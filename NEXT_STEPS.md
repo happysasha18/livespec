@@ -1,8 +1,11 @@
 # livespec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
 ## LIVE STATE (2026-07-04 late evening)
-PUBLIC: github.com/happysasha18/livespec (v0.2 spec, prover-proven, honest prior-art in docs/).
-Profile page rewritten around livespec; product-prover README links it. Old three skill repos await
+PUBLIC: github.com/happysasha18/livespec (SPEC now v0.3 LOCAL, push pending Alexander's review).
+v0.3 = parallel-session protection: write-ownership (only a livespec-assigned session edits this repo;
+outsiders → one new inbox/ file), concurrent-edit fence (HEAD/status re-check before every write/commit),
+inbox/ created; communicator rule 6 hardened (spec codes never spoken to the human) + installed copy synced.
+v0.3 delta is prover-pending at next milestone (alongside the A-0 reorder). Old three skill repos await
 deletion (needs Alexander: gh auth refresh -h github.com -s delete_repo, then delete).
 
 ## Forward queue (mirrors ROADMAP.md)

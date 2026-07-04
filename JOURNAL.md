@@ -49,3 +49,23 @@ meanings, not a frozen order). A re-prove of the adopt section is due at the nex
 not blocking). Closes ROADMAP row 4; completes the "update ADOPT.md to the proven spec" tail of row 7.
 Note: livespec repo was concurrently edited by another session (publish + rows 12-15) — this entry touched
 only ADOPT.md, SPEC A-0/A-5, ROADMAP row 4, and this journal.
+
+## 2026-07-04 — parallel-session protection (row 16) + codes-never-speak (row 17)
+Two sessions edited this repo the same evening: one publishing (rows 1, 12–15), one running the tlvphoto
+adopt (row 4) — the adopt session edited ADOPT.md/SPEC/ROADMAP/JOURNAL directly and avoided a collision only
+by NOTICING the foreign commits and being surgical. Alexander: that must be mechanics, not luck — and a host
+run's story belongs in the HOST's docs, not here.
+
+Landed (SPEC v0.3): **INV-10 write-ownership** — only a session the human assigned to livespec itself writes
+this repo; every other session is read-only except creating one new `inbox/` file. **INV-11 concurrent-edit
+fence** — re-check HEAD/`git status` before every write and every commit; foreign changes ⇒ stop, re-read,
+proceed surgically or back off; never push while another session is live (push coordination is the human's);
+applies to host repos too. **E-11/T-10 inbox/** — one new file per outside wish; file-creation cannot collide,
+so no-wish-is-lost holds without outsiders touching shared files. ADOPT.md now states the host-session
+read-only rule. The row-4 entry above stays (it documents a real livespec change); under the new rule that
+change would have arrived as an inbox wish.
+
+Same evening, second leak of the same class (row 17): a session told Alexander "INV-8 рекомендует
+GitHub-бэкап" — a spec handle spoken to the human. communicator rule 6 hardened from a soft "translate
+internal ids" to a hard gate: spec handles (INV-x, E-x, A-x, T-x, row numbers, ⟨DECIDE⟩) are machine anchors
+that never appear in a sentence addressed to the human; the leak itself is the rule's ❌ example now.

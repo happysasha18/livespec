@@ -6,6 +6,11 @@ has a clear done-state. Adoption never assumes a blank slate, and it **never del
 
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
 
+**The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a livespec
+defect (a stale phase here, a template gap) does NOT edit the livespec repo — it drops ONE new file into
+livespec's `inbox/` (see `inbox/README.md`) and records the finding in the HOST's own journal. Learned the
+hard way: the pilot run edited livespec directly while another session was mid-flight in the same repo.
+
 ---
 
 ## Phase 0 — Version-control gate FIRST (SPEC A-5, done early for reversibility)
