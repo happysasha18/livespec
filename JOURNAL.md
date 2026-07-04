@@ -22,3 +22,13 @@ wishes (attic-not-delete; version-control gate). Instead of patching ADOPT.md po
 on itself: three wishes → queue rows 8-10 → SPEC.md v0.1 authored covering the whole package (wish
 lifecycle, both entry modes, actors, milestones, self-application invariant M-4). ADOPT.md and README will
 be updated AFTER the prover pass (row 7) — spec before docs, by the book.
+
+## 2026-07-04 — prover pass (row 7) + the honesty correction
+FULL product-prover pass over SPEC v0.1: 11 findings (wish exit states; preemption path; surface-registry
+entity; current-vs-target marking; profile owner+trust rule; provenance reconcile transition; baseline
+advance timing; INV homes; human-gate re-listing; skill-version drift; checkpoint home). All folded → v0.2.
+Alexander then challenged the "pioneers / no prior art" claim as possible people-pleasing. He is partly
+right: artifact-baseline diffing is MATURE prior art in testing tooling (Jest snapshots, Percy, Chromatic
+visual regression). Our narrower true claim: declared-scope diff as an agent pre-push guardrail + the
+continuous-intake combination. README rewritten to credit lineage and link BMAD; long-tail search of the
+skill ecosystem launched before publish.
