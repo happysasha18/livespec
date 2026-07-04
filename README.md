@@ -30,7 +30,7 @@ prior art we missed, open an issue — we would genuinely like to read it.
 
 **Step 0 — Intake.** A wish arrives in plain words. Classify it (new feature / bug / refactor / removal / docs). Determine where it enters the pipeline.
 
-1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name.
+1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (livespec's own `SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
 3. **Reconcile.** Map every spec claim to a real `file:line`. Spec drifts from code; fix the spec to the shipped truth, not the other way.
 4. **Matrix.** Derive `TEST_MATRIX.md` from the proven spec. One row per invariant/state/transition, each pinned to a test level (string / DOM / browser / pixel). Visibility and layout facts get level ≥ browser.

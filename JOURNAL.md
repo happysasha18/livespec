@@ -108,3 +108,22 @@ Alexander's four wishes the same hour:
 - **Context hygiene for long work (row 26, landed):** at a safe breakpoint the context may be compacted or
   cleared — the breakpoint's whole point is that disk holds the resume.
 Push deferred: bundling with row 22's landing so the push-gate prover run covers both.
+
+## 2026-07-04 — SPEC v0.4: the spec now reads as a product document (row 22)
+Alexander OK'd the sample shape the same night ("давай полный прогон, потом пуш"). The whole spec
+restructured use-case-first: sections are now scenarios ("Throwing a wish", "When a bug cuts the line",
+"The package repo: who may write", "Attaching to a live project") — the prose talks to the human, every
+code only trails in parentheses/brackets, and a Formal index closes the doc as the machine map. Explicitly
+ONE document, not a human copy and a model copy in sync — the index is declared a derived map, and the
+milestone now re-checks it against the prose so it can never become a second truth.
+
+The guard held: anchor set v0.3 → v0.4 byte-identical (49 anchors, grep-extract diff). Push-gate prover
+pass (docs/prover/2026-07-04-v04-push.md): 4 findings, all folded — package-governance section moved out
+of the product story's path; index-drift check added to the milestone; D-1's expired "first adopt run"
+trigger refreshed to "next"; README got the one sentence naming the new shape (full propagation to the
+template + spec-author is row 23, its own landing).
+
+Also folded from Alexander the same hour (row 26 refined): at a safe breakpoint the agent compacts its own
+context to keep working and SAYS so — never silently; a full wipe/clear of the conversation is the human's
+move. And row 27 opened: he floated renaming to "live-spec" (hyphen) — recommendation recorded (keep the
+unbroken token), his call, awaiting his word.
