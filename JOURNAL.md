@@ -34,12 +34,10 @@ continuous-intake combination. README rewritten to credit lineage and link BMAD;
 skill ecosystem launched before publish.
 
 ## 2026-07-04 — first REAL adopt run (tlvphoto) + dogfood fix to ADOPT.md (row 4)
-Ran the adopt procedure end-to-end on a live project (tlvphoto: 7.7 GB, ~18 docs, no git). Landed
-non-destructively: git baseline (media/venv gitignored), `.livespec/` (profile + skill commits), a surface
-registry (30 surfaces) and a TEST_MATRIX from the host's proven SPEC (all TODO — the data rows double as the
-host's next sprint's acceptance), then 7 superseded docs → `attic/` with a manifest (Alexander OK), live
-current-state pointers repointed. tlvphoto was already authored in the method, so re-engineering rewrote
-nothing — adoption was light, which is the intended outcome for a well-run host.
+The adopt procedure ran end-to-end on a live host for the first time. The run's own story lives where it
+belongs — in the HOST's journal (tlvphoto JOURNAL.md, entry "2026-07-04 — livespec adopt"); this entry keeps
+only what changed LIVESPEC. (Trimmed 2026-07-04 late: the host story was originally written here too —
+that duplication is exactly what the write-ownership rule now forbids.)
 
 **Why this changed livespec itself:** the run proved `adopt/ADOPT.md` was STALE vs SPEC (it still had the old
 inventory→reverse-spec→snapshot order, missing orient/attic/VCS-gate). Rewrote ADOPT.md to the SPEC A-0…A-7
@@ -69,3 +67,22 @@ Same evening, second leak of the same class (row 17): a session told Alexander "
 GitHub-бэкап" — a spec handle spoken to the human. communicator rule 6 hardened from a soft "translate
 internal ids" to a hard gate: spec handles (INV-x, E-x, A-x, T-x, row numbers, ⟨DECIDE⟩) are machine anchors
 that never appear in a sentence addressed to the human; the leak itself is the rule's ❌ example now.
+
+## 2026-07-04 — late refinements: anchors-in-parens, journal cleanup, push gate + its first run
+Three refinements from Alexander the same night, all landed before the v0.3 push:
+1. **Anchors in parentheses are allowed — with the WHY recorded** (row 17 refined): the plain sentence
+   carries the meaning for the human; the trailing code serves the MODEL — transcripts are what it greps
+   and self-monitors against, so a stable anchor makes past reasoning findable. Rule 6 rewritten from
+   "codes never appear" to "a code never does the talking"; installed copy synced.
+2. **Journal cleanup by the new ownership rule:** the row-4 entry held the tlvphoto run's full story — a
+   HOST's story in the package's journal, the exact duplication the write-ownership rule forbids. Trimmed
+   to the livespec-only part with a pointer to tlvphoto's JOURNAL (verified present there first).
+3. **Push gate (M-6, row 18):** Alexander — livespec specifically gets a fresh whole-spec re-check before
+   EVERY push. Spec'd and enforced immediately: prover pass docs/prover/2026-07-04-v03-push.md over v0.3
+   found 7 findings in the new seams — the gate could regress on itself (fold→re-prove forever), an
+   outsider's uncommitted inbox file would trip the very fence built to receive it, an inbox wish could
+   wait durably-recorded but invisible, plus name-collision/record-naming/standing-routine edges. Six
+   folded into SPEC same session (gate no-regress rule; outsider commits its inbox file + fence treats
+   inbox files as benign; sessions sweep inbox first + milestone lists unharvested files; `-2` counter;
+   dated record naming; standing routines count as assignment). Seventh recorded onto row 3's scope
+   (guardrails scaffold also mechanizes the fence and the push gate). First push of v0.3 follows this entry.

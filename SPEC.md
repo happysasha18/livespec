@@ -46,10 +46,12 @@ mechanical guardrails a project instantiates.
   scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
   registry is self-closing, never a trusted hand-list. [E-10]
 - **Inbox (inbox/)** — the parallel-safe intake door for wishes born OUTSIDE a livespec session (a host's
-  adopt run, any passing conversation). One NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`), a few plain
-  lines; never an edit to an existing file — creating a fresh file cannot collide, shared files can. The next
-  livespec session harvests inbox files into queue rows; the harvest commit removes the file (git history
-  keeps it — this internal removal is not an INV-7 case, which protects HOST files). [E-11]
+  adopt run, any passing conversation). One NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; if the name
+  exists, append `-2`, `-3`, …), a few plain lines; never an edit to an existing file — creating a fresh
+  file cannot collide, shared files can. The outsider COMMITS its one new file (a commit touching inbox/
+  only, message naming the source) — that commit is inside the read-only exception. The next livespec
+  session harvests inbox files into queue rows; the harvest commit removes the file (git history keeps it —
+  this internal removal is not an INV-7 case, which protects HOST files). [E-11]
 
 ## The life of a wish (states and transitions)
 
@@ -69,8 +71,9 @@ takes the lane, and the parked wish resumes as the immediate next landing. [T-9]
 
 Arrival from outside: a wish born in a NON-livespec session (a host adopt run that hits a package defect,
 any other conversation) arrives as one new `inbox/` file [E-11] — that file IS the durable record, so
-"spoken means it exists" [INV-1] holds without the outside session touching the queue; the next livespec
-session harvests it into a row. [T-10]
+"spoken means it exists" [INV-1] holds without the outside session touching the queue. A livespec session
+sweeps inbox/ as its FIRST act and harvests each file into a row — a wish must not wait durably-recorded
+but operationally invisible. [T-10]
 
 Invariants:
 - **No wish is ever lost** — spoken means a queue row exists before anything else happens; rows are never
@@ -93,11 +96,13 @@ Invariants:
   repo's files (spec, queue, journal, skills, templates, adopt procedure). Every other session — a host
   adopt run, a skill install, anything that merely reads the package — is READ-ONLY here, with exactly one
   exception: creating a new wish file in inbox/ [E-11]. The test is crisp: if the session cannot say "the
-  human asked ME, in this conversation, to change livespec", it does not write. A host run's story lives in
+  human asked ME, in this conversation — or via a standing routine the human created FOR livespec — to
+  change livespec", it does not write. A host run's story lives in
   the HOST's journal, never here. [INV-10]
 - **Concurrent-edit fence** — before writing to a repo and again before every commit, the agent re-checks
   `git status` + HEAD against what it last read; if HEAD moved or the tree holds changes it did not make,
-  it STOPS, re-reads the changed files, and only then proceeds surgically — or backs off to inbox/. It
+  it STOPS, re-reads the changed files, and only then proceeds surgically — or backs off to inbox/. New
+  files under inbox/ are the expected benign case, not a fence trip. It
   never pushes while another session is known to be live in the repo — push coordination belongs to the
   human. Applies to livespec AND to any host repo two sessions might share (the concurrency axis of C-1
   made mechanical). [INV-11]
@@ -148,7 +153,8 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit + surface-composition check + doc
   COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly) +
-  a re-listing of every open human gate, one line each, so a waiting wish is never forgotten. [M-1]
+  a re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting
+  wish is never forgotten. [M-1]
 - **Safe breakpoint (end of every movement):** NEXT_STEPS live-state replaced (never stacked) + dated
   JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss. [M-2]
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
@@ -159,6 +165,13 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 - **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
   mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source of
   truth — CI runs them, never redefines them. (ROADMAP row 14.) [M-5]
+- **Push gate for livespec itself** — this repo is public and is the method's own flagship, so EVERY push
+  is preceded, in the same session, by (a) the concurrent-edit fence [INV-11] and (b) a fresh whole-spec
+  re-check: a product-prover pass over SPEC.md as it stands, its record landing in docs/prover/ before the
+  push (record name `YYYY-MM-DD[-suffix].md`; suffix mandatory when the date's file exists). Findings that
+  are must-fix fold before pushing; folds produced by the gate's own pass do NOT re-trigger the gate — they
+  ship with the same record; the rest become queue rows. No re-check record for the pushed state ⇒ the push
+  should not have happened. [M-6]
 
 ## Cross-section composition
 

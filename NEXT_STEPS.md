@@ -1,12 +1,13 @@
 # livespec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-04 late evening)
-PUBLIC: github.com/happysasha18/livespec (SPEC now v0.3 LOCAL, push pending Alexander's review).
-v0.3 = parallel-session protection: write-ownership (only a livespec-assigned session edits this repo;
-outsiders → one new inbox/ file), concurrent-edit fence (HEAD/status re-check before every write/commit),
-inbox/ created; communicator rule 6 hardened (spec codes never spoken to the human) + installed copy synced.
-v0.3 delta is prover-pending at next milestone (alongside the A-0 reorder). Old three skill repos await
-deletion (needs Alexander: gh auth refresh -h github.com -s delete_repo, then delete).
+## LIVE STATE (2026-07-04 night)
+PUBLIC: github.com/happysasha18/livespec — SPEC v0.3 PUSHED (Alexander's OK) after the first push-gate
+prover run (docs/prover/2026-07-04-v03-push.md: 7 findings, 6 folded, 1 → row 3 scope).
+v0.3 = parallel-session protection (write-ownership INV-10, concurrent-edit fence INV-11, inbox/ E-11)
++ push gate M-6 (whole-spec re-prove before EVERY livespec push) + communicator rule 6 (plain words carry
+meaning, code may trail in parentheses as a model-side anchor; installed copy synced) + livespec JOURNAL
+cleaned of the tlvphoto host story (lives in tlvphoto's JOURNAL). Old three skill repos await deletion
+(needs Alexander: gh auth refresh -h github.com -s delete_repo, then delete).
 
 ## Forward queue (mirrors ROADMAP.md)
 1. Delete spec-author/build-pipeline/communicator repos (after Alexander grants delete scope).
