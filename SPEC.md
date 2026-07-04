@@ -130,6 +130,9 @@ Adoption is a sequence; each phase completes before the next. [A-0]
 - **The package is itself a host project of livespec [target until E-6 lands]** — this spec, this queue,
   these rules govern livespec's own development. Enforcement becomes mechanical when the guardrails
   scaffold (ROADMAP row 3) ships; until then the discipline is followed by hand and says so. [M-4]
+- **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
+  mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source of
+  truth — CI runs them, never redefines them. (ROADMAP row 14.) [M-5]
 
 ## Cross-section composition
 

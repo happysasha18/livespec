@@ -39,6 +39,44 @@ we missed, open an issue — we would genuinely like to read it.
 
 Bug shortcut: `bug → matrix → test → code` (skip spec/prove if the fact is already in SPEC; update the spec sentence if it isn't).
 
+```mermaid
+flowchart LR
+  W([wish, in passing]) --> I[0 intake:<br/>classify + queue row]
+  I --> S[1 spec delta] --> P[2 prove] --> R[3 reconcile<br/>with code] --> M[4 matrix]
+  M --> T[5 tests,<br/>red first] --> C[6 code<br/>to green] --> V[7 verify by deed<br/>+ guardrails] --> L[8 land:<br/>commit + report]
+  L -. milestone .-> A[full re-prove + matrix audit<br/>+ doc compaction]
+```
+
+### The life of a wish
+
+```mermaid
+stateDiagram-v2
+  [*] --> arrived: spoken
+  arrived --> classified
+  classified --> queued: spec-delta drafted + validated
+  queued --> in_work: lane free (serial)
+  in_work --> parked: bug preempts (checkpoint written)
+  parked --> in_work: bug landed
+  in_work --> landed: green suite + guardrails
+  landed --> reported: one plain line
+  reported --> [*]
+  queued --> declined: human says no
+  queued --> deferred: parked with revisit trigger
+  queued --> superseded: absorbed by another wish
+```
+
+### How you drive it
+
+No CLI — you drive it in plain words, in your Claude session:
+
+| You say | What happens |
+|---|---|
+| *"attach livespec to this project"* (new) | templates copied, version-control gate, queue starts |
+| *"attach livespec — existing project, adopt"* | orient (reads ALL your docs first) → inventory → re-engineer → attic → baseline |
+| any wish, in passing, mid-anything | intake: queue row + spec-delta + only YOUR questions back, batched |
+| *"status"* | position on the map: what landed, what's in the lane, what waits on you |
+| *"publish / push"* | your gate — nothing outward-facing moves without your word |
+
 ---
 
 ## The four skills
