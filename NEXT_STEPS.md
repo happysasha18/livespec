@@ -1,15 +1,13 @@
-# livespec — Next Steps
+# livespec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-04)
+## LIVE STATE (2026-07-04 evening)
+SPEC v0.1 authored (self-application run #1) and committed (6b5f645). Unpublished — README open for
+Alexander's review (publish gate). Queue rows 8-10 (adopt-orient / attic / VCS-gate) spec'd and landed.
 
-Skeleton assembled and committed locally. Four skills copied (read-only). Templates, adopt procedure, guardrails outline, install script all present. Unpublished — local only, no GitHub repo, no push.
-
-## Forward queue
-
-1. **Alexander's word to publish** — create GitHub repo, push, update install.sh to reference the real remote
-2. **Author SPEC via spec-author** — full scope: entities (wish, pipeline run, skill, project, guardrail check), states, transitions, actors, invariants, cross-section composition
-3. **Prove the SPEC via product-prover** — whole spec, full pass, findings to docs/prover/
-4. **Generic guardrails scaffold** — lift the four mechanical checks from track-coach, make them project-agnostic, wire to install.sh
-5. **Adopt-mode dry run on tlvphoto** — validate ADOPT.md procedure on a real mid-flight project
-
-Memory can be wiped after this message — NEXT_STEPS.md + JOURNAL.md have the full resume trail.
+## Forward queue (mirrors ROADMAP.md)
+1. Alexander's word → publish repo → THEN delete spec-author/build-pipeline/communicator repos
+   (product-prover repo STAYS standalone) → update his profile-page README.
+2. product-prover pass over SPEC.md (row 7) → fold must-fixes → update ADOPT.md + README to the proven spec.
+3. Generic guardrails scaffold lifted from track-coach (row 3).
+4. Adopt dry run on tlvphoto (row 4, needs Alexander).
+5. skill-creator eval pass over the four skills (row 5).
