@@ -106,8 +106,9 @@ Adoption is a sequence; each phase completes before the next. [A-0]
 6. **Baseline snapshot [target]** — render/produce the current artifacts as they are and save them; this
    is the diff baseline per E-7. [A-6]
 7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
-   installed skill versions are recorded in `.livespec/` at attach time, and a later skill upgrade gets a
-   one-line journal note at the next session start. [A-7]
+   installed skill versions are recorded in `.livespec/` at attach time. **On any version change (livespec
+   or any installed skill), the agent RE-READS the changed SKILL.md before continuing** — never coasts on
+   the stale in-memory version — and writes a one-line journal note naming old → new. [A-7]
 
 ## Actors
 
