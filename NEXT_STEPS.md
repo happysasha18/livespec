@@ -6,8 +6,10 @@ lead, codes trail as anchors, Formal index closes the doc; anchor-set guard 49=4
 2026-07-04-v04-push.md, 4 findings all folded). Day's stack: v0.3 parallel-session protection
 (write-ownership, fence, inbox/ — inbox already USED once by tlvphoto and harvested → rows 19-21) + push
 gate M-6 + breakpoint skill re-stat (A-7) + announced self-compaction at breakpoints (M-2).
-OPEN for Alexander: row 27 naming ("live-spec" vs livespec — recommendation: keep livespec) · old three
-skill repos deletion (needs gh auth refresh -h github.com -s delete_repo).
+Late add: communicator rule 8 "retell, don't reference" (row 28, landed + synced). Old three skill repos
+DELETED by Alexander 2026-07-04 — the package is the skills' only public home now.
+OPEN for Alexander: row 27 naming ("live-spec" vs livespec — recommendation: keep livespec; if renamed,
+notify the adopted host projects).
 
 ## Forward queue (mirrors ROADMAP.md)
 1. Propagate the use-case-first shape to SPEC.template.md + spec-author skill (row 23) — own landing.

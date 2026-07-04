@@ -126,4 +126,17 @@ template + spec-author is row 23, its own landing).
 Also folded from Alexander the same hour (row 26 refined): at a safe breakpoint the agent compacts its own
 context to keep working and SAYS so — never silently; a full wipe/clear of the conversation is the human's
 move. And row 27 opened: he floated renaming to "live-spec" (hyphen) — recommendation recorded (keep the
-unbroken token), his call, awaiting his word.
+unbroken token), his call, awaiting his word; if renamed, the adopted host projects must be told.
+
+## 2026-07-04 — communicator rule 8: retell, don't reference (row 28)
+End of the same night, a live communication failure taught the last rule: the report "the inbox worked —
+harvested into rows 19–21" meant nothing to Alexander until retold as a story (the other project's session
+found three adoption gaps; before tonight it would have edited the package directly; instead it left one
+inbox file and touched nothing else; the findings became queue rows). Same fact, only the second telling
+communicated. Landed as communicator rule 8 (seven rules → eight): an event is REPORTED as a story that
+stands on its own; internal bookkeeping (row numbers, file names) may only trail as an anchor, never
+substitute. The failed/working pair is the skill's live example. Installed copy synced; the general
+principle also recorded in the playbook. Old three skill repos: Alexander deleted them tonight — the
+package is now the skills' only public home.
+Push note: SPEC.md is byte-unchanged since the v0.4 push-gate record (2026-07-04-v04-push.md), so that
+record covers this push's spec state per the gate's own terms.

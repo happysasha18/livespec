@@ -8,14 +8,14 @@ description: How to show work to a human and ask for decisions they can actually
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Seven rules, few enough to hold in your head.
+internal ids). Eight rules, few enough to hold in your head.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
 **(c)** name a problem. If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
-## The seven rules
+## The eight rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -55,6 +55,12 @@ stop and show it.
    micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak. And
    only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
 
+8. **Retell, don't reference.** When reporting an event or a result, tell it as a small story — who did what,
+   what would have happened before, what happened instead, why it matters — in words that stand on their own.
+   A pointer into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record, not a
+   message: if the sentence only lands for someone who already holds the context, it hasn't been said yet.
+   The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
+
 ## Presenting a fork (template)
 A choice is never a paragraph. Generate a tiny HTML:
 - **Option A (recommended, if you have a pick)** — a picture/example + one line "when this is better".
@@ -76,6 +82,11 @@ A choice is never a paragraph. Generate a tiny HTML:
 - **A day of work that looked like nothing.** Instead of claiming the audits were valuable, put yesterday's
   build next to today's in one window, synced, with an honest verdict: "you're right, this is not a visual
   redesign — here's the little that's visible and the two bugs it caught that you can't see." (rules 4, 7)
+- **The same event, told twice.** First telling: "the inbox worked — a session dropped three findings,
+  harvested into rows 19–21" — the human had to ask what that meant. Second telling: "the other project's
+  session found three gaps in the adoption procedure; before tonight it would have edited the package's
+  files directly; instead it left one new file in the inbox and touched nothing else; I turned its findings
+  into queue rows." Same fact — only the second one communicated. (rules 6, 8)
 
 > The pack, whole: **spec-author** writes the spec · **product-prover** reviews it · **build-pipeline** ships
 > it · **communicator** makes the human-facing exchange land.
