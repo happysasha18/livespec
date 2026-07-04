@@ -6,9 +6,21 @@ A continuous, self-proving development pipeline for building with AI agents: thr
 
 ---
 
-## Why not BMAD / spec-kit / Kiro
+## Why livespec, when [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [spec-kit](https://github.com/github/spec-kit) and [Kiro](https://kiro.dev) exist
 
-Every framework in this space does spec-before-code, and that is the right instinct. But all of them stop there. None do **continuous intake** (a wish enters the pipeline in a sentence, not a planning session). None **diff artifacts against the previous run's output** — so a panel that shipped empty is invisible until a human notices it. None **prove the process itself** with mechanical guardrails wired to git hooks. We surveyed seven frameworks in July 2026; none combined these three. livespec does.
+They are good, and they share the right instinct: spec before code. Use them if their shape fits your work.
+livespec is built for a different shape of work — **continuous**: you throw wishes in passing, mid-anything,
+and each one enters the process in a sentence, not a planning session; the queue is persistent across
+sessions; execution runs asynchronously while you keep talking.
+
+Honest lineage note: baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
+Chromatic) — livespec's contribution is repurposing it as an **agent guardrail with declared scope**: every
+change declares what it touches, and an undeclared difference against the previous accepted run is red at
+pre-push. That is aimed at a failure class specific to agents — silent, unasked micro-changes. The other
+part we have not found elsewhere (survey of 7 frameworks + a long-tail skill-ecosystem search, July 2026):
+the development process itself is specced and formally reviewed like a product — this repo's own SPEC.md
+went through product-prover before publish, and the findings are in `docs/prover/`. If you know prior art
+we missed, open an issue — we would genuinely like to read it.
 
 ---
 
