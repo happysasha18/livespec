@@ -1,0 +1,19 @@
+# [Project Name] Journal
+
+The WHY behind every change. The spec and README state current truth; this file explains how we got there. Never assert project history from memory — verify via this file and git.
+
+---
+
+## YYYY-MM-DD — [Short title of the movement]
+
+**What:** One paragraph describing what changed or was decided.
+
+**Why:** The reason — what problem it solves, what observation led to the decision, what constraint or principle drove the shape of the solution.
+
+**Decided:** Any option that was explicitly chosen over alternatives — name the alternatives and why this one won.
+
+**Status:** What state the project is in at end of this movement.
+
+---
+
+*Add a new dated entry for every significant movement: a shipped stage, a spec+prove pass, a design decision landed. Trim the file to keep it readable; archive old entries to JOURNAL_archive.md if it grows unwieldy.*
