@@ -1,73 +1,121 @@
 # ADOPT — Mid-flight adoption procedure
 
-How to attach livespec to an existing codebase that has no spec yet. Follow these steps in order; each one has a clear done-state before moving to the next.
+How to attach livespec to an existing codebase — at the start or in the middle. This is the executable
+projection of SPEC.md "Entry mode 2: adopting a live project" (A-0…A-7). Follow the phases in order; each
+has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
+
+First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
 
 ---
 
-## Step 1 — Inventory the code
+## Phase 0 — Version-control gate FIRST (SPEC A-5, done early for reversibility)
 
-**Goal:** Know what exists before writing anything down.
+The spec requires version control before the first *landing* (INV-8). In practice, do it **before you touch
+anything** — then the whole adopt run is reversible.
 
-1. List every user-facing output the project produces (HTML files, CLI output, API responses, rendered widgets, emails — anything a user receives).
-2. List every surface (a panel, a page, a form, a chart) visible in those outputs.
-3. List every significant data entity the code operates on (from filenames, class names, database tables, or config keys).
-4. Record this inventory in `data/adopt_inventory.md` — one line per item, no analysis yet.
+1. If the host has no git: `git init`.
+2. Write a `.gitignore` that keeps source + structured data and excludes the virtualenv, caches, and heavy
+   generated/media artifacts. (On the pilot this was ~7.6 GB of media out of a 7.7 GB tree — commit the
+   ~source, not the exports.)
+3. Make ONE **baseline commit** of the pristine original — this is the restore point and the diff baseline
+   (SPEC A-6 / E-7).
+4. **Recommend** a remote (GitHub) + a backup habit. Creating/pushing a remote is the human's gate — offer,
+   don't do it silently.
 
-Done when: `data/adopt_inventory.md` exists and every output + surface + entity has a line.
-
----
-
-## Step 2 — Reverse-spec from the code
-
-**Goal:** Write what the system actually does, not what you wish it did.
-
-1. For each entity from the inventory: what states can it be in? What transitions move it between states? Who (user, automated process, external system) triggers each transition?
-2. For each surface: what state does it carry? What does it show in each of its possible states?
-3. Write a draft `SPEC.md` using `spec-author` — prose-first, plain language, structured on the spine (Purpose / Entities / States & transitions / Actors / Invariants / Cross-section composition / Glossary).
-4. Mark anything you can't determine from the code alone with `⟨DECIDE⟩` and a one-line question. Do not guess intent.
-
-Done when: `SPEC.md` exists with all known sections filled and all unknowns marked `⟨DECIDE⟩`.
+Done when: the host is a git repo with a clean baseline commit, and heavy artifacts are gitignored.
 
 ---
 
-## Step 3 — Build the surface registry
+## Phase 1 — Orient: read everything first (SPEC A-1)
 
-**Goal:** Every surface is named once and pinned to a file:line.
+Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
+suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
+these in livespec shape** — then adoption is light and you rewrite nothing.
 
-1. For each surface in the spec, find the file and line where it is generated or rendered.
-2. Record in `data/surface_registry.md`: surface name | owning file:line | test that asserts it exists.
-3. A surface with no owning file:line is an inventory gap — investigate or mark `⟨DECIDE⟩`.
+Produce a **document digest** (`data/adopt_orient_digest.md`): per doc — kind (spec/roadmap/journal/notes/
+report/…) · one-paragraph what-it-says · CURRENT or STALE (and why) · what it overlaps/duplicates.
 
-Done when: every surface in SPEC.md has a row in the registry with a real `file:line`.
+> Delegate this read to a worker — it is fan-out fact-gathering, not judgment. The senior reads the digest.
 
----
-
-## Step 4 — First artifact snapshot as diff baseline
-
-**Goal:** A recorded snapshot of every output so future changes are visible as diffs, not surprises.
-
-1. Run the project and capture every user-facing output (save HTML, screenshot, or record CLI output).
-2. Store snapshots in `data/snapshots/YYYY-MM-DD/`.
-3. Note the version or commit hash these snapshots belong to.
-
-Done when: snapshots exist for all outputs from the inventory.
+Done when: every existing document has a digest entry.
 
 ---
 
-## Step 5 — Derive the test matrix from the spec
+## Phase 2 — Inventory the code & surfaces (SPEC A-2)
 
-**Goal:** Every spec invariant, state, and transition has a matrix row with a test level assigned.
+1. List every **user-facing output** (HTML, CLI output, API responses, rendered widgets, emails, consumed
+   JSON).
+2. List every **surface** (a page, panel, form, chart) and pin it to its owning `file:line` — this seeds the
+   **surface registry** (`SURFACE_REGISTRY.md`, SPEC E-10), which is self-closing: a surface that renders but
+   isn't registered is RED.
+3. List every significant **data entity** (from filenames, JSON keys, class names, tables, config).
 
-1. Use `templates/TEST_MATRIX.template.md` as the starting point.
-2. For each invariant in SPEC.md: one row, test level assigned (string / DOM / browser / pixel). Visibility and layout facts get level >= browser-computed.
-3. Mark all rows `TODO` — they will be filled in as tests are written.
+Record in `data/adopt_inventory.md` (one line per item), then lift the surfaces into `SURFACE_REGISTRY.md`.
 
-Done when: `TEST_MATRIX.md` exists with a row per spec invariant, all marked TODO.
+Done when: the inventory exists and every surface in the registry has a real `file:line` (or is marked
+`⟨DECIDE⟩`).
 
 ---
 
-## Step 6 — Incremental from here
+## Phase 3 — Re-engineer existing documents into livespec shapes (SPEC A-3)
 
-From this point, the project is on the standard pipeline. Every new wish enters at Step 0 (intake) and flows through `spec → prove → matrix → test → code → verify → commit`. The adopt procedure is complete.
+Turn what exists into the canonical set — **keeping original claims, marking them unverified**:
+- an existing spec → `SPEC.md` sections (entities / states & transitions / actors / invariants /
+  cross-section composition / glossary); if the host's spec is already in this shape, **do not rewrite it** —
+  just confirm structure and fill the two things hosts usually lack: the **surface registry** (Phase 2) and
+  the **test matrix** (Phase 5).
+- existing tests → matrix rows citing them at their real level.
+- an existing roadmap/TODO → queue rows in `ROADMAP.md`.
 
-**First recommended action after adoption:** run `product-prover` on the whole spec to find the gaps that the reverse-spec pass missed. Fold every must-fix before writing new tests.
+**Provenance (SPEC C-1).** Mark each document `native-livespec` (authored in the method) or
+`re-engineered-from-existing`. A re-engineered claim is **unverified until reconciled** — pinned to
+`file:line` or removed at the FIRST landing that touches its surface, and all remaining ones at the first
+milestone. A host authored entirely in the method (like the pilot) has no reconcile backlog beyond its own
+`⟨DECIDE⟩` / `[planned]` markings.
+
+Done when: the canonical doc set exists (SPEC/ROADMAP/JOURNAL/NEXT_STEPS + registry + matrix) and every claim
+is marked native or unverified.
+
+---
+
+## Phase 4 — Attic, not deletion (SPEC A-4, INV-7)
+
+Any document Phase 3 supersedes (an old spec, a stale resume, a folded notes file, a completed process
+checkpoint) **moves to `attic/`** with a one-line manifest entry (original path · why · absorbing doc ·
+date). Flat layout; on a basename collision the source dir prefixes the name.
+
+**The selection is a human gate.** These are the human's authored files in a live project — propose the attic
+set with reasons and get an OK before moving. Moving is done with `git mv` (history preserved).
+
+**Sweep the coupling.** After moving, fix any **live current-state pointer** in the KEPT docs that named a
+moved file as canonical (e.g. a JOURNAL header "canonical state lives in X") — repoint it, or it becomes a
+dead backpointer. Leave pure historical citations in dated entries (they resolve via the manifest).
+
+Done when: superseded files are under `attic/` with a manifest, and no live pointer is dead.
+
+---
+
+## Phase 5 — Derive the test matrix from the spec (SPEC A-3, tail)
+
+Build `TEST_MATRIX.md` from the proven spec: one row per invariant / transition / cross-section / surface,
+each pinned to a test **level** (string / DOM / browser / pixel — extend with `data` for a data pipeline).
+Every row states BOTH sides — what the fact DOES and what it must NEVER do (the negative is the regression
+fence). Visibility/layout facts get level ≥ browser. If the host has no suite yet, all rows are `TODO` — the
+data/invariant rows become the acceptance criteria for the next build sprint.
+
+Done when: `TEST_MATRIX.md` has a row per spec invariant, each with a level, all `TODO` (or better).
+
+---
+
+## Phase 6 — Attach record & incremental from here (SPEC A-7)
+
+1. Record installed skill versions in `.livespec/` (pin by source commit if the skills carry no semver) and
+   seed `.livespec/profile.md` (the human's working contract — mode/trust set only on the human's word,
+   INV-9).
+2. Write the run's JOURNAL entry (what landed · why · provenance · any findings held for the human).
+3. The host is now on the standard pipeline: every new wish enters at intake and flows
+   `spec → prove → matrix → test → code → verify → commit`.
+
+**First recommended action after adoption:** run `product-prover` on the whole spec to catch what the
+reverse-spec pass missed — UNLESS the spec was prover-proven recently with no drift since (then say so and
+skip the re-prove).

@@ -8,7 +8,7 @@ the current landing finishes before the next starts (bugs may preempt).
 | 1 | Alexander's word to publish the repo | needs Alexander | **landed 2026-07-04** | Published: github.com/happysasha18/livespec (after prover pass + honest prior-art check) |
 | 2 | Author the package's own SPEC | M | **landed 2026-07-04** | SPEC.md v0.1 written (self-application run #1); prover pass = row 7 |
 | 3 | Generic guardrails scaffold lifted from track-coach | M | queued | After prover pass on SPEC |
-| 4 | Adopt-mode dry run on tlvphoto | M | queued, needs Alexander | Alexander confirms tlvphoto as pilot |
+| 4 | Adopt-mode dry run on tlvphoto | M | **landed 2026-07-04** | First real adopt run: tlvphoto attached (git baseline + `.livespec/` + surface registry + TEST_MATRIX; 7 docs → attic w/ Alexander OK). Dogfood fixes folded: `adopt/ADOPT.md` rewritten to the SPEC A-sequence; VCS-gate moved FIRST (SPEC A-0/A-5) |
 | 5 | skill-creator eval pass over the four skills | S | queued | After guardrails scaffold |
 | 6 | Better name if one lands | — | closed 2026-07-04 | livespec is Alexander's pick |
 | 7 | product-prover pass over livespec's own SPEC | M | **landed 2026-07-04** | 11 findings (4 must-fix), ALL folded same session → SPEC v0.2; docs/prover/2026-07-04.md |

@@ -32,3 +32,20 @@ right: artifact-baseline diffing is MATURE prior art in testing tooling (Jest sn
 visual regression). Our narrower true claim: declared-scope diff as an agent pre-push guardrail + the
 continuous-intake combination. README rewritten to credit lineage and link BMAD; long-tail search of the
 skill ecosystem launched before publish.
+
+## 2026-07-04 — first REAL adopt run (tlvphoto) + dogfood fix to ADOPT.md (row 4)
+Ran the adopt procedure end-to-end on a live project (tlvphoto: 7.7 GB, ~18 docs, no git). Landed
+non-destructively: git baseline (media/venv gitignored), `.livespec/` (profile + skill commits), a surface
+registry (30 surfaces) and a TEST_MATRIX from the host's proven SPEC (all TODO — the data rows double as the
+host's next sprint's acceptance), then 7 superseded docs → `attic/` with a manifest (Alexander OK), live
+current-state pointers repointed. tlvphoto was already authored in the method, so re-engineering rewrote
+nothing — adoption was light, which is the intended outcome for a well-run host.
+
+**Why this changed livespec itself:** the run proved `adopt/ADOPT.md` was STALE vs SPEC (it still had the old
+inventory→reverse-spec→snapshot order, missing orient/attic/VCS-gate). Rewrote ADOPT.md to the SPEC A-0…A-7
+sequence. One genuine refinement the run surfaced and I folded: the **version-control gate belongs FIRST**
+(before orient touches anything) so the whole run is reversible — annotated SPEC A-0/A-5 (codes name
+meanings, not a frozen order). A re-prove of the adopt section is due at the next milestone (minor reorder,
+not blocking). Closes ROADMAP row 4; completes the "update ADOPT.md to the proven spec" tail of row 7.
+Note: livespec repo was concurrently edited by another session (publish + rows 12-15) — this entry touched
+only ADOPT.md, SPEC A-0/A-5, ROADMAP row 4, and this journal.

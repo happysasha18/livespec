@@ -87,7 +87,9 @@ wish enters the queue → pipeline runs from step 0. [B-1]
 
 ## Entry mode 2: adopting a live project
 
-Adoption is a sequence; each phase completes before the next. [A-0]
+Adoption is a sequence; each phase completes before the next. In practice the version-control gate [A-5]
+is performed FIRST — before A-1 touches or moves anything — so the whole run is reversible; the codes below
+name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-07-04). [A-0]
 
 1. **Orient — read everything first.** Every existing document is read BEFORE anything is touched:
    README, any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption
@@ -101,8 +103,9 @@ Adoption is a sequence; each phase completes before the next. [A-0]
    FIRST landing that touches its surface — and all remaining ones at the first milestone, whichever
    comes first. [A-3]
 4. **Attic, not deletion** — any file superseded by A-3 moves to attic/ per INV-7. [A-4]
-5. **Version-control gate** — if the host has no git: init it, and recommend a remote (GitHub) plus a
-   backup habit, before the first landing [INV-8]. [A-5]
+5. **Version-control gate (done FIRST — see A-0)** — if the host has no git: init it, write a `.gitignore`
+   that excludes heavy generated/media artifacts, make a pristine baseline commit (this doubles as the A-6
+   baseline), and recommend a remote (GitHub) plus a backup habit before the first landing [INV-8]. [A-5]
 6. **Baseline snapshot [target]** — render/produce the current artifacts as they are and save them; this
    is the diff baseline per E-7. [A-6]
 7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
