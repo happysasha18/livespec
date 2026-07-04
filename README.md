@@ -13,14 +13,16 @@ livespec is built for a different shape of work — **continuous**: you throw wi
 and each one enters the process in a sentence, not a planning session; the queue is persistent across
 sessions; execution runs asynchronously while you keep talking.
 
-Honest lineage note: baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
-Chromatic) — livespec's contribution is repurposing it as an **agent guardrail with declared scope**: every
-change declares what it touches, and an undeclared difference against the previous accepted run is red at
-pre-push. That is aimed at a failure class specific to agents — silent, unasked micro-changes. The other
-part we have not found elsewhere (survey of 7 frameworks + a long-tail skill-ecosystem search, July 2026):
-the development process itself is specced and formally reviewed like a product — this repo's own SPEC.md
-went through product-prover before publish, and the findings are in `docs/prover/`. If you know prior art
-we missed, open an issue — we would genuinely like to read it.
+Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
+Chromatic). Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails)
+diffs a run's actual changes against a per-task file declaration; credit where due. livespec's one claim is
+the **integration**: the spec is the single authority binding the whole loop — intake validates every wish
+against it, scope declarations derive from it (not from an ad-hoc brief), a prover skill formally reviews
+it, adoption reverse-generates it from an existing codebase, and the development process itself is specced
+and proven the same way (this repo's own SPEC.md went through product-prover before its first publish —
+findings in `docs/prover/`). Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search —
+found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md). If you know
+prior art we missed, open an issue — we would genuinely like to read it.
 
 ---
 
