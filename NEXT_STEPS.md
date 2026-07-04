@@ -10,9 +10,14 @@ cleaned of the tlvphoto host story (lives in tlvphoto's JOURNAL). Old three skil
 (needs Alexander: gh auth refresh -h github.com -s delete_repo, then delete).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. Delete spec-author/build-pipeline/communicator repos (after Alexander grants delete scope).
-2. Fold the 11 CLAUDE.md-mining gaps into the skills (row 12) — via the pipeline, one at a time.
-3. Guardrails scaffold lifted from track-coach (row 3) · CI-mirror example (row 14).
-4. track-coach becomes the first formal adopt-host → test-suite rework by architecture node (pre-1.0).
-5. ~~Adopt dry run on tlvphoto (row 4)~~ **LANDED 2026-07-04** (first real adopt; ADOPT.md rewritten to the
-   SPEC A-sequence, VCS-gate moved first) · skill-creator eval pass (row 5).
+1. **Use-case-first spec restructure (row 22) — WAITING on Alexander's OK of the sample shape** (shown in
+   chat 2026-07-04 night); then propagate to template + spec-author (row 23). Guard: anchor-set diff.
+2. Adopt fixes from the FIRST REAL INBOX HARVEST (rows 19–21): remote-or-declined deliverable · adopt
+   artifacts home `.livespec/adopt/` · human-gated cruft sweep.
+3. Base skill ("Object class") every skill references (row 24).
+4. Delete spec-author/build-pipeline/communicator repos (after Alexander grants delete scope).
+5. Fold the 11 CLAUDE.md-mining gaps into the skills (row 12) — via the pipeline, one at a time.
+6. Guardrails scaffold (row 3, scope grew: + fence & push-gate mechanization) · CI-mirror example (row 14).
+7. track-coach becomes the first formal adopt-host → test-suite rework by architecture node (pre-1.0) ·
+   skill-creator eval pass (row 5).
+PUSH: held — bundling rows 25/26 + inbox harvest with row 22's landing so one push-gate prover run covers all.

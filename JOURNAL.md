@@ -86,3 +86,25 @@ Three refinements from Alexander the same night, all landed before the v0.3 push
    inbox files as benign; sessions sweep inbox first + milestone lists unharvested files; `-2` counter;
    dated record naming; standing routines count as assignment). Seventh recorded onto row 3's scope
    (guardrails scaffold also mechanizes the fence and the push gate). First push of v0.3 follows this entry.
+
+## 2026-07-04 — first real inbox harvest + four wishes from Alexander (rows 19–26)
+The inbox worked on its first night: the tlvphoto session dropped one committed wish file (three adopt
+gaps, each with a primary source — remote never actually made to happen; adopt artifacts polluting the
+host's data/; pre-existing gitignored cruft left on disk) and touched nothing else. Harvested → rows 19–21,
+file removed in this commit per the inbox contract.
+
+Alexander's four wishes the same hour:
+- **Use-case-first spec (row 22, the big one):** the spec must read as a PRODUCT document — scenarios of
+  what the human does and sees lead, codes only trail as anchors; explicitly ONE document, not a human copy
+  and a model copy in sync (he named that alternative and prefers one readable doc). Held for his OK on a
+  sample section shown in chat; guard for the restructure: the anchor SET before/after must be identical
+  (grep-diff) so nothing formal is lost, then full prover + push gate. Propagation to the template and
+  spec-author is row 23, strictly after.
+- **Skill freshness is not event-only (row 25, landed):** at every safe breakpoint, re-stat installed
+  skills + package on disk and re-read what changed — a parallel session may have shipped an update.
+- **Base skill, the "Object class" (row 24, queued):** the rules every skill inherits (re-read-on-change,
+  write-ownership/fence, anchors, checkpoints) stated once, referenced everywhere — also serves milestone
+  compaction.
+- **Context hygiene for long work (row 26, landed):** at a safe breakpoint the context may be compacted or
+  cleared — the breakpoint's whole point is that disk holds the resume.
+Push deferred: bundling with row 22's landing so the push-gate prover run covers both.

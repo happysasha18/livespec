@@ -138,7 +138,10 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
    installed skill versions are recorded in `.livespec/` at attach time. **On any version change (livespec
    or any installed skill), the agent RE-READS the changed SKILL.md before continuing** — never coasts on
-   the stale in-memory version — and writes a one-line journal note naming old → new. [A-7]
+   the stale in-memory version — and writes a one-line journal note naming old → new. The check is not
+   event-only: at every safe breakpoint [M-2] the agent re-stats the installed skills and the package on
+   disk (version / file mtime) and re-reads what changed — a parallel session may have shipped an update
+   mid-flight. [A-7]
 
 ## Actors
 
@@ -156,7 +159,9 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
   a re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting
   wish is never forgotten. [M-1]
 - **Safe breakpoint (end of every movement):** NEXT_STEPS live-state replaced (never stacked) + dated
-  JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss. [M-2]
+  JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss. A long session SHOULD take
+  that offer: compact or clear the conversation context at a breakpoint (the disk state is the resume) and
+  re-check skill freshness [A-7] on the way back in. [M-2]
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
   which roadmap" is answerable. [M-3]
 - **The package is itself a host project of livespec [target until E-6 lands]** — this spec, this queue,
