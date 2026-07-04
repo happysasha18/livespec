@@ -5,7 +5,7 @@ the current landing finishes before the next starts (bugs may preempt).
 
 | # | Wish (plain words) | Size | Status | Decision / acceptance |
 |---|---|---|---|---|
-| 1 | Alexander's word to publish the repo | needs Alexander | waiting — README open in Sublime | Alexander reviews README, says publish |
+| 1 | Alexander's word to publish the repo | needs Alexander | **landed 2026-07-04** | Published: github.com/happysasha18/livespec (after prover pass + honest prior-art check) |
 | 2 | Author the package's own SPEC | M | **landed 2026-07-04** | SPEC.md v0.1 written (self-application run #1); prover pass = row 7 |
 | 3 | Generic guardrails scaffold lifted from track-coach | M | queued | After prover pass on SPEC |
 | 4 | Adopt-mode dry run on tlvphoto | M | queued, needs Alexander | Alexander confirms tlvphoto as pilot |
@@ -16,6 +16,6 @@ the current landing finishes before the next starts (bugs may preempt).
 | 9 | Superseded old files are ARCHIVED, never deleted — attic/ folder with a manifest (Alexander 2026-07-04) | S | **landed 2026-07-04** | Spec'd in SPEC.md; acceptance: no adopt run ever deletes a host file |
 | 10 | Version-control gate: no git in host ⇒ init + recommend GitHub remote/backup before first landing (Alexander 2026-07-04) | S | **landed 2026-07-04** | Spec'd in SPEC.md; acceptance: adopt on a git-less folder refuses to land changes until VCS exists |
 | 11 | Honest long-tail prior-art check (skill ecosystem, awesome-lists, GitHub topics) before README claims go public (Alexander challenged the "pioneers" claim 2026-07-04) | S | **landed 2026-07-04** | agent-guardrails found + credited; claim narrowed to the spec-as-single-authority integration; evidence in docs/prior-art*.md |
-| 12 | Mine CLAUDE.md + PLAYBOOK for rules not yet in the package skills — map rule → skill → gap, fold gaps (Alexander 2026-07-04) | M | in-work | Mapping table exists; every gap either folded into a skill or queued with a reason |
+| 12 | Mine CLAUDE.md + PLAYBOOK for rules not yet in the package skills — map rule → skill → gap, fold gaps (Alexander 2026-07-04) | M | mapping done, folding queued | 45 rules mapped (22 full / 13 partial / 10 gap); 11 package-worthy gaps ranked in /tmp/claudemd_mining_s51.md → fold via pipeline |
 | 13 | Flow/state diagrams in README (pipeline flow + wish lifecycle) + a "how you drive it" command list (Alexander 2026-07-04) | S | **landed 2026-07-04** | Two mermaid diagrams + drive-it table in README; CI-mirror spec'd as M-5 |
 | 14 | Custom-steps / CI adapter guidance — e.g. a host wires the guardrails into Jenkins/GitHub Actions as a second net (Alexander 2026-07-04) | M | queued | ADOPT/README section: same checks, CI mirror; one worked example |

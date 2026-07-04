@@ -1,13 +1,13 @@
 # livespec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-04 evening)
-SPEC v0.1 authored (self-application run #1) and committed (6b5f645). Unpublished — README open for
-Alexander's review (publish gate). Queue rows 8-10 (adopt-orient / attic / VCS-gate) spec'd and landed.
+## LIVE STATE (2026-07-04 late evening)
+PUBLIC: github.com/happysasha18/livespec (v0.2 spec, prover-proven, honest prior-art in docs/).
+Profile page rewritten around livespec; product-prover README links it. Old three skill repos await
+deletion (needs Alexander: gh auth refresh -h github.com -s delete_repo, then delete).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. Alexander's word → publish repo → THEN delete spec-author/build-pipeline/communicator repos
-   (product-prover repo STAYS standalone) → update his profile-page README.
-2. product-prover pass over SPEC.md (row 7) → fold must-fixes → update ADOPT.md + README to the proven spec.
-3. Generic guardrails scaffold lifted from track-coach (row 3).
-4. Adopt dry run on tlvphoto (row 4, needs Alexander).
-5. skill-creator eval pass over the four skills (row 5).
+1. Delete spec-author/build-pipeline/communicator repos (after Alexander grants delete scope).
+2. Fold the 11 CLAUDE.md-mining gaps into the skills (row 12) — via the pipeline, one at a time.
+3. Guardrails scaffold lifted from track-coach (row 3) · CI-mirror example (row 14).
+4. track-coach becomes the first formal adopt-host → test-suite rework by architecture node (pre-1.0).
+5. Adopt dry run on tlvphoto (row 4) · skill-creator eval pass (row 5).
