@@ -15,3 +15,10 @@ Edit history lives here — the WHY behind every change. The spec and README sta
 **Status:** Skeleton only. Skills are read-only copies (source repos unchanged). No SPEC authored yet — that waits for Alexander's signal to publish, so spec-author runs on the full intended scope, not a moving target. Unpublished; local only.
 
 **Decided:** Local-only for now. No GitHub creation, no push. When Alexander says publish, that is ROADMAP item 1 — create the repo, push, wire the skill install to the real source.
+
+## 2026-07-04 — SPEC v0.1: the first self-application run
+Alexander caught a real hole in ADOPT (it inventoried code but not existing DOCUMENTS) and added two more
+wishes (attic-not-delete; version-control gate). Instead of patching ADOPT.md pointwise, livespec was run
+on itself: three wishes → queue rows 8-10 → SPEC.md v0.1 authored covering the whole package (wish
+lifecycle, both entry modes, actors, milestones, self-application invariant M-4). ADOPT.md and README will
+be updated AFTER the prover pass (row 7) — spec before docs, by the book.
