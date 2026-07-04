@@ -10,4 +10,5 @@ deletion (needs Alexander: gh auth refresh -h github.com -s delete_repo, then de
 2. Fold the 11 CLAUDE.md-mining gaps into the skills (row 12) — via the pipeline, one at a time.
 3. Guardrails scaffold lifted from track-coach (row 3) · CI-mirror example (row 14).
 4. track-coach becomes the first formal adopt-host → test-suite rework by architecture node (pre-1.0).
-5. Adopt dry run on tlvphoto (row 4) · skill-creator eval pass (row 5).
+5. ~~Adopt dry run on tlvphoto (row 4)~~ **LANDED 2026-07-04** (first real adopt; ADOPT.md rewritten to the
+   SPEC A-sequence, VCS-gate moved first) · skill-creator eval pass (row 5).
