@@ -1,4 +1,4 @@
-# ADLC — Agentic Development Life Cycle
+# livespec — a continuous, self-proving Agentic Development Life Cycle
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
@@ -8,7 +8,7 @@ A continuous, self-proving development pipeline for building with AI agents: thr
 
 ## Why not BMAD / spec-kit / Kiro
 
-Every framework in this space does spec-before-code, and that is the right instinct. But all of them stop there. None do **continuous intake** (a wish enters the pipeline in a sentence, not a planning session). None **diff artifacts against the previous run's output** — so a panel that shipped empty is invisible until a human notices it. None **prove the process itself** with mechanical guardrails wired to git hooks. We surveyed seven frameworks in July 2026; none combined these three. ADLC does.
+Every framework in this space does spec-before-code, and that is the right instinct. But all of them stop there. None do **continuous intake** (a wish enters the pipeline in a sentence, not a planning session). None **diff artifacts against the previous run's output** — so a panel that shipped empty is invisible until a human notices it. None **prove the process itself** with mechanical guardrails wired to git hooks. We surveyed seven frameworks in July 2026; none combined these three. livespec does.
 
 ---
 
@@ -34,7 +34,7 @@ Bug shortcut: `bug → matrix → test → code` (skip spec/prove if the fact is
 | Skill | Role |
 |---|---|
 | `spec-author` | Writes and grows the living spec — entities, states, transitions, actors, invariants, cross-section composition |
-| `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants |
+| `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants. Also maintained as a [standalone repo](https://github.com/happysasha18/product-prover) — it works on any product document, no pipeline required |
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
 | `communicator` | Makes the human exchange land — how to show work, batch decisions, ask only what the human can actually decide |
 

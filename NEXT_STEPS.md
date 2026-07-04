@@ -1,4 +1,4 @@
-# ADLC — Next Steps
+# livespec — Next Steps
 
 ## LIVE STATE (2026-07-04)
 

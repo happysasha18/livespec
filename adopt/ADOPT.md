@@ -1,6 +1,6 @@
 # ADOPT — Mid-flight adoption procedure
 
-How to attach ADLC to an existing codebase that has no spec yet. Follow these steps in order; each one has a clear done-state before moving to the next.
+How to attach livespec to an existing codebase that has no spec yet. Follow these steps in order; each one has a clear done-state before moving to the next.
 
 ---
 

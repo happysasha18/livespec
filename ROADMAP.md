@@ -1,4 +1,4 @@
-# ADLC Roadmap
+# livespec Roadmap
 
 The wish queue. Each item enters the pipeline when Alexander gives the word or the queue clears to it.
 
@@ -9,4 +9,4 @@ The wish queue. Each item enters the pipeline when Alexander gives the word or t
 | 3 | Generic guardrails scaffold lifted from track-coach | M | queued | After SPEC authored |
 | 4 | Adopt-mode dry run on tlvphoto | M | queued, needs Alexander | Needs Alexander to confirm tlvphoto is the right pilot |
 | 5 | skill-creator eval pass over the four skills | S | queued | After guardrails scaffold |
-| 6 | Better name if one lands | — | queued, Alexander's word | Working name ADLC — his coinage 2026-07-04; rename if a better one arrives |
+| 6 | Better name if one lands | — | queued, Alexander's word | Working name livespec — his coinage 2026-07-04; rename if a better one arrives |

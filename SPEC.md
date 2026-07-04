@@ -1,4 +1,4 @@
-# ADLC Spec
+# livespec Spec
 
 > How to read: the prose is the meaning; the short codes (INV-x, CR-x, ⟨DECIDE⟩) are quiet machine handles at line-ends for the prover and test matrix. Edit history lives in JOURNAL.md, not here. This spec states today's truth.
 

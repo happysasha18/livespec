@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install.sh — copies ADLC skills into ~/.claude/skills/
+# install.sh — copies livespec skills into ~/.claude/skills/
 # Idempotent: backs up any existing skill with a timestamp before overwriting.
 # Usage: ./install.sh
 
@@ -9,7 +9,7 @@ SKILLS_SRC="$(cd "$(dirname "$0")/skills" && pwd)"
 SKILLS_DEST="$HOME/.claude/skills"
 TIMESTAMP="$(date +%Y%m%d_%H%M%S)"
 
-echo "ADLC install — copying skills to $SKILLS_DEST"
+echo "livespec install — copying skills to $SKILLS_DEST"
 echo "Timestamp for backups: $TIMESTAMP"
 echo ""
 
