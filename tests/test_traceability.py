@@ -922,3 +922,22 @@ class TestSkillSync(unittest.TestCase):
                        "reports every version change old → new",
                        "A hand-copy is the anti-pattern the tool retires"):
             self.assertIn(phrase, spec, "SPEC lost the skill-sync clause: %s" % phrase)
+
+
+class TestStandaloneTemplatePointers(unittest.TestCase):
+    """Row 67 (M-097/M-098): a skill installed standalone must still resolve its template
+    references — the pointers name the pack repo, no in-skill copies (D-4: a copy forks the truth)."""
+
+    def test_standalone_template_pointers(self):
+        for rel in ("skills/spec-author/SKILL.md", "skills/build-pipeline/SKILL.md"):
+            body = re.sub(r"\s+", " ", read(rel))
+            if ".template." not in body:
+                continue
+            self.assertIn("github.com/happysasha18/live-spec", body,
+                          "%s names templates but not their resolvable home (row 67)" % rel)
+            self.assertIn("a copy would fork the truth", body,
+                          "%s lost the no-in-skill-copies rationale" % rel)
+        for skill_dir in ("spec-author", "build-pipeline"):
+            path = os.path.join(ROOT, "skills", skill_dir, "templates")
+            self.assertFalse(os.path.isdir(path),
+                             "in-skill template copies appeared in %s — D-4 forbids the fork" % skill_dir)

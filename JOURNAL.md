@@ -876,3 +876,13 @@ skill over its installed twin, reports every version change old → new (the A-7
 idempotent and it says so. Tested by a real run against a temp dest twice, then run for real on this
 machine. SPEC v0.15.8 (E-23, package-repo section), architecture pin on package-docs, matrix M-096,
 suite 83 green; pack 0.8.14.
+
+## 2026-07-05 ~22:51, session 9 — row 67: standalone skills learn where their templates live
+
+The skill-creator eval had caught it: spec-author and build-pipeline point at `templates/…` paths that
+don't resolve from a standalone install. Fork inside the row — ship copies inside each skill vs fixed
+pointers — taken on the recommended option (fixed pointers to the pack repo; package-is-source D-4:
+a copy would fork the truth), surfaced for veto. Both skills now name the pack repo as the templates'
+home, and the suite asserts the negative side: an in-skill templates/ dir is red by construction.
+A-7 sync line (via the new tool, its first real job): build-pipeline 0.2.10 → 0.2.11, spec-author
+0.1.9 → 0.1.10. Matrix M-097/M-098; suite 84 green; pack 0.8.15.

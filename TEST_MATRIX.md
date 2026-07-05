@@ -120,6 +120,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-013 | The spec is the living truth, use-case-first, one surface = one name; never two synced copies | E-4 | string | prover FULL pass at milestones (M-1) | TODO |
+| M-097 | spec-author's template pointer resolves for a standalone install: the skill names the pack repo as the templates' home; never an in-skill template copy (a copy forks the truth, D-4) | E-4 | string | `test_standalone_template_pointers` | BUILT |
 | M-014 | Every stateful surface composes across the canonical axes + the provenance axis at adoption; never only its own axis | C-1 | string | prover FULL pass at milestones (M-1) | TODO |
 | M-072 | A feature-doored spec-delta walks the standard-facet sweep (phone/narrow · touch-vs-hover · empty/error/loading · accessibility · performance envelope); the canonical list has ONE home (spec-author); a mid-work re-door re-runs the sweep; a fenced prototype is never swept | T-13 | string | `test_spec_states_facet_sweep`, `test_skills_carry_facet_sweep` | BUILT |
 | M-077 | Every feature's delta closes with a non-goals sentence, ALWAYS written ("nothing deliberately left out this time" is valid); a scope-narrowing non-goal rides the batched report; never a missing sentence passing as fine | INV-20 | string | `test_spec_states_intake_trio`, `test_skills_carry_intake_trio` | BUILT |
@@ -139,6 +140,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-076 | Scope, never time: a too-big wish is cut (fewer surfaces, plainer defaults) or split into stages; a time budget/estimate is never an input; the proposal proceeds on the recommended option, surfaced in the batched report; never a silent cut, never lane order moved, never the safety net touched | T-15 | string | `test_spec_states_intake_trio`, `test_skills_carry_intake_trio` | BUILT |
+| M-098 | build-pipeline's template pointers (architecture + matrix steps) resolve for a standalone install: the pack repo named as their home; never an in-skill template copy | E-14 | string | `test_standalone_template_pointers` | BUILT |
 | M-016 | A wish is one request in plain words, any size, any moment; never lost for being informal | E-2 | string | process — inbox + intake discipline; milestone re-listing (M-1) | TODO |
 | M-017 | The wish walks arrived → classified → spec-delta → validated → queued → in-work → landed; never skipping the spec-delta or validation step | T-1..T-6 | string | the E-6 host-facing gates (rows 55+) (bounds check: behaviour traces to spec) | TODO |
 | M-018 | A wish may exit declined / deferred / superseded — the row stays in the table; never deleted | T-8 | string | queue archive rule + milestone audit | TODO |

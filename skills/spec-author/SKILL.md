@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.9
+  version: 0.1.10
 ---
 
 # Spec Author
@@ -234,7 +234,9 @@ landing that touches it. A prototype writes neither — it promises nothing.
 1. **Author / grow the relevant section** in `SPEC.md`, use-case-first: find (or open) the scenario the
    change belongs to and grow the walk, plain language, anchors at line-ends, the Formal index updated in
    the same edit. Reuse the existing vocabulary; don't introduce a second word for an existing concept.
-   Starting fresh? Copy `templates/SPEC.template.md`.
+   Starting fresh? Copy `templates/SPEC.template.md`. (Template paths resolve from the PACK repo —
+   github.com/happysasha18/live-spec; a standalone install of this skill fetches them there. They are
+   deliberately NOT copied into the skill dir: the pack is the source, a copy would fork the truth.)
 2. **Ask, don't silently fill.** When the spec needs a decision only the author can make (a threshold, a
    policy, desired behavior on an edge), ask the leading question or mark ⟨DECIDE⟩ — never guess intent.
 3. **Run the completeness pass** (below) on what you wrote.

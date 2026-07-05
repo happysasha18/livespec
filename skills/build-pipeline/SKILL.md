@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.10
+  version: 0.2.11
 ---
 
 # build-pipeline — ship a change by the method
@@ -118,7 +118,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    remaining open ones in the reply so the count is visible — don't gate on resolving all of them.
 
 3. **Architecture — write or update `ARCHITECTURE.md` from the proven spec** (template:
-   `ARCHITECTURE.template.md`). Named nodes, one responsibility and one name each; every spec fact OWNED
+   `ARCHITECTURE.template.md` — template paths here and in step 5 resolve from the PACK repo,
+   github.com/happysasha18/live-spec; a standalone install fetches them there, never from the skill
+   dir: the pack is the source, a copy would fork the truth). Named nodes, one responsibility and one name each; every spec fact OWNED
    by exactly one node; named seams between nodes. In a live codebase every node pins to its owning
    `file:line` — **this step is where the spec is reconciled with reality**: each pin comes from a command
    you ran, never from the doc's own prose, your memory, or a worker's summary — those are leads to verify
