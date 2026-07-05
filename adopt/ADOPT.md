@@ -131,9 +131,11 @@ Done when: `TEST_MATRIX.md` has a row per spec invariant, each with a level, all
 
 ## Phase 6 — Attach record & incremental from here (SPEC A-7)
 
-1. Record installed skill versions in `.livespec/` (pin by source commit if the skills carry no semver) and
-   seed `.livespec/profile.md` (the human's working contract — mode/trust set only on the human's word,
-   INV-9).
+1. Record installed skill versions in `.livespec/` (every pack SKILL.md carries `version:` frontmatter and
+   the package a root `VERSION` file — SPEC M-7) and seed `.livespec/profile.md` — the HOST's overrides
+   only; settings about the human (language, proactivity) belong in their personal profile
+   (`~/.claude/livespec/profile.md`), which this host file overrides per the settings ladder (SPEC E-13).
+   Mode/trust set only on the human's word (INV-9).
 2. Write the run's JOURNAL entry (what landed · why · provenance · the remote outcome (exists/declined) ·
    any findings held for the human).
 3. The host is now on the standard pipeline: every new wish enters at intake and flows

@@ -7,9 +7,16 @@ description: >
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
+version: 0.1.0
 ---
 
 # build-pipeline — ship a change by the method
+
+> Part of the **livespec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
+> one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
+> fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates) live
+> ONCE in the pack's base skill, `livespec-base` (v0.1.0), together with the settings ladder — this skill
+> references them and elaborates only its own domain. Used standalone, this note is plain advice.
 
 One pipeline, each step has a tool. The order is **spec → prove → reconcile → matrix → test → code → verify
 → commit**. A bug shortcuts to **bug → matrix → test → code**. **Skip the pipeline only if ALL hold:** single

@@ -2,7 +2,7 @@
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
-**Status:** v0.1.0 skeleton — method proven in production on track-coach (700+ tests, 30-widget library); package extraction in progress. MIT.
+**Status:** v0.1.0 (see `VERSION`) — five skills, templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
 
 ---
 
@@ -81,10 +81,11 @@ No CLI — you drive it in plain words, in your Claude session:
 
 ---
 
-## The four skills
+## The five skills
 
 | Skill | Role |
 |---|---|
+| `livespec-base` | The shared rulebook — the working rules every pack skill references (stated once, so copies can't drift) plus the settings ladder: package defaults → personal profile (about you: language, proactivity) → per-host override, every override written down, never silent |
 | `spec-author` | Writes and grows the living spec — entities, states, transitions, actors, invariants, cross-section composition |
 | `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants. Also maintained as a [standalone repo](https://github.com/happysasha18/product-prover) — it works on any product document, no pipeline required |
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
@@ -108,9 +109,9 @@ Skills land in `~/.claude/skills/`, available in every project on the machine. E
 
 ## Project status
 
-- v0.1.0 — skeleton assembled, unpublished (local only)
+- Published and self-hosted: this repo runs on its own method — own `SPEC.md` (use-case-first, prover-proven; every push preceded by a recorded prover re-check in `docs/prover/`), own queue (`ROADMAP.md`), own journal
 - Method proven in production: track-coach — 700+ tests, 30-widget library, running since 2025
-- Package extraction in progress; own SPEC not yet authored (queued, see ROADMAP)
+- First real adoption run completed on a live host (2026-07-04); guardrails scaffold and snapshot machinery are the next major queued items (see ROADMAP)
 
 ---
 

@@ -229,3 +229,30 @@ now, a queued item what it will give, a waiting item exactly what is asked. The 
 so the refinement survives a memory wipe. Installed copy synced; landed as a quick win inside the same
 report exchange (row 37). Push gate: SPEC unchanged since the same-day green pass, verified by blob hash
 (docs/prover/2026-07-05-rule9-detail.md).
+
+## 2026-07-05 — the base skill + the settings ladder (rows 24+36, with debts 31+32; SPEC v0.6)
+The pack grew its fifth skill and its spine. Until today every working skill carried its own near-copy of
+the shared working rules, and copies drift — the evidence sweep that opened this landing (a junior read of
+all four SKILL.md files + templates + ADOPT.md, raw greps kept in the session scratchpad, spot-checked by
+re-running one) caught the anchor convention told two ways and the concurrent-edit fence stated only in
+the adoption text while every writing skill needs it. So the shared rules now live ONCE, in
+`skills/livespec-base/` — twelve of them, the list derived from what the sweep actually found repeated,
+not from memory — and each working skill opens with a one-line inherit note instead of restating them;
+pruning the old restatements is deliberately deferred to milestone compaction, skill by skill, never one
+risky rewrite (SPEC E-12, INV-13).
+
+Settings became a three-step ladder (SPEC E-13, INV-14): package defaults (a table in the base skill) →
+personal profile at `~/.claude/livespec/profile.md` (about the human, follows him everywhere — his
+language split, max-proactive mode, written from his recorded standing words) → host profile in
+`.livespec/` (about the project). Host beats personal beats default; an override exists only as a written,
+dated line; an unknown line is ignored aloud, never silently. livespec's own push gate turned out to BE
+the worked example — the every-push prover re-check is now also recorded as this repo's host-profile
+override of the "before MINOR bumps" default, one fact with M-6 as its normative home.
+
+Two queued debts landed on the way, as their rows had planned: versions got homes (root VERSION 0.1.0 +
+`version:` frontmatter in all five skills — row 31, SPEC M-7) and the global profile path got its name
+(row 32, open pick D-5). The prover's cross-link pass (docs/prover/2026-07-05-base-skill.md) folded three
+must-fixes before push — the sharpest: the inherit notes pin the base version as four literal copies, so
+the spec now obliges the landing that bumps the base to sweep the pins the same session — and opened row
+38 (the personal profile has no git home yet). Open picks for Alexander, lane not blocked: base folder
+name (D-4, `livespec-base` current) and personal-profile home (D-5).

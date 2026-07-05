@@ -1,4 +1,4 @@
-# livespec — SPEC (v0.5, 2026-07-05)
+# livespec — SPEC (v0.6, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -6,8 +6,8 @@
 > Restructured use-case-first 2026-07-04 (queue row 22) under an anchor-set guard: v0.4 carries exactly the
 > anchor set of v0.3 — the shape changed, no rule was lost.
 
-**Current vs target.** Shipped today: the four skills, the templates, the adoption procedure text, the
-inbox, this spec and queue. Target (each owned by a ROADMAP row, not yet code): the guardrails scaffold
+**Current vs target.** Shipped today: the five skills (the base rulebook and the four working ones), the
+templates, the adoption procedure text, the inbox, this spec and queue. Target (each owned by a ROADMAP row, not yet code): the guardrails scaffold
 [E-6], the snapshot machinery [E-7], the model router [ACT-3], and therefore full self-enforcement [M-4].
 This spec never claims shipped what isn't — sections below marked [target] await their row. [S-0]
 
@@ -15,9 +15,10 @@ This spec never claims shipped what isn't — sections below marked [target] awa
 
 A package a software project attaches to — at the start or in the middle — to work by one discipline:
 wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
-interrupted only for decisions that are genuinely theirs. The package is four skills (spec-author,
-product-prover, build-pipeline, communicator), document templates, an adoption procedure, and a set of
-mechanical guardrails a project instantiates.
+interrupted only for decisions that are genuinely theirs. The package is a **base skill** — the pack's
+shared rulebook and default settings [E-12] — plus four working skills (spec-author, product-prover,
+build-pipeline, communicator), document templates, an adoption procedure, and a set of mechanical
+guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
 registry, and a `.livespec/` folder (profile, checkpoints, installed-skill versions). [E-1]
@@ -129,14 +130,58 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
    disk (version / file mtime) and re-reads what changed — a parallel session may have shipped an update
    mid-flight. [A-7]
 
+## One rulebook behind the skills
+
+Open any skill of the pack and the same working rules greet you: ask, never guess; plain words with the
+code trailing quietly; one surface = one name; one canonical home per fact; work a junior can resume from
+a checkpoint after a cut-off. Until now each skill carried its own near-copy of those rules — and copies
+drift (the pack's own sweep caught the anchor convention told two ways, and the concurrent-edit fence
+stated only in the adoption text while every skill that writes shared files needs it).
+
+**So the shared rules live ONCE, in the base skill** — the pack's fifth skill and shared rulebook (folder
+name: an open pick [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
+package's default settings [E-13]; each working skill opens with one line naming the base skill and the
+base version it was written against — a pin the landing that bumps the base sweeps in the same session,
+never leaves stale — and REFERENCES the shared rules instead of restating them. A working
+skill elaborates only its own domain — communicator may teach HOW to speak plainly; THAT we speak plainly
+is the base's sentence. A skill used standalone, outside the pack, still stands: the pointer reads as
+plain advice and nothing in the skill's own domain depends on the base being installed. [E-12]
+
+While the pack evolves, one thing is always true: **a shared rule has exactly one normative home — the
+base skill; a second full statement inside a working skill is drift, a defect to fold, not a
+convenience.** Restatements older than the base skill are pruned at milestones through the compaction pass
+[M-1], skill by skill, never in one risky rewrite. [INV-13]
+
 ## Who decides what
 
 **You (the human)** own taste, design, irreversible calls, publish/push gates, domain wording — and your
-own working contract [INV-9]. [ACT-1] That contract is the **user profile**: proactivity mode (ask-at-max
-| max-proactive), trust level, language, domain vocabulary, at `.livespec/profile.md` in the host (global
-default as fallback), read by communicator before every human-facing exchange. [E-8] **Mode and trust are
-written ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
+own working contract [INV-9]. [ACT-1] That contract is what the settings ladder RESOLVES to (next
+paragraph): the lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language,
+domain vocabulary — live in your personal profile and follow you everywhere; the **host profile** at
+`.livespec/profile.md` narrows them for one project when you say so [E-8]. Communicator reads the resolved
+contract, not any single file, before every human-facing exchange [E-13]. **Mode and trust are written
+ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
 level.** [INV-9]
+
+**Settings climb a three-step ladder.** Every way the pack behaves for you is a named setting with a home
+on exactly one of three steps: the **package defaults** — each setting's out-of-the-box value, stated in
+the base skill beside the rules it tunes [E-12]; your **personal profile** — settings about YOU that
+follow you across every project (language: docs and commits vs conversation · proactivity mode · trust ·
+your domain vocabulary), one file per human at `~/.claude/livespec/profile.md` (home is an open pick
+[D-5]); and the **host profile** — settings about THIS project [E-8]. Resolution reads up the ladder:
+host beats personal beats package default. A setting belongs to the step it describes — about the human →
+personal; about the project → host; a host line may override a personal one only on your word for that
+project (an all-English project overriding your Russian-chat line, say). Profiles are re-read at the same
+freshness points as skills [A-7]; a profile line the current pack does not recognize (written under an
+older vocabulary) is ignored ALOUD — named once in the session's next report, never a silent drop and
+never an error. [E-13]
+
+**No override is ever silent.** An override exists only as a written line in its profile file, and
+setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the
+package's for a default change. This is the no-silent-micro-decisions rule [INV-5] applied to settings;
+livespec's own push gate [M-6] is the worked example: the package default says a full prover pass before
+a MINOR bump, and livespec's own host contract tightens it to "before every push" — recorded, visible,
+never assumed. [INV-14]
 
 **The senior agent** owns judgment: spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
@@ -208,6 +253,10 @@ push coordination belongs to the human. Applies to livespec AND to any host repo
   never drift into a second truth). [M-1]
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
   which roadmap" is answerable. [M-3]
+- **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a `version:`
+  line in its SKILL.md frontmatter. A host: the installed set recorded in `.livespec/` at attach and on
+  every update. So the freshness check [A-7] compares version against version, not just file times, and
+  its "old → new" journal note is finally writable. [M-7]
 - **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
   mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source of
   truth — CI runs them, never redefines them. (ROADMAP row 14.) [M-5]
@@ -234,6 +283,10 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
   may override per wish (current pick: router proposes, senior may override, override is logged). [D-2]
 - ⟨DECIDE⟩ snapshot retention: last-only (current pick) vs last-N — revisit when a diff dispute needs
   history. [D-3]
+- ⟨DECIDE⟩ base skill folder name: `livespec-base` (current pick — greppable, clearly of the pack) vs
+  `base` / `core` — Alexander may rename; cheap before the next adopt run, a sweep after. [D-4]
+- ⟨DECIDE⟩ personal profile home: `~/.claude/livespec/profile.md` (current pick — next to the global
+  CLAUDE.md, a directory so future global state has a roof) vs a single flat file. [D-5]
 
 ## Formal index
 
@@ -250,10 +303,12 @@ meaning, this table is only the map.
 | E-5 | matrix: fact × test level | Machines |
 | E-6 | guardrails on the pre-push hook [target] | Machines |
 | E-7 | snapshot baseline, declared-scope diff [target] | Machines |
-| E-8 | user profile: mode/trust/language | Who decides what |
+| E-8 | host profile at `.livespec/profile.md` | Who decides what |
 | E-9 | attic: archive, never delete | Adoption step 4 |
 | E-10 | surface registry, self-closing | Machines |
 | E-11 | inbox: one new committed file per outside wish | Package repo |
+| E-12 | base skill: shared rules + defaults, stated once | One rulebook |
+| E-13 | settings ladder: host > personal > package default | Who decides what |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
@@ -271,6 +326,8 @@ meaning, this table is only the map.
 | INV-10 | write-ownership of the package repo | Package repo |
 | INV-11 | concurrent-edit fence before write/commit | Package repo |
 | INV-12 | ambiguous size/priority is asked at intake, never guessed | Throwing a wish |
+| INV-13 | one normative home per shared rule: the base skill | One rulebook |
+| INV-14 | no silent override; every profile line recorded + journaled | Who decides what |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |
@@ -291,7 +348,10 @@ meaning, this table is only the map.
 | M-4 | livespec is its own host | Package repo |
 | M-5 | CI mirror of the same checks [target] | Rhythm |
 | M-6 | push gate: prover re-check before every push | Rhythm |
+| M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
 | C-1 | canonical axes + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing override | Open decisions |
 | D-3 | snapshot retention | Open decisions |
+| D-4 | base skill folder name | Open decisions |
+| D-5 | personal profile home | Open decisions |
