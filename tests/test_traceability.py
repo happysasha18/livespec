@@ -442,6 +442,14 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
         self.assertIn("append their ordinal", cm, "communicator lost the decision-file numbering")
 
+    def test_spec_states_registry_and_pins(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertIn("the NORMATIVE pin is the named thing", body, "SPEC lost symbol-first pins (E-14)")
+        self.assertIn("PREFERRED form is executable", body, "SPEC lost the executable-registry form (E-10)")
+        adopt = re.sub(r"\s+", " ", read("adopt/ADOPT.md"))
+        self.assertIn("lift the surface inventory into an executable completeness gate", adopt)
+        self.assertIn("Pins are names first", adopt)
+
     def test_no_calques_rule(self):
         # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))

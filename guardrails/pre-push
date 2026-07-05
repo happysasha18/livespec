@@ -41,6 +41,11 @@ if ! "$GUARDRAILS/check-matrix-coverage.sh"; then
 fi
 
 echo ""
+echo "-- gate g: pin drift --"
+if ! "$GUARDRAILS/check-pin-drift.sh"; then
+  fail=1
+fi
+
 echo "-- gate f: skill loadability --"
 if ! "$GUARDRAILS/check-skill-loadability.sh"; then
   fail=1

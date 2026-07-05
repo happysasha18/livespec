@@ -407,7 +407,11 @@ documents that were once implicit — and an implicit layer is a lost layer (Ale
 **The architecture doc (ARCHITECTURE.md)** — how the product is BUILT: a short list of named nodes
 (pipeline stages, modules, the owners of surfaces), one responsibility each, one name each — the
 one-surface-one-name rule applied to structure. Every spec fact is OWNED by exactly one node; in a live
-codebase every node pins to its owning `file:line` — so drafting the architecture IS where spec claims
+codebase every node pins to its owning place — the NORMATIVE pin is the named thing (a function, a
+marker comment, a selector, a section heading), the `:line` beside it is a convenience cache that may
+lag; a reader resolves the name, and a drift check re-greps it (pins rot silently otherwise — a real
+host drifted 7 of 17 pins in ONE working session, and a wrong-with-confidence pin is worse than none).
+Drafting the architecture IS where spec claims
 get reconciled against shipped reality (each pin comes from a command actually run, never from the doc's
 own prose). It is written from the proven spec (template: `ARCHITECTURE.template.md`) and — like the spec
 — it is PROVEN before anything derives from it: a product-prover pass with the architecture lens (every
@@ -466,7 +470,12 @@ What keeps "it works" honest, each one a named machine:
   skill's defaults [E-13]; a host turning it on writes a recorded profile line [INV-14]. Every sync is
   gated by the human because a sync PUBLISHES outside the machine. The pack itself, a text product,
   never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis (row 86). [E-18]
-- **The surface registry [target]** — one named list per host of every user-facing surface. The completeness check
+- **The surface registry [target]** — one named list per host of every user-facing surface, and the
+  PREFERRED form is executable: the list lives as a declared map inside a completeness-gate test, so a
+  mismatch IS a failing test in both directions (rendered-but-unregistered · registered-but-empty); the
+  `.md` file stays the honest fallback for a host with no test harness (a real host arrived with the
+  executable form already working — adoption recognises it as satisfying this machine, never asks it to
+  step backwards into a document). The completeness check
   scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
   registry is self-closing, never a trusted hand-list. [E-10]
 

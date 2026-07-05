@@ -194,6 +194,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-082 | Architecture pins are names first, the :line a cache; the drift gate (g) turns file-missing/beyond-EOF RED and reports label drift (strict mode blocks); never a rotten pin trusted silently | E-14 | string | `test_real_repo_passes` (gate g), `test_missing_file_fails`, `test_label_drift_strict_fails` | BUILT |
+| M-083 | The surface registry's PREFERRED form is executable (a declared map inside a completeness-gate test, red both directions); the .md is the doc-only fallback; adoption never asks an executable registry to step back into a document | E-10 | string | clause presence: `test_spec_states_registry_and_pins`; machine rides row 55 | BUILT |
 | M-081 | Every shipped skill loads: frontmatter parses, name = folder, description + version present, a "when NOT to use" section scopes it; a broken skill turns the push gate RED; never an unloadable or unscoped skill shipped | E-6 | string | `test_real_repo_passes` (gate f), `test_broken_skill_fails`, `test_missing_skills_dir_fails` | BUILT |
 | M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | first slice BUILT (pack gates: prover record · green suite · anchor ownership · matrix coverage — `guardrails/pre-push` + `test_guardrails.py`); the four host-facing checks await the surface registry + snapshot (rows 55+) | TODO |
 | M-061 | The surface registry is self-closing: a rendered-but-unregistered surface is RED; never a trusted hand-list | E-10 | string | machine lands at row 3 | TODO |

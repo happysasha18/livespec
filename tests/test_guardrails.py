@@ -345,3 +345,36 @@ class TestGateF_SkillLoadability(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             result = run([os.path.join(GUARDRAILS, "check-skill-loadability.sh"), tmp])
             self.assertEqual(result.returncode, 1, "empty skills dir must fail, not pass silently")
+
+
+class TestGateG_PinDrift(unittest.TestCase):
+    """Gate (g): architecture pins must not rot (SPEC E-14, row 90) — file-missing or
+    beyond-EOF is RED; label-not-near-line is reported drift (RED under --strict)."""
+
+    def test_real_repo_passes(self):
+        result = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"),
+                      os.path.join(ROOT, "ARCHITECTURE.md")])
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_missing_file_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            arch = os.path.join(tmp, "ARCHITECTURE.md")
+            with open(arch, "w") as f:
+                f.write("## Nodes\n| n | r | E-1 | `ghost.py:5` (spine) |\n## Seams\n")
+            result = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch])
+            self.assertEqual(result.returncode, 1, "missing pinned file must be RED")
+            self.assertIn("pinned file missing", result.stdout)
+
+    def test_label_drift_strict_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = os.path.join(tmp, "code.py")
+            with open(target, "w") as f:
+                f.write("\n" * 100)
+            arch = os.path.join(tmp, "ARCHITECTURE.md")
+            with open(arch, "w") as f:
+                f.write("## Nodes\n| n | r | E-1 | `code.py:50` (nonexistent-symbol) |\n## Seams\n")
+            soft = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch])
+            self.assertEqual(soft.returncode, 0, "non-strict drift must report, not block")
+            self.assertIn("DRIFT", soft.stdout)
+            strict = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch, "--strict"])
+            self.assertEqual(strict.returncode, 1, "strict drift must be RED")
