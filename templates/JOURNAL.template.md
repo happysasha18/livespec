@@ -4,7 +4,7 @@ The WHY behind every change. The spec and README state current truth; this file 
 
 ---
 
-## YYYY-MM-DD — [Short title of the movement]
+## YYYY-MM-DD, HH:MM — [Short title of the movement]
 
 **What:** One paragraph describing what changed or was decided.
 
@@ -16,4 +16,4 @@ The WHY behind every change. The spec and README state current truth; this file 
 
 ---
 
-*Add a new dated entry for every significant movement: a shipped stage, a spec+prove pass, a design decision landed. Trim the file to keep it readable; archive old entries to JOURNAL_archive.md if it grows unwieldy.*
+*Add a new dated entry for every significant movement: a shipped stage, a spec+prove pass, a design decision landed. Stamp date AND time — later you'll want to say "yesterday evening we decided X", and only the record can answer that. Trim the file to keep it readable; archive old entries to JOURNAL_archive.md if it grows unwieldy.*

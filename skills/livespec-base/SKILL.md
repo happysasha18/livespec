@@ -1,7 +1,7 @@
 ---
 name: livespec-base
 description: The livespec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the three-step settings ladder (package defaults → personal profile → host profile). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # livespec-base — one rulebook, five skills
@@ -56,7 +56,10 @@ a working skill still stands: its pointer here reads as plain advice.
 
 9. **History lives in the JOURNAL; docs travel with the change.** The dated WHY of every movement goes to
    JOURNAL.md the same session; SPEC / NEXT_STEPS / ROADMAP prose states only current truth. A shipped
-   change updates its README / CHANGELOG / SKILL.md before the session ends.
+   change updates its README / CHANGELOG / SKILL.md before the session ends. **Entries and harvested
+   records carry date AND time of day** — "yesterday evening you wrote X, so I did Y" is answerable later
+   only if the record holds the moment, not just the day; a decision file keeps its answered-at stamp, a
+   journal entry opens with when it happened (Alexander 2026-07-05).
 
 10. **Nothing is silently deleted.** A superseded host file moves to the attic with a manifest line; a
     removed feature leaves a dated tombstone in the spec and RETIRED matrix rows; only clearly-regenerable

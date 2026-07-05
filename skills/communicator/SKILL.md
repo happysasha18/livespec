@@ -1,7 +1,7 @@
 ---
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -9,21 +9,21 @@ version: 0.1.1
 > Part of the **livespec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources) live ONCE in the pack's base skill, `livespec-base` (v0.1.1), together with the
+> need primary sources) live ONCE in the pack's base skill, `livespec-base` (v0.1.2), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Nine rules, few enough to hold in your head.
+internal ids). Ten rules, few enough to hold in your head.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
 **(c)** name a problem. If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
-## The nine rules
+## The ten rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -79,8 +79,22 @@ stop and show it.
    a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
    can't say. (Alexander 2026-07-05, refined same day)
 
+10. **Several open picks → ONE interactive decision page.** When more than one decision waits on the
+    human, don't serialize questions into chat and don't write a questionnaire document: render one local
+    HTML page — one card per question with radio options, the recommendation marked "(recommended)"
+    (rule 2), a free-form note field on every card (there is always room for an answer outside the
+    options), and a **Download JSON** button. The file it saves is named
+    **`<project>-decisions-<YYYY-MM-DD>.json`** — the project name is part of the filename because
+    several projects can run in parallel and their answer files land in the same Downloads folder
+    (Alexander 2026-07-05); the JSON stamps when it was answered. Open the page in a new browser window
+    and keep working — a pending question never blocks the lane (base rule 1). When the file appears:
+    read it back, archive it in the project's `docs/decisions/`, and harvest every answer into its queue
+    row the same session — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning
+    images the same way; first real round-trip ran the same morning.)
+
 ## Presenting a fork (template)
-A choice is never a paragraph. Generate a tiny HTML:
+A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision
+page, rule 10):
 - **Option A (recommended, if you have a pick)** — a picture/example + one line "when this is better".
 - **Option B** — a picture/example + one line "when this is better".
 - Question at the bottom: "this or that?" — with your recommendation named. Every option still stays open.
