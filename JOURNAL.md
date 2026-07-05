@@ -256,3 +256,31 @@ must-fixes before push — the sharpest: the inherit notes pin the base version 
 the spec now obliges the landing that bumps the base to sweep the pins the same session — and opened row
 38 (the personal profile has no git home yet). Open picks for Alexander, lane not blocked: base folder
 name (D-4, `livespec-base` current) and personal-profile home (D-5).
+
+## 2026-07-05 — decision page prototype + the first mined gap folded (rows 39, 12; skills → 0.1.1)
+Alexander proposed a better way to be asked: instead of reading an MD questionnaire, an interactive local
+HTML page in the browser — radio options, a note field per question, a Download JSON button — the way he
+already tunes images in tlvphoto; the agent then reads the downloaded JSON. Taken as row 39 (quick win,
+jumped the queue inside the same exchange) and used immediately for real: the five standing open picks
+(base folder name, personal-profile home, livespec vs live-spec, playbook fate, adopt artifacts in git)
+became the first page, headless-render gate before showing (6 cards + live counter). The page is a session
+artifact; the durable record is the downloaded JSON folded back into this queue. Folding the mechanism
+into communicator is queued as its own landing.
+
+Row 12 folding began with gaps 1+2 taken as one class — primary-source discipline. The rule existed only
+in the private playbook; now it is base rule 13 (a claim about what code does / what happened / who
+decided rests on a citation — file:line, commit, a command just run; memory, a worker's summary, a doc's
+prose are leads, not evidence), with its two working faces referenced where they bite: build-pipeline's
+reconcile step (the reconcile note cites primary sources, never the doc's own prose) and a product-prover
+meta-rule (claims about the shipped system key on the reconciliation note's citations — prose that outran
+the code would otherwise "prove" dead behaviour). Base bump 0.1.0 → 0.1.1 swept the four inherit-note pins
+the same session, as the spec obliges (E-12); all five skills and the package VERSION now read 0.1.1. The
+mining map itself moved from /tmp to the private playbook repo (it quotes the private rules — not public
+material), commit 05b13af there; row 12 pointer updated. No test suite exists in this repo yet to extend
+(guardrails are row 3) — the folded rule's verification stays the prover's push-gate pass for now.
+
+Also answered aloud: other project windows already receive pack updates by themselves — install.sh copies
+the skills to the global ~/.claude/skills, every session loads from there, and base rule 8 (freshness)
+makes long-running sessions re-stat and re-read on change; the livespec session's only duty is to sync
+installed copies after each landing. What is NOT automatic yet is formal adoption (the .livespec/ attach)
+— track-coach is queued as the first formal adopt-host.

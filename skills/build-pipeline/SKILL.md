@@ -7,16 +7,17 @@ description: >
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
-version: 0.1.0
+version: 0.1.1
 ---
 
 # build-pipeline — ship a change by the method
 
 > Part of the **livespec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
-> fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates) live
-> ONCE in the pack's base skill, `livespec-base` (v0.1.0), together with the settings ladder — this skill
-> references them and elaborates only its own domain. Used standalone, this note is plain advice.
+> fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
+> need primary sources) live ONCE in the pack's base skill, `livespec-base` (v0.1.1), together with the
+> settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
+> note is plain advice.
 
 One pipeline, each step has a tool. The order is **spec → prove → reconcile → matrix → test → code → verify
 → commit**. A bug shortcuts to **bug → matrix → test → code**. **Skip the pipeline only if ALL hold:** single
@@ -60,6 +61,9 @@ the principle behind each step; this skill is its executable projection — keep
    actually behaves (each surface → owning `file:line` from a command you ran). Specs drift from code; fix
    the spec to the shipped truth, not the other way. (This is where "the prover assumed X, the code does Y"
    gets caught.) Running the greps/commands is junior work; judging what a mismatch MEANS is the senior's.
+   Every claim the reconcile note makes rests on a primary source — the `file:line` or command output
+   itself, never the doc's own prose, your memory, or a worker's summary; those are leads to verify
+   (base rule 13).
 
 4. **Matrix — derive `TEST_MATRIX.md` from the proven spec.** It opens with an **artifact inventory** —
    every file the user receives (widget, catalog, README render) — and every inventory entry owns at least

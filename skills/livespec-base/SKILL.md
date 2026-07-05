@@ -1,7 +1,7 @@
 ---
 name: livespec-base
 description: The livespec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the three-step settings ladder (package defaults → personal profile → host profile). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
-version: 0.1.0
+version: 0.1.1
 ---
 
 # livespec-base — one rulebook, five skills
@@ -69,6 +69,13 @@ a working skill still stands: its pointer here reads as plain advice.
 12. **The human's gates are the human's.** Irreversible moves, authored-content moves, publishing, pushes
     where the host says so, taste and domain wording — proposed with a recommendation, executed on their
     word. And only what is genuinely theirs is asked; everything else proceeds and is reported.
+
+13. **A claim needs its primary source.** Anything asserted as fact — what the code does, what happened,
+    who decided — rests on evidence you can point to: an owning `file:line`, a commit, a command just run
+    and its output. Your memory, a worker's summary, a document's prose are LEADS, not evidence — before
+    attributing a decision to the human or calling a behaviour "by design", read the actual source line
+    (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure", then
+    check — never assert.
 
 ## The settings ladder
 
