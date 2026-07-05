@@ -612,3 +612,16 @@ base rule; SPEC's one-rulebook clause (INV-13) already owns the home. Test test_
 0.1.6, build-pipeline 0.2.5, product-prover 0.1.5; installed copies synced; suite 46 green. Same
 sitting: row 74 filed (a plain-language map of the whole structure — Alexander can't hold where things
 live; he is right, and the two research agents on row 44 homework are running in the background).
+
+## 2026-07-05 (night, session 7) — rows 77+85: non-goals, appetite, success measure — SPEC v0.13.0
+
+WHY: Alexander's decision-page answers (harvested this evening). He took the intake trio NOW with the
+KPI note ("зашивать сразу в фичу как мера успеха, все сразу дата дривен") and declined the waived-risk
+verdict ("не понимаю о чем ты"). Landed: appetite as an optional rider on size (scope-only, trims
+proceed on the recommended option and are surfaced — the prover's must-fix killed the lane-blocking
+"come back to choose" wording); the two always-written closing sentences of every feature delta —
+non-goals ("nothing left out" is valid prose, a narrowing one is surfaced) and one success measure
+(`[default]` = provenance only, the KPI/A-B reading machinery honestly [target] under future rows).
+Prover CROSS-LINK: 1 must-fix + 8 others, ALL folded (2026-07-05-intake-trio.md). Suite 50 green.
+Same night: the promoter mis-founding (personal-vs-reusable never asked) → his profile line
+product.default-reusable (playbook, pushed), inbox wish to the promoter, row 88 queued for tonight.

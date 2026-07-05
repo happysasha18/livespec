@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.12.0, 2026-07-05)
+# live-spec — SPEC (v0.13.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -58,6 +58,17 @@ immediate value, no design decision inside. When the classifier can't call a siz
 you at intake and never guesses; until you answer, the wish carries normal and the open question rides in
 the row — the lane keeps moving [INV-4]. [INV-12]
 
+**Your time budget is part of the wish.** You may name an **appetite** at intake — "give it half a day",
+"worth a week" — and it rides the intake line as an optional rider on the size word (size says how big
+the wish IS; appetite says how much of your time it MAY cost). Appetite bends scope only, never order: a
+half-day appetite is not a quick-win mark, and only priority moves the lane [T-11]. When the walk sees
+the wish won't fit its budget, it proceeds on the recommended trim — the lane never parks on it [INV-4]
+— and the trim is surfaced in the same batched report as every taken default [INV-18], never silent:
+your re-widen is simply a new wish. What a trim may cut: which surfaces are in, and how considered the
+defaults are (a half-day wish takes the plainest default; a two-week one earns the considered option) —
+never whether a kept surface's facets get their sentences. No appetite named — none assumed, and
+defaults stay at the walk's own considered judgment. [T-15]
+
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
 feature goes to the queue head too; but only the bug DOOR preempts the in-work lane [T-9]. A quick win may bubble up: when the lane frees, it may be taken ahead of
@@ -68,7 +79,8 @@ competes with spoken timestamps. Arrival ties resolve by queue row order, top to
 an inbox batch harvests in filename-sorted order. [T-11]
 
 **The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
-two axes, stated together in ONE intake line — size · priority · door. Size (with priority) says how big
+two axes, stated together in ONE intake line — size (with its optional appetite rider [T-15]) ·
+priority · door. Size (with priority) says how big
 and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
 docs-only · skip**. The two axes share one word deliberately — a wish sized "bug" IS the bug door, one
 call stated once; the door axis only adds the other four entries. [T-12]
@@ -141,6 +153,22 @@ fences by the anchors they cite ("fences: …") — "untouched and still true" b
 while the LANDING line stays its one-line self [T-7]. Fence-AUTHORING belongs to the feature door; the
 bug and refactor doors inherit only the catching (their full-suite runs exercise every never-side), and
 a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
+
+**A feature also says what it is NOT doing — and how we'd know it worked.** Every feature's spec-delta
+closes with two short sentences, and both are ALWAYS written — like the facets, silence is not a legal
+state. **Non-goals**: what is deliberately left out ("version comparison — not this time"); "nothing
+deliberately left out this time" is itself a valid sentence — only a MISSING sentence is a hole. A
+non-goal that narrows what the wish asked for is a scope decision, so it rides the same batched report
+as every taken default [INV-4, INV-18], never a silent narrowing [INV-5]. [INV-20]
+**A success measure**: how we'd notice the feature worked for its person, a number where one exists
+("the producer opens the evidence panel at least once per session"), decided or `[default]`-tagged like
+any facet — the tag marking provenance only: no matrix row derives from a success measure while the
+machinery that READS them (KPI dashboards, A/B runs, segmentation) stays [target] under its own queue
+rows; until then a measure is a written promise the human checks by eye, honestly labelled so. The
+quantification questions — is there an analytics tag? how will we measure? is an A/B worth it? — ride
+the facet sweep's batched report [T-13, INV-18]. Both sentences bind forward from features specified
+after this rule lands; an adopted feature owes its pair at the first landing that touches it [A-3],
+never retroactively en masse. A prototype writes neither — it promises nothing [E-17]. [INV-21]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
@@ -542,6 +570,7 @@ meaning, this table is only the map.
 | T-12 | the door is named before any code | Throwing a wish |
 | T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
 | T-14 | touching a live surface: spec-delta opens with regression fences citing existing clauses | Throwing a wish |
+| T-15 | appetite: optional rider on size; bends scope only, never lane order; trims proceed on the recommended option, surfaced | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -561,6 +590,8 @@ meaning, this table is only the map.
 | INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype is not the product |
 | INV-18 | every facet ends as a spec sentence — decided, or `[default]`-tagged + reported | Throwing a wish |
 | INV-19 | a fence cites its clause and discharges through that clause's existing never-side; fences named by anchor in the wish's row | Throwing a wish |
+| INV-20 | the non-goals sentence is always written ("nothing left out" is valid); scope-narrowing non-goals ride the batched report | Throwing a wish |
+| INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |

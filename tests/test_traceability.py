@@ -386,6 +386,30 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("regression fences", bp, "build-pipeline step 1 lost the fences sentence")
         self.assertIn("never a new row (SPEC T-14, INV-19)", bp)
 
+    def test_spec_states_intake_trio(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("Your time budget is part of the wish",
+                       "optional rider on the size word",     # F2 fold
+                       "bends scope only, never order",       # F3 fold (index line wording differs)
+                       "proceeds on the recommended trim",    # F1 fold
+                       "A feature also says what it is NOT doing",
+                       "nothing deliberately left out this time",  # F4 fold
+                       "the tag marking provenance only",     # F6 fold
+                       "bind forward",                        # F7 fold
+                       "A prototype writes neither"):         # F8 fold
+            self.assertIn(phrase, body, "SPEC lost the intake-trio clause: %s" % phrase)
+        for anchor in ("[T-15]", "[INV-20]", "[INV-21]"):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+
+    def test_skills_carry_intake_trio(self):
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("The delta's two closing sentences", sa,
+                      "spec-author lost the closing-sentences section")
+        self.assertIn("only a missing sentence is a hole", sa)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("optional appetite rider", bp, "build-pipeline intake line lost the appetite rider")
+        self.assertIn("The delta CLOSES with its two sentences", bp)
+
     def test_no_calques_rule(self):
         # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))

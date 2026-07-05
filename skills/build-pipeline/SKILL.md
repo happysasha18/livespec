@@ -30,7 +30,9 @@ the principle behind each step; this skill is its executable projection — keep
 
 ## When to run it — and where each kind of change enters
 - **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15).** The intake
-  line states size · priority · door: feature · bug · refactor · docs-only · skip. Tripwires decide, not
+  line states size (with the human's optional appetite rider — a named time budget that bends scope
+  only, never lane order; trims proceed on the recommended option and are surfaced, SPEC T-15) ·
+  priority · door: feature · bug · refactor · docs-only · skip. Tripwires decide, not
   judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
   · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
   casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
@@ -68,6 +70,8 @@ the principle behind each step; this skill is its executable projection — keep
    surface that already lives, the delta opens with **regression fences** BEFORE that sweep — neighbouring
    promises that must stay true, each citing the clause it guards, named by anchor in the wish's row; a
    fence discharges through the cited clause's existing never-side row, never a new row (SPEC T-14, INV-19).
+   The delta CLOSES with its two sentences — non-goals ("nothing left out" is valid, a narrowing one is
+   surfaced) and one success measure, decided or `[default]`-tagged (SPEC INV-20, INV-21).
 
 2. **Prove — invoke `product-prover`.** The prover only catches a cross-section hole when both sides are
    present and named the same at prove-time — so a surface absent or unlinked then is invisible to it. Two

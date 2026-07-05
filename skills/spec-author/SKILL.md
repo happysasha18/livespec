@@ -187,6 +187,18 @@ like any re-engineered claim, never invented greenfield. And the sweep versus th
 the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and test them
 across views once the surface exists — one dimension, split by time, never specified twice.
 
+## The delta's two closing sentences — non-goals and the success measure (SPEC INV-20, INV-21)
+
+Every feature's spec-delta CLOSES with two short sentences, always written — silence is not a legal
+state for either. **Non-goals**: what is deliberately left out ("version comparison — not this time");
+"nothing deliberately left out this time" is itself valid — only a missing sentence is a hole, and a
+non-goal that narrows what the wish asked for rides the batched report, never a silent narrowing.
+**A success measure**: how we'd notice the feature worked for its person, a number where one exists;
+decided or `[default]`-tagged — the tag marks provenance only, no test row derives from it until the
+reading machinery lands. The quantification questions (analytics tag? how measured? A/B worth it?) ride
+the facet sweep's batched report. Both bind forward; an adopted feature owes its pair at the first
+landing that touches it. A prototype writes neither — it promises nothing.
+
 ## How you work
 
 1. **Author / grow the relevant section** in `SPEC.md`, use-case-first: find (or open) the scenario the

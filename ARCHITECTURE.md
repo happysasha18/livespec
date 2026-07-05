@@ -9,7 +9,8 @@ the one-surface-one-name rule applied to structure. Kept current through SPEC v0
 (E-16 → host-contract; the doors landing 2026-07-05: T-12/INV-16 → build-pipeline, E-17 → base-rulebook,
 INV-17 → guardrails, A-10 → attach; the facet-sweep landing 2026-07-05 evening: T-13/INV-18 →
 spec-author, the canonical facet list's one home; the fences landing 2026-07-05 night: T-14/INV-19 →
-spec-author (the fence-authoring rule) — assignments + pins, no node or seam change, so no
+spec-author (the fence-authoring rule); the intake-trio landing 2026-07-05 night: T-15 → build-pipeline
+(intake rider), INV-20/INV-21 → spec-author (the delta's closing sentences) — assignments + pins, no node or seam change, so no
 re-prove per this doc's own rule); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
@@ -33,9 +34,9 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |
 |---|---|---|---|
 | base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence), `:95` (door + prototype rules 15-16), `:114` (ladder), `:141` (defaults) |
-| spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1, T-13, INV-18, T-14, INV-19 | `skills/spec-author/SKILL.md:75` (spine), `:100` ([target] tag tripwire), `:112` (axes composition), `:144` (fences), `:159` (facet sweep — the canonical facet list) |
+| spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1, T-13, INV-18, T-14, INV-19, INV-20, INV-21 | `skills/spec-author/SKILL.md:75` (spine), `:100` ([target] tag tripwire), `:112` (axes composition), `:144` (fences), `:159` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6 | `skills/product-prover/SKILL.md:148` (review modes), `.live-spec/profile.md:6` (gate cadence instance) |
-| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, T-12, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:31` (entry map incl. step zero: the door), `:58` (steps), `:146` (gates) |
+| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:31` (entry map incl. step zero: the door), `:58` (steps), `:146` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages | T-7 (the report step; the walk before it is build-pipeline's) | `skills/communicator/SKILL.md:27` (ten rules) |
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1 | `templates/TEST_MATRIX.template.md:43` (checklist), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10 | `adopt/ADOPT.md:16` (VCS gate first), `:100` (unbacked-surface verdict), `:110` (attic), `:148` (attach record), `install.sh:2` |
