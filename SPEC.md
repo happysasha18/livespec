@@ -6,7 +6,7 @@
 > Restructured use-case-first 2026-07-04 (queue row 22) under an anchor-set guard: v0.4 carries exactly the
 > anchor set of v0.3 — the shape changed, no rule was lost.
 
-**Current vs target.** Shipped today: the five skills (the base rulebook and the four working ones), the
+**Current vs target.** Shipped today: the six skills (the base rulebook and the five working ones), the
 templates, the adoption procedure text, the inbox, this spec and queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
@@ -20,9 +20,9 @@ tag, never merely a parent section or one leg of a split anchor. [S-0]
 A package a software project attaches to — at the start or in the middle — to work by one discipline:
 wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
 interrupted only for decisions that are genuinely theirs. The package is a **base skill** — the pack's
-shared rulebook and default settings [E-12] — plus four working skills (spec-author, product-prover,
-build-pipeline, communicator), document templates, an adoption procedure, and a set of mechanical
-guardrails a project instantiates.
+shared rulebook and default settings [E-12] — plus five working skills (spec-author, product-prover,
+build-pipeline, communicator, publish), document templates, an adoption procedure, and a set of
+mechanical guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
 registry, inbox, and a `.live-spec/` folder (profile, checkpoints, installed-skill versions). [E-1]
@@ -350,7 +350,7 @@ a checkpoint after a cut-off. Until now each skill carried its own near-copy of 
 drift (the pack's own sweep caught the anchor convention told two ways, and the concurrent-edit fence
 stated only in the adoption text while every skill that writes shared files needs it).
 
-**So the shared rules live ONCE, in the base skill** — the pack's fifth skill and shared rulebook (folder:
+**So the shared rules live ONCE, in the base skill** — the pack's shared rulebook beside the working skills (folder:
 `live-spec-base`; pack structure decided: package-is-source, standalone repos read-only mirrors [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
 package's default settings [E-13]; each working skill opens with one line naming the base skill and the
 base version it was written against — a pin the landing that bumps the base sweeps in the same session,
@@ -596,6 +596,25 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   push should not have happened. The record ENUMERATES the folds applied from its own pass, and a fold
   stays LOCAL to the sections its finding named — a fold reaching wider re-triggers the gate. [M-6]
 
+## Publishing — the deposit owes what its kind owes
+
+Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin
+directory, a release is cut, rendered cards go to a design project. **Publication is a surface of its
+own, and it owes the reader what the artifact's KIND owes** — the same work-kind axis [T-16], read at
+the door instead of the intake: a **skill** shows how to install it, the commands to run, when to use
+it (and when not); a **tool** shows real runs with real output; a visual **product** shows FRESH
+screenshots — a stale screenshot is a false claim in picture form; **prose** shows its reading path. A
+comparison or a diagram joins when it carries the argument, never as decoration. The per-kind publish
+checklist has ONE normative home — the publish skill, the pack's fifth working skill [E-12]; this spec
+binds the contract: nothing is deposited outward past the checklist, and the walk's result rides the
+landing report like any step [INV-22]. **Each publish TARGET is a plugin that embeds its own steps
+into the walk** (Alexander 2026-07-05: a GitHub plugin brings its stages): GitHub brings
+README-at-the-door + release notes; a plugin directory brings its manifest and forms; the design
+project brings its cards [E-18] — the target adds steps, it never removes the kind's owed minimum. And
+publishing never bypasses the gates that already stand: the human's publish gate for anything
+irreversible or outward (base rule 17 [ACT-1]), the host's own push gates [M-6] — the checklist runs
+BEFORE the gate, so what the human approves is already worth approving. [E-20]
+
 ## Composing across axes
 
 Every stateful surface of a host is composed across the canonical axes (view · mode · tier · viewport ·
@@ -648,6 +667,7 @@ meaning, this table is only the map.
 | E-17 | prototype: fenced home, visible label | A prototype is not the product |
 | E-18 | design-sync: machine [target], wiring live — off-by-default switch in base defaults, channel lines in communicator/pipeline, human-gated (publishes) | Machines |
 | E-19 | skill evals: per working skill one scenario, red proven bare, corrected by the skill; re-run at milestones and behaviour changes | Machines |
+| E-20 | publishing owes the artifact's kind its checklist (one home: the publish skill); targets are plugins embedding their steps; gates untouched | Publishing |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |

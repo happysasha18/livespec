@@ -25,7 +25,7 @@ live-spec pack. The file physically sits inside the playbook repo (so it has his
 `~/.claude/CLAUDE.md` is a link pointing at it. It used to hold every rule; now each rule lives in its
 real home and the note only points.
 
-## Inside the pack: one rulebook, four working skills
+## Inside the pack: one rulebook, five working skills
 
 - **live-spec-base** — the shared rulebook: rules that bind EVERY skill (ask-never-guess, plain words,
   no calques, one home per fact, the door before code, prototype ≠ product…) stated ONCE, plus default
@@ -38,6 +38,9 @@ real home and the note only points.
   code → verify → commit. The order is law.
 - **communicator** — everything the human sees: plain-language reports, batched questions, decision
   pages, how a prototype may be shown.
+- **publish** — the moment work leaves the machine: what a good publication owes per kind of artifact
+  (a skill shows its commands, a tool shows real runs, a visual product shows fresh screenshots), and
+  how a target (GitHub, a plugin directory, a design project) plugs its own steps into the walk.
 
 Around them: `templates/` (the document shapes a project copies), `adopt/` (how to attach to an existing
 project), `guardrails/` (the automatic pre-push checks), `inbox/` (how an outside session files a wish

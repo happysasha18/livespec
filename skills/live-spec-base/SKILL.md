@@ -1,14 +1,14 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
+description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.9
+  version: 0.1.10
 ---
 
-# live-spec-base — one rulebook, five skills
+# live-spec-base — one rulebook, six skills
 
 The pack's shared working rules live HERE, once. A working skill (spec-author, product-prover,
-build-pipeline, communicator) opens by naming this base and the version it was written against, references
+build-pipeline, communicator, publish) opens by naming this base and the version it was written against, references
 these rules, and elaborates only its own domain — communicator teaches HOW to speak plainly; THAT we speak
 plainly is this file's sentence. A second full statement of a shared rule inside a working skill is drift —
 a defect to fold at the next milestone, not a convenience (SPEC INV-13). Used standalone, outside the pack,
@@ -175,4 +175,4 @@ table grows through the queue like everything else.
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **build-pipeline** ships the change · **communicator** makes the human
-> exchange land.
+> exchange land · **publish** sees the work out the door, owing its kind's checklist.

@@ -723,3 +723,24 @@ remainder is the first real sync on a visual host through Alexander's gate; that
 visible surface, N/A aloud; prove-architecture — pin/name updates only on an existing node, no
 structure change, stands down by E-14's own rule; the sync machine itself — still [target], nothing
 claims it ran.
+
+## 2026-07-05 night (~22:50, session 8) — row 98: the publish skill, and the eval that cut both ways
+
+Alexander, mid-evening: "короткий паблиш скилл — ридми грамотный; если скилл — команды показать;
+сравнительный анализ, скриншоты или диаграммы — всё по типу того что заливается… плагин гитхаба должен
+встраивать свои этапы". Landed as the pack's FIFTH working skill (E-20, pack 0.8.3 → 0.8.4): the
+publication surface owes its reader what the artifact's KIND owes — the work-kind axis read at the
+door instead of the intake — with a shared floor (what/who/how-to-start in the reader's language,
+claims true today, license explicit, nothing secret or unshareable leaves), a per-kind table (its one
+home: the skill), and the target-plugin seam: GitHub, plugin directory, design project each embed
+their steps, never removing the kind's minimum; the checklist always finishes BEFORE the human's gate
+and never sends anything itself. Count sweep ran everywhere ("four working skills" → five; base header
+→ six skills; count-free wording where a count would rot). Base 0.1.10, pins swept third time tonight
+— the dynamic pin test made each sweep a non-event. Two machines proved themselves on this landing:
+the EVAL LAW caught the new skill mechanically (suite red until evals/publish.md existed — E-19's
+self-closing promise, verified by deed), and the publish eval's first run cut BOTH ways — the bare arm
+knew five public-repo hygiene steps the skill's draft lacked (secrets/history sweep, fixture copyright,
+dependency licenses, fresh-clone check, name collision), all folded into the skill the same evening.
+Records: docs/prover/2026-07-05-row98.md, docs/evals/2026-07-05-first-run/{bare,with-skill}-publish.md.
+Suite 67 → 68 green. INV-22 line: kind = skill; facets N/A aloud; design-sync/snapshot stand down;
+prove-architecture APPLIED (node add). First real use of the skill = this repo's own next public push.

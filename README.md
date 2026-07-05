@@ -85,7 +85,7 @@ No CLI — you drive it in plain words, in your Claude session:
 
 ---
 
-## The five skills
+## The six skills
 
 | Skill | Role |
 |---|---|
@@ -94,6 +94,7 @@ No CLI — you drive it in plain words, in your Claude session:
 | `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants. Also maintained as a [standalone repo](https://github.com/happysasha18/product-prover) — it works on any product document, no pipeline required |
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
 | `communicator` | Makes the human exchange land — how to show work, batch decisions, ask only what the human can actually decide |
+| `publish` | The publish-quality gate — what a deposit owes per artifact kind (commands for a skill, real runs for a tool, fresh screenshots for a visual product), with publish targets plugging in their own steps |
 
 ### Standalone mirrors
 

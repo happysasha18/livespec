@@ -377,7 +377,8 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         base_version = re.search(r"(?m)^\s*version:\s*([0-9.]+)",
                                  read("skills/live-spec-base/SKILL.md")).group(1)
         for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
-                    "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md"):
+                    "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md",
+                    "skills/publish/SKILL.md"):
             self.assertIn("`live-spec-base` (v%s)" % base_version, read(rel),
                           "%s pins a stale base version" % rel)
 
@@ -625,3 +626,26 @@ class TestDesignSyncWiring(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         self.assertIn("[target: the machine; the wiring is live]", spec,
                       "SPEC E-18 lost the honest wired-vs-target split")
+
+
+class TestPublishSkill(unittest.TestCase):
+    """SPEC E-20, row 98: the publish-quality gate ships as the fifth working skill."""
+
+    def test_publish_skill_carries_checklist(self):
+        body = re.sub(r"\s+", " ", read("skills/publish/SKILL.md"))
+        for phrase in ("The kind checklist",
+                       "Targets are plugins",
+                       "FRESH screenshots",
+                       "when to USE it and when NOT",
+                       "at least one REAL run",
+                       "never sends anything itself",
+                       "the human releases it"):
+            self.assertIn(phrase, body, "publish skill lost: %s" % phrase)
+        for target in ("GitHub repo", "Plugin directory", "Design project"):
+            self.assertIn(target, body, "publish skill lost target plugin: %s" % target)
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("Publishing — the deposit owes what its kind owes",
+                       "Each publish TARGET is a plugin",
+                       "the checklist runs BEFORE the gate"):
+            self.assertIn(phrase, spec, "SPEC lost the publishing clause: %s" % phrase)
+        self.assertIn("[E-20]", spec, "SPEC prose lost anchor E-20")

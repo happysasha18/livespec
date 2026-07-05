@@ -80,6 +80,9 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Queue archives | `docs/queue-archive/` | records dir (non-empty) | `test_artifact_inventory` |
 | Audit records | `docs/audit/` | records dir (non-empty) | `test_artifact_inventory` |
 | Prior-art survey | `docs/prior-art.md` | shipped text | `test_artifact_inventory` |
+| Publish skill | `skills/publish/SKILL.md` | shipped text | `test_artifact_inventory` |
+| Publish README | `skills/publish/README.md` | shipped text | `test_artifact_inventory` |
+| Publish license | `skills/publish/LICENSE` | legal | `test_artifact_inventory` |
 | Skill evals — method + honest boundary | `evals/README.md` | shipped text | `test_artifact_inventory`, `test_eval_readme_states_honest_boundary` |
 | Skill evals — one per working skill | `evals/` | shipped text dir | `test_skill_evals_present` (self-closing over skills/) |
 | Eval run records | `docs/evals/` | records dir (non-empty) | `test_artifact_inventory` |
@@ -149,6 +152,13 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-068 | Feature tripwires are hard and ordered (surface/state/interaction/[target]/unbacked behaviour ⇒ feature); the verdict outranks a casual label, a re-doored wish takes no preemption, the door re-fires mid-work; never a wish hand-built past the pipeline for sounding small | INV-16 | string | `test_spec_states_door_procedure`, `test_base_rules_door_and_prototype` | BUILT |
 | M-084 | The work-kind is named at intake: product · infra · skill · prose, one kind per wish, called from what the wish PRODUCES; a host with ONE usual kind may record a profile default; the vocabulary is curated — a fifth joins only with a named mis-served wish; never a guessed kind (uncallable ⇒ asked, like size) | T-16 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
 | M-085 | The kind scales each running step's FORM (per-kind table's one home: build-pipeline SKILL.md); at landing every door-granted step has APPLIED or STOOD DOWN by name in the report; an unresolved kind scales nothing down; never a silent skip, and never the safety net (door law, mandatory sentences, ask-at-intake) touched by a kind | INV-22 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
+
+### [node: publish]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-089 | Publishing owes the artifact's kind its checklist — the per-kind table's ONE home is the publish skill (floor: what/who/how-to-start, claims true today, license explicit; skill → install+commands+when-NOT; tool → real runs; visual product → fresh screenshots; prose → reading path); never a deposit past the checklist | E-20 | string | `test_publish_skill_carries_checklist` | BUILT |
+| M-090 | Publish targets are PLUGINS embedding their steps (GitHub · plugin directory · design project), never removing the kind's owed minimum; the walk runs BEFORE the human's gate and never sends anything itself; never a publish bypassing base rules 12/17 or a host push gate (M-6) | E-20 | string | `test_publish_skill_carries_checklist`; behaviour: first real use = our own next public push, journaled | BUILT |
 
 ### [node: skill-evals]
 

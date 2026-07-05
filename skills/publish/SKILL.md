@@ -1,0 +1,81 @@
+---
+name: publish
+description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate — never instead of it. NOT for in-session showing of work (communicator owns that), not for commits that stay local.
+metadata:
+  version: 0.1.0
+---
+
+# publish — the work leaves the machine looking like a product
+
+> Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
+> one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
+> fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.10), together with the
+> settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
+> note is plain advice.
+
+A deposit outward is a SURFACE: the reader meets the README, the release notes, the directory card —
+not your commit history. This skill is the checklist that surface must pass, keyed by the artifact's
+work-kind (SPEC T-16, E-20), plus the seam where a publish target adds its own steps. It runs BEFORE
+the human's publish gate (base rules 12/17) and before any push gate the host holds — what the human
+approves has already earned approval. It never sends anything itself.
+
+## When it fires
+
+Anything crossing the machine's edge: first public push of a repo · a push that changes what a public
+reader sees (README, docs, screenshots) · a release/tag · a plugin-directory or marketplace submission
+· a skill shipped for someone else's machine · design-project sync cards (SPEC E-18). If no reader
+outside this machine will meet the artifact, this skill stands down — showing work to your OWN human
+in-session is communicator's rule 5, not a publication.
+
+## The kind checklist — what every publication owes (one home: this table)
+
+First, the floor every kind shares: the README/landing surface answers, in its first screen, WHAT this
+is, WHO it serves, and HOW to start — in the reader's language, not the repo's internal vocabulary
+(base rule 2); every claim on it is TRUE of the shipped version today (a stale claim or picture is a
+false claim); the license/attribution state is explicit; and NOTHING secret or unshareable leaves —
+the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
+sample checked shareable (no copyrighted material we may not republish). (The sweep items entered from
+the first eval run, 2026-07-05 — the bare arm knew them and the skill didn't; evals cut both ways.)
+
+| Kind (SPEC T-16) | The publication additionally owes |
+|---|---|
+| skill | install line(s) that actually run · the commands/invocations, shown as they're typed · when to USE it and when NOT (both, verbatim from the skill's own boundaries) · a one-scenario taste of it working (its eval scenario is the honest source, SPEC E-19) |
+| infra / tool | at least one REAL run: the command and its real output, current version · requirements/platform stated · failure behaviour named (what the user sees when input is wrong) |
+| product (visual) | FRESH screenshots of the shipped version — re-shot at every publish that changes what they show, never reused stale · a start-to-value walkthrough (open → first result) |
+| prose | the reading path (what to read first, how long it takes) · who it's for stated up front |
+
+Comparisons and diagrams JOIN when they carry the argument — a comparison table against the honest
+alternatives, a diagram where structure beats words — and never as decoration; an empty comparison
+("we're better at everything") is worse than none.
+
+## Targets are plugins — each embeds its steps
+
+The walk above is the trunk; the TARGET adds its own steps, never removes the kind's owed minimum
+(SPEC E-20):
+
+- **GitHub repo** — README current at the root · screenshots re-shot where the host's rule says so ·
+  release notes for a tagged release · repo description + topics set · third-party dependency licenses
+  compatible with the release · the name checked for collisions where it matters (GitHub/PyPI/npm) ·
+  a fresh-clone check — install and run from scratch as an outside reader would, not "works on my
+  machine" · the push gate of the host ALWAYS holds (a publish never turns into a push authorization).
+- **Plugin directory / marketplace** — the manifest complete and validated · the directory's forms
+  answered · the listing text reads as the directory's reader expects, not as repo prose.
+- **Design project (claude.ai/design)** — the landing's DECLARED components as rendered cards, through
+  the human's gate; the in-session render stays the authority (SPEC E-18).
+- A new target = a new plugin section here, added through the queue like any wish.
+
+## How it runs
+
+1. Name the artifact's kind (it usually already stands in the queue row, SPEC T-16) and the target(s).
+2. Walk the floor, then the kind's row, then each target's steps — fixing what fails BEFORE asking the
+   human anything.
+3. Report the walk's result in the landing report (a stood-down publish step is named like any other,
+   SPEC INV-22), then hand the human their gate with the surface ALREADY worth approving: "the README
+   is current, screenshots re-shot today, forms filled — push?"
+
+## When NOT to use
+
+Not for showing work in-session (communicator rule 5); not for local commits; not for a prototype —
+a sketch is never published, it isn't a product (base rule 16); not as a substitute for the human's
+publish gate — this skill prepares the deposit, the human releases it.
