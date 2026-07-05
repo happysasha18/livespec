@@ -854,3 +854,15 @@ ahead of reality (written "~23:55"/"00:05" while the wall clock said 22:40) — 
 Alexander already corrected once. All session-9 stamps in ROADMAP, JOURNAL and the two prover records
 re-set from the git commit clock (7+6+5 fixes). Rule re-learned in the muscle: a stamp is READ off the
 clock at write time, never continued from the previous stamp's arithmetic.
+
+## 2026-07-05 ~22:45, session 9 — row 62: bootstrap gets its order and its first green
+
+Two audit holes in one row (fable F6, opus F-13): bootstrap copied templates BEFORE the VCS gate
+(adoption learned gate-first long ago — a gate cannot protect files older than itself), and "green
+suite" at landing #1 was undefined on a testless newborn project. B-1 rewritten: gate FIRST → six
+templates + a runnable suite scaffold (`templates/test_scaffold.template.py`, the pack's newest shipped
+artifact) → hooks offered as at adoption → first wish. The scaffold DEFINES landing-#1 green: docs
+present, headers really filled (a surviving placeholder is red), coverage checklist in place, one
+live-state block — a floor, landing #1 ships its first real test beside it. Verified by deed: the
+suite simulates a bootstrap in a temp dir both ways. SPEC v0.15.7, M-034 re-authored, inventory grows,
+suite 81 green; pack 0.8.13.

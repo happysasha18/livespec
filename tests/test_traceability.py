@@ -234,6 +234,8 @@ class TestArtifacts(unittest.TestCase):
             full = os.path.join(ROOT, rel)
             self.assertTrue(os.path.isfile(full), "missing template: %s" % rel)
             self.assertGreater(os.path.getsize(full), 100, "template suspiciously small: %s" % rel)
+        scaffold = os.path.join(ROOT, "templates", "test_scaffold.template.py")
+        self.assertTrue(os.path.isfile(scaffold), "missing the bootstrap suite scaffold (B-1, row 62)")
 
 
 class TestQueue(unittest.TestCase):
@@ -844,3 +846,51 @@ class TestWorkerContract(unittest.TestCase):
                        "never resolves the settings ladder itself",
                        "never a silent retry on the same tier"):
             self.assertIn(phrase, bp, "build-pipeline lost the worker-contract elaboration: %s" % phrase)
+
+
+class TestBootstrapScaffold(unittest.TestCase):
+    """Row 62 (M-034 extension): the bootstrap ships a runnable suite scaffold that defines green
+    for landing #1. Verified BY DEED: a simulated bootstrap in a temp dir runs the shipped scaffold
+    — green when the copy is filled, red when a placeholder survives."""
+
+    def _bootstrap(self, tmp, fill=True):
+        import shutil
+        os.makedirs(os.path.join(tmp, "tests"))
+        for name in ("SPEC", "ARCHITECTURE", "TEST_MATRIX", "ROADMAP", "JOURNAL", "NEXT_STEPS"):
+            src = os.path.join(ROOT, "templates", "%s.template.md" % name)
+            with open(src, encoding="utf-8") as f:
+                body = f.read()
+            if fill:
+                body = body.replace("[Project Name]", "demo").replace(
+                    "(v0.1, [date])", "(v0.1, 2026-07-05)")
+            with open(os.path.join(tmp, "%s.md" % name), "w", encoding="utf-8") as f:
+                f.write(body)
+        shutil.copy(os.path.join(ROOT, "templates", "test_scaffold.template.py"),
+                    os.path.join(tmp, "tests", "test_scaffold.py"))
+
+    def test_scaffold_bootstrap_runs(self):
+        import subprocess
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            self._bootstrap(tmp, fill=True)
+            r = subprocess.run(["python3", "-m", "unittest", "discover", "tests"],
+                               cwd=tmp, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0,
+                             "scaffold not green on a filled bootstrap:\n%s" % r.stderr)
+        with tempfile.TemporaryDirectory() as tmp:
+            self._bootstrap(tmp, fill=False)
+            r = subprocess.run(["python3", "-m", "unittest", "discover", "tests"],
+                               cwd=tmp, capture_output=True, text=True)
+            self.assertNotEqual(r.returncode, 0,
+                                "scaffold stayed green on an UNFILLED bootstrap — placeholders "
+                                "must be red")
+
+    def test_spec_states_bootstrap_order(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("The version-control gate runs FIRST",
+                       "a gate cannot protect files older than itself",
+                       "plus the suite scaffold",
+                       "DEFINES what \"green\" means for landing #1",
+                       "a leftover placeholder is red",
+                       "Hooks are OFFERED at bootstrap exactly as at adoption"):
+            self.assertIn(phrase, spec, "SPEC lost the bootstrap-order clause: %s" % phrase)

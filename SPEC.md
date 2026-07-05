@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.6, 2026-07-05)
+# live-spec — SPEC (v0.15.7, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -283,8 +283,16 @@ promised, marked, and owned by its rows. [INV-17]
 
 ## Starting a new project (bootstrap)
 
-Copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate
-→ the first wish enters the queue → the pipeline runs from intake. [B-1] The gate itself is an always-rule: **no
+**The version-control gate runs FIRST** — the same order adoption keeps [A-0]: git exists (init if
+not), a remote settled or explicitly declined, before anything else is created — a gate cannot protect
+files older than itself. Then copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL,
+NEXT_STEPS) **plus the suite scaffold** (`test_scaffold.py` into `tests/`) — the minimal runnable suite
+that DEFINES what "green" means for landing #1: the document set present, every header really filled
+(a leftover placeholder is red), the coverage checklist in place, one live-state block. That green is a
+floor, not a ceiling — landing #1 ships its own first real test beside the scaffold, and the
+traceability checks grow from there. Hooks are OFFERED at bootstrap exactly as at adoption [E-6] —
+never imposed, plain words first. Then the first wish enters the queue → the pipeline runs from
+intake. [B-1] The gate itself is an always-rule: **no
 landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
 declined (recorded, not merely recommended), before the first landing. [INV-8]
 
