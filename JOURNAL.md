@@ -799,3 +799,13 @@ the unswept fourth (F2, folded). Base 0.1.11, pin sweep across the five working 
 untouched per the aff99f9 precedent), matrix M-093, suite 74 green; pack 0.8.8. Also from this session's
 gate run: row 61's freshness lock proved itself live — the row-57 commit turned the repo red until this
 record existed. The teeth bite in the right place.
+
+## 2026-07-05 late (~23:00, session 9) — row 63: a superseded wish never dies by pointer
+
+The audit's F8: a superseded row points INTO its absorber — so if the absorber is later DECLINED, the
+absorbed wishes die silently with it, and INV-1 ("no wish is ever lost") leaks through a pointer. T-8
+now closes the hole at the transition: declining an absorber LISTS the rows superseded into it, each
+declined by name (the no covered it) or returned to the queue (the no was about the absorber's shape).
+SPEC v0.15.3 + the ROADMAP template's status-values line (the prover's A3: the template was the
+half-form surface this time). Matrix M-094; suite 75 green; pack 0.8.9. No declined absorber exists in
+the live queue yet — the behavioural side is a named milestone-audit item, not an assumption.

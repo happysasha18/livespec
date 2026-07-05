@@ -21,4 +21,5 @@ marked in the row). Ambiguous size or priority is asked at intake, never guessed
 
 **Status values:** `queued` (ready to enter the pipeline) · `in-work` (active) · `waiting` (blocked on a
 person or event) · `landed` (acceptance met, committed) · `declined` / `deferred` / `superseded` (closed
-without landing; the row stays).
+without landing; the row stays). Declining a wish that other rows were superseded INTO lists those rows:
+each is declined by name or returned to the queue — a superseded wish never dies by pointer (SPEC T-8).

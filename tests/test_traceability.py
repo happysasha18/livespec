@@ -731,3 +731,19 @@ class TestCollisionLaw(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         self.assertEqual(spec.count("rule 18"), 2,
                          "the law must be CITED at its two instances (attic, inbox), stated only in base")
+
+
+class TestDeclineListsAbsorbed(unittest.TestCase):
+    """Row 63 (M-094): declining an absorber lists the rows superseded into it — each declined by
+    name or returned; a superseded wish never dies by pointer."""
+
+    def test_spec_states_decline_absorbed(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("declining is not a black hole",
+                       "declined BY NAME",
+                       "RETURNED to the queue as its own row again",
+                       "a superseded wish never dies by pointer"):
+            self.assertIn(phrase, spec, "SPEC lost the decline-lists-absorbed clause: %s" % phrase)
+        tpl = re.sub(r"\s+", " ", read("templates/ROADMAP.template.md"))
+        self.assertIn("never dies by pointer", tpl,
+                      "ROADMAP template lost the decline-lists-absorbed rule")

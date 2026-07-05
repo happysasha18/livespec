@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.2, 2026-07-05)
+# live-spec — SPEC (v0.15.3, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -237,7 +237,10 @@ While it walks, four things are always true:
 
 A wish can also end without landing; its row stays in the table: **declined** (you said no) · **deferred**
 (parked with a named revisit trigger) · **superseded** (absorbed by another wish; the row points to the
-absorbing one). [T-8]
+absorbing one). And declining is not a black hole for what the declined wish had absorbed: a wish other
+rows were superseded INTO lists them at its decline, and each listed row is either declined BY NAME in
+the same breath (your no covered it too) or RETURNED to the queue as its own row again (your no was
+about the absorber's shape, not the need) — a superseded wish never dies by pointer [INV-1]. [T-8]
 
 What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface
 = one name, everywhere. [E-4]
