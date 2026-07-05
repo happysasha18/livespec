@@ -1033,3 +1033,36 @@ class TestProblemLedger(unittest.TestCase):
             self.assertRegex(r, r"\d{4}-\d{2}-\d{2}", "ledger entry without a date: %s" % r)
             self.assertTrue(any(s in r for s in self.STATUSES),
                             "ledger entry without a legal status: %s" % r)
+
+
+class TestClockDiscipline(unittest.TestCase):
+    """Row 103: time is read off the clock, never invented (SPEC INV-24, matrix M-106).
+    Scope: file NAMES repo-wide, JOURNAL entry headings, ledger dates — prose quoting a
+    past incident's wrong date stays legal (the journal describes defects, it doesn't repeat them)."""
+
+    DATE = re.compile(r"(\d{4}-\d{2}-\d{2})")
+
+    def test_no_future_dated_stamps(self):
+        import datetime
+        today = datetime.date.today().isoformat()
+        offenders = []
+        for dirpath, dirnames, filenames in os.walk(ROOT):
+            dirnames[:] = [d for d in dirnames
+                           if d not in (".git", "__pycache__", "node_modules")]
+            for name in filenames:
+                for d in self.DATE.findall(name):
+                    if d > today:
+                        offenders.append(os.path.relpath(os.path.join(dirpath, name), ROOT))
+        for line in read("JOURNAL.md").splitlines():
+            if line.startswith("## "):
+                for d in self.DATE.findall(line):
+                    if d > today:
+                        offenders.append("JOURNAL.md heading: %s" % line[:70])
+        for line in read(".live-spec/PROBLEMS.md").splitlines():
+            if line.startswith("| "):
+                for d in self.DATE.findall(line):
+                    if d > today:
+                        offenders.append("ledger: %s" % line[:70])
+        self.assertFalse(
+            offenders,
+            "future-dated stamps — the invented-time family (INV-24): %s" % offenders)

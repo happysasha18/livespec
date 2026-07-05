@@ -979,7 +979,7 @@ supersession must not compress an unfinished story away.
 clock said 07-05 23:12 — renamed and corrected against the clock; tlvphoto's own 07-06-dated prover
 record noted in its inbox wish. Goes straight into row 100's evidence at build time.
 
-## 2026-07-05 ~23:50, session 10 — row 100 LANDS pack-side: the problem ledger (SPEC v0.15.10, base 0.1.12, pack 0.8.21)
+## 2026-07-05 23:39 (git), session 10 — row 100 LANDS pack-side: the problem ledger (SPEC v0.15.10, base 0.1.12, pack 0.8.21)
 
 The workshop got its law. New spec section "When the workshop itself misbehaves": operational noise —
 flaky harness, missing dep, environment error — is written down the moment it fires (one WATCHED line,
@@ -1010,3 +1010,25 @@ assertion vs a line-wrapped rule — the test's own bug, normalized). Suite 93 g
 
 Remaining leg of row 100: the first FOREIGN-host ledger (tlvphoto / track-coach) — rides their own
 windows; this window stays fenced to one inbox file per host.
+
+## 2026-07-05 ~23:43, session 10 — row 103 lands: the clock fence (SPEC v0.15.11, pack 0.8.22)
+
+The ledger's first entry closed the same night it was owned — the loop the whole feature exists for,
+walked end to end within the hour: noise noticed (invented-time stamps, third recurrence) → entry
+OWNED by a fresh queue row → the row landed a MECHANICAL owner → entry SOLVED. INV-24: time is read
+off the clock, never invented — no future-dated file name, journal heading, or ledger date survives
+the suite (`test_no_future_dated_stamps`, red proven on a synthetic 2027-named file, then 94 green).
+The one edge decided in the open: prose QUOTING a past incident's wrong date stays legal — the journal
+must be able to describe the defect without tripping the fence. Matrix M-106 under the guardrails
+node; hand-sweeping this family is over.
+
+## 2026-07-05 23:45, session 10 — the fence's own night catch: the TIME variant (row 104 intaken)
+
+Minutes after row 103 landed, the session caught ITSELF writing landing stamps ahead of the wall clock
+("~23:50"/"~23:58"/"00:02" written at 23:35–23:43) — the same failure session 8 journaled (written
+"~23:55" at 22:40). The date fence can't see same-day TIMES, so this is a distinct signature; by the
+hour-old second-occurrence law it got an owner on the spot: new ledger entry OWNED by new row 104 — a
+pre-commit check that an ADDED line stamping today with a time later than the commit clock goes red
+(the commit moment is the reference, so it isn't racy the way a suite-time check would be). All of
+tonight's stamps corrected against git (23:39 is the row-100 commit, git the arbiter). The ledger's
+second live catch, same night it was born.

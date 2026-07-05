@@ -260,6 +260,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-061 | The surface registry is self-closing: a rendered-but-unregistered surface is RED; never a trusted hand-list | E-10 | string | rides row 55 (registry executable form travels with the snapshot/guardrails family; the stale row-3 cite caught by row 64's mechanization — row 3 landed its pack slice and archived) | TODO |
 | M-062 | A host may mirror the same checks in CI — one source of truth, CI never redefines them | M-5 | string | lands at row 14 | TODO |
 | M-070 | The prototype fence is mechanical: a prod file referencing anything inside a prototype home turns the push gate RED; never a green push with such a reference | INV-17 | string | `test_prod_reference_fails`, `test_real_repo_passes`, `test_narrative_mention_passes` | BUILT |
+| M-106 | Time is read off the clock: no repo file NAME, journal entry heading, or ledger date sits later than the current clock — a future-dated stamp turns the suite (and so the push walk) RED; prose quoting a past incident's wrong date stays legal; never an invented tomorrow shipped | INV-24 | string | `test_no_future_dated_stamps` (red proven by deed on a synthetic future-named file) | BUILT |
 
 ### [node: snapshot [target]]
 
