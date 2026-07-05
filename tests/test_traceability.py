@@ -265,9 +265,14 @@ class TestVersionsAndPins(unittest.TestCase):
         v = read("VERSION").strip()
         self.assertRegex(v, r"^\d+\.\d+\.\d+$", "VERSION is not semver")
         for s in self.SKILLS:
-            head = read("skills/%s/SKILL.md" % s).splitlines()[:15]
-            self.assertTrue(any(re.match(r"version: \d+\.\d+\.\d+", l) for l in head),
-                            "no version: frontmatter in %s" % s)
+            head = read("skills/%s/SKILL.md" % s).splitlines()[:20]
+            metadata_idx = next((i for i, l in enumerate(head) if l.strip() == "metadata:"), None)
+            self.assertIsNotNone(metadata_idx, "no metadata: block in %s frontmatter" % s)
+            self.assertTrue(
+                re.match(r"^\s+version: \d+\.\d+\.\d+", head[metadata_idx + 1]),
+                "metadata: block in %s does not carry version: on the next line" % s)
+            self.assertFalse(any(re.match(r"^version: \d+\.\d+\.\d+", l) for l in head),
+                              "%s still carries a top-level version: line (must live under metadata:)" % s)
 
     def test_skills_inherit_base_pin(self):
         for s in self.SKILLS:
@@ -275,6 +280,11 @@ class TestVersionsAndPins(unittest.TestCase):
                 continue
             body = read("skills/%s/SKILL.md" % s)
             self.assertIn("live-spec-base", body, "%s carries no base-skill inherit pin" % s)
+
+    def test_settings_ladder_documented(self):
+        body = read("skills/live-spec-base/SKILL.md")
+        self.assertRegex(body, r"session beats host beats personal beats\s+package default",
+                          "base skill no longer states the settings-ladder resolution order (SPEC E-13)")
 
 
 class TestDoors(unittest.TestCase):

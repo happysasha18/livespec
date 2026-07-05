@@ -140,8 +140,9 @@ Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), 
 
 ## Phase 6 — Attach record & incremental from here (SPEC A-7)
 
-1. Record installed skill versions in `.live-spec/` (every pack SKILL.md carries `version:` frontmatter and
-   the package a root `VERSION` file — SPEC M-7) and seed `.live-spec/profile.md` — the HOST's overrides
+1. Record installed skill versions in `.live-spec/` (every pack SKILL.md carries a version line under
+   `metadata:` in its frontmatter and the package a root `VERSION` file — SPEC M-7) and seed
+   `.live-spec/profile.md` — the HOST's overrides
    only; settings about the human (language, proactivity) belong in their personal profile
    (`~/.claude/live-spec/profile.md`), which this host file overrides per the settings ladder (SPEC E-13).
    Mode/trust set only on the human's word (INV-9).

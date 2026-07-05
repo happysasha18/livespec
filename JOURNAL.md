@@ -452,3 +452,45 @@ sample), skill-creator eval (row 5) rides the same night.
 
 **Why:** Gap 3 was the one CLAUDE.md rule with no pack home — the named blocker on row 52's flip
 (CLAUDE.md → thin loader + profile). With it folded, the flip waits only on the drafts review.
+
+## 2026-07-05, ~15:40 — The 0.5.0 preventive audit: run, compared across models, folded (session 5)
+
+**What:** The full MINOR gate, run in daylight instead of overnight on Alexander's "поехали". Three audit
+passes plus the skill-creator eval ran as parallel Opus workers; pass 1 (whole-spec prover) ran TWICE —
+Opus and Fable independently, same brief, no cross-reads — as the model-comparison sample Alexander asked
+for. Two workers hit the plan's session limit at the finish line but had already written their reports to
+disk (checkpoint discipline paying for itself — zero loss, no resume needed). All records in
+`docs/audit/2026-07-05/` (five reports + `model-comparison.md`).
+
+**Results:** matrix pass — suite 35 green at audit time, 70/70 anchors each owned exactly once, zero
+must-fix; composition pass — 20 surfaces, clean naming, zero must-fix; prover passes — Opus 4 must-fix /
+8 should / 2 worth, Fable 1 / 5 / 3, agreeing on the headline defect: INV-2's serial-lane rule never said
+how it scales to two sessions or delegated workers, while the flagship's own journal records blessed
+parallel workers. Skill eval: all five skills sound, repo/installed copies byte-identical; one cross-skill
+defect (top-level `version:` where the canonical validator wants `metadata.version`).
+
+**Folded the same sitting (SPEC v0.8.1 → v0.9.0, anchor set unchanged):** the lane got its token (the
+single in-work row; workers may overlap only on disjoint files under the fence, landings close serially);
+a parked wish resumes ahead of any quick-win bubble; inbox harvest is one atomic commit per file,
+idempotent on re-sweep; closed queue rows ARCHIVE at milestones, never delete (folds row 30 — the INV-1
+vs compaction contradiction Opus caught); push-gate folds are enumerated in the record and stay local;
+profile files got explicit tracked-ness (host profile tracked, created at attach; personal profile may
+live in a PRIVATE human-owned git home — the wording fix that unblocked the row-52 flip); the inbox is
+now host-general (every host gets the parallel-safe door); unrecognized profile lines leave a durable
+journal note, not just a report line; [target] adoption phases are recorded-and-skipped; arrival ties
+resolve by row order; M-1 gains the derived-header re-pin rule; version homes moved to `metadata.version`
+across all ten SKILL.md copies (matrix M-001/M-002/M-012 reconciled, M-066 added, new
+`test_settings_ladder_documented`). Architecture pins re-verified — one (`:83` ladder) was stale BEFORE
+this session; all four corrected. Non-folded findings became queue rows 59–69.
+
+**Model comparison verdict (the budget question):** Opus was fully sufficient for scaffolded document
+review — denser findings, sound severity, best single fix proposal (the lane token). Fable's edge showed
+in cross-document timeliness (catching that E-16's old wording would contradict the imminent row-52
+landing) and severity restraint. Split confirmed: audits on Opus, fold triage and spec wording on Fable.
+
+**Verified:** suite 36 green, zero skips — worker's run AND the senior's own re-run (the session's
+delegate spot-check). VERSION 0.2.4 → 0.5.0 on Alexander's standing word (the straight-to-0.5.0 plan,
+~15:00). Push still held for his review, per the same word.
+
+**Also:** Alexander OK'd the row-52 five-line summary (~15:34) — the loader flip executes immediately
+after this commit; its own journal entry follows.

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.8.1, 2026-07-05)
+# live-spec — SPEC (v0.9.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -23,7 +23,7 @@ build-pipeline, communicator), document templates, an adoption procedure, and a 
 guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
-registry, and a `.live-spec/` folder (profile, checkpoints, installed-skill versions). [E-1]
+registry, inbox, and a `.live-spec/` folder (profile, checkpoints, installed-skill versions). [E-1]
 
 ## Throwing a wish
 
@@ -34,7 +34,8 @@ That same minute the wish becomes a row in the **queue (ROADMAP.md)** — the pe
 every wish: your words · class (size, plus priority when it isn't normal) · status · acceptance criterion,
 one row each. [E-3] Spoken means the row
 exists before anything else happens; it survives even if the session dies a second later, and rows are
-never deleted — only closed with a named exit. No wish is ever lost. [INV-1]
+never deleted — only closed with a named exit; at a milestone, closed rows MOVE to a dated queue archive —
+the attic principle applied to the queue: archived, never edited, never lost. No wish is ever lost. [INV-1]
 
 From the row the wish walks one path: classified by size and priority (the two paragraphs below) → a
 spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
@@ -53,11 +54,16 @@ the row — the lane keeps moving [INV-4]. [INV-12]
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). A quick win may bubble up: when the lane frees, it may be taken ahead of
 larger queued wishes, the jump marked in its row, never silent; after one bubbled landing the queue head
-goes next, so a stream of quick wins cannot starve a big wish forever. [T-11]
+goes next, so a stream of quick wins cannot starve a big wish forever. Arrival ties resolve by queue row
+order, top to bottom; an inbox batch harvests in filename-sorted order. [T-11]
 
 While it walks, four things are always true:
-- Intake is parallel, execution is serial — **one landing at a time**; a new wish waits its turn unless it
-  is a bug preempting (next section). [INV-2]
+- Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
+  the lane token, so any assigned session (a second parallel one included) takes a wish only after seeing no
+  other row in-work. Bounded delegated execution (workers) may overlap under the senior — only on disjoint
+  files, with the edit fence armed [INV-11] — but the lane itself (spec-delta, validation, integration,
+  closing the row) still lands one at a time. A new wish waits its turn unless it is a bug preempting
+  (next section). [INV-2]
 - **A pending question for you never stops the work** — the lane proceeds on the recommended option; the
   question stays open in the row, revisitable any time. [INV-4]
 - **No silent micro-decisions** — every choice not in your wish is either asked, or recorded in the spec
@@ -76,7 +82,8 @@ What the wishes grow is the **spec (SPEC.md)** — the living statement of what 
 
 A bug may interrupt the wish in-work. The interrupted wish moves to **parked**: a checkpoint is written
 (failing test names if red, hypothesis, touched files — nothing red is ever committed), the bug takes the
-lane, and the parked wish resumes as the immediate next landing. Should more bugs arrive while one holds
+lane, and the parked wish resumes as the immediate next landing — ahead of ANY queued wish, a quick win
+included: a bubble [T-11] jumps only fresh queued wishes, never a resume. Should more bugs arrive while one holds
 the lane, **critical** bugs head the waiting line (among themselves by arrival), the rest follow by
 arrival; the parked wish resumes only once no bug waits. A bug already in the lane is never itself
 interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked. [T-9]
@@ -92,7 +99,9 @@ declined (recorded, not merely recommended), before the first landing. [INV-8]
 
 Adoption is a sequence; each phase completes before the next. In practice the version-control gate [A-5]
 is performed FIRST — before anything is touched or moved — so the whole run is reversible; the codes below
-name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-07-04). [A-0]
+name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-07-04). A phase marked
+[target] is recorded-and-skipped until its machine lands — the run's journal names the deferral (the
+pilot's baseline snapshot is the precedent). [A-0]
 
 1. **Orient — read everything first.** Every existing document is read BEFORE anything is touched: README,
    any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption never assumes
@@ -143,7 +152,7 @@ drift (the pack's own sweep caught the anchor convention told two ways, and the 
 stated only in the adoption text while every skill that writes shared files needs it).
 
 **So the shared rules live ONCE, in the base skill** — the pack's fifth skill and shared rulebook (folder:
-`live-spec-base`; the pack-structure half of the question is still open [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
+`live-spec-base`; pack structure decided: package-is-source, standalone repos read-only mirrors [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
 package's default settings [E-13]; each working skill opens with one line naming the base skill and the
 base version it was written against — a pin the landing that bumps the base sweeps in the same session,
 never leaves stale — and REFERENCES the shared rules instead of restating them. A working
@@ -162,7 +171,9 @@ convenience.** Restatements older than the base skill are pruned at milestones t
 own working contract [INV-9]. [ACT-1] That contract is what the settings ladder RESOLVES to (next
 paragraph): the lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language,
 domain vocabulary — live in your personal profile and follow you everywhere; the **host profile** at
-`.live-spec/profile.md` narrows them for one project when you say so [E-8]. Communicator reads the resolved
+`.live-spec/profile.md` narrows them for one project when you say so — created at attach, and git-tracked
+in the host repo like the adopt artifacts [A-8]; of `.live-spec/` only the checkpoints stay ignored
+[ACT-3] [E-8]. Communicator reads the resolved
 contract, not any single file, before every human-facing exchange [E-13]. **Mode and trust are written
 ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
 level.** [INV-9]
@@ -180,8 +191,9 @@ narrower one overrides it on your word (an all-English project overriding your R
 "today answer me in English" overriding both for one sitting). Resolution therefore reads from the
 narrowest scope out: session beats host beats personal beats package default. Profiles are re-read at
 the same freshness points as skills [A-7]; a profile line the current pack does not recognize (written
-under an older vocabulary) is ignored ALOUD — named once in the session's next report, never a silent
-drop and never an error. [E-13]
+under an older vocabulary) is ignored ALOUD — a dated note in the host's journal plus a line in the
+session's next report (the journal half is durable, so a session dying before its report still leaves
+the trace), never a silent drop and never an error. [E-13]
 
 **No override is ever silent.** An override exists only as a written line in its profile file, and
 setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the
@@ -207,7 +219,9 @@ fork by scope — each rule moves to the scope it describes: a method rule the p
 the pack's (a second copy is drift [INV-13]); a personal line → the profile; a project line → that
 project's host profile — proven lossless by a rule-by-rule mapping, with the old file kept in the attic
 [INV-7] so one move rolls the whole change back. And the fork only WRITES what the running session owns:
-pack rules land in the pack, the personal profile lives on the human's machine outside any project repo;
+pack rules land in the pack, the personal profile lives on the human's machine outside any host or pack
+repo (a PRIVATE repo the human owns may serve as its git home; sitting outside any repo fence [INV-11],
+a promotion RE-READS the file immediately before appending, and that git home is its recovery net);
 a project line becomes a written migration note that the project's OWN session lands at its next update —
 nothing in this migration writes a foreign repo [INV-10]. [E-16]
 
@@ -301,10 +315,15 @@ in the HOST's journal, never here. [INV-10]
 NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, …), a few plain lines,
 never an edit to an existing file — creating a fresh file cannot collide, shared files can. The outsider
 COMMITS its one new file (a commit touching inbox/ only, message naming the source) — that commit is
-inside the read-only exception. [E-11] A live-spec session sweeps the inbox as its FIRST act and harvests
+inside the read-only exception. The door is host-general: every host carries its own inbox/ under the
+same law, swept first by that host's own sessions — that is what keeps "no wish is ever lost" [INV-1]
+true when two contributors' sessions share one host. [E-11] A live-spec session sweeps the inbox as its FIRST act and harvests
 each file into a queue row — a wish must not wait durably-recorded but operationally invisible; the
 harvest commit removes the file (git history keeps it — this internal removal is not an attic case, which
-protects HOST files). So "spoken means it exists" holds without the outside session touching the queue. [T-10]
+protects HOST files). Each harvest is ONE commit that both adds the row and removes its file — the row
+names the source file, so an interrupted harvest leaves the file for the next sweep, which re-harvests
+idempotently (a file already represented by a row is removed, never re-added). So "spoken means it
+exists" holds without the outside session touching the queue. [T-10]
 
 **Before writing to a repo — and again before every commit** — the agent re-checks `git status` + HEAD
 against what it last read. If HEAD moved or the tree holds changes it did not make: STOP, re-read the
@@ -316,20 +335,22 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
 ## The rhythm: breakpoints, milestones, pushes
 
 - **Safe breakpoint (end of every movement):** NEXT_STEPS live-state replaced (never stacked) + dated
-  JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss. A long session SHOULD take
+  JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss (NEXT_STEPS may be
+  gitignored — the journal entry is the durable safety net). A long session SHOULD take
   that offer: at a breakpoint the agent compacts its own context to keep working — and SAYS so, never
   silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
   in, re-check skill freshness [A-7]. [M-2]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
   against the CURRENT spec + architecture) + surface-composition check + doc
-  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly) + a
+  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly;
+  queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
   re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
   is never forgotten + the formal index re-checked against the prose (the index is a derived map and must
-  never drift into a second truth). [M-1]
+  never drift into a second truth) + the derived docs' headers re-pinned to the spec version then proven. [M-1]
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
   which roadmap" is answerable. [M-3]
-- **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a `version:`
-  line in its SKILL.md frontmatter. A host: the installed set recorded in `.live-spec/` at attach and on
+- **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version
+  line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
   every update. So the freshness check [A-7] compares version against version, not just file times, and
   its "old → new" journal note is finally writable. [M-7]
 - **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
@@ -341,7 +362,8 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   push (record name `YYYY-MM-DD[-suffix].md`; suffix mandatory when the date's file exists). Findings that
   are must-fix fold before pushing; folds produced by the gate's own pass do NOT re-trigger the gate — they
   ship with the same record; the rest become queue rows. No re-check record for the pushed state ⇒ the
-  push should not have happened. [M-6]
+  push should not have happened. The record ENUMERATES the folds applied from its own pass, and a fold
+  stays LOCAL to the sections its finding named — a fold reaching wider re-triggers the gate. [M-6]
 
 ## Composing across axes
 

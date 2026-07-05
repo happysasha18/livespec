@@ -7,7 +7,8 @@ description: >
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
-version: 0.2.2
+metadata:
+  version: 0.2.2
 ---
 
 # build-pipeline — ship a change by the method

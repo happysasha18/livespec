@@ -3,7 +3,9 @@
 How the pack is BUILT: the named nodes the spec's facts live in. Written from the proven SPEC v0.7
 (record `docs/prover/2026-07-05-lost-layers.md`), proven itself with the architecture lens before the
 test matrix was derived (record: see Prover record below). One node = one name = one responsibility —
-the one-surface-one-name rule applied to structure. [E-14]
+the one-surface-one-name rule applied to structure. Kept current through SPEC v0.9.0 by assignment
+(E-16 → host-contract; 2026-07-05 audit folds — no anchor delta); last full architecture-lens prove:
+v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
 text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
@@ -25,7 +27,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |
 |---|---|---|---|
-| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, ACT-1, ACT-2, ACT-3, M-2, M-7 | `skills/live-spec-base/SKILL.md:16` (rules), `:48` (fence), `:83` (ladder), `:100` (defaults) |
+| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, ACT-1, ACT-2, ACT-3, M-2, M-7 | `skills/live-spec-base/SKILL.md:17` (rules), `:49` (fence), `:92` (ladder), `:101` (defaults) |
 | spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1 | `skills/spec-author/SKILL.md:74` (spine), `:103` (axes composition) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6 | `skills/product-prover/SKILL.md:148` (review modes), `.live-spec/profile.md:6` (gate cadence instance) |
 | build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, INV-1, INV-2, INV-3, INV-4, INV-12, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:45` (steps), `:30` (entry map), `:128` (gates) |

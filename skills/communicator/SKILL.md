@@ -1,7 +1,8 @@
 ---
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
-version: 0.1.3
+metadata:
+  version: 0.1.3
 ---
 
 # communicator — show the work, ask decisions the human can actually make

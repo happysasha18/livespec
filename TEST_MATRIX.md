@@ -1,7 +1,9 @@
 # live-spec — Test Matrix (v0.1, 2026-07-05)
 
 Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** (records:
-`docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`). Rows are organized
+`docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
+SPEC v0.9.0 by assignment + the 2026-07-05 audit folds (no anchor delta; headers re-pin at each milestone
+per M-1). Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run, not once. [E-15]
@@ -65,8 +67,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-001 | The base skill states every shared rule once, next to the package defaults; never a working skill restating a shared rule normatively | E-12 | string | `test_skills_inherit_base_pin` | BUILT |
-| M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | milestone audit (M-1) + guardrails row 3 | TODO |
+| M-001 | Every working skill opens with the base-inherit pin (base name + the base version it was written against); never a working skill without its pin | E-12 | string | `test_skills_inherit_base_pin` | BUILT |
+| M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | `test_settings_ladder_documented` (structural clause: ladder + resolution order stated in the base skill); behavioral resolution: milestone audit (M-1) + guardrails row 3 | BUILT |
 | M-003 | Every choice not in the wish is asked or recorded-and-surfaced; never decided-and-buried | INV-5 | string | snapshot declared-scope diff (row 55) — the mechanical fence | TODO |
 | M-004 | Proactivity mode and trust are written only on the human's word; the agent never raises its own level | INV-9 | string | milestone audit (M-1) | TODO |
 | M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes you did not make | INV-11 | string | `guardrails/pre-commit` (opt-in fence): `test_armed_stale_head_blocks_commit`, `test_unarmed_fence_passes_silently` | BUILT |
@@ -76,7 +78,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-009 | The senior agent owns judgment (spec deltas, levels, triage); never delegated to a worker | ACT-2 | string | process — journal audit at milestones (M-1) | TODO |
 | M-010 | Workers run mechanical execution with persistent checkpoints in `.live-spec/checkpoints/`; never in a system temp dir | ACT-3 | string | router design (row 56) makes it mechanical | TODO |
 | M-011 | A safe breakpoint = LIVE STATE replaced (one block, never stacked) + dated journal entry + commit | M-2 | string | `test_next_steps_live_state` (shape; the discipline audits at M-1) | BUILT |
-| M-012 | Versions have named homes: VERSION file, `version:` frontmatter per skill, host record; never scattered or absent | M-7 | string | `test_version_homes` | BUILT |
+| M-012 | Versions have named homes: VERSION file, a version line under `metadata:` in its SKILL.md frontmatter, host record; never scattered or absent | M-7 | string | `test_version_homes` | BUILT |
+| M-066 | The base skill states each shared rule once and no working skill restates one normatively; never a second normative home for a shared rule | E-12 | string | milestone compaction pass (M-1) | TODO |
 
 ### [node: spec-author]
 
@@ -192,7 +195,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 - [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 70/70 (E-16 added 2026-07-05, rows 52–53), mechanized in `test_matrix_covers_every_anchor`.
 - [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 12/12 blocks, every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
-- [x] Every artifact-inventory entry owns ≥ 1 rendered-level row — for this text product the rendered level is `string` against the shipped file (prover F6); every entry is checked by `test_artifact_inventory`.
+- [x] Every artifact-inventory entry is asserted shipped-and-non-empty (`test_artifact_inventory`) — the text-product rendered level (prover F6).
 - [x] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed` — vacuously true: the pack ships no browser surface (prover F6); the clause re-arms the day one exists.
 - [x] No row cites a spec anchor or node that no longer exists — mechanized in `test_matrix_covers_every_anchor` (stale refs fail the suite; retirement, never deletion).
 
