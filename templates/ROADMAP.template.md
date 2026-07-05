@@ -22,4 +22,4 @@ marked in the row). Ambiguous size or priority is asked at intake, never guessed
 **Status values:** `queued` (ready to enter the pipeline) · `in-work` (active) · `waiting` (blocked on a
 person or event) · `landed` (acceptance met, committed) · `declined` / `deferred` / `superseded` (closed
 without landing; the row stays). Declining a wish that other rows were superseded INTO lists those rows:
-each is declined by name or returned to the queue — a superseded wish never dies by pointer (SPEC T-8).
+each is declined by name or returned to the queue — a superseded wish never dies by pointer (SPEC T-8). A row carrying several user stories enumerates per-story acceptance in its Decision/acceptance cell and cannot close with an unmet leg (SPEC INV-26) — though the norm is one wish = one story, split at intake (SPEC T-17).

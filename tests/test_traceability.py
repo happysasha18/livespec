@@ -1041,6 +1041,25 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, skill,
                           "communicator rule 11 missing: %s" % needle)
 
+    def test_one_story_close_whole(self):
+        """Row 102 (M-108/M-109, T-17/INV-26): one wish = one story at intake;
+        a multi-leg row closes only whole; LIVE-STATE never compresses an open leg."""
+        spec = read("SPEC.md")
+        for needle in ("T-17", "INV-26", "closes only whole"):
+            self.assertIn(needle, spec)
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        for needle in (
+            "One wish = one user story",
+            "SPEC T-17",
+            "A row closes only whole",
+            "SPEC INV-26",
+            "half-done is a status, never a landing",
+        ):
+            self.assertIn(needle, pipeline,
+                          "build-pipeline missing: %s" % needle)
+        self.assertIn("INV-26", read(os.path.join("templates", "NEXT_STEPS.template.md")))
+        self.assertIn("INV-26", read(os.path.join("templates", "ROADMAP.template.md")))
+
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
         rows = [l for l in led.splitlines()

@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.14
+  version: 0.2.15
 ---
 
 # build-pipeline — ship a change by the method
@@ -41,7 +41,7 @@ the principle behind each step; this skill is its executable projection — keep
   casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
   bug door alone — a re-doored wish takes no preemption. Re-fire the door mid-work the moment the work is
   about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
-  door. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
+  door. **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, not new stories; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
   rule 16) — never into prod, never shown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
@@ -223,6 +223,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   `bug → matrix → test → code`. Never code first and back-fill a spec — and never jump from spec straight
   to tests: the two layers between them (architecture, test-spec derivation) are where whole classes of
   holes get caught (SPEC E-14/E-15/INV-15).
+- **A row closes only whole (SPEC INV-26):** where a row carries several legs, its Done-when enumerates each, and the landing report may close the row only with EVERY leg met — half-done is a status, never a landing; an open leg keeps the row in-work, and the resume file's LIVE-STATE restates it at every supersession, never compresses it away (still open at compaction ⇒ restated, not summarized out).
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →

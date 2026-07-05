@@ -1065,3 +1065,17 @@ And the fence family fired twice on me tonight: the chat opener stamped [01:47] 
 (new CHAT-variant WATCHED line), then queue stamps "00:15/00:30/00:40" written at ~00:05–00:11 — third
 occurrence on the owned TIME-variant entry; row 104 (the pre-commit time check) should bubble as a
 quick win. All stamps corrected against `date` before this commit.
+
+## 2026-07-06 01:30, session 11 — row 102 lands: one wish = one story, a row closes only whole
+
+The tlvphoto lesson becomes law (SPEC v0.15.13 T-17 + INV-26, build-pipeline 0.2.15, M-108/M-109, pack
+0.8.24, suite 96 green): a wish carrying several user stories splits at intake, each row citing the one
+spoken wish; a multi-leg row enumerates per-leg acceptance and cannot close with an unmet leg; the
+resume file restates an open leg at every supersession, never compresses it away. The prover pass
+re-walked the real incident as the red test — all three sentences catch it (record pass 2). The
+delegation had its own lesson: the worker STOPPED on a brief anchor I quoted from the wrong file —
+exactly the contract working; corrected, resumed same tier, logged in its checkpoint. Kin wish
+harvested: prototype-norm lens → row 109 (its own law, its own row — by 102's own rule). And row 107's
+implementation study came back: three workers read Spec Kit / OpenSpec / GSD / BMAD at code level —
+headline: Spec Kit's "consistency checks" are prompt text, zero mechanical enforcement; harvest doc
+written, six steal-candidates filed as rows 110–115.

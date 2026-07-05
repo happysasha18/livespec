@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.12, 2026-07-06)
+# live-spec — SPEC (v0.15.13, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -83,6 +83,21 @@ bends scope only, never order — it is not a quick-win mark, and only priority 
 And what no cut may ever touch: the delta's MANDATORY sentences — the fences [T-14], a kept surface's
 facets [INV-18], the non-goals and the success measure [INV-20, INV-21]. Scope dials richness; it never
 touches the safety net. [T-15]
+
+**One wish = one user story; a row closes only whole.** The failure this law is built on: a project
+fused two stories — a door and a gallery — into one queue row; the door half shipped, the row was
+declared COMPLETE, and the gallery stayed a rejected wall for four rebuilds, each drop caught by the
+human's eyes, never by the pipeline. So, at intake: a wish carrying several USER STORIES — several
+distinct things a person will DO and SEE — is SPLIT, each story its own row through the full pipeline.
+Kin to a stage split, but a different knife: stages slice ONE story's depth [T-15]; separate stories
+are never fused into one row to begin with. Sub-behaviours of one story — its hover face, its phone
+face, a backpointer — are that story's ACCEPTANCE, not new stories; unclear whether it is one story or
+two is asked at intake, never guessed [INV-12]; and a split loses nothing — every row born of it cites
+the one spoken wish it came from [INV-1]. [T-17] Where a row nonetheless carries several legs (a
+legacy fusion, a harvested batch), its Done-when enumerates per-leg acceptance and the row CANNOT close
+with an unmet leg — half-done is a status, never a landing; and the resume file's LIVE-STATE
+supersession never compresses an unfinished leg out of existence: a leg still open at compaction is
+restated, not summarized away [M-2]. [INV-26]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -799,6 +814,7 @@ meaning, this table is only the map.
 | T-14 | touching a live surface: spec-delta opens with regression fences citing existing clauses | Throwing a wish |
 | T-15 | scope, never time: a too-big wish is cut or staged (a time budget/estimate is never an input); proposals proceed on the recommended option, surfaced; the safety net uncuttable | Throwing a wish |
 | T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
+| T-17 | one wish = one user story: multi-story wishes split at intake, each story its own row; sub-behaviours are acceptance, not stories; unclear count asked | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -824,6 +840,7 @@ meaning, this table is only the map.
 | INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
 | INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date — mechanical fence in the suite; quoting a past wrong date stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
+| INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
