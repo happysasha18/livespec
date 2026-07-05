@@ -744,3 +744,19 @@ dependency licenses, fresh-clone check, name collision), all folded into the ski
 Records: docs/prover/2026-07-05-row98.md, docs/evals/2026-07-05-first-run/{bare,with-skill}-publish.md.
 Suite 67 → 68 green. INV-22 line: kind = skill; facets N/A aloud; design-sync/snapshot stand down;
 prove-architecture APPLIED (node add). First real use of the skill = this repo's own next public push.
+
+## 2026-07-05 night (~23:25, session 8) — row 99: scope is the only negotiation; time budgets die
+
+Alexander, on reading the evening's report: "сделай по-быстрому это неправильно… какой дебил спрашивает
+программера 'сколько это займет?' надеясь на вменяемо квантизованный ответ? это всегда ложь. можно
+играться со скоупом а не с таймлайнами." Stronger than the de-ceremonialization I'd recommended — not
+the word, the MECHANISM: T-15 re-authored to scope-never-time (a too-big wish is CUT — fewer surfaces,
+plainer defaults — or STAGED, each stage a full-pipeline landing; an hours-or-days answer is never an
+input the walk accepts). What survived intact, deliberately: proceed-on-recommended + batched surfacing
+(INV-4/5/18), only-priority-moves-the-lane (T-11), and the uncuttable safety net (fences, facets,
+non-goals, success measure). The imported term swept from SPEC, build-pipeline (0.2.9), spec-author
+(0.1.9), README, matrix M-076 — and the suite now asserts it ABSENT so muscle memory can't sneak it
+back; history (journal, archives, prover records) keeps the old word, as history must. Pack 0.8.5,
+suite 68 green. The research-adopt lesson closes its loop: we imported Shape Up's appetite with a named
+incident behind half of it — the human kept the half with the incident (speed never cuts the safety
+net, reborn as scope-cut law) and killed the half that was ceremony. Curation working as designed.

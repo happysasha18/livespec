@@ -436,10 +436,11 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_intake_trio(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("Your time budget is part of the wish",
-                       "optional rider on the size word",     # F2 fold
-                       "bends scope only, never order",       # F3 fold (index line wording differs)
-                       "proceeds on the recommended trim",    # F1 fold
+        for phrase in ("A big wish negotiates scope, never time",  # row 99: his word, time budgets dead
+                       "not an input the walk accepts",
+                       "split into stages",
+                       "bends scope only, never order",
+                       "Scope dials richness; it never touches the safety net",
                        "A feature also says what it is NOT doing",
                        "nothing deliberately left out this time",  # F4 fold
                        "the tag marking provenance only",     # F6 fold
@@ -455,8 +456,14 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                       "spec-author lost the closing-sentences section")
         self.assertIn("only a missing sentence is a hole", sa)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
-        self.assertIn("optional appetite rider", bp, "build-pipeline intake line lost the appetite rider")
+        self.assertIn("never a time budget or estimate", bp,
+                      "build-pipeline intake line lost the scope-never-time law")
+        self.assertNotIn("appetite", bp.lower(), "build-pipeline still speaks the retired term")
         self.assertIn("The delta CLOSES with its two sentences", bp)
+        sa2 = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertNotIn("appetite", sa2.lower(), "spec-author still speaks the retired term")
+        spec2 = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertNotIn("appetite", spec2.lower(), "SPEC still speaks the retired term")
 
     def test_spec_states_founding_and_designsync(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))

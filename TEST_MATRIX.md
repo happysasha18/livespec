@@ -133,7 +133,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-076 | Appetite: optional rider on size in the ONE intake line; bends scope only — a trim proceeds on the recommended option and is surfaced in the batched report; never lane order moved by appetite, never a silent trim | T-15 | string | `test_spec_states_intake_trio`, `test_skills_carry_intake_trio` | BUILT |
+| M-076 | Scope, never time: a too-big wish is cut (fewer surfaces, plainer defaults) or split into stages; a time budget/estimate is never an input; the proposal proceeds on the recommended option, surfaced in the batched report; never a silent cut, never lane order moved, never the safety net touched | T-15 | string | `test_spec_states_intake_trio`, `test_skills_carry_intake_trio` | BUILT |
 | M-016 | A wish is one request in plain words, any size, any moment; never lost for being informal | E-2 | string | process — inbox + intake discipline; milestone re-listing (M-1) | TODO |
 | M-017 | The wish walks arrived → classified → spec-delta → validated → queued → in-work → landed; never skipping the spec-delta or validation step | T-1..T-6 | string | the E-6 host-facing gates (rows 55+) (bounds check: behaviour traces to spec) | TODO |
 | M-018 | A wish may exit declined / deferred / superseded — the row stays in the table; never deleted | T-8 | string | queue archive rule + milestone audit | TODO |

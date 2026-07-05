@@ -60,18 +60,18 @@ immediate value, no design decision inside. When the classifier can't call a siz
 host's recorded default, else none — and a kind not yet named scales nothing down [INV-22]) and the open
 question rides in the row — the lane keeps moving [INV-4]. [INV-12]
 
-**Your time budget is part of the wish.** You may name an **appetite** at intake — "give it half a day",
-"worth a week" — and it rides the intake line as an optional rider on the size word (size says how big
-the wish IS; appetite says how much of your time it MAY cost). Appetite bends scope only, never order: a
-half-day appetite is not a quick-win mark, and only priority moves the lane [T-11]. When the walk sees
-the wish won't fit its budget, it proceeds on the recommended trim — the lane never parks on it [INV-4]
-— and the trim is surfaced in the same batched report as every taken default [INV-18], never silent:
-your re-widen is simply a new wish. What a trim may cut: which surfaces are in, and how considered the
-defaults are (a half-day wish takes the plainest default; a two-week one earns the considered option) —
-never any of the delta's MANDATORY sentences: the fences [T-14], a kept surface's facets [INV-18], the
-non-goals and the success measure [INV-20, INV-21]. Appetite dials richness; it never touches the safety
-net. No appetite named — none assumed, and
-defaults stay at the walk's own considered judgment. [T-15]
+**A big wish negotiates scope, never time.** Nobody here asks "how long will it take", and an answer in
+hours or days is not an input the walk accepts — a time estimate out of a builder is a guess dressed as
+a number (Alexander 2026-07-05: "можно играться со скоупом, а не с таймлайнами"). When a wish looks
+bigger than it is worth, the walk answers in scope terms and PROPOSES: **cut the scope** — fewer
+surfaces in, plainer defaults on what stays — or **split into stages**, each stage one landing through
+the full pipeline (the "large" size already decomposes this way [INV-12]). The proposal proceeds on the
+recommended option — the lane never parks on it [INV-4] — and every cut rides the same batched report
+as every taken default [INV-18], never silent [INV-5]: your re-widen is simply a new wish. A scope cut
+bends scope only, never order — it is not a quick-win mark, and only priority moves the lane [T-11].
+And what no cut may ever touch: the delta's MANDATORY sentences — the fences [T-14], a kept surface's
+facets [INV-18], the non-goals and the success measure [INV-20, INV-21]. Scope dials richness; it never
+touches the safety net. [T-15]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -83,8 +83,8 @@ competes with spoken timestamps. Arrival ties resolve by queue row order, top to
 an inbox batch harvests in filename-sorted order. [T-11]
 
 **The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
-three axes, stated together in ONE intake line — size (with its optional appetite rider [T-15]) ·
-priority · door · the work-kind (what the wish builds — next paragraphs [T-16]). Size (with priority) says how big
+three axes, stated together in ONE intake line — size · priority · door · the work-kind (what the wish
+builds — next paragraphs [T-16]); a wish too big for its worth is negotiated in scope, never in time [T-15]. Size (with priority) says how big
 and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
 docs-only · skip**. The size and door axes share one word deliberately — a wish sized "bug" IS the bug door, one
 call stated once; the door axis only adds the other four entries. [T-12]
@@ -139,7 +139,7 @@ down — while the kind question rides the row [INV-12], every step applies in f
 step down requires a NAMED kind to answer for it. What no kind may ever touch: the
 door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals,
 success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]; the kind dials the
-machinery, never the safety net — the same law appetite obeys [T-15]. [INV-22]
+machinery, never the safety net — the same law a scope cut obeys [T-15]. [INV-22]
 
 **A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
 say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
@@ -677,7 +677,7 @@ meaning, this table is only the map.
 | T-12 | the door is named before any code | Throwing a wish |
 | T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
 | T-14 | touching a live surface: spec-delta opens with regression fences citing existing clauses | Throwing a wish |
-| T-15 | appetite: optional rider on size; bends scope only, never lane order; trims proceed on the recommended option, surfaced | Throwing a wish |
+| T-15 | scope, never time: a too-big wish is cut or staged (a time budget/estimate is never an input); proposals proceed on the recommended option, surfaced; the safety net uncuttable | Throwing a wish |
 | T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |

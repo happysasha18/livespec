@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.8
+  version: 0.2.9
 ---
 
 # build-pipeline — ship a change by the method
@@ -30,8 +30,9 @@ the principle behind each step; this skill is its executable projection — keep
 
 ## When to run it — and where each kind of change enters
 - **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15).** The intake
-  line states size (with the human's optional appetite rider — a named time budget that bends scope
-  only, never lane order; trims proceed on the recommended option and are surfaced, SPEC T-15) ·
+  line states size (a wish too big for its worth is negotiated in SCOPE — cut surfaces or split into
+  stages, never a time budget or estimate; proposals proceed on the recommended option and are
+  surfaced, SPEC T-15) ·
   priority · door: feature · bug · refactor · docs-only · skip · work-kind: product · infra · skill ·
   prose — what the wish BUILDS, one kind per wish, scaling the FORM of every step it walks (the
   work-kind table below; SPEC T-16, INV-22). Tripwires decide, not
@@ -75,7 +76,7 @@ or STOOD DOWN by name** in the landing report ("design-sync — text product, st
 skipped step is a defect. **An unresolved kind scales nothing down** — standing a step down requires a
 NAMED kind (the ask rides the row, SPEC INV-12). And no kind ever touches the safety net: the door law
 and its tripwires, the delta's mandatory sentences (fences · facets · non-goals · success measure),
-ask-at-intake — the same law appetite obeys.
+ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
 | Step | product (a user faces it) | infra (tooling for the project) | skill (an agent works by it) | prose (a human reads it) |
 |---|---|---|---|---|
