@@ -1,0 +1,11 @@
+{
+  "name": "live-spec",
+  "version": "0.8.0",
+  "description": "Living-spec methodology pack: five skills (spec-author, product-prover, build-pipeline, communicator, live-spec-base) that take a feature through spec -> prove -> architecture -> tests -> code with formal-verification thinking.",
+  "icon": ".claude-plugin/icon.png",
+  "author": { "name": "Alexander Abramovich", "url": "https://github.com/happysasha18" },
+  "homepage": "https://github.com/happysasha18/live-spec",
+  "repository": "https://github.com/happysasha18/live-spec",
+  "license": "MIT",
+  "keywords": ["spec", "specification", "product-spec", "formal-verification", "methodology", "pipeline", "prover"]
+}

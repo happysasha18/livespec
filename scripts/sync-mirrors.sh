@@ -41,7 +41,12 @@ GITHUB_OWNER="happysasha18"
 PACK_VERSION="$(cat "$PACK_ROOT/VERSION" 2>/dev/null || echo "unknown")"
 PACK_SHA="$(git -C "$PACK_ROOT" rev-parse --short HEAD)"
 
-BANNER="Read-only mirror. This skill lives in the live-spec pack: https://github.com/${GITHUB_OWNER}/live-spec — do not open PRs here; changes land in the pack and are synced by scripts/sync-mirrors.sh."
+# The banner leads with WHAT THIS IS (a stranger from a directory reads that first),
+# then the read-only notice (promoter inbox wish, 2026-07-05).
+banner_for() {
+  local skill_name="$1"
+  echo "**${skill_name}** — one skill from the [live-spec pack](https://github.com/${GITHUB_OWNER}/live-spec), installable on its own. Read-only mirror: do not open PRs here; changes land in the pack and are synced by scripts/sync-mirrors.sh."
+}
 
 # One status line per skill, collected here and printed again at the end as a summary.
 declare -a SUMMARY_LINES=()
@@ -87,10 +92,14 @@ for skill_path in "$SKILLS_DIR"/*/; do
   # the mirror's own .git history (that's how it stays a real, pushable repo).
   rsync -a --delete --exclude='.git' "$skill_path" "$mirror_dir/"
 
-  # Make sure README.md starts with the read-only-mirror banner.
+  # Make sure README.md starts with the what-this-is + read-only banner.
+  BANNER="$(banner_for "$skill_name")"
   readme="$mirror_dir/README.md"
-  if [ -f "$readme" ] && head -1 "$readme" | grep -qF "Read-only mirror. This skill lives in the live-spec pack"; then
-    : # banner already there (e.g. from a previous sync run) — leave it as is
+  if [ -f "$readme" ] && head -1 "$readme" | grep -q "Read-only mirror"; then
+    # a banner (old or new wording) is there — rewrite line 1 to the current wording
+    tmp_readme="$(mktemp)"
+    { echo "$BANNER"; tail -n +2 "$readme"; } > "$tmp_readme"
+    mv "$tmp_readme" "$readme"
   elif [ -f "$readme" ]; then
     # Skill has its own README — keep it, just prepend the banner above it.
     tmp_readme="$(mktemp)"

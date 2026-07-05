@@ -45,6 +45,9 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Migration note (rename) | `MIGRATION.md` | shipped text | `test_artifact_inventory` |
 | Front door | `README.md` | shipped text | `test_artifact_inventory` |
 | The one-page map | `OVERVIEW.md` | shipped text | `test_artifact_inventory` |
+| Plugin manifest | `.claude-plugin/plugin.json` | shipped config | `test_artifact_inventory` |
+| Plugin marketplace ref | `.claude-plugin/marketplace.json` | shipped config | `test_artifact_inventory` |
+| Plugin icon | `.claude-plugin/icon.png` | shipped image | `test_artifact_inventory` |
 | Inbox door + law | `inbox/README.md` | shipped text | `test_artifact_inventory` |
 | Guardrails scaffold text | `scaffold/guardrails/README.md` | shipped text | `test_artifact_inventory` |
 | The pack's own spec | `SPEC.md` | flagship doc | `test_artifact_inventory` |

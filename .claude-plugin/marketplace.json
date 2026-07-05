@@ -1,0 +1,2 @@
+{ "name": "live-spec", "owner": { "name": "Community" },
+  "plugins": [ { "name": "live-spec", "source": "./", "strict": false } ] }
