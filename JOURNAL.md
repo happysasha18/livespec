@@ -625,3 +625,16 @@ non-goals ("nothing left out" is valid prose, a narrowing one is surfaced) and o
 Prover CROSS-LINK: 1 must-fix + 8 others, ALL folded (2026-07-05-intake-trio.md). Suite 50 green.
 Same night: the promoter mis-founding (personal-vs-reusable never asked) → his profile line
 product.default-reusable (playbook, pushed), inbox wish to the promoter, row 88 queued for tonight.
+
+## 2026-07-05 (night, session 7) — rows 83+88: founding questions + design-sync [target] — SPEC v0.14.0
+
+WHY: two lessons of the same evening. The promoter window founded a project as "a personal agent for
+three artifacts" without asking the one question that shapes everything — personal or reusable; Alexander:
+everything he builds is for reuse (profile line landed, playbook). And his 1.0 directive asked design-sync
+to be thought through — the proposal (docs/research/2026-07-05-design-sync-proposal.md) made it an
+OPTIONAL [target] machine: declared-scope footprint, supplements (never replaces) the real render,
+human-gated because a sync publishes. Prover CROSS-LINK: 0 must-fix, 7 clarifications ALL folded
+(founding answers = a deliberate strengthening that blocks the first wish; A-1 carries the pointer;
+E-13/INV-14 seams stated). New [target] architecture node design-sync — the structure change re-proves at
+tonight's milestone audit. Suite 51 green. Inbox harvested: promoter plugin-directory prep (89),
+track-coach pin freshness (90), registry-as-gate (91), visual-hierarchy facet (92), design-sync wiring (93).

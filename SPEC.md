@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.13.0, 2026-07-05)
+# live-spec — SPEC (v0.14.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -11,7 +11,7 @@ templates, the adoption procedure text, the inbox, this spec and queue, and the 
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
 snapshot machinery [E-7] (the adoption baseline A-6 rides it), the CI mirror [M-5], the model router
-[ACT-3]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
+[ACT-3], the optional design-sync machine [E-18]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
 the tag binds at the granularity it is written: a surface is [target] only if its OWN clause carries the
 tag, never merely a parent section or one leg of a split anchor. [S-0]
 
@@ -234,6 +234,19 @@ Copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEP
 landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
 declined (recorded, not merely recommended), before the first landing. [INV-8]
 
+**The founding questions are asked, never inferred.** Before the first wish walks, the questions that
+shape everything downstream get explicit answers in the new spec's opening — first among them:
+**personal tool, or reusable product?** A founding answer resolves like any setting [E-13]: the human's
+profile answers when a line covers it — a personal-scope standing preference seeding this project's
+default, and the seeding is SAID, not silent — asked otherwise; never derived from examples ("he named
+three of his own artifacts" does not mean the product IS those artifacts; they may just be its first
+users). This is deliberately STRONGER than the walk's proceed-on-default habit [INV-4, INV-12]: an
+ordinary open question rides the row while the lane moves, but a founding answer blocks the FIRST wish
+until asked or profile-read — every later sentence leans on it, which makes an inferred one the silent
+micro-decision [INV-5] at its most expensive. Adoption owes the same questions at orient — A-1 carries
+the pointer. (Born 2026-07-05: a fresh project was founded as "a personal agent for three artifacts" —
+the reusable-product question was never asked, and the human's standing answer was reusable.) [B-2]
+
 ## Attaching to a live project (adoption)
 
 Adoption is a sequence; each phase completes before the next. In practice the version-control gate [A-5]
@@ -244,7 +257,8 @@ pilot's baseline snapshot is the precedent). [A-0]
 
 1. **Orient — read everything first.** Every existing document is read BEFORE anything is touched: README,
    any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption never assumes
-   a blank slate. [A-1]
+   a blank slate — and it owes the project the founding questions (personal-vs-reusable first; the rule
+   lives at the bootstrap [B-2]) about what it finds. [A-1]
 2. **Inventory** — code, user-facing surfaces (seeding the host's surface registry [E-10]), and the
    document set from the orient pass, listed with owners (file:line for surfaces). [A-2] Adoption's
    working artifacts — the orient digest, this inventory, reconcile notes — live in the host's
@@ -439,6 +453,14 @@ What keeps "it works" honest, each one a named machine:
   any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
   only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
   what catches the unasked change. Retention (last-only vs last-N) is an open decision [D-3]. [E-7]
+- **Design-sync [target]** — an OPTIONAL machine for hosts with visual components: it syncs the
+  components a landing DECLARED (the same declared-scope notion the snapshot diffs by [E-7]) to the
+  team's design project (claude.ai/design), where the human reviews rendered cards. It SUPPLEMENTS the
+  in-session render — the real render stays the authority for the landing gate; the design project is
+  the team-review channel. The switch and its off-by-default home land WITH the machine in the base
+  skill's defaults [E-13]; a host turning it on writes a recorded profile line [INV-14]. Every sync is
+  gated by the human because a sync PUBLISHES outside the machine. The pack itself, a text product,
+  never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis (row 86). [E-18]
 - **The surface registry [target]** — one named list per host of every user-facing surface. The completeness check
   scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
   registry is self-closing, never a trusted hand-list. [E-10]
@@ -562,6 +584,7 @@ meaning, this table is only the map.
 | E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
 | E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
 | E-17 | prototype: fenced home, visible label | A prototype is not the product |
+| E-18 | design-sync: optional machine, host-profile switch, human-gated (publishes) [target] | Machines |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
@@ -593,8 +616,9 @@ meaning, this table is only the map.
 | INV-20 | the non-goals sentence is always written ("nothing left out" is valid); scope-narrowing non-goals ride the batched report | Throwing a wish |
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
+| B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
-| A-1 | orient: read everything first | Adoption step 1 |
+| A-1 | orient: read everything first; owes the founding questions [B-2] | Adoption step 1 |
 | A-2 | inventory code + surfaces + docs | Adoption step 2 |
 | A-3 | re-engineer docs, unverified until reconciled | Adoption step 3 |
 | A-4 | superseded files move to attic | Adoption step 4 |

@@ -47,6 +47,10 @@ Done when: the sweep was offered and either declined or executed exactly as appr
 
 ## Phase 1 — Orient: read everything first (SPEC A-1)
 
+**Founding questions ride the orient (SPEC B-2 via A-1):** before the digest closes, the run asks —
+or reads from the human's profile — the answers that shape everything downstream, personal-vs-reusable
+first; an answer inferred from examples is a defect, not a reading.
+
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
 these in live-spec shape** — then adoption is light and you rewrite nothing.

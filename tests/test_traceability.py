@@ -410,6 +410,23 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("optional appetite rider", bp, "build-pipeline intake line lost the appetite rider")
         self.assertIn("The delta CLOSES with its two sentences", bp)
 
+    def test_spec_states_founding_and_designsync(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("The founding questions are asked, never inferred",
+                       "personal tool, or reusable product?",
+                       "deliberately STRONGER than the walk's proceed-on-default habit",  # F5 fold
+                       "A-1 carries the pointer",                                          # F7 fold
+                       "Design-sync [target]",
+                       "SUPPLEMENTS the in-session render",                                # F1 fold
+                       "the components a landing DECLARED"):                               # F4 fold
+            self.assertIn(phrase, body, "SPEC lost the founding/design-sync clause: %s" % phrase)
+        for anchor in ("[B-2]", "[E-18]"):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+        adopt = re.sub(r"\s+", " ", read("adopt/ADOPT.md"))
+        self.assertIn("Founding questions ride the orient", adopt, "ADOPT lost the founding-questions line")
+        tpl = re.sub(r"\s+", " ", read("templates/SPEC.template.md"))
+        self.assertIn("Founding answers (B-2)", tpl, "SPEC template lost the founding-answers slot")
+
     def test_no_calques_rule(self):
         # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))

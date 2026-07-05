@@ -100,6 +100,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-079 | Founding questions asked or profile-read at bootstrap AND owed at adopt orient (A-1 pointer); personal-vs-reusable first; never a founding answer inferred from examples | B-2 | string | `test_spec_states_founding_and_designsync` | BUILT |
 | M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/`; never a push without its record | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails` | BUILT |
 
 ### [node: build-pipeline]
@@ -201,6 +202,12 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 |---|---|---|---|---|---|
 | M-063 | The snapshot is the last accepted baseline; it advances only at *landed* and only for DECLARED surfaces; never an undeclared advance | E-7 | string | machine lands at row 55 | TODO |
 | M-064 | Adoption saves a baseline snapshot of current artifacts as the first diff base; never a first landing diffed against nothing | A-6 | string | lands at row 55 (with the machinery) | TODO |
+
+### [node: design-sync [target]]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-080 | Design-sync: optional machine — declared-scope footprint, supplements the render (which stays the gate authority), human-gated publish; never a sync without the human's word, never on without a recorded profile line | E-18 | string | machine lands at row 93; clause presence: `test_spec_states_founding_and_designsync` | BUILT |
 
 ---
 

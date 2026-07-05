@@ -5,6 +5,9 @@
 > index at the end maps every anchor to its home section. Edit history lives in JOURNAL.md; this spec
 > states today's truth.
 
+**Founding answers (B-2).** personal-vs-reusable: ⟨DECIDE⟩ · asked of the human or read from their
+profile at founding — never inferred from examples. Add the other answers that shape this product.
+
 **Current vs target.** [If anything below is designed but not yet shipped, say so here and mark those
 sections `[target]` — the spec never claims shipped what isn't. Keep this block honest at every edit;
 remove it only when everything stated is real.] [S-0]

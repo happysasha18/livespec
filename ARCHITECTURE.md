@@ -10,7 +10,9 @@ the one-surface-one-name rule applied to structure. Kept current through SPEC v0
 INV-17 → guardrails, A-10 → attach; the facet-sweep landing 2026-07-05 evening: T-13/INV-18 →
 spec-author, the canonical facet list's one home; the fences landing 2026-07-05 night: T-14/INV-19 →
 spec-author (the fence-authoring rule); the intake-trio landing 2026-07-05 night: T-15 → build-pipeline
-(intake rider), INV-20/INV-21 → spec-author (the delta's closing sentences) — assignments + pins, no node or seam change, so no
+(intake rider), INV-20/INV-21 → spec-author (the delta's closing sentences); the founding/design-sync
+landing 2026-07-05 night: B-2 → attach, E-18 → NEW [target] node design-sync — a node ADD is a
+structure change, its architecture-lens re-prove rides tonight's milestone audit (row 84) — assignments + pins, no node or seam change, so no
 re-prove per this doc's own rule); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
@@ -39,12 +41,13 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:31` (entry map incl. step zero: the door), `:58` (steps), `:146` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages | T-7 (the report step; the walk before it is build-pipeline's) | `skills/communicator/SKILL.md:27` (ten rules) |
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1 | `templates/TEST_MATRIX.template.md:43` (checklist), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index) |
-| attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10 | `adopt/ADOPT.md:16` (VCS gate first), `:100` (unbacked-surface verdict), `:110` (attic), `:148` (attach record), `install.sh:2` |
+| attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, B-2, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10 | `adopt/ADOPT.md:16` (VCS gate first), `:100` (unbacked-surface verdict), `:110` (attic), `:148` (attach record), `install.sh:2` |
 | inbox | parallel-safe intake door for wishes born outside a live-spec session | E-11, T-10, INV-10 | `inbox/README.md:3` (write rule), `:9` (file format), `:14` (commit rule) |
 | host-contract | the recorded settings instances: this host's profile, the human's personal profile, and the thin loader that boots the personal layer | E-8, E-16 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (symlink → playbook repo `personal/profile.md`, its git home — row 38 landed 2026-07-05), loader: `~/.claude/CLAUDE.md:1` (thin loader live — row 52 landed 2026-07-05) |
 | package-docs | live-spec's own host instance (dogfood): spec, queue, journal, resume file, version, records | S-0, M-3, M-4, D-1, D-2, D-3, D-4, D-5 | `SPEC.md:1`, `ROADMAP.md:8` (queue table), `JOURNAL.md:1`, `VERSION:1` |
 | guardrails [target] | mechanical pre-push checks + surface registry + CI mirror; first slice LIVE (the pack's own gates + opt-in fence, hooks installed), host-facing checks + registry + CI still [target] (ROADMAP rows 14, 55) | E-6, E-10, M-5, INV-17 | `guardrails/pre-push:1` (gates), `guardrails/check-prototype-fence.sh:1` (prototype fence, gate e), `guardrails/pre-commit:1` (commit fence), `guardrails/install.sh:1`, `tests/test_guardrails.py:1`; registry/CI: — |
 | snapshot [target] | saved baseline of the last accepted run; declared-scope diff (ROADMAP row 55) | E-7, A-6 | — (spec'd, not yet code) |
+| design-sync [target] | optional machine: declared components of a landing synced to the team's design project, human-gated (ROADMAP row 93) | E-18 | — (spec'd, not yet code) |
 
 ## Seams
 
