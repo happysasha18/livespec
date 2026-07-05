@@ -85,7 +85,7 @@ an inbox batch harvests in filename-sorted order. [T-11]
 three axes, stated together in ONE intake line — size (with its optional appetite rider [T-15]) ·
 priority · door · the work-kind (what the wish builds — next paragraphs [T-16]). Size (with priority) says how big
 and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
-docs-only · skip**. The two axes share one word deliberately — a wish sized "bug" IS the bug door, one
+docs-only · skip**. The size and door axes share one word deliberately — a wish sized "bug" IS the bug door, one
 call stated once; the door axis only adds the other four entries. [T-12]
 
 The door is decided by an ordered procedure, tripwires first — never judgment. (1) It IS a **feature** —
@@ -124,7 +124,8 @@ product); a host whose wishes genuinely span kinds — live-spec itself ships sk
 records none and calls each wish on its own. The vocabulary is CURATED like the facet list [T-13]: each kind above is earned by real
 work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five
 skills — skill; OVERVIEW.md — prose), and a fifth joins only with a named wish the four mis-served,
-re-justified at milestones. [T-16]
+re-justified at milestones. The law binds forward: a row queued before it carries no kind and owes no
+retro-fill — it names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
 
 **A kind scales the steps — it never skips one silently.** The door picks WHICH steps run [T-12]; the
 kind picks the FORM each running step takes, never whether the walk happens: the per-kind meaning of every step (what "architecture" means for

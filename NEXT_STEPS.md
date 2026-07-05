@@ -1,27 +1,25 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~20:15, session 7 end — session 7 mis-dated itself 07-06, corrected against the git clock — safe to wipe after this report)
-PUBLIC: github.com/happysasha18/live-spec. **MILESTONE 0.8.0 PUSHED** (renamed from 1.0 on Alexander's
-word — polish first). The research-integration night: 13 rows landed (facets→8+curation law · fences ·
-non-goals/appetite/success-measure · founding questions B-2 · design-sync E-18 [target] · worker briefs
-· skill hygiene + gate f · excuses table · anti-taste + irreversibility rule 17 · file numbering ·
-plugin-directory prep · symbol pins + drift gate g · executable registry), each CROSS-LINK-proven, all
-findings folded; 3-pass milestone audit CLEAN (1 must-fix total, folded + mechanized;
-records: docs/prover/2026-07-05-v14-push.md + docs/audit/2026-07-05-night/). SPEC v0.14.0 (84 anchors
-symmetric); suite **61 green / 0 skips**; queue archive live (65 rows → docs/queue-archive/2026-07-05.md).
-Skills: base 0.1.7 · spec-author 0.1.7 · communicator 0.1.7 · build-pipeline 0.2.6 · product-prover
-0.1.6; installed copies synced. Alexander's page answers harvested (waived-risk DECLINED his word;
-appetite+KPI NOW). Research reports + tlvphoto failure analysis in docs/research/. REMAINS FOR HIM:
-submit the two plugin-directory forms (row 89 note); read OVERVIEW.md (row 74 closes on his word);
-the serious talk (agenda posted in chat ~21:52).
+## LIVE STATE (2026-07-05 ~21:05, session 8 — safe to wipe after this report)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.1, SPEC v0.15.0, suite 64 green / 0 skips.**
+Session 8 landed **row 86 — the work-kind axis** (Alexander's "поехали по полной"): the intake line now
+names WHAT a wish builds — product · infra · skill · prose (T-16), and every door-granted pipeline step
+either APPLIES in its kind's form or STANDS DOWN by name in the landing report (INV-22); the per-kind
+step table's one home = build-pipeline SKILL.md 0.2.7; base rule 15 carries the axis (0.1.8, pins swept,
+pin test now dynamic); communicator reports stood-down steps (0.1.8); matrix M-084/M-085; installed
+copies synced. Prover: CROSS-LINK row86 (3 folds) + FULL v15 push gate (3 folds — template header,
+T-12 wording, T-16 binds-forward) — records in docs/prover/. Also: row 74 CLOSED (he read OVERVIEW);
+session-7 date defect swept (07-06 → 07-05 per git clock; ROADMAP/NEXT_STEPS/profile/memory).
+Marathon phase charter stands (rows 95-96): no version race; 1.0 shortlist = rows 93 · 94 + tlvphoto
+lessons. REMAINS FOR HIM: the two plugin-directory forms (row 89 note); the serious talk (agenda in
+chat 2026-07-05 ~21:52 — NB: that stamp was written during the mis-dated stretch, it happened 07-05).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **The 1.0 shortlist**: row 86 (work-kind axis — the pack understands WHAT it builds) · row 93
-   (design-sync wiring, with 86) · row 94 (skill-behavior evals) · tlvphoto lessons run through one real
-   feature as proof. Plus row 74 acceptance (his read).
-2. Rows 57 remainder · 12 gaps (8) · 54 onboarding · audit rows 59-69 (worker contract & collision law
-   first) · 66/67/68 (skill-creator eval leftovers).
+1. **Row 94** (skill-behavior evals — fully landable in this window) · **row 93** (design-sync wiring:
+   pack-side lines landable here; the DONE-WHEN needs a real visual host run + his gate — plan the split
+   at intake). Both post-86: the kind axis they lean on is now law.
+2. Rows 57 remainder · 12 gaps (8) · 54 onboarding (candidate: adoption asks the host's usual kind —
+   v15 gate note) · audit rows 59-69 (worker contract & collision law first) · 66/67/68.
 3. Snapshot machinery (55) · CI-mirror (14) · registry executable form rides 55.
-4. Deferred tail: model router (56) · feedback (47) → measurement (48) → A/B (49) — note: INV-21's
-   success measures now WAIT on this family (the reading machinery) · learn-from-others (44, homework
-   done — reports in docs/research/) · track-coach formal adopt.
+4. Deferred tail: model router (56) · feedback family 47-49 (raised by row 96 — next-up after tlvphoto
+   lessons; INV-21's reading machinery waits on it) · learn-from-others (44) · track-coach formal adopt.

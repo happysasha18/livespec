@@ -3,7 +3,9 @@
 The wish queue. Intake is continuous — a wish lands here the moment it is spoken. Execution is serial:
 the current landing finishes before the next starts. Every row names its size, its priority when not
 normal, and its DOOR — feature · bug · refactor · docs-only · skip — said at intake, before any code
-(SPEC T-12, INV-16).
+(SPEC T-12, INV-16). It also names its WORK-KIND — product · infra · skill · prose — what the wish
+builds; the kind scales the form each pipeline step takes, and a stood-down step is named in the
+landing report, never silently skipped (SPEC T-16, INV-22).
 
 | # | Wish (plain words) | Class | Status | Decision / acceptance |
 |---|---|---|---|---|
