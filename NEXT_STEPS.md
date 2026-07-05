@@ -1,6 +1,6 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~00:30, session 7 end — safe to wipe after this report)
+## LIVE STATE (2026-07-05 ~20:15, session 7 end — session 7 mis-dated itself 07-06, corrected against the git clock — safe to wipe after this report)
 PUBLIC: github.com/happysasha18/live-spec. **MILESTONE 0.8.0 PUSHED** (renamed from 1.0 on Alexander's
 word — polish first). The research-integration night: 13 rows landed (facets→8+curation law · fences ·
 non-goals/appetite/success-measure · founding questions B-2 · design-sync E-18 [target] · worker briefs
