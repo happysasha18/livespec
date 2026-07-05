@@ -165,3 +165,20 @@ stopped it. Both killed before a single write landed (git status clean, no files
 Rule saved to memory: cwd=home + no project named ⇒ ask which project, listing the NEXT_STEPS files on
 disk; never infer from memory volume. Mechanical fix offered: launch each project session from its own
 directory.
+
+## 2026-07-05 — push-gate prover pass (fresh, on Alexander's word) + the push
+Alexander cleared the push and asked for a fresh spec check first. Full prover pass over SPEC.md v0.4
+(docs/prover/2026-07-05.md): 5 findings, 0 must-fix. One folded with the record per the gate's own-fold
+rule — when a second bug arrives while one already holds the lane, the spec now says bugs take the lane
+in arrival order and the parked wish waits until no bug does (T-9; before, two rules both claimed the
+next slot and the agent would have picked silently). The other four became queue rows 29–32: one size
+vocabulary for wishes (spec's four classes vs the queue column's S/M) · closed rows ARCHIVE at milestones
+(reconciles "never deleted" with "nothing grows unboundedly") · versions need a disk home before A-7's
+old→new note is writable · the global-default profile path is still unnamed. Anchor-set guard: byte-set
+identical before/after the fold (checked against HEAD). Pushed: row 23 (use-case-first template +
+spec-author) + this gate's record + the fold.
+
+Also today, on Alexander's word, the working setup became a standing global rule (playbook 79d45a1 —
+CLAUDE.md lives in the playbook repo via symlink, hence that commit): one window = one project (livespec ·
+track-coach · tlvphoto), ask when the project is unsure, never infer from memory; livespec runs on Fable
+only, as the package that will rule the other projects.

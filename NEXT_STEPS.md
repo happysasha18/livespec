@@ -1,16 +1,12 @@
 # livespec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 morning)
-PUBLIC: github.com/happysasha18/livespec — pushed through 4613f98 (SPEC v0.4 + communicator rule 8).
-LOCAL, not yet pushed: **row 23 LANDED** — the use-case-first shape propagated: SPEC.template.md rewritten
-(scenario sections lead, anchors trail, Formal index closes the doc, sample index covers all sample
-anchors) + spec-author SKILL.md teaches the shape (spine = checklist inside scenarios; anchor-set guard
-for restructures; shape questions in completeness pass; structure-first & index-drift anti-patterns).
-Sibling skills checked — no old-shape assumptions. Installed spec-author copy synced. JOURNAL 2026-07-05.
-Push awaits Alexander's word; the M-6 gate then needs a fresh prover record (SPEC.md itself is unchanged,
-but run the gate check at push time).
-Session note: morning near-miss — wrong-project resume (track-coach instead of livespec), stopped by
-Alexander before any write landed; disambiguation rule saved to agent memory.
+## LIVE STATE (2026-07-05 morning, after push)
+PUBLIC: github.com/happysasha18/livespec — **PUSHED: row 23 landed** (SPEC.template.md rewritten
+use-case-first + spec-author teaches the shape; installed copy synced) **+ the M-6 gate pass**
+(docs/prover/2026-07-05.md: 5 findings, 0 must-fix, F4 two-bugs ordering folded into T-9 under an
+anchor-set guard, F1/F2/F3/F5 → queue rows 29–32). JOURNAL 2026-07-05 (two entries).
+Standing setup (now a CLAUDE.md non-negotiable, playbook 79d45a1): one window = one project
+(livespec · track-coach · tlvphoto), ask when unsure which; **livespec = Fable only**.
 OPEN for Alexander: row 27 naming ("live-spec" vs livespec — recommendation: keep livespec; if renamed,
 notify the adopted host projects).
 

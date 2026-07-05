@@ -59,7 +59,8 @@ What the wishes grow is the **spec (SPEC.md)** — the living statement of what 
 
 A bug may interrupt the wish in-work. The interrupted wish moves to **parked**: a checkpoint is written
 (failing test names if red, hypothesis, touched files — nothing red is ever committed), the bug takes the
-lane, and the parked wish resumes as the immediate next landing. [T-9]
+lane, and the parked wish resumes as the immediate next landing. Should more bugs arrive while one holds
+the lane, bugs take it in arrival order; the parked wish resumes only once no bug waits. [T-9]
 
 ## Starting a new project (bootstrap)
 
