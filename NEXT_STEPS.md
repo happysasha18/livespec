@@ -1,47 +1,46 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~23:55, session 8 end — WIPE-READY: everything below is cold-start sufficient)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.6, SPEC v0.15.0, suite 70 green / 0 skips,
-fresh-clone green, ALL PUSHED** (verify on resume: `git status -sb` → up to date with origin/main).
-Session 8 ("поехали по полной", ~20:15–24:00) landed SIX rows + closed one + swept one defect:
-- **86 work-kind axis** — intake names product·infra·skill·prose (T-16); every door-granted step
-  APPLIES in its kind's form or STANDS DOWN by name in the landing report (INV-22); per-kind table's
-  one home: build-pipeline SKILL.md.
-- **94 skill evals** — evals/ one per working skill (E-19), 12 real runs recorded in
-  docs/evals/2026-07-05-first-run/; honest boundary: NO truly bare session on this machine (the thin
-  loader feeds method) — red = bare-of-the-SKILL; self-closing suite check (a new working skill is red
-  until its eval exists — it CAUGHT the publish skill the same evening); M-1 carries the re-run.
-- **93 pack-side half, row WAITING** — design-sync wired (E-18 split "[target: the machine; the wiring
-  is live]": base-defaults switch off-by-default, communicator/pipeline channel lines). REMAINDER: the
-  first real sync on a visual host (track-coach/tlvphoto window) through HIS gate.
-- **98 publish skill** — FIFTH working skill (E-20): per-kind publish checklist + target plugins
-  (GitHub · plugin directory · design project); its first eval cut BOTH ways — 5 public-repo hygiene
-  steps folded INTO the skill from the bare arm; first real walks: tonight's own pushes.
-- **99 scope-never-time** — HIS WORD (~23:10: "можно играться со скоупом а не с таймлайнами"): the
-  time-budget mechanism is DEAD; a too-big wish is CUT (fewer surfaces, plainer defaults) or STAGED;
-  T-15 re-authored, the retired term swept and ASSERTED ABSENT by the suite; safety net byte-intact.
-- **61 push-gate freshness** — gate a now requires the newest prover-record commit ≥ last SPEC.md
-  commit (stale morning records no longer bless evening spec changes); Sonnet worker, red→green.
-- Row 74 closed on his read of OVERVIEW; session-7 date defect swept (07-06 → 07-05 per git clock).
-Skills: base 0.1.10 · build-pipeline 0.2.9 · communicator 0.1.9 · spec-author 0.1.9 · product-prover
-0.1.7 · publish 0.1.0 — installed copies synced (~/.claude/skills/); pin test DYNAMIC (reads base
-frontmatter, a base bump without same-session sweep is red by construction). Prover records tonight:
-row86 · v15 · row94 · row93 · row98 · v15b · row99 · v15c · row61-in-M-015 · v15d — zero unfolded rows
-anywhere. ⟨DECIDE⟩ open: D-1 attic layout · D-2 tier routing · D-3 snapshot retention.
+## LIVE STATE (2026-07-05 ~23:05, session 9 end — WIPE-READY: everything below is cold-start sufficient)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.19, SPEC v0.15.8, suite 90 green / 0 skips, ALL
+PUSHED** (verify on resume: `git status -sb` → up to date with origin/main). Session 9 ("некст степс
+проекта лайвспек", ~22:00–23:05) landed ELEVEN rows + folded five row-12 gaps + intook row 100:
+- **Stage A smalls, all landed:** 57 (SPEC names installer E-21 + decision page E-22; the real-run test
+  caught install.sh failing on a fresh machine — mkdir -p fixed) · 60 (ONE collision law, base rule 18:
+  semantic mark → ordinal → session token; four half-form surfaces now cite it) · 63 (T-8: declining an
+  absorber lists its absorbed rows — never dies by pointer) · 64 (S-0 mechanized: declared map
+  [target]→open-row in the suite, both directions; caught E-10's lost index mark + M-061 citing landed
+  row 3) · 65 (M-1 gains the loader-stays-thin walk; first walk done: 16 lines, all pass).
+- **Stage C:** 59 (worker contract at ACT-3: ownership narrowed to the brief, sibling files
+  fence-benign, session lines ride the brief, failed acceptance escalates one logged tier) · 62
+  (bootstrap: VCS gate FIRST + templates/test_scaffold.template.py DEFINES landing-#1 green; simulated
+  both ways) · 66 (scripts/sync-skills.sh, E-23 — hand-copy retired; reports old→new for A-7) · 67
+  (standalone template pointers → the pack repo, fork taken on recommended, no in-skill copies) · 68
+  (communicator trigger narrowed with a NOT-side; over-trigger phrase asserted gone).
+- **Row 12 gaps folded:** 4 (recurring bug re-doors to feature — invariant, not a patch) · 5+8 as one
+  docs class (CHANGELOG speaks to the user; no drifting version pins) · 6 (delegation savings line) ·
+  9 (prover domain-language lens) · 10 (step 5 teaches DO+NEVER). REMAIN: gap 7 verify-only + the
+  stale-copy sweep rule.
+- **Row 100 INTAKEN, NEXT-UP on his word** (~23:00, watching tlvphoto): the PROBLEM LEDGER — recurring
+  operational noise is solved or explicitly agreed non-problem, dynamic per-host list, second
+  occurrence gets an owner that moment. Evidence in the row. Also in permanent memory.
+- **Timestamp defect swept twice** (invented-time family): stamps now read off the clock; git clock is
+  the arbiter.
+Skills: base 0.1.11 · build-pipeline 0.2.14 · communicator 0.1.10 · spec-author 0.1.11 · product-prover
+0.1.8 · publish 0.1.0 — installed copies synced via the NEW scripts/sync-skills.sh (the only sync path
+now). Prover records: rows57-60 (+10 addenda) · v15-5-full · v15-8-full · v15-8b push note — zero
+unfolded must-fix anywhere. ⟨DECIDE⟩ open: D-1 attic · D-2 tiers · D-3 snapshot retention.
+Talk prep rendered for his morning: refreshed agenda + tlvphoto cleanup draft (scratchpad, opened in
+browser windows; content summarized in the morning report in chat).
 
-## Forward queue (mirrors ROADMAP.md — next session starts at item 1, each row self-contained)
-1. **Night tail smalls, one landing each:** row 57 (installer + decision-page get their spec sentences
-   + anchors; partial already landed — see the row) · row 60 (ONE name-collision law in base: prefix,
-   then -2/-3 suffix — attic + inbox speak it today in two half-forms) · row 63 (a declined wish lists
-   its absorbed/superseded-into-it rows by name) · row 64 (mechanize S-0: every [target] token ↔ a
-   non-landed queue row — a traceability test) · row 65 (milestone audit item: the thin loader stays
-   thin, line-count stated).
-2. **HIS WORD / his day:** plugin-directory forms (row 89 note) · the serious talk (agenda posted in
-   chat 2026-07-05 evening) · row 93 remainder (live design-sync run on a visual window, his gate) ·
-   row 95 charter continues (observe his windows read-only, fold lessons as inbox wishes).
-3. Rows 12 gaps (8 left) · 54 onboarding (+ candidate: adoption asks the host's usual work-kind) ·
-   59 worker contract · 62 bootstrap order · 66/67/68 skill-creator leftovers · 69 (deferred).
-4. Snapshot (55) · CI mirror (14, + clean-machine eval arm candidate rides it) · registry executable
-   form rides 55 · router (56) · feedback family 47-49 (raised by row 96 — next-up after tlvphoto
-   lessons; INV-21's reading machinery waits on it) · track-coach formal adopt · tlvphoto lessons run
-   through one real feature.
+## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
+1. **Row 100 — the problem ledger (HIS WORD, next-up):** design the per-host dynamic list (home +
+   shape), the second-occurrence law in the base skill, the pack's own ledger opened with live entries
+   (zsh `===` case), first host run on tlvphoto/track-coach. Full pipeline, kind skill+infra.
+2. **HIS items (untouched, his day):** the serious talk (refreshed agenda rendered; forks left: tlvphoto
+   cleanup — file to its inbox or he leads; promoter mirrors; "software house on steroids" vision line)
+   · plugin-directory forms (row 89 note) · row 93 remainder (live design-sync on a visual window, his
+   gate) · D-1/D-2/D-3.
+3. Row 12 tail: gap 7 verify-only (cite the delegation gate in the mining map) + stale-copy sweep rule ·
+   row 54 onboarding (surface; first-real-run leg needs him).
+4. Snapshot (55) · CI mirror (14) · router (56) · feedback family 47-49/96 · track-coach formal adopt ·
+   tlvphoto lessons through one real feature (the 1.0 list's last open leg).
