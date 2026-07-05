@@ -380,3 +380,17 @@ tests/test_traceability.py — 20 tests, zero deps, green with zero skips — an
 defects before it went green (unowned A-6/E-7, a range token double-counted), which is exactly the
 red-first the method asks for. INV-15 binds from this landing. VERSION 0.2.1. Push held for Alexander's
 look; the prover record doubles as the push-gate re-check for this state.
+
+## 2026-07-05, ~14:10 — Iterativity enters the method (row 58), everything pushes
+
+A piggyback wish with a perfect origin story: tlvphoto's agent asked Alexander "should I write the
+architecture several milestones ahead?" — and the method had no sentence to answer with. Now it does,
+in every home the question could be asked from: SPEC E-14 (v0.7.2) — the architecture doc is iterative,
+maps the product as it stands plus the landing in flight; a node exists for what ships or what an owned
+queue row already promises ([target], pin empty); a future feature earns its node when its landing
+arrives, and a speculative node is unbacked structure, the structural twin of a silent micro-decision.
+Same sentence in ARCHITECTURE.template.md and build-pipeline step 3 (skill 0.2.1, installed copy synced
+so every host on this machine reads it at the next freshness check). Cross-link prover check green
+(docs/prover/2026-07-05-iterativity.md) — the [target] node rule and INV-15's assign-on-landing already
+compose with it cleanly. Row 58 landed the hour it was spoken. VERSION 0.2.2. Push follows on
+Alexander's word given in the same message.

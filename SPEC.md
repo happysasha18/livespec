@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.7.1, 2026-07-05)
+# live-spec — SPEC (v0.7.2, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -210,7 +210,12 @@ spec fact has an owning node · no node stands without spec backing · the seams
 A large or surface-class wish updates the doc before the matrix is touched; a bug or small wish cites the
 existing node it lands in — or, when its fact has no owner yet, ASSIGNS it to the fitting existing node
 (recorded in the doc; an assignment alone triggers no re-prove) — so no fix is ever the thing the rules
-forbid to land. The doc is re-proven when its structure CHANGES, not on every landing. [E-14]
+forbid to land. The doc is re-proven when its structure CHANGES, not on every landing. And it is
+ITERATIVE, like the spec it serves: it maps the product as it stands plus the landing in flight — a node
+exists for what ships today, or for what the spec already promises under an owned queue row (marked
+[target] with an empty pin); it is never designed several milestones ahead. A future feature earns its
+node when its landing arrives — speculative nodes are unbacked structure, the architecture's version of
+a silent micro-decision. [E-14]
 
 **The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
 Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,

@@ -7,7 +7,7 @@ description: >
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
-version: 0.2.0
+version: 0.2.1
 ---
 
 # build-pipeline — ship a change by the method
@@ -67,6 +67,11 @@ the principle behind each step; this skill is its executable projection — keep
    (base rule 13). Specs drift from code; fix the spec to the shipped truth, not the other way. A large or
    surface-class change updates the doc; a bug or small change just cites its existing node and skips to
    the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
+   **The doc is ITERATIVE — never written milestones ahead:** it maps the product as it stands plus the
+   landing in flight. A node exists for what ships today, or for what the spec already promises under an
+   owned queue row (marked [target], pin empty). A future feature earns its node when its landing arrives;
+   a speculative node is unbacked structure — the prover flags it, and "should I architect the next few
+   milestones now?" is answered NO by the method, not by taste.
 
 4. **Prove the architecture — invoke `product-prover` with the architecture lens** whenever the doc
    changed in step 3: every spec fact has an owning node · no node stands without spec backing · every
