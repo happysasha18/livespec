@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# pre-commit — the concurrent-edit fence (SPEC INV-11).
+#
+# OPT-IN by design: a session arms the fence by running guardrails/fence-refresh.sh,
+# which writes the HEAD sha it last saw into .live-spec-fence (untracked, repo root).
+#
+# If .live-spec-fence is ABSENT, this hook passes silently — the fence is not armed,
+# and that is deliberate, not a bug to "fix". If present and HEAD has moved since it
+# was recorded, another writer touched the repo; the commit is blocked until the
+# fence is reviewed and refreshed.
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+FENCE_FILE="$REPO_ROOT/.live-spec-fence"
+
+if [ ! -f "$FENCE_FILE" ]; then
+  exit 0
+fi
+
+recorded_sha="$(tr -d '[:space:]' < "$FENCE_FILE")"
+current_sha="$(git -C "$REPO_ROOT" rev-parse HEAD)"
+
+if [ "$recorded_sha" != "$current_sha" ]; then
+  echo "COMMIT BLOCKED — the concurrent-edit fence is armed and HEAD has moved."
+  echo "  Recorded HEAD: $recorded_sha"
+  echo "  Current HEAD:  $current_sha"
+  echo "  Someone else committed or pulled into this repo since your session started."
+  echo "  Review what changed (e.g. git log $recorded_sha..$current_sha), then refresh"
+  echo "  the fence once you've accounted for it:"
+  echo "    guardrails/fence-refresh.sh"
+  exit 1
+fi
+
+exit 0

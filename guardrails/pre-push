@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# pre-push — the live-spec push gate (SPEC M-6; scope grown by prover findings F7/F4).
+# Blocks a push unless every gate below passes.
+#
+# Generic pattern for a host project: copy this file, then in guardrails/README.md's
+# "how a host adapts" section swap in your own test command and prover cadence — the
+# gate shape (fresh review record / green tests / ownership / coverage) travels as-is.
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+GUARDRAILS="$REPO_ROOT/guardrails"
+
+fail=0
+
+echo "== live-spec push gate =="
+
+echo ""
+echo "-- gate a: fresh prover record for today --"
+if ! "$GUARDRAILS/check-prover-record.sh"; then
+  fail=1
+fi
+
+echo ""
+echo "-- gate b: test suite green --"
+if ! "$GUARDRAILS/check-tests.sh"; then
+  fail=1
+fi
+
+echo ""
+echo "-- gate c: every spec anchor owned by exactly one architecture node --"
+echo "   Covered by gate b: tests/test_traceability.py already asserts this"
+echo "   (test_architecture_owns_every_anchor_once) — no separate check needed here."
+
+echo ""
+echo "-- gate d: TEST_MATRIX.md coverage-validation fully checked --"
+if ! "$GUARDRAILS/check-matrix-coverage.sh"; then
+  fail=1
+fi
+
+echo ""
+if [ "$fail" -ne 0 ]; then
+  echo "PUSH BLOCKED — one or more gates above failed. Fix them and try again."
+  exit 1
+fi
+
+echo "All gates green — push allowed."
+exit 0
