@@ -21,6 +21,9 @@ skill list, delete after the push review.
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
 1. Alexander: the one copy command above (closes row 52) · review → the ONE push (re-check gate: fresh
    prover record for pushed state, M-6).
+2. **Rows 70–71 CUT THE LINE after the push** (Alexander, the Room incident 2026-07-05 ~16:20):
+   feature-recognition tripwire + prototype quarantine/prod-traceability — one build-pipeline landing;
+   wish relayed to tlvphoto (`~/tlvphoto/inbox/2026-07-05-room-prototype-quarantine.md`).
 3. Row 57 remainder (installer + decision page) · row 12 gaps (8) · row 54 onboarding · new audit rows
    59–69 (worker contract & collision law first — 3-model consensus).
 4. Snapshot machinery (55) · CI-mirror (14).
