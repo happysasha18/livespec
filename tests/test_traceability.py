@@ -524,3 +524,21 @@ class TestFacetSweep(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestDocRenderer(unittest.TestCase):
+    """Row 97: documents a human reads render to a real page (no VT220)."""
+
+    def test_render_doc_smoke(self):
+        import subprocess, tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            src = os.path.join(tmp, "t.md")
+            with open(src, "w") as f:
+                f.write("# Title\n\nA **bold** point.\n\n| a | b |\n|---|---|\n| 1 | 2 |\n")
+            out = os.path.join(tmp, "t.html")
+            r = subprocess.run(["python3", os.path.join(ROOT, "scripts", "render-doc.py"), src, out],
+                               capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            body = open(out).read()
+            for frag in ("<h1>Title</h1>", "<strong>bold</strong>", "<table>", "<td>2</td>"):
+                self.assertIn(frag, body)

@@ -50,6 +50,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Plugin marketplace ref | `.claude-plugin/marketplace.json` | shipped config | `test_artifact_inventory` |
 | Plugin icon | `.claude-plugin/icon.png` | shipped image | `test_artifact_inventory` |
 | Mirror sync script | `scripts/sync-mirrors.sh` | shipped script | `test_artifact_inventory` |
+| Doc renderer | `scripts/render-doc.py` | shipped script | `test_artifact_inventory`, `test_render_doc_smoke` |
 | Base skill README | `skills/live-spec-base/README.md` | shipped text | `test_artifact_inventory` |
 | Base skill license | `skills/live-spec-base/LICENSE` | legal | `test_artifact_inventory` |
 | Spec-author README | `skills/spec-author/README.md` | shipped text | `test_artifact_inventory` |
