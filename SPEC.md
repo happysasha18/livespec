@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.8, 2026-07-05)
+# live-spec — SPEC (v0.15.9, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -620,7 +620,9 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   in, re-check skill freshness [A-7]. [M-2]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
   against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] + doc
-  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly;
+  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills, and the TEST SUITE swept the
+  same way — a duplicate or superseded test is deleted only when the matrix audit shows its rows still
+  covered by a live test; nothing grows unboundedly, docs or suite;
   queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
   re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
   is never forgotten + the formal index re-checked against the prose (the index is a derived map and must

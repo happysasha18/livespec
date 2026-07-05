@@ -1,4 +1,4 @@
-# Wish: visual clauses carry their prototype pointer; the build step opens it (from tlvphoto, 2026-07-06)
+# Wish: visual clauses carry their prototype pointer; the build step opens it (from tlvphoto, 2026-07-05; was mis-dated 07-06 at intake — invented-time family, corrected against the clock session 10)
 
 Incident (tlvphoto, door+gallery): a spec clause born from an APPROVED visual prototype was rebuilt from
 the clause's TEXT alone — the prototype ("что ближе сейчас" ask line; the Room museum hang confirmed as

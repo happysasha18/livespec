@@ -944,3 +944,37 @@ readyState timeouts in two sessions, missing PIL — retried every time, owned n
 NEXT-UP on his word: a per-host problem ledger for operational noise (the workshop), distinct from the
 recurring-BUG rule (the product) that landed as gap 4 tonight. The lesson also went to permanent
 memory. The pack's own first ledger entry candidate: zsh eating `echo ===` twice in one night.
+
+## 2026-07-05 ~23:20, session 10 — smalls before row 100: suite joins compaction; serious talk dropped; tlvphoto investigated; rows 101–102 intaken
+
+**Suite joins the compaction (SPEC v0.15.9).** Alexander asked, minutes before sleep: as we add, do we
+also CLEAN — tests, spec, everything — so nothing bloats? The answer was already mostly yes (M-1's doc
+compaction "nothing grows unboundedly"; removal tombstones + RETIRED rows + owning tests deleted), with
+one named hole: the compaction list said spec/matrix/queue/skills and never the TEST SUITE itself. One
+sentence folds it: a duplicate or superseded test is deleted only when the matrix audit shows its rows
+still covered by a live test. M-029 re-authored to match. Suite 90 green.
+
+**The serious talk dropped on his word** ("потерялась нить, не помню зачем — можно выпилить пока не
+поняли зачем"). The rendered agenda files deleted from the scratchpad, the queue item rewritten: the
+tlvphoto-cleanup fork stays live, the agenda itself gone; re-raise only if he remembers the why.
+
+**tlvphoto investigated (his ask): the GALLERY story kept dropping.** A read-only worker walked the
+host repo: of the MVP's two stories (door + gallery), the gallery dropped FOUR times — the adopt filed
+the approved Room (with journaled locked laws) as "not yet specified"; sessions rebuilt from prose into
+the rejected grid wall; the fused row 5a was declared COMPLETE when only the door shipped; the suite
+stayed green throughout, proving a misread spec perfectly. Every catch was his eyes, never the
+pipeline. Repo-side actions went as ONE wish file to tlvphoto's inbox (land the uncommitted EX-HANG
+rework; split row 5a; date check). Pack-side: the prototype-norm inbox wish already carries the main
+law; the rest intaken tonight (below). Delegation savings: the whole repo walk ran on a worker; senior
+work was only the verdict and the intake.
+
+**Rows 101–102 intaken (his word + the investigation).** 101: a "did you do X?" question is answered
+with an EVIDENCE WALK — claim → checkable artifact — verified-vs-asserted said apart, and the answer
+names the METHOD VERSION it was done by ("если сделал — то по какой версии"; triggered by his
+track-coach adoption question tonight). 102: a multi-story row can't close by half — one wish = one
+story as the pack sentence it never had, per-story done-legs where a row does bundle, LIVE-STATE
+supersession must not compress an unfinished story away.
+
+**Invented-time family, third catch.** The prototype-norm inbox file arrived dated 07-06 while the
+clock said 07-05 23:12 — renamed and corrected against the clock; tlvphoto's own 07-06-dated prover
+record noted in its inbox wish. Goes straight into row 100's evidence at build time.
