@@ -1079,3 +1079,24 @@ harvested: prototype-norm lens → row 109 (its own law, its own row — by 102'
 implementation study came back: three workers read Spec Kit / OpenSpec / GSD / BMAD at code level —
 headline: Spec Kit's "consistency checks" are prompt text, zero mechanical enforcement; harvest doc
 written, six steal-candidates filed as rows 110–115.
+
+## 2026-07-06 01:37, session 11 — row 104 lands as the night's quick win: the clock gets teeth at commit
+
+The TIME variant of the invented-time family — same-day stamps written ahead of the wall clock — got
+its mechanical owner (SPEC v0.15.14 INV-24 second arm, guardrails/check-future-times.sh wired into
+pre-commit ABOVE the opt-in fence's early exit, M-110, pack 0.8.25, suite 99 green). The bubble was
+earned the hard way: the hand guessed time ahead TWICE MORE this very night (occurrences 3 and 4 on
+the owned entry — queue stamps "00:15/00:30/00:40" at ~00:11, then "~01:40" committed at 01:28:57),
+while the fence's own row sat queued. Proven by deed in the real repo: a staged "23:59" stamp
+BLOCKED at 01:36 with the clause quoted back. The ledger entry flips to SOLVED — the family's two
+mechanical arms (dates in the suite, times at commit) now cover everything but chat, whose WATCHED
+line stands. Delegation note: the worker stopped TWICE on brief defects (an anchor quoted from the
+wrong file; a matrix level outside the schema vocabulary) — both times the stop was correct, both
+corrections logged; the second was caught by the traceability suite itself, which is the teeth
+working on their own author.
+Addendum, ~01:39 (F9): the fence's FIRST live run blocked its own landing commit — and the catches
+split honestly: a journal heading written one minute ahead of the clock and five stale "~01:40"
+references were REAL (fixed); the ledger's occurrence lists, which legally mix today's date with
+quoted past times, exposed the line-global reading as over-broad. Narrowed the same hour to the
+ADJACENT stamp shape (`date [~]time`) — faithful to the clause's word "pairs" — with two new fixture
+tests (mixed-history line green; adjacent future stamp still red). Five TimeFence tests green.

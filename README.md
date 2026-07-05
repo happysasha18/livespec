@@ -27,6 +27,20 @@ findings in `docs/prover/`). Our July-2026 survey — 7 frameworks plus a long-t
 found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md). If you know
 prior art we missed, open an issue — we would genuinely like to read it.
 
+An independent look, July 2026: two clean-context analysts — briefed to verify this repo's claims
+against its actual files and to criticize all three subjects — compared live-spec with BMAD and Kiro,
+and three more read Spec Kit, OpenSpec, GSD and BMAD at source level. Their verdicts are published
+unsoftened, including the uncomfortable parts: this project is young and single-author, its
+"production-proven" evidence largely belongs to a sibling project, and its judgment loop is one model
+reviewing itself — only the mechanical gates are independent. Full texts:
+[the comparison](docs/research/2026-07-06-bmad-kiro-livespec-comparison.md) and
+[the implementation-level harvest](docs/research/2026-07-06-neighbours-implementation-harvest.md).
+The one distinction both analysts confirmed by RUNNING things rather than reading claims: live-spec's
+traceability and freshness gates are executable scripts that block a push, while the surveyed
+alternatives enforce their specs by prompt text (Spec Kit's consistency checks, analyze and converge
+included, are LLM instructions — the only mechanical checks in its repo are file-existence tests).
+Six mechanisms the neighbours genuinely do better are queued to be absorbed (queue rows 110–115).
+
 ---
 
 ## The pipeline

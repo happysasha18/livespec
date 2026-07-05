@@ -429,3 +429,47 @@ class TestGateG_PinDrift(unittest.TestCase):
             self.assertIn("DRIFT", soft.stdout)
             strict = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch, "--strict"])
             self.assertEqual(strict.returncode, 1, "strict drift must be RED")
+
+
+class TestGateTimeFence(unittest.TestCase):
+    """Row 104 (M-110, INV-24 second arm): an added line pairing today's date with a
+    clock time later than the commit moment goes red at pre-commit."""
+
+    def _run_check(self, line, today="2026-01-01", now="12:00"):
+        import subprocess, tempfile, os
+        script = os.path.join(ROOT, "guardrails", "check-future-times.sh")
+        with tempfile.TemporaryDirectory() as d:
+            subprocess.run(["git", "init", "-q", d], check=True)
+            p = os.path.join(d, "note.md")
+            with open(p, "w") as f:
+                f.write(line + "\n")
+            subprocess.run(["git", "-C", d, "add", "note.md"], check=True)
+            return subprocess.run(
+                ["bash", script],
+                cwd=d,
+                env={**os.environ, "CHECK_TODAY": today, "CHECK_NOW": now},
+                capture_output=True, text=True)
+
+    def test_future_time_today_goes_red(self):
+        r = self._run_check("landed 2026-01-01 13:00, session 99")
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+
+    def test_past_time_today_stays_green(self):
+        r = self._run_check("landed 2026-01-01 11:00, session 99")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_other_day_time_stays_green(self):
+        r = self._run_check("landed 2025-12-31 13:00 (quoted past incident)")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_mixed_history_line_stays_green(self):
+        """F9: a line mixing today's date with QUOTED times of other moments
+        (a ledger occurrence list) is legal — only the ADJACENT stamp shape trips."""
+        r = self._run_check(
+            'occurrences: 2025-12-31 (stamps "23:50"/"23:58" corrected), '
+            '2026-01-01 ~11:00 (fourth catch; the "13:40" quote stays legal)')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_adjacent_future_stamp_still_red_after_narrowing(self):
+        r = self._run_check("queued 2026-01-01 ~13:05, session 99")
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)

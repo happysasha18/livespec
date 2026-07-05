@@ -14,6 +14,11 @@ set -euo pipefail
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 FENCE_FILE="$REPO_ROOT/.live-spec-fence"
 
+# INV-24 second arm (row 104): no staged line stamps today with a future time.
+if [ -x "$REPO_ROOT/guardrails/check-future-times.sh" ]; then
+  "$REPO_ROOT/guardrails/check-future-times.sh" || exit 1
+fi
+
 if [ ! -f "$FENCE_FILE" ]; then
   exit 0
 fi

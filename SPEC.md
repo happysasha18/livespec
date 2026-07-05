@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.13, 2026-07-06)
+# live-spec — SPEC (v0.15.14, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -710,8 +710,15 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   or queue stamp, a ledger occurrence — comes from the machine's clock at write time; in doubt, git is
   the arbiter. The fence is mechanical, in the suite (and so in the pre-push walk): no repo file NAME,
   no journal entry heading, and no ledger date may sit LATER than the current clock — a future-dated
-  stamp is red, not a style nit; prose QUOTING a past incident's wrong date stays legal. (The
-  invented-time family: three catches in two days, hand-swept twice before this fence.) [INV-24]
+  stamp is red, not a style nit; prose QUOTING a past incident's wrong date stays legal. And the fence
+  has a second arm for the family's TIME variant (the date fence cannot see same-day times, and the
+  hand guessed them ahead three sessions running): at COMMIT, an ADDED line that pairs today's date
+  with a clock time LATER than the commit moment is red — "pairs" means the ADJACENT stamp shape
+  (`date [~]time`), so a line legally quoting other moments' times beside today's date stays green
+  (the fence's own first live run proved the broader reading wrong — it flagged the ledger's history
+  lines); the commit clock is the reference, so the check is not racy; the known cost, taken
+  deliberately: a future plan is spelled without writing it as a date-time stamp. (The invented-time
+  family: six catches in two days, hand-swept twice before the fences.) [INV-24]
 - **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version
   line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
   every update. So the freshness check [A-7] compares version against version, not just file times, and
@@ -838,7 +845,7 @@ meaning, this table is only the map.
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
 | INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
-| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date — mechanical fence in the suite; quoting a past wrong date stays legal | Rhythm |
+| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence); quoting a past wrong date stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
