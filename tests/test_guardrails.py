@@ -79,6 +79,57 @@ class TestGateA_ProverRecord(unittest.TestCase):
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("FAIL (prover record)", result.stdout)
 
+    def _init_repo(self, tmp):
+        run(["git", "init", "-q"], cwd=tmp)
+        run(["git", "config", "user.email", "a@example.com"], cwd=tmp)
+        run(["git", "config", "user.name", "a"], cwd=tmp)
+
+    def _write(self, tmp, relpath, content):
+        path = os.path.join(tmp, relpath)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return path
+
+    def _commit_all(self, tmp, msg):
+        run(["git", "add", "-A"], cwd=tmp)
+        run(["git", "commit", "-q", "-m", msg], cwd=tmp)
+
+    def test_stale_record_fails(self):
+        """A record committed BEFORE the last SPEC.md change is stale (row 61,
+        SPEC M-6): the gate must refuse it even though it is dated today and
+        committed — gate (a)'s original checks alone would wrongly pass this."""
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "SPEC.md", "spec v1\n")
+            self._commit_all(tmp, "spec v1")
+            self._write(tmp, "docs/prover/2026-07-05-x.md", "prover record for v1\n")
+            self._commit_all(tmp, "record for v1")
+            self._write(tmp, "SPEC.md", "spec v2 — changed after the record\n")
+            self._commit_all(tmp, "spec v2, no new record")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
+                cwd=tmp,
+            )
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("predates the last SPEC.md change", result.stdout)
+
+    def test_record_with_spec_same_commit_passes(self):
+        """A record committed in the SAME commit as the SPEC.md change it
+        covers is fresh, not stale — this is the normal push shape."""
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "SPEC.md", "spec v1\n")
+            self._commit_all(tmp, "spec v1")
+            self._write(tmp, "SPEC.md", "spec v2\n")
+            self._write(tmp, "docs/prover/2026-07-05-x.md", "prover record for v2\n")
+            self._commit_all(tmp, "spec v2 + its record, same commit")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
+                cwd=tmp,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
 
 class TestGateB_Tests(unittest.TestCase):
     """Gate (b): the test suite must be green (also covers gate c, anchor ownership).

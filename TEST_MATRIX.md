@@ -127,7 +127,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/`; never a push without its record | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails` | BUILT |
+| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/` — and the record is for the PUSHED STATE: the newest record commit is never older than the last SPEC.md commit (row 61); never a push without its record, never a today-dated-but-stale record passing | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails`, `test_stale_record_fails`, `test_record_with_spec_same_commit_passes` | BUILT |
 
 ### [node: build-pipeline]
 

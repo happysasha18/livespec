@@ -760,3 +760,15 @@ back; history (journal, archives, prover records) keeps the old word, as history
 suite 68 green. The research-adopt lesson closes its loop: we imported Shape Up's appetite with a named
 incident behind half of it — the human kept the half with the incident (speed never cuts the safety
 net, reborn as scope-cut law) and killed the half that was ceremony. Curation working as designed.
+
+## 2026-07-05 night (~23:45, session 8) — row 61: the push gate stops trusting the calendar
+
+Gate a checked "a prover record dated today, committed" — so a morning record blessed an evening SPEC
+change it never reviewed. Now it checks the STATE: the newest docs/prover/ commit must not be older
+than the last commit touching SPEC.md (record shipping in the same commit as its folds passes — M-6's
+own fold clause). Door: bug (shipped gate weaker than M-6's promise); kind: infra; the mechanical half
+ran as a Sonnet worker on a self-contained brief with a checkpoint (.live-spec/checkpoints/row61.md),
+red→green shown raw, senior re-ran the gate and the suite by deed. Suite 68 → 70 green; M-015
+re-authored; pack 0.8.6. The delegation debt (the standing "I keep not delegating" failure) got its
+counter-example tonight: brief written in 5 minutes, worker landed it while the senior answered the
+human's scope-never-time word.
