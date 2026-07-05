@@ -28,7 +28,7 @@ prior art we missed, open an issue — we would genuinely like to read it.
 
 ## The pipeline
 
-**Step 0 — Intake.** A wish arrives in plain words. Classify it (new feature / bug / refactor / removal / docs). Determine where it enters the pipeline.
+**Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep). Hard tripwires, not judgment: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17).
 
 1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.

@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.3
+  version: 0.1.4
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.5), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -96,6 +96,14 @@ scenarios and is findable through the Formal index. Never let a new feature land
 
 Mark anything that needs a human's domain call with **⟨DECIDE⟩** and a one-line question. Never invent
 intent to fill a gap — flag it.
+
+**Name the future with the [target] tag — it is a tripwire, not a decoration.** A surface or phase the
+spec names but does not yet specify for build carries the literal tag `[target]` (the header's
+current-vs-target paragraph lists them). That tag is the canonical, machine-checkable form of "not yet
+specified / later surface": the pipeline's feature tripwires key off it — touching a [target] surface
+starts at the spec step, full stop (SPEC S-0, INV-16). Plain-prose phrasings ("TBD", "future work",
+"planned") bind too, but always write the tag: a future the machine can't see is a future a session can
+hand-build past the method.
 
 **Reshaping an existing spec? Hold the anchor-set guard.** A restructure (e.g. structure-first →
 use-case-first) must carry EXACTLY the prior anchor set: diff the sorted anchor list before and after —

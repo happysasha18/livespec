@@ -165,8 +165,71 @@ class TestGateD_MatrixCoverage(unittest.TestCase):
         self.assertIn("FAIL (matrix)", result.stdout)
 
 
+class TestGateE_PrototypeFence(unittest.TestCase):
+    """Gate (e): a PROD file must not reference into a fenced prototype/ home
+    (SPEC INV-17) — the prototype fence catches structural wiring (a prod file
+    naming a fenced file); narrative mentions (JOURNAL.md, docs/, etc.) are excluded.
+    """
+
+    def _init_repo(self, tmp):
+        run(["git", "init", "-q"], cwd=tmp)
+        run(["git", "config", "user.email", "a@example.com"], cwd=tmp)
+        run(["git", "config", "user.name", "a"], cwd=tmp)
+
+    def _write(self, tmp, relpath, content):
+        path = os.path.join(tmp, relpath)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return path
+
+    def _commit_all(self, tmp):
+        run(["git", "add", "-A"], cwd=tmp)
+        run(["git", "commit", "-q", "-m", "scratch"], cwd=tmp)
+
+    def test_real_repo_passes(self):
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("real-repo state check — meaningless in a git-less scratch copy")
+        result = run([os.path.join(GUARDRAILS, "check-prototype-fence.sh")])
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("OK (prototype fence)", result.stdout)
+
+    def test_prod_reference_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "prototype/sketch.html", "<html>sketch</html>\n")
+            self._write(tmp, "index.html", '<script src="prototype/sketch.html"></script>\n')
+            self._commit_all(tmp)
+            result = run([os.path.join(GUARDRAILS, "check-prototype-fence.sh"), tmp])
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("FAIL (prototype fence)", result.stdout)
+            self.assertIn("index.html", result.stdout)
+            self.assertIn("prototype/sketch.html", result.stdout)
+
+    def test_narrative_mention_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "prototype/sketch.html", "<html>sketch</html>\n")
+            self._write(tmp, "JOURNAL.md", "Tried prototype/sketch.html today, promising.\n")
+            self._write(tmp, "docs/note.md", "See prototype/sketch.html for the sketch.\n")
+            self._commit_all(tmp)
+            result = run([os.path.join(GUARDRAILS, "check-prototype-fence.sh"), tmp])
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("OK (prototype fence)", result.stdout)
+
+    def test_empty_prototype_dir_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            os.makedirs(os.path.join(tmp, "prototype"), exist_ok=True)
+            self._write(tmp, "readme.txt", "ordinary file, nothing fenced here.\n")
+            self._commit_all(tmp)
+            result = run([os.path.join(GUARDRAILS, "check-prototype-fence.sh"), tmp])
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("OK (prototype fence)", result.stdout)
+
+
 class TestPrePush(unittest.TestCase):
-    """pre-push wires the three check scripts together. It is NOT executed here:
+    """pre-push wires the four check scripts together. It is NOT executed here:
     it calls check-tests.sh with no argument, which defaults to the real tests/
     dir — the very dir this file lives in — so running it from inside a test
     would make a running suite re-invoke itself (and its own re-invocation)
@@ -175,10 +238,15 @@ class TestPrePush(unittest.TestCase):
     assert its wiring is intact.
     """
 
-    def test_pre_push_calls_all_three_checks(self):
+    def test_pre_push_calls_all_four_checks(self):
         with open(os.path.join(GUARDRAILS, "pre-push"), encoding="utf-8") as f:
             body = f.read()
-        for script in ("check-prover-record.sh", "check-tests.sh", "check-matrix-coverage.sh"):
+        for script in (
+            "check-prover-record.sh",
+            "check-tests.sh",
+            "check-matrix-coverage.sh",
+            "check-prototype-fence.sh",
+        ):
             self.assertIn(script, body, "pre-push no longer wires in %s" % script)
         self.assertIn("gate c", body.lower())
 

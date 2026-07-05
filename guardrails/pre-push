@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# pre-push — the live-spec push gate (SPEC M-6; scope grown by prover findings F7/F4).
+# pre-push — the live-spec push gate (SPEC M-6; scope grown by prover findings F7/F4;
+# gate e added for INV-17, the prototype fence).
 # Blocks a push unless every gate below passes.
 #
 # Generic pattern for a host project: copy this file, then in guardrails/README.md's
@@ -36,6 +37,12 @@ echo "   (test_architecture_owns_every_anchor_once) — no separate check needed
 echo ""
 echo "-- gate d: TEST_MATRIX.md coverage-validation fully checked --"
 if ! "$GUARDRAILS/check-matrix-coverage.sh"; then
+  fail=1
+fi
+
+echo ""
+echo "-- gate e: prototype fence --"
+if ! "$GUARDRAILS/check-prototype-fence.sh"; then
   fail=1
 fi
 

@@ -1,7 +1,9 @@
 # [Project Name] — Roadmap
 
 The wish queue. Intake is continuous — a wish lands here the moment it is spoken. Execution is serial:
-the current landing finishes before the next starts.
+the current landing finishes before the next starts. Every row names its size, its priority when not
+normal, and its DOOR — feature · bug · refactor · docs-only · skip — said at intake, before any code
+(SPEC T-12, INV-16).
 
 | # | Wish (plain words) | Class | Status | Decision / acceptance |
 |---|---|---|---|---|

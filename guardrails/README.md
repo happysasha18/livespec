@@ -5,7 +5,7 @@ instead of things you have to remember.
 
 ## What each gate catches
 
-**`pre-push`** — blocks a push unless four things are all true:
+**`pre-push`** — blocks a push unless five things are all true:
 
 - **a. Fresh review.** A prover record dated today exists under `docs/prover/` and is
   committed. This is the push gate every push of live-spec must pass (SPEC anchor `M-6`):
@@ -17,10 +17,20 @@ instead of things you have to remember.
 - **d. The test matrix's coverage checklist is fully walked.** `TEST_MATRIX.md` ends with a
   "Coverage validation" section of checkboxes; any box left unchecked (`- [ ]`) blocks
   the push until it's ticked or the row it belongs to is explicitly retired.
+- **e. The prototype fence holds.** A prototype lives in a fenced home (a `prototype/`
+  folder — SPEC `INV-17`); a PROD file referencing anything inside that home is RED.
+  This gate catches STRUCTURAL wiring — a prod file naming or loading a fenced file
+  (a script src, an import, a link target) — not narrative mentions: `docs/`, `attic/`,
+  `inbox/`, `JOURNAL.md`, `ROADMAP.md`, `NEXT_STEPS.md`, any `README.md` under
+  `guardrails/`, and `.live-spec/` are excluded, so a journal can talk *about* a
+  prototype without tripping the gate. If no `prototype/` directory exists (or it's
+  empty), the gate passes — there's nothing fenced yet. A host that names its fence
+  home something else passes that name as the script's second argument
+  (`check-prototype-fence.sh <repo-root> <fence-dir-name>`).
 
 Each check lives in its own small script (`check-prover-record.sh`, `check-tests.sh`,
-`check-matrix-coverage.sh`) so it can be run and tested on its own, pointed at a scratch
-file instead of the real repo.
+`check-matrix-coverage.sh`, `check-prototype-fence.sh`) so it can be run and tested on
+its own, pointed at a scratch file instead of the real repo.
 
 **`pre-commit`** — the concurrent-edit fence. It protects against two sessions writing the
 same repo at once. It is **off by default**: if no `.live-spec-fence` file exists at the
@@ -44,8 +54,8 @@ It does **not** create `.live-spec-fence`; the fence stays opt-in until you run
 
 ## How a host project adapts the pattern
 
-The four-gate shape (fresh review · green tests · ownership · full coverage) is the part
-worth copying as-is. What changes per host:
+The five-gate shape (fresh review · green tests · ownership · full coverage · prototype
+fence) is the part worth copying as-is. What changes per host:
 
 - **Test command.** Swap `python3 -m unittest discover tests` in `check-tests.sh` for
   whatever the host runs (`pytest`, `npm test`, …).
@@ -56,6 +66,9 @@ worth copying as-is. What changes per host:
   entirely) to match.
 - **File names/paths.** If the host's matrix or prover folder lives somewhere else, pass
   it as the script's argument, or edit the default.
+- **Fence home name.** If the host calls its prototype home something other than
+  `prototype/` (say `sketches/` or `labs/`), pass that name as
+  `check-prototype-fence.sh`'s second argument instead of renaming the script.
 
 Everything else — the fence being opt-in, the plain-English failure messages, hooks
 living in a version-controlled `guardrails/` folder rather than only inside `.git/hooks/`

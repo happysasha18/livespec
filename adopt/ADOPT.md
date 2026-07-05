@@ -95,8 +95,14 @@ Turn what exists into the canonical set — **keeping original claims, marking t
 milestone. A host authored entirely in the method (like the pilot) has no reconcile backlog beyond its own
 `⟨DECIDE⟩` / `[planned]` markings.
 
-Done when: the canonical doc set exists (SPEC/ROADMAP/JOURNAL/NEXT_STEPS + registry + matrix) and every claim
-is marked native or unverified.
+**Unbacked live surfaces get a verdict (SPEC A-10).** Anything the inventory found that reaches the user
+but has no spec backing — a de-facto prototype, the adopted host's most common residue — is flagged here,
+and the human decides per surface: **promote** (it enters at the spec step as a feature, SPEC INV-16) ·
+**quarantine** (moved into a prototype home and labelled, SPEC E-17) · **attic** (A-4). No unbacked
+surface is silently registered as product.
+
+Done when: the canonical doc set exists (SPEC/ROADMAP/JOURNAL/NEXT_STEPS + registry + matrix), every claim
+is marked native or unverified, and every unbacked live surface carries its verdict.
 
 ---
 

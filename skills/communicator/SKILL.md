@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
 metadata:
-  version: 0.1.3
+  version: 0.1.4
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.5), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -45,7 +45,9 @@ stop and show it.
 
 5. **Put the artifact where they'll actually see it — real data, never a path.** A local GUI → open it in the
    browser/preview; a chat-only channel → inline the image or the example itself. Synthetic data only for your
-   own checks, always labelled `SYNTHETIC`. Never hand over a file path and make them go open it.
+   own checks, always labelled `SYNTHETIC`. A sketch is shown ONLY under its `PROTOTYPE` label — opened,
+   framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
+   Never hand over a file path and make them go open it.
 
 6. **Plain language, in the product's own words — a code never does the talking.** Speak in use-cases —
    what the person DOES and SEES — not the mechanism. Every internal handle — plan codes, worker names,

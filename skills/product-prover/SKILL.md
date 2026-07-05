@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly.
 metadata:
-  version: 0.1.3
+  version: 0.1.4
 ---
 
 # Product Prover
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.5), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -243,7 +243,7 @@ For every entity, transition, and operation, check whether the document specifie
 
 3e. Generative stress-testing — actively imagine, do not pattern-match:
 
-For every operation, transition, rule, or assumption, mentally stress-test it against eight families of questions. Specific cases are yours to invent based on what the operation actually does. These are habits of attention, not a checklist.
+For every operation, transition, rule, or assumption, mentally stress-test it against nine families of questions. Specific cases are yours to invent based on what the operation actually does. These are habits of attention, not a checklist.
 
 - **Ambiguity and ties** — when the spec selects, ranks, matches, or chooses, what if inputs are equivalent on the criterion? Is the resolution deterministic?
 - **Concurrency and order** — when actions happen in sequence or parallel, what if they overlap, repeat, or arrive out of expected order?
@@ -257,6 +257,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   and write ONE finding that names the class and lists every instance found, not the first point you hit.
   A point finding on a class defect sends the author on the same sweep you skipped.
 - **Persistence and versions** — when the system persists anything beyond the session (localStorage, files, caches, saved preferences), what happens when state written by an OLDER version meets the current code and UI? Is the stored shape partial, orphaned by a removed feature, or read on reopen into a UI that no longer matches it? Is there a defined migrate / ignore / clear rule? (This is the family of "reopened the widget and it looked broken" — persisted state auto-restoring into a changed surface.)
+- **Unbacked surfaces and unlabelled sketches** — when the document (or the build it describes) exposes a user-facing surface, does a spec clause back it? A surface the spec marks [target] / "not yet specified" that nonetheless exists in the build, an exploratory sketch wired into or linked from a prod surface, or anything shown to the human as product without having walked the pipeline is the finding — the build must never contain what the spec doesn't name (SPEC INV-16, INV-17, E-17; this is the family of "the hand-built room shown as if shipped").
 
 For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining, not in producing a finding for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 

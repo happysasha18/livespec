@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.4
+  version: 0.1.5
 ---
 
 # live-spec-base — one rulebook, five skills
@@ -88,6 +88,25 @@ a working skill still stands: its pointer here reads as plain advice.
     human never finds the second instance by eye. Each working skill applies this in its own domain: the
     pipeline sweeps code and surfaces on every bugfix, the prover sweeps the document before writing a
     point finding.
+
+15. **The door is named before any code.** Every request states its entry point — feature · bug ·
+    refactor · docs-only · skip — in one intake line beside size and priority, BEFORE the first line of
+    code. Hard tripwires decide, never mood: a new user-visible surface · new persistent state · a new
+    interaction on an existing surface · a spec [target] mark on the touched surface · behaviour no spec
+    clause backs ⇒ FEATURE, however casually asked — and the tripwire verdict outranks a casual label
+    (queue-cutting stays with the bug door alone). The door re-fires mid-work: the moment running work is
+    about to create a surface or state its door doesn't grant — STOP, reclassify, continue by the right
+    door. Casual asks are routed, never refused — and never hand-built past the pipeline because they
+    sounded small. (SPEC T-12, INV-16)
+
+16. **A prototype is not the product.** Exploring is legal, but a sketch lives fenced: its own
+    `prototype/` home, a PROTOTYPE label in the form its kind can show (screen banner · `_prototype:
+    true` field/header · first-line CLI banner · name/header marker), never wired into or linked from a
+    prod surface, and shown to the human only under its label. A request to merely SEE or TRY may be
+    sketched; a request to HAVE it in the product is a feature — unclear which ⇒ one plain question
+    (rule 1). Promotion is not a merge: the feature enters at the spec step; the sketch is evidence, its
+    code holds no rights. Opening a prototype home is a repo write of the assigned senior — never a
+    worker's own move, never an outsider's (theirs is an inbox wish). (SPEC E-17, INV-17)
 
 ## The settings ladder
 

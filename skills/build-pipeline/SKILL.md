@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.2
+  version: 0.2.3
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.5), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -29,6 +29,15 @@ Otherwise don't skip a step — the bugs that pass every test hide in the steps 
 the principle behind each step; this skill is its executable projection — keep the two in sync.)
 
 ## When to run it — and where each kind of change enters
+- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15).** The intake
+  line states size · priority · door: feature · bug · refactor · docs-only · skip. Tripwires decide, not
+  judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
+  · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
+  casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
+  bug door alone — a re-doored wish takes no preemption. Re-fire the door mid-work the moment the work is
+  about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
+  door. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
+  rule 16) — never into prod, never shown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
   also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample

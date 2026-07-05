@@ -297,8 +297,10 @@ class TestDoors(unittest.TestCase):
     def test_adopt_phases_cite_spec(self):
         body = read("adopt/ADOPT.md")
         for code in ("A-0", "A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9",
-                     "INV-7", "INV-8", "E-14", "E-15"):
+                     "A-10", "INV-7", "INV-8", "E-14", "E-15"):
             self.assertIn(code, body, "ADOPT.md no longer cites %s" % code)
+        for verdict in ("promote", "quarantine", "attic"):
+            self.assertIn(verdict, body, "ADOPT.md unbacked-surface verdict lost: %s" % verdict)
 
     def test_inbox_states_write_rule(self):
         body = read("inbox/README.md")
@@ -310,6 +312,58 @@ class TestDoors(unittest.TestCase):
         body = read(".live-spec/profile.md")
         for code in ("INV-14", "E-13", "M-6"):
             self.assertIn(code, body, "host profile no longer cites %s" % code)
+
+
+class TestDoorLawAndPrototype(unittest.TestCase):
+    """The doors landing (SPEC v0.10.0, rows 70-71): the door law and the prototype law must live in
+    their normative homes — SPEC prose + index, base rules 15-16, and each working skill's own domain
+    slice. String-level per the matrix rows M-067..M-069; the fence machine (M-070) is asserted in
+    test_guardrails.py."""
+
+    def test_spec_states_door_procedure(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))  # prose wraps mid-phrase; compare normalized
+        self.assertIn("feature · bug · refactor · docs-only · skip", body,
+                      "SPEC lost the five-door vocabulary")
+        for phrase in ("The door is named before any code",
+                       "A prototype is not the product",
+                       "one-way",
+                       "re-checked mid-work"):
+            self.assertIn(phrase, body, "SPEC lost the door/prototype clause: %s" % phrase)
+        for anchor in ("[T-12]", "[INV-16]", "[E-17]", "[INV-17]", "[A-10]"):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+        # the tripwire verdict must outrank a casual label, and preemption stays with the bug door
+        self.assertIn("outranks a casual label", body)
+        self.assertIn("takes no preemption", body)
+
+    def test_base_rules_door_and_prototype(self):
+        body = read("skills/live-spec-base/SKILL.md")
+        self.assertRegex(body, r"(?m)^15\. \*\*The door is named before any code", "base rule 15 missing")
+        self.assertRegex(body, r"(?m)^16\. \*\*A prototype is not the product", "base rule 16 missing")
+        body = re.sub(r"\s+", " ", body)
+        for phrase in ("FEATURE, however casually asked", "re-fires mid-work",
+                       "PROTOTYPE label", "its code holds no rights"):
+            self.assertIn(phrase, body, "base rules 15-16 lost: %s" % phrase)
+
+    def test_working_skills_carry_the_door(self):
+        bp = read("skills/build-pipeline/SKILL.md")
+        self.assertIn("Step zero, before ANY tool call: name the door aloud", bp,
+                      "build-pipeline lost the door step")
+        self.assertIn("feature · bug · refactor · docs-only · skip", bp)
+        pp = read("skills/product-prover/SKILL.md")
+        self.assertIn("Unbacked surfaces and unlabelled sketches", pp,
+                      "product-prover lost the ninth lens")
+        self.assertIn("nine families", pp, "prover lens count not updated")
+        cm = read("skills/communicator/SKILL.md")
+        self.assertIn("shown ONLY under its `PROTOTYPE` label", cm,
+                      "communicator lost the prototype-showing rule")
+        sa = read("skills/spec-author/SKILL.md")
+        self.assertIn("Name the future with the [target] tag", sa,
+                      "spec-author lost the [target] tripwire rule")
+        # the four working skills' base pin points at the current base version
+        for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
+                    "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md"):
+            self.assertIn("`live-spec-base` (v0.1.5)", read(rel),
+                          "%s pins a stale base version" % rel)
 
 
 if __name__ == "__main__":

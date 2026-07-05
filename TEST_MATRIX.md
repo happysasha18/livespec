@@ -2,8 +2,8 @@
 
 Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** (records:
 `docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
-SPEC v0.9.0 by assignment + the 2026-07-05 audit folds (no anchor delta; headers re-pin at each milestone
-per M-1). Rows are organized
+SPEC v0.10.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71: five new anchors
+T-12/INV-16/E-17/INV-17/A-10, rows M-067..M-071 below; headers re-pin at each milestone per M-1). Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run, not once. [E-15]
@@ -80,6 +80,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-011 | A safe breakpoint = LIVE STATE replaced (one block, never stacked) + dated journal entry + commit | M-2 | string | `test_next_steps_live_state` (shape; the discipline audits at M-1) | BUILT |
 | M-012 | Versions have named homes: VERSION file, a version line under `metadata:` in its SKILL.md frontmatter, host record; never scattered or absent | M-7 | string | `test_version_homes` | BUILT |
 | M-066 | The base skill states each shared rule once and no working skill restates one normatively; never a second normative home for a shared rule | E-12 | string | milestone compaction pass (M-1) | TODO |
+| M-069 | A prototype lives fenced (own home) with a PROTOTYPE label per artifact kind, opened only by the assigned senior, shown only as a sketch; never wired into or presented as the product | E-17 | string | `test_base_rules_door_and_prototype`, `test_working_skills_carry_the_door` | BUILT |
 
 ### [node: spec-author]
 
@@ -112,6 +113,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-027 | The matrix is DERIVED node × fact with the coverage validation walked; never just filled | E-15 | string | `test_matrix_covers_every_anchor`, `test_matrix_blocks_match_architecture_nodes` | BUILT |
 | M-028 | No wish lands whose facts lack an owning node and a right-level matrix row (binds from this landing, never retroactively) | INV-15 | string | `test_matrix_covers_every_anchor` (re-runs at every commit) | BUILT |
 | M-029 | The milestone gate runs: full re-prove + matrix audit + composition check + compaction + gate/inbox re-listing + index re-check; never a MINOR without it | M-1 | string | next MINOR walks it; journal records the walk | TODO |
+| M-067 | The door is named before any code: every wish states size · priority · door in ONE intake line; never code before the door is said | T-12 | string | `test_spec_states_door_procedure`, `test_working_skills_carry_the_door` | BUILT |
+| M-068 | Feature tripwires are hard and ordered (surface/state/interaction/[target]/unbacked behaviour ⇒ feature); the verdict outranks a casual label, a re-doored wish takes no preemption, the door re-fires mid-work; never a wish hand-built past the pipeline for sounding small | INV-16 | string | `test_spec_states_door_procedure`, `test_base_rules_door_and_prototype` | BUILT |
 
 ### [node: communicator]
 
@@ -145,6 +148,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-045 | On any version change the agent re-reads the changed SKILL.md + journals old → new; re-stats at every breakpoint; never coasts on a stale copy | A-7 | string | `test_adopt_phases_cite_spec` (text; behavior audits at M-1) | BUILT |
 | M-046 | Adopt working artifacts live tracked in `.live-spec/adopt/`; never scattered into the host's own folders | A-8 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-047 | A cruft sweep is offered, listed, human-gated, regenerable-only; never silent and never authored content | A-9 | string | `test_adopt_phases_cite_spec` | BUILT |
+| M-071 | Adoption gives every unbacked live surface a human verdict — promote / quarantine / attic; never an unbacked surface silently registered as product | A-10 | string | `test_adopt_phases_cite_spec` (A-10 citation + verdict wording) | BUILT |
 
 ### [node: inbox]
 
@@ -181,6 +185,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | first slice BUILT (pack gates: prover record · green suite · anchor ownership · matrix coverage — `guardrails/pre-push` + `test_guardrails.py`); the four host-facing checks await the surface registry + snapshot (rows 55+) | TODO |
 | M-061 | The surface registry is self-closing: a rendered-but-unregistered surface is RED; never a trusted hand-list | E-10 | string | machine lands at row 3 | TODO |
 | M-062 | A host may mirror the same checks in CI — one source of truth, CI never redefines them | M-5 | string | lands at row 14 | TODO |
+| M-070 | The prototype fence is mechanical: a prod file referencing anything inside a prototype home turns the push gate RED; never a green push with such a reference | INV-17 | string | `test_prod_reference_fails`, `test_real_repo_passes`, `test_narrative_mention_passes` | BUILT |
 
 ### [node: snapshot [target]]
 

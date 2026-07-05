@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.9.1, 2026-07-05)
+# live-spec — SPEC (v0.10.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -10,8 +10,10 @@
 templates, the adoption procedure text, the inbox, this spec and queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
-snapshot machinery [E-7], the CI mirror [M-5], the model router [ACT-3].
-This spec never claims shipped what isn't — sections below marked [target] await their row. [S-0]
+snapshot machinery [E-7] (the adoption baseline A-6 rides it), the CI mirror [M-5], the model router
+[ACT-3]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
+the tag binds at the granularity it is written: a surface is [target] only if its OWN clause carries the
+tag, never merely a parent section or one leg of a split anchor. [S-0]
 
 ## What live-spec is
 
@@ -40,14 +42,16 @@ never edited, never lost. A **deferred** row is not terminal: it stays in the ac
 revisit trigger until the trigger fires or it re-resolves to a terminal exit — the archive never swallows
 a wish that is still due back. No wish is ever lost. [INV-1]
 
-From the row the wish walks one path: classified by size and priority (the two paragraphs below) → a
+From the row the wish walks one path: classified by size, priority, and door — stated back to you in one
+INTAKE line (the paragraphs below) → a
 spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
 everything else proceeds on the recommended option, marked in the row → queued → in-work → landed (green
 suite + guardrails + committed + the row closed with its acceptance met) → reported to you in one
-plain-language line: position on the map · what landed · what remains. [T-1..T-7]
+plain-language LANDING line: position on the map · what landed · what remains. [T-1..T-7]
 
 **How a wish is classified.** Size is one four-word vocabulary everywhere — **bug / small / surface /
-large** — and the queue's class column speaks the same four words, never a second scale. Priority is
+large** — and the queue's class column speaks the same four words, never a second SIZE scale (the door
+below is a different axis — where the wish ENTERS the pipeline, not how big it is). Priority is
 **normal** unless the row says otherwise; two marks exist: **critical** — the shipped product is broken for
 its user (an unusable surface, data being lost, a safety gate violated) — and **quick win** — low effort,
 immediate value, no design decision inside. When the classifier can't call a size or a priority, it asks
@@ -55,12 +59,42 @@ you at intake and never guesses; until you answer, the wish carries normal and t
 the row — the lane keeps moving [INV-4]. [INV-12]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
-waiting-bug line (next section). A quick win may bubble up: when the lane frees, it may be taken ahead of
+waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
+feature goes to the queue head too; but only the bug DOOR preempts the in-work lane [T-9]. A quick win may bubble up: when the lane frees, it may be taken ahead of
 larger queued wishes, the jump marked in its row, never silent; after one bubbled landing the queue head
 goes next, so a stream of quick wins cannot starve a big wish forever. An inbox wish's arrival IS its
 harvest moment — that is when it first becomes a row the ordering rules can see; a file's own date never
 competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom; within one sweep
 an inbox batch harvests in filename-sorted order. [T-11]
+
+**The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
+two axes, stated together in ONE intake line — size · priority · door. Size (with priority) says how big
+and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
+docs-only · skip**. The two axes share one word deliberately — a wish sized "bug" IS the bug door, one
+call stated once; the door axis only adds the other four entries. [T-12]
+
+The door is decided by an ordered procedure, tripwires first — never judgment. (1) It IS a **feature** —
+however casually asked — when ANY of these holds: a new user-visible surface appears · new persistent
+state appears · a new interaction lands on an existing surface · the touched surface is marked [target]
+in the spec (the canonical, machine-checkable form of "not yet specified / later surface"; the
+plain-prose cousins bind too, but the author writes the tag) · the change adds behaviour no spec clause
+backs. (2) No tripwire fired, but shipped behaviour is wrong against what the spec or product already
+promises → **bug**. (3) Behaviour stays identical, structure moves → **refactor**. (4) Only prose OUTSIDE the
+normative spec changes (README, comments, guides) → **docs-only** — rewording a spec rule is NOT
+docs-only: it changes what behaviour the spec backs and routes as feature or bug. (5) The narrow all-hold boundary (single file · no new state, element, or visible
+behaviour · an existing test level already covers the touched fact) → **skip**. The tripwire verdict
+outranks a casual label: a wish called a "bugfix" that fires a feature tripwire is re-doored to feature
+and the intake line says so [INV-5]; queue-cutting [T-9] belongs ONLY to the bug door, so a re-doored
+wish takes no preemption — your word can still raise its priority (priority is yours), but no word makes
+a feature skip the spec step. The door is also re-checked mid-work: the moment running work is about to
+create a user-visible surface or persistent state its current door doesn't grant, work STOPS and the
+door step fires again — "it sounded like loading until the surface existed" is exactly the failure this
+catches; the re-doored wish KEEPS the lane token and re-enters the walk in place (no re-queue, no park —
+parking stays a bug-preemption move [T-9]). One request lives outside the lane entirely: asking to merely
+SEE or TRY something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype
+is not the product" — the ask-when-unclear rule lives there). Casual
+loading stays the contract — a wish is routed through its door, never refused for being casual, and
+never hand-built past the pipeline because it sounded small. [INV-16]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
@@ -96,6 +130,29 @@ the lane, **critical** bugs head the waiting line (among themselves by arrival),
 arrival; the parked wish resumes only once no bug waits. A bug already in the lane is never itself
 interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked. [T-9]
 
+## A prototype is not the product
+
+Exploring is legal — sometimes you sketch a room before building the house. A **prototype** is such a
+sketch: it lives fenced in its own clearly-named home (a `prototype/` folder or branch), and every
+artifact it produces carries the PROTOTYPE label in the form its kind can show — a rendered page: an
+on-screen banner · an API or data payload: a `_prototype: true` field or header · a script/CLI: a
+first-line PROTOTYPE banner · a bare file: the marker in its name or header line. [E-17] The boundary
+with the door step: a wish to HAVE something in the product is a feature [INV-16]; a request to merely
+SEE or TRY — no commitment — may live as a sketch here, in the fence, no lane, no spec; unclear which
+was meant ⇒ one plain question, never a guess. Opening a prototype home is a repo write like any other —
+governed by the write-ownership law [INV-10], a judgment act of the assigned senior [ACT-2]: an outside
+session files an inbox wish instead, and a worker never opens one on its own brief. The fence is
+one-way: a prototype is never wired into, linked from, or styled as a prod surface, and it is shown to
+the human only under its label — nothing reaches you AS the product unless its surface walked the
+pipeline. Promotion is not a merge: when a sketch earns its place, its feature enters at the spec step
+like any wish [T-12, INV-16] — the prototype is evidence for that spec, its code holds no rights. The
+machine side: the prototype fence is a guardrails check — a prod file referencing anything inside a
+prototype home is RED [E-6], live for the pack repo today; the other two legs — the surface registry's
+completeness scan [E-10] and behaviour-traces-to-spec — are still [target, E-6]. When all three land,
+the header's honesty rule holds in BOTH directions — the spec never claims what isn't built [S-0], and
+the build never contains what the spec doesn't name; today the fence leg is enforced, the rest is
+promised, marked, and owned by its rows. [INV-17]
+
 ## Starting a new project (bootstrap)
 
 Copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate
@@ -126,6 +183,13 @@ pilot's baseline snapshot is the precedent). [A-0]
    an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
    unreconciled. An unverified claim is reconciled (pinned to file:line, or removed) at the FIRST landing
    that touches its surface — and all remaining ones at the first milestone, whichever comes first. [A-3]
+   One verdict is mandatory per unbacked LIVE surface: anything inventoried that reaches the user but has
+   no spec backing — a de-facto prototype, the adopted host's most common residue — is flagged at orient,
+   and the human decides per surface: **promote** (it enters at the spec step as a feature [INV-16]) ·
+   **quarantine** (moved into a prototype home and labelled [E-17] — itself a production change: the human
+   is choosing that users lose the surface or see it relabelled; the move leaves a dated one-line
+   provenance record at the prototype home — what, why, date — the attic manifest's mirror) · **attic**
+   [A-4]. [A-10]
 4. **Attic, not deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**
    — the host's archive folder: append-only, one manifest line per file (what it was, why moved, date); on
    a basename collision the source dir prefixes the name [E-9]. Flat-with-manifest vs dated subfolders is
@@ -281,7 +345,7 @@ A project that predates these layers — this pack itself included — brings th
 the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively
 (the pack's own bring-up is queue row 50). [INV-15]
 
-## The machines that hold the bounds [target]
+## The machines that hold the bounds
 
 What keeps "it works" honest, each one a named machine:
 
@@ -291,7 +355,8 @@ What keeps "it works" honest, each one a named machine:
   regression fence. [INV-6]
 - **The guardrails** — the mechanical checks wired to the pre-push hook. Live for the pack repo itself:
   a today-dated prover record exists · the suite is green · every anchor owned by exactly one node · no
-  unchecked matrix-coverage box, plus the opt-in concurrent-edit fence on commit. Still [target]: the
+  unchecked matrix-coverage box · the prototype fence (no prod file references into a prototype home
+  [E-17, INV-17]), plus the opt-in concurrent-edit fence on commit. Still [target]: the
   host-facing set — completeness (against the surface registry) · tests-present · behaviour-traces-to-spec
   · declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed: only where the host uses
   git at all, and installed only after asking the human — with a plain-words explanation of what the hook
@@ -300,7 +365,7 @@ What keeps "it works" honest, each one a named machine:
   any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
   only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
   what catches the unasked change. Retention (last-only vs last-N) is an open decision [D-3]. [E-7]
-- **The surface registry** — one named list per host of every user-facing surface. The completeness check
+- **The surface registry [target]** — one named list per host of every user-facing surface. The completeness check
   scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
   registry is self-closing, never a trusted hand-list. [E-10]
 
@@ -422,11 +487,13 @@ meaning, this table is only the map.
 | E-14 | architecture doc: named nodes own spec facts, pinned to file:line, proven | From spec to tests |
 | E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
 | E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
+| E-17 | prototype: fenced home, visible label | A prototype is not the product |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
 | T-10 | outside wish arrives via inbox, swept first | Package repo |
 | T-11 | priority bends the lane order, visibly; one bubble then the queue head | Throwing a wish |
+| T-12 | the door is named before any code | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -442,6 +509,8 @@ meaning, this table is only the map.
 | INV-13 | one normative home per shared rule: the base skill | One rulebook |
 | INV-14 | no silent override; every profile line recorded + journaled | Who decides what |
 | INV-15 | no landing without an owning node + a right-level matrix row | From spec to tests |
+| INV-16 | feature tripwires are hard, not judged; casual asks still route | Throwing a wish |
+| INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype is not the product |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |
@@ -453,6 +522,7 @@ meaning, this table is only the map.
 | A-7 | re-read changed skills; re-stat at breakpoints | Adoption step 7 |
 | A-8 | adopt artifacts live in `.live-spec/adopt/`, tracked | Adoption step 2 |
 | A-9 | cruft sweep: gated, listed, regenerable-only | Adoption step 4 |
+| A-10 | unbacked live surface at adoption: promote / quarantine / attic | Adoption step 3 |
 | ACT-1 | the human: taste, gates, wording | Who decides what |
 | ACT-2 | senior agent: judgment | Who decides what |
 | ACT-3 | tiered workers, checkpoints [router target] | Who decides what |

@@ -536,3 +536,35 @@ quarantine + prod-traceability guardrail) land next, one pipeline landing; wish 
 inbox (created with the file — the host had none). Fitting coda: while filing those very rows the
 traceability suite went red on the senior's own class-cell vocabulary — the gate caught the gatekeeper,
 live evidence that tripwires beat judgment.
+
+## 2026-07-05 (session 6, ~17:40) — rows 70–71 land: the door law + the prototype law (the Room incident folded into the method)
+
+Why this exists: Alexander, this afternoon, hot and right — tlvphoto's similarity room was hand-built
+past the pipeline and shown as product while its own spec said "later surface, not yet specified". The
+agreement was "load casually, the system lines it up"; the recognition half was guidance, not law. Two
+laws land, one pipeline landing (door: feature, size: surface):
+
+**The door (SPEC T-12, INV-16).** Classification is an explicit step said BEFORE any code: every wish
+names size · priority · door (feature · bug · refactor · docs-only · skip) in one intake line. Hard
+tripwires replace judgment — new visible surface / new state / new interaction / a [target]-marked
+surface / unbacked behaviour ⇒ feature, however casual the ask. The verdict outranks a casual "bugfix"
+label; queue-cutting stays with the bug door; the door re-fires mid-work the moment work is about to
+create something its door doesn't grant.
+
+**The prototype (SPEC E-17, INV-17, A-10).** Exploring is legal but fenced: prototype/ home, label per
+artifact kind, senior-only creation, shown only as a sketch; promotion re-enters at the spec step.
+Machine tooth shipped: guardrails gate (e) `check-prototype-fence.sh` — a prod file referencing into a
+prototype home blocks the push (red-first proven). Adoption now gives every unbacked live surface a
+human verdict: promote / quarantine / attic.
+
+Pipeline walked in full: spec delta → CROSS-LINK prove (Opus worker; 4 must-fix + 6 clarify, ALL folded
+— record docs/prover/2026-07-05-doors.md) → architecture assignments (T-12/INV-16 → build-pipeline,
+E-17 → base-rulebook, INV-17 → guardrails, A-10 → attach; no node/seam change, no re-prove per the
+doc's own rule) → matrix M-067..M-071 → tests (traceability class TestDoorLawAndPrototype + guardrails
+TestGateE, red-first) → code (base rules 15–16 v0.1.5; build-pipeline step zero v0.2.3; prover ninth
+lens v0.1.4; communicator PROTOTYPE-label line v0.1.4; spec-author [target]-tag rule v0.1.4; installed
+copies synced) → sweep (README step 0, ROADMAP header + template, PLAYBOOK principle line — pushed).
+Suite 36→43 green. Worker split held: Opus proved, Sonnet built the fence + its tests (checkpoint
+`.live-spec/checkpoints/2026-07-05-prototype-fence.md`), Fable folded and worded. Alexander's second
+wish of the evening (feature intake must sweep the standard facets a layman can't name — responsive,
+touch, states) filed as row 72, enters next; row 44 (learn-from-others) will feed it.
