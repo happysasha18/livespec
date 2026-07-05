@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.10.1, 2026-07-05)
+# live-spec — SPEC (v0.11.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -95,6 +95,32 @@ SEE or TRY something, with no commitment to keep it, may be built as a labelled 
 is not the product" — the ask-when-unclear rule lives there). Casual
 loading stays the contract — a wish is routed through its door, never refused for being casual, and
 never hand-built past the pipeline because it sounded small. [INV-16]
+
+**A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
+say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
+says feature, drafting its spec-delta walks a fixed sweep of the **standard facets** — the dimensions
+every visible feature has whether or not anyone names them: layout on a phone or narrow window · touch
+where the design assumed a mouse (anything hover-only needs a touch answer) · the empty, error, and
+loading states of each new surface · accessibility (reachable by keyboard, readable contrast) · the
+performance envelope (at what input size it must stay usable). The facet list's normative home is the
+spec-author skill, one list for every project; this spec binds THAT the sweep runs and what counts as
+done. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes — the
+late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is NOT swept
+— a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
+
+**Every facet ends as a spec sentence — silence is not an option.** Two ways a sentence gets there:
+**decided** — you (or the walk's batched questions) called it — or **defaulted** — the recommended option
+is taken so the lane keeps moving, written into the spec carrying the literal tag `[default]` at its line
+end (so a later prover tells a taken default from a hole, and the matrix derives the facet's test row
+either way [E-15]), and the choice comes back to you as a plain-words tradeoff in your product's terms
+("on a phone this gallery stacks into one column — ok?"), batched with the walk's other questions
+[INV-4], never one ping per facet — your veto simply becomes a new wish. A facet with no sentence —
+neither decided nor defaulted — is a spec defect the prover flags, the exact hole the Room shipped
+through (hover-only openings, no phone layout). On an adopted or promoted surface that already lives
+[A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never
+invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by
+time: the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and
+test them across views once the surface exists. [INV-18]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
@@ -494,6 +520,7 @@ meaning, this table is only the map.
 | T-10 | outside wish arrives via inbox, swept first | Package repo |
 | T-11 | priority bends the lane order, visibly; one bubble then the queue head | Throwing a wish |
 | T-12 | the door is named before any code | Throwing a wish |
+| T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -511,6 +538,7 @@ meaning, this table is only the map.
 | INV-15 | no landing without an owning node + a right-level matrix row | From spec to tests |
 | INV-16 | feature tripwires are hard, not judged; casual asks still route | Throwing a wish |
 | INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype is not the product |
+| INV-18 | every facet ends as a spec sentence — decided, or `[default]`-tagged + reported | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |

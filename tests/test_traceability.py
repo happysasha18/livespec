@@ -366,5 +366,45 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                           "%s pins a stale base version" % rel)
 
 
+class TestFacetSweep(unittest.TestCase):
+    """The facet-sweep landing (SPEC v0.11.0, row 72): a feature-doored spec-delta walks the standard
+    facets a layman can't name; every facet ends as a spec sentence — decided or [default]-tagged +
+    reported. Normative homes: SPEC prose + index (T-13/INV-18), the canonical facet list in
+    spec-author, the tradeoff-report line in communicator, the step-1 sweep sentence in build-pipeline.
+    String-level per matrix rows M-072..M-073."""
+
+    FACETS = ("phone or narrow window", "hover-only needs a touch answer",
+              "empty, error, and", "accessibility", "performance envelope")
+
+    def test_spec_states_facet_sweep(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertIn("A feature is specified past what you know to ask", body,
+                      "SPEC lost the facet-sweep headline")
+        for phrase in self.FACETS:
+            self.assertIn(phrase, body, "SPEC lost the facet: %s" % phrase)
+        for phrase in ("Every facet ends as a spec sentence",
+                       "`[default]`",                       # the default tag (F1 fold)
+                       "walks the sweep before work resumes",  # mid-work re-door (F3 fold)
+                       "A fenced prototype is NOT swept",       # prototype boundary (F7 fold)
+                       "reconciled like any re-engineered claim",  # adopted surface (F6 fold)
+                       "AUTHORS the facet sentences"):          # sweep vs axes split (F5 fold)
+            self.assertIn(phrase, body, "SPEC lost the facet-sweep clause: %s" % phrase)
+        for anchor in ("[T-13]", "[INV-18]"):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+
+    def test_skills_carry_facet_sweep(self):
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("canonical facet list", sa, "spec-author lost the facet list home")
+        for phrase in self.FACETS:
+            self.assertIn(phrase, sa, "spec-author facet list lost: %s" % phrase)
+        self.assertIn("`[default]`", sa, "spec-author lost the [default] tag rule")
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("standard-facet sweep", cm, "communicator lost the facet tradeoff-report line")
+        self.assertIn("a veto becomes a new wish", cm)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("standard-facet sweep", bp, "build-pipeline step 1 lost the sweep sentence")
+        self.assertIn("canonical list lives in spec-author", bp)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

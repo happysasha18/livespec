@@ -568,3 +568,26 @@ Suite 36→43 green. Worker split held: Opus proved, Sonnet built the fence + it
 `.live-spec/checkpoints/2026-07-05-prototype-fence.md`), Fable folded and worded. Alexander's second
 wish of the evening (feature intake must sweep the standard facets a layman can't name — responsive,
 touch, states) filed as row 72, enters next; row 44 (learn-from-others) will feed it.
+
+## 2026-07-05 (evening, session 7) — row 72: the facet sweep — SPEC v0.11.0, pack 0.5.2
+
+WHY: the Room incident's third lesson (after the door and the prototype laws). Alexander can't be
+expected to ask "and what happens on a phone?" — the dimensions a layman can't name (narrow layout,
+touch-vs-hover, empty/error/loading, accessibility, performance) simply never got a sentence, and the
+Room shipped hover-only with no phone layout. The fix: when a wish's door says feature, drafting the
+spec-delta walks the canonical facet list (its one home: spec-author). Every facet ends as a SPEC
+SENTENCE — decided, or the recommended default taken with the literal `[default]` tag and reported back
+as a plain-words tradeoff, batched. Silence stopped being a legal outcome.
+
+Pipeline walked in full: spec delta → CROSS-LINK prove (Opus worker; 1 must-fix + 4 clarify + 2
+worth-considering, ALL SEVEN folded — record docs/prover/2026-07-05-facets.md; the must-fix was real:
+a defaulted facet had no durable home, hence the `[default]` tag) → architecture assignment
+(T-13/INV-18 → spec-author, pin :144; no node/seam change, no re-prove) → matrix M-072..M-073 → tests
+(TestFacetSweep, red-first proven) → code (spec-author facet-sweep section + completeness bullet
+v0.1.5; communicator rule-10 tradeoff line v0.1.5; build-pipeline step-1 sweep sentence v0.2.4;
+installed copies synced) → suite 45 green, 0 skips. Per the prover's process finding (F4) the MINOR
+spec bump owes a FULL pass at the push gate — run before this push per M-6.
+
+Same evening, before the landing: Alexander banned calques outright (Russian chat had been carrying
+loan-translated pack terms — «растяжки», «та же семья»). Contract line `language.no-calques` live in
+his profile (playbook 234bce6); pack-general rule filed as row 73 (communicator + base), lands next.

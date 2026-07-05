@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.4
+  version: 0.1.5
 ---
 
 # Spec Author
@@ -141,6 +141,35 @@ So, for every stateful surface, before you call its section done:
   that's older, partial, or belongs to a since-removed feature? State a migrate / ignore / clear rule — this
   is the seam behind "reopened it and it looked broken".
 
+## The facet sweep — run when a wish's door says FEATURE (SPEC T-13, INV-18)
+
+A person asks for a feature in the words they have; the dimensions below exist whether or not anyone
+names them ("add a room where photos hang" never says "and decide what happens on a phone"). When the
+door says feature, drafting the spec-delta walks this checklist — the **canonical facet list; its home is
+here**, one list for every project:
+
+- **layout on a phone or narrow window** — what the feature does below desktop width;
+- **touch where the design assumed a mouse** — anything hover-only needs a touch answer;
+- **the empty, error, and loading states** of each new surface (spelled "empty, error, and loading");
+- **accessibility** — reachable by keyboard, readable contrast;
+- **the performance envelope** — at what input size it must stay usable.
+
+**Every facet ends as a spec sentence — silence is not an option.** Either the human (or the walk's
+batched questions) DECIDED it, or the recommended option is taken so the lane keeps moving and the
+sentence is written carrying the literal tag `[default]` at its line end — so a later prover tells a
+taken default from a hole, and the matrix derives the facet's test row either way. Every defaulted facet
+is then reported back as a plain-words tradeoff in the product's terms ("on a phone this gallery stacks
+into one column — ok?"), batched, never one ping per facet — communicator owns the report shape; a veto
+simply becomes a new wish. A facet with no sentence is a spec defect the prover flags.
+
+Boundaries, stated once: a wish re-doored to feature mid-work walks the sweep before work resumes — the
+late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is never
+swept (a sketch has no facets to promise); the sweep fires when promotion makes it a feature. On an
+adopted or promoted surface that already lives, a default is read from the shipped truth and reconciled
+like any re-engineered claim, never invented greenfield. And the sweep versus the canonical axes above:
+the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and test them
+across views once the surface exists — one dimension, split by time, never specified twice.
+
 ## How you work
 
 1. **Author / grow the relevant section** in `SPEC.md`, use-case-first: find (or open) the scenario the
@@ -172,6 +201,8 @@ Ask each question out loud; a "no" or "don't know" is a gap to fill or mark ⟨D
   viewport size / persistence-reopen / concurrency) is it shown? For each, is its state still visible and
   reversible? Is the transition's effect (preserve / reset / block) stated? If it persists state, is the
   older-stored-value × current-code case handled?
+- **Facets (feature door):** Did the facet sweep run — does every entry of the canonical facet list end
+  in a spec sentence, decided or `[default]`-tagged and reported?
 - **Naming:** Is anything in this section also referred to by another name elsewhere? Unify it.
 - **Single source of truth:** Does any OTHER document in this repo also claim to be the spec or the matrix
   ("source of truth")? If so, demote it to a pointer — two docs claiming authority is undefined when they disagree.

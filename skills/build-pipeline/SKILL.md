@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.3
+  version: 0.2.4
 ---
 
 # build-pipeline — ship a change by the method
@@ -60,7 +60,11 @@ the principle behind each step; this skill is its executable projection — keep
 1. **Spec — invoke `spec-author`.** Write or grow the project `SPEC.md`: entities, states, transitions,
    actors, invariants, and the cross-section composition between surfaces. One surface = one name. Compose
    every stateful surface across **every** view/mode axis it lives under, not just its own. Real gaps are
-   marked `⟨DECIDE⟩` and asked, never guessed. Human-first language; codes at line ends.
+   marked `⟨DECIDE⟩` and asked, never guessed. Human-first language; codes at line ends. A feature-doored
+   wish also walks the **standard-facet sweep** (the canonical list lives in spec-author): phone/narrow
+   layout · touch-vs-hover · empty/error/loading · accessibility · performance — every facet ends as a
+   spec sentence, decided or `[default]`-tagged and reported as a plain-words tradeoff, batched; a
+   mid-work re-door walks the sweep before work resumes (SPEC T-13, INV-18).
 
 2. **Prove — invoke `product-prover`.** The prover only catches a cross-section hole when both sides are
    present and named the same at prove-time — so a surface absent or unlinked then is invisible to it. Two

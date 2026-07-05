@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
 metadata:
-  version: 0.1.4
+  version: 0.1.5
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -94,6 +94,10 @@ stop and show it.
     read it back, archive it in the project's `docs/decisions/`, and harvest every answer into its queue
     row the same session — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning
     images the same way; first real round-trip ran the same morning.)
+    The standard-facet sweep (SPEC T-13/INV-18) reports through this same batch: a facet taken on its
+    recommended default arrives as one card — the tradeoff said in the product's words ("on a phone this
+    gallery stacks into one column — ok?"), the default already live so the lane never waited; a veto
+    becomes a new wish, never a blocked lane.
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision

@@ -7,8 +7,9 @@ with the architecture lens before the
 test matrix was derived (record: see Prover record below). One node = one name = one responsibility —
 the one-surface-one-name rule applied to structure. Kept current through SPEC v0.10.0 by assignment
 (E-16 → host-contract; the doors landing 2026-07-05: T-12/INV-16 → build-pipeline, E-17 → base-rulebook,
-INV-17 → guardrails, A-10 → attach — assignments + pins, no node or seam change, so no re-prove per this
-doc's own rule); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
+INV-17 → guardrails, A-10 → attach; the facet-sweep landing 2026-07-05 evening: T-13/INV-18 →
+spec-author, the canonical facet list's one home — assignments + pins, no node or seam change, so no
+re-prove per this doc's own rule); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
 text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
@@ -31,7 +32,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |
 |---|---|---|---|
 | base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:17` (rules), `:49` (fence), `:92` (door + prototype rules 15-16), `:111` (ladder), `:138` (defaults) |
-| spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1 | `skills/spec-author/SKILL.md:75` (spine), `:100` ([target] tag tripwire), `:112` (axes composition) |
+| spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1, T-13, INV-18 | `skills/spec-author/SKILL.md:75` (spine), `:100` ([target] tag tripwire), `:112` (axes composition), `:144` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6 | `skills/product-prover/SKILL.md:148` (review modes), `.live-spec/profile.md:6` (gate cadence instance) |
 | build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, T-12, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:31` (entry map incl. step zero: the door), `:58` (steps), `:146` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages | T-7 (the report step; the walk before it is build-pipeline's) | `skills/communicator/SKILL.md:26` (ten rules) |
