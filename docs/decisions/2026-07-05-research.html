@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>live-spec — что берём из чужого опыта (2026-07-05)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, "Segoe UI", sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+  h1 { font-size: 1.5rem; }
+  .intro { color: #666; margin-bottom: 1.5rem; }
+  @media (prefers-color-scheme: dark) { .intro { color: #aaa; } .card { background: #1c1c1e; border-color: #333; } .src { color: #999; } }
+  .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; background: #fafafa; }
+  .card h2 { font-size: 1.05rem; margin: 0 0 .4rem; }
+  .card p { margin: .3rem 0 .7rem; }
+  .src { font-size: .85rem; color: #777; }
+  label { display: block; margin: .25rem 0; cursor: pointer; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 2.2rem; margin-top: .5rem; font: inherit; padding: .35rem .5rem; border-radius: 6px; border: 1px solid #ccc; background: transparent; color: inherit; }
+  .dl { position: sticky; bottom: 1rem; text-align: center; margin-top: 2rem; }
+  button { font: inherit; font-weight: 600; padding: .7rem 1.6rem; border-radius: 10px; border: none; background: #2f6fed; color: #fff; cursor: pointer; }
+  button:hover { background: #245ac4; }
+  .rec { font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Что берём из чужого опыта — твоё слово</h1>
+<p class="intro">Два исследования прошлись по зрелым методикам (spec-kit, BMAD, Kiro, Shape Up, Google,
+Amazon) и по лучшим чужим скиллам (официальный набор Anthropic, superpowers, Trail of Bits). Ниже —
+всё стоящее, одной карточкой на идею, с моей рекомендацией первым пунктом. Отметь по каждой, внизу —
+кнопка «Скачать ответы»; можно ответить на часть и дописать словами в любом поле. Полные отчёты лежат в
+<code>docs/research/</code> (английские, для меня).</p>
+
+<div class="card" data-id="regression-fences">
+  <h2>1. «Продолжает работать как раньше» — фразы-предохранители</h2>
+  <p>Каждая правка существующего экрана начинается с записи в спеку: что при этом НЕ должно сломаться
+  («каталог по-прежнему открывается кликом», «плеер продолжает играть»). Из этих фраз автоматически
+  выводятся тесты. Это прямое лекарство от нашей главной боли — «поправили одно, тихо сломали соседнее».</p>
+  <p class="src">Источник: Kiro (Amazon), их правила написания спек.</p>
+  <label><input type="radio" name="regression-fences" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="regression-fences" value="later"> Позже</label>
+  <label><input type="radio" name="regression-fences" value="no"> Не берём</label>
+  <textarea name="note-regression-fences" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="waived-risk">
+  <h2>2. Вердикт «принимаем риск» у проверяющего</h2>
+  <p>Сейчас у проверяющего два исхода: «вшить правку» или «отклонить находку». Добавить третий:
+  «риск принят» — с причиной, датой и тем, кто принял. Осознанное «живём с этим» перестаёт теряться
+  и не блокирует работу.</p>
+  <p class="src">Источник: BMAD, их шаблон ворот качества.</p>
+  <label><input type="radio" name="waived-risk" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="waived-risk" value="later"> Позже</label>
+  <label><input type="radio" name="waived-risk" value="no"> Не берём</label>
+  <textarea name="note-waived-risk" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="non-goals">
+  <h2>3. «Чего мы НЕ делаем» — обязательная строка у каждой фичи</h2>
+  <p>Одно предложение в спеке: что сознательно оставлено за бортом («сравнение версий — не в этот раз»).
+  Проверяющий перестаёт гадать, дыра это или осознанный отказ.</p>
+  <p class="src">Источник: Shape Up (Basecamp) и дизайн-документы Google.</p>
+  <label><input type="radio" name="non-goals" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="non-goals" value="later"> Позже</label>
+  <label><input type="radio" name="non-goals" value="no"> Не берём</label>
+  <textarea name="note-non-goals" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="facet-additions">
+  <h2>4. Два новых пункта в список «пять граней» + правило отбора</h2>
+  <p>Кандидаты в наш вчерашний список (телефон, тач, пустые состояния, доступность, скорость):
+  <b>«два окна одновременно»</b> (одна и та же сохранённая настройка в двух окнах — ровно наш случай с
+  запомненной «целью» в track-coach) и <b>«пропал исходник»</b> (файл переименован/удалён — наши случаи
+  «спроси, не гадай»). Плюс правило: пункт попадает в список только с именем реального случая, который
+  он бы поймал — чтобы список не разросся в анкету на сорок строк.</p>
+  <p class="src">Источник: Google (их посадочный чек-лист живёт под таким же правилом отбора).</p>
+  <label><input type="radio" name="facet-additions" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="facet-additions" value="later"> Позже</label>
+  <label><input type="radio" name="facet-additions" value="no"> Не берём</label>
+  <textarea name="note-facet-additions" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="worker-briefs">
+  <h2>5. Самодостаточные задания младшим воркерам</h2>
+  <p>Когда работа уходит дешёвой модели, задание собирается как отдельный документ со вшитыми точными
+  фразами из спеки и списком проверок — воркеру не нужно ничего искать и додумывать. Лечит мой
+  хронический недодел: я обещаю делегировать рутину и не делегирую, потому что «долго объяснять».</p>
+  <p class="src">Источник: BMAD, их файлы-истории для исполнителей.</p>
+  <label><input type="radio" name="worker-briefs" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="worker-briefs" value="later"> Позже</label>
+  <label><input type="radio" name="worker-briefs" value="no"> Не берём</label>
+  <textarea name="note-worker-briefs" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="skill-hygiene">
+  <h2>6. Гигиена скиллов — одной посадкой</h2>
+  <p>Три вещи из лучших чужих наборов: у каждого скилла раздел <b>«когда меня НЕ звать»</b> (сейчас он
+  есть только у одного из пяти); <b>автопроверка перед пушем</b>, что каждый скилл вообще корректно
+  загружается (шапка читается, все упомянутые файлы существуют); и <b>тест на срабатывание</b> —
+  сценарий, где без скилла ассистент ошибается, а со скиллом нет.</p>
+  <p class="src">Источники: Trail of Bits, superpowers, официальные рекомендации Anthropic.</p>
+  <label><input type="radio" name="skill-hygiene" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="skill-hygiene" value="later"> Позже</label>
+  <label><input type="radio" name="skill-hygiene" value="no"> Не берём</label>
+  <textarea name="note-skill-hygiene" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="rationalizations">
+  <h2>7. Таблица отговорок в конвейере</h2>
+  <p>Список типовых самооправданий, которыми агент срезает путь («это же однострочник», «спеку допишу
+  потом», «человек торопится») — и напротив каждого, почему это ловушка. Комната случилась ровно через
+  такую отговорку.</p>
+  <p class="src">Источник: superpowers и Trail of Bits (у обоих это обязательный раздел).</p>
+  <label><input type="radio" name="rationalizations" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="rationalizations" value="later"> Позже</label>
+  <label><input type="radio" name="rationalizations" value="no"> Не берём</label>
+  <textarea name="note-rationalizations" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="two-one-liners">
+  <h2>8. Две строки в свод правил</h2>
+  <p>Проверяющему: «сообщай дыры, влияющие на правильность, а не вкусовые придирки». И общее правило
+  необратимости: необратимое действие (пуш, публикация, удаление, деньги) всегда останавливается и
+  спрашивает тебя, каким бы самостоятельным ни был режим; обратимое — едет по режиму.</p>
+  <p class="src">Источники: рекомендации Anthropic по Claude Code; руководство OpenAI по агентам.</p>
+  <label><input type="radio" name="two-one-liners" value="now" checked> <span class="rec">Берём сейчас (рекомендую)</span></label>
+  <label><input type="radio" name="two-one-liners" value="later"> Позже</label>
+  <label><input type="radio" name="two-one-liners" value="no"> Не берём</label>
+  <textarea name="note-two-one-liners" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="card" data-id="appetite-success">
+  <h2>9. На вырост: «аппетит» и «мера успеха»</h2>
+  <p>Две идеи посерьёзнее, обе меняют сам приём желания: <b>аппетит</b> — при приёме называется, сколько
+  времени готовы дать («полдня» / «неделя»), и объём подстраивается под это, а не наоборот;
+  <b>мера успеха</b> — у фичи одно измеримое «как поймём, что она сработала для человека». Я бы отложил
+  обе до следующего большого подъёма версии — они хорошие, но трогают много.</p>
+  <p class="src">Источники: Shape Up; spec-kit (GitHub).</p>
+  <label><input type="radio" name="appetite-success" value="later" checked> <span class="rec">Позже (рекомендую)</span></label>
+  <label><input type="radio" name="appetite-success" value="now"> Берём сейчас</label>
+  <label><input type="radio" name="appetite-success" value="no"> Не берём</label>
+  <textarea name="note-appetite-success" placeholder="свои слова…"></textarea>
+</div>
+
+<div class="dl"><button onclick="save()">Скачать ответы (JSON)</button></div>
+
+<script>
+function save(){
+  const out = { project: "live-spec", page: "research-adoption", answered_at: new Date().toISOString(), answers: {} };
+  document.querySelectorAll(".card").forEach(c => {
+    const id = c.dataset.id;
+    const pick = c.querySelector("input[type=radio]:checked");
+    const note = c.querySelector("textarea").value.trim();
+    out.answers[id] = { choice: pick ? pick.value : null, note: note || null };
+  });
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type: "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "live-spec-decisions-2026-07-05.json";
+  a.click();
+}
+</script>
+</body>
+</html>
