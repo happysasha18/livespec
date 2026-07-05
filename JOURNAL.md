@@ -978,3 +978,35 @@ supersession must not compress an unfinished story away.
 **Invented-time family, third catch.** The prototype-norm inbox file arrived dated 07-06 while the
 clock said 07-05 23:12 — renamed and corrected against the clock; tlvphoto's own 07-06-dated prover
 record noted in its inbox wish. Goes straight into row 100's evidence at build time.
+
+## 2026-07-05 ~23:50, session 10 — row 100 LANDS pack-side: the problem ledger (SPEC v0.15.10, base 0.1.12, pack 0.8.21)
+
+The workshop got its law. New spec section "When the workshop itself misbehaves": operational noise —
+flaky harness, missing dep, environment error — is written down the moment it fires (one WATCHED line,
+never a silent retry), the SECOND occurrence gets an owner that moment (a queue row, or the human's
+dated agreed non-problem — his word alone), and a THIRD unowned recurrence is a defect of the METHOD
+that goes to the pack's queue (E-24 the ledger, INV-23 the law). Distinct by what broke from the
+recurring-BUG rule: that one covers the product, this one the workshop. Base rule 19 states it for
+every skill; templates/PROBLEMS.template.md ships the shape; the milestone compaction list gains the
+ledger (and keeps last hour's suite clause).
+
+Prover CROSS-LINK (record row100): five findings, all folded before code — the owned-entry recurrence
+path (dates append, nothing else changes), SOLVED's owning actor (the landing that closes the row),
+the archive home (a dated ARCHIVED tail of the same file), signature-drift merge at compaction, and
+the worker-brief seam (a brief may name the ledger; ACT-3 stays the law).
+
+Dogfood, and the first real catch: the pack's own `.live-spec/PROBLEMS.md` opened with two live
+entries. The invented-time family (stamps dated tomorrow — third recurrence tonight after two hand
+sweeps) is now OWNED by new row 103: a mechanical future-dated-stamp check in suite + pre-push. That
+is the ledger doing exactly what Alexander asked for at intake: the second-plus occurrence stopped
+being retried and got an owner. The zsh `===` noise entered as AGREED NON-PROBLEM recommended —
+awaiting his word, workaround standing (separators are `---`).
+
+Delegation: the whole implementation bundle (tests red-first, template, ledger, rule-19 insert,
+five-skill pin sweep, VERSION, row-103 insert, suite runs) ran on a Sonnet worker — ~15 min of senior
+time saved; the worker correctly STOPPED on two defects of the BRIEF (M-105 filed under package-docs
+while citing templates-owned E-24 — refiled to M-4, the honest dogfood anchor; and a whitespace-blind
+assertion vs a line-wrapped rule — the test's own bug, normalized). Suite 93 green / 0 skips.
+
+Remaining leg of row 100: the first FOREIGN-host ledger (tlvphoto / track-coach) — rides their own
+windows; this window stays fenced to one inbox file per host.

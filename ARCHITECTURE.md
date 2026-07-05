@@ -20,7 +20,11 @@ E-22 → communicator (rule 10, the seam report → human already carried the pa
 E-18 → NEW [target]
 node design-sync — a node ADD is a
 structure change, its architecture-lens re-prove rides tonight's milestone audit (row 84) — assignments + pins, no node or seam change, so no
-re-prove per this doc's own rule); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
+re-prove per this doc's own rule); the row-100 landing 2026-07-05 ~23:35, session 10: INV-23 →
+base-rulebook (the workshop-noise law joins the shared rules), E-24 → templates (the ledger's shape is
+a document shape; the pack's own `.live-spec/PROBLEMS.md` is package-docs' dogfood instance, pinned
+there without moving the anchor) — assignments + pins only, no node or seam change, no re-prove per
+this doc's own rule; last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
 text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
@@ -42,16 +46,16 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |
 |---|---|---|---|
-| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:19` (rules), `:52` (fence), `:95` (door + work-kind + prototype rules 15-16), `:131` (ladder), `:158` (defaults) |
+| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, INV-23, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence), `:95` (door + work-kind + prototype rules 15-16), `:132` (rule 19, INV-23 — the workshop-noise law), `:152` (ladder), `:179` (defaults) |
 | spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1, T-13, INV-18, T-14, INV-19, INV-20, INV-21 | `skills/spec-author/SKILL.md:82` (spine), `:107` ([target] tag tripwire), `:119` (axes composition), `:163` (fences), `:178` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6 | `skills/product-prover/SKILL.md:161` (review modes), `.live-spec/profile.md:6` (gate cadence instance) |
 | build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → matrix → test → code → land | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:32` (step zero: the door + work-kind), `:69` (the work-kind table — per-kind meanings' one home), `:93` (steps), `:204` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages | T-7 (the report step; the walk before it is build-pipeline's), E-22 | `skills/communicator/SKILL.md:33` (ten rules), `:102` (rule 10 — the decision page) |
-| templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1 | `templates/TEST_MATRIX.template.md:43` (coverage validation), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index) |
+| templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1, E-24 | `templates/TEST_MATRIX.template.md:43` (coverage validation), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index), `templates/PROBLEMS.template.md:1` (E-24 — the ledger's shape) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, B-2, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10, E-21 | `adopt/ADOPT.md:16` (VCS gate first), `:109` (unbacked-surface verdict), `:42` (attic), `:11` (attach record), `install.sh:2` (E-21 — the installer itself) |
 | inbox | parallel-safe intake door for wishes born outside a live-spec session | E-11, T-10, INV-10 | `inbox/README.md:3` (one door, one NEW file), `:9` (file format), `:14` (commit rule) |
 | host-contract | the recorded settings instances: this host's profile, the human's personal profile, and the thin loader that boots the personal layer | E-8, E-16 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (symlink → playbook repo `personal/profile.md`, its git home — row 38 landed 2026-07-05), loader: `~/.claude/CLAUDE.md:1` (thin loader live — row 52 landed 2026-07-05) |
-| package-docs | live-spec's own host instance (dogfood): spec, queue, journal, resume file, version, records, dev-machine skill sync | S-0, M-3, M-4, D-1, D-2, D-3, D-4, D-5, E-23 | `SPEC.md:1`, `ROADMAP.md:12` (queue table), `JOURNAL.md:1`, `VERSION:1`, `scripts/sync-skills.sh:1` (E-23) |
+| package-docs | live-spec's own host instance (dogfood): spec, queue, journal, resume file, version, records, dev-machine skill sync, its own problem ledger | S-0, M-3, M-4, D-1, D-2, D-3, D-4, D-5, E-23 | `SPEC.md:1`, `ROADMAP.md:12` (queue table), `JOURNAL.md:1`, `VERSION:1`, `scripts/sync-skills.sh:1` (E-23), `.live-spec/PROBLEMS.md:1` (E-24's dogfood instance; anchor owned by templates) |
 | guardrails [target] | mechanical pre-push checks + surface registry + CI mirror; first slice LIVE (the pack's own gates + opt-in fence, hooks installed), host-facing checks + registry + CI still [target] (ROADMAP rows 14, 55) | E-6, E-10, M-5, INV-17 | `guardrails/pre-push:1` (gates), `guardrails/check-prototype-fence.sh:1` (prototype fence, gate e), `guardrails/pre-commit:1` (commit fence), `guardrails/install.sh:1`, `tests/test_guardrails.py:1`; registry/CI: — |
 | snapshot [target] | saved baseline of the last accepted run; declared-scope diff (ROADMAP row 55) | E-7, A-6 | — (spec'd, not yet code) |
 | design-sync | optional machine, [target: machine; wiring live] — declared components of a landing synced to the team's design project, human-gated (ROADMAP row 93 — pack-side wiring landed session 8; the machine's first real run remains) | E-18 | wiring: `skills/live-spec-base/SKILL.md` (defaults table, `design-sync` row), `skills/communicator/SKILL.md` (rule 5 channel line), `skills/build-pipeline/SKILL.md` (step 9 sync line); machine: — |

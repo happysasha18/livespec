@@ -998,3 +998,38 @@ class TestCommunicatorTrigger(unittest.TestCase):
                       "communicator description lost the narrowed report trigger")
         self.assertNotIn("before writing a status update", head,
                          "the over-trigger phrase is back — every status line would load the skill")
+
+
+class TestProblemLedger(unittest.TestCase):
+    """Row 100: the workshop's problem ledger (SPEC E-24, INV-23; matrix M-103/M-104/M-105)."""
+
+    STATUSES = ["WATCHED", "OWNED", "AGREED NON-PROBLEM", "SOLVED"]
+
+    def test_problems_template_shape(self):
+        t = read("templates/PROBLEMS.template.md")
+        for s in self.STATUSES:
+            self.assertIn(s, t, "ledger template lost status %s" % s)
+        low = t.lower()
+        self.assertIn("signature", low, "ledger template lost the signature concept")
+        self.assertIn("second occurrence", low, "ledger template lost the second-occurrence law")
+        self.assertIn("ARCHIVED", t, "ledger template lost the dated ARCHIVED tail (prover row100 F3)")
+        self.assertIn("silent retry", low, "ledger template lost the never-a-silent-retry side")
+
+    def test_base_rule_problem_ledger(self):
+        base = read("skills/live-spec-base/SKILL.md")
+        # normalize whitespace: the rule's sentences wrap across hard line breaks
+        low = " ".join(base.lower().split())
+        self.assertIn("problem ledger", low, "base skill lost the workshop-noise rule (INV-23)")
+        for phrase in ["watched", "second occurrence", "agreed non-problem",
+                       "defect of the method", "silent retry", "bug lane"]:
+            self.assertIn(phrase, low, "base rule lost its '%s' leg" % phrase)
+
+    def test_pack_own_ledger(self):
+        led = read(".live-spec/PROBLEMS.md")
+        rows = [l for l in led.splitlines()
+                if l.startswith("| ") and not l.startswith("| Signature")]
+        self.assertTrue(rows, "the pack's own ledger has no entries (dogfood, M-105)")
+        for r in rows:
+            self.assertRegex(r, r"\d{4}-\d{2}-\d{2}", "ledger entry without a date: %s" % r)
+            self.assertTrue(any(s in r for s in self.STATUSES),
+                            "ledger entry without a legal status: %s" % r)

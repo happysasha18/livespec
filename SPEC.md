@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.9, 2026-07-05)
+# live-spec — SPEC (v0.15.10, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -257,6 +257,48 @@ included: a bubble [T-11] jumps only fresh queued wishes, never a resume. Should
 the lane, **critical** bugs head the waiting line (among themselves by arrival), the rest follow by
 arrival; the parked wish resumes only once no bug waits. A bug already in the lane is never itself
 interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked. [T-9]
+
+## When the workshop itself misbehaves (the problem ledger)
+
+Some noise is not a product bug: the test harness flakes, a dependency is missing, the shell eats a
+command, a tool times out. The temptation is to retry and move on — and the same noise then eats the
+same minutes in session after session. **The problem ledger** is the host's dynamic list of exactly this
+operational noise: one git-tracked file, `.live-spec/PROBLEMS.md` (template in the pack;
+of `.live-spec/` still only the checkpoints stay ignored [E-8]), born on its first entry. An entry is a
+**signature** — a short, greppable plain phrase ("element not clickable: #ex-skip", "zsh eats a bare
+===") — with its dated occurrences and a status: **WATCHED** (seen once) · **OWNED** (a named queue row
+will solve it) · **AGREED NON-PROBLEM** (dated, the human's word) · **SOLVED** (its row landed, date
+kept). [E-24]
+
+**The walk, the moment noise fires mid-work: grep the ledger for the signature.** Not listed → write one
+WATCHED line (signature, date, one line of context) and keep working — the write replaces the silent
+retry, and it never takes the lane: a defect of the PRODUCT is a bug and goes to the bug lane instead
+[T-9]. **Listed → this is the second occurrence, and it gets an owner THAT MOMENT:** either a queue row
+(the problem will be solved) or the human's dated agreed non-problem — that verdict is the human's word
+alone, never the agent's [INV-9]; the agent recommends, writes the recommended owner now, and the ask
+rides the batched report [INV-4, E-22] — the lane never stalls on it. **A third recurrence arriving with
+no owner is a defect of the METHOD, not of the day:** it leaves the host as a wish to the pack's own
+queue (from a host window: one inbox file [E-11, INV-10]), citing the signature and its dates. [INV-23]
+
+After the owner is written, the entry only collects dates: a recurrence on an OWNED or AGREED entry
+appends its date and changes nothing else — re-raising an agreed non-problem is the human's move, the
+growing date list is what he re-raises FROM. The landing that closes an OWNED entry's queue row flips it
+to SOLVED in the same session — the entry never waits for an audit to learn its row landed.
+
+The seams, stated: sessions write the ledger — a worker reports noise in its checkpoint and the session
+carries it over, unless its brief names the ledger among its files (the brief stays the write-ownership
+law [ACT-3]); two sessions on one host share the file under the concurrent-edit fence like any doc
+[INV-11]; "same problem?" is decided by grep and eyes — signatures stay short so the grep is honest, and
+one problem found under two wordings merges into one entry at the milestone compaction. SOLVED and
+agreed entries move to a dated ARCHIVED tail of the same file at that compaction [M-1] — one file stays
+the one home, and the ledger, too, never grows unboundedly. This is the workshop's law; the product
+keeps its own (a recurring product bug re-doors to feature — the pipeline's rule, distinct by what
+broke). No visible surface — facets N/A. Non-goals this landing: no mechanical guardrail yet — the named
+candidate (a pre-push check that no entry crosses a milestone unowned) earns its row after real usage;
+no automated signature matching; the first foreign-host ledgers (tlvphoto, track-coach) open from their
+own windows — this landing opens the pack's own, with tonight's live entries. Success measure: the next
+operational hiccup in a live-spec session lands as a ledger line instead of a silent retry, checked at
+the milestone audit [default].
 
 ## A prototype is not the product
 
@@ -620,7 +662,7 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   in, re-check skill freshness [A-7]. [M-2]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
   against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] + doc
-  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills, and the TEST SUITE swept the
+  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills/ledger [E-24], and the TEST SUITE swept the
   same way — a duplicate or superseded test is deleted only when the matrix audit shows its rows still
   covered by a live test; nothing grows unboundedly, docs or suite;
   queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
@@ -724,6 +766,7 @@ meaning, this table is only the map.
 | E-21 | installer: install.sh copies skills to the skills home; timestamped backup, never deletes | Adoption step 7 |
 | E-22 | batched questions arrive as ONE decision page; answers archived and harvested same session | Throwing a wish |
 | E-23 | dev-machine skill sync: named script, version changes reported old → new for the A-7 re-read | Package repo |
+| E-24 | problem ledger: per-host `.live-spec/PROBLEMS.md`, signature + dated occurrences + status (WATCHED/OWNED/AGREED NON-PROBLEM/SOLVED) | Workshop misbehaves |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
@@ -756,6 +799,7 @@ meaning, this table is only the map.
 | INV-20 | the non-goals sentence is always written ("nothing left out" is valid); scope-narrowing non-goals ride the batched report | Throwing a wish |
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
+| INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

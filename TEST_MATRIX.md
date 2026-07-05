@@ -43,6 +43,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Roadmap template | `templates/ROADMAP.template.md` | shipped text | `test_artifact_inventory` |
 | Journal template | `templates/JOURNAL.template.md` | shipped text | `test_artifact_inventory` |
 | Next-steps template | `templates/NEXT_STEPS.template.md` | shipped text | `test_artifact_inventory` |
+| Problem-ledger template | `templates/PROBLEMS.template.md` | shipped text | `test_artifact_inventory` + `test_problems_template_shape` |
 | Bootstrap suite scaffold | `templates/test_scaffold.template.py` | shipped script | `test_artifact_inventory` + `test_scaffold_bootstrap_runs` (real simulated bootstrap, both ways) |
 | Dev-machine skill sync | `scripts/sync-skills.sh` | shipped script | `test_artifact_inventory` + `test_sync_skills_script` (real run, twice) |
 | Adoption procedure | `adopt/ADOPT.md` | shipped text | `test_artifact_inventory` |
@@ -111,6 +112,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-010 | Workers run mechanical execution with persistent checkpoints in `.live-spec/checkpoints/`; never in a system temp dir | ACT-3 | string | router design (row 56) makes it mechanical | TODO |
 | M-095 | The worker contract: write-ownership narrowed to the brief's named files; same-session sibling files fence-benign (fence alarms on FOREIGN sessions); live session-scope lines ride into the brief verbatim; failed acceptance escalates one tier, logged; never a silent same-tier retry, never a worker resolving the ladder itself | ACT-3 | string | `test_worker_contract_stated` (SPEC clause + pipeline elaboration) | BUILT |
 | M-102 | Every delegation's landing report carries the savings line (what went to the worker, roughly what senior work it saved); never a delegation that lands unreported — the missing line is the habit dying | ACT-3 | string | `test_gap6_delegation_savings_line` | BUILT |
+| M-104 | The workshop-noise law (base rule): first sight of operational noise = one WATCHED ledger line, never a silent retry; the SECOND occurrence gets an owner that moment — a queue row or the human's dated agreed non-problem (his word alone, INV-9); a third unowned recurrence is a METHOD defect that goes to the pack's queue; never ledger noise preempting the bug lane | INV-23 | string | `test_base_rule_problem_ledger` | BUILT |
 | M-011 | A safe breakpoint = LIVE STATE replaced (one block, never stacked) + dated journal entry + commit | M-2 | string | `test_next_steps_live_state` (shape; the discipline audits at M-1) | BUILT |
 | M-012 | Versions have named homes: VERSION file, a version line under `metadata:` in its SKILL.md frontmatter, host record; never scattered or absent | M-7 | string | `test_version_homes` | BUILT |
 | M-066 | The base skill states each shared rule once and no working skill restates one normatively; never a second normative home for a shared rule | E-12 | string | milestone compaction pass (M-1) | TODO |
@@ -194,6 +196,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-032 | The matrix shape: inventory + node blocks + coverage validation; never a bare row bucket | E-5 | string | `test_matrix_blocks_match_architecture_nodes` | BUILT |
 | M-033 | Every matrix row states the DO and the NEVER side; never a row without its regression fence | INV-6 | string | `test_matrix_rows_have_level_and_negative_side` + `test_gap10_step5_both_sides` (the derivation step TEACHES it, row 12 gap 10) | BUILT |
 | M-034 | Bootstrap = VCS gate FIRST → copy the six templates + the suite scaffold (which DEFINES green for landing #1: docs present, headers filled, no surviving placeholder) → hooks offered as at adoption → first wish through the pipeline; never landing before the gate, never a bootstrap without a runnable suite | B-1 | string | `test_templates_ship` + `test_scaffold_bootstrap_runs` (simulated bootstrap BY DEED: filled → green, placeholder → red) + `test_spec_states_bootstrap_order` | BUILT |
+| M-103 | The problem-ledger template ships the shape: signature + dated occurrences + the full status vocabulary (WATCHED · OWNED · AGREED NON-PROBLEM · SOLVED) + a dated ARCHIVED tail; never a shape missing a status or the archive home | E-24 | string | `test_problems_template_shape` | BUILT |
 
 ### [node: attach]
 
@@ -244,6 +247,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-057 | Snapshot retention choice stays open (closes via row 55); never silently resolved | D-3 | string | `test_spec_decide_markers_match_open` | BUILT |
 | M-058 | D-4 records its decided state (package-is-source, row 51 executes); never re-litigated silently | D-4 | string | `test_spec_decide_markers_match_open` | BUILT |
 | M-059 | D-5 records its decided state (all-into-profile, rows 52–54 execute); never re-litigated silently | D-5 | string | `test_spec_decide_markers_match_open` | BUILT |
+| M-105 | The pack keeps its own problem ledger (dogfood — E-24's shape applied to itself): `.live-spec/PROBLEMS.md` exists, every entry carries a signature, ≥1 date, and a legal status; never an empty ledger claiming entries, never an entry without date or status | M-4 | string | `test_pack_own_ledger` | BUILT |
 
 ### [node: guardrails [target]]
 

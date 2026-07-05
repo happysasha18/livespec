@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.11
+  version: 0.1.12
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -128,6 +128,19 @@ a working skill still stands: its pointer here reads as plain advice.
    race one name (the inbox: two sessions, one slug, one moment), a short session token joins the
    semantic mark — a collision may cost a rename, never a lost file. (Audit 2026-07-05: the attic had no
    answer for a second collision; the attic and the inbox each spoke half a law.)
+
+19. **The problem ledger — workshop noise is owned, never re-suffered.** Operational noise (a flaky
+   test harness, a missing dependency, an environment error, a tool misbehaving — the WORKSHOP, never
+   the product's own defect: that is a bug and takes the bug lane) is written down the moment it fires:
+   grep the host's `.live-spec/PROBLEMS.md` for the signature. Not listed → one WATCHED line
+   (signature, date, one line of context) and keep working — the write replaces the silent retry.
+   Listed → the SECOND occurrence gets an owner THAT MOMENT: a queue row (OWNED) or the human's dated
+   AGREED NON-PROBLEM — his word alone, never the agent's; the agent recommends, writes the recommended
+   owner now, and the ask rides the batched report. A THIRD recurrence arriving unowned is a defect of
+   the METHOD, not of the day — it goes to the pack's own queue (from a host window: one inbox file).
+   A recurrence on an owned entry appends its date and changes nothing else; the landing that closes an
+   OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23; born of tlvphoto's retried-never-owned
+   noise, 2026-07-05.)
 
 
 ## When NOT to load this
