@@ -167,7 +167,18 @@ here**, one list for every project:
 - **touch where the design assumed a mouse** — anything hover-only needs a touch answer;
 - **the empty, error, and loading states** of each new surface (spelled "empty, error, and loading");
 - **accessibility** — reachable by keyboard, readable contrast;
-- **the performance envelope** — at what input size it must stay usable.
+- **the performance envelope** — at what input size it must stay usable;
+- **visual hierarchy** — the gap BETWEEN separate things larger than the gap WITHIN one thing (nesting
+  depth drives spacing, never per-element guesswork); a heading never dimmer or smaller than the body it
+  heads, sizes from one scale (incident: track-coach's inverted panel margins, 2026-07-05);
+- **two windows at once** — the same stored state open in two windows; what one window's change does to
+  the other (incident: track-coach's persisted aim auto-swapping cards, 2026-07-02);
+- **a missing source** — an input file renamed, moved, or gone: the feature says what it shows and asks
+  instead of guessing (incident family: the ask-don't-guess stem/source cases, track-coach 2026-06/07).
+
+**The list is curated, not collected.** A facet joins ONLY with a named real incident it would have
+caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
+that grows by taste rots into a forty-row form nobody walks (the Google launch-checklist lesson).
 
 **Every facet ends as a spec sentence — silence is not an option.** Either the human (or the walk's
 batched questions) DECIDED it, or the recommended option is taken so the lane keeps moving and the

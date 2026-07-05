@@ -446,7 +446,15 @@ class TestFacetSweep(unittest.TestCase):
     String-level per matrix rows M-072..M-073."""
 
     FACETS = ("phone or narrow window", "hover-only needs a touch answer",
-              "empty, error, and", "accessibility", "performance envelope")
+              "empty, error, and", "accessibility", "performance envelope",
+              "visual hierarchy", "two windows at once", "missing source")
+
+    def test_facet_list_is_curated(self):
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("The list is curated, not collected", sa, "spec-author lost the curation law")
+        self.assertIn("named real incident", sa)
+        # every facet entry in the canonical list names its incident
+        self.assertGreaterEqual(sa.count("(incident"), 3, "new facets must carry their incidents")
 
     def test_spec_states_facet_sweep(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))

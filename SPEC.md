@@ -114,8 +114,13 @@ says feature, drafting its spec-delta walks a fixed sweep of the **standard face
 every visible feature has whether or not anyone names them: layout on a phone or narrow window · touch
 where the design assumed a mouse (anything hover-only needs a touch answer) · the empty, error, and
 loading states of each new surface · accessibility (reachable by keyboard, readable contrast) · the
-performance envelope (at what input size it must stay usable). The facet list's normative home is the
-spec-author skill, one list for every project; this spec binds THAT the sweep runs and what counts as
+performance envelope (at what input size it must stay usable) · visual hierarchy (the gap between
+separate things larger than the gap within one thing; a heading never dimmer or smaller than its body)
+· two windows at once (the same stored state open twice) · a missing source (an input file renamed or
+gone). The facet list's normative home is the
+spec-author skill, one list for every project, and the list is CURATED: a facet joins only with a named
+real incident it would have caught, and the list is re-justified at milestones — a checklist that grows
+by taste rots into a forty-row form. This spec binds THAT the sweep runs and what counts as
 done. The sweep scopes to the feature's VISIBLE surfaces: a feature with none — new persistent state
 only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A", never a
 silent skip. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes — the
