@@ -191,6 +191,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-081 | Every shipped skill loads: frontmatter parses, name = folder, description + version present, a "when NOT to use" section scopes it; a broken skill turns the push gate RED; never an unloadable or unscoped skill shipped | E-6 | string | `test_real_repo_passes` (gate f), `test_broken_skill_fails`, `test_missing_skills_dir_fails` | BUILT |
 | M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | first slice BUILT (pack gates: prover record · green suite · anchor ownership · matrix coverage — `guardrails/pre-push` + `test_guardrails.py`); the four host-facing checks await the surface registry + snapshot (rows 55+) | TODO |
 | M-061 | The surface registry is self-closing: a rendered-but-unregistered surface is RED; never a trusted hand-list | E-10 | string | machine lands at row 3 | TODO |
 | M-062 | A host may mirror the same checks in CI — one source of truth, CI never redefines them | M-5 | string | lands at row 14 | TODO |

@@ -23,6 +23,13 @@ cross-links explicit.
 Your job is not to produce a giant document up front. It is to keep a spec that is **complete for what
 exists, honest about what's undecided, and structured so the prover can find the holes you can't.**
 
+## When NOT to use
+
+Not for retro-documenting already-built code so it looks specced (the spec leads, code chases); not for
+a prototype (a sketch gets a label and a fence, never a spec); not for pure research notes; not for the
+skip-boundary edit (single file, no new behaviour — it goes straight to code + its test); and not when
+what's wanted is a REVIEW — that is product-prover's half of the pair.
+
 ## The one rule
 
 > A spec exists so the next reader — the prover, a teammate, or you in three months — can reason about

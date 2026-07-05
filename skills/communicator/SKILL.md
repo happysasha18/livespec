@@ -24,6 +24,12 @@ Every time you: **(a)** need the human to DECIDE something; **(b)** finish or ad
 **(c)** name a problem. If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
+## When NOT to use
+
+Not for my own working notes (those are marked "(себе)" and he may skip them); not for worker briefs,
+checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
+human will read. This skill fires when a PERSON must see, decide, or hear a result.
+
 ## The ten rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →

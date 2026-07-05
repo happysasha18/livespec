@@ -41,6 +41,11 @@ if ! "$GUARDRAILS/check-matrix-coverage.sh"; then
 fi
 
 echo ""
+echo "-- gate f: skill loadability --"
+if ! "$GUARDRAILS/check-skill-loadability.sh"; then
+  fail=1
+fi
+
 echo "-- gate e: prototype fence --"
 if ! "$GUARDRAILS/check-prototype-fence.sh"; then
   fail=1

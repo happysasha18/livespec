@@ -118,6 +118,12 @@ a working skill still stands: its pointer here reads as plain advice.
    losing nothing?" (Alexander 2026-07-05: money yes, deletion yes, a push no).
 
 
+## When NOT to load this
+
+Not for sessions outside the pack's work — this is the pack's rulebook, not a general style guide; and
+never as a place to WRITE host- or person-specific values (those live in profiles; this file holds only
+package defaults and the rules themselves).
+
 ## The settings ladder
 
 How the pack behaves is a **named setting** living in one of four NESTED scopes; a setting belongs to the

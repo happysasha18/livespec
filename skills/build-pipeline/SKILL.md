@@ -57,6 +57,13 @@ the principle behind each step; this skill is its executable projection — keep
 - **Skip entirely** only under the single boundary above (pure research, fact-gathering, a one-file
   no-new-behaviour edit already covered by a test level).
 
+## When NOT to run it
+
+Not for the skip-boundary edit (single file · no new state, element, or visible behaviour · an existing
+test level already covers the touched fact — it still ships a test, just no pipeline); not for pure
+research or fact-gathering (no artifact changes); not for a SEE/TRY ask (that goes to the labelled
+prototype home, base rule 16 — and comes BACK through this pipeline only at promotion).
+
 ## The steps
 
 1. **Spec — invoke `spec-author`.** Write or grow the project `SPEC.md`: entities, states, transitions,
