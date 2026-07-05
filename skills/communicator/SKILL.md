@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.11
+  version: 0.1.13
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,7 +17,7 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Eleven rules, few enough to hold in your head.
+internal ids). Twelve rules, few enough to hold in your head.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
@@ -30,7 +30,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The eleven rules
+## The twelve rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -97,7 +97,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    a waiting item exactly what is asked — so the list informs, not just enumerates ("bare titles read fine
    but say too little" — Alexander, same day). Never paste the queue table into chat and never retell it as
    a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
-   can't say. (Alexander 2026-07-05, refined same day)
+   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → matrix → tests → code → verify → landed — the station vocabulary being the pipeline's own step names, so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day)
 
 10. **Several open picks → ONE interactive decision page.** When more than one decision waits on the
     human, don't serialize questions into chat and don't write a questionnaire document: render one local
@@ -131,6 +131,15 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌ "да, тесты по методологии сделаны"
     ✅ "verified: suite green — tonight's run, this commit; done by pack 0.8.x / prover 0.1.8; asserted
     (not re-checked): the adoption record's coverage claim"*
+
+12. **The capture echo — a wish hears itself land.** The moment a wish is intaken, the human hears the
+    intake line back as ONE plain sentence — what was heard, the door called (the door step's own
+    verdict, not a second classification), the name the work will answer to, and its row number:
+    "caught: <the wish, compressed>. It's a feature, we'll call it X, row N." No echo ⇒ the human
+    cannot know the request survived. A wish that arrives silently — an inbox file, a harvest — gets
+    its echo in the NEXT report, never as a mid-work interruption; a batch echoes one line per wish.
+    (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
+    we'll call it this and that".)
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision

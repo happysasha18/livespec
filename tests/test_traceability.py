@@ -1060,6 +1060,25 @@ class TestProblemLedger(unittest.TestCase):
         self.assertIn("INV-26", read(os.path.join("templates", "NEXT_STEPS.template.md")))
         self.assertIn("INV-26", read(os.path.join("templates", "ROADMAP.template.md")))
 
+    def test_capture_echo_and_board(self):
+        """Row 105 (M-111/M-112, INV-27): every intake is echoed back in one sentence;
+        every status report names each in-flight feature's pipeline station."""
+        spec = read("SPEC.md")
+        for needle in ("INV-27", "departures board", "hears itself land"):
+            self.assertIn(needle, spec)
+        comm = read(os.path.join("skills", "communicator", "SKILL.md"))
+        for needle in (
+            "The capture echo",
+            "row number",
+            "departures board",
+            "pipeline STATION",
+            "INV-27",
+        ):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        self.assertIn("capture echo", pipeline,
+                      "build-pipeline step zero must cite the capture echo")
+
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
         rows = [l for l in led.splitlines()

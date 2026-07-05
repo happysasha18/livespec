@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.14, 2026-07-06)
+# live-spec — SPEC (v0.15.15, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -57,7 +57,12 @@ plain-language LANDING line: position on the map · what landed · what remains.
 they render as ONE interactive decision page — one card per question, the recommendation named, room for
 a free-form answer on every card — opened in its own window while the lane keeps moving [INV-4]. The
 answered file is read back, archived in the project's `docs/decisions/`, and every answer is harvested
-into its queue row the same session — an answer left un-harvested is a decision lost. The page's
+into its queue row the same session — an answer left un-harvested is a decision lost. And an answer is
+his WORD, not merely his click: a pick the human then disavows in plain speech ("я не понял, что
+подтверждал") is WITHDRAWN — recorded as answered-then-withdrawn, the pick re-opens with a plainer
+explanation owed before it is asked again; an uninformed pick never settles a verdict that needs his
+word [INV-9] (born 2026-07-05 night: the shell-separator verdict, picked at 23:49, disavowed minutes
+later). The page's
 mechanics (filename law, ordinals, the JSON round-trip) live once, in the communicator skill's rule 10
 [INV-13]. [E-22]
 
@@ -98,6 +103,18 @@ legacy fusion, a harvested batch), its Done-when enumerates per-leg acceptance a
 with an unmet leg — half-done is a status, never a landing; and the resume file's LIVE-STATE
 supersession never compresses an unfinished leg out of existence: a leg still open at compaction is
 restated, not summarized away [M-2]. [INV-26]
+
+**A wish hears itself land, and progress reads like a departures board.** You toss a wish in passing —
+before sleep, mid-thought — and without an echo you cannot know it survived. So the intake line is not
+only WRITTEN into the queue, it is SPOKEN back: one plain sentence — what was heard, the door called,
+the name the work will answer to, its row number ("caught: …, it's a feature, we'll call it X, row N").
+A wish that arrives silently (an inbox file, a harvest) gets its echo in the next report, never as an
+interruption. And whenever status is reported, every in-flight feature is named by that name with its
+pipeline STATION — spec → prove → architecture → matrix → tests → code → verify → landed — so progress
+reads like a departures board at a glance, never prose archaeology; the station vocabulary is the
+pipeline's own step names, one name per step. (His word 2026-07-05, before sleep: "captured this that
+request, it's a feature, we'll call it this and that — а потом рапортовать как каждая фича идет по
+пайплайну".) [INV-27]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -848,6 +865,7 @@ meaning, this table is only the map.
 | INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence); quoting a past wrong date stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
+| INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

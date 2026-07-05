@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.15
+  version: 0.2.16
 ---
 
 # build-pipeline — ship a change by the method
@@ -29,7 +29,7 @@ Otherwise don't skip a step — the bugs that pass every test hide in the steps 
 the principle behind each step; this skill is its executable projection — keep the two in sync.)
 
 ## When to run it — and where each kind of change enters
-- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15).** The intake
+- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row (communicator rule 12; SPEC INV-27).** The intake
   line states size (a wish too big for its worth is negotiated in SCOPE — cut surfaces or split into
   stages, never a time budget or estimate; proposals proceed on the recommended option and are
   surfaced, SPEC T-15) ·

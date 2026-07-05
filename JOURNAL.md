@@ -1100,3 +1100,18 @@ references were REAL (fixed); the ledger's occurrence lists, which legally mix t
 quoted past times, exposed the line-global reading as over-broad. Narrowed the same hour to the
 ADJACENT stamp shape (`date [~]time`) — faithful to the clause's word "pairs" — with two new fixture
 tests (mixed-history line green; adjacent future stamp still red). Five TimeFence tests green.
+
+## 2026-07-06 01:53, session 11 — row 105 lands, the push gate walked whole: full prover pass, evals re-run red→green, publish walk
+
+Row 105 (the capture echo + the departures board, SPEC v0.15.15 INV-27, communicator 0.1.12→0.1.13,
+build-pipeline 0.2.16, M-111/M-112, pack 0.8.26) landed with its first-real-run leg riding this
+morning's report — per-leg status said openly in its row (INV-26 working on its own author). The push
+gate then ran WHOLE: the FULL prover pass over v0.15.15 (record pass 5) found and folded two must-fix
+holes — a decision-page answer the human disavows now re-opens as answered-then-withdrawn (E-22,
+born of tonight's zsh verdict), and E-19's own law that a behaviour-changing landing owes its skill
+evals a re-run. Both evals re-ran two-arm by workers: build-pipeline with-skill 9/9 green including
+the new capture-echo criterion (bare: 6 red); communicator caught a REAL skill gap — the new station
+line read as a gesture, not a place — rule 9 gained a worked example (0.1.13) and the re-run went
+green. The publish walk ran as row 98's first real use: secrets/path sweep clean, fresh clone installs
+all six skills into a clean HOME, screenshots/release-notes stood down by name (text product, no tag).
+The zsh `===` explanation and verdict re-ask ride the morning decision page.

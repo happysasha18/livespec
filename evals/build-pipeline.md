@@ -23,6 +23,7 @@ by it. Prompt (verbatim):
 | Guardrails run named before done (pipeline teeth) | RED — absent | GREEN — pre-push check named as a step |
 | Verify by deed on the real artifact (step 8) | MET BARE (manual re-run present) | GREEN |
 | Plain-language report to the owner before push (step 9 / T-7) | MET BARE (partial — report present, push-gate respected) | GREEN — report step names files + verified output |
+| The capture echo at intake: the report is echoed back in one sentence — heard · door · name · row (step zero; SPEC INV-27, added 2026-07-06) | — (criterion added later) | scored from the 2026-07-06 re-run |
 
 ## The red
 
