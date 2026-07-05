@@ -656,3 +656,55 @@ class TestPublishSkill(unittest.TestCase):
                        "the checklist runs BEFORE the gate"):
             self.assertIn(phrase, spec, "SPEC lost the publishing clause: %s" % phrase)
         self.assertIn("[E-20]", spec, "SPEC prose lost anchor E-20")
+
+
+class TestInstallerAndDecisionPage(unittest.TestCase):
+    """Row 57 (SPEC v0.15.1): the two shipped mechanisms the spec now names — the installer (E-21,
+    M-091) and the decision page (E-22, M-092). The installer row is a REAL run against a temp home,
+    twice, because its promises (fresh machine works · backup before overwrite · never deletes) are
+    behaviours of the script, not strings in it."""
+
+    def test_install_sh_installs_and_backs_up(self):
+        import subprocess
+        import tempfile
+        script = os.path.join(ROOT, "install.sh")
+        skills = sorted(d for d in os.listdir(os.path.join(ROOT, "skills"))
+                        if os.path.isdir(os.path.join(ROOT, "skills", d)))
+        self.assertGreaterEqual(len(skills), 5, "skills/ parse failure")
+        with tempfile.TemporaryDirectory() as tmp:
+            env = dict(os.environ, HOME=tmp)
+            r = subprocess.run(["bash", script], env=env, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0,
+                             "install.sh failed on a FRESH home (no ~/.claude/skills yet):\n%s\n%s"
+                             % (r.stdout, r.stderr))
+            dest = os.path.join(tmp, ".claude", "skills")
+            for s in skills:
+                self.assertTrue(os.path.isfile(os.path.join(dest, s, "SKILL.md")),
+                                "%s not installed" % s)
+            r2 = subprocess.run(["bash", script], env=env, capture_output=True, text=True)
+            self.assertEqual(r2.returncode, 0, "second (idempotent) run failed:\n%s" % r2.stderr)
+            for s in skills:
+                self.assertTrue(os.path.isfile(os.path.join(dest, s, "SKILL.md")),
+                                "%s gone after re-run — the never-deletes side broke" % s)
+            backups = [d for d in os.listdir(dest) if ".bak_" in d]
+            self.assertGreaterEqual(len(backups), len(skills),
+                                    "second run left no timestamped backups")
+
+    def test_spec_names_installer(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("How the skills arrive on a machine",
+                       "backed up with a timestamp before being overwritten, never deleted",
+                       "two halves of one seam"):
+            self.assertIn(phrase, body, "SPEC lost the installer clause: %s" % phrase)
+        self.assertIn("[E-21]", body, "SPEC prose lost anchor E-21")
+
+    def test_spec_names_decision_page(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("How batched questions reach you",
+                       "never become a serialized chat questionnaire",
+                       "an answer left un-harvested is a decision lost"):
+            self.assertIn(phrase, body, "SPEC lost the decision-page clause: %s" % phrase)
+        self.assertIn("[E-22]", body, "SPEC prose lost anchor E-22")
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("ONE interactive decision page", cm, "communicator rule 10 lost the page law")
+        self.assertIn("docs/decisions/", cm, "communicator rule 10 lost the archive step")

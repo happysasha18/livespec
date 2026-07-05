@@ -772,3 +772,17 @@ red→green shown raw, senior re-ran the gate and the suite by deed. Suite 68 �
 re-authored; pack 0.8.6. The delegation debt (the standing "I keep not delegating" failure) got its
 counter-example tonight: brief written in 5 minutes, worker landed it while the senior answered the
 human's scope-never-time word.
+
+## 2026-07-05 late (~22:20, session 9) — row 57: the spec stops pretending two mechanisms don't exist
+
+The architecture audit (F2+F3) had named the hole: install.sh and the decision page both SHIP but had no
+spec sentence — an unnamed mechanism is invisible to the prover, so its promises can silently rot. Door:
+bug (prover-found spec hole); kind: prose. SPEC v0.15.1 adds two clauses in their scenarios' own homes:
+"How the skills arrive on a machine" (adoption, E-21 — idempotent, timestamped backup, never deletes;
+installing and A-7's version record are two halves of one seam) and "How batched questions reach you"
+(the wish walk, E-22 — ONE decision page, answers archived + harvested same session; mechanics stay in
+communicator rule 10, one home). Ownership: E-21 → attach (it already pinned install.sh), E-22 →
+communicator — assignments only, no re-prove. Matrix M-091/M-092; and M-091's REAL-run test (a fresh
+temp home, run twice) immediately caught a REAL bug: install.sh had no mkdir -p, so a genuinely fresh
+machine — the exact machine the installer exists for — failed on first run. Red shown, one-line fix,
+backup-and-never-delete sides asserted by the same run. Suite 70 → 73 green; pack 0.8.7.

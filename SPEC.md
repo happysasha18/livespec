@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.0, 2026-07-05)
+# live-spec — SPEC (v0.15.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -49,6 +49,14 @@ spec-delta is drafted → validated against the WHOLE spec — here only genuine
 everything else proceeds on the recommended option, marked in the row → queued → in-work → landed (green
 suite + guardrails + committed + the row closed with its acceptance met) → reported to you in one
 plain-language LANDING line: position on the map · what landed · what remains. [T-1..T-7]
+
+**How batched questions reach you.** Several open picks never become a serialized chat questionnaire:
+they render as ONE interactive decision page — one card per question, the recommendation named, room for
+a free-form answer on every card — opened in its own window while the lane keeps moving [INV-4]. The
+answered file is read back, archived in the project's `docs/decisions/`, and every answer is harvested
+into its queue row the same session — an answer left un-harvested is a decision lost. The page's
+mechanics (filename law, ordinals, the JSON round-trip) live once, in the communicator skill's rule 10
+[INV-13]. [E-22]
 
 **How a wish is classified.** Size is one four-word vocabulary everywhere — **bug / small / surface /
 large** — and the queue's class column speaks the same four words, never a second SIZE scale (the door
@@ -342,6 +350,12 @@ pilot's baseline snapshot is the precedent). [A-0]
    event-only: at every safe breakpoint [M-2] the agent re-stats the installed skills and the package on
    disk (version / file mtime) and re-reads what changed — a parallel session may have shipped an update
    mid-flight. [A-7]
+
+**How the skills arrive on a machine.** The pack ships one installer, `install.sh`: it copies every pack
+skill into the agent's skills home (`~/.claude/skills/`), and it is idempotent — an existing copy is
+backed up with a timestamp before being overwritten, never deleted (the attic principle applied at
+install time). What the installer just wrote is exactly what A-7's record clause writes down in
+`.live-spec/` — installing and recording are two halves of one seam. [E-21]
 
 ## One rulebook behind the skills
 
@@ -669,6 +683,8 @@ meaning, this table is only the map.
 | E-18 | design-sync: machine [target], wiring live — off-by-default switch in base defaults, channel lines in communicator/pipeline, human-gated (publishes) | Machines |
 | E-19 | skill evals: per working skill one scenario, red proven bare, corrected by the skill; re-run at milestones and behaviour changes | Machines |
 | E-20 | publishing owes the artifact's kind its checklist (one home: the publish skill); targets are plugins embedding their steps; gates untouched | Publishing |
+| E-21 | installer: install.sh copies skills to the skills home; timestamped backup, never deletes | Adoption step 7 |
+| E-22 | batched questions arrive as ONE decision page; answers archived and harvested same session | Throwing a wish |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |

@@ -9,6 +9,8 @@ SKILLS_SRC="$(cd "$(dirname "$0")/skills" && pwd)"
 SKILLS_DEST="$HOME/.claude/skills"
 TIMESTAMP="$(date +%Y%m%d_%H%M%S)"
 
+mkdir -p "$SKILLS_DEST"  # a fresh machine has no skills home yet (E-21's fresh-install promise)
+
 echo "live-spec install — copying skills to $SKILLS_DEST"
 echo "Timestamp for backups: $TIMESTAMP"
 echo ""

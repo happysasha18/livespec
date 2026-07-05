@@ -5,7 +5,8 @@ Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** 
 SPEC v0.14.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
 + the night-of-2026-07-05 landings (rows 72-92: facets/fences/intake-trio/founding/design-sync —
 anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083) + the work-kind landing (SPEC v0.15.0,
-session 8: T-16/INV-22, rows M-084/M-085; headers re-pin at each milestone per M-1). Rows are organized
+session 8: T-16/INV-22, rows M-084/M-085; headers re-pin at each milestone per M-1) + the row-57 landing
+(SPEC v0.15.1, session 9: E-21/E-22, rows M-091/M-092). Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run, not once. [E-15]
@@ -172,6 +173,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-030 | A landing is reported in one plain-language line (position · what landed · what remains); never a report that only points at internal rows | T-7 | string | process — communicator rules 8/9; milestone audit | TODO |
+| M-092 | Batched questions arrive as ONE decision page (one card per pick, recommendation named, free-form room), answers archived in docs/decisions/ and harvested the same session; never a serialized chat questionnaire, never an answer left un-harvested | E-22 | string | `test_spec_names_decision_page` (SPEC clause + rule-10 mechanics in the shipped communicator SKILL.md) | BUILT |
 
 ### [node: templates]
 
@@ -198,6 +200,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-043 | Superseded files move to the attic during adoption; never silently replaced | A-4 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-044 | The version-control gate: init, .gitignore, pristine baseline, remote settled as a named deliverable — never closed on a mere recommendation | A-5 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-045 | On any version change the agent re-reads the changed SKILL.md + journals old → new; re-stats at every breakpoint; never coasts on a stale copy | A-7 | string | `test_adopt_phases_cite_spec` (text; behavior audits at M-1) | BUILT |
+| M-091 | install.sh copies every pack skill into the skills home, idempotently — an existing copy is backed up with a timestamp before overwrite; never a skill deleted, never a second run destroying the first | E-21 | string | `test_install_sh_installs_and_backs_up` (a REAL run against a temp home, twice) | BUILT |
 | M-046 | Adopt working artifacts live tracked in `.live-spec/adopt/`; never scattered into the host's own folders | A-8 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-047 | A cruft sweep is offered, listed, human-gated, regenerable-only; never silent and never authored content | A-9 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-071 | Adoption gives every unbacked live surface a human verdict — promote / quarantine / attic; never an unbacked surface silently registered as product | A-10 | string | `test_adopt_phases_cite_spec` (A-10 citation + verdict wording) | BUILT |
