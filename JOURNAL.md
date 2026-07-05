@@ -886,3 +886,13 @@ a copy would fork the truth), surfaced for veto. Both skills now name the pack r
 home, and the suite asserts the negative side: an in-skill templates/ dir is red by construction.
 A-7 sync line (via the new tool, its first real job): build-pipeline 0.2.10 → 0.2.11, spec-author
 0.1.9 → 0.1.10. Matrix M-097/M-098; suite 84 green; pack 0.8.15.
+
+## 2026-07-05 ~22:53, session 9 — row 68: communicator stops firing on every passing line
+
+The skill-creator eval had flagged it: the description said "reach for it before writing a status
+update" — so ANY status line loaded the whole skill. Narrowed to what it is for: decisions, landing/
+milestone reports (the movement-end report stays in by name — his standing rule), problems needing the
+human's word; with a stated NOT-side (mid-work status lines, internal notes, plain factual answers just
+get said). The over-trigger phrase is asserted GONE by the suite. Communicator 0.1.10 (synced, A-7
+line above); matrix M-099; eval re-run duty recorded per E-19 (prover J2). Suite 85 green; pack 0.8.16.
+Stage C's eval-tail trio (66, 67, 68) is complete.

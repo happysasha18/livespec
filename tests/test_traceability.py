@@ -941,3 +941,17 @@ class TestStandaloneTemplatePointers(unittest.TestCase):
             path = os.path.join(ROOT, "skills", skill_dir, "templates")
             self.assertFalse(os.path.isdir(path),
                              "in-skill template copies appeared in %s — D-4 forbids the fork" % skill_dir)
+
+
+class TestCommunicatorTrigger(unittest.TestCase):
+    """Row 68 (M-099): the communicator description fires on decisions and landing reports,
+    and says what it is NOT for — the eval caught it loading on every passing status line."""
+
+    def test_communicator_trigger_narrowed(self):
+        head = "".join(read("skills/communicator/SKILL.md").splitlines(True)[:8])
+        self.assertIn("NOT for a passing mid-work status line", head,
+                      "communicator description lost its NOT-side (row 68)")
+        self.assertIn("landing or milestone is REPORTED", head,
+                      "communicator description lost the narrowed report trigger")
+        self.assertNotIn("before writing a status update", head,
+                         "the over-trigger phrase is back — every status line would load the skill")
