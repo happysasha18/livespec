@@ -91,7 +91,9 @@ stop and show it.
     HTML page — one card per question with radio options, the recommendation marked "(recommended)"
     (rule 2), a free-form note field on every card (there is always room for an answer outside the
     options), and a **Download JSON** button. The file it saves is named
-    **`<project>-decisions-<YYYY-MM-DD>.json`** — the project name is part of the filename because
+    **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's SECOND and later pages append their
+    ordinal (`…-<date>-2.json`), set by the page author from the decision archive, so a browser never
+    invents an ugly " (1)" suffix (Alexander 2026-07-05) — the project name is part of the filename because
     several projects can run in parallel and their answer files land in the same Downloads folder
     (Alexander 2026-07-05); the JSON stamps when it was answered. Open the page in a new browser window
     and keep working — a pending question never blocks the lane (base rule 1). When the file appears:

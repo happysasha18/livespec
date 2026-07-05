@@ -110,6 +110,13 @@ a working skill still stands: its pointer here reads as plain advice.
     (rule 1). Promotion is not a merge: the feature enters at the spec step; the sketch is evidence, its
     code holds no rights. Opening a prototype home is a repo write of the assigned senior — never a
     worker's own move, never an outsider's (theirs is an inbox wish). (SPEC E-17, INV-17)
+17. **Irreversible means gone, not merely public.** Truly irreversible actions — spending money,
+   deleting data, sending to a person or an audience you cannot unsend from — always STOP for the
+   human's word, whatever the proactivity mode. A push to your own repository is NOT irreversible (it
+   reverts); it rides the mode and the project's own push gates. When unsure which side an action is
+   on, treat it as irreversible and ask — the criterion is "can we get back to before, ourselves,
+   losing nothing?" (Alexander 2026-07-05: money yes, deletion yes, a push no).
+
 
 ## The settings ladder
 

@@ -427,6 +427,21 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         tpl = re.sub(r"\s+", " ", read("templates/SPEC.template.md"))
         self.assertIn("Founding answers (B-2)", tpl, "SPEC template lost the founding-answers slot")
 
+    def test_night_batch_skill_rules(self):
+        # rows 79/81/82/87: worker briefs, excuses table, two one-liners, decision-file numbering
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("The brief is self-contained", bp, "build-pipeline lost the worker-brief rule")
+        self.assertIn("The excuses table", bp, "build-pipeline lost the excuses table")
+        self.assertIn("Size never picks the door", bp)
+        pp = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
+        self.assertIn("Report gaps, not taste", pp, "product-prover lost the anti-taste line")
+        base = read("skills/live-spec-base/SKILL.md")
+        self.assertRegex(base, r"(?m)^17\. \*\*Irreversible means gone, not merely public",
+                         "base rule 17 missing")
+        self.assertIn("A push to your own repository is NOT irreversible", base)
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("append their ordinal", cm, "communicator lost the decision-file numbering")
+
     def test_no_calques_rule(self):
         # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))

@@ -154,6 +154,20 @@ partial artifact, id/naming conflict). They do NOT catch a subtle SEMANTIC bug (
 still needs `product-prover` + a human's eyes. Enforce structure mechanically; reason about meaning with the
 prover. Verify-by-deed (step 8) and commit/push (step 9) both run the guardrails first; guidance and teeth agree.
 
+## The excuses table — read it the moment one of these crosses your mind
+
+The shortcuts that kill the method never announce themselves; they arrive as one of these thoughts.
+Each is a tripwire: thinking it means STOP and take the pipeline door you were about to skip.
+
+| The thought | Why it is a trap |
+|---|---|
+| "it's a one-liner / just a prototype" | The Room was "just to see" — it shipped hover-only with no phone layout and no spec. Size never picks the door; the tripwires do (base rule 15). |
+| "I'll write the spec after it works" | Spec-after-code documents what you built, not what was asked; the prover can no longer catch the difference (spec-author anti-pattern). |
+| "the human is in a hurry" | Urgency moves PRIORITY, never the door — a critical feature heads the queue, it still enters at the spec step (SPEC T-12). |
+| "the suite is green, ship it" | Green proves the facts the matrix knows; an unspecced surface has no rows, so green says nothing about it (SPEC INV-15). |
+| "asking would bother them" | Batched questions exist exactly for this; a silent guess costs a re-build, the batch costs one read (SPEC INV-4, INV-5). |
+| "долго объяснять — сам быстрее сделаю" | That is delegation dying, and the senior drowning in junior work; write the self-contained brief (the delegation rule above). |
+
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
   audit + a surface-composition check. Fix holes by the book; record the rest.
@@ -165,7 +179,12 @@ prover. Verify-by-deed (step 8) and commit/push (step 9) both run the guardrails
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →
   Sonnet; judgment/design → senior. The junior pastes RAW output (command + exit + failing lines) into a
-  persistent checkpoint file as it goes — that raw output is evidence, its prose is only a lead. See PLAYBOOK.
+  persistent checkpoint file as it goes — that raw output is evidence, its prose is only a lead. **The
+  brief is self-contained (the BMAD story-file lesson):** delegated work ships as one document embedding
+  the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and the
+  checkpoint path — the worker never hunts context, never interprets the spec, never decides. If writing
+  the brief means deciding something first, that decision is the senior's and happens BEFORE delegation
+  — "долго объяснять" is how delegation silently dies. See PLAYBOOK.
 - **Traceability is a test, not a vow.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
   RESOLVED that still carries the live marker — so drift is caught every commit, not once per MINOR.
