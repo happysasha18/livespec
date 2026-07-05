@@ -1,7 +1,7 @@
 ---
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # Product Prover
@@ -162,7 +162,8 @@ Check:
 - Is this a product spec, feature doc, HLD, LLD, or design proposal?
 - Does it describe a system with state, behavior, transitions — versus marketing copy, vision statements, or prose without operational content?
 - Is there enough material to extract a model?
-- **Does the doc claim to describe a SHIPPED system?** If so, require a reconciliation note (each surface → owning `file:line`, from the build-pipeline reconcile step). Without it, every finding is CONDITIONAL on the doc being current — say so, and flag any section describing a surface with no owning code/test as possibly-removed (a spec that outran an excision will otherwise "prove" dead behaviour).
+- **Does the doc claim to describe a SHIPPED system?** If so, require the architecture doc's node pins (each surface → owning `file:line`, written at the build-pipeline architecture step). Without them, every finding is CONDITIONAL on the doc being current — say so, and flag any section describing a surface with no owning code/test as possibly-removed (a spec that outran an excision will otherwise "prove" dead behaviour).
+- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line`, not prose. The paired SPEC.md must be in view — ownership is only checkable against the fact list it owns.
 
 Output one of:
 

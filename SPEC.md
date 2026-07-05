@@ -1,4 +1,4 @@
-# livespec — SPEC (v0.6, 2026-07-05)
+# livespec — SPEC (v0.7, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -81,8 +81,8 @@ interrupted — an arriving bug, critical included, joins the line, so at most o
 
 ## Starting a new project (bootstrap)
 
-Copy the templates (SPEC, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate → the first
-wish enters the queue → the pipeline runs from step 0. [B-1] The gate itself is an always-rule: **no
+Copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate
+→ the first wish enters the queue → the pipeline runs from step 0. [B-1] The gate itself is an always-rule: **no
 landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
 declined (recorded, not merely recommended), before the first landing. [INV-8]
 
@@ -191,14 +191,43 @@ cheapest sufficient tier does the job (haiku one-shot / sonnet multi-step / seni
 Whether the queue's size class fixes the tier mechanically or the senior may override is an open decision
 [D-2]. [ACT-3]
 
+## From the spec to the tests: two layers that must not be skipped
+
+The spec says WHAT the product is; tests prove facts about the shipped artifact. Between them live two
+documents that were once implicit — and an implicit layer is a lost layer (Alexander caught the gap
+2026-07-05: the pack taught a matrix template but not the layers that produce it).
+
+**The architecture doc (ARCHITECTURE.md)** — how the product is BUILT: a short list of named nodes
+(pipeline stages, modules, the owners of surfaces), one responsibility each, one name each — the
+one-surface-one-name rule applied to structure. Every spec fact is OWNED by exactly one node; in a live
+codebase every node pins to its owning `file:line` — so drafting the architecture IS where spec claims
+get reconciled against shipped reality (each pin comes from a command actually run, never from the doc's
+own prose). It is written from the proven spec (template: `ARCHITECTURE.template.md`) and — like the spec
+— it is PROVEN before anything derives from it: a product-prover pass with the architecture lens (every
+spec fact has an owning node · no node stands without spec backing · the seams between nodes are named).
+A large or surface-class wish updates the doc before the matrix is touched; a bug or small wish cites the
+existing node it lands in — the doc is re-proven when it CHANGES, not on every landing. [E-14]
+
+**The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
+Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,
+every fact gets at least one row, every row pins a test level — and the derivation closes with a
+**coverage validation**, a checklist actually walked: every spec anchor appears in ≥1 row · every
+artifact-inventory entry owns ≥1 rendered-level row · every visibility/layout/colour/interaction fact
+sits at level ≥ browser-computed · every node carries its negative-side rows [INV-6]. A fact with no row,
+or a row at a too-weak level, is a derivation defect — caught at derivation time, not by the user. [E-15]
+
+While both layers live, one thing holds: **no wish lands whose facts lack an owning architecture node and
+a matrix row at the right level** — the bridge from spec to tests is walked layer by layer, never jumped.
+[INV-15]
+
 ## The machines that hold the bounds [target]
 
 What keeps "it works" honest, each one a named machine:
 
-- **The matrix (TEST_MATRIX.md)** — one row per fact, each pinned to a test level; organized by
-  architecture node × spec fact once the architecture doc exists. [E-5] Every row states the positive AND
-  the negative side — what the fact does and what it must never do; the negative side is the regression
-  fence. [INV-6]
+- **The matrix (TEST_MATRIX.md)** — one row per fact, each pinned to a test level; organized architecture
+  node × spec fact, produced by the derivation method above [E-14, E-15]. [E-5] Every row states the
+  positive AND the negative side — what the fact does and what it must never do; the negative side is the
+  regression fence. [INV-6]
 - **The guardrails [target]** — the mechanical checks wired to the pre-push hook: completeness (against
   the surface registry) · tests-present · behaviour-traces-to-spec · declared-scope diff vs snapshot. [E-6]
 - **The snapshot [target]** — the saved artifact of the last accepted run (HTML, JSON, files, numbers —
@@ -309,6 +338,8 @@ meaning, this table is only the map.
 | E-11 | inbox: one new committed file per outside wish | Package repo |
 | E-12 | base skill: shared rules + defaults, stated once | One rulebook |
 | E-13 | settings ladder: host > personal > package default | Who decides what |
+| E-14 | architecture doc: named nodes own spec facts, pinned to file:line, proven | From spec to tests |
+| E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
@@ -328,6 +359,7 @@ meaning, this table is only the map.
 | INV-12 | ambiguous size/priority is asked at intake, never guessed | Throwing a wish |
 | INV-13 | one normative home per shared rule: the base skill | One rulebook |
 | INV-14 | no silent override; every profile line recorded + journaled | Who decides what |
+| INV-15 | no landing without an owning node + a right-level matrix row | From spec to tests |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |

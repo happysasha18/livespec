@@ -32,20 +32,21 @@ prior art we missed, open an issue — we would genuinely like to read it.
 
 1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (livespec's own `SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
-3. **Reconcile.** Map every spec claim to a real `file:line`. Spec drifts from code; fix the spec to the shipped truth, not the other way.
-4. **Matrix.** Derive `TEST_MATRIX.md` from the proven spec. One row per invariant/state/transition, each pinned to a test level (string / DOM / browser / pixel). Visibility and layout facts get level ≥ browser.
-5. **Test.** Write tests that assert the real shipped artifact — rendered widget, produced file, called function. Watch each new test fail first.
-6. **Code.** Implement until green. Delegate well-scoped mechanical work; keep judgment on the senior model.
-7. **Verify by deed.** Run it and see the result. Green = zero failures AND the skip-set is exactly the expected list.
-8. **Commit and show.** Commit when green. Docs travel with the change. Show the real render; push only after the human has reviewed it.
+3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning `file:line` — this is where the spec is reconciled with shipped reality (fix the spec to the truth, not the other way).
+4. **Prove the architecture** (`product-prover`, architecture lens) whenever the doc changed: every fact has an owning node, no node without spec backing, every seam named.
+5. **Test spec.** DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture: rows organized node × fact, each pinned to a test level (string / DOM / browser / pixel); visibility and layout facts get level ≥ browser; derivation closes with a coverage-validation checklist actually walked.
+6. **Test.** Write tests that assert the real shipped artifact — rendered widget, produced file, called function. Watch each new test fail first.
+7. **Code.** Implement until green. Delegate well-scoped mechanical work; keep judgment on the senior model.
+8. **Verify by deed.** Run it and see the result. Green = zero failures AND the skip-set is exactly the expected list.
+9. **Commit and show.** Commit when green. Docs travel with the change. Show the real render; push only after the human has reviewed it.
 
 Bug shortcut: `bug → matrix → test → code` (skip spec/prove if the fact is already in SPEC; update the spec sentence if it isn't).
 
 ```mermaid
 flowchart LR
   W([wish, in passing]) --> I[0 intake:<br/>classify + queue row]
-  I --> S[1 spec delta] --> P[2 prove] --> R[3 reconcile<br/>with code] --> M[4 matrix]
-  M --> T[5 tests,<br/>red first] --> C[6 code<br/>to green] --> V[7 verify by deed<br/>+ guardrails] --> L[8 land:<br/>commit + report]
+  I --> S[1 spec delta] --> P[2 prove] --> R[3 architecture<br/>nodes pinned to code] --> PA[4 prove<br/>architecture] --> M[5 test spec:<br/>derive matrix]
+  M --> T[6 tests,<br/>red first] --> C[7 code<br/>to green] --> V[8 verify by deed<br/>+ guardrails] --> L[9 land:<br/>commit + report]
   L -. milestone .-> A[full re-prove + matrix audit<br/>+ doc compaction]
 ```
 

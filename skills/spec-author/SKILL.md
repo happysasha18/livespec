@@ -1,7 +1,7 @@
 ---
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
-version: 0.1.1
+version: 0.1.2
 ---
 
 # Spec Author
@@ -144,8 +144,10 @@ So, for every stateful surface, before you call its section done:
 4. **Hand off to `product-prover` on the WHOLE spec** — not just your delta. The prover catches a
    cross-section hole only when *both* sides of the seam are in the document; a surface you added in
    isolation, or left unlinked, is invisible to it. So re-prove the whole spec whenever a surface is added.
-5. **Then derive** the test matrix and tests from the proven spec, then write code (`spec → prove → matrix
-   → test → code`). The spec leads; code chases it.
+5. **Then walk the two layers to the tests** — the architecture doc (nodes owning the spec's facts,
+   proven with the architecture lens), then the matrix DERIVED node × fact (`spec → prove → architecture
+   → prove architecture → matrix → test → code`; build-pipeline owns the steps). The spec leads; code
+   chases it.
 
 ## The completeness pass — run before declaring a section done
 
