@@ -505,6 +505,15 @@ What keeps "it works" honest, each one a named machine:
   gated by the human because a sync PUBLISHES outside the machine. The pack itself, a text product,
   never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis [T-16] — the
 machine applies to product-kind work on a visual host; every other kind stands it down by name [INV-22]. [E-18]
+- **The skill evals** — the pack's own skills are tested like any shipped artifact, at the level that
+  matters for a skill: BEHAVIOUR. Each working skill owns at least one recorded eval — a scenario where
+  a bare session (the skill not loaded) demonstrably errs and the skill's text corrects it: the skill's
+  own red-first test, proven red at authoring with a dated run record, never asserted from belief. The
+  eval home is `evals/` in the pack repo — one file per skill stating the scenario prompt, the recorded
+  bare failure (date + run record), what a with-skill run must show, and the checks a re-run walks.
+  Evals re-run at milestones (the M-1 list carries the item) and at any landing that changes a skill's
+  own BEHAVIOUR — a bump that only sweeps a pin or version line owes no re-run. The law binds from this
+  landing: a working skill without its eval is a defect the milestone audit flags. [E-19]
 - **The surface registry [target]** — one named list per host of every user-facing surface, and the
   PREFERRED form is executable: the list lives as a declared map inside a completeness-gate test, so a
   mismatch IS a failing test in both directions (rendered-but-unregistered · registered-but-empty); the
@@ -559,7 +568,7 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
   in, re-check skill freshness [A-7]. [M-2]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
-  against the CURRENT spec + architecture) + surface-composition check + doc
+  against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] + doc
   COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly;
   queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
   re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
@@ -634,6 +643,7 @@ meaning, this table is only the map.
 | E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
 | E-17 | prototype: fenced home, visible label | A prototype is not the product |
 | E-18 | design-sync: optional machine, host-profile switch, human-gated (publishes) [target] | Machines |
+| E-19 | skill evals: per working skill one scenario, red proven bare, corrected by the skill; re-run at milestones and behaviour changes | Machines |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |

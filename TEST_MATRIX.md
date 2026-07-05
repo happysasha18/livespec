@@ -80,6 +80,9 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Queue archives | `docs/queue-archive/` | records dir (non-empty) | `test_artifact_inventory` |
 | Audit records | `docs/audit/` | records dir (non-empty) | `test_artifact_inventory` |
 | Prior-art survey | `docs/prior-art.md` | shipped text | `test_artifact_inventory` |
+| Skill evals — method + honest boundary | `evals/README.md` | shipped text | `test_artifact_inventory`, `test_eval_readme_states_honest_boundary` |
+| Skill evals — one per working skill | `evals/` | shipped text dir | `test_skill_evals_present` (self-closing over skills/) |
+| Eval run records | `docs/evals/` | records dir (non-empty) | `test_artifact_inventory` |
 
 ---
 
@@ -146,6 +149,13 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-068 | Feature tripwires are hard and ordered (surface/state/interaction/[target]/unbacked behaviour ⇒ feature); the verdict outranks a casual label, a re-doored wish takes no preemption, the door re-fires mid-work; never a wish hand-built past the pipeline for sounding small | INV-16 | string | `test_spec_states_door_procedure`, `test_base_rules_door_and_prototype` | BUILT |
 | M-084 | The work-kind is named at intake: product · infra · skill · prose, one kind per wish, called from what the wish PRODUCES; a host with ONE usual kind may record a profile default; the vocabulary is curated — a fifth joins only with a named mis-served wish; never a guessed kind (uncallable ⇒ asked, like size) | T-16 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
 | M-085 | The kind scales each running step's FORM (per-kind table's one home: build-pipeline SKILL.md); at landing every door-granted step has APPLIED or STOOD DOWN by name in the report; an unresolved kind scales nothing down; never a silent skip, and never the safety net (door law, mandatory sentences, ask-at-intake) touched by a kind | INV-22 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
+
+### [node: skill-evals]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-086 | Every working skill owns an eval file: scenario · criteria · dated bare-run record (red PROVEN, never asserted) · re-run instructions; the required set derives from skills/ itself, so a fifth working skill is red until its eval exists; never a skill without its eval | E-19 | string | `test_skill_evals_present` | BUILT |
+| M-087 | The eval method states its honest boundary (bare = bare-of-the-SKILL, the machine loader still feeds method) and the authoring rule (the scenario speaks like the human — no enumerated facet hints); run records are dated and append-only; evals re-run at milestones (M-1 list) and at behaviour-changing skill landings; never a contaminated red sold as clean | E-19 | string | `test_eval_readme_states_honest_boundary`; re-run discipline: milestone audit (M-1) | BUILT |
 
 ### [node: communicator]
 

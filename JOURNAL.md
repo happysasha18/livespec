@@ -688,3 +688,24 @@ pin sweep is red by construction. Matrix rows M-084/M-085; suite 62 → 64 green
 skills before the code step. Prover record: docs/prover/2026-07-05-row86.md (CROSS-LINK, 3 findings, all
 folded same pass). This landing's own report dogfoods INV-22: kind = skill; prove-architecture stood
 down (assignment only, E-14's rule); design-sync/snapshot stood down (text product, [target] anyway).
+
+## 2026-07-05 late evening (~22:00, session 8) — row 94: the skills got their own failing tests
+
+The evals machine (SPEC E-19, pack 0.8.1 → 0.8.2): each working skill now owns a recorded scenario
+where a session without it errs and the skill corrects — superpowers' "no skill without a failing
+test", made ours. Eight real runs tonight (four bare + four with-skill Sonnet workers), records in
+docs/evals/2026-07-05-first-run/, eval files in evals/, self-closing suite check (a fifth working skill
+goes red until its eval exists). The reds that survived scoring: spec-author's bare run decided ~10
+product questions SILENTLY (zero tags, zero questions — the Room's hole, reproduced in vitro);
+product-prover's bare run wrote an essay with no severities and missed the end-of-track dead-end the
+skilled run caught; build-pipeline's bare run planned to PARK on the design question (INV-4 inverted)
+and never named door/kind; communicator's bare run shipped no map and let version numbers do the
+talking. The finding of the night (folded into evals/README): on this machine there is NO bare session
+— the thin loader feeds the method to every agent (the "bare" bug plan cited "per this project's own
+discipline"!), so a red here is bare-of-the-SKILL, honest boundary stated, per-criterion scoring with
+MET BARE never claimed as the skill's win. Second lesson folded: a scenario that enumerates facet hints
+does the skill's job (the first spec-author prompt did — recorded as contamination, de-contamination
+scheduled for the next re-run). M-1 now carries the evals re-run; architecture gained the skill-evals
+node (re-proven, record docs/prover/2026-07-05-row94.md); suite 64 → 66 green. This landing's own
+INV-22 line: kind = infra; facets N/A (no visible surface, said aloud); design-sync/snapshot stand
+down; prove-architecture APPLIED (node add).

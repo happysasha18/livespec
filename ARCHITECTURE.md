@@ -53,6 +53,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | guardrails [target] | mechanical pre-push checks + surface registry + CI mirror; first slice LIVE (the pack's own gates + opt-in fence, hooks installed), host-facing checks + registry + CI still [target] (ROADMAP rows 14, 55) | E-6, E-10, M-5, INV-17 | `guardrails/pre-push:1` (gates), `guardrails/check-prototype-fence.sh:1` (prototype fence, gate e), `guardrails/pre-commit:1` (commit fence), `guardrails/install.sh:1`, `tests/test_guardrails.py:1`; registry/CI: — |
 | snapshot [target] | saved baseline of the last accepted run; declared-scope diff (ROADMAP row 55) | E-7, A-6 | — (spec'd, not yet code) |
 | design-sync [target] | optional machine: declared components of a landing synced to the team's design project, human-gated (ROADMAP row 93) | E-18 | — (spec'd, not yet code) |
+| skill-evals | behaviour tests for the pack's own skills: per working skill one scenario, red proven bare, re-run at milestones (added session 8, row 94 — node add re-proven, record `docs/prover/2026-07-05-row94.md`) | E-19 | `evals/README.md:1` (the method + honest boundary), `evals/` (one file per working skill), `tests/test_traceability.py` (`test_skill_evals_present`, self-closing over skills/) |
 
 ## Seams
 
@@ -72,6 +73,8 @@ crosses it and which side owns the format.
 | checks → push [target] | guardrails · build-pipeline | pre-push verdict (red blocks the push) | guardrails |
 | baseline → checks [target] | snapshot · guardrails | declared-scope diff vs baseline | snapshot |
 | sync → design project [target] | design-sync · the human | a landing's DECLARED components as rendered cards; every sync passes the human's publish gate (base rule 17, ACT-1) | design-sync |
+| evals ↔ working skills | skill-evals · the four working skills | each scenario's green-criteria against the SKILL.md's promised behaviour | skill-evals |
+| evals → milestone gate | skill-evals · package-docs | the re-run item in M-1's list + dated run records in docs/evals/ | package-docs (the gate list's home is the spec) |
 
 ## Prover record
 

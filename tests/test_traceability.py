@@ -576,3 +576,32 @@ class TestDocRenderer(unittest.TestCase):
             body = open(out).read()
             for frag in ("<h1>Title</h1>", "<strong>bold</strong>", "<table>", "<td>2</td>"):
                 self.assertIn(frag, body)
+
+
+class TestSkillEvals(unittest.TestCase):
+    """SPEC E-19: every working skill owns an eval — self-closing over skills/ (row 94)."""
+
+    def working_skills(self):
+        return sorted(d for d in os.listdir(os.path.join(ROOT, "skills"))
+                      if os.path.isdir(os.path.join(ROOT, "skills", d))
+                      and d != "live-spec-base")
+
+    def test_skill_evals_present(self):
+        skills = self.working_skills()
+        self.assertGreaterEqual(len(skills), 4)
+        for s in skills:
+            path = "evals/%s.md" % s
+            self.assertTrue(os.path.exists(os.path.join(ROOT, path)),
+                            "working skill %s has no eval (%s) — E-19 binds" % (s, path))
+            body = read(path)
+            for section in ("## Scenario", "## Criteria", "## The red", "## Re-run"):
+                self.assertIn(section, body, "%s lost its %s section" % (path, section))
+            self.assertRegex(body, r"bare run: \d{4}-\d{2}-\d{2}",
+                             "%s carries no dated bare-run record — red must be PROVEN" % path)
+
+    def test_eval_readme_states_honest_boundary(self):
+        body = read("evals/README.md")
+        self.assertIn("bare-of-the-SKILL", body,
+                      "evals/README lost the loader-contamination boundary")
+        self.assertIn("the scenario speaks like the human", body,
+                      "evals/README lost the no-enumerated-hints authoring rule")

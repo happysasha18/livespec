@@ -1,0 +1,46 @@
+# Eval — spec-author (SPEC E-19)
+
+## Scenario
+
+Both arms get the same task; the with-skill arm first reads `skills/spec-author/SKILL.md` and works by
+it. Prompt (verbatim):
+
+> Write the SPEC.md section for this new feature of a photo-gallery web app: "clicking a photo opens a
+> lightbox — the photo shown enlarged, with prev/next arrows".
+> Context you know about the app: it has two views (a compact grid and a detailed list), it is used on
+> desktop and on phones, and the same gallery can be open in two browser windows at once. Photos can be
+> renamed or deleted by other tools while the app is open.
+
+**Known contamination (first run, 2026-07-05):** this prompt enumerates facet hints (views, phones, two
+windows, renamed/deleted) — it steered the bare run to exactly those facets, so their MET BARE scores
+below are partly the prompt's doing, not the session's. The next re-run rewrites the scenario per the
+authoring rule (evals/README.md): the wish sentence only, context discoverable in the world.
+
+## Criteria
+
+| Criterion (the skill's promise) | bare | with-skill |
+|---|---|---|
+| No silent micro-decisions: every invented choice is ⟨DECIDE⟩-asked or `[default]`-tagged and BATCHED back (INV-5/INV-18) | RED — ~10 behaviours decided silently (no-wraparound, resolve-at-press, per-window state, close set…), zero tags, zero questions | GREEN — one genuine ⟨DECIDE⟩ asked (photo identity), five `[default]`s tagged in place and surfaced as one batch |
+| Regression fences open the delta when a live surface is touched (T-14) | RED — absent | GREEN — fences first, with an honest note that citations need the real anchors |
+| The delta closes with non-goals + a success measure (INV-20/21) | RED — absent | GREEN — both present, measure `[default]`-tagged |
+| Facet sweep completeness: accessibility, performance envelope, visual hierarchy, empty/error/loading (T-13) | RED — a11y partial (keys only, no focus trap/contrast), no performance envelope, no hierarchy | GREEN — focus trap + contrast + alt text, preload envelope, hierarchy sentence |
+| Composition across canonical axes stated explicitly (C-1), incl. persistence/reopen | MET BARE (view, two-windows, missing-source — prompt-fed; reopen covered) | GREEN — full axis walk incl. explicit mode/tier N/A |
+| Use-case-first shape, anchors trail, index closes the doc | MET BARE (loader-fed: scenario prose + formal index) | GREEN |
+
+## The red
+
+The bare run (bare run: 2026-07-05, Sonnet worker, zero tool uses — record
+`docs/evals/2026-07-05-first-run/bare-spec-author.md`) wrote a structurally impressive spec — and
+decided roughly ten product questions SILENTLY: no-wraparound at the ends, resolve-at-press-time,
+per-window lightbox state, the close-trigger set — none marked, none asked, exactly the hole the Room
+shipped through. It also skipped fences, non-goals, the success measure, the performance envelope, and
+most of accessibility. The with-skill run (same day, record `with-skill-spec-author.md`) flipped every
+one of those: the invented choices became one ⟨DECIDE⟩ plus five tagged `[default]`s surfaced as a
+batch, fences opened the delta, the two closing sentences closed it.
+
+## Re-run
+
+One Sonnet worker per arm. Bare arm: the scenario + "do not invoke any tools or skills". With-skill arm:
+"First read skills/spec-author/SKILL.md and work strictly by it" + the same scenario. BEFORE the next
+run: de-contaminate the prompt (drop the enumerated hints; put the context in a small repo fixture the
+scenario points at). Score per criterion; append the dated record to `docs/evals/`.
