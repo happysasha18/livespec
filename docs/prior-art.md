@@ -14,6 +14,6 @@ Two surveys, run before the first public push; raw notes in the two files beside
 - Mid-flight adopt → proven SPEC → pipeline attached: partial, scattered (OpenSpec onboard,
   reverse-engineering-skill); no single pack.
 - **The integration — the spec as single authority binding intake, scope, proof and adoption: found nowhere.
-  That is livespec's claim, and the only one we make.**
+  That is live-spec's claim, and the only one we make.**
 
 Know prior art we missed? Open an issue — genuinely welcome.

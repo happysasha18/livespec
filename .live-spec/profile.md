@@ -1,4 +1,4 @@
-# Host profile — livespec itself
+# Host profile — live-spec itself
 
 Overrides for this repo only; they beat the personal profile and the package defaults (settings ladder,
 SPEC E-13). Every line here is a recorded override, never a silent divergence (SPEC INV-14).

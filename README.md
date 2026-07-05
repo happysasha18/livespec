@@ -1,4 +1,4 @@
-# livespec — a continuous, self-proving Agentic Development Life Cycle
+# live-spec — a continuous, self-proving Agentic Development Life Cycle
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
@@ -6,16 +6,16 @@ A continuous, self-proving development pipeline for building with AI agents: thr
 
 ---
 
-## Why livespec, when [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [spec-kit](https://github.com/github/spec-kit) and [Kiro](https://kiro.dev) exist
+## Why live-spec, when [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [spec-kit](https://github.com/github/spec-kit) and [Kiro](https://kiro.dev) exist
 
 They are good, and they share the right instinct: spec before code. Use them if their shape fits your work.
-livespec is built for a different shape of work — **continuous**: you throw wishes in passing, mid-anything,
+live-spec is built for a different shape of work — **continuous**: you throw wishes in passing, mid-anything,
 and each one enters the process in a sentence, not a planning session; the queue is persistent across
 sessions; execution runs asynchronously while you keep talking.
 
 Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
 Chromatic). Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails)
-diffs a run's actual changes against a per-task file declaration; credit where due. livespec's one claim is
+diffs a run's actual changes against a per-task file declaration; credit where due. live-spec's one claim is
 the **integration**: the spec is the single authority binding the whole loop — intake validates every wish
 against it, scope declarations derive from it (not from an ad-hoc brief), a prover skill formally reviews
 it, adoption reverse-generates it from an existing codebase, and the development process itself is specced
@@ -30,7 +30,7 @@ prior art we missed, open an issue — we would genuinely like to read it.
 
 **Step 0 — Intake.** A wish arrives in plain words. Classify it (new feature / bug / refactor / removal / docs). Determine where it enters the pipeline.
 
-1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (livespec's own `SPEC.md` is the reference shape).
+1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
 3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning `file:line` — this is where the spec is reconciled with shipped reality (fix the spec to the truth, not the other way).
 4. **Prove the architecture** (`product-prover`, architecture lens) whenever the doc changed: every fact has an owning node, no node without spec backing, every seam named.
@@ -74,8 +74,8 @@ No CLI — you drive it in plain words, in your Claude session:
 
 | You say | What happens |
 |---|---|
-| *"attach livespec to this project"* (new) | templates copied, version-control gate, queue starts |
-| *"attach livespec — existing project, adopt"* | orient (reads ALL your docs first) → inventory → re-engineer → attic → baseline |
+| *"attach live-spec to this project"* (new) | templates copied, version-control gate, queue starts |
+| *"attach live-spec — existing project, adopt"* | orient (reads ALL your docs first) → inventory → re-engineer → attic → baseline |
 | any wish, in passing, mid-anything | intake: queue row + spec-delta + only YOUR questions back, batched |
 | *"status"* | position on the map: what landed, what's in the lane, what waits on you |
 | *"publish / push"* | your gate — nothing outward-facing moves without your word |
@@ -86,7 +86,7 @@ No CLI — you drive it in plain words, in your Claude session:
 
 | Skill | Role |
 |---|---|
-| `livespec-base` | The shared rulebook — the working rules every pack skill references (stated once, so copies can't drift) plus the settings ladder: package defaults → personal profile (about you: language, proactivity) → per-host override, every override written down, never silent |
+| `live-spec-base` | The shared rulebook — the working rules every pack skill references (stated once, so copies can't drift) plus the settings ladder: package defaults → personal profile (about you: language, proactivity) → per-host override, every override written down, never silent |
 | `spec-author` | Writes and grows the living spec — entities, states, transitions, actors, invariants, cross-section composition |
 | `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants. Also maintained as a [standalone repo](https://github.com/happysasha18/product-prover) — it works on any product document, no pipeline required |
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |

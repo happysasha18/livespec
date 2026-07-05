@@ -1,15 +1,15 @@
 # ADOPT — Mid-flight adoption procedure
 
-How to attach livespec to an existing codebase — at the start or in the middle. This is the executable
+How to attach live-spec to an existing codebase — at the start or in the middle. This is the executable
 projection of SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
 has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
 
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
 
-**The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a livespec
-defect (a stale phase here, a template gap) does NOT edit the livespec repo — it drops ONE new file into
-livespec's `inbox/` (see `inbox/README.md`) and records the finding in the HOST's own journal. Learned the
-hard way: the pilot run edited livespec directly while another session was mid-flight in the same repo.
+**The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a live-spec
+defect (a stale phase here, a template gap) does NOT edit the live-spec repo — it drops ONE new file into
+live-spec's `inbox/` (see `inbox/README.md`) and records the finding in the HOST's own journal. Learned the
+hard way: the pilot run edited live-spec directly while another session was mid-flight in the same repo.
 
 ---
 
@@ -49,10 +49,10 @@ Done when: the sweep was offered and either declined or executed exactly as appr
 
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
-these in livespec shape** — then adoption is light and you rewrite nothing.
+these in live-spec shape** — then adoption is light and you rewrite nothing.
 
-Produce a **document digest** (`.livespec/adopt/orient_digest.md` — ALL adopt working artifacts live in
-`.livespec/adopt/`, tracked in git as the run's audit trail, never in the host's own folders; SPEC A-8):
+Produce a **document digest** (`.live-spec/adopt/orient_digest.md` — ALL adopt working artifacts live in
+`.live-spec/adopt/`, tracked in git as the run's audit trail, never in the host's own folders; SPEC A-8):
 per doc — kind (spec/roadmap/journal/notes/report/…) · one-paragraph what-it-says · CURRENT or STALE (and
 why) · what it overlaps/duplicates.
 
@@ -71,7 +71,7 @@ Done when: every existing document has a digest entry.
    isn't registered is RED.
 3. List every significant **data entity** (from filenames, JSON keys, class names, tables, config).
 
-Record in `.livespec/adopt/inventory.md` (one line per item; A-8 home), then lift the surfaces into
+Record in `.live-spec/adopt/inventory.md` (one line per item; A-8 home), then lift the surfaces into
 `SURFACE_REGISTRY.md`.
 
 Done when: the inventory exists and every surface in the registry has a real `file:line` (or is marked
@@ -79,7 +79,7 @@ Done when: the inventory exists and every surface in the registry has a real `fi
 
 ---
 
-## Phase 3 — Re-engineer existing documents into livespec shapes (SPEC A-3)
+## Phase 3 — Re-engineer existing documents into live-spec shapes (SPEC A-3)
 
 Turn what exists into the canonical set — **keeping original claims, marking them unverified**:
 - an existing spec → `SPEC.md` sections (entities / states & transitions / actors / invariants /
@@ -89,7 +89,7 @@ Turn what exists into the canonical set — **keeping original claims, marking t
 - existing tests → matrix rows citing them at their real level.
 - an existing roadmap/TODO → queue rows in `ROADMAP.md`.
 
-**Provenance (SPEC C-1).** Mark each document `native-livespec` (authored in the method) or
+**Provenance (SPEC C-1).** Mark each document `native-live-spec` (authored in the method) or
 `re-engineered-from-existing`. A re-engineered claim is **unverified until reconciled** — pinned to
 `file:line` or removed at the FIRST landing that touches its surface, and all remaining ones at the first
 milestone. A host authored entirely in the method (like the pilot) has no reconcile backlog beyond its own
@@ -131,10 +131,10 @@ Done when: `TEST_MATRIX.md` has a row per spec invariant, each with a level, all
 
 ## Phase 6 — Attach record & incremental from here (SPEC A-7)
 
-1. Record installed skill versions in `.livespec/` (every pack SKILL.md carries `version:` frontmatter and
-   the package a root `VERSION` file — SPEC M-7) and seed `.livespec/profile.md` — the HOST's overrides
+1. Record installed skill versions in `.live-spec/` (every pack SKILL.md carries `version:` frontmatter and
+   the package a root `VERSION` file — SPEC M-7) and seed `.live-spec/profile.md` — the HOST's overrides
    only; settings about the human (language, proactivity) belong in their personal profile
-   (`~/.claude/livespec/profile.md`), which this host file overrides per the settings ladder (SPEC E-13).
+   (`~/.claude/live-spec/profile.md`), which this host file overrides per the settings ladder (SPEC E-13).
    Mode/trust set only on the human's word (INV-9).
 2. Write the run's JOURNAL entry (what landed · why · provenance · the remote outcome (exists/declined) ·
    any findings held for the human).

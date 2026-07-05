@@ -1,4 +1,4 @@
-# livespec — SPEC (v0.7, 2026-07-05)
+# live-spec — SPEC (v0.7, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -11,7 +11,7 @@ templates, the adoption procedure text, the inbox, this spec and queue. Target (
 [E-6], the snapshot machinery [E-7], the model router [ACT-3], and therefore full self-enforcement [M-4].
 This spec never claims shipped what isn't — sections below marked [target] await their row. [S-0]
 
-## What livespec is
+## What live-spec is
 
 A package a software project attaches to — at the start or in the middle — to work by one discipline:
 wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
@@ -21,7 +21,7 @@ build-pipeline, communicator), document templates, an adoption procedure, and a 
 guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
-registry, and a `.livespec/` folder (profile, checkpoints, installed-skill versions). [E-1]
+registry, and a `.live-spec/` folder (profile, checkpoints, installed-skill versions). [E-1]
 
 ## Throwing a wish
 
@@ -98,9 +98,9 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 2. **Inventory** — code, user-facing surfaces (seeding the host's surface registry [E-10]), and the
    document set from the orient pass, listed with owners (file:line for surfaces). [A-2] Adoption's
    working artifacts — the orient digest, this inventory, reconcile notes — live in the host's
-   `.livespec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own
+   `.live-spec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own
    folders (the pilot polluted the host's `data/`). [A-8]
-3. **Re-engineer the existing documents into livespec shapes** — an existing spec becomes SPEC.md sections
+3. **Re-engineer the existing documents into live-spec shapes** — an existing spec becomes SPEC.md sections
    (original claims kept, marked unverified); existing tests become matrix rows citing them at their real
    level; an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
    unreconciled. An unverified claim is reconciled (pinned to file:line, or removed) at the FIRST landing
@@ -123,7 +123,7 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 6. **Baseline snapshot [target]** — render/produce the current artifacts as they are and save them; this
    is the diff baseline the snapshot machinery [E-7] will guard. [A-6]
 7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
-   installed skill versions are recorded in `.livespec/` at attach time. **On any version change (livespec
+   installed skill versions are recorded in `.live-spec/` at attach time. **On any version change (live-spec
    or any installed skill), the agent RE-READS the changed SKILL.md before continuing** — never coasts on
    the stale in-memory version — and writes a one-line journal note naming old → new. The check is not
    event-only: at every safe breakpoint [M-2] the agent re-stats the installed skills and the package on
@@ -138,8 +138,8 @@ a checkpoint after a cut-off. Until now each skill carried its own near-copy of 
 drift (the pack's own sweep caught the anchor convention told two ways, and the concurrent-edit fence
 stated only in the adoption text while every skill that writes shared files needs it).
 
-**So the shared rules live ONCE, in the base skill** — the pack's fifth skill and shared rulebook (folder
-name: an open pick [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
+**So the shared rules live ONCE, in the base skill** — the pack's fifth skill and shared rulebook (folder:
+`live-spec-base`; the pack-structure half of the question is still open [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
 package's default settings [E-13]; each working skill opens with one line naming the base skill and the
 base version it was written against — a pin the landing that bumps the base sweeps in the same session,
 never leaves stale — and REFERENCES the shared rules instead of restating them. A working
@@ -158,7 +158,7 @@ convenience.** Restatements older than the base skill are pruned at milestones t
 own working contract [INV-9]. [ACT-1] That contract is what the settings ladder RESOLVES to (next
 paragraph): the lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language,
 domain vocabulary — live in your personal profile and follow you everywhere; the **host profile** at
-`.livespec/profile.md` narrows them for one project when you say so [E-8]. Communicator reads the resolved
+`.live-spec/profile.md` narrows them for one project when you say so [E-8]. Communicator reads the resolved
 contract, not any single file, before every human-facing exchange [E-13]. **Mode and trust are written
 ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
 level.** [INV-9]
@@ -167,7 +167,7 @@ level.** [INV-9]
 on exactly one of three steps: the **package defaults** — each setting's out-of-the-box value, stated in
 the base skill beside the rules it tunes [E-12]; your **personal profile** — settings about YOU that
 follow you across every project (language: docs and commits vs conversation · proactivity mode · trust ·
-your domain vocabulary), one file per human at `~/.claude/livespec/profile.md` (home is an open pick
+your domain vocabulary), one file per human at `~/.claude/live-spec/profile.md` (home is an open pick
 [D-5]); and the **host profile** — settings about THIS project [E-8]. Resolution reads up the ladder:
 host beats personal beats package default. A setting belongs to the step it describes — about the human →
 personal; about the project → host; a host line may override a personal one only on your word for that
@@ -179,14 +179,14 @@ never an error. [E-13]
 **No override is ever silent.** An override exists only as a written line in its profile file, and
 setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the
 package's for a default change. This is the no-silent-micro-decisions rule [INV-5] applied to settings;
-livespec's own push gate [M-6] is the worked example: the package default says a full prover pass before
-a MINOR bump, and livespec's own host contract tightens it to "before every push" — recorded, visible,
+live-spec's own push gate [M-6] is the worked example: the package default says a full prover pass before
+a MINOR bump, and live-spec's own host contract tightens it to "before every push" — recorded, visible,
 never assumed. [INV-14]
 
 **The senior agent** owns judgment: spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
 **Workers (tiered) [router: target]** own mechanical execution, with persistent checkpoint files in the
-host's `.livespec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); the
+host's `.live-spec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); the
 cheapest sufficient tier does the job (haiku one-shot / sonnet multi-step / senior judgment), budget-aware.
 Whether the queue's size class fixes the tier mechanically or the senior may override is an open decision
 [D-2]. [ACT-3]
@@ -240,23 +240,23 @@ What keeps "it works" honest, each one a named machine:
 
 ## The package repo: who may write, and two sessions at once
 
-livespec eats its own cooking — this spec, this queue, these rules govern livespec's own development
+live-spec eats its own cooking — this spec, this queue, these rules govern live-spec's own development
 [target until the guardrails land: enforcement becomes mechanical with ROADMAP row 3; until then the
 discipline is followed by hand and says so]. [M-4] That makes its repo a shared surface, and one evening
 of two parallel sessions taught us the rules:
 
-**Only a session you assigned to livespec itself writes this repo** (spec, queue, journal, skills,
+**Only a session you assigned to live-spec itself writes this repo** (spec, queue, journal, skills,
 templates, adopt procedure). Every other session — a host adopt run, a skill install, anything that merely
 reads the package — is read-only here, with exactly one exception: creating a new wish file in the inbox.
 The test is crisp: if the session cannot say "the human asked ME, in this conversation — or via a standing
-routine the human created FOR livespec — to change livespec", it does not write. A host run's story lives
+routine the human created FOR live-spec — to change live-spec", it does not write. A host run's story lives
 in the HOST's journal, never here. [INV-10]
 
-**The inbox (inbox/)** is the parallel-safe intake door for wishes born outside a livespec session: one
+**The inbox (inbox/)** is the parallel-safe intake door for wishes born outside a live-spec session: one
 NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, …), a few plain lines,
 never an edit to an existing file — creating a fresh file cannot collide, shared files can. The outsider
 COMMITS its one new file (a commit touching inbox/ only, message naming the source) — that commit is
-inside the read-only exception. [E-11] A livespec session sweeps the inbox as its FIRST act and harvests
+inside the read-only exception. [E-11] A live-spec session sweeps the inbox as its FIRST act and harvests
 each file into a queue row — a wish must not wait durably-recorded but operationally invisible; the
 harvest commit removes the file (git history keeps it — this internal removal is not an attic case, which
 protects HOST files). So "spoken means it exists" holds without the outside session touching the queue. [T-10]
@@ -265,7 +265,7 @@ protects HOST files). So "spoken means it exists" holds without the outside sess
 against what it last read. If HEAD moved or the tree holds changes it did not make: STOP, re-read the
 changed files, and only then proceed surgically — or back off to the inbox. New files under inbox/ are the
 expected benign case, not a fence trip. Never push while another session is known to be live in the repo —
-push coordination belongs to the human. Applies to livespec AND to any host repo two sessions might share
+push coordination belongs to the human. Applies to live-spec AND to any host repo two sessions might share
 (the concurrency axis of the composition rule, made mechanical). [INV-11]
 
 ## The rhythm: breakpoints, milestones, pushes
@@ -283,13 +283,13 @@ push coordination belongs to the human. Applies to livespec AND to any host repo
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
   which roadmap" is answerable. [M-3]
 - **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a `version:`
-  line in its SKILL.md frontmatter. A host: the installed set recorded in `.livespec/` at attach and on
+  line in its SKILL.md frontmatter. A host: the installed set recorded in `.live-spec/` at attach and on
   every update. So the freshness check [A-7] compares version against version, not just file times, and
   its "old → new" journal note is finally writable. [M-7]
 - **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
   mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source of
   truth — CI runs them, never redefines them. (ROADMAP row 14.) [M-5]
-- **Push gate for livespec itself** — this repo is public and is the method's own flagship, so EVERY push
+- **Push gate for live-spec itself** — this repo is public and is the method's own flagship, so EVERY push
   is preceded, in the same session, by (a) the concurrent-edit fence [INV-11] and (b) a fresh whole-spec
   re-check: a product-prover pass over SPEC.md as it stands, its record landing in docs/prover/ before the
   push (record name `YYYY-MM-DD[-suffix].md`; suffix mandatory when the date's file exists). Findings that
@@ -301,7 +301,7 @@ push coordination belongs to the human. Applies to livespec AND to any host repo
 
 Every stateful surface of a host is composed across the canonical axes (view · mode · tier · viewport ·
 persistence/reopen · concurrency where real) — and adoption adds one axis of its own: **document
-provenance** (native-livespec × re-engineered-from-existing), because a re-engineered claim behaves
+provenance** (native-live-spec × re-engineered-from-existing), because a re-engineered claim behaves
 differently (unverified until reconciled per the adoption rules [A-3]) from a native one. [C-1]
 
 ## Open decisions
@@ -312,10 +312,14 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
   may override per wish (current pick: router proposes, senior may override, override is logged). [D-2]
 - ⟨DECIDE⟩ snapshot retention: last-only (current pick) vs last-N — revisit when a diff dispute needs
   history. [D-3]
-- ⟨DECIDE⟩ base skill folder name: `livespec-base` (current pick — greppable, clearly of the pack) vs
-  `base` / `core` — Alexander may rename; cheap before the next adopt run, a sweep after. [D-4]
-- ⟨DECIDE⟩ personal profile home: `~/.claude/livespec/profile.md` (current pick — next to the global
-  CLAUDE.md, a directory so future global state has a roof) vs a single flat file. [D-5]
+- ⟨DECIDE⟩ pack ↔ standalone-skill-repos structure: one package as the single source (mirrors for the
+  standalone repos) vs federation (pack pulls skill repos by manifest) vs package-only — and with it, how
+  the pack loads other repos. The folder-NAME half closed 2026-07-05 (`live-spec-base`, with the package
+  rename); a worked-examples decision page is out (queue row 42). [D-4]
+- ⟨DECIDE⟩ the personal-settings home and split: what lives in the pack's personal profile
+  (`~/.claude/live-spec/profile.md`, current pick) vs the always-loaded CLAUDE.md vs the private playbook —
+  Alexander's framing 2026-07-05: global personal settings + per-project settings; a worked-examples
+  decision page is out (queue row 43). [D-5]
 
 ## Formal index
 
@@ -325,14 +329,14 @@ meaning, this table is only the map.
 | Anchor | One line | Section |
 |---|---|---|
 | S-0 | shipped vs target marked honestly | header |
-| E-1 | host project + its `.livespec/` | What livespec is |
+| E-1 | host project + its `.live-spec/` | What live-spec is |
 | E-2 | wish: plain words, any moment | Throwing a wish |
 | E-3 | queue ROADMAP.md, one row per wish | Throwing a wish |
 | E-4 | spec: living truth, one surface = one name | Throwing a wish |
 | E-5 | matrix: fact × test level | Machines |
 | E-6 | guardrails on the pre-push hook [target] | Machines |
 | E-7 | snapshot baseline, declared-scope diff [target] | Machines |
-| E-8 | host profile at `.livespec/profile.md` | Who decides what |
+| E-8 | host profile at `.live-spec/profile.md` | Who decides what |
 | E-9 | attic: archive, never delete | Adoption step 4 |
 | E-10 | surface registry, self-closing | Machines |
 | E-11 | inbox: one new committed file per outside wish | Package repo |
@@ -369,7 +373,7 @@ meaning, this table is only the map.
 | A-5 | version-control gate | Adoption step 5 |
 | A-6 | baseline snapshot [target] | Adoption step 6 |
 | A-7 | re-read changed skills; re-stat at breakpoints | Adoption step 7 |
-| A-8 | adopt artifacts live in `.livespec/adopt/`, tracked | Adoption step 2 |
+| A-8 | adopt artifacts live in `.live-spec/adopt/`, tracked | Adoption step 2 |
 | A-9 | cruft sweep: gated, listed, regenerable-only | Adoption step 4 |
 | ACT-1 | the human: taste, gates, wording | Who decides what |
 | ACT-2 | senior agent: judgment | Who decides what |
@@ -377,7 +381,7 @@ meaning, this table is only the map.
 | M-1 | milestone: re-prove + audit + compaction + gate list | Rhythm |
 | M-2 | safe breakpoint; announced self-compaction | Rhythm |
 | M-3 | documents versioned like code | Rhythm |
-| M-4 | livespec is its own host | Package repo |
+| M-4 | live-spec is its own host | Package repo |
 | M-5 | CI mirror of the same checks [target] | Rhythm |
 | M-6 | push gate: prover re-check before every push | Rhythm |
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
@@ -385,5 +389,5 @@ meaning, this table is only the map.
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing override | Open decisions |
 | D-3 | snapshot retention | Open decisions |
-| D-4 | base skill folder name | Open decisions |
-| D-5 | personal profile home | Open decisions |
+| D-4 | pack ↔ skill-repos structure (name half closed: `live-spec-base`) | Open decisions |
+| D-5 | personal-settings home and split | Open decisions |

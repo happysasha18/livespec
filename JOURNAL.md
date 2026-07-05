@@ -1,4 +1,4 @@
-# livespec Journal
+# live-spec Journal
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
@@ -284,3 +284,46 @@ the skills to the global ~/.claude/skills, every session loads from there, and b
 makes long-running sessions re-stat and re-read on change; the livespec session's only duty is to sync
 installed copies after each landing. What is NOT automatic yet is formal adoption (the .livespec/ attach)
 — track-coach is queued as the first formal adopt-host.
+
+## 2026-07-05, 11:50–12:20 — The lost layers return; the package becomes live-spec
+
+The morning decision page came back as JSON (answered 08:49; archived in docs/decisions/) — the first
+full round-trip of the mechanism, five picks harvested the same session. Three of them landed today's
+movements; two grew into new design work.
+
+**The lost layers (row 41, Alexander: "очень важный момент").** When the method was distilled from
+track-coach practice into the pack, the layers between the proven spec and the tests silently dropped
+out — a matrix TEMPLATE shipped, but not the method that produces a matrix, and no architecture document
+at all. Both are now first-class pipeline steps no wish may jump: an ARCHITECTURE.md written from the
+proven spec (named nodes, one responsibility each, every spec fact owned by exactly one node, named
+seams; in live code every node pinned to its owning file:line — which is where the old standalone
+"reconcile" step now lives), proven by product-prover with an architecture lens whenever it changes; then
+the matrix DERIVED node × fact, closing with a coverage-validation checklist that is actually walked
+(SPEC v0.7: E-14, E-15, INV-15; new ARCHITECTURE template; build-pipeline 0.2.0; prover + spec-author
+0.1.2 for the lens and the pointer). Decided by delegation ("или как сам решишь"): the architecture
+prover pass fires when the doc CHANGES, not on every landing — a bug cites its node and moves.
+
+**Decision page becomes law; time enters the records (rows 39/45/46).** Communicator rule 10 now states
+the mechanism: several open picks → one interactive page, radio + recommendation + free-form per card,
+JSON filename carrying the PROJECT name (several projects share one Downloads folder — Alexander caught
+it this morning), answers archived and harvested same session. Base rule 9 now requires date AND time on
+journal entries and harvested records — "вчера вечером ты написал X" must be answerable from the record
+(communicator 0.1.2, base 0.1.2, four inherit pins swept).
+
+**The rename (rows 27/40).** Alexander picked live-spec over the keep-recommendation. One name
+everywhere, so the sweep took the machine tokens too: 97 occurrences across 14 files (a sonnet junior ran
+it; senior re-ran the verification grep), the base skill folder is live-spec-base (closing the name half
+of D-4), the host folder .live-spec/, the profile home ~/.claude/live-spec/. Dated history — this
+journal's older entries, prover records, decision JSONs — intentionally keeps the old spelling; MIGRATION.md
+tells each adopted host what its own session runs at the next update. GitHub repo + local clone dir
+rename wait for the reviewed push, so the outward move is one atomic step.
+
+**New in the queue from midday messages:** feedback-collection as a pack skill (row 47), a maintenance
+skill with measurement plugins — analytics per user story/axis (row 48), A/B experiments for software
+hosts (row 49), learning from other frameworks as its own version bump (row 44). Rows 42 (pack
+structure) and 43 (personal-settings split) went out as today's second decision page, worked examples
+included, gate-checked before showing.
+
+**Status:** three commits today before this entry; VERSION goes 0.1.1 → 0.2.0 with the whole-spec prover
+pass that closes the session (MINOR gate: this pack has no matrix yet — guardrails are row 3 — so the
+audit is the prover pass + the queue re-listing, said honestly). Push held for Alexander's review.

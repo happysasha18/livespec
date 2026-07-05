@@ -6,10 +6,10 @@ version: 0.1.2
 
 # communicator — show the work, ask decisions the human can actually make
 
-> Part of the **livespec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
+> Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources) live ONCE in the pack's base skill, `livespec-base` (v0.1.2), together with the
+> need primary sources) live ONCE in the pack's base skill, `live-spec-base` (v0.1.2), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
