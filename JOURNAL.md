@@ -786,3 +786,16 @@ communicator — assignments only, no re-prove. Matrix M-091/M-092; and M-091's 
 temp home, run twice) immediately caught a REAL bug: install.sh had no mkdir -p, so a genuinely fresh
 machine — the exact machine the installer exists for — failed on first run. Red shown, one-line fix,
 backup-and-never-delete sides asserted by the same run. Suite 70 → 73 green; pack 0.8.7.
+
+## 2026-07-05 late (~22:40, session 9) — row 60: one collision law instead of two half-laws
+
+The audit had it right (fable F3, opus F-7, comp N6): the attic said "source dir prefixes the name" with
+no answer for a SECOND collision; the inbox said "-2, -3" with no semantic mark; nobody owned the rule.
+Now base rule 18 states it once — semantic mark first (each home already has one), then numeric ordinal,
+a session token where true concurrency can race one name (the inbox); never overwrite, never a third
+scheme, never a lost file. The four surfaces that spoke halves (SPEC attic clause, SPEC inbox clause,
+ADOPT, communicator rule 10's ordinal) now CITE the law — the prover's cross-link pass caught rule 10 as
+the unswept fourth (F2, folded). Base 0.1.11, pin sweep across the five working skills (versions
+untouched per the aff99f9 precedent), matrix M-093, suite 74 green; pack 0.8.8. Also from this session's
+gate run: row 61's freshness lock proved itself live — the row-57 commit turned the repo red until this
+record existed. The teeth bite in the right place.

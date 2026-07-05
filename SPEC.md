@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.1, 2026-07-05)
+# live-spec — SPEC (v0.15.2, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -328,7 +328,9 @@ pilot's baseline snapshot is the precedent). [A-0]
    [A-4]. [A-10]
 4. **Attic, not deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**
    — the host's archive folder: append-only, one manifest line per file (what it was, why moved, date); on
-   a basename collision the source dir prefixes the name [E-9]. Flat-with-manifest vs dated subfolders is
+   a basename collision the source dir prefixes the name, and a name STILL taken appends a numeric
+   ordinal `-2`, `-3` — the pack's one collision law, stated once in the base skill (rule 18) [E-9].
+   Flat-with-manifest vs dated subfolders is
    an open decision [D-1]. [A-4] The rule behind it never bends for anything authored: **no adopt or
    rework run deletes a host file** — superseded files move to attic/ with a manifest line. [INV-7]
    One exception, and only through a gate: adoption may OFFER a cruft sweep — clearly-regenerable junk
@@ -558,7 +560,9 @@ routine the human created FOR live-spec — to change live-spec", it does not wr
 in the HOST's journal, never here. [INV-10]
 
 **The inbox (inbox/)** is the parallel-safe intake door for wishes born outside a live-spec session: one
-NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, …), a few plain lines,
+NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, … — the same one
+collision law, base rule 18; two sessions racing one slug add a short session token to the source mark),
+a few plain lines,
 never an edit to an existing file — creating a fresh file cannot collide, shared files can. The outsider
 COMMITS its one new file (a commit touching inbox/ only, message naming the source) — that commit is
 inside the read-only exception. The door is host-general: every host carries its own inbox/ under the

@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.10
+  version: 0.1.11
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -120,6 +120,14 @@ a working skill still stands: its pointer here reads as plain advice.
    reverts); it rides the mode and the project's own push gates. When unsure which side an action is
    on, treat it as irreversible and ask — the criterion is "can we get back to before, ourselves,
    losing nothing?" (Alexander 2026-07-05: money yes, deletion yes, a push no).
+
+18. **One name-collision law.** A new file whose name is taken differentiates in TWO moves, the same
+   everywhere in the pack: first the semantic mark its home already defines (the attic prefixes the
+   source dir; a decision file already carries project + date), then — still taken — a numeric ordinal
+   `-2`, `-3`, … before the extension. Never overwrite, never a third scheme. Where true concurrency can
+   race one name (the inbox: two sessions, one slug, one moment), a short session token joins the
+   semantic mark — a collision may cost a rename, never a lost file. (Audit 2026-07-05: the attic had no
+   answer for a second collision; the attic and the inbox each spoke half a law.)
 
 
 ## When NOT to load this

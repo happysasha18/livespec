@@ -6,7 +6,7 @@ the spec, the queue, the journal, the skills — and never an existing inbox fil
 
 Why a folder of files: creating a fresh file cannot collide with anyone; editing a shared file can.
 
-**Format:** `YYYY-MM-DD-<source>-<slug>.md` (name taken? append `-2`, `-3`, …) — a few plain lines:
+**Format:** `YYYY-MM-DD-<source>-<slug>.md` (name taken? append `-2`, `-3`, … — the pack's one collision law, base rule 18; two sessions racing one slug: add a short session token to the source mark) — a few plain lines:
 - the wish, in plain words
 - why (what broke / what was missing, with the primary source if there is one)
 - who threw it (which host / which conversation)

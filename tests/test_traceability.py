@@ -708,3 +708,26 @@ class TestInstallerAndDecisionPage(unittest.TestCase):
         cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
         self.assertIn("ONE interactive decision page", cm, "communicator rule 10 lost the page law")
         self.assertIn("docs/decisions/", cm, "communicator rule 10 lost the archive step")
+
+
+class TestCollisionLaw(unittest.TestCase):
+    """Row 60 (M-093): one name-collision law, one home — base rule 18; the attic, the inbox and
+    ADOPT cite it instead of each speaking half of it."""
+
+    def test_collision_law_one_home(self):
+        base = read("skills/live-spec-base/SKILL.md")
+        self.assertRegex(base, r"(?m)^18\. \*\*One name-collision law",
+                         "base rule 18 missing")
+        flat = re.sub(r"\s+", " ", base)
+        for phrase in ("first the semantic mark its home already defines",
+                       "numeric ordinal",
+                       "Never overwrite, never a third scheme",
+                       "a short session token",
+                       "never a lost file"):
+            self.assertIn(phrase, flat, "base rule 18 lost: %s" % phrase)
+        for rel in ("SPEC.md", "adopt/ADOPT.md", "inbox/README.md"):
+            body = re.sub(r"\s+", " ", read(rel))
+            self.assertIn("rule 18", body, "%s no longer cites the one collision law" % rel)
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertEqual(spec.count("rule 18"), 2,
+                         "the law must be CITED at its two instances (attic, inbox), stated only in base")

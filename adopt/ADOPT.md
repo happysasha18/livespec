@@ -118,7 +118,7 @@ is marked native or unverified, and every unbacked live surface carries its verd
 
 Any document Phase 3 supersedes (an old spec, a stale resume, a folded notes file, a completed process
 checkpoint) **moves to `attic/`** with a one-line manifest entry (original path · why · absorbing doc ·
-date). Flat layout; on a basename collision the source dir prefixes the name.
+date). Flat layout; on a basename collision the source dir prefixes the name; still taken → a numeric ordinal `-2`, `-3` (the pack's one collision law, base rule 18).
 
 **The selection is a human gate.** These are the human's authored files in a live project — propose the attic
 set with reasons and get an OK before moving. Moving is done with `git mv` (history preserved).

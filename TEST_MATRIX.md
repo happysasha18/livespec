@@ -97,6 +97,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-001 | Every working skill opens with the base-inherit pin (base name + the base version it was written against); never a working skill without its pin | E-12 | string | `test_skills_inherit_base_pin` | BUILT |
+| M-093 | One name-collision law, stated once (base rule 18): semantic mark first, then numeric ordinal -2/-3; concurrent homes add a session token; the attic, the inbox and ADOPT all CITE the law rather than restate half of it; never overwrite, never a third scheme, never a lost file | E-12 | string | `test_collision_law_one_home` | BUILT |
 | M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | `test_settings_ladder_documented` (structural clause: ladder + resolution order stated in the base skill); behavioral resolution: milestone audit (M-1) + the E-6 host-facing gates (rows 55+) | BUILT |
 | M-003 | Every choice not in the wish is asked or recorded-and-surfaced; never decided-and-buried | INV-5 | string | snapshot declared-scope diff (row 55) — the mechanical fence | TODO |
 | M-004 | Proactivity mode and trust are written only on the human's word; the agent never raises its own level | INV-9 | string | milestone audit (M-1) | TODO |
