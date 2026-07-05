@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.5
+  version: 0.1.6
 ---
 
 # live-spec-base — one rulebook, five skills
@@ -25,7 +25,10 @@ a working skill still stands: its pointer here reads as plain advice.
    own in the product's language; internal handles (INV-x, row numbers, worker names, model names) never do
    the talking. One convention, two faces: in **chat**, the anchor may trail the sentence in parentheses —
    "no remote copy exists (INV-8)"; in **documents**, anchors sit at line ends in square brackets — `[INV-8]`.
-   Never open a line with a code.
+   Never open a line with a code. And when chat runs in one language while the docs run in another, a term
+   or metaphor coined in the docs language is never loan-translated into chat — **no calques**: say what
+   actually happens in natural chat-language words; the original term may trail in parentheses like any
+   anchor (Alexander 2026-07-05 — a calque reads as machine-speak and degrades the product).
 
 3. **One surface = one name, everywhere.** The moment one thing answers to two names, every cross-check
    silently loses the seam between them. The vocabulary comes from the host's SPEC.

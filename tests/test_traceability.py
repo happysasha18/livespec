@@ -362,8 +362,18 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         # the four working skills' base pin points at the current base version
         for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
                     "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md"):
-            self.assertIn("`live-spec-base` (v0.1.5)", read(rel),
+            self.assertIn("`live-spec-base` (v0.1.6)", read(rel),
                           "%s pins a stale base version" % rel)
+
+    def test_no_calques_rule(self):
+        # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
+        base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))
+        self.assertIn("no calques", base, "base rule 2 lost the calque ban")
+        self.assertIn("never loan-translated", base)
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("Calques are the same bug across a language split", cm,
+                      "communicator rule 6 lost the calque elaboration")
+        self.assertIn("вердикт растяжки старше ярлыка", cm, "communicator lost the field example")
 
 
 class TestFacetSweep(unittest.TestCase):

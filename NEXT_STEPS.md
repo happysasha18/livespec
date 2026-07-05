@@ -17,9 +17,18 @@ zero must-fix; its one should-clarify — headless feature, facets N/A — folde
 communicator + base). Stale `.bak_20260705_113914` skill copies moved to
 `~/.claude/playbook/row52/attic/skills-bak/` (local-only, gitignored there).
 
+**Row 73 LANDED same session (second landing): no calques** — base rule 2 names the ban (its one home),
+communicator rule 6 elaborates with the field example; base 0.1.6 · communicator 0.1.6 · spec-author
+0.1.6 · build-pipeline 0.2.5 · product-prover 0.1.5 (pin sweep by Sonnet worker, checkpoint
+row73-mechanical); test_no_calques_rule; suite **46 green / 0 skips**; pack 0.5.3. Push follows the M-6
+gate (FULL prover pass running at write time). **Row 74 filed**: plain-language map of the whole
+structure (Alexander: "помоги навести порядок") — good candidate to land WITH the research results.
+**Two research agents running in background** (row 44 homework): mature-method intake checklists →
+docs/research/2026-07-05-methods.md · skill-ecosystem patterns → docs/research/2026-07-05-skill-patterns.md.
+
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. **Row 73 — next landing** (small, door: feature): no calques when chat language ≠ docs language —
-   communicator rule + base plain-words rule name the calque case; profile line already binding.
+1. **Row 74 — next landing** (small, docs-only unless it changes a rule): the structure map, one
+   readable page in Alexander's words; fold research findings if they're back.
 2. Row 57 remainder (installer + decision page) · row 12 gaps (8) · row 54 onboarding · audit rows
    59–69 (worker contract & collision law first — 3-model consensus). tlvphoto wish note still
    unharvested (tlvphoto session's job): `~/tlvphoto/inbox/2026-07-05-room-prototype-quarantine.md`.

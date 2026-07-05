@@ -597,3 +597,18 @@ must-fix, 77 anchors symmetric, all seven facet folds verified in prose. Its one
 headless feature — new persistent state, no visible surface — would owe layout sentences) folded same
 sitting: the sweep scopes to VISIBLE surfaces, a headless feature writes one explicit "no visible
 surface — facets N/A" line -> SPEC v0.11.1. Suite 45 green; pushed.
+
+## 2026-07-05 (evening, session 7, second landing) — row 73: no calques — base 0.1.6, pack 0.5.3
+
+WHY: twice in one day a Russian-chat report carried English pack terms as literal translations
+(«растяжки» for tripwires, «та же семья»); Alexander: "НЕЛЬЗЯ использовать кальки… это позорит наш
+продукт". The personal contract line (`language.no-calques`, his profile) had already landed; this
+landing bakes the language-pair-general rule into the pack itself. One home per rule held: the ban
+lives in base rule 2 (the plain-words rule — a calque is its cross-language case), communicator rule 6
+elaborates with the field example. Spec step concluded NO spec delta: the rule elaborates an existing
+base rule; SPEC's one-rulebook clause (INV-13) already owns the home. Test test_no_calques_rule; base
+0.1.6 (pins swept across the four working skills by a Sonnet worker, checkpoint
+2026-07-05-row73-mechanical.md — the delegation rule held this time), communicator 0.1.6, spec-author
+0.1.6, build-pipeline 0.2.5, product-prover 0.1.5; installed copies synced; suite 46 green. Same
+sitting: row 74 filed (a plain-language map of the whole structure — Alexander can't hold where things
+live; he is right, and the two research agents on row 44 homework are running in the background).

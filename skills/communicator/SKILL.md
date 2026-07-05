@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
 metadata:
-  version: 0.1.5
+  version: 0.1.6
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.5), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.6), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -57,7 +57,11 @@ stop and show it.
    sentence; the anchor serves the MODEL — transcripts are what it greps and self-monitors against, so a
    stable code in parentheses makes past reasoning findable without ever asking the human to parse it.
    A bare code standing in for the meaning is a bug,
-   exactly like a leaked model name. One thing = one name, everywhere; the vocabulary comes from the SPEC. —
+   exactly like a leaked model name. Calques are the same bug across a language split (base rule 2): a
+   term or metaphor coined in the docs language never crosses into chat as a literal translation —
+   restate the mechanism in natural chat-language words, the original may trail in parentheses. —
+   *❌ "вердикт растяжки старше ярлыка"  ✅ "фиксированный чек-лист решает, фича это или багфикс
+   (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day). One thing = one name, everywhere; the vocabulary comes from the SPEC. —
    *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name, not a blank" ·
    ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up
    a GitHub backup before heavy compute (INV-8); want me to?"*
