@@ -8,14 +8,14 @@ description: How to show work to a human and ask for decisions they can actually
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Eight rules, few enough to hold in your head.
+internal ids). Nine rules, few enough to hold in your head.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
 **(c)** name a problem. If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
-## The eight rules
+## The nine rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -60,6 +60,12 @@ stop and show it.
    A pointer into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record, not a
    message: if the sentence only lands for someone who already holds the context, it hasn't been said yet.
    The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
+
+9. **Show the map as a map — status icons, not a table wall.** When saying where we are and what's next,
+   render the roadmap as a short bulleted list with status icons — ✅ landed · 🔨 in work now · ⬜ queued,
+   in order · 🙋 waiting on the human — the current item visibly marked, finished stretches collapsed to a
+   line each. Never paste the queue table into chat and never retell it as a paragraph; the eye should get
+   the whole map in one glance, then the words add only what the icons can't say. (Alexander 2026-07-05)
 
 ## Presenting a fork (template)
 A choice is never a paragraph. Generate a tiny HTML:

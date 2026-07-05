@@ -198,3 +198,25 @@ contradiction (A-9; ADOPT Phase 0.5). Push gate: CROSS-LINK prover pass over the
 Anchors: deliberate add of exactly A-8/A-9, indexed. Row 33 opened: Alexander asks whether the playbook
 repo + CLAUDE.md symlink are still needed — recommendation recorded (keep as the thin private layer;
 audit/shrink after rows 12 and 24), his call.
+
+## 2026-07-05 — the classifier learns priority, the queue speaks one language (rows 29+34), the roadmap gets a face (row 35); rows 34–36 opened
+Alexander asked for two things in passing and both landed as one classification scheme. First, priority
+(row 34): a wish is now classed by size AND priority — critical (the shipped product is broken for its
+user) lands before everything, a quick win may bubble up between landings with the jump marked in its row,
+and an ambiguous call is ASKED at intake, never guessed — until answered the wish carries normal and the
+lane keeps moving (INV-12, T-11, T-9 graded). The starvation edge is fenced: after one bubbled landing the
+queue head goes next. Second, the size vocabulary unified (row 29, queued since the morning prover pass):
+the queue's S/M column swept to the spec's four words — bug / small / surface / large — as a Class column
+that also carries the priority mark. SPEC v0.4 → v0.5; anchors: deliberate add of exactly T-11 + INV-12.
+Push-gate CROSS-LINK pass (docs/prover/2026-07-05-classes.md): 3 findings, all folded before push — order
+among two waiting critical bugs (by arrival) · a bug in the lane is never itself interrupted, so at most
+one wish is ever parked · the real catch: ROADMAP.template.md still TAUGHT the old S/M/L scale, so every
+future host would have contradicted the one-vocabulary rule on day one — template rewritten (the
+never-patch-pointwise rule earning its keep). Row 35 landed the same hour: when reporting where-we-are,
+the roadmap renders as a bulleted icon list (✅🔨⬜🙋), current item marked, finished stretches collapsed —
+communicator rule 9, installed copy synced. This landing itself ran as a quick win bubbling ahead of
+row 24 — on Alexander's explicit word, and marked in the rows. Mid-landing Alexander threw row 36
+(package defaults a host overrides — e.g. full prover pass per push for livespec vs big-versions-only for
+track-coach; refined minutes later: some settings are personal and global, like docs-English /
+chat-Russian): recorded as a three-layer design (package defaults → global personal profile → per-host
+override), to be designed with row 24's base skill.

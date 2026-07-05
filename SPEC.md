@@ -1,4 +1,4 @@
-# livespec — SPEC (v0.4, 2026-07-04)
+# livespec — SPEC (v0.5, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -28,15 +28,29 @@ You say, mid-anything: "and let the card also show…" — and go back to your t
 that: one request in plain words, any size, spoken at any moment. [E-2]
 
 That same minute the wish becomes a row in the **queue (ROADMAP.md)** — the persistent, ordered home of
-every wish: your words · size · status · acceptance criterion, one row each. [E-3] Spoken means the row
+every wish: your words · class (size, plus priority when it isn't normal) · status · acceptance criterion,
+one row each. [E-3] Spoken means the row
 exists before anything else happens; it survives even if the session dies a second later, and rows are
 never deleted — only closed with a named exit. No wish is ever lost. [INV-1]
 
-From the row the wish walks one path: classified by size (bug / small / surface / large) → a spec-delta is
-drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
+From the row the wish walks one path: classified by size and priority (the two paragraphs below) → a
+spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
 everything else proceeds on the recommended option, marked in the row → queued → in-work → landed (green
 suite + guardrails + committed + the row closed with its acceptance met) → reported to you in one
 plain-language line: position on the map · what landed · what remains. [T-1..T-7]
+
+**How a wish is classified.** Size is one four-word vocabulary everywhere — **bug / small / surface /
+large** — and the queue's class column speaks the same four words, never a second scale. Priority is
+**normal** unless the row says otherwise; two marks exist: **critical** — the shipped product is broken for
+its user (an unusable surface, data being lost, a safety gate violated) — and **quick win** — low effort,
+immediate value, no design decision inside. When the classifier can't call a size or a priority, it asks
+you at intake and never guesses; until you answer, the wish carries normal and the open question rides in
+the row — the lane keeps moving [INV-4]. [INV-12]
+
+**Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
+waiting-bug line (next section). A quick win may bubble up: when the lane frees, it may be taken ahead of
+larger queued wishes, the jump marked in its row, never silent; after one bubbled landing the queue head
+goes next, so a stream of quick wins cannot starve a big wish forever. [T-11]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time**; a new wish waits its turn unless it
@@ -60,7 +74,9 @@ What the wishes grow is the **spec (SPEC.md)** — the living statement of what 
 A bug may interrupt the wish in-work. The interrupted wish moves to **parked**: a checkpoint is written
 (failing test names if red, hypothesis, touched files — nothing red is ever committed), the bug takes the
 lane, and the parked wish resumes as the immediate next landing. Should more bugs arrive while one holds
-the lane, bugs take it in arrival order; the parked wish resumes only once no bug waits. [T-9]
+the lane, **critical** bugs head the waiting line (among themselves by arrival), the rest follow by
+arrival; the parked wish resumes only once no bug waits. A bug already in the lane is never itself
+interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked. [T-9]
 
 ## Starting a new project (bootstrap)
 
@@ -242,6 +258,7 @@ meaning, this table is only the map.
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
 | T-10 | outside wish arrives via inbox, swept first | Package repo |
+| T-11 | priority bends the lane order, visibly; one bubble then the queue head | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -253,6 +270,7 @@ meaning, this table is only the map.
 | INV-9 | trust set only by the human | Who decides what |
 | INV-10 | write-ownership of the package repo | Package repo |
 | INV-11 | concurrent-edit fence before write/commit | Package repo |
+| INV-12 | ambiguous size/priority is asked at intake, never guessed | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |
