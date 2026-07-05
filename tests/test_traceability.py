@@ -242,7 +242,10 @@ class TestQueue(unittest.TestCase):
         for col in ("Class", "Status", "Decision / acceptance"):
             self.assertIn(col, header, "queue missing column: %s" % col)
         rows = self._rows()
-        self.assertGreater(len(rows), 40, "queue parse failure")
+        self.assertGreater(len(rows), 3, "queue parse failure")
+        # terminal rows move to dated archives at milestones (INV-1/M-1); the archive dir must exist once one happened
+        self.assertTrue(os.path.isdir(os.path.join(ROOT, "docs", "queue-archive")),
+                        "closed rows gone but no queue archive present")
         pat = re.compile(r"^(bug|small|surface|large)( · (critical|quick win))?$")
         bad = [(r[0], r[2]) for r in rows if not pat.match(r[2])]
         self.assertEqual(bad, [], "class cells outside the four-word vocabulary (+ priority)")
@@ -362,7 +365,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         # the four working skills' base pin points at the current base version
         for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
                     "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md"):
-            self.assertIn("`live-spec-base` (v0.1.6)", read(rel),
+            self.assertIn("`live-spec-base` (v0.1.7)", read(rel),
                           "%s pins a stale base version" % rel)
 
     def test_spec_states_regression_fences(self):
