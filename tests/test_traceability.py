@@ -823,3 +823,24 @@ class TestLoaderStaysThin(unittest.TestCase):
                        "states the line count",
                        "migrates to its real home"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the loader-stays-thin item: %s" % phrase)
+
+
+class TestWorkerContract(unittest.TestCase):
+    """Row 59 (M-095): the worker contract — ownership narrowed to the brief, sibling files
+    fence-benign, session lines ride the brief, failed acceptance escalates one logged tier."""
+
+    def test_worker_contract_stated(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("The worker contract",
+                       "NARROWED to the files its brief names",
+                       "fence-benign",
+                       "ride INTO the brief verbatim",
+                       "escalates ONE tier with a logged line",
+                       "never a skipped rung"):
+            self.assertIn(phrase, spec, "SPEC ACT-3 lost the worker-contract clause: %s" % phrase)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        for phrase in ("The worker contract (SPEC ACT-3)",
+                       "fence alarms on foreign sessions",
+                       "never resolves the settings ladder itself",
+                       "never a silent retry on the same tier"):
+            self.assertIn(phrase, bp, "build-pipeline lost the worker-contract elaboration: %s" % phrase)

@@ -833,3 +833,16 @@ window law, the profile pointer, the pack pointer are the bootstrap itself; the 
 (migration map, attic) are candidates to prune at the next milestone but each still answers a
 before-the-pack question. SPEC v0.15.5, M-029 extended, suite 78 green; pack 0.8.11. Stage A of the
 night plan (rows 57, 60, 63, 64, 65) is complete.
+
+## 2026-07-05 night (~23:55, session 9) — row 59: the worker contract, written down
+
+Delegation had a brief format but no CONTRACT: what may a worker write? what happens when two briefed
+workers touch neighbouring files? which settings does a worker obey? what happens on a failed
+acceptance? Four audit findings (fable F2, opus F-12, comp H2) said: unstated. Now ACT-3 states it —
+ownership narrowed to the brief's named files; same-session sibling files fence-benign (the fence
+alarms on foreign sessions — the senior who briefed both owns the seams); the session's live setting
+lines ride into the brief verbatim (a worker cannot hear the human's word, so it never resolves the
+ladder itself); failed acceptance escalates exactly one tier, logged. Pipeline 0.2.10 elaborates it in
+the delegation bullet. SPEC v0.15.6, matrix M-095, suite 79 green; pack 0.8.12. Eval-re-run duty
+honestly recorded, not silently skipped (prover D3): the current eval can't flip on this delta; the
+M-1 re-run adds a delegation criterion.

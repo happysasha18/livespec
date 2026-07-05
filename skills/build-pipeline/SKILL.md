@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.9
+  version: 0.2.10
 ---
 
 # build-pipeline — ship a change by the method
@@ -220,7 +220,14 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and the
   checkpoint path — the worker never hunts context, never interprets the spec, never decides. If writing
   the brief means deciding something first, that decision is the senior's and happens BEFORE delegation
-  — "долго объяснять" is how delegation silently dies. See PLAYBOOK.
+  — "долго объяснять" is how delegation silently dies. See PLAYBOOK. **The worker contract (SPEC
+  ACT-3):** the brief NAMES the files the worker may write — its session's write-ownership narrowed to
+  exactly those, reads free, writes fenced; same-session sibling-worker files are fence-benign (the
+  concurrent-edit fence alarms on foreign sessions, not on your own briefed hands — the senior who
+  briefed both owns the seams between briefs); the session's live setting lines ride into the brief
+  verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's spoken
+  word; and a result failing its brief's acceptance escalates ONE tier with a logged line — never a
+  silent retry on the same tier, never a skipped rung.
 - **Traceability is a test, not a vow.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
   RESOLVED that still carries the live marker — so drift is caught every commit, not once per MINOR.

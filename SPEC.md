@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.5, 2026-07-05)
+# live-spec — SPEC (v0.15.6, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -453,7 +453,14 @@ nothing in this migration writes a foreign repo [INV-10]. [E-16]
 host's `.live-spec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); the
 cheapest sufficient tier does the job (haiku one-shot / sonnet multi-step / senior judgment), budget-aware.
 Whether the queue's size class fixes the tier mechanically or the senior may override is an open decision
-[D-2]. [ACT-3]
+[D-2]. **The worker contract** binds every delegation: a worker inherits its session's write-ownership
+[INV-10] NARROWED to the files its brief names — outside them it reads but never writes; files a
+same-session SIBLING worker just wrote are fence-benign — the concurrent-edit fence [INV-11] alarms on
+foreign sessions, not on your own briefed hands, and the senior who briefed both owns their seams; the
+session's live setting lines [E-13] ride INTO the brief verbatim (a worker never resolves the ladder
+itself — it cannot hear the human's spoken word); and a result that fails its brief's acceptance
+escalates ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier,
+never a skipped rung. [ACT-3]
 
 ## From the spec to the tests: two layers that must not be skipped
 
