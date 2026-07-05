@@ -943,6 +943,18 @@ class TestStandaloneTemplatePointers(unittest.TestCase):
                              "in-skill template copies appeared in %s — D-4 forbids the fork" % skill_dir)
 
 
+class TestMinedGapFolds(unittest.TestCase):
+    """Row 12's remaining gaps, folded one landing each (session 9). Each test pins one fold to the
+    shipped skill text; the mining map in the private playbook records the same fold by number."""
+
+    def test_gap4_recurring_bug_escalates(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        for phrase in ("A RECURRING bug re-doors to feature",
+                       "missing an INVARIANT",
+                       "grep JOURNAL.md for the area's name"):
+            self.assertIn(phrase, bp, "build-pipeline lost the recurring-bug escalation: %s" % phrase)
+
+
 class TestCommunicatorTrigger(unittest.TestCase):
     """Row 68 (M-099): the communicator description fires on decisions and landing reports,
     and says what it is NOT for — the eval caught it loading on every passing status line."""

@@ -896,3 +896,10 @@ human's word; with a stated NOT-side (mid-work status lines, internal notes, pla
 get said). The over-trigger phrase is asserted GONE by the suite. Communicator 0.1.10 (synced, A-7
 line above); matrix M-099; eval re-run duty recorded per E-19 (prover J2). Suite 85 green; pack 0.8.16.
 Stage C's eval-tail trio (66, 67, 68) is complete.
+
+## 2026-07-05 ~22:58, session 9 — row 12, gap 4: a recurring bug is a missing invariant
+
+From the playbook into the pack: a second bug in the same area within ~30 days stops being a patch —
+it re-doors to feature and the full pipeline writes the missing invariant first. The journal grep is
+the detector (dated entries are exactly the record that makes "same area, second time" checkable).
+build-pipeline 0.2.12; matrix M-100; suite 86 green; pack 0.8.17.

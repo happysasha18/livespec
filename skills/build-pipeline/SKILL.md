@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.11
+  version: 0.2.12
 ---
 
 # build-pipeline — ship a change by the method
@@ -48,7 +48,11 @@ the principle behind each step; this skill is its executable projection — keep
   also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample
   of its class (base rule 14):** before calling it done, name the pattern, grep the repo for it, check the
   visible text of every user-facing surface, and fix all siblings in the same change — the matrix row and
-  the red-on-bug test cover the CLASS, not the single instance.
+  the red-on-bug test cover the CLASS, not the single instance. **A RECURRING bug re-doors to feature:**
+  a second bug in the same area within ~30 days is not another patch — the area is missing an INVARIANT,
+  so it escalates to the full pipeline from step 1 (spec the invariant, re-prove, then fix under it).
+  The journal is how you notice: before taking any bug, grep JOURNAL.md for the area's name and check
+  the dates.
 - **Removal of a shipped feature is a change too:** spec section → dated REMOVED tombstone · matrix rows
   retired (not left "BUILT") · owning tests deleted · SKILL.md / README swept — all the same session. (This
   is the step that actually got skipped once: an excision cleaned code + tests but left four doc surfaces dangling.)
