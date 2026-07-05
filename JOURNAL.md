@@ -347,3 +347,14 @@ servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a thin loader, an
 "understand who you're working with" onboarding step (rows 52–54). The mid-session interruption cost
 nothing: three commits were already on disk, the uncommitted folds survived in the tree, and the resume
 file told the truth — the discipline paid for itself the first time it was tested.
+
+## 2026-07-05, ~13:30 — Push released (session 4)
+
+Alexander's steady-state call came in plain words: nothing left to review at a green gate — push. Fence
+re-check passed (clean tree, no inbox deposits, remote unmoved), and the five held commits went out
+(b6e2827..70b71f9): the lost layers, the decision-page law, the rename-in-content, the 0.2.0 gate. The
+one piece the harness would not let this session do is the OUTWARD half of row 40 — renaming the GitHub
+repo itself (an external write the permission layer reserves for a human). So the rename is now split
+honestly: content says live-spec everywhere (pushed), the repo/clone-dir rename waits on one command from
+Alexander (`gh repo rename live-spec --repo happysasha18/livespec --yes`), after which the local dir move
+and remote URL update are mechanical. Recorded here so the split is a fact with a reason, not a drift.
