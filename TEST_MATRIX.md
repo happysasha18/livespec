@@ -192,7 +192,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 |---|---|---|---|---|---|
 | M-031 | The queue is one table: wish · class · status · acceptance, one row per wish; never a second scale or format | E-3 | string | `test_roadmap_class_vocabulary` (columns + vocabulary) | BUILT |
 | M-032 | The matrix shape: inventory + node blocks + coverage validation; never a bare row bucket | E-5 | string | `test_matrix_blocks_match_architecture_nodes` | BUILT |
-| M-033 | Every matrix row states the DO and the NEVER side; never a row without its regression fence | INV-6 | string | `test_matrix_rows_have_level_and_negative_side` | BUILT |
+| M-033 | Every matrix row states the DO and the NEVER side; never a row without its regression fence | INV-6 | string | `test_matrix_rows_have_level_and_negative_side` + `test_gap10_step5_both_sides` (the derivation step TEACHES it, row 12 gap 10) | BUILT |
 | M-034 | Bootstrap = VCS gate FIRST → copy the six templates + the suite scaffold (which DEFINES green for landing #1: docs present, headers filled, no surviving placeholder) → hooks offered as at adoption → first wish through the pipeline; never landing before the gate, never a bootstrap without a runnable suite | B-1 | string | `test_templates_ship` + `test_scaffold_bootstrap_runs` (simulated bootstrap BY DEED: filled → green, placeholder → red) + `test_spec_states_bootstrap_order` | BUILT |
 
 ### [node: attach]

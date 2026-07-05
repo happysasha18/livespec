@@ -954,6 +954,12 @@ class TestMinedGapFolds(unittest.TestCase):
                        "grep JOURNAL.md for the area's name"):
             self.assertIn(phrase, bp, "build-pipeline lost the recurring-bug escalation: %s" % phrase)
 
+    def test_gap10_step5_both_sides(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("every row states BOTH sides — what the fact DOES and what it must NEVER do", bp,
+                      "build-pipeline step 5 lost the DO+NEVER instruction (INV-6)")
+        self.assertIn("a row without it is a derivation defect", bp)
+
     def test_gap9_prover_domain_language_lens(self):
         pp = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
         for phrase in ("Domain language on every user-facing surface",

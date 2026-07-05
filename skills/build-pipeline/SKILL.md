@@ -144,7 +144,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
 5. **Test spec — DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture.** The
    matrix is derived, never just filled: rows organized **architecture node × spec fact** (one block per
-   node), every fact gets ≥ 1 row, and **every row pins a test LEVEL** (string / DOM-text /
+   node), every fact gets ≥ 1 row, **every row states BOTH sides — what the fact DOES and what it must
+   NEVER do** (the never side IS the regression fence, SPEC INV-6; a row without it is a derivation
+   defect), and **every row pins a test LEVEL** (string / DOM-text /
    browser-computed / pixel); any fact about visibility / layout / colour / interaction gets level ≥
    browser-computed. It opens with an **artifact inventory** — every file the user receives — and every
    inventory entry owns at least one rendered-level row. Derivation CLOSES with the template's **coverage

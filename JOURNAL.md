@@ -927,3 +927,10 @@ read them as the USER would — a leaked internal identifier, code, or mechanism
 surface is a finding (the track-coach "aim-demo" label and tlvphoto's dev-named cards are the incident
 family). product-prover 0.1.8. No matrix row — no spec anchor changed; the lens is the prover's own
 text, pinned by its test.
+
+## 2026-07-05 ~23:01, session 9 — row 12, gap 10: step 5 teaches both sides of a row
+
+SPEC INV-6 always demanded the DO and NEVER sides; the suite always checked them; but the derivation
+step's own text never SAID it — an adopter reading only the pipeline would learn levels and blocks and
+miss the fence. Step 5 now states it where the rows are born. build-pipeline 0.2.14 (same bump as gap
+6, one session); M-033's owning tests grow.
