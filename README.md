@@ -104,7 +104,7 @@ Skills land in `~/.claude/skills/`, available in every project on the machine. E
 
 **Attach to a new project:** start from `templates/` — copy the template files you need into your project root.
 
-**Attach mid-flight** (existing codebase, no spec yet): follow `adopt/ADOPT.md` — inventory the code, reverse-spec from what ships, build the test matrix from there.
+**Attach mid-flight** (existing codebase, no spec yet): follow `adopt/ADOPT.md` — inventory the code, reverse-spec from what ships, pin the architecture to the real files, derive the test matrix from there.
 
 ---
 

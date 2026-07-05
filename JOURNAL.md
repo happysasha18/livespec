@@ -358,3 +358,25 @@ repo itself (an external write the permission layer reserves for a human). So th
 honestly: content says live-spec everywhere (pushed), the repo/clone-dir rename waits on one command from
 Alexander (`gh repo rename live-spec --repo happysasha18/livespec --yes`), after which the local dir move
 and remote URL update are mechanical. Recorded here so the split is a fact with a reason, not a drift.
+
+## 2026-07-05, ~14:00 — Row 50 lands: the flagship gets its own architecture and derived matrix
+
+The bring-up the lost-layers session promised: live-spec now walks its own new pipeline. ARCHITECTURE.md
+v0.1 names 12 nodes (five skills, templates, attach = ADOPT+installer, inbox, host-contract, the pack's
+own docs, and the two honest [target] machines — guardrails and snapshot); all 69 spec anchors are owned
+exactly once, every pin taken from a command run this session, none from memory. The architecture-lens
+prover pass (docs/prover/2026-07-05-architecture.md) earned its keep on the first walk: the sharpest
+find was S-0's broken promise — the spec swears every [target] machine has a queue row, and two didn't
+(snapshot, model router → rows 55–56); it also caught the spec still claiming two decision pages were
+"out" that Alexander had already answered (D-4/D-5 rewritten to their decided state, SPEC v0.7.1), and
+a queue header with no date where M-3 requires one. Eight findings total: three must-fix folded in
+session, two queued as row 57 (installer and decision page deserve spec sentences), three recorded.
+
+TEST_MATRIX.md v0.1 derives 64 rows node × fact, every row with a DO and a NEVER side, and the honest
+adaptation for a text product recorded in its header: the "rendered level" here is a string assertion
+against the SHIPPED file — no browser surface exists, so the browser-level clause holds vacuously and
+re-arms the day one ships. The coverage validation is not a checklist walked once: it is mechanized in
+tests/test_traceability.py — 20 tests, zero deps, green with zero skips — and the walk went red on real
+defects before it went green (unowned A-6/E-7, a range token double-counted), which is exactly the
+red-first the method asks for. INV-15 binds from this landing. VERSION 0.2.1. Push held for Alexander's
+look; the prover record doubles as the push-gate re-check for this state.

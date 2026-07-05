@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.7, 2026-07-05)
+# live-spec — SPEC (v0.7.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -321,14 +321,14 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
   may override per wish (current pick: router proposes, senior may override, override is logged). [D-2]
 - ⟨DECIDE⟩ snapshot retention: last-only (current pick) vs last-N — revisit when a diff dispute needs
   history. [D-3]
-- ⟨DECIDE⟩ pack ↔ standalone-skill-repos structure: one package as the single source (mirrors for the
-  standalone repos) vs federation (pack pulls skill repos by manifest) vs package-only — and with it, how
-  the pack loads other repos. The folder-NAME half closed 2026-07-05 (`live-spec-base`, with the package
-  rename); a worked-examples decision page is out (queue row 42). [D-4]
-- ⟨DECIDE⟩ the personal-settings home and split: what lives in the pack's personal profile
-  (`~/.claude/live-spec/profile.md`, current pick) vs the always-loaded CLAUDE.md vs the private playbook —
-  Alexander's framing 2026-07-05: global personal settings + per-project settings; a worked-examples
-  decision page is out (queue row 43). [D-5]
+- Decided 2026-07-05 (page 2): pack ↔ standalone-skill-repos structure is **package-is-source** — the
+  pack repo is the single truth, standalone repos become read-only mirrors (Alexander's note: reusable
+  parts must stay findable alone — exactly what mirrors give). The folder-NAME half had closed earlier
+  the same day (`live-spec-base`). Execution: queue row 51 (mirrors + one sync command). [D-4]
+- Decided 2026-07-05 (page 2): the personal-settings split is **all-into-profile** — everything personal
+  moves into live-spec settings with servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a
+  thin loader, and setup gains an "understand who you're working with" onboarding step. The design lands
+  through queue rows 52–54. [D-5]
 
 ## Formal index
 
@@ -398,5 +398,5 @@ meaning, this table is only the map.
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing override | Open decisions |
 | D-3 | snapshot retention | Open decisions |
-| D-4 | pack ↔ skill-repos structure (name half closed: `live-spec-base`) | Open decisions |
-| D-5 | personal-settings home and split | Open decisions |
+| D-4 | pack structure: package-is-source decided; mirrors = row 51 | Open decisions |
+| D-5 | all-into-profile decided; rows 52–54 execute | Open decisions |

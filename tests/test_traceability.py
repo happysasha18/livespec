@@ -1,0 +1,302 @@
+"""Traceability suite — the coverage validation of TEST_MATRIX.md, mechanized (SPEC E-14/E-15/INV-15).
+
+Zero dependencies; run from the repo root:  python3 -m unittest discover tests -v
+Every check here asserts the SHIPPED files on disk, never a source fragment or a memory of one.
+This is the first slice of the guardrails' conflicts check (ROADMAP rows 3 and 12's gap 3 territory);
+the pre-push hook generalizes it when row 3 lands.
+"""
+
+import os
+import re
+import unittest
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def read(rel):
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        return f.read()
+
+
+def expand(anchor):
+    """T-1..T-7 -> [T-1 ... T-7]; plain anchors pass through."""
+    m = re.match(r"([A-Z]+)-(\d+)\.\.(?:[A-Z]+-)?(\d+)$", anchor)
+    if m:
+        prefix, lo, hi = m.group(1), int(m.group(2)), int(m.group(3))
+        return ["%s-%d" % (prefix, i) for i in range(lo, hi + 1)]
+    return [anchor]
+
+
+ANCHOR_TOKEN = r"[A-Z]+-[0-9]+(?:\.\.[A-Z]*-?[0-9]+)?"
+
+
+def spec_index_anchors():
+    """Anchors from SPEC.md's Formal index table, ranges expanded."""
+    spec = read("SPEC.md")
+    raw = re.findall(r"^\| (%s) \|" % ANCHOR_TOKEN, spec, re.M)
+    out = set()
+    for a in raw:
+        out.update(expand(a))
+    return raw, out
+
+
+def architecture_nodes():
+    """{node name: set of owned anchors} from ARCHITECTURE.md's Nodes table."""
+    arch = read("ARCHITECTURE.md")
+    nodes = {}
+    in_nodes = False
+    for line in arch.splitlines():
+        if line.startswith("## Nodes"):
+            in_nodes = True
+            continue
+        if in_nodes and line.startswith("## "):
+            break
+        if in_nodes and line.startswith("|") and not line.startswith("|---") and "Responsibility" not in line:
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if len(cells) == 4:
+                owned = set()
+                for tok in re.findall(ANCHOR_TOKEN, cells[1]):
+                    pass  # responsibility column may mention rows; anchors come from column 3 only
+                for tok in re.findall(ANCHOR_TOKEN, cells[2]):
+                    owned.update(expand(tok))
+                nodes[cells[0]] = owned
+    return nodes
+
+
+def matrix_blocks():
+    """{block node name: [row dicts]} from TEST_MATRIX.md."""
+    mat = read("TEST_MATRIX.md")
+    blocks = {}
+    current = None
+    for line in mat.splitlines():
+        m = re.match(r"^### \[node: (.*)\]\s*$", line)
+        if m:
+            current = m.group(1)
+            blocks[current] = []
+            continue
+        if current and line.startswith("|") and not line.startswith("|---") and "Owning test" not in line:
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if len(cells) == 6:
+                refs = set()
+                for tok in re.findall(ANCHOR_TOKEN, cells[2]):
+                    refs.update(expand(tok))
+                blocks[current].append(
+                    {"id": cells[0], "fact": cells[1], "refs": refs,
+                     "level": cells[3], "owning": cells[4], "status": cells[5]}
+                )
+    return blocks
+
+
+def inventory_entries():
+    """[(path, is_dir)] from the Artifact inventory table."""
+    mat = read("TEST_MATRIX.md")
+    section = mat.split("## Artifact inventory", 1)[1].split("## Matrix rows", 1)[0]
+    entries = []
+    for m in re.finditer(r"^\|[^|]+\| `([^`]+)` \|", section, re.M):
+        path = m.group(1)
+        entries.append((path, path.endswith("/")))
+    return entries
+
+
+class TestSpecIndex(unittest.TestCase):
+    def test_spec_index_unique_anchors(self):
+        raw, _ = spec_index_anchors()
+        dupes = [a for a in set(raw) if raw.count(a) > 1]
+        self.assertEqual(dupes, [], "duplicate anchor ids in the Formal index")
+        self.assertGreater(len(raw), 40, "index suspiciously small — parser broke or index truncated")
+
+    def test_spec_decide_markers_match_open(self):
+        spec = read("SPEC.md")
+        _, index = spec_index_anchors()
+        d_anchors = {a for a in index if a.startswith("D-")}
+        open_section = spec.split("## Open decisions", 1)[1].split("## Formal index", 1)[0]
+        for line_group in re.split(r"\n- ", open_section):
+            if "⟨DECIDE⟩" in line_group:
+                cited = set(re.findall(r"\[?(D-\d+)\]?", line_group))
+                self.assertTrue(cited & d_anchors,
+                                "a ⟨DECIDE⟩ entry cites no D-anchor from the index: %r" % line_group[:80])
+                self.assertNotIn("Decided", line_group.split("⟨DECIDE⟩")[0],
+                                 "an entry is both Decided and ⟨DECIDE⟩-open")
+        for d in sorted(d_anchors):
+            self.assertIn(d, open_section, "index D-anchor %s missing from Open decisions" % d)
+
+
+class TestArchitecture(unittest.TestCase):
+    def test_architecture_owns_every_anchor_once(self):
+        _, index = spec_index_anchors()
+        nodes = architecture_nodes()
+        owners = {}
+        for node, owned in nodes.items():
+            for a in owned:
+                owners.setdefault(a, []).append(node)
+        missing = sorted(a for a in index if a not in owners)
+        dupes = {a: ns for a, ns in owners.items() if len(ns) > 1}
+        stale = sorted(a for a in owners if a not in index)
+        self.assertEqual(missing, [], "index anchors with no owning node")
+        self.assertEqual(dupes, {}, "anchors owned by more than one node")
+        self.assertEqual(stale, [], "owned anchors absent from the index")
+
+    def test_architecture_no_orphan_nodes(self):
+        nodes = architecture_nodes()
+        self.assertGreaterEqual(len(nodes), 10, "nodes table parse failure")
+        orphans = [n for n, owned in nodes.items() if not owned]
+        self.assertEqual(orphans, [], "nodes owning no spec fact (no spec backing)")
+
+    def test_architecture_pins_exist(self):
+        arch = read("ARCHITECTURE.md")
+        section = arch.split("## Nodes", 1)[1].split("## Seams", 1)[0]
+        pins = re.findall(r"`([\w./-]+):(\d+)`", section)
+        self.assertGreater(len(pins), 10, "pin parse failure")
+        for path, line_no in pins:
+            full = os.path.join(ROOT, path)
+            self.assertTrue(os.path.isfile(full), "pinned file missing: %s" % path)
+            with open(full, encoding="utf-8") as f:
+                n_lines = len(f.readlines())
+            self.assertGreaterEqual(n_lines, int(line_no),
+                                    "pin %s:%s beyond end of file (%d lines)" % (path, line_no, n_lines))
+
+
+class TestMatrix(unittest.TestCase):
+    def test_matrix_blocks_match_architecture_nodes(self):
+        nodes = set(architecture_nodes())
+        blocks = set(matrix_blocks())
+        self.assertEqual(blocks - nodes, set(), "matrix blocks citing no architecture node (stale)")
+        self.assertEqual(nodes - blocks, set(), "architecture nodes with no matrix block")
+
+    def test_matrix_covers_every_anchor(self):
+        _, index = spec_index_anchors()
+        covered = set()
+        for rows in matrix_blocks().values():
+            for row in rows:
+                covered.update(row["refs"])
+        self.assertEqual(sorted(index - covered), [], "index anchors with no matrix row")
+        self.assertEqual(sorted(covered - index), [], "matrix rows citing anchors absent from the index")
+
+    def test_matrix_rows_have_level_and_negative_side(self):
+        levels = {"string", "DOM-text", "browser-computed", "pixel"}
+        statuses = ("BUILT", "TODO", "RETIRED")
+        ids = []
+        for node, rows in matrix_blocks().items():
+            self.assertTrue(rows, "empty matrix block: %s" % node)
+            for row in rows:
+                ids.append(row["id"])
+                self.assertIn(row["level"], levels, "%s: unknown level %r" % (row["id"], row["level"]))
+                self.assertIn("never", row["fact"].lower(),
+                              "%s: no NEVER side (regression fence missing)" % row["id"])
+                self.assertTrue(row["status"].startswith(statuses),
+                                "%s: status outside vocabulary: %r" % (row["id"], row["status"]))
+        dupes = [i for i in set(ids) if ids.count(i) > 1]
+        self.assertEqual(dupes, [], "duplicate matrix row ids")
+
+    def test_matrix_built_rows_name_real_tests(self):
+        module = globals()
+        this_file = read("tests/test_traceability.py")
+        for rows in matrix_blocks().values():
+            for row in rows:
+                if row["status"].startswith("BUILT"):
+                    names = re.findall(r"test_\w+", row["owning"])
+                    self.assertTrue(names, "%s: BUILT but owning test cell names none" % row["id"])
+                    for name in names:
+                        self.assertIn("def %s" % name, this_file,
+                                      "%s: BUILT row cites missing test %s" % (row["id"], name))
+
+
+class TestArtifacts(unittest.TestCase):
+    def test_artifact_inventory(self):
+        entries = inventory_entries()
+        self.assertGreater(len(entries), 20, "inventory parse failure")
+        for path, is_dir in entries:
+            full = os.path.join(ROOT, path)
+            if is_dir:
+                self.assertTrue(os.path.isdir(full), "inventory dir missing: %s" % path)
+                self.assertTrue(os.listdir(full), "inventory dir empty: %s" % path)
+            else:
+                self.assertTrue(os.path.isfile(full), "inventory file missing: %s" % path)
+                self.assertGreater(os.path.getsize(full), 0, "inventory file empty: %s" % path)
+
+    def test_templates_ship(self):
+        for name in ("SPEC", "ARCHITECTURE", "TEST_MATRIX", "ROADMAP", "JOURNAL", "NEXT_STEPS"):
+            rel = "templates/%s.template.md" % name
+            full = os.path.join(ROOT, rel)
+            self.assertTrue(os.path.isfile(full), "missing template: %s" % rel)
+            self.assertGreater(os.path.getsize(full), 100, "template suspiciously small: %s" % rel)
+
+
+class TestQueue(unittest.TestCase):
+    def _rows(self):
+        rows = []
+        for line in read("ROADMAP.md").splitlines():
+            if line.startswith("|") and not line.startswith("|---") and "Wish (plain words)" not in line:
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                if len(cells) == 5 and cells[0].isdigit():
+                    rows.append(cells)
+        return rows
+
+    def test_roadmap_class_vocabulary(self):
+        head = read("ROADMAP.md").splitlines()
+        header = next(l for l in head if "Wish (plain words)" in l)
+        for col in ("Class", "Status", "Decision / acceptance"):
+            self.assertIn(col, header, "queue missing column: %s" % col)
+        rows = self._rows()
+        self.assertGreater(len(rows), 40, "queue parse failure")
+        pat = re.compile(r"^(bug|small|surface|large)( · (critical|quick win))?$")
+        bad = [(r[0], r[2]) for r in rows if not pat.match(r[2])]
+        self.assertEqual(bad, [], "class cells outside the four-word vocabulary (+ priority)")
+
+    def test_roadmap_single_in_work(self):
+        in_work = [r[0] for r in self._rows() if r[3].lower().startswith("in-work")]
+        self.assertLessEqual(len(in_work), 1, "more than one wish in-work: rows %s" % in_work)
+
+    def test_roadmap_header_dated(self):
+        first = read("ROADMAP.md").splitlines()[0]
+        self.assertRegex(first, r"\d{4}-\d{2}-\d{2}", "queue header carries no date (SPEC M-3)")
+        spec_first = read("SPEC.md").splitlines()[0]
+        self.assertRegex(spec_first, r"\(v[\d.]+, \d{4}-\d{2}-\d{2}\)", "spec header not versioned+dated")
+
+
+class TestVersionsAndPins(unittest.TestCase):
+    SKILLS = ("live-spec-base", "spec-author", "product-prover", "build-pipeline", "communicator")
+
+    def test_version_homes(self):
+        v = read("VERSION").strip()
+        self.assertRegex(v, r"^\d+\.\d+\.\d+$", "VERSION is not semver")
+        for s in self.SKILLS:
+            head = read("skills/%s/SKILL.md" % s).splitlines()[:15]
+            self.assertTrue(any(re.match(r"version: \d+\.\d+\.\d+", l) for l in head),
+                            "no version: frontmatter in %s" % s)
+
+    def test_skills_inherit_base_pin(self):
+        for s in self.SKILLS:
+            if s == "live-spec-base":
+                continue
+            body = read("skills/%s/SKILL.md" % s)
+            self.assertIn("live-spec-base", body, "%s carries no base-skill inherit pin" % s)
+
+
+class TestDoors(unittest.TestCase):
+    def test_next_steps_live_state(self):
+        body = read("NEXT_STEPS.md")
+        blocks = re.findall(r"^## LIVE STATE", body, re.M)
+        self.assertEqual(len(blocks), 1, "LIVE STATE blocks must be replaced, never stacked")
+        self.assertRegex(body, r"## LIVE STATE \(\d{4}-\d{2}-\d{2}", "LIVE STATE carries no date")
+
+    def test_adopt_phases_cite_spec(self):
+        body = read("adopt/ADOPT.md")
+        for code in ("A-0", "A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9",
+                     "INV-7", "INV-8", "E-14", "E-15"):
+            self.assertIn(code, body, "ADOPT.md no longer cites %s" % code)
+
+    def test_inbox_states_write_rule(self):
+        body = read("inbox/README.md")
+        self.assertIn("INV-10", body)
+        self.assertIn("NEW file", body)
+        self.assertIn("YYYY-MM-DD-<source>-<slug>.md", body)
+
+    def test_host_profile_recorded_override(self):
+        body = read(".live-spec/profile.md")
+        for code in ("INV-14", "E-13", "M-6"):
+            self.assertIn(code, body, "host profile no longer cites %s" % code)
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
