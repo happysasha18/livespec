@@ -903,3 +903,12 @@ From the playbook into the pack: a second bug in the same area within ~30 days s
 it re-doors to feature and the full pipeline writes the missing invariant first. The journal grep is
 the detector (dated entries are exactly the record that makes "same area, second time" checkable).
 build-pipeline 0.2.12; matrix M-100; suite 86 green; pack 0.8.17.
+
+## 2026-07-05 ~22:58, session 9 — row 12, gaps 5+8: docs discipline lands in step 9
+
+One class, two halves (folded together by the gaps-1+2 precedent, said aloud): the CHANGELOG speaks to
+the USER — what changed for them, one concrete example from real output, no function names or row
+numbers (those are the journal's); and no doc pins a drifting version number in prose — the version has
+one home, point there or omit (spec-author's anti-patterns list gains the entry; the flagship README
+already lives by it). build-pipeline 0.2.13, spec-author 0.1.11, both synced (A-7 lines in the sync
+output); matrix M-101; suite 87 green; pack 0.8.18.

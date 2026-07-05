@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.10
+  version: 0.1.11
 ---
 
 # Spec Author
@@ -294,6 +294,8 @@ resolve and the leading questions behind them.
   ⟨DECIDE⟩.
 - **Speccing after the code** — writing the spec to match what was built, rather than letting the spec lead
   and the prover find the holes before code exists.
+- **Pinning a drifting version number in prose** — "current version: vX.Y" in a header or README always
+  goes stale; the version has one home (the VERSION file, the frontmatter) — point there or omit it.
 - **A wall of undifferentiated prose** — paragraphs with no headline to land on. The fix is NOT terseness
   (machine fragments get rejected just as hard, see "How it reads") — it's a **bold headline per rule + the
   detail beneath**, so the eye lands, then drills in.

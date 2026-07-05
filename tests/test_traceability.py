@@ -954,6 +954,17 @@ class TestMinedGapFolds(unittest.TestCase):
                        "grep JOURNAL.md for the area's name"):
             self.assertIn(phrase, bp, "build-pipeline lost the recurring-bug escalation: %s" % phrase)
 
+    def test_gaps5_8_docs_discipline(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        for phrase in ("The CHANGELOG speaks to the USER, the journal to the builder",
+                       "one concrete example from real output",
+                       "never function names, internal ids, or row numbers",
+                       "no doc pins a drifting version number in prose"):
+            self.assertIn(phrase, bp, "build-pipeline step 9 lost the docs discipline: %s" % phrase)
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("Pinning a drifting version number in prose", sa,
+                      "spec-author anti-patterns lost the version-pin entry")
+
 
 class TestCommunicatorTrigger(unittest.TestCase):
     """Row 68 (M-099): the communicator description fires on decisions and landing reports,

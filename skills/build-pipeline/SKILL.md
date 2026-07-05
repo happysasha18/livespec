@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.12
+  version: 0.2.13
 ---
 
 # build-pipeline — ship a change by the method
@@ -169,7 +169,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
 9. **Commit & show.** Commit when green with no regression (unasked). Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session; diary the
-   WHY in `JOURNAL.md`. Show the human the REAL render in a new window; push/deposit only after they've
+   WHY in `JOURNAL.md`. **The CHANGELOG speaks to the USER, the journal to the builder:** each entry says
+   what changed for the person using the product, with one concrete example from real output — never
+   function names, internal ids, or row numbers (those live in the journal). And no doc pins a drifting
+   version number in prose — "current version: vX.Y" always goes stale; point at the version's one home
+   (the VERSION file, the frontmatter) or omit it. Show the human the REAL render in a new window; push/deposit only after they've
    reviewed it. A push re-renders all deposited artifacts. Where the host's design-sync is ON (base
    defaults; SPEC E-18), the landing's DECLARED components also sync to the team's design project — after
    the human's gate, never instead of the in-session show.
