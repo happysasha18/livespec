@@ -494,3 +494,22 @@ delegate spot-check). VERSION 0.2.4 → 0.5.0 on Alexander's standing word (the 
 
 **Also:** Alexander OK'd the row-52 five-line summary (~15:34) — the loader flip executes immediately
 after this commit; its own journal entry follows.
+
+## 2026-07-05, ~15:50 — Row 52 flip staged to one human command; row 38 closed (session 5)
+
+**What:** Alexander OK'd the five-line summary (~15:34). Executed the reviewed checklist: pre-migration
+`~/.claude/CLAUDE.md` AND the old personal profile attic'd (`playbook/row52/attic/*.2026-07-05`); profile
+v2 written to its git home `playbook/personal/profile.md` (private repo, pushed — 5aa79a8) with
+`~/.claude/live-spec/profile.md` now a symlink to it, which lands row 38's backup/history debt with the
+same move; the final loader text staged at `row52/CLAUDE.final.md`.
+
+**The one step that did NOT execute by agent hand — by design:** the permission classifier refused the
+agent's rewrite of `~/.claude/CLAUDE.md` (self-modification of the global instruction file on a
+narrated OK). That refusal is the method's own INV-9/ACT-1 line drawn by an outside machine: the swap of
+the human's standing instruction file is the human's move. Alexander runs one command
+(`cp ~/.claude/playbook/row52/CLAUDE.final.md ~/.claude/CLAUDE.md`); rollback is the same command from
+attic. Row 52 marked "flip staged"; it closes on his copy.
+
+**Why journal this:** the audit had just folded the worker-contract seam as a queue row (who may write
+what a session's own machinery may not) — and an hour later a live permission gate enforced exactly that
+seam against the senior itself. Primary evidence for row 59's design.
