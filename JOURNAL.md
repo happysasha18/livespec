@@ -661,3 +661,30 @@ docs/audit/2026-07-05-night/ + docs/prover/2026-07-05-v14-push.md): ONE must-fix
 passes (a matrix row under the wrong node — moved, and the class mechanized as a standing test), the
 rest folded. Suite 46→61 green. Workers: two Opus provers ×5 passes, three Sonnet mechanical briefs
 (the self-contained-brief rule dogfooded on its own landing night). Pushed on the clean verdict.
+
+## 2026-07-05 evening (~20:50, session 8) — row 86: the pack now names WHAT it builds
+
+Alexander opened the evening with "поехали по полной" — the queue's 1.0-shortlist head, row 86, went
+through the full pipeline in one sitting. First, housekeeping: session 7 had mis-dated its late entries
+"2026-07-06" while the git clock says everything landed 2026-07-05 19:23–20:14 — swept the class
+(ROADMAP rows 95–97, NEXT_STEPS, the personal profile line, session memory), and row 74 closed on his
+word: he read the rendered OVERVIEW and asked one follow-up (why the playbook loads per-session — 
+answered in chat: always-on loader stays thin, rules arrive at the moment of use, durability lives in
+files + guardrails, and row 94's evals are the honest answer to "what if a skill never fires").
+
+The landing itself, SPEC v0.14.0 → v0.15.0, pack 0.8.0 → 0.8.1: the intake line's third axis, the
+WORK-KIND — product · infra · skill · prose — his decision-page note made law ("скилл сет должен
+понимать с чем работает… задействовать необходимые функционалы, не все всегда нужны"). T-16: kind named
+at intake, one kind per wish, curated vocabulary, host-profile default only for a one-kind host (the
+draft's own "live-spec = skill-and-prose default" broke that law and died in the CROSS-LINK pass — F1,
+must-fix, folded). INV-22: the door picks WHICH steps run, the kind picks the FORM each running step
+takes; at landing every door-granted step has APPLIED or STOOD DOWN by name in the report; an unresolved
+kind scales nothing down; the safety net (door law, mandatory sentences, ask-at-intake) is kind-proof —
+the same shape as appetite's law, deliberately. The per-kind step table's one normative home:
+build-pipeline SKILL.md (new section, pinned in the architecture). Base rule 15 carries the axis
+(0.1.8); communicator's landing report names stood-down steps (0.1.8); the base-pin test went dynamic —
+it now reads the base version from the base's own frontmatter, so a base bump without the same-session
+pin sweep is red by construction. Matrix rows M-084/M-085; suite 62 → 64 green, red-first shown on the
+skills before the code step. Prover record: docs/prover/2026-07-05-row86.md (CROSS-LINK, 3 findings, all
+folded same pass). This landing's own report dogfoods INV-22: kind = skill; prove-architecture stood
+down (assignment only, E-14's rule); design-sync/snapshot stood down (text product, [target] anyway).

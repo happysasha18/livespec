@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.6
+  version: 0.2.7
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.7), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.8), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -32,7 +32,9 @@ the principle behind each step; this skill is its executable projection — keep
 - **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15).** The intake
   line states size (with the human's optional appetite rider — a named time budget that bends scope
   only, never lane order; trims proceed on the recommended option and are surfaced, SPEC T-15) ·
-  priority · door: feature · bug · refactor · docs-only · skip. Tripwires decide, not
+  priority · door: feature · bug · refactor · docs-only · skip · work-kind: product · infra · skill ·
+  prose — what the wish BUILDS, one kind per wish, scaling the FORM of every step it walks (the
+  work-kind table below; SPEC T-16, INV-22). Tripwires decide, not
   judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
   · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
   casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
@@ -63,6 +65,30 @@ Not for the skip-boundary edit (single file · no new state, element, or visible
 test level already covers the touched fact — it still ships a test, just no pipeline); not for pure
 research or fact-gathering (no artifact changes); not for a SEE/TRY ask (that goes to the labelled
 prototype home, base rule 16 — and comes BACK through this pipeline only at promotion).
+
+## The work-kind table — WHAT the wish builds scales HOW each step runs (SPEC T-16, INV-22)
+
+The door picks WHICH steps run; the kind picks the FORM each running step takes. The work-kind table
+below is the per-kind meanings' ONE normative home (the spec binds the contract around it). The
+contract, before the table: at landing, every door-granted step has either **APPLIED in its kind's form
+or STOOD DOWN by name** in the landing report ("design-sync — text product, stands down") — a silently
+skipped step is a defect. **An unresolved kind scales nothing down** — standing a step down requires a
+NAMED kind (the ask rides the row, SPEC INV-12). And no kind ever touches the safety net: the door law
+and its tripwires, the delta's mandatory sentences (fences · facets · non-goals · success measure),
+ask-at-intake — the same law appetite obeys.
+
+| Step | product (a user faces it) | infra (tooling for the project) | skill (an agent works by it) | prose (a human reads it) |
+|---|---|---|---|---|
+| 1 spec | full delta: fences, axes, facet sweep over visible surfaces | the tool's contract: inputs → outputs, failure behaviour, where it runs; usually "no visible surface — facets N/A" | the behaviour it must produce: trigger, the correction it makes, when NOT to fire | the reader, the claims, the reading path; visual facets only if it renders |
+| 2 prove | as written | as written | as written | as written — the prover reads documents natively |
+| 3 architecture | nodes + `file:line` pins | one node owns the tool, pinned to its entry point | the skill IS a node; pin its SKILL.md | owned by a docs node; new node only if structure grows |
+| 4 prove architecture | when structure changed | same | same | usually stands down — assignment, no structure change |
+| 5 matrix | rendered-level rows (E-15) | function-level rows: run the tool, assert real output | string rows on the SHIPPED SKILL.md; behaviour eval when the eval machinery lands (row 94) | render-level: file shipped, sections present, links resolve |
+| 6 test | assert the real render | run on a fixture, assert output | string assertions against the installed artifact | assert the shipped file's content |
+| 7 code | as written | as written | as written | the writing IS the step |
+| 8 verify by deed | open the real artifact, eyes on it | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap | render it by the show rule and READ it |
+| 9 commit & show | show the render | show the run's output | version bump + installed-copy sync, same session | open the rendered page for the human |
+| design-sync / snapshot | product with visuals: declared scope syncs (human-gated) | stands down | stands down | stands down |
 
 ## The steps
 

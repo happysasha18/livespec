@@ -4,7 +4,8 @@ Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** 
 `docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
 SPEC v0.14.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
 + the night-of-2026-07-05 landings (rows 72-92: facets/fences/intake-trio/founding/design-sync —
-anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083; headers re-pin at each milestone per M-1). Rows are organized
+anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083) + the work-kind landing (SPEC v0.15.0,
+session 8: T-16/INV-22, rows M-084/M-085; headers re-pin at each milestone per M-1). Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run, not once. [E-15]
@@ -136,13 +137,15 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-022 | One landing at a time; never two rows in-work at once | INV-2 | string | `test_roadmap_single_in_work` | BUILT |
 | M-023 | Every landing cites its wish row in commit or journal; never an unexplained change | INV-3 | string | pre-push hook (the E-6 host-facing gates (rows 55+)) | TODO |
 | M-024 | A pending human question never stops the lane — work proceeds on the recommended option, marked in the row | INV-4 | string | queue audit at milestones (M-1) | TODO |
-| M-025 | Ambiguous size or priority is asked at intake, never guessed; the class column speaks the four-word vocabulary + priority marks only | INV-12 | string | `test_roadmap_class_vocabulary` | BUILT |
+| M-025 | Ambiguous size, priority, or work-kind is asked at intake, never guessed; the class column speaks the four-word vocabulary + priority marks only | INV-12 | string | `test_roadmap_class_vocabulary` | BUILT |
 | M-026 | ARCHITECTURE.md exists, every node pinned to a real file:line, proven before the matrix derives; never an unproven architecture under a matrix | E-14 | string | `test_architecture_owns_every_anchor_once`, `test_architecture_no_orphan_nodes` | BUILT |
 | M-027 | The matrix is DERIVED node × fact with the coverage validation walked; never just filled | E-15 | string | `test_matrix_covers_every_anchor`, `test_matrix_blocks_match_architecture_nodes` | BUILT |
 | M-028 | No wish lands whose facts lack an owning node and a right-level matrix row (binds from this landing, never retroactively) | INV-15 | string | `test_matrix_covers_every_anchor` (re-runs at every commit) | BUILT |
 | M-029 | The milestone gate runs: full re-prove + matrix audit + composition check + compaction + gate/inbox re-listing + index re-check; never a MINOR without it | M-1 | string | next MINOR walks it; journal records the walk | TODO |
-| M-067 | The door is named before any code: every wish states size · priority · door in ONE intake line; never code before the door is said | T-12 | string | `test_spec_states_door_procedure`, `test_working_skills_carry_the_door` | BUILT |
+| M-067 | The door is named before any code: every wish states size · priority · door · work-kind in ONE intake line; never code before the door is said | T-12 | string | `test_spec_states_door_procedure`, `test_working_skills_carry_the_door` | BUILT |
 | M-068 | Feature tripwires are hard and ordered (surface/state/interaction/[target]/unbacked behaviour ⇒ feature); the verdict outranks a casual label, a re-doored wish takes no preemption, the door re-fires mid-work; never a wish hand-built past the pipeline for sounding small | INV-16 | string | `test_spec_states_door_procedure`, `test_base_rules_door_and_prototype` | BUILT |
+| M-084 | The work-kind is named at intake: product · infra · skill · prose, one kind per wish, called from what the wish PRODUCES; a host with ONE usual kind may record a profile default; the vocabulary is curated — a fifth joins only with a named mis-served wish; never a guessed kind (uncallable ⇒ asked, like size) | T-16 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
+| M-085 | The kind scales each running step's FORM (per-kind table's one home: build-pipeline SKILL.md); at landing every door-granted step has APPLIED or STOOD DOWN by name in the report; an unresolved kind scales nothing down; never a silent skip, and never the safety net (door law, mandatory sentences, ask-at-intake) touched by a kind | INV-22 | string | `test_spec_states_work_kind`, `test_skills_carry_work_kind` | BUILT |
 
 ### [node: communicator]
 

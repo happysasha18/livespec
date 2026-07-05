@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.14.0, 2026-07-05)
+# live-spec — SPEC (v0.15.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -42,8 +42,8 @@ never edited, never lost. A **deferred** row is not terminal: it stays in the ac
 revisit trigger until the trigger fires or it re-resolves to a terminal exit — the archive never swallows
 a wish that is still due back. No wish is ever lost. [INV-1]
 
-From the row the wish walks one path: classified by size, priority, and door — stated back to you in one
-INTAKE line (the paragraphs below) → a
+From the row the wish walks one path: classified by size, priority, door, and work-kind — stated back to
+you in one INTAKE line (the paragraphs below) → a
 spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
 everything else proceeds on the recommended option, marked in the row → queued → in-work → landed (green
 suite + guardrails + committed + the row closed with its acceptance met) → reported to you in one
@@ -54,9 +54,10 @@ large** — and the queue's class column speaks the same four words, never a sec
 below is a different axis — where the wish ENTERS the pipeline, not how big it is). Priority is
 **normal** unless the row says otherwise; two marks exist: **critical** — the shipped product is broken for
 its user (an unusable surface, data being lost, a safety gate violated) — and **quick win** — low effort,
-immediate value, no design decision inside. When the classifier can't call a size or a priority, it asks
-you at intake and never guesses; until you answer, the wish carries normal and the open question rides in
-the row — the lane keeps moving [INV-4]. [INV-12]
+immediate value, no design decision inside. When the classifier can't call a size, a priority, or a work-kind
+[T-16], it asks you at intake and never guesses; until you answer, the wish carries normal (a kind: the
+host's recorded default, else none — and a kind not yet named scales nothing down [INV-22]) and the open
+question rides in the row — the lane keeps moving [INV-4]. [INV-12]
 
 **Your time budget is part of the wish.** You may name an **appetite** at intake — "give it half a day",
 "worth a week" — and it rides the intake line as an optional rider on the size word (size says how big
@@ -81,8 +82,8 @@ competes with spoken timestamps. Arrival ties resolve by queue row order, top to
 an inbox batch harvests in filename-sorted order. [T-11]
 
 **The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
-two axes, stated together in ONE intake line — size (with its optional appetite rider [T-15]) ·
-priority · door. Size (with priority) says how big
+three axes, stated together in ONE intake line — size (with its optional appetite rider [T-15]) ·
+priority · door · the work-kind (what the wish builds — next paragraphs [T-16]). Size (with priority) says how big
 and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
 docs-only · skip**. The two axes share one word deliberately — a wish sized "bug" IS the bug door, one
 call stated once; the door axis only adds the other four entries. [T-12]
@@ -109,6 +110,34 @@ SEE or TRY something, with no commitment to keep it, may be built as a labelled 
 is not the product" — the ask-when-unclear rule lives there). Casual
 loading stays the contract — a wish is routed through its door, never refused for being casual, and
 never hand-built past the pipeline because it sounded small. [INV-16]
+
+**The intake line also names WHAT is being built.** Size says how big, the door says where the wish
+enters — the **work-kind** says what kind of thing the work produces, and with it which pipeline
+machinery earns its keep. Four kinds today: **product** — something the host's own user faces;
+**infra** — tooling that serves the project itself (scripts, hooks, CI, pipelines); **skill** — a
+behaviour document an agent works by (a SKILL.md, a prompt pack); **prose** — a document written for a
+human to read (an overview, an article, a spec's own text). The kind is called from what the wish
+PRODUCES, one kind per wish — a wish genuinely producing two kinds is two wishes, split at intake; a
+kind the classifier can't call is asked like an uncallable size [INV-12]. A host with ONE usual kind may
+record it as a host-profile default the intake line starts from [E-8, E-13] (track-coach's would be
+product); a host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra —
+records none and calls each wish on its own. The vocabulary is CURATED like the facet list [T-13]: each kind above is earned by real
+work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five
+skills — skill; OVERVIEW.md — prose), and a fifth joins only with a named wish the four mis-served,
+re-justified at milestones. [T-16]
+
+**A kind scales the steps — it never skips one silently.** The door picks WHICH steps run [T-12]; the
+kind picks the FORM each running step takes, never whether the walk happens: the per-kind meaning of every step (what "architecture" means for
+a one-file script, what "verify by deed" means for a document a human reads) has its normative home in
+the build-pipeline skill — one table for every project, the skill's own domain [E-12]. This spec binds
+the contract around it: at landing, every pipeline step has either APPLIED in the form the table states
+for the wish's kind, or STOOD DOWN by name in the landing's report ("design-sync — text product, stands
+down"), so a skipped step is always a written fact, never an omission. An unresolved kind scales nothing
+down — while the kind question rides the row [INV-12], every step applies in full, because standing a
+step down requires a NAMED kind to answer for it. What no kind may ever touch: the
+door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals,
+success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]; the kind dials the
+machinery, never the safety net — the same law appetite obeys [T-15]. [INV-22]
 
 **A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
 say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
@@ -473,7 +502,8 @@ What keeps "it works" honest, each one a named machine:
   the team-review channel. The switch and its off-by-default home land WITH the machine in the base
   skill's defaults [E-13]; a host turning it on writes a recorded profile line [INV-14]. Every sync is
   gated by the human because a sync PUBLISHES outside the machine. The pack itself, a text product,
-  never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis (row 86). [E-18]
+  never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis [T-16] — the
+machine applies to product-kind work on a visual host; every other kind stands it down by name [INV-22]. [E-18]
 - **The surface registry [target]** — one named list per host of every user-facing surface, and the
   PREFERRED form is executable: the list lives as a declared map inside a completeness-gate test, so a
   mismatch IS a failing test in both directions (rendered-but-unregistered · registered-but-empty); the
@@ -612,6 +642,7 @@ meaning, this table is only the map.
 | T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
 | T-14 | touching a live surface: spec-delta opens with regression fences citing existing clauses | Throwing a wish |
 | T-15 | appetite: optional rider on size; bends scope only, never lane order; trims proceed on the recommended option, surfaced | Throwing a wish |
+| T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -623,7 +654,7 @@ meaning, this table is only the map.
 | INV-9 | trust set only by the human | Who decides what |
 | INV-10 | write-ownership of the package repo | Package repo |
 | INV-11 | concurrent-edit fence before write/commit | Package repo |
-| INV-12 | ambiguous size/priority is asked at intake, never guessed | Throwing a wish |
+| INV-12 | ambiguous size/priority/work-kind is asked at intake, never guessed | Throwing a wish |
 | INV-13 | one normative home per shared rule: the base skill | One rulebook |
 | INV-14 | no silent override; every profile line recorded + journaled | Who decides what |
 | INV-15 | no landing without an owning node + a right-level matrix row | From spec to tests |
@@ -633,6 +664,7 @@ meaning, this table is only the map.
 | INV-19 | a fence cites its clause and discharges through that clause's existing never-side; fences named by anchor in the wish's row | Throwing a wish |
 | INV-20 | the non-goals sentence is always written ("nothing left out" is valid); scope-narrowing non-goals ride the batched report | Throwing a wish |
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
+| INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

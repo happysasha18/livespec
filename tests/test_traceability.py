@@ -372,11 +372,45 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         sa = read("skills/spec-author/SKILL.md")
         self.assertIn("Name the future with the [target] tag", sa,
                       "spec-author lost the [target] tripwire rule")
-        # the four working skills' base pin points at the current base version
+        # the four working skills' base pin points at the CURRENT base version (read from its
+        # frontmatter, so a base bump without the same-session pin sweep is red by construction)
+        base_version = re.search(r"(?m)^\s*version:\s*([0-9.]+)",
+                                 read("skills/live-spec-base/SKILL.md")).group(1)
         for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
                     "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md"):
-            self.assertIn("`live-spec-base` (v0.1.7)", read(rel),
+            self.assertIn("`live-spec-base` (v%s)" % base_version, read(rel),
                           "%s pins a stale base version" % rel)
+
+    def test_spec_states_work_kind(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("The intake line also names WHAT is being built",
+                       "A kind scales the steps — it never skips one silently",
+                       "STOOD DOWN by name",
+                       "An unresolved kind scales nothing down",
+                       "never the safety net",
+                       "one kind per wish",
+                       "The vocabulary is CURATED like the facet list"):
+            self.assertIn(phrase, body, "SPEC lost the work-kind clause: %s" % phrase)
+        for kind in ("**product**", "**infra**", "**skill**", "**prose**"):
+            self.assertIn(kind, body, "SPEC lost the kind %s" % kind)
+        for anchor in ("[T-16]", "[INV-22]"):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+
+    def test_skills_carry_work_kind(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("product · infra · skill · prose", bp,
+                      "build-pipeline lost the work-kind vocabulary")
+        self.assertIn("The work-kind table", bp,
+                      "build-pipeline lost the per-kind step table (its ONE normative home)")
+        for phrase in ("APPLIED in its kind's form or STOOD DOWN by name",
+                       "An unresolved kind scales nothing down"):
+            self.assertIn(phrase, bp, "build-pipeline lost the work-kind clause: %s" % phrase)
+        base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))
+        self.assertIn("work-kind", base, "base rule 15 lost the work-kind axis")
+        self.assertIn("product · infra · skill · prose", base,
+                      "base rule 15 lost the four-kind vocabulary")
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("stood down", cm, "communicator lost the stood-down-steps report line")
 
     def test_spec_states_regression_fences(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))

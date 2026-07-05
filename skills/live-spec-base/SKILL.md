@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
 metadata:
-  version: 0.1.7
+  version: 0.1.8
 ---
 
 # live-spec-base — one rulebook, five skills
@@ -94,7 +94,11 @@ a working skill still stands: its pointer here reads as plain advice.
 
 15. **The door is named before any code.** Every request states its entry point — feature · bug ·
     refactor · docs-only · skip — in one intake line beside size and priority, BEFORE the first line of
-    code. Hard tripwires decide, never mood: a new user-visible surface · new persistent state · a new
+    code. The same line names the **work-kind** — product · infra · skill · prose — what the request
+    BUILDS: the door picks WHICH pipeline steps run, the kind picks the FORM each running step takes
+    (the per-kind table's one home is build-pipeline), and at landing every door-granted step has
+    applied or been stood down BY NAME in the report — never a silent skip, never a kind touching the
+    safety net (SPEC T-16, INV-22). Hard tripwires decide, never mood: a new user-visible surface · new persistent state · a new
     interaction on an existing surface · a spec [target] mark on the touched surface · behaviour no spec
     clause backs ⇒ FEATURE, however casually asked — and the tripwire verdict outranks a casual label
     (queue-cutting stays with the bug door alone). The door re-fires mid-work: the moment running work is
@@ -162,6 +166,7 @@ any pack file is read, and it is those bootstrap lines' one home — the profile
 | `prover.cadence` | FULL pass before every MINOR bump; CROSS-LINK on every surface add | tighter (e.g. live-spec itself: before every push) or looser, recorded |
 | `worker.tiering` | router proposes the cheapest sufficient tier; senior may override, logged | fixed tier per size class (SPEC D-2) |
 | `checkpoints.home` | `<host>/.live-spec/checkpoints/`, gitignored | another host path |
+| `work-kind.host-default` | none — each wish's kind is called at intake | a host with ONE usual kind names it as the intake default (SPEC T-16) |
 
 A profile file is plain markdown: one `setting: value` line per override, each with a trailing date and,
 when it narrows the defaults, one line of WHY. Settings not listed above may be proposed as wishes — the
