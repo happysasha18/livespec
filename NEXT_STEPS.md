@@ -1,8 +1,10 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~15:45, session 5 — safe to wipe after this report)
-PUBLIC: github.com/happysasha18/live-spec, local VERSION **0.5.0 committed, PUSH HELD for Alexander's
-review (his word: one push after the tidy-up).** The 0.5.0 preventive audit ran IN FULL this afternoon
+## LIVE STATE (2026-07-05 ~16:50, session 6 — safe to wipe after this report)
+PUBLIC: github.com/happysasha18/live-spec, VERSION **0.5.0 PUSHED 2026-07-05 on Alexander's word**,
+push gate ran fresh (Opus worker + senior triage): 2 must-fix found and FOLDED (lane claim = committed
+act, INV-2; deferred rows never archived, INV-1) + 3 smaller → **SPEC v0.9.1**, anchors unchanged, suite
+36 green twice; record `docs/prover/2026-07-05-v05-push.md`. The 0.5.0 preventive audit ran IN FULL this afternoon
 (3 passes + skill-creator eval, Opus workers; pass 1 run twice — Opus AND Fable independently as the
 model sample; records + `model-comparison.md` in `docs/audit/2026-07-05/`). Zero must-fix in matrix and
 composition passes; prover must-fixes ALL FOLDED same sitting → **SPEC v0.9.0** (lane token = single
@@ -19,13 +21,11 @@ Model verdict: audits on Opus suffice; Fable for fold triage/wording — split c
 skill list, delete after the push review.
 
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. Alexander: the one copy command above (closes row 52) · review → the ONE push (re-check gate: fresh
-   prover record for pushed state, M-6).
-2. **Rows 70–71 CUT THE LINE after the push** (Alexander, the Room incident 2026-07-05 ~16:20):
+1. **Rows 70–71 CUT THE LINE — next landing** (Alexander, the Room incident 2026-07-05 ~16:20):
    feature-recognition tripwire + prototype quarantine/prod-traceability — one build-pipeline landing;
    wish relayed to tlvphoto (`~/tlvphoto/inbox/2026-07-05-room-prototype-quarantine.md`).
-3. Row 57 remainder (installer + decision page) · row 12 gaps (8) · row 54 onboarding · new audit rows
+2. Row 57 remainder (installer + decision page) · row 12 gaps (8) · row 54 onboarding · new audit rows
    59–69 (worker contract & collision law first — 3-model consensus).
-4. Snapshot machinery (55) · CI-mirror (14).
-5. Deferred tail: model router (56) · feedback (47) → measurement (48) → A/B (49) · learn-from-others
+3. Snapshot machinery (55) · CI-mirror (14).
+4. Deferred tail: model router (56) · feedback (47) → measurement (48) → A/B (49) · learn-from-others
    (44) · track-coach formal adopt.

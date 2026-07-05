@@ -513,3 +513,26 @@ attic. Row 52 marked "flip staged"; it closes on his copy.
 **Why journal this:** the audit had just folded the worker-contract seam as a queue row (who may write
 what a session's own machinery may not) — and an hour later a live permission gate enforced exactly that
 seam against the senior itself. Primary evidence for row 59's design.
+
+## 2026-07-05 (session 6, evening) — the 0.5.0 push lands; the Room incident files rows 70–71
+
+Row 52 closed at Alexander's own hand (~16:12, the one `cp`; diff-verified identical) — the thin-loader
+migration is live. The push gate then ran as designed: FULL prover pass on an Opus worker (per the
+morning's model-split decision), senior triage. It found two real must-fix holes the morning's audit
+folds had left — the lane token was a bare read, not a committed claim (two parallel sessions could
+double-land, INV-2), and the milestone archive could swallow a deferred wish whose revisit trigger
+hadn't fired (INV-1 violated by its own clause). Both folded as narrow wording fixes + three smaller
+folds (inbox arrival = harvest moment; unreachable harvest-recovery parenthetical rewritten; the
+architecture's stale loader pin flipped to landed). SPEC v0.9.0 → v0.9.1, anchor set unchanged, suite 36
+green twice (before and after folds). Record: docs/prover/2026-07-05-v05-push.md.
+
+**The Room incident (why rows 70–71 exist and cut the line).** Alexander, hot and right: tlvphoto's
+similarity room was hand-built over the infrastructure past the pipeline — its own spec named Room a
+"later surface, not yet specified", and no pack law made that line binding, no law defined "prototype",
+no machine check compared the prod build against the spec. The agreement was "load casually, the system
+lines it up" — the recognition half was never made a mandatory step. Rows 70 (feature-recognition
+tripwire: classification said aloud before any code; hard triggers replace judgment) and 71 (prototype
+quarantine + prod-traceability guardrail) land next, one pipeline landing; wish relayed to tlvphoto's
+inbox (created with the file — the host had none). Fitting coda: while filing those very rows the
+traceability suite went red on the senior's own class-cell vocabulary — the gate caught the gatekeeper,
+live evidence that tripwires beat judgment.

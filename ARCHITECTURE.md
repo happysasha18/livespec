@@ -1,9 +1,11 @@
 # live-spec — Architecture (v0.1, 2026-07-05)
 
 How the pack is BUILT: the named nodes the spec's facts live in. Written from the proven SPEC v0.7
-(record `docs/prover/2026-07-05-lost-layers.md`), proven itself with the architecture lens before the
+(record `docs/prover/2026-07-05-lost-layers.md`; the matrix cites v0.7.1 — the same proven spec after
+two already-decided questions were reworded to their decided state, no rule delta), proven itself
+with the architecture lens before the
 test matrix was derived (record: see Prover record below). One node = one name = one responsibility —
-the one-surface-one-name rule applied to structure. Kept current through SPEC v0.9.0 by assignment
+the one-surface-one-name rule applied to structure. Kept current through SPEC v0.9.1 by assignment
 (E-16 → host-contract; 2026-07-05 audit folds — no anchor delta); last full architecture-lens prove:
 v0.1, 2026-07-05. [E-14]
 
@@ -35,7 +37,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1 | `templates/TEST_MATRIX.template.md:43` (checklist), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9 | `adopt/ADOPT.md:16` (VCS gate first), `:103` (attic), `:141` (attach record), `install.sh:2` |
 | inbox | parallel-safe intake door for wishes born outside a live-spec session | E-11, T-10, INV-10 | `inbox/README.md:3` (write rule), `:9` (file format), `:14` (commit rule) |
-| host-contract | the recorded settings instances: this host's profile, the human's personal profile, and the thin loader that boots the personal layer | E-8, E-16 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (outside the repo — row 38 debt), loader: `~/.claude/CLAUDE.md` ([target] until row 52 lands) |
+| host-contract | the recorded settings instances: this host's profile, the human's personal profile, and the thin loader that boots the personal layer | E-8, E-16 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (symlink → playbook repo `personal/profile.md`, its git home — row 38 landed 2026-07-05), loader: `~/.claude/CLAUDE.md:1` (thin loader live — row 52 landed 2026-07-05) |
 | package-docs | live-spec's own host instance (dogfood): spec, queue, journal, resume file, version, records | S-0, M-3, M-4, D-1, D-2, D-3, D-4, D-5 | `SPEC.md:1`, `ROADMAP.md:8` (queue table), `JOURNAL.md:1`, `VERSION:1` |
 | guardrails [target] | mechanical pre-push checks + surface registry + CI mirror; first slice LIVE (the pack's own gates + opt-in fence, hooks installed), host-facing checks + registry + CI still [target] (ROADMAP rows 14, 55) | E-6, E-10, M-5 | `guardrails/pre-push:1` (gates), `guardrails/pre-commit:1` (fence), `guardrails/install.sh:1`, `tests/test_guardrails.py:1`; registry/CI: — |
 | snapshot [target] | saved baseline of the last accepted run; declared-scope diff (ROADMAP row 55) | E-7, A-6 | — (spec'd, not yet code) |

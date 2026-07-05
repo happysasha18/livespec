@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.9.0, 2026-07-05)
+# live-spec — SPEC (v0.9.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -34,8 +34,11 @@ That same minute the wish becomes a row in the **queue (ROADMAP.md)** — the pe
 every wish: your words · class (size, plus priority when it isn't normal) · status · acceptance criterion,
 one row each. [E-3] Spoken means the row
 exists before anything else happens; it survives even if the session dies a second later, and rows are
-never deleted — only closed with a named exit; at a milestone, closed rows MOVE to a dated queue archive —
-the attic principle applied to the queue: archived, never edited, never lost. No wish is ever lost. [INV-1]
+never deleted — only closed with a named exit; at a milestone, rows closed with a TERMINAL exit (landed ·
+declined · superseded) MOVE to a dated queue archive — the attic principle applied to the queue: archived,
+never edited, never lost. A **deferred** row is not terminal: it stays in the active queue carrying its
+revisit trigger until the trigger fires or it re-resolves to a terminal exit — the archive never swallows
+a wish that is still due back. No wish is ever lost. [INV-1]
 
 From the row the wish walks one path: classified by size and priority (the two paragraphs below) → a
 spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
@@ -54,13 +57,18 @@ the row — the lane keeps moving [INV-4]. [INV-12]
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). A quick win may bubble up: when the lane frees, it may be taken ahead of
 larger queued wishes, the jump marked in its row, never silent; after one bubbled landing the queue head
-goes next, so a stream of quick wins cannot starve a big wish forever. Arrival ties resolve by queue row
-order, top to bottom; an inbox batch harvests in filename-sorted order. [T-11]
+goes next, so a stream of quick wins cannot starve a big wish forever. An inbox wish's arrival IS its
+harvest moment — that is when it first becomes a row the ordering rules can see; a file's own date never
+competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom; within one sweep
+an inbox batch harvests in filename-sorted order. [T-11]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
-  the lane token, so any assigned session (a second parallel one included) takes a wish only after seeing no
-  other row in-work. Bounded delegated execution (workers) may overlap under the senior — only on disjoint
+  the lane token, and CLAIMING it is an atomic committed act — the session commits the row→in-work flip
+  first, then re-checks the token under the fence [INV-11] immediately before drafting the spec-delta; if
+  the re-check reveals another committed in-work row, the later claimant backs off and re-queues. So any
+  assigned session (a second parallel one included) takes a wish only after seeing — in committed history,
+  never a bare read — no other row in-work. Bounded delegated execution (workers) may overlap under the senior — only on disjoint
   files, with the edit fence armed [INV-11] — but the lane itself (spec-delta, validation, integration,
   closing the row) still lands one at a time. A new wish waits its turn unless it is a bug preempting
   (next section). [INV-2]
@@ -321,9 +329,9 @@ true when two contributors' sessions share one host. [E-11] A live-spec session 
 each file into a queue row — a wish must not wait durably-recorded but operationally invisible; the
 harvest commit removes the file (git history keeps it — this internal removal is not an attic case, which
 protects HOST files). Each harvest is ONE commit that both adds the row and removes its file — the row
-names the source file, so an interrupted harvest leaves the file for the next sweep, which re-harvests
-idempotently (a file already represented by a row is removed, never re-added). So "spoken means it
-exists" holds without the outside session touching the queue. [T-10]
+names the source file, so an interrupted harvest (nothing committed) leaves the file untouched for the
+next sweep, which harvests it exactly once — a committed harvest leaves no file behind to re-harvest. So
+"spoken means it exists" holds without the outside session touching the queue. [T-10]
 
 **Before writing to a repo — and again before every commit** — the agent re-checks `git status` + HEAD
 against what it last read. If HEAD moved or the tree holds changes it did not make: STOP, re-read the
