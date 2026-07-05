@@ -919,3 +919,11 @@ From the playbook's accountability rule into the pack: every delegation's landin
 line — what went to the worker and roughly what senior work it saved. The line is the habit's pulse
 (the pack author's own standing failure is exactly a session that quietly stops delegating — now the
 missing line is visible). build-pipeline 0.2.14; matrix M-102 under the worker contract.
+
+## 2026-07-05 ~23:00, session 9 — row 12, gap 9: the prover reads the visible words as the user
+
+Phase 4 (human factors) gains the domain-language lens: extract the visible strings a spec promises and
+read them as the USER would — a leaked internal identifier, code, or mechanism name on a user-facing
+surface is a finding (the track-coach "aim-demo" label and tlvphoto's dev-named cards are the incident
+family). product-prover 0.1.8. No matrix row — no spec anchor changed; the lens is the prover's own
+text, pinned by its test.

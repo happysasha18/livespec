@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly.
 metadata:
-  version: 0.1.7
+  version: 0.1.8
 ---
 
 # Product Prover
@@ -304,6 +304,10 @@ If there are no acknowledged gaps, write "No explicit Open Items or TBDs in the 
 Properties that aren't formally checkable but matter equally:
 
 - Human observability: can operators understand the system's state? Are identifiers readable? Are errors actionable?
+- Domain language on every user-facing surface: the visible text speaks the product's words — never an
+  internal identifier, code, or mechanism name leaking through (a card labelled by a dev tag, a page
+  titled by an id). Extract the visible strings the spec promises and read them as the USER would; a
+  leaked internal word is a finding.
 - Cognitive load: mode-dependent behavior, exceptions, special cases users must remember.
 - Operational UX: debuggability, audit trails, traceability.
 - Performance and scale budgets: how big can the input get (size, count, duration) before the artifact is unusable? State the assumed ceiling rather than leaving it implicit.
