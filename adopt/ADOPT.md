@@ -1,7 +1,7 @@
 # ADOPT — Mid-flight adoption procedure
 
 How to attach livespec to an existing codebase — at the start or in the middle. This is the executable
-projection of SPEC.md "Entry mode 2: adopting a live project" (A-0…A-7). Follow the phases in order; each
+projection of SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
 has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
 
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
@@ -24,10 +24,24 @@ anything** — then the whole adopt run is reversible.
    ~source, not the exports.)
 3. Make ONE **baseline commit** of the pristine original — this is the restore point and the diff baseline
    (SPEC A-6 / E-7).
-4. **Recommend** a remote (GitHub) + a backup habit. Creating/pushing a remote is the human's gate — offer,
-   don't do it silently.
+4. **Settle the remote — a named deliverable, not a recommendation (SPEC A-5).** By the first landing a
+   remote (GitHub) either EXISTS or the human has EXPLICITLY DECLINED one; record the outcome in the run's
+   journal entry. Creating/pushing the remote is the human's gate — offer and follow through, don't do it
+   silently and don't let "recommended" quietly become "never happened" (the pilot ended local-only that way).
 
-Done when: the host is a git repo with a clean baseline commit, and heavy artifacts are gitignored.
+Done when: the host is a git repo with a clean baseline commit, heavy artifacts are gitignored, and the
+remote outcome (exists / declined) is recorded.
+
+---
+
+## Phase 0.5 — Optional cruft sweep (human-gated; SPEC A-9)
+
+Writing the `.gitignore` usually surfaces pre-existing regenerable junk (caches, build leftovers, stale
+exports). Offer ONE sweep: list what qualifies as "N files, M MB" per group, get the human's explicit OK,
+delete ONLY the approved regenerable junk. Never silent, never authored content — anything a human wrote
+goes through the attic (INV-7), not this sweep. Skipping the offer is fine; deleting without the OK is not.
+
+Done when: the sweep was offered and either declined or executed exactly as approved.
 
 ---
 
@@ -37,8 +51,10 @@ Read every existing document BEFORE writing or moving anything: README, any road
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
 these in livespec shape** — then adoption is light and you rewrite nothing.
 
-Produce a **document digest** (`data/adopt_orient_digest.md`): per doc — kind (spec/roadmap/journal/notes/
-report/…) · one-paragraph what-it-says · CURRENT or STALE (and why) · what it overlaps/duplicates.
+Produce a **document digest** (`.livespec/adopt/orient_digest.md` — ALL adopt working artifacts live in
+`.livespec/adopt/`, tracked in git as the run's audit trail, never in the host's own folders; SPEC A-8):
+per doc — kind (spec/roadmap/journal/notes/report/…) · one-paragraph what-it-says · CURRENT or STALE (and
+why) · what it overlaps/duplicates.
 
 > Delegate this read to a worker — it is fan-out fact-gathering, not judgment. The senior reads the digest.
 
@@ -55,7 +71,8 @@ Done when: every existing document has a digest entry.
    isn't registered is RED.
 3. List every significant **data entity** (from filenames, JSON keys, class names, tables, config).
 
-Record in `data/adopt_inventory.md` (one line per item), then lift the surfaces into `SURFACE_REGISTRY.md`.
+Record in `.livespec/adopt/inventory.md` (one line per item; A-8 home), then lift the surfaces into
+`SURFACE_REGISTRY.md`.
 
 Done when: the inventory exists and every surface in the registry has a real `file:line` (or is marked
 `⟨DECIDE⟩`).
@@ -117,7 +134,8 @@ Done when: `TEST_MATRIX.md` has a row per spec invariant, each with a level, all
 1. Record installed skill versions in `.livespec/` (pin by source commit if the skills carry no semver) and
    seed `.livespec/profile.md` (the human's working contract — mode/trust set only on the human's word,
    INV-9).
-2. Write the run's JOURNAL entry (what landed · why · provenance · any findings held for the human).
+2. Write the run's JOURNAL entry (what landed · why · provenance · the remote outcome (exists/declined) ·
+   any findings held for the human).
 3. The host is now on the standard pipeline: every new wish enters at intake and flows
    `spec → prove → matrix → test → code → verify → commit`.
 

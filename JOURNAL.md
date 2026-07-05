@@ -182,3 +182,19 @@ Also today, on Alexander's word, the working setup became a standing global rule
 CLAUDE.md lives in the playbook repo via symlink, hence that commit): one window = one project (livespec ·
 track-coach · tlvphoto), ask when the project is unsure, never infer from memory; livespec runs on Fable
 only, as the package that will rule the other projects.
+
+## 2026-07-05 — the three adoption fixes from the first real adopt run (rows 19–21) + row 33 opened
+The tlvphoto pilot's inbox wishes became rules. (1) The remote is now a NAMED deliverable, not a
+recommendation: by the first landing it exists or the human explicitly declined it, outcome recorded in
+the run's journal — the pilot had ended local-only on a mere "recommended"; the bootstrap sentence carried
+the same weakness and was fixed as the same class (A-5, INV-8). (2) Adoption's working artifacts (orient
+digest, inventory, reconcile notes) got a home: `.livespec/adopt/`, TRACKED in git as the run's audit
+trail — recommended pick recorded in row 20, Alexander may flip to gitignored; the pilot had polluted the
+host's data/ (A-8). (3) The optional cruft sweep is spec'd as the ONE gated exception to never-delete:
+regenerable junk only, listed with counts and sizes, human's explicit OK, authored content always via the
+attic — INV-7 reworded to "never bends for anything authored" so the exception is a gate, not a buried
+contradiction (A-9; ADOPT Phase 0.5). Push gate: CROSS-LINK prover pass over the three seams
+(docs/prover/2026-07-05-adopt.md) — one drift found and folded (INV-7's index line), 0 must-fix.
+Anchors: deliberate add of exactly A-8/A-9, indexed. Row 33 opened: Alexander asks whether the playbook
+repo + CLAUDE.md symlink are still needed — recommendation recorded (keep as the thin private layer;
+audit/shrink after rows 12 and 24), his call.

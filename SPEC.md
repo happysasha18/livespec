@@ -66,8 +66,8 @@ the lane, bugs take it in arrival order; the parked wish resumes only once no bu
 
 Copy the templates (SPEC, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate → the first
 wish enters the queue → the pipeline runs from step 0. [B-1] The gate itself is an always-rule: **no
-landing into an unversioned host** — version control exists (and a remote is recommended) before the
-first landing. [INV-8]
+landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
+declined (recorded, not merely recommended), before the first landing. [INV-8]
 
 ## Attaching to a live project (adoption)
 
@@ -79,7 +79,10 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
    any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption never assumes
    a blank slate. [A-1]
 2. **Inventory** — code, user-facing surfaces (seeding the host's surface registry [E-10]), and the
-   document set from the orient pass, listed with owners (file:line for surfaces). [A-2]
+   document set from the orient pass, listed with owners (file:line for surfaces). [A-2] Adoption's
+   working artifacts — the orient digest, this inventory, reconcile notes — live in the host's
+   `.livespec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own
+   folders (the pilot polluted the host's `data/`). [A-8]
 3. **Re-engineer the existing documents into livespec shapes** — an existing spec becomes SPEC.md sections
    (original claims kept, marked unverified); existing tests become matrix rows citing them at their real
    level; an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
@@ -88,12 +91,18 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
 4. **Attic, not deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**
    — the host's archive folder: append-only, one manifest line per file (what it was, why moved, date); on
    a basename collision the source dir prefixes the name [E-9]. Flat-with-manifest vs dated subfolders is
-   an open decision [D-1]. [A-4] The rule behind it never bends: **no adopt or rework run deletes a host
-   file** — superseded files move to attic/ with a manifest line. [INV-7]
+   an open decision [D-1]. [A-4] The rule behind it never bends for anything authored: **no adopt or
+   rework run deletes a host file** — superseded files move to attic/ with a manifest line. [INV-7]
+   One exception, and only through a gate: adoption may OFFER a cruft sweep — clearly-regenerable junk
+   (caches, build leftovers, already gitignored) listed with file counts and sizes, deleted only on the
+   human's explicit OK, never silently; authored content never qualifies and always goes through the
+   attic. [A-9]
 5. **Version-control gate (done FIRST — see the note above).** If the host has no git: init it, write a
    `.gitignore` that excludes heavy generated/media artifacts, make a pristine baseline commit (this
-   doubles as the diff baseline), and recommend a remote (GitHub) plus a backup habit before the first
-   landing [INV-8]. [A-5]
+   doubles as the diff baseline), and settle the remote as a NAMED deliverable: by the first landing a
+   remote (GitHub) either exists or the human has explicitly declined one, and the outcome is recorded in
+   the run's journal entry — a recommendation alone doesn't close the gate (the pilot ended local-only on
+   a mere recommendation) [INV-8]. [A-5]
 6. **Baseline snapshot [target]** — render/produce the current artifacts as they are and save them; this
    is the diff baseline the snapshot machinery [E-7] will guard. [A-6]
 7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
@@ -239,7 +248,7 @@ meaning, this table is only the map.
 | INV-4 | a pending question never blocks the lane | Throwing a wish |
 | INV-5 | no silent micro-decisions | Throwing a wish |
 | INV-6 | matrix rows state DO and NEVER sides | Machines |
-| INV-7 | attic, never deletion of host files | Adoption step 4 |
+| INV-7 | authored host files: attic, never deletion | Adoption step 4 |
 | INV-8 | no landing into an unversioned host | Bootstrap |
 | INV-9 | trust set only by the human | Who decides what |
 | INV-10 | write-ownership of the package repo | Package repo |
@@ -253,6 +262,8 @@ meaning, this table is only the map.
 | A-5 | version-control gate | Adoption step 5 |
 | A-6 | baseline snapshot [target] | Adoption step 6 |
 | A-7 | re-read changed skills; re-stat at breakpoints | Adoption step 7 |
+| A-8 | adopt artifacts live in `.livespec/adopt/`, tracked | Adoption step 2 |
+| A-9 | cruft sweep: gated, listed, regenerable-only | Adoption step 4 |
 | ACT-1 | the human: taste, gates, wording | Who decides what |
 | ACT-2 | senior agent: judgment | Who decides what |
 | ACT-3 | tiered workers, checkpoints [router target] | Who decides what |
