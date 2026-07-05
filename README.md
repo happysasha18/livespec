@@ -92,6 +92,13 @@ No CLI — you drive it in plain words, in your Claude session:
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
 | `communicator` | Makes the human exchange land — how to show work, batch decisions, ask only what the human can actually decide |
 
+### Standalone mirrors
+
+Some skills also exist as their own read-only repos under the same account (for example, `product-prover`
+above), so someone who only wants that one skill doesn't need the whole pack. This repo stays the single
+source — those repos are synced copies, kept current by `scripts/sync-mirrors.sh` whenever the pack is
+pushed.
+
 ---
 
 ## Install
