@@ -811,3 +811,15 @@ class TestTargetOwnership(unittest.TestCase):
                               "mark the missing pin with an em-dash" % name)
             if pins.strip().startswith("—"):
                 self.assertTrue(has_tag, "node %r has no real pin but no [target] mark" % name)
+
+
+class TestLoaderStaysThin(unittest.TestCase):
+    """Row 65 (M-029 extension): the milestone gate list carries the loader-stays-thin item."""
+
+    def test_m1_names_loader_thin_item(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("the thin loader stays thin",
+                       "must this hold BEFORE any pack file loads?",
+                       "states the line count",
+                       "migrates to its real home"):
+            self.assertIn(phrase, spec, "SPEC M-1 lost the loader-stays-thin item: %s" % phrase)

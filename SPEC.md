@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.4, 2026-07-05)
+# live-spec — SPEC (v0.15.5, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -602,7 +602,11 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
   re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
   is never forgotten + the formal index re-checked against the prose (the index is a derived map and must
-  never drift into a second truth) + the derived docs' headers re-pinned to the spec version then proven. [M-1]
+  never drift into a second truth) + the derived docs' headers re-pinned to the spec version then proven
+  + **the thin loader stays thin** [E-16]: the personal layer's global instruction file is re-read line
+  by line, every line must pass the "must this hold BEFORE any pack file loads?" test, and the audit
+  report states the line count — a rule that survives there without passing the test migrates to its
+  real home (profile or pack), never lingers. [M-1]
 - **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
   which roadmap" is answerable. [M-3]
 - **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version

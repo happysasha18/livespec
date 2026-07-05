@@ -821,3 +821,15 @@ two real drifts before it ever ran in CI-mode: E-10's index line had LOST its [t
 still carried it), and matrix M-061 cited LANDED row 3 as the registry's future owner. Both folded; red
 proven against the pre-fix spec. SPEC v0.15.4 (S-0 names its mechanization), M-052 TODO→BUILT, suite 77
 green; pack 0.8.10.
+
+## 2026-07-05 late (~23:35, session 9) — row 65: the loader diet becomes a standing audit item
+
+Row 52 flipped CLAUDE.md to a thin loader; nothing GUARDED the thinness — every future "just one more
+line" would land there by gravity (the audit's F7). M-1's gate list now carries the item: at every
+milestone the loader is re-read line by line against ONE test — "must this hold BEFORE any pack file
+loads?" — the count stated in the audit report, a failing line migrated to its real home (profile or
+pack), never left to linger. First walk done tonight (prover C3): 16 non-empty lines, all pass — the
+window law, the profile pointer, the pack pointer are the bootstrap itself; the two provenance pointers
+(migration map, attic) are candidates to prune at the next milestone but each still answers a
+before-the-pack question. SPEC v0.15.5, M-029 extended, suite 78 green; pack 0.8.11. Stage A of the
+night plan (rows 57, 60, 63, 64, 65) is complete.
