@@ -10,11 +10,13 @@ in-work row; parked-resume outranks bubbles; atomic inbox harvest; closed rows a
 inbox; profile tracked-ness; `metadata.version` across all ten SKILL.md copies). Suite **36 green, 0
 skips** (worker run + senior re-run). Non-folded findings → queue rows 59–69; row 30 closed (folded).
 Model verdict: audits on Opus suffice; Fable for fold triage/wording — split confirmed.
-**Row 52 flip STAGED on his OK (~15:34); row 38 LANDED** — both old files attic'd, profile v2 live at
-its playbook git home (+symlink, pushed 5aa79a8), loader text at `row52/CLAUDE.final.md`. The CLAUDE.md
-swap itself was permission-gated to the human (self-modification): **Alexander runs
-`cp ~/.claude/playbook/row52/CLAUDE.final.md ~/.claude/CLAUDE.md`** → row 52 closes; rollback =
-`cp ~/.claude/playbook/row52/attic/CLAUDE.md.2026-07-05 ~/.claude/CLAUDE.md`.
+**Rows 52 + 38 LANDED** — Alexander ran the CLAUDE.md copy ~16:12 (session 6 verified: diff vs
+`row52/CLAUDE.final.md` identical); profile v2 live at its playbook git home (+symlink, pushed
+5aa79a8); old files attic'd. Rollback stays one copy:
+`cp ~/.claude/playbook/row52/attic/CLAUDE.md.2026-07-05 ~/.claude/CLAUDE.md`. Skills are read from
+`~/.claude/skills/` at invocation — other windows pick the new layer up on their next session start
+(/clear or restart), nothing to re-pull; `.bak_20260705_113914` skill copies still pollute the
+skill list, delete after the push review.
 
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
 1. Alexander: the one copy command above (closes row 52) · review → the ONE push (re-check gate: fresh
