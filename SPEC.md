@@ -7,7 +7,8 @@
 > anchor set of v0.3 — the shape changed, no rule was lost.
 
 **Current vs target.** Shipped today: the six skills (the base rulebook and the five working ones), the
-templates, the adoption procedure text, the inbox, this spec and queue, and the first guardrails slice —
+templates, the adoption procedure text, the inbox, the skill evals with their run records, this spec and
+queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
 snapshot machinery [E-7] (the adoption baseline A-6 rides it), the CI mirror [M-5], the model router
