@@ -773,7 +773,7 @@ re-authored; pack 0.8.6. The delegation debt (the standing "I keep not delegatin
 counter-example tonight: brief written in 5 minutes, worker landed it while the senior answered the
 human's scope-never-time word.
 
-## 2026-07-05 late (~22:20, session 9) — row 57: the spec stops pretending two mechanisms don't exist
+## 2026-07-05 late (~22:15, session 9) — row 57: the spec stops pretending two mechanisms don't exist
 
 The architecture audit (F2+F3) had named the hole: install.sh and the decision page both SHIP but had no
 spec sentence — an unnamed mechanism is invisible to the prover, so its promises can silently rot. Door:
@@ -787,7 +787,7 @@ temp home, run twice) immediately caught a REAL bug: install.sh had no mkdir -p,
 machine — the exact machine the installer exists for — failed on first run. Red shown, one-line fix,
 backup-and-never-delete sides asserted by the same run. Suite 70 → 73 green; pack 0.8.7.
 
-## 2026-07-05 late (~22:40, session 9) — row 60: one collision law instead of two half-laws
+## 2026-07-05 late (~22:23, session 9) — row 60: one collision law instead of two half-laws
 
 The audit had it right (fable F3, opus F-7, comp N6): the attic said "source dir prefixes the name" with
 no answer for a SECOND collision; the inbox said "-2, -3" with no semantic mark; nobody owned the rule.
@@ -800,7 +800,7 @@ untouched per the aff99f9 precedent), matrix M-093, suite 74 green; pack 0.8.8. 
 gate run: row 61's freshness lock proved itself live — the row-57 commit turned the repo red until this
 record existed. The teeth bite in the right place.
 
-## 2026-07-05 late (~23:00, session 9) — row 63: a superseded wish never dies by pointer
+## 2026-07-05 late (~22:27, session 9) — row 63: a superseded wish never dies by pointer
 
 The audit's F8: a superseded row points INTO its absorber — so if the absorber is later DECLINED, the
 absorbed wishes die silently with it, and INV-1 ("no wish is ever lost") leaks through a pointer. T-8
@@ -810,7 +810,7 @@ SPEC v0.15.3 + the ROADMAP template's status-values line (the prover's A3: the t
 half-form surface this time). Matrix M-094; suite 75 green; pack 0.8.9. No declined absorber exists in
 the live queue yet — the behavioural side is a named milestone-audit item, not an assumption.
 
-## 2026-07-05 late (~23:20, session 9) — row 64: the [target] promise grows teeth
+## 2026-07-05 late (~22:31, session 9) — row 64: the [target] promise grows teeth
 
 S-0 promised "every [target] is owned by a row" and the 0.8.0 audit checked it BY HAND (prover F1).
 Now it's a test: a declared map (anchor → owning queue row) inside the suite, self-closing both ways —
@@ -822,7 +822,7 @@ still carried it), and matrix M-061 cited LANDED row 3 as the registry's future 
 proven against the pre-fix spec. SPEC v0.15.4 (S-0 names its mechanization), M-052 TODO→BUILT, suite 77
 green; pack 0.8.10.
 
-## 2026-07-05 late (~23:35, session 9) — row 65: the loader diet becomes a standing audit item
+## 2026-07-05 late (~22:34, session 9) — row 65: the loader diet becomes a standing audit item
 
 Row 52 flipped CLAUDE.md to a thin loader; nothing GUARDED the thinness — every future "just one more
 line" would land there by gravity (the audit's F7). M-1's gate list now carries the item: at every
@@ -834,7 +834,7 @@ window law, the profile pointer, the pack pointer are the bootstrap itself; the 
 before-the-pack question. SPEC v0.15.5, M-029 extended, suite 78 green; pack 0.8.11. Stage A of the
 night plan (rows 57, 60, 63, 64, 65) is complete.
 
-## 2026-07-05 night (~23:55, session 9) — row 59: the worker contract, written down
+## 2026-07-05 night (~22:40, session 9) — row 59: the worker contract, written down
 
 Delegation had a brief format but no CONTRACT: what may a worker write? what happens when two briefed
 workers touch neighbouring files? which settings does a worker obey? what happens on a failed
@@ -846,3 +846,11 @@ ladder itself); failed acceptance escalates exactly one tier, logged. Pipeline 0
 the delegation bullet. SPEC v0.15.6, matrix M-095, suite 79 green; pack 0.8.12. Eval-re-run duty
 honestly recorded, not silently skipped (prover D3): the current eval can't flip on this delta; the
 M-1 re-run adds a delegation criterion.
+
+## 2026-07-05 ~22:45, session 9 — timestamp defect swept (same family as session 8's date defect)
+
+Caught by looking at the clock before a lane-claim line: the session's file stamps had drifted ~1 hour
+ahead of reality (written "~23:55"/"00:05" while the wall clock said 22:40) — the invented-time failure
+Alexander already corrected once. All session-9 stamps in ROADMAP, JOURNAL and the two prover records
+re-set from the git commit clock (7+6+5 fixes). Rule re-learned in the muscle: a stamp is READ off the
+clock at write time, never continued from the previous stamp's arithmetic.
