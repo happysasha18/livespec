@@ -66,7 +66,9 @@ the wish won't fit its budget, it proceeds on the recommended trim — the lane 
 — and the trim is surfaced in the same batched report as every taken default [INV-18], never silent:
 your re-widen is simply a new wish. What a trim may cut: which surfaces are in, and how considered the
 defaults are (a half-day wish takes the plainest default; a two-week one earns the considered option) —
-never whether a kept surface's facets get their sentences. No appetite named — none assumed, and
+never any of the delta's MANDATORY sentences: the fences [T-14], a kept surface's facets [INV-18], the
+non-goals and the success measure [INV-20, INV-21]. Appetite dials richness; it never touches the safety
+net. No appetite named — none assumed, and
 defaults stay at the walk's own considered judgment. [T-15]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
@@ -188,7 +190,9 @@ While it walks, four things are always true:
 - **A pending question for you never stops the work** — the lane proceeds on the recommended option; the
   question stays open in the row, revisitable any time. [INV-4]
 - **No silent micro-decisions** — every choice not in your wish is either asked, or recorded in the spec
-  AND surfaced in the same report. Nothing decided-and-buried. [INV-5]
+  AND surfaced in the same report. The batched report carries this as its own postcondition: EVERY taken
+  default, trim, and deliberate narrowing of the walk appears in it — a decision absent from the report
+  is silent by definition, whatever the spec recorded. Nothing decided-and-buried. [INV-5]
 - **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this
   exist" is always answerable. [INV-3]
 

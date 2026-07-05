@@ -638,3 +638,26 @@ human-gated because a sync publishes. Prover CROSS-LINK: 0 must-fix, 7 clarifica
 E-13/INV-14 seams stated). New [target] architecture node design-sync — the structure change re-proves at
 tonight's milestone audit. Suite 51 green. Inbox harvested: promoter plugin-directory prep (89),
 track-coach pin freshness (90), registry-as-gate (91), visual-hierarchy facet (92), design-sync wiring (93).
+
+## 2026-07-05 (night, session 7) — MILESTONE 0.8.0: the research-integration night
+
+WHY 0.8.0 and not 1.0: Alexander's own word ("может это 0.8 или 0.9, не надо спешить") — 1.0 waits for
+the work-kind axis (row 86), design-sync wiring (93), skill-behavior evals (94), and the tlvphoto
+lessons run through a real feature. What the night landed, every row through the full pipeline with an
+independent prover pass and all findings folded same sitting: facet list 5→8 under a curation law
+(rows 78+92) · regression fences (75) · non-goals + appetite + success measure (77+85, his KPI note) ·
+founding questions + design-sync [target] machine (83+88) · self-contained worker briefs (79) ·
+skill hygiene: when-NOT-to-use ×5 + loadability gate f (80) · excuses table (81) · prover anti-taste
+line + base irreversibility rule 17 with HIS criterion — money/deletion yes, push no (82) ·
+decision-file numbering (87) · plugin-directory prep + mirror fix (89) · symbol-first pins + drift
+gate g — which immediately caught 3 stale labels in our own architecture (90) · executable registry
+preferred (91). Alexander's page answers harvested: waived-risk DECLINED in his words; appetite+KPI
+taken NOW. The promoter mis-founding became B-2 + his profile line product.default-reusable. tlvphoto
+failure analysis (Sonnet, transcripts): the pack simply wasn't attached for the first 30 hours, then
+fired unevenly — report in docs/research/, feeds the serious talk. Milestone: 64→65 terminal rows to
+the dated queue archive; versions swept (base 0.1.7 · spec-author 0.1.7 · communicator 0.1.7 ·
+build-pipeline 0.2.6 · product-prover 0.1.6 · pack 0.8.0); 3-pass audit (records in
+docs/audit/2026-07-05-night/ + docs/prover/2026-07-05-v14-push.md): ONE must-fix across all three
+passes (a matrix row under the wrong node — moved, and the class mechanized as a standing test), the
+rest folded. Suite 46→61 green. Workers: two Opus provers ×5 passes, three Sonnet mechanical briefs
+(the self-contained-brief rule dogfooded on its own landing night). Pushed on the clean verdict.

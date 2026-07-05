@@ -163,6 +163,16 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(blocks - nodes, set(), "matrix blocks citing no architecture node (stale)")
         self.assertEqual(nodes - blocks, set(), "architecture nodes with no matrix block")
 
+    def test_matrix_rows_sit_under_their_owning_node(self):
+        # the 0.8.0 matrix audit's F1: a row whose anchors are all owned elsewhere is misplaced
+        nodes = architecture_nodes()
+        for block, rows in matrix_blocks().items():
+            owned = nodes.get(block, set())
+            for row in rows:
+                self.assertTrue(row["refs"] & owned,
+                                "%s sits under %r but cites only %s (owned elsewhere)"
+                                % (row["id"], block, sorted(row["refs"])))
+
     def test_matrix_covers_every_anchor(self):
         _, index = spec_index_anchors()
         covered = set()

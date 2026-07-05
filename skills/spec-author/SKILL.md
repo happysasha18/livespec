@@ -148,6 +148,18 @@ So, for every stateful surface, before you call its section done:
   that's older, partial, or belongs to a since-removed feature? State a migrate / ignore / clear rule — this
   is the seam behind "reopened it and it looked broken".
 
+## The feature delta, assembled — one home for its mandatory parts
+
+Author in this order; every part below is MANDATORY for a feature and none may be trimmed by appetite
+(appetite dials richness, never the safety net — SPEC T-15):
+
+1. **Regression fences** — when the wish touches a live surface (next section; SPEC T-14, INV-19);
+2. **The new behaviour itself** — entities, states, transitions, composed across the canonical axes;
+3. **The standard-facet sweep** — every facet a spec sentence, decided or `[default]`-tagged (SPEC T-13, INV-18);
+4. **The two closing sentences** — non-goals + one success measure (SPEC INV-20, INV-21).
+
+A delta missing any numbered part is incomplete at authoring time — not something the prover has to catch.
+
 ## The regression fences — run FIRST when the wish touches a surface that already lives (SPEC T-14, INV-19)
 
 Before authoring anything new, preserve the neighbours. The spec-delta opens with one sentence per

@@ -2,8 +2,9 @@
 
 Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** (records:
 `docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
-SPEC v0.10.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71: five new anchors
-T-12/INV-16/E-17/INV-17/A-10, rows M-067..M-071 below; headers re-pin at each milestone per M-1). Rows are organized
+SPEC v0.14.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
++ the night-of-2026-07-05 landings (rows 72-92: facets/fences/intake-trio/founding/design-sync —
+anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083; headers re-pin at each milestone per M-1). Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run, not once. [E-15]
@@ -14,7 +15,7 @@ The "rendered level" for a text artifact is a `string` assertion **against the S
 (never a source fragment or a memory of it). Two kinds of fact get two honest treatments:
 - **structural facts** (a doc exists, carries its sections, cites its law) — level `string`, testable now;
 - **behavioral facts** (a discipline holds during work: one landing at a time over time, attic on a real
-  adopt run) — the row names its future mechanical owner (guardrails row 3, snapshot row 55, the next
+  adopt run) — the row names its future mechanical owner (the E-6 host-facing gates (rows 55+), snapshot row 55, the next
   adopt run, or the milestone audit) and stays TODO until that owner exists. A TODO row is a named debt,
   never a silent one.
 
@@ -48,6 +49,17 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Plugin manifest | `.claude-plugin/plugin.json` | shipped config | `test_artifact_inventory` |
 | Plugin marketplace ref | `.claude-plugin/marketplace.json` | shipped config | `test_artifact_inventory` |
 | Plugin icon | `.claude-plugin/icon.png` | shipped image | `test_artifact_inventory` |
+| Mirror sync script | `scripts/sync-mirrors.sh` | shipped script | `test_artifact_inventory` |
+| Base skill README | `skills/live-spec-base/README.md` | shipped text | `test_artifact_inventory` |
+| Base skill license | `skills/live-spec-base/LICENSE` | legal | `test_artifact_inventory` |
+| Spec-author README | `skills/spec-author/README.md` | shipped text | `test_artifact_inventory` |
+| Spec-author license | `skills/spec-author/LICENSE` | legal | `test_artifact_inventory` |
+| Product-prover README | `skills/product-prover/README.md` | shipped text | `test_artifact_inventory` |
+| Product-prover license | `skills/product-prover/LICENSE` | legal | `test_artifact_inventory` |
+| Build-pipeline README | `skills/build-pipeline/README.md` | shipped text | `test_artifact_inventory` |
+| Build-pipeline license | `skills/build-pipeline/LICENSE` | legal | `test_artifact_inventory` |
+| Communicator README | `skills/communicator/README.md` | shipped text | `test_artifact_inventory` |
+| Communicator license | `skills/communicator/LICENSE` | legal | `test_artifact_inventory` |
 | Inbox door + law | `inbox/README.md` | shipped text | `test_artifact_inventory` |
 | Guardrails scaffold text | `scaffold/guardrails/README.md` | shipped text | `test_artifact_inventory` |
 | The pack's own spec | `SPEC.md` | flagship doc | `test_artifact_inventory` |
@@ -62,6 +74,10 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Prover records | `docs/prover/` | records dir (non-empty) | `test_artifact_inventory` |
 | Guardrails (pack gates + fence) | `guardrails/` | scripts dir (non-empty) | `test_artifact_inventory` |
 | Decision archives | `docs/decisions/` | records dir (non-empty) | `test_artifact_inventory` |
+| Research reports | `docs/research/` | records dir (non-empty) | `test_artifact_inventory` |
+| Queue archives | `docs/queue-archive/` | records dir (non-empty) | `test_artifact_inventory` |
+| Audit records | `docs/audit/` | records dir (non-empty) | `test_artifact_inventory` |
+| Prior-art survey | `docs/prior-art.md` | shipped text | `test_artifact_inventory` |
 
 ---
 
@@ -72,7 +88,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-001 | Every working skill opens with the base-inherit pin (base name + the base version it was written against); never a working skill without its pin | E-12 | string | `test_skills_inherit_base_pin` | BUILT |
-| M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | `test_settings_ladder_documented` (structural clause: ladder + resolution order stated in the base skill); behavioral resolution: milestone audit (M-1) + guardrails row 3 | BUILT |
+| M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | `test_settings_ladder_documented` (structural clause: ladder + resolution order stated in the base skill); behavioral resolution: milestone audit (M-1) + the E-6 host-facing gates (rows 55+) | BUILT |
 | M-003 | Every choice not in the wish is asked or recorded-and-surfaced; never decided-and-buried | INV-5 | string | snapshot declared-scope diff (row 55) — the mechanical fence | TODO |
 | M-004 | Proactivity mode and trust are written only on the human's word; the agent never raises its own level | INV-9 | string | milestone audit (M-1) | TODO |
 | M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes you did not make | INV-11 | string | `guardrails/pre-commit` (opt-in fence): `test_armed_stale_head_blocks_commit`, `test_unarmed_fence_passes_silently` | BUILT |
@@ -103,7 +119,6 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-079 | Founding questions asked or profile-read at bootstrap AND owed at adopt orient (A-1 pointer); personal-vs-reusable first; never a founding answer inferred from examples | B-2 | string | `test_spec_states_founding_and_designsync` | BUILT |
 | M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/`; never a push without its record | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails` | BUILT |
 
 ### [node: build-pipeline]
@@ -112,13 +127,13 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 |---|---|---|---|---|---|
 | M-076 | Appetite: optional rider on size in the ONE intake line; bends scope only — a trim proceeds on the recommended option and is surfaced in the batched report; never lane order moved by appetite, never a silent trim | T-15 | string | `test_spec_states_intake_trio`, `test_skills_carry_intake_trio` | BUILT |
 | M-016 | A wish is one request in plain words, any size, any moment; never lost for being informal | E-2 | string | process — inbox + intake discipline; milestone re-listing (M-1) | TODO |
-| M-017 | The wish walks arrived → classified → spec-delta → validated → queued → in-work → landed; never skipping the spec-delta or validation step | T-1..T-6 | string | guardrails row 3 (bounds check: behaviour traces to spec) | TODO |
-| M-018 | A wish may exit declined / deferred / superseded — the row stays in the table; never deleted | T-8 | string | queue archive rule (row 30) + milestone audit | TODO |
-| M-019 | A bug preempts: the wish parks with a checkpoint, nothing red is committed; never two wishes parked | T-9 | string | process — next real preemption journals it; guardrails row 3 | TODO |
+| M-017 | The wish walks arrived → classified → spec-delta → validated → queued → in-work → landed; never skipping the spec-delta or validation step | T-1..T-6 | string | the E-6 host-facing gates (rows 55+) (bounds check: behaviour traces to spec) | TODO |
+| M-018 | A wish may exit declined / deferred / superseded — the row stays in the table; never deleted | T-8 | string | queue archive rule + milestone audit | TODO |
+| M-019 | A bug preempts: the wish parks with a checkpoint, nothing red is committed; never two wishes parked | T-9 | string | process — next real preemption journals it; the E-6 host-facing gates (rows 55+) | TODO |
 | M-020 | Priority bends the lane visibly: critical heads the line, a quick win may bubble once, then the queue head; never a silent jump and never starvation | T-11 | string | queue audit at milestones (M-1) | TODO |
 | M-021 | No wish is ever lost: the row exists the minute it is spoken; never an intake that leaves no trace | INV-1 | string | milestone re-listing of gates + inbox files (M-1) | TODO |
 | M-022 | One landing at a time; never two rows in-work at once | INV-2 | string | `test_roadmap_single_in_work` | BUILT |
-| M-023 | Every landing cites its wish row in commit or journal; never an unexplained change | INV-3 | string | pre-push hook (guardrails row 3) | TODO |
+| M-023 | Every landing cites its wish row in commit or journal; never an unexplained change | INV-3 | string | pre-push hook (the E-6 host-facing gates (rows 55+)) | TODO |
 | M-024 | A pending human question never stops the lane — work proceeds on the recommended option, marked in the row | INV-4 | string | queue audit at milestones (M-1) | TODO |
 | M-025 | Ambiguous size or priority is asked at intake, never guessed; the class column speaks the four-word vocabulary + priority marks only | INV-12 | string | `test_roadmap_class_vocabulary` | BUILT |
 | M-026 | ARCHITECTURE.md exists, every node pinned to a real file:line, proven before the matrix derives; never an unproven architecture under a matrix | E-14 | string | `test_architecture_owns_every_anchor_once`, `test_architecture_no_orphan_nodes` | BUILT |
@@ -147,9 +162,10 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-079 | Founding questions asked or profile-read at bootstrap AND owed at adopt orient (A-1 pointer); personal-vs-reusable first; never a founding answer inferred from examples | B-2 | string | `test_spec_states_founding_and_designsync` | BUILT |
 | M-035 | The host owns its docs and a `.live-spec/` folder (profile, checkpoints, installed versions); never pack state scattered into host folders | E-1 | string | `test_host_profile_recorded_override` (dogfood instance) | BUILT |
 | M-036 | The attic archives superseded host files with a manifest line; never deletion | E-9 | string | `test_adopt_phases_cite_spec` (procedure text; behavior = next adopt run) | BUILT |
-| M-037 | No adopt or rework run deletes a host file; authored content never bypasses the attic | INV-7 | string | next real adopt run journals it; guardrails row 3 long-term | TODO |
+| M-037 | No adopt or rework run deletes a host file; authored content never bypasses the attic | INV-7 | string | next real adopt run journals it; the E-6 host-facing gates (rows 55+) long-term | TODO |
 | M-038 | No landing into an unversioned host: git + (remote exists OR explicitly declined, recorded); never a mere recommendation | INV-8 | string | next bootstrap/adopt run journals the gate outcome | TODO |
 | M-039 | Adoption codes name meanings, not order; the VCS gate runs FIRST — never an irreversible touch before it | A-0 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-040 | Orient: every existing document is read before anything is touched; never a blank-slate assumption | A-1 | string | `test_adopt_phases_cite_spec` | BUILT |
@@ -175,7 +191,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-051 | The host profile narrows the human's contract for one project, every line a recorded override; never a silent divergence | E-8 | string | `test_host_profile_recorded_override` | BUILT |
-| M-065 | The personal layer has ONE home (the profile); the global instruction file is a thin loader carrying only the pointer + bootstrap lines (their one home — never restated in the profile); a session line is never written by the agent; the migration fork never writes a foreign repo | E-16 | string | row 52 migration landing: diff-proven fork map + loader shown to the human before flipping | TODO |
+| M-065 | The personal layer has ONE home (the profile); the global instruction file is a thin loader carrying only the pointer + bootstrap lines (their one home — never restated in the profile); a session line is never written by the agent; the migration fork never writes a foreign repo | E-16 | string | milestone audit (M-1) — loader live since row 52; asserted at audits | TODO |
 
 ### [node: package-docs]
 
@@ -194,7 +210,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-082 | Architecture pins are names first, the :line a cache; the drift gate (g) turns file-missing/beyond-EOF RED and reports label drift (strict mode blocks); never a rotten pin trusted silently | E-14 | string | `test_real_repo_passes` (gate g), `test_missing_file_fails`, `test_label_drift_strict_fails` | BUILT |
+| M-082 | Architecture pins are names first, the :line a cache (E-14); the drift gate (g) turns file-missing/beyond-EOF RED and reports label drift (strict mode blocks); never a rotten pin trusted silently | E-6 | string | `test_real_repo_passes` (gate g), `test_missing_file_fails`, `test_label_drift_strict_fails` | BUILT |
 | M-083 | The surface registry's PREFERRED form is executable (a declared map inside a completeness-gate test, red both directions); the .md is the doc-only fallback; adoption never asks an executable registry to step back into a document | E-10 | string | clause presence: `test_spec_states_registry_and_pins`; machine rides row 55 | BUILT |
 | M-081 | Every shipped skill loads: frontmatter parses, name = folder, description + version present, a "when NOT to use" section scopes it; a broken skill turns the push gate RED; never an unloadable or unscoped skill shipped | E-6 | string | `test_real_repo_passes` (gate f), `test_broken_skill_fails`, `test_missing_skills_dir_fails` | BUILT |
 | M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | first slice BUILT (pack gates: prover record · green suite · anchor ownership · matrix coverage — `guardrails/pre-push` + `test_guardrails.py`); the four host-facing checks await the surface registry + snapshot (rows 55+) | TODO |
@@ -213,7 +229,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-080 | Design-sync: optional machine — declared-scope footprint, supplements the render (which stays the gate authority), human-gated publish; never a sync without the human's word, never on without a recorded profile line | E-18 | string | machine lands at row 93; clause presence: `test_spec_states_founding_and_designsync` | BUILT |
+| M-080 | Design-sync: optional machine — declared-scope footprint, supplements the render (which stays the gate authority), human-gated publish; never a sync without the human's word, never on without a recorded profile line | E-18 | string | machine lands at row 93; clause presence: `test_spec_states_founding_and_designsync` | TODO |
 
 ---
 

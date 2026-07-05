@@ -1,37 +1,27 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~18:20, session 7 — safe to wipe after this report)
-PUBLIC: github.com/happysasha18/live-spec. **Row 72 LANDED (the facet sweep, the Room incident's third
-lesson): SPEC v0.11.1** — T-13 (feature spec-delta walks the canonical facet list: phone/narrow ·
-touch-vs-hover · empty/error/loading · a11y · perf; list's ONE home = spec-author :144; mid-work
-re-door re-runs the sweep; a fenced prototype is never swept) + INV-18 (every facet ends as a SPEC
-SENTENCE — decided, or `[default]`-tagged + reported as a plain-words tradeoff, batched; adopted
-surfaces reconcile from shipped truth). CROSS-LINK prover record `docs/prover/2026-07-05-facets.md`
-(1 must-fix + 6 others, ALL folded — the must-fix birthed the `[default]` tag). Matrix M-072..M-073;
-tests TestFacetSweep red-first; skills: spec-author 0.1.5 · communicator 0.1.5 (rule-10 tradeoff line)
-· build-pipeline 0.2.4 (step-1 sweep sentence); installed copies synced; suite **45 green / 0 skips**;
-pack VERSION 0.5.2. M-6 gate PASSED: FULL pass on v0.11 (`docs/prover/2026-07-05-v11-push.md`,
-zero must-fix; its one should-clarify — headless feature, facets N/A — folded same sitting → v0.11.1);
-77 anchors symmetric both directions; PUSHED. Earlier same session: Alexander's calque ban →
-`language.no-calques` in his profile (playbook 234bce6, pushed) + row 73 intake (pack-general rule,
-communicator + base). Stale `.bak_20260705_113914` skill copies moved to
-`~/.claude/playbook/row52/attic/skills-bak/` (local-only, gitignored there).
+## LIVE STATE (2026-07-06 ~00:30, session 7 end — safe to wipe after this report)
+PUBLIC: github.com/happysasha18/live-spec. **MILESTONE 0.8.0 PUSHED** (renamed from 1.0 on Alexander's
+word — polish first). The research-integration night: 13 rows landed (facets→8+curation law · fences ·
+non-goals/appetite/success-measure · founding questions B-2 · design-sync E-18 [target] · worker briefs
+· skill hygiene + gate f · excuses table · anti-taste + irreversibility rule 17 · file numbering ·
+plugin-directory prep · symbol pins + drift gate g · executable registry), each CROSS-LINK-proven, all
+findings folded; 3-pass milestone audit CLEAN (1 must-fix total, folded + mechanized;
+records: docs/prover/2026-07-05-v14-push.md + docs/audit/2026-07-05-night/). SPEC v0.14.0 (84 anchors
+symmetric); suite **61 green / 0 skips**; queue archive live (65 rows → docs/queue-archive/2026-07-05.md).
+Skills: base 0.1.7 · spec-author 0.1.7 · communicator 0.1.7 · build-pipeline 0.2.6 · product-prover
+0.1.6; installed copies synced. Alexander's page answers harvested (waived-risk DECLINED his word;
+appetite+KPI NOW). Research reports + tlvphoto failure analysis in docs/research/. REMAINS FOR HIM:
+submit the two plugin-directory forms (row 89 note); read OVERVIEW.md (row 74 closes on his word);
+the serious talk (agenda posted in chat ~21:52).
 
-**Row 73 LANDED same session (second landing): no calques** — base rule 2 names the ban (its one home),
-communicator rule 6 elaborates with the field example; base 0.1.6 · communicator 0.1.6 · spec-author
-0.1.6 · build-pipeline 0.2.5 · product-prover 0.1.5 (pin sweep by Sonnet worker, checkpoint
-row73-mechanical); test_no_calques_rule; suite **46 green / 0 skips**; pack 0.5.3. Push follows the M-6
-gate (FULL prover pass running at write time). **Row 74 filed**: plain-language map of the whole
-structure (Alexander: "помоги навести порядок") — good candidate to land WITH the research results.
-**Two research agents running in background** (row 44 homework): mature-method intake checklists →
-docs/research/2026-07-05-methods.md · skill-ecosystem patterns → docs/research/2026-07-05-skill-patterns.md.
-
-## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. **Row 74 — next landing** (small, docs-only unless it changes a rule): the structure map, one
-   readable page in Alexander's words; fold research findings if they're back.
-2. Row 57 remainder (installer + decision page) · row 12 gaps (8) · row 54 onboarding · audit rows
-   59–69 (worker contract & collision law first — 3-model consensus). tlvphoto wish note still
-   unharvested (tlvphoto session's job): `~/tlvphoto/inbox/2026-07-05-room-prototype-quarantine.md`.
-3. Snapshot machinery (55) · CI-mirror (14).
-4. Deferred tail: model router (56) · feedback (47) → measurement (48) → A/B (49) · learn-from-others
-   (44, feeds row 72's list) · track-coach formal adopt.
+## Forward queue (mirrors ROADMAP.md)
+1. **The 1.0 shortlist**: row 86 (work-kind axis — the pack understands WHAT it builds) · row 93
+   (design-sync wiring, with 86) · row 94 (skill-behavior evals) · tlvphoto lessons run through one real
+   feature as proof. Plus row 74 acceptance (his read).
+2. Rows 57 remainder · 12 gaps (8) · 54 onboarding · audit rows 59-69 (worker contract & collision law
+   first) · 66/67/68 (skill-creator eval leftovers).
+3. Snapshot machinery (55) · CI-mirror (14) · registry executable form rides 55.
+4. Deferred tail: model router (56) · feedback (47) → measurement (48) → A/B (49) — note: INV-21's
+   success measures now WAIT on this family (the reading machinery) · learn-from-others (44, homework
+   done — reports in docs/research/) · track-coach formal adopt.
