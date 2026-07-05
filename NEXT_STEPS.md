@@ -1,47 +1,50 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~23:47, session 10 — WIPE-READY: cold-start sufficient)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.22, SPEC v0.15.11, suite 94 green / 0 skips, ALL
-PUSHED** (verify on resume: `git status -sb`). Session 10 (his before-sleep batch, ~23:10–23:50):
-- **ROW 103 LANDED — the clock fence (INV-24):** no future-dated file name / journal heading / ledger
-  date survives the suite (`test_no_future_dated_stamps`, red proven by deed); prose quoting a past
-  wrong date stays legal. The ledger's first entry went WATCHED→OWNED→SOLVED within the hour — the
-  loop row 100 exists for, walked end to end the same night.
-- **ROW 100 LANDED pack-side — the problem ledger** (full pipeline; row WAITING only on the first
-  foreign-host run): SPEC section "When the workshop itself misbehaves" (E-24 ledger at
-  `.live-spec/PROBLEMS.md`, INV-23 second-occurrence-owner law, third unowned recurrence = METHOD
-  defect) · base rule 19 (0.1.12, pins swept, installed synced) · templates/PROBLEMS.template.md ·
-  prover CROSS-LINK row100: 5 findings all folded · matrix M-103/104/105 · the pack's own ledger OPEN
-  with two live entries — invented-time OWNED by NEW ROW 103 (mechanical future-dated-stamp check;
-  the ledger's first real catch), zsh `===` AGREED NON-PROBLEM recommended ⟨his word pending⟩.
-- **Suite joined the compaction (v0.15.9, his "чистим ли тесты и спеки?"):** M-1 compaction now names
-  the TEST SUITE (a dup/superseded test dies only with rows shown still covered) + the ledger.
-- **Serious talk DROPPED on his word;** agenda files deleted; re-raise only if he recalls the why.
-- **tlvphoto investigated (his ask):** the GALLERY story dropped FOUR times (adopt filed the approved
-  Room "not yet specified"; prose rebuilds → rejected wall; fused row 5a closed by its door half; suite
-  green throughout). One wish file → tlvphoto/inbox (land in-flight EX-HANG rework · split 5a · date
-  check). Pack-side laws intaken as rows 101–102.
-- **Rows 101–103 INTAKEN:** 101 done-claims = evidence walk + METHOD VERSION in the answer (his word) ·
-  102 multi-story row can't close by half + one-wish-one-story law · 103 invented-time mechanical check
-  (suite + pre-push; owns the ledger's first entry).
-- **Invented-time, the TIME variant caught in-session (4th family event):** tonight's own landing
-  stamps were written ahead of the wall clock (23:50/23:58/00:02 at 23:43) — same failure as session
-  8's (JOURNAL:853). Corrected against git; new ledger entry OWNED by NEW ROW 104 (pre-commit check:
-  an added same-day stamp with a time later than the commit clock goes red — not racy at commit time).
-Skills: base 0.1.12 · build-pipeline 0.2.14 · communicator 0.1.10 · spec-author 0.1.11 · product-prover
-0.1.8 · publish 0.1.0 (synced via scripts/sync-skills.sh). Prover records tonight: v15-9 · row100 ·
-row103 — zero unfolded must-fix anywhere. ⟨DECIDE⟩ open: D-1/D-2/D-3 + the zsh `===` non-problem
-verdict + rows 101/102 order — HIS morning batch.
+## LIVE STATE (2026-07-06 ~00:15, session 11 mid-night — WIPE-READY: cold-start sufficient)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.23, SPEC v0.15.12, suite 95 tests — green once
+tonight's commit lands (the one red is the M-6 gate demanding the prover record be COMMITTED; commit
+clears it), NOT YET PUSHED** (verify on resume: `git status -sb`; push gate = full prover pass, HIS
+standing push OK for tonight GIVEN ~00:05 "если все гейты пройдут то не забудь запушить"). Night
+session 11 so far (~23:47–00:15):
+- **ROW 101 LANDED** — a done-claim is an evidence walk wearing its method version (SPEC v0.15.12
+  INV-25 · communicator 0.1.11 rule 11 · M-107 · red-proven test · first real run done on his
+  track-coach question: verified commit `193d39d`, 797 test functions ↔ claimed 795+2, method version
+  from the attach record = pack 0.5.3; "asserted, not re-checked: all 795 green at this hour").
+  Prover CROSS-LINK: `docs/prover/2026-07-06-night.md` pass 1, F1 must-fix folded (absent-version arm).
+- **Rows 105–108 INTAKEN** (his night batch): 105 capture echo + pipeline board · 106 pytest-from-root
+  trips on scaffold template (bug; found by a clean-context analyst) · 107 implementation-level study
+  of neighbours (skip door, research; HIS word: run in the fresh session window) · 108 feature-fit
+  interrogation at intake ("минимальный прувер на фичу"; his five tlvphoto comments → one file in
+  tlvphoto/inbox same hour).
+- **Research trio done + doc opened + he READ it**: `docs/research/2026-07-06-bmad-kiro-livespec-comparison.md`
+  (2 clean-context Opus analysts + landscape scout; criticism kept unsoftened). He asks for a
+  plain-words retelling of the live-spec paragraph in the morning report. README mention of the
+  research = HIS ~00:05 word "так и сделай, не приукрашивай" — pending the push window's publish walk.
+- **Decisions recorded**: page-3 answers archived (`docs/decisions/2026-07-05-page-3-answers.json`);
+  101-first order APPLIED; zsh `===` verdict WITHDRAWN by his own "я не понял" — ledger entry awaits an
+  informed word, plain explanation owed in the morning report.
+- **Fence family, twice on me tonight**: chat opener stamped [01:47] at 23:47 (new CHAT-variant WATCHED
+  ledger line) · queue stamps guessed ahead again at ~00:05–00:11 (third occurrence on the owned
+  TIME-variant entry) — **row 104 should BUBBLE as a quick win next window**.
+- **Budget/session plan (his words ~23:58 + ~00:05)**: session window renews ~01:30; wake then; don't
+  overwork before it. Spawning fresh Fables/Opuses off NEXT_STEPS allowed AFTER renewal, ~5h cadence.
+Skills: base 0.1.12 · build-pipeline 0.2.14 · communicator 0.1.11 · spec-author 0.1.11 · product-prover
+0.1.8 · publish 0.1.0 (synced). ⟨DECIDE⟩ open: D-1/D-2/D-3 + zsh `===` informed verdict (explain plainly
+first) + rows 106/107/108 order beyond the queue's own.
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
-1. **Rows 101–102** (done-claims evidence walk + versioned answer; multi-story rows can't close by
-   half) — order between 101 and 102 is his call if he has one, else 101 first (his word, twice).
-   Kin inbox wish to harvest with 102: prototype-norm lens (same tlvphoto incident family).
-2. **HIS items (untouched, his day):** tlvphoto cleanup (file to its inbox or he leads; investigation
-   report pending) · promoter mirrors · plugin-directory forms (row 89 note) · row 93 remainder (live
-   design-sync on a visual window, his gate) · D-1/D-2/D-3. (The serious-talk agenda itself was dropped
-   on his word 2026-07-05 — re-raise only if he remembers why he wanted it.)
-3. Row 12 tail: gap 7 verify-only (cite the delegation gate in the mining map) + stale-copy sweep rule ·
-   row 54 onboarding (surface; first-real-run leg needs him).
-4. Snapshot (55) · CI mirror (14) · router (56) · feedback family 47-49/96 · track-coach formal adopt ·
-   tlvphoto lessons through one real feature (the 1.0 list's last open leg).
+1. **Row 102** (multi-story row can't close by half + one-wish-one-story; harvest kin inbox wish:
+   prototype-norm lens). Then **row 104 as the quick-win bubble** (pre-commit time check — three
+   occurrences now; jump marked in its row when taken).
+2. **Row 105** (capture echo + pipeline board — the morning report is its first real run; write the
+   report IN the board format even if 105 hasn't landed, then land 105 same window).
+3. **Push window**: FULL prover pass over SPEC v0.15.12+ (append to `docs/prover/2026-07-06-night.md`) ·
+   README research mention (honest, publish walk owes the comparison its screenshots/nothing-oversold) ·
+   suite green · push (his OK stands, ~00:05).
+4. **Row 107** (implementation-level neighbour study — clone Spec Kit / OpenSpec / GSD / BMAD, read
+   code, harvest doc + per-mechanism wish rows; fresh window, workers encouraged).
+5. **Morning report** (~his wake): pipeline-board format · the live-spec research paragraph retold in
+   plain Russian · zsh `===` explained in one plain sentence + ask his informed verdict · the two
+   fence catches on me · row 108 opinion already given in chat at ~00:32 [chat time; real ~00:08].
+6. Then the standing queue: 108 · 106 · rows 12 tail · 54 · 55 · 14 · 56 · 47-49/96 · track-coach
+   formal adopt · tlvphoto lessons through one real feature.

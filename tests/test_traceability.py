@@ -1024,6 +1024,23 @@ class TestProblemLedger(unittest.TestCase):
                        "defect of the method", "silent retry", "bug lane"]:
             self.assertIn(phrase, low, "base rule lost its '%s' leg" % phrase)
 
+    def test_done_claim_evidence_walk(self):
+        """Row 101 (M-107, INV-25): a done-claim is answered as an evidence walk,
+        wearing its method version; an absent installed set is said, never invented."""
+        spec = read("SPEC.md")
+        self.assertIn("INV-25", spec)
+        self.assertIn("walking the evidence", spec)
+        skill = read(os.path.join("skills", "communicator", "SKILL.md"))
+        for needle in (
+            "claim → artifact → version",
+            "walking the evidence",
+            "method version",
+            "an absent version is itself an honest answer, never an invented one",
+            "INV-25",
+        ):
+            self.assertIn(needle, skill,
+                          "communicator rule 11 missing: %s" % needle)
+
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
         rows = [l for l in led.splitlines()

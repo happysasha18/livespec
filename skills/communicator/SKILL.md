@@ -1,8 +1,8 @@
 ---
 name: communicator
-description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said; loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
+description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.10
+  version: 0.1.11
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,11 +17,11 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Ten rules, few enough to hold in your head.
+internal ids). Eleven rules, few enough to hold in your head.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
-**(c)** name a problem. If your next sentence is a question the person can't answer without seeing something,
+**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim. If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
 ## When NOT to use
@@ -30,7 +30,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The ten rules
+## The eleven rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -118,6 +118,19 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     recommended default arrives as one card — the tradeoff said in the product's words ("on a phone this
     gallery stacks into one column — ok?"), the default already live so the lane never waited; a veto
     becomes a new wish, never a blocked lane.
+
+11. **"Did we actually do X?" is answered by walking the evidence — wearing its method version.** A
+    done-claim ("is it done / adopted / true?") is never answered from memory: it is the
+    claims-need-primary-source rule (base rule 13) applied to the exchange itself. Walk the records NOW —
+    adoption record, prover record, suite run, git commit, matrix row — and pin each claim to its
+    artifact, one line per claim: **claim → artifact → version**. Say verified apart from asserted, in
+    plain words: what you opened and saw versus what you merely believe. The answer names the METHOD
+    VERSION the work was done by — pack + skill versions read from that host's installed set (SPEC M-7) —
+    so "done by live-spec" always means "done by live-spec vX"; and where the host has no installed set
+    (never adopted, or the work predates adoption), say exactly that —
+    an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌ "да, тесты по методологии сделаны"
+    ✅ "verified: suite green — tonight's run, this commit; done by pack 0.8.x / prover 0.1.8; asserted
+    (not re-checked): the adoption record's coverage claim"*
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision

@@ -187,6 +187,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-030 | A landing is reported in one plain-language line (position · what landed · what remains); never a report that only points at internal rows | T-7 | string | process — communicator rules 8/9; milestone audit | TODO |
 | M-092 | Batched questions arrive as ONE decision page (one card per pick, recommendation named, free-form room), answers archived in docs/decisions/ and harvested the same session; never a serialized chat questionnaire, never an answer left un-harvested | E-22 | string | `test_spec_names_decision_page` (SPEC clause + rule-10 mechanics in the shipped communicator SKILL.md) | BUILT |
 | M-099 | Communicator's trigger is narrowed: decisions, landing/milestone reports, problems needing the human's word — with a stated NOT-side (mid-work status lines, internal notes, plain factual answers); never a description that fires on every passing report | T-7 | string | `test_communicator_trigger_narrowed` | BUILT |
+| M-107 | A done-claim ("did we do X?") is answered as an evidence walk: each claim pinned to a checkable artifact walked NOW (adoption/prover record, suite run, commit, matrix row), verified vs asserted said apart, and the answer names the method version from the host's installed set — or says plainly that none exists; never a narrative answer standing alone, never "done by live-spec" without its version, never an invented version for an unadopted host | INV-25 | string | `test_done_claim_evidence_walk` | BUILT |
 
 ### [node: templates]
 

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.11, 2026-07-05)
+# live-spec — SPEC (v0.15.12, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -450,6 +450,22 @@ contract, not any single file, before every human-facing exchange [E-13]. **Mode
 ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
 level.** [INV-9]
 
+**"Did you actually do X?" is answered by walking the evidence — and the answer wears its method
+version.** You ask whether something was done, adopted, true — "did that project run the tests by the
+method?" — and a fluent story comes back; the story may even be right, but you cannot tell VERIFIED from
+NARRATIVE, and that difference is the whole point of the method. So a done-claim is never answered from
+memory: each claim in the answer is pinned to a checkable artifact — an adoption record, a prover
+record, a suite run with its count, a git commit, a matrix row — walked NOW, not recalled (the
+claims-need-primary-source rule applied to the answering exchange itself); what the walk verified is
+said apart from what is merely asserted, in plain words; and because "done by live-spec" means nothing
+without a version, the answer names the METHOD VERSION the work was done by — the pack and skill
+versions read from that host's installed set (the version homes, [M-7]). One claim line reads
+claim → artifact → version: "suite green — 795 tests, tonight's run, commit `193d39d` — done by
+live-spec 0.8.x, prover 0.1.8". And where the host HAS no installed set — never adopted, or the work
+predates adoption — the answer says exactly that in plain words: an absent version is itself an honest
+answer, never an invented one. Born 2026-07-05: the track-coach answer was right, and he still could
+not tell which half of it was checked. [INV-25]
+
 **Settings climb a ladder of four NESTED scopes — the narrowest word wins.** Every way the pack behaves
 for you is a named setting with a home in exactly one scope, and the scope is chosen by what the setting
 DESCRIBES: about the pack itself → the **package defaults**, each value stated in the base skill beside
@@ -807,6 +823,7 @@ meaning, this table is only the map.
 | INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
 | INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
 | INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date — mechanical fence in the suite; quoting a past wrong date stays legal | Rhythm |
+| INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

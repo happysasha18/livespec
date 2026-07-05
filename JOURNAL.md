@@ -1032,3 +1032,36 @@ pre-commit check that an ADDED line stamping today with a time later than the co
 (the commit moment is the reference, so it isn't racy the way a suite-time check would be). All of
 tonight's stamps corrected against git (23:39 is the row-100 commit, git the arbiter). The ledger's
 second live catch, same night it was born.
+
+## 2026-07-06 00:14, session 11 (night, he sleeps) — row 101 lands: a done-claim walks its evidence; the clean-context research trio reports
+
+Row 101 landed (SPEC v0.15.12 INV-25, communicator 0.1.11 rule 11, M-107, pack 0.8.23): "did we do X?"
+is now answered by walking the records — claim → artifact → version, verified said apart from asserted,
+the method version read from the host's installed set, and an absent record said plainly, never
+invented (the prover's F1: the absent-version arm — its example host turned out to HOLD an attach
+record, the law stands for truly unadopted ones). First real run re-answered his track-coach question:
+commit `193d39d` verified, 797 test functions counted against the claimed 795+2, method version pinned
+to the attach record — done by pack 0.5.3, not tonight's 0.8.x. WHY this row: his 23:15 words — the
+track-coach answer was right and he still couldn't tell which half was checked.
+
+The before-sleep batch intaken as rows 105–108: the capture echo + pipeline board (105, his
+"регламентированно… рапортовать как каждая фича идет по пайплайну"); pytest-from-root trips on the
+scaffold template (106, found by a clean-context analyst in his first minute); implementation-level
+study of the neighbours (107, "посгружать и посмотреть как реализовали"); the feature-fit
+interrogation at intake (108, his tlvphoto evidence — "минимальный прувер на фичу"; the five tlvphoto
+product wishes forwarded to that project's inbox, one file). His page-3 zsh verdict recorded then
+WITHDRAWN by his own "я не понял" — an uninformed pick is not a verdict; the entry stays awaiting an
+informed word, explanation owed in the morning report.
+
+The research he asked for at 23:50 ran as three clean-context spawns (two Opus analysts briefed to
+verify our claims against the files and criticize all three; one landscape scout): BMAD vs Kiro vs
+live-spec, honest doc at `docs/research/2026-07-06-bmad-kiro-livespec-comparison.md`, rendered and
+opened for his morning — he read it the same night. Verbatim-in-spirit criticism kept: days old, bus
+factor one, judgment loop grades its own homework, only the mechanical gates are independent. One
+analyst ran our suite MID-EDIT and caught it red (illegal ledger status) — the flagship wasn't green
+when a stranger looked, and the same gate would have blocked that push. Fixed within the hour.
+
+And the fence family fired twice on me tonight: the chat opener stamped [01:47] off a guessed clock
+(new CHAT-variant WATCHED line), then queue stamps "00:15/00:30/00:40" written at ~00:05–00:11 — third
+occurrence on the owned TIME-variant entry; row 104 (the pre-commit time check) should bubble as a
+quick win. All stamps corrected against `date` before this commit.
