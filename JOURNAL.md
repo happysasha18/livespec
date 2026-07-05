@@ -866,3 +866,13 @@ present, headers really filled (a surviving placeholder is red), coverage checkl
 live-state block — a floor, landing #1 ships its first real test beside it. Verified by deed: the
 suite simulates a bootstrap in a temp dir both ways. SPEC v0.15.7, M-034 re-authored, inventory grows,
 suite 81 green; pack 0.8.13.
+
+## 2026-07-05 ~22:48, session 9 — row 66: the hand-copy retires
+
+The composition audit (H4) named the seam nobody owned: repo skills vs installed copies on the pack
+developer's own machine. Tonight's earlier landings synced by hand — exactly the silent path that lets
+a stale skill run a whole session. Now `scripts/sync-skills.sh` is the named tool: copies each repo
+skill over its installed twin, reports every version change old → new (the A-7 re-read trigger),
+idempotent and it says so. Tested by a real run against a temp dest twice, then run for real on this
+machine. SPEC v0.15.8 (E-23, package-repo section), architecture pin on package-docs, matrix M-096,
+suite 83 green; pack 0.8.14.

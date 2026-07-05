@@ -894,3 +894,31 @@ class TestBootstrapScaffold(unittest.TestCase):
                        "a leftover placeholder is red",
                        "Hooks are OFFERED at bootstrap exactly as at adoption"):
             self.assertIn(phrase, spec, "SPEC lost the bootstrap-order clause: %s" % phrase)
+
+
+class TestSkillSync(unittest.TestCase):
+    """Row 66 (M-096): the dev-machine sync is a named tool with a spoken report, not a habit."""
+
+    def test_sync_skills_script(self):
+        import subprocess
+        import tempfile
+        script = os.path.join(ROOT, "scripts", "sync-skills.sh")
+        self.assertTrue(os.access(script, os.X_OK), "sync-skills.sh not executable")
+        with tempfile.TemporaryDirectory() as tmp:
+            r = subprocess.run(["bash", script, tmp], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertIn("absent ->", r.stdout, "first sync must report absent -> version")
+            self.assertIn("RE-READ", r.stdout, "the A-7 trigger line is the tool's whole point")
+            self.assertTrue(os.path.isfile(os.path.join(tmp, "live-spec-base", "SKILL.md")),
+                            "base skill not synced")
+            r2 = subprocess.run(["bash", script, tmp], capture_output=True, text=True)
+            self.assertEqual(r2.returncode, 0, r2.stderr)
+            self.assertIn("everything fresh", r2.stdout, "second run must be a no-op that says so")
+
+    def test_spec_states_skill_sync(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("keeps its skills fresh by name, not by habit",
+                       "sync-skills.sh",
+                       "reports every version change old → new",
+                       "A hand-copy is the anti-pattern the tool retires"):
+            self.assertIn(phrase, spec, "SPEC lost the skill-sync clause: %s" % phrase)

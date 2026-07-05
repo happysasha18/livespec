@@ -44,6 +44,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Journal template | `templates/JOURNAL.template.md` | shipped text | `test_artifact_inventory` |
 | Next-steps template | `templates/NEXT_STEPS.template.md` | shipped text | `test_artifact_inventory` |
 | Bootstrap suite scaffold | `templates/test_scaffold.template.py` | shipped script | `test_artifact_inventory` + `test_scaffold_bootstrap_runs` (real simulated bootstrap, both ways) |
+| Dev-machine skill sync | `scripts/sync-skills.sh` | shipped script | `test_artifact_inventory` + `test_sync_skills_script` (real run, twice) |
 | Adoption procedure | `adopt/ADOPT.md` | shipped text | `test_artifact_inventory` |
 | Installer | `install.sh` | shipped script | `test_artifact_inventory` |
 | Migration note (rename) | `MIGRATION.md` | shipped text | `test_artifact_inventory` |
@@ -230,6 +231,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 |---|---|---|---|---|---|
 | M-052 | Shipped vs target is marked honestly; every [target] machine is owned by a STILL-OPEN queue row (declared map, self-closing both directions); a [target] node names its missing pin, a fully-pinned node carries no tag; never a claimed-shipped target, never a target orphaned by its row landing or vanishing | S-0 | string | `test_targets_owned_by_open_rows`, `test_target_nodes_pin_honesty` (row 64 mechanized what prover F1 caught by hand) | BUILT |
 | M-053 | The queue and the spec carry dated versions; never an undated truth | M-3 | string | `test_roadmap_header_dated` | BUILT |
+| M-096 | Dev-machine skill sync goes through the named script: installed copies overwritten from the repo source, every version change REPORTED old → new (the A-7 trigger line); idempotent — a fresh dest fills, an unchanged one says so; never a silent hand-copy as the sync path | E-23 | string | `test_sync_skills_script` (a REAL run against a temp dest, twice) | BUILT |
 | M-054 | live-spec eats its own cooking — this repo works by its own spec and queue; the pack's own push gates run mechanically on the installed hooks; never a claim of mechanical enforcement beyond what is actually wired | M-4 | string | `test_hooks_and_scripts_exist_and_executable` (+ `guardrails/install.sh` run for real, journaled) | BUILT |
 | M-055 | Attic layout choice stays open with a named revisit trigger; never silently resolved | D-1 | string | `test_spec_decide_markers_match_open` | BUILT |
 | M-056 | Tier-routing override choice stays open (closes via row 56); never silently resolved | D-2 | string | `test_spec_decide_markers_match_open` | BUILT |

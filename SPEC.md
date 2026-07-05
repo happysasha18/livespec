@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.7, 2026-07-05)
+# live-spec — SPEC (v0.15.8, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -573,6 +573,13 @@ green suite, anchor ownership, matrix coverage — `guardrails/`); the host-faci
 with E-6. [M-4] That makes its repo a shared surface, and one evening
 of two parallel sessions taught us the rules:
 
+**The developer's own machine keeps its skills fresh by name, not by habit.** The repo is the source
+[D-4]; the installed copies under the agent's skills home are mirrors — and a session that edits a
+skill syncs the installed copy the SAME session, through the named tool: `scripts/sync-skills.sh`,
+which copies each repo skill over its installed twin and reports every version change old → new — the
+exact line A-7's re-read rule fires on. A hand-copy is the anti-pattern the tool retires: it syncs
+silently, so nothing tells the next breakpoint what changed. [E-23]
+
 **Only a session you assigned to live-spec itself writes this repo** (spec, queue, journal, skills,
 templates, adopt procedure). Every other session — a host adopt run, a skill install, anything that merely
 reads the package — is read-only here, with exactly one exception: creating a new wish file in the inbox.
@@ -714,6 +721,7 @@ meaning, this table is only the map.
 | E-20 | publishing owes the artifact's kind its checklist (one home: the publish skill); targets are plugins embedding their steps; gates untouched | Publishing |
 | E-21 | installer: install.sh copies skills to the skills home; timestamped backup, never deletes | Adoption step 7 |
 | E-22 | batched questions arrive as ONE decision page; answers archived and harvested same session | Throwing a wish |
+| E-23 | dev-machine skill sync: named script, version changes reported old → new for the A-7 re-read | Package repo |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |
