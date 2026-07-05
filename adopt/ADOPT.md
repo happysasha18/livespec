@@ -117,15 +117,24 @@ Done when: superseded files are under `attic/` with a manifest, and no live poin
 
 ---
 
-## Phase 5 — Derive the test matrix from the spec (SPEC A-3, tail)
+## Phase 5 — Architecture, then the test matrix (SPEC A-3 tail, E-14/E-15)
 
-Build `TEST_MATRIX.md` from the proven spec: one row per invariant / transition / cross-section / surface,
-each pinned to a test **level** (string / DOM / browser / pixel — extend with `data` for a data pipeline).
-Every row states BOTH sides — what the fact DOES and what it must NEVER do (the negative is the regression
-fence). Visibility/layout facts get level ≥ browser. If the host has no suite yet, all rows are `TODO` — the
-data/invariant rows become the acceptance criteria for the next build sprint.
+**First the architecture.** Seed `ARCHITECTURE.md` from Phase 2's inventory: the surfaces' `file:line`
+pins become named nodes (one responsibility, one name each — template: `ARCHITECTURE.template.md`), every
+spec fact is assigned an owning node, seams are named. The pins ARE the reconciliation of re-engineered
+claims (A-3) — they come from commands run in Phase 2, not from the old docs' prose. Run a
+product-prover pass with the architecture lens before deriving anything from it.
 
-Done when: `TEST_MATRIX.md` has a row per spec invariant, each with a level, all `TODO` (or better).
+**Then DERIVE `TEST_MATRIX.md` through it**: rows organized node × fact, at least one row per invariant /
+transition / cross-section / surface, each pinned to a test **level** (string / DOM / browser / pixel —
+extend with `data` for a data pipeline). Every row states BOTH sides — what the fact DOES and what it must
+NEVER do (the negative is the regression fence). Visibility/layout facts get level ≥ browser. The
+derivation closes with the template's coverage-validation checklist, actually walked. If the host has no
+suite yet, all rows are `TODO` — the data/invariant rows become the acceptance criteria for the next
+build sprint.
+
+Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), and `TEST_MATRIX.md` has
+≥ 1 row per spec invariant under its owning node, each with a level, all `TODO` (or better).
 
 ---
 

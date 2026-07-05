@@ -82,7 +82,7 @@ interrupted — an arriving bug, critical included, joins the line, so at most o
 ## Starting a new project (bootstrap)
 
 Copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS) → version-control gate
-→ the first wish enters the queue → the pipeline runs from step 0. [B-1] The gate itself is an always-rule: **no
+→ the first wish enters the queue → the pipeline runs from intake. [B-1] The gate itself is an always-rule: **no
 landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
 declined (recorded, not merely recommended), before the first landing. [INV-8]
 
@@ -101,8 +101,10 @@ name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-0
    `.live-spec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own
    folders (the pilot polluted the host's `data/`). [A-8]
 3. **Re-engineer the existing documents into live-spec shapes** — an existing spec becomes SPEC.md sections
-   (original claims kept, marked unverified); existing tests become matrix rows citing them at their real
-   level; an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
+   (original claims kept, marked unverified); the inventory's `file:line` pins seed ARCHITECTURE.md [E-14]
+   (the nodes come from the real code structure, so the layer arrives at adoption, not as an afterthought);
+   existing tests become matrix rows citing them at their real level, organized under those nodes [E-15];
+   an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
    unreconciled. An unverified claim is reconciled (pinned to file:line, or removed) at the FIRST landing
    that touches its surface — and all remaining ones at the first milestone, whichever comes first. [A-3]
 4. **Attic, not deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**
@@ -206,26 +208,32 @@ own prose). It is written from the proven spec (template: `ARCHITECTURE.template
 — it is PROVEN before anything derives from it: a product-prover pass with the architecture lens (every
 spec fact has an owning node · no node stands without spec backing · the seams between nodes are named).
 A large or surface-class wish updates the doc before the matrix is touched; a bug or small wish cites the
-existing node it lands in — the doc is re-proven when it CHANGES, not on every landing. [E-14]
+existing node it lands in — or, when its fact has no owner yet, ASSIGNS it to the fitting existing node
+(recorded in the doc; an assignment alone triggers no re-prove) — so no fix is ever the thing the rules
+forbid to land. The doc is re-proven when its structure CHANGES, not on every landing. [E-14]
 
 **The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
 Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,
-every fact gets at least one row, every row pins a test level — and the derivation closes with a
-**coverage validation**, a checklist actually walked: every spec anchor appears in ≥1 row · every
-artifact-inventory entry owns ≥1 rendered-level row · every visibility/layout/colour/interaction fact
-sits at level ≥ browser-computed · every node carries its negative-side rows [INV-6]. A fact with no row,
-or a row at a too-weak level, is a derivation defect — caught at derivation time, not by the user. [E-15]
+every fact gets at least one row, every row pins a test level — and the derivation closes with the
+**coverage validation** — the checklist whose normative home is the matrix template, actually walked:
+every spec anchor appears in ≥1 row · every artifact-inventory entry owns ≥1 rendered-level row · every
+visibility/layout/colour/interaction fact sits at level ≥ browser-computed · every node carries its
+negative-side rows [INV-6] · no row cites an anchor or node that no longer exists (stale rows retire,
+never vanish). A fact with no row, or a row at a too-weak level, is a derivation defect — caught at
+derivation time, not by the user. [E-15]
 
 While both layers live, one thing holds: **no wish lands whose facts lack an owning architecture node and
 a matrix row at the right level** — the bridge from spec to tests is walked layer by layer, never jumped.
-[INV-15]
+A project that predates these layers — this pack itself included — brings them up as an OWNED landing:
+the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively
+(the pack's own bring-up is queue row 50). [INV-15]
 
 ## The machines that hold the bounds [target]
 
 What keeps "it works" honest, each one a named machine:
 
-- **The matrix (TEST_MATRIX.md)** — one row per fact, each pinned to a test level; organized architecture
-  node × spec fact, produced by the derivation method above [E-14, E-15]. [E-5] Every row states the
+- **The matrix (TEST_MATRIX.md)** — at least one row per fact, each row pinned to a test level; organized
+  architecture node × spec fact, produced by the derivation method above [E-14, E-15]. [E-5] Every row states the
   positive AND the negative side — what the fact does and what it must never do; the negative side is the
   regression fence. [INV-6]
 - **The guardrails [target]** — the mechanical checks wired to the pre-push hook: completeness (against
@@ -275,7 +283,8 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   that offer: at a breakpoint the agent compacts its own context to keep working — and SAYS so, never
   silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
   in, re-check skill freshness [A-7]. [M-2]
-- **Milestone (MINOR gate):** full spec re-prove + matrix audit + surface-composition check + doc
+- **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
+  against the CURRENT spec + architecture) + surface-composition check + doc
   COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills — nothing grows unboundedly) + a
   re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
   is never forgotten + the formal index re-checked against the prose (the index is a derived map and must

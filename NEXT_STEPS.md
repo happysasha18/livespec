@@ -1,27 +1,26 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~12:20, session 3)
-PUBLIC: github.com/happysasha18/livespec — **renamed to live-spec locally (row 40 sweep landed); the
-GitHub repo rename + `~/livespec` → `~/live-spec` clone-dir rename happen AT the reviewed push, as one
-outward move.** Morning decision JSON harvested (5 picks; archived docs/decisions/). Landed today:
-**the lost layers** — pipeline is now spec → prove → architecture → prove architecture → matrix(test spec,
-derived node × fact + walked coverage checklist) → test → code (SPEC v0.7 E-14/E-15/INV-15, ARCHITECTURE
-template, build-pipeline 0.2.0); decision page = communicator rule 10 (project name in the JSON filename);
-timestamps = base rule 9 (date AND time in records). Installed skills synced; playbook/CLAUDE.md updated +
-pushed. **In flight: whole-spec prover pass (push gate M-6 + MINOR gate) → then VERSION 0.1.1 → 0.2.0 +
-final commit.** PUSH HELD until Alexander reviews.
-WAITING on Alexander: second decision page in his Chrome (worked examples): pack structure (row 42, D-4)
-· personal-settings split CLAUDE.md/playbook/profile (row 43, D-5). Answers land as
-`~/Downloads/live-spec-decisions-2026-07-05.json`.
+## LIVE STATE (2026-07-05 ~13:05, session 3)
+PUBLIC: github.com/happysasha18/livespec — renamed live-spec IN CONTENT (row 40); GitHub repo rename +
+`~/livespec` → `~/live-spec` clone-dir rename happen AT the reviewed push, one outward move. **VERSION
+0.2.0.** Landed today: the lost layers (pipeline = spec → prove → architecture → prove architecture →
+matrix derived node × fact → test → code; SPEC v0.7 E-14/E-15/INV-15) · decision page = communicator law
+(rule 10) · timestamps in records (base rule 9) · the rename sweep. Whole-spec prover pass
+`docs/prover/2026-07-05-lost-layers.md`: 10 findings, ALL folded same session — GREEN for push + MINOR.
+BOTH decision pages harvested (5 morning picks + 2 afternoon: **package-is-source** with mirrors → row 51;
+**all-into-profile** with servlet-scopes + onboarding → rows 52–54). PUSH HELD until Alexander reviews.
 Standing: one window = one project; **live-spec = Fable only**.
 
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. Finish this session: prover record in docs/prover/ → fold must-fixes → VERSION 0.2.0 → commit; at
-   Alexander's review-OK: GitHub rename + clone-dir rename + push (re-check fence first).
-2. Harvest `live-spec-decisions-2026-07-05.json` when it appears (rows 42/43 → structure + settings work).
-3. Fold the remaining 9 mined gaps (row 12), next: gap 3 "fix the class, sweep look-alikes".
-4. Prover debts: queue archive at milestones (row 30) · personal-profile git home (row 38 — likely folds
-   into row 43's outcome).
-5. Guardrails scaffold (row 3) · CI-mirror example (row 14) · then the deferred tail: feedback skill
-   (row 47) → maintenance/measurement plugins (row 48) → A/B experiments (row 49) · learn-from-others
-   (row 44, own bump) · track-coach as first formal adopt-host · skill-creator eval (row 5).
+1. **Row 50 — NEXT landing: bring-up on live-spec itself** — author ARCHITECTURE.md (nodes pinned to real
+   files) + derive TEST_MATRIX.md node × fact, coverage validation walked (INV-15 becomes satisfiable in
+   the flagship).
+2. At Alexander's review-OK: fence re-check → GitHub rename + clone-dir rename → push (prover record
+   already green for this state).
+3. Rows 52+53 design (personal layer → profile with nested/inherited scopes; CLAUDE.md → thin loader) ·
+   row 54 onboarding step · row 51 mirrors + sync command.
+4. Fold remaining 9 mined gaps (row 12), next: gap 3 "fix the class, sweep look-alikes" · prover debts
+   rows 30, 38 (38 likely folds into row 52).
+5. Guardrails scaffold (row 3, scope incl. INV-15 teeth) · CI-mirror (row 14) · deferred tail: feedback
+   skill (47) → measurement plugins (48) → A/B (49) · learn-from-others (44, own bump) · track-coach
+   formal adopt · skill-creator eval (row 5).

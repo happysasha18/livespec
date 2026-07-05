@@ -123,7 +123,7 @@ patch. The four mechanical guardrails:
 **Honest boundary:** guardrails catch STRUCTURAL defects (empty surface, missing test, untraced behaviour,
 partial artifact, id/naming conflict). They do NOT catch a subtle SEMANTIC bug (is the number right?) — that
 still needs `product-prover` + a human's eyes. Enforce structure mechanically; reason about meaning with the
-prover. Verify-by-deed (step 7) and push (step 8) both run the guardrails first; guidance and teeth agree.
+prover. Verify-by-deed (step 8) and commit/push (step 9) both run the guardrails first; guidance and teeth agree.
 
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix

@@ -19,3 +19,8 @@ For each adopted host (at its next update session):
    `~/.claude/skills/live-spec-base`.
 
 Journal the migration in the host's JOURNAL.md with date and time.
+
+**Matrix reshape (same 2026-07-05 wave, separate from the rename).** The pipeline regained its two lost
+layers: an ARCHITECTURE.md between the proven spec and the tests, and the matrix DERIVED node × fact.
+A host holding an old-shape flat matrix regroups its rows under nodes at its first architecture-doc
+landing (the bring-up) — rows are preserved and re-homed, never re-derived from scratch.

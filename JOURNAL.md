@@ -327,3 +327,23 @@ included, gate-checked before showing.
 **Status:** three commits today before this entry; VERSION goes 0.1.1 → 0.2.0 with the whole-spec prover
 pass that closes the session (MINOR gate: this pack has no matrix yet — guardrails are row 3 — so the
 audit is the prover pass + the queue re-listing, said honestly). Push held for Alexander's review.
+
+## 2026-07-05, 12:40–13:10 — Gate green, 0.2.0, and the afternoon answers
+
+The session's prover gate ran as a FULL pass over SPEC v0.7 (record: docs/prover/2026-07-05-lost-layers.md)
+and did its job: 10 findings, the sharpest being that the new layer invariant was unsatisfiable for every
+EXISTING host — live-spec's own repo first — because nothing owned creating the two new documents, and
+adoption still produced the old flat matrix. All ten folded the same session (bring-up rule + queue row 50;
+adoption Phase 5 rewritten "architecture, then the matrix"; a bug may now ASSIGN an orphan fact to a node
+so no critical fix is ever the thing the rules forbid; the template owns the coverage checklist; stale step
+numbers and one-vs-at-least-one wording swept). VERSION 0.1.1 → 0.2.0 — the MINOR gate's matrix-audit leg
+is honestly N/A until row 50 exists; said, not skipped.
+
+The afternoon decision page came back at 12:48 (archived docs/decisions/2026-07-05-decisions-2.json):
+**package-is-source** — the pack repo is the single truth, standalone repos become per-skill mirrors
+(Alexander's note about reusable parts staying findable alone is exactly what mirrors give; row 51), and
+**all-into-profile** — against the recommendation: everything personal moves into live-spec settings with
+servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a thin loader, and setup gains an
+"understand who you're working with" onboarding step (rows 52–54). The mid-session interruption cost
+nothing: three commits were already on disk, the uncommitted folds survived in the tree, and the resume
+file told the truth — the discipline paid for itself the first time it was tested.
