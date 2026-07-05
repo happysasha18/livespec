@@ -140,3 +140,28 @@ principle also recorded in the playbook. Old three skill repos: Alexander delete
 package is now the skills' only public home.
 Push note: SPEC.md is byte-unchanged since the v0.4 push-gate record (2026-07-04-v04-push.md), so that
 record covers this push's spec state per the gate's own terms.
+
+## 2026-07-05 — the use-case-first shape propagated to the template + spec-author (row 23)
+Row 22 proved the shape on livespec's own spec (v0.4); today the shape became the DEFAULT every future
+spec is born with. `templates/SPEC.template.md` rewritten from a structure-first skeleton (Purpose /
+Entities / States / Actors / Invariants / Composition / Glossary chapters) to a use-case-first one:
+scenario sections lead ("what the person does" is the section name), entities are defined in bold where
+the walk first meets them, invariants read as "always true while this runs" sentences, anchors trail at
+line-ends, and a Formal index closes the doc — with all 11 sample anchors in the body covered by the
+sample index, so the template models its own rule. `skills/spec-author/SKILL.md` updated to teach it: the
+spine reframed from a section ORDER to a completeness CHECKLIST that lives inside the scenarios; two new
+"How it reads" rules (scenarios lead · the index is a derived map, never a second truth); the anchor-set
+guard for restructures written down as method (diff the sorted anchor list before/after — identical sets
+prove no rule was lost); shape questions added to the completeness pass; two new anti-patterns
+(structure-first layout, index drift). WHY the glossary changed: the proven v0.4 exemplar defines terms in
+place (bold at first use) and has no glossary section, so the checklist now says exactly that, with a
+separate glossary only when in-place stops scaling. Sibling skills swept for old-shape assumptions
+(product-prover / build-pipeline reference no section order) — clean. Installed spec-author copy synced.
+
+Session note (the morning's near-miss, cross-project): the session began with a wrong-project resume — I
+picked up track-coach's NEXT_STEPS instead of livespec's (home-launched sessions share one memory; volume
+of old track-coach notes ≠ assignment) and spawned two workers toward track-coach's tests before Alexander
+stopped it. Both killed before a single write landed (git status clean, no files created — verified).
+Rule saved to memory: cwd=home + no project named ⇒ ask which project, listing the NEXT_STEPS files on
+disk; never infer from memory volume. Mechanical fix offered: launch each project session from its own
+directory.

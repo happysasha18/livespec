@@ -1,6 +1,6 @@
 ---
 name: spec-author
-description: Author and maintain a living product spec as a project grows — a structured, prover-ready SPEC.md that states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
+description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 ---
 
 # Spec Author
@@ -30,16 +30,27 @@ thing IS and does — not machine fragments with markup. It doesn't have to read
 project: a prover-facing spec that read like "machine fragments with markup" was rejected by its author and
 stopped being read — which kills a spec).
 
+- **Scenarios lead; the formal content lives inside them (use-case-first).** Sections are named by what the
+  person DOES ("Throwing a wish", "Analysing a track", "When a bug cuts the line") and read as a walk: what
+  you do, what you see, what the system does underneath. Entities are defined in bold where the walk first
+  meets them; transitions are told as steps; invariants are the "while it walks, these are always true"
+  sentences. Never organize the document as Entities / States / Actors chapters — that shape reads like a
+  database dump and stops being read (proven on the flagship: the structure-first v0.3 was rejected, the
+  use-case-first v0.4 is the shape that survived).
 - **Prose carries the meaning; the machine handles stay quiet.** Every rule is a plain sentence a person
   reads straight through. The short codes — `CR-1`, `INV-18`, `⟨DECIDE⟩`, a `tags:` line — sit at the **END**
   of the line as quiet handles for the prover and the test matrix. A reader skims past them; the prover keys
   on them. **Never open a rule with its code.**
+- **A Formal index closes the doc.** One compact table at the end maps every anchor → one line → home
+  section, so the prover and the matrix can key on codes without the prose ever bending to them. The index
+  is a DERIVED map: re-derive it whenever anchors change, re-check it at every milestone — it must never
+  drift into a second truth.
 - **Bold the headline, bury the threshold.** Lead each rule with a **bold plain-language headline** (the
   shape of it), then the exact number / condition in the detail after. The reader gets the gist from the
   bold; the builder drops into the detail for the precise value.
 - **A "how to read" note at the very top.** Open the spec with a short front-matter: what the product is in
-  two sentences, that the prose is the meaning and the tags are quiet machine handles, and that **edit
-  history lives in the JOURNAL, not here.**
+  two sentences, that each section is a scenario, that the codes are quiet machine anchors mapped by the
+  Formal index at the end, and that **edit history lives in the JOURNAL, not here.**
 - **The spec states the CURRENT truth, not a changelog.** No "changed in v0.8.3 from…" scars in the prose;
   the *why-we-changed-it* belongs in `JOURNAL.md` (dated, with the reason). A superseded rule may stay with a
   one-line "SUPERSEDED by §X" pointer when the old shape still needs explaining — but the prose reads as
@@ -52,27 +63,34 @@ stopped being read — which kills a spec).
 
 This is the shape `product-prover` is tuned to read, and the one a human will actually keep open.
 
-## The spine — every spec, in this order
+## The spine — what every spec must CONTAIN (not its section order)
 
-Author and maintain these sections. Add to them as the project grows; never let a new feature land without
-its entry.
+The spine is a completeness checklist, not a table of contents. The DOCUMENT is organized use-case-first
+(scenario sections, per "How it reads" and `templates/SPEC.template.md`); each spine item lives INSIDE the
+scenarios and is findable through the Formal index. Never let a new feature land without its entry.
 
-1. **Purpose** — why the product exists, in plain words. One paragraph. What is its whole value?
-2. **Entities** — the nouns. Each with its attributes, its unit/valid range if it's a measure, and its
-   **states** if it has a lifecycle. *One concept, one name* (see below).
-3. **States & transitions** — for each entity with a lifecycle: the states, and every move between them
-   (which action, which actor, what triggers it). A state with no way out is a bug; say what exits it.
-4. **Actors** — who initiates each significant action (user, role, automated service, external system).
-   "Who does this?" must have an answer for every transition.
-5. **Invariants** — the properties that must hold across *every* reachable state. Split:
+1. **Purpose** — why the product exists, in plain words: the opening "What [product] is" paragraph.
+2. **Entities** — the nouns. Each defined in **bold** where a scenario first meets it, with its attributes,
+   its unit/valid range if it's a measure, and its **states** if it has a lifecycle. *One concept, one
+   name* (see below).
+3. **States & transitions** — every move an entity can make, told as steps of the walk (which action, which
+   actor, what triggers it). A state with no way out is a bug; say what exits it.
+4. **Actors** — a "Who decides what" section: who initiates each significant action (user, role, automated
+   service, external system). "Who does this?" must have an answer for every transition.
+5. **Invariants** — the properties that must hold across *every* reachable state, stated as plain "always
+   true while this runs" sentences inside their scenario. Cover both sides:
    - **Safety** — what must NEVER happen (mutually-exclusive modes, no over-claiming, no partial writes).
    - **Liveness** — what must EVENTUALLY happen (every async path completes / times out / rolls back).
 6. **Cross-section composition** — the part most specs miss. See the dedicated step below.
-7. **Glossary** — plain-language definition of every term that needed explaining. Expand it the moment a
-   term is ambiguous.
+7. **Terms** — every term that needs explaining is defined in place, in bold, at first use. Add a separate
+   glossary section only when in-place definitions stop scaling.
 
 Mark anything that needs a human's domain call with **⟨DECIDE⟩** and a one-line question. Never invent
 intent to fill a gap — flag it.
+
+**Reshaping an existing spec? Hold the anchor-set guard.** A restructure (e.g. structure-first →
+use-case-first) must carry EXACTLY the prior anchor set: diff the sorted anchor list before and after —
+identical sets prove the shape changed and no rule was lost; any delta must be a deliberate, named change.
 
 ## The move most specs miss: compose every stateful surface across EVERY axis
 
@@ -108,8 +126,10 @@ So, for every stateful surface, before you call its section done:
 
 ## How you work
 
-1. **Author / grow the relevant section** in `SPEC.md`, prose-first, plain language. Reuse the existing
-   vocabulary; don't introduce a second word for an existing concept.
+1. **Author / grow the relevant section** in `SPEC.md`, use-case-first: find (or open) the scenario the
+   change belongs to and grow the walk, plain language, anchors at line-ends, the Formal index updated in
+   the same edit. Reuse the existing vocabulary; don't introduce a second word for an existing concept.
+   Starting fresh? Copy `templates/SPEC.template.md`.
 2. **Ask, don't silently fill.** When the spec needs a decision only the author can make (a threshold, a
    policy, desired behavior on an edge), ask the leading question or mark ⟨DECIDE⟩ — never guess intent.
 3. **Run the completeness pass** (below) on what you wrote.
@@ -142,12 +162,16 @@ Ask each question out loud; a "no" or "don't know" is a gap to fill or mark ⟨D
   non-author grasps in one read? Is it in product words, not machine fragments? Are the codes/tags at
   line-*ends*, never opening the line? Is there any edit-history scar in the prose that belongs in the
   JOURNAL? Does the spec open with a "how to read" note?
+- **Shape (use-case-first):** Is every section a scenario named by what the person does — no
+  Entities/States/Actors chapters? Is every spine item present INSIDE the scenarios? Does every anchor in
+  the prose appear in the Formal index (and every index row point at a real section)? After a restructure:
+  is the anchor set identical to before (or every delta named)?
 
 ## What you produce
 
-A `SPEC.md` (or an updated section of one) that is prose-first, plain-language, structured on the spine,
-with surfaces named once and their cross-axis composition stated — ready for `product-prover` to review and
-for a test matrix to be derived from. You also surface, in your reply, the ⟨DECIDE⟩ points you couldn't
+A `SPEC.md` (or an updated section of one) that is use-case-first — scenarios lead, anchors trail, the
+Formal index closes the doc — complete against the spine, with surfaces named once and their cross-axis
+composition stated — ready for `product-prover` to review and for a test matrix to be derived from. You also surface, in your reply, the ⟨DECIDE⟩ points you couldn't
 resolve and the leading questions behind them.
 
 ## Anti-patterns (refuse these)
@@ -164,6 +188,11 @@ resolve and the leading questions behind them.
   detail beneath**, so the eye lands, then drills in.
 - **Codes opening the line / edit-history in the prose** — `INV-18:` as a sentence's first word, or "in v0.8
   we changed…" baked into a rule. Codes go at line-ends; history goes in the JOURNAL.
+- **Structure-first layout** — a document organized as Entities / States / Actors / Invariants chapters.
+  That's the checklist wearing the reader's hat: it reads like a database dump and stops being read.
+  Scenarios lead; the primitives live inside them; the Formal index serves the machine.
+- **An index that drifts** — a Formal index edited by hand into claims the prose doesn't make (or missing
+  anchors the prose has). The index is derived from the prose, re-checked at milestones, never a second truth.
 
 ## Pairing with product-prover
 

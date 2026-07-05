@@ -1,78 +1,80 @@
-# [Project Name] Spec
+# [Project Name] — SPEC (v0.1, [date])
 
-> How to read: the prose is the meaning; the short codes (INV-x, CR-x, ⟨DECIDE⟩) are quiet machine handles at line-ends for the prover and test matrix. Edit history lives in JOURNAL.md, not here. This spec states today's truth.
+> How to read: each section is a scenario — what a person does and what they see. The short codes in
+> brackets are quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal
+> index at the end maps every anchor to its home section. Edit history lives in JOURNAL.md; this spec
+> states today's truth.
+
+**Current vs target.** [If anything below is designed but not yet shipped, say so here and mark those
+sections `[target]` — the spec never claims shipped what isn't. Keep this block honest at every edit;
+remove it only when everything stated is real.] [S-0]
+
+## What [product] is
+
+[One paragraph, plain words: why the product exists and its whole value to the person using it. Introduce
+the main nouns in **bold** as you go — each first appearance is where that entity is defined (attributes,
+unit/valid range if it's a measure) and gets its anchor.] [E-1]
+
+## [The main scenario — name it by what the person DOES: "Analysing a track", "Throwing a wish", …]
+
+[Walk it as prose: what the person does, what they see, what the system does underneath. Weave the formal
+content into the walk — never split it out into separate Entities/States/Actors chapters:]
+
+[Each **entity** is defined in bold where the walk first meets it, with its attributes and states. [E-2]]
+
+[Each lifecycle move is told as a step of the walk — which action, which actor, what triggers it. A state
+with no way out is a bug; say what exits it. [T-1]]
+
+[What is ALWAYS true while the scenario runs gets its own plain sentences — safety (what must never
+happen) and liveness (what must eventually happen, within what bound):]
+- [Plain-language invariant sentence — exact condition trails in the detail. [INV-1]]
+
+## [The edge scenario — what happens when it goes wrong or is interrupted: "When a bug cuts the line", …]
+
+[Every failure, interruption, and exception path the system can reach is a scenario too: what the person
+sees, what the system guarantees, how the normal path resumes. An edge the spec doesn't walk is a gap,
+even if the code "handles" it. [T-2] [INV-2]]
+
+## Who decides what
+
+[**The human** owns: taste, thresholds only they can pick, irreversible calls, … [ACT-1]]
+[**The system / the agent** owns: … [ACT-2]]
+[Every transition told above must trace to an actor named here. Decisions the spec can't make alone are
+marked ⟨DECIDE⟩ inline and listed under Open decisions.]
+
+## Composing across axes
+
+[For every stateful surface, compose it across the canonical axis list: **view · mode · tier · viewport
+size · persistence/reopen · concurrency** (where real). One surface = one name everywhere. For each axis
+value: is the surface's state still visible, still reversible; does the transition preserve, reset, or
+block it? If the surface persists state, walk the older-stored-value × current-code case too. Close with
+the composition invariant as one plain sentence. [C-1]]
+
+## Open decisions
+
+- ⟨DECIDE⟩ [A call only the human can make — one line, with the leading question and the current pick if
+  work proceeds on a recommendation. [D-1]]
+
+## Formal index
+
+Machine handles → home section. The prose above is the meaning; this table is only the derived map —
+re-derive it whenever anchors change; it must never drift into a second truth.
+
+| Anchor | One line | Section |
+|---|---|---|
+| S-0 | shipped vs target marked honestly | header |
+| E-1 | [entity, one line] | What [product] is |
+| E-2 | [entity, one line] | [main scenario] |
+| T-1 | [transition, one line] | [main scenario] |
+| T-2 | [transition, one line] | [edge scenario] |
+| INV-1 | [invariant headline] | [main scenario] |
+| INV-2 | [invariant headline] | [edge scenario] |
+| ACT-1 | [the human: what they own] | Who decides what |
+| ACT-2 | [the system/agent: what it owns] | Who decides what |
+| C-1 | [composition rule] | Composing across axes |
+| D-1 | [open decision] | Open decisions |
 
 ---
 
-## 1. Purpose
-
-Why the product exists, in plain words. One paragraph. What is its whole value to the person using it?
-
----
-
-## 2. Entities
-
-The nouns. Each with its attributes, its unit/valid range if it's a measure, and its states if it has a lifecycle.
-
-**[Entity name]** — description. Attributes: [attr: type, valid range]. States: [if lifecycle — see section 3].
-
-*One concept, one name everywhere. If two sections use different words for the same thing, unify them.*
-
----
-
-## 3. States and transitions
-
-For each entity with a lifecycle: the states, and every move between them (which action, which actor, what triggers it). A state with no way out is a bug; say what exits it.
-
-**[Entity]:**
-- State A → State B: [action], triggered by [actor] when [condition]
-- State B → State C: [action], triggered by [actor] when [condition]
-
----
-
-## 4. Actors
-
-Who initiates each significant action.
-
-- **[Actor]** — [what they do and which transitions they initiate]
-
-Every transition in section 3 must name an actor from this list.
-
----
-
-## 5. Invariants
-
-Properties that must hold across every reachable state.
-
-**Safety** — what must NEVER happen:
-- [INV-1] Plain-language headline — exact condition. `tags: safety`
-
-**Liveness** — what must EVENTUALLY happen:
-- [INV-2] Plain-language headline — async path completes / times out / rolls back within [bound]. `tags: liveness`
-
----
-
-## 6. Cross-section composition
-
-For every stateful surface, composed across the canonical axis list: **view · mode · tier · viewport size · persistence/reopen · concurrency**.
-
-**[Surface name]** — [what state it carries]:
-- view (compact / detailed): [what happens to the surface's state and controls]
-- mode (quick / full): [preserve / reset / block — and what triggers it]
-- viewport size: [reflow behaviour below [width]px]
-- persistence/reopen: [what the surface writes to disk/localStorage; what happens when an older stored value meets the current UI]
-- concurrency (if applicable): [concurrent access behaviour]
-
-*Composition invariant: "[plain sentence stating what must hold across axes]."*
-
----
-
-## 7. Glossary
-
-Plain-language definition of every term that needed explaining. Expand whenever a term is ambiguous.
-
-- **[Term]** — [definition]
-
----
-
-*Authored via spec-author. Review with product-prover before deriving the test matrix or writing code.*
+*Authored via spec-author (use-case-first shape: scenarios lead, codes trail as anchors, the Formal index
+closes the doc). Review with product-prover before deriving the test matrix or writing code.*
