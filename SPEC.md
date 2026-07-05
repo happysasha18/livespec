@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.11.0, 2026-07-05)
+# live-spec — SPEC (v0.11.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -104,7 +104,9 @@ where the design assumed a mouse (anything hover-only needs a touch answer) · t
 loading states of each new surface · accessibility (reachable by keyboard, readable contrast) · the
 performance envelope (at what input size it must stay usable). The facet list's normative home is the
 spec-author skill, one list for every project; this spec binds THAT the sweep runs and what counts as
-done. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes — the
+done. The sweep scopes to the feature's VISIBLE surfaces: a feature with none — new persistent state
+only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A", never a
+silent skip. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes — the
 late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is NOT swept
 — a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
 

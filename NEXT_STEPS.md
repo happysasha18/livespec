@@ -2,7 +2,7 @@
 
 ## LIVE STATE (2026-07-05 ~18:20, session 7 — safe to wipe after this report)
 PUBLIC: github.com/happysasha18/live-spec. **Row 72 LANDED (the facet sweep, the Room incident's third
-lesson): SPEC v0.11.0** — T-13 (feature spec-delta walks the canonical facet list: phone/narrow ·
+lesson): SPEC v0.11.1** — T-13 (feature spec-delta walks the canonical facet list: phone/narrow ·
 touch-vs-hover · empty/error/loading · a11y · perf; list's ONE home = spec-author :144; mid-work
 re-door re-runs the sweep; a fenced prototype is never swept) + INV-18 (every facet ends as a SPEC
 SENTENCE — decided, or `[default]`-tagged + reported as a plain-words tradeoff, batched; adopted
@@ -10,8 +10,9 @@ surfaces reconcile from shipped truth). CROSS-LINK prover record `docs/prover/20
 (1 must-fix + 6 others, ALL folded — the must-fix birthed the `[default]` tag). Matrix M-072..M-073;
 tests TestFacetSweep red-first; skills: spec-author 0.1.5 · communicator 0.1.5 (rule-10 tradeoff line)
 · build-pipeline 0.2.4 (step-1 sweep sentence); installed copies synced; suite **45 green / 0 skips**;
-pack VERSION 0.5.2. **Push PENDING the M-6 gate: FULL prover pass owed (also discharges finding F4 —
-MINOR bump needs FULL), running/next.** Earlier same session: Alexander's calque ban →
+pack VERSION 0.5.2. M-6 gate PASSED: FULL pass on v0.11 (`docs/prover/2026-07-05-v11-push.md`,
+zero must-fix; its one should-clarify — headless feature, facets N/A — folded same sitting → v0.11.1);
+77 anchors symmetric both directions; PUSHED. Earlier same session: Alexander's calque ban →
 `language.no-calques` in his profile (playbook 234bce6, pushed) + row 73 intake (pack-general rule,
 communicator + base). Stale `.bak_20260705_113914` skill copies moved to
 `~/.claude/playbook/row52/attic/skills-bak/` (local-only, gitignored there).

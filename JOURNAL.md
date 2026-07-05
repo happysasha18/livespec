@@ -591,3 +591,9 @@ spec bump owes a FULL pass at the push gate — run before this push per M-6.
 Same evening, before the landing: Alexander banned calques outright (Russian chat had been carrying
 loan-translated pack terms — «растяжки», «та же семья»). Contract line `language.no-calques` live in
 his profile (playbook 234bce6); pack-general rule filed as row 73 (communicator + base), lands next.
+
+Push gate (M-6): FULL pass on an Opus worker (docs/prover/2026-07-05-v11-push.md) — ready-to-push, zero
+must-fix, 77 anchors symmetric, all seven facet folds verified in prose. Its one should-clarify (a
+headless feature — new persistent state, no visible surface — would owe layout sentences) folded same
+sitting: the sweep scopes to VISIBLE surfaces, a headless feature writes one explicit "no visible
+surface — facets N/A" line -> SPEC v0.11.1. Suite 45 green; pushed.

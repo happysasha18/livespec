@@ -160,7 +160,9 @@ sentence is written carrying the literal tag `[default]` at its line end — so 
 taken default from a hole, and the matrix derives the facet's test row either way. Every defaulted facet
 is then reported back as a plain-words tradeoff in the product's terms ("on a phone this gallery stacks
 into one column — ok?"), batched, never one ping per facet — communicator owns the report shape; a veto
-simply becomes a new wish. A facet with no sentence is a spec defect the prover flags.
+simply becomes a new wish. A facet with no sentence is a spec defect the prover flags. The sweep scopes to the feature's VISIBLE
+surfaces — a headless feature (new persistent state only) satisfies it with one explicit sentence, "no
+visible surface — facets N/A", never a silent skip.
 
 Boundaries, stated once: a wish re-doored to feature mid-work walks the sweep before work resumes — the
 late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is never
