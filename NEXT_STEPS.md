@@ -1,27 +1,27 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~14:15, session 4 — safe to wipe after this push)
-PUBLIC: github.com/happysasha18/live-spec, **VERSION 0.2.2 PUSHED on Alexander's word** (row 40 rename
-fully closed earlier today). Landed this session: **row 50** — flagship bring-up: ARCHITECTURE.md v0.1
-(12 nodes, 69/69 anchors owned once, pins command-verified) + TEST_MATRIX.md v0.1 (64 rows node × fact,
-DO+NEVER each; text-product level adaptation recorded) + `tests/test_traceability.py` (20 GREEN, zero
-skips; run: `python3 -m unittest discover tests`); INV-15 binds from now. Prover records:
-`2026-07-05-architecture.md` (8 findings; rows 55–57 opened; SPEC v0.7.1) and `2026-07-05-iterativity.md`
-(green). **Row 58** — architecture is ITERATIVE, never milestones ahead (tlvphoto's agent asked; answer
-now lives in SPEC E-14 v0.7.2 + ARCHITECTURE template + build-pipeline 0.2.1, installed copy synced —
-hosts pick it up at their next freshness re-stat).
-**Opus split (Alexander opened the door 2026-07-05):** judgment/design rows stay on Fable; bounded
-mechanical rows may go to an Alexander-assigned Opus session that resumes COLD from this file
-(candidates: row 51 mirrors+sync command; row 3 generalizing the traceability suite into the pre-push
-hook). Standing: one window = one project.
+## LIVE STATE (2026-07-05 ~15:50, session 4 — safe to wipe after this report)
+PUBLIC: github.com/happysasha18/live-spec, local VERSION **0.2.3 committed, PUSH PENDING Alexander's
+review**. Landed this stretch (his "поехали" 15:05): **row 53** — SPEC v0.8.0 settings ladder = four
+nested scopes (session > host > personal > package default; session = live word, never a file), base
+skill 0.1.3, prover record `2026-07-05-scopes.md` (3 findings, folded); **row 3 pack slice** —
+`guardrails/` pre-push gates + opt-in fence, hooks INSTALLED in this repo (a push now needs a today-dated
+prover record + green suite + ownership + coverage), 15 new tests, suite 35 green; **row 51 reduced** —
+`scripts/sync-mirrors.sh`, product-prover mirror synced; spec-author standalone repo turned out NOT to
+exist. **Row 52 designed, flip GATED**: drafts in `~/.claude/playbook/row52/` (migration-map ·
+CLAUDE.draft · profile.draft); flip = fold row 12 gap 3 → Alexander reviews drafts → attic → swap;
+rollback one copy.
+**Version plan (Alexander 15:05): next MINOR bump goes straight to 0.5.0**, 3-pass preventive audit first.
+**Waiting on Alexander:** (1) create 4 mirror repos? (spec-author, build-pipeline, communicator,
+live-spec-base — his publish gate); (2) review row52 drafts; (3) the 0.2.3 push (prover record exists,
+gates green).
 
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. Rows 52+53 design (personal layer → profile with nested/inherited scopes; CLAUDE.md → thin loader) ·
-   row 54 onboarding step — judgment, Fable.
-2. Row 51 mirrors + sync command · row 3 guardrails scaffold (scope incl. INV-15 teeth + pre-push hook
-   from tests/test_traceability.py) — mechanical, Opus-eligible with this file as the handoff.
-3. Row 57 (installer + decision page get spec sentences) · fold remaining 9 mined gaps (row 12), next:
-   gap 3 "fix the class, sweep look-alikes" · prover debts rows 30, 38 (38 likely folds into row 52).
-4. Snapshot machinery (row 55) · CI-mirror (row 14).
-5. Deferred tail: model router (56, after 52–54) · feedback skill (47) → measurement plugins (48) → A/B
+1. Fold row 12 gap 3 (fix-the-class sweep → build-pipeline/prover) — unblocks row 52's flip.
+2. Row 52 flip after Alexander's review (attic old CLAUDE.md → swap loader + profile; execute row 38
+   symlink move with it) · row 54 onboarding step.
+3. Row 57 (installer + decision page spec sentences) · remaining row 12 gaps · prover debt row 30.
+4. Snapshot machinery (row 55) — guardrails' declared-scope diff consumes it · CI-mirror (row 14).
+5. 3-pass preventive audit → **0.5.0** when Alexander says the moment is right.
+6. Deferred tail: model router (56, after 52–54) · feedback skill (47) → measurement plugins (48) → A/B
    (49) · learn-from-others (44, own bump) · track-coach formal adopt · skill-creator eval (row 5).

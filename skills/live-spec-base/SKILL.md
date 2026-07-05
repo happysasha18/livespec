@@ -1,7 +1,7 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the three-step settings ladder (package defaults → personal profile → host profile). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
-version: 0.1.2
+description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
+version: 0.1.3
 ---
 
 # live-spec-base — one rulebook, five skills
@@ -82,20 +82,30 @@ a working skill still stands: its pointer here reads as plain advice.
 
 ## The settings ladder
 
-How the pack behaves is a **named setting** resolved up a three-step ladder — **host profile beats personal
-profile beats package default** (SPEC E-13):
+How the pack behaves is a **named setting** living in one of four NESTED scopes; a setting belongs to the
+scope it DESCRIBES, broader values are INHERITED down until a narrower scope overrides them on the human's
+word, and resolution reads from the narrowest scope out — **session beats host beats personal beats
+package default** (SPEC E-13):
 
-| Step | Home | Holds settings about |
+| Scope | Home | Holds settings about |
 |---|---|---|
 | package defaults | the table below, in this file | the pack out of the box |
-| personal profile | `~/.claude/live-spec/profile.md` (SPEC D-5) | the HUMAN — follows them across every project |
+| personal profile | `~/.claude/live-spec/profile.md` | the HUMAN — follows them across every project |
 | host profile | `<host>/.live-spec/profile.md` | THIS project |
+| session | the human's live word — never a file | RIGHT NOW, one conversation |
 
 An override exists only as a written line in its profile file, and setting one leaves a dated journal note
-in the home it governs — never a silent divergence (SPEC INV-14). Proactivity mode and trust are written
+in the home it governs — never a silent divergence (SPEC INV-14). The session scope is the one exception —
+it lives only in the human's spoken word and dies with the conversation; the agent never writes it
+anywhere on its own, and making it outlive the session is a PROMOTION into the profile it describes, on
+the human's word, journaled like any other override. Proactivity mode and trust are written
 only on the human's word — the agent may propose, never set (SPEC INV-9). Profiles are re-read at the same
 freshness points as skills (rule 8). A profile line the current pack does not recognize is ignored ALOUD —
 named once in the session's next report — never silently dropped, never an error.
+
+The personal layer has ONE home — the profile; the machine-global instruction file (e.g. `~/.claude/CLAUDE.md`)
+is a thin LOADER: the pointer that loads the profile plus only the bootstrap lines that must hold before
+any pack file is read, and it is those bootstrap lines' one home — the profile never restates them (SPEC E-16).
 
 ### Package defaults
 

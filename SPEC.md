@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.7.2, 2026-07-05)
+# live-spec — SPEC (v0.8.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -7,8 +7,10 @@
 > anchor set of v0.3 — the shape changed, no rule was lost.
 
 **Current vs target.** Shipped today: the five skills (the base rulebook and the four working ones), the
-templates, the adoption procedure text, the inbox, this spec and queue. Target (each owned by a ROADMAP row, not yet code): the guardrails scaffold
-[E-6], the snapshot machinery [E-7], the model router [ACT-3], and therefore full self-enforcement [M-4].
+templates, the adoption procedure text, the inbox, this spec and queue, and the first guardrails slice —
+the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
+by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
+snapshot machinery [E-7], the CI mirror [M-5], the model router [ACT-3].
 This spec never claims shipped what isn't — sections below marked [target] await their row. [S-0]
 
 ## What live-spec is
@@ -165,25 +167,49 @@ contract, not any single file, before every human-facing exchange [E-13]. **Mode
 ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
 level.** [INV-9]
 
-**Settings climb a three-step ladder.** Every way the pack behaves for you is a named setting with a home
-on exactly one of three steps: the **package defaults** — each setting's out-of-the-box value, stated in
-the base skill beside the rules it tunes [E-12]; your **personal profile** — settings about YOU that
-follow you across every project (language: docs and commits vs conversation · proactivity mode · trust ·
-your domain vocabulary), one file per human at `~/.claude/live-spec/profile.md` (home is an open pick
-[D-5]); and the **host profile** — settings about THIS project [E-8]. Resolution reads up the ladder:
-host beats personal beats package default. A setting belongs to the step it describes — about the human →
-personal; about the project → host; a host line may override a personal one only on your word for that
-project (an all-English project overriding your Russian-chat line, say). Profiles are re-read at the same
-freshness points as skills [A-7]; a profile line the current pack does not recognize (written under an
-older vocabulary) is ignored ALOUD — named once in the session's next report, never a silent drop and
-never an error. [E-13]
+**Settings climb a ladder of four NESTED scopes — the narrowest word wins.** Every way the pack behaves
+for you is a named setting with a home in exactly one scope, and the scope is chosen by what the setting
+DESCRIBES: about the pack itself → the **package defaults**, each value stated in the base skill beside
+the rule it tunes [E-12]; about YOU, following you across every project (language: docs and commits vs
+conversation · proactivity mode · trust · your domain vocabulary) → your **personal profile**, one file
+per human at `~/.claude/live-spec/profile.md`; about THIS project → the **host profile** [E-8]; about
+RIGHT NOW → the **session scope**: your live word in one conversation. The scopes nest — the package
+holds every human, a personal profile holds every project that human touches, a host holds every session
+run inside it — and a setting set at a broad scope is INHERITED down through the narrower ones until a
+narrower one overrides it on your word (an all-English project overriding your Russian-chat line; a
+"today answer me in English" overriding both for one sitting). Resolution therefore reads from the
+narrowest scope out: session beats host beats personal beats package default. Profiles are re-read at
+the same freshness points as skills [A-7]; a profile line the current pack does not recognize (written
+under an older vocabulary) is ignored ALOUD — named once in the session's next report, never a silent
+drop and never an error. [E-13]
 
 **No override is ever silent.** An override exists only as a written line in its profile file, and
 setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the
 package's for a default change. This is the no-silent-micro-decisions rule [INV-5] applied to settings;
 live-spec's own push gate [M-6] is the worked example: the package default says a full prover pass before
 a MINOR bump, and live-spec's own host contract tightens it to "before every push" — recorded, visible,
-never assumed. [INV-14]
+never assumed. The session scope is the one that is never a file: a session override lives only in your
+spoken word and dies with the conversation — the agent never writes it anywhere on its own; if it should
+outlive the session, that is a PROMOTION into the profile it describes (personal or host), made on your
+word and journaled like any other override. An announced self-compaction [M-2] carries the live session
+lines forward in its summary; a full wipe ends the sitting — session lines die with it by design, and
+that loss is your own move, never the agent's. [INV-14]
+
+**Your profile is the ONE home of the personal layer; the global instruction file is a thin loader.**
+Everything personal — who you are, how you like to be spoken to, your standing working rules — lives in
+the personal profile, never scattered across always-on instruction files. The machine-global instruction
+file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: the pointer that loads the profile,
+plus ONLY the bootstrap lines that must hold before any pack file is read — the which-project
+disambiguation rule is the type specimen: the rule that stops a session writing into a foreign repo
+cannot itself wait for that repo's files to load. The loader is those bootstrap lines' ONE home; the
+profile never restates them [INV-13]. Migrating an existing rule file into this shape is a
+fork by scope — each rule moves to the scope it describes: a method rule the pack already states stays
+the pack's (a second copy is drift [INV-13]); a personal line → the profile; a project line → that
+project's host profile — proven lossless by a rule-by-rule mapping, with the old file kept in the attic
+[INV-7] so one move rolls the whole change back. And the fork only WRITES what the running session owns:
+pack rules land in the pack, the personal profile lives on the human's machine outside any project repo;
+a project line becomes a written migration note that the project's OWN session lands at its next update —
+nothing in this migration writes a foreign repo [INV-10]. [E-16]
 
 **The senior agent** owns judgment: spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
@@ -241,8 +267,11 @@ What keeps "it works" honest, each one a named machine:
   architecture node × spec fact, produced by the derivation method above [E-14, E-15]. [E-5] Every row states the
   positive AND the negative side — what the fact does and what it must never do; the negative side is the
   regression fence. [INV-6]
-- **The guardrails [target]** — the mechanical checks wired to the pre-push hook: completeness (against
-  the surface registry) · tests-present · behaviour-traces-to-spec · declared-scope diff vs snapshot. [E-6]
+- **The guardrails** — the mechanical checks wired to the pre-push hook. Live for the pack repo itself:
+  a today-dated prover record exists · the suite is green · every anchor owned by exactly one node · no
+  unchecked matrix-coverage box, plus the opt-in concurrent-edit fence on commit. Still [target]: the
+  host-facing set — completeness (against the surface registry) · tests-present · behaviour-traces-to-spec
+  · declared-scope diff vs snapshot. [E-6]
 - **The snapshot [target]** — the saved artifact of the last accepted run (HTML, JSON, files, numbers —
   any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
   only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
@@ -253,9 +282,10 @@ What keeps "it works" honest, each one a named machine:
 
 ## The package repo: who may write, and two sessions at once
 
-live-spec eats its own cooking — this spec, this queue, these rules govern live-spec's own development
-[target until the guardrails land: enforcement becomes mechanical with ROADMAP row 3; until then the
-discipline is followed by hand and says so]. [M-4] That makes its repo a shared surface, and one evening
+live-spec eats its own cooking — this spec, this queue, these rules govern live-spec's own development,
+and the pack repo's own push gates run mechanically on the installed hooks (a fresh prover record, a
+green suite, anchor ownership, matrix coverage — `guardrails/`); the host-facing checks stay [target]
+with E-6. [M-4] That makes its repo a shared surface, and one evening
 of two parallel sessions taught us the rules:
 
 **Only a session you assigned to live-spec itself writes this repo** (spec, queue, journal, skills,
@@ -332,8 +362,9 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
   the same day (`live-spec-base`). Execution: queue row 51 (mirrors + one sync command). [D-4]
 - Decided 2026-07-05 (page 2): the personal-settings split is **all-into-profile** — everything personal
   moves into live-spec settings with servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a
-  thin loader, and setup gains an "understand who you're working with" onboarding step. The design lands
-  through queue rows 52–54. [D-5]
+  thin loader, and setup gains an "understand who you're working with" onboarding step. The scope model
+  and the thin-loader shape are spec'd (the ladder and profile paragraphs above, 2026-07-05, rows 52–53);
+  the onboarding step remains row 54's landing. [D-5]
 
 ## Formal index
 
@@ -355,9 +386,10 @@ meaning, this table is only the map.
 | E-10 | surface registry, self-closing | Machines |
 | E-11 | inbox: one new committed file per outside wish | Package repo |
 | E-12 | base skill: shared rules + defaults, stated once | One rulebook |
-| E-13 | settings ladder: host > personal > package default | Who decides what |
+| E-13 | settings ladder: four nested scopes, session > host > personal > package default | Who decides what |
 | E-14 | architecture doc: named nodes own spec facts, pinned to file:line, proven | From spec to tests |
 | E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
+| E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, wish parks with checkpoint | Bug cuts the line |

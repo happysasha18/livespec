@@ -190,7 +190,11 @@ class TestMatrix(unittest.TestCase):
 
     def test_matrix_built_rows_name_real_tests(self):
         module = globals()
-        this_file = read("tests/test_traceability.py")
+        tests_dir = os.path.join(ROOT, "tests")
+        this_file = "\n".join(
+            read(os.path.join("tests", f)) for f in sorted(os.listdir(tests_dir))
+            if f.startswith("test_") and f.endswith(".py")
+        )
         for rows in matrix_blocks().values():
             for row in rows:
                 if row["status"].startswith("BUILT"):

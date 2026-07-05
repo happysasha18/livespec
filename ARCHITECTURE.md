@@ -33,9 +33,9 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1 | `templates/TEST_MATRIX.template.md:43` (checklist), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9 | `adopt/ADOPT.md:16` (VCS gate first), `:103` (attic), `:141` (attach record), `install.sh:2` |
 | inbox | parallel-safe intake door for wishes born outside a live-spec session | E-11, T-10, INV-10 | `inbox/README.md:3` (write rule), `:9` (file format), `:14` (commit rule) |
-| host-contract | the recorded settings instances: this host's profile (and the human's personal profile) | E-8 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (outside the repo — row 38 debt) |
+| host-contract | the recorded settings instances: this host's profile, the human's personal profile, and the thin loader that boots the personal layer | E-8, E-16 | `.live-spec/profile.md:1` (host), personal: `~/.claude/live-spec/profile.md` (outside the repo — row 38 debt), loader: `~/.claude/CLAUDE.md` ([target] until row 52 lands) |
 | package-docs | live-spec's own host instance (dogfood): spec, queue, journal, resume file, version, records | S-0, M-3, M-4, D-1, D-2, D-3, D-4, D-5 | `SPEC.md:1`, `ROADMAP.md:8` (queue table), `JOURNAL.md:1`, `VERSION:1` |
-| guardrails [target] | mechanical pre-push checks + surface registry + CI mirror (ROADMAP rows 3, 14) | E-6, E-10, M-5 | `scaffold/guardrails/README.md:1` (scaffold text; machine not yet code) |
+| guardrails [target] | mechanical pre-push checks + surface registry + CI mirror; first slice LIVE (the pack's own gates + opt-in fence, hooks installed), host-facing checks + registry + CI still [target] (ROADMAP rows 14, 55) | E-6, E-10, M-5 | `guardrails/pre-push:1` (gates), `guardrails/pre-commit:1` (fence), `guardrails/install.sh:1`, `tests/test_guardrails.py:1`; registry/CI: — |
 | snapshot [target] | saved baseline of the last accepted run; declared-scope diff (ROADMAP row 55) | E-7, A-6 | — (spec'd, not yet code) |
 
 ## Seams

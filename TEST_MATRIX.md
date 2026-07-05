@@ -54,6 +54,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Host profile (dogfood) | `.live-spec/profile.md` | settings instance | `test_artifact_inventory` |
 | License | `LICENSE` | legal | `test_artifact_inventory` |
 | Prover records | `docs/prover/` | records dir (non-empty) | `test_artifact_inventory` |
+| Guardrails (pack gates + fence) | `guardrails/` | scripts dir (non-empty) | `test_artifact_inventory` |
 | Decision archives | `docs/decisions/` | records dir (non-empty) | `test_artifact_inventory` |
 
 ---
@@ -65,10 +66,10 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-001 | The base skill states every shared rule once, next to the package defaults; never a working skill restating a shared rule normatively | E-12 | string | `test_skills_inherit_base_pin` | BUILT |
-| M-002 | Settings resolve host > personal > package default; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | milestone audit (M-1) + guardrails row 3 | TODO |
+| M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | milestone audit (M-1) + guardrails row 3 | TODO |
 | M-003 | Every choice not in the wish is asked or recorded-and-surfaced; never decided-and-buried | INV-5 | string | snapshot declared-scope diff (row 55) — the mechanical fence | TODO |
 | M-004 | Proactivity mode and trust are written only on the human's word; the agent never raises its own level | INV-9 | string | milestone audit (M-1) | TODO |
-| M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes you did not make | INV-11 | string | pre-push hook (guardrails row 3) | TODO |
+| M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes you did not make | INV-11 | string | `guardrails/pre-commit` (opt-in fence): `test_armed_stale_head_blocks_commit`, `test_unarmed_fence_passes_silently` | BUILT |
 | M-006 | A shared rule has exactly one normative home (the base skill); never two full statements | INV-13 | string | milestone compaction pass (M-1) | TODO |
 | M-007 | An override exists only as a written profile line + a dated journal note in the home it governs; never an unwritten divergence | INV-14 | string | `test_host_profile_recorded_override` | BUILT |
 | M-008 | The human owns taste, design, irreversible calls, push gates, domain wording, their contract; never the agent | ACT-1 | string | process — every decision page + milestone gate-list (M-1) | TODO |
@@ -88,7 +89,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/`; never a push without its record | M-6 | string | pre-push hook: record-exists check (guardrails row 3) | TODO |
+| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/`; never a push without its record | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails` | BUILT |
 
 ### [node: build-pipeline]
 
@@ -155,6 +156,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-051 | The host profile narrows the human's contract for one project, every line a recorded override; never a silent divergence | E-8 | string | `test_host_profile_recorded_override` | BUILT |
+| M-065 | The personal layer has ONE home (the profile); the global instruction file is a thin loader carrying only the pointer + bootstrap lines (their one home — never restated in the profile); a session line is never written by the agent; the migration fork never writes a foreign repo | E-16 | string | row 52 migration landing: diff-proven fork map + loader shown to the human before flipping | TODO |
 
 ### [node: package-docs]
 
@@ -162,7 +164,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 |---|---|---|---|---|---|
 | M-052 | Shipped vs target is marked honestly; every [target] machine is owned by a queue row; never a claimed-shipped target | S-0 | string | milestone audit (caught by hand in prover F1 this pass) | TODO |
 | M-053 | The queue and the spec carry dated versions; never an undated truth | M-3 | string | `test_roadmap_header_dated` | BUILT |
-| M-054 | live-spec eats its own cooking — this repo works by its own spec and queue (by hand until row 3, said aloud); never claims mechanical enforcement early | M-4 | string | guardrails row 3 (until then: by hand, said aloud) | TODO |
+| M-054 | live-spec eats its own cooking — this repo works by its own spec and queue; the pack's own push gates run mechanically on the installed hooks; never a claim of mechanical enforcement beyond what is actually wired | M-4 | string | `test_hooks_and_scripts_exist_and_executable` (+ `guardrails/install.sh` run for real, journaled) | BUILT |
 | M-055 | Attic layout choice stays open with a named revisit trigger; never silently resolved | D-1 | string | `test_spec_decide_markers_match_open` | BUILT |
 | M-056 | Tier-routing override choice stays open (closes via row 56); never silently resolved | D-2 | string | `test_spec_decide_markers_match_open` | BUILT |
 | M-057 | Snapshot retention choice stays open (closes via row 55); never silently resolved | D-3 | string | `test_spec_decide_markers_match_open` | BUILT |
@@ -173,7 +175,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | machine lands at row 3 (scaffold text ships today) | TODO |
+| M-060 | The guardrails run on the pre-push hook: completeness, tests-present, behaviour-traces-to-spec, declared-scope diff; never a red push | E-6 | string | first slice BUILT (pack gates: prover record · green suite · anchor ownership · matrix coverage — `guardrails/pre-push` + `test_guardrails.py`); the four host-facing checks await the surface registry + snapshot (rows 55+) | TODO |
 | M-061 | The surface registry is self-closing: a rendered-but-unregistered surface is RED; never a trusted hand-list | E-10 | string | machine lands at row 3 | TODO |
 | M-062 | A host may mirror the same checks in CI — one source of truth, CI never redefines them | M-5 | string | lands at row 14 | TODO |
 
@@ -188,7 +190,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 ## Coverage validation — walked 2026-07-05 at derivation; re-walked mechanically by `tests/test_traceability.py` at every run
 
-- [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 69/69, mechanized in `test_matrix_covers_every_anchor`.
+- [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 70/70 (E-16 added 2026-07-05, rows 52–53), mechanized in `test_matrix_covers_every_anchor`.
 - [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 12/12 blocks, every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
 - [x] Every artifact-inventory entry owns ≥ 1 rendered-level row — for this text product the rendered level is `string` against the shipped file (prover F6); every entry is checked by `test_artifact_inventory`.
 - [x] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed` — vacuously true: the pack ships no browser surface (prover F6); the clause re-arms the day one exists.

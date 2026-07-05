@@ -394,3 +394,35 @@ so every host on this machine reads it at the next freshness check). Cross-link 
 (docs/prover/2026-07-05-iterativity.md) — the [target] node rule and INV-15's assign-on-landing already
 compose with it cleanly. Row 58 landed the hour it was spoken. VERSION 0.2.2. Push follows on
 Alexander's word given in the same message.
+
+## 2026-07-05, ~15:45 — Rows 53 + 3 land, row 51 lands reduced, row 52 designed (session 4, afternoon)
+
+**What:** Four movements in one afternoon stretch, on Alexander's "поехали" (~15:05) — he also set the
+version plan: the next MINOR bump goes straight to **0.5.0** (his word, marking the volume since 0.2),
+with the 3-pass preventive audit before it as always.
+
+- **Row 53 (scope model):** SPEC v0.8.0 — the settings ladder generalized to four NESTED scopes with
+  inheritance, resolution narrowest-out: session > host > personal > package default. The session scope
+  is named for the first time: the human's live word, never a file; the agent never writes it; making it
+  outlive the session is a PROMOTION into a profile, journaled. Base skill ladder rewritten (0.1.3, four
+  inherit pins swept, installed copies synced). Prover pass docs/prover/2026-07-05-scopes.md: 3 findings
+  (1 must-fix — the migration fork must never write a foreign repo), all folded same pass. New anchor
+  E-16 owned by host-contract; matrix M-002 updated, M-065 added (70/70 anchors).
+- **Row 52 (personal-layer migration) — designed, flip gated:** migration map + thin-loader draft +
+  profile-v2 draft written to ~/.claude/playbook/row52/ (private repo — doubles as the git home row 38
+  asked for, via a proposed symlink). Flip blocked on: folding row 12 gap 3 (fix-the-class — the one
+  CLAUDE.md rule with no pack home yet) and Alexander's review of both drafts. Rollback = one copy back.
+- **Row 3 (guardrails, pack slice) — landed by a Sonnet worker:** guardrails/ with pre-push gates
+  (prover record · green suite · anchor ownership · matrix coverage) + opt-in commit fence + install.sh;
+  hooks installed, each gate proven by deed incl. a failure case; 15 new tests. The worker caught its own
+  test-recursion bug (pre-push invoked inside the suite re-discovering the suite) and fixed it with
+  scratch-copy fixtures. Spec/architecture/matrix reconciled to the shipped slice (M-4 now mechanical
+  for the pack; E-6 host-facing set stays [target]).
+- **Row 51 (mirrors, reduced) — landed by a Sonnet worker:** scripts/sync-mirrors.sh + product-prover
+  mirror synced to 0.2.2 (idempotency proven). Discovery: spec-author had NO standalone repo — the
+  standing note was wrong. Creating four mirrors awaits Alexander's word (new public repos are his gate;
+  the permission classifier enforced the same line when the first worker brief included repo creation).
+
+**Why this order:** Alexander asked to distribute and economize — judgment (scope design, spec, prover)
+stayed on Fable; both bounded rows ran on Sonnet in parallel with checkpoints. Old-name leftover
+("livespec") found and fixed in the personal profile — a file outside the repo the row 40 sweep missed.

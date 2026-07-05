@@ -19,9 +19,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GUARDRAILS = os.path.join(ROOT, "guardrails")
 
 
-def run(args, cwd=None):
+def run(args, cwd=None, extra_env=None):
+    env = dict(os.environ)
+    if extra_env:
+        env.update(extra_env)
     return subprocess.run(
-        args, cwd=cwd or ROOT, capture_output=True, text=True
+        args, cwd=cwd or ROOT, capture_output=True, text=True, env=env
     )
 
 
@@ -58,6 +61,8 @@ class TestGateA_ProverRecord(unittest.TestCase):
     """Gate (a): a committed prover record dated today must exist."""
 
     def test_real_repo_passes(self):
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("real-repo state check — meaningless in a git-less scratch copy")
         result = run([os.path.join(GUARDRAILS, "check-prover-record.sh")])
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("OK (prover record)", result.stdout)
@@ -80,31 +85,33 @@ class TestGateB_Tests(unittest.TestCase):
 
     Both checks here run against a SCRATCH COPY of the whole repo (test_traceability.py
     resolves its fixture paths — SPEC.md, ARCHITECTURE.md, etc. — relative to the repo
-    root, so a bare copy of tests/ alone would 404 on every one of them) with
-    test_guardrails.py itself excluded from the copy. Pointing check-tests.sh at the
-    real tests/ dir (which contains this very file) would make a running test
-    re-invoke the whole suite, including itself, forever — a fork bomb, not a check.
-    Gate (b)'s real-repo behaviour is proven directly by manual runs (recorded in the
-    row-3 checkpoint), not re-executed recursively from inside the suite it would be
-    discovering.
+    root, so a bare copy of tests/ alone would 404 on every one of them). The copy
+    keeps test_guardrails.py — architecture pins and BUILT matrix rows now reference
+    it, so a copy without it is not a green repo — and recursion is cut by an env
+    guard instead: the inner run gets LIVE_SPEC_SCRATCH=1, under which these two
+    scratch-suite tests skip themselves (one level of nesting, never a fork bomb).
     """
 
     def _scratch_tests_dir(self, tmp):
         dest = os.path.join(tmp, "repo")
         shutil.copytree(ROOT, dest, ignore=shutil.ignore_patterns(".git", "__pycache__"))
-        scratch_tests = os.path.join(dest, "tests")
-        os.remove(os.path.join(scratch_tests, "test_guardrails.py"))
-        return scratch_tests
+        return os.path.join(dest, "tests")
+
+    def _skip_if_inner(self):
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("inner scratch run — recursion guard")
 
     def test_real_content_passes(self):
+        self._skip_if_inner()
         with tempfile.TemporaryDirectory() as tmp:
             scratch_tests = self._scratch_tests_dir(tmp)
-            result = run([os.path.join(GUARDRAILS, "check-tests.sh"), scratch_tests])
+            result = run([os.path.join(GUARDRAILS, "check-tests.sh"), scratch_tests],
+                         extra_env={"LIVE_SPEC_SCRATCH": "1"})
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("OK (tests)", result.stdout)
-            self.assertIn("Ran 20 tests", result.stdout + result.stderr)
 
     def test_broken_suite_fails(self):
+        self._skip_if_inner()
         with tempfile.TemporaryDirectory() as tmp:
             scratch_tests = self._scratch_tests_dir(tmp)
             target = os.path.join(scratch_tests, "test_traceability.py")
@@ -117,7 +124,8 @@ class TestGateB_Tests(unittest.TestCase):
             self.assertNotEqual(content, broken, "fixture edit did not match — test is stale")
             with open(target, "w", encoding="utf-8") as f:
                 f.write(broken)
-            result = run([os.path.join(GUARDRAILS, "check-tests.sh"), scratch_tests])
+            result = run([os.path.join(GUARDRAILS, "check-tests.sh"), scratch_tests],
+                         extra_env={"LIVE_SPEC_SCRATCH": "1"})
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("FAIL (tests)", result.stdout)
 
