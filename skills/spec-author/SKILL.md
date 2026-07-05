@@ -141,6 +141,21 @@ So, for every stateful surface, before you call its section done:
   that's older, partial, or belongs to a since-removed feature? State a migrate / ignore / clear rule — this
   is the seam behind "reopened it and it looked broken".
 
+## The regression fences — run FIRST when the wish touches a surface that already lives (SPEC T-14, INV-19)
+
+Before authoring anything new, preserve the neighbours. The spec-delta opens with one sentence per
+existing promise that must stay true through the change ("the catalog still opens on click"), each
+citing the spec clause it guards. A fence is not new law and earns NO new matrix row — the cited
+clause's row already carries its never-side, and the landing's full-suite run is what proves the fence
+held. Split what the delta touches: promises that STAY are fenced; behaviour being CHANGED is
+re-authored as new law — a fact is fenced or re-authored, never both. A fence that finds no clause
+behind it has discovered an unwritten promise: reconcile it from the shipped truth (like an adopted
+claim), write it as its own spec fact with its own row, and surface it — never assume it silently. If
+the cited neighbour claim is adoption-born and still unverified, its reconciliation runs before it can
+be fenced — you cannot fence a hope. Name the fences by cited anchor in the wish's queue row
+("fences: …") so "untouched and still true" stays greppable. A prototype fences nothing — it promises
+nothing.
+
 ## The facet sweep — run when a wish's door says FEATURE (SPEC T-13, INV-18)
 
 A person asks for a feature in the words they have; the dimensions below exist whether or not anyone

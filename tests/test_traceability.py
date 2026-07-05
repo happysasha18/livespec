@@ -365,6 +365,27 @@ class TestDoorLawAndPrototype(unittest.TestCase):
             self.assertIn("`live-spec-base` (v0.1.6)", read(rel),
                           "%s pins a stale base version" % rel)
 
+    def test_spec_states_regression_fences(self):
+        body = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("What already works is promised before you touch it",
+                       "regression fences",
+                       "earns NO new matrix row",              # F1 fold: no second home
+                       "fenced, cited, untouched",             # the stays/changed split
+                       "reconciled from the shipped truth",    # F4/F5 fold
+                       'fences by the anchors they cite',      # F8 fold: greppable marker
+                       "a prototype fences nothing"):          # F7 fold
+            self.assertIn(phrase, body, "SPEC lost the fences clause: %s" % phrase)
+        for anchor in ("[T-14, INV-19]",):
+            self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
+
+    def test_skills_carry_regression_fences(self):
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("The regression fences — run FIRST", sa, "spec-author lost the fences section")
+        self.assertIn("you cannot fence a hope", sa)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("regression fences", bp, "build-pipeline step 1 lost the fences sentence")
+        self.assertIn("never a new row (SPEC T-14, INV-19)", bp)
+
     def test_no_calques_rule(self):
         # row 73: the calque ban lives once in base rule 2; communicator elaborates with the example
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))

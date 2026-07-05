@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.11.1, 2026-07-05)
+# live-spec — SPEC (v0.12.0, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -123,6 +123,24 @@ through (hover-only openings, no phone layout). On an adopted or promoted surfac
 invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by
 time: the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and
 test them across views once the surface exists. [INV-18]
+
+**What already works is promised before you touch it.** When a feature-doored wish touches a surface
+that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
+**regression fences**: one sentence per neighbouring promise that must stay true through the change
+("the catalog still opens on click", "the player keeps playing across a view switch"), each citing the
+existing spec clause it guards. A fence is not new law and earns NO new matrix row: the cited clause's
+own row already carries its never-side [INV-6], and the landing's full-suite run is what proves the
+fence held — so "fixed one thing, quietly broke the neighbour" turns red before it ships. The delta
+thereby splits everything it touches in two: promises that STAY — fenced, cited, untouched — and
+behaviour being CHANGED — never fenced, re-authored as new law through the normal walk. A fence that
+finds no clause behind it has discovered an unwritten promise: that promise is reconciled from the
+shipped truth like an adopted claim [A-3], written as its own spec fact with its own row, and surfaced,
+never silently assumed [INV-5]; likewise, touching a neighbour whose claim is adoption-born and still
+unverified triggers that claim's reconciliation before it can be fenced. The wish's queue row names its
+fences by the anchors they cite ("fences: …") — "untouched and still true" becomes a greppable claim —
+while the LANDING line stays its one-line self [T-7]. Fence-AUTHORING belongs to the feature door; the
+bug and refactor doors inherit only the catching (their full-suite runs exercise every never-side), and
+a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
 
 While it walks, four things are always true:
 - Intake is parallel, execution is serial — **one landing at a time, per repo**: the single in-work row IS
@@ -523,6 +541,7 @@ meaning, this table is only the map.
 | T-11 | priority bends the lane order, visibly; one bubble then the queue head | Throwing a wish |
 | T-12 | the door is named before any code | Throwing a wish |
 | T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
+| T-14 | touching a live surface: spec-delta opens with regression fences citing existing clauses | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -541,6 +560,7 @@ meaning, this table is only the map.
 | INV-16 | feature tripwires are hard, not judged; casual asks still route | Throwing a wish |
 | INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype is not the product |
 | INV-18 | every facet ends as a spec sentence — decided, or `[default]`-tagged + reported | Throwing a wish |
+| INV-19 | a fence cites its clause and discharges through that clause's existing never-side; fences named by anchor in the wish's row | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first | Adoption step 1 |

@@ -64,7 +64,10 @@ the principle behind each step; this skill is its executable projection — keep
    wish also walks the **standard-facet sweep** (the canonical list lives in spec-author): phone/narrow
    layout · touch-vs-hover · empty/error/loading · accessibility · performance — every facet ends as a
    spec sentence, decided or `[default]`-tagged and reported as a plain-words tradeoff, batched; a
-   mid-work re-door walks the sweep before work resumes (SPEC T-13, INV-18).
+   mid-work re-door walks the sweep before work resumes (SPEC T-13, INV-18). And when the wish touches a
+   surface that already lives, the delta opens with **regression fences** BEFORE that sweep — neighbouring
+   promises that must stay true, each citing the clause it guards, named by anchor in the wish's row; a
+   fence discharges through the cited clause's existing never-side row, never a new row (SPEC T-14, INV-19).
 
 2. **Prove — invoke `product-prover`.** The prover only catches a cross-section hole when both sides are
    present and named the same at prove-time — so a surface absent or unlinked then is invisible to it. Two
