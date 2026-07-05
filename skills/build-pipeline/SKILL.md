@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.7
+  version: 0.2.8
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.8), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.9), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -163,7 +163,9 @@ ask-at-intake — the same law appetite obeys.
 9. **Commit & show.** Commit when green with no regression (unasked). Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session; diary the
    WHY in `JOURNAL.md`. Show the human the REAL render in a new window; push/deposit only after they've
-   reviewed it. A push re-renders all deposited artifacts.
+   reviewed it. A push re-renders all deposited artifacts. Where the host's design-sync is ON (base
+   defaults; SPEC E-18), the landing's DECLARED components also sync to the team's design project — after
+   the human's gate, never instead of the in-session show.
 
 ## Guardrails — the pipeline's TEETH (mechanical, every project inherits them)
 The eight steps are guidance, and an agent DRIFTS from guidance — that is the failure that stops a project

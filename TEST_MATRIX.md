@@ -239,11 +239,12 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-063 | The snapshot is the last accepted baseline; it advances only at *landed* and only for DECLARED surfaces; never an undeclared advance | E-7 | string | machine lands at row 55 | TODO |
 | M-064 | Adoption saves a baseline snapshot of current artifacts as the first diff base; never a first landing diffed against nothing | A-6 | string | lands at row 55 (with the machinery) | TODO |
 
-### [node: design-sync [target]]
+### [node: design-sync]
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
-| M-080 | Design-sync: optional machine — declared-scope footprint, supplements the render (which stays the gate authority), human-gated publish; never a sync without the human's word, never on without a recorded profile line | E-18 | string | machine lands at row 93; clause presence: `test_spec_states_founding_and_designsync` | TODO |
+| M-080 | Design-sync: optional machine — declared-scope footprint, supplements the render (which stays the gate authority), human-gated publish; never a sync without the human's word, never on without a recorded profile line | E-18 | string | machine's first real run = row 93's remainder; clause presence: `test_spec_states_founding_and_designsync` | TODO |
+| M-088 | Design-sync WIRING is live: the `design-sync` switch off-by-default in base defaults, the channel line in communicator (cards after the gate, render stays authority) and in the pipeline's commit-and-show step; never a wired line contradicting the machine's [target] honesty | E-18 | string | `test_designsync_wiring` | BUILT |
 
 ---
 

@@ -463,7 +463,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                        "personal tool, or reusable product?",
                        "deliberately STRONGER than the walk's proceed-on-default habit",  # F5 fold
                        "A-1 carries the pointer",                                          # F7 fold
-                       "Design-sync [target]",
+                       "Design-sync [target: the machine; the wiring is live]",           # row 93 pack-side
                        "SUPPLEMENTS the in-session render",                                # F1 fold
                        "the components a landing DECLARED"):                               # F4 fold
             self.assertIn(phrase, body, "SPEC lost the founding/design-sync clause: %s" % phrase)
@@ -605,3 +605,23 @@ class TestSkillEvals(unittest.TestCase):
                       "evals/README lost the loader-contamination boundary")
         self.assertIn("the scenario speaks like the human", body,
                       "evals/README lost the no-enumerated-hints authoring rule")
+
+
+class TestDesignSyncWiring(unittest.TestCase):
+    """SPEC E-18, row 93 pack-side half: the switch + channel lines are wired; the machine stays [target]."""
+
+    def test_designsync_wiring(self):
+        base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))
+        self.assertIn("`design-sync`", base, "base defaults table lost the design-sync switch")
+        self.assertIn("off — a host with visual components may switch it on", base,
+                      "design-sync switch lost its off-by-default value")
+        cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("design project", cm, "communicator lost the design-sync channel line")
+        self.assertIn("after the human's gate", cm,
+                      "communicator's design-sync line lost the gate")
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("design-sync is ON", bp,
+                      "build-pipeline step 9 lost the design-sync line")
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertIn("[target: the machine; the wiring is live]", spec,
+                      "SPEC E-18 lost the honest wired-vs-target split")

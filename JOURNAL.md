@@ -709,3 +709,17 @@ scheduled for the next re-run). M-1 now carries the evals re-run; architecture g
 node (re-proven, record docs/prover/2026-07-05-row94.md); suite 64 → 66 green. This landing's own
 INV-22 line: kind = infra; facets N/A (no visible surface, said aloud); design-sync/snapshot stand
 down; prove-architecture APPLIED (node add).
+
+## 2026-07-05 late evening (~22:20, session 8) — row 93, the pack-side half: design-sync is wired
+
+The switch and the channels exist; the machine still owes its first real run. E-18 re-worded to the
+honest split "[target: the machine; the wiring is live]": the `design-sync` setting sits off-by-default
+in the base defaults table (0.1.9, pins swept — the dynamic pin test earned its keep the same evening it
+was written), communicator rule 5 says where the cards go (the design project, only AFTER the human's
+gate, the in-session render staying the authority), pipeline step 9 says when a sync fires. New matrix
+row M-088 + `test_designsync_wiring`; suite 67 green; pack 0.8.3. The row stays OPEN — its named
+remainder is the first real sync on a visual host through Alexander's gate; that needs a visual window
+(track-coach or tlvphoto), not this one. Landing report line per INV-22: kind = skill; facet sweep — no
+visible surface, N/A aloud; prove-architecture — pin/name updates only on an existing node, no
+structure change, stands down by E-14's own rule; the sync machine itself — still [target], nothing
+claims it ran.

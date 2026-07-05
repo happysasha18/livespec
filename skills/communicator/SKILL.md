@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
 metadata:
-  version: 0.1.8
+  version: 0.1.9
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.8), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.9), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -53,7 +53,11 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    browser/preview; a chat-only channel → inline the image or the example itself. Synthetic data only for your
    own checks, always labelled `SYNTHETIC`. A sketch is shown ONLY under its `PROTOTYPE` label — opened,
    framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
-   Never hand over a file path and make them go open it.
+   Never hand over a file path and make them go open it. On a host that switched design-sync on (base
+   defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
+   project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
+   stays the authority for the landing itself; the design project is the team-review channel, never a
+   substitute for showing the real thing here.
 
 6. **Plain language, in the product's own words — a code never does the talking.** Speak in use-cases —
    what the person DOES and SEES — not the mechanism. Every internal handle — plan codes, worker names,

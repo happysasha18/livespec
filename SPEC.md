@@ -496,15 +496,19 @@ What keeps "it works" honest, each one a named machine:
   any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
   only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
   what catches the unasked change. Retention (last-only vs last-N) is an open decision [D-3]. [E-7]
-- **Design-sync [target]** — an OPTIONAL machine for hosts with visual components: it syncs the
-  components a landing DECLARED (the same declared-scope notion the snapshot diffs by [E-7]) to the
-  team's design project (claude.ai/design), where the human reviews rendered cards. It SUPPLEMENTS the
-  in-session render — the real render stays the authority for the landing gate; the design project is
-  the team-review channel. The switch and its off-by-default home land WITH the machine in the base
-  skill's defaults [E-13]; a host turning it on writes a recorded profile line [INV-14]. Every sync is
-  gated by the human because a sync PUBLISHES outside the machine. The pack itself, a text product,
-  never syncs. Wiring lands under its own queue row (row 93), kin to the work-kind axis [T-16] — the
-machine applies to product-kind work on a visual host; every other kind stands it down by name [INV-22]. [E-18]
+- **Design-sync [target: the machine; the wiring is live]** — an OPTIONAL machine for hosts with
+  visual components: it syncs the components a landing DECLARED (the same declared-scope notion the
+  snapshot diffs by [E-7]) to the team's design project (claude.ai/design), where the human reviews
+  rendered cards. It SUPPLEMENTS the in-session render — the real render stays the authority for the
+  landing gate; the design project is the team-review channel. WIRED today (row 93's pack-side half):
+  the switch lives off-by-default in the base skill's defaults table [E-13] under the name
+  `design-sync` — a host turning it on writes a recorded profile line [INV-14] — and the channel lines
+  stand in communicator (where the cards go, after the gate) and in the pipeline's commit-and-show step
+  (when a sync fires). STILL [target]: the machine itself — the first real sync on a visual host, shown
+  working through the human's gate, closes row 93. Every sync is gated by the human because a sync
+  PUBLISHES outside the machine [ACT-1]. The pack itself, a text product, never syncs — and the
+  work-kind axis is what says so mechanically [T-16]: the machine applies to product-kind work on a
+  visual host; every other kind stands it down by name [INV-22]. [E-18]
 - **The skill evals** — the pack's own skills are tested like any shipped artifact, at the level that
   matters for a skill: BEHAVIOUR. Each working skill owns at least one recorded eval — a scenario where
   a bare session (the skill not loaded) demonstrably errs and the skill's text corrects it: the skill's
@@ -642,7 +646,7 @@ meaning, this table is only the map.
 | E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
 | E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
 | E-17 | prototype: fenced home, visible label | A prototype is not the product |
-| E-18 | design-sync: optional machine, host-profile switch, human-gated (publishes) [target] | Machines |
+| E-18 | design-sync: machine [target], wiring live — off-by-default switch in base defaults, channel lines in communicator/pipeline, human-gated (publishes) | Machines |
 | E-19 | skill evals: per working skill one scenario, red proven bare, corrected by the skill; re-run at milestones and behaviour changes | Machines |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
