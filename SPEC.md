@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.3, 2026-07-05)
+# live-spec — SPEC (v0.15.4, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -14,7 +14,10 @@ by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface 
 snapshot machinery [E-7] (the adoption baseline A-6 rides it), the CI mirror [M-5], the model router
 [ACT-3], the optional design-sync machine [E-18]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
 the tag binds at the granularity it is written: a surface is [target] only if its OWN clause carries the
-tag, never merely a parent section or one leg of a split anchor. [S-0]
+tag, never merely a parent section or one leg of a split anchor. The promise is mechanized: the suite
+holds the map from every [target]-marked index fact to its owning, still-open queue row — a target whose
+row lands, vanishes, or was never named turns the suite red, and so does a node keeping the tag after
+its pins became real. [S-0]
 
 ## What live-spec is
 
@@ -679,7 +682,7 @@ meaning, this table is only the map.
 | E-7 | snapshot baseline, declared-scope diff [target] | Machines |
 | E-8 | host profile at `.live-spec/profile.md` | Who decides what |
 | E-9 | attic: archive, never delete | Adoption step 4 |
-| E-10 | surface registry, self-closing | Machines |
+| E-10 | surface registry, self-closing [target] | Machines |
 | E-11 | inbox: one new committed file per outside wish | Package repo |
 | E-12 | base skill: shared rules + defaults, stated once | One rulebook |
 | E-13 | settings ladder: four nested scopes, session > host > personal > package default | Who decides what |

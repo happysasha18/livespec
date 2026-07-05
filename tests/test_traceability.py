@@ -747,3 +747,67 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
         tpl = re.sub(r"\s+", " ", read("templates/ROADMAP.template.md"))
         self.assertIn("never dies by pointer", tpl,
                       "ROADMAP template lost the decline-lists-absorbed rule")
+
+
+class TestTargetOwnership(unittest.TestCase):
+    """Row 64 (M-095): SPEC S-0 mechanized. Every [target]-marked index fact maps to a still-open
+    queue row (the map below is declared HERE, self-closing: a new [target] without a map entry is
+    red, a map entry whose index mark disappeared is red too); and the architecture stays honest —
+    a node carrying [target] names its missing pin with an em-dash, a node whose pins are all real
+    carries no tag."""
+
+    TARGET_ROW_OWNERS = {
+        "E-6": 55,    # host-facing gates ride the registry+snapshot family (archived row 3's remainder)
+        "E-7": 55,    # snapshot machinery
+        "E-10": 55,   # surface registry executable form rides the same family
+        "E-18": 93,   # design-sync machine: first real sync on a visual host
+        "INV-17": 55, # build⊆spec honesty legs = the host-facing gate legs
+        "INV-21": 96, # success-measure reading machinery = the feedback family
+        "A-6": 55,    # adoption baseline rides the snapshot
+        "ACT-3": 56,  # the model router
+        "M-5": 14,    # CI mirror
+    }
+
+    def roadmap_rows(self):
+        rows = {}
+        for line in read("ROADMAP.md").splitlines():
+            if line.startswith("|") and not line.startswith("|---"):
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                if len(cells) == 5 and cells[0].isdigit():
+                    rows[int(cells[0])] = cells[3]
+        return rows
+
+    def test_targets_owned_by_open_rows(self):
+        spec = read("SPEC.md")
+        index_lines = re.findall(r"^\| (%s) \| ([^|]*) \|" % ANCHOR_TOKEN, spec, re.M)
+        marked = {a for a, fact in index_lines if re.search(r"\[[^\]]*target", fact)}
+        self.assertEqual(marked, set(self.TARGET_ROW_OWNERS),
+                         "the [target] map and the Formal index disagree — a new target needs its "
+                         "map entry WITH an owning row; a landed one leaves both (SPEC S-0)")
+        rows = self.roadmap_rows()
+        for anchor, row_no in sorted(self.TARGET_ROW_OWNERS.items()):
+            self.assertIn(row_no, rows,
+                          "%s's owning row %d is not in the ACTIVE queue (landed/archived?) — "
+                          "re-own the target or drop its tag" % (anchor, row_no))
+            status = rows[row_no].lstrip("*").strip().lower()
+            self.assertFalse(status.startswith(("landed", "declined", "superseded")),
+                             "%s's owning row %d is terminal (%r) — a target owned by a closed row "
+                             "is an orphan" % (anchor, row_no, rows[row_no][:60]))
+
+    def test_target_nodes_pin_honesty(self):
+        arch = read("ARCHITECTURE.md")
+        section = arch.split("## Nodes", 1)[1].split("## Seams", 1)[0]
+        for line in section.splitlines():
+            if not line.startswith("|") or line.startswith("|---"):
+                continue
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if len(cells) != 4 or cells[0] == "Node":
+                continue
+            name, resp, owned, pins = cells
+            has_tag = "[target" in name or "[target" in resp
+            if has_tag:
+                self.assertIn("—", pins,
+                              "node %r carries [target] but every pin reads real — drop the tag or "
+                              "mark the missing pin with an em-dash" % name)
+            if pins.strip().startswith("—"):
+                self.assertTrue(has_tag, "node %r has no real pin but no [target] mark" % name)

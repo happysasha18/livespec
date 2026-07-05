@@ -809,3 +809,15 @@ declined by name (the no covered it) or returned to the queue (the no was about 
 SPEC v0.15.3 + the ROADMAP template's status-values line (the prover's A3: the template was the
 half-form surface this time). Matrix M-094; suite 75 green; pack 0.8.9. No declined absorber exists in
 the live queue yet — the behavioural side is a named milestone-audit item, not an assumption.
+
+## 2026-07-05 late (~23:20, session 9) — row 64: the [target] promise grows teeth
+
+S-0 promised "every [target] is owned by a row" and the 0.8.0 audit checked it BY HAND (prover F1).
+Now it's a test: a declared map (anchor → owning queue row) inside the suite, self-closing both ways —
+a new [target] without a map entry is red, a map entry whose index mark disappeared is red, an owning
+row that lands/vanishes/turns terminal is red. Second check: architecture pin honesty — a [target] node
+must name its missing pin with an em-dash, a fully-pinned node must not keep the tag. Building it caught
+two real drifts before it ever ran in CI-mode: E-10's index line had LOST its [target] mark (its prose
+still carried it), and matrix M-061 cited LANDED row 3 as the registry's future owner. Both folded; red
+proven against the pre-fix spec. SPEC v0.15.4 (S-0 names its mechanization), M-052 TODO→BUILT, suite 77
+green; pack 0.8.10.
