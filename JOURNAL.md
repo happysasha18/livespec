@@ -934,3 +934,13 @@ SPEC INV-6 always demanded the DO and NEVER sides; the suite always checked them
 step's own text never SAID it — an adopter reading only the pipeline would learn levels and blocks and
 miss the fence. Step 5 now states it where the rows are born. build-pipeline 0.2.14 (same bump as gap
 6, one session); M-033's owning tests grow.
+
+## 2026-07-05 ~23:03, session 9 — row 100 intaken: the problem ledger (his word, priority raised)
+
+Alexander, watching tlvphoto's transcripts live: a problem — especially a RECURRING one — is either
+SOLVED or explicitly agreed to be a non-problem; keep a dynamic list; silent recurrence "не должно
+вообще происходить". The transcripts back him with receipts: "element not clickable: #ex-skip" ×5,
+readyState timeouts in two sessions, missing PIL — retried every time, owned never. Row 100 queued
+NEXT-UP on his word: a per-host problem ledger for operational noise (the workshop), distinct from the
+recurring-BUG rule (the product) that landed as gap 4 tonight. The lesson also went to permanent
+memory. The pack's own first ledger entry candidate: zsh eating `echo ===` twice in one night.
