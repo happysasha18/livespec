@@ -220,3 +220,12 @@ row 24 — on Alexander's explicit word, and marked in the rows. Mid-landing Ale
 track-coach; refined minutes later: some settings are personal and global, like docs-English /
 chat-Russian): recorded as a three-layer design (package defaults → global personal profile → per-host
 override), to be designed with row 24's base skill.
+
+## 2026-07-05 — roadmap list lines gain substance (row 37)
+Alexander's read on row 35's first use: the icon list reads fine, but the lines are bare titles — he
+wants each a bit more informative. Refined communicator rule 9: every line now carries one clause of
+substance matched to its status — a landed item says what it changed, an in-work item what is happening
+now, a queued item what it will give, a waiting item exactly what is asked. The WHY is quoted in the rule
+so the refinement survives a memory wipe. Installed copy synced; landed as a quick win inside the same
+report exchange (row 37). Push gate: SPEC unchanged since the same-day green pass, verified by blob hash
+(docs/prover/2026-07-05-rule9-detail.md).

@@ -64,8 +64,12 @@ stop and show it.
 9. **Show the map as a map — status icons, not a table wall.** When saying where we are and what's next,
    render the roadmap as a short bulleted list with status icons — ✅ landed · 🔨 in work now · ⬜ queued,
    in order · 🙋 waiting on the human — the current item visibly marked, finished stretches collapsed to a
-   line each. Never paste the queue table into chat and never retell it as a paragraph; the eye should get
-   the whole map in one glance, then the words add only what the icons can't say. (Alexander 2026-07-05)
+   line each. Each line carries one clause of substance beyond the title, matched to its status: a landed
+   item says what it changed, an in-work item what is happening right now, a queued item what it will give,
+   a waiting item exactly what is asked — so the list informs, not just enumerates ("bare titles read fine
+   but say too little" — Alexander, same day). Never paste the queue table into chat and never retell it as
+   a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
+   can't say. (Alexander 2026-07-05, refined same day)
 
 ## Presenting a fork (template)
 A choice is never a paragraph. Generate a tiny HTML:
