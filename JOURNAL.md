@@ -426,3 +426,29 @@ with the 3-pass preventive audit before it as always.
 **Why this order:** Alexander asked to distribute and economize — judgment (scope design, spec, prover)
 stayed on Fable; both bounded rows ran on Sonnet in parallel with checkpoints. Old-name leftover
 ("livespec") found and fixed in the personal profile — a file outside the repo the row 40 sweep missed.
+
+## 2026-07-05, 15:05 — Gap 3 folded (fix the class, sweep look-alikes) + three decisions from Alexander
+
+**What:** The "never patch pointwise" rule got its pack home: base rule 14 (a found defect is a sample of
+its class — sweep the repo and every user-facing surface before calling the fix done), the bug entry path
+in build-pipeline now says the matrix row and red-on-bug test cover the CLASS not the instance, and
+product-prover Phase 3e gained an eighth stress family, "Sibling instances" (sweep the document, write one
+class finding listing every instance). The rule-list in all four working skills' headers + their base pin
+(v0.1.4) swept in the same change — itself an application of the new rule. Versions: base 0.1.4,
+build-pipeline 0.2.2, prover 0.1.3, spec-author 0.1.3, communicator 0.1.3.
+
+**Also landed, same sitting:** (1) SPEC v0.8.1 — hooks are OFFERED, never imposed: on a host, git hooks
+only where git exists and only after asking the human with a plain-words explanation (Alexander's word,
+~15:00; rides E-6, row 57 keeps the installer/decision-page half). (2) README status line — the drifting
+pinned "v0.1.0" replaced by the rule (release number lives in VERSION only) plus a plain explanation of the
+two counters: VERSION counts package releases, the SPEC header counts spec revisions, and the spec's
+counter runs ahead by design. Class-swept: no other drifting version pin in prose (the base-pin lines in
+skill headers are deliberate written-against pins).
+
+**Decisions by Alexander (this session, ~15:00):** NO new mirror repos — live-spec stays the one pack
+repo, product-prover the sole standalone mirror, name unchanged (row 51 closed for good); one push after
+today's tidy-up, not now; night audit run by Opus with a Fable spot-check of one pass (the model-comparison
+sample), skill-creator eval (row 5) rides the same night.
+
+**Why:** Gap 3 was the one CLAUDE.md rule with no pack home — the named blocker on row 52's flip
+(CLAUDE.md → thin loader + profile). With it folded, the flip waits only on the drafts review.

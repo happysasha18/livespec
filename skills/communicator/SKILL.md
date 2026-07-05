@@ -1,7 +1,7 @@
 ---
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use whenever you need a person to DECIDE something (especially anything visual or textual), when you report progress or results, or when you name a problem. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land. Reach for it before asking "which option?", before opening an artifact, and before writing a status update.
-version: 0.1.2
+version: 0.1.3
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -9,7 +9,7 @@ version: 0.1.2
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources) live ONCE in the pack's base skill, `live-spec-base` (v0.1.3), together with the
+> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 

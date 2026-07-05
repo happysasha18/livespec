@@ -7,7 +7,7 @@ description: >
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
-version: 0.2.1
+version: 0.2.2
 ---
 
 # build-pipeline — ship a change by the method
@@ -15,7 +15,7 @@ version: 0.2.1
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources) live ONCE in the pack's base skill, `live-spec-base` (v0.1.3), together with the
+> need primary sources · fix the class, sweep look-alikes) live ONCE in the pack's base skill, `live-spec-base` (v0.1.4), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -30,7 +30,10 @@ the principle behind each step; this skill is its executable projection — keep
 ## When to run it — and where each kind of change enters
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
-  also lives in SPEC prose, update the spec sentence in the same change.
+  also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample
+  of its class (base rule 14):** before calling it done, name the pattern, grep the repo for it, check the
+  visible text of every user-facing surface, and fix all siblings in the same change — the matrix row and
+  the red-on-bug test cover the CLASS, not the single instance.
 - **Removal of a shipped feature is a change too:** spec section → dated REMOVED tombstone · matrix rows
   retired (not left "BUILT") · owning tests deleted · SKILL.md / README swept — all the same session. (This
   is the step that actually got skipped once: an excision cleaned code + tests but left four doc surfaces dangling.)

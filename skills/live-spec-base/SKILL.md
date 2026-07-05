@@ -1,7 +1,7 @@
 ---
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) stated ONCE, plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate.
-version: 0.1.3
+version: 0.1.4
 ---
 
 # live-spec-base — one rulebook, five skills
@@ -79,6 +79,14 @@ a working skill still stands: its pointer here reads as plain advice.
     attributing a decision to the human or calling a behaviour "by design", read the actual source line
     (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure", then
     check — never assert.
+
+14. **A found defect is a sample of its CLASS — fix the class, sweep the look-alikes.** A bug, a stale
+    name, a jargon string, a design inconsistency: before calling the fix done, name the pattern behind the
+    instance, search the whole repo for it, and check every user-facing surface (not just the one reported)
+    — then fix all siblings in the same change. One instance reported means the whole class is owned; the
+    human never finds the second instance by eye. Each working skill applies this in its own domain: the
+    pipeline sweeps code and surfaces on every bugfix, the prover sweeps the document before writing a
+    point finding.
 
 ## The settings ladder
 

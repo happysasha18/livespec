@@ -1,27 +1,30 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-05 ~15:50, session 4 — safe to wipe after this report)
-PUBLIC: github.com/happysasha18/live-spec, local VERSION **0.2.3 committed, PUSH PENDING Alexander's
-review**. Landed this stretch (his "поехали" 15:05): **row 53** — SPEC v0.8.0 settings ladder = four
-nested scopes (session > host > personal > package default; session = live word, never a file), base
-skill 0.1.3, prover record `2026-07-05-scopes.md` (3 findings, folded); **row 3 pack slice** —
-`guardrails/` pre-push gates + opt-in fence, hooks INSTALLED in this repo (a push now needs a today-dated
-prover record + green suite + ownership + coverage), 15 new tests, suite 35 green; **row 51 reduced** —
-`scripts/sync-mirrors.sh`, product-prover mirror synced; spec-author standalone repo turned out NOT to
-exist. **Row 52 designed, flip GATED**: drafts in `~/.claude/playbook/row52/` (migration-map ·
-CLAUDE.draft · profile.draft); flip = fold row 12 gap 3 → Alexander reviews drafts → attic → swap;
-rollback one copy.
-**Version plan (Alexander 15:05): next MINOR bump goes straight to 0.5.0**, 3-pass preventive audit first.
-**Waiting on Alexander:** (1) create 4 mirror repos? (spec-author, build-pipeline, communicator,
-live-spec-base — his publish gate); (2) review row52 drafts; (3) the 0.2.3 push (prover record exists,
-gates green).
+## LIVE STATE (2026-07-05 ~15:05, session 5 — safe to wipe after this report)
+PUBLIC: github.com/happysasha18/live-spec, local VERSION **0.2.4 committed (07b6fea), 4 commits ahead,
+PUSH by Alexander's word: ONE push after today's tidy-up** (his pick ~14:58). Landed this stretch:
+**row 12 gap 3 folded** — fix-the-class sweep = base rule 14 + build-pipeline bug-path sentence + prover
+3e "Sibling instances" (8th family); rule-list headers + base pin v0.1.4 swept across all four skills;
+8 gaps remain. **SPEC v0.8.1** — hooks OFFERED never imposed on hosts (git-only, ask first with a
+plain-words explanation; Alexander ~15:00; row 57 keeps the installer half). **README** — drifting v0.1.0
+pin removed, the two version counters explained (VERSION = releases, SPEC header = spec revisions).
+**Row 51 CLOSED by his word: NO mirrors** — live-spec is the one pack repo, product-prover the sole
+standalone, name unchanged. Suite 35 green. **Row 52 flip now waits ONLY on his OK to the 5-line summary**
+(drafts self-verified this session: 23/23 CLAUDE.md rules have homes, both grep-checked suspects —
+NEXT_STEPS-replace-never-stack SPEC:318, unchanged-artifact communicator r4 — covered; nuance-debts ride
+row 12's 8 gaps, tracked not lost).
+**Tonight (Alexander's plan ~15:00):** 3-pass preventive audit run by OPUS + Fable independently re-runs
+one pass to compare (the model sample — Fable soon API-only) + skill-creator eval (row 5) → morning
+report → 0.5.0. **Waiting on Alexander:** (1) OK on the row-52 five lines → flip (attic → loader+profile
+swap, row 38 symlink rides it); (2) the one push after tidy-up.
 
 ## Forward queue (mirrors ROADMAP.md; priority marks live there)
-1. Fold row 12 gap 3 (fix-the-class sweep → build-pipeline/prover) — unblocks row 52's flip.
-2. Row 52 flip after Alexander's review (attic old CLAUDE.md → swap loader + profile; execute row 38
-   symlink move with it) · row 54 onboarding step.
-3. Row 57 (installer + decision page spec sentences) · remaining row 12 gaps · prover debt row 30.
-4. Snapshot machinery (row 55) — guardrails' declared-scope diff consumes it · CI-mirror (row 14).
-5. 3-pass preventive audit → **0.5.0** when Alexander says the moment is right.
-6. Deferred tail: model router (56, after 52–54) · feedback skill (47) → measurement plugins (48) → A/B
-   (49) · learn-from-others (44, own bump) · track-coach formal adopt · skill-creator eval (row 5).
+1. Row 52 flip on his OK (attic old CLAUDE.md → swap loader + profile; execute row 38 with it) → then
+   other projects may restart on the pack (they read the new CLAUDE.md).
+2. Night: 3-pass audit (Opus) + Fable one-pass comparison + skill-creator eval → fold must-fixes → 0.5.0
+   → the reviewed push.
+3. Row 57 remainder (installer + decision page spec sentences) · remaining row 12 gaps (8) · prover debt
+   row 30 · row 54 onboarding.
+4. Snapshot machinery (row 55) · CI-mirror (row 14).
+5. Deferred tail: model router (56) · feedback skill (47) → measurement (48) → A/B (49) ·
+   learn-from-others (44, own bump) · track-coach formal adopt.

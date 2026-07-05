@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.8.0, 2026-07-05)
+# live-spec — SPEC (v0.8.1, 2026-07-05)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -271,7 +271,9 @@ What keeps "it works" honest, each one a named machine:
   a today-dated prover record exists · the suite is green · every anchor owned by exactly one node · no
   unchecked matrix-coverage box, plus the opt-in concurrent-edit fence on commit. Still [target]: the
   host-facing set — completeness (against the surface registry) · tests-present · behaviour-traces-to-spec
-  · declared-scope diff vs snapshot. [E-6]
+  · declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed: only where the host uses
+  git at all, and installed only after asking the human — with a plain-words explanation of what the hook
+  will check and block, because the human may not know what a git hook is (Alexander 2026-07-05). [E-6]
 - **The snapshot [target]** — the saved artifact of the last accepted run (HTML, JSON, files, numbers —
   any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
   only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
