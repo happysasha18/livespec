@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.13
+  version: 0.2.14
 ---
 
 # build-pipeline — ship a change by the method
@@ -237,7 +237,10 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   briefed both owns the seams between briefs); the session's live setting lines ride into the brief
   verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's spoken
   word; and a result failing its brief's acceptance escalates ONE tier with a logged line — never a
-  silent retry on the same tier, never a skipped rung.
+  silent retry on the same tier, never a skipped rung. **Every delegation reports its saving:** the
+  landing report carries one line — what went to the worker and roughly how much senior work it saved.
+  The line is what keeps the habit alive; a session that never writes it is a session that quietly
+  stopped delegating.
 - **Traceability is a test, not a vow.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
   RESOLVED that still carries the live marker — so drift is caught every commit, not once per MINOR.

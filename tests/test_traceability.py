@@ -954,6 +954,13 @@ class TestMinedGapFolds(unittest.TestCase):
                        "grep JOURNAL.md for the area's name"):
             self.assertIn(phrase, bp, "build-pipeline lost the recurring-bug escalation: %s" % phrase)
 
+    def test_gap6_delegation_savings_line(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        for phrase in ("Every delegation reports its saving",
+                       "roughly how much senior work it saved",
+                       "quietly stopped delegating"):
+            self.assertIn(phrase, bp, "build-pipeline lost the delegation-savings line: %s" % phrase)
+
     def test_gaps5_8_docs_discipline(self):
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         for phrase in ("The CHANGELOG speaks to the USER, the journal to the builder",

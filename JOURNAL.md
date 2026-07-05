@@ -912,3 +912,10 @@ numbers (those are the journal's); and no doc pins a drifting version number in 
 one home, point there or omit (spec-author's anti-patterns list gains the entry; the flagship README
 already lives by it). build-pipeline 0.2.13, spec-author 0.1.11, both synced (A-7 lines in the sync
 output); matrix M-101; suite 87 green; pack 0.8.18.
+
+## 2026-07-05 ~22:59, session 9 — row 12, gap 6: the delegation savings line
+
+From the playbook's accountability rule into the pack: every delegation's landing report carries one
+line — what went to the worker and roughly what senior work it saved. The line is the habit's pulse
+(the pack author's own standing failure is exactly a session that quietly stops delegating — now the
+missing line is visible). build-pipeline 0.2.14; matrix M-102 under the worker contract.
