@@ -1390,6 +1390,29 @@ class TestProblemLedger(unittest.TestCase):
                        "never only in session memory"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_prototype_norm_pointer(self):
+        """Row 109 (M-140, INV-43): an approved prototype is the norm — the clause
+        cites `norm: <path>` (frozen into docs/norms/), the code step opens the
+        artifact and records a plan-vs-prototype diff line, a mockup-first entry
+        condition cancels only by the human naming it, and the prover carries the
+        norm lens."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-43", "`norm: <path>`", "docs/norms/",
+                       "a missing diff line is a defect at review",
+                       "cancelled only by the human naming it"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
+        for needle in ("`norm: <path>`", "docs/norms/", "frozen copy",
+                       "never into a live prototype home"):
+            self.assertIn(needle, author, "spec-author missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("plan-vs-prototype diff", "entry: mockup-first",
+                       "only by the human naming it", "OPEN the artifact before building"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+        prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
+        for needle in ("`norm: <path>`", "contradicting its own artifact"):
+            self.assertIn(needle, prover, "product-prover missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

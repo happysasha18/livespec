@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.16
+  version: 0.1.17
 ---
 
 # Spec Author
@@ -111,6 +111,15 @@ specified / later surface": the pipeline's feature tripwires key off it — touc
 starts at the spec step, full stop (SPEC S-0, INV-16). Plain-prose phrasings ("TBD", "future work",
 "planned") bind too, but always write the tag: a future the machine can't see is a future a session can
 hand-build past the method.
+
+**A clause born of an approved look points at its norm (SPEC INV-43).** When the human approves a
+visual prototype as the look ("this is the door"), the clause that encodes it carries a `norm: <path>`
+pointer at its line end, beside its anchors — the prose carries the laws, the artifact keeps the look;
+a build from text alone ships a cheap look-alike with a green suite (tlvphoto, 2026-07-05). Approval
+FREEZES the artifact into the project's records: copy it to `docs/norms/` with a dated provenance line
+(what, approved when, from which sketch) and point at the frozen copy — never into a live prototype
+home, so the one-way fence stays absolute (E-17). A text-born clause carries no pointer, and the law
+binds forward — a clause owes its pointer at the first landing that touches it.
 
 **Reshaping an existing spec? Hold the anchor-set guard.** A restructure (e.g. structure-first →
 use-case-first) must carry EXACTLY the prior anchor set: diff the sorted anchor list before and after —

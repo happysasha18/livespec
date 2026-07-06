@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.29
+  version: 0.2.30
 ---
 
 # build-pipeline — ship a change by the method
@@ -58,6 +58,11 @@ toolsmith — the ladder names the archetypes, the kind says what their standard
   - Re-fire the door mid-work the moment the work is
     about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
     door.
+  - **A declared mockup-first entry condition is honoured from the row, cancelled only by name (SPEC
+    INV-43).** A story whose intake said "show me first, then build" carries the condition WRITTEN in
+    its queue row ("entry: mockup-first"); a later general "go build" moves priority, never the
+    condition — only by the human naming it does the condition fall. A condition living only in chat
+    memory is the defect this line kills (the tlvphoto door was built past its voiced mockup-first word).
   - **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, not new stories; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
     rule 16) — never into prod, never shown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
@@ -197,6 +202,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 7. **Code — implement until green.** Delegate well-scoped, mechanical implementation to a junior worker
    with a precise brief + a persistent checkpoint file (so a cut-off resumes, not restarts). Keep the hard
    parts (ambiguous specs, design, tricky debugging) on the senior model. Verify the junior's result by deed.
+   **A norm-pointered surface builds with the artifact open (SPEC INV-43):** when the surface's spec
+   clauses carry a `norm: <path>` pointer, OPEN the artifact before building — the frozen prototype is
+   the norm for look and feel, the clause text only its laws — and record a one-line plan-vs-prototype
+   diff in the landing's accounting; a missing diff line is a defect at review. The verify step's feel
+   bar (step 8) reads the same pointer.
 
 8. **Verify by deed.** Run it and see the result with your own eyes. Only call it done/working after that;
    otherwise label it an assumption. Run the whole suite before any push. **Green = zero failures AND the

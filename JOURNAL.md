@@ -1672,3 +1672,28 @@ tree by another hand (its own window taking it back, consistent with his verdict
 **Why:** One home per fact and the craft split: the communicator owns the EXCHANGE with the human;
 how to write persuasive copy is a host project's craft. The general spine — honouring his cuts and
 reading his intent — is exchange law and belongs to the pack.
+
+## 2026-07-06 ~22:56 — row 109: an approved prototype becomes the norm its clause points at (session 22)
+**What:** The tlvphoto look-alike incident (an approved prototype's clause rebuilt from TEXT alone,
+75 green tests proving the misreading) became pack law — SPEC v0.15.40 INV-43, one law with four arms
+in four homes: spec-author 0.1.17 states the pointer format (`norm: <path>` at the clause's line end;
+approval FREEZES the artifact into `docs/norms/` with a dated provenance line); build-pipeline 0.2.30
+grew the door-step bullet (a mockup-first entry condition is written in the wish's queue row, cancelled
+only by the human naming it) and the code-step clause (a norm-pointered surface builds with the
+artifact OPEN, one-line plan-vs-prototype diff recorded, the verify feel bar reading the same pointer);
+product-prover 0.1.11 carries the norm lens. M-140, `test_prototype_norm_pointer` red-proven then
+green, suite 135. Pack 0.8.52. The inbox wish is archived with its landed pointer
+(docs/queue-archive/). Prover CROSS-LINK (`docs/prover/2026-07-06-row109.md`): the sharpest find was
+the pointer FIGHTING the shipped prototype-fence scan — SPEC.md is in that check's scan set, so a
+pointer into a live `prototype/` home would go red at push; the docs/norms/ freeze resolves it and
+keeps the fence absolute.
+**Also this session, on his word:** rows 146 (the shopfront is fresh at every push — README + kind-owed
+visuals ride every version push; walked by DEED on this very push: README's pipeline section got the
+two new law lines, diagrams verified current) and 147 (the push gate scales to the diff's reach — his
+dependency-graph word + track-coach's own written answer folded in: a declared, conservative,
+self-tested REACH MAP of which checks read which file classes; a naive "only .md skips tests" is named
+a trap because SPEC/matrix/SKILL.md ARE tested documents). Track-coach's "leave as is" for its own
+rare-push cadence respected — AUDIT-ONLY.
+**Why:** Tests derived from a misread spec cannot catch the misreading — only the artifact itself can;
+the norm pointer makes the artifact reachable at every step that owes it a look (author, build,
+verify, prove), and the freeze makes the pointer legal beside a one-way fence.

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.39, 2026-07-06)
+# live-spec — SPEC (v0.15.40, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -627,6 +627,32 @@ completeness scan [E-10] and behaviour-traces-to-spec — are still [target, E-6
 the header's honesty rule holds in BOTH directions — the spec never claims what isn't built [S-0], and
 the build never contains what the spec doesn't name; today the fence leg is enforced, the rest is
 promised, marked, and owned by its rows. [INV-17]
+
+**An approved look lives in its artifact — the clause that encodes it points there, and the build looks
+at it.** Text cannot carry a feel: a spec clause born of an approved visual prototype was once rebuilt
+from its own prose and shipped a cheap look-alike — 75 tests green, because tests derived from a misread
+spec prove the misreading (tlvphoto's door and gallery, 2026-07-05). So when the human approves a sketch
+as the look, the prototype becomes the **norm** for look and feel, and one law with four arms guards it.
+The clause CITES its artifact — a `norm: <path>` pointer at the clause's line end beside its anchors,
+the prose carrying the laws while the artifact keeps the look (spec-author owns the pointer's format).
+Approval FREEZES the artifact into the project's records: a copy lands in `docs/norms/` with a dated
+provenance line (what, approved when, from which sketch), and the pointer cites the frozen copy — a
+norm pointer never reaches into a live prototype home, so the one-way fence stays absolute and the
+sketch stays free to die [E-17, INV-17]. Building a surface whose clauses carry a norm-pointer OPENS
+the artifact before the code step, and the landing records a one-line plan-vs-prototype diff — a
+missing diff line is a defect at review (build-pipeline's code step); the verify step's feel bar reads
+the same pointer [INV-30]. A story's declared mockup-first entry condition — "show me first, then
+build" — is WRITTEN in the wish's queue row at intake ("entry: mockup-first") and is cancelled only by
+the human naming it; a general "go build" moves priority, never that condition (the door step). And the prover reads visual clauses with the norm lens: a prototype-born
+clause with no pointer, or clause text contradicting its own artifact, is a finding — the "wordless door
+≠ no question" class (product-prover). The law binds forward — a clause owes its pointer at the first
+landing that touches it, never retroactively en masse; a pointer names only a prototype the human
+APPROVED as the look — an unapproved sketch stays plain evidence in its fence [E-17], and a text-born
+clause carries no pointer. No visible surface — facets N/A. Non-goals this landing: no mechanical
+pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free —
+whatever page or file the human approved. Success measure: the next prototype-born surface lands with
+its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does
+not recur [default]. [INV-43]
 
 ## Starting a new project (bootstrap)
 
@@ -1287,6 +1313,7 @@ meaning, this table is only the map.
 | INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
 | INV-41 | the architecture states measurable quality budgets plus each budget's instrumentation home (numbers measured and human-readable); the project's KIND proposes the dimensions (product: paint/interaction times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass rate, suite time; prose: what honestly has a number) and a quality with no honest number is said by name, never a vanity metric; each budget asserted by a matrix-row acceptance, never prose hope; no budgets + no instrumentation home = derivation defect; numbers are the host's taste, set on the human's word at the surface's first budget landing, binding never retroactively | From the spec to the tests |
 | INV-42 | the human's word on a shown artifact is read as meant: a phrasing he killed in a review round stays killed in every later draft of that artifact (the writer keeps the kill-list written in the artifact's project records, never only in session memory — a resurfaced cut is a defect, not a fresh idea); a vivid phrase of his is adopted only as meant — mockery of a bad draft is not guidance, its intent read from context or asked, never assumed prescriptive; home: communicator | Throwing a wish |
+| INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype is not the product |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

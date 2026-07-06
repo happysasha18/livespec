@@ -1,3 +1,5 @@
+> ARCHIVED 2026-07-06, session 22 — landed as ROADMAP row 109 (SPEC INV-43, M-140, pack 0.8.52); the four sentences live in spec-author 0.1.17 / build-pipeline 0.2.30 (door + code steps) / product-prover 0.1.11.
+
 # Wish: visual clauses carry their prototype pointer; the build step opens it (from tlvphoto, 2026-07-05; was mis-dated 07-06 at intake — invented-time family, corrected against the clock session 10)
 
 Incident (tlvphoto, door+gallery): a spec clause born from an APPROVED visual prototype was rebuilt from
