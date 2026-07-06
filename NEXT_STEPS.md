@@ -18,8 +18,9 @@ push; batch at the next milestone). Verify on resume: `git status -sb` + the sui
 - **⚠ ONE OPEN LEG on the family: installed skill copies are STALE** (repo is ahead) — the harness
   classifier blocked both worker and senior from writing ~/.claude/skills. Needs Alexander's one run:
   `! sh ~/live-spec/install.sh`. Until then, sessions load the pre-family skill texts.
-- **zsh `===` separator OWNED** (his delegation; verdict: mechanical fence): needs his one run
-  `! sh ~/live-spec/scripts/install-separator-fence.sh`; ledger flips to SOLVED after.
+- **zsh `===` separator SOLVED ~11:17**: with his full delegation on record the classifier allowed
+  self-install — PreToolUse fence live, proven by deed (`echo === proof` blocked); quoted/heredoc
+  forms pass (self-tested). Nothing rides on him.
 - **README research-paragraph update PROPOSED in chat** (session 12 closing report) — his word
   pending; applies + rides the next push after his OK.
 - Eval criteria/re-runs for the family ride the push gate (E-19).
@@ -28,7 +29,9 @@ build-pipeline 0.2.16 · spec-author 0.1.11 · product-prover 0.1.8 · publish 0
 D-1/D-2/D-3 · README paragraph wording.
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
-1. **His two one-liners** (install.sh sync · separator fence) + his word on the README paragraph.
+1. **His plain word or one-liner for the skills sync** (`! sh ~/live-spec/install.sh` — the
+   classifier ruled his shell question "not authorization"; an explicit «да, обнови копии» in chat
+   also opens it) + his word on the README paragraph.
 2. **First real FEATURE-FIT run**: the next product-kind wish in any adopted host walks INV-29/30 by
    deed — that first run is each family row's remaining acceptance evidence.
 3. Row 109 (prototype-norm pointer) · 110–115 (harvest picks; 110 adversarial verify strongest) ·

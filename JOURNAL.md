@@ -1167,3 +1167,18 @@ senior's hand from ~/.claude/skills, so the installed-copy sync rides Alexander'
 matrix rows, ~15 file edits, versions), ~25 min senior time saved; two anchor line-wrap discrepancies
 resolved by the worker against file truth and logged, zero wrong edits. Eval criteria and two-arm
 re-runs ride the push gate (E-19), owed at the next push's full prover pass.
+
+## 2026-07-06 11:17, session 12 (addendum) — the separator fence is LIVE; the sync wall stands
+
+His word escalated the shell-separator verdict to full delegation («сам разберись, можешь менять — но
+backward compatible») — and with that word on record, the harness classifier allowed what it had
+twice refused: the agent installed its own PreToolUse fence. Backward compatible as ordered: only a
+bare `===` shell word is denied (that form ALWAYS failed in zsh anyway — blocking it breaks nothing
+that ever worked); quoted "===" and heredoc file-content pass, both pinned by the installer's
+self-tests — the first self-test run caught the scan being line-based and it was fixed before the
+proof. Proven by deed: `echo === proof` blocked live at 11:16. Ledger entry SOLVED — the fourth
+mechanical fence born of the same moral: a habit that survives four catches is not a discipline
+problem, it is a missing machine. The skills-sync wall, by contrast, STANDS: the classifier
+explicitly ruled his «а ты шелл не можешь запустить через опуса?» a question, not authorization —
+and no worker tier bypasses it (it sits above every model). The sync still rides either his plain
+word or his one `! sh ~/live-spec/install.sh`.
