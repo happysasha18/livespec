@@ -1430,6 +1430,21 @@ class TestProblemLedger(unittest.TestCase):
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
         self.assertIn("shopfront", pipe, "build-pipeline step 9 missing the shopfront pointer")
 
+    def test_push_gate_reach_law(self):
+        """Row 147 (M-142, INV-45): the push gate derives its check-set from a
+        declared, conservative, self-tested reach map."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-45", "reach map",
+                       "an unmapped or new file means the FULL suite",
+                       "every check the diff can reach, green"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        self.assertIn("every check the diff can reach", pipe,
+                      "build-pipeline missing the reach sentence")
+        self.assertTrue(
+            os.path.isfile(os.path.join(ROOT, "guardrails", "check-push-reach.sh")),
+            "guardrails/check-push-reach.sh missing")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

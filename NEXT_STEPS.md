@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~23:07, session 22 — rows 109 + 146 LANDED WHOLE; row 147 next;
+## LIVE STATE (2026-07-06 ~23:20, session 22 — rows 109 + 146 + 147 LANDED WHOLE tonight;
 overnight /loop RUNNING — cumulative morning report owed to Alexander by 08:00)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.53, SPEC v0.15.41, suite 136 green.** Verify on
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.54, SPEC v0.15.42, suite 140 green.** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -23,24 +23,30 @@ resuming on another model, ASK Alexander before working this window.**
   prover's fold: the list was diff-triggered, the incident class is truth-triggered), step 9 points at
   it (build-pipeline 0.2.31), landing reports carry "shopfront checked — current"; M-141,
   `test_shopfront_fresh_at_push` red→green; walked by DEED on both of tonight's pushes.
-- **Row 147 QUEUED (his ~22:47 case + ~22:51 re-shape): the push gate scales to the diff's reach** —
-  a declared, conservative, SELF-TESTED reach map (which checks read which file classes; unknown file
-  ⇒ full suite; SPEC/matrix/SKILL.md are TESTED documents, never "just .md" — track-coach's own
-  written answer folded in, its "leave as is" for its own cadence respected, AUDIT-ONLY). After 146.
+- **Row 147 LANDED WHOLE ~23:19 (his audit case + dependency-graph word): the push gate scales to
+  the diff's reach** — SPEC v0.15.42 INV-45; guardrails/check-push-reach.sh decides gate b's scope
+  from the diff's file list (explicit narrow prose class; unknown ⇒ full; tested documents never fast-
+  pathed); the two old "suite green" sentences re-read through the map; proven by deed both ways;
+  M-142, 3 fixture tests red-proven bare; build-pipeline 0.2.32. A senior brief defect (compound level
+  word in the matrix) was caught by the traceability tooth, the worker HALTed by contract — the net
+  worked end to end.
 - **Field legs still OPEN (ride real windows, not tonight's loop):** rows 134+141 (zero-drift session;
   THIRTEENTH clock catch logged this session — mid-turn record stamps 1–4 min ahead, caught at the
   pre-landing `date`) · row 143 (first host landing walking the budgets clause) · row 144 (task list
   plain by his eye — tonight's list was plain English again) · row 140 (first budget-named session).
 - **His correction batch (~21:33, session 21) stays law:** this window never fixes a host — it fixes
   the SKILL so the host fixes itself; other projects AUDIT-ONLY (host-profile line + memory file).
-- Versions: SPEC v0.15.41 · spec-author 0.1.17 · communicator 0.1.31 · build-pipeline 0.2.31 ·
-  product-prover 0.1.11 · base 0.1.19 · publish 0.1.2 · pack 0.8.53. Installed copies synced.
+- Versions: SPEC v0.15.42 · spec-author 0.1.17 · communicator 0.1.31 · build-pipeline 0.2.32 ·
+  product-prover 0.1.11 · base 0.1.19 · publish 0.1.2 · pack 0.8.54. Installed copies synced.
 - Prover records this session: row109 (3 folded) · pushgate-s22 · row146 (1 folded, 1 composing) ·
-  pushgate-s22-2. Clock catches 13+14 logged (mid-turn stamps; row 134's zero-drift leg still open).
+  pushgate-s22-2 · row147 (2 folded, 1 intended) · pushgate-s22-3. Clock catches 13–15 logged
+  (mid-turn stamps; #15 BLOCKED by the commit fence live; row 134's zero-drift leg still open).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — tonight's loop works top-down what needs no him)
-1. **Row 147** (reach-map push gate; tonight) → then queue item 4's without-him rows (110–115, 106).
+1. Tonight's next without-him rows: **106** (pytest-from-root bug — smallest) → **110–115** (harvest
+   picks: adversarial verify · brief-from-read-code · HALT list · brief sizing · gate hygiene ·
+   resume-file size cap).
 2. **Field legs riding real windows:** rows 134+141 · 143 · 144 · 140 (not tonight — they need his eye
    or a host window).
 3. **First real FEATURE-FIT run** (INV-29/30; row 117's open leg) + **row 129's open leg** (first real

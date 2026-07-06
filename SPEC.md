@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.41, 2026-07-06)
+# live-spec — SPEC (v0.15.42, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -983,9 +983,10 @@ What keeps "it works" honest, each one a named machine:
   positive AND the negative side — what the fact does and what it must never do; the negative side is the
   regression fence. [INV-6]
 - **The guardrails** — the mechanical checks wired to the pre-push hook. Live for the pack repo itself:
-  a today-dated prover record exists · the suite is green · every anchor owned by exactly one node · no
-  unchecked matrix-coverage box · the prototype fence (no prod file references into a prototype home
-  [E-17, INV-17]), plus the opt-in concurrent-edit fence on commit. Still [target]: the
+  a today-dated prover record exists · the suite is green (its RUN scoped by the diff's reach — a
+  prose-only diff stands the suite down by name, everything else runs it whole [INV-45]) · every anchor
+  owned by exactly one node · no unchecked matrix-coverage box · the prototype fence (no prod file
+  references into a prototype home [E-17, INV-17]), plus the opt-in concurrent-edit fence on commit. Still [target]: the
   host-facing set — completeness (against the surface registry) · tests-present · behaviour-traces-to-spec
   · declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed: only where the host uses
   git at all, and installed only after asking the human — with a plain-words explanation of what the hook
@@ -1024,6 +1025,21 @@ What keeps "it works" honest, each one a named machine:
   step backwards into a document). The completeness check
   scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
   registry is self-closing, never a trusted hand-list. [E-10]
+
+**The gate is thorough by REACH, not by ritual.** "Run everything before any push" reads rigorous and
+double-misses: a README-only push pays minutes of behavioural tests that read no README line, while
+the checks a prose diff CAN break run never (found in a host audit, 2026-07-06 — a one-file README
+change paid a 795-test run; his word the same evening: understand what changed to know what to test —
+build the dependency graph, a little conservative). So the push gate derives its check-set from a
+declared **reach map** — which checks READ which file classes — mechanically from the diff's file
+list, never self-judged. Three teeth keep it honest: the map is EXPLICIT (a named file in guardrails/,
+patterns a human reads); it is CONSERVATIVE — an unmapped or new file means the FULL suite, fast paths
+exist only for explicitly claimed prose classes, and "just .md" is no class: this repo's SPEC, matrix,
+architecture, queue, and every SKILL.md are TESTED documents and stay full-reach; and it is
+SELF-TESTED — the deciding script is red-proven on fixtures, and anything it cannot classify falls to
+full by construction. The cheap gates (prover record, ownership, coverage, loadability, prototype
+fence) never scope — they run at every push. "Full rigor" [INV-40] reads as: every check the diff can
+reach, green — never fewer, and never a ritual run of checks that read nothing in the diff. [INV-45]
 
 ## The package repo: who may write, and two sessions at once
 
@@ -1170,8 +1186,8 @@ What NEVER bends, at any rung — the never-bend list, stated once [INV-40]:
 - the human's gates — irreversible moves, publishing, authored content, taste [INV-9];
 - the landing report, carrying its taken-defaults AND its named sheds [INV-5, INV-31];
 - landing purity — one row's delta per commit, whatever the batching [INV-39];
-- the push gate — work leaves the machine at full rigor only: suite green at HEAD plus the host's
-  recorded prover cadence [M-6];
+- the push gate — work leaves the machine at full rigor only: every check the diff can REACH green at
+  HEAD (the reach map's reading [INV-45]) plus the host's recorded prover cadence [M-6];
 - the safety net no work-kind and no scope-cut touches — poverty is its third non-toucher [T-15, T-16];
 - narration — it is cheap and stays whole at every rung [INV-35].
 
@@ -1329,6 +1345,7 @@ meaning, this table is only the map.
 | INV-42 | the human's word on a shown artifact is read as meant: a phrasing he killed in a review round stays killed in every later draft of that artifact (the writer keeps the kill-list written in the artifact's project records, never only in session memory — a resurfaced cut is a defect, not a fresh idea); a vivid phrase of his is adopted only as meant — mockery of a bad draft is not guidance, its intent read from context or asked, never assumed prescriptive; home: communicator | Throwing a wish |
 | INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype is not the product |
 | INV-44 | a version push re-opens the shopfront: the README's claims match the pushed truth and the kind-owed visuals ride along (skill pack: diagrams; visual product: fresh screenshots; tool: example runs) — the walk is the publish skill's checklist at push scale (one home there), pointed at by the commit-and-show step, its outcome riding the landing report ("shopfront checked — current" when untouched); a stale claim is fixed before the push; never a version push past a stale shopfront | Publishing |
+| INV-45 | the push gate derives its check-set from a declared reach map (which checks read which file classes), mechanically from the diff's file list, never self-judged: EXPLICIT (a named file in guardrails/), CONSERVATIVE (an unmapped or new file ⇒ the full suite; tested documents — SPEC, matrix, architecture, queue, SKILL.md — stay full-reach, "just .md" is no class), SELF-TESTED (the deciding script red-proven on fixtures, unclassifiable ⇒ full by construction); the cheap gates never scope; "full rigor" (INV-40) = every check the diff can reach, green | The machines that hold the bounds |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

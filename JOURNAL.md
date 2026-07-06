@@ -1711,3 +1711,23 @@ then green, suite 136, pack 0.8.53. Walked by deed on its own landing: the row-1
 refreshed the README's pipeline lines by hand on his word; this push adds the step-9 shopfront line.
 **Why:** A stale README is a false claim in prose exactly as a stale screenshot is in pixels; the
 truth changes at every version push, so the freshness trigger must be the push, not the diff.
+
+## 2026-07-06 ~23:19 — row 147: the push gate scales to the diff's reach (session 22)
+**What:** His track-coach audit case («README поменял — весь прогон; давай думать что мы не до конца
+прописали») + his dependency-graph word became SPEC v0.15.42 INV-45: the push gate derives its
+check-set from a declared REACH MAP — which checks read which file classes — mechanically from the
+diff's file list. Three teeth: EXPLICIT (guardrails/check-push-reach.sh, patterns a human reads),
+CONSERVATIVE (unmapped/new file ⇒ full suite; SPEC/matrix/architecture/queue/SKILL.md are TESTED
+documents and stay full-reach — track-coach's own written caveat, folded), SELF-TESTED (3 fixture
+tests, red-proven bare at exit 127). The two standing "suite green" sentences (the never-bend bullet,
+the machines bullet) were re-read through the map IN the same delta — the prover's must-fix. Gate b in
+pre-push now scopes: prose-only diff stands the suite down BY NAME; proven by deed both ways
+(README→0, SPEC→1). M-142, suite 140 green, build-pipeline 0.2.32, pack 0.8.54.
+**A worker HALT worth keeping:** the Sonnet worker stopped by contract on the suite's red — and the
+red was the SENIOR's brief defect (a compound word in the matrix row's level field against the closed
+level vocabulary; the same trap row 104's worker hit). The traceability tooth caught it exactly as
+designed; the senior fixed his own file and the suite went whole.
+**Why:** "Run everything" reads rigorous and double-misses — it burns minutes on checks that read
+nothing in the diff while the checks a prose diff CAN break (stale claims, dead links, a stale
+shopfront) run never. Rigor = every check the diff can reach, green — thoroughness by knowledge, not
+by ritual.

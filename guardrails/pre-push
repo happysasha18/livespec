@@ -24,9 +24,13 @@ if ! "$GUARDRAILS/check-prover-record.sh"; then
 fi
 
 echo ""
-echo "-- gate b: test suite green --"
-if ! "$GUARDRAILS/check-tests.sh"; then
-  fail=1
+echo "-- gate b: test suite green (scoped by the diff's reach, SPEC INV-45) --"
+if "$GUARDRAILS/check-push-reach.sh"; then
+  echo "   prose-only diff: the suite stands down by name; every other gate still runs."
+else
+  if ! "$GUARDRAILS/check-tests.sh"; then
+    fail=1
+  fi
 fi
 
 echo ""

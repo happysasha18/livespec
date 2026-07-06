@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.31
+  version: 0.2.32
 ---
 
 # build-pipeline — ship a change by the method
@@ -209,7 +209,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    bar (step 8) reads the same pointer.
 
 8. **Verify by deed.** Run it and see the result with your own eyes. Only call it done/working after that;
-   otherwise label it an assumption. Run the whole suite before any push. **Green = zero failures AND the
+   otherwise label it an assumption. Run every check the diff can reach before any push — the reach map's law (SPEC INV-45): a prose-only diff runs the doc gates whole and says so; any code, spec, matrix, skill, or test file in the diff means the whole suite. **Green = zero failures AND the
    skip-set is exactly the expected pinned list** — an unexpected skip (Chrome absent, a real-data fixture
    missing) is a FAILURE, not a pass. **If red at a pause / session end: never commit; write the failing test
    name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint IS the red test.

@@ -295,6 +295,7 @@ class TestPrePush(unittest.TestCase):
         for script in (
             "check-prover-record.sh",
             "check-tests.sh",
+            "check-push-reach.sh",
             "check-matrix-coverage.sh",
             "check-prototype-fence.sh",
         ):
@@ -473,3 +474,29 @@ class TestGateTimeFence(unittest.TestCase):
     def test_adjacent_future_stamp_still_red_after_narrowing(self):
         r = self._run_check("queued 2026-01-01 ~13:05, session 99")
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+
+
+class TestGateReachMap(unittest.TestCase):
+    """Row 147 (M-142, INV-45): the reach map's deciding script — a prose-only diff
+    stands the suite down; tested documents, unknown files, and empty diffs fall to
+    FULL by construction."""
+
+    SCRIPT = os.path.join(GUARDRAILS, "check-push-reach.sh")
+
+    def reach(self, files):
+        return run(["bash", self.SCRIPT], extra_env={"REACH_FILES": files})
+
+    def test_prose_only_diff_stands_suite_down(self):
+        r = self.reach("README.md\ndocs/research/example.md")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_tested_documents_stay_full_reach(self):
+        for f in ("SPEC.md", "TEST_MATRIX.md", "ARCHITECTURE.md", "ROADMAP.md",
+                  "skills/publish/SKILL.md", "tests/test_traceability.py",
+                  "guardrails/pre-push", "JOURNAL.md", "NEXT_STEPS.md"):
+            r = self.reach("README.md\n" + f)
+            self.assertEqual(r.returncode, 1, "%s must force FULL, got: %s" % (f, r.stdout))
+
+    def test_unknown_and_empty_fall_to_full(self):
+        self.assertEqual(self.reach("something/new-place.txt").returncode, 1)
+        self.assertEqual(self.reach("\n").returncode, 1)
