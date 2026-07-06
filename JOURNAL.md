@@ -1573,3 +1573,16 @@ reminder's teeth, so a law change forces the hook text to move with it. Install 
 as the clock: the classifier blocks the agent's self-config hand — deliberately right — so ONE
 installer covers both hooks and waits for Alexander's `!` command. The honest boundary stands: chat
 has no suite; the hook reminds, the eval watches, the field is the test.
+
+## 2026-07-06 ~21:17 — row 142: the lane cap moves on his word (session 20)
+**What:** T-18's parallel-lanes cap flipped 2 → 3 [default]; a fourth lane now opens only on
+Alexander's asked word, never silently. SPEC v0.15.34; M-022 reworded so the cap NUMBER has one home
+(T-18) and the queue law just points at it; M-129/M-130 never-sides generalized ("never a fourth
+unasked"); base 0.1.17, build-pipeline 0.2.27, communicator 0.1.27; pack 0.8.46; suite 129 green,
+red-proven on the skills first.
+**Why:** His live word ~21:04 — a hard two-train default wastes independent work that exists; take
+two-three lanes and ASK whether he wants more in parallel. Session 19's report had already named the
+cap a tagged [default] one word moves — the word arrived the next session, and the settings-ladder
+machinery carried it as designed (row 142's F3). The same message re-raised the communication pain
+("опять непонятно что над чем работает") — answered by the board discipline, not new law: every
+rolling train narrated on the departures board (INV-27/INV-35 stand).

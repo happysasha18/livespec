@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.33, 2026-07-06)
+# live-spec — SPEC (v0.15.34, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -425,7 +425,7 @@ While it walks, four things are always true:
   re-checks under the fence [INV-11] immediately before its first shared-truth write; a re-check revealing
   a FOREIGN session's committed in-work row means the later claimant backs off and re-queues — foreign
   hands never share a repo's pen, so across sessions the law stands as it always stood. Within ONE
-  assigned session, two trains may roll under the parallel-lanes law (below) [T-18] — but every pen-stage
+  assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18] — but every pen-stage
   still lands one at a time, and a landing commit carries exactly one row's delta [INV-39]. Bounded
   delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated
   tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting
@@ -439,13 +439,14 @@ While it walks, four things are always true:
 - **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this
   exist" is always answerable. [INV-3]
 
-**Two trains may roll — one pen writes.** Parallelism was born below the lane — workers on disjoint
+**Trains may roll — one pen writes.** Parallelism was born below the lane — workers on disjoint
 files, read-only analysis riding the background while another wish walked the pipeline — and this law
-lifts it to feature level where it is safe. One assigned session may hold TWO build lanes in-work at
-once when the senior judges them independent — no surface both touch, no spec section both must edit —
-and says so: opening a second lane is narrated, and both trains appear on the departures board [INV-27].
-What may overlap: everything that does not write the shared truth — the SECOND train's code and tests,
-written in an isolated copy of the tree ONLY (its delta reaches the shared tree through integration
+lifts it to feature level where it is safe. One assigned session may hold UP TO THREE build lanes
+in-work at once when the senior judges them pairwise independent — no surface two of them touch, no
+spec section two of them must edit —
+and says so: opening every additional lane is narrated, and all rolling trains appear on the departures board [INV-27].
+What may overlap: everything that does not write the shared truth — a LATER train's code and tests,
+each written in its own isolated copy of the tree ONLY (its delta reaches the shared tree through integration
 under the pen; the brief-named disjoint-file road [ACT-3] stays legal WITHIN one lane, whose workers
 land with that lane's own commit), read-only analysis and research, a prover run reading committed law.
 What always takes the pen, one lane at a time: edits to every document both lanes share — the spec,
@@ -453,30 +454,34 @@ the architecture doc, the matrix, the queue, the journal and the resume file amo
 integration (bringing a lane's delta into the shared tree and running its gate) and the closing of a
 row. So the document stages of two lanes never interleave mid-edit: each lane's spec-delta is drafted
 and proven against the spec as committed law, never against another lane's half-written draft — the
-pen passes between trains while their long mechanical stages run. At most two build lanes roll at once
-[default]; read-only background analysis never counts against that. The board shows both trains: each
+pen passes between trains while their long mechanical stages run. At most three build lanes roll at once
+without asking [default] — his word 2026-07-06: don't sit on a hard two, take the independent work
+that exists; a FOURTH lane opens only on the human's asked word — when more independent work waits
+workable, the session ASKS whether he wants another train rolling, never opens it silently;
+read-only background analysis never counts against that. The board shows every rolling train: each
 in-flight row keeps its own station line [INV-27], and a lane waiting for the pen SAYS so and names
-the row it waits behind ("at integration, waiting behind row N"). When both trains want the human's
+the row it waits behind ("at integration, waiting behind row N"). When several trains want the human's
 word, the questions ride ONE batched decision page, every card naming its lane's row [E-22, INV-4].
 A bug still cuts the line [T-9]: it takes the pen and the senior's hand at the end of the current
 pen-stage — a pen-stage is never cut mid-edit; rolling background briefs may finish, but no lane takes
 the pen back until the bug lands. And a milestone's whole-spec operations run with one train only —
-no second lane opens mid-gate, and a milestone opens only once a single train rolls (the other lands
-or parks first) [M-1]. [T-18]
-While two trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**,
+no new lane opens mid-gate, and a milestone opens only once a single train rolls (the others land
+or park first) [M-1]. [T-18]
+While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**,
 and its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's
-unfinished work; half of another train never rides a landing. When the first lane lands, the shared
-truth has moved — so the second lane's integration re-checks under the fence [INV-11] and re-runs its
-gate against the tree as it now stands: landed-first wins, second re-verifies, never the reverse. [INV-39]
+unfinished work; half of another train never rides a landing. When a lane lands, the shared
+truth has moved — so every still-rolling lane's integration re-checks under the fence [INV-11] and re-runs its
+gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
 
-The parallel-lanes law's edges, stated once. It fires when a second workable, INDEPENDENT wish waits
+The parallel-lanes law's edges, stated once. It fires when another workable, INDEPENDENT wish waits
 while a rolling lane's long mechanical stage runs — the correction is idle waiting gone, a feature's
 code hours no longer blocking another feature's document hours. It does NOT fire across sessions, on
 wishes that share a surface or a spec section (those serialize as before), mid-milestone, or while a
 bug holds the pen. Its only face is board and report lines, already governed by the line law — no
 other visible surface, facets N/A [INV-28]. Non-goals: cross-session double-landing — not this time
 (foreign sessions still back off); no automatic independence checker — the senior judges independence
-and says so aloud; no third build lane; no per-lane sub-board. Success measure: the first real
+and says so aloud; no fourth build lane unasked — beyond three, his word opens each next train (his
+2026-07-06 word moved the cap itself from two); no per-lane sub-board. Success measure: the first real
 double-lane run lands both rows clean with the board readable throughout — the human can say at any
 moment where each train stands, checked by his own read of that run's reports [default]. [T-18]
 
@@ -530,7 +535,7 @@ included: a bubble [T-11] jumps only fresh queued wishes, never a resume. Should
 the lane, **critical** bugs head the waiting line (among themselves by arrival), the rest follow by
 arrival; the parked wishes resume only once no bug waits. A bug already in the lane is never itself
 interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked
-PER LANE: when two trains were rolling [T-18], the bug parks both — each at its own checkpoint — and
+PER LANE: when several trains were rolling [T-18], the bug parks them all — each at its own checkpoint — and
 they resume in their landing order. [T-9]
 
 ## When the workshop itself misbehaves (the problem ledger)
@@ -1149,7 +1154,7 @@ meaning, this table is only the map.
 | T-15 | scope, never time: a too-big wish is cut or staged (a time budget/estimate is never an input); proposals proceed on the recommended option, surfaced; the safety net uncuttable | Throwing a wish |
 | T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
 | T-17 | one wish = one user story: multi-story wishes split at intake, each story its own row; sub-behaviours are acceptance, not stories; unclear count asked | Throwing a wish |
-| T-18 | parallel lanes: one session may roll two independent build lanes (max two [default]); penless stages overlap (the second train writes only in an isolated tree; disjoint-file workers within one lane; read-only analysis free); pen-stages serialize (every shared doc, integration, row close; a pen-stage never cut mid-edit); opening narrated, both trains on the board with the waiting lane naming whom it waits behind, cross-lane questions one batched page; not across sessions / dependent wishes / mid-milestone / while a bug holds the pen | Throwing a wish |
+| T-18 | parallel lanes: one session may roll up to three independent build lanes without asking (max three [default], his 2026-07-06 word; a fourth opens only on the human's asked word); penless stages overlap (later trains write only in isolated trees; disjoint-file workers within one lane; read-only analysis free); pen-stages serialize (every shared doc, integration, row close; a pen-stage never cut mid-edit); opening narrated, every train on the board with a waiting lane naming whom it waits behind, cross-lane questions one batched page; not across sessions / dependent wishes / mid-milestone / while a bug holds the pen | Throwing a wish |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time per repo, under one pen (shared-truth writes serialize); claiming stays the atomic committed flip; foreign sessions never share a pen | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |

@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.26
+  version: 0.1.27
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.16), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.17), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -134,7 +134,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
      likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs
      the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают
      зубы» and its reader bounced it, 2026-07-06 morning).
-   - With two trains rolling (SPEC T-18), each in-work lane keeps its own board line, and a lane
+   - With several trains rolling (SPEC T-18 — up to three without asking), each in-work lane keeps its own board line, and a lane
      WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code
      written, at integration, waiting behind row 135"* — waiting and working must read apart at a
      glance.

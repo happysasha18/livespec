@@ -264,8 +264,8 @@ class TestQueue(unittest.TestCase):
 
     def test_roadmap_in_work_cap(self):
         in_work = [r[0] for r in self._rows() if r[3].lower().startswith("in-work")]
-        self.assertLessEqual(len(in_work), 2,
-                             "more than two rows in-work — the two-lane cap (SPEC T-18): rows %s" % in_work)
+        self.assertLessEqual(len(in_work), 3,
+                             "more than three rows in-work — the lane cap (SPEC T-18): rows %s" % in_work)
 
     def test_roadmap_header_dated(self):
         first = read("ROADMAP.md").splitlines()[0]
@@ -1398,16 +1398,19 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
     def test_parallel_lanes_law(self):
-        """Row 135 (M-129, T-18): two trains may roll, one pen writes — the law in SPEC,
-        carried by build-pipeline + base; the waiting lane readable on the board (communicator)."""
+        """Rows 135+142 (M-129, T-18): up to three trains may roll without asking, a fourth on the
+        human's word, one pen writes — the law in SPEC, carried by build-pipeline + base; the
+        waiting lane readable on the board (communicator)."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("Two trains may roll", "T-18", "At most two build lanes roll at once",
+        for needle in ("Trains may roll", "T-18", "At most three build lanes roll at once",
+                       "a FOURTH lane opens only on the human's asked word",
                        "waiting for the pen SAYS so and names the row it waits behind",
                        "a pen-stage is never cut mid-edit",
                        "never against another lane's half-written draft"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
-        for needle in ("Two trains, one pen", "SPEC T-18", "isolated tree"):
+        for needle in ("Trains, one pen", "SPEC T-18", "isolated tree",
+                       "a fourth opens only on the human's asked word"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("SPEC T-18", "PEN"):
@@ -1419,7 +1422,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 135 (M-130, INV-39): a landing commit carries exactly one row's delta."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-39", "a landing commit carries exactly one row's delta",
-                       "landed-first wins, second re-verifies",
+                       "landed-first wins, the later lanes re-verify",
                        "half of another train never rides a landing"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
