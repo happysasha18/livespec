@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.46, 2026-07-07)
+# live-spec — SPEC (v0.15.47, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -627,6 +627,18 @@ After the owner is written, the entry only collects dates: a recurrence on an OW
 appends its date and changes nothing else — re-raising an agreed non-problem is the human's move, the
 growing date list is what he re-raises FROM. The landing that closes an OWNED entry's queue row flips it
 to SOLVED in the same session — the entry never waits for an audit to learn its row landed.
+
+**A limping thing never dams the flow.** A KNOWN, owned problem — a recurring defect with its
+mechanical owner named, a check red for an understood and recorded reason — is PARKED, not orbited:
+the ledger line (or the owning row, or an expected-red note in the record) holds it, and every
+unrelated lane keeps rolling (his 2026-07-07 word: «если одно не совсем работает — оно не затыкает
+всё остальное»). Two teeth: hand-fixing loops cap at the ledger's own two-strikes law — the second
+occurrence buys an owner, never another hand-pass; and once a defect HAS its named mechanical owner,
+its instances are serviced in BATCH — fixed silently where the fence catches them, one ledger append
+at the session's end — never a per-instance ceremony that interrupts the work and the human's reading
+of it (the night this law landed, the clock drift had been hand-ceremonied ten times in one session
+while its owner, the hook row, was open all along). A real NEW bug still preempts [T-9]; this law
+governs the KNOWN limp. [INV-56]
 
 The seams, stated: sessions write the ledger — a worker reports noise in its checkpoint and the session
 carries it over, unless its brief names the ledger among its files (the brief stays the write-ownership
@@ -1450,6 +1462,7 @@ meaning, this table is only the map.
 | INV-53 | a brief editing existing files is born from READING them in full: three recorded lines per file (current state · what changes · what must survive); every step back-references its spec sentence; every technical claim cites a source (file:line / command output) | Who decides what |
 | INV-54 | the worker HALT list, closed: ambiguous requirement · two consecutive unexplained failures of one command · missing config/dependency · acceptance impossible as briefed — stop with evidence; otherwise run to completion; composes with one-tier escalation | Who decides what |
 | INV-55 | a brief targets a bounded share of the worker's context, splits above it (default bound: brief text ~300 lines, ~8 files to edit [default]); paths, never inlined file bodies | Who decides what |
+| INV-56 | a limping thing never dams the flow: a KNOWN owned problem is parked (ledger line / owning row / expected-red note) and unrelated lanes keep rolling; hand-fix loops cap at two-strikes (second occurrence buys an owner); a defect with a named mechanical owner is serviced in batch (silent fence-fixes, one ledger append at session end), never per-instance ceremony; a real NEW bug still preempts (T-9) | When the workshop itself misbehaves |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

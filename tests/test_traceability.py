@@ -1518,6 +1518,17 @@ class TestProblemLedger(unittest.TestCase):
                        "~300 lines", "never inlined file bodies"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
+    def test_limp_never_dams_flow(self):
+        """Row 153 (M-155, INV-56): a known owned problem parks; unrelated lanes
+        roll; batch servicing for mechanically-owned defects, never ceremony."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-56", "never dams the flow", "serviced in BATCH",
+                       "never a per-instance ceremony"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("never dams the flow", "serviced in BATCH", "known limp"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

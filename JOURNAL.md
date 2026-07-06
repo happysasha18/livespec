@@ -1828,3 +1828,15 @@ ways (foreign HOME + CI → note + exit 0; foreign HOME local → hard FAIL), re
 never-side extended. Alexander got GitHub's failure mail and asked — answered with the passport: his
 project, just an update, nothing needed from him; the mail's very existence was the second net doing
 its job on its first breath.
+
+## 2026-07-07 ~00:36 — row 153: a limping thing never dams the flow (session 22)
+**What:** his 00:17 word became SPEC v0.15.47 INV-56 + base rule 19's new clause (0.1.20, inherit
+pins swept in all five skills by the freshness tooth): a KNOWN owned problem PARKS behind a written
+holder and unrelated lanes keep rolling; hand-fix loops cap at two-strikes; a mechanically-owned
+defect is serviced in BATCH — silent fence fixes, one session-end ledger append — never per-instance
+ceremony. Applied by deed BEFORE it landed: the clock-drift ceremony (ten hand-passes in one night
+while its owner row sat open) retired to batch mode at 00:18. One honesty note: the red-first order
+slipped (skill edit preceded the test); the red was proven against HEAD's shipped state via git show
+and owned aloud. M-155, suite 156, pack 0.8.59.
+**Why:** the method's own failure mode is perfectionism-in-place — orbiting one limp while the queue
+waits. The ledger already owned recurrence; this law owns the FLOW.

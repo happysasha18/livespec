@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.19
+  version: 0.1.20
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -140,7 +140,13 @@ a working skill still stands: its pointer here reads as plain advice.
    the METHOD, not of the day — it goes to the pack's own queue (from a host window: one inbox file).
    A recurrence on an owned entry appends its date and changes nothing else; the landing that closes an
    OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23; born of tlvphoto's retried-never-owned
-   noise, 2026-07-05.)
+   noise, 2026-07-05.) **And a limping thing never dams the flow (SPEC INV-56):** a KNOWN, owned
+   problem is PARKED — the ledger line, the owning row, or an expected-red note holds it — and every
+   unrelated lane keeps rolling; hand-fixing loops cap at the two-strikes law above, and a defect with
+   a NAMED mechanical owner is serviced in BATCH — instances fixed silently where the fence catches
+   them, one ledger append at the session's end — never a per-instance ceremony that interrupts the
+   work (born of a clock drift hand-ceremonied ten times in one night while its owner row sat open,
+   2026-07-07). A real NEW bug still preempts; this governs the known limp.
 
 
 ## When NOT to load this
