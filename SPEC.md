@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.44, 2026-07-06)
+# live-spec — SPEC (v0.15.45, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -963,6 +963,27 @@ else it is the senior's option; a skill or prose landing walks the same ladder i
 the checker re-reads the SHIPPED text against the spec sentences. The checker is a worker like any
 other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
 
+**A brief is born from read files, never from memory of them.** Before authoring a brief that edits
+existing files, the brief-writer READS IN FULL every file the work will modify, and the brief records
+three lines per file: current state · what changes · what must survive. Every step carries a
+back-reference to the spec sentence it serves, and every technical claim in the brief cites its
+source — a file:line, a command's output — because a brief written from memory hands the worker the
+senior's guess dressed as fact (the neighbours' story-file lesson, row 107; the night the anchors
+were quoted from memory, the worker walked into a wall twice). [INV-53]
+
+**A worker stops only on a named condition.** The brief carries the HALT list, closed and short: an
+ambiguous requirement · two consecutive unexplained failures of one command · a missing config or
+dependency · acceptance impossible as briefed. On any of these the worker STOPS with evidence;
+otherwise it runs to completion — sharper than "ask if unsure", composing with the one-tier
+escalation law [ACT-3]. (The list's first full night: three workers HALTed by it, every stop a real
+defect and two of them the senior's own.) [INV-54]
+
+**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context
+and the work SPLITS above it — the default bound, concrete: the brief's own text stays within ~300
+lines and names at most ~8 files to edit [default]; above either, the work splits into staged briefs.
+And a brief passes PATHS, never inlined file bodies — the worker reads its own truth from disk, an
+inlined body goes stale the moment a sibling edits the file. [INV-55]
+
 ## From the spec to the tests: two layers that must not be skipped
 
 The spec says WHAT the product is; tests prove facts about the shipped artifact. Between them live two
@@ -1423,6 +1444,9 @@ meaning, this table is only the map.
 | INV-50 | a conditionally-entered face (first visit, empty state, onboarding, one-time banner) states its deliberate re-entry path or names the one-way as a decision; trigger wording "only on first visit/run", "until dismissed" owes its return sentence; prover carries the entry-symmetry lens; extends INV-29's where-next to faces over the visit's lifetime | Throwing a wish |
 | INV-51 | anything handed/opened to the human leads with its passport: the project's NAME in the visible content (never only the URL) + the read contract ("needs your word: what, by when" or "just an update"); the announcing chat line carries the same two facts; home: communicator | Throwing a wish |
 | INV-52 | during an away-stretch nothing opens a browser window: artifacts accumulate on ONE page, the stretch's end opens it once; mid-stretch re-open only as the same page refreshed; home: communicator | Throwing a wish |
+| INV-53 | a brief editing existing files is born from READING them in full: three recorded lines per file (current state · what changes · what must survive); every step back-references its spec sentence; every technical claim cites a source (file:line / command output) | Who decides what |
+| INV-54 | the worker HALT list, closed: ambiguous requirement · two consecutive unexplained failures of one command · missing config/dependency · acceptance impossible as briefed — stop with evidence; otherwise run to completion; composes with one-tier escalation | Who decides what |
+| INV-55 | a brief targets a bounded share of the worker's context, splits above it (default bound: brief text ~300 lines, ~8 files to edit [default]); paths, never inlined file bodies | Who decides what |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

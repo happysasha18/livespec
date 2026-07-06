@@ -1793,3 +1793,15 @@ mid-batch prover-record red, one a cascade. The traceability teeth caught the se
 time tonight; all fixed pre-commit, suite whole after the landing commit.
 **Why:** the night's pattern — his one-line corrections are the pack's highest-value input, and the
 pipeline turns them into enforced law within the hour without losing a single one.
+
+## 2026-07-07 ~00:14 — rows 111 + 112 + 113: the brief's birth gets its three laws (session 22)
+**What:** SPEC v0.15.45 INV-53/54/55 + the delegation gate (build-pipeline 0.2.35): a brief editing
+existing files is born from READING them in full (three recorded lines per file; steps back-reference
+spec sentences; claims cite sources); the worker HALT list is closed (ambiguous requirement · two
+consecutive unexplained failures · missing dependency · acceptance impossible — stop with evidence);
+a brief is SIZED (~300 lines, ~8 files [default], splits above; paths, never inlined bodies — the
+prover's must-fix: the row promised numbers and the draft said "bounded share", the vanity-avoidance
+instinct overcorrected into vagueness). M-151..153, `test_brief_trio_laws` red→green, suite 152.
+**Why:** the night itself wrote these laws — every brief read its files, carried the list, passed
+paths; three workers HALTed by the list and every stop was a real defect. Law catching up with deed
+is the cheapest law there is.

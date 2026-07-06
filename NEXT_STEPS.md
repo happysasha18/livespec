@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-07 ~00:10, session 22 — ELEVEN rows landed tonight: 109 · 146 · 147 · 106 ·
-110 · 114 · 115 (three parallel lanes) · 149 · 150 · 151 · 152 (one serial lane, the graph's word))
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.56, SPEC v0.15.44, suite 151 green.** Verify on
+## LIVE STATE (2026-07-07 ~00:14, session 22 — FOURTEEN rows landed tonight: 109 · 146 · 147 · 106 ·
+110 · 114 · 115 (three parallel lanes) · 149–152 · 111–113 (serial lanes by the graph's word))
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.57, SPEC v0.15.45, suite 152 green.** Verify on
 resume: `git status -sb` + suite (root `pytest` legal since row 106). **Anthropic pulls FABLE from
 Claude Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only — if resuming
 on another model, ASK Alexander first.**
@@ -23,16 +23,17 @@ on another model, ASK Alexander first.**
 - **Field legs OPEN (need his eye / host windows, not tonight):** 134+141 zero-drift session (catches
   13–18 tonight: mid-turn stamps; fence blocked #15/#17/#18) · 143 budgets clause first host landing ·
   144 task list plain by his eye · 140 first budget-named session · 117/129/133 first real runs.
-- Versions: SPEC v0.15.44 · spec-author 0.1.18 · communicator 0.1.32 · build-pipeline 0.2.34 ·
-  product-prover 0.1.12 · base 0.1.19 · publish 0.1.2 · pack 0.8.56. Installed copies synced.
-- Prover records tonight: row109 · row146 · row147 · rows110-114-115 · rows149-152 (+ 6 pushgate
-  records; every finding folded or recorded with reason). Ledger: +1 WATCHED (needle vs line-wrap);
+- Versions: SPEC v0.15.45 · spec-author 0.1.18 · communicator 0.1.32 · build-pipeline 0.2.35 ·
+  product-prover 0.1.12 · base 0.1.19 · publish 0.1.2 · pack 0.8.57. Installed copies synced.
+- Prover records tonight: row109 · row146 · row147 · rows110-114-115 · rows149-152 · rows111-113 (+ 7
+  pushgate records; every finding folded or recorded with reason). Ledger: +1 WATCHED (needle vs line-wrap);
   clock catches now 13–20 (three fence-blocked).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. Tonight, executable without him: **111–113** (delegation-gate trio: brief-from-read-code · HALT
-   list · brief sizing — serial, same section, one worker).
+1. Without-him queue for tonight: EMPTY — rows 111–113 landed ~00:14 (the brief-birth trio,
+   INV-53/54/55). What remains needs him or a real host window; the loop now waits for morning
+   (see item 2) unless a new wish arrives.
 2. **Morning (his word):** row 148 sample verdict (decisions page + JSON round-trip) · the cumulative
    report before 08:00 · one window opened at the end (row 152's deed).
 3. Field legs riding real windows: rows 134+141 · 143 · 144 · 140 · 117 · 129 · 133.

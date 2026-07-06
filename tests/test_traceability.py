@@ -1505,6 +1505,20 @@ class TestProblemLedger(unittest.TestCase):
                        "opens that one window once"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_brief_trio_laws(self):
+        """Rows 111-113 (M-151..153, INV-53/54/55): a brief is born from read files,
+        carries the closed HALT list, and is sized with paths, never bodies."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-53", "INV-54", "INV-55",
+                       "current state · what changes · what must survive",
+                       "two consecutive unexplained failures",
+                       "never inlined file bodies"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("READING them in full", "closed HALT list",
+                       "~300 lines", "never inlined file bodies"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

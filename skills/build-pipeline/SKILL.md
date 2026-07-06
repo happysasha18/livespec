@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.34
+  version: 0.2.35
 ---
 
 # build-pipeline — ship a change by the method
@@ -310,7 +310,15 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and the
   checkpoint path — the worker never hunts context, never interprets the spec, never decides. If writing
   the brief means deciding something first, that decision is the senior's and happens BEFORE delegation
-  — "долго объяснять" is how delegation silently dies. See the private playbook repo's PLAYBOOK.md. **The worker contract (SPEC
+  — "долго объяснять" is how delegation silently dies. **The brief's birth has three laws (SPEC INV-53/54/55):** a brief that
+  edits existing files is born from READING them in full — three recorded lines per file (current
+  state · what changes · what must survive), every step back-referencing its spec sentence, every
+  technical claim citing a source (a file:line, a command's output), never memory of a file; the
+  brief carries the closed HALT list — ambiguous requirement · two consecutive unexplained failures
+  of one command · missing config/dependency · acceptance impossible as briefed — stop WITH evidence,
+  otherwise run to completion (the senior's escalation ladder is a separate move, after a failed
+  acceptance); and the brief is SIZED — its text within ~300 lines, at most ~8 files to edit
+  [default], the work splitting above either — passing PATHS, never inlined file bodies. See the private playbook repo's PLAYBOOK.md. **The worker contract (SPEC
   ACT-3):** the brief NAMES the files the worker may write — its session's write-ownership narrowed to
   exactly those, reads free, writes fenced; same-session sibling-worker files are fence-benign (the
   concurrent-edit fence alarms on foreign sessions, not on your own briefed hands — the senior who
