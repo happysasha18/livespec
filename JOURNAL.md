@@ -1586,3 +1586,18 @@ cap a tagged [default] one word moves — the word arrived the next session, and
 machinery carried it as designed (row 142's F3). The same message re-raised the communication pain
 ("опять непонятно что над чем работает") — answered by the board discipline, not new law: every
 rolling train narrated on the departures board (INV-27/INV-35 stand).
+
+## 2026-07-06 ~21:26 — row 140: the economy ladder, build legs (session 20)
+**What:** New SPEC section "When money or time run short" — `budget.pressure` (full [default] · lean ·
+tight) moved only by Alexander's word; lean = node-scoped mid-work test runs + CROSS-LINK with FULL
+deferrable as dated debt + one-tier-cheaper workers; tight = + batched landing gates (purity kept,
+batch-end red bisects by landing order, push still full-green at HEAD) + cheapest sufficient tier; the
+never-bend list stated once (door law, red-before-fix, his gates, the report with named sheds, landing
+purity, push gate, safety net, narration; a host's explicit line outlives any rung). SPEC v0.15.35
+(T-19/INV-40, base-rulebook node), base 0.1.18, pack 0.8.47, M-134/M-135, suite 130 green (the suite
+itself caught the missing architecture owner and the wrong matrix block mid-landing — the derivation
+teeth working). Field leg OPEN: the first budget-named session.
+**Why:** His 20:23 wish (row 140) — economy must be a setting moved by his word, not an improvisation
+under pressure. Also this session: row 144 queued from his screenshot — the task list on his screen
+must speak plain words (the language law's surface it already claims but nothing names); the open
+tasks were renamed to plain Russian the same minute.

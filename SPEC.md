@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.34, 2026-07-06)
+# live-spec — SPEC (v0.15.35, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -1066,6 +1066,48 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   push should not have happened. The record ENUMERATES the folds applied from its own pass, and a fold
   stays LOCAL to the sections its finding named — a fold reaching wider re-triggers the gate. [M-6]
 
+## When money or time run short (the economy ladder)
+
+Rigor costs — suite runs, prover passes, senior-model hours. Today the pack spends at full rigor
+always; this section names what a tight budget may LEGALLY shed, so economy is a setting you moved,
+never an improvisation under pressure. [T-19]
+
+The pressure is a setting on the ladder (`budget.pressure`, package default `full`): it moves ONLY on
+your word — a session's word for today, a profile line to stand — exactly like proactivity and trust
+[E-13, INV-9]; when you name money or time pressure the agent may PROPOSE a rung, never set one. Three
+rungs, each naming its legal sheds; every shed actually taken is SAID in the landing report — a silent
+economy is a silent micro-decision, the exact thing the report exists to prevent [INV-5]:
+
+- **full [default]** — as today: the full suite at every landing gate, the prover at its recorded
+  cadence, the worker router picking tiers.
+- **lean** — mid-work test runs may scope to the touched architecture node's rows (the full suite
+  still runs at every LANDING gate and before every push); surface-add prover passes stay CROSS-LINK,
+  and a FULL pass owed by the default cadence may defer to the next milestone — the deferral written
+  as a dated debt line in its queue row, never just remembered; mechanical work rides one worker tier
+  cheaper when the brief is airtight [D-2].
+- **tight** — everything lean, plus: landing gates may BATCH — consecutive small landings share one
+  full-suite run at the batch's end (each landing commit still carries exactly one row's delta
+  [INV-39]; a red at batch end bisects by landing order before anything else lands; a push still
+  requires the full gate green at HEAD [M-6]); the cheapest sufficient worker tier is the rule, senior
+  hours spent on judgment alone [D-2].
+
+What NEVER bends, at any rung — the never-bend list, stated once [INV-40]:
+- the door law and its tripwires — poverty, like urgency, moves priority, never the door [T-12, INV-16];
+- red-before-fix — a bug still gets its failing test before its fix;
+- the human's gates — irreversible moves, publishing, authored content, taste [INV-9];
+- the landing report, carrying its taken-defaults AND its named sheds [INV-5, INV-31];
+- landing purity — one row's delta per commit, whatever the batching [INV-39];
+- the push gate — work leaves the machine at full rigor only: suite green at HEAD plus the host's
+  recorded prover cadence [M-6];
+- the safety net no work-kind and no scope-cut touches — poverty is its third non-toucher [T-15, T-16];
+- narration — it is cheap and stays whole at every rung [INV-35].
+
+An explicit host line outlives any rung: a host profile pinning a tighter cadence (this repo's own
+push gate) keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters — the
+rung is qualitative, moved by your word; no automatic rung-switching. Success measure [default]: the
+first budget-named session names its rung and its sheds aloud in its landing report, checked by your
+read of it. [T-19]
+
 ## Publishing — the deposit owes what its kind owes
 
 Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin
@@ -1155,6 +1197,7 @@ meaning, this table is only the map.
 | T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
 | T-17 | one wish = one user story: multi-story wishes split at intake, each story its own row; sub-behaviours are acceptance, not stories; unclear count asked | Throwing a wish |
 | T-18 | parallel lanes: one session may roll up to three independent build lanes without asking (max three [default], his 2026-07-06 word; a fourth opens only on the human's asked word); penless stages overlap (later trains write only in isolated trees; disjoint-file workers within one lane; read-only analysis free); pen-stages serialize (every shared doc, integration, row close; a pen-stage never cut mid-edit); opening narrated, every train on the board with a waiting lane naming whom it waits behind, cross-lane questions one batched page; not across sessions / dependent wishes / mid-milestone / while a bug holds the pen | Throwing a wish |
+| T-19 | the economy ladder: `budget.pressure` ∈ full [default] · lean · tight, moved only by the human's word (session word or profile line, never the agent's); lean = node-scoped mid-work test runs (full suite still at every landing gate) + CROSS-LINK with an owed FULL deferrable to the next milestone as a dated debt line + one-tier-cheaper mechanical work; tight = lean + batched landing gates (one full-suite run per batch's end, red bisects by landing order) + cheapest sufficient worker tier; every taken shed named in the landing report | When money or time run short |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time per repo, under one pen (shared-truth writes serialize); claiming stays the atomic committed flip; foreign sessions never share a pen | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -1194,6 +1237,7 @@ meaning, this table is only the map.
 | INV-37 | every wish is placed on the product's feature map at intake, the placement SPOKEN with the echo and WRITTEN in the row (`map:` — changes feature X / new feature / restructure); the map = spec scenarios + architecture nodes, no third document; a restructure verdict queues its own row and re-carves only through the architecture step's re-prove | Throwing a wish |
 | INV-38 | the whole feature map is readable on demand — read at ask-time off the spec's scenario sections, the current-vs-target header (statuses at the granularity the promised-tag binds, per S-0), and the queue's open rows (stations for in-flight, queued NEW-verdict wishes included); no third document; answer lines obey the line law; chat by default, rendered page on the human's word; never fires uninvited (reports keep the board's in-flight scope); a host with nothing to read is answered honestly | Asking what the product does |
 | INV-39 | a landing commit carries exactly one row's delta; its gate runs on a tree clean of any other lane's unfinished work; after a landing, the waiting lane re-fences and re-runs its gate on the new truth — landed-first wins | Throwing a wish |
+| INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

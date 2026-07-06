@@ -1418,6 +1418,22 @@ class TestProblemLedger(unittest.TestCase):
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         self.assertIn("waiting behind row", comm, "communicator missing the waiting-lane board face")
 
+    def test_economy_ladder(self):
+        """Row 140 (M-134/M-135, T-19/INV-40): the economy ladder — legal sheds per rung, the
+        never-bend list, the rung moved only by the human's word; base carries the setting row."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("economy ladder", "`budget.pressure`", "full [default]",
+                       "moved only by the human's word",
+                       "every taken shed named in the landing report",
+                       "What NEVER bends, at any rung",
+                       "a push still requires the full gate green at HEAD",
+                       "red at batch end bisects by landing order",
+                       "an explicit host line outlives any rung"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("budget.pressure", "economy ladder", "SPEC T-19"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+
     def test_landing_purity(self):
         """Row 135 (M-130, INV-39): a landing commit carries exactly one row's delta."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
