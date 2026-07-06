@@ -116,6 +116,20 @@ pipeline's own step names, one name per step. (His word 2026-07-05, before sleep
 request, it's a feature, we'll call it this and that — а потом рапортовать как каждая фича идет по
 пайплайну".) [INV-27]
 
+**The outcome does the talking: names are chosen plain, and every handle trails.** The first real
+departures board passed its eval and failed its READER — lines led with coined metaphor-names
+(«Прогулка по уликам», «Часы получают зубы») and row numbers he never opens, and squeezed facts into
+riddles only their writer could parse ("seven times — twice the fence"; 2026-07-06 morning, the jargon
+family's third strike in two days). Two arms, one law. NAMING: a feature's echo-name is a short
+DESCRIPTIVE phrase in the product's own words — what the thing does, parseable cold by a reader who
+missed its birth — never a private metaphor; a name that needs its story told first is a handle, not a
+name. LINES: a human-facing report or board line (chat reports, report pages, decision pages, the
+capture echo — method-internal docs keep their anchors) OPENS with what changed for the reader — what
+they can now do, see, or stop fearing; every internal handle — spec codes, row and session numbers, and
+any coined name the reader never chose to learn — may only TRAIL in parentheses; and one fact = one
+standalone sentence — a compression whose parsing needs the writer's context is a defect of the line,
+not a flourish. [INV-28]
+
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
 feature goes to the queue head too; but only the bug DOOR preempts the in-work lane [T-9]. A quick win may bubble up: when the lane frees, it may be taken ahead of
@@ -866,6 +880,7 @@ meaning, this table is only the map.
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
+| INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

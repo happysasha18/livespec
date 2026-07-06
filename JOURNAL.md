@@ -1115,3 +1115,32 @@ line read as a gesture, not a place — rule 9 gained a worked example (0.1.13) 
 green. The publish walk ran as row 98's first real use: secrets/path sweep clean, fresh clone installs
 all six skills into a clean HOME, screenshots/release-notes stood down by name (text product, no tag).
 The zsh `===` explanation and verdict re-ask ride the morning decision page.
+
+## 2026-07-06 10:34, session 12 — the board's first reader bounces it; row 116 lands the same hour
+
+The morning report — row 105's proud first real run — failed the only judge that counts: Alexander
+opened it and asked ЧТО??? four times. The lines led with coined metaphor-names («Прогулка по
+уликам», «Часы получают зубы»), row numbers he never opens, and riddle-compression («семь раз —
+дважды забор»). The eval had passed; the reader had not — the criterion the eval lacked is now the
+one it has. Third strike of the jargon family in two days ⇒ the recurring-bug law re-doored it to a
+feature, and INV-28 landed with two arms (names are descriptive phrases parseable cold; the line
+opens with the reader's outcome, every handle trails, one fact per sentence) — SPEC v0.15.16, base
+0.1.13, communicator 0.1.14, M-113, `test_outcome_leads_law` red-proven, pack 0.8.27, suite 103
+green. Delegation worked exactly as the contract wants: the Sonnet worker HALTed twice, and the
+second HALT caught the SENIOR's own skipped step — the brief said "architecture: assignment, no doc
+change", but ARCHITECTURE.md's node table owns anchors, so INV-28 needed its cell; the ownership
+test went red and stayed red until the senior authorized the two-cell edit. The teeth bite their
+author; that is the point of teeth.
+
+Same morning, the tlvphoto window sent its verdict on the method (Alexander: «давай учитывать. это
+умно!»): the fences keep written promises unbroken, but all five of his complaints live where the
+method doesn't look — the VISIT, not the surface. Its inbox note split into two rows by the
+one-story law: the visitor-walk + feel pass at verify (row 117) and the two-landing expiry for taste
+defaults (row 118); the intake half of the same hole is row 108, unchanged and next in the lane.
+
+The zsh `===` separator got its delegated verdict (his morning word: «проанализируй взаимозависимости
+и реши»): interdependencies none, four recurrences prove discipline lost, so it takes the same
+medicine as invented time — a mechanical fence. The installer is written
+(`scripts/install-separator-fence.sh`); the harness classifier rightly refuses to let the agent edit
+its own hook config, so the entry is OWNED and flips to SOLVED when Alexander runs the one-liner.
+Also decided on his same delegation: the day opens with row 116 (his direct feedback), then row 108.

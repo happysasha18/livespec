@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.13
+  version: 0.1.14
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.12), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.13), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -61,7 +61,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
 
 6. **Plain language, in the product's own words — a code never does the talking.** Speak in use-cases —
    what the person DOES and SEES — not the mechanism. Every internal handle — plan codes, worker names,
-   session numbers, **and spec handles (INV-x, E-x, A-x, T-x, queue row numbers, ⟨DECIDE⟩ markers)** — is a
+   session numbers, **and spec handles (INV-x, E-x, A-x, T-x, queue row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the reader never chose to learn (a name that needs its story told first is a handle, not a name — SPEC INV-28)** — is a
    machine anchor: the plain-words sentence carries the meaning, and the code may only TRAIL it in
    parentheses as a quiet anchor. The split is deliberate (Alexander 2026-07-04): the human reads the
    sentence; the anchor serves the MODEL — transcripts are what it greps and self-monitors against, so a
@@ -97,7 +97,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    a waiting item exactly what is asked — so the list informs, not just enumerates ("bare titles read fine
    but say too little" — Alexander, same day). Never paste the queue table into chat and never retell it as
    a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
-   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → matrix → tests → code → verify → landed — the station vocabulary being the pipeline's own step names, so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day)
+   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → matrix → tests → code → verify → landed — the station vocabulary being the pipeline's own step names, so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day) And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for the reader; the feature's name on the board is a plain descriptive phrase — a coined feature name is an internal handle (rule 6) and may only trail; row numbers trail likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают зубы» and its reader bounced it, 2026-07-06 morning).
 
 10. **Several open picks → ONE interactive decision page.** When more than one decision waits on the
     human, don't serialize questions into chat and don't write a questionnaire document: render one local
@@ -163,6 +163,12 @@ page, rule 10):
 - **A day of work that looked like nothing.** Instead of claiming the audits were valuable, put yesterday's
   build next to today's in one window, synced, with an honest verdict: "you're right, this is not a visual
   redesign — here's the little that's visible and the two bugs it caught that you can't see." (rules 4, 7)
+- **The first departures board, bounced by its reader.** The night report led every line with the
+  feature's coined nickname («Прогулка по уликам», «Часы получают зубы») plus a row number, and
+  compressed a story to "seven times — twice the fence". The reader asked ЧТО??? four times. Retold
+  under the law: "ask me 'did you actually do X?' — I now answer by walking the artifacts, with the
+  method version named, not from memory (row 101)" — the outcome first, every handle trailing.
+  (rules 6, 8, 9; SPEC INV-28)
 - **The same event, told twice.** First telling: "the inbox worked — a session dropped three findings,
   harvested into rows 19–21" — the human had to ask what that meant. Second telling: "the other project's
   session found three gaps in the adoption procedure; before tonight it would have edited the package's

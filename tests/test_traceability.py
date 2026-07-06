@@ -1079,6 +1079,19 @@ class TestProblemLedger(unittest.TestCase):
         self.assertIn("capture echo", pipeline,
                       "build-pipeline step zero must cite the capture echo")
 
+    def test_outcome_leads_law(self):
+        """Row 116 (M-113, INV-28): the outcome does the talking — echo-names are plain
+        descriptive phrases; handles and coined names only trail; one fact per sentence."""
+        spec = read("SPEC.md")
+        for needle in ("INV-28", "never chose to learn", "one fact = one standalone sentence"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = read(os.path.join("skills", "communicator", "SKILL.md"))
+        for needle in ("coined feature name", "INV-28", "one fact = one standalone sentence"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+        base = read(os.path.join("skills", "live-spec-base", "SKILL.md"))
+        self.assertIn("coined feature name", base,
+                      "base rule 2 must name coined feature names as handles")
+
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
         rows = [l for l in led.splitlines()
