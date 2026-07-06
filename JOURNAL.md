@@ -1866,3 +1866,12 @@ artifact reopens its source), 159 (mechanical kill-list template), 161 (provenan
 commentable reviews).
 **Why:** the promoter window paid five rejected rounds to learn these; the pack writes them once so
 no host pays twice.
+
+## 2026-07-07 ~01:27 — row 155: process bookkeeping scales to the delta (session 22)
+**What:** his «каждая итерация очень длинная» became SPEC v0.15.50 INV-61 + the pipeline's gates
+sentence (0.2.36) + the host profile's cadence line reconciled: the pre-push re-check keeps its rigor
+(previous records · the delta walked · a verdict) and scales its FORM — small deltas ride a three-line
+short-form record, surface/structural deltas keep the full walk; claims batch per lane, journal and
+resume once per batch; the irreducible named (writing the law well, red-first, the delta prove, the
+gates). The ~40% bookkeeping audit of tonight's own landings is the row's evidence. M-160, suite 159.
+This very landing ships the FIRST short-form record — the law's own dogfood.

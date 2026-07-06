@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.35
+  version: 0.2.36
 ---
 
 # build-pipeline — ship a change by the method
@@ -277,6 +277,12 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
   audit + a surface-composition check. Fix holes by the book; record the rest.
+- **Process bookkeeping scales to the delta (SPEC INV-61):** the pre-push re-check keeps its rigor and
+  scales its FORM — a small delta (skill/prose/infra kind, no new surface, no structure change) ships a
+  three-line SHORT-FORM record (previous records clean · the delta in one line · the verdict); a
+  surface-sized or structural delta keeps the full walk. Claims batch per declared lane; the journal
+  chapter and the resume rewrite come once per landing batch. Never scaled: the law's own text, the
+  red-first test, the delta's prove, the gates.
 - **Order is law:** `spec → prove → architecture → prove architecture → matrix → test → code`;
   `bug → matrix → test → code`. Never code first and back-fill a spec — and never jump from spec straight
   to tests: the two layers between them (architecture, test-spec derivation) are where whole classes of

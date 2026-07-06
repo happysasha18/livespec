@@ -143,6 +143,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-160 | Process bookkeeping scales to the delta: the pre-push re-check keeps rigor (previous records · delta walked · verdict) and scales FORM — small deltas (skill/prose/infra, no new surface/structure) ride a three-line short-form record, surface/structural deltas the full walk; claims batch per lane, journal + resume once per batch; never the safety net scaled (law text, red-first, delta prove, gates), never a surface delta on the short form | INV-61 | string | `test_process_cost_scales` (red proven against HEAD's shipped state) | BUILT |
 | M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/` — and the record is for the PUSHED STATE: the newest record commit is never older than the last SPEC.md commit (row 61); never a push without its record, never a today-dated-but-stale record passing | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails`, `test_stale_record_fails`, `test_record_with_spec_same_commit_passes` | BUILT |
 
 ### [node: build-pipeline]

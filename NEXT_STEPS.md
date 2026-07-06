@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-07 ~00:14, session 22 — TWENTY rows landed tonight: 109 · 146 · 147 · 106 ·
+## LIVE STATE (2026-07-07 ~00:14, session 22 — TWENTY-ONE rows landed tonight: 109 · 146 · 147 · 106 ·
 110 · 114 · 115 (three parallel lanes) · 149–152 · 111–113 (serial lanes) · 14 (CI mirror LIVE, first catch fixed, run №2 GREEN) · 153 (park-and-flow) · 154 (unmissable stretch-end) · 158+160+162 (promoter harvest: frozen text · no-question-twice · mined proposals))
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.61, SPEC v0.15.49, suite 158 green; CI mirror live.** Verify on
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.62, SPEC v0.15.50, suite 159 green; CI mirror live; short-form records live (INV-61).** Verify on
 resume: `git status -sb` + suite (root `pytest` legal since row 106). **Anthropic pulls FABLE from
 Claude Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only — if resuming
 on another model, ASK Alexander first.**
@@ -23,8 +23,8 @@ on another model, ASK Alexander first.**
 - **Field legs OPEN (need his eye / host windows, not tonight):** 134+141 zero-drift session (catches
   13–18 tonight: mid-turn stamps; fence blocked #15/#17/#18) · 143 budgets clause first host landing ·
   144 task list plain by his eye · 140 first budget-named session · 117/129/133 first real runs.
-- Versions: SPEC v0.15.49 · spec-author 0.1.18 · communicator 0.1.34 · build-pipeline 0.2.35 ·
-  product-prover 0.1.12 · base 0.1.20 · publish 0.1.2 · pack 0.8.61. Installed copies synced.
+- Versions: SPEC v0.15.50 · spec-author 0.1.18 · communicator 0.1.34 · build-pipeline 0.2.36 ·
+  product-prover 0.1.12 · base 0.1.20 · publish 0.1.2 · pack 0.8.62. Installed copies synced.
 - Prover records tonight: row109 · row146 · row147 · rows110-114-115 · rows149-152 · rows111-113 (+ 7
   pushgate records; every finding folded or recorded with reason). Ledger: +1 WATCHED (needle vs line-wrap);
   clock catches now 13–20 (three fence-blocked).
@@ -32,9 +32,9 @@ on another model, ASK Alexander first.**
 
 ## Forward queue (mirrors ROADMAP.md)
 1. PROMOTER AUDIT DONE (read-only, honored): eight lessons → rows 155–162; trio 158+160+162 LANDED
-   ~01:04. Without-him remaining: **155** (process cost scales to the delta) · **156** (smallest
-   sample first) · **157** (rejected artifact reopens its source) · **159** (kill-list template) ·
-   **161** (provenance chips + commentable reviews). Then morning finale ~07:40 (final report + ONE
+   ~01:04. Without-him remaining: **156** (smallest sample first) · **157** (rejected artifact reopens its
+   source) · **159** (kill-list template) · **161** (provenance chips + commentable reviews); row 155
+   LANDED ~01:28 (short-form records live — this landing's own record was the first). Then morning finale ~07:40 (final report + ONE
    page opening + the unmissable final line). Budget cut possible: all commit-fresh, resume here.
 2. **Morning (his word):** row 148 sample verdict (decisions page + JSON round-trip) · the cumulative
    report before 08:00 · one window opened at the end (row 152's deed).

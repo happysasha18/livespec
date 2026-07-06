@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.49, 2026-07-07)
+# live-spec — SPEC (v0.15.50, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -1287,6 +1287,20 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   push should not have happened. The record ENUMERATES the folds applied from its own pass, and a fold
   stays LOCAL to the sections its finding named — a fold reaching wider re-triggers the gate. [M-6]
 
+- **Process bookkeeping scales to the delta — the record's reach map.** A night of eighteen landings
+  measured it: a TINY row pays the same fixed bookkeeping as a whole surface — its own claim commit,
+  its own full-page re-check record, its own journal chapter, a resume rewrite — roughly forty percent
+  of its wall time, and none of it is the safety net (his 2026-07-07 question: «каждая итерация очень
+  длинная — если необходимо, ок; если нет — что можно сделать, не принося качество в жертву»). So the
+  reach idea [INV-45] applies to PROCESS: the re-check before a push keeps its RIGOR always (previous
+  records checked, the delta walked, a verdict) but scales its FORM — a SMALL delta (skill/prose/infra
+  kind, no new surface, no structure change) ships a SHORT-FORM record of three lines: previous
+  records clean · the delta in one line · the verdict; a surface-sized or structural delta keeps the
+  full walk. Claims batch per declared lane (one commit); the journal chapter and the resume rewrite
+  come once per landing BATCH, never per tiny row. And the irreducible is named: the law's own text
+  written well, the red-first test, the delta's cross-link prove, the gates — quality itself, never
+  scaled. [INV-61]
+
 ## When money or time run short (the economy ladder)
 
 Rigor costs — suite runs, prover passes, senior-model hours. Today the pack spends at full rigor
@@ -1496,6 +1510,7 @@ meaning, this table is only the map.
 | INV-58 | approved text is frozen: a revision applies exactly the named correction, never a fresh rewrite around it; churn of approved material = a defect, kin of a resurfaced cut; home: communicator | Throwing a wish |
 | INV-59 | no question asked twice: recorded answers searched before any ask (archives, records, journal, profile) — an already-answered question is a defect; dialogues converge (answered = closed + harvested same session; named problems return solved with evidence; round N+1 only new); home: communicator | Throwing a wish |
 | INV-60 | a taste ask carries the agent's own researched proposal (mined exemplars/options with citations + a chosen recommendation); asking the human to supply what the agent should have mined = a defect; sharpens INV-4; home: communicator | Throwing a wish |
+| INV-61 | process bookkeeping scales to the delta: the pre-push re-check keeps its rigor but scales its form — a small delta (skill/prose/infra, no new surface/structure) ships a three-line SHORT-FORM record (previous clean · delta one line · verdict), surface/structural deltas keep the full walk; claims batch per lane, journal + resume once per batch; the irreducible named (law text, red-first, delta prove, gates) | Rhythm |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

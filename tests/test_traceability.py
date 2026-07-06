@@ -1554,6 +1554,21 @@ class TestProblemLedger(unittest.TestCase):
                        "mined the material first", "closes forever"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_process_cost_scales(self):
+        """Row 155 (M-160, INV-61): the pre-push re-check scales its form to the
+        delta; rigor and the safety net never scale."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-61", "SHORT-FORM record of three lines",
+                       "never per tiny row", "quality itself, never"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("scales to the delta", "three-line SHORT-FORM record",
+                       "once per landing batch"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+        prof = re.sub(r"\s+", " ", read(os.path.join(".live-spec", "profile.md")))
+        self.assertIn("FORM scaled by the delta", prof,
+                      "host profile line not reconciled with INV-61")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""
