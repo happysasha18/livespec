@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.15
+  version: 0.1.16
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -113,8 +113,10 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     and keep working — a pending question never blocks the lane (base rule 1). Every card OPENS with
     what the choice CHANGES for the person — what he will see, get, or stop suffering under each
     option, in the product's words; mechanism only after, only if it helps; options labelled by
-    consequence, never by implementation (SPEC INV-32). A `[default]` that has survived two landings
-    unreviewed rides this page flagged loudly (SPEC INV-31). When the file appears:
+    consequence, never by implementation (SPEC INV-32). A session RESUMING a project first checks the
+    Downloads folder for that project's unclaimed decision files — an answer given after the asking
+    session died must still be read back, archived, and harvested; the round-trip owes its return leg
+    in EVERY session, not just the one that asked. When the file appears:
     read it back, archive it in the project's `docs/decisions/`, and harvest every answer into its queue
     row the same session — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning
     images the same way; first real round-trip ran the same morning.)

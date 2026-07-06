@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.15, 2026-07-06)
+# live-spec — SPEC (v0.15.18, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -270,17 +270,20 @@ return visit, entry through another door, "where am I and how do I move on" from
 exits — and a FEEL pass: motion quality (easing, duration, choreography) and each affordance's craft,
 judged against the approved prototype as the bar [E-17]. Findings become rows or red — never vibes,
 never a mental note. The walk's checklist lives in the build-pipeline step-8 product cell [E-12,
-INV-22]; this clause binds THAT it runs for anything a person visits. [INV-30]
+INV-22]; this clause binds THAT it runs for anything a person visits — and in the FORM the medium actually
+has: a browser product walks motion and affordance craft, a book walks its reading path and chapter
+flow, a CLI its command round-trip; the feel lens is a partial skill applied by the product's
+context, never a frontend checklist forced on prose (Alexander 2026-07-06). [INV-30]
 
-**A taste default is a loan, not a settlement — it may not outlive two landings unreviewed.** The
-`[default]` tag keeps the lane moving [INV-18], but with no closing law defaults compound: a product
-carrying eight open taste calls across two landings reads unfinished everywhere (tlvphoto,
-2026-07-06). So every landing report LISTS the open `[default]`s riding its surfaces with their age
-in landings; one that has survived TWO landings without the human's word may not age silently again —
-it rides the next decision page [E-22] flagged loudly, and the report says so in plain words. His
-pick or veto closes it like any answer [INV-18]. The list's home is the landing report itself — each
-report restates it, a list dropped between reports is a named defect; no separate counter file, no
-new state home. [INV-31]
+**A taste choice made without asking is TOLD, never confirmed.** Building a feature, the walk makes
+small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a
+caption's wording — each written into the spec with its `[default]` tag [INV-18]. What went wrong the
+first time was silence: a product accumulated eight untold choices and read unfinished everywhere
+(tlvphoto, 2026-07-06). The law: the landing report NAMES each choice made without asking, in plain
+words with an example, marked as tweakable — and that is ALL. No confirmation is requested; silence
+is consent; nothing is re-asked later — the person asks when they want something changed, and the
+`[default]` tags keep every such choice findable in the spec forever (Alexander 2026-07-06: «если
+мне всё ок — не надо подтверждать… дальше уже, если надо, пользователь спросит»). [INV-31]
 
 **What already works is promised before you touch it.** When a feature-doored wish touches a surface
 that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
@@ -933,8 +936,8 @@ meaning, this table is only the map.
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
 | INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence | Throwing a wish |
 | INV-29 | a feature-doored wish walks the kind-scaled FIT WALK at intake (journey / flows / trigger lenses); trivially-closable holes closed and written how; only genuine taste calls go out, batched; prover mode FEATURE-FIT | Throwing a wish |
-| INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar; findings become rows or red | Throwing a wish |
-| INV-31 | a `[default]` may not outlive two landings unreviewed: landing reports list open defaults with age; expired ones ride the next decision page loudly | Throwing a wish |
+| INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar, in the medium's own form (motion for a browser, reading path for a book); findings become rows or red | Throwing a wish |
+| INV-31 | a taste choice made without asking is told in the landing report — plain words, an example, a tweakable mark; no confirmation, silence is consent, never re-asked; the [default] tag keeps it findable | Throwing a wish |
 | INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |

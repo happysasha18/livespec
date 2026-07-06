@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.17
+  version: 0.2.18
 ---
 
 # build-pipeline — ship a change by the method
@@ -177,9 +177,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    what changed for the person using the product, with one concrete example from real output — never
    function names, internal ids, or row numbers (those live in the journal). And no doc pins a drifting
    version number in prose — "current version: vX.Y" always goes stale; point at the version's one home
-   (the VERSION file, the frontmatter) or omit it. The landing report lists the open `[default]`s riding
-   the landed surfaces with their age in landings; one older than two landings rides the next decision
-   page flagged loudly (SPEC INV-31). Show the human the REAL render in a new window; push/deposit only
+   (the VERSION file, the frontmatter) or omit it. The landing report TELLS the taste choices made
+   without asking — the open `[default]`s — each in plain words with an example and a tweakable mark;
+   no confirmation requested, silence is consent, never re-asked (SPEC INV-31). Show the human the REAL render in a new window; push/deposit only
    after they've reviewed it. A push re-renders all deposited artifacts. Where the host's design-sync is ON (base
    defaults; SPEC E-18), the landing's DECLARED components also sync to the team's design project — after
    the human's gate, never instead of the in-session show.

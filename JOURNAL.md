@@ -1182,3 +1182,30 @@ problem, it is a missing machine. The skills-sync wall, by contrast, STANDS: the
 explicitly ruled his «а ты шелл не можешь запустить через опуса?» a question, not authorization —
 and no worker tier bypasses it (it sits above every model). The sync still rides either his plain
 word or his one `! sh ~/live-spec/install.sh`.
+
+## 2026-07-06 11:42, session 12 — his three corrections fold in; the new lens walks its own maker
+
+Morning round three, all on his word within the hour. (1) The two-landing forced review of taste
+choices died the same day it was born: «если мне всё ок — не надо подтверждать» — the law is now
+TELL, never confirm: the landing report names each choice made without asking, plainly, with an
+example and a tweakable mark; silence is consent; the person asks when they want a change. The
+telling half of yesterday's complaint stands — silent accumulation stays illegal. (2) The feel lens
+learned context: a browser product walks motion and craft, a book walks its reading path, a CLI its
+command round-trip — a partial skill by medium, never a frontend checklist forced on prose. (3) The
+installer bug he hit by deed — six stale skill copies listed by the harness as loadable duplicates
+after his own install run — fixed red-first: backups now land in an attic beside the skills dir
+(rows 120/121/122; SPEC header un-drifted to v0.15.18 — the header had silently stayed at .15
+through two claimed bumps, a brief defect of this same morning, corrected here).
+
+Then the FEATURE-FIT lens ran RETROACTIVELY on the pack's own landed features — his ask, and the
+mode's first real run (record: docs/prover/2026-07-06-feature-fit-retro.md). Ten features walked as
+their user lives them. Two holes closed the same hour, written how: an answer file downloaded AFTER
+the asking session died had no owner — every resuming session now sweeps Downloads first
+(communicator 0.1.16); and the installer bug above. One new row queued (123: worker briefs carry the
+problem ledger). Three known holes confirmed already owned (54 onboarding · 106 pytest · 112 HALT
+list). Zero questions for the human — nothing was taste. His new wish caught and queued: each
+pipeline step worked in its craft's mindset — product manager at spec, architect at architecture,
+QA automation at the matrix (row 124). Versions: communicator 0.1.16 · build-pipeline 0.2.18 ·
+pack 0.8.29 · suite 108 green. The worker HALTed once more, again correctly: the brief had missed
+that a pre-existing installer test PINNED the buggy behaviour, and that a matrix row must physically
+move with its anchor's new owner — both fixed on the senior's word, both logged.

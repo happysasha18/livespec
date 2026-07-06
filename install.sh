@@ -20,7 +20,9 @@ for skill_dir in "$SKILLS_SRC"/*/; do
   dest="$SKILLS_DEST/$skill_name"
 
   if [ -d "$dest" ]; then
-    backup="$dest.bak_$TIMESTAMP"
+    backup_home="$SKILLS_DEST-attic"
+    mkdir -p "$backup_home"
+    backup="$backup_home/$skill_name.bak_$TIMESTAMP"
     echo "  $skill_name — backing up existing to $backup"
     cp -r "$dest" "$backup"
   else

@@ -1,7 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~11:07, session 12 — morning, Alexander active)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.28, SPEC v0.15.17, suite 107 green, two local
+## LIVE STATE (2026-07-06 ~11:43, session 12 — morning, Alexander active; context heavy, wipe-ready
+after this landing's report)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.29, SPEC v0.15.18, suite 108 green, four local
 commits, NOT pushed** (host push gate = FULL prover pass + eval re-runs + publish walk before every
 push; batch at the next milestone). Verify on resume: `git status -sb` + the suite.
 - **ROW 116 LANDED ~10:33** — the outcome-leads law (INV-28): a report line opens with what changed
@@ -15,9 +16,21 @@ push; batch at the next milestone). Verify on resume: `git status -sb` + the sui
   defaults expire after two landings unreviewed (landing report restates the open list) · INV-32
   decision cards open with consequences, never mechanisms. spec-author 0.1.12 · product-prover 0.1.9 ·
   build-pipeline 0.2.17 · communicator 0.1.15 · M-114..M-117 · four red-proven tests.
-- **⚠ ONE OPEN LEG on the family: installed skill copies are STALE** (repo is ahead) — the harness
-  classifier blocked both worker and senior from writing ~/.claude/skills. Needs Alexander's one run:
-  `! sh ~/live-spec/install.sh`. Until then, sessions load the pre-family skill texts.
+- **ROWS 120/121/122 LANDED ~11:40 (his same-hour corrections)**: taste choices are TOLD, never
+  confirmed (INV-31 rewritten — report names each with an example + tweakable mark, silence is
+  consent); the feel lens scales to the medium (INV-30 — a book walks its reading path, not
+  animations); the installer no longer drops backups into the live skills folder (bug he hit by
+  deed; red-proven; SPEC header un-drifted to v0.15.18). communicator 0.1.16 · build-pipeline
+  0.2.18 · pack 0.8.29 · suite 108 green.
+- **FEATURE-FIT retro run DONE** (his ask; record `docs/prover/2026-07-06-feature-fit-retro.md`):
+  ten pack features walked; two holes closed same hour (resume now sweeps Downloads for unclaimed
+  decision answers · installer attic); row 123 queued (worker briefs carry the problem ledger);
+  rows 54/106/112 confirmed already owned.
+- **ROW 124 QUEUED**: each pipeline step worked in its craft's mindset (his «крутой продакт /
+  крутой архитект / крутой QA-автоматчик»).
+- **⚠ Installed skill copies STALE AGAIN** (his install.sh run synced the morning family, but rows
+  120-122 changed communicator + build-pipeline after it) — needs his `! sh ~/live-spec/install.sh`
+  once more, or his plain «да, обнови копии» in chat (his word opens the classifier).
 - **zsh `===` separator SOLVED ~11:17**: with his full delegation on record the classifier allowed
   self-install — PreToolUse fence live, proven by deed (`echo === proof` blocked); quoted/heredoc
   forms pass (self-tested). Nothing rides on him.

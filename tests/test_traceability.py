@@ -688,9 +688,15 @@ class TestInstallerAndDecisionPage(unittest.TestCase):
             for s in skills:
                 self.assertTrue(os.path.isfile(os.path.join(dest, s, "SKILL.md")),
                                 "%s gone after re-run — the never-deletes side broke" % s)
-            backups = [d for d in os.listdir(dest) if ".bak_" in d]
-            self.assertGreaterEqual(len(backups), len(skills),
-                                    "second run left no timestamped backups")
+            attic = dest + "-attic"
+            self.assertTrue(os.path.isdir(attic),
+                            "second run left no attic dir beside the live skills dest (row 122)")
+            attic_backups = [d for d in os.listdir(attic) if ".bak_" in d]
+            self.assertGreaterEqual(len(attic_backups), len(skills),
+                                    "second run left no timestamped backups in the attic")
+            dest_backups = [d for d in os.listdir(dest) if ".bak_" in d]
+            self.assertEqual(dest_backups, [],
+                             "a backup landed inside the live skills dir — row 122 regression")
 
     def test_spec_names_installer(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
@@ -1117,10 +1123,11 @@ class TestProblemLedger(unittest.TestCase):
     def test_default_expiry_law(self):
         """Row 118 (M-116, INV-31): a taste default may not outlive two landings unreviewed."""
         spec = read("SPEC.md")
-        for needle in ("INV-31", "outlive two landings"):
+        for needle in ("INV-31", "TOLD, never confirmed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
-        self.assertIn("two landings", comm, "communicator rule 10 missing the expiry law")
+        self.assertIn("unclaimed decision files", comm,
+                      "communicator rule 10 missing the resume-sweep of decision answers")
         pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
         self.assertIn("open `[default]`s", pipeline, "pipeline step 9 missing the defaults list")
 
@@ -1132,6 +1139,13 @@ class TestProblemLedger(unittest.TestCase):
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         self.assertIn("what the choice CHANGES for the person", comm,
                       "communicator rule 10 missing the consequence-first card law")
+
+    def test_install_backup_home(self):
+        """Row 122 (M-118): installer backups live outside the live skills dir."""
+        script = read("install.sh")
+        self.assertIn("-attic", script, "install.sh must back up into an attic, not the live dir")
+        self.assertNotIn('backup="$dest.bak_', script,
+                         "install.sh still backs up inside ~/.claude/skills")
 
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
