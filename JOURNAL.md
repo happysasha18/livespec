@@ -1496,3 +1496,22 @@ the first real T-18 run; the landing tree held only lane A's delta (INV-39 by co
 independence judgment shaped the work (base left untouched so no citation re-pin would cross into
 lane B's files). Delegation: lane B entire = a Sonnet worker in a worktree; lane A stayed senior
 (spec-heavy, small script). Suite 122 green; pack 0.8.41.
+
+## 2026-07-06 18:11, session 18 — row 137 lands: dense rules get scannable shapes (LANE B; the double-lane run completes)
+
+WHY: the skill-creator walk's two re-queued findings (6+11) — build-pipeline's step-zero bullet and
+communicator's rules 6/8/9/10/11 failed the 30-second scan a fresh agent needs. Refactor door: FORM
+only. The worker's method deserves the journal: extracted each block's raw text programmatically
+(protecting the six raw-read pinned substrings from mid-string newlines), split at sentence
+boundaries, and VERIFIED token-sequence equality old-vs-new before writing — zero words moved, the
+suite as the second detector, run after every rule. THE METHOD NEWS: this was lane B of the FIRST
+double-lane run — built start-to-finish in an isolated worktree while lane A (row 136) walked the
+document stages and landed; integration waited for the pen, the gate re-ran on the new truth,
+landed-first won and the second re-verified — T-18 and INV-39 lived exactly as the law reads two
+hours after it was written. One workshop find: the harness parks worker worktrees INSIDE the repo
+(.claude/worktrees/) — gitignored as a class at lane A's landing so no future train's tree can ride a
+landing commit. Delegation: lane B entire = one Sonnet worker (roughly 40 minutes of senior hands
+returned; the token-equality rigor was the worker's own craft, worth naming). Suite 122; versions:
+build-pipeline 0.2.26, communicator 0.1.25, pack 0.8.42.
+(The clock fence's FIFTH catch, right at this landing: 18:21/18:22 stamps at an 18:11 clock — the hand
+extrapolates whenever it stops reading; row 134's case is now five strong in two days.)

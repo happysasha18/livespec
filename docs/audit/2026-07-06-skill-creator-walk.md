@@ -23,12 +23,12 @@ publish 95 (post-fold numbers).
 | 3 | live-spec-base | description one ~110-word run-on | nit | **FOLDED** with #2: split at "stated ONCE" |
 | 4 | spec-author | dense pack coinages vs the "stands standalone" header claim; suggested a glossary | nit | **REJECTED**: the header is pack-wide boilerplate (one home, INV-13) — softening it in one skill forks it; the coinages (doors, fences, facets) are each defined in the body section that owns them |
 | 5 | build-pipeline | PLAYBOOK.md cited three times as if co-located; it lives in the private playbook repo — a fresh agent greps and finds nothing | should | **FOLDED**: all three mentions now say "the private playbook repo's PLAYBOOK.md" |
-| 6 | build-pipeline | step-zero bullet ~18 lines of unbroken code-laden prose — scanability | should | **RE-QUEUED as row 137** (with #11 — the same class): a restructure-scale rewrite around test-pinned strings, its own row, never a drive-by |
+| 6 | build-pipeline | step-zero bullet ~18 lines of unbroken code-laden prose — scanability | should | **FOLDED via row 137** (landed 2026-07-06 s18, lane B of the first double-lane run: lead line + sub-points, every word kept, pins verbatim, suite green) |
 | 7 | build-pipeline | no worked end-to-end example | nit | **REJECTED**: size pressure vs value — the work-kind and excuses tables already anchor concretely; may ride row 137 if its rewrite makes room |
 | 8 | build-pipeline | emphatic caps against skill-creator's style guidance | nit | **REJECTED**: deliberate register — the reader is a model and the caps mark law-bearing words; the teeth are mechanical (guardrails), the caps are the pointer to them |
 | 9 | product-prover | description lacked the NOT-tail (body-only) | nit | **FOLDED**: "NOT for code or diffs… never a substitute for tests" appended to the description |
 | 10 | communicator | description carried self-referential tuning history and bare rule-number pointers; ~180 words | should | **FOLDED**: history clause dropped, rule numbers dropped, the done-claim and feature-map triggers named in reader terms; the row-68 fence held — the pinned NOT-side phrases kept verbatim (suite-checked) |
-| 11 | communicator | rules 6/8/9/10/11 are single dense paragraphs — scanability | should | **RE-QUEUED as row 137** (with #6): same class, same care |
+| 11 | communicator | rules 6/8/9/10/11 are single dense paragraphs — scanability | should | **FOLDED via row 137** (landed 2026-07-06 s18, with #6 — rules 6/8/9/10/11 reshaped, token-equality verified) |
 | 12 | publish | no concrete ❌/✅ worked example | should | **FOLDED**: a before/after skill-README example added ahead of When-NOT |
 | 13 | both (comm/publish) | body When-NOT duplicates description info | nit | **REJECTED**: deliberate redundancy — the body serves standalone use, the description serves the triggering classifier; recorded here as intentional |
 

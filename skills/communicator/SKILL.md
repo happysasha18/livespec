@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.24
+  version: 0.1.25
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -60,22 +60,27 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    stays the authority for the landing itself; the design project is the team-review channel, never a
    substitute for showing the real thing here.
 
-6. **Plain language, in the product's own words — a code never does the talking.** Speak in use-cases —
-   what the person DOES and SEES — not the mechanism. Every internal handle — plan codes, worker names,
-   session numbers, **and spec handles (INV-x, E-x, A-x, T-x, queue row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the reader never chose to learn (a name that needs its story told first is a handle, not a name — SPEC INV-28)** — is a
-   machine anchor: the plain-words sentence carries the meaning, and the code may only TRAIL it in
-   parentheses as a quiet anchor. The split is deliberate (Alexander 2026-07-04): the human reads the
-   sentence; the anchor serves the MODEL — transcripts are what it greps and self-monitors against, so a
-   stable code in parentheses makes past reasoning findable without ever asking the human to parse it.
-   A bare code standing in for the meaning is a bug,
-   exactly like a leaked model name. Calques are the same bug across a language split (base rule 2): a
-   term or metaphor coined in the docs language never crosses into chat as a literal translation —
-   restate the mechanism in natural chat-language words, the original may trail in parentheses. —
-   *❌ "вердикт растяжки старше ярлыка"  ✅ "фиксированный чек-лист решает, фича это или багфикс
-   (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day). One thing = one name, everywhere; the vocabulary comes from the SPEC. —
-   *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name, not a blank" ·
-   ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up
-   a GitHub backup before heavy compute (INV-8); want me to?"*
+6. **Plain language, in the product's own words — a code never does the talking.**
+   - Speak in use-cases — what the person DOES and SEES — not the mechanism.
+   - Every internal handle — plan codes, worker names, session numbers, **and spec handles (INV-x,
+     E-x, A-x, T-x, queue row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the
+     reader never chose to learn (a name that needs its story told first is a handle, not a name —
+     SPEC INV-28)** — is a machine anchor: the plain-words sentence carries the meaning, and the code
+     may only TRAIL it in parentheses as a quiet anchor.
+   - The split is deliberate (Alexander 2026-07-04): the human reads the sentence; the anchor serves
+     the MODEL — transcripts are what it greps and self-monitors against, so a stable code in
+     parentheses makes past reasoning findable without ever asking the human to parse it.
+   - A bare code standing in for the meaning is a bug, exactly like a leaked model name.
+   - Calques are the same bug across a language split (base rule 2): a term or metaphor coined in the
+     docs language never crosses into chat as a literal translation — restate the mechanism in natural
+     chat-language words, the original may trail in parentheses. —
+     *❌ "вердикт растяжки старше ярлыка"  ✅ "фиксированный чек-лист решает, фича это или багфикс
+     (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day).
+   - One thing = one name, everywhere; the vocabulary comes from the SPEC. —
+     *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name, not a blank" ·
+     ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up
+     a GitHub backup before heavy compute (INV-8); want me to?"*
+
 
 7. **Be honest about the result — small is not a win; and don't escalate what you can decide.** Don't sell a
    micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak. And
@@ -85,71 +90,101 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    earlier stamp; quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
    family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
 
-8. **Retell, don't reference.** When reporting an event or a result, tell it as a small story — who did what,
-   what would have happened before, what happened instead, why it matters — in words that stand on their own.
-   A pointer into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record, not a
-   message: if the sentence only lands for someone who already holds the context, it hasn't been said yet.
-   The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it. A LANDING report
-   also names, in plain words, every pipeline step the wish's work-kind stood down ("design-sync — text
-   product, stood down") — a skipped step is a written fact the human can read, never an omission
-   (SPEC INV-22). And the NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly
-   this, 2026-07-06): a test count, a suite size, a version string, a check tally is never message
-   content — say what the number means for the reader ("tested clean", "saved", "the method held") and
-   let it trail as a quiet anchor or stay in the records. One carve-out: where the number is the asked
-   substance — a direct question about it, or rule 11's evidence walk (SPEC INV-25) — the number IS the
-   answer. — *❌ "все 64 проверки зелёные, v0.9.16"  ✅ "проверено начисто, изменение сохранено (64
-   checks, v0.9.16)"*
+8. **Retell, don't reference.**
+   - When reporting an event or a result, tell it as a small story — who did what, what would have
+     happened before, what happened instead, why it matters — in words that stand on their own.
+   - A pointer into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record,
+     not a message: if the sentence only lands for someone who already holds the context, it hasn't
+     been said yet.
+   - The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
+   - A LANDING report also names, in plain words, every pipeline step the wish's work-kind stood down
+     ("design-sync — text product, stood down") — a skipped step is a written fact the human can read,
+     never an omission (SPEC INV-22).
+   - And the NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly this,
+     2026-07-06): a test count, a suite size, a version string, a check tally is never message content —
+     say what the number means for the reader ("tested clean", "saved", "the method held") and let it
+     trail as a quiet anchor or stay in the records.
+   - One carve-out: where the number is the asked substance — a direct question about it, or rule 11's
+     evidence walk (SPEC INV-25) — the number IS the answer. —
+     *❌ "все 64 проверки зелёные, v0.9.16"  ✅ "проверено начисто, изменение сохранено (64
+     checks, v0.9.16)"*
 
-9. **Show the map as a map — status icons, not a table wall.** When saying where we are and what's next,
-   render the roadmap as a short bulleted list with status icons — ✅ landed · 🔨 in work now · ⬜ queued,
-   in order · 🙋 waiting on the human — the current item visibly marked, finished stretches collapsed to a
-   line each. Each line carries one clause of substance beyond the title, matched to its status: a landed
-   item says what it changed, an in-work item what is happening right now, a queued item what it will give,
-   a waiting item exactly what is asked — so the list informs, not just enumerates ("bare titles read fine
-   but say too little" — Alexander, same day). Never paste the queue table into chat and never retell it as
-   a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
-   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the station vocabulary being the pipeline's own step names, one station per step, all nine (landed is a state, not a step), so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day) And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for the reader; the feature's name on the board is a plain descriptive phrase — a coined feature name is an internal handle (rule 6) and may only trail; row numbers trail likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают зубы» and its reader bounced it, 2026-07-06 morning). With two trains rolling (SPEC T-18), each in-work lane keeps its own board line, and a lane WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code written, at integration, waiting behind row 135"* — waiting and working must read apart at a glance.
+9. **Show the map as a map — status icons, not a table wall.**
+   - When saying where we are and what's next, render the roadmap as a short bulleted list with
+     status icons — ✅ landed · 🔨 in work now · ⬜ queued, in order · 🙋 waiting on the human — the
+     current item visibly marked, finished stretches collapsed to a line each.
+   - Each line carries one clause of substance beyond the title, matched to its status: a landed
+     item says what it changed, an in-work item what is happening right now, a queued item what it
+     will give, a waiting item exactly what is asked — so the list informs, not just enumerates
+     ("bare titles read fine but say too little" — Alexander, same day).
+   - Never paste the queue table into chat and never retell it as a paragraph; the eye should get
+     the whole map in one glance, then the words add only what the icons can't say.
+   - And each in-work line names its pipeline STATION — spec → prove → architecture → prove
+     architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the
+     station vocabulary being the pipeline's own step names, one station per step, all nine
+     (landed is a state, not a step), so the map reads like a departures board (SPEC INV-27): said
+     in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌
+     "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is
+     written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare
+     or gestured station name a plain reader can't place is the map failing (first eval re-run
+     caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day)
+   - And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for
+     the reader; the feature's name on the board is a plain descriptive phrase — a
+     coined feature name is an internal handle (rule 6) and may only trail; row numbers trail
+     likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs
+     the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают
+     зубы» and its reader bounced it, 2026-07-06 morning).
+   - With two trains rolling (SPEC T-18), each in-work lane keeps its own board line, and a lane
+     WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code
+     written, at integration, waiting behind row 135"* — waiting and working must read apart at a
+     glance.
 
-10. **Several open picks → ONE interactive decision page.** When more than one decision waits on the
-    human, don't serialize questions into chat and don't write a questionnaire document: render one local
-    HTML page — one card per question with radio options, the recommendation marked "(recommended)"
-    (rule 2), a free-form note field on every card (there is always room for an answer outside the
-    options), and a **Download JSON** button. The file it saves is named
-    **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's SECOND and later pages append their
-    ordinal (`…-<date>-2.json`), set by the page author from the decision archive — the pack's one
-    collision law, base rule 18 — so a browser never
-    invents an ugly " (1)" suffix (Alexander 2026-07-05) — the project name is part of the filename because
-    several projects can run in parallel and their answer files land in the same Downloads folder
-    (Alexander 2026-07-05); the JSON stamps when it was answered. Open the page in a new browser window
-    and keep working — a pending question never blocks the lane (base rule 1). Every card OPENS with
-    what the choice CHANGES for the person — what he will see, get, or stop suffering under each
-    option, in the product's words; mechanism only after, only if it helps; options labelled by
-    consequence, never by implementation (SPEC INV-32). A session RESUMING a project first checks the
-    Downloads folder for that project's unclaimed decision files — an answer given after the asking
-    session died must still be read back, archived, and harvested; the round-trip owes its return leg
-    in EVERY session, not just the one that asked. When the file appears:
-    read it back, archive it in the project's `docs/decisions/`, and harvest every answer into its queue
-    row the same session — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning
-    images the same way; first real round-trip ran the same morning.)
-    The standard-facet sweep (SPEC T-13/INV-18) does NOT ask through this batch: a facet taken on its
-    recommended default is TOLD on the landing report's defaults list — the tradeoff said in the
-    product's words ("on a phone this gallery stacks into one column — tweakable"), the default already
-    live so the lane never waited, no confirmation requested, silence is consent (SPEC INV-31); the
-    cards carry only the genuinely open picks; a veto
-    becomes a new wish, never a blocked lane.
+10. **Several open picks → ONE interactive decision page.**
+    - When more than one decision waits on the human, don't serialize questions into chat and
+      don't write a questionnaire document: render one local HTML page — one card per question
+      with radio options, the recommendation marked "(recommended)" (rule 2), a free-form note
+      field on every card (there is always room for an answer outside the options), and a
+      **Download JSON** button.
+    - The file it saves is named **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's
+      SECOND and later pages append their ordinal (`…-<date>-2.json`), set by the page author
+      from the decision archive — the pack's one collision law, base rule 18 — so a browser
+      never invents an ugly " (1)" suffix (Alexander 2026-07-05) — the project name is part of
+      the filename because several projects can run in parallel and their answer files land in
+      the same Downloads folder (Alexander 2026-07-05); the JSON stamps when it was answered.
+    - Open the page in a new browser window and keep working — a pending question never blocks
+      the lane (base rule 1).
+    - Every card OPENS with what the choice CHANGES for the person — what he will see, get, or
+      stop suffering under each option, in the product's words; mechanism only after, only if it
+      helps; options labelled by consequence, never by implementation (SPEC INV-32).
+    - A session RESUMING a project first checks the Downloads folder for that project's
+      unclaimed decision files — an answer given after the asking session died must still be
+      read back, archived, and harvested; the round-trip owes its return leg in EVERY session,
+      not just the one that asked. When the file appears: read it back, archive it in the
+      project's `docs/decisions/`, and harvest every answer into its queue row the same session
+      — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning images the
+      same way; first real round-trip ran the same morning.)
+    - The standard-facet sweep (SPEC T-13/INV-18) does NOT ask through this batch: a facet taken
+      on its recommended default is TOLD on the landing report's defaults list — the tradeoff
+      said in the product's words ("on a phone this gallery stacks into one column —
+      tweakable"), the default already live so the lane never waited, no confirmation requested,
+      silence is consent (SPEC INV-31); the cards carry only the genuinely open picks; a veto
+      becomes a new wish, never a blocked lane.
 
-11. **"Did we actually do X?" is answered by walking the evidence — wearing its method version.** A
-    done-claim ("is it done / adopted / true?") is never answered from memory: it is the
-    claims-need-primary-source rule (base rule 13) applied to the exchange itself. Walk the records NOW —
-    adoption record, prover record, suite run, git commit, matrix row — and pin each claim to its
-    artifact, one line per claim: **claim → artifact → version**. Say verified apart from asserted, in
-    plain words: what you opened and saw versus what you merely believe. The answer names the METHOD
-    VERSION the work was done by — pack + skill versions read from that host's installed set (SPEC M-7) —
-    so "done by live-spec" always means "done by live-spec vX"; and where the host has no installed set
-    (never adopted, or the work predates adoption), say exactly that —
-    an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌ "да, тесты по методологии сделаны"
-    ✅ "verified: suite green — tonight's run, this commit; done by pack 0.8.x / prover 0.1.8; asserted
-    (not re-checked): the adoption record's coverage claim"*
+11. **"Did we actually do X?" is answered by walking the evidence — wearing its method version.**
+    - A done-claim ("is it done / adopted / true?") is never answered from memory: it is the
+      claims-need-primary-source rule (base rule 13) applied to the exchange itself.
+    - Walk the records NOW — adoption record, prover record, suite run, git commit, matrix row —
+      and pin each claim to its artifact, one line per claim: **claim → artifact → version**.
+    - Say verified apart from asserted, in plain words: what you opened and saw versus what you
+      merely believe.
+    - The answer names the METHOD VERSION the work was done by — pack + skill versions read from
+      that host's installed set (SPEC M-7) — so "done by live-spec" always means "done by
+      live-spec vX"; and where the host has no installed set (never adopted, or the work
+      predates adoption), say exactly that —
+      an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌
+      "да, тесты по методологии сделаны" ✅ "verified: suite green — tonight's run, this commit;
+      done by pack 0.8.x / prover 0.1.8; asserted (not re-checked): the adoption record's
+      coverage claim"*
 
 12. **The capture echo — a wish hears itself land.** The moment a wish is intaken, the human hears the
     intake line back as ONE plain sentence — what was heard, the door called (the door step's own

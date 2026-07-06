@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.25
+  version: 0.2.26
 ---
 
 # build-pipeline — ship a change by the method
@@ -40,25 +40,26 @@ and the hat each artifact was made under is namable on ask. The craft wears the 
 toolsmith — the ladder names the archetypes, the kind says what their standards look like in its medium.
 
 ## When to run it — and where each kind of change enters
-- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row · place on the map (communicator rule 12; SPEC INV-27, INV-37).** The intake
-  line states size (a wish too big for its worth is negotiated in SCOPE — cut surfaces or split into
-  stages, never a time budget or estimate; proposals proceed on the recommended option and are
-  surfaced, SPEC T-15) ·
-  priority · door: feature · bug · refactor · docs-only · skip · work-kind: product · infra · skill ·
-  prose — what the wish BUILDS, one kind per wish, scaling the FORM of every step it walks (the
-  work-kind table below; SPEC T-16, INV-22). The same line PLACES the wish on the product's feature
-  map — **changes feature X · a new feature · restructure** — spoken in the echo and written in the
-  row's `map:` note; the map is the spec's scenario sections plus the architecture's nodes, never a
-  third document, and a restructure verdict queues its OWN row (refactor door if only structure
-  moves, feature door if behaviour moves too) — the re-carve happens only through the architecture
-  step and its re-prove (SPEC INV-37). Tripwires decide, not
-  judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
-  · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
-  casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
-  bug door alone — a re-doored wish takes no preemption. Re-fire the door mid-work the moment the work is
-  about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
-  door. **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, not new stories; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
-  rule 16) — never into prod, never shown as product.
+- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row · place on the map (communicator rule 12; SPEC INV-27, INV-37).**
+  - The intake line states size (a wish too big for its worth is negotiated in SCOPE — cut surfaces or
+    split into stages, never a time budget or estimate; proposals proceed on the recommended option and
+    are surfaced, SPEC T-15) · priority · door: feature · bug · refactor · docs-only · skip · work-kind: product · infra · skill ·
+    prose — what the wish BUILDS, one kind per wish, scaling the FORM of every step it walks (the
+    work-kind table below; SPEC T-16, INV-22). The same line PLACES the wish on the product's feature
+    map — **changes feature X · a new feature · restructure** — spoken in the echo and written in the
+    row's `map:` note; the map is the spec's scenario sections plus the architecture's nodes, never a
+    third document, and a restructure verdict queues its OWN row (refactor door if only structure
+    moves, feature door if behaviour moves too) — the re-carve happens only through the architecture
+    step and its re-prove (SPEC INV-37).
+  - Tripwires decide, not judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
+    · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
+    casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
+    bug door alone — a re-doored wish takes no preemption.
+  - Re-fire the door mid-work the moment the work is
+    about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
+    door.
+  - **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, not new stories; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
+    rule 16) — never into prod, never shown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
   also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample
