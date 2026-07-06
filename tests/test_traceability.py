@@ -832,6 +832,19 @@ class TestLoaderStaysThin(unittest.TestCase):
                        "migrates to its real home"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the loader-stays-thin item: %s" % phrase)
 
+    def test_m1_names_skill_creator_rewalk(self):
+        """Row 130 (M-128): the milestone gate re-walks the pack's skills through
+        skill-creator; findings folded or rejected with reason in a dated record;
+        a new skill walks it at birth."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("re-walked through the standard skill-making skill",
+                       "folded or rejected with a written reason in a dated record",
+                       "walks it at birth"):
+            self.assertIn(phrase, spec, "SPEC M-1 lost the skill-creator re-walk item: %s" % phrase)
+        import glob
+        recs = glob.glob(os.path.join(ROOT, "docs", "audit", "*skill-creator*"))
+        self.assertTrue(recs, "no dated skill-creator walk record in docs/audit/ (M-128)")
+
 
 class TestWorkerContract(unittest.TestCase):
     """Row 59 (M-095): the worker contract — ownership narrowed to the brief, sibling files

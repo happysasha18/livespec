@@ -1443,3 +1443,19 @@ parallelism, «токены не жалко, скорость важнее»; to
 read-only analysis agents ran row 130's walks in the background while row 133 held the lane) and row 136
 (the pack checks GitHub for its own updates daily and PROPOSES, never installs silently). Row 130's
 walk itself came back with findings from all three agents — folding is the next movement.
+
+## 2026-07-06 16:37, session 17 — row 130 lands: the six skills walk skill-creator (row 137 queued)
+
+The walk itself was the session's parallel arm: three read-only analysis agents (two skills each) ran
+skill-creator's craft lens over the repo copies while row 133 held the lane — the senior kept judgment,
+the agents kept the reading. Thirteen findings; seven folded (the prover link that named a second repo
+now points into the pack; base, prover and communicator descriptions carry their NOT-sides and lose
+history scars and bare rule numbers — communicator's row-68 fence held, its pinned phrases verbatim;
+build-pipeline's PLAYBOOK references name the private playbook repo so a fresh agent stops grepping for
+a file that isn't there; publish gains its worked before/after example), four rejected with written
+reasons (pack-wide header boilerplate stays one home; the pipeline's caps are a deliberate register for
+a model reader; the When-NOT redundancy is intentional standalone support), two re-queued as row 137 —
+the dense-paragraph scanability class is a restructure-scale rewrite around pinned strings, not a
+drive-by. The standing law: M-1's milestone checklist now carries the re-walk item and a skill joining
+the pack walks skill-creator at birth (M-128, red-proven then green). Record:
+docs/audit/2026-07-06-skill-creator-walk.md. All six sizes stay under the 500-line ideal.

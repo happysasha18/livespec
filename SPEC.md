@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.27, 2026-07-06)
+# live-spec — SPEC (v0.15.28, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -911,7 +911,11 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
   in, re-check skill freshness [A-7]. [M-2]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
-  against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] + doc
+  against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] +
+  the pack's skills re-walked through the standard skill-making skill (skill-creator's format /
+  frontmatter / description-triggering lens — our evals test behaviour, this lens tests the CRAFT of the
+  skill file itself; findings folded or rejected with a written reason in a dated record; and a skill
+  newly JOINING the pack walks it at birth, not only at the gate) + doc
   COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills/ledger [E-24], and the TEST SUITE swept the
   same way — a duplicate or superseded test is deleted only when the matrix audit shows its rows still
   covered by a live test; nothing grows unboundedly, docs or suite;

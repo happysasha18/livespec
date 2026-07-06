@@ -5,10 +5,10 @@ description: >
   test → code → verify → commit & show pipeline, orchestrating the spec-author and product-prover skills. Use this whenever starting a new
   feature, a new stateful surface, or a behaviour change that deserves more than a one-line edit:
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
-  executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
+  executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.23
+  version: 0.2.24
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.14), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.15), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -25,7 +25,7 @@ matrix → test → code → verify → commit & show**. A bug shortcuts to **bu
 existing architecture node it lands in). **Skip the pipeline only if ALL hold:** single
 file · no new state / element / user-visible behaviour · an existing test level already covers the touched
 fact (still ship a test). Anything touching visibility / layout / colour enters at the matrix step minimum.
-Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (PLAYBOOK.md holds
+Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (The private playbook repo's PLAYBOOK.md holds
 the principle behind each step; this skill is its executable projection — keep the two in sync.)
 
 **The craft ladder — whose head you wear at each step (SPEC INV-33).** Each artifact is judged by its
@@ -257,7 +257,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and the
   checkpoint path — the worker never hunts context, never interprets the spec, never decides. If writing
   the brief means deciding something first, that decision is the senior's and happens BEFORE delegation
-  — "долго объяснять" is how delegation silently dies. See PLAYBOOK. **The worker contract (SPEC
+  — "долго объяснять" is how delegation silently dies. See the private playbook repo's PLAYBOOK.md. **The worker contract (SPEC
   ACT-3):** the brief NAMES the files the worker may write — its session's write-ownership narrowed to
   exactly those, reads free, writes fenced; same-session sibling-worker files are fence-benign (the
   concurrent-edit fence alarms on foreign sessions, not on your own briefed hands — the senior who

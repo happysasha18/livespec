@@ -2,7 +2,7 @@
 name: publish
 description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate — never instead of it. NOT for in-session showing of work (communicator owns that), not for commits that stay local.
 metadata:
-  version: 0.1.0
+  version: 0.1.1
 ---
 
 # publish — the work leaves the machine looking like a product
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.14), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.15), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -73,6 +73,20 @@ The walk above is the trunk; the TARGET adds its own steps, never removes the ki
 3. Report the walk's result in the landing report (a stood-down publish step is named like any other,
    SPEC INV-22), then hand the human their gate with the surface ALREADY worth approving: "the README
    is current, screenshots re-shot today, forms filled — push?"
+
+## One worked example (a skill's README, before and after the walk)
+
+❌ *"track-coach — a compositional analysis pipeline. See `build_widget.py` for entry points; config
+in the usual place. v1.4 adds INV-50 scale wording."* — fails the floor (WHAT/WHO/HOW absent, internal
+vocabulary, a version claim in prose) and the skill row (no install line, no typed commands, no
+when-NOT, no taste of it working).
+
+✅ *"track-coach — a coach for music producers: point it at a track (mp3/wav/…) and an Ableton
+project, get one offline page that shows where the arrangement is alive and where it stalls. Install:
+`./install.sh`. Use: say 'analyse my track' with the file — deep mode runs itself. Not for mastering
+metrics or loudness compliance. Below: one real read of a real track."* — the first screen answers
+what/who/how in the reader's words, the commands are shown as typed, both boundary sides are stated,
+and the taste comes from a real run, not a promise.
 
 ## When NOT to use
 
