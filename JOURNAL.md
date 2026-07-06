@@ -1333,3 +1333,29 @@ named in full; helper tasks now carry the wall-clock time and the write-the-obst
 each step in its specialist's role). Two side catches while writing it: the row-128 queue stamp was
 written 4 minutes ahead of the clock — a recurrence on the owned chat-drift entry (row 127), date
 appended; nothing else changed.
+
+## 2026-07-06 13:53, session 14 — rows 126·127·128 land as one communicator sitting
+
+The three lessons of session 13's close move from the queue into the skill, smallest-first by pain:
+the bounced report (128) becomes a WALKED step — before any movement-end or milestone report the
+communicator rules are re-read and the draft passes phrase by phrase through "does this sentence
+stand for a reader outside the pack" (SPEC INV-34, the walk's home a new section in communicator);
+the bookkeeping leak (126, bug door) gives rule 8 its NEVER-list with the worked ❌/✅ example, the
+SPEC carve-out sharpened by the prover's own pass (a direct question about a number, or the evidence
+walk, keeps the number as the answer — F1, folded in-pass); the chat-stamp drift (127) becomes the
+clock law's third face — a human-facing timestamp is read off the clock at write time, never
+extrapolated (INV-24 chat arm; the invariant stays with the fences node, communicator carries the
+sentence — a wiring pin, one owner). WHY one sitting: three small clauses, one skill, one eval
+re-run — the queue's own kin note. The sitting dogfooded both its rows: the session's own leads
+drifted ~9 minutes before the clause shipped (caught at the eval-brief clock read, appended to the
+ledger entry, which then flipped SOLVED with the landing), and this entry's report is the first
+drafted under the pre-report walk — row 128's acceptance leg rides Alexander's read of it. Eval
+re-run (two Sonnet workers, records `docs/evals/2026-07-06-rows126-128-rerun/`): the with-skill arm
+shipped ZERO bookkeeping tokens as message content on the first run under the shipped NEVER-list,
+after two consecutive red runs before it — numbers trailing in parens, "tested clean and saved"
+doing the talking; one watched note — the station line said "review" where the step name is "prove",
+first eval occurrence of that drift. Prover CROSS-LINK record `docs/prover/2026-07-06-rows126-128.md`
+(F1 folded, F2 — narration lines deliberately outside the walk's scope — rejected with reason).
+Suite 110 → 113 green, all three new tests red-proven first. Row 124's open leg closes: the landing
+report names the hat each artifact was made under. Versions: SPEC v0.15.24 · communicator 0.1.19 ·
+pack 0.8.35; installed copy synced.

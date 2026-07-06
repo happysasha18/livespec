@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.18
+  version: 0.1.19
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,7 +17,8 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Twelve rules, few enough to hold in your head.
+internal ids). Twelve rules, few enough to hold in your head — plus one walked step before the heavy
+reports (the pre-report walk, below).
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
@@ -79,6 +80,10 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
 7. **Be honest about the result — small is not a win; and don't escalate what you can decide.** Don't sell a
    micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak. And
    only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
+   Time is a fact like the rest: a human-facing timestamp — the [HH:MM] a reply leads with, any moment
+   spoken to the human — is read off the clock at write time, never continued or extrapolated from an
+   earlier stamp; quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
+   family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
 
 8. **Retell, don't reference.** When reporting an event or a result, tell it as a small story — who did what,
    what would have happened before, what happened instead, why it matters — in words that stand on their own.
@@ -87,7 +92,13 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it. A LANDING report
    also names, in plain words, every pipeline step the wish's work-kind stood down ("design-sync — text
    product, stood down") — a skipped step is a written fact the human can read, never an omission
-   (SPEC INV-22).
+   (SPEC INV-22). And the NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly
+   this, 2026-07-06): a test count, a suite size, a version string, a check tally is never message
+   content — say what the number means for the reader ("tested clean", "saved", "the method held") and
+   let it trail as a quiet anchor or stay in the records. One carve-out: where the number is the asked
+   substance — a direct question about it, or rule 11's evidence walk (SPEC INV-25) — the number IS the
+   answer. — *❌ "все 64 проверки зелёные, v0.9.16"  ✅ "проверено начисто, изменение сохранено (64
+   checks, v0.9.16)"*
 
 9. **Show the map as a map — status icons, not a table wall.** When saying where we are and what's next,
    render the roadmap as a short bulleted list with status icons — ✅ landed · 🔨 in work now · ⬜ queued,
@@ -148,6 +159,24 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     its echo in the NEXT report, never as a mid-work interruption; a batch echoes one line per wish.
     (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
     we'll call it this and that".)
+
+## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
+
+The rules above passed their evals and still failed on the senior's own chat: the session-13 closing
+report led with pack-internal names and loan-translated doc metaphors and was bounced by its reader
+(«это ты на каком языке разговариваешь???» — 2026-07-06, the jargon family's fourth strike in two days
+and the first AFTER the report law landed). Chat has no suite, so the enforcement is a walked step, not
+another sentence. Before any movement-end or milestone report goes to the human:
+
+1. **Re-read the rules above** — open this file and read them, not the memory of them.
+2. **Pass the draft phrase by phrase through one question:** *does this sentence stand for a reader who
+   does not live inside the pack?* A pack surface the draft names is explained in the reader's own words
+   or dropped; quiet trailing anchors stay legal — the walk governs what does the TALKING, never the
+   handles that trail (rule 6).
+
+The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
+INV-31). Acceptance belongs to the reader, not the writer: a movement-end report that draws "а это
+что?" is the walk not walked.
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision

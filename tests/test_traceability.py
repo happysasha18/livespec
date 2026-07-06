@@ -1200,6 +1200,41 @@ class TestProblemLedger(unittest.TestCase):
         self.assertIn("what the choice CHANGES for the person", comm,
                       "communicator rule 10 missing the consequence-first card law")
 
+    def test_bookkeeping_never_list(self):
+        """Row 126 (M-121, INV-28): bookkeeping numbers are never message content —
+        translated ("tested clean", "saved"), trailing, or in the records; a direct
+        question or the done-claim walk (INV-25) keeps the number as the answer."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("Bookkeeping numbers are handles too", "NEVER-list",
+                       "speaks as the answer, not as bookkeeping"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("test count", "version string", "tested clean",
+                       "asked substance"):
+            self.assertIn(needle, comm, "communicator rule 8 missing: %s" % needle)
+
+    def test_pre_report_walk(self):
+        """Row 128 (M-122, INV-34): before any movement-end/milestone report the
+        communicator rules are re-read and the draft passes phrase by phrase through
+        the outside-reader question; trailing anchors stay legal."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-34", "walked, not remembered",
+                       "does this sentence stand for a reader who does not live inside the pack"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("pre-report walk", "phrase by phrase", "INV-34"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
+    def test_chat_timestamp_at_write_time(self):
+        """Row 127 (M-123, INV-24 chat face): a human-facing timestamp is read off the
+        clock at write time, never extrapolated; quoting a past recorded time stays legal."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("CHAT face", "AT WRITE TIME"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("read off the clock at write time", "never continued or extrapolated"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_install_backup_home(self):
         """Row 122 (M-118): installer backups live outside the live skills dir."""
         script = read("install.sh")

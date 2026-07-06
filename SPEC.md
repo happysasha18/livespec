@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.23, 2026-07-06)
+# live-spec — SPEC (v0.15.24, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -139,7 +139,26 @@ capture echo — method-internal docs keep their anchors) OPENS with what change
 they can now do, see, or stop fearing; every internal handle — spec codes, row and session numbers, and
 any coined name the reader never chose to learn — may only TRAIL in parentheses; and one fact = one
 standalone sentence — a compression whose parsing needs the writer's context is a defect of the line,
-not a flourish. [INV-28]
+not a flourish. Bookkeeping numbers are handles too, and they kept walking into the message anyway —
+two consecutive eval runs put "all 64 checks green, v0.9.16" into the human's message body (2026-07-06)
+— so the law carries an explicit NEVER-list: a test count, a suite size, a version string, a check
+tally is never message CONTENT; the message says what the number means for the reader ("tested clean",
+"saved", "the method held"), and the number may only trail as a quiet anchor or stay in the records.
+One carve-out, by law: where the number IS the asked substance — a direct question about it, or the
+done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as
+the answer, not as bookkeeping. [INV-28]
+
+**The report law is walked, not remembered.** The law above passed its evals and still failed on the
+senior's own chat: the session-13 closing report led with pack-internal names and loan-translated doc
+metaphors and was bounced by its reader («это ты на каком языке разговариваешь???» — 2026-07-06, the
+jargon family's fourth strike in two days and the first AFTER the law landed). Chat has no suite, so
+the enforcement is a STEP, not another sentence: before any movement-end or milestone report goes to
+the human, the communicator rules are RE-READ, and the draft is passed phrase by phrase through one
+question — does this sentence stand for a reader who does not live inside the pack; a pack surface it
+names is explained in the reader's own words or dropped (quiet trailing anchors stay legal — the walk
+governs what does the talking, never the handles that trail). The walk's one home is the communicator
+skill; its acceptance belongs to the reader — a movement-end report that draws "а это что?" is the walk
+not walked. [INV-34]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -827,8 +846,13 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   (`date [~]time`), so a line legally quoting other moments' times beside today's date stays green
   (the fence's own first live run proved the broader reading wrong — it flagged the ledger's history
   lines); the commit clock is the reference, so the check is not racy; the known cost, taken
-  deliberately: a future plan is spelled without writing it as a date-time stamp. (The invented-time
-  family: six catches in two days, hand-swept twice before the fences.) [INV-24]
+  deliberately: a future plan is spelled without writing it as a date-time stamp. And the family has a
+  CHAT face no mechanical fence can reach: a human-facing timestamp — the [HH:MM] a reply leads with,
+  any moment spoken to the human — is read off the clock AT WRITE TIME, never continued or extrapolated
+  from an earlier stamp (mid-session leads ran up to seven minutes fast, twice in two days, 2026-07-05/06);
+  where no fence exists the rule is stated as law where the human-facing exchange shapes live — the
+  communicator skill — and quoting a past moment's recorded time stays legal on this face too. (The
+  invented-time family: six catches in two days, hand-swept twice before the fences.) [INV-24]
 - **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version
   line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
   every update. So the freshness check [A-7] compares version against version, not just file times, and
@@ -955,16 +979,17 @@ meaning, this table is only the map.
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
 | INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
-| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence); quoting a past wrong date stays legal | Rhythm |
+| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence) AND the chat face: a human-facing timestamp read at write time, never extrapolated (law in communicator, no mechanical fence); quoting a past wrong date or time stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
-| INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence | Throwing a wish |
+| INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence; NEVER-list: bookkeeping numbers (test counts, suite sizes, version strings) never as message content — translated, trailing, or in the records; the done-claim walk [INV-25] keeps them as the answer | Throwing a wish |
 | INV-29 | a feature-doored wish walks the kind-scaled FIT WALK at intake (journey / flows / trigger lenses); trivially-closable holes closed and written how; only genuine taste calls go out, batched; prover mode FEATURE-FIT | Throwing a wish |
 | INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar, in the medium's own form (motion for a browser, reading path for a book); findings become rows or red | Throwing a wish |
 | INV-31 | a taste choice made without asking is told in the landing report — plain words, an example, a tweakable mark; no confirmation, silence is consent, never re-asked; the [default] tag keeps it findable | Throwing a wish |
 | INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
 | INV-33 | every pipeline step is worked wearing its craft's head (product manager at spec · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify); the step→craft ladder's one home: build-pipeline | Throwing a wish |
+| INV-34 | the pre-report walk: before any movement-end/milestone report, the communicator rules are re-read and the draft passes phrase by phrase through the outside-reader question; trailing anchors stay legal; acceptance = the reader's own read; the walk's one home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
