@@ -1544,3 +1544,16 @@ stretches, one explicitly broken "continuing without pause" promise, «did somet
 twice in one session — so this row and row 134 (the mechanical clock hand) are exactly the pair the
 field data ordered. Landing hiccup worth keeping: the VERSION file briefly lost its trailing newline
 and the pin-drift guardrail caught it before commit — the teeth bite their own builder, as designed.
+
+## 2026-07-06 20:44, session 19 — row 134 builds its mechanical hand; the disease bites the landing that cures it
+
+Lane B of the session's double-lane run: a Sonnet worker built the clock hook in an isolated worktree
+while lane A (row 139) held the pen — red-proven on the absent script, then green, suite whole twice
+(worktree + integrated tree). The evening supplied its own proof of need: while the hand's row was
+being integrated, the commit fence BLOCKED row 139's landing on stamps written minutes ahead of the
+20:38 clock, and the session's chat leads had drifted the same ~4 minutes — the eighth catch on the
+ledger's chat entry, caught this time by a fence, not by luck. Install: the harness classifier
+blocked the agent's own hand from wiring ~/.claude/settings.json (self-config) — the road the
+Done-when named in advance; the installer script ships with row 141 and waits for Alexander's one
+`!` command. The row stays in-work: the zero-drift session and the ledger's SOLVED flip ride the
+install.

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.31, 2026-07-06)
+# live-spec — SPEC (v0.15.32, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -1032,7 +1032,12 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   any moment spoken to the human — is read off the clock AT WRITE TIME, never continued or extrapolated
   from an earlier stamp (mid-session leads ran up to seven minutes fast, twice in two days, 2026-07-05/06);
   where no fence exists the rule is stated as law where the human-facing exchange shapes live — the
-  communicator skill — and quoting a past moment's recorded time stays legal on this face too. (The
+  communicator skill — and quoting a past moment's recorded time stays legal on this face too. And
+  since the hand kept drifting even under the shipped law (the ledger's chat entry re-opened after
+  repeated catches), the chat face grew a mechanical HAND of its own: a harness hook installed on the
+  working machine — `scripts/clock-hook.sh`, wired as a prompt hook in the host's settings — injects
+  the wall clock into every prompt's context, so the lead stamp is read off the machine, not off
+  memory; where the hook is not installed, the law above stands alone. (The
   invented-time family: six catches in two days, hand-swept twice before the fences.) [INV-24]
 - **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version
   line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
@@ -1162,7 +1167,7 @@ meaning, this table is only the map.
 | INV-21 | every feature states one success measure, decided or `[default]`-tagged (provenance only, no row yet); reading machinery [target]; binds forward | Throwing a wish |
 | INV-22 | kind scales each step's FORM; a step applies or stands down BY NAME in the landing report — never a silent skip; the safety net is kind-proof | Throwing a wish |
 | INV-23 | workshop noise: first sight = WATCHED line (never a silent retry); second occurrence gets an owner that moment (row, or the human's agreed non-problem); a third unowned recurrence is a METHOD defect → the pack's queue | Workshop misbehaves |
-| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence) AND the chat face: a human-facing timestamp read at write time, never extrapolated (law in communicator, no mechanical fence); quoting a past wrong date or time stays legal | Rhythm |
+| INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence) AND the chat face: a human-facing timestamp read at write time, never extrapolated (law in communicator, no mechanical fence) — plus the chat face's mechanical hand, a prompt hook injecting the wall clock into every prompt (per-machine install, `scripts/clock-hook.sh`); quoting a past wrong date or time stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row, plus the placement [INV-37]; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
