@@ -1410,3 +1410,14 @@ re-opened as a METHOD defect: row 134, a hook that injects the wall clock into t
 open leg closed by deed: this session narrated unprompted from its first minute — no third ask
 needed. He also said Fable is being taken away tomorrow (probably returns later) — the session
 closed everything whole on purpose.
+
+## 2026-07-06 16:09, session 16 (second movement) — обкатка checks on his word; Fable pulled tomorrow
+
+He corrected the record: Anthropic pulls FABLE from Claude Code tomorrow (API-only after, return
+expected «в какой-то момент») — so today runs at maximum and closes wipe-ready. Three checks on his
+ask, all green: the feature list spoken in chat off the spec's scenarios — row 133's first informal
+run, evidence that the map reads off existing documents; skill sizes — all six SKILL.md under the
+500-line ideal (largest 382), row 69's extraction pressure eased, evidence pinned in row 130; spec
+format laws — scenarios lead (17 sections), anchors trail, the 19 line-start codes are wrap
+artifacts, not code-led rules. He confirmed the обкатка direction: tlvphoto window is already
+exercising the pack live, the pack keeps exercising itself.

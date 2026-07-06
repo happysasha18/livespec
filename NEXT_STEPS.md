@@ -1,10 +1,16 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~16:00, session 16 — rows 129+132 landed; wipe-ready after push)
+## LIVE STATE (2026-07-06 ~16:09, session 16 — rows 129+132 landed + обкатка checks green; WIPE-READY)
 PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.37, SPEC v0.15.26, suite 116 green.** Verify on
-resume: `git status -sb` + the suite. **Fable is taken away 2026-07-07 (his word 2026-07-06 ~15:52,
-probably returns later); live-spec runs on Fable only (loader law) — if resuming on another model,
-ASK Alexander before working this window.**
+resume: `git status -sb` + the suite. **Anthropic pulls FABLE from Claude Code 2026-07-07 (API-only
+after; his word 2026-07-06 ~16:03, return expected); live-spec runs on Fable only (loader law) — if
+resuming on another model, ASK Alexander before working this window. His direction: обкатка phase —
+the tlvphoto window already exercises the pack live; the pack keeps exercising itself.**
+- **Обкатка checks (his ask, ~16:05, all green)**: feature list spoken in chat = row 133's first
+  informal run (the map reads off spec scenarios + the shipped-vs-target header, no third document);
+  skill sizes all under the 500-line ideal (largest: product-prover 382 — row 69 pressure eased,
+  evidence in row 130's cell); spec format laws hold (17 scenario sections lead, anchors trail,
+  line-start codes are wrap artifacts only).
 - **Rows 129+132 LANDED (~15:58) as one head — the product-self-knowledge family.** INV-36: a
   project knows its own KIND (asked at founding/orient, never profile-seeded, one home the host
   profile, updated on his word as the project evolves; the pack's own profile carries
