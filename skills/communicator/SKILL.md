@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.23
+  version: 0.1.24
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.15), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.16), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -108,7 +108,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    a waiting item exactly what is asked — so the list informs, not just enumerates ("bare titles read fine
    but say too little" — Alexander, same day). Never paste the queue table into chat and never retell it as
    a paragraph; the eye should get the whole map in one glance, then the words add only what the icons
-   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the station vocabulary being the pipeline's own step names, one station per step, all nine (landed is a state, not a step), so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day) And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for the reader; the feature's name on the board is a plain descriptive phrase — a coined feature name is an internal handle (rule 6) and may only trail; row numbers trail likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают зубы» and its reader bounced it, 2026-07-06 morning).
+   can't say. And each in-work line names its pipeline STATION — spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the station vocabulary being the pipeline's own step names, one station per step, all nine (landed is a state, not a step), so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌ "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare or gestured station name a plain reader can't place is the map failing (first eval re-run caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day) And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for the reader; the feature's name on the board is a plain descriptive phrase — a coined feature name is an internal handle (rule 6) and may only trail; row numbers trail likewise; one fact = one standalone sentence — never riddle-compression whose parsing needs the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают зубы» and its reader bounced it, 2026-07-06 morning). With two trains rolling (SPEC T-18), each in-work lane keeps its own board line, and a lane WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code written, at integration, waiting behind row 135"* — waiting and working must read apart at a glance.
 
 10. **Several open picks → ONE interactive decision page.** When more than one decision waits on the
     human, don't serialize questions into chat and don't write a questionnaire document: render one local

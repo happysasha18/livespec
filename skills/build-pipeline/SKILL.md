@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.24
+  version: 0.2.25
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.15), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.16), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -248,6 +248,16 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   to tests: the two layers between them (architecture, test-spec derivation) are where whole classes of
   holes get caught (SPEC E-14/E-15/INV-15).
 - **A row closes only whole (SPEC INV-26):** where a row carries several legs, its Done-when enumerates each, and the landing report may close the row only with EVERY leg met — half-done is a status, never a landing; an open leg keeps the row in-work, and the resume file's LIVE-STATE restates it at every supersession, never compresses it away (still open at compaction ⇒ restated, not summarized out).
+- **Two trains, one pen (SPEC T-18, INV-39):** one session may roll at most two INDEPENDENT build lanes —
+  no shared surface, no shared spec section; opening the second is narrated and both trains ride the
+  departures board, the waiting lane naming whom it waits behind. Only penless stages overlap: the second
+  train's code and tests in an isolated tree (its delta integrates only under the pen; the disjoint-file
+  road stays within one lane), read-only analysis free. Every shared-doc edit, the integration, and the
+  closing of a row take the pen one lane at a time — a pen-stage is never cut mid-edit — and a landing
+  commit carries exactly one row's delta, its gate run on a tree clean of the other lane's unfinished
+  work; after a landing, the waiting lane re-fences and re-runs its gate on the new truth. Never across
+  sessions, never mid-milestone; a bug takes the pen at the end of the current pen-stage and parks every
+  rolling lane, each at its own checkpoint, resuming in landing order.
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →

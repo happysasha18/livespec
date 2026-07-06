@@ -262,9 +262,10 @@ class TestQueue(unittest.TestCase):
         bad = [(r[0], r[2]) for r in rows if not pat.match(r[2])]
         self.assertEqual(bad, [], "class cells outside the four-word vocabulary (+ priority)")
 
-    def test_roadmap_single_in_work(self):
+    def test_roadmap_in_work_cap(self):
         in_work = [r[0] for r in self._rows() if r[3].lower().startswith("in-work")]
-        self.assertLessEqual(len(in_work), 1, "more than one wish in-work: rows %s" % in_work)
+        self.assertLessEqual(len(in_work), 2,
+                             "more than two rows in-work — the two-lane cap (SPEC T-18): rows %s" % in_work)
 
     def test_roadmap_header_dated(self):
         first = read("ROADMAP.md").splitlines()[0]
@@ -1306,6 +1307,34 @@ class TestProblemLedger(unittest.TestCase):
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("feature map on demand", "no third document", "INV-38"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
+    def test_parallel_lanes_law(self):
+        """Row 135 (M-129, T-18): two trains may roll, one pen writes — the law in SPEC,
+        carried by build-pipeline + base; the waiting lane readable on the board (communicator)."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("Two trains may roll", "T-18", "At most two build lanes roll at once",
+                       "waiting for the pen SAYS so and names the row it waits behind",
+                       "a pen-stage is never cut mid-edit",
+                       "never against another lane's half-written draft"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("Two trains, one pen", "SPEC T-18", "isolated tree"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("SPEC T-18", "PEN"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        self.assertIn("waiting behind row", comm, "communicator missing the waiting-lane board face")
+
+    def test_landing_purity(self):
+        """Row 135 (M-130, INV-39): a landing commit carries exactly one row's delta."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-39", "a landing commit carries exactly one row's delta",
+                       "landed-first wins, second re-verifies",
+                       "half of another train never rides a landing"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        self.assertIn("exactly one row's delta", pipe, "build-pipeline missing INV-39's clause")
 
     def test_install_backup_home(self):
         """Row 122 (M-118): installer backups live outside the live skills dir."""

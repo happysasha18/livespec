@@ -1459,3 +1459,26 @@ the dense-paragraph scanability class is a restructure-scale rewrite around pinn
 drive-by. The standing law: M-1's milestone checklist now carries the re-walk item and a skill joining
 the pack walks skill-creator at birth (M-128, red-proven then green). Record:
 docs/audit/2026-07-06-skill-creator-walk.md. All six sizes stay under the 500-line ideal.
+
+## 2026-07-06 17:21, session 18 — row 135 lands (pack side): parallel lanes — two trains, one pen
+
+WHY: his word yesterday's echo (~16:20, session 17) — «надо продумать параллелизм… это тратит токены,
+но зато ускоряет процесс». The design insight: the lane was never serial because everything in it must
+be serial — only the writes to the SHARED TRUTH must be. So the law names that one thing the **pen**
+(spec/architecture/matrix/queue/journal/resume-file edits, integration, row close — one lane at a time)
+and frees the rest: the second train builds code and tests in an isolated copy of the tree, read-only
+analysis rides free (row 130's walk during row 133's lane was the pre-evidence). Landing purity is its
+own invariant now: a landing commit carries exactly one row's delta, gate on a clean tree,
+second-lands-re-verifies (INV-39). Kept whole and fenced: the atomic committed claim, foreign-session
+back-off, whole-row closing, bug preemption (now parking per-lane — the prover caught the "at most one
+parked" contradiction), the batched decision page (cards name their lane's row). Prover CROSS-LINK:
+7 findings, all folded in-pass — the three real ones were the T-9 contradiction, the waiting-lane
+board face designed-but-not-written, and the disjoint-file worker road leaking another lane's
+unfinished files into a landing gate (closed: second train = isolated tree ONLY). Delegation: the
+whole mechanical batch (matrix rows, red-first tests, three skill edits, version bumps + citation
+re-pins, sync, suite) went to one Sonnet worker on a verbatim brief — roughly 25 minutes of senior
+hands returned, zero brief defects. Versions: SPEC v0.15.29, base 0.1.16, build-pipeline 0.2.25,
+communicator 0.1.24, pack 0.8.40, suite 120 green. OPEN LEG (INV-26): the first real double-lane run —
+rides the next pair of independent wishes.
+(The pre-commit clock fence caught the hand a FOURTH time at this very landing — a 17:22 stamp at a
+17:21 clock; row 134's case grows again.)
