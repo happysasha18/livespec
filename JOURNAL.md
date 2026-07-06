@@ -1234,3 +1234,19 @@ suite green from scratch; secrets/paths sweep clean; one stale README claim caug
 skills" → six — the publish skill's own arrival had outdated it). Versions: SPEC v0.15.19 ·
 spec-author 0.1.13 · communicator 0.1.17 · build-pipeline 0.2.19 · pack 0.8.30 · suite 108 green.
 This entry rides the push it gates.
+
+## 2026-07-06 12:26, session 13 — the double-witness paragraph rides on his word
+
+His «пушь нормально в ридми и весь проект на гитхаб» closed the one item the last push left open:
+the README research paragraph proposed at 11:08 landed — with two honesty corrections made before
+the ink dried. The proposal predated his same-morning «не надо подтверждать», so its "two-landing
+expiry" sentence described a mechanism that died the day it was born; the landed text states the
+living law (taste choices told, tweakable, never confirmed — INV-31). And "first real adopter" was
+softened to "first real project built under the pack" — tlvphoto is built under the method but has
+not formally adopted, and the softer claim is the true one. Versions in the paragraph pinned by
+commit truth (fit family = 0.8.28, told-never-confirmed = 0.8.29). The push gate's letter was
+honored without theater: SPEC and skills are byte-identical to the 11:57 full prover pass, so that
+record carries; what got a FRESH prover walk is the paragraph itself, claim by claim against shipped
+evidence (addendum in docs/prover/2026-07-06-push.md). Suite 108 green, README-only delta, publish
+floor clean. The paragraph ends with a promise to update it after the first real feature-fit run —
+that promise is queue item 1's acceptance evidence, now public.

@@ -1,9 +1,13 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~12:06, session 12 — push gate walked; wipe-ready after the push + report)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.30, SPEC v0.15.19, suite 108 green — push gate
-COMPLETE, push riding now** (this landing batches the morning's four commits + the gate commit).
-Verify on resume: `git status -sb` + the suite.
+## LIVE STATE (2026-07-06 ~12:26, session 13 — README paragraph landed on his word; wipe-ready)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.30, SPEC v0.15.19, suite 108 green — all pushed,
+tree clean.** Verify on resume: `git status -sb` + the suite.
+- **README "double witness" paragraph RODE (~12:26)** on his OK («пушь нормально в ридми»): the
+  tlvphoto-use critique + the three shipped answers, corrected before landing (dead two-landing-expiry
+  wording → told-never-confirmed; "adopter" softened to "first real project built under the pack";
+  versions pinned 0.8.28–0.8.29 by commit). Claim-by-claim prover check in the addendum of
+  `docs/prover/2026-07-06-push.md` — spec bytes unchanged since the full pass, so it carries.
 - **PUSH GATE WALKED ~12:05 (all three legs)**: FULL prover pass over the whole spec (record
   `docs/prover/2026-07-06-push.md`) — two must-fixes folded same hour: the taken-default example
   asked "ok?" in FOUR homes against the same morning's INV-31 (all four now read TOLD/tweakable,
@@ -21,9 +25,7 @@ Verify on resume: `git status -sb` + the suite.
 - Versions: SPEC v0.15.19 · spec-author 0.1.13 · communicator 0.1.17 · build-pipeline 0.2.19 ·
   product-prover 0.1.9 · base 0.1.13 · publish 0.1.0 · pack 0.8.30. Installed copies re-synced this
   session via scripts/sync-skills.sh after the gate folds (verify: version grep repo vs installed).
-- **README research-paragraph update still PROPOSED, his word pending** — did NOT ride this push;
-  applies + rides the next one after his OK.
-- ⟨DECIDE⟩ open: D-1/D-2/D-3 · README paragraph wording.
+- ⟨DECIDE⟩ open: D-1/D-2/D-3.
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
 1. **First real FEATURE-FIT run**: the next product-kind wish in any adopted host walks INV-29/30 by

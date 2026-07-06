@@ -41,6 +41,20 @@ alternatives enforce their specs by prompt text (Spec Kit's consistency checks, 
 included, are LLM instructions — the only mechanical checks in its repo are file-existence tests).
 Six mechanisms the neighbours genuinely do better are queued to be absorbed (queue rows 110–115).
 
+The sharpest critique arrived the same week from use, not review: the first real project built under
+the pack — a photo-portfolio site — reported that while no written promise ever regressed, everything
+that felt unfinished lived where the method wasn't looking. It specced SURFACES, not the visitor's
+PATH (nobody asked "and where does the guest go from here?"); verify-by-deed confirmed "works", never
+"feels"; taste defaults accumulated silently until the product read eighty-percent-finished
+everywhere. This converges with the analysts' structural critique, so we treat it as the strongest
+entry in this section. The gap is now the pack's own shipped work — a product-fit interrogation on
+every incoming feature, a visitor-walk and feel pass at verify (scaled to the medium: a site walks
+motion, a book walks its reading path), and landing reports that state every taste choice plainly,
+marked tweakable, never asking for confirmation (pack releases 0.8.28–0.8.29, July 2026). A
+retroactive walk of these lenses over the pack's own ten shipped features closed two more holes the
+same day; the first run on a real incoming feature is still ahead — this paragraph will be updated
+with how it goes.
+
 ---
 
 ## The pipeline
