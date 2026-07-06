@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.27
+  version: 0.2.28
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.18), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.19), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -151,6 +151,13 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    (base rule 13). Specs drift from code; fix the spec to the shipped truth, not the other way. A large or
    surface-class change updates the doc; a bug or small change just cites its existing node and skips to
    the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
+   **The architecture owes NUMBERS, not only names (SPEC INV-41):** every user-facing surface gets
+   measurable quality budgets — performance first ("first image within 2 s on a cold visit") — plus an
+   instrumentation home: where the surface's real timings are measured and where a human can read them
+   (an export, a debug view). Each budget is asserted by a matrix-row acceptance, never a hope in
+   prose; a user-facing surface with no budget line and no instrumentation home is a derivation
+   defect, exactly like an unowned fact. The numbers are the host's taste — propose with a
+   recommendation, set on the human's word at the surface's first budget landing.
    **The doc is ITERATIVE — never written milestones ahead:** it maps the product as it stands plus the
    landing in flight. A node exists for what ships today, or for what the spec already promises under an
    owned queue row (marked [target], pin empty). A future feature earns its node when its landing arrives;

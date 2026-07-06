@@ -52,7 +52,9 @@ or reads from the human's profile — the answers that shape everything downstre
 first, and **what kind of project this is** — book · backend service · static site · fullstack app ·
 CLI · skill pack · a custom kind — recorded as the host profile's `project.kind` line; that one is
 always ASKED, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
-inferred from examples is a defect, not a reading.
+inferred from examples is a defect, not a reading. The same breath asks — or tells the standing
+default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
+choice at setup, not mid-crisis; the rung moves only on their word.
 
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of

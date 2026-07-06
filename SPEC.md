@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.35, 2026-07-06)
+# live-spec — SPEC (v0.15.36, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -888,6 +888,19 @@ node when its landing arrives — speculative nodes are unbacked structure, the 
 a silent micro-decision. Re-carving the whole map IS legal — it arrives as a restructure placement's
 own queue row [INV-37], walks this step, and is re-proven like any structure change. [E-14]
 
+**The architecture owes numbers, not only names.** For every surface a user faces, the architecture
+doc states MEASURABLE quality budgets — performance first ("the first image appears within 2 s on a
+cold visit"), other measurable qualities where the surface warrants them — plus the surface's
+INSTRUMENTATION home: where its real timings are measured and where a human can read them (an export,
+a debug view). A budget is asserted by acceptance — a matrix row at a level that can see it — never a
+hope in prose; a user-facing surface whose architecture names no budgets and no instrumentation home
+is a derivation defect the prover flags, exactly like an unowned fact. The numbers themselves are the
+host's taste — proposed with a recommendation, set on the human's word at the surface's first budget
+landing. Like the two layers themselves [INV-15], the duty binds from the first landing that touches
+the surface after the clause exists — never retroactively across a host's whole map. (Born of a real
+miss: a gallery's first picture loaded long and the human found it before any check did — that
+architecture had named no budget and measured nothing, 2026-07-06.) [INV-41]
+
 **The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
 Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,
 every fact gets at least one row, every row pins a test level — and the derivation closes with the
@@ -1074,7 +1087,10 @@ never an improvisation under pressure. [T-19]
 
 The pressure is a setting on the ladder (`budget.pressure`, package default `full`): it moves ONLY on
 your word — a session's word for today, a profile line to stand — exactly like proactivity and trust
-[E-13, INV-9]; when you name money or time pressure the agent may PROPOSE a rung, never set one. Three
+[E-13, INV-9]; when you name money or time pressure the agent may PROPOSE a rung, never set one. And
+the pack does not wait for pressure to surface the choice: at a project's SETUP — founding or
+adoption — the economy rung is asked, or the standing default told, alongside `project.kind`
+[INV-36], so the preference is yours from day one, not discovered mid-crisis. Three
 rungs, each naming its legal sheds; every shed actually taken is SAID in the landing report — a silent
 economy is a silent micro-decision, the exact thing the report exists to prevent [INV-5]:
 
@@ -1197,7 +1213,7 @@ meaning, this table is only the map.
 | T-16 | work-kind named at intake: product / infra / skill / prose; one kind per wish; curated vocabulary; host default in its profile | Throwing a wish |
 | T-17 | one wish = one user story: multi-story wishes split at intake, each story its own row; sub-behaviours are acceptance, not stories; unclear count asked | Throwing a wish |
 | T-18 | parallel lanes: one session may roll up to three independent build lanes without asking (max three [default], his 2026-07-06 word; a fourth opens only on the human's asked word); penless stages overlap (later trains write only in isolated trees; disjoint-file workers within one lane; read-only analysis free); pen-stages serialize (every shared doc, integration, row close; a pen-stage never cut mid-edit); opening narrated, every train on the board with a waiting lane naming whom it waits behind, cross-lane questions one batched page; not across sessions / dependent wishes / mid-milestone / while a bug holds the pen | Throwing a wish |
-| T-19 | the economy ladder: `budget.pressure` ∈ full [default] · lean · tight, moved only by the human's word (session word or profile line, never the agent's); lean = node-scoped mid-work test runs (full suite still at every landing gate) + CROSS-LINK with an owed FULL deferrable to the next milestone as a dated debt line + one-tier-cheaper mechanical work; tight = lean + batched landing gates (one full-suite run per batch's end, red bisects by landing order) + cheapest sufficient worker tier; every taken shed named in the landing report | When money or time run short |
+| T-19 | the economy ladder: `budget.pressure` ∈ full [default] · lean · tight, moved only by the human's word (session word or profile line, never the agent's); asked — or the default told — at a project's setup (founding/adoption) alongside project.kind; lean = node-scoped mid-work test runs (full suite still at every landing gate) + CROSS-LINK with an owed FULL deferrable to the next milestone as a dated debt line + one-tier-cheaper mechanical work; tight = lean + batched landing gates (one full-suite run per batch's end, red bisects by landing order) + cheapest sufficient worker tier; every taken shed named in the landing report | When money or time run short |
 | INV-1 | no wish is ever lost | Throwing a wish |
 | INV-2 | one landing at a time per repo, under one pen (shared-truth writes serialize); claiming stays the atomic committed flip; foreign sessions never share a pen | Throwing a wish |
 | INV-3 | every landing cites its row | Throwing a wish |
@@ -1238,6 +1254,7 @@ meaning, this table is only the map.
 | INV-38 | the whole feature map is readable on demand — read at ask-time off the spec's scenario sections, the current-vs-target header (statuses at the granularity the promised-tag binds, per S-0), and the queue's open rows (stations for in-flight, queued NEW-verdict wishes included); no third document; answer lines obey the line law; chat by default, rendered page on the human's word; never fires uninvited (reports keep the board's in-flight scope); a host with nothing to read is answered honestly | Asking what the product does |
 | INV-39 | a landing commit carries exactly one row's delta; its gate runs on a tree clean of any other lane's unfinished work; after a landing, the waiting lane re-fences and re-runs its gate on the new truth — landed-first wins | Throwing a wish |
 | INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
+| INV-41 | a user-facing surface's architecture states measurable quality budgets (performance first) plus its instrumentation home (where timings are measured and human-readable); each budget asserted by a matrix-row acceptance, never prose hope; no budget + no instrumentation home on a user-facing surface = derivation defect; the numbers are the host's taste, set on the human's word at the surface's first budget landing | From the spec to the tests |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

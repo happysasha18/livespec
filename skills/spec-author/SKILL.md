@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.15
+  version: 0.1.16
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.18), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.19), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -187,7 +187,11 @@ here**, one list for every project:
 - **touch where the design assumed a mouse** — anything hover-only needs a touch answer;
 - **the empty, error, and loading states** of each new surface (spelled "empty, error, and loading");
 - **accessibility** — reachable by keyboard, readable contrast;
-- **the performance envelope** — at what input size it must stay usable;
+- **the performance envelope** — at what input size it must stay usable; for a user-facing surface
+  this facet ends as a MEASURABLE budget sentence ("the first image appears within 2 s on a cold
+  visit"), never an unmeasurable "fast enough" — the architecture step pairs the budget with an
+  instrumentation home and acceptance asserts it (SPEC INV-41; born of a gallery whose first picture
+  loaded long with nothing measuring it, 2026-07-06);
 - **visual hierarchy** — the gap BETWEEN separate things larger than the gap WITHIN one thing (nesting
   depth drives spacing, never per-element guesswork); a heading never dimmer or smaller than the body it
   heads, sizes from one scale (incident: track-coach's inverted panel margins, 2026-07-05);

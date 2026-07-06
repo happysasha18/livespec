@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.27
+  version: 0.1.28
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.18), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.19), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -80,6 +80,12 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
      *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name, not a blank" ·
      ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up
      a GitHub backup before heavy compute (INV-8); want me to?"*
+   - The session's TASK LIST on the human's screen (the harness to-do list and its spinner) is a
+     language-law surface too: subjects speak plain product words in the docs language (English),
+     understandable at a glance — what is being done, for which feature — with codes, row numbers, and
+     internal step names only trailing in parentheses. Never a subject that is a bare code chain
+     (Alexander 2026-07-06, on a screenshot of "Row 142: prove (CROSS-LINK), matrix M-022/M-129": the
+     list strongly helps exactly when it communicates in understandable words).
 
 
 7. **Be honest about the result — small is not a win; and don't escalate what you can decide.** Don't sell a

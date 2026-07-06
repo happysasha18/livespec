@@ -1418,12 +1418,37 @@ class TestProblemLedger(unittest.TestCase):
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         self.assertIn("waiting behind row", comm, "communicator missing the waiting-lane board face")
 
+    def test_architecture_owes_budgets(self):
+        """Row 143 (M-136, INV-41): a user-facing surface's architecture states measurable
+        quality budgets + an instrumentation home; carried by build-pipeline + spec-author."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("The architecture owes numbers, not only names", "INV-41",
+                       "MEASURABLE quality budgets",
+                       "INSTRUMENTATION home",
+                       "is a derivation defect the prover flags",
+                       "set on the human's word at the surface's first budget landing"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("SPEC INV-41", "measurable quality budgets", "instrumentation home"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+        author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
+        for needle in ("SPEC INV-41", "budget sentence"):
+            self.assertIn(needle, author, "spec-author missing: %s" % needle)
+
+    def test_task_list_plain_words(self):
+        """Row 144 (M-137, INV-28): the session's task list speaks plain product English,
+        codes only trail — the rule lives in communicator's language family."""
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("TASK LIST", "docs language", "codes, row numbers, and internal step names only trail"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_economy_ladder(self):
         """Row 140 (M-134/M-135, T-19/INV-40): the economy ladder — legal sheds per rung, the
         never-bend list, the rung moved only by the human's word; base carries the setting row."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("economy ladder", "`budget.pressure`", "full [default]",
                        "moved only by the human's word",
+                       "the economy rung is asked, or the standing default told",
                        "every taken shed named in the landing report",
                        "What NEVER bends, at any rung",
                        "a push still requires the full gate green at HEAD",

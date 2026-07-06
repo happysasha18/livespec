@@ -1601,3 +1601,19 @@ teeth working). Field leg OPEN: the first budget-named session.
 under pressure. Also this session: row 144 queued from his screenshot — the task list on his screen
 must speak plain words (the language law's surface it already claims but nothing names); the open
 tasks were renamed to plain Russian the same minute.
+
+## 2026-07-06 ~21:45 — his correction batch: the skill fixes itself, not the host (session 20)
+**What:** Three deltas from one message. (1) Row 143 built: the architecture step now OWES measurable
+quality budgets (performance first) + an instrumentation home for every user-facing surface, asserted
+by acceptance, binding from a surface's next landing — SPEC v0.15.36 INV-41, build-pipeline 0.2.28,
+spec-author 0.1.16 (the performance facet ends as a budget sentence). (2) Row 144 built with his
+correction folded: the session's task list speaks plain ENGLISH (docs language, not chat Russian —
+the first reading was wrong) — communicator 0.1.28 rule 6. (3) Row 140 amended: the economy rung is
+asked — or the default told — at a project's SETUP alongside the kind question (SPEC T-19, base
+0.1.19, ADOPT orient). Also: the status vocabulary cleaned — a row whose build is done and only field
+evidence rides now reads "build legs MET; field legs OPEN", not "in-work": it holds no pen and rolls
+no lane, so it never eats the lane cap (rows 134/141/140/143/144 all renamed; suite 132 green).
+**Why:** His words: the live-spec window should not fix tlvphoto — it should fix the SKILL so tlvphoto
+fixes itself. And it already had: tlvphoto's own window landed the first-image fix + budgets + a
+timings export the same evening (its c93d2cd) — evidence for INV-41's shape before the clause shipped.
+The tlvphoto inbox wish was already consumed by that window; nothing to take back.
