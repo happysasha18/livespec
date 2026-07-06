@@ -73,3 +73,19 @@ fence) is the part worth copying as-is. What changes per host:
 Everything else — the fence being opt-in, the plain-English failure messages, hooks
 living in a version-controlled `guardrails/` folder rather than only inside `.git/hooks/`
 so they travel with the repo — is meant to hold for any host.
+
+## The gate contract (SPEC INV-47)
+
+Every gate script authored or next touched in this directory obeys three conventions (the
+neighbours' CLI lesson, ROADMAP row 114):
+
+1. **A blocking red carries one typed line.** Beside its human lines, a BLOCKING gate that fails
+   emits exactly one parseable JSON object — `{"severity": "...", "code": "...", "message": "...",
+   "fix": "..."}` — where `fix` is the same sentence a person reads. Agents parse the line; humans
+   read the prose; both see one truth. (First gate under the contract: `check-prototype-fence.sh`.)
+2. **Every check declares blocking or advisory.** A header comment names it; an advisory check
+   prints its findings and never flips the exit code.
+3. **All-or-nothing writes.** A script that rebuilds artifacts validates every output before writing any — no half-written artifact ever lands on disk.
+
+Exempt by name: `check-push-reach.sh` — its exit code is a VERDICT (which checks the diff can
+reach), not a defect; it is a decider, not a blocking gate.

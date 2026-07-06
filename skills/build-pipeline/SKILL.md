@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.32
+  version: 0.2.33
 ---
 
 # build-pipeline — ship a change by the method
@@ -213,6 +213,17 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    skip-set is exactly the expected pinned list** — an unexpected skip (Chrome absent, a real-data fixture
    missing) is a FAILURE, not a pass. **If red at a pause / session end: never commit; write the failing test
    name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint IS the red test.
+
+   **The adversarial option — a second pair of FRESH eyes (SPEC INV-46).** When the code step was
+   delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change), verify
+   also runs a fresh-context checker: brief it with the SPEC sentences the landing claims (the
+   anchors) and the artifact paths — never the worker's summary, never your plan; its opening
+   hypothesis is "tasks completed, goal missed"; it walks each claimed fact up the ladder exists →
+   substantive → wired → flows, and greps for stubs: TODO · FIXME · placeholder · lorem · hardcoded
+   sample · empty function body. Findings become rows or red, never a nod; the checker is a worker
+   under the full contract (checkpoint, ledger, clock), and its verdict rides the landing report.
+   Anywhere else the checker is the senior's option; a skill or prose landing walks the ladder in its
+   kind's form — the checker re-reads the SHIPPED text against the spec sentences.
 
 9. **Commit & show.** Commit when green with no regression (unasked). Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session; diary the

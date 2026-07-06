@@ -20,6 +20,8 @@
 # repo-relative path, across all git-tracked files outside the exclusion list;
 # any hit is a structural reference into the fenced home and fails the gate.
 
+# contract: BLOCKING gate (SPEC INV-47) — on red, one typed failure line beside the human lines.
+
 set -euo pipefail
 
 REPO_ROOT="${1:-$(git rev-parse --show-toplevel)}"
@@ -73,6 +75,7 @@ if [ ${#hits[@]} -gt 0 ]; then
     echo "FAIL (prototype fence): $h"
   done
   echo "  Fix: a prod file must not reference into a prototype home (SPEC INV-17); promote through the pipeline or remove the reference."
+  echo '{"severity":"error","code":"prototype-fence","message":"a prod file references into a prototype home","fix":"promote through the pipeline or remove the reference (SPEC INV-17)"}'
   exit 1
 fi
 

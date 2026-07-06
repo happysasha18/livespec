@@ -8,6 +8,7 @@ logic both against the real repo state (must be green today) and against scratch
 fixtures (must fail the way the gate promises to fail).
 """
 
+import json
 import os
 import shutil
 import stat
@@ -512,3 +513,54 @@ class TestPytestFromRoot(unittest.TestCase):
         self.assertEqual(r.returncode, 0, (r.stdout or "")[-2000:] + (r.stderr or "")[-2000:])
         self.assertNotIn("test_scaffold.template", r.stdout,
                          "the scaffold template must never be collected")
+
+
+class TestGateHygieneContract(unittest.TestCase):
+    """Row 114 (M-145, INV-47): the gate contract — a typed failure line on a
+    blocking gate's red, a declared blocking/advisory taxonomy, all-or-nothing
+    writes; the reach decider exempt by name."""
+
+    def _init_repo(self, tmp):
+        run(["git", "init", "-q"], cwd=tmp)
+        run(["git", "config", "user.email", "a@example.com"], cwd=tmp)
+        run(["git", "config", "user.name", "a"], cwd=tmp)
+
+    def _write(self, tmp, relpath, content):
+        path = os.path.join(tmp, relpath)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return path
+
+    def _commit_all(self, tmp):
+        run(["git", "add", "-A"], cwd=tmp)
+        run(["git", "commit", "-q", "-m", "scratch"], cwd=tmp)
+
+    def test_readme_states_contract(self):
+        with open(os.path.join(GUARDRAILS, "README.md"), encoding="utf-8") as f:
+            body = f.read()
+        for needle in ('"severity"', "blocking or advisory", "before writing any",
+                       "check-push-reach.sh", "INV-47"):
+            self.assertIn(needle, body, "guardrails README missing: %s" % needle)
+
+    def test_prototype_fence_emits_typed_failure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "prototype/sketch.html", "<html>sketch</html>\n")
+            self._write(tmp, "index.html", '<script src="prototype/sketch.html"></script>\n')
+            self._commit_all(tmp)
+            result = run([os.path.join(GUARDRAILS, "check-prototype-fence.sh"), tmp])
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            json_line = None
+            for line in result.stdout.splitlines():
+                if line.startswith("{"):
+                    json_line = line
+                    break
+            self.assertIsNotNone(json_line, "no typed JSON failure line found in: " + result.stdout)
+            payload = json.loads(json_line)
+            self.assertEqual(
+                set(payload.keys()), {"severity", "code", "message", "fix"},
+                "typed failure line has unexpected keys: %r" % (payload,)
+            )
+            self.assertEqual(payload["severity"], "error")
+            self.assertEqual(payload["code"], "prototype-fence")

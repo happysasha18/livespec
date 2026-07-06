@@ -1746,3 +1746,27 @@ intake: the row declares "entry: mockup-first" — a rendered before/after sampl
 to his morning eye before any whole-doc rewrite (INV-43's door arm, dogfooded the night it landed).
 **Why:** The first minute IS a shopfront — a stranger's standard command failing on a shipped file is
 a false claim about the repo's quality, the same family as a stale README.
+
+## 2026-07-06 ~23:56 — rows 110 + 114 + 115: the first three-lane night (session 22)
+**What:** Three laws landed as three parallel lanes off a declared dependency graph (his ~23:33 word
+walked by deed the same hour; no shared files between lanes, one pen for the shared docs, one batch
+landing with a shared prover record — the batch shape rows 126–128 and 143–144 already used).
+- **Row 110 (SPEC v0.15.43 INV-46, M-144):** verify's ADVERSARIAL option — a fresh-context checker
+  briefed with only the landing's spec sentences + artifact paths, hypothesis "tasks completed, goal
+  missed", ladder exists → substantive → wired → flows + stub greps; MANDATORY for delegated
+  surface-sized landings. build-pipeline 0.2.33 (step 8).
+- **Row 114 (INV-47, M-145):** the gate contract — a blocking gate's red emits one typed JSON line
+  {severity, code, message, fix} beside its human lines; blocking/advisory declared; all-or-nothing
+  writes; home guardrails README; first gate converted by deed: the prototype fence (real scratch-run
+  proof, JSON parsed); the reach decider exempt by name.
+- **Row 115 (INV-48, M-146):** the resume file is a digest ≤ 100 lines [default]; open legs restate
+  as one terse line each (INV-26 by form); check red-proven on a synthetic bloated file; template
+  states the cap; the pack's own file is at 68.
+**The night's best minute:** INV-46 ran ON ITS OWN LANDING — the fresh checker (no worker summaries,
+no senior plan) returned GOAL MET plus three real findings: a matrix row over-claiming two never-
+clauses with no home, a test needling one word where the law ships six stub patterns, and a
+self-contradicting matrix phrase. All three were the SENIOR's own edits — the law caught its author
+twice in its first hour. All folded before the landing commit; suite 147 green.
+**Why:** a worker's green and a senior's satisfaction are both leads; only derivation from the spec
+by uninvolved eyes is evidence — and the dependency-graph night proves parallel lanes and the pen can
+coexist without a single cross-lane clobber.

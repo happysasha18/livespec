@@ -1445,6 +1445,20 @@ class TestProblemLedger(unittest.TestCase):
             os.path.isfile(os.path.join(ROOT, "guardrails", "check-push-reach.sh")),
             "guardrails/check-push-reach.sh missing")
 
+    def test_adversarial_verify_option(self):
+        """Row 110 (M-144, INV-46): verify's adversarial option — a fresh-context
+        checker re-derives from the spec sentences, never the worker's summary."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-46", "tasks completed, goal missed",
+                       "never the worker's summary",
+                       "MANDATORY when the code step was delegated"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("tasks completed, goal missed",
+                       "TODO · FIXME · placeholder · lorem · hardcoded sample · empty function body",
+                       "never the worker's summary"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

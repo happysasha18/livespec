@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.42, 2026-07-06)
+# live-spec — SPEC (v0.15.43, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -910,6 +910,21 @@ their reports with a wrong hour, 2026-07-06); and a result that fails its brief'
 ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier, never a
 skipped rung. [ACT-3]
 
+**A worker's green gets a second pair of eyes — verify can turn adversarial.** A worker's report is a
+lead, never evidence, and on a large delegated landing the blind spot is structural: the same head
+that wrote the brief reads the result, so "tasks completed, goal missed" ships green (the neighbours'
+verifier lesson, row 107). So the verify step carries an ADVERSARIAL option: a FRESH-context checker
+briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths — never the
+worker's summary, never the senior's plan — opens on the hypothesis "tasks completed, goal missed"
+and walks each claimed fact up a fixed ladder: EXISTS (the artifact is there) → SUBSTANTIVE (not a
+stub — the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded
+sample / empty body) → WIRED (reachable from the surface that claims it) → FLOWS (real values move
+end to end). Findings become rows or red, never a nod. It fires MANDATORY when the code step was
+delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere
+else it is the senior's option; a skill or prose landing walks the same ladder in its kind's form —
+the checker re-reads the SHIPPED text against the spec sentences. The checker is a worker like any
+other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
+
 ## From the spec to the tests: two layers that must not be skipped
 
 The spec says WHAT the product is; tests prove facts about the shipped artifact. Between them live two
@@ -1041,6 +1056,16 @@ full by construction. The cheap gates (prover record, ownership, coverage, loada
 fence) never scope — they run at every push. "Full rigor" [INV-40] reads as: every check the diff can
 reach, green — never fewer, and never a ritual run of checks that read nothing in the diff. [INV-45]
 
+**A gate that blocks speaks one language.** Today each gate script fails in its own words — an agent
+parses prose, a human hunts the fix. The contract (the neighbours' CLI lesson, row 107): every
+BLOCKING gate, on red, emits ONE typed failure line — a parseable JSON object `{severity, code,
+message, fix}` — beside its human lines, the `fix` field being the same sentence a person reads;
+every check DECLARES itself blocking or advisory (an advisory check prints and never flips the exit
+code); and a script that REBUILDS artifacts validates every output before writing any — no
+half-written artifact ever lands on disk. The contract's operational home is the guardrails README
+(the gate-authoring rules); it binds by deed from the first gate shipped under it and sweeps the rest
+as each is next touched, never retroactively en masse. [INV-47]
+
 ## The package repo: who may write, and two sessions at once
 
 live-spec eats its own cooking — this spec, this queue, these rules govern live-spec's own development,
@@ -1094,6 +1119,13 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   that offer: at a breakpoint the agent compacts its own context to keep working — and SAYS so, never
   silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
   in, re-check skill freshness [A-7]. [M-2]
+- **The resume file is a digest with a hard cap:** NEXT_STEPS exists to be read in one minute at a
+  cold start — growth is a design failure, so the whole file holds at most 100 lines [default] and a
+  suite check owns the number (red on a bloated file, red-proven on a synthetic one). The cap and the
+  restate-every-open-leg law [INV-26] resolve by FORM, never by dropping: an open leg is restated as
+  ONE terse line — its name, what stays open, where the detail lives — and the detail flows to the
+  journal, the queue row, or the record the line points at. Compaction moves prose to its home; it
+  never silently drops an open leg. [INV-48]
 - **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
   against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] +
   the pack's skills re-walked through the standard skill-making skill (skill-creator's format /
@@ -1346,6 +1378,9 @@ meaning, this table is only the map.
 | INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype is not the product |
 | INV-44 | a version push re-opens the shopfront: the README's claims match the pushed truth and the kind-owed visuals ride along (skill pack: diagrams; visual product: fresh screenshots; tool: example runs) — the walk is the publish skill's checklist at push scale (one home there), pointed at by the commit-and-show step, its outcome riding the landing report ("shopfront checked — current" when untouched); a stale claim is fixed before the push; never a version push past a stale shopfront | Publishing |
 | INV-45 | the push gate derives its check-set from a declared reach map (which checks read which file classes), mechanically from the diff's file list, never self-judged: EXPLICIT (a named file in guardrails/), CONSERVATIVE (an unmapped or new file ⇒ the full suite; tested documents — SPEC, matrix, architecture, queue, SKILL.md — stay full-reach, "just .md" is no class), SELF-TESTED (the deciding script red-proven on fixtures, unclassifiable ⇒ full by construction); the cheap gates never scope; "full rigor" (INV-40) = every check the diff can reach, green | The machines that hold the bounds |
+| INV-46 | verify's adversarial option: a FRESH-context checker briefed with the landing's SPEC sentences + artifact paths (never the worker's summary or the senior's plan), hypothesis "tasks completed, goal missed", ladder exists → substantive (stub greps: TODO/FIXME/placeholder/lorem/hardcoded sample/empty body; list's home: pipeline step 8) → wired → flows; findings become rows or red; MANDATORY when the code step was delegated AND the delta is surface-sized, optional elsewhere; kind-scaled for skill/prose (shipped text vs spec sentences); the checker is a worker under ACT-3, verdict rides the landing report | Who decides what |
+| INV-47 | gate hygiene: every BLOCKING gate on red emits one typed failure line `{severity, code, message, fix}` beside its human lines (fix = the human sentence); every check declares blocking or advisory (advisory never flips the exit); artifact-rebuilding scripts validate all outputs before writing any; operational home: guardrails README; binds by deed from the first gate under it, sweeps as each is next touched | The machines that hold the bounds |
+| INV-48 | the resume file is a digest with a hard cap: whole file ≤ 100 lines [default], a suite check owns the number (red-proven on a synthetic bloated file); open legs restate as one terse line each (name + what's open + where detail lives, INV-26 resolved by form); compaction moves prose to its home, never drops a leg | Rhythm |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
