@@ -1385,3 +1385,28 @@ dates appended — next recurrence re-opens as a method-defect row). Mid-landing
 arrived and queued as row 132: a new wish is placed on the product's feature map at intake — change
 vs new vs restructure, plus a restructure trigger for the module map; kin row 129, one head. Suite
 113 → 114 green. Versions: SPEC v0.15.25 · communicator 0.1.20 · pack 0.8.36; installed copy synced.
+
+## 2026-07-06 15:58, session 16 — rows 129+132 land as one head: the product knows itself
+
+His morning message set the day's frame: the tlvphoto windows kept receiving ideas without ever
+hearing back "this is feature X, we're changing it / adding a new one" — and that complaint is
+exactly the wish he had already queued mid-landing yesterday (row 132), plus its kin (row 129). So
+the product-self-knowledge family landed as one head. SPEC v0.15.26: INV-36 — a project knows its
+own KIND (book / backend / static site / fullstack / CLI / skill pack / custom via the queue), asked
+at founding and at adoption's orient, never profile-seeded, one home in the host profile, alive as
+the project evolves; INV-37 — every wish is PLACED on the product's feature map at intake, the
+placement spoken with the echo and written in the row's `map:` note (changes X / new / restructure),
+the map being the spec's scenarios + the architecture's nodes — no third document — and a
+restructure verdict queuing its own row, re-carved only through the architecture step's re-prove.
+The prover's CROSS-LINK pass found four seam holes (echo enumeration needed a one-home pointer;
+project.kind vs work-kind.host-default needed a stated winner; a spoken-only verdict evaporates —
+now written in the row; profile-seeding can't answer a host question) — all folded in-pass, record
+docs/prover/2026-07-06-rows129-132.md. The pack's own profile now carries `project.kind: skill pack`
+by deed; the first real HOST line is row 129's one open leg. Mid-landing he threw a new wish —
+«покажи все фичи», transparency commands — queued as row 133 with the family's first real spoken
+placement (a NEW feature beside the departures board). And the chat clock drifted AGAIN (~6 min,
+caught at the worker-brief clock read) — the ledger's named next-session recurrence, so the entry
+re-opened as a METHOD defect: row 134, a hook that injects the wall clock into the reply. Row 131's
+open leg closed by deed: this session narrated unprompted from its first minute — no third ask
+needed. He also said Fable is being taken away tomorrow (probably returns later) — the session
+closed everything whole on purpose.

@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (rule 13 governs those and is learned once), an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.20
+  version: 0.1.21
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.13), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.14), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -153,8 +153,11 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
 
 12. **The capture echo — a wish hears itself land.** The moment a wish is intaken, the human hears the
     intake line back as ONE plain sentence — what was heard, the door called (the door step's own
-    verdict, not a second classification), the name the work will answer to, and its row number:
-    "caught: <the wish, compressed>. It's a feature, we'll call it X, row N." No echo ⇒ the human
+    verdict, not a second classification), the name the work will answer to, its row number, and its
+    place on the product's map — changes feature X · a new feature · restructure (SPEC INV-37; the
+    map is the spec's scenarios + the architecture's nodes, and the verdict is also written into the
+    row's `map:` note): "caught: <the wish, compressed>. It's a feature, we'll call it X, row N — it
+    changes the catalog." No echo ⇒ the human
     cannot know the request survived. A wish that arrives silently — an inbox file, a harvest — gets
     its echo in the NEXT report, never as a mid-work interruption; a batch echoes one line per wish.
     (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,

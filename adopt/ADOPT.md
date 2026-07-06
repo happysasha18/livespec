@@ -49,7 +49,10 @@ Done when: the sweep was offered and either declined or executed exactly as appr
 
 **Founding questions ride the orient (SPEC B-2 via A-1):** before the digest closes, the run asks —
 or reads from the human's profile — the answers that shape everything downstream, personal-vs-reusable
-first; an answer inferred from examples is a defect, not a reading.
+first, and **what kind of project this is** — book · backend service · static site · fullstack app ·
+CLI · skill pack · a custom kind — recorded as the host profile's `project.kind` line; that one is
+always ASKED, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
+inferred from examples is a defect, not a reading.
 
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of

@@ -172,6 +172,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-115 | Product-kind verify includes the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar, in the medium's own form (a text product walks its reading path, not animations); findings become rows or red; never "renders and clicks" alone passing a product-kind verify, never findings kept as vibes | INV-30 | string | `test_visitor_walk_feel_pass` | BUILT |
 | M-116 | A taste choice made without asking is TOLD at landing: the report names each open `[default]` in plain words with an example and a tweakable mark; no confirmation requested, silence is consent, never re-asked — the person asks when they want a change; never a choice accumulating untold, never a forced confirmation loop | INV-31 | string | `test_default_expiry_law` | BUILT |
 | M-120 | Every pipeline step is worked in its craft's mindset — the step→craft ladder (product manager at spec · formal reviewer at both prove steps · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify · release hand at commit & show) lives in ONE home, build-pipeline's step list, and artifacts are judged by their craft's standards; never a second full ladder statement elsewhere, never a generalist head excused by habit | INV-33 | string | `test_craft_ladder` | BUILT |
+| M-126 | Every wish is placed on the feature map at intake: the placement spoken with the echo and written in the row's `map:` note — changes feature X · new feature · restructure; the map is the spec's scenarios + the architecture's nodes, no third document; a restructure verdict queues its own row and re-carves only through the architecture step's re-prove; never a silent placement, never a re-carve in passing | INV-37 | string | `test_feature_map_placement` | BUILT |
 
 ### [node: publish]
 
@@ -234,6 +235,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-046 | Adopt working artifacts live tracked in `.live-spec/adopt/`; never scattered into the host's own folders | A-8 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-047 | A cruft sweep is offered, listed, human-gated, regenerable-only; never silent and never authored content | A-9 | string | `test_adopt_phases_cite_spec` | BUILT |
 | M-071 | Adoption gives every unbacked live surface a human verdict — promote / quarantine / attic; never an unbacked surface silently registered as product | A-10 | string | `test_adopt_phases_cite_spec` (A-10 citation + verdict wording) | BUILT |
+| M-125 | The project knows its own kind: `project.kind` asked at founding and at adoption's orient — always the human's answer, never profile-seeded — recorded in the host profile, seeding project-wide defaults without overriding an explicit line, updated on the human's word the moment evolution is noticed, journaled; never inferred from examples, never a founding fossil an audit has to catch | INV-36 | string | `test_project_kind` | BUILT |
 
 ### [node: inbox]
 

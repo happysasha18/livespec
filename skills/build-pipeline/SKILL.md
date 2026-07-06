@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.22
+  version: 0.2.23
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.13), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.14), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -40,13 +40,18 @@ and the hat each artifact was made under is namable on ask. The craft wears the 
 toolsmith — the ladder names the archetypes, the kind says what their standards look like in its medium.
 
 ## When to run it — and where each kind of change enters
-- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row (communicator rule 12; SPEC INV-27).** The intake
+- **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row · place on the map (communicator rule 12; SPEC INV-27, INV-37).** The intake
   line states size (a wish too big for its worth is negotiated in SCOPE — cut surfaces or split into
   stages, never a time budget or estimate; proposals proceed on the recommended option and are
   surfaced, SPEC T-15) ·
   priority · door: feature · bug · refactor · docs-only · skip · work-kind: product · infra · skill ·
   prose — what the wish BUILDS, one kind per wish, scaling the FORM of every step it walks (the
-  work-kind table below; SPEC T-16, INV-22). Tripwires decide, not
+  work-kind table below; SPEC T-16, INV-22). The same line PLACES the wish on the product's feature
+  map — **changes feature X · a new feature · restructure** — spoken in the echo and written in the
+  row's `map:` note; the map is the spec's scenario sections plus the architecture's nodes, never a
+  third document, and a restructure verdict queues its OWN row (refactor door if only structure
+  moves, feature door if behaviour moves too) — the re-carve happens only through the architecture
+  step and its re-prove (SPEC INV-37). Tripwires decide, not
   judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
   · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
   casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
@@ -149,7 +154,10 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    landing in flight. A node exists for what ships today, or for what the spec already promises under an
    owned queue row (marked [target], pin empty). A future feature earns its node when its landing arrives;
    a speculative node is unbacked structure — the prover flags it, and "should I architect the next few
-   milestones now?" is answered NO by the method, not by taste.
+   milestones now?" is answered NO by the method, not by taste. Re-carving the whole node map IS
+   legal — it arrives as a restructure placement's own queue row (SPEC INV-37), walks this step, and
+   is re-proven like any structure change; a placement may SAY the shape no longer fits, only a
+   landing changes the shape.
 
 4. **Prove the architecture — invoke `product-prover` with the architecture lens** whenever the doc
    changed in step 3: every spec fact has an owning node · no node stands without spec backing · every

@@ -1249,6 +1249,37 @@ class TestProblemLedger(unittest.TestCase):
                        "INV-35"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_project_kind(self):
+        """Row 129 (M-125, INV-36): the project knows its own kind — asked at
+        founding/orient, one home in the host profile, alive as the project evolves."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-36", "The project knows what KIND of thing it is",
+                       "never silently overrides an explicit profile line"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("`project.kind`", "asked at founding and at adoption"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+        adopt = re.sub(r"\s+", " ", read(os.path.join("adopt", "ADOPT.md")))
+        self.assertIn("project.kind", adopt, "ADOPT.md missing the project-kind founding ask")
+        prof = re.sub(r"\s+", " ", read(os.path.join(".live-spec", "profile.md")))
+        self.assertIn("project.kind", prof,
+                      "the pack's own host profile carries no project.kind line (dogfood)")
+
+    def test_feature_map_placement(self):
+        """Row 132 (M-126, INV-37): every wish is placed on the feature map at intake —
+        spoken with the echo, written in the row, restructure only through a landing."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-37", "PLACED on the product's map",
+                       "A restructure verdict never re-carves in passing",
+                       "Re-carving the whole map IS legal"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("place on the product's map", "INV-37"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("place on the map", "changes feature X", "INV-37"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+
     def test_install_backup_home(self):
         """Row 122 (M-118): installer backups live outside the live skills dir."""
         script = read("install.sh")

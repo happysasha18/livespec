@@ -7,3 +7,8 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   public and the method's own flagship; tightened from the package default (before MINOR bumps) on
   Alexander's explicit word, 2026-07-04. This line and the push gate [M-6] are one fact; M-6 is its
   normative home.
+
+- `project.kind: skill pack — the live-spec method itself; this repo doubles as the flagship host
+  instance` — recorded 2026-07-06 at the INV-36 landing, the law's own founding-ask applied to its
+  birthplace; updated on Alexander's word if the pack outgrows it (SPEC INV-36).
+

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.25, 2026-07-06)
+# live-spec — SPEC (v0.15.26, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -125,7 +125,27 @@ prose archaeology; the station vocabulary is the pipeline's own step names, one 
 nine — a feature paused at proving the architecture or at commit & show reads under that station's own
 name, never an improvised one; landed is a state, not a step: it says the row closed whole. (His word 2026-07-05, before sleep: "captured this that
 request, it's a feature, we'll call it this and that — а потом рапортовать как каждая фича идет по
-пайплайну".) [INV-27]
+пайплайну".) The echo carries one more part — the wish's place on the product's map; its law lives in
+the next paragraph [INV-37]. [INV-27]
+
+**Every wish is also PLACED on the product's map — "this changes feature X", "this is a new feature",
+or "the shape no longer fits" — and the placement is spoken, out of the box.** The echo above says what
+the work IS (heard · door · name · row); the same breath says WHERE it lands. The map is not a new
+document: the spec's scenario sections and the architecture's nodes ARE the product's feature map
+[E-14] — this law only makes the until-now implicit mapping SPOKEN. Three verdicts exist: **changes an
+existing feature** (the delta grows that scenario, names it) · **a new feature** (a new scenario
+section, and at the architecture step its own node) · **restructure** (the wish fits no existing
+carving cleanly, or fitting it in shows the modules have outgrown their shape — his words: the moment
+of «формирование продуктовой модульной архитектуры»). A restructure verdict never re-carves in
+passing: it queues its OWN row (refactor door when only structure moves; feature door when behaviour
+moves with it), and the re-carve walks the architecture step with its re-prove [E-14] — the placement
+may SAY the shape no longer fits, only a landing may change the shape. A bug's placement is the
+feature it repairs; a wish whose feature the classifier can't call is asked like any uncallable axis
+[INV-12]. And the verdict is WRITTEN as well as spoken: the wish's queue row carries a `map:` note —
+changes X · new · restructure — so placement stays greppable after the echo fades, the way the fences
+stay greppable in their rows [T-14 kin]. (His word 2026-07-06: «когда приходит новый запрос, ты должен понять, к какой фиче
+относится — меняем ли фичу, пишем ли новую, нужна ли структуризация… я ожидал бы, чтобы это было
+понятно из коробки».) [INV-37]
 
 **The outcome does the talking: names are chosen plain, and every handle trails.** The first real
 departures board passed its eval and failed its READER — lines led with coined metaphor-names
@@ -505,6 +525,27 @@ micro-decision [INV-5] at its most expensive. Adoption owes the same questions a
 the pointer. (Born 2026-07-05: a fresh project was founded as "a personal agent for three artifacts" —
 the reusable-product question was never asked, and the human's standing answer was reusable.) [B-2]
 
+**The project knows what KIND of thing it is — and the kind evolves.** Beside personal-vs-reusable,
+founding asks the second shaping question: **what is this project** — a book · a backend service · a
+static site · a fullstack app · a CLI · a skill pack — one plain line, recorded in the HOST profile
+(`project.kind`, the settings ladder's host scope [E-13]); adoption owes the same ask at orient, with
+the other founding questions [A-1, B-2]. This is NOT the per-wish work-kind [T-16] — three verdicts
+share the intake breath and never collapse into one: the PROJECT kind says what the product IS and
+seeds project-wide defaults (the usual work-kind, which facets and feel-lenses apply by default
+[T-13, INV-30]); the wish's work-kind says what THIS wish builds; the placement [INV-37] says where it
+lands on the map. The seed proposes, a written line disposes: a host that already records its own
+default (`work-kind.host-default` [T-16, E-13]) keeps it — the project kind never silently overrides
+an explicit profile line. And the ask is always the HUMAN's: no personal-profile line can say what a
+host is, so B-2's profile-seeding arm never answers this question — it is asked at founding or orient,
+every time. The kind vocabulary is CURATED the same way the work-kinds' is [T-16]: the list
+above names shapes real projects already wear, and a custom kind joins through the queue with a named
+project the list mis-served — his word expects custom kinds, the queue is their door. And the line is
+ALIVE, not a founding fossil: the moment work notices the project has outgrown its kind — the static
+site that grew a backend — the line updates on the human's word, journaled right then, never parked
+for an audit. A project attached before this law owes no retro-ask: the line arrives at the next
+landing that would lean on it, like any forward-binding intake law [T-16 kin]. (His word 2026-07-06:
+«нужно понять — и апдейтить, если надо — какой это проект… всё эволюционирует».) [INV-36]
+
 ## Attaching to a live project (adoption)
 
 Adoption is a sequence; each phase completes before the next. In practice the version-control gate [A-5]
@@ -715,7 +756,8 @@ ITERATIVE, like the spec it serves: it maps the product as it stands plus the la
 exists for what ships today, or for what the spec already promises under an owned queue row (marked
 [target] with an empty pin); it is never designed several milestones ahead. A future feature earns its
 node when its landing arrives — speculative nodes are unbacked structure, the architecture's version of
-a silent micro-decision. [E-14]
+a silent micro-decision. Re-carving the whole map IS legal — it arrives as a restructure placement's
+own queue row [INV-37], walks this step, and is re-proven like any structure change. [E-14]
 
 **The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
 Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,
@@ -999,7 +1041,7 @@ meaning, this table is only the map.
 | INV-24 | time read off the clock, never invented: no future-dated file name, journal heading, or ledger date (suite fence) AND no added line pairing today's date with a time past the commit clock (pre-commit fence) AND the chat face: a human-facing timestamp read at write time, never extrapolated (law in communicator, no mechanical fence); quoting a past wrong date or time stays legal | Rhythm |
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
-| INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
+| INV-27 | every intake is echoed back in one sentence (heard · door · name · row, plus the placement [INV-37]; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
 | INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence; NEVER-list: bookkeeping numbers (test counts, suite sizes, version strings) never as message content — translated, trailing, or in the records; the done-claim walk [INV-25] keeps them as the answer | Throwing a wish |
 | INV-29 | a feature-doored wish walks the kind-scaled FIT WALK at intake (journey / flows / trigger lenses); trivially-closable holes closed and written how; only genuine taste calls go out, batched; prover mode FEATURE-FIT | Throwing a wish |
 | INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar, in the medium's own form (motion for a browser, reading path for a book); findings become rows or red | Throwing a wish |
@@ -1008,6 +1050,8 @@ meaning, this table is only the map.
 | INV-33 | every pipeline step is worked wearing its craft's head (product manager at spec · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify); the step→craft ladder's one home: build-pipeline | Throwing a wish |
 | INV-34 | the pre-report walk: before any movement-end/milestone report, the communicator rules are re-read and the draft passes phrase by phrase through the outside-reader question; trailing anchors stay legal; acceptance = the reader's own read; the walk's one home: communicator | Throwing a wish |
 | INV-35 | while work runs, beats are narrated as they happen — a station passed, a load-bearing find, a turn — in plain roadmap terms, the reports' voice; the grind stays quiet; a narration line is chat, not a report (no pre-report walk, no questions, the plain-language and bookkeeping laws still bind); it replaces no report; the law's one home: communicator | Throwing a wish |
+| INV-36 | the project's own kind (book / backend / static site / fullstack / CLI / skill pack / custom via the queue) asked at founding and at adoption's orient — always asked, never profile-seeded; one home: the host profile's `project.kind`; seeds project-wide defaults but never overrides an explicit host line; distinct from the per-wish work-kind and the placement; updated on the human's word the moment evolution is noticed, journaled | Bootstrap |
+| INV-37 | every wish is placed on the product's feature map at intake, the placement SPOKEN with the echo and WRITTEN in the row (`map:` — changes feature X / new feature / restructure); the map = spec scenarios + architecture nodes, no third document; a restructure verdict queues its own row and re-carves only through the architecture step's re-prove | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
