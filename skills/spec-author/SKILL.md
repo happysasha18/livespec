@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.17
+  version: 0.1.18
 ---
 
 # Spec Author
@@ -242,7 +242,9 @@ with incidents exactly like the facet list:
 - **product / UX kind — the visitor's journey:** how does the person ARRIVE here (every entry door,
   not just the main one) · what do they DO here · where do they go NEXT from every state this surface
   can be in (no dead ends — the door↔room loop incident, tlvphoto 2026-07-06) · what does a RETURN
-  visit change (seen-state, no-repeat — and the remembered state it implies) · what does the FEEL owe
+  visit change (seen-state, no-repeat — and the remembered state it implies) · a conditionally-entered
+  face (first visit, empty state, onboarding, a one-time banner) names its deliberate re-entry path or
+  states the one-way as a decision (SPEC INV-50) · what does the FEEL owe
   against the approved prototype's bar · what next feature does this one invite;
 - **infra / backend kind — the flows:** inputs → outputs · the data's lifecycle (created, updated,
   stale, gone) · every failure path and what the caller sees;

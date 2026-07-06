@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 0.1.11
+  version: 0.1.12
 ---
 
 # Product Prover
@@ -276,6 +276,12 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   contradict its own artifact (prose demanding a question the approved door shows wordless — the
   tlvphoto class)? A prototype-born clause with no pointer, or clause text contradicting its own
   artifact, is a finding (SPEC INV-43).
+- **Entry symmetry** — for every FACE, MODE, or PANEL entered under a condition (first visit, empty
+  state, onboarding, a one-time banner): what deliberate path re-enters it later? A get with no set is
+  a finding unless the spec states the one-way as a decision, by name (SPEC INV-50). Trigger patterns:
+  "only on first visit", "only on first run", "until dismissed" — each such clause owes its return
+  sentence (born of a real door: six seams found, the one-way face missed — the dead-end lens tests
+  STATES for exits, this lens tests FACES for re-entry over the visit's lifetime).
 
 For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining, not in producing a finding for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 

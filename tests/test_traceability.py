@@ -1459,6 +1459,52 @@ class TestProblemLedger(unittest.TestCase):
                        "never the worker's summary"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
+    def test_lanes_by_graph(self):
+        """Row 149 (M-147, INV-49): lanes picked by a dependency graph, integration
+        order declared at claim, tiny rows serial."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-49", "DEPENDENCY GRAPH", "rows ride serial",
+                       "first-declared lands first"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("Lanes are picked by a graph", "rows ride serial",
+                       "DECLARED at claim"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+
+    def test_entry_symmetry(self):
+        """Row 150 (M-148, INV-50): a conditionally-entered face owes a re-entry
+        path or a written one-way; the prover carries the lens."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-50", "deliberate RE-ENTRY path", "until dismissed"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
+        for needle in ("Entry symmetry", "A get with no set is a finding", "SPEC INV-50"):
+            self.assertIn(needle, prover, "product-prover missing: %s" % needle)
+        author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
+        self.assertIn("re-entry path", author,
+                      "spec-author journey lens missing the re-entry clause")
+
+    def test_artifact_passport(self):
+        """Row 151 (M-149, INV-51): anything handed to the human leads with its
+        passport — project name + the read contract."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-51", "never only the URL", "just an update"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("passport", "needs your word: what, by when", "never only the URL"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
+    def test_windows_accumulate(self):
+        """Row 152 (M-150, INV-52): during an away-stretch windows accumulate to one
+        end-of-stretch opening."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-52", "accumulate on ONE page", "refreshed in place"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("windows accumulate", "refreshed in place",
+                       "opens that one window once"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

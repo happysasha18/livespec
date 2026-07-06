@@ -1770,3 +1770,26 @@ twice in its first hour. All folded before the landing commit; suite 147 green.
 **Why:** a worker's green and a senior's satisfaction are both leads; only derivation from the spec
 by uninvolved eyes is evidence — and the dependency-graph night proves parallel lanes and the pen can
 coexist without a single cross-lane clobber.
+
+## 2026-07-07 ~00:09 — rows 149 + 150 + 151 + 152: his midnight words become law (session 22)
+**What:** Four laws from four of his live messages inside one late-evening hour, landed as one serial
+lane (the graph's own tiny-rows word applied to its own landing):
+- **Row 149 (SPEC v0.15.44 INV-49, M-147):** lanes are picked by a dependency graph — edges = shared
+  surfaces/sections/files; independent set up to the cap; integration-only collisions declare their
+  landing order at claim; tiny rows ride serial and the choice is said on the board. The deed preceded
+  the law by an hour: three medium rows rolled as lanes, five tiny ones went serial.
+- **Row 150 (INV-50, M-148):** a conditionally-entered face owes a deliberate re-entry path or a
+  written one-way («если есть гет — есть сет»); spec-author's journey lens asks it, the prover's new
+  entry-symmetry lens reads for it. The tlvphoto inbox wish archived with its pointer.
+- **Row 151 (INV-51, M-149):** anything handed to the human leads with its passport — the project's
+  name in the visible content + "needs your word: what, by when" or "just an update". Fixed live on
+  the decisions page the minute he asked; now law (communicator rule 16).
+- **Row 152 (INV-52, M-150):** during an away-stretch windows accumulate to ONE page and one opening
+  at the stretch's end; precedence: WHEN (this rule) · HOW (the show rule) · WHAT (the passport).
+  Communicator rule 17; seventeen rules now, 0.1.32.
+**Worker discipline note:** the shared worker HALTed by contract on a 3-red suite — one was the
+senior's own matrix-block misplacement (the symmetry row filed under the wrong node), one the known
+mid-batch prover-record red, one a cascade. The traceability teeth caught the senior for the third
+time tonight; all fixed pre-commit, suite whole after the landing commit.
+**Why:** the night's pattern — his one-line corrections are the pack's highest-value input, and the
+pipeline turns them into enforced law within the hour without losing a single one.

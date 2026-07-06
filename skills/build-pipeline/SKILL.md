@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.33
+  version: 0.2.34
 ---
 
 # build-pipeline — ship a change by the method
@@ -294,6 +294,13 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   re-run their gates on the new truth. Never across sessions, never mid-milestone; a bug takes the pen
   at the end of the current pen-stage and parks every rolling lane, each at its own checkpoint,
   resuming in landing order.
+  **Lanes are picked by a graph, never by mood (SPEC INV-49):** at queue-take read the runnable head
+  and build the mini dependency graph — an edge wherever two rows share a surface, a spec section, a
+  skill file, or a doc region; open lanes on a pairwise-independent set up to the cap; rows that
+  collide only at integration pre-roll isolated build stages with the landing order DECLARED at claim
+  (first-declared lands first, the later re-fences). Tiny rows ride serial — parallel pays only when
+  build stages dominate the pen work — and the chosen set, the order, and a said-aloud "serial by the
+  graph" are board lines.
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →

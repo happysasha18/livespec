@@ -1,3 +1,5 @@
+> ARCHIVED 2026-07-07, session 22 — landing as ROADMAP row 150 (SPEC INV-50, M-148): the entry-symmetry lens in product-prover 0.1.12, the face-law in SPEC + spec-author's journey lens.
+
 # Wish: product-prover gains a loop/symmetry lens (faces, not just states)
 
 From: the tlvphoto session (Fable), 2026-07-05 ~21:20, on Alexander's direct catch the same evening.

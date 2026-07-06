@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.43, 2026-07-06)
+# live-spec — SPEC (v0.15.44, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -232,6 +232,20 @@ as the writer's own remain a separate, skippable register; narration is FOR the 
 replaces no report — milestones still get the full one. The law's one home is the communicator (its
 narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
 
+**Anything handed to the human opens with its passport.** A page opened in his browser at midnight
+either says WHICH project it is and WHETHER it wants him — or it is noise (his 2026-07-06 word, twice
+in one minute: the project's name in the visible content, never only the URL; and "needs your word:
+what, by when" or "just an update, no action"). Every artifact handed or opened — a report page, a
+decision page, a rendered doc — LEADS with that one-line passport, and the chat line announcing it
+carries the same two facts. Home: communicator (the passport rule). [INV-51]
+
+**During an away-stretch, windows accumulate — one opening at the end.** When the human has stepped
+away (an overnight loop, an offline window [INV-35]), nothing opens a browser window mid-stretch:
+artifacts accumulate on ONE page — the stretch's decisions/report page — and the stretch's end opens
+that single window once; mid-stretch re-opening is legal only as the SAME page refreshed in place
+(his 2026-07-06 word: «всё-всё-всё открыл бы в конце… если переоткрывать — аккумулировать»). Home:
+communicator (the showing-cadence rule beside the offline window). [INV-52]
+
 **His word on a shown artifact is read as meant — and his cuts hold.** The lesson arrived through the
 promoter window (2026-07-06 — three review rounds of one document rejected in a single evening, the
 same failures repeating after they had been named; the confident-specialist VOICE core of that lesson
@@ -385,6 +399,18 @@ spec-author's sweep section, curated like the facet list [T-13]; the law binds f
 feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21
 kin]. [INV-29]
 
+**A face you can enter once owes a way back — or a written one-way.** A surface's FACES (a
+first-visit door, an empty state, an onboarding screen, a one-time banner) are entered under
+conditions — and a face whose condition can never re-arise is a dead end the state lenses miss: the
+states all have exits, the FACE has no re-entry (tlvphoto's door, 2026-07-05 — a prover pass found
+six seams and missed the one-way face; his words: «всегда в автомате должен быть луп — если есть гет,
+есть сет»). The law: every conditionally-entered face states its deliberate RE-ENTRY path — or states
+the one-way as a decision, by name. Trigger wording is the tell: "only on first visit", "only on
+first run", "until dismissed" — each such clause owes its return sentence. The prover reads for it
+(the entry-symmetry lens in product-prover's stress list); the fit walk's journey lens [INV-29]
+already asks "where NEXT from every state" — this law extends the question to faces over the visit's
+lifetime. [INV-50]
+
 **Verify-by-deed walks the visit and watches the feel.** "Eyes on the artifact" has meant "it renders
 and clicks" — and cheap-feeling motion or an ugly affordance shipped green through the whole pipeline
 (tlvphoto's transitions and its open-work button, 2026-07-06). So for the product kind the verify
@@ -509,6 +535,18 @@ and says so aloud; no fourth build lane unasked — beyond three, his word opens
 2026-07-06 word moved the cap itself from two); no per-lane sub-board. Success measure: the first real
 double-lane run lands both rows clean with the board readable throughout — the human can say at any
 moment where each train stands, checked by his own read of that run's reports [default]. [T-18]
+
+**Lanes are picked by a graph, never by mood.** At queue-take the session reads the runnable head —
+the next few rows workable without the human — and builds the mini DEPENDENCY GRAPH: an edge wherever
+two rows share a surface, a spec section, a skill file, or a doc region. Lanes open on a
+pairwise-independent set, up to the cap [T-18]; rows joined by an edge serialize inside one lane.
+Rows that collide only at their INTEGRATION (one file, different concerns) may pre-roll their
+isolated build stages with the integration ORDER DECLARED at claim time — first-declared lands first,
+the later re-fences on the new truth [INV-39]. And the graph knows when NOT to parallelize: parallel
+pays only when build stages dominate the pen work — tiny rows ride serial, and saying so aloud is
+part of the board (the first graph night proved both directions in one hour: three medium rows rolled
+as lanes, the next five, all tiny, went serial by the graph's own word, 2026-07-06). The chosen set
+and the order are NARRATED at opening [INV-27]. [INV-49]
 
 A wish can also end without landing; its row stays in the table: **declined** (you said no) · **deferred**
 (parked with a named revisit trigger) · **superseded** (absorbed by another wish; the row points to the
@@ -1381,6 +1419,10 @@ meaning, this table is only the map.
 | INV-46 | verify's adversarial option: a FRESH-context checker briefed with the landing's SPEC sentences + artifact paths (never the worker's summary or the senior's plan), hypothesis "tasks completed, goal missed", ladder exists → substantive (stub greps: TODO/FIXME/placeholder/lorem/hardcoded sample/empty body; list's home: pipeline step 8) → wired → flows; findings become rows or red; MANDATORY when the code step was delegated AND the delta is surface-sized, optional elsewhere; kind-scaled for skill/prose (shipped text vs spec sentences); the checker is a worker under ACT-3, verdict rides the landing report | Who decides what |
 | INV-47 | gate hygiene: every BLOCKING gate on red emits one typed failure line `{severity, code, message, fix}` beside its human lines (fix = the human sentence); every check declares blocking or advisory (advisory never flips the exit); artifact-rebuilding scripts validate all outputs before writing any; operational home: guardrails README; binds by deed from the first gate under it, sweeps as each is next touched | The machines that hold the bounds |
 | INV-48 | the resume file is a digest with a hard cap: whole file ≤ 100 lines [default], a suite check owns the number (red-proven on a synthetic bloated file); open legs restate as one terse line each (name + what's open + where detail lives, INV-26 resolved by form); compaction moves prose to its home, never drops a leg | Rhythm |
+| INV-49 | lanes are picked by a dependency graph at queue-take (edge = shared surface / spec section / skill file / doc region): open on a pairwise-independent set up to the T-18 cap; integration-only collisions pre-roll isolated build stages with the landing order DECLARED at claim (first-declared lands first, later re-fences); tiny rows ride serial — parallel pays only when build stages dominate; the set and order narrated at opening | Throwing a wish |
+| INV-50 | a conditionally-entered face (first visit, empty state, onboarding, one-time banner) states its deliberate re-entry path or names the one-way as a decision; trigger wording "only on first visit/run", "until dismissed" owes its return sentence; prover carries the entry-symmetry lens; extends INV-29's where-next to faces over the visit's lifetime | Throwing a wish |
+| INV-51 | anything handed/opened to the human leads with its passport: the project's NAME in the visible content (never only the URL) + the read contract ("needs your word: what, by when" or "just an update"); the announcing chat line carries the same two facts; home: communicator | Throwing a wish |
+| INV-52 | during an away-stretch nothing opens a browser window: artifacts accumulate on ONE page, the stretch's end opens it once; mid-stretch re-open only as the same page refreshed; home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

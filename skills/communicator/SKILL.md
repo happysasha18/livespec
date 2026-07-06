@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.31
+  version: 0.1.32
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,7 +17,7 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Fifteen rules, few enough to hold in your head — plus one walked step before the heavy
+internal ids). Seventeen rules, few enough to hold in your head — plus one walked step before the heavy
 reports (the pre-report walk, below).
 
 ## When it fires
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The fifteen rules
+## The seventeen rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -288,6 +288,23 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     word back in round three] ✅ kill-list line in the project's journal: "«master» — cut 2026-07-06,
     stays cut" · ❌ [his parody metaphor shipped as the pitch] ✅ "это ты в насмешку написал или
     вписать всерьёз?"*
+
+16. **Anything handed to the human opens with its passport (SPEC INV-51).**
+    - Every artifact handed or opened — a report page, a decision page, a rendered doc — LEADS with a
+      one-line passport: the PROJECT NAME in the visible content (never only the URL or filename) and
+      the read contract — "needs your word: what, by when" or "just an update, no action needed".
+    - The chat line announcing an opened window carries the same two facts.
+    - Born 2026-07-06: a page opened at midnight with no name and no contract — «написал тебе потому
+      что в браузере открылось что-то».
+
+17. **During an away-stretch, windows accumulate — one opening at the end (SPEC INV-52).**
+    - The offline window (SPEC INV-35) is the trigger: between "you may step away" and the
+      needed-again beat, NOTHING opens a browser window.
+    - Artifacts accumulate on ONE page — the stretch's decisions/report page; mid-stretch re-opening
+      is legal only as the SAME page refreshed in place.
+    - The stretch's end opens that one window once. Precedence, stated once: this rule governs WHEN,
+      the show rule (a new window) governs HOW at that single opening, the passport (rule 16) governs
+      WHAT the page leads with.
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 
