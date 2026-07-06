@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.19
+  version: 0.2.20
 ---
 
 # build-pipeline — ship a change by the method
@@ -244,8 +244,14 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   concurrent-edit fence alarms on foreign sessions, not on your own briefed hands — the senior who
   briefed both owns the seams between briefs); the session's live setting lines ride into the brief
   verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's spoken
-  word; and a result failing its brief's acceptance escalates ONE tier with a logged line — never a
-  silent retry on the same tier, never a skipped rung. **Every delegation reports its saving:** the
+  word; the brief ARMS the worker for the workshop — it carries the host's problem-ledger path
+  (`.live-spec/PROBLEMS.md`) with the WATCHED-line duty: workshop noise the worker hits (a flaky
+  harness, a missing dependency, a tool misbehaving) goes into its checkpoint as a ledger line —
+  signature, date, one line of context — never a silent retry, and the senior carries the lines into
+  the ledger at verify (SPEC INV-23); and it carries the CLOCK — the date and time read at briefing —
+  so the worker stamps its checkpoint and any dated output from the brief's clock, never an invented
+  hour (SPEC INV-24); and a result failing its brief's acceptance escalates ONE tier with a logged
+  line — never a silent retry on the same tier, never a skipped rung. **Every delegation reports its saving:** the
   landing report carries one line — what went to the worker and roughly how much senior work it saved.
   The line is what keeps the habit alive; a session that never writes it is a session that quietly
   stopped delegating.

@@ -1264,3 +1264,20 @@ untouched — history stays history). Red-proven: the new station assertions fai
 eight-name lists before any edit, then green; suite 108. Delegation: a Sonnet worker ran the eight
 verbatim edits with red/green proof off a self-contained brief — roughly fifteen minutes of senior
 hands saved. SPEC v0.15.20 · communicator 0.1.18 · pack 0.8.31.
+
+## 2026-07-06 12:53, session 13 — the brief arms its worker: ledger walk + clock (row 123)
+
+The retro fit-walk found the first half and the eval re-runs proved the second: workshop noise a
+worker hits was getting silently retried unless the senior happened to read the raw output, and both
+eval arms led their reports with a wrong hour the day their briefs carried no clock. The worker
+contract (ACT-3) gains two arms. Every brief now carries the host's problem-ledger path with the
+WATCHED-line duty — noise goes into the worker's checkpoint as a ledger line (signature, date, one
+line of context), the senior carries it into the ledger at verify. And every brief carries the CLOCK,
+the date and time read at briefing, so a worker's stamps come off the brief, never off feel —
+composing with the invented-time fences (INV-24). Elaborated in the delegation gate; matrix M-119;
+red-proven test. Dogfooded on its own landing: the row-123 brief itself carried both lines and the
+worker used them correctly — it wrote a ledger line and HALTed by contract on a full-suite red that
+its edits didn't explain. That red was the push gate's own tooth (a SPEC commit newer than the last
+committed prover record — mid-batch by design; the batch's closing full prover pass turns it green),
+now a WATCHED ledger entry. A Sonnet worker ran the seven verbatim edits red→green off a
+self-contained brief (~15 min senior hands saved). SPEC v0.15.21 · build-pipeline 0.2.20 · pack 0.8.32.

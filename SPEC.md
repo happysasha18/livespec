@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.20, 2026-07-06)
+# live-spec — SPEC (v0.15.21, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -628,9 +628,15 @@ Whether the queue's size class fixes the tier mechanically or the senior may ove
 same-session SIBLING worker just wrote are fence-benign — the concurrent-edit fence [INV-11] alarms on
 foreign sessions, not on your own briefed hands, and the senior who briefed both owns their seams; the
 session's live setting lines [E-13] ride INTO the brief verbatim (a worker never resolves the ladder
-itself — it cannot hear the human's spoken word); and a result that fails its brief's acceptance
-escalates ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier,
-never a skipped rung. [ACT-3]
+itself — it cannot hear the human's spoken word); the brief ARMS the worker for the workshop — it
+carries the host's problem-ledger path with the WATCHED-line duty (noise the worker hits goes into its
+checkpoint as a ledger line — signature, date, one line of context — never a silent retry; the senior
+carries the lines into the ledger at verify unless the brief names the ledger among the worker's files
+[INV-23]), and it carries the CLOCK — the date and time read at briefing — so a worker's stamps come
+off the brief's clock, never invented [INV-24] (the day the briefs carried no clock, both eval arms led
+their reports with a wrong hour, 2026-07-06); and a result that fails its brief's acceptance escalates
+ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier, never a
+skipped rung. [ACT-3]
 
 ## From the spec to the tests: two layers that must not be skipped
 
@@ -958,7 +964,7 @@ meaning, this table is only the map.
 | A-10 | unbacked live surface at adoption: promote / quarantine / attic | Adoption step 3 |
 | ACT-1 | the human: taste, gates, wording | Who decides what |
 | ACT-2 | senior agent: judgment | Who decides what |
-| ACT-3 | tiered workers, checkpoints [router target] | Who decides what |
+| ACT-3 | tiered workers, checkpoints; every brief carries the ledger walk + the clock [router target] | Who decides what |
 | M-1 | milestone: re-prove + audit + compaction + gate list | Rhythm |
 | M-2 | safe breakpoint; announced self-compaction | Rhythm |
 | M-3 | documents versioned like code | Rhythm |

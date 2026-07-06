@@ -837,6 +837,29 @@ class TestWorkerContract(unittest.TestCase):
     """Row 59 (M-095): the worker contract — ownership narrowed to the brief, sibling files
     fence-benign, session lines ride the brief, failed acceptance escalates one logged tier."""
 
+    def test_brief_carries_ledger_and_clock(self):
+        """Row 123 (M-119, ACT-3): every worker brief carries the problem-ledger
+        walk and the clock read at briefing."""
+        spec = read("SPEC.md")
+        flat_spec = " ".join(spec.split())
+        for needle in (
+            "the brief ARMS the worker for the workshop",
+            "carries the CLOCK",
+        ):
+            self.assertIn(needle, flat_spec, "SPEC ACT-3 missing: %s" % needle)
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        flat_pipe = " ".join(pipeline.split())
+        for needle in (
+            "the brief ARMS the worker for the workshop",
+            "WATCHED-line duty",
+            "carries the CLOCK",
+            "never an invented hour",
+        ):
+            self.assertIn(needle, flat_pipe, "build-pipeline missing: %s" % needle)
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("test_brief_carries_ledger_and_clock", matrix,
+                      "M-119 must pin this test (row 123)")
+
     def test_worker_contract_stated(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("The worker contract",
