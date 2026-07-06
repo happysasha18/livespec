@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.18
+  version: 0.2.19
 ---
 
 # build-pipeline — ship a change by the method
@@ -105,7 +105,8 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    trigger lenses; lens lists live in spec-author; prover mode FEATURE-FIT; SPEC INV-29) — and the
    **standard-facet sweep** (the canonical list lives in spec-author): phone/narrow
    layout · touch-vs-hover · empty/error/loading · accessibility · performance — every facet ends as a
-   spec sentence, decided or `[default]`-tagged and reported as a plain-words tradeoff, batched; a
+   spec sentence, decided or `[default]`-tagged and TOLD at landing as a plain-words tradeoff, never a
+   confirmation request (SPEC INV-31); a
    mid-work re-door walks the sweep before work resumes (SPEC T-13, INV-18). And when the wish touches a
    surface that already lives, the delta opens with **regression fences** BEFORE that sweep — neighbouring
    promises that must stay true, each citing the clause it guards, named by anchor in the wish's row; a

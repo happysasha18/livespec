@@ -1209,3 +1209,28 @@ QA automation at the matrix (row 124). Versions: communicator 0.1.16 · build-pi
 pack 0.8.29 · suite 108 green. The worker HALTed once more, again correctly: the brief had missed
 that a pre-existing installer test PINNED the buggy behaviour, and that a matrix row must physically
 move with its anchor's new owner — both fixed on the senior's word, both logged.
+
+## 2026-07-06 — Session 12, part 3: the push gate walked in full — prover, evals, publish (pack 0.8.30)
+
+The morning's seven-row batch sat in four local commits, and the host's own law says no push without
+the full walk. All three legs ran this sitting. (1) FULL prover pass over the whole spec (record:
+docs/prover/2026-07-06-push.md): two must-fixes found and folded the same hour — the taken-default
+example still ASKED "ok?" in four homes (SPEC INV-18, spec-author, communicator, build-pipeline —
+the exact wording INV-31 outlawed that morning; all four now say TOLD, tweakable, never confirmed),
+and the installer's backup-home promise lived in a red-proven test but not in the spec's own prose
+(E-21 now states backups land beside the skills home, never inside). One stale docstring fixed, one
+should-clarify queued (row 125: the departures board has no station name for two of the pipeline's
+nine steps). (2) The eval re-runs (E-19): four skills changed behaviour this morning, so all four ran
+both arms fresh — eight Sonnet workers, records in docs/evals/2026-07-06-push-rerun/. New criteria
+added for INV-29/30/31/32; every one GREEN with-skill and RED bare — the fit walk, the medium-scaled
+verify, told-never-confirmed, and mode-naming all demonstrably the skill's work, not the loader's.
+The spec-author prompt was finally DE-contaminated (the old one fed the bare arm its facets), and the
+honest result: facet scores that were MET BARE on the fed prompt are RED on the clean one — the
+skill's marginal value was larger than first measured. Two wobbles recorded, not hidden: the
+with-skill communicator run leaked the test count back into the message, and both communicator arms
+fumbled the timestamp (bare invented "[07:00]", with-skill printed a literal "[HH:MM]") — the
+clock-goes-in-the-brief lesson, kin to row 123. (3) The publish walk (E-20): fresh clone runs the
+suite green from scratch; secrets/paths sweep clean; one stale README claim caught and fixed ("Five
+skills" → six — the publish skill's own arrival had outdated it). Versions: SPEC v0.15.19 ·
+spec-author 0.1.13 · communicator 0.1.17 · build-pipeline 0.2.19 · pack 0.8.30 · suite 108 green.
+This entry rides the push it gates.

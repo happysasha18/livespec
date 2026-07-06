@@ -1121,7 +1121,7 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, pipeline, "pipeline step-8 missing: %s" % needle)
 
     def test_default_expiry_law(self):
-        """Row 118 (M-116, INV-31): a taste default may not outlive two landings unreviewed."""
+        """Rows 118+120 (M-116, INV-31): a taste default is TOLD at landing, never confirmed."""
         spec = read("SPEC.md")
         for needle in ("INV-31", "TOLD, never confirmed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)

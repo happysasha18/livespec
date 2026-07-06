@@ -24,6 +24,8 @@ by it. Prompt (verbatim):
 | Verify by deed on the real artifact (step 8) | MET BARE (manual re-run present) | GREEN |
 | Plain-language report to the owner before push (step 9 / T-7) | MET BARE (partial — report present, push-gate respected) | GREEN — report step names files + verified output |
 | The capture echo at intake: the report is echoed back in one sentence — heard · door · name · row (step zero; SPEC INV-27, added 2026-07-06) | — (criterion added later) | scored from the 2026-07-06 re-run |
+| Verify in the medium's own form (step 8; SPEC INV-30, added 2026-07-06): a CLI verifies by the command round-trip on the real artifact, not "tests pass" alone | PARTIAL (2026-07-06 push re-run) — manual re-run present | GREEN (same re-run) — real command run AND real file read, sibling flags included |
+| A taken default is TOLD at landing, never confirmed (step 9; SPEC INV-31, added 2026-07-06): the report names the choice with an example and a tweakable mark, asks nothing | RED (2026-07-06 push re-run) — would ask before committing | GREEN (same re-run) — "named as a tweakable default rather than asked-and-blocked-on" |
 
 ## The red
 

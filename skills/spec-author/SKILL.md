@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.12
+  version: 0.1.13
 ---
 
 # Spec Author
@@ -204,8 +204,9 @@ that grows by taste rots into a forty-row form nobody walks (the Google launch-c
 batched questions) DECIDED it, or the recommended option is taken so the lane keeps moving and the
 sentence is written carrying the literal tag `[default]` at its line end — so a later prover tells a
 taken default from a hole, and the matrix derives the facet's test row either way. Every defaulted facet
-is then reported back as a plain-words tradeoff in the product's terms ("on a phone this gallery stacks
-into one column — ok?"), batched, never one ping per facet — communicator owns the report shape; a veto
+is then TOLD on the landing report's defaults list as a plain-words tradeoff in the product's terms
+("on a phone this gallery stacks into one column — tweakable"), never one ping per facet and never a
+confirmation request (SPEC INV-31) — communicator owns the report shape; a veto
 simply becomes a new wish. A facet with no sentence is a spec defect the prover flags. The sweep scopes to the feature's VISIBLE
 surfaces — a headless feature (new persistent state only) satisfies it with one explicit sentence, "no
 visible surface — facets N/A", never a silent skip.

@@ -7,14 +7,14 @@ it. Prompt (verbatim):
 
 > Write the SPEC.md section for this new feature of a photo-gallery web app: "clicking a photo opens a
 > lightbox — the photo shown enlarged, with prev/next arrows".
-> Context you know about the app: it has two views (a compact grid and a detailed list), it is used on
-> desktop and on phones, and the same gallery can be open in two browser windows at once. Photos can be
-> renamed or deleted by other tools while the app is open.
+> Context you know about the app: it shows a folder of the user's photos and already ships two views, a
+> compact grid and a detailed list.
 
-**Known contamination (first run, 2026-07-05):** this prompt enumerates facet hints (views, phones, two
-windows, renamed/deleted) — it steered the bare run to exactly those facets, so their MET BARE scores
-below are partly the prompt's doing, not the session's. The next re-run rewrites the scenario per the
-authoring rule (evals/README.md): the wish sentence only, context discoverable in the world.
+**Prompt history.** The first run's prompt (2026-07-05) enumerated facet hints (phones, two windows,
+renamed/deleted files) and contaminated the bare arm's MET BARE scores; de-contaminated at the
+2026-07-06 push-gate re-run per the authoring rule (evals/README.md) — the wish sentence plus
+discoverable context only, no failure modes named. First-run scores below that leaned on those hints
+are marked; the re-run's scores are the honest ones for the facet criteria.
 
 ## Criteria
 
@@ -26,6 +26,7 @@ authoring rule (evals/README.md): the wish sentence only, context discoverable i
 | Facet sweep completeness: accessibility, performance envelope, visual hierarchy, empty/error/loading (T-13) | RED — a11y partial (keys only, no focus trap/contrast), no performance envelope, no hierarchy | GREEN — focus trap + contrast + alt text, preload envelope, hierarchy sentence |
 | Composition across canonical axes stated explicitly (C-1), incl. persistence/reopen | MET BARE (view, two-windows, missing-source — prompt-fed; reopen covered) | GREEN — full axis walk incl. explicit mode/tier N/A |
 | Use-case-first shape, anchors trail, index closes the doc | MET BARE (loader-fed: scenario prose + formal index) | GREEN |
+| The fit walk (SPEC INV-29, added 2026-07-06): the journey lenses walked — arrival, where-next from every state, return visit, cross-entry, implied neighbour state, invited-next; trivially-closable holes closed AND written how; only genuine taste calls go out | RED (2026-07-06 push re-run) — edge cases yes, journey no | GREEN (same re-run) — explicit fit-walk section, holes closed and written how |
 
 ## The red
 

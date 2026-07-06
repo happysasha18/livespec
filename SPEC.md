@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.18, 2026-07-06)
+# live-spec — SPEC (v0.15.19, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -230,9 +230,10 @@ late-recognized surface is exactly the one whose facets nobody looked at. A fenc
 **decided** — you (or the walk's batched questions) called it — or **defaulted** — the recommended option
 is taken so the lane keeps moving, written into the spec carrying the literal tag `[default]` at its line
 end (so a later prover tells a taken default from a hole, and the matrix derives the facet's test row
-either way [E-15]), and the choice comes back to you as a plain-words tradeoff in your product's terms
-("on a phone this gallery stacks into one column — ok?"), batched with the walk's other questions
-[INV-4], never one ping per facet — your veto simply becomes a new wish. A facet with no sentence —
+either way [E-15]), and the choice is TOLD on the landing report's defaults list as a plain-words
+tradeoff in your product's terms ("on a phone this gallery stacks into one column — tweakable"), never
+one ping per facet and never a confirmation request — silence is consent [INV-31]; your veto simply
+becomes a new wish. A facet with no sentence —
 neither decided nor defaulted — is a spec defect the prover flags, the exact hole the Room shipped
 through (hover-only openings, no phone layout). On an adopted or promoted surface that already lives
 [A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never
@@ -511,8 +512,9 @@ pilot's baseline snapshot is the precedent). [A-0]
 
 **How the skills arrive on a machine.** The pack ships one installer, `install.sh`: it copies every pack
 skill into the agent's skills home (`~/.claude/skills/`), and it is idempotent — an existing copy is
-backed up with a timestamp before being overwritten, never deleted (the attic principle applied at
-install time). What the installer just wrote is exactly what A-7's record clause writes down in
+backed up with a timestamp before being overwritten, never deleted — and the backup lands in an attic
+folder BESIDE the skills home, never inside it, so the agent never scans a stale copy as a live skill
+(the attic principle applied at install time). What the installer just wrote is exactly what A-7's record clause writes down in
 `.live-spec/` — installing and recording are two halves of one seam. [E-21]
 
 ## One rulebook behind the skills

@@ -23,7 +23,9 @@ it. Prompt (verbatim):
 | No internal bookkeeping doing the talking (rule 8): version numbers / "64 green checks" as message content | RED — "Committed as 0.9.16", "64 green checks" | GREEN — "tested clean, saved, not pushing until you say" |
 | Retell, don't reference: row numbers trail, never lead | MET BARE | GREEN (rows trail in parens) |
 | The in-flight feature named with its pipeline STATION — the departures board (rule 9; SPEC INV-27, added 2026-07-06) | — (criterion added later) | scored from the 2026-07-06 re-run |
-| The outcome leads (rules 6/9; SPEC INV-28, added 2026-07-06): no line led by a coined name or bare number, no riddle-compression, one fact per sentence | — (criterion added later) | scored at the next re-run |
+| The outcome leads (rules 6/9; SPEC INV-28, added 2026-07-06): no line led by a coined name or bare number, no riddle-compression, one fact per sentence | — (criterion added later) | GREEN (2026-07-06 push re-run) — every ✅ line opens with what he can now do/see |
+| The one decision asked in CONSEQUENCES, not mechanisms (rule 10; SPEC INV-32, added 2026-07-06): the sort question says what the producer will SEE under each option | — (criterion added at the 0.8.30 push gate) | GREEN (2026-07-06 push re-run) — each option labelled by what shows first, with an example |
+| A taken default is TOLD, never confirmed (SPEC INV-31, added 2026-07-06): no "ok?" trailing a decision already made | — (criterion added at the 0.8.30 push gate) | no violation at the push re-run, but the scenario carries no taken default — a scenario tweak is owed before this criterion can go GREEN honestly |
 
 ## The red
 

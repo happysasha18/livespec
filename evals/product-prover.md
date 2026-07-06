@@ -28,6 +28,7 @@ version-N-1 stored state.
 | Coverage tables (CRUD / invariants-per-state) or a named N/A | RED — absent | GREEN — tables + named authorization skip |
 | Paste-ready properties for the author (Phase 5) | RED — prose advice only | GREEN — 5 paste-ready invariant sentences |
 | Substance beyond the bare run | — | GREEN — found the end-of-track dead-end (F5) the bare run missed entirely |
+| The run names its MODE aloud with the modes list intact — FULL here, CROSS-LINK for surface adds, FEATURE-FIT for one feature's intake delta (SPEC INV-29, added 2026-07-06) | RED (2026-07-06 push re-run) — no triage, no mode | GREEN (same re-run) — "Running FULL mode per the product-prover skill (v0.1.9)" |
 
 ## The red
 

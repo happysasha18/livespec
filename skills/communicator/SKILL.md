@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.16
+  version: 0.1.17
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -120,9 +120,11 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     read it back, archive it in the project's `docs/decisions/`, and harvest every answer into its queue
     row the same session — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning
     images the same way; first real round-trip ran the same morning.)
-    The standard-facet sweep (SPEC T-13/INV-18) reports through this same batch: a facet taken on its
-    recommended default arrives as one card — the tradeoff said in the product's words ("on a phone this
-    gallery stacks into one column — ok?"), the default already live so the lane never waited; a veto
+    The standard-facet sweep (SPEC T-13/INV-18) does NOT ask through this batch: a facet taken on its
+    recommended default is TOLD on the landing report's defaults list — the tradeoff said in the
+    product's words ("on a phone this gallery stacks into one column — tweakable"), the default already
+    live so the lane never waited, no confirmation requested, silence is consent (SPEC INV-31); the
+    cards carry only the genuinely open picks; a veto
     becomes a new wish, never a blocked lane.
 
 11. **"Did we actually do X?" is answered by walking the evidence — wearing its method version.** A
