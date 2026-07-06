@@ -1593,6 +1593,19 @@ class TestProblemLedger(unittest.TestCase):
                        "extended to review pages"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_kill_list_mechanical(self):
+        """Row 159 (M-164, E-26): the kill-list template ships and the scanner
+        guidance stands in guardrails."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("E-26", "this is its teeth"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        t = read(os.path.join("templates", "KILL_LIST.template.md"))
+        for needle in ("NEVER removed", "Killed literal (exact)", "turns the suite RED"):
+            self.assertIn(needle, t, "template missing: %s" % needle)
+        g = read(os.path.join("guardrails", "README.md"))
+        for needle in ("kill-list scanner", "KILL_LIST.template.md"):
+            self.assertIn(needle, g, "guardrails README missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

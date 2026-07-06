@@ -99,3 +99,13 @@ optimization, the second net stays conservative; **a plain workflow a host copie
 command for your own, keep the script calls. The worked example is this repo's own
 `.github/workflows/gates.yml` (note its `fetch-depth: 0` — the prover-record freshness rule reads
 history — and its `TZ` pin, so "today" is the author's day, not UTC's).
+
+## The kill-list scanner (SPEC E-26)
+
+A host with taste-reviewed artifacts keeps a kill-list beside them (template:
+`templates/KILL_LIST.template.md` — the human's cuts as dated literals, appended, never removed) and
+wires a SCANNER: a test that reads the kill-list table and greps the artifact's surfaces for each
+literal — a killed phrase reappearing turns the suite red. Born of a real case: a banned pattern
+returned into a campaign's most visible line after the ban was "written on the forehead"; only the
+executable scanner ended it (promoter, 2026-07-07). Same shape as every gate here: the list is the
+declared truth, the test re-walks it every run.

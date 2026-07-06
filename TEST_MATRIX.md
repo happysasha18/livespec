@@ -44,6 +44,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Journal template | `templates/JOURNAL.template.md` | shipped text | `test_artifact_inventory` |
 | Next-steps template | `templates/NEXT_STEPS.template.md` | shipped text | `test_artifact_inventory` |
 | Problem-ledger template | `templates/PROBLEMS.template.md` | shipped text | `test_artifact_inventory` + `test_problems_template_shape` |
+| Kill-list template | `templates/KILL_LIST.template.md` | shipped text | `test_artifact_inventory` + `test_kill_list_mechanical` |
 | Bootstrap suite scaffold | `templates/test_scaffold.template.py` | shipped script | `test_artifact_inventory` + `test_scaffold_bootstrap_runs` (real simulated bootstrap, both ways) |
 | Dev-machine skill sync | `scripts/sync-skills.sh` | shipped script | `test_artifact_inventory` + `test_sync_skills_script` (real run, twice) |
 | Adoption procedure | `adopt/ADOPT.md` | shipped text | `test_artifact_inventory` |
@@ -245,6 +246,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-033 | Every matrix row states the DO and the NEVER side; never a row without its regression fence | INV-6 | string | `test_matrix_rows_have_level_and_negative_side` + `test_gap10_step5_both_sides` (the derivation step TEACHES it, row 12 gap 10) | BUILT |
 | M-034 | Bootstrap = VCS gate FIRST → copy the six templates + the suite scaffold (which DEFINES green for landing #1: docs present, headers filled, no surviving placeholder) → hooks offered as at adoption → first wish through the pipeline; never landing before the gate, never a bootstrap without a runnable suite | B-1 | string | `test_templates_ship` + `test_scaffold_bootstrap_runs` (simulated bootstrap BY DEED: filled → green, placeholder → red) + `test_spec_states_bootstrap_order` | BUILT |
 | M-103 | The problem-ledger template ships the shape: signature + dated occurrences + the full status vocabulary (WATCHED · OWNED · AGREED NON-PROBLEM · SOLVED) + a dated ARCHIVED tail; never a shape missing a status or the archive home | E-24 | string | `test_problems_template_shape` | BUILT |
+| M-164 | The kill-list's mechanical face ships: the template (dated literals, appended, never removed; scanner note) + the guardrails scanner guidance; never a cut living only in memory, never a removed kill-line | E-26 | string | `test_kill_list_mechanical` (red proven against HEAD — template absent there) | BUILT |
 | M-146 | The resume file is a digest with a hard cap: the whole file ≤ 100 lines [default], the check red-proven on a synthetic bloated file and green on the pack's own NEXT_STEPS; the template states the cap; open legs restate as one terse line each (INV-26 by form); never a cap satisfied by dropping an open leg; the number's normative home is the law, template and check restating it | INV-48 | string | `test_resume_digest_cap` + `test_resume_cap_catches_synthetic_bloat` (tests/test_resume_digest.py) | BUILT |
 
 ### [node: attach]

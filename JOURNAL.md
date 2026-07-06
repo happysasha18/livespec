@@ -1891,3 +1891,12 @@ word became SPEC v0.15.52 INV-64 + communicator rule 22 (0.1.35, twenty-two rule
 FOR REVIEW carries per-claim provenance (artifact · his recorded word · MY INFERENCE — inferences
 loudest) and is commentable with the decision page's JSON answer capture extended to review pages.
 M-163, red vs HEAD, suite 161, pack 0.8.64. Short-form record.
+
+## 2026-07-07 ~01:34 — row 159: the kill-list grows teeth (session 22)
+**What:** the audit's last harvest row — SPEC v0.15.53 E-26: the pack ships the kill-list TEMPLATE
+(dated literals, appended the moment a cut happens, never removed) + guardrails scanner guidance (a
+test greps the artifact's surfaces for every killed literal; a reappearance is red). Born of the
+promoter's scissors returning into the headline after the ban was «written on the forehead». The law
+stays with the cuts-stay-cut rule; this is its mechanism. M-164, red vs HEAD, inventory entry, suite
+162, pack 0.8.65. Short-form record. **The promoter audit is fully harvested: eight lessons, eight
+landings (149-through-162 family) in one night.**
