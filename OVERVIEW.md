@@ -34,8 +34,8 @@ real home and the note only points.
   the standard facets of a feature).
 - **product-prover** — reviews the spec and the architecture like a formal-methods architect; runs the
   re-check that gates every push.
-- **build-pipeline** — runs a change end to end: door → spec → prove → architecture → matrix → tests →
-  code → verify → commit. The order is law.
+- **build-pipeline** — runs a change end to end: door → spec → prove → architecture → prove
+  architecture → matrix → test → code → verify → commit & show. The order is law.
 - **communicator** — everything the human sees: plain-language reports, batched questions, decision
   pages, how a prototype may be shown.
 - **publish** — the moment work leaves the machine: what a good publication owes per kind of artifact

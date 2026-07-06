@@ -1250,3 +1250,17 @@ record carries; what got a FRESH prover walk is the paragraph itself, claim by c
 evidence (addendum in docs/prover/2026-07-06-push.md). Suite 108 green, README-only delta, publish
 floor clean. The paragraph ends with a promise to update it after the first real feature-fit run —
 that promise is queue item 1's acceptance evidence, now public.
+
+## 2026-07-06 12:42, session 13 — the board learns its two missing stops (row 125)
+
+The push-gate prover caught it (F4 in 2026-07-06-push.md): INV-27 promised "the pipeline's own step
+names, one name per step" while every shipped station list named EIGHT stops for a nine-step pipeline —
+a feature paused at proving the architecture or at commit & show had no honest station and would get an
+improvised one, exactly the drift the one-name law exists to stop. Fix: all nine steps are stations,
+verbatim from the pipeline's own step list, and landed is stated as what it always was — the terminal
+state, not a step. Swept as a class, not a point: SPEC INV-27, communicator's board rule, matrix M-112,
+OVERVIEW's pipeline bullet, ARCHITECTURE's wish-lifecycle line (prover records and past eval scores
+untouched — history stays history). Red-proven: the new station assertions failed against the shipped
+eight-name lists before any edit, then green; suite 108. Delegation: a Sonnet worker ran the eight
+verbatim edits with red/green proof off a self-contained brief — roughly fifteen minutes of senior
+hands saved. SPEC v0.15.20 · communicator 0.1.18 · pack 0.8.31.

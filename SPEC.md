@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.19, 2026-07-06)
+# live-spec — SPEC (v0.15.20, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -119,9 +119,11 @@ only WRITTEN into the queue, it is SPOKEN back: one plain sentence — what was 
 the name the work will answer to, its row number ("caught: …, it's a feature, we'll call it X, row N").
 A wish that arrives silently (an inbox file, a harvest) gets its echo in the next report, never as an
 interruption. And whenever status is reported, every in-flight feature is named by that name with its
-pipeline STATION — spec → prove → architecture → matrix → tests → code → verify → landed — so progress
-reads like a departures board at a glance, never prose archaeology; the station vocabulary is the
-pipeline's own step names, one name per step. (His word 2026-07-05, before sleep: "captured this that
+pipeline STATION — spec → prove → architecture → prove architecture → matrix → test → code → verify →
+commit & show, plus the terminal landed — so progress reads like a departures board at a glance, never
+prose archaeology; the station vocabulary is the pipeline's own step names, one station per step, all
+nine — a feature paused at proving the architecture or at commit & show reads under that station's own
+name, never an improvised one; landed is a state, not a step: it says the row closed whole. (His word 2026-07-05, before sleep: "captured this that
 request, it's a feature, we'll call it this and that — а потом рапортовать как каждая фича идет по
 пайплайну".) [INV-27]
 

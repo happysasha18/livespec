@@ -1084,6 +1084,20 @@ class TestProblemLedger(unittest.TestCase):
         pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
         self.assertIn("capture echo", pipeline,
                       "build-pipeline step zero must cite the capture echo")
+        # Row 125 (M-112): the board names ALL NINE pipeline steps — prove
+        # architecture and commit & show included; landed is the terminal
+        # state, not a step. Lists wrap across lines, so compare flattened.
+        stations = ("spec → prove → architecture → prove architecture → "
+                    "matrix → test → code → verify → commit & show")
+        matrix = read("TEST_MATRIX.md")
+        for home, text in (("SPEC.md", spec),
+                           ("communicator SKILL.md", comm),
+                           ("TEST_MATRIX.md", matrix)):
+            flat = " ".join(text.split())
+            self.assertIn(stations, flat,
+                          "%s station list is missing a pipeline step (row 125)" % home)
+            self.assertIn("plus the terminal landed", flat,
+                          "%s must mark landed as the terminal state (row 125)" % home)
 
     def test_outcome_leads_law(self):
         """Row 116 (M-113, INV-28): the outcome does the talking — echo-names are plain
