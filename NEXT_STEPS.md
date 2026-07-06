@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~21:46, session 20 — rows 142 landed whole; 140/143/144 build legs MET,
-field legs OPEN; his correction batch folded; WIPE-READY after push)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.48, SPEC v0.15.36, suite 132 green.** Verify on
+## LIVE STATE (2026-07-06 ~21:56, session 20 — rows 142 landed whole; 140/143/144 build legs MET,
+field legs OPEN; BOTH his correction batches folded; PUSHED, WIPE-READY)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.49, SPEC v0.15.37, suite 132 green.** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -12,14 +12,14 @@ resuming on another model, ASK Alexander before working this window.**
   first-image fix + performance budgets + a `?timings` export the same evening (its commit c93d2cd;
   its deploy waits his word THERE).**
 - **Row 143 build legs MET: the architecture step owes NUMBERS** — every user-facing surface gets
-  measurable quality budgets (performance first) + an instrumentation home, asserted by acceptance,
-  binding from the surface's next landing, never retroactively (SPEC v0.15.36 INV-41; build-pipeline
-  0.2.28 step 3; spec-author 0.1.16 — the performance facet must end as a budget sentence; M-136).
+  measurable quality budgets + an instrumentation home, asserted by acceptance — AND the project's KIND proposes what is measurable (his ~21:50 word: not frontend-only; backend: latency/throughput/errors, CLI/pipeline: run time + per-unit cost, skill pack: eval pass rate + suite time, prose: what honestly has a number; a no-honest-number quality said by name, never a vanity metric) —
+  binding from the surface's next landing, never retroactively (SPEC v0.15.37 INV-41; build-pipeline
+  0.2.29 step 3; spec-author 0.1.16 — the performance facet must end as a budget sentence; M-136).
   Field leg OPEN: the first host landing that walks the clause.
 - **Row 144 build legs MET: the task list speaks plain ENGLISH** — the harness to-do list is a
   language-law surface; subjects say what is being done in understandable DOCS-language words, codes
   only trail (his correction: NOT Russian — the first reading renamed tasks to Russian and he flagged
-  it; communicator 0.1.28 rule 6; M-137). Field leg OPEN: a following session's list reads plain by
+  it; communicator rule 6; M-137). Field leg OPEN: a following session's list reads plain by
   his eye.
 - **Row 140 build legs MET + AMENDED: the economy ladder** — `budget.pressure` full [default] · lean ·
   tight, moved only by his word; the rung is ASKED — or the standing default told — at a project's
@@ -35,10 +35,18 @@ resuming on another model, ASK Alexander before working this window.**
   `! bash ~/live-spec/scripts/install-session-hooks.sh`
   (clock injection + chat-laws reminder, machine-wide). The commit fence caught invented time TWICE
   this session (ninth + tenth ledger catches) — the hook is the fix waiting on his hand.
-- Versions: SPEC v0.15.36 · spec-author 0.1.16 · communicator 0.1.28 · build-pipeline 0.2.28 ·
-  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.48. Installed copies synced.
-- Prover records this session: rows142 · row140 · pushgate-s20 · rows143-144 (all in docs/prover/,
-  no unfolded rows).
+- **NEW HOST-PROFILE LAW (his ~21:50 word): `other-projects: AUDIT-ONLY`** — a project Alexander
+  names in this window is a CASE STUDY for improving the pack, never a task there; no fixes, no
+  managing, not even an inbox wish (narrower than base rule 7); a memory file also holds it
+  (live-spec-window-other-projects-audit-only). The session's earlier tlvphoto inbox move was the
+  counterexample. tlvphoto manages itself — its deploy waits his word in ITS window.
+- Communicator 0.1.29: the calque rule now names the agent's OWN report coinages ("open leg" →
+  «открытое плечо») as the trap — the sentence must be plain the FIRST time; translating after the
+  fact does not fix it.
+- Versions: SPEC v0.15.37 · spec-author 0.1.16 · communicator 0.1.29 · build-pipeline 0.2.29 ·
+  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.49. Installed copies synced.
+- Prover records this session: rows142 · row140 · pushgate-s20 · rows143-144 · pushgate-s20-2 (all
+  in docs/prover/, no unfolded rows).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
