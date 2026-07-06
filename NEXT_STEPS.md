@@ -1,6 +1,6 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~13:24, session 13 — rows 125·123·124 landed, gate walked, PUSHED be9a476→9f59d88; closing report BOUNCED for jargon → row 128; wipe-ready)
+## LIVE STATE (2026-07-06 ~13:32, session 13 — rows 125·123·124 landed, gate walked, pushed; report bounce → row 128; his closing words → rows 129·130; wipe-ready)
 PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.34, SPEC v0.15.23, suite 110 green, all pushed;
 after the push only queue/journal/ledger docs moved (rows 128 + stamp fixes — commit them).** Verify on
 resume: `git status -sb` + the suite.
@@ -46,11 +46,15 @@ resume: `git status -sb` + the suite.
    NEVER-list — bookkeeping never talks to the human) · row 127 (human-facing timestamps read at
    write time — the chat face of the invented-time family). Kin: consider landing 126+127+128 as one
    communicator sitting — three small clauses, one skill, one eval re-run.
-3. Row 109 (prototype-norm pointer) · 110–115 (harvest picks; 110 adversarial verify strongest) ·
+3. Row 129 (a project knows its own KIND — book/backend/static-site/fullstack/custom — asked at
+   founding, recorded in the host profile, re-checked as the project evolves; his word at session-13
+   close) · row 130 (walk all six pack skills through skill-creator, fold findings, put the re-walk on
+   the milestone list; same message).
+4. Row 109 (prototype-norm pointer) · 110–115 (harvest picks; 110 adversarial verify strongest) ·
    106 (pytest-from-root bug).
-4. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96
+5. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96
    feedback family · track-coach formal adopt · tlvphoto lessons through one real feature.
-5. Standing habits: read `date` BEFORE any stamp — chat included (drifted three times this session,
+6. Standing habits: read `date` BEFORE any stamp — chat included (drifted three times this session,
    owned by row 127; a queue stamp even tripped the commit fence once — fence works); reports obey
    INV-28 AND the row-128 lesson (before a movement-end report: re-read communicator, no pack name
    unexplained, no calques — the bounced report is the cautionary example); decision cards obey
