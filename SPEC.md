@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.22, 2026-07-06)
+# live-spec — SPEC (v0.15.23, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -217,7 +217,10 @@ automation engineer, the code as a senior developer; the two prove steps are the
 formal-reviewer head, commit & show is a careful release hand whose reader is the human — and the
 verify walk is done with the visitor's own eyes, not the builder's [INV-30 kin]. The full step→craft
 ladder has ONE home, build-pipeline's step list [E-12]; each artifact is judged by its craft's
-standards, and the landing report's step accounting speaks in them. (His word 2026-07-06: «когда ты
+standards, and the landing report's step accounting speaks in them. And the craft, like the step's
+form, wears the KIND's face [INV-22, INV-30 kin]: on a prose product the code step is worked as a
+strong writer, on infra as a toolsmith — the ladder names the archetypes, the wish's kind says what
+their standards look like in its medium. (His word 2026-07-06: «когда ты
 делаешь продукт-спеку — ты крутой продакт, когда архитектуру — крутой архитект, когда матрицу тестов —
 крутой QA-автоматчик».) [INV-33]
 

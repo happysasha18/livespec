@@ -2,13 +2,13 @@
 name: build-pipeline
 description: >
   Run a non-trivial change by the book — the spec → prove → architecture → prove architecture → matrix →
-  test → code → verify → commit pipeline, orchestrating the spec-author and product-prover skills. Use this whenever starting a new
+  test → code → verify → commit & show pipeline, orchestrating the spec-author and product-prover skills. Use this whenever starting a new
   feature, a new stateful surface, or a behaviour change that deserves more than a one-line edit:
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.21
+  version: 0.2.22
 ---
 
 # build-pipeline — ship a change by the method
@@ -21,7 +21,7 @@ metadata:
 > note is plain advice.
 
 One pipeline, each step has a tool. The order is **spec → prove → architecture → prove architecture →
-matrix → test → code → verify → commit**. A bug shortcuts to **bug → matrix → test → code** (citing the
+matrix → test → code → verify → commit & show**. A bug shortcuts to **bug → matrix → test → code** (citing the
 existing architecture node it lands in). **Skip the pipeline only if ALL hold:** single
 file · no new state / element / user-visible behaviour · an existing test level already covers the touched
 fact (still ship a test). Anything touching visibility / layout / colour enters at the matrix step minimum.
@@ -35,7 +35,9 @@ product's words) · **prove / prove architecture** — the prover's formal-metho
 automation lead deriving coverage · **test** — the same QA engineer writing it · **code** — a senior
 developer · **verify** — the visitor's own eyes, not the builder's · **commit & show** — a careful
 release hand whose reader is the human. The landing report's step accounting speaks in these standards,
-and the hat each artifact was made under is namable on ask.
+and the hat each artifact was made under is namable on ask. The craft wears the work-KIND's face
+(SPEC INV-22, INV-33): on a prose product the code step is worked as a strong writer, on infra as a
+toolsmith — the ladder names the archetypes, the kind says what their standards look like in its medium.
 
 ## When to run it — and where each kind of change enters
 - **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row (communicator rule 12; SPEC INV-27).** The intake
@@ -259,7 +261,8 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   signature, date, one line of context — never a silent retry, and the senior carries the lines into
   the ledger at verify (SPEC INV-23); and it carries the CLOCK — the date and time read at briefing —
   so the worker stamps its checkpoint and any dated output from the brief's clock, never an invented
-  hour (SPEC INV-24); and a result failing its brief's acceptance escalates ONE tier with a logged
+  hour (SPEC INV-24; a worker WITH a shell re-reads the machine clock itself — the brief's line is the
+  floor for one without, and elapsed time is never guessed); and a result failing its brief's acceptance escalates ONE tier with a logged
   line — never a silent retry on the same tier, never a skipped rung. **Every delegation reports its saving:** the
   landing report carries one line — what went to the worker and roughly how much senior work it saved.
   The line is what keeps the habit alive; a session that never writes it is a session that quietly

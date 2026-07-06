@@ -1,6 +1,6 @@
 # build-pipeline
 
-**Ship a change by the method — spec → prove → architecture → prove architecture → matrix → test → code → verify → commit. A [Claude Code](https://claude.com/claude-code) skill.**
+**Ship a change by the method — spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. A [Claude Code](https://claude.com/claude-code) skill.**
 
 It's the spine that runs the whole arc. You ask for a feature; build-pipeline walks it through writing the spec, proving it, deriving the tests, writing the code, verifying by deed, and committing — in that order, every time. It's the orchestrator for a pair of sibling skills: **[spec-author](https://github.com/happysasha18/spec-author)** writes the spec, **[product-prover](https://github.com/happysasha18/product-prover)** reviews it, and build-pipeline sequences them through to shipped code.
 
@@ -8,7 +8,7 @@ It's the spine that runs the whole arc. You ask for a feature; build-pipeline wa
 
 ## The order it won't break
 
-> spec → prove → architecture → prove architecture → matrix → test → code → verify → commit. A bug shortcuts to bug → matrix → test → code.
+> spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. A bug shortcuts to bug → matrix → test → code.
 
 Never code first and back-fill a spec to match. The point of the order is that each step catches what the next one would otherwise build on top of: the prover only finds a cross-section hole when the whole spec is in front of it; the tests come from the matrix, not the code; "done" means you ran it and watched it work.
 

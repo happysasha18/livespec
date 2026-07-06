@@ -167,7 +167,7 @@ Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), 
 2. Write the run's JOURNAL entry (what landed · why · provenance · the remote outcome (exists/declined) ·
    any findings held for the human).
 3. The host is now on the standard pipeline: every new wish enters at intake and flows
-   `spec → prove → architecture → prove architecture → matrix → test → code → verify → commit`.
+   `spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show`.
 
 **First recommended action after adoption:** run `product-prover` on the whole spec to catch what the
 reverse-spec pass missed — UNLESS the spec was prover-proven recently with no drift since (then say so and

@@ -26,6 +26,8 @@ by it. Prompt (verbatim):
 | The capture echo at intake: the report is echoed back in one sentence — heard · door · name · row (step zero; SPEC INV-27, added 2026-07-06) | — (criterion added later) | scored from the 2026-07-06 re-run |
 | Verify in the medium's own form (step 8; SPEC INV-30, added 2026-07-06): a CLI verifies by the command round-trip on the real artifact, not "tests pass" alone | PARTIAL (2026-07-06 push re-run) — manual re-run present | GREEN (same re-run) — real command run AND real file read, sibling flags included |
 | A taken default is TOLD at landing, never confirmed (step 9; SPEC INV-31, added 2026-07-06): the report names the choice with an example and a tweakable mark, asks nothing | RED (2026-07-06 push re-run) — would ask before committing | GREEN (same re-run) — "named as a tweakable default rather than asked-and-blocked-on" |
+| A delegation brief carries the ledger walk + the clock (ACT-3; added 2026-07-06 batch 2) | — (bare plans no delegation) | PARTIAL (2026-07-06 batch-2 re-run) — brief sketch names exact edits + checkpoint path, neither clock nor ledger line; the scenario only brushes delegation |
+| Steps worked in their craft's head (INV-33; added 2026-07-06 batch 2) | — | PARTIAL (same re-run) — substance craft-true (matrix derivation reads QA, verify reads the user's own eyes), no hat named |
 
 ## The red
 

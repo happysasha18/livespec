@@ -1298,3 +1298,24 @@ insertion had shifted four line pins) was made on the senior's word — second t
 catch the senior's own stood-down step. A Sonnet worker ran the seven verbatim edits red→green off a
 self-contained brief that carried the clock and the ledger walk, both used correctly (~15 min senior
 hands saved). SPEC v0.15.22 · build-pipeline 0.2.21 · pack 0.8.33.
+
+## 2026-07-06 13:15, session 13 — the batch's push gate: full prover walk, eval re-runs, three folds
+
+The gate's letter, walked whole. The prover pass (record `2026-07-06-push-2.md`): the 11:57 FULL
+record carries for every unchanged byte (diff-verified — only the three landed clauses moved), the
+three deltas walked fresh against all their seams. Three findings, all folded within the hour: the
+row-125 family one layer deeper (the pipeline's own full order lines still called step 9 "commit"
+while its heading says "commit & show" — five sites swept); the brief's clock doesn't stop GUESSED
+elapsed time (the row-123 worker proved it by deed, stamping +20 invented minutes — a sighted worker
+now re-reads the machine clock, the brief's line is the floor); and the craft ladder was medium-blind,
+the same family Alexander corrected in row 121 — the craft now wears the KIND's face (on prose the
+code step is a writer's, on infra a toolsmith's). Eval re-runs (E-19, both behaviour-changed skills,
+both arms, four Sonnet workers, records in `docs/evals/2026-07-06-batch2-rerun/`): build-pipeline
+with-skill walks door → echo → recurrence check → class sweep → both-sides rows → close-only-whole;
+communicator with-skill delivers the map, the plain station line and a consequences-framed question —
+and leaked bookkeeping numbers into the message a SECOND consecutive run, so the leak got its owner
+that moment: row 126 (rule 8 gains a NEVER-list). The eval briefs carried the clock and no record
+misstamped — row 123's fix held on its first live test. Two more rows born at the gate: 127 — the
+chat-stamp drift hit its second occurrence (my own hand, ~7 minutes fast mid-session, the fence
+catching one queue stamp born of it), so the read-at-write-time sentence moves into communicator.
+Installed skills re-synced (build-pipeline 0.2.21 → 0.2.22 at the folds). SPEC v0.15.23 · pack 0.8.34.
