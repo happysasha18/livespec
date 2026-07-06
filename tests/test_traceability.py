@@ -1375,6 +1375,21 @@ class TestProblemLedger(unittest.TestCase):
             self.assertNotIn("its own promised law (queue row 138)", home,
                              "%s still carries the superseded row-138 fence sentence" % name)
 
+    def test_his_word_read_right(self):
+        """Row 145 (M-139, INV-42): a phrasing he killed stays killed — the kill-list
+        written in the artifact's project records, never only session memory; his
+        vivid phrase adopted only as meant — sarcasm is not instruction."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-42", "stays killed in every later draft",
+                       "never only in session memory",
+                       "mockery of a bad draft, not guidance"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("stays killed", "kill-list",
+                       "Sarcasm is not instruction",
+                       "never only in session memory"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

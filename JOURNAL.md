@@ -1656,3 +1656,19 @@ drift field leg did NOT close: mid-turn, record stamps drifted 2 min ahead of th
 (twelfth catch, ledger updated) — the hook owns the prompt moment; mid-turn stamps stay on the
 date-before-any-stamp habit and the commit fence. Rows 134/141 field legs remain OPEN for a clean
 session.
+
+## 2026-07-06 ~22:26 — row 145: his word read as meant; the voice core goes home to the promoter (session 21)
+**What:** The promoter window's inbox wish (authored-copy voice, six bans) was re-scoped on Alexander's
+word — «это он перестарался»: the confident-specialist voice core belongs to the promoter's own voice
+skill, not the pack; the pack kept the two GENERAL elements as communicator rule 15 / SPEC v0.15.39
+INV-42: (a) cuts stay cut — a phrasing he killed in a review round stays killed in every later draft,
+the kill-list written in the artifact's project records (the prover's fold: never only in session
+memory, a wipe must not resurrect a cut); (b) sarcasm is not instruction — his vivid phrase is adopted
+only as meant, intent read or asked. Two of the wish's six bans already lived here (no empty drama;
+no approval-begging) — cross-linked, never restated. M-139, `test_his_word_read_right` red-proven;
+communicator 0.1.31 (fifteen rules now), pack 0.8.51. The inbox file was deleted from the working
+tree by another hand (its own window taking it back, consistent with his verdict) — git history
+(f59419d) is the record; not restored.
+**Why:** One home per fact and the craft split: the communicator owns the EXCHANGE with the human;
+how to write persuasive copy is a host project's craft. The general spine — honouring his cuts and
+reading his intent — is exchange law and belongs to the pack.

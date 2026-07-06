@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.38, 2026-07-06)
+# live-spec — SPEC (v0.15.39, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -231,6 +231,20 @@ the outcome talks, handles trail, bookkeeping stays out of the content [INV-28].
 as the writer's own remain a separate, skippable register; narration is FOR the reader, and it
 replaces no report — milestones still get the full one. The law's one home is the communicator (its
 narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
+
+**His word on a shown artifact is read as meant — and his cuts hold.** The lesson arrived through the
+promoter window (2026-07-06 — three review rounds of one document rejected in a single evening, the
+same failures repeating after they had been named; the confident-specialist VOICE core of that lesson
+lives in the promoter's own voice skill by his placement word — the pack keeps only the general
+spine). Two clauses. A phrasing the human KILLED in a review round stays killed in every later draft
+of that artifact — the writer keeps the kill-list WRITTEN where the artifact's project keeps its
+records (its journal, or the artifact's own notes file), never only in session memory: a wipe must not
+resurrect a cut; a cut word resurfacing two rounds later is a defect, not a fresh idea. And a vivid phrase of his is adopted only as MEANT: a human sometimes writes
+mockery of a bad draft, not guidance (the parody metaphor earnestly baked into copy as if prescribed),
+so before his colorful phrase shapes the work its intent is read from context or asked [INV-4] —
+never assumed prescriptive. The law's home is the communicator; two of the original wish's bans
+already live in the pack (no empty drama — the no-disclaimers rule; no approval-begging — silence is
+consent [INV-31]) and are cross-linked from there, never restated. [INV-42]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -1272,6 +1286,7 @@ meaning, this table is only the map.
 | INV-39 | a landing commit carries exactly one row's delta; its gate runs on a tree clean of any other lane's unfinished work; after a landing, the waiting lane re-fences and re-runs its gate on the new truth — landed-first wins | Throwing a wish |
 | INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
 | INV-41 | the architecture states measurable quality budgets plus each budget's instrumentation home (numbers measured and human-readable); the project's KIND proposes the dimensions (product: paint/interaction times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass rate, suite time; prose: what honestly has a number) and a quality with no honest number is said by name, never a vanity metric; each budget asserted by a matrix-row acceptance, never prose hope; no budgets + no instrumentation home = derivation defect; numbers are the host's taste, set on the human's word at the surface's first budget landing, binding never retroactively | From the spec to the tests |
+| INV-42 | the human's word on a shown artifact is read as meant: a phrasing he killed in a review round stays killed in every later draft of that artifact (the writer keeps the kill-list written in the artifact's project records, never only in session memory — a resurfaced cut is a defect, not a fresh idea); a vivid phrase of his is adopted only as meant — mockery of a bad draft is not guidance, its intent read from context or asked, never assumed prescriptive; home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

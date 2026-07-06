@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~22:10, session 21 — row 138 LANDED WHOLE; session hooks fired their
-first live session; twelfth clock catch mid-turn — rows 134/141 field legs still OPEN)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.50, SPEC v0.15.38, suite 133 green.** Verify on
+## LIVE STATE (2026-07-06 ~22:26, session 21 — rows 138 + 145 LANDED WHOLE; session hooks fired
+their first live session; clock catches 12–13 mid-turn — rows 134/141 field legs still OPEN)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.51, SPEC v0.15.39, suite 134 green.** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -38,6 +38,12 @@ resuming on another model, ASK Alexander before working this window.**
   first live «можешь отойти» was spoken at the landing itself — all three legs met. His /loop question
   answered in-session: the loop cures waiting, not asking; the pack's answer is this law + batched
   questions.
+- **Row 145 LANDED WHOLE ~22:26 (re-scoped on his word — «это он перестарался»):** the promoter's
+  voice core stays the promoter's; the pack kept two general clauses as communicator rule 15 (SPEC
+  INV-42): cuts stay cut (kill-list written in the artifact's project records, never only session
+  memory) + sarcasm is not instruction (his vivid phrase adopted only as meant, intent read or asked).
+  The verdict rides the row for the promoter window to read; the inbox file was taken back by its own
+  window (git f59419d is the record).
 - **Rows 134+141: hooks INSTALLED by his hand and FIRED this session** (clock line + chat-laws line on
   the prompt). Field legs still OPEN: the zero-drift session did NOT happen — mid-turn stamps drifted
   2 min ahead again (twelfth ledger catch; the hook owns the prompt moment, mid-turn stays on the
@@ -50,10 +56,10 @@ resuming on another model, ASK Alexander before working this window.**
 - Communicator 0.1.29: the calque rule now names the agent's OWN report coinages ("open leg" →
   «открытое плечо») as the trap — the sentence must be plain the FIRST time; translating after the
   fact does not fix it.
-- Versions: SPEC v0.15.38 · spec-author 0.1.16 · communicator 0.1.30 · build-pipeline 0.2.29 ·
-  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.50. Installed copies synced.
-- Prover records this session: row138 (CROSS-LINK, 2 folded) · pushgate-s21 (no unfolded rows;
-  session-20 records all closed).
+- Versions: SPEC v0.15.39 · spec-author 0.1.16 · communicator 0.1.31 · build-pipeline 0.2.29 ·
+  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.51. Installed copies synced.
+- Prover records this session: row138 (CROSS-LINK, 2 folded) · pushgate-s21 · row145 (CROSS-LINK,
+  1 folded) · pushgate-s21-2 (no unfolded rows).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)

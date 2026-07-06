@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.30
+  version: 0.1.31
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,7 +17,7 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Fourteen rules, few enough to hold in your head — plus one walked step before the heavy
+internal ids). Fifteen rules, few enough to hold in your head — plus one walked step before the heavy
 reports (the pre-report walk, below).
 
 ## When it fires
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The fourteen rules
+## The fifteen rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -269,6 +269,25 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
     is empty" plus the bootstrap/adoption pointer — never an invented list. (SPEC INV-38; his word
     2026-07-06: «покажи все фичи» — transparency is a command, not archaeology.)
+
+15. **His word is read as meant — and his cuts hold.** Two clauses, born in the promoter window
+    (2026-07-06 — three review rounds of one document rejected in a single evening, the same failures
+    repeating after they had been named; the confident-specialist VOICE core of that lesson lives in
+    the promoter's own voice skill by his placement word — the pack keeps the general spine):
+    - **Cuts stay cut.** A phrasing the human killed in a review round stays killed in every later
+      draft of that artifact. Keep the kill-list WRITTEN where the artifact's project keeps its
+      records (its journal, or the artifact's own notes file) — never only in session memory: a wipe
+      must not resurrect a cut. A cut word resurfacing two rounds later is a defect, not a fresh idea.
+    - **Sarcasm is not instruction.** A vivid phrase of his is adopted only as MEANT: a human
+      sometimes writes mockery of a bad draft, not guidance (the parody metaphor earnestly baked into
+      the copy as if prescribed). Before his colorful phrase shapes the work, read its intent from
+      context or ask (base rule 1) — never assume prescriptive.
+    The original wish's other bans already live in the pack — no empty drama (rule 7's
+    no-disclaimers face), no per-line approval-begging (rule 7; silence is consent, SPEC INV-31) —
+    cross-linked, never restated (one home per fact, base rule 4). (SPEC INV-42.) — *❌ [the killed
+    word back in round three] ✅ kill-list line in the project's journal: "«master» — cut 2026-07-06,
+    stays cut" · ❌ [his parody metaphor shipped as the pitch] ✅ "это ты в насмешку написал или
+    вписать всерьёз?"*
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 
