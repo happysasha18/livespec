@@ -1,8 +1,8 @@
 ---
 name: communicator
-description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT for a passing mid-work status line, an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
+description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (rule 13 governs those and is learned once), an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.19
+  version: 0.1.20
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,12 +17,12 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Twelve rules, few enough to hold in your head — plus one walked step before the heavy
+internal ids). Thirteen rules, few enough to hold in your head — plus one walked step before the heavy
 reports (the pre-report walk, below).
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
-**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim. If your next sentence is a question the person can't answer without seeing something,
+**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim; **(e)** are mid-work and a beat lands worth a sentence — narrate it (rule 13, a standing habit, not a load-trigger). If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
 ## When NOT to use
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The twelve rules
+## The thirteen rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -159,6 +159,20 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     its echo in the NEXT report, never as a mid-work interruption; a batch echoes one line per wish.
     (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
     we'll call it this and that".)
+
+13. **Narrate the work while it runs — the beats, not the grind.** Between the capture echo (rule 12)
+    and the landing report the human is never left reading silence: when a beat lands — a pipeline
+    station passed, a load-bearing find, a change of direction — say it as it happens, one or two plain
+    sentences in the roadmap's terms (which wish is in hand, what it gives, what just moved), the same
+    voice as the reports. The mechanical grind stays quiet — narration marks beats, never a per-command
+    commentary. A narration line is chat, not a report: no pre-report walk (that walk scopes to
+    movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of
+    human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out (rules
+    6–8). Working notes marked "(себе)" stay a separate register the human may skip — narration is FOR
+    the human, and it replaces no report: milestones still get the full one. (SPEC INV-35; his word
+    twice in one day, 2026-07-06 — the morning ask landed only as a personal-profile line and did not
+    carry across sessions, the repeat made it pack law.) — *❌ [forty minutes of silent tool calls,
+    then a wall of report] ✅ "спека написана, зову прувера на швы (station: spec done, prove next)"*
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 

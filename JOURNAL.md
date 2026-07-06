@@ -1359,3 +1359,29 @@ first eval occurrence of that drift. Prover CROSS-LINK record `docs/prover/2026-
 Suite 110 → 113 green, all three new tests red-proven first. Row 124's open leg closes: the landing
 report names the hat each artifact was made under. Versions: SPEC v0.15.24 · communicator 0.1.19 ·
 pack 0.8.35; installed copy synced.
+
+## 2026-07-06 14:19, session 15 — row 131: work is narrated while it runs (and row 132 queued)
+
+His resume message asked twice-in-one-day for the same thing — "не забывай отчитываться и по ходу
+действия… это должно быть и в проекте коммуникации зафиксировано" — and the repetition IS the
+lesson: the morning's word had been recorded only as a personal-profile line, and a habit that lives
+only in a profile does not carry across sessions. So the rule moved into the pack: SPEC INV-35 (the
+third voice between the capture echo and the landing report — beats said as they happen, plain
+roadmap terms, the reports' voice, the grind quiet; a narration line is chat, not a report),
+communicator rule 13 as its one home, the profile line shrunk to his tuning plus a pointer (prover
+F3). The prover's other stitches: INV-28's line enumeration now names narration lines (F1), the
+communicator description's NOT-side reworded so it no longer contradicts the rule it advertises —
+narration is a standing habit, never a load-trigger (F2); the narration-vs-"(себе)" boundary left as
+a deliberate judgment line (F4, rejected with reason). One fence renegotiated by letter, not fact:
+row 68's test pinned the description's exact old phrase; the guarded fact (a stated NOT-side, no
+over-triggering) is intact, so only the test's needle moved to the new wording. WHY red-first held:
+the new test was proven red against the pre-edit communicator before the rule text landed. The
+Sonnet worker ran the mechanical tail and stopped correctly twice — once on the senior's own wrong
+matrix anchor (M-124 first placed under a section that doesn't own INV-35; corrected, resumed same
+tier), once on the row-68 needle conflict (escalated — the senior's call by contract). Dogfood both
+ways: the session narrated by the rule while building it, and the clock law's chat face recurred
+TWICE mid-session (leads extrapolated ahead of the wall clock; both catches owned aloud, ledger
+dates appended — next recurrence re-opens as a method-defect row). Mid-landing his second wish
+arrived and queued as row 132: a new wish is placed on the product's feature map at intake — change
+vs new vs restructure, plus a restructure trigger for the module map; kin row 129, one head. Suite
+113 → 114 green. Versions: SPEC v0.15.25 · communicator 0.1.20 · pack 0.8.36; installed copy synced.

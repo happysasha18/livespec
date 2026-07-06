@@ -1044,8 +1044,9 @@ class TestCommunicatorTrigger(unittest.TestCase):
 
     def test_communicator_trigger_narrowed(self):
         head = "".join(read("skills/communicator/SKILL.md").splitlines(True)[:8])
-        self.assertIn("NOT for a passing mid-work status line", head,
-                      "communicator description lost its NOT-side (row 68)")
+        self.assertIn("NOT a reason to LOAD it: a passing mid-work narration line", head,
+                      "communicator description lost its NOT-side (row 68; reworded at row 131 — "
+                      "narration is rule 13's standing habit, never a load-trigger)")
         self.assertIn("landing or milestone is REPORTED", head,
                       "communicator description lost the narrowed report trigger")
         self.assertNotIn("before writing a status update", head,
@@ -1233,6 +1234,19 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("read off the clock at write time", "never continued or extrapolated"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
+    def test_working_narration(self):
+        """Row 131 (M-124, INV-35): work is narrated while it runs — beats in plain
+        roadmap terms, the reports' voice, the grind quiet; a narration line is chat,
+        not a report."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-35", "third voice between the echo and the report",
+                       "narration marks beats, never a per-command commentary"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("Narrate the work while it runs", "narration line is chat, not a report",
+                       "INV-35"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
     def test_install_backup_home(self):

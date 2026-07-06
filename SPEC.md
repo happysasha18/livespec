@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.24, 2026-07-06)
+# live-spec — SPEC (v0.15.25, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -134,8 +134,8 @@ riddles only their writer could parse ("seven times — twice the fence"; 2026-0
 family's third strike in two days). Two arms, one law. NAMING: a feature's echo-name is a short
 DESCRIPTIVE phrase in the product's own words — what the thing does, parseable cold by a reader who
 missed its birth — never a private metaphor; a name that needs its story told first is a handle, not a
-name. LINES: a human-facing report or board line (chat reports, report pages, decision pages, the
-capture echo — method-internal docs keep their anchors) OPENS with what changed for the reader — what
+name. LINES: a human-facing report or board line (chat reports, narration lines [INV-35], report pages,
+decision pages, the capture echo — method-internal docs keep their anchors) OPENS with what changed for the reader — what
 they can now do, see, or stop fearing; every internal handle — spec codes, row and session numbers, and
 any coined name the reader never chose to learn — may only TRAIL in parentheses; and one fact = one
 standalone sentence — a compression whose parsing needs the writer's context is a defect of the line,
@@ -159,6 +159,23 @@ names is explained in the reader's own words or dropped (quiet trailing anchors 
 governs what does the talking, never the handles that trail). The walk's one home is the communicator
 skill; its acceptance belongs to the reader — a movement-end report that draws "а это что?" is the walk
 not walked. [INV-34]
+
+**Work is narrated while it runs — the third voice between the echo and the report.** The intake has
+its echo [INV-27] and the landing has its report [INV-28], but between them a working session used to
+go quiet, and the human — who leads several windows at once — was left reading silence. His word came
+twice in one day (2026-07-06): the morning ask wrote a personal-profile line, and by afternoon the ask
+returned ("не забывай отчитываться и по ходу действия… это должно быть и в проекте коммуникации
+зафиксировано") — a habit held only in a personal profile did not carry across sessions, so it is pack
+law. While work runs, each beat worth a sentence — a pipeline station just passed, a load-bearing
+find, a change of direction — is SAID as it happens: one or two plain sentences in the roadmap's terms
+(which wish is in hand, what it gives, what just moved), the same voice as the reports. The mechanical
+grind stays quiet — narration marks beats, never a per-command commentary. A narration line is chat,
+not a report: it walks no pre-report walk (the walk scopes to movement-end and milestone reports — a
+deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds —
+the outcome talks, handles trail, bookkeeping stays out of the content [INV-28]. Working notes marked
+as the writer's own remain a separate, skippable register; narration is FOR the reader, and it
+replaces no report — milestones still get the full one. The law's one home is the communicator (its
+narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -990,6 +1007,7 @@ meaning, this table is only the map.
 | INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
 | INV-33 | every pipeline step is worked wearing its craft's head (product manager at spec · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify); the step→craft ladder's one home: build-pipeline | Throwing a wish |
 | INV-34 | the pre-report walk: before any movement-end/milestone report, the communicator rules are re-read and the draft passes phrase by phrase through the outside-reader question; trailing anchors stay legal; acceptance = the reader's own read; the walk's one home: communicator | Throwing a wish |
+| INV-35 | while work runs, beats are narrated as they happen — a station passed, a load-bearing find, a turn — in plain roadmap terms, the reports' voice; the grind stays quiet; a narration line is chat, not a report (no pre-report walk, no questions, the plain-language and bookkeeping laws still bind); it replaces no report; the law's one home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
