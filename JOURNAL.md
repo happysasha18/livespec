@@ -1840,3 +1840,12 @@ slipped (skill edit preceded the test); the red was proven against HEAD's shippe
 and owned aloud. M-155, suite 156, pack 0.8.59.
 **Why:** the method's own failure mode is perfectionism-in-place — orbiting one limp while the queue
 waits. The ledger already owned recurrence; this law owns the FLOW.
+
+## 2026-07-07 ~00:57 — row 154: the stretch's end is unmissable (session 22)
+**What:** his 00:53 complaint — a seventeen-row night that ended, to his eye, «без сообщения» — became
+SPEC v0.15.48 INV-57 + communicator rule 18 (0.1.33, eighteen rules): every stretch ends with one
+SHORT final line, LAST after all tool calls — what closed · what's next · what's needed · when the
+agent wakes; the long report above; a page deliverable repeats its passport there. Delivery, not
+existence. M-156, red→green, suite 157, pack 0.8.60.
+**Why:** the 00:38 report existed and drowned; a law that measures existence instead of delivery
+measures nothing the reader feels.

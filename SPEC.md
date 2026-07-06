@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.47, 2026-07-07)
+# live-spec — SPEC (v0.15.48, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -245,6 +245,14 @@ artifacts accumulate on ONE page — the stretch's decisions/report page — and
 that single window once; mid-stretch re-opening is legal only as the SAME page refreshed in place
 (his 2026-07-06 word: «всё-всё-всё открыл бы в конце… если переоткрывать — аккумулировать»). Home:
 communicator (the showing-cadence rule beside the offline window). [INV-52]
+
+**The stretch's end is unmissable.** A report that exists but drowns above tool noise was never
+delivered (his 2026-07-07 word after a 17-row night ended in what read to him as silence: «закончил
+вообще непонятно, без ничего»). When a stretch ends — a loop iteration going to sleep, an
+away-stretch closing, a session ending — the LAST rendered thing is one SHORT final line: what closed
+· what's next · what's needed from him · when the agent wakes. The long report lives ABOVE it; the
+final line comes LAST, after every tool call; a page deliverable repeats its passport [INV-51] in
+that line. Delivery, not existence, is the law. Home: communicator. [INV-57]
 
 **His word on a shown artifact is read as meant — and his cuts hold.** The lesson arrived through the
 promoter window (2026-07-06 — three review rounds of one document rejected in a single evening, the
@@ -1463,6 +1471,7 @@ meaning, this table is only the map.
 | INV-54 | the worker HALT list, closed: ambiguous requirement · two consecutive unexplained failures of one command · missing config/dependency · acceptance impossible as briefed — stop with evidence; otherwise run to completion; composes with one-tier escalation | Who decides what |
 | INV-55 | a brief targets a bounded share of the worker's context, splits above it (default bound: brief text ~300 lines, ~8 files to edit [default]); paths, never inlined file bodies | Who decides what |
 | INV-56 | a limping thing never dams the flow: a KNOWN owned problem is parked (ledger line / owning row / expected-red note) and unrelated lanes keep rolling; hand-fix loops cap at two-strikes (second occurrence buys an owner); a defect with a named mechanical owner is serviced in batch (silent fence-fixes, one ledger append at session end), never per-instance ceremony; a real NEW bug still preempts (T-9) | When the workshop itself misbehaves |
+| INV-57 | the stretch's end is unmissable: the last rendered thing is one short final line (what closed · what's next · what's needed · when the agent wakes), the long report above it, a page deliverable repeating its passport; delivery, not existence; home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

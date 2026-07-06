@@ -1529,6 +1529,17 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("never dams the flow", "serviced in BATCH", "known limp"):
             self.assertIn(needle, base, "base missing: %s" % needle)
 
+    def test_stretch_end_unmissable(self):
+        """Row 154 (M-156, INV-57): the stretch's end is one short final line, last,
+        after every tool call — delivery, not existence."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-57", "Delivery, not existence",
+                       "the LAST rendered thing is one SHORT final line"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("final line comes LAST", "what closed", "when the agent wakes"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

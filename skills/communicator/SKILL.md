@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.32
+  version: 0.1.33
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The seventeen rules
+## The eighteen rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -305,6 +305,16 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     - The stretch's end opens that one window once. Precedence, stated once: this rule governs WHEN,
       the show rule (a new window) governs HOW at that single opening, the passport (rule 16) governs
       WHAT the page leads with.
+
+18. **The stretch's end is unmissable (SPEC INV-57).**
+    - When a stretch ends — a loop iteration going to sleep, an away-stretch closing, a session
+      ending — the LAST rendered thing is one SHORT final line: what closed · what's next · what's
+      needed from him · when the agent wakes.
+    - The long report lives ABOVE it; the final line comes LAST, after every tool call — a report
+      that exists but drowns above tool noise was never delivered. Delivery, not existence.
+    - A page deliverable repeats its passport (rule 16) in that final line.
+    - Born 2026-07-07: a seventeen-row night ended in what read as silence — «закончил вообще
+      непонятно, без ничего, без сообщения».
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 
