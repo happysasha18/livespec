@@ -990,6 +990,73 @@ class TestSkillSync(unittest.TestCase):
             self.assertIn(phrase, spec, "SPEC lost the skill-sync clause: %s" % phrase)
 
 
+class TestPackUpdateCheck(unittest.TestCase):
+    """Row 136 (M-131, E-25): once a day the machine asks the public repo whether the pack
+    moved; propose-never-install, forward only, honest offline skip naming the address."""
+
+    def _run(self, tmp, remote=None, installed="0.8.40", stamp_content=None, force=True):
+        import subprocess
+        script = os.path.join(ROOT, "scripts", "check-pack-update.sh")
+        inst = os.path.join(tmp, "VERSION")
+        with open(inst, "w") as f:
+            f.write(installed)
+        stamp = os.path.join(tmp, "stamp")
+        if stamp_content is not None:
+            with open(stamp, "w") as f:
+                f.write(stamp_content)
+        cmd = ["bash", script, "--installed-file", inst, "--stamp-file", stamp]
+        rf = os.path.join(tmp, "REMOTE" if remote is not None else "no-such-file")
+        if remote is not None:
+            with open(rf, "w") as f:
+                f.write(remote)
+        cmd += ["--remote-file", rf]
+        if force:
+            cmd.append("--force")
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        return r, stamp
+
+    def test_pack_update_check(self):
+        import datetime
+        import tempfile
+        script = os.path.join(ROOT, "scripts", "check-pack-update.sh")
+        self.assertTrue(os.access(script, os.X_OK), "check-pack-update.sh not executable (E-25)")
+        with tempfile.TemporaryDirectory() as tmp:
+            # newer remote -> the spoken proposal: versions, pointer, road, proposal-only
+            r, stamp = self._run(tmp, remote="9.9.9")
+            self.assertEqual(r.returncode, 0, r.stderr)
+            for needle in ("PACK UPDATE AVAILABLE: 9.9.9", "0.8.40", "JOURNAL.md",
+                           "install.sh", "PROPOSAL ONLY"):
+                self.assertIn(needle, r.stdout, "proposal missing: %s" % needle)
+            self.assertTrue(os.path.isfile(stamp), "a successful check must write the stamp")
+        with tempfile.TemporaryDirectory() as tmp:
+            r, _ = self._run(tmp, remote="0.8.40")
+            self.assertIn("up to date", r.stdout)
+        with tempfile.TemporaryDirectory() as tmp:
+            # OLDER remote (the dev machine ahead mid-work) -> forward only
+            r, _ = self._run(tmp, remote="0.1.0")
+            self.assertIn("up to date", r.stdout, "ahead-of-public must never propose a downgrade")
+            self.assertNotIn("UPDATE AVAILABLE", r.stdout)
+        with tempfile.TemporaryDirectory() as tmp:
+            # unreadable remote -> honest skip NAMING the address, stamp left unwritten
+            r, stamp = self._run(tmp, remote=None)
+            self.assertEqual(r.returncode, 0, "offline must never block")
+            self.assertIn("skipped", r.stdout)
+            self.assertIn("no-such-file", r.stdout, "the skip line must name the address it tried")
+            self.assertFalse(os.path.isfile(stamp), "an offline day must leave the stamp unwritten")
+        with tempfile.TemporaryDirectory() as tmp:
+            # same-day stamp -> quiet daily throttle
+            today = datetime.date.today().isoformat()
+            r, _ = self._run(tmp, remote="9.9.9", stamp_content=today, force=False)
+            self.assertIn("already ran today", r.stdout)
+            self.assertNotIn("UPDATE AVAILABLE", r.stdout)
+
+    def test_spec_states_update_check(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("check-pack-update.sh", "once a day", "never installs anything",
+                       "naming the address it tried", "never a downgrade", "E-25"):
+            self.assertIn(phrase, spec, "SPEC lost the update-check clause: %s" % phrase)
+
+
 class TestStandaloneTemplatePointers(unittest.TestCase):
     """Row 67 (M-097/M-098): a skill installed standalone must still resolve its template
     references — the pointers name the pack repo, no in-skill copies (D-4: a copy forks the truth)."""

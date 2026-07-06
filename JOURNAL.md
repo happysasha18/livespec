@@ -1482,3 +1482,17 @@ communicator 0.1.24, pack 0.8.40, suite 120 green. OPEN LEG (INV-26): the first 
 rides the next pair of independent wishes.
 (The pre-commit clock fence caught the hand a FOURTH time at this very landing — a 17:22 stamp at a
 17:21 clock; row 134's case grows again.)
+
+## 2026-07-06 18:01, session 18 — row 136 lands: the pack update check (LANE A of the FIRST double-lane run)
+
+WHY: his word (~16:24 s17) — the pack should notice its own updates instead of waiting for a hand.
+Design: no daemon — the proposal belongs where he reads, so the check rides the session's first
+freshness point of the day (dated stamp throttles), asks the public repo's VERSION, and PROPOSES
+(versions + journal pointer + install.sh/pull road) — never installs; offline = one honest skip line
+NAMING the address (prover F1: a dead URL must not masquerade as a plane ride), ahead-of-public = up
+to date, forward only (prover F2). E-25 born beside E-21/A-7, owner attach. THE RUN ITSELF IS THE
+NEWS: this landed as lane A while row 137's train built in an isolated worktree in the background —
+the first real T-18 run; the landing tree held only lane A's delta (INV-39 by construction), and the
+independence judgment shaped the work (base left untouched so no citation re-pin would cross into
+lane B's files). Delegation: lane B entire = a Sonnet worker in a worktree; lane A stayed senior
+(spec-heavy, small script). Suite 122 green; pack 0.8.41.

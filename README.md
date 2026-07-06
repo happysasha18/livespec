@@ -141,6 +141,8 @@ pushed.
 
 Skills land in `~/.claude/skills/`, available in every project on the machine. Existing skills are backed up with a timestamp before anything is overwritten.
 
+**Staying current:** once a day, a session's freshness walk runs `scripts/check-pack-update.sh` — it asks this repo's public `VERSION` whether the pack has moved past what your machine runs, and if so it *proposes* the update (what changed + the install road). It never installs anything by itself; updating is always your word.
+
 **Attach to a new project:** start from `templates/` — copy the template files you need into your project root.
 
 **Attach mid-flight** (existing codebase, no spec yet): follow `adopt/ADOPT.md` — inventory the code, reverse-spec from what ships, pin the architecture to the real files, derive the test matrix from there.

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.29, 2026-07-06)
+# live-spec — SPEC (v0.15.30, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -679,7 +679,8 @@ pilot's baseline snapshot is the precedent). [A-0]
    the stale in-memory version — and writes a one-line journal note naming old → new. The check is not
    event-only: at every safe breakpoint [M-2] the agent re-stats the installed skills and the package on
    disk (version / file mtime) and re-reads what changed — a parallel session may have shipped an update
-   mid-flight. [A-7]
+   mid-flight; and once a day the same walk also asks the PUBLIC repo whether the pack itself has moved,
+   through the update check [E-25]. [A-7]
 
 **How the skills arrive on a machine.** The pack ships one installer, `install.sh`: it copies every pack
 skill into the agent's skills home (`~/.claude/skills/`), and it is idempotent — an existing copy is
@@ -687,6 +688,26 @@ backed up with a timestamp before being overwritten, never deleted — and the b
 folder BESIDE the skills home, never inside it, so the agent never scans a stale copy as a live skill
 (the attic principle applied at install time). What the installer just wrote is exactly what A-7's record clause writes down in
 `.live-spec/` — installing and recording are two halves of one seam. [E-21]
+
+**How the machine learns a newer pack exists.** Freshness [A-7] re-reads what is already ON the
+machine; delivery of a newer pack used to be a hand job nobody's walk owned. So the pack carries an
+update check, `scripts/check-pack-update.sh`: once a day — at the first freshness point of the day,
+throttled by a dated stamp in the machine's pack home (`~/.claude/live-spec/update-check-stamp`) — it
+asks the public repo (the VERSION file on main) whether the pack moved past what this machine runs
+(the walk hands it the installed version from its recorded home [M-7]), and when the remote is newer
+it PROPOSES, in the session's own chat: both versions named, the what-changed pointer (the public
+journal), and the road named — `install.sh`, whose attic backup already guards the overwrite [E-21],
+or a plain pull where the repo itself runs the pack. It never installs anything: updating stays the
+human's word, like every install gate [ACT-1]. No network — or an unreadable answer — reads as one
+honest "check skipped" line naming the address it tried (a dead URL must not masquerade as a quiet
+offline day), never a block, never a guess, and an offline day leaves the stamp unwritten so the next
+session retries. A machine AHEAD of the public repo — the developer's, mid-work — reads as up to date:
+the check proposes forward only, never a downgrade. It is E-23's outward twin: sync-skills keeps the machine's
+copies true to the LOCAL repo, the update check tells when the PUBLIC repo has moved past both.
+Its edges: non-goals — no background daemon (a proposal belongs where the human reads, in the
+session), no auto-install ever, no per-skill remote diff (the pack version speaks for the whole);
+its only face is the proposal line, governed by the line law — facets N/A [INV-28]; success measure:
+the day a newer pack ships, the next session on another machine proposes it unasked [default]. [E-25]
 
 ## One rulebook behind the skills
 
@@ -1087,6 +1108,7 @@ meaning, this table is only the map.
 | E-22 | batched questions arrive as ONE decision page; answers archived and harvested same session | Throwing a wish |
 | E-23 | dev-machine skill sync: named script, version changes reported old → new for the A-7 re-read | Package repo |
 | E-24 | problem ledger: per-host `.live-spec/PROBLEMS.md`, signature + dated occurrences + status (WATCHED/OWNED/AGREED NON-PROBLEM/SOLVED) | Workshop misbehaves |
+| E-25 | pack update check: once a day (dated stamp) the first freshness point asks the public repo's VERSION; newer remote ⇒ a spoken proposal (versions, what-changed pointer, the install.sh/pull road) — never an install; offline ⇒ one honest skip line, stamp unwritten; no daemon | Adoption |
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, rolling wishes park with checkpoints (at most one parked per lane), resume in landing order | Bug cuts the line |
