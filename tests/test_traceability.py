@@ -1569,6 +1569,18 @@ class TestProblemLedger(unittest.TestCase):
         self.assertIn("FORM scaled by the delta", prof,
                       "host profile line not reconciled with INV-61")
 
+    def test_sample_first_and_source_reopen(self):
+        """Rows 156+157 (M-161/162, INV-62/63): smallest sample judged first;
+        a rejected artifact reopens its source, never line-patches."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-62", "INV-63", "cheapest judgeable sample",
+                       "the five-round trap"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        for needle in ("build smallest-first", "reopens its SOURCE",
+                       "cheapest judgeable sample"):
+            self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

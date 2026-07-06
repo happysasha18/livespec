@@ -1875,3 +1875,12 @@ short-form record, surface/structural deltas keep the full walk; claims batch pe
 resume once per batch; the irreducible named (writing the law well, red-first, the delta prove, the
 gates). The ~40% bookkeeping audit of tonight's own landings is the row's evidence. M-160, suite 159.
 This very landing ships the FIRST short-form record — the law's own dogfood.
+
+## 2026-07-07 ~01:29 — rows 156 + 157: the sample gate and the source-reopen law (session 22)
+**What:** two more promoter lessons into the pipeline (SPEC v0.15.51, build-pipeline 0.2.37):
+taste-heavy deliverables build SMALLEST-FIRST — the cheapest judgeable sample takes his word before
+the full build spends (INV-62; five full media-packs once died where one paragraph would have) — and
+a REJECTED artifact reopens its SOURCE: correct the card/clause/brief, rebuild from it, never
+line-patch the output (INV-63, the five-round trap banned by name; composes with the frozen-approved
+law — two ends of one review). M-161/162, shared red-proven test, suite 160, pack 0.8.63. Short-form
+record per the new bookkeeping law.

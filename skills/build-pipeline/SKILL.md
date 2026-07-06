@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.36
+  version: 0.2.37
 ---
 
 # build-pipeline — ship a change by the method
@@ -207,6 +207,13 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    the norm for look and feel, the clause text only its laws — and record a one-line plan-vs-prototype
    diff in the landing's accounting; a missing diff line is a defect at review. The verify step's feel
    bar (step 8) reads the same pointer.
+   **Taste-heavy deliverables build smallest-first (SPEC INV-62):** when taste rules the deliverable —
+   voice, copy, visual style, spec prose — STOP at the cheapest judgeable sample (one paragraph, one
+   card, two sections) and take the human's word on it before the full build spends anything; five
+   full packs once died on a failure a one-paragraph sample would have caught. **And a rejected
+   artifact reopens its SOURCE (SPEC INV-63):** the fix starts at the spec clause / card / brief that
+   produced it — correct the source, rebuild from it; line-patching the rejected output against an
+   unchanged source is the five-round trap, banned.
 
 8. **Verify by deed.** Run it and see the result with your own eyes. Only call it done/working after that;
    otherwise label it an assumption. Run every check the diff can reach before any push — the reach map's law (SPEC INV-45): a prose-only diff runs the doc gates whole and says so; any code, spec, matrix, skill, or test file in the diff means the whole suite. **Green = zero failures AND the

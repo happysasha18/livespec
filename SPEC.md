@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.50, 2026-07-07)
+# live-spec — SPEC (v0.15.51, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -462,6 +462,20 @@ words with an example, marked as tweakable — and that is ALL. No confirmation 
 is consent; nothing is re-asked later — the person asks when they want something changed, and the
 `[default]` tags keep every such choice findable in the spec forever (Alexander 2026-07-06: «если
 мне всё ок — не надо подтверждать… дальше уже, если надо, пользователь спросит»). [INV-31]
+
+**The smallest sample is judged before the full artifact.** For a taste-heavy deliverable — voice,
+copy, visual style, spec prose — the build STOPS at the cheapest judgeable sample (one paragraph, one
+card, two sections) and the human's word on the sample sets the bar BEFORE the full build spends
+anything (a neighbour project shipped FIVE full media-packs that died on one tone failure a
+one-paragraph sample would have caught, 2026-07-06). Kin split, stated: the mockup-first entry
+condition [INV-43] is the HUMAN's declared "show me first"; this law is the AGENT's own discipline —
+build smallest first even unasked when taste rules the deliverable. [INV-62]
+
+**A rejected artifact reopens its SOURCE.** When the human rejects an artifact, the fix starts at the
+artifact's source — the spec clause, the card, the brief that produced it: the source is corrected
+first, the artifact rebuilt FROM it. Patching the rejected output line-by-line against an unchanged
+source is the five-round trap by name (each round re-patched the output, the unchanged card re-made
+the same failure; promoter case, 2026-07-06) — banned. [INV-63]
 
 **What already works is promised before you touch it.** When a feature-doored wish touches a surface
 that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
@@ -1511,6 +1525,8 @@ meaning, this table is only the map.
 | INV-59 | no question asked twice: recorded answers searched before any ask (archives, records, journal, profile) — an already-answered question is a defect; dialogues converge (answered = closed + harvested same session; named problems return solved with evidence; round N+1 only new); home: communicator | Throwing a wish |
 | INV-60 | a taste ask carries the agent's own researched proposal (mined exemplars/options with citations + a chosen recommendation); asking the human to supply what the agent should have mined = a defect; sharpens INV-4; home: communicator | Throwing a wish |
 | INV-61 | process bookkeeping scales to the delta: the pre-push re-check keeps its rigor but scales its form — a small delta (skill/prose/infra, no new surface/structure) ships a three-line SHORT-FORM record (previous clean · delta one line · verdict), surface/structural deltas keep the full walk; claims batch per lane, journal + resume once per batch; the irreducible named (law text, red-first, delta prove, gates) | Rhythm |
+| INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
+| INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
