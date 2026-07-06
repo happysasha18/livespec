@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.34
+  version: 0.1.35
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The twenty-one rules
+## The twenty-two rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -338,6 +338,15 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
       its evidence.
     - Asking the human to supply what the agent should have mined is a defect («сам нашёл,
       предложил — потом показывай»). Sharpens the recommended-option law (rule 2) for taste calls.
+
+22. **A review surface shows its sources and takes his pen (SPEC INV-64).**
+    - Anything shown FOR REVIEW — a dossier, a claims page, a draft with assertions — carries
+      per-claim provenance: each claim chipped as read from the ARTIFACT · his own RECORDED WORD ·
+      or MY INFERENCE — and inferences are flagged loudest.
+    - The surface is commentable, never a read-only wall: line-by-line room for his word, with the
+      decision page's answer capture (rule 10's JSON law) extended to review pages.
+    - Born in the promoter case: «я не знаю, откуда ты всё это взял» — an unmarked inference costs a
+      review round; his standing word since 2026-07-06: never a read-only wall.
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 

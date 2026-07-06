@@ -1884,3 +1884,10 @@ a REJECTED artifact reopens its SOURCE: correct the card/clause/brief, rebuild f
 line-patch the output (INV-63, the five-round trap banned by name; composes with the frozen-approved
 law — two ends of one review). M-161/162, shared red-proven test, suite 160, pack 0.8.63. Short-form
 record per the new bookkeeping law.
+
+## 2026-07-07 ~01:31 — row 161: review surfaces show their sources and take his pen (session 22)
+**What:** the promoter's «я не знаю, откуда ты всё это взял» + his standing never-a-read-only-wall
+word became SPEC v0.15.52 INV-64 + communicator rule 22 (0.1.35, twenty-two rules): anything shown
+FOR REVIEW carries per-claim provenance (artifact · his recorded word · MY INFERENCE — inferences
+loudest) and is commentable with the decision page's JSON answer capture extended to review pages.
+M-163, red vs HEAD, suite 161, pack 0.8.64. Short-form record.

@@ -1581,6 +1581,18 @@ class TestProblemLedger(unittest.TestCase):
                        "cheapest judgeable sample"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
+    def test_review_provenance_commentable(self):
+        """Row 161 (M-163, INV-64): review surfaces carry per-claim provenance and
+        take his pen — never a read-only wall."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-64", "inferences are flagged LOUDEST",
+                       "COMMENTABLE, never a read-only wall"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("MY INFERENCE", "never a read-only wall",
+                       "extended to review pages"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

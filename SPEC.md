@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.51, 2026-07-07)
+# live-spec — SPEC (v0.15.52, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -253,6 +253,15 @@ away-stretch closing, a session ending — the LAST rendered thing is one SHORT 
 · what's next · what's needed from him · when the agent wakes. The long report lives ABOVE it; the
 final line comes LAST, after every tool call; a page deliverable repeats its passport [INV-51] in
 that line. Delivery, not existence, is the law. Home: communicator. [INV-57]
+
+**A review surface shows its sources and takes his pen.** Anything shown FOR REVIEW — a dossier, a
+claims page, a draft with assertions — carries per-claim PROVENANCE: each claim chipped as read from
+the artifact · his own recorded word · or the agent's inference, and inferences are flagged LOUDEST
+(«я не знаю, откуда ты всё это взял» — the promoter case, where unmarked inference cost a review
+round). And the surface is COMMENTABLE, never a read-only wall: line-by-line room for his word with
+answer capture — the decision page's saved-answers law [INV-32] extends to review pages, one JSON
+round-trip home. His standing cross-project word, 2026-07-06. Home: communicator, beside the decision
+page rule. [INV-64]
 
 **His word on a shown artifact is read as meant — and his cuts hold.** The lesson arrived through the
 promoter window (2026-07-06 — three review rounds of one document rejected in a single evening, the
@@ -1525,6 +1534,7 @@ meaning, this table is only the map.
 | INV-59 | no question asked twice: recorded answers searched before any ask (archives, records, journal, profile) — an already-answered question is a defect; dialogues converge (answered = closed + harvested same session; named problems return solved with evidence; round N+1 only new); home: communicator | Throwing a wish |
 | INV-60 | a taste ask carries the agent's own researched proposal (mined exemplars/options with citations + a chosen recommendation); asking the human to supply what the agent should have mined = a defect; sharpens INV-4; home: communicator | Throwing a wish |
 | INV-61 | process bookkeeping scales to the delta: the pre-push re-check keeps its rigor but scales its form — a small delta (skill/prose/infra, no new surface/structure) ships a three-line SHORT-FORM record (previous clean · delta one line · verdict), surface/structural deltas keep the full walk; claims batch per lane, journal + resume once per batch; the irreducible named (law text, red-first, delta prove, gates) | Rhythm |
+| INV-64 | anything shown FOR REVIEW carries per-claim provenance (artifact · his recorded word · the agent's inference — inferences loudest) and is commentable with answer capture (the decision page's JSON law extends to review pages); never a read-only wall, never an unmarked inference | Throwing a wish |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
