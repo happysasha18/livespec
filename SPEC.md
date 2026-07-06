@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.37, 2026-07-06)
+# live-spec — SPEC (v0.15.38, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -209,9 +209,20 @@ what is now covered, the code station says what now works — two or three plain
 artifact pasted into chat; a station a delegated worker closed becomes the senior's beat the moment
 its result lands. HEARTBEAT: when a stretch runs long with no beat — a big suite, a worker
 batch, a long render — narration says what is grinding and roughly why it takes long; a beatless
-stretch past ~10 minutes owes its heartbeat [default]; whether the
-human may step away during it, and for how long, is the offline-window face — its own promised law
-(queue row 138), not this one. Together the trail is the session's time accounting: read top to
+stretch past ~10 minutes owes its heartbeat [default]. The heartbeat has a second, forward-looking
+face — the OFFLINE WINDOW (his word 2026-07-06: «надо иногда писать, когда можно оффлайн — например,
+если тесты локально бегут»; the same evening's ask again — pulled back every half hour by a question):
+when the coming stretch needs NOTHING from the human — a local suite run, a delegated worker batch, a
+long render, a pipeline stretch with no gate or taste call ahead — narration says so BEFORE it starts:
+that he may step away, an honest range for how long (read from the work's known shape or observed
+runs; an unknown duration is said as unknown — never a guess dressed as a promise), and what he will
+be needed for when it ends; and when he IS needed again, that too is a beat — said plainly, naming the
+gate or decision that waits. The window is a read on the work, never a dismissal: beats keep landing
+during it so the returning reader finds the trail whole; questions born inside the window batch to its
+end [INV-4]; a window that ends off its spoken range says so — overrun, done sooner, or blocked on his
+word alone — the heartbeat's own duty; the needed-again beat is a chat line awaiting his return, never
+a summons (the machinery of reaching an absent human stays outside this law); and no offline sentence
+fires when the very next beat needs the human. Together the trail is the session's time accounting: read top to
 bottom it answers "where did the time go" in work terms — token and test counts stay bookkeeping
 [INV-28]. A narration line is chat,
 not a report: it walks no pre-report walk (the walk scopes to movement-end and milestone reports — a
@@ -1254,7 +1265,7 @@ meaning, this table is only the map.
 | INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
 | INV-33 | every pipeline step is worked wearing its craft's head (product manager at spec · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify); the step→craft ladder's one home: build-pipeline | Throwing a wish |
 | INV-34 | the pre-report walk: before any movement-end/milestone report, the communicator rules are re-read and the draft passes phrase by phrase through the outside-reader question; trailing anchors stay legal; acceptance = the reader's own read; the walk's one home: communicator | Throwing a wish |
-| INV-35 | while work runs, beats are narrated as they happen — a station passed, a load-bearing find, a turn — in plain roadmap terms, the reports' voice; every beat names the wish and station in hand (identity); a station's completion is a beat whose line digests what the station produced (digest); a long beatless grind gets a line naming what grinds (heartbeat) — the trail accounts for the session's time; the per-command grind stays quiet; a narration line is chat, not a report (no pre-report walk, no questions, the plain-language and bookkeeping laws still bind); it replaces no report; the law's one home: communicator | Throwing a wish |
+| INV-35 | while work runs, beats are narrated as they happen — a station passed, a load-bearing find, a turn — in plain roadmap terms, the reports' voice; every beat names the wish and station in hand (identity); a station's completion is a beat whose line digests what the station produced (digest); a long beatless grind gets a line naming what grinds (heartbeat), and a coming stretch that needs nothing from the human is told as an offline window — step away, an honest range (unknown said as unknown, never a guess dressed as a promise), what he is needed for at its end, and a beat when he is needed again; the window batches its questions to its end and says its own off-range end (overrun, done sooner, blocked on his word), the needed-again beat a chat line awaiting his return, never a summons — the trail accounts for the session's time; the per-command grind stays quiet; a narration line is chat, not a report (no pre-report walk, no questions, the plain-language and bookkeeping laws still bind); it replaces no report; the law's one home: communicator | Throwing a wish |
 | INV-36 | the project's own kind (book / backend / static site / fullstack / CLI / skill pack / custom via the queue) asked at founding and at adoption's orient — always asked, never profile-seeded; one home: the host profile's `project.kind`; seeds project-wide defaults but never overrides an explicit host line; distinct from the per-wish work-kind and the placement; updated on the human's word the moment evolution is noticed, journaled | Bootstrap |
 | INV-37 | every wish is placed on the product's feature map at intake, the placement SPOKEN with the echo and WRITTEN in the row (`map:` — changes feature X / new feature / restructure); the map = spec scenarios + architecture nodes, no third document; a restructure verdict queues its own row and re-carves only through the architecture step's re-prove | Throwing a wish |
 | INV-38 | the whole feature map is readable on demand — read at ask-time off the spec's scenario sections, the current-vs-target header (statuses at the granularity the promised-tag binds, per S-0), and the queue's open rows (stations for in-flight, queued NEW-verdict wishes included); no third document; answer lines obey the line law; chat by default, rendered page on the human's word; never fires uninvited (reports keep the board's in-flight scope); a host with nothing to read is answered honestly | Asking what the product does |

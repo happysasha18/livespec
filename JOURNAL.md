@@ -1632,3 +1632,27 @@ counterexample that taught it. Memory file written so the rule survives wipes. P
 **Why:** His words: "смотри не только числа для фронтенда… по типу классификации проекта понять, что
 измеряемое вообще"; "тлвфото сам справится, не надо его тут менеджить… НИКОГДА в тот проект активно
 не вмешиваться, это только аудит".
+
+## 2026-07-06 ~22:10 — row 138: the narration says when he can step away (session 21)
+**What:** The offline-window face landed on the narration heartbeat — NOT a fourth tooth: when a
+coming stretch needs nothing from the human (a suite run, a worker batch, a long render), narration
+says BEFORE it starts that he may step away, an honest range (unknown said as unknown, never a guess
+dressed as a promise), and what he is needed for at its end; the needed-again moment is its own beat —
+a chat line awaiting his return, never a summons; beats keep landing inside the window, questions
+batch to its end, an off-range end (overrun, done sooner, blocked on his word) says itself. Homes:
+SPEC v0.15.38 INV-35 + communicator 0.1.30 heartbeat tooth; M-138, `test_offline_window` red-proven on
+the communicator side (the superseded row-139 fence sentence asserted gone from both homes). Prover
+CROSS-LINK folded two seams in-pass: the window's three ends, and the needed-again beat as a waiting
+line, not a promise to reach an absent human. The first live «можешь отойти» was spoken at this very
+landing's close — the field leg met by deed. Pack 0.8.50.
+**Why:** His word twice — 2026-07-06 ~17:26 («надо иногда писать, когда можно оффлайн — например,
+если тесты бегут») and this evening's resume ask about being pulled back every half hour: the honest
+answer to «может, запустить тебя в /loop?» was that the loop mechanism doesn't cure being ASKED
+things — the pack owes the offline sentence and batched questions instead; the mechanism note (loops,
+wakeups) stays a profile habit, not pack law.
+**Also this session:** the session hooks fired for the FIRST time (his install between sessions —
+rows 134+141): the clock line stamped the prompt and the chat-laws reminder arrived. But the zero-
+drift field leg did NOT close: mid-turn, record stamps drifted 2 min ahead of the wall clock again
+(twelfth catch, ledger updated) — the hook owns the prompt moment; mid-turn stamps stay on the
+date-before-any-stamp habit and the commit fence. Rows 134/141 field legs remain OPEN for a clean
+session.

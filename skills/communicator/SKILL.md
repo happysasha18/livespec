@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.29
+  version: 0.1.30
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -227,8 +227,20 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
       moment its result lands.
     - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
       what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
-      heartbeat [default]. Whether the human may step away, and for how long, is the offline-window
-      face — its own promised law (queue row 138), not this rule.
+      heartbeat [default]. The heartbeat's second, forward-looking face is the **Offline window**
+      (his word 2026-07-06: «надо иногда писать, когда можно оффлайн — например, если тесты локально
+      бегут»): when the coming stretch needs nothing from the human — a local suite run, a worker
+      batch, a long render — say so BEFORE it starts: that he may step away, an honest range for how
+      long (read from the work's known shape or observed runs; unknown is said as unknown — never a
+      guess dressed as a promise), and what he is needed for at its end; when he is needed again,
+      that is a beat too — a chat line awaiting his return, never a summons (reaching an absent
+      human is outside this rule). The window is a read on the work, never a dismissal: beats keep
+      landing during it so the returning reader finds the trail whole; questions born inside it
+      batch to its end (base rule 1); a window that ends off its spoken range says so — overrun,
+      done sooner, or blocked on his word alone; and no offline sentence fires when the very next
+      beat needs the human. — *✅ "тесты побежали — минут десять я справлюсь без тебя; вернёшься —
+      покажу, что закрыли" ✅ return-beat: "ты снова нужен: посмотреть посадку и сказать слово про
+      деплой"*
     The mechanical grind stays quiet — narration marks beats, never a per-command
     commentary. A narration line is chat, not a report: no pre-report walk (that walk scopes to
     movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of

@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~21:56, session 20 — rows 142 landed whole; 140/143/144 build legs MET,
-field legs OPEN; BOTH his correction batches folded; PUSHED, WIPE-READY)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.49, SPEC v0.15.37, suite 132 green.** Verify on
+## LIVE STATE (2026-07-06 ~22:10, session 21 — row 138 LANDED WHOLE; session hooks fired their
+first live session; twelfth clock catch mid-turn — rows 134/141 field legs still OPEN)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.50, SPEC v0.15.38, suite 133 green.** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -31,10 +31,17 @@ resuming on another model, ASK Alexander before working this window.**
 - **Status vocabulary cleaned this session:** a row with build done and only field evidence riding
   reads "build legs MET; field legs OPEN" — it holds no pen, rolls no lane, never eats the lane cap;
   "in-work" is reserved for rows actually rolling (rows 134/141/140/143/144 renamed).
-- **Rows 134+141 build legs MET, install pending — HIS ONE COMMAND:**
-  `! bash ~/live-spec/scripts/install-session-hooks.sh`
-  (clock injection + chat-laws reminder, machine-wide). The commit fence caught invented time TWICE
-  this session (ninth + tenth ledger catches) — the hook is the fix waiting on his hand.
+- **Row 138 LANDED WHOLE ~22:10: the offline window** — the narration heartbeat grew a forward-
+  looking face: before a stretch needing nothing from him, say he may step away, an honest range,
+  what he's needed for at its end; the needed-again beat is a chat line awaiting his return, never a
+  summons; off-range ends say themselves (SPEC v0.15.38 INV-35 + communicator 0.1.30; M-138). The
+  first live «можешь отойти» was spoken at the landing itself — all three legs met. His /loop question
+  answered in-session: the loop cures waiting, not asking; the pack's answer is this law + batched
+  questions.
+- **Rows 134+141: hooks INSTALLED by his hand and FIRED this session** (clock line + chat-laws line on
+  the prompt). Field legs still OPEN: the zero-drift session did NOT happen — mid-turn stamps drifted
+  2 min ahead again (twelfth ledger catch; the hook owns the prompt moment, mid-turn stays on the
+  `date`-before-any-stamp habit + commit fence). Next clean session closes them.
 - **NEW HOST-PROFILE LAW (his ~21:50 word): `other-projects: AUDIT-ONLY`** — a project Alexander
   names in this window is a CASE STUDY for improving the pack, never a task there; no fixes, no
   managing, not even an inbox wish (narrower than base rule 7); a memory file also holds it
@@ -43,21 +50,21 @@ resuming on another model, ASK Alexander before working this window.**
 - Communicator 0.1.29: the calque rule now names the agent's OWN report coinages ("open leg" →
   «открытое плечо») as the trap — the sentence must be plain the FIRST time; translating after the
   fact does not fix it.
-- Versions: SPEC v0.15.37 · spec-author 0.1.16 · communicator 0.1.29 · build-pipeline 0.2.29 ·
-  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.49. Installed copies synced.
-- Prover records this session: rows142 · row140 · pushgate-s20 · rows143-144 · pushgate-s20-2 (all
-  in docs/prover/, no unfolded rows).
+- Versions: SPEC v0.15.38 · spec-author 0.1.16 · communicator 0.1.30 · build-pipeline 0.2.29 ·
+  product-prover 0.1.10 · base 0.1.19 · publish 0.1.1 · pack 0.8.50. Installed copies synced.
+- Prover records this session: row138 (CROSS-LINK, 2 folded) · pushgate-s21 (no unfolded rows;
+  session-20 records all closed).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — next session starts at item 1)
-1. **Field legs riding real windows:** rows 134+141 (after his hook install: a zero-drift session; a
-   tlvphoto session with no leading codes) · row 143 (first host landing walking the budgets clause) ·
-   row 144 (a following session's task list plain by his eye) · row 140 (first budget-named session).
+1. **Field legs riding real windows:** rows 134+141 (hooks now installed and firing: a zero-drift
+   session; a tlvphoto session with no leading codes) · row 143 (first host landing walking the
+   budgets clause) · row 144 (task list plain by his eye — this session's list was plain English,
+   one his-eye read short of closing) · row 140 (first budget-named session).
 2. **First real FEATURE-FIT run** (INV-29/30; row 117's open leg) + **row 129's open leg** (first real
    host `project.kind` line) + **row 133's open leg** (first real «покажи все фичи» ask) — all ride
    real wishes/asks in host windows.
-3. **Row 138** (offline windows — "you may step away" narration; INV-35 family) · row 109
-   (prototype-norm pointer) · 110–115 (harvest picks) · 106 (pytest-from-root bug).
+3. Row 109 (prototype-norm pointer) · 110–115 (harvest picks) · 106 (pytest-from-root bug).
 4. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96 feedback
    family · track-coach formal adopt · tlvphoto lessons through one real feature.
 5. Standing habits: `date` at the start of EVERY reply until the clock hook is installed; narrate by

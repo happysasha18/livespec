@@ -1352,6 +1352,29 @@ class TestProblemLedger(unittest.TestCase):
                        "never a test count"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_offline_window(self):
+        """Row 138 (M-138, INV-35): the heartbeat's offline-window face — before a
+        stretch needing nothing from the human, narration says he may step away, an
+        honest range, and what he is needed for at its end; the needed-again beat is
+        a chat line awaiting his return, never a summons; the superseded fence
+        sentence survives in neither home."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("OFFLINE WINDOW",
+                       "he may step away, an honest range for how long",
+                       "never a guess dressed as a promise",
+                       "a chat line awaiting his return, never a summons",
+                       "overrun, done sooner, or blocked on his word alone",
+                       "no offline sentence fires when the very next beat needs the human"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("Offline window", "may step away", "honest range",
+                       "never a guess dressed as a promise",
+                       "a chat line awaiting his return, never a summons"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+        for name, home in (("SPEC", spec), ("communicator", comm)):
+            self.assertNotIn("its own promised law (queue row 138)", home,
+                             "%s still carries the superseded row-138 fence sentence" % name)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""
