@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.21, 2026-07-06)
+# live-spec — SPEC (v0.15.22, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -208,6 +208,18 @@ step down requires a NAMED kind to answer for it. What no kind may ever touch: t
 door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals,
 success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]; the kind dials the
 machinery, never the safety net — the same law a scope cut obeys [T-15]. [INV-22]
+
+**Each step is worked in its craft's mindset.** A pipeline walked by one generalist head produces
+generalist artifacts — a spec that reads like a coder's notes, a matrix that checks what was convenient
+to check. So every step names the profession whose head you wear while walking it: the spec is written
+as a strong product manager, the architecture as a software architect, the matrix and the tests as a QA
+automation engineer, the code as a senior developer; the two prove steps are the prover's own
+formal-reviewer head, commit & show is a careful release hand whose reader is the human — and the
+verify walk is done with the visitor's own eyes, not the builder's [INV-30 kin]. The full step→craft
+ladder has ONE home, build-pipeline's step list [E-12]; each artifact is judged by its craft's
+standards, and the landing report's step accounting speaks in them. (His word 2026-07-06: «когда ты
+делаешь продукт-спеку — ты крутой продакт, когда архитектуру — крутой архитект, когда матрицу тестов —
+крутой QA-автоматчик».) [INV-33]
 
 **A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
 say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
@@ -949,6 +961,7 @@ meaning, this table is only the map.
 | INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar, in the medium's own form (motion for a browser, reading path for a book); findings become rows or red | Throwing a wish |
 | INV-31 | a taste choice made without asking is told in the landing report — plain words, an example, a tweakable mark; no confirmation, silence is consent, never re-asked; the [default] tag keeps it findable | Throwing a wish |
 | INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
+| INV-33 | every pipeline step is worked wearing its craft's head (product manager at spec · architect at architecture · QA automation at matrix and tests · senior developer at code · the visitor's own eyes at verify); the step→craft ladder's one home: build-pipeline | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

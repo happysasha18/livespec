@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.20
+  version: 0.2.21
 ---
 
 # build-pipeline — ship a change by the method
@@ -27,6 +27,15 @@ file · no new state / element / user-visible behaviour · an existing test leve
 fact (still ship a test). Anything touching visibility / layout / colour enters at the matrix step minimum.
 Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (PLAYBOOK.md holds
 the principle behind each step; this skill is its executable projection — keep the two in sync.)
+
+**The craft ladder — whose head you wear at each step (SPEC INV-33).** Each artifact is judged by its
+craft's standards, not a generalist's: **spec** — a strong product manager (the user's journey, the
+product's words) · **prove / prove architecture** — the prover's formal-methods reviewer ·
+**architecture** — a software architect (nodes, seams, one responsibility each) · **matrix** — a QA
+automation lead deriving coverage · **test** — the same QA engineer writing it · **code** — a senior
+developer · **verify** — the visitor's own eyes, not the builder's · **commit & show** — a careful
+release hand whose reader is the human. The landing report's step accounting speaks in these standards,
+and the hat each artifact was made under is namable on ask.
 
 ## When to run it — and where each kind of change enters
 - **Step zero, before ANY tool call: name the door aloud (SPEC T-12, INV-16; base rule 15) — and the human hears the intake line back as the capture echo: heard · door · name · row (communicator rule 12; SPEC INV-27).** The intake

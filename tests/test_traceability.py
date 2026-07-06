@@ -837,6 +837,29 @@ class TestWorkerContract(unittest.TestCase):
     """Row 59 (M-095): the worker contract — ownership narrowed to the brief, sibling files
     fence-benign, session lines ride the brief, failed acceptance escalates one logged tier."""
 
+    def test_craft_ladder(self):
+        """Row 124 (M-120, INV-33): every pipeline step is worked in its craft's
+        mindset; the step->craft ladder's one home is build-pipeline."""
+        spec = read("SPEC.md")
+        flat_spec = " ".join(spec.split())
+        for needle in (
+            "Each step is worked in its craft's mindset",
+            "INV-33",
+        ):
+            self.assertIn(needle, flat_spec, "SPEC missing: %s" % needle)
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        flat_pipe = " ".join(pipeline.split())
+        for needle in (
+            "The craft ladder — whose head you wear at each step",
+            "a strong product manager",
+            "QA automation lead",
+            "the visitor's own eyes, not the builder's",
+            "a careful release hand",
+        ):
+            self.assertIn(needle, flat_pipe, "build-pipeline missing: %s" % needle)
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("test_craft_ladder", matrix, "M-120 must pin this test (row 124)")
+
     def test_brief_carries_ledger_and_clock(self):
         """Row 123 (M-119, ACT-3): every worker brief carries the problem-ledger
         walk and the clock read at briefing."""

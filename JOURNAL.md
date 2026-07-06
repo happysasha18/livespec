@@ -1281,3 +1281,20 @@ its edits didn't explain. That red was the push gate's own tooth (a SPEC commit 
 committed prover record — mid-batch by design; the batch's closing full prover pass turns it green),
 now a WATCHED ledger entry. A Sonnet worker ran the seven verbatim edits red→green off a
 self-contained brief (~15 min senior hands saved). SPEC v0.15.21 · build-pipeline 0.2.20 · pack 0.8.32.
+
+## 2026-07-06 13:05, session 13 — every step gets its craft's head (row 124)
+
+His morning words, now law: «когда ты делаешь продукт-спеку — ты крутой продакт, когда архитектуру —
+крутой архитект, когда матрицу тестов — крутой QA-автоматчик». A pipeline walked by one generalist
+head produces generalist artifacts — so every step now names the profession whose head is worn while
+walking it: product manager at spec, the prover's formal reviewer at both prove steps, software
+architect at architecture, QA automation at matrix and tests, senior developer at code, the visitor's
+own eyes (never the builder's) at verify, a careful release hand at commit & show. SPEC binds the law
+(INV-33); the full step→craft ladder lives in ONE home, build-pipeline's step list; matrix M-120;
+red-proven test. The prove-architecture step bit its author again, correctly: the senior briefed the
+worker without an ARCHITECTURE change, the suite went red on "INV-33 has no owning node", the worker
+HALTed by contract, and the assignment (INV-33 → build-pipeline node) plus a pin refresh (the ladder's
+insertion had shifted four line pins) was made on the senior's word — second time this month the teeth
+catch the senior's own stood-down step. A Sonnet worker ran the seven verbatim edits red→green off a
+self-contained brief that carried the clock and the ledger walk, both used correctly (~15 min senior
+hands saved). SPEC v0.15.22 · build-pipeline 0.2.21 · pack 0.8.33.

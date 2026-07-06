@@ -1,4 +1,4 @@
-# live-spec — Architecture (v0.1, 2026-07-05)
+# live-spec — Architecture (v0.1, 2026-07-06)
 
 How the pack is BUILT: the named nodes the spec's facts live in. Written from the proven SPEC v0.7
 (record `docs/prover/2026-07-05-lost-layers.md`; the matrix cites v0.7.1 — the same proven spec after
@@ -35,7 +35,10 @@ templates node's existing pins) — assignment + pin only, no node or seam chang
 doc's own rule; the row-105 landing 2026-07-06 night, session 11: INV-27 → communicator (the capture
 echo and the departures board are exchange shapes — rule 12 and rule 9's station line; build-pipeline's
 step zero cites the echo, the citation is not a second home) — assignment + pin only, no node or seam
-change, no re-prove per this doc's own rule; last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
+change, no re-prove per this doc's own rule; the row-124 landing 2026-07-06 ~13:05, session 13: INV-33 →
+build-pipeline (the craft ladder is the step list's own domain; four line pins re-run after the ladder's
+insertion shifted them) — assignment + pin refresh only, no node or seam change, no re-prove per this
+doc's own rule; last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
 text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
@@ -60,7 +63,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, INV-23, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence), `:95` (door + work-kind + prototype rules 15-16), `:132` (rule 19, INV-23 — the workshop-noise law), `:152` (ladder), `:179` (defaults) |
 | spec-author | authoring method for a living, use-case-first, prover-ready SPEC.md | E-4, C-1, T-13, INV-18, INV-29, T-14, INV-19, INV-20, INV-21 | `skills/spec-author/SKILL.md:82` (spine), `:107` ([target] tag tripwire), `:119` (axes composition), `:163` (fences), `:178` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6 | `skills/product-prover/SKILL.md:161` (review modes), `.live-spec/profile.md:6` (gate cadence instance) |
-| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show → landed | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, T-17, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, INV-26, INV-30, INV-31, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:32` (step zero: the door + work-kind), `:69` (the work-kind table — per-kind meanings' one home), `:93` (steps), `:204` (gates) |
+| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show → landed | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, T-17, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, INV-26, INV-30, INV-31, INV-33, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:41` (step zero: the door + work-kind), `:31` (the craft ladder — step→craft one home), `:83` (the work-kind table — per-kind meanings' one home), `:107` (steps), `:233` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages, done-claim answers, the capture echo + departures board | T-7 (the report step; the walk before it is build-pipeline's), E-22, INV-25, INV-27, INV-28, INV-32 | `skills/communicator/SKILL.md:33` (the rules), `:102` (rule 10 — the decision page), `:122` (rule 11 — the evidence walk), `:100` (rule 9 — the outcome-leads line shape) |
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1, E-24 | `templates/TEST_MATRIX.template.md:43` (coverage validation), `templates/ROADMAP.template.md:1`, `templates/SPEC.template.md:58` (index), `templates/PROBLEMS.template.md:1` (E-24 — the ledger's shape) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record | E-1, E-9, INV-7, INV-8, B-2, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10, E-21 | `adopt/ADOPT.md:16` (VCS gate first), `:109` (unbacked-surface verdict), `:42` (attic), `:11` (attach record), `install.sh:2` (E-21 — the installer itself) |
