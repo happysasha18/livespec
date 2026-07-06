@@ -500,3 +500,15 @@ class TestGateReachMap(unittest.TestCase):
     def test_unknown_and_empty_fall_to_full(self):
         self.assertEqual(self.reach("something/new-place.txt").returncode, 1)
         self.assertEqual(self.reach("\n").returncode, 1)
+
+
+class TestPytestFromRoot(unittest.TestCase):
+    """Row 106 (M-143): a stranger's `python3 -m pytest` from the repo root must
+    collect the real suite cleanly and never trip over the scaffold template."""
+
+    def test_pytest_collects_clean_from_root(self):
+        import sys
+        r = run([sys.executable, "-m", "pytest", "--collect-only", "-q"], cwd=ROOT)
+        self.assertEqual(r.returncode, 0, (r.stdout or "")[-2000:] + (r.stderr or "")[-2000:])
+        self.assertNotIn("test_scaffold.template", r.stdout,
+                         "the scaffold template must never be collected")

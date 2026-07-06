@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~23:20, session 22 — rows 109 + 146 + 147 LANDED WHOLE tonight;
+## LIVE STATE (2026-07-06 ~23:20, session 22 — rows 109+146+147+106 LANDED tonight; row 148 queued (entry: mockup-first);
 overnight /loop RUNNING — cumulative morning report owed to Alexander by 08:00)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.54, SPEC v0.15.42, suite 140 green.** Verify on
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.54, SPEC v0.15.42, suite 141 green (`pytest` from root now legal, row 106).** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -39,14 +39,16 @@ resuming on another model, ASK Alexander before working this window.**
 - Versions: SPEC v0.15.42 · spec-author 0.1.17 · communicator 0.1.31 · build-pipeline 0.2.32 ·
   product-prover 0.1.11 · base 0.1.19 · publish 0.1.2 · pack 0.8.54. Installed copies synced.
 - Prover records this session: row109 (3 folded) · pushgate-s22 · row146 (1 folded, 1 composing) ·
-  pushgate-s22-2 · row147 (2 folded, 1 intended) · pushgate-s22-3. Clock catches 13–15 logged
-  (mid-turn stamps; #15 BLOCKED by the commit fence live; row 134's zero-drift leg still open).
+  pushgate-s22-2 · row147 (2 folded, 1 intended) · pushgate-s22-3 · pushgate-s22-4. Clock catches
+  13–16 logged (mid-turn stamps; #15 BLOCKED by the commit fence live; row 134's leg still open).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — tonight's loop works top-down what needs no him)
-1. Tonight's next without-him rows: **106** (pytest-from-root bug — smallest) → **110–115** (harvest
+1. Tonight's next: **row 148's entry deed** (the mockup-first sample — a rendered before/after of two
+   SPEC sections for his morning eye; the whole-doc rewrite waits his word) → **110–115** (harvest
    picks: adversarial verify · brief-from-read-code · HALT list · brief sizing · gate hygiene ·
-   resume-file size cap).
+   resume-file size cap). Row 106 LANDED ~23:25 (pytest.ini, `pytest` from root = 141 collected clean,
+   M-143 red→green).
 2. **Field legs riding real windows:** rows 134+141 · 143 · 144 · 140 (not tonight — they need his eye
    or a host window).
 3. **First real FEATURE-FIT run** (INV-29/30; row 117's open leg) + **row 129's open leg** (first real
@@ -54,7 +56,7 @@ resuming on another model, ASK Alexander before working this window.**
    asks, not tonight.
 4. Rows 110–115 (harvest picks — 110 adversarial verify, 111 brief-from-read-code, 112 HALT list,
    113 brief sizing, 114 gate-script hygiene, 115 resume-file size cap; all without-him ELIGIBLE for
-   tonight) · row 106 (pytest-from-root bug; without-him, tonight-eligible).
+   tonight).
 5. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96 feedback
    family · track-coach formal adopt · tlvphoto lessons through one real feature.
 6. Standing habits: `date` before ANY stamp (mid-turn drift lives — 13 catches); narrate by the three

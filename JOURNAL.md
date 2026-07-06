@@ -1731,3 +1731,18 @@ designed; the senior fixed his own file and the suite went whole.
 nothing in the diff while the checks a prose diff CAN break (stale claims, dead links, a stale
 shopfront) run never. Rigor = every check the diff can reach, green — thoroughness by knowledge, not
 by ritual.
+
+## 2026-07-06 ~23:25 — row 106: a stranger's first minute is clean (session 22)
+**What:** `python3 -m pytest` from the repo root used to trip over templates/test_scaffold.template.py
+(its test_* NAME gets collected, its import fails) — found by a clean-context analyst in their first
+minute. Fix: pytest.ini pins `testpaths = tests`; the template stays a template, never collected.
+Red-proven first (`test_pytest_collects_clean_from_root` failed on the pre-fix tree, exit 1 at
+collection), then green: 141 collected from root, zero errors. M-143. Class swept: exactly one
+collectable template in the repo; scripts/render-doc.py is not test-named. Delegation decision said
+aloud: kept on the senior — a brief would cost more than the two-file edit.
+**Also this session, his word ~23:24:** row 148 queued — the pack's own SPEC.md rewritten to read
+like its craft wrote it (product voice in product places), with tonight's OWN new law walked at
+intake: the row declares "entry: mockup-first" — a rendered before/after sample of two sections goes
+to his morning eye before any whole-doc rewrite (INV-43's door arm, dogfooded the night it landed).
+**Why:** The first minute IS a shopfront — a stranger's standard command failing on a shipped file is
+a false claim about the repo's quality, the same family as a stale README.
