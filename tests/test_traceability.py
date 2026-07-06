@@ -774,7 +774,6 @@ class TestTargetOwnership(unittest.TestCase):
         "INV-21": 96, # success-measure reading machinery = the feedback family
         "A-6": 55,    # adoption baseline rides the snapshot
         "ACT-3": 56,  # the model router
-        "M-5": 14,    # CI mirror
     }
 
     def roadmap_rows(self):

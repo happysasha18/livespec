@@ -1,0 +1,36 @@
+# gates.yml — the CI mirror of the push gate (SPEC M-5, ROADMAP row 14).
+# Same checks, one source of truth: CI runs the SAME scripts the local pre-push hook
+# runs — it never redefines them. This is the SECOND net: the local reach map
+# (SPEC INV-45) is a developer-latency optimization; the CI net always runs the full set.
+name: gates
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Jerusalem   # gate (a) wants a today-dated prover record; "today" is the author's day, not UTC's
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # gate (a)'s freshness rule reads commit history (record vs SPEC.md)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install pytest
+        run: pip install pytest
+      - name: test suite (gate b, full — the reach map stays local)
+        run: python3 -m pytest -q
+      - name: gate a — fresh prover record
+        run: guardrails/check-prover-record.sh
+      - name: gate d — matrix coverage
+        run: guardrails/check-matrix-coverage.sh
+      - name: gate g — pin drift
+        run: guardrails/check-pin-drift.sh
+      - name: gate f — skill loadability
+        run: guardrails/check-skill-loadability.sh
+      - name: gate e — prototype fence
+        run: guardrails/check-prototype-fence.sh

@@ -564,3 +564,24 @@ class TestGateHygieneContract(unittest.TestCase):
             )
             self.assertEqual(payload["severity"], "error")
             self.assertEqual(payload["code"], "prototype-fence")
+
+
+class TestCIMirror(unittest.TestCase):
+    """Row 14 (M-154, SPEC M-5): the CI mirror ships — the same gate scripts as a
+    second net; the reach map stays a local optimization."""
+
+    def test_workflow_ships_and_mirrors_the_gates(self):
+        path = os.path.join(ROOT, ".github", "workflows", "gates.yml")
+        self.assertTrue(os.path.isfile(path), "gates.yml missing")
+        with open(path, encoding="utf-8") as f:
+            body = f.read()
+        for needle in ("pytest", "check-prover-record.sh", "check-matrix-coverage.sh",
+                       "check-pin-drift.sh", "check-skill-loadability.sh",
+                       "check-prototype-fence.sh", "fetch-depth: 0"):
+            self.assertIn(needle, body, "gates.yml missing: %s" % needle)
+
+    def test_readme_carries_the_mirror_guidance(self):
+        with open(os.path.join(GUARDRAILS, "README.md"), encoding="utf-8") as f:
+            body = f.read()
+        for needle in ("CI mirror", "second net", "never redefines"):
+            self.assertIn(needle, body, "guardrails README missing: %s" % needle)

@@ -89,3 +89,13 @@ neighbours' CLI lesson, ROADMAP row 114):
 
 Exempt by name: `check-push-reach.sh` — its exit code is a VERDICT (which checks the diff can
 reach), not a defect; it is a decider, not a blocking gate.
+
+## The CI mirror (SPEC M-5, ROADMAP row 14)
+
+The gates' native home is the LOCAL pre-push hook — CI is the second net, never the first. Three
+rules: **same checks, one source of truth** — CI invokes the same scripts in this directory
+and never redefines a check; **the full set, always** — the reach map (SPEC INV-45) is a local latency
+optimization, the second net stays conservative; **a plain workflow a host copies** — swap the test
+command for your own, keep the script calls. The worked example is this repo's own
+`.github/workflows/gates.yml` (note its `fetch-depth: 0` — the prover-record freshness rule reads
+history — and its `TZ` pin, so "today" is the author's day, not UTC's).

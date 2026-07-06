@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.45, 2026-07-07)
+# live-spec — SPEC (v0.15.46, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -11,7 +11,7 @@ templates, the adoption procedure text, the inbox, the skill evals with their ru
 queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
-snapshot machinery [E-7] (the adoption baseline A-6 rides it), the CI mirror [M-5], the model router
+snapshot machinery [E-7] (the adoption baseline A-6 rides it), the model router
 [ACT-3], the optional design-sync machine [E-18]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
 the tag binds at the granularity it is written: a surface is [target] only if its OWN clause carries the
 tag, never merely a parent section or one leg of a split anchor. The promise is mechanized: the suite
@@ -1231,9 +1231,12 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
   line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
   every update. So the freshness check [A-7] compares version against version, not just file times, and
   its "old → new" journal note is finally writable. [M-7]
-- **CI mirror [target]** — the guardrails' native home is the local pre-push hook; a host may additionally
-  mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source of
-  truth — CI runs them, never redefines them. (ROADMAP row 14.) [M-5]
+- **CI mirror** — the guardrails' native home is the local pre-push hook; a host may additionally
+  mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source
+  of truth — CI runs the same scripts, never redefines them; and the second net runs the FULL set —
+  the reach map [INV-45] is a local latency optimization, never a CI shortcut. The worked example is
+  the pack repo's own workflow (`.github/workflows/gates.yml`); host guidance lives in the guardrails
+  README. (ROADMAP row 14.) [M-5]
 - **Push gate for live-spec itself** — this repo is public and is the method's own flagship, so EVERY push
   is preceded, in the same session, by (a) the concurrent-edit fence [INV-11] and (b) a fresh whole-spec
   re-check: a product-prover pass over SPEC.md as it stands, its record landing in docs/prover/ before the
@@ -1467,7 +1470,7 @@ meaning, this table is only the map.
 | M-2 | safe breakpoint; announced self-compaction | Rhythm |
 | M-3 | documents versioned like code | Rhythm |
 | M-4 | live-spec is its own host | Package repo |
-| M-5 | CI mirror of the same checks [target] | Rhythm |
+| M-5 | CI mirror of the same checks: same scripts, second net runs the FULL set (the reach map stays local); worked example `.github/workflows/gates.yml` + guardrails-README host guidance | Rhythm |
 | M-6 | push gate: prover re-check before every push | Rhythm |
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
 | C-1 | canonical axes + provenance axis | Composing across axes |

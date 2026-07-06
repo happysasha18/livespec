@@ -1805,3 +1805,16 @@ instinct overcorrected into vagueness). M-151..153, `test_brief_trio_laws` red�
 **Why:** the night itself wrote these laws — every brief read its files, carried the list, passed
 paths; three workers HALTed by the list and every stop was a real defect. Law catching up with deed
 is the cheapest law there is.
+
+## 2026-07-07 ~00:23 — row 14: the CI mirror goes live (session 22)
+**What:** The public repo now runs its own gates on every push — `.github/workflows/gates.yml` (SPEC
+v0.15.46, M-5's [target] off): the same guardrail scripts as the local pre-push, a SECOND net that
+always runs the full set (the reach map stays a developer-latency optimization, said in the SPEC, the
+README, and the workflow's own comments). fetch-depth 0 because the prover-record freshness rule
+reads commit history; TZ pinned to the author's day so a post-midnight push doesn't hunt yesterday's
+record in UTC. Host guidance in guardrails/README (copy, swap the test command, never redefine a
+check). The [target] tooth worked exactly as designed: index, header list, and the suite's declared
+target map each went red in turn until the landing updated all three. M-154, TestCIMirror red-proven,
+suite 154, pack 0.8.58.
+**Why:** the gates' truth lives in one place; CI re-RUNS it. And the shopfront law gets its mechanical
+cousin: a public repo whose checks run in the open is a claim a stranger can verify.
