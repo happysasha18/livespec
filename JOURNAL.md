@@ -1818,3 +1818,13 @@ target map each went red in turn until the landing updated all three. M-154, Tes
 suite 154, pack 0.8.58.
 **Why:** the gates' truth lives in one place; CI re-RUNS it. And the shopfront law gets its mechanical
 cousin: a public repo whose checks run in the open is a claim a stranger can verify.
+
+## 2026-07-07 ~00:30 — the CI mirror's first catch, fixed the same half-hour (session 22)
+**What:** the mirror's FIRST live run went red on a real environment truth — the pin-drift gate
+demanded `~/.claude/CLAUDE.md`, a file that exists only on the author's machine. Fix: a machine-local
+pin (~/ or absolute) is NOTED and skipped when CI=true, strict everywhere else — proven by deed both
+ways (foreign HOME + CI → note + exit 0; foreign HOME local → hard FAIL), regression-tested
+(`test_machine_local_pins_skip_in_ci_only`, with the scratch-copy guard its siblings wear), M-154's
+never-side extended. Alexander got GitHub's failure mail and asked — answered with the passport: his
+project, just an update, nothing needed from him; the mail's very existence was the second net doing
+its job on its first breath.

@@ -32,6 +32,15 @@ while IFS=$'\t' read -r path line label; do
     /*)    full="$path" ;;
     *)     full="$ROOT/$path" ;;
   esac
+  # A machine-local pin (~/ or absolute, outside the repo) exists only on the author's
+  # machine; in CI (the second net, SPEC M-5) it is noted and skipped, never a false red.
+  case "$path" in
+    "~/"*|/*)
+      if [ ! -f "$full" ] && [ "${CI:-}" = "true" ]; then
+        echo "note (pin drift): $path:$line — machine-local pin, absent in CI; skipped."
+        continue
+      fi ;;
+  esac
   if [ ! -f "$full" ]; then
     echo "FAIL (pin drift): $path:$line — pinned file missing"; hard_fail=1; continue
   fi

@@ -585,3 +585,17 @@ class TestCIMirror(unittest.TestCase):
             body = f.read()
         for needle in ("CI mirror", "second net", "never redefines"):
             self.assertIn(needle, body, "guardrails README missing: %s" % needle)
+
+    def test_machine_local_pins_skip_in_ci_only(self):
+        """The CI net must not false-red on pins that live only on the author's
+        machine (~/.claude/...), while the local run stays strict (row 14's first
+        live CI run caught exactly this)."""
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("machine-local pin behaviour — meaningless in a git-less scratch copy")
+        script = os.path.join(GUARDRAILS, "check-pin-drift.sh")
+        in_ci = run([script], extra_env={"CI": "true", "HOME": "/nonexistent-ci-home"})
+        self.assertEqual(in_ci.returncode, 0, in_ci.stdout + in_ci.stderr)
+        self.assertIn("machine-local pin, absent in CI; skipped", in_ci.stdout)
+        local = run([script], extra_env={"CI": "", "HOME": "/nonexistent-ci-home"})
+        self.assertEqual(local.returncode, 1,
+                         "outside CI a missing machine-local pin must stay a hard FAIL")
