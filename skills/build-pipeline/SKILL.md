@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.28
+  version: 0.2.29
 ---
 
 # build-pipeline — ship a change by the method
@@ -151,13 +151,18 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    (base rule 13). Specs drift from code; fix the spec to the shipped truth, not the other way. A large or
    surface-class change updates the doc; a bug or small change just cites its existing node and skips to
    the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
-   **The architecture owes NUMBERS, not only names (SPEC INV-41):** every user-facing surface gets
-   measurable quality budgets — performance first ("first image within 2 s on a cold visit") — plus an
-   instrumentation home: where the surface's real timings are measured and where a human can read them
-   (an export, a debug view). Each budget is asserted by a matrix-row acceptance, never a hope in
-   prose; a user-facing surface with no budget line and no instrumentation home is a derivation
-   defect, exactly like an unowned fact. The numbers are the host's taste — propose with a
-   recommendation, set on the human's word at the surface's first budget landing.
+   **The architecture owes NUMBERS, not only names (SPEC INV-41):** measurable quality budgets plus
+   each budget's instrumentation home — where the real numbers are measured and where a human can
+   read them (an export, a debug view, a report). WHAT is measurable comes from the project's KIND
+   (SPEC INV-36) — ask "what does quality MEAN here, in numbers?" before writing any: a user-facing
+   product measures paint/interaction times ("first image within 2 s on a cold visit"); a backend
+   service latency, throughput, error rate; a CLI or pipeline run time on a typical input and
+   per-unit cost; a skill pack its evals' pass rate and suite wall-time; prose what honestly HAS a
+   number — and a quality with no honest number is SAID by name, never given a vanity metric. Each
+   budget is asserted by a matrix-row acceptance, never a hope in prose; a surface with no budget
+   line and no instrumentation home is a derivation defect, exactly like an unowned fact. The numbers
+   are the host's taste — propose with a recommendation, set on the human's word at the surface's
+   first budget landing.
    **The doc is ITERATIVE — never written milestones ahead:** it maps the product as it stands plus the
    landing in flight. A node exists for what ships today, or for what the spec already promises under an
    owned queue row (marked [target], pin empty). A future feature earns its node when its landing arrives;

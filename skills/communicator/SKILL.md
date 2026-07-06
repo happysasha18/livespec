@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.28
+  version: 0.1.29
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -75,7 +75,11 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
      docs language never crosses into chat as a literal translation — restate the mechanism in natural
      chat-language words, the original may trail in parentheses. —
      *❌ "вердикт растяжки старше ярлыка"  ✅ "фиксированный чек-лист решает, фича это или багфикс
-     (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day).
+     (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day). The trap includes YOUR OWN report
+     coinages: a metaphor born in this pack's English docs ("open leg", "ladder rung") calqued into
+     chat reads as riddles — *❌ "открытое плечо"  ✅ "правило написано, но ещё не проверено в реальной
+     сессии"* (Alexander 2026-07-06: «что это такое???» — and a translation AFTER the fact does not
+     fix it; the sentence must be plain the first time).
    - One thing = one name, everywhere; the vocabulary comes from the SPEC. —
      *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name, not a blank" ·
      ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up

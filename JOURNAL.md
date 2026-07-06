@@ -1617,3 +1617,18 @@ no lane, so it never eats the lane cap (rows 134/141/140/143/144 all renamed; su
 fixes itself. And it already had: tlvphoto's own window landed the first-image fix + budgets + a
 timings export the same evening (its c93d2cd) — evidence for INV-41's shape before the clause shipped.
 The tlvphoto inbox wish was already consumed by that window; nothing to take back.
+
+## 2026-07-06 ~21:55 — his second correction batch: think wider than the frontend (session 20)
+**What:** (1) Row 143 AMENDED — the budgets law is kind-wide, not frontend-only: the project's KIND
+proposes what is measurable (backend: latency/throughput/errors; CLI/pipeline: run time, per-unit
+cost; skill pack: eval pass rate, suite time; prose: what honestly has a number), and a quality with
+no honest number is said by name, never given a vanity metric (SPEC v0.15.37 INV-41, build-pipeline
+0.2.29, M-136). (2) Communicator 0.1.29 — the calque rule now names MY OWN report coinages ("open
+leg" → «открытое плечо») as the trap, with his «что это такое???» as the incident; translating after
+the fact does not fix it. (3) The host profile gains `other-projects: AUDIT-ONLY` (INV-14 note: set
+on his explicit word ~21:50): a project he names in this window is a case study for improving the
+PACK — never intervene there, not even an inbox wish; the earlier tlvphoto inbox move was the
+counterexample that taught it. Memory file written so the rule survives wipes. Pack 0.8.49, suite 132.
+**Why:** His words: "смотри не только числа для фронтенда… по типу классификации проекта понять, что
+измеряемое вообще"; "тлвфото сам справится, не надо его тут менеджить… НИКОГДА в тот проект активно
+не вмешиваться, это только аудит".

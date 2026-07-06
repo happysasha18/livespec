@@ -1423,13 +1423,16 @@ class TestProblemLedger(unittest.TestCase):
         quality budgets + an instrumentation home; carried by build-pipeline + spec-author."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("The architecture owes numbers, not only names", "INV-41",
-                       "MEASURABLE quality budgets",
+                       "MEASURABLE quality",
                        "INSTRUMENTATION home",
+                       "the project's KIND [INV-36] proposes the dimensions",
+                       "no honest number, the architecture SAYS so by name",
                        "is a derivation defect the prover flags",
                        "set on the human's word at the surface's first budget landing"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
-        for needle in ("SPEC INV-41", "measurable quality budgets", "instrumentation home"):
+        for needle in ("SPEC INV-41", "measurable quality budgets", "instrumentation home",
+                       "WHAT is measurable comes from the project's KIND"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         for needle in ("SPEC INV-41", "budget sentence"):

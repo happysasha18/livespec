@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.36, 2026-07-06)
+# live-spec — SPEC (v0.15.37, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -888,12 +888,18 @@ node when its landing arrives — speculative nodes are unbacked structure, the 
 a silent micro-decision. Re-carving the whole map IS legal — it arrives as a restructure placement's
 own queue row [INV-37], walks this step, and is re-proven like any structure change. [E-14]
 
-**The architecture owes numbers, not only names.** For every surface a user faces, the architecture
-doc states MEASURABLE quality budgets — performance first ("the first image appears within 2 s on a
-cold visit"), other measurable qualities where the surface warrants them — plus the surface's
-INSTRUMENTATION home: where its real timings are measured and where a human can read them (an export,
-a debug view). A budget is asserted by acceptance — a matrix row at a level that can see it — never a
-hope in prose; a user-facing surface whose architecture names no budgets and no instrumentation home
+**The architecture owes numbers, not only names.** The architecture doc states MEASURABLE quality
+budgets for what it builds, plus each budget's INSTRUMENTATION home: where the real numbers are
+measured and where a human can read them (an export, a debug view, a report). And WHAT is measurable
+is not one-size — **the project's KIND [INV-36] proposes the dimensions**, the architecture step asks
+"what does quality MEAN here, in numbers?" before writing any: a user-facing product measures paint
+and interaction times ("the first image appears within 2 s on a cold visit"); a backend service
+measures latency, throughput, error rate; a CLI or pipeline measures run time on a typical input and
+per-unit cost; a skill pack measures its evals' pass rate and suite wall-time; prose measures what
+honestly HAS a number (a reader reaches X within one scroll) — and where a quality genuinely has no
+honest number, the architecture SAYS so by name instead of inventing a vanity metric. A budget is
+asserted by acceptance — a matrix row at a level that can see it — never a hope in prose; a surface
+whose architecture names no budgets and no instrumentation home
 is a derivation defect the prover flags, exactly like an unowned fact. The numbers themselves are the
 host's taste — proposed with a recommendation, set on the human's word at the surface's first budget
 landing. Like the two layers themselves [INV-15], the duty binds from the first landing that touches
@@ -1254,7 +1260,7 @@ meaning, this table is only the map.
 | INV-38 | the whole feature map is readable on demand — read at ask-time off the spec's scenario sections, the current-vs-target header (statuses at the granularity the promised-tag binds, per S-0), and the queue's open rows (stations for in-flight, queued NEW-verdict wishes included); no third document; answer lines obey the line law; chat by default, rendered page on the human's word; never fires uninvited (reports keep the board's in-flight scope); a host with nothing to read is answered honestly | Asking what the product does |
 | INV-39 | a landing commit carries exactly one row's delta; its gate runs on a tree clean of any other lane's unfinished work; after a landing, the waiting lane re-fences and re-runs its gate on the new truth — landed-first wins | Throwing a wish |
 | INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
-| INV-41 | a user-facing surface's architecture states measurable quality budgets (performance first) plus its instrumentation home (where timings are measured and human-readable); each budget asserted by a matrix-row acceptance, never prose hope; no budget + no instrumentation home on a user-facing surface = derivation defect; the numbers are the host's taste, set on the human's word at the surface's first budget landing | From the spec to the tests |
+| INV-41 | the architecture states measurable quality budgets plus each budget's instrumentation home (numbers measured and human-readable); the project's KIND proposes the dimensions (product: paint/interaction times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass rate, suite time; prose: what honestly has a number) and a quality with no honest number is said by name, never a vanity metric; each budget asserted by a matrix-row acceptance, never prose hope; no budgets + no instrumentation home = derivation defect; numbers are the host's taste, set on the human's word at the surface's first budget landing, binding never retroactively | From the spec to the tests |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
