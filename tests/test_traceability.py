@@ -1413,6 +1413,23 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("`norm: <path>`", "contradicting its own artifact"):
             self.assertIn(needle, prover, "product-prover missing: %s" % needle)
 
+    def test_shopfront_fresh_at_push(self):
+        """Row 146 (M-141, INV-44): a version push re-opens the shopfront — README
+        claims match the pushed truth, kind-owed visuals ride along, the landing
+        report carries the outcome line."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-44", "the shopfront rides every push",
+                       "shopfront checked — current",
+                       "a stale claim found is fixed BEFORE the push"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pub = re.sub(r"\s+", " ", read(os.path.join("skills", "publish", "SKILL.md")))
+        for needle in ("any push that ships a new version",
+                       "shopfront checked — current",
+                       "even when the diff never touched a doc"):
+            self.assertIn(needle, pub, "publish missing: %s" % needle)
+        pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        self.assertIn("shopfront", pipe, "build-pipeline step 9 missing the shopfront pointer")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

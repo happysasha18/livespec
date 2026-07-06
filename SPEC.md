@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.40, 2026-07-06)
+# live-spec — SPEC (v0.15.41, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -1200,6 +1200,20 @@ publishing never bypasses the gates that already stand: the human's publish gate
 irreversible or outward (base rule 17 [ACT-1]), the host's own push gates [M-6] — the checklist runs
 BEFORE the gate, so what the human approves is already worth approving. [E-20]
 
+**A version push re-opens the shopfront.** Publication is not only the first deposit: every push that
+ships a new version changes the truth a public reader will read tomorrow — even when the diff never
+touched a doc — so the shopfront rides every push. The README's CLAIMS (behaviour, counts, commands,
+version homes) still match the pushed truth, and the kind-owed visuals ride along: a skill pack
+re-checks its diagrams and flow pictures, a visual product re-shoots what changed on screen, a tool
+re-runs its example — a stale shopfront is a false claim exactly like a stale screenshot [E-20]. The
+walk is the publish skill's checklist read at push scale (the checklist's one home stays there); the
+pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]
+— a push whose delta touches none of the shopfront's claims says so in one line ("shopfront checked —
+current"), a stale claim found is fixed BEFORE the push. Freshness means claims, never cosmetics.
+Non-goals this landing: no mechanical README-vs-diff checker (the reach map, row 147, is the candidate
+owner); no auto-regenerated images. Success measure: no push lands whose README claims an older
+behaviour or count, checked at milestone audits [default]. [INV-44]
+
 ## Composing across axes
 
 Every stateful surface of a host is composed across the canonical axes (view · mode · tier · viewport ·
@@ -1314,6 +1328,7 @@ meaning, this table is only the map.
 | INV-41 | the architecture states measurable quality budgets plus each budget's instrumentation home (numbers measured and human-readable); the project's KIND proposes the dimensions (product: paint/interaction times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass rate, suite time; prose: what honestly has a number) and a quality with no honest number is said by name, never a vanity metric; each budget asserted by a matrix-row acceptance, never prose hope; no budgets + no instrumentation home = derivation defect; numbers are the host's taste, set on the human's word at the surface's first budget landing, binding never retroactively | From the spec to the tests |
 | INV-42 | the human's word on a shown artifact is read as meant: a phrasing he killed in a review round stays killed in every later draft of that artifact (the writer keeps the kill-list written in the artifact's project records, never only in session memory — a resurfaced cut is a defect, not a fresh idea); a vivid phrase of his is adopted only as meant — mockery of a bad draft is not guidance, its intent read from context or asked, never assumed prescriptive; home: communicator | Throwing a wish |
 | INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype is not the product |
+| INV-44 | a version push re-opens the shopfront: the README's claims match the pushed truth and the kind-owed visuals ride along (skill pack: diagrams; visual product: fresh screenshots; tool: example runs) — the walk is the publish skill's checklist at push scale (one home there), pointed at by the commit-and-show step, its outcome riding the landing report ("shopfront checked — current" when untouched); a stale claim is fixed before the push; never a version push past a stale shopfront | Publishing |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

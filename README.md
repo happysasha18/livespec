@@ -69,7 +69,7 @@ with how it goes.
 6. **Test.** Write tests that assert the real shipped artifact — rendered widget, produced file, called function. Watch each new test fail first.
 7. **Code.** Implement until green. Delegate well-scoped mechanical work; keep judgment on the senior model. A surface whose spec clause cites an approved prototype (`norm: <path>`, the artifact frozen into `docs/norms/`) is built with that artifact OPEN, and the landing records a one-line plan-vs-prototype diff (SPEC INV-43).
 8. **Verify by deed.** Run it and see the result. Green = zero failures AND the skip-set is exactly the expected list.
-9. **Commit and show.** Commit when green. Docs travel with the change. Show the real render; push only after the human has reviewed it.
+9. **Commit and show.** Commit when green. Docs travel with the change. Show the real render; push only after the human has reviewed it. A push that ships a new version also re-opens the shopfront: the README's claims and its kind-owed visuals (diagrams for a skill pack, screenshots for a visual product) must match the pushed truth (SPEC INV-44).
 
 Bug shortcut: `bug → matrix → test → code` (skip spec/prove if the fact is already in SPEC; update the spec sentence if it isn't).
 

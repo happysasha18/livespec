@@ -1,8 +1,8 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md)
 
-## LIVE STATE (2026-07-06 ~22:57, session 22 — row 109 LANDED WHOLE; rows 146+147 queued on his
-evening words; overnight /loop RUNNING — cumulative morning report owed to Alexander by 08:00)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.52, SPEC v0.15.40, suite 135 green.** Verify on
+## LIVE STATE (2026-07-06 ~23:07, session 22 — rows 109 + 146 LANDED WHOLE; row 147 next;
+overnight /loop RUNNING — cumulative morning report owed to Alexander by 08:00)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.53, SPEC v0.15.41, suite 136 green.** Verify on
 resume: `git status -sb` + the suite (from tests/, row 106's bug). **Anthropic pulls FABLE from Claude
 Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only (loader law) — if
 resuming on another model, ASK Alexander before working this window.**
@@ -18,9 +18,11 @@ resuming on another model, ASK Alexander before working this window.**
   cancelled only by his naming it; prover norm lens. spec-author 0.1.17 · build-pipeline 0.2.30 ·
   product-prover 0.1.11 · M-140 · `test_prototype_norm_pointer` red→green · inbox wish archived
   (docs/queue-archive/). Prover records: row109 (3 folded) + pushgate-s22.
-- **Row 146 QUEUED (his ~22:44 word): the shopfront is fresh at every push** — README + kind-owed
-  visuals (skill pack: diagrams; visual product: screenshots) ride every version push; walked by DEED
-  on the row-109 push (README pipeline section got the two new law lines). NEXT for this session.
+- **Row 146 LANDED WHOLE ~23:06 (his ~22:44 word): the shopfront is fresh at every push** — SPEC
+  v0.15.41 INV-44; the walk lives in publish 0.1.2 (fire-list gained the version-push trigger — the
+  prover's fold: the list was diff-triggered, the incident class is truth-triggered), step 9 points at
+  it (build-pipeline 0.2.31), landing reports carry "shopfront checked — current"; M-141,
+  `test_shopfront_fresh_at_push` red→green; walked by DEED on both of tonight's pushes.
 - **Row 147 QUEUED (his ~22:47 case + ~22:51 re-shape): the push gate scales to the diff's reach** —
   a declared, conservative, SELF-TESTED reach map (which checks read which file classes; unknown file
   ⇒ full suite; SPEC/matrix/SKILL.md are TESTED documents, never "just .md" — track-coach's own
@@ -31,14 +33,14 @@ resuming on another model, ASK Alexander before working this window.**
   plain by his eye — tonight's list was plain English again) · row 140 (first budget-named session).
 - **His correction batch (~21:33, session 21) stays law:** this window never fixes a host — it fixes
   the SKILL so the host fixes itself; other projects AUDIT-ONLY (host-profile line + memory file).
-- Versions: SPEC v0.15.40 · spec-author 0.1.17 · communicator 0.1.31 · build-pipeline 0.2.30 ·
-  product-prover 0.1.11 · base 0.1.19 · publish 0.1.1 · pack 0.8.52. Installed copies synced (worker
-  ran sync-skills.sh; three skills updated).
+- Versions: SPEC v0.15.41 · spec-author 0.1.17 · communicator 0.1.31 · build-pipeline 0.2.31 ·
+  product-prover 0.1.11 · base 0.1.19 · publish 0.1.2 · pack 0.8.53. Installed copies synced.
+- Prover records this session: row109 (3 folded) · pushgate-s22 · row146 (1 folded, 1 composing) ·
+  pushgate-s22-2. Clock catches 13+14 logged (mid-turn stamps; row 134's zero-drift leg still open).
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched; D-2 cited by the ladder, not resolved).
 
 ## Forward queue (mirrors ROADMAP.md — tonight's loop works top-down what needs no him)
-1. **Row 146** (shopfront freshness — the clause into its one home; tonight) → **row 147** (reach-map
-   push gate; tonight, after 146).
+1. **Row 147** (reach-map push gate; tonight) → then queue item 4's without-him rows (110–115, 106).
 2. **Field legs riding real windows:** rows 134+141 · 143 · 144 · 140 (not tonight — they need his eye
    or a host window).
 3. **First real FEATURE-FIT run** (INV-29/30; row 117's open leg) + **row 129's open leg** (first real

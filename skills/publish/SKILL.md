@@ -2,7 +2,7 @@
 name: publish
 description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate — never instead of it. NOT for in-session showing of work (communicator owns that), not for commits that stay local.
 metadata:
-  version: 0.1.1
+  version: 0.1.2
 ---
 
 # publish — the work leaves the machine looking like a product
@@ -23,10 +23,19 @@ approves has already earned approval. It never sends anything itself.
 ## When it fires
 
 Anything crossing the machine's edge: first public push of a repo · a push that changes what a public
-reader sees (README, docs, screenshots) · a release/tag · a plugin-directory or marketplace submission
+reader sees (README, docs, screenshots) · any push that ships a new version (the shopfront walk, SPEC
+INV-44) · a release/tag · a plugin-directory or marketplace submission
 · a skill shipped for someone else's machine · design-project sync cards (SPEC E-18). If no reader
 outside this machine will meet the artifact, this skill stands down — showing work to your OWN human
 in-session is communicator's rule 5, not a publication.
+
+**A version push always fires the shopfront walk (SPEC INV-44).** Shipping a new version changes the
+truth a public reader will read tomorrow even when the diff never touched a doc — so at every such
+push, walk the shopfront in one look: the README's CLAIMS (behaviour, counts, commands, version homes)
+still match the pushed truth, and the kind-owed visuals ride along — a skill pack re-checks its
+diagrams and flow pictures, a visual product re-shoots what changed on screen, a tool re-runs its
+example. The landing report carries the outcome in one line — "shopfront checked — current" when
+nothing was touched; a stale claim found is fixed BEFORE the push, the same law as a stale screenshot.
 
 ## The kind checklist — what every publication owes (one home: this table)
 

@@ -1697,3 +1697,17 @@ rare-push cadence respected — AUDIT-ONLY.
 **Why:** Tests derived from a misread spec cannot catch the misreading — only the artifact itself can;
 the norm pointer makes the artifact reachable at every step that owes it a look (author, build,
 verify, prove), and the freeze makes the pointer legal beside a one-way fence.
+
+## 2026-07-06 ~23:06 — row 146: the shopfront is fresh at every push (session 22)
+**What:** His 22:44 word became law the same evening — SPEC v0.15.41 INV-44: a push that ships a new
+version re-opens the SHOPFRONT even when the diff never touched a doc; the README's claims must match
+the pushed truth and the kind-owed visuals ride along (skill pack: diagrams; visual product: fresh
+screenshots; tool: example runs). The walk lives in the publish skill (0.1.2) — its fire-list gained
+"any push that ships a new version" (the prover's fold: the list was DIFF-triggered while the incident
+class is TRUTH-triggered — a version push changes the product under an untouched README); the
+pipeline's commit-and-show step (build-pipeline 0.2.31) points at it and the landing report carries
+the outcome line ("shopfront checked — current"). M-141, `test_shopfront_fresh_at_push` red-proven
+then green, suite 136, pack 0.8.53. Walked by deed on its own landing: the row-109 push had already
+refreshed the README's pipeline lines by hand on his word; this push adds the step-9 shopfront line.
+**Why:** A stale README is a false claim in prose exactly as a stale screenshot is in pixels; the
+truth changes at every version push, so the freshness trigger must be the push, not the diff.
