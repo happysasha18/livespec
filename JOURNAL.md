@@ -1319,3 +1319,17 @@ misstamped — row 123's fix held on its first live test. Two more rows born at 
 chat-stamp drift hit its second occurrence (my own hand, ~7 minutes fast mid-session, the fence
 catching one queue stamp born of it), so the read-at-write-time sentence moves into communicator.
 Installed skills re-synced (build-pipeline 0.2.21 → 0.2.22 at the folds). SPEC v0.15.23 · pack 0.8.34.
+
+## 2026-07-06 13:23, session 13 — the closing report bounced: the jargon family's fourth strike
+
+Alexander bounced the session's movement-end report on sight («это ты на каком языке вообще
+разговариваешь???»): its lines led with pack-internal names — the board, the armed brief, the craft
+ladder as Russian calques — exactly what INV-28 and the no-calques profile line forbid, and the first
+strike AFTER the law landed. The lesson written into the queue as row 128: an invariant with no
+enforcement step on the senior's own chat does not hold there — before any movement-end report the
+communicator rules are re-read and every phrase passes "does this stand for a reader outside the
+pack". The report was re-given in plain words in the same exchange (nine steps of building a feature,
+named in full; helper tasks now carry the wall-clock time and the write-the-obstacle-down duty; work
+each step in its specialist's role). Two side catches while writing it: the row-128 queue stamp was
+written 4 minutes ahead of the clock — a recurrence on the owned chat-drift entry (row 127), date
+appended; nothing else changed.
