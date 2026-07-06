@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.32, 2026-07-06)
+# live-spec — SPEC (v0.15.33, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -166,7 +166,13 @@ tally is never message CONTENT; the message says what the number means for the r
 "saved", "the method held"), and the number may only trail as a quiet anchor or stay in the records.
 One carve-out, by law: where the number IS the asked substance — a direct question about it, or the
 done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as
-the answer, not as bookkeeping. [INV-28]
+the answer, not as bookkeeping. And because this law and the narration law live in skills a window
+may never load (the day the field showed it: three windows leaked raw codes to their reader in one
+day, 2026-07-06), they have a mechanical VOICE on the working machine: a prompt hook
+(`scripts/chat-law-hook.sh`, installed beside the clock's hand by the human's own command) injects a
+one-line reminder of both laws into every prompt — the skills remain the laws' homes, the hook only
+reminds and never legislates, and a window that ignores the line is breaking the same law, not a
+different one. [INV-28]
 
 **The report law is walked, not remembered.** The law above passed its evals and still failed on the
 senior's own chat: the session-13 closing report led with pack-internal names and loan-translated doc
@@ -1171,7 +1177,7 @@ meaning, this table is only the map.
 | INV-25 | a done-claim is an evidence walk: claim → artifact → method version, walked now; verified vs asserted said apart | Who decides what |
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row, plus the placement [INV-37]; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
-| INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence; NEVER-list: bookkeeping numbers (test counts, suite sizes, version strings) never as message content — translated, trailing, or in the records; the done-claim walk [INV-25] keeps them as the answer | Throwing a wish |
+| INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence; NEVER-list: bookkeeping numbers (test counts, suite sizes, version strings) never as message content — translated, trailing, or in the records; the done-claim walk [INV-25] keeps them as the answer; delivery: a prompt hook reminds every window of the language + narration laws (per-machine, the human's install; the skills stay the homes) | Throwing a wish |
 | INV-29 | a feature-doored wish walks the kind-scaled FIT WALK at intake (journey / flows / trigger lenses); trivially-closable holes closed and written how; only genuine taste calls go out, batched; prover mode FEATURE-FIT | Throwing a wish |
 | INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar, in the medium's own form (motion for a browser, reading path for a book); findings become rows or red | Throwing a wish |
 | INV-31 | a taste choice made without asking is told in the landing report — plain words, an example, a tweakable mark; no confirmation, silence is consent, never re-asked; the [default] tag keeps it findable | Throwing a wish |

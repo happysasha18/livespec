@@ -1557,3 +1557,19 @@ blocked the agent's own hand from wiring ~/.claude/settings.json (self-config) �
 Done-when named in advance; the installer script ships with row 141 and waits for Alexander's one
 `!` command. The row stays in-work: the zero-drift session and the ledger's SOLVED flip ride the
 install.
+
+## 2026-07-06 20:49, session 19 — row 141: the chat laws get a voice no window can fail to hear
+
+Born from live fire: while this session was integrating the clock hand, tlvphoto wrote «новый раздел
+EX-SHARE… перед надгробием стены» straight into Alexander's chat — raw anchor codes and a doc
+metaphor leading the sentence — and he asked whether anything can be DONE about communication at
+all. The day's audit had already named the class: the language and narration laws live in skills,
+and the failing sessions were exactly the ones that never loaded them. The fix is delivery, not
+another sentence: the same prompt-hook mechanism as the clock injects a one-line reminder of both
+laws into EVERY prompt on the machine — a window that never invoked a single pack skill still hears
+plain-words-talk-codes-trail and narrate-with-digests on every turn. The prover's real find (two
+texts, one law — the reminder could drift from its home) folded mechanically: the suite pins the
+reminder's teeth, so a law change forces the hook text to move with it. Install rides the same road
+as the clock: the classifier blocks the agent's self-config hand — deliberately right — so ONE
+installer covers both hooks and waits for Alexander's `!` command. The honest boundary stands: chat
+has no suite; the hook reminds, the eval watches, the field is the test.
