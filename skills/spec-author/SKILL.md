@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced.
 metadata:
-  version: 0.1.11
+  version: 0.1.12
 ---
 
 # Spec Author
@@ -156,7 +156,8 @@ Author in this order; every part below is MANDATORY for a feature and no scope c
 1. **Regression fences** — when the wish touches a live surface (next section; SPEC T-14, INV-19);
 2. **The new behaviour itself** — entities, states, transitions, composed across the canonical axes;
 3. **The standard-facet sweep** — every facet a spec sentence, decided or `[default]`-tagged (SPEC T-13, INV-18);
-4. **The two closing sentences** — non-goals + one success measure (SPEC INV-20, INV-21).
+4. **The fit walk** — how the feature sits in the person's path, kind-scaled (SPEC INV-29);
+5. **The two closing sentences** — non-goals + one success measure (SPEC INV-20, INV-21).
 
 A delta missing any numbered part is incomplete at authoring time — not something the prover has to catch.
 
@@ -216,6 +217,27 @@ adopted or promoted surface that already lives, a default is read from the shipp
 like any re-engineered claim, never invented greenfield. And the sweep versus the canonical axes above:
 the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and test them
 across views once the surface exists — one dimension, split by time, never specified twice.
+
+## The fit walk — run with the facet sweep when the door says FEATURE (SPEC INV-29)
+
+The facets above ask what every visible feature owes its DEVICE; the fit walk asks how the feature
+sits in the person's PATH — the questions nobody thinks to ask until a guest is stuck at the tenth
+picture with no way on (tlvphoto, 2026-07-06). **The lens lists' home is here**, kind-scaled, curated
+with incidents exactly like the facet list:
+
+- **product / UX kind — the visitor's journey:** how does the person ARRIVE here (every entry door,
+  not just the main one) · what do they DO here · where do they go NEXT from every state this surface
+  can be in (no dead ends — the door↔room loop incident, tlvphoto 2026-07-06) · what does a RETURN
+  visit change (seen-state, no-repeat — and the remembered state it implies) · what does the FEEL owe
+  against the approved prototype's bar · what next feature does this one invite;
+- **infra / backend kind — the flows:** inputs → outputs · the data's lifecycle (created, updated,
+  stale, gone) · every failure path and what the caller sees;
+- **skill kind — the behaviour:** the trigger · the correction it makes · when it must NOT fire.
+
+The walk interrogates the FEATURE, never the person (SPEC INV-29): derive answers from the existing
+spec and shipped truth; close the trivially-closable holes yourself AND WRITE HOW each was closed;
+`[default]`-tag the rest; batch only the genuine taste calls with the facet sweep's report. Every
+answer lands as a spec sentence — the same silence-is-not-an-option law as the facets.
 
 ## The delta's two closing sentences — non-goals and the success measure (SPEC INV-20, INV-21)
 

@@ -1092,6 +1092,47 @@ class TestProblemLedger(unittest.TestCase):
         self.assertIn("coined feature name", base,
                       "base rule 2 must name coined feature names as handles")
 
+    def test_fit_walk_law(self):
+        """Row 108 (M-114, INV-29): a feature is interrogated for product fit at intake."""
+        spec = read("SPEC.md")
+        for needle in ("INV-29", "small prover on the wish itself", "FEATURE-FIT"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        author = read(os.path.join("skills", "spec-author", "SKILL.md"))
+        for needle in ("The fit walk", "journey", "INV-29"):
+            self.assertIn(needle, author, "spec-author missing: %s" % needle)
+        prover = read(os.path.join("skills", "product-prover", "SKILL.md"))
+        self.assertIn("FEATURE-FIT", prover, "prover missing its FEATURE-FIT mode")
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        self.assertIn("fit walk", pipeline, "pipeline step 1 must cite the fit walk")
+
+    def test_visitor_walk_feel_pass(self):
+        """Row 117 (M-115, INV-30): product-kind verify walks the visit and watches the feel."""
+        spec = read("SPEC.md")
+        for needle in ("INV-30", "VISITOR WALK", "FEEL pass"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        for needle in ("VISITOR WALK", "FEEL pass"):
+            self.assertIn(needle, pipeline, "pipeline step-8 missing: %s" % needle)
+
+    def test_default_expiry_law(self):
+        """Row 118 (M-116, INV-31): a taste default may not outlive two landings unreviewed."""
+        spec = read("SPEC.md")
+        for needle in ("INV-31", "outlive two landings"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = read(os.path.join("skills", "communicator", "SKILL.md"))
+        self.assertIn("two landings", comm, "communicator rule 10 missing the expiry law")
+        pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
+        self.assertIn("open `[default]`s", pipeline, "pipeline step 9 missing the defaults list")
+
+    def test_decision_card_consequences(self):
+        """Row 119 (M-117, INV-32): a decision card asks in consequences, not mechanisms."""
+        spec = read("SPEC.md")
+        for needle in ("INV-32", "consequences, not mechanisms"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = read(os.path.join("skills", "communicator", "SKILL.md"))
+        self.assertIn("what the choice CHANGES for the person", comm,
+                      "communicator rule 10 missing the consequence-first card law")
+
     def test_pack_own_ledger(self):
         led = read(".live-spec/PROBLEMS.md")
         rows = [l for l in led.splitlines()

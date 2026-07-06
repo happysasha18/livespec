@@ -66,6 +66,15 @@ later). The page's
 mechanics (filename law, ordinals, the JSON round-trip) live once, in the communicator skill's rule 10
 [INV-13]. [E-22]
 
+**A decision card asks in consequences, not mechanisms.** The shell-separator card explained HOW the
+failure worked, and the reader still could not tell what he was deciding («я не понял проблему, не
+понял последствия, не понял что решать» — 2026-07-06, the same incident that already birthed the
+withdrawn-answer law above). So every card on a decision page OPENS with what the choice CHANGES for
+the person — what he will see, get, or stop suffering under each option, in the product's words; the
+mechanism follows only if it helps; and each option is labelled by its consequence, never by its
+implementation. A card whose question cannot be answered without understanding the mechanism is a
+defect of the card [INV-28 kin]. [INV-32]
+
 **How a wish is classified.** Size is one four-word vocabulary everywhere — **bug / small / surface /
 large** — and the queue's class column speaks the same four words, never a second SIZE scale (the door
 below is a different axis — where the wish ENTERS the pipeline, not how big it is). Priority is
@@ -230,6 +239,48 @@ through (hover-only openings, no phone layout). On an adopted or promoted surfac
 invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by
 time: the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and
 test them across views once the surface exists. [INV-18]
+
+**A feature is interrogated for how it fits the product — a small prover on the wish itself.** The
+device facets above ask what every visible feature owes; nobody yet asked how THIS feature sits in
+the person's PATH — and path holes (enter → browse → re-enter → stuck at the tenth picture with no
+way on) ship green because no clause ever promised the way out. So a feature-doored wish's spec-delta
+also walks the FIT WALK, kind-scaled: a product/UX wish walks the visitor's journey — how the person
+ARRIVES at the new thing, what they do there, where they go NEXT from every state it can be in, what
+a RETURN visit or entry through another door changes, what neighbouring behaviour it IMPLIES
+(no-repeat needs remembered state), what the FEEL owes against the approved prototype's bar [E-17],
+and what next feature it invites; an infra wish walks its flows — inputs → outputs, data lifecycle,
+failure paths; a skill wish walks trigger → correction → when NOT to fire. The walk interrogates the
+FEATURE, never the person: derive each answer from the existing spec and the shipped truth first;
+a hole that is trivially closable is CLOSED by the walker and the closing is WRITTEN down (his word
+2026-07-06: закрыть и написать как закрыл); the rest are written decided or `[default]`-tagged, and
+only the genuine taste calls go out, batched [INV-4, INV-18] — «не надо мучать пользователя вопросами
+как на пытках» (Alexander 2026-07-06, with tlvphoto's shipped evidence in hand). The prover gains the
+matching focused mode — FEATURE-FIT: given one feature's delta, walk its journey seams against the
+whole spec the way CROSS-LINK walks a new surface's seams — the prover already thinks in flows,
+states, and transitions; this pulls that thinking forward to intake. Lens lists live once, in
+spec-author's sweep section, curated like the facet list [T-13]; the law binds forward — a landed
+feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21
+kin]. [INV-29]
+
+**Verify-by-deed walks the visit and watches the feel.** "Eyes on the artifact" has meant "it renders
+and clicks" — and cheap-feeling motion or an ugly affordance shipped green through the whole pipeline
+(tlvphoto's transitions and its open-work button, 2026-07-06). So for the product kind the verify
+step includes a named VISITOR WALK — the whole journey as the person will live it: first visit,
+return visit, entry through another door, "where am I and how do I move on" from any point, the
+exits — and a FEEL pass: motion quality (easing, duration, choreography) and each affordance's craft,
+judged against the approved prototype as the bar [E-17]. Findings become rows or red — never vibes,
+never a mental note. The walk's checklist lives in the build-pipeline step-8 product cell [E-12,
+INV-22]; this clause binds THAT it runs for anything a person visits. [INV-30]
+
+**A taste default is a loan, not a settlement — it may not outlive two landings unreviewed.** The
+`[default]` tag keeps the lane moving [INV-18], but with no closing law defaults compound: a product
+carrying eight open taste calls across two landings reads unfinished everywhere (tlvphoto,
+2026-07-06). So every landing report LISTS the open `[default]`s riding its surfaces with their age
+in landings; one that has survived TWO landings without the human's word may not age silently again —
+it rides the next decision page [E-22] flagged loudly, and the report says so in plain words. His
+pick or veto closes it like any answer [INV-18]. The list's home is the landing report itself — each
+report restates it, a list dropped between reports is a named defect; no separate counter file, no
+new state home. [INV-31]
 
 **What already works is promised before you touch it.** When a feature-doored wish touches a surface
 that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
@@ -881,6 +932,10 @@ meaning, this table is only the map.
 | INV-26 | a row closes only whole: per-leg Done-when, no close with an unmet leg; LIVE-STATE supersession never compresses an open leg away | Throwing a wish |
 | INV-27 | every intake is echoed back in one sentence (heard · door · name · row; silent arrivals echo in the next report); every status report names each in-flight feature's pipeline station | Throwing a wish |
 | INV-28 | echo-names are plain descriptive phrases; a report line opens with the reader's outcome; every handle (codes, numbers, coined names) only trails; one fact = one standalone sentence | Throwing a wish |
+| INV-29 | a feature-doored wish walks the kind-scaled FIT WALK at intake (journey / flows / trigger lenses); trivially-closable holes closed and written how; only genuine taste calls go out, batched; prover mode FEATURE-FIT | Throwing a wish |
+| INV-30 | product-kind verify includes the visitor walk + feel pass against the prototype bar; findings become rows or red | Throwing a wish |
+| INV-31 | a `[default]` may not outlive two landings unreviewed: landing reports list open defaults with age; expired ones ride the next decision page loudly | Throwing a wish |
+| INV-32 | a decision card opens with what the choice changes for the person; options labelled by consequence, mechanism only if it helps | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

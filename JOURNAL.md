@@ -1144,3 +1144,26 @@ medicine as invented time — a mechanical fence. The installer is written
 (`scripts/install-separator-fence.sh`); the harness classifier rightly refuses to let the agent edit
 its own hook config, so the entry is OWNED and flips to SOLVED when Alexander runs the one-liner.
 Also decided on his same delegation: the day opens with row 116 (his direct feedback), then row 108.
+
+## 2026-07-06 11:06, session 12 — the product-fit family lands: the method learns to walk the visit
+
+His morning verdict, in one line: the fences keep written promises unbroken, but everything that FEELS
+unfinished lives where the method never looked — the visitor's path, the motion, the accumulated taste
+calls. And his sharper point: the prover already thinks in flows, states and transitions — «прувер
+может валидировать что угодно» — so pull that thinking to where the holes are born. Four clauses
+landed as one family (SPEC v0.15.17, pack 0.8.28, suite 107 green): the FIT WALK at intake — every
+feature interrogated for how it sits in the person's path, kind-scaled lenses living in spec-author,
+the prover gaining a FEATURE-FIT mode beside FULL and CROSS-LINK, trivially-closable holes closed by
+the walker and WRITTEN how, only genuine taste calls going out (his words verbatim in the clause);
+the VISITOR WALK + FEEL pass in the product kind's verify step — first visit, return, cross-entry,
+exits, motion quality and affordance craft against the prototype bar, findings become rows or red;
+the two-landing EXPIRY on unreviewed taste defaults — the landing report restates the open list, an
+aged default rides the next decision page loudly; and consequence-first DECISION CARDS — a card opens
+with what the choice changes for the person, born of the shell-separator card he twice could not
+parse. Versions: spec-author 0.1.12 · product-prover 0.1.9 · build-pipeline 0.2.17 · communicator
+0.1.15. One leg stays open honestly: the harness classifier blocked both the worker's and the
+senior's hand from ~/.claude/skills, so the installed-copy sync rides Alexander's one `! sh
+~/live-spec/install.sh`. Delegation: one Sonnet worker, all mechanics (four tests red-first, four
+matrix rows, ~15 file edits, versions), ~25 min senior time saved; two anchor line-wrap discrepancies
+resolved by the worker against file truth and logged, zero wrong edits. Eval criteria and two-arm
+re-runs ride the push gate (E-19), owed at the next push's full prover pass.

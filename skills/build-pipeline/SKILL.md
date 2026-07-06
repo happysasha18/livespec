@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.16
+  version: 0.2.17
 ---
 
 # build-pipeline — ship a change by the method
@@ -91,7 +91,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 | 5 matrix | rendered-level rows (E-15) | function-level rows: run the tool, assert real output | string rows on the SHIPPED SKILL.md; behaviour eval when the eval machinery lands (row 94) | render-level: file shipped, sections present, links resolve |
 | 6 test | assert the real render | run on a fixture, assert output | string assertions against the installed artifact | assert the shipped file's content |
 | 7 code | as written | as written | as written | the writing IS the step |
-| 8 verify by deed | open the real artifact, eyes on it | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap | render it by the show rule and READ it |
+| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; findings become rows or red (SPEC INV-30) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap | render it by the show rule and READ it |
 | 9 commit & show | show the render | show the run's output | version bump + installed-copy sync, same session | open the rendered page for the human |
 | design-sync / snapshot | product with visuals: declared scope syncs (human-gated) | stands down | stands down | stands down |
 
@@ -101,7 +101,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    actors, invariants, and the cross-section composition between surfaces. One surface = one name. Compose
    every stateful surface across **every** view/mode axis it lives under, not just its own. Real gaps are
    marked `⟨DECIDE⟩` and asked, never guessed. Human-first language; codes at line ends. A feature-doored
-   wish also walks the **standard-facet sweep** (the canonical list lives in spec-author): phone/narrow
+   wish also walks the **fit walk** — the kind-scaled product-fit interrogation (journey · flows ·
+   trigger lenses; lens lists live in spec-author; prover mode FEATURE-FIT; SPEC INV-29) — and the
+   **standard-facet sweep** (the canonical list lives in spec-author): phone/narrow
    layout · touch-vs-hover · empty/error/loading · accessibility · performance — every facet ends as a
    spec sentence, decided or `[default]`-tagged and reported as a plain-words tradeoff, batched; a
    mid-work re-door walks the sweep before work resumes (SPEC T-13, INV-18). And when the wish touches a
@@ -175,8 +177,10 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    what changed for the person using the product, with one concrete example from real output — never
    function names, internal ids, or row numbers (those live in the journal). And no doc pins a drifting
    version number in prose — "current version: vX.Y" always goes stale; point at the version's one home
-   (the VERSION file, the frontmatter) or omit it. Show the human the REAL render in a new window; push/deposit only after they've
-   reviewed it. A push re-renders all deposited artifacts. Where the host's design-sync is ON (base
+   (the VERSION file, the frontmatter) or omit it. The landing report lists the open `[default]`s riding
+   the landed surfaces with their age in landings; one older than two landings rides the next decision
+   page flagged loudly (SPEC INV-31). Show the human the REAL render in a new window; push/deposit only
+   after they've reviewed it. A push re-renders all deposited artifacts. Where the host's design-sync is ON (base
    defaults; SPEC E-18), the landing's DECLARED components also sync to the team's design project — after
    the human's gate, never instead of the in-session show.
 
