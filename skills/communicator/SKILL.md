@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.25
+  version: 0.1.26
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -202,15 +202,35 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     and the landing report the human is never left reading silence: when a beat lands — a pipeline
     station passed, a load-bearing find, a change of direction — say it as it happens, one or two plain
     sentences in the roadmap's terms (which wish is in hand, what it gives, what just moved), the same
-    voice as the reports. The mechanical grind stays quiet — narration marks beats, never a per-command
+    voice as the reports. Three teeth, so the trail accounts for where the session's time went (his
+    third ask in the family, 2026-07-06 evening — the landing reports were good and the mid-work trail
+    was still thin):
+    - **Identity** — every beat names which wish is in hand and which station it stands at (outside
+      the pipeline — research, a harvest, a docs sweep — the work's own name serves), and whether it
+      mends something broken or builds something new; a reader dropping in mid-session can tell what
+      is being worked without scrolling back.
+    - **Digest** — a station's completion is itself a beat: its line digests what the station produced
+      in the work's own words — spec → what the delta promises · architecture → the shape and what
+      changed structurally · tests → what is now covered · code → what now works — two-three plain
+      sentences, never the artifact pasted, never a test count or token tally doing the talking
+      (rule 8's never-list binds digests too); a worker-closed station becomes the senior's beat the
+      moment its result lands.
+    - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
+      what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
+      heartbeat [default]. Whether the human may step away, and for how long, is the offline-window
+      face — its own promised law (queue row 138), not this rule.
+    The mechanical grind stays quiet — narration marks beats, never a per-command
     commentary. A narration line is chat, not a report: no pre-report walk (that walk scopes to
     movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of
     human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out (rules
     6–8). Working notes marked "(себе)" stay a separate register the human may skip — narration is FOR
     the human, and it replaces no report: milestones still get the full one. (SPEC INV-35; his word
     twice in one day, 2026-07-06 — the morning ask landed only as a personal-profile line and did not
-    carry across sessions, the repeat made it pack law.) — *❌ [forty minutes of silent tool calls,
-    then a wall of report] ✅ "спека написана, зову прувера на швы (station: spec done, prove next)"*
+    carry across sessions, the repeat made it pack law; the evening ask the same day gave the rule its
+    three teeth.) — *❌ [forty minutes of silent tool calls,
+    then a wall of report] ✅ "спека написана, зову прувера на швы (station: spec done, prove next)"
+    ✅ station-end: "тесты дописаны: закрыто, что каждая станция оставляет выжимку и что тишина дольше
+    десяти минут — долг (tests: the three teeth pinned)"*
 
 14. **The feature map on demand — the whole product readable on one ask.** When the human asks what
     the product does — «покажи все фичи», "show the feature map", "what's in it today" — read the map

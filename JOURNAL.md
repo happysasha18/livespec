@@ -1525,3 +1525,22 @@ delta; the two-train board (working/waiting faces) was read live in chat. The me
 capability and proved it on itself within two hours. Rows 135, 136, 137 all close whole; row 138
 (offline windows) queued from his word; row 134 (clock hook) now carries FIVE catches and heads the
 practical queue.
+
+## 2026-07-06 20:38, session 19 — row 139: the narration law grows teeth that account for the time
+
+His third ask in the narration family, sharpest yet: the movement-end reports had become good and the
+mid-work trail was still thin — «заход на полчаса-час, и непонятно, на что реально ушло время». The
+law (INV-35) grew three teeth: IDENTITY — every beat names the wish and station in hand (with two
+trains rolling this is also what keeps the interleaved chat readable, the prover noted it as the
+composition working); DIGEST — a station's completion is itself a beat, its line saying what the
+station PRODUCED in the work's own words (the seam with the bookkeeping law held deliberately: a
+digest speaks what is covered or promised, never a count); HEARTBEAT — a beatless stretch past ~10
+minutes [default] owes a line naming what grinds. Prover CROSS-LINK found the worker-voice hole (a
+lane-B station can close with nobody speaking — folded: the senior's beat the moment the result
+lands), the missing threshold, and one over-specific wording; all folded in-pass. WHY beyond the
+wish: today's tlvphoto transcript audit (seven sessions, 24 hours, two reader agents) found narration
+silence to be the single most recurring failure across every window — 12-to-70-minute silent
+stretches, one explicitly broken "continuing without pause" promise, «did something stall?» asked
+twice in one session — so this row and row 134 (the mechanical clock hand) are exactly the pair the
+field data ordered. Landing hiccup worth keeping: the VERSION file briefly lost its trailing newline
+and the pin-drift guardrail caught it before commit — the teeth bite their own builder, as designed.

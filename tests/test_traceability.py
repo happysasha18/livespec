@@ -1330,6 +1330,28 @@ class TestProblemLedger(unittest.TestCase):
                        "INV-35"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_narration_three_teeth(self):
+        """Row 139 (M-124, INV-35 grown): identity — every beat names the wish and
+        station in hand; digest — a station's completion is a beat digesting what the
+        station produced (a worker-closed station is the senior's beat); heartbeat — a
+        beatless stretch past ~10 minutes [default] names what grinds. Both homes carry
+        the teeth; digests never speak in counters (INV-28 seam)."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("IDENTITY: every narration beat names the work it belongs to",
+                       "a station's completion is itself a beat by law",
+                       "a station a delegated worker closed becomes the senior's beat",
+                       "beatless stretch past ~10 minutes owes its heartbeat [default]",
+                       "token and test counts stay bookkeeping"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("Identity", "Digest", "Heartbeat",
+                       "which wish is in hand and which station it stands at",
+                       "digests what the station produced",
+                       "a worker-closed station becomes the senior's beat",
+                       "beatless stretch past ~10 minutes owes its heartbeat [default]",
+                       "never a test count"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""
