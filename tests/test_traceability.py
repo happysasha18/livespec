@@ -1280,6 +1280,20 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("place on the map", "changes feature X", "INV-37"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
+    def test_feature_map_on_demand(self):
+        """Row 133 (M-127, INV-38): the whole feature map is readable on demand —
+        read at ask-time off spec scenarios + header + queue, no third document,
+        statuses at the [target] tag's own granularity, queued NEW wishes included."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-38", "Asking what the product does",
+                       "transparency is a command, not archaeology",
+                       "the whole map comes only when",
+                       "a host with nothing to read", "shown as queued"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("feature map on demand", "no third document", "INV-38"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_install_backup_home(self):
         """Row 122 (M-118): installer backups live outside the live skills dir."""
         script = read("install.sh")

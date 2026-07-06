@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.26, 2026-07-06)
+# live-spec — SPEC (v0.15.27, 2026-07-06)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -421,6 +421,37 @@ about the absorber's shape, not the need) — a superseded wish never dies by po
 
 What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface
 = one name, everywhere. [E-4]
+
+## Asking what the product does (the feature map on demand)
+
+**The whole map is readable on one ask — transparency is a command, not archaeology.** The departures
+board answers "how is the in-flight work going" at every report [INV-27], and intake places each arriving
+wish on the map [INV-37]; this scenario answers the third question — «покажи все фичи», "what does the
+product do today?" — with the map WHOLE, on demand. The answer is read off the living documents at
+ask-time: the spec's scenario sections name the features, the header's current-vs-target paragraph splits
+shipped from promised — at the granularity the [target] tag binds, so a scenario holding both shipped law
+and promised parts reads "shipped, with promised parts (named)", never one blanket status [S-0] — and the
+queue's open rows add the rest: each in-flight feature's station, and each wish whose `map:` verdict says
+NEW but whose scenario is not yet written, shown as queued — a feature the queue already knows is on the
+map before the spec meets it [INV-27, INV-37]. No
+third document exists to maintain or drift — no feature list file, no cached copy; the spec's scenarios
+and the architecture's nodes ARE the map [E-14], and the ask only reads them aloud. Each line of the
+answer obeys the line law: a short descriptive name in the product's own words, what it gives its person,
+the status trailing quietly — shipped · target · in-flight at its station [INV-28]. The map arrives in
+chat by default; a rendered page comes on your word (the show rule) [default]. And it never fires
+uninvited: routine reports keep the departures board's in-flight scope — the whole map comes only when
+asked. In a host with nothing to read yet — no spec, no scenario sections — the answer says exactly that
+and points at bootstrap or adoption, never an invented list. [INV-38]
+
+The section's edges, stated once. Fences its birth must hold: the departures board's report scope is
+unchanged [INV-27], intake placement is unchanged [INV-37], the no-third-document law is reaffirmed, not
+amended [E-14]. Facets, skill kind: the feature's only surface is the answer itself (chat, or a rendered
+page on ask) — layout, touch, accessibility, and performance belong to the medium that carries it; the
+empty state is the nothing-to-read answer above; facets otherwise N/A [default]. Non-goals: no standing
+feature document, no auto-refreshing dashboard, no per-feature history timeline — not this time. Success
+measure: an ask yields a map whose feature set covers the spec's scenario sections one-to-one plus every
+open NEW-verdict queue row, and whose shipped-vs-promised marks agree with the header and the [target]
+tags at their own granularity — checkable by diffing the lists [default].
 
 ## When a bug cuts the line
 
@@ -1052,6 +1083,7 @@ meaning, this table is only the map.
 | INV-35 | while work runs, beats are narrated as they happen — a station passed, a load-bearing find, a turn — in plain roadmap terms, the reports' voice; the grind stays quiet; a narration line is chat, not a report (no pre-report walk, no questions, the plain-language and bookkeeping laws still bind); it replaces no report; the law's one home: communicator | Throwing a wish |
 | INV-36 | the project's own kind (book / backend / static site / fullstack / CLI / skill pack / custom via the queue) asked at founding and at adoption's orient — always asked, never profile-seeded; one home: the host profile's `project.kind`; seeds project-wide defaults but never overrides an explicit host line; distinct from the per-wish work-kind and the placement; updated on the human's word the moment evolution is noticed, journaled | Bootstrap |
 | INV-37 | every wish is placed on the product's feature map at intake, the placement SPOKEN with the echo and WRITTEN in the row (`map:` — changes feature X / new feature / restructure); the map = spec scenarios + architecture nodes, no third document; a restructure verdict queues its own row and re-carves only through the architecture step's re-prove | Throwing a wish |
+| INV-38 | the whole feature map is readable on demand — read at ask-time off the spec's scenario sections, the current-vs-target header (statuses at the granularity the promised-tag binds, per S-0), and the queue's open rows (stations for in-flight, queued NEW-verdict wishes included); no third document; answer lines obey the line law; chat by default, rendered page on the human's word; never fires uninvited (reports keep the board's in-flight scope); a host with nothing to read is answered honestly | Asking what the product does |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |

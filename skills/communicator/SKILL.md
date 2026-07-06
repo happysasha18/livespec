@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (rule 13 governs those and is learned once), an internal working note, or a plain factual answer — those just get said (but "did we actually do X?" is not plain: that answer walks the evidence, rule 11); loading the skill for them is the over-trigger this description once had. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.21
+  version: 0.1.22
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -17,12 +17,12 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Thirteen rules, few enough to hold in your head — plus one walked step before the heavy
+internal ids). Fourteen rules, few enough to hold in your head — plus one walked step before the heavy
 reports (the pre-report walk, below).
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
-**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim; **(e)** are mid-work and a beat lands worth a sentence — narrate it (rule 13, a standing habit, not a load-trigger). If your next sentence is a question the person can't answer without seeing something,
+**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim; **(e)** are mid-work and a beat lands worth a sentence — narrate it (rule 13, a standing habit, not a load-trigger); **(f)** hear the human ask what the product does — «покажи все фичи» and kin — the feature map on demand (rule 14). If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
 ## When NOT to use
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The thirteen rules
+## The fourteen rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -176,6 +176,22 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     twice in one day, 2026-07-06 — the morning ask landed only as a personal-profile line and did not
     carry across sessions, the repeat made it pack law.) — *❌ [forty minutes of silent tool calls,
     then a wall of report] ✅ "спека написана, зову прувера на швы (station: spec done, prove next)"*
+
+14. **The feature map on demand — the whole product readable on one ask.** When the human asks what
+    the product does — «покажи все фичи», "show the feature map", "what's in it today" — read the map
+    aloud AT ASK-TIME: the spec's scenario sections name the features; the current-vs-target header
+    splits shipped from promised at the [target] tag's own granularity — a scenario holding both reads
+    "shipped, with promised parts (named)", never one blanket status; the queue's open rows add each
+    in-flight feature's station (rule 9's vocabulary) and every queued NEW-verdict wish — its `map:`
+    note is its placement, so a wish the spec hasn't met yet is still on the map. The answer only
+    reads the living documents aloud — no third document, no feature list file, no cache: the spec's
+    scenarios and the architecture's nodes ARE the map (SPEC E-14). Each answer line obeys the line
+    law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
+    the status trailing quietly. Chat by default; a rendered page on the human's word. Never fire it
+    uninvited — routine reports keep the departures board's in-flight scope (rule 9); the whole map
+    comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
+    is empty" plus the bootstrap/adoption pointer — never an invented list. (SPEC INV-38; his word
+    2026-07-06: «покажи все фичи» — transparency is a command, not archaeology.)
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 

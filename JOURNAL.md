@@ -1421,3 +1421,25 @@ run, evidence that the map reads off existing documents; skill sizes — all six
 format laws — scenarios lead (17 sections), anchors trail, the 19 line-start codes are wrap
 artifacts, not code-led rules. He confirmed the обкатка direction: tlvphoto window is already
 exercising the pack live, the pack keeps exercising itself.
+
+## 2026-07-06 16:27, session 17 — row 133 lands: the feature map on demand (rows 135+136 queued)
+
+Row 133 walked the full pipeline in one movement. The wish («покажи все фичи», his transparency ask of
+yesterday afternoon) became SPEC v0.15.27's new scenario "Asking what the product does" (INV-38): on the
+human's ask the WHOLE map is read at ask-time off the spec's scenario sections, the current-vs-target
+header, and the queue's open rows — no third document, chat by default, never uninvited. The prover's
+CROSS-LINK pass caught two seams worth having: statuses must bind at the promised-tag's own granularity
+(a scenario holding both shipped law and promised parts reads "shipped, with promised parts", never one
+blanket status — S-0's letter), and a wish placed NEW at intake but not yet spec'd was invisible to a
+scenarios-only read — the queue's `map:` notes now feed the map too. Both folded in-pass
+(docs/prover/2026-07-06-row133.md). Communicator 0.1.22 carries rule 14 (the fourteenth rule) + the
+when-it-fires arm (f); M-127 red-proven then green; suite 117. The row keeps one open leg by INV-26's
+letter: the law itself forbids showing the map uninvited, so the first real post-law run rides HIS next
+ask. One workshop note: the target-ownership machine read the index row's mention of the tag as the tag
+itself — the index line now says "promised-tag" in prose; the machine was right to be literal.
+
+Same movement, two wishes queued from his messages mid-work: row 135 (parallel lanes — feature-level
+parallelism, «токены не жалко, скорость важнее»; today's session is its own pre-evidence: three
+read-only analysis agents ran row 130's walks in the background while row 133 held the lane) and row 136
+(the pack checks GitHub for its own updates daily and PROPOSES, never installs silently). Row 130's
+walk itself came back with findings from all three agents — folding is the next movement.
