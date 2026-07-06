@@ -1849,3 +1849,20 @@ agent wakes; the long report above; a page deliverable repeats its passport ther
 existence. M-156, red→green, suite 157, pack 0.8.60.
 **Why:** the 00:38 report existed and drowned; a law that measures existence instead of delivery
 measures nothing the reader feels.
+
+## 2026-07-07 ~01:03 — rows 158 + 160 + 162: the promoter audit's first harvest lands (session 22)
+**What:** his ~00:53 audit ask ran as a read-only case study over both promoter repos (an Explore
+reader, file-cited); eight pack lessons queued (rows 155–162), the communicator trio landed the same
+hour — SPEC v0.15.49, communicator 0.1.34 (twenty-one rules): **approved text is frozen** (a revision
+applies exactly the named correction — the promoter's v1.1 opener rewrote an approved sample and
+smuggled in a banned pattern; INV-58, rule 19); **no question asked twice + dialogues converge**
+(search the recorded word before any ask; answered closes forever, harvested same session; round N+1
+only new — his escalating hour: «на кучу похожих вопросов уже давали ответы»; INV-59, rule 20); **a
+taste ask carries a mined proposal** («сам нашёл, предложил — потом показывай»; INV-60, rule 21).
+M-157..159, one shared red-proven test, suite 158.
+**Still queued from the harvest:** 155 (process cost scales to the delta — his iteration-length
+question, the senior's own 40%-bookkeeping audit), 156 (smallest sample first), 157 (rejected
+artifact reopens its source), 159 (mechanical kill-list template), 161 (provenance chips +
+commentable reviews).
+**Why:** the promoter window paid five rejected rounds to learn these; the pack writes them once so
+no host pays twice.

@@ -1540,6 +1540,20 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("final line comes LAST", "what closed", "when the agent wakes"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_promoter_harvest_trio(self):
+        """Rows 158+160+162 (M-157..159, INV-58/59/60): frozen approved text; no
+        question twice + converging dialogues; taste asks carry a mined proposal."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-58", "INV-59", "INV-60",
+                       "never a fresh rewrite around it",
+                       "a question a record already answers is a DEFECT",
+                       "never arrives empty-handed"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("Approved text is frozen", "round N+1 carries only new material",
+                       "mined the material first", "closes forever"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

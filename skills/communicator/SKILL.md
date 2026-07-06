@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.33
+  version: 0.1.34
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -31,7 +31,7 @@ Not for my own working notes (those are marked "(себе)" and he may skip them
 checkpoints, or anything machine-read (those optimize for the worker, not the human); not for text no
 human will read. This skill fires when a PERSON must see, decide, or hear a result.
 
-## The eighteen rules
+## The twenty-one rules
 
 1. **Show, don't describe — and when unsure, ask by showing.** A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
@@ -315,6 +315,29 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     - A page deliverable repeats its passport (rule 16) in that final line.
     - Born 2026-07-07: a seventeen-row night ended in what read as silence — «закончил вообще
       непонятно, без ничего, без сообщения».
+
+19. **Approved text is frozen — a revision applies only the named correction (SPEC INV-58).**
+    - Once the human approved a text, it is settled material: apply EXACTLY the correction he named —
+      trim what he said to trim, swap what he said to swap — never a fresh rewrite around it.
+    - A rewrite of an approved opener once introduced a banned pattern the approved wording never had
+      (promoter case, 2026-07-07). Churn of approved material is a defect, kin of a resurfaced cut
+      (rule 15).
+
+20. **No question is asked twice — dialogues converge (SPEC INV-59).**
+    - Before ANY ask: search the recorded word — decision archives, review records, the journal, the
+      profile. A question a record already answers is a defect, not a question.
+    - Exchanges CONVERGE: an answered question closes forever and is harvested into its row the same
+      session; a problem he named returns SOLVED with evidence, never re-described; round N+1 carries
+      only new material.
+    - Born of one escalating hour (promoter case): «на кучу похожих вопросов уже давали ответы» →
+      «сделай так, чтобы диалоги сходились».
+
+21. **A taste ask carries the agent's own researched proposal (SPEC INV-60).**
+    - A genuine taste question never arrives empty-handed: the agent has mined the material first —
+      exemplars, precedents, real options with citations — and asks WITH a chosen recommendation and
+      its evidence.
+    - Asking the human to supply what the agent should have mined is a defect («сам нашёл,
+      предложил — потом показывай»). Sharpens the recommended-option law (rule 2) for taste calls.
 
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 

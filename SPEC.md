@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.48, 2026-07-07)
+# live-spec — SPEC (v0.15.49, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -267,6 +267,27 @@ so before his colorful phrase shapes the work its intent is read from context or
 never assumed prescriptive. The law's home is the communicator; two of the original wish's bans
 already live in the pack (no empty drama — the no-disclaimers rule; no approval-begging — silence is
 consent [INV-31]) and are cross-linked from there, never restated. [INV-42]
+
+**Approved text is frozen — a revision applies only the named correction.** Once the human approved a
+text, it is settled material: a later revision applies EXACTLY the correction he named — trim what he
+said to trim, swap what he said to swap — never a fresh rewrite around it (a rewrite of an approved
+opener once introduced a banned pattern the approved wording never had; promoter case, 2026-07-07).
+Churn of approved material is a defect, kin of a resurfaced cut [INV-42]. Home: communicator, beside
+the kill-list rule. [INV-58]
+
+**No question is asked twice — and dialogues converge.** Before ANY ask, the recorded word is
+searched — the decision archives, review records, the journal, the profile; a question a record
+already answers is a DEFECT, not a question (his escalation, promoter case: «на кучу похожих вопросов
+уже давали ответы… сделай так, чтобы диалоги сходились»). And exchanges CONVERGE: an answered
+question closes forever and is harvested into its row the same session; a problem he named returns
+SOLVED with evidence, never re-described; round N+1 carries only new material. Home: communicator's
+ask rules. [INV-59]
+
+**A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question never
+arrives empty-handed: the agent mines the material first — exemplars, precedents, real options with
+citations — and asks WITH a chosen recommendation and its evidence; asking the human to supply what
+the agent should have mined is a defect (his word, promoter case: «сам нашёл, предложил — потом
+показывай»). Sharpens the recommended-option law [INV-4] for taste calls. Home: communicator. [INV-60]
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
 waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
@@ -1472,6 +1493,9 @@ meaning, this table is only the map.
 | INV-55 | a brief targets a bounded share of the worker's context, splits above it (default bound: brief text ~300 lines, ~8 files to edit [default]); paths, never inlined file bodies | Who decides what |
 | INV-56 | a limping thing never dams the flow: a KNOWN owned problem is parked (ledger line / owning row / expected-red note) and unrelated lanes keep rolling; hand-fix loops cap at two-strikes (second occurrence buys an owner); a defect with a named mechanical owner is serviced in batch (silent fence-fixes, one ledger append at session end), never per-instance ceremony; a real NEW bug still preempts (T-9) | When the workshop itself misbehaves |
 | INV-57 | the stretch's end is unmissable: the last rendered thing is one short final line (what closed · what's next · what's needed · when the agent wakes), the long report above it, a page deliverable repeating its passport; delivery, not existence; home: communicator | Throwing a wish |
+| INV-58 | approved text is frozen: a revision applies exactly the named correction, never a fresh rewrite around it; churn of approved material = a defect, kin of a resurfaced cut; home: communicator | Throwing a wish |
+| INV-59 | no question asked twice: recorded answers searched before any ask (archives, records, journal, profile) — an already-answered question is a defect; dialogues converge (answered = closed + harvested same session; named problems return solved with evidence; round N+1 only new); home: communicator | Throwing a wish |
+| INV-60 | a taste ask carries the agent's own researched proposal (mined exemplars/options with citations + a chosen recommendation); asking the human to supply what the agent should have mined = a defect; sharpens INV-4; home: communicator | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
