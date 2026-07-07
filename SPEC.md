@@ -812,52 +812,41 @@ republished. [INV-65]
 
 ## A prototype is not the product
 
-Exploring is legal — sometimes you sketch a room before building the house. A **prototype** is such a
-sketch: it lives fenced in its own clearly-named home (a `prototype/` folder or branch), and every
-artifact it produces carries the PROTOTYPE label in the form its kind can show — a rendered page: an
-on-screen banner · an API or data payload: a `_prototype: true` field or header · a script/CLI: a
-first-line PROTOTYPE banner · a bare file: the marker in its name or header line. [E-17] The boundary
-with the door step: a wish to HAVE something in the product is a feature [INV-16]; a request to merely
-SEE or TRY — no commitment — may live as a sketch here, in the fence, no lane, no spec; unclear which
-was meant ⇒ one plain question, never a guess. Opening a prototype home is a repo write like any other —
-governed by the write-ownership law [INV-10], a judgment act of the assigned senior [ACT-2]: an outside
-session files an inbox wish instead, and a worker never opens one on its own brief. The fence is
-one-way: a prototype is never wired into, linked from, or styled as a prod surface, and it is shown to
-the human only under its label — nothing reaches you AS the product unless its surface walked the
-pipeline. Promotion is not a merge: when a sketch earns its place, its feature enters at the spec step
-like any wish [T-12, INV-16] — the prototype is evidence for that spec, its code holds no rights. The
-machine side: the prototype fence is a guardrails check — a prod file referencing anything inside a
-prototype home is RED [E-6], live for the pack repo today; the other two legs — the surface registry's
-completeness scan [E-10] and behaviour-traces-to-spec — are still [target, E-6]. When all three land,
-the header's honesty rule holds in BOTH directions — the spec never claims what isn't built [S-0], and
-the build never contains what the spec doesn't name; today the fence leg is enforced, the rest is
-promised, marked, and owned by its rows. [INV-17]
+Exploring an idea before you commit to it is allowed. Sometimes you sketch a room before building the house. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. "Fenced off" means the code sits apart, and nothing in the product reaches into it.
 
-**An approved look lives in its artifact — the clause that encodes it points there, and the build looks
-at it.** Text cannot carry a feel: a spec clause born of an approved visual prototype was once rebuilt
-from its own prose and shipped a cheap look-alike — 75 tests green, because tests derived from a misread
-spec prove the misreading (tlvphoto's door and gallery, 2026-07-05). So when the human approves a sketch
-as the look, the prototype becomes the **norm** for look and feel, and one law with four arms guards it.
-The clause CITES its artifact — a `norm: <path>` pointer at the clause's line end beside its anchors,
-the prose carrying the laws while the artifact keeps the look (spec-author owns the pointer's format).
-Approval FREEZES the artifact into the project's records: a copy lands in `docs/norms/` with a dated
-provenance line (what, approved when, from which sketch), and the pointer cites the frozen copy — a
-norm pointer never reaches into a live prototype home, so the one-way fence stays absolute and the
-sketch stays free to die [E-17, INV-17]. Building a surface whose clauses carry a norm-pointer OPENS
-the artifact before the code step, and the landing records a one-line plan-vs-prototype diff — a
-missing diff line is a defect at review (build-pipeline's code step); the verify step's feel bar reads
-the same pointer [INV-30]. A story's declared mockup-first entry condition — "show me first, then
-build" — is WRITTEN in the wish's queue row at intake ("entry: mockup-first") and is cancelled only by
-the human naming it; a general "go build" moves priority, never that condition (the door step). And the prover reads visual clauses with the norm lens: a prototype-born
-clause with no pointer, or clause text contradicting its own artifact, is a finding — the "wordless door
-≠ no question" class (product-prover). The law binds forward — a clause owes its pointer at the first
-landing that touches it, never retroactively en masse; a pointer names only a prototype the human
-APPROVED as the look — an unapproved sketch stays plain evidence in its fence [E-17], and a text-born
-clause carries no pointer. No visible surface — facets N/A. Non-goals this landing: no mechanical
-pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free —
-whatever page or file the human approved. Success measure: the next prototype-born surface lands with
-its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does
-not recur [default]. [INV-43]
+Every artifact a prototype produces carries the PROTOTYPE label in whatever form its kind can show. A rendered page shows an on-screen banner. An API or data payload carries a `_prototype: true` field or header. A script or CLI prints a first-line PROTOTYPE banner. A bare file marks it in its name or header line. [E-17]
+
+The boundary sits at the door step — the point where a request becomes a product feature. A wish to HAVE something in the product is a feature [INV-16]. A request to merely SEE or TRY something, with no commitment, may live as a sketch inside the fence, with no lane — no path through the build pipeline — and no spec. When you cannot tell which was meant, ask one plain question. Do not guess.
+
+Opening a prototype home is a repo write like any other. The write-ownership law governs it [INV-10]. The assigned senior makes that judgment call [ACT-2]. An outside session files an inbox wish instead. A worker never opens a prototype home on its own brief.
+
+The fence runs one way: influence crosses out of the prototype, never in. You never wire a prototype into a prod surface, link to it from one, or style it to match one. A prod surface is any part of the shipped product a user meets. You show a prototype to the human only under its label. Nothing reaches the human AS the product unless its surface walked the full pipeline.
+
+Promotion is not a merge. When a sketch earns its place, its feature enters at the spec step like any wish [T-12, INV-16]. The prototype serves as evidence for that spec; its code holds no rights.
+
+The machine enforces the fence through a guardrails check. A prod file that references anything inside a prototype home turns RED [E-6]. This check runs live for the pack repo today. The surface registry's completeness scan [E-10] and the behaviour-traces-to-spec check are still [target, E-6].
+
+When all three legs land, the header's honesty rule holds in both directions. The spec never claims what isn't built [S-0]. The build never contains what the spec does not name. Today the fence leg is enforced; the rest is promised, marked, and owned by its rows. [INV-17]
+
+**An approved look lives in its artifact. The clause that encodes it points there, and the build reads that artifact.** Text cannot carry a feel. One spec clause, born from an approved visual prototype, was later rebuilt from its own prose and shipped a cheap look-alike. Seventy-five tests passed, because tests derived from a misread spec only prove the misreading (tlvphoto's door and gallery, 2026-07-05).
+
+So when the human approves a sketch as the look, the prototype becomes the **norm** for look and feel. One law with four arms guards it.
+
+First, the clause cites its artifact. A `norm: <path>` pointer sits at the clause's line end, beside its anchors. The prose carries the laws. The artifact keeps the look. spec-author owns the pointer's format.
+
+Second, approval freezes the artifact into the project's records. A copy lands in `docs/norms/` with a dated provenance line — what it is, when it was approved, and which sketch it came from. The pointer cites this frozen copy. A norm pointer never reaches into a live prototype home. So the one-way fence stays absolute, and the sketch stays free to die [E-17, INV-17].
+
+Third, building a surface whose clauses carry a norm pointer opens the artifact before the code step. The landing records a one-line plan-vs-prototype diff, and a missing diff line is a defect at review, checked at build-pipeline's code step. The verify step's feel bar reads the same pointer [INV-30].
+
+Fourth, the prover reads visual clauses with the norm lens. It flags two things: a prototype-born clause with no pointer, or a clause contradicting its own artifact. Both belong to the "wordless door ≠ no question" class (product-prover).
+
+A story can declare that the human must see a mockup before the build starts — "show me first, then build". You write this in the wish's queue row at intake as "entry: mockup-first". It is cancelled only by the human naming it. A general "go build" moves priority. It never cancels that condition, which the door step holds.
+
+The law binds forward. A clause owes its pointer at the first landing that touches it, never retroactively across the whole spec at once. A pointer names only a prototype the human approved as the look. An unapproved sketch stays plain evidence in its fence [E-17]. A text-born clause carries no pointer.
+
+This landing shows no visible surface, so facets are N/A. Non-goals for this landing: no mechanical pointer-grep guardrail, which becomes a candidate after real usage. The norm artifact's own format stays free — whatever page or file the human approved.
+
+Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur [default]. [INV-43]
 
 ## Starting a new project (bootstrap)
 
