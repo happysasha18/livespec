@@ -167,73 +167,24 @@ The kind is called from what the wish PRODUCES, one kind per wish. A wish genuin
 
 The full step→craft ladder has ONE home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them. And the craft, like the step's form, wears the KIND's face [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer, on infra as a toolsmith — the ladder names the archetypes, the wish's kind says what their standards look like in its medium. (His word 2026-07-06: when you write the product spec you are a strong product manager, when the architecture a strong software architect, when the test matrix a strong QA automation engineer.) [INV-33]
 
-**A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
-say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
-says feature, drafting its spec-delta walks a fixed sweep of the **standard facets** — the dimensions
-every visible feature has whether or not anyone names them: layout on a phone or narrow window · touch
-where the design assumed a mouse (anything hover-only needs a touch answer) · the empty, error, and
-loading states of each new surface · accessibility (reachable by keyboard, readable contrast) · the
-performance envelope (at what input size it must stay usable) · visual hierarchy (the gap between
-separate things larger than the gap within one thing; a heading never dimmer or smaller than its body)
-· two windows at once (the same stored state open twice) · a missing source (an input file renamed or
-gone). The facet list's normative home is the
-spec-author skill, one list for every project, and the list is CURATED: a facet joins only with a named
-real incident it would have caught, and the list is re-justified at milestones — a checklist that grows
-by taste rots into a forty-row form. This spec binds THAT the sweep runs and what counts as
-done. The sweep scopes to the feature's VISIBLE surfaces: a feature with none — new persistent state
-only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A", never a
-silent skip. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes — the
-late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is NOT swept
-— a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
+**A feature is specified past what you know to ask.** You say "add a room where photos hang." You do not say "and decide what happens on a phone," because you cannot know that is a question. So when a wish's door says feature, drafting its spec-delta walks a fixed sweep of the **standard facets** — the dimensions every visible feature has whether or not anyone names them:
 
-**Every facet ends as a spec sentence — silence is not an option.** Two ways a sentence gets there:
-**decided** — you (or the walk's batched questions) called it — or **defaulted** — the recommended option
-is taken so the lane keeps moving, written into the spec carrying the literal tag `[default]` at its line
-end (so a later prover tells a taken default from a hole, and the matrix derives the facet's test row
-either way [E-15]), and the choice is TOLD on the landing report's defaults list as a plain-words
-tradeoff in your product's terms ("on a phone this gallery stacks into one column — tweakable"), never
-one ping per facet and never a confirmation request — silence is consent [INV-31]; your veto simply
-becomes a new wish. A facet with no sentence —
-neither decided nor defaulted — is a spec defect the prover flags, the exact hole the Room shipped
-through (hover-only openings, no phone layout). On an adopted or promoted surface that already lives
-[A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never
-invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by
-time: the sweep AUTHORS the facet sentences when the feature is first specified; the axes COMPOSE and
-test them across views once the surface exists. [INV-18]
+- layout on a phone or narrow window
+- touch where the design assumed a mouse (anything hover-only needs a touch answer)
+- the empty, error, and loading states of each new surface
+- accessibility: reachable by keyboard, readable contrast
+- the performance envelope (at what input size it must stay usable)
+- visual hierarchy: the gap between separate things larger than the gap within one thing, and a heading never dimmer or smaller than its body
+- two windows at once (the same stored state open twice)
+- a missing source (an input file renamed or gone)
 
-**A feature is interrogated for how it fits the product — a small prover on the wish itself.** The
-device facets above ask what every visible feature owes; nobody yet asked how THIS feature sits in
-the person's PATH — and path holes (enter → browse → re-enter → stuck at the tenth picture with no
-way on) ship green because no clause ever promised the way out. So a feature-doored wish's spec-delta
-also walks the FIT WALK, kind-scaled: a product/UX wish walks the visitor's journey — how the person
-ARRIVES at the new thing, what they do there, where they go NEXT from every state it can be in, what
-a RETURN visit or entry through another door changes, what neighbouring behaviour it IMPLIES
-(no-repeat needs remembered state), what the FEEL owes against the approved prototype's bar [E-17],
-and what next feature it invites; an infra wish walks its flows — inputs → outputs, data lifecycle,
-failure paths; a skill wish walks trigger → correction → when NOT to fire. The walk interrogates the
-FEATURE, never the person: derive each answer from the existing spec and the shipped truth first;
-a hole that is trivially closable is CLOSED by the walker and the closing is WRITTEN down (his word
-2026-07-06: закрыть и написать как закрыл); the rest are written decided or `[default]`-tagged, and
-only the genuine taste calls go out, batched [INV-4, INV-18] — «не надо мучать пользователя вопросами
-как на пытках» (Alexander 2026-07-06, with tlvphoto's shipped evidence in hand). The prover gains the
-matching focused mode — FEATURE-FIT: given one feature's delta, walk its journey seams against the
-whole spec the way CROSS-LINK walks a new surface's seams — the prover already thinks in flows,
-states, and transitions; this pulls that thinking forward to intake. Lens lists live once, in
-spec-author's sweep section, curated like the facet list [T-13]; the law binds forward — a landed
-feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21
-kin]. [INV-29]
+The facet list lives in one place, the spec-author skill, one list for every project. That list is curated: a facet joins only with a named real incident it would have caught, and it is re-justified at milestones. A checklist that grows by taste rots into a forty-row form. This spec binds that the sweep runs and what counts as done. The sweep scopes to the feature's visible surfaces. A feature with none — new persistent state only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A", never a silent skip. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes, because the late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is NOT swept, since a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
 
-**A face you can enter once owes a way back — or a written one-way.** A surface's FACES (a
-first-visit door, an empty state, an onboarding screen, a one-time banner) are entered under
-conditions — and a face whose condition can never re-arise is a dead end the state lenses miss: the
-states all have exits, the FACE has no re-entry (tlvphoto's door, 2026-07-05 — a prover pass found
-six seams and missed the one-way face; his words: «всегда в автомате должен быть луп — если есть гет,
-есть сет»). The law: every conditionally-entered face states its deliberate RE-ENTRY path — or states
-the one-way as a decision, by name. Trigger wording is the tell: "only on first visit", "only on
-first run", "until dismissed" — each such clause owes its return sentence. The prover reads for it
-(the entry-symmetry lens in product-prover's stress list); the fit walk's journey lens [INV-29]
-already asks "where NEXT from every state" — this law extends the question to faces over the visit's
-lifetime. [INV-50]
+**Every facet ends as a spec sentence — silence is not an option.** A facet sentence gets written one of two ways. Decided: you, or the walk's batched questions, called it. Defaulted: the recommended option is taken so the lane keeps moving. A defaulted sentence carries the literal tag `[default]` at its line end, so a later prover tells a taken default from a hole, and the matrix derives the facet's test row either way [E-15]. The landing report's defaults list then tells the choice as a plain-words tradeoff in your product's terms ("on a phone this gallery stacks into one column — tweakable"). It never pings once per facet and never asks you to confirm, because silence is consent [INV-31]; your veto simply becomes a new wish. A facet with no sentence — neither decided nor defaulted — is a spec defect the prover flags. That is the exact hole the Room shipped through: hover-only openings, no phone layout. On an adopted or promoted surface that already lives [A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by time. The sweep AUTHORS the facet sentences when the feature is first specified. The axes compose and test them across views once the surface exists. [INV-18]
+
+**A feature is interrogated for how it fits the product — a small prover on the wish itself.** The device facets above ask what every visible feature owes. Nobody has yet asked how this feature sits in the person's path. Path holes ship green because no clause ever promised the way out — enter, browse, re-enter, then stuck at the tenth picture with no way on. So a feature-doored wish's spec-delta also walks the fit walk, scaled to the wish's kind. A product or UX wish walks the visitor's journey: how the person arrives at the new thing, what they do there, where they go next from every state it can be in, what a return visit or entry through another door changes, what neighbouring behaviour it implies (no-repeat needs remembered state), what the feel owes against the approved prototype's bar [E-17], and what next feature it invites. An infra wish walks its flows: inputs to outputs, data lifecycle, failure paths. A skill wish walks trigger, correction, and when NOT to fire. The walk interrogates the feature, never the person. Derive each answer from the existing spec and the shipped truth first. A hole that is trivially closable is closed by the walker, and the closing is written down (his word 2026-07-06: close the hole and write down how it was closed). The rest are written decided or `[default]`-tagged, and only the genuine taste calls go out, batched [INV-4, INV-18]. Do not torment the user with a barrage of questions (Alexander 2026-07-06, with tlvphoto's shipped evidence in hand). The prover gains the matching focused mode, FEATURE-FIT: given one feature's delta, it walks the journey seams against the whole spec the way CROSS-LINK walks a new surface's seams. The prover already thinks in flows, states, and transitions; this pulls that thinking forward to intake. Lens lists live once, in spec-author's sweep section, curated like the facet list [T-13]. The law binds forward: a landed feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21 kin]. [INV-29]
+
+**A face you can enter once owes a way back — or a written one-way.** A surface's faces are entered under conditions: a first-visit door, an empty state, an onboarding screen, a one-time banner. A face whose condition can never re-arise is a dead end the state lenses miss. The states all have exits, yet the face has no re-entry (tlvphoto's door, 2026-07-05 — a prover pass found six seams and missed the one-way face; his words: a state machine should always have a loop: if there is a get, there is a set). The law: every conditionally-entered face states its deliberate RE-ENTRY path, or states the one-way as a decision, by name. Trigger wording is the tell. "only on first visit", "only on first run", "until dismissed" — each such clause owes its return sentence. The prover reads for it, through the entry-symmetry lens in product-prover's stress list. The fit walk's journey lens [INV-29] already asks "where NEXT from every state"; this law extends the question to faces over the visit's lifetime. [INV-50]
 
 **Verify-by-deed walks the visit and watches the feel.** "Eyes on the artifact" has meant "it renders
 and clicks" — and cheap-feeling motion or an ugly affordance shipped green through the whole pipeline
