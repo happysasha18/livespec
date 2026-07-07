@@ -15,10 +15,18 @@ one voice; the three '— not' hits are non-goal labels/a gloss (not scissors). 
 — the "Asking what the product does" bold lead still carries the Russian trigger «покажи все фичи» + a
 TESTED scissors "transparency is a command, not archaeology" (echoed in communicator); NOT auto-edited (his
 policy call, 3 options in that prover doc).
-**NEXT (loop continues):** (1) ARCHITECTURE.md rewrite — his 19:07 scope; FIRST investigate its test
-protection (needle-extract is SPEC.md-only; build a like gate or confirm what its tests assert); (2)
-whole-document prover pass + 0.9.0 3-pass audit + stale-quote grep over untested prose; (3) VERSION bump;
-(4) his decision on the "Asking" finding; (5) my full-certification push on his word. Push BLOCKED until all green.
+**LOOP STOPPED (2026-07-07 21:13) at a clean milestone — SPEC.md humanize (his primary ask) 100% done,
+gated green; two his-decisions now block meaningful progress:**
+- **DEC-1 — "Asking what the product does":** its bold lead keeps the Russian trigger «покажи все фичи» + a
+  TESTED scissors "transparency is a command, not archaeology" (echoed in communicator). 3 options in
+  docs/prover/2026-07-07-template-audit-and-consistency-scan.md.
+- **DEC-2 — ARCHITECTURE.md:** its prose is ~15 reader-facing lines + a ~90-line inline assignment-history
+  log; tests protect only the Nodes table/pins/header/anchor-set, not prose. Recommend migrating the log to
+  JOURNAL (VERIFIED SAFE: 0 anchors drop) then register-cleaning the 15 lines. Options in
+  docs/prover/2026-07-07-architecture-scope-finding.md.
+**Remaining before my full-certification push (all his-word/audit gated):** DEC-1 · DEC-2 · whole-document
+prover pass over SPEC.md · 0.9.0 3-pass audit · stale-quote grep over untested prose (README/OVERVIEW/
+MIGRATION/docs) · VERSION bump. 39 commits local, none pushed. Restart the loop or hand decisions any time.
 **SCOPE EXPANDED (his word 19:07): rewrite ALL the specs, not only SPEC.md — ARCHITECTURE.md too** (in
 the same register; check what tests assert about ARCHITECTURE content before rewriting, its facts are
 protected differently). After SPEC + ARCHITECTURE, confirm README/OVERVIEW/ROADMAP as candidates.
