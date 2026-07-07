@@ -4,10 +4,9 @@
 skill discovery + borrowing practice) · row 148 round 4 ANSWERED and VALIDATED (genre approved; pilot
 section rewritten in-place, suite green; migration plan in docs/research/, Phase 3 awaits his word) ·
 row 166 (live work board) born out-of-turn, sketch round 2 (feature language) awaits his word · rows
-163 (test-author, the seventh skill + real two-arm eval) · 167 (pack-list parity, the historic
-four-skill footer is the permanent red fixture) · 55 (snapshot design; D-3 CLOSED: last-only,
-git is the archive) ALL LANDED by ~10:51.)
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.70, suite 168 green; CI live.** Verify on
+163 · 167 · 55 · 168 ALL LANDED by ~11:02 (test-author skill · pack-list parity · snapshot design
+with D-3 closed · seat-switched showing channel).
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.71, suite 169 green; CI live.** Verify on
 resume: `git status -sb` + suite. **Fable-only window (Anthropic pulls Fable from Claude Code today —
 if resuming on another model, ASK Alexander first.)** His morning language laws live in the profile
 (scissors ban · native-plain English · industry-vocabulary narration — no calques). Board sketch:
@@ -16,8 +15,7 @@ ask). Clock-fence catches #21–23 today (all blocked at commit; the zero-drift 
 
 ## Forward queue (mirrors ROADMAP.md)
 1. **Next without-him rows:** 47 (feedback-collection skill design — gates 42/43 decided; re-scope
-   per row 96) · 168 (showing channel adapts to the session's seat — local HTML window vs remote
-   artifact page; his 10:57 word, full text in the row) · 12 tail · 56 router.
+   per row 96) · 12 tail · 56 router (after 52–54; check 52/53 statuses at take).
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition) · 148 Phase 3 go (the
    whole-doc rewrite by the migration plan, docs/research/2026-07-07-genre-migration-plan.md; epics
    proposal rides the first batch).
