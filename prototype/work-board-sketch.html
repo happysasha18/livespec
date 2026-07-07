@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="5">
+<title>live-spec — что сейчас происходит (ПРОТОТИП)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.55 -apple-system, "Segoe UI", sans-serif; max-width: 980px;
+         margin: 1.5rem auto 3rem; padding: 0 1.2rem; color: #1c1c1e; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #e6e6e8; background: #161618; } }
+  .proto { background: #b4562a; color: #fff; font-weight: 700; padding: .4rem .8rem;
+           border-radius: 8px; display: inline-block; margin-bottom: 1rem; }
+  h1 { font-size: 1.25rem; margin: .2rem 0 .1rem; }
+  .stamp { opacity: .7; font-size: .9rem; margin-bottom: 1.2rem; }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .card { border: 1px solid #8884; border-radius: 10px; padding: .9rem 1.1rem; }
+  .card h2 { font-size: .95rem; margin: 0 0 .6rem; text-transform: uppercase; letter-spacing: .04em; opacity: .75; }
+  .now { border: 2px solid #2a7ab4; }
+  .wait { border: 2px solid #b4562a; }
+  .f { margin: .7rem 0; }
+  .f b { font-size: 1.02rem; }
+  .f .what { display: block; opacity: .85; margin: .15rem 0; }
+  .f .stage { display: inline-block; margin-top: .2rem; padding: .12rem .6rem; border-radius: 999px;
+              background: #2a7ab41a; border: 1px solid #2a7ab466; font-size: .84rem; font-weight: 600; }
+  .f .stage.you { background: #b4562a1a; border-color: #b4562a88; }
+  .f .stage.done { background: #2f9e441a; border-color: #2f9e4466; }
+  ul { margin: .3rem 0; padding-left: 1.2rem; }
+  li { margin: .35rem 0; }
+  .muted { opacity: .7; font-size: .9rem; }
+  .feed li { font-size: .9rem; }
+  .feed time { opacity: .65; font-variant-numeric: tabular-nums; margin-right: .4rem; }
+</style>
+</head>
+<body>
+
+<div class="proto">ПРОТОТИП, вариант 2 — после вашего замечания: говорим языком фич. Данные настоящие (09:48, 07.07.2026).</div>
+
+<h1>live-spec — что сейчас происходит</h1>
+<div class="stamp">Обновлено 09:48 · все 164 автопроверки прошли · страница перечитывает себя каждые 5 секунд</div>
+
+<div class="grid">
+
+  <div class="card now">
+    <h2>Сейчас строится</h2>
+    <div class="f">
+      <b>Живое табло</b>
+      <span class="what">Вы всегда видите, чем занят агент и на каком этапе каждая фича.</span>
+      <span class="stage you">этап: эскиз № 2 — на вашей оценке (вы смотрите на него)</span>
+    </div>
+    <div class="f">
+      <b>Новый язык спеки</b>
+      <span class="what">Спека читается как рассказ о продукте: у каждой фичи — история, условия и критерии приёмки.</span>
+      <span class="stage done">этап: проверка на прочность пройдена — первая секция переписана начисто, все автопроверки прошли</span>
+      <span class="what muted">следующий шаг: план переписки всего документа — вам на утверждение.</span>
+    </div>
+  </div>
+
+  <div class="card wait">
+    <h2>Ждёт вашего слова</h2>
+    <ul>
+      <li>Вид этого табло — годится ли такой язык и состав.</li>
+      <li>План полной переписки спеки — готовлю, покажу следом.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Готово сегодня</h2>
+    <div class="f">
+      <b>Знакомство при подключении</b>
+      <span class="what">Пакет узнаёт, с кем работает, и заводит профиль человека только с его слов.</span>
+      <span class="stage done">выложено</span>
+    </div>
+    <div class="f">
+      <b>Поиск готовых навыков</b>
+      <span class="what">При старте проекта и при повторном затыке агент сначала ищет готовое решение, потом изобретает своё.</span>
+      <span class="stage done">выложено</span>
+    </div>
+    <div class="f">
+      <b>Правила языка</b>
+      <span class="what">Запрещены обороты «не X, а Y», капс-драматизм и кальки; английский — простой и человеческий.</span>
+      <span class="stage done">действуют во всех проектах</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Дальше в очереди</h2>
+    <div class="f">
+      <b>Методика тестов — отдельным навыком</b>
+      <span class="what">Новый проект начинает с сильными тестами, а не проходит заново путь проб и ошибок.</span>
+      <span class="stage">этап: в очереди</span>
+    </div>
+    <div class="f">
+      <b>Снимок-эталон</b>
+      <span class="what">Каждое изменение сверяется с последним принятым видом продукта — незаказанные перемены видны сразу.</span>
+      <span class="stage">этап: в очереди</span>
+    </div>
+    <div class="f">
+      <b>Приём обратной связи</b>
+      <span class="what">Замечание можно бросить в проект в любую минуту — текстом, картинкой, файлом — и оно не потеряется.</span>
+      <span class="stage">этап: в очереди</span>
+    </div>
+  </div>
+
+  <div class="card" style="grid-column: 1 / -1">
+    <h2>Последние шаги</h2>
+    <ul class="feed">
+      <li><time>09:47</time> Новый язык спеки: пилотная секция переписана прямо в документе, все 164 автопроверки прошли — язык машинку не ломает.</li>
+      <li><time>09:44</time> Ваше замечание о языке табло принято — этот вид переделан: говорим именами фич и этапами.</li>
+      <li><time>09:42</time> Составлена полная опись того, что автоматика читает в спеке, — основа плана безопасной переписки.</li>
+      <li><time>09:38</time> «Поиск готовых навыков» выложен в репозиторий.</li>
+      <li><time>09:34</time> Ваши ответы по языку спеки получены и вшиты; капс в критериях запрещён.</li>
+      <li><time>08:36</time> «Знакомство при подключении» выложено.</li>
+    </ul>
+  </div>
+
+</div>
+
+<p class="muted" style="margin-top:1.2rem">Как это будет жить: агент обновляет табло при каждой смене этапа; названия и описания фич берутся из спеки — тем же языком, которым они там написаны. Никаких внутренних кодов и словечек на этой странице.</p>
+
+</body>
+</html>

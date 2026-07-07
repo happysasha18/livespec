@@ -650,15 +650,30 @@ tags at their own granularity — checkable by diffing the lists [default].
 
 ## When a bug cuts the line
 
-A bug may interrupt the wish in-work. The interrupted wish moves to **parked**: a checkpoint is written
-(failing test names if red, hypothesis, touched files — nothing red is ever committed), the bug takes the
-lane, and the parked wish resumes as the immediate next landing — ahead of ANY queued wish, a quick win
-included: a bubble [T-11] jumps only fresh queued wishes, never a resume. Should more bugs arrive while one holds
-the lane, **critical** bugs head the waiting line (among themselves by arrival), the rest follow by
-arrival; the parked wishes resume only once no bug waits. A bug already in the lane is never itself
-interrupted — an arriving bug, critical included, joins the line, so at most one wish is ever parked
-PER LANE: when several trains were rolling [T-18], the bug parks them all — each at its own checkpoint — and
-they resume in their landing order. [T-9]
+**User story:** as the product owner, I report a bug in the shipped product and it gets fixed before
+anything else; the feature that was mid-build comes back on its own afterwards, and no work gets lost.
+
+Mid-feature, you report: "the card is broken on the phone." The feature is set aside at a checkpoint,
+the bug takes the lane, and once no bug is waiting, the feature returns as the very next thing to
+finish.
+
+**Precondition:** a feature is in work when the bug report arrives (with nothing in work, the bug
+simply takes the lane).
+
+**Acceptance criteria:**
+1. A bug report arriving mid-feature moves the feature to **parked**, with a checkpoint written first:
+   the failing test names (if any are red), the current hypothesis, the touched files. Work with
+   failing tests is never committed. [T-9]
+2. The bug takes the lane and runs to completion. An arriving bug, critical included, joins the
+   waiting line and interrupts nothing.
+3. Waiting bugs order critical-first; bugs of equal priority go by arrival.
+4. Once no bug waits, parked features resume ahead of the whole queue. Nothing jumps a resume, a
+   quick win included: a bubble jumps only fresh queued wishes. [T-11]
+5. At most one feature is parked per lane. When several trains were rolling [T-18], a bug parks them
+   all, each at its own checkpoint, and they resume in their landing order.
+
+**Postcondition:** the bug's fix is landed; every parked feature is back in work (or landed) in its
+original order; no red work was committed anywhere.
 
 ## When the workshop itself misbehaves (the problem ledger)
 
