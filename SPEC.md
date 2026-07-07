@@ -739,72 +739,65 @@ original order; no red work was committed anywhere.
 
 ## When the workshop itself misbehaves (the problem ledger)
 
-Some noise is not a product bug: the test harness flakes, a dependency is missing, the shell eats a
-command, a tool times out. The temptation is to retry and move on — and the same noise then eats the
-same minutes in session after session. **The problem ledger** is the host's dynamic list of exactly this
-operational noise: one git-tracked file, `.live-spec/PROBLEMS.md` (template in the pack;
-of `.live-spec/` still only the checkpoints stay ignored [E-8]), born on its first entry. An entry is a
-**signature** — a short, greppable plain phrase ("element not clickable: #ex-skip", "zsh eats a bare
-===") — with its dated occurrences and a status: **WATCHED** (seen once) · **OWNED** (a named queue row
-will solve it) · **AGREED NON-PROBLEM** (dated, the human's word) · **SOLVED** (its row landed, date
-kept). [E-24]
+Some noise comes from the workshop itself. The test harness flakes. A dependency goes missing. The shell eats a command. A tool times out. You retry and move on, and the same noise then eats the same minutes in session after session.
 
-**The walk, the moment noise fires mid-work: grep the ledger for the signature.** Not listed → write one
-WATCHED line (signature, date, one line of context) and keep working — the write replaces the silent
-retry, and it never takes the lane: a defect of the PRODUCT is a bug and goes to the bug lane instead
-[T-9]. **Listed → this is the second occurrence, and it gets an owner THAT MOMENT:** either a queue row
-(the problem will be solved) or the human's dated agreed non-problem — that verdict is the human's word
-alone, never the agent's [INV-9]; the agent recommends, writes the recommended owner now, and the ask
-rides the batched report [INV-4, E-22] — the lane never stalls on it. **A third recurrence arriving with
-no owner is a defect of the METHOD, not of the day:** it leaves the host as a wish to the pack's own
-queue (from a host window: one inbox file [E-11, INV-10]), citing the signature and its dates. [INV-23]
+**The problem ledger** is the host's dynamic list of this operational noise. It lives in one git-tracked file, `.live-spec/PROBLEMS.md` (the template ships in the pack). Within `.live-spec/`, only the checkpoints stay ignored [E-8]. The ledger is born on its first entry.
 
-After the owner is written, the entry only collects dates: a recurrence on an OWNED or AGREED entry
-appends its date and changes nothing else — re-raising an agreed non-problem is the human's move, the
-growing date list is what he re-raises FROM. The landing that closes an OWNED entry's queue row flips it
-to SOLVED in the same session — the entry never waits for an audit to learn its row landed.
+An entry is a **signature**: a short, greppable plain phrase such as "element not clickable: #ex-skip" or "zsh eats a bare ===". Each signature carries its dated occurrences and one status [E-24]:
 
-**A limping thing never dams the flow.** A KNOWN, owned problem — a recurring defect with its
-mechanical owner named, a check red for an understood and recorded reason — is PARKED, not orbited:
-the ledger line (or the owning row, or an expected-red note in the record) holds it, and every
-unrelated lane keeps rolling (his 2026-07-07 word: «если одно не совсем работает — оно не затыкает
-всё остальное»). Two teeth: hand-fixing loops cap at the ledger's own two-strikes law — the second
-occurrence buys an owner, never another hand-pass; and once a defect HAS its named mechanical owner,
-its instances are serviced in BATCH — fixed silently where the fence catches them, one ledger append
-at the session's end — never a per-instance ceremony that interrupts the work and the human's reading
-of it (the night this law landed, the clock drift had been hand-ceremonied ten times in one session
-while its owner, the hook row, was open all along). A real NEW bug still preempts [T-9]; this law
-governs the KNOWN limp. [INV-56]
+- **WATCHED** — seen once.
+- **OWNED** — a named queue row will solve it.
+- **AGREED NON-PROBLEM** — dated, the human's word.
+- **SOLVED** — its row landed, date kept.
 
-The seams, stated: sessions write the ledger — a worker reports noise in its checkpoint and the session
-carries it over, unless its brief names the ledger among its files (the brief stays the write-ownership
-law [ACT-3]); two sessions on one host share the file under the concurrent-edit fence like any doc
-[INV-11]; "same problem?" is decided by grep and eyes — signatures stay short so the grep is honest, and
-one problem found under two wordings merges into one entry at the milestone compaction. SOLVED and
-agreed entries move to a dated ARCHIVED tail of the same file at that compaction [M-1] — one file stays
-the one home, and the ledger, too, never grows unboundedly. This is the workshop's law; the product
-keeps its own (a recurring product bug re-doors to feature — the pipeline's rule, distinct by what
-broke). No visible surface — facets N/A. Non-goals this landing: no mechanical guardrail yet — the named
-candidate (a pre-push check that no entry crosses a milestone unowned) earns its row after real usage;
-no automated signature matching; the first foreign-host ledgers (tlvphoto, track-coach) open from their
-own windows — this landing opens the pack's own, with tonight's live entries. Success measure: the next
-operational hiccup in a live-spec session lands as a ledger line instead of a silent retry, checked at
-the milestone audit [default].
+**The walk, the moment noise fires mid-work: grep the ledger for the signature.** What you find decides the next move.
 
-**Before the workshop reinvents a fix, it searches for an existing skill.** Two moments trigger the
-search. At a project's SETUP — founding, or adoption's orient, beside the founding questions [B-2,
-B-3] — the pack scans the skills already installed and the catalogs it can reach for ones matching
-the project's kind and its crafts, and proposes the fit list with a recommendation; the human's word
-picks. And at a STRUGGLE — a ledger entry reaching its second occurrence [INV-23], a taste artifact
-rejected twice [INV-62 kin], any failure family that keeps returning — the next attempt waits one
-search: an existing skill or published checklist may already own this failure class. A found skill is
-adopted or rejected BY NAME, the verdict recorded where the struggle lives (the ledger entry, the
-kill-list, the row). Born of a real morning: five review rounds died on a voice failure that a public
-skill had carried as a written checklist for months — the search would have cost a minute and saved
-the five rounds (promoter, stop-slop, 2026-07-07). Borrowing follows one practice: a found skill is
-INVOKED as it ships; a lesson folded into our own documents is paraphrased and credits its source by
-name; verbatim text travels only under its license, notice kept — unlicensed text is never
-republished. [INV-65]
+- **Not listed:** write one WATCHED line — signature, date, one line of context — and keep working. This write replaces the silent retry. It never takes the lane; a defect of the PRODUCT is a bug and goes to the bug lane instead [T-9].
+- **Listed:** this is the second occurrence, and it gets an owner THAT MOMENT. Give it either a queue row (the problem will be solved) or the human's dated agreed non-problem. That verdict belongs to the human alone [INV-9]. The agent recommends, writes the recommended owner now, and the ask rides the batched report [INV-4, E-22]. The lane never stalls on it.
+- **Third recurrence, no owner:** this exposes a defect of the METHOD, reaching past the single day. It leaves the host as a wish to the pack's own queue — from a host window, one inbox file [E-11, INV-10] — citing the signature and its dates [INV-23].
+
+After the owner is written, the entry only collects dates. A recurrence on an OWNED or AGREED entry appends its date and changes nothing else. Re-raising an agreed non-problem is the human's move, and the growing date list is what he re-raises from. When a landing closes an OWNED entry's queue row, the same session flips the entry to SOLVED. The entry never waits for an audit to learn its row landed.
+
+**A limping thing never dams the flow.** A known, owned problem stays parked while every unrelated lane keeps rolling. Such a problem is a recurring defect with its mechanical owner named, or a check held red for an understood and recorded reason. Its ledger line — or the owning row, or an expected-red note in the record — holds it in place. The human stated the principle this way on 2026-07-07: when one thing does not quite work, it should leave everything else free to move.
+
+Two rules keep the limp parked:
+
+- Hand-fixing loops cap at the ledger's own two-strikes law. The second occurrence buys an owner, never another hand-pass.
+- Once a defect has its named mechanical owner, its instances are serviced in BATCH. The fence fixes them silently where it catches them, with one ledger append at the session's end. This is never a per-instance ceremony that interrupts the work and the human's reading of it.
+
+The night this law landed, the clock drift had been hand-ceremonied ten times in one session while its owner, the hook row, stayed open the whole time. A real NEW bug still preempts [T-9]; this law governs the KNOWN limp [INV-56].
+
+The seams, stated:
+
+**Write-ownership.** Sessions write the ledger. A worker reports noise in its checkpoint, and the session carries it over. A worker whose brief names the ledger among its files may write it directly. The brief stays the write-ownership law [ACT-3].
+
+**Concurrent edit.** Two sessions on one host share the file under the concurrent-edit fence, like any doc [INV-11].
+
+**Same problem?** Grep and eyes decide whether two entries are one problem. Signatures stay short so the grep stays honest. One problem found under two wordings merges into one entry at the milestone compaction.
+
+**Archival.** At that compaction, SOLVED and agreed entries move to a dated ARCHIVED tail of the same file [M-1]. One file stays the one home, and the ledger never grows unboundedly.
+
+**Product versus workshop.** This is the workshop's law; the product keeps its own. A recurring product bug re-doors to a feature under the pipeline's rule, distinct by what broke.
+
+**Facets.** No visible surface, so facets are N/A.
+
+**Non-goals this landing.**
+
+- No mechanical guardrail yet. The named candidate — a pre-push check that no entry crosses a milestone unowned — earns its row after real usage.
+- No automated signature matching.
+- The first foreign-host ledgers (tlvphoto, track-coach) open from their own windows. This landing opens the pack's own, with tonight's live entries.
+
+**Success measure.** The next operational hiccup in a live-spec session lands as a ledger line instead of a silent retry, checked at the milestone audit [default].
+
+**Before the workshop reinvents a fix, it searches for an existing skill.** Two moments trigger the search.
+
+At a project's SETUP — founding, or adoption's orient, beside the founding questions [B-2, B-3] — the pack scans the skills already installed and the catalogs it can reach. It looks for ones matching the project's kind and its crafts, then proposes the fit list with a recommendation. The human's word picks.
+
+At a STRUGGLE — a ledger entry reaching its second occurrence [INV-23], a taste artifact rejected twice [INV-62 kin], any failure family that keeps returning — the next attempt waits one search. An existing skill or published checklist may already own this failure class. A found skill is adopted or rejected BY NAME, and the verdict is recorded where the struggle lives: the ledger entry, the kill-list, or the row.
+
+This law was born of a real morning: five review rounds died on a voice failure that a public skill had carried as a written checklist for months, when the search would have cost a minute and saved the five rounds (promoter, stop-slop, 2026-07-07).
+
+Borrowing follows one practice. Invoke a found skill as it ships. Paraphrase a lesson folded into our own documents, and credit its source by name. And verbatim text travels only under its license, notice kept; never republish unlicensed text [INV-65].
 
 ## A prototype stays a sketch
 

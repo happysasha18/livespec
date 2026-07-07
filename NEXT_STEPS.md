@@ -1,25 +1,21 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-07 18:31, session 24 cont.): item 0 done · first structured SPEC sheet landed ·
-register now deployed + always-on.** This ran on Opus (Fable pulled today); Alexander confirmed Opus is
-enough for the sweep, Fable optional only for a final full-doc prove.
-- **Item 0 done:** `PLAYBOOK.md` + `~/.claude/CLAUDE.md` rewritten in the register, pushed (18ec7b0).
-- **SPEC sweep, first heavy sheet:** the prototype section rewritten in the register, THEN restructured
-  (lists for the label forms / the three legs / the four-arm norm law; an H3), THEN retitled from the
-  scissors frame "A prototype is not the product" → **"A prototype stays a sketch"**. Rename coordinated
-  across 6 homes (SPEC header + 3 index cells + base rule 16 + 2 test_traceability checks). 11/11 phrases
-  preserved, anchors intact, suite 175 green, prover cross-link recorded.
-- **Format adopted for the whole sweep:** spec-author "How it reads" now says use lists inside a scenario
-  section (guarded against reopening structure-first). Applied to every later sheet.
-- **Register now in force (root cause of the leaks found + fixed):** the deployed `~/.claude/skills` copy
-  was STALE — the register lived only in the repo, so it never loaded. `install.sh` re-run, deployed==repo
-  now. Profile gained `language.register` (clean source, loaded each session). Goal (his word): minimal
-  per-turn hooks as the docs themselves model the voice.
-- **Iteration plan (his insight):** a fresh `/clear` converges better because the context is clean and the
-  source docs are cleaner each pass. Run the sweep as iterations: each next session takes sheets in the
-  structured format, shows + tunes; a final convergence pass over the whole doc closes it (his "1–2
-  iterations"). SAFE TO WIPE MEMORY here.
-Next: `/clear`, then the next SPEC sheets in the structured+register format (order below, item 1).
+**LATEST (2026-07-07 18:50, session 25): two more humanize batches landed — "Sending feedback in"
+(677d8a7) and "When the workshop itself misbehaves" (committing now).** Each scenario section rewritten
+in the technical-writer register via a fresh clean-context agent; dense end paragraphs split into
+labelled lists. Per batch all gates green: every tested phrase preserved section-scoped, bracket-code
+multiset identical to the captured baseline, full suite 175 green, prover cross-link under `docs/prover/`.
+Sections done (7): What live-spec is · Composing across axes · Asking what the product does · When a bug
+cuts the line · A prototype stays a sketch · Sending feedback in · When the workshop itself misbehaves.
+Runs on Opus (Fable pulled today; Alexander confirmed Opus is enough, Fable optional for a final
+full-doc prove). Item 0 (PLAYBOOK + CLAUDE.md in the register) pushed earlier (18ec7b0). Register now
+deployed==repo (install.sh re-run; the stale deployed copy was the leak root). SAFE TO WIPE MEMORY here.
+**Language: no coined mechanism-names in chat OR docs (his sharp word again 18:47 — "иголки"/"якоря"
+leaked) → say "tested phrases" / "bracket codes"; durable fix rides row 170 (pre-show plain-language lint).**
+**Push decision: ONE clean push at the 0.9.0 milestone after the whole-doc audit, on his word — not per
+batch (a half-humanized doc on origin reads inconsistent).**
+Next: remaining mid/small sections, then the heavies (Throwing a wish — the wish walk; the worker
+contract; the milestone laws), governance last, template one small batch, final register sweep.
 
 ## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
 (V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten
