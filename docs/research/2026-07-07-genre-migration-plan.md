@@ -63,5 +63,14 @@ the first needled section of Phase 3.
 - The genre law lands in the spec-author skill with the first batch (write-new-specs-this-way), so
   every future spec is born in the genre, and the caps ban + plain-criteria voice ride the skill.
 
+- **His word 2026-07-07 ~12:20, after seeing the rendered spec:** the genre is BETTER but not yet
+  fully human. Two directives for the polish. (1) It is a **fresh-context job** — run it from a CLEAN
+  session with his live «давай по-человечески» loop, not crammed into a loaded working session; his
+  own second-try nudges lift the prose faster than a cold one-shot, so the polish rides a tight
+  back-and-forth with him, smallest-first, his taste the bar. (2) The polished spec must keep
+  **clear, referenceable sections** — stable per-section addressing so the prover can cite a point
+  conveniently; the readability pass STRENGTHENS section structure (the epic layer above + stable
+  section anchors), never blurs it.
+
 Scale estimate: 19 scenario sections; the needled ones cluster around the wish walk, the worker
 contract, and the milestone laws. Several sessions, each batch independently green and pushed.
