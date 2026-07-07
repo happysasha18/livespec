@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.36
+  version: 0.1.37
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -54,7 +54,13 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
    browser/preview; a chat-only channel → inline the image or the example itself. Synthetic data only for your
    own checks, always labelled `SYNTHETIC`. A sketch is shown ONLY under its `PROTOTYPE` label — opened,
    framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
-   Never hand over a file path and make them go open it. On a host that switched design-sync on (base
+   Never hand over a file path and make them go open it.
+   **The channel is picked by the SEAT (SPEC INV-67).** Seated locally (the human's machine: its
+   platform, its filesystem, a browser you can open) → render and open the window, per the profile's
+   show line. Seated remotely (running in the cloud, read through the human's browser) → the same
+   content as an artifact page the host renders, or inline in chat; a local path or an `open` that
+   lands nowhere is the unopened-window defect. Detect the seat before the first show of the session
+   and say which channel you picked. On a host that switched design-sync on (base
    defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
    project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
    stays the authority for the landing itself; the design project is the team-review channel, never a

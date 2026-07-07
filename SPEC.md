@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.58, 2026-07-07)
+# live-spec — SPEC (v0.15.59, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -245,6 +245,15 @@ artifacts accumulate on ONE page — the stretch's decisions/report page — and
 that single window once; mid-stretch re-opening is legal only as the SAME page refreshed in place
 (his 2026-07-06 word: «всё-всё-всё открыл бы в конце… если переоткрывать — аккумулировать»). Home:
 communicator (the showing-cadence rule beside the offline window). [INV-52]
+
+**The showing channel matches the session's seat.** A session seated on the human's machine shows a
+rendered artifact as a local page opened in a browser window; a session seated remotely (the agent
+running in the cloud, read through a browser) can open nothing local — the same content goes through
+the remote seat's own channel: an artifact page the host renders for the human, or the chat itself —
+same passport [INV-51], same round-trip. The session detects its seat from what it can actually reach
+(platform, display, whose filesystem) and names the channel it picked; a local file path handed to a
+remote reader is a defect of the exchange, the unopened window's twin. The personal profile's show
+line is the LOCAL seat's arm, never the law itself. (His word 2026-07-07 morning.) [INV-67]
 
 **The stretch's end is unmissable.** A report that exists but drowns above tool noise was never
 delivered (his 2026-07-07 word after a 17-row night ended in what read to him as silence: «закончил
@@ -1617,6 +1626,7 @@ meaning, this table is only the map.
 | INV-64 | anything shown FOR REVIEW carries per-claim provenance (artifact · his recorded word · the agent's inference — inferences loudest) and is commentable with answer capture (the decision page's JSON law extends to review pages); never a read-only wall, never an unmarked inference | Throwing a wish |
 | INV-65 | search for an existing skill at setup and at every struggle; adopt or reject by name; invoke as shipped · paraphrase + named credit · verbatim only under license | When the workshop itself misbehaves |
 | INV-66 | every place the pack lists its skills names the same complete set — checked mechanically, a missing name goes red | One rulebook behind the skills |
+| INV-67 | the showing channel matches the session's seat — local window vs the remote seat's own channel, detected and said | Throwing a wish |
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
 | E-27 | the test method's one home — the test-author skill, invoked at the pipeline's matrix and test steps | From the spec to the tests |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |

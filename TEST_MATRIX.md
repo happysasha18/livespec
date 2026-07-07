@@ -213,6 +213,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
+| M-170 | The showing channel matches the session's seat: local seat opens the rendered window, remote seat sends the same content through its own channel (artifact page / chat), seat detected and the pick said; never a local path handed to a remote reader | INV-67 | string | `test_showing_seat` (red proven against HEAD — the law absent there) | BUILT |
 | M-030 | A landing is reported in one plain-language line (position · what landed · what remains); never a report that only points at internal rows | T-7 | string | process — communicator rules 8/9; milestone audit | TODO |
 | M-092 | Batched questions arrive as ONE decision page (one card per pick, recommendation named, free-form room), answers archived in docs/decisions/ and harvested the same session; never a serialized chat questionnaire, never an answer left un-harvested | E-22 | string | `test_spec_names_decision_page` (SPEC clause + rule-10 mechanics in the shipped communicator SKILL.md) | BUILT |
 | M-099 | Communicator's trigger is narrowed: decisions, landing/milestone reports, problems needing the human's word — with a stated NOT-side (mid-work status lines, internal notes, plain factual answers); never a description that fires on every passing report | T-7 | string | `test_communicator_trigger_narrowed` | BUILT |

@@ -1710,6 +1710,17 @@ class TestProblemLedger(unittest.TestCase):
         readme = re.sub(r"\s+", " ", read("README.md"))
         self.assertIn("test-author", readme, "README missing the new skill")
 
+    def test_showing_seat(self):
+        """Row 168 (M-170, INV-67): the showing channel matches the session's seat —
+        local window vs remote artifact page, detected and said."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-67", "matches the session's seat",
+                       "a local file path handed to a remote reader is a defect"):
+            self.assertIn(needle, spec, "SPEC missing seat-law fact: %s" % needle)
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("picked by the SEAT", "Detect the seat before the first show"):
+            self.assertIn(needle, comm, "communicator missing: %s" % needle)
+
     def test_snapshot_design(self):
         """Row 55 (M-169, E-7): the snapshot design decided — home, manifest,
         advance-at-landed for declared surfaces only, git history as the archive."""

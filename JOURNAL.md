@@ -1971,3 +1971,12 @@ retention closed the open decision: last-only in the working tree, git history a
 older baseline is one checkout away, so a second archive mechanism never exists; heavy surfaces keep
 only their hash in git. The machine itself stays a target: its first mechanical slice rides the
 guardrails scaffold row. Suite 168 green; pack 0.8.70.
+
+## 2026-07-07 ~11:02 — session 23: row 168 landed — the showing channel matches the session's seat
+**What:** his morning question («локально — хтмл, а на удаленке — клод в браузере; распознаёшь?»)
+became law: a locally-seated session opens rendered pages in a browser window; a remotely-seated one
+sends the same content through its own channel (an artifact page or the chat), same passport, same
+round-trip; the seat is detected from what the session can actually reach and the pick is said aloud.
+A local path handed to a remote reader is now a named defect. SPEC v0.15.59; communicator 0.1.37;
+the personal profile's show line marked as the local arm. Suite 169; pack 0.8.71. Field leg open:
+the first real cloud-seated session.
