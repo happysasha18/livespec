@@ -110,36 +110,13 @@ The heartbeat has a second, forward-looking face — the OFFLINE WINDOW (his wor
 
 Together the trail is the session's time accounting: read top to bottom, it answers where the time went in work terms — token and test counts stay bookkeeping [INV-28]. A narration line is chat, not a report: it walks no pre-report walk (the walk scopes to movement-end and milestone reports, a deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out of the content [INV-28]. Working notes marked as the writer's own remain a separate, skippable register; narration is for the reader, and it replaces no report — milestones still get the full one. The law's one home is the communicator (its narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
 
-**Anything handed to the human opens with its passport.** A page opened in his browser at midnight
-either says WHICH project it is and WHETHER it wants him — or it is noise (his 2026-07-06 word, twice
-in one minute: the project's name in the visible content, never only the URL; and "needs your word:
-what, by when" or "just an update, no action"). Every artifact handed or opened — a report page, a
-decision page, a rendered doc — LEADS with that one-line passport, and the chat line announcing it
-carries the same two facts. Home: communicator (the passport rule). [INV-51]
+**Anything handed to the human opens with its passport.** A page that opens in his browser at midnight must say two things: which project it belongs to, and whether it wants him. A page that says neither is noise. His 2026-07-06 word, said twice in one minute: put the project's name in the visible content, never only the URL. Then say what the page needs from him: "needs your word: what, by when", or "just an update, no action". Every artifact you hand or open leads with that one-line passport — a report page, a decision page, a rendered doc alike. The chat line that announces the artifact carries the same two facts. Home: communicator (the passport rule). [INV-51]
 
-**During an away-stretch, windows accumulate — one opening at the end.** When the human has stepped
-away (an overnight loop, an offline window [INV-35]), nothing opens a browser window mid-stretch:
-artifacts accumulate on ONE page — the stretch's decisions/report page — and the stretch's end opens
-that single window once; mid-stretch re-opening is legal only as the SAME page refreshed in place
-(his 2026-07-06 word: «всё-всё-всё открыл бы в конце… если переоткрывать — аккумулировать»). Home:
-communicator (the showing-cadence rule beside the offline window). [INV-52]
+**During an away-stretch, windows accumulate — one opening at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], nothing opens a browser window mid-stretch. Artifacts accumulate on ONE page: the stretch's decisions and report page. The stretch's end opens that single window once. Mid-stretch re-opening is legal only as the SAME page refreshed in place. This is his 2026-07-06 word: he would open everything at the very end, and if anything re-opens mid-stretch it only accumulates onto the same page. Home: communicator (the showing-cadence rule beside the offline window). [INV-52]
 
-**The showing channel matches the session's seat.** A session seated on the human's machine shows a
-rendered artifact as a local page opened in a browser window; a session seated remotely (the agent
-running in the cloud, read through a browser) can open nothing local — the same content goes through
-the remote seat's own channel: an artifact page the host renders for the human, or the chat itself —
-same passport [INV-51], same round-trip. The session detects its seat from what it can actually reach
-(platform, display, whose filesystem) and names the channel it picked; a local file path handed to a
-remote reader is a defect of the exchange, the unopened window's twin. The personal profile's show
-line is the LOCAL seat's arm, never the law itself. (His word 2026-07-07 morning.) [INV-67]
+**The showing channel matches the session's seat.** A session seated on the human's machine shows a rendered artifact as a local page in a browser window. A session seated remotely runs in the cloud and is read through a browser, so it can open nothing local. The same content goes through the remote seat's own channel: an artifact page the host renders for the human, or the chat itself. Either way, same passport [INV-51], same round-trip. The session reads its seat from what it can actually reach — the platform, the display, whose filesystem — and names the channel it picked. So a local file path handed to a remote reader is a defect of the exchange, the twin of the window that never opened. The personal profile's show line is the local seat's arm, never the law itself. His word, 2026-07-07 morning. [INV-67]
 
-**The stretch's end is unmissable.** A report that exists but drowns above tool noise was never
-delivered (his 2026-07-07 word after a 17-row night ended in what read to him as silence: «закончил
-вообще непонятно, без ничего»). When a stretch ends — a loop iteration going to sleep, an
-away-stretch closing, a session ending — the LAST rendered thing is one SHORT final line: what closed
-· what's next · what's needed from him · when the agent wakes. The long report lives ABOVE it; the
-final line comes LAST, after every tool call; a page deliverable repeats its passport [INV-51] in
-that line. Delivery, not existence, is the law. Home: communicator. [INV-57]
+**The stretch's end is unmissable.** A report that exists but drowns above tool noise was never delivered. This is his 2026-07-07 word after a 17-row night: the night ended in a way that read to him as nothing at all, unclear, with no closing word. When a stretch ends — a loop iteration going to sleep, an away-stretch closing, a session ending — the LAST rendered thing is one SHORT final line. It carries four fields: what closed, what's next, what's needed from him, and when the agent wakes. The long report lives ABOVE it. The final line comes LAST, after every tool call. A page deliverable repeats its passport [INV-51] in that final line. Delivery, not existence, is the law. Home: communicator. [INV-57]
 
 **A review surface shows its sources and takes his pen.** Anything shown FOR REVIEW — a dossier, a
 claims page, a draft with assertions — carries per-claim PROVENANCE: each claim chipped as read from
