@@ -1606,6 +1606,25 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("kill-list scanner", "KILL_LIST.template.md"):
             self.assertIn(needle, g, "guardrails README missing: %s" % needle)
 
+    def test_onboarding_step(self):
+        """Row 54 (M-165, B-3): the pack learns WHO it works with at setup —
+        the profile found or founded, every line on the human's word."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("B-3", "learns WHO it is working with",
+                       "a proposed line is accepted or dropped one at a time",
+                       "templates/profile.template.md"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("found or founded at setup", "profile.template.md",
+                       "never onboards anyone"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+        adopt = re.sub(r"\s+", " ", read(os.path.join("adopt", "ADOPT.md")))
+        for needle in ("Who am I working with", "profile.template.md"):
+            self.assertIn(needle, adopt, "ADOPT.md missing: %s" % needle)
+        t = read(os.path.join("templates", "profile.template.md"))
+        for needle in ("on the human's word", "placeholder", "SPEC INV-9", "settings ladder"):
+            self.assertIn(needle, t, "template missing: %s" % needle)
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.20
+  version: 0.1.21
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -177,6 +177,15 @@ the human's word, journaled like any other override. Proactivity mode and trust 
 only on the human's word — the agent may propose, never set (SPEC INV-9). Profiles are re-read at the same
 freshness points as skills (rule 8). A profile line the current pack does not recognize is ignored ALOUD —
 named once in the session's next report — never silently dropped, never an error.
+
+**The profile is found or founded at setup (SPEC B-3).** At founding, at adoption's orient, and at the
+first session on a new machine or with a new human, the pack looks for the personal profile before the
+founding questions resolve: found ⇒ loaded and said aloud; absent ⇒ an OFFER to create it from
+`templates/profile.template.md` — the human tells about themselves and may name sources for the pack
+to read and propose from; every line lands on the human's word, a declined proposal is dropped (INV-9
+caps it: mode and trust move only on their word). A declined step runs the session on package
+defaults, said aloud, and the offer returns at the next setup. A worker session never onboards
+anyone — its brief carries its setting lines (SPEC ACT-3).
 
 The personal layer has ONE home — the profile; the machine-global instruction file (e.g. `~/.claude/CLAUDE.md`)
 is a thin LOADER: the pointer that loads the profile plus only the bootstrap lines that must hold before

@@ -47,6 +47,13 @@ Done when: the sweep was offered and either declined or executed exactly as appr
 
 ## Phase 1 — Orient: read everything first (SPEC A-1)
 
+**Who am I working with (SPEC B-3) — the first breath of orient:** before any founding question
+resolves, look for the human's personal profile (`~/.claude/live-spec/profile.md`). Found ⇒ load it
+and say so — the file, plus any line ignored aloud (SPEC E-13). Absent ⇒ offer to create it from
+`templates/profile.template.md`: the human tells about themselves and may name sources to read; every
+line lands on their word, and a declined proposal is dropped. Declining the whole step runs the
+session on package defaults, said aloud. A worker session never runs this step (SPEC ACT-3).
+
 **Founding questions ride the orient (SPEC B-2 via A-1):** before the digest closes, the run asks —
 or reads from the human's profile — the answers that shape everything downstream, personal-vs-reusable
 first, and **what kind of project this is** — book · backend service · static site · fullstack app ·

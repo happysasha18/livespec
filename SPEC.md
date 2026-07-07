@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.53, 2026-07-07)
+# live-spec — SPEC (v0.15.54, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -791,6 +791,22 @@ micro-decision [INV-5] at its most expensive. Adoption owes the same questions a
 the pointer. (Born 2026-07-05: a fresh project was founded as "a personal agent for three artifacts" —
 the reusable-product question was never asked, and the human's standing answer was reusable.) [B-2]
 
+**The pack learns WHO it is working with before any founding question resolves.** At founding, at
+adoption's orient [A-1], and at the first session on a new machine or with a new human, one step runs
+first: look for the personal profile at its one home [E-13]. When the profile exists, it is loaded and
+SAID — the file named, any unrecognized line ignored aloud under the ladder's own law [E-13]. When it
+is absent, the pack OFFERS to create it from the pack's template (`templates/profile.template.md`): the
+human tells about themselves — chat and docs language, how to address them, what they do, their own
+vocabulary — and may also name sources for the pack to read (their repos, their docs, a public page);
+from a named source the pack PROPOSES lines. Every line lands on the human's word: a told line is
+written faithfully, a proposed line is accepted or dropped one at a time, and a dropped proposal stays
+dropped [INV-9 is this rule's ceiling: mode and trust move only on their word]. The human may decline
+the whole step — the session then runs on package defaults and says so, and the offer returns at the
+next project setup, never mid-work. The step stands down where it has nothing to do: once the profile
+exists, a later session simply loads it; and a worker session never onboards anyone — its brief
+carries the setting lines it needs [ACT-3]. The template seeds the profile with every placeholder
+marked as a placeholder, so nothing in it can pass for the human's word. [B-3]
+
 **The project knows what KIND of thing it is — and the kind evolves.** Beside personal-vs-reusable,
 founding asks the second shaping question: **what is this project** — a book · a backend service · a
 static site · a fullstack app · a CLI · a skill pack — one plain line, recorded in the HOST profile
@@ -1547,6 +1563,7 @@ meaning, this table is only the map.
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
+| B-3 | onboarding: the profile found or founded at setup, every line on the human's word | Bootstrap |
 | A-0 | codes name meanings, VCS-gate runs first | Adoption |
 | A-1 | orient: read everything first; owes the founding questions [B-2] | Adoption step 1 |
 | A-2 | inventory code + surfaces + docs | Adoption step 2 |

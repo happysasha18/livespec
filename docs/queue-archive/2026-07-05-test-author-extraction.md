@@ -1,3 +1,5 @@
+> Archived 2026-07-07 ~08:19 (session 23) at intake: harvested into ROADMAP row 163 (test-author skill).
+
 # Wish: extract the test methodology into the pack — a `test-author` skill (build-pipeline steps 4–5)
 
 From: the track-coach session (Fable), 2026-07-05 late night, at the project's close for promotion.

@@ -1,11 +1,15 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-07 ~00:14, session 22 — TWENTY-FIVE rows landed tonight: 109 · 146 · 147 · 106 ·
-110 · 114 · 115 (three parallel lanes) · 149–152 · 111–113 (serial lanes) · 14 (CI mirror LIVE, first catch fixed, run №2 GREEN) · 153 (park-and-flow) · 154 (unmissable stretch-end) · 158+160+162 (promoter harvest: frozen text · no-question-twice · mined proposals))
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.65, SPEC v0.15.53, suite 162 green; CI live. The promoter audit fully harvested (8/8).** Verify on
+## LIVE STATE (2026-07-07 ~08:35, session 23 — morning with him: row 54 build legs LANDED (onboarding,
+B-3, worker-run bundle, one brief defect caught by the worker's correct STOP); rows 163 (test-author
+extraction) + 165 (skill discovery at setup/struggle + borrowing practice) QUEUED; inbox emptied (the
+commentable-review wish was already row 161's landing — archived with pointer); row 148 at ROUND 4.)
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.66, SPEC v0.15.54, suite 163 green; CI live.** Verify on
 resume: `git status -sb` + suite (root `pytest` legal since row 106). **Anthropic pulls FABLE from
 Claude Code 2026-07-07 (API-only after; return expected); live-spec runs on Fable only — if resuming
-on another model, ASK Alexander first.**
+on another model, ASK Alexander first.** His morning language laws (profile, playbook repo): scissors
+banned FOREVER (`language.no-scissors`), native-plain doc English, calque sharpening (industry-standard
+words in narration). Clock-fence catch #21 (invented stamp blocked at commit).
 - **OVERNIGHT LOOP (his ~22:37 word):** without-him rows through the pipeline to landing+push, one at
   a time (or lanes); his-only questions ride the DECISIONS page; cumulative report each iteration,
   final before 08:00; **NO browser windows till the morning open** (his ~23:37 word, row 152) — the
@@ -34,14 +38,15 @@ on another model, ASK Alexander first.**
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **Row 148 round 4 (s23 morning):** round 3 verdict ~08:11 — STRUCTURE APPROVED, language killed
-   (scissors banned FOREVER → profile `language.no-scissors` + `language.native-english`, memory
-   updated, playbook pushed); round-4 page = same file 2026-07-07-morning-round3.html rewritten in
-   plain native English, refreshed in place (he reloads the open tab); WATCH ~/Downloads for
-   live-spec-decisions-2026-07-07-round3.json — on arrival: read back, archive, harvest into row 148,
-   then the whole-doc rewrite (anchor sets identical, FULL prover re-prove; the genre law also lands
-   in spec-author's "How it reads" with the rewrite). Borrowing legal: BMAD MIT, EARS published
-   method, no text copied.
+1. **Row 148 round 4 (s23):** genre approved, language rewritten plain (round-3 kills recorded); the
+   round-4 page docs/decisions/2026-07-07-morning-round3.html awaits his word — WATCH ~/Downloads for
+   live-spec-decisions-2026-07-07-round3.json (a Monitor is armed this session) — on arrival: read
+   back, archive, harvest into row 148, then the whole-doc rewrite (anchor sets identical, FULL
+   prover re-prove; the use-case genre law lands in spec-author's "How it reads" with it).
+2. **Next without-him rows ready:** 165 (skill discovery — his fresh word, full text in the row) ·
+   163 (test-author extraction) · 55 (snapshot design, retention decided with it) · 47 (feedback
+   skill design). Row 54's field leg + rows 134+141 · 143 · 144 · 140 · 117 · 129 · 133 ride real
+   windows with him.
 3. Field legs riding real windows: rows 134+141 · 143 · 144 · 140 · 117 · 129 · 133.
 4. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96 feedback
    family · track-coach formal adopt · tlvphoto lessons through one real feature.

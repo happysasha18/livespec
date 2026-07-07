@@ -1,3 +1,5 @@
+> Archived 2026-07-07 ~08:19 (session 23) at intake: already covered by ROADMAP row 161 (landed 2026-07-07 ~01:31 — communicator 0.1.35 rule 22, SPEC INV-64): per-claim SOURCE chips + commentable review surfaces + JSON round-trip. No new row needed.
+
 # Wish (from promoter session, 2026-07-06) — communicator: work shown COMMENTABLE, with per-claim provenance
 
 Learned on the promoter/track-coach обкатка, drew a sharp owner reaction ("открой мне всегда с

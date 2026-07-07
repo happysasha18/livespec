@@ -1900,3 +1900,27 @@ promoter's scissors returning into the headline after the ban was «written on t
 stays with the cuts-stay-cut rule; this is its mechanism. M-164, red vs HEAD, inventory entry, suite
 162, pack 0.8.65. Short-form record. **The promoter audit is fully harvested: eight lessons, eight
 landings (149-through-162 family) in one night.**
+
+## 2026-07-07 ~08:35 — session 23 morning: row 54 landed (build legs), rows 163+165 queued, row 148 rounds 3–4 (his eye in)
+**Row 54 (onboarding):** the pack now learns WHO it works with before any founding question resolves —
+SPEC v0.15.54 B-3 + ADOPT's first-breath-of-orient paragraph + the base rulebook's found-or-founded
+clause + templates/profile.template.md (every placeholder marked so nothing passes for the human's
+word; INV-9 is the ceiling). B-3 → attach. `test_onboarding_step` red-proven against HEAD, then green;
+suite 163; base 0.1.21, pins swept; pack 0.8.66. The whole mechanical bundle ran on a Sonnet worker,
+which correctly STOPPED on one brief defect (the requirement's test row belonged in the attach
+component's section; the brief had placed it by number order) — the senior placed it; the stop itself
+is the worker-contract law working. Field leg OPEN: first real run rides the next real setup.
+**Why now:** his overnight loop word — take without-him rows to landing.
+**Rows 163 + 165 queued from the morning's two harvests:** the test-methodology extraction into a
+test-author skill (inbox from track-coach's close, archived with pointer), and skill discovery at
+setup + at every struggle (promoter audit: five review rounds died on failures a public skill,
+stop-slop, already carried as a checklist — with the borrowing practice: invoke found skills as-is,
+paraphrase + credit for folded lessons, verbatim only under license). The inbox wish on commentable
+review surfaces was already covered by row 161's night landing — archived with a pointer, no new row.
+**Row 148 (spec readability), his morning eye:** round 2 killed (~07:59 — the rule-book genre out; bar
+= use-case genre per BMAD+Kiro, both formats researched); round 3 killed on language (~08:11 —
+STRUCTURE approved; scissors banned FOREVER globally → profile law, native-plain English named);
+round 4 rewritten in place, awaiting his word. Two more of his morning words went to the profile:
+the calque sharpening (narration in the industry's standard vocabulary, coined terms stay in docs) —
+after «ломаный ассоциативный» hit my own narration line; and the clock fence caught an invented
+stamp mid-commit (catch #21) — the fence blocked the commit until the stamp was read off `date`.

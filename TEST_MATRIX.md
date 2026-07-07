@@ -254,6 +254,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-079 | Founding questions asked or profile-read at bootstrap AND owed at adopt orient (A-1 pointer); personal-vs-reusable first; never a founding answer inferred from examples | B-2 | string | `test_spec_states_founding_and_designsync` | BUILT |
+| M-165 | Onboarding at setup: SPEC states the who-am-I-working-with step (B-3: profile found ⇒ loaded and said; absent ⇒ offer from the template, every line on the human's word), the base rulebook and ADOPT carry it, the profile template ships with placeholders marked; never a profile line written without the human's word, never a worker running the step | B-3 | string | `test_onboarding_step` (red proven against HEAD — clause and template absent there) | BUILT |
 | M-035 | The host owns its docs and a `.live-spec/` folder (profile, checkpoints, installed versions); never pack state scattered into host folders | E-1 | string | `test_host_profile_recorded_override` (dogfood instance) | BUILT |
 | M-036 | The attic archives superseded host files with a manifest line; never deletion | E-9 | string | `test_adopt_phases_cite_spec` (procedure text; behavior = next adopt run) | BUILT |
 | M-037 | No adopt or rework run deletes a host file; authored content never bypasses the attic | INV-7 | string | next real adopt run journals it; the E-6 host-facing gates (rows 55+) long-term | TODO |
