@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>live-spec — spec style, round 3 (use cases)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 -apple-system, "Segoe UI", sans-serif; max-width: 880px;
+         margin: 2rem auto 4rem; padding: 0 1.2rem; color: #1c1c1e; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #e6e6e8; background: #161618; } }
+  .passport { border: 2px solid #b4562a; border-radius: 10px; padding: .9rem 1.1rem; margin-bottom: 1.6rem; }
+  .passport b { font-size: 1.05rem; }
+  .card { border: 1px solid #8884; border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1.4rem 0; }
+  .card h2 { margin-top: 0; font-size: 1.15rem; }
+  blockquote { border-left: 3px solid #8886; margin: .6rem 0; padding: .1rem .9rem; opacity: .95; }
+  details { margin: .7rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  label.opt { display: block; margin: .45rem 0; padding: .5rem .7rem; border: 1px solid #8884;
+              border-radius: 8px; cursor: pointer; }
+  label.opt:has(input:checked) { border-color: #b4562a; background: #b4562a14; }
+  textarea { width: 100%; min-height: 4.5rem; margin-top: .6rem; font: inherit; padding: .5rem;
+             border-radius: 8px; border: 1px solid #8886; background: transparent; color: inherit; }
+  button { font: inherit; font-weight: 600; padding: .6rem 1.2rem; border-radius: 9px;
+           border: 1px solid #b4562a; background: #b4562a; color: #fff; cursor: pointer; margin-top: 1rem; }
+  .muted { opacity: .75; font-size: .92rem; }
+  .kills { font-size: .92rem; opacity: .85; border: 1px dashed #8886; border-radius: 8px; padding: .6rem .9rem; }
+  .story { font-style: italic; }
+  .crit li { margin: .35rem 0; }
+</style>
+</head>
+<body>
+
+<div class="passport">
+  <b>Проект: live-spec · стиль спеки, раунд 3 (утро 07.07.2026)</b><br>
+  <b>НУЖНО ТВОЁ СЛОВО — годится ли жанр.</b><br>
+  <span style="opacity:.85">Твой утренний вердикт: второй раунд плох, писать надо языком юзкейсов и
+  описаний фич, вдохновляясь BMAD и Kiro. Я изучил оба формата (шаблоны эпиков и историй BMAD,
+  требования Kiro с критериями «КОГДА… — СИСТЕМА ДОЛЖНА…») и переписал те же две секции в этом
+  жанре. Правила внутри не изменились — только форма изложения.</span>
+</div>
+
+<div class="kills">
+  Убитое в прошлых раундах (не всплывёт): формулировки первого образца целиком; наши внутренние
+  словечки в тексте для человека; пустые связки-открывашки; <b>и сам жанр «свода правил» — пронумерованные
+  законы от лица владельца ремесла (раунд 2, твоё утреннее слово)</b>. Новая планка: жанр юзкейса —
+  история пользователя, короткий рассказ, проверяемые критерии приёмки.
+</div>
+
+<p>Каждая фича в новом жанре несёт четыре части: <b>историю пользователя</b> (кто, что хочет, зачем) ·
+<b>короткий рассказ</b>, как это выглядит вживую · <b>критерии приёмки</b> — нумерованный список, каждый
+пункт одно проверяемое поведение · <b>почему это существует</b> — случай, который правило родил, двумя
+предложениями в конце. Коды остаются тихими якорями в хвосте.</p>
+
+<div class="card" id="sampleA">
+  <h2>Образец A — «Утверждённый прототип — эталон вида»</h2>
+  <p class="muted">Как сейчас в спеке (плотная проза с историей внутри правила):</p>
+  <blockquote><p><b>An approved look lives in its artifact — the clause that encodes it points there,
+  and the build looks at it.</b> Text cannot carry a feel: a spec clause born of an approved visual
+  prototype was once rebuilt from its own prose and shipped a cheap look-alike — 75 tests green,
+  because tests derived from a misread spec prove the misreading (tlvphoto's door and gallery,
+  2026-07-05). So when the human approves a sketch as the look, the prototype becomes the <b>norm</b>
+  for look and feel, and one law with four arms guards it…</p></blockquote>
+
+  <p class="muted">Раунд 3 — жанр юзкейса:</p>
+  <blockquote>
+    <p><b>Feature: An approved prototype is the design reference</b></p>
+    <p class="story"><b>User Story:</b> As the product owner, I want the prototype I approved — not
+    the prose describing it — to be what the feature is built and judged against, so that what ships
+    looks like what I said yes to.</p>
+    <p>You look at a rendered sketch and say "yes — this is the door." From that word on, the sketch
+    itself carries the look: the spec points at a frozen copy of it, the builder opens it before
+    writing a line, and review compares the result to it — never to anyone's reading of the text.</p>
+    <p><b>Acceptance Criteria:</b></p>
+    <ol class="crit">
+      <li>WHEN the owner approves a prototype as the look THEN a copy SHALL be frozen under
+      <code>docs/norms/</code> with a short note: what it is, when it was approved, which sketch it
+      came from.</li>
+      <li>WHEN a requirement is born from an approved prototype THEN the requirement SHALL end with a
+      pointer to the frozen copy (<code>norm: docs/norms/door.html</code>) — never to a working
+      sketch, which may still change or be deleted.</li>
+      <li>WHEN a builder picks up such a requirement THEN they SHALL open the reference before
+      building and record one line: how the plan differs from it.</li>
+      <li>IF the reference was never opened THEN review SHALL reject the work; the final check SHALL
+      judge look and feel against the same reference.</li>
+      <li>WHILE a "mockup first" entry condition stands on a task, a general "go ahead and build"
+      SHALL NOT cancel it — only an explicit cancellation naming it SHALL.</li>
+    </ol>
+    <p><b>Why this exists:</b> a gallery was once rebuilt from its text description alone, without
+    opening the approved prototype. All 75 tests passed — they had been derived from the same misread
+    text — and what shipped looked nothing like what was approved. (tlvphoto, 2026-07-05) [INV-43]</p>
+  </blockquote>
+</div>
+
+<div class="card" id="sampleB">
+  <h2>Образец B — «Баг режет очередь»</h2>
+  <p class="muted">Как сейчас в спеке:</p>
+  <blockquote><p>A bug may interrupt the wish in-work. The interrupted wish moves to <b>parked</b>: a
+  checkpoint is written (failing test names if red, hypothesis, touched files — nothing red is ever
+  committed), the bug takes the lane, and the parked wish resumes as the immediate next landing —
+  ahead of ANY queued wish, a quick win included: a bubble [T-11] jumps only fresh queued wishes,
+  never a resume…</p></blockquote>
+
+  <p class="muted">Раунд 3 — жанр юзкейса:</p>
+  <blockquote>
+    <p><b>Feature: A bug takes the lane; parked work returns first</b></p>
+    <p class="story"><b>User Story:</b> As the product owner, I want a bug in the shipped product
+    fixed ahead of everything, without losing the feature that was mid-build, so that the product
+    heals immediately and no work evaporates.</p>
+    <p>Mid-feature, you report: "the card is broken on the phone." The feature parks at a checkpoint,
+    the bug takes the lane, and once the last waiting bug is fixed, the parked feature comes back
+    first — ahead of the whole queue.</p>
+    <p><b>Acceptance Criteria:</b></p>
+    <ol class="crit">
+      <li>WHEN a bug report arrives while a feature is mid-build THEN the feature SHALL park with a
+      checkpoint — failing test names, the current hypothesis, touched files — and red work SHALL NOT
+      be committed.</li>
+      <li>WHILE a bug is being fixed, nothing SHALL interrupt it — a newly arriving bug waits,
+      whatever its priority.</li>
+      <li>WHEN several bugs wait THEN they SHALL queue critical-first; equals order by arrival.</li>
+      <li>WHEN no bug is waiting THEN parked features SHALL resume ahead of the entire regular
+      queue — nothing jumps a resume, quick wins included.</li>
+      <li>IF several lanes were parked at once THEN each SHALL resume from its own checkpoint, in the
+      order they were due to land.</li>
+    </ol>
+    <p>At most one feature is parked per lane. [T-9, T-11, T-18]</p>
+  </blockquote>
+</div>
+
+<div class="card" id="q1">
+  <h2>Вопрос 1 — жанр</h2>
+  <label class="opt"><input type="radio" name="q1" value="go"> (a) Жанр годится — переписывай весь
+  документ в нём <b>(рекомендую)</b></label>
+  <label class="opt"><input type="radio" name="q1" value="adjust"> (b) Ближе, но поправить — напишу
+  ниже, что именно</label>
+  <label class="opt"><input type="radio" name="q1" value="no"> (c) Всё ещё не то — напишу ниже</label>
+  <textarea id="q1note" placeholder="Твоё слово свободной формой"></textarea>
+</div>
+
+<div class="card" id="q2">
+  <h2>Вопрос 2 — строгость критериев</h2>
+  <p>Критерии приёмки можно писать двумя голосами. Строгий (как в образцах выше, стиль Kiro):
+  «WHEN a bug arrives THEN the feature SHALL park…» — однозначно и проверяемо машиной, но звучит
+  формально. Обычный (стиль BMAD): «A bug arriving parks the feature at a checkpoint; red work is
+  never committed.» — читается легче, проверяемость та же, пока каждый пункт несёт одно
+  поведение.</p>
+  <label class="opt"><input type="radio" name="q2" value="plain"> (a) Обычные предложения, один пункт —
+  одно поведение <b>(рекомендую: та же проверяемость, легче читать)</b></label>
+  <label class="opt"><input type="radio" name="q2" value="ears"> (b) Строгий WHEN/THEN/SHALL как в
+  образцах</label>
+  <textarea id="q2note" placeholder="Твоё слово свободной формой"></textarea>
+</div>
+
+<button onclick="saveJSON()">Сохранить JSON с ответами</button>
+<p class="muted">Файл: <code>live-spec-decisions-2026-07-07-round3.json</code> — я подберу его из
+Downloads, заархивирую и внесу ответ в очередь.</p>
+
+<script>
+function saveJSON() {
+  const p1 = document.querySelector('input[name="q1"]:checked');
+  const p2 = document.querySelector('input[name="q2"]:checked');
+  const data = {
+    project: "live-spec",
+    page: "2026-07-07-morning-round3",
+    answeredAt: new Date().toISOString(),
+    decisions: [
+      { id: "round3-genre-row148",
+        question: "Use-case genre sample (round 3) — go / adjust / no?",
+        choice: p1 ? p1.value : null,
+        note: document.getElementById('q1note').value || null },
+      { id: "round3-criteria-voice-row148",
+        question: "Acceptance-criteria voice — plain sentences or strict WHEN/THEN/SHALL?",
+        choice: p2 ? p2.value : null,
+        note: document.getElementById('q2note').value || null }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "live-spec-decisions-2026-07-07-round3.json";
+  a.click();
+}
+</script>
+</body>
+</html>

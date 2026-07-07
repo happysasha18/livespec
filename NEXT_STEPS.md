@@ -18,8 +18,11 @@ on another model, ASK Alexander first.**
   typed JSON on red) · 115 resume-file cap (INV-48; this file ≤100 lines, checked by suite).
 - **His midnight words now LAW (rows 149–152, journal has the tale):** lanes by dependency graph
   (INV-49) · entry-symmetry faces (INV-50; inbox wish archived) · artifact passport (INV-51) ·
-  windows accumulate to one end-of-stretch opening (INV-52). Row 148 (spec readability) WAITS HIS
-  MORNING EYE — the sample on the decisions page; kill-list recorded there.
+  windows accumulate to one end-of-stretch opening (INV-52). Row 148 (spec readability): round-2 sample
+  KILLED by his morning word (07-07 ~07:59 — rule-book genre out; bar = USE-CASE / feature-description
+  genre, BMAD+Kiro studied); ROUND-3 page built s23 (user story + narrative + acceptance criteria,
+  same two sections) — watching Downloads for live-spec-decisions-2026-07-07-round3.json. Borrow-legality
+  checked: BMAD = MIT; the WHEN/THEN-SHALL form is EARS (published method); shapes borrowed, no text copied.
 - **Field legs OPEN (need his eye / host windows, not tonight):** 134+141 zero-drift session (catches
   13–18 tonight: mid-turn stamps; fence blocked #15/#17/#18) · 143 budgets clause first host landing ·
   144 task list plain by his eye · 140 first budget-named session · 117/129/133 first real runs.
@@ -31,14 +34,12 @@ on another model, ASK Alexander first.**
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. PROMOTER AUDIT DONE (read-only, honored): eight lessons → rows 155–162; trio 158+160+162 LANDED
-   ~01:04. MORNING FINALE DONE ~07:42: final cumulative report given, the decisions page opened ONCE (rows
-   152+154 walked by deed). The loop now WATCHES ~/Downloads for live-spec-decisions-2026-07-07.json
-   (his row-148 sample verdict) — on arrival: read back, archive to docs/decisions/, harvest into
-   row 148 the same session (communicator's round-trip law). Then morning finale ~07:40 (final report + ONE
-   page opening + the unmissable final line). Budget cut possible: all commit-fresh, resume here.
-2. **Morning (his word):** row 148 sample verdict (decisions page + JSON round-trip) · the cumulative
-   report before 08:00 · one window opened at the end (row 152's deed).
+1. **Row 148 round 3 (s23 morning):** his verdict killed round 2; round-3 page
+   docs/decisions/2026-07-07-morning-round3.html (use-case genre + criteria-voice question) opened to
+   him; WATCH ~/Downloads for live-spec-decisions-2026-07-07-round3.json — on arrival: read back,
+   archive, harvest into row 148, then the whole-doc rewrite (anchor sets identical, FULL prover
+   re-prove). His open question answered in chat: why round 2 missed (genre anchor, own lesson recorded);
+   borrowing legal (BMAD MIT, EARS published method, no text copied — scratchpad template copies stay OUT of the repo).
 3. Field legs riding real windows: rows 134+141 · 143 · 144 · 140 · 117 · 129 · 133.
 4. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96 feedback
    family · track-coach formal adopt · tlvphoto lessons through one real feature.

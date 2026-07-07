@@ -16,6 +16,11 @@ Kill-list of this artifact (his review rounds, INV-42):
   built»: a human text says task, feature, work in progress; internal nicknames stay internal) and
   **filler openers — KILLED** («Here is exactly what happens» is noise; a rule starts with the rule).
   Both applied to round 2 below.
+- Round 2 (2026-07-07 ~07:59, morning verdict): **the rule-book genre itself — KILLED** («это все
+  равно плохо»). Numbered laws in an owner's voice still read as regulation, not product. The bar he
+  set: write in the language of USE CASES and FEATURE DESCRIPTIONS — the reader follows a person doing
+  something and what the product does for them; study BMAD-METHOD and Kiro spec formats (user stories,
+  acceptance criteria) for the shape. Round 3 = use-case-genre sample.
 
 ---
 
