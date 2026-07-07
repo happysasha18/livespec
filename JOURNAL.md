@@ -1999,3 +1999,30 @@ green, push-ready.
 **Why:** the shopfront is the first thing a stranger reads; a five-skill list and a 0.8.0 pin were
 quietly lying about the pack. The fix follows the row-167 lesson to its metadata sibling: complete
 lists live where the parity check reads, everything else describes without counting.
+
+## 2026-07-07 ~11:47 — session 24: row 47 lands — the pack learns to LISTEN (feedback-intake, the eighth skill)
+**What:** the "шикарная вещь" wish from 2026-07-05 shipped whole: a new scenario "Sending feedback in"
+(SPEC v0.15.60, E-28/T-20/INV-68) and the **feedback-intake** skill (0.1.0) — anything a person hands
+back (a remark, an answer, a screenshot, a dropped file, a relayed user report) takes exactly one of
+five routes, each citing the law that already owns it, and lands the same session in that route's
+home. The routes that had no home get one: **FEEDBACK.md**, the append-only field-evidence ledger
+beside the queue — the first honest slice of INV-21's reading machinery (plugins and aggregation stay
+[target] under row 48). The inbox door widened from wishes to items (wish or feedback), harvest
+destination by route, the one-commit sweep law kept.
+**The prover earned its keep:** the draft promised a ledger line for EVERY item — double bookkeeping
+against the queue, the archive, and the journal (the INV-61 drift risk); the fold gave routes their
+own homes and the ledger only what was homeless. The inbox contradiction (harvest says "into a queue
+row") was caught as a fence I had wrongly declared and re-authored properly.
+**The eval was honestly red:** the bare Sonnet arm archived the decision, fixed the typo, owned the
+workshop warning — a strong floor — but scattered field evidence (a vague friend-remark became queue
+spam, a visitor's praise a journal note), named no sweep-commit law, no append-date discipline. The
+with-skill arm routed all six by the table.
+**Also serviced in passing:** the count-drift class (rows 167/169's family) swept again — SPEC header
+"six skills", README "The six skills" heading, two seam cells; and test-author's architecture pin
+label lied about its vicinity (the gate's standing DRIFT warning since yesterday) — label fixed, pin
+gate fully clean for the first time today.
+**Delegation:** the row-47 context dump and both eval arms ran on Sonnet workers (~25 min of senior
+time saved); the footer/README edits stayed on the senior — smaller than their brief.
+**Why:** decision pages carry work out; until today nothing owned what comes BACK. Now the exchange
+has both halves, and success measures have a place where real signals can accumulate — row 96's first
+loop can run on a real project.

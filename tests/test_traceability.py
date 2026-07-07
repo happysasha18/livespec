@@ -844,6 +844,52 @@ class TestPluginMetadata(unittest.TestCase):
                             % (rel, sorted(set(skills) - named)))
 
 
+class TestFeedbackIntake(unittest.TestCase):
+    """Row 47 (M-172..174, E-28/T-20/INV-68): the intake skill ships, every route has a
+    home, and the never-lost law agrees across its three surfaces."""
+
+    def skill(self):
+        return read(os.path.join("skills", "feedback-intake", "SKILL.md"))
+
+    def test_feedback_intake_ships(self):
+        body = self.skill()
+        head = "\n".join(body.splitlines()[:8])
+        self.assertIn("name: feedback-intake", head, "frontmatter lost its name")
+        self.assertIn("version:", head, "frontmatter lost its version")
+        flat = re.sub(r"\s+", " ", body)
+        for channel in ("Spoken or typed", "A comment on something shown", "A dropped file"):
+            self.assertIn(channel, flat, "skill lost a channel: %s" % channel)
+        self.assertIn("FEEDBACK.md", flat, "skill lost the ledger's name")
+        for part in ("when it arrived", "who handed it in", "which channel",
+                     "what it concerns", "where it went"):
+            self.assertIn(part, flat, "ledger line shape lost: %s" % part)
+
+    def test_feedback_routes_have_homes(self):
+        flat = re.sub(r"\s+", " ", self.skill())
+        for route, home in (("WISH", "queue row"), ("FIXED", "journal"),
+                            ("CLOSES", "archive"), ("FIELD EVIDENCE", "ledger"),
+                            ("workshop noise", "problem ledger")):
+            self.assertIn(route, flat, "routing table lost the %s route" % route)
+            self.assertIn(home, flat, "route %s lost its home %s" % (route, home))
+        self.assertIn("inbox sweep", flat, "the sweep fire-moment is gone")
+        self.assertIn("never on the agent's own output", flat.lower(),
+                      "the never-fires side is gone")
+        self.assertIn("never opens a queue row on its own judgment", flat.lower(),
+                      "the wish-door boundary is gone")
+
+    def test_feedback_never_lost_in_both_homes(self):
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        self.assertIn("| INV-68 |", spec, "SPEC index lost INV-68")
+        self.assertIn("route's own home", spec, "SPEC lost the route-homes law")
+        skill = re.sub(r"\s+", " ", self.skill())
+        for phrase in ("one echo per item", "appends its date", "only the assigned session"):
+            self.assertIn(phrase, skill.lower(), "skill lost the never-lost clause: %s" % phrase)
+        inbox = re.sub(r"\s+", " ", read(os.path.join("inbox", "README.md")))
+        self.assertIn("wishes and feedback", inbox, "inbox README still speaks wishes only")
+        self.assertIn("the home its route owns", inbox,
+                      "inbox README still harvests everything into rows")
+
+
 class TestTargetOwnership(unittest.TestCase):
     """Row 64 (M-095): SPEC S-0 mechanized. Every [target]-marked index fact maps to a still-open
     queue row (the map below is declared HERE, self-closing: a new [target] without a map entry is
@@ -1730,7 +1776,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 163 (M-167, E-27): the test method's one home — the test-author
         skill, wired from the pipeline's matrix and test steps."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("E-27", "six working skills", "test-author"):
+        for needle in ("E-27", "the working skills (spec-author", "test-author"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         skill = re.sub(r"\s+", " ", read(os.path.join("skills", "test-author", "SKILL.md")))
         for needle in ("The level ladder", "Red first, proven", "Pin the skip-set",

@@ -1,11 +1,22 @@
 {
   "name": "live-spec",
-  "version": "0.8.72",
+  "version": "0.8.73",
   "description": "Living-spec methodology pack: skills and guardrails that take every change through spec, prove, architecture, tests, and code with formal-verification thinking.",
   "icon": ".claude-plugin/icon.png",
-  "author": { "name": "Alexander Abramovich", "url": "https://github.com/happysasha18" },
+  "author": {
+    "name": "Alexander Abramovich",
+    "url": "https://github.com/happysasha18"
+  },
   "homepage": "https://github.com/happysasha18/live-spec",
   "repository": "https://github.com/happysasha18/live-spec",
   "license": "MIT",
-  "keywords": ["spec", "specification", "product-spec", "formal-verification", "methodology", "pipeline", "prover"]
+  "keywords": [
+    "spec",
+    "specification",
+    "product-spec",
+    "formal-verification",
+    "methodology",
+    "pipeline",
+    "prover"
+  ]
 }

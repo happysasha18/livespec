@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.59, 2026-07-07)
+# live-spec — SPEC (v0.15.60, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -6,7 +6,7 @@
 > Restructured use-case-first 2026-07-04 (queue row 22) under an anchor-set guard: v0.4 carries exactly the
 > anchor set of v0.3 — the shape changed, no rule was lost.
 
-**Current vs target.** Shipped today: the six skills (the base rulebook and the five working ones), the
+**Current vs target.** Shipped today: the skills (the base rulebook and its working skills), the
 templates, the adoption procedure text, the inbox, the skill evals with their run records, this spec and
 queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
@@ -24,12 +24,13 @@ its pins became real. [S-0]
 A package a software project attaches to — at the start or in the middle — to work by one discipline:
 wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
 interrupted only for decisions that are genuinely theirs. The package is a **base skill** — the pack's
-shared rulebook and default settings [E-12] — plus six working skills (spec-author, product-prover,
-build-pipeline, test-author, communicator, publish), document templates, an adoption procedure, and a set of
-mechanical guardrails a project instantiates.
+shared rulebook and default settings [E-12] — plus the working skills (spec-author, product-prover,
+build-pipeline, test-author, communicator, publish, feedback-intake), document templates, an adoption
+procedure, and a set of mechanical guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
-registry, inbox, and a `.live-spec/` folder (profile, checkpoints, installed-skill versions). [E-1]
+registry, inbox, feedback ledger, and a `.live-spec/` folder (profile, checkpoints, installed-skill
+versions). [E-1]
 
 ## Throwing a wish
 
@@ -625,6 +626,75 @@ about the absorber's shape, not the need) — a superseded wish never dies by po
 
 What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface
 = one name, everywhere. [E-4]
+
+## Sending feedback in
+
+You look at what shipped and something occurs to you — a reaction, an answer, a screenshot with a red
+circle, a log file. **Feedback** is anything a person hands back to the project: any size, any moment,
+any channel. The person is usually the host's human; when the host's product has users of its own,
+their reports travel the same road once a session receives them. [E-28]
+
+**The promise: nothing handed in is ever lost, and everything handed in is answered by a route.**
+Every received item lands, the same session, in the home its ROUTE owns — a wish in its queue row, an
+answer in its decision archive and harvested row, a fix in its commit and journal line, workshop noise
+in the problem ledger. The routes that had no home before this section get one: the **feedback ledger
+(FEEDBACK.md)** — an append-only file beside the queue at the host root [default], owning field
+evidence, plain reactions, and wordless drops awaiting their question, one dated line each: when it
+arrived · who handed it in and through which channel · what it concerns on the feature map · the item
+in plain words · where it went. Every arrival is echoed back in one sentence, one echo per item — a
+wish-shaped item's echo IS the wish echo [INV-27]; everything else hears what was heard and where it
+went. A re-mention of an already-recorded item appends its date to the existing line and changes
+nothing else — the problem ledger's own discipline, applied here. [INV-68]
+
+**Three channels, one contract.** [T-20]
+- **Spoken or typed** — a remark in the conversation, or a note in a file the human points at.
+- **A comment on something shown** — decision pages and review pages already capture answers as saved
+  JSON [INV-4, INV-64]; each saved answer is a feedback item whose home the capture law already names
+  (the archive and its harvested row).
+- **A dropped file** — a screenshot, a log, a document: from the human directly in the conversation, or
+  from any outside session through the host's inbox door — one NEW file per item, the same naming and
+  collision law wishes use [E-11], swept by the host's own sessions [T-10]. A file arriving with no
+  words gets one plain question about what it means; a guess is never written into the ledger.
+
+**Every item takes exactly one route, and each route already has its law and its home.**
+- an item asking for new behaviour is a WISH — it walks wish intake with its own echo, door, and row;
+  the row is its home [T-12, INV-27];
+- a fix-sized comment on shown work is FIXED the same session — the commit and its journal line are
+  the home; a story-sized comment queues as a wish;
+- an answer to an open question CLOSES it forever and is harvested the same session — the decision
+  archive and the harvested row are the home [INV-59];
+- a reaction to a shipped feature is FIELD EVIDENCE and lands in the ledger: the line cites the
+  feature's scenario, and the feature's success-measure sentence [INV-21] gains a place where real
+  signals accumulate — the ledger is the reading machinery's first honest slice, while the machinery
+  itself (measurement plugins, aggregation) stays [target] under its own long-lived row (row 48);
+  evidence grows into a wish only by the human's word or a tripwire verdict;
+- workshop noise (a flaky tool, a missing dependency) belongs to the problem ledger [INV-23]; the seam
+  is the subject: the product's behaviour goes to FEEDBACK.md, the workshop's goes to PROBLEMS.md, one
+  home each.
+
+**The skill that owns this behaviour is feedback-intake** — the pack's intake half of the exchange:
+communicator carries work out to the human; feedback-intake carries what comes back. It FIRES the
+moment any session receives a handed-in item, and at every inbox sweep for files that carry feedback
+rather than a wish. It does NOT fire on the agent's own output, on a question the agent asked, or on
+something the human merely mentions without handing it in — unsure whether a remark was handed in is
+answered by one plain question. It never opens a queue row on its own judgment: the wish door owns
+that verdict. [T-20]
+
+The section's edges, stated once. Fences its birth must hold: the inbox stays one new committed file
+per outside item [E-11] swept first [T-10]; the wish echo and intake path are unchanged [INV-27, T-12];
+answered questions still close and harvest by the convergence law [INV-59]; workshop noise still lives
+in the problem ledger alone [INV-23]; and the queue's no-wish-ever-lost law is extended, never amended
+[INV-1]. Composition: outside sessions never edit the ledger — they use the inbox door, and only the
+assigned session appends FEEDBACK.md (the write-ownership and fence laws carry it [INV-10, INV-11]);
+the ledger is append-only and archives like the queue, never trimmed [INV-1]. Facets, skill kind: the
+feature's surfaces are the ledger file and the chat echo — prose read in place; layout, touch,
+accessibility and performance belong to the media that carry them; the empty state is a ledger holding
+only its header, which is healthy; facets otherwise N/A [default]. Non-goals: no end-user feedback
+widget on a host's own product (a site's visitors writing in rides the measurement family, row 48, or
+its own wish); no automatic reading, scoring, or aggregation of the ledger (the reading machinery
+stays [target]); no new door mechanics (the inbox is reused as it stands). Success measure: the human
+never has to hand in the same item twice — every received item findable in the ledger with its route
+the same session [default].
 
 ## Asking what the product does (the feature map on demand)
 
@@ -1299,8 +1369,9 @@ The test is crisp: if the session cannot say "the human asked ME, in this conver
 routine the human created FOR live-spec — to change live-spec", it does not write. A host run's story lives
 in the HOST's journal, never here. [INV-10]
 
-**The inbox (inbox/)** is the parallel-safe intake door for wishes born outside a live-spec session: one
-NEW file per wish (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, … — the same one
+**The inbox (inbox/)** is the parallel-safe intake door for wishes and feedback born outside a
+live-spec session: one
+NEW file per item (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, … — the same one
 collision law, base rule 18; two sessions racing one slug add a short session token to the source mark),
 a few plain lines,
 never an edit to an existing file — creating a fresh file cannot collide, shared files can. The outsider
@@ -1308,9 +1379,11 @@ COMMITS its one new file (a commit touching inbox/ only, message naming the sour
 inside the read-only exception. The door is host-general: every host carries its own inbox/ under the
 same law, swept first by that host's own sessions — that is what keeps "no wish is ever lost" [INV-1]
 true when two contributors' sessions share one host. [E-11] A live-spec session sweeps the inbox as its FIRST act and harvests
-each file into a queue row — a wish must not wait durably-recorded but operationally invisible; the
+each file into the home its route owns — a wish file into a queue row as always, a feedback file by
+the routing law [T-20] — an item must not wait durably-recorded but operationally invisible; the
 harvest commit removes the file (git history keeps it — this internal removal is not an attic case, which
-protects HOST files). Each harvest is ONE commit that both adds the row and removes its file — the row
+protects HOST files). Each harvest is ONE commit that both lands the route (the row, the ledger line)
+and removes its file — the landing
 names the source file, so an interrupted harvest (nothing committed) leaves the file untouched for the
 next sweep, which harvests it exactly once — a committed harvest leaves no file behind to re-harvest. So
 "spoken means it exists" holds without the outside session touching the queue. [T-10]
@@ -1534,7 +1607,7 @@ meaning, this table is only the map.
 | E-8 | host profile at `.live-spec/profile.md` | Who decides what |
 | E-9 | attic: archive, never delete | Adoption step 4 |
 | E-10 | surface registry, self-closing [target] | Machines |
-| E-11 | inbox: one new committed file per outside wish | Package repo |
+| E-11 | inbox: one new committed file per outside item (wish or feedback) | Package repo |
 | E-12 | base skill: shared rules + defaults, stated once | One rulebook |
 | E-13 | settings ladder: four nested scopes, session > host > personal > package default | Who decides what |
 | E-14 | architecture doc: named nodes own spec facts, pinned to file:line, proven | From spec to tests |
@@ -1552,7 +1625,7 @@ meaning, this table is only the map.
 | T-1..T-7 | arrived → … → landed → reported | Throwing a wish |
 | T-8 | exits: declined / deferred / superseded | Throwing a wish |
 | T-9 | bug preempts, rolling wishes park with checkpoints (at most one parked per lane), resume in landing order | Bug cuts the line |
-| T-10 | outside wish arrives via inbox, swept first | Package repo |
+| T-10 | outside item arrives via inbox, swept first into the home its route owns (wish→row, feedback→by T-20) | Package repo |
 | T-11 | priority bends the lane order, visibly; one bubble then the queue head | Throwing a wish |
 | T-12 | the door is named before any code | Throwing a wish |
 | T-13 | feature spec step sweeps the standard facets (phone/touch/empty-error-loading/a11y/perf) | Throwing a wish |
@@ -1629,6 +1702,9 @@ meaning, this table is only the map.
 | INV-67 | the showing channel matches the session's seat — local window vs the remote seat's own channel, detected and said | Throwing a wish |
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
 | E-27 | the test method's one home — the test-author skill, invoked at the pipeline's matrix and test steps | From the spec to the tests |
+| E-28 | feedback: anything a person hands back to the project; its home is the feedback ledger FEEDBACK.md, append-only beside the queue | Sending feedback in |
+| T-20 | three intake channels (spoken/typed · comment on something shown · dropped file, outside sessions via the inbox door) → exactly one of five routes (wish intake · same-session fix · closing answer · field evidence beside the feature's success measure · problem ledger), the route named in the ledger line; the skill fires on receipt and at inbox sweep, never on the agent's own output, and never opens a queue row by itself | Sending feedback in |
+| INV-68 | nothing handed in is lost: every received item lands the same session in its route's own home (wish→row · fix→commit+journal · answer→archive+row · noise→problem ledger), and the routes with no prior home — field evidence, reactions, wordless drops — land as dated feedback-ledger lines (who · channel · concerns · plain words · route); one echo per item; a re-mention appends its date; only the assigned session writes the ledger, outsiders use the inbox door | Sending feedback in |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |

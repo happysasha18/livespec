@@ -113,7 +113,7 @@ No CLI — you drive it in plain words, in your Claude session:
 
 ---
 
-## The six skills
+## The skills
 
 | Skill | Role |
 |---|---|
@@ -123,6 +123,7 @@ No CLI — you drive it in plain words, in your Claude session:
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
 | `communicator` | Makes the human exchange land — how to show work, batch decisions, ask only what the human can actually decide |
 | `test-author` | Derives the test matrix from the proven spec and writes the tests — the level ladder, real-artifact assertions, red-first proof |
+| `feedback-intake` | The intake half of the exchange — receives anything handed back (a remark, an answer, a screenshot, a file) and routes it to the home its law owns; field evidence lands in the feedback ledger, nothing handed in is ever lost |
 | `publish` | The publish-quality gate — what a deposit owes per artifact kind (commands for a skill, real runs for a tool, fresh screenshots for a visual product), with publish targets plugging in their own steps |
 
 ### Standalone mirrors

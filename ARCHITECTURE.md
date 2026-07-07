@@ -83,7 +83,13 @@ row-163 landing 2026-07-07 session 23: E-27 → NEW node test-author (the skill 
 spec-author/product-prover precedent) — a node ADD is a structure change: the architecture lens ran
 with the landing (record `docs/prover/2026-07-07-row163.md`), the derivation seam named
 (build-pipeline · test-author), the two working-skills seam cells recounted five → six;
-last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
+The row-47 landing 2026-07-07 session 24: E-28/T-20/INV-68 → NEW node feedback-intake (the skill IS a
+node, the test-author precedent) — a node ADD is a structure change: the architecture lens ran with
+the landing (record `docs/prover/2026-07-07-row47.md`), two seams named (item → its home;
+feedback ↔ communicator's echo), the outside-wish seam widened to outside ITEM (wish or feedback,
+harvest destination by route, T-20), and the two working-skills seam cells reworded count-free (the
+row-167/169 count-drift class: lists that enumerate stay complete, everything else describes without
+counting); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
 text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
@@ -120,7 +126,8 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | design-sync | optional machine, [target: machine; wiring live] — declared components of a landing synced to the team's design project, human-gated (ROADMAP row 93 — pack-side wiring landed session 8; the machine's first real run remains) | E-18 | wiring: `skills/live-spec-base/SKILL.md` (defaults table, `design-sync` row), `skills/communicator/SKILL.md` (rule 5 channel line), `skills/build-pipeline/SKILL.md` (step 9 sync line); machine: — |
 | skill-evals | behaviour tests for the pack's own skills: per working skill one scenario, red proven bare, re-run at milestones (added session 8, row 94 — node add re-proven, record `docs/prover/2026-07-05-row94.md`) | E-19 | `evals/README.md:1` (the method + honest boundary), `evals/` (one file per working skill), `tests/test_traceability.py` (`test_skill_evals_present`, self-closing over skills/) |
 | publish | the publish-quality gate: per-kind publication checklist (its one home) + the target-plugin seam; runs BEFORE the human's gate, never instead (added session 8, row 98 — node add re-proven, record `docs/prover/2026-07-05-row98.md`) | E-20, INV-44 | `skills/publish/SKILL.md:1` (frontmatter + when it fires), the kind-checklist table and target-plugin sections in the same file |
-| test-author | the test method's one home: derives TEST_MATRIX.md from the proven spec through the proven architecture and writes the tests — the level ladder, real-artifact assertions, red-first proof, the pinned skip-set, traceability as a standing test (added session 23, row 163 — node add re-proven, record `docs/prover/2026-07-07-row163.md`) | E-27 | `skills/test-author/SKILL.md:1` (frontmatter + boundary), the level-ladder table and the two step sections in the same file |
+| test-author | the test method's one home: derives TEST_MATRIX.md from the proven spec through the proven architecture and writes the tests — the level ladder, real-artifact assertions, red-first proof, the pinned skip-set, traceability as a standing test (added session 23, row 163 — node add re-proven, record `docs/prover/2026-07-07-row163.md`) | E-27 | `skills/test-author/SKILL.md:1` (name + description), the level-ladder table and the two step sections in the same file |
+| feedback-intake | the intake half of the exchange: receives anything handed back through three channels, routes each item to the home its law owns, keeps the feedback ledger's shape, echoes every arrival (added session 24, row 47 — node add re-proven, record `docs/prover/2026-07-07-row47.md`) | E-28, T-20, INV-68 | `skills/feedback-intake/SKILL.md:1` (frontmatter + when it fires), the routing table and ledger-shape sections in the same file |
 
 ## Seams
 
@@ -132,15 +139,17 @@ crosses it and which side owns the format.
 | spec → prove | package-docs · product-prover | SPEC.md, whole document | spec-author (the shape both sides speak) |
 | prove → record | product-prover · package-docs | prover record `docs/prover/YYYY-MM-DD[-suffix].md`, folded/rejected column | product-prover |
 | pipeline → shapes | build-pipeline · templates | the document shapes the steps produce, incl. the coverage checklist | templates |
-| outside wish → queue | inbox · package-docs | one wish file, harvested into a ROADMAP row at sweep | inbox (file naming law) |
+| outside item → its home | inbox · package-docs | one item file (wish or feedback), harvested at sweep into the home its route owns — a ROADMAP row, or by the routing law (T-20) | inbox (file naming law); feedback-intake (the routing) |
+| handed-in item → its home | feedback-intake · package-docs | the routed landing: a wish row, a ledger line, a harvested answer — the route named in the echo | feedback-intake (the routing law) |
+| feedback ↔ the echo | feedback-intake · communicator | the one echo per received item (a wish-shaped item keeps the wish echo, INV-27) | communicator (the echo's shape) |
 | attach → host state | attach · host-contract | `.live-spec/` (profile, installed versions, checkpoints home) | attach |
-| base → working skills | base-rulebook · the six working skills | the inherit pin (base name + version each skill opens with) | base-rulebook |
+| base → working skills | base-rulebook · the working skills | the inherit pin (base name + version each skill opens with) | base-rulebook |
 | ladder resolution | host-contract · base-rulebook | the resolved working contract communicator reads before every exchange | base-rulebook (ladder rule); host-contract (the lines) |
 | report → human | communicator · the human | plain-language report · decision page + `<project>-decisions-<date>.json` | communicator |
 | checks → push [target] | guardrails · build-pipeline | pre-push verdict (red blocks the push) | guardrails |
 | baseline → checks [target] | snapshot · guardrails | declared-scope diff vs baseline | snapshot |
 | sync → design project [target] | design-sync · the human | a landing's DECLARED components as rendered cards; every sync passes the human's publish gate (base rule 17, ACT-1) | design-sync |
-| evals ↔ working skills | skill-evals · the six working skills | each scenario's green-criteria against the SKILL.md's promised behaviour | skill-evals |
+| evals ↔ working skills | skill-evals · the working skills | each scenario's green-criteria against the SKILL.md's promised behaviour | skill-evals |
 | evals → milestone gate | skill-evals · package-docs | the re-run item in M-1's list + dated run records in docs/evals/ | package-docs (the gate list's home is the spec) |
 | publish → the human's gate | publish · the human | the prepared deposit (README/listing/cards, checklist walked) handed to the publish/push gate — the gate stays the human's (base rules 12/17, M-6) | publish (the checklist); the human (the gate) |
 | matrix & tests derivation | build-pipeline · test-author | the proven spec + architecture in; TEST_MATRIX.md + owning tests out (steps 5–6 invoke the skill the way steps 1–2 invoke theirs) | test-author (the ladder and the assertion shapes) |
