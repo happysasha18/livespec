@@ -34,12 +34,14 @@ on another model, ASK Alexander first.**
 - ⟨DECIDE⟩ open: D-1/D-2/D-3 (untouched).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **Row 148 round 3 (s23 morning):** his verdict killed round 2; round-3 page
-   docs/decisions/2026-07-07-morning-round3.html (use-case genre + criteria-voice question) opened to
-   him; WATCH ~/Downloads for live-spec-decisions-2026-07-07-round3.json — on arrival: read back,
-   archive, harvest into row 148, then the whole-doc rewrite (anchor sets identical, FULL prover
-   re-prove). His open question answered in chat: why round 2 missed (genre anchor, own lesson recorded);
-   borrowing legal (BMAD MIT, EARS published method, no text copied — scratchpad template copies stay OUT of the repo).
+1. **Row 148 round 4 (s23 morning):** round 3 verdict ~08:11 — STRUCTURE APPROVED, language killed
+   (scissors banned FOREVER → profile `language.no-scissors` + `language.native-english`, memory
+   updated, playbook pushed); round-4 page = same file 2026-07-07-morning-round3.html rewritten in
+   plain native English, refreshed in place (he reloads the open tab); WATCH ~/Downloads for
+   live-spec-decisions-2026-07-07-round3.json — on arrival: read back, archive, harvest into row 148,
+   then the whole-doc rewrite (anchor sets identical, FULL prover re-prove; the genre law also lands
+   in spec-author's "How it reads" with the rewrite). Borrowing legal: BMAD MIT, EARS published
+   method, no text copied.
 3. Field legs riding real windows: rows 134+141 · 143 · 144 · 140 · 117 · 129 · 133.
 4. Standing queue: rows 12 tail · 54 onboarding · 55 snapshot · 14 CI · 56 router · 47-49/96 feedback
    family · track-coach formal adopt · tlvphoto lessons through one real feature.

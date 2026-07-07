@@ -12,6 +12,12 @@ Kill-list (cumulative, INV-42):
 - Round 2 (2026-07-07 ~07:59): **the rule-book genre itself — KILLED** («это все равно плохо»).
   Numbered laws in an owner's voice still read as regulation. New bar: use-case / feature-description
   language — user story, short narrative, testable acceptance criteria (BMAD + Kiro shapes).
+- Round 3 (2026-07-07 ~08:11): **the STRUCTURE APPROVED** («структура правильная»); three language
+  kills: the scissors frame "X — not Y" — BANNED FOREVER in all texts of all projects, law written to
+  his profile (`language.no-scissors`) and to memory; the overcompressed narrative («the sketch itself
+  carries the look» — «непонятно вообще») — KILLED; the non-native English (he read it as Hinglish) —
+  KILLED, bar = short plain native sentences (`language.native-english` profile line). Round 4 = the
+  same page rewritten to this bar; the page file is refreshed in place.
 
 ## The round-3 shape (what the samples demonstrate)
 
