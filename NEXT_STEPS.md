@@ -32,9 +32,10 @@ on another model, ASK Alexander first.**
 
 ## Forward queue (mirrors ROADMAP.md)
 1. PROMOTER AUDIT DONE (read-only, honored): eight lessons → rows 155–162; trio 158+160+162 LANDED
-   ~01:04. Without-him: EMPTY — all eight audit lessons landed (155–162 family done; 159 closed it ~01:35).
-   The loop WAITS FOR MORNING: ~07:40 final report + ONE opening of the decisions page (row 152) +
-   the unmissable final line (row 154). Then morning finale ~07:40 (final report + ONE
+   ~01:04. MORNING FINALE DONE ~07:42: final cumulative report given, the decisions page opened ONCE (rows
+   152+154 walked by deed). The loop now WATCHES ~/Downloads for live-spec-decisions-2026-07-07.json
+   (his row-148 sample verdict) — on arrival: read back, archive to docs/decisions/, harvest into
+   row 148 the same session (communicator's round-trip law). Then morning finale ~07:40 (final report + ONE
    page opening + the unmissable final line). Budget cut possible: all commit-fresh, resume here.
 2. **Morning (his word):** row 148 sample verdict (decisions page + JSON round-trip) · the cumulative
    report before 08:00 · one window opened at the end (row 152's deed).
