@@ -64,6 +64,13 @@ stopped being read — which kills a spec).
 - **Bold the headline, bury the threshold.** Lead each rule with a **bold plain-language headline** (the
   shape of it), then the exact number / condition in the detail after. The reader gets the gist from the
   bold; the builder drops into the detail for the precise value.
+- **Use lists inside a scenario, not a wall of prose.** The narrative leads, but a genuine enumeration
+  reads as a list, and a section with distinct parts can carry sub-headers. When a rule spells out
+  several forms, legs, or arms — the PROTOTYPE label's forms, a check's three legs, a law's four arms —
+  lay them out as bullet or numbered items so the eye scans them, and keep prose for the reasoning that
+  connects them. This is layout inside the use-case-first shape. It is not a return to the rejected
+  structure-first document, which organized the WHOLE spec as entity and state tables (Alexander
+  2026-07-07).
 - **A "how to read" note at the very top.** Open the spec with a short front-matter: what the product is in
   two sentences, that each section is a scenario, that the codes are quiet machine anchors mapped by the
   Formal index at the end, and that **edit history lives in the JOURNAL, not here.**
