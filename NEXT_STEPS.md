@@ -58,6 +58,13 @@ the profile (scissors ban · native-plain English · industry-vocabulary narrati
 prototype/work-board-sketch.html (update at every station change — his standing ask).
 
 ## Forward queue (mirrors ROADMAP.md)
+
+0. **COLD-START FIRST TASK (his idea 2026-07-07 ~16:01):** rewrite `PLAYBOOK.md` (in the private
+   playbook repo `~/.claude/playbook`, NOT this repo) and `~/.claude/CLAUDE.md` in the new writing
+   register (communicator skill's "The writing register" section) — they are human-facing and should
+   model the standard. Do it COLD (clean context writes prose better — the session's own lesson). Both
+   live OUTSIDE the live-spec tree: a deliberate separate pass. CLAUDE.md is the boot loader — edit the
+   STYLE gently and little, never the meaning. Then resume the SPEC sweep (item 1).
 1. **TOP — sweeping (batch 1 DONE):** next SPEC-humanize batches, each via a fresh-context spawn in the
    frozen V2 register. Order: small warm-ups ("Composing across axes", "Asking what the product does"),
    then the needled heavies (the wish walk, worker contract, milestone laws), governance last, template
