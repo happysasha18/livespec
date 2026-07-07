@@ -1,0 +1,19 @@
+{
+  "project": "live-spec",
+  "page": "2026-07-07-morning-round4",
+  "answeredAt": "2026-07-07T06:34:27.183Z",
+  "decisions": [
+    {
+      "id": "round4-language-row148",
+      "question": "Round-4 plain-English sample — go / adjust / no?",
+      "choice": "adjust",
+      "note": "б отлично. там и процесс и ориентация на результат. если что хорошо бы описать прекондишенс и посткондишенс если они есть. плюс надо подумать как ты будешь группировать эпики. плюс нужна сейчас же серьезная валидация что это все работает на нашем проекте и не сбивает прувер и процесс. это крайне важно проверь немедленно, с тщательным планом. "
+    },
+    {
+      "id": "round3-criteria-voice-row148",
+      "question": "Acceptance-criteria voice — plain sentences or strict WHEN/THEN/SHALL?",
+      "choice": "plain",
+      "note": "не надо вообще этих капсов, зачем псевдодраматичность?"
+    }
+  ]
+}

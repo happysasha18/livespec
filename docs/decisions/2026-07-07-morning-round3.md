@@ -18,6 +18,13 @@ Kill-list (cumulative, INV-42):
   carries the look» — «непонятно вообще») — KILLED; the non-native English (he read it as Hinglish) —
   KILLED, bar = short plain native sentences (`language.native-english` profile line). Round 4 = the
   same page rewritten to this bar; the page file is refreshed in place.
+- Round 4 (2026-07-07 ~09:34, his answered JSON — archived beside this file): **genre and language
+  APPROVED with three adjustments** («отлично. там и процесс и ориентация на результат»): (1) state
+  preconditions and postconditions where a feature has them; (2) propose how features group into
+  EPICS across the document; (3) before any whole-doc rewrite, run a SERIOUS VALIDATION with a
+  thorough plan — the new genre must not break the prover, the anchors, or the mechanical checks
+  («крайне важно, проверь немедленно»). Criteria voice: plain sentences; **the WHEN/THEN/SHALL caps —
+  KILLED** («зачем псевдодраматичность?») — no shouting keywords anywhere in the spec.
 
 ## The round-3 shape (what the samples demonstrate)
 

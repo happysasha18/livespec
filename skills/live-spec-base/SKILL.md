@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.21
+  version: 0.1.22
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -147,6 +147,16 @@ a working skill still stands: its pointer here reads as plain advice.
    them, one ledger append at the session's end — never a per-instance ceremony that interrupts the
    work (born of a clock drift hand-ceremonied ten times in one night while its owner row sat open,
    2026-07-07). A real NEW bug still preempts; this governs the known limp.
+
+20. **Search for a skill before reinventing (SPEC INV-65).** At a project's setup (founding, or
+   adoption's orient, beside the founding questions) scan the installed skills and the catalogs you
+   can reach for ones matching the project's kind and its crafts; propose the fit list with a
+   recommendation — the human's word picks. At a struggle — a ledger entry's second occurrence, a
+   taste artifact rejected twice, any returning failure family — the next attempt waits one search:
+   an existing skill or checklist may already own the failure class; the find is adopted or rejected
+   by name, recorded where the struggle lives. Borrowing practice: invoke a found skill as it ships;
+   paraphrase folded lessons and credit the source by name; verbatim text only under its license,
+   notice kept.
 
 
 ## When NOT to load this

@@ -1625,6 +1625,21 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("on the human's word", "placeholder", "SPEC INV-9", "settings ladder"):
             self.assertIn(needle, t, "template missing: %s" % needle)
 
+    def test_skill_discovery(self):
+        """Row 165 (M-166, INV-65): search for an existing skill at setup and at
+        every struggle; borrow by invoking, or by paraphrase with named credit."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("INV-65", "it searches for an existing skill",
+                       "adopted or rejected BY NAME",
+                       "verbatim text travels only under its license"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        for needle in ("Search for a skill before reinventing",
+                       "credit the source by name"):
+            self.assertIn(needle, base, "base missing: %s" % needle)
+        adopt = re.sub(r"\s+", " ", read(os.path.join("adopt", "ADOPT.md")))
+        self.assertIn("Skill search rides the setup", adopt, "ADOPT.md missing the setup arm")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.54, 2026-07-07)
+# live-spec — SPEC (v0.15.55, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -713,6 +713,21 @@ no automated signature matching; the first foreign-host ledgers (tlvphoto, track
 own windows — this landing opens the pack's own, with tonight's live entries. Success measure: the next
 operational hiccup in a live-spec session lands as a ledger line instead of a silent retry, checked at
 the milestone audit [default].
+
+**Before the workshop reinvents a fix, it searches for an existing skill.** Two moments trigger the
+search. At a project's SETUP — founding, or adoption's orient, beside the founding questions [B-2,
+B-3] — the pack scans the skills already installed and the catalogs it can reach for ones matching
+the project's kind and its crafts, and proposes the fit list with a recommendation; the human's word
+picks. And at a STRUGGLE — a ledger entry reaching its second occurrence [INV-23], a taste artifact
+rejected twice [INV-62 kin], any failure family that keeps returning — the next attempt waits one
+search: an existing skill or published checklist may already own this failure class. A found skill is
+adopted or rejected BY NAME, the verdict recorded where the struggle lives (the ledger entry, the
+kill-list, the row). Born of a real morning: five review rounds died on a voice failure that a public
+skill had carried as a written checklist for months — the search would have cost a minute and saved
+the five rounds (promoter, stop-slop, 2026-07-07). Borrowing follows one practice: a found skill is
+INVOKED as it ships; a lesson folded into our own documents is paraphrased and credits its source by
+name; verbatim text travels only under its license, notice kept — unlicensed text is never
+republished. [INV-65]
 
 ## A prototype is not the product
 
@@ -1558,6 +1573,7 @@ meaning, this table is only the map.
 | INV-60 | a taste ask carries the agent's own researched proposal (mined exemplars/options with citations + a chosen recommendation); asking the human to supply what the agent should have mined = a defect; sharpens INV-4; home: communicator | Throwing a wish |
 | INV-61 | process bookkeeping scales to the delta: the pre-push re-check keeps its rigor but scales its form — a small delta (skill/prose/infra, no new surface/structure) ships a three-line SHORT-FORM record (previous clean · delta one line · verdict), surface/structural deltas keep the full walk; claims batch per lane, journal + resume once per batch; the irreducible named (law text, red-first, delta prove, gates) | Rhythm |
 | INV-64 | anything shown FOR REVIEW carries per-claim provenance (artifact · his recorded word · the agent's inference — inferences loudest) and is commentable with answer capture (the decision page's JSON law extends to review pages); never a read-only wall, never an unmarked inference | Throwing a wish |
+| INV-65 | search for an existing skill at setup and at every struggle; adopt or reject by name; invoke as shipped · paraphrase + named credit · verbatim only under license | When the workshop itself misbehaves |
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |

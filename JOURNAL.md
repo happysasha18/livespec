@@ -1924,3 +1924,16 @@ round 4 rewritten in place, awaiting his word. Two more of his morning words wen
 the calque sharpening (narration in the industry's standard vocabulary, coined terms stay in docs) —
 after «ломаный ассоциативный» hit my own narration line; and the clock fence caught an invented
 stamp mid-commit (catch #21) — the fence blocked the commit until the stamp was read off `date`.
+
+## 2026-07-07 ~09:38 — session 23: row 165 landed (build legs), row 148 round 4 answered, row 166 born out-of-turn
+**Row 165 (skill discovery):** the workshop now searches for an existing skill before reinventing —
+at setup (beside the founding questions) and at every struggle (a ledger entry's second occurrence, a
+taste artifact rejected twice); found skills adopted or rejected by name; borrowing practice: invoke
+as shipped · paraphrase + named credit · verbatim only under license. SPEC v0.15.55 INV-65 · base
+0.1.22 rule 20 · M-166 · red-proven test · pack 0.8.67 · suite 164. Worker-run bundle, zero deviations.
+**Row 148 round 4 answered (~09:34, JSON archived):** genre and language approved; three adjustments —
+pre/postconditions where they exist · an epic grouping proposal · a SERIOUS VALIDATION with a thorough
+plan before the whole-doc rewrite; the WHEN/THEN/SHALL caps killed («псевдодраматичность»). Validation
+inventory (every mechanical consumer of SPEC.md's shape) delegated to a scout this session.
+**Row 166 born on his out-of-turn word:** a live work board — what the agent does at every moment, the
+whole process always visible. Mockup-first entry declared; prototype on real data goes to his eye.

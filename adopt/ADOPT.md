@@ -63,6 +63,11 @@ inferred from examples is a defect, not a reading. The same breath asks — or t
 default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
 choice at setup, not mid-crisis; the rung moves only on their word.
 
+**Skill search rides the setup (SPEC INV-65):** with the founding questions answered, scan the
+installed skills and the catalogs you can reach for ones matching the project's kind and its crafts;
+propose the fit list with a recommendation — the human's word picks. Later, any struggle (a ledger
+entry seen twice, a taste artifact rejected twice) buys one search before the next attempt.
+
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
 these in live-spec shape** — then adoption is light and you rewrite nothing.
