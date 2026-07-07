@@ -810,43 +810,53 @@ INVOKED as it ships; a lesson folded into our own documents is paraphrased and c
 name; verbatim text travels only under its license, notice kept — unlicensed text is never
 republished. [INV-65]
 
-## A prototype is not the product
+## A prototype stays a sketch
 
 Exploring an idea before you commit to it is allowed. Sometimes you sketch a room before building the house. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. "Fenced off" means the code sits apart, and nothing in the product reaches into it.
 
-Every artifact a prototype produces carries the PROTOTYPE label in whatever form its kind can show. A rendered page shows an on-screen banner. An API or data payload carries a `_prototype: true` field or header. A script or CLI prints a first-line PROTOTYPE banner. A bare file marks it in its name or header line. [E-17]
+Every artifact a prototype produces carries the PROTOTYPE label, in whatever form its kind can show:
 
-The boundary sits at the door step — the point where a request becomes a product feature. A wish to HAVE something in the product is a feature [INV-16]. A request to merely SEE or TRY something, with no commitment, may live as a sketch inside the fence, with no lane — no path through the build pipeline — and no spec. When you cannot tell which was meant, ask one plain question. Do not guess.
+- **A rendered page** — an on-screen banner.
+- **An API or data payload** — a `_prototype: true` field or header.
+- **A script or CLI** — a first-line PROTOTYPE banner.
+- **A bare file** — the marker in its name or header line. [E-17]
 
-Opening a prototype home is a repo write like any other. The write-ownership law governs it [INV-10]. The assigned senior makes that judgment call [ACT-2]. An outside session files an inbox wish instead. A worker never opens a prototype home on its own brief.
+**Is it a feature or just a sketch?** The boundary sits at the door step — the point where a request becomes a product feature.
+
+- A wish to HAVE something in the product is a feature. [INV-16]
+- A request to merely SEE or TRY something, with no commitment, may live as a sketch inside the fence — no lane (no path through the build pipeline) and no spec.
+- When you cannot tell which was meant, ask one plain question. Do not guess.
+
+Opening a prototype home is a repo write like any other. The write-ownership law governs it [INV-10], and the assigned senior makes that judgment call [ACT-2]. An outside session files an inbox wish instead, and a worker never opens a prototype home on its own brief.
 
 The fence runs one way: influence crosses out of the prototype, never in. You never wire a prototype into a prod surface, link to it from one, or style it to match one. A prod surface is any part of the shipped product a user meets. You show a prototype to the human only under its label. Nothing reaches the human AS the product unless its surface walked the full pipeline.
 
 Promotion is not a merge. When a sketch earns its place, its feature enters at the spec step like any wish [T-12, INV-16]. The prototype serves as evidence for that spec; its code holds no rights.
 
-The machine enforces the fence through a guardrails check. A prod file that references anything inside a prototype home turns RED [E-6]. This check runs live for the pack repo today. The surface registry's completeness scan [E-10] and the behaviour-traces-to-spec check are still [target, E-6].
+The machine enforces the fence with a guardrails check that has three legs:
 
-When all three legs land, the header's honesty rule holds in both directions. The spec never claims what isn't built [S-0]. The build never contains what the spec does not name. Today the fence leg is enforced; the rest is promised, marked, and owned by its rows. [INV-17]
+- **Live today** (for the pack repo): a prod file that references anything inside a prototype home turns RED. [E-6]
+- **Still a target**: the surface registry's completeness scan. [E-10]
+- **Still a target**: the behaviour-traces-to-spec check. [target, E-6]
 
-**An approved look lives in its artifact. The clause that encodes it points there, and the build reads that artifact.** Text cannot carry a feel. One spec clause, born from an approved visual prototype, was later rebuilt from its own prose and shipped a cheap look-alike. Seventy-five tests passed, because tests derived from a misread spec only prove the misreading (tlvphoto's door and gallery, 2026-07-05).
+When all three legs land, the header's honesty rule holds in both directions. The spec never claims what isn't built [S-0], and the build never contains what the spec does not name. Today the fence leg is enforced; the rest is promised, marked, and owned by its rows. [INV-17]
 
-So when the human approves a sketch as the look, the prototype becomes the **norm** for look and feel. One law with four arms guards it.
+### An approved look lives in its artifact
 
-First, the clause cites its artifact. A `norm: <path>` pointer sits at the clause's line end, beside its anchors. The prose carries the laws. The artifact keeps the look. spec-author owns the pointer's format.
+Text cannot carry a feel. One spec clause, born from an approved visual prototype, was later rebuilt from its own prose and shipped a cheap look-alike. Seventy-five tests passed, because tests derived from a misread spec only prove the misreading (tlvphoto's door and gallery, 2026-07-05).
 
-Second, approval freezes the artifact into the project's records. A copy lands in `docs/norms/` with a dated provenance line — what it is, when it was approved, and which sketch it came from. The pointer cites this frozen copy. A norm pointer never reaches into a live prototype home. So the one-way fence stays absolute, and the sketch stays free to die [E-17, INV-17].
+So when the human approves a sketch as the look, the prototype becomes the **norm** for look and feel. One law with four arms guards it:
 
-Third, building a surface whose clauses carry a norm pointer opens the artifact before the code step. The landing records a one-line plan-vs-prototype diff, and a missing diff line is a defect at review, checked at build-pipeline's code step. The verify step's feel bar reads the same pointer [INV-30].
+1. **The clause cites its artifact.** A `norm: <path>` pointer sits at the clause's line end, beside its anchors. The prose carries the laws; the artifact keeps the look. spec-author owns the pointer's format.
+2. **Approval freezes the artifact** into the project's records. A copy lands in `docs/norms/` with a dated provenance line — what it is, when it was approved, and which sketch it came from. The pointer cites this frozen copy. A norm pointer never reaches into a live prototype home, so the one-way fence stays absolute and the sketch stays free to die. [E-17, INV-17]
+3. **The build reads the artifact.** Building a surface whose clauses carry a norm pointer opens the artifact before the code step. The landing records a one-line plan-vs-prototype diff, and a missing diff line is a defect at review, checked at build-pipeline's code step. The verify step's feel bar reads the same pointer. [INV-30]
+4. **The prover reads visual clauses with the norm lens.** It flags a prototype-born clause with no pointer, or a clause contradicting its own artifact. Both belong to the "wordless door ≠ no question" class.
 
-Fourth, the prover reads visual clauses with the norm lens. It flags two things: a prototype-born clause with no pointer, or a clause contradicting its own artifact. Both belong to the "wordless door ≠ no question" class (product-prover).
+A story can declare that the human must see a mockup before the build starts — "show me first, then build". You write this in the wish's queue row at intake as "entry: mockup-first". It is cancelled only by the human naming it. A general "go build" moves priority; it never cancels that condition, which the door step holds.
 
-A story can declare that the human must see a mockup before the build starts — "show me first, then build". You write this in the wish's queue row at intake as "entry: mockup-first". It is cancelled only by the human naming it. A general "go build" moves priority. It never cancels that condition, which the door step holds.
+The law binds forward. A clause owes its pointer at the first landing that touches it, never retroactively across the whole spec at once. A pointer names only a prototype the human approved as the look. An unapproved sketch stays plain evidence in its fence [E-17], and a text-born clause carries no pointer.
 
-The law binds forward. A clause owes its pointer at the first landing that touches it, never retroactively across the whole spec at once. A pointer names only a prototype the human approved as the look. An unapproved sketch stays plain evidence in its fence [E-17]. A text-born clause carries no pointer.
-
-This landing shows no visible surface, so facets are N/A. Non-goals for this landing: no mechanical pointer-grep guardrail, which becomes a candidate after real usage. The norm artifact's own format stays free — whatever page or file the human approved.
-
-Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur [default]. [INV-43]
+This landing shows no visible surface, so facets are N/A. Non-goals for this landing: no mechanical pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free. Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur. [default] [INV-43]
 
 ## Starting a new project (bootstrap)
 
@@ -1613,7 +1623,7 @@ meaning, this table is only the map.
 | E-14 | architecture doc: named nodes own spec facts, pinned to file:line, proven | From spec to tests |
 | E-15 | test spec: matrix derived node × fact, coverage validated per level | From spec to tests |
 | E-16 | personal layer lives in the profile; global instruction file = thin loader | Who decides what |
-| E-17 | prototype: fenced home, visible label | A prototype is not the product |
+| E-17 | prototype: fenced home, visible label | A prototype stays a sketch |
 | E-18 | design-sync: machine [target], wiring live — off-by-default switch in base defaults, channel lines in communicator/pipeline, human-gated (publishes) | Machines |
 | E-19 | skill evals: per working skill one scenario, red proven bare, corrected by the skill; re-run at milestones and behaviour changes | Machines |
 | E-20 | publishing owes the artifact's kind its checklist (one home: the publish skill); targets are plugins embedding their steps; gates untouched | Publishing |
@@ -1651,7 +1661,7 @@ meaning, this table is only the map.
 | INV-14 | no silent override; every profile line recorded + journaled | Who decides what |
 | INV-15 | no landing without an owning node + a right-level matrix row | From spec to tests |
 | INV-16 | feature tripwires are hard, not judged; casual asks still route | Throwing a wish |
-| INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype is not the product |
+| INV-17 | prototype fence one-way; build⊆spec honesty (fence live, other legs [target]) | A prototype stays a sketch |
 | INV-18 | every facet ends as a spec sentence — decided, or `[default]`-tagged + reported | Throwing a wish |
 | INV-19 | a fence cites its clause and discharges through that clause's existing never-side; fences named by anchor in the wish's row | Throwing a wish |
 | INV-20 | the non-goals sentence is always written ("nothing left out" is valid); scope-narrowing non-goals ride the batched report | Throwing a wish |
@@ -1677,7 +1687,7 @@ meaning, this table is only the map.
 | INV-40 | the never-bend list holds at every economy rung: the door law + tripwires; red-before-fix; the human's gates; the landing report with named sheds; landing purity; the push gate at full rigor; the safety net; narration whole; and an explicit host line outlives any rung | When money or time run short |
 | INV-41 | the architecture states measurable quality budgets plus each budget's instrumentation home (numbers measured and human-readable); the project's KIND proposes the dimensions (product: paint/interaction times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass rate, suite time; prose: what honestly has a number) and a quality with no honest number is said by name, never a vanity metric; each budget asserted by a matrix-row acceptance, never prose hope; no budgets + no instrumentation home = derivation defect; numbers are the host's taste, set on the human's word at the surface's first budget landing, binding never retroactively | From the spec to the tests |
 | INV-42 | the human's word on a shown artifact is read as meant: a phrasing he killed in a review round stays killed in every later draft of that artifact (the writer keeps the kill-list written in the artifact's project records, never only in session memory — a resurfaced cut is a defect, not a fresh idea); a vivid phrase of his is adopted only as meant — mockery of a bad draft is not guidance, its intent read from context or asked, never assumed prescriptive; home: communicator | Throwing a wish |
-| INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype is not the product |
+| INV-43 | an approved prototype is the norm for look and feel, one law with four arms: the clause it fathered cites `norm: <path>` at line end, approval freezing the artifact into `docs/norms/` with a dated provenance line so the pointer never reaches a live prototype home (format: spec-author); a norm-pointered surface's build OPENS the artifact before the code step and the landing records a one-line plan-vs-prototype diff, a missing line = review defect, the verify feel bar reading the same pointer (build-pipeline code step); a declared mockup-first entry condition is written in the wish's queue row and cancels only by the human naming it, never a general "go build" (door step); prover lens: a prototype-born clause with no pointer, or clause text contradicting its own artifact = finding; binds forward, pointer only for prototypes the human APPROVED as the look | A prototype stays a sketch |
 | INV-44 | a version push re-opens the shopfront: the README's claims match the pushed truth and the kind-owed visuals ride along (skill pack: diagrams; visual product: fresh screenshots; tool: example runs) — the walk is the publish skill's checklist at push scale (one home there), pointed at by the commit-and-show step, its outcome riding the landing report ("shopfront checked — current" when untouched); a stale claim is fixed before the push; never a version push past a stale shopfront | Publishing |
 | INV-45 | the push gate derives its check-set from a declared reach map (which checks read which file classes), mechanically from the diff's file list, never self-judged: EXPLICIT (a named file in guardrails/), CONSERVATIVE (an unmapped or new file ⇒ the full suite; tested documents — SPEC, matrix, architecture, queue, SKILL.md — stay full-reach, "just .md" is no class), SELF-TESTED (the deciding script red-proven on fixtures, unclassifiable ⇒ full by construction); the cheap gates never scope; "full rigor" (INV-40) = every check the diff can reach, green | The machines that hold the bounds |
 | INV-46 | verify's adversarial option: a FRESH-context checker briefed with the landing's SPEC sentences + artifact paths (never the worker's summary or the senior's plan), hypothesis "tasks completed, goal missed", ladder exists → substantive (stub greps: TODO/FIXME/placeholder/lorem/hardcoded sample/empty body; list's home: pipeline step 8) → wired → flows; findings become rows or red; MANDATORY when the code step was delegated AND the delta is surface-sized, optional elsewhere; kind-scaled for skill/prose (shipped text vs spec sentences); the checker is a worker under ACT-3, verdict rides the landing report | Who decides what |

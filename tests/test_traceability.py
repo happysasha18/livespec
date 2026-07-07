@@ -342,7 +342,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("feature · bug · refactor · docs-only · skip", body,
                       "SPEC lost the five-door vocabulary")
         for phrase in ("The door is named before any code",
-                       "A prototype is not the product",
+                       "A prototype stays a sketch",
                        "one-way",
                        "re-checked mid-work"):
             self.assertIn(phrase, body, "SPEC lost the door/prototype clause: %s" % phrase)
@@ -355,7 +355,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
     def test_base_rules_door_and_prototype(self):
         body = read("skills/live-spec-base/SKILL.md")
         self.assertRegex(body, r"(?m)^15\. \*\*The door is named before any code", "base rule 15 missing")
-        self.assertRegex(body, r"(?m)^16\. \*\*A prototype is not the product", "base rule 16 missing")
+        self.assertRegex(body, r"(?m)^16\. \*\*A prototype stays a sketch", "base rule 16 missing")
         body = re.sub(r"\s+", " ", body)
         for phrase in ("FEATURE, however casually asked", "re-fires mid-work",
                        "PROTOTYPE label", "its code holds no rights"):

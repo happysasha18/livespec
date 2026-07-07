@@ -106,7 +106,7 @@ a working skill still stands: its pointer here reads as plain advice.
     door. Casual asks are routed, never refused — and never hand-built past the pipeline because they
     sounded small. (SPEC T-12, INV-16)
 
-16. **A prototype is not the product.** Exploring is legal, but a sketch lives fenced: its own
+16. **A prototype stays a sketch.** Exploring is legal, but a sketch lives fenced: its own
     `prototype/` home, a PROTOTYPE label in the form its kind can show (screen banner · `_prototype:
     true` field/header · first-line CLI banner · name/header marker), never wired into or linked from a
     prod surface, and shown to the human only under its label. A request to merely SEE or TRY may be

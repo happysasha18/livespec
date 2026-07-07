@@ -39,3 +39,16 @@ voice (communicator "The writing register").
 PASS. Every old fact, precondition, and invariant has a carrier in the new prose. No anchor moved to a
 weaker sentence. No rule added or dropped. Internal terms (fence, door step, one-way, prod surface,
 lane) are now grounded in plain words at first use. The rewrite is safe to land.
+
+## Addendum — iteration 2: restructure + positive title (2026-07-07 ~18:28)
+
+The section gained structure (lists for the label forms, the three machine legs, and the four-arm
+norm law; an H3 for the approved-look part) and a positive title. "A prototype is not the product"
+(a scissors frame, banned by the register) became **"A prototype stays a sketch"**. The rename is
+coordinated across all six live homes in one commit: the SPEC header, three Formal-index section
+cells, base rule 16 in `live-spec-base`, and two checks in `test_traceability.py` (the door/prototype
+needle and the base-rule-16 regex).
+
+Gates: phrase preservation 11/11 (section-scoped, under the new name) · every anchor present and
+trailing · full suite 175 green. No fact, precondition, or invariant changed from iteration 1 — this
+is layout plus a title. Verdict: PASS.
