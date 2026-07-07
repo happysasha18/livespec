@@ -1,21 +1,27 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-07 18:50, session 25): two more humanize batches landed — "Sending feedback in"
-(677d8a7) and "When the workshop itself misbehaves" (committing now).** Each scenario section rewritten
-in the technical-writer register via a fresh clean-context agent; dense end paragraphs split into
-labelled lists. Per batch all gates green: every tested phrase preserved section-scoped, bracket-code
-multiset identical to the captured baseline, full suite 175 green, prover cross-link under `docs/prover/`.
-Sections done (7): What live-spec is · Composing across axes · Asking what the product does · When a bug
-cuts the line · A prototype stays a sketch · Sending feedback in · When the workshop itself misbehaves.
-Runs on Opus (Fable pulled today; Alexander confirmed Opus is enough, Fable optional for a final
-full-doc prove). Item 0 (PLAYBOOK + CLAUDE.md in the register) pushed earlier (18ec7b0). Register now
-deployed==repo (install.sh re-run; the stale deployed copy was the leak root). SAFE TO WIPE MEMORY here.
-**Language: no coined mechanism-names in chat OR docs (his sharp word again 18:47 — "иголки"/"якоря"
-leaked) → say "tested phrases" / "bracket codes"; durable fix rides row 170 (pre-show plain-language lint).**
-**Push decision: ONE clean push at the 0.9.0 milestone after the whole-doc audit, on his word — not per
-batch (a half-humanized doc on origin reads inconsistent).**
-Next: remaining mid/small sections, then the heavies (Throwing a wish — the wish walk; the worker
-contract; the milestone laws), governance last, template one small batch, final register sweep.
+**LATEST (2026-07-07 19:12, session 25, /loop dynamic — one section per tick): SPEC humanize at 11/18
+scenario sections.** This session landed 6 batches: Sending feedback in (677d8a7) · When the workshop
+itself misbehaves (7fb617f) · One rulebook behind the skills (db75387) · Publishing (eb9c687) · When
+money or time run short (96c35e1) · From the spec to the tests (e7517b8). Each via a fresh clean-context
+agent in the technical-writer register; every batch gated: tested phrases preserved section-scoped,
+bracket-code multiset identical to baseline, full suite 175 green, prover cross-link under `docs/prover/`.
+Two case-sensitivity slips caught+fixed (a lowercase tested phrase must not land capitalized at a
+sentence start) — watch this on every batch.
+**SPEC sections still in old register (7):** Throwing a wish (heavy) · Starting a new project (bootstrap)
+· Attaching to a live project (adoption) · Who decides what (gov) · The machines that hold the bounds
+(gov) · The package repo (gov) · The rhythm (heavy). Order: mid/small first, heavies, governance last.
+**SCOPE EXPANDED (his word 19:07): rewrite ALL the specs, not only SPEC.md — ARCHITECTURE.md too** (in
+the same register; check what tests assert about ARCHITECTURE content before rewriting, its facts are
+protected differently). After SPEC + ARCHITECTURE, confirm README/OVERVIEW/ROADMAP as candidates.
+**PUSH GATE (his word 19:07, CHANGED): push ONLY when I certify the whole thing is 100% correct and
+verified — my full go-ahead, no push-then-apology. Not per batch, not at a mechanical milestone alone;
+my certification is the gate. Commit locally meanwhile.**
+**GENERALIZE (his word 19:07): when this works end-to-end, hand him the exact command/prompt to run in
+the OTHER projects (track-coach, tlvphoto) to do the same rewrite — the reusable migration sub-skill (D4).**
+Runs on Opus (Fable pulled today). Register deployed==repo. Language: no coined mechanism-names in chat
+OR docs — say "tested phrases"/"bracket codes" (his sharp word 18:47); durable fix rides row 170.
+SAFE TO WIPE MEMORY here.
 
 ## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
 (V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten
