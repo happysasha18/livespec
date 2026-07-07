@@ -849,68 +849,19 @@ This landing shows no visible surface, so facets are N/A. Non-goals for this lan
 
 ## Starting a new project (bootstrap)
 
-**The version-control gate runs FIRST** — the same order adoption keeps [A-0]: git exists (init if
-not), a remote settled or explicitly declined, before anything else is created — a gate cannot protect
-files older than itself. Then copy the templates (SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL,
-NEXT_STEPS) **plus the suite scaffold** (`test_scaffold.py` into `tests/`) — the minimal runnable suite
-that DEFINES what "green" means for landing #1: the document set present, every header really filled
-(a leftover placeholder is red), the coverage checklist in place, one live-state block. That green is a
-floor, not a ceiling — landing #1 ships its own first real test beside the scaffold, and the
-traceability checks grow from there. Hooks are OFFERED at bootstrap exactly as at adoption [E-6] —
-never imposed, plain words first. Then the first wish enters the queue → the pipeline runs from
-intake. [B-1] The gate itself is an always-rule: **no
-landing into an unversioned host** — version control exists, and a remote either exists or is explicitly
-declined (recorded, not merely recommended), before the first landing. [INV-8]
+**The version-control gate runs FIRST**, in the same order adoption keeps [A-0]. Git exists (init if not). A remote is settled or explicitly declined, before anything else is created, because a gate cannot protect files older than itself. Then copy the templates — SPEC, ARCHITECTURE, TEST_MATRIX, ROADMAP, JOURNAL, NEXT_STEPS — **plus the suite scaffold** (`test_scaffold.py` into `tests/`). That scaffold is the minimal runnable suite that DEFINES what "green" means for landing #1: the document set is present, every header is really filled (a leftover placeholder is red), the coverage checklist is in place, one live-state block. That green is a floor, not a ceiling. Landing #1 ships its own first real test beside the scaffold, and traceability checks grow from there. Hooks are OFFERED at bootstrap exactly as at adoption [E-6], never imposed, plain words first. Then the first wish enters the queue, and the pipeline runs from intake [B-1]. The gate is an always-rule: **no landing into an unversioned host**. Version control exists, and a remote either exists or is explicitly declined (recorded, not merely recommended), before the first landing [INV-8].
 
-**The founding questions are asked, never inferred.** Before the first wish walks, the questions that
-shape everything downstream get explicit answers in the new spec's opening — first among them:
-**personal tool, or reusable product?** A founding answer resolves like any setting [E-13]: the human's
-profile answers when a line covers it — a personal-scope standing preference seeding this project's
-default, and the seeding is SAID, not silent — asked otherwise; never derived from examples ("he named
-three of his own artifacts" does not mean the product IS those artifacts; they may just be its first
-users). This is deliberately STRONGER than the walk's proceed-on-default habit [INV-4, INV-12]: an
-ordinary open question rides the row while the lane moves, but a founding answer blocks the FIRST wish
-until asked or profile-read — every later sentence leans on it, which makes an inferred one the silent
-micro-decision [INV-5] at its most expensive. Adoption owes the same questions at orient — A-1 carries
-the pointer. (Born 2026-07-05: a fresh project was founded as "a personal agent for three artifacts" —
-the reusable-product question was never asked, and the human's standing answer was reusable.) [B-2]
+**The founding questions are asked, never inferred.** Before the first wish walks, the questions that shape everything downstream get explicit answers in the new spec's opening. First among them: **personal tool, or reusable product?** A founding answer resolves like any setting [E-13]. The human's profile answers when a line covers it: a personal-scope standing preference seeds this project's default, and the seeding is SAID, not silent. Otherwise the pack asks. It never derives the answer from examples — naming three of his own artifacts does not mean the product IS those artifacts, since they may be its first users. This is deliberately STRONGER than the walk's proceed-on-default habit [INV-4, INV-12]. An ordinary open question rides the row while the lane moves. A founding answer blocks the FIRST wish until asked or profile-read. Every later sentence leans on it, which makes an inferred one the silent micro-decision [INV-5] at its most expensive. Adoption owes the same questions at orient — A-1 carries the pointer. Origin (2026-07-05): a fresh project was founded as "a personal agent for three artifacts", the reusable-product question was never asked, and the human's standing answer was reusable [B-2].
 
-**The pack learns WHO it is working with before any founding question resolves.** At founding, at
-adoption's orient [A-1], and at the first session on a new machine or with a new human, one step runs
-first: look for the personal profile at its one home [E-13]. When the profile exists, it is loaded and
-SAID — the file named, any unrecognized line ignored aloud under the ladder's own law [E-13]. When it
-is absent, the pack OFFERS to create it from the pack's template (`templates/profile.template.md`): the
-human tells about themselves — chat and docs language, how to address them, what they do, their own
-vocabulary — and may also name sources for the pack to read (their repos, their docs, a public page);
-from a named source the pack PROPOSES lines. Every line lands on the human's word: a told line is
-written faithfully, a proposed line is accepted or dropped one at a time, and a dropped proposal stays
-dropped [INV-9 is this rule's ceiling: mode and trust move only on their word]. The human may decline
-the whole step — the session then runs on package defaults and says so, and the offer returns at the
-next project setup, never mid-work. The step stands down where it has nothing to do: once the profile
-exists, a later session simply loads it; and a worker session never onboards anyone — its brief
-carries the setting lines it needs [ACT-3]. The template seeds the profile with every placeholder
-marked as a placeholder, so nothing in it can pass for the human's word. [B-3]
+**The pack learns WHO it is working with before any founding question resolves.** At founding, at adoption's orient [A-1], and at the first session on a new machine or with a new human, one step runs first: look for the personal profile at its one home [E-13]. When the profile exists, the pack loads it and SAYS so: the file is named, any unrecognized line is ignored aloud under the ladder's own law [E-13]. When it is absent, the pack OFFERS to create it from the template (`templates/profile.template.md`). The human tells about themselves — chat and docs language, how to address them, what they do, their own vocabulary — and may name sources for the pack to read: their repos, their docs, a public page. From a named source the pack PROPOSES lines. Every line lands on the human's word: a told line is written faithfully, a proposed line is accepted or dropped one at a time, a dropped proposal stays dropped [INV-9 is this rule's ceiling: mode and trust move only on their word]. The human may decline the whole step. The session then runs on package defaults and says so, and the offer returns at the next project setup, never mid-work. The step stands down where it has nothing to do. Once the profile exists, a later session simply loads it. A worker session never onboards anyone; its brief carries the setting lines it needs [ACT-3]. The template seeds the profile with every placeholder marked as a placeholder, so nothing in it can pass for the human's word [B-3].
 
-**The project knows what KIND of thing it is — and the kind evolves.** Beside personal-vs-reusable,
-founding asks the second shaping question: **what is this project** — a book · a backend service · a
-static site · a fullstack app · a CLI · a skill pack — one plain line, recorded in the HOST profile
-(`project.kind`, the settings ladder's host scope [E-13]); adoption owes the same ask at orient, with
-the other founding questions [A-1, B-2]. This is NOT the per-wish work-kind [T-16] — three verdicts
-share the intake breath and never collapse into one: the PROJECT kind says what the product IS and
-seeds project-wide defaults (the usual work-kind, which facets and feel-lenses apply by default
-[T-13, INV-30]); the wish's work-kind says what THIS wish builds; the placement [INV-37] says where it
-lands on the map. The seed proposes, a written line disposes: a host that already records its own
-default (`work-kind.host-default` [T-16, E-13]) keeps it — the project kind never silently overrides
-an explicit profile line. And the ask is always the HUMAN's: no personal-profile line can say what a
-host is, so B-2's profile-seeding arm never answers this question — it is asked at founding or orient,
-every time. The kind vocabulary is CURATED the same way the work-kinds' is [T-16]: the list
-above names shapes real projects already wear, and a custom kind joins through the queue with a named
-project the list mis-served — his word expects custom kinds, the queue is their door. And the line is
-ALIVE, not a founding fossil: the moment work notices the project has outgrown its kind — the static
-site that grew a backend — the line updates on the human's word, journaled right then, never parked
-for an audit. A project attached before this law owes no retro-ask: the line arrives at the next
-landing that would lean on it, like any forward-binding intake law [T-16 kin]. (His word 2026-07-06:
-«нужно понять — и апдейтить, если надо — какой это проект… всё эволюционирует».) [INV-36]
+**The project knows what KIND of thing it is — and the kind evolves.** Beside personal-vs-reusable, founding asks the second shaping question: **what is this project** — a book, a backend service, a static site, a fullstack app, a CLI, a skill pack. One plain line records it in the HOST profile (`project.kind`, the settings ladder's host scope [E-13]). Adoption owes the same ask at orient, with the other founding questions [A-1, B-2]. This is NOT the per-wish work-kind [T-16]. Three verdicts share the intake breath and never collapse into one:
+
+- the PROJECT kind says what the product IS and seeds project-wide defaults — the usual work-kind, which facets and feel-lenses apply by default [T-13, INV-30];
+- the wish's work-kind says what THIS wish builds;
+- the placement [INV-37] says where it lands on the map.
+
+The seed proposes, a written line disposes. A host that already records its own default (`work-kind.host-default` [T-16, E-13]) keeps it: the project kind never silently overrides an explicit profile line. The ask is always the HUMAN's. No personal-profile line can say what a host is, so B-2's profile-seeding arm never answers this question — it is asked at founding or orient, every time. The kind vocabulary is CURATED the same way the work-kinds' is [T-16]. The list above names shapes real projects already wear, and a custom kind joins through the queue with a named project the list mis-served. Custom kinds are expected, and the queue is their door. The line is ALIVE, not a founding fossil. The moment work notices the project has outgrown its kind — the static site that grew a backend — the line updates on the human's word, journaled right then, never parked for an audit. A project attached before this law owes no retro-ask. The line arrives at the next landing that would lean on it, like any forward-binding intake law [T-16 kin]. Origin (his word 2026-07-06): understand which kind of project this is, and update it when it changes, because everything evolves [INV-36].
 
 ## Attaching to a live project (adoption)
 
