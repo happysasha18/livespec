@@ -914,161 +914,77 @@ As the pack evolves, one thing stays true. **A shared rule has exactly one norma
 
 ## Who decides what
 
-**You (the human)** own taste, design, irreversible calls, publish/push gates, domain wording — and your
-own working contract [INV-9]. [ACT-1] That contract is what the settings ladder RESOLVES to (next
-paragraph): the lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language,
-domain vocabulary — live in your personal profile and follow you everywhere; the **host profile** at
-`.live-spec/profile.md` narrows them for one project when you say so — created at attach, and git-tracked
-in the host repo like the adopt artifacts [A-8]; of `.live-spec/` only the checkpoints stay ignored
-[ACT-3] [E-8]. Communicator reads the resolved
-contract, not any single file, before every human-facing exchange [E-13]. **Mode and trust are written
-ONLY on your word — the agent may propose, never set; it never raises its own trust or proactivity
-level.** [INV-9]
+**You (the human) own taste, design, irreversible calls, publish and push gates, domain wording — and your own working contract** [INV-9]. [ACT-1] That contract is what the settings ladder RESOLVES to, described in the next paragraph. The lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language, domain vocabulary — live in your personal profile and follow you everywhere. The **host profile** at `.live-spec/profile.md` narrows them for one project when you say so. It is created at attach and git-tracked in the host repo like the adopt artifacts [A-8]. Of `.live-spec/` only the checkpoints stay ignored [ACT-3] [E-8]. Communicator reads the resolved contract before every human-facing exchange, resolving the ladder rather than opening one file [E-13]. **Mode and trust are written ONLY on your word.** The agent may propose them, and it never sets them; it never raises its own trust or proactivity level. [INV-9]
 
-**"Did you actually do X?" is answered by walking the evidence — and the answer wears its method
-version.** You ask whether something was done, adopted, true — "did that project run the tests by the
-method?" — and a fluent story comes back; the story may even be right, but you cannot tell VERIFIED from
-NARRATIVE, and that difference is the whole point of the method. So a done-claim is never answered from
-memory: each claim in the answer is pinned to a checkable artifact — an adoption record, a prover
-record, a suite run with its count, a git commit, a matrix row — walked NOW, not recalled (the
-claims-need-primary-source rule applied to the answering exchange itself); what the walk verified is
-said apart from what is merely asserted, in plain words; and because "done by live-spec" means nothing
-without a version, the answer names the METHOD VERSION the work was done by — the pack and skill
-versions read from that host's installed set (the version homes, [M-7]). One claim line reads
-claim → artifact → version: "suite green — 795 tests, tonight's run, commit `193d39d` — done by
-live-spec 0.8.x, prover 0.1.8". And where the host HAS no installed set — never adopted, or the work
-predates adoption — the answer says exactly that in plain words: an absent version is itself an honest
-answer, never an invented one. Born 2026-07-05: the track-coach answer was right, and he still could
-not tell which half of it was checked. [INV-25]
+**Answer "Did you actually do X?" by walking the evidence, and let the answer wear its method version.** You ask whether something was done, adopted, or true — "did that project run the tests by the method?" — and a fluent story comes back. The story may even be right, yet you cannot tell VERIFIED from NARRATIVE, and that difference is the whole point of the method. So a done-claim is never answered from memory. Each claim in the answer is pinned to a checkable artifact — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row — walked NOW rather than recalled. This is the claims-need-primary-source rule applied to the answering exchange itself. What the walk verified is stated apart from what is merely asserted, in plain words. Because "done by live-spec" means nothing without a version, the answer names the METHOD VERSION the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8". Where the host HAS no installed set — never adopted, or the work predates adoption — the answer says exactly that in plain words: an absent version is itself an honest answer, never an invented one. Born 2026-07-05: the track-coach answer was right, and he still could not tell which half of it was checked. [INV-25]
 
-**Settings climb a ladder of four NESTED scopes — the narrowest word wins.** Every way the pack behaves
-for you is a named setting with a home in exactly one scope, and the scope is chosen by what the setting
-DESCRIBES: about the pack itself → the **package defaults**, each value stated in the base skill beside
-the rule it tunes [E-12]; about YOU, following you across every project (language: docs and commits vs
-conversation · proactivity mode · trust · your domain vocabulary) → your **personal profile**, one file
-per human at `~/.claude/live-spec/profile.md`; about THIS project → the **host profile** [E-8]; about
-RIGHT NOW → the **session scope**: your live word in one conversation. The scopes nest — the package
-holds every human, a personal profile holds every project that human touches, a host holds every session
-run inside it — and a setting set at a broad scope is INHERITED down through the narrower ones until a
-narrower one overrides it on your word (an all-English project overriding your Russian-chat line; a
-"today answer me in English" overriding both for one sitting). Resolution therefore reads from the
-narrowest scope out: session beats host beats personal beats package default. Profiles are re-read at
-the same freshness points as skills [A-7]; a profile line the current pack does not recognize (written
-under an older vocabulary) is ignored ALOUD — a dated note in the host's journal plus a line in the
-session's next report (the journal half is durable, so a session dying before its report still leaves
-the trace), never a silent drop and never an error. [E-13]
+**Settings climb a ladder of four NESTED scopes, and the narrowest word wins.** Every way the pack behaves for you is a named setting with a home in exactly one scope, and the scope is chosen by what the setting DESCRIBES:
 
-**No override is ever silent.** An override exists only as a written line in its profile file, and
-setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the
-package's for a default change. This is the no-silent-micro-decisions rule [INV-5] applied to settings;
-live-spec's own push gate [M-6] is the worked example: the package default says a full prover pass before
-a MINOR bump, and live-spec's own host contract tightens it to "before every push" — recorded, visible,
-never assumed. The session scope is the one that is never a file: a session override lives only in your
-spoken word and dies with the conversation — the agent never writes it anywhere on its own; if it should
-outlive the session, that is a PROMOTION into the profile it describes (personal or host), made on your
-word and journaled like any other override. An announced self-compaction [M-2] carries the live session
-lines forward in its summary; a full wipe ends the sitting — session lines die with it by design, and
-that loss is your own move, never the agent's. [INV-14]
+- about the pack itself → the **package defaults**, each value stated in the base skill beside the rule it tunes [E-12];
+- about YOU, following you across every project (language: docs and commits vs conversation · proactivity mode · trust · your domain vocabulary) → your **personal profile**, one file per human at `~/.claude/live-spec/profile.md`;
+- about THIS project → the **host profile** [E-8];
+- about RIGHT NOW → the **session scope**, your live word in one conversation.
 
-**Your profile is the ONE home of the personal layer; the global instruction file is a thin loader.**
-Everything personal — who you are, how you like to be spoken to, your standing working rules — lives in
-the personal profile, never scattered across always-on instruction files. The machine-global instruction
-file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: the pointer that loads the profile,
-plus ONLY the bootstrap lines that must hold before any pack file is read — the which-project
-disambiguation rule is the type specimen: the rule that stops a session writing into a foreign repo
-cannot itself wait for that repo's files to load. The loader is those bootstrap lines' ONE home; the
-profile never restates them [INV-13]. Migrating an existing rule file into this shape is a
-fork by scope — each rule moves to the scope it describes: a method rule the pack already states stays
-the pack's (a second copy is drift [INV-13]); a personal line → the profile; a project line → that
-project's host profile — proven lossless by a rule-by-rule mapping, with the old file kept in the attic
-[INV-7] so one move rolls the whole change back. And the fork only WRITES what the running session owns:
-pack rules land in the pack, the personal profile lives on the human's machine outside any host or pack
-repo (a PRIVATE repo the human owns may serve as its git home; sitting outside any repo fence [INV-11],
-a promotion RE-READS the file immediately before appending, and that git home is its recovery net);
-a project line becomes a written migration note that the project's OWN session lands at its next update —
-nothing in this migration writes a foreign repo [INV-10]. [E-16]
+The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it. A setting made at a broad scope is INHERITED down through the narrower ones until a narrower one overrides it on your word — an all-English project overriding your Russian-chat line, or a "today answer me in English" overriding both for one sitting. Resolution therefore reads from the narrowest scope out: session beats host beats personal beats package default. Profiles are re-read at the same freshness points as skills [A-7]. A profile line the current pack does not recognize (written under an older vocabulary) is ignored ALOUD — a dated note in the host's journal plus a line in the session's next report. The journal half is durable, so a session dying before its report still leaves the trace; the line is never a silent drop and never an error. [E-13]
+
+**No override is ever silent.** An override exists only as a written line in its profile file, and setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5] applied to settings. Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a MINOR bump, and live-spec's own host contract tightens it to "before every push" — recorded, visible, never assumed. The session scope is the one that is never a file. A session override lives only in your spoken word and dies with the conversation; the agent never writes it anywhere on its own. If it should outlive the session, that is a PROMOTION into the profile it describes (personal or host), made on your word and journaled like any other override. An announced self-compaction [M-2] carries the live session lines forward in its summary. A full wipe ends the sitting, and session lines die with it by design — that loss is your own move, never the agent's. [INV-14]
+
+**Your profile is the ONE home of the personal layer, and the global instruction file is a thin loader.** Everything personal — who you are, how you like to be spoken to, your standing working rules — lives in the personal profile, gathered in one place. The machine-global instruction file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: the pointer that loads the profile, plus ONLY the bootstrap lines that must hold before any pack file is read. The which-project disambiguation rule is the type specimen: the rule that stops a session writing into a foreign repo cannot itself wait for that repo's files to load. The loader is those bootstrap lines' ONE home, and the profile never restates them [INV-13]. Migrating an existing rule file into this shape is a fork by scope — each rule moves to the scope it describes: a method rule the pack already states stays the pack's (a second copy is drift [INV-13]); a personal line → the profile; a project line → that project's host profile. It is proven lossless by a rule-by-rule mapping, with the old file kept in the attic [INV-7] so one move rolls the whole change back. The fork only WRITES what the running session owns: pack rules land in the pack, and the personal profile lives on the human's machine outside any host or pack repo. A PRIVATE repo the human owns may serve as its git home; sitting outside any repo fence [INV-11], a promotion RE-READS the file immediately before appending, and that git home is its recovery net. A project line becomes a written migration note that the project's OWN session lands at its next update, so nothing in this migration writes a foreign repo [INV-10]. [E-16]
 
 **The senior agent** owns judgment: spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
-**Workers (tiered)** own mechanical execution, with persistent checkpoint files in the
-host's `.live-spec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); three
-tiers stand — a no-decision one-shot on haiku, multi-step mechanical on sonnet, judgment on the senior —
-and which tier a unit of work is PROPOSED at, before the senior may overrule it, is the routing rule below
-[INV-69]. **The worker contract** binds every delegation: a worker inherits its session's write-ownership
-[INV-10] NARROWED to the files its brief names — outside them it reads but never writes; a brief may
-instead name an ISOLATED copy of the tree (a parallel lane's build stages work there), and that copy's
-delta reaches the shared tree only through the senior's integration under the pen [T-18, INV-39]; files a
-same-session SIBLING worker just wrote are fence-benign — the concurrent-edit fence [INV-11] alarms on
-foreign sessions, not on your own briefed hands, and the senior who briefed both owns their seams; the
-session's live setting lines [E-13] ride INTO the brief verbatim (a worker never resolves the ladder
-itself — it cannot hear the human's spoken word); the brief ARMS the worker for the workshop — it
-carries the host's problem-ledger path with the WATCHED-line duty (noise the worker hits goes into its
-checkpoint as a ledger line — signature, date, one line of context — never a silent retry; the senior
-carries the lines into the ledger at verify unless the brief names the ledger among the worker's files
-[INV-23]), and it carries the CLOCK — the date and time read at briefing — so a worker's stamps come
-off the brief's clock, never invented [INV-24] (the day the briefs carried no clock, both eval arms led
-their reports with a wrong hour, 2026-07-06); and a result that fails its brief's acceptance escalates
-ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier, never a
-skipped rung. [ACT-3]
+**Workers (tiered)** own mechanical execution, with persistent checkpoint files in the host's `.live-spec/checkpoints/` (gitignored; never /tmp, since a reboot must not erase a resume point). Three tiers stand:
 
-**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it
-aloud.** Before a unit of work is delegated its tier is PROPOSED, never defaulted, and the proposal reads
-what the work IS — not the row's size alone. A judgment step — a spec delta, a prove pass, an architecture
-carve, the matrix's level calls, findings triage, any taste call — proposes the senior, ACT-2's own
-[ACT-2] and never routed down; a mechanical step proposes a worker: a no-decision one-shot (a grep, a dump,
-a known-string edit) the **haiku** tier, a self-contained multi-step brief (edits across named files, a
-pipeline run, tests written to a fixed matrix) the **sonnet** tier. The size class is only a coarse prior —
-a large row carries more delegable mechanical mass, a small one is often all-judgment — the STEP inside it
-decides. **The economy rung moves the threshold** [T-19]: at `full` the map stands as written; at `lean` an
-airtight brief rides one tier cheaper (a sonnet brief that leaves the worker nothing to decide may propose
-haiku, and the bar to keep a step on the senior rises); at `tight` the cheapest sufficient tier is always
-the proposal, the senior spending its hours on judgment alone. **The proposal is advisory — the senior may
-override per wish, and the override is LOGGED** [D-2]: a brief that looked mechanical but hides a real
-decision routes UP, a rare over-cautious default routes down, and either way one line rides the checkpoint
-and the landing report — proposed tier → chosen tier → why (this assignment-time override is distinct from
-ACT-3's failed-acceptance escalation — one is the senior's choice BEFORE the work, the other a runtime bump
-AFTER a miss; both logged, different lines). A silent tier change is the defect this closes;
-the router never hardens into a mechanical gate the senior cannot overrule, and it never touches the human's
-gates or ACT-2's ownership of judgment. No visible surface — facets N/A. Non-goals: no token meters or
-numeric budgets (the rung stays qualitative [T-19]); no fourth tier and no renaming of the three; no
-auto-routing that overrides the senior's word. Success measure [default]: the first routed landing names, in
-its report, the proposal → choice → why for each delegated unit, checked by your read of it. [INV-69]
+- a no-decision one-shot on **haiku**;
+- multi-step mechanical work on **sonnet**;
+- judgment on the **senior**.
 
-**A worker's green gets a second pair of eyes — verify can turn adversarial.** A worker's report is a
-lead, never evidence, and on a large delegated landing the blind spot is structural: the same head
-that wrote the brief reads the result, so "tasks completed, goal missed" ships green (the neighbours'
-verifier lesson, row 107). So the verify step carries an ADVERSARIAL option: a FRESH-context checker
-briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths — never the
-worker's summary, never the senior's plan — opens on the hypothesis "tasks completed, goal missed"
-and walks each claimed fact up a fixed ladder: EXISTS (the artifact is there) → SUBSTANTIVE (not a
-stub — the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded
-sample / empty body) → WIRED (reachable from the surface that claims it) → FLOWS (real values move
-end to end). Findings become rows or red, never a nod. It fires MANDATORY when the code step was
-delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere
-else it is the senior's option; a skill or prose landing walks the same ladder in its kind's form —
-the checker re-reads the SHIPPED text against the spec sentences. The checker is a worker like any
-other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
+Which tier a unit of work is PROPOSED at, before the senior may overrule it, is the routing rule below [INV-69].
 
-**A brief is born from read files, never from memory of them.** Before authoring a brief that edits
-existing files, the brief-writer READS IN FULL every file the work will modify, and the brief records
-three lines per file: current state · what changes · what must survive. Every step carries a
-back-reference to the spec sentence it serves, and every technical claim in the brief cites its
-source — a file:line, a command's output — because a brief written from memory hands the worker the
-senior's guess dressed as fact (the neighbours' story-file lesson, row 107; the night the anchors
-were quoted from memory, the worker walked into a wall twice). [INV-53]
+**The worker contract** binds every delegation:
 
-**A worker stops only on a named condition.** The brief carries the HALT list, closed and short: an
-ambiguous requirement · two consecutive unexplained failures of one command · a missing config or
-dependency · acceptance impossible as briefed. On any of these the worker STOPS with evidence;
-otherwise it runs to completion — sharper than "ask if unsure", composing with the one-tier
-escalation law [ACT-3]. (The list's first full night: three workers HALTed by it, every stop a real
-defect and two of them the senior's own.) [INV-54]
+- A worker inherits its session's write-ownership [INV-10] NARROWED to the files its brief names; outside them it reads and never writes.
+- A brief may instead name an ISOLATED copy of the tree (a parallel lane's build stages work there), and that copy's delta reaches the shared tree only through the senior's integration under the pen [T-18, INV-39].
+- Files a same-session SIBLING worker just wrote are fence-benign: the concurrent-edit fence [INV-11] alarms on foreign sessions and stays quiet for your own briefed hands, and the senior who briefed both owns their seams.
+- The session's live setting lines [E-13] ride INTO the brief verbatim, because a worker never resolves the ladder itself — it cannot hear the human's spoken word.
+- the brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Noise the worker hits goes into its checkpoint as a ledger line — signature, date, one line of context — never a silent retry; the senior carries the lines into the ledger at verify unless the brief names the ledger among the worker's files [INV-23].
+- It carries the CLOCK — the date and time read at briefing — so a worker's stamps come off the brief's clock, never invented [INV-24] (the day the briefs carried no clock, both eval arms led their reports with a wrong hour, 2026-07-06).
+- A result that fails its brief's acceptance escalates ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier, never a skipped rung. [ACT-3]
 
-**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context
-and the work SPLITS above it — the default bound, concrete: the brief's own text stays within ~300
-lines and names at most ~8 files to edit [default]; above either, the work splits into staged briefs.
-And a brief passes PATHS, never inlined file bodies — the worker reads its own truth from disk, an
-inlined body goes stale the moment a sibling edits the file. [INV-55]
+**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it aloud.** Before a unit of work is delegated its tier is PROPOSED, never defaulted, and the proposal reads what the work IS, looking past the row's size alone. A judgment step — a spec delta, a prove pass, an architecture carve, the matrix's level calls, findings triage, any taste call — proposes the senior, ACT-2's own [ACT-2] and never routed down. A mechanical step proposes a worker:
+
+- a no-decision one-shot (a grep, a dump, a known-string edit) → the **haiku** tier;
+- a self-contained multi-step brief (edits across named files, a pipeline run, tests written to a fixed matrix) → the **sonnet** tier.
+
+The size class is only a coarse prior: a large row carries more delegable mechanical mass, a small one is often all-judgment, and the STEP inside it decides. **The economy rung moves the threshold** [T-19]:
+
+- at `full` the map stands as written;
+- at `lean` an airtight brief rides one tier cheaper (a sonnet brief that leaves the worker nothing to decide may propose haiku, and the bar to keep a step on the senior rises);
+- at `tight` the cheapest sufficient tier is always the proposal, the senior spending its hours on judgment alone.
+
+**The proposal is advisory — the senior may override per wish, and the override is LOGGED** [D-2]. A brief that looked mechanical but hides a real decision routes UP; a rare over-cautious default routes down; either way one line rides the checkpoint and the landing report — proposed tier → chosen tier → why. This assignment-time override is distinct from ACT-3's failed-acceptance escalation: one is the senior's choice BEFORE the work, the other a runtime bump AFTER a miss; both logged, different lines. A silent tier change is the defect this closes. The router never hardens into a mechanical gate the senior cannot overrule, and it never touches the human's gates or ACT-2's ownership of judgment. No visible surface — facets N/A. Non-goals: no token meters or numeric budgets (the rung stays qualitative [T-19]); no fourth tier and no renaming of the three; no auto-routing that overrides the senior's word. Success measure [default]: the first routed landing names, in its report, the proposal → choice → why for each delegated unit, checked by your read of it. [INV-69]
+
+**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead and no more; it never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" ships green (the neighbours' verifier lesson, row 107). So the verify step carries an ADVERSARIAL option. A FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths — never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
+
+- EXISTS — the artifact is there;
+- SUBSTANTIVE — not a stub (the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
+- WIRED — reachable from the surface that claims it;
+- FLOWS — real values move end to end.
+
+Findings become rows or red, never a nod. It fires MANDATORY when the code step was delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere else it is the senior's option. A skill or prose landing walks the same ladder in its kind's form — the checker re-reads the SHIPPED text against the spec sentences. The checker is a worker like any other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
+
+**A brief is born from read files, never from memory of them.** Before authoring a brief that edits existing files, the brief-writer READS IN FULL every file the work will modify. The brief records three lines per file: current state · what changes · what must survive. Every step carries a back-reference to the spec sentence it serves, and every technical claim in the brief cites its source — a file:line, a command's output. A brief written from memory hands the worker the senior's guess dressed as fact (the neighbours' story-file lesson, row 107; the night the anchors were quoted from memory, the worker walked into a wall twice). [INV-53]
+
+**A worker stops only on a named condition.** The brief carries the HALT list, closed and short:
+
+- an ambiguous requirement;
+- two consecutive unexplained failures of one command;
+- a missing config or dependency;
+- acceptance impossible as briefed.
+
+On any of these the worker STOPS with evidence; otherwise it runs to completion. This is sharper than "ask if unsure", and it composes with the one-tier escalation law [ACT-3]. (The list's first full night: three workers HALTed by it, every stop a real defect and two of them the senior's own.) [INV-54]
+
+**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context, and the work SPLITS above it. The default bound is concrete: the brief's own text stays within ~300 lines and names at most ~8 files to edit [default]; above either, the work splits into staged briefs. A brief passes PATHS, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
 
 ## From the spec to the tests: two layers that must not be skipped
 
