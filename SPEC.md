@@ -1478,48 +1478,30 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
 
 ## When money or time run short (the economy ladder)
 
-Rigor costs — suite runs, prover passes, senior-model hours. Today the pack spends at full rigor
-always; this section names what a tight budget may LEGALLY shed, so economy is a setting you moved,
-never an improvisation under pressure. [T-19]
+Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may LEGALLY shed, so economy is a setting you moved, never an improvisation under pressure. [T-19]
 
-The pressure is a setting on the ladder (`budget.pressure`, package default `full`): it moves ONLY on
-your word — a session's word for today, a profile line to stand — exactly like proactivity and trust
-[E-13, INV-9]; when you name money or time pressure the agent may PROPOSE a rung, never set one. And
-the pack does not wait for pressure to surface the choice: at a project's SETUP — founding or
-adoption — the economy rung is asked, or the standing default told, alongside `project.kind`
-[INV-36], so the preference is yours from day one, not discovered mid-crisis. Three
-rungs, each naming its legal sheds; every shed actually taken is SAID in the landing report — a silent
-economy is a silent micro-decision, the exact thing the report exists to prevent [INV-5]:
+The pressure lives as one setting on the ladder: `budget.pressure`, with package default `full`. It moves ONLY on your word — a session's word for today, or a profile line to stand. This works exactly like proactivity and trust [E-13, INV-9]. When you name money or time pressure, the agent may PROPOSE a rung. The agent never sets one.
 
-- **full [default]** — as today: the full suite at every landing gate, the prover at its recorded
-  cadence, the worker router picking tiers by the routing rule [INV-69].
-- **lean** — mid-work test runs may scope to the touched architecture node's rows (the full suite
-  still runs at every LANDING gate and before every push); surface-add prover passes stay CROSS-LINK,
-  and a FULL pass owed by the default cadence may defer to the next milestone — the deferral written
-  as a dated debt line in its queue row, never just remembered; mechanical work rides one worker tier
-  cheaper when the brief is airtight [INV-69].
-- **tight** — everything lean, plus: landing gates may BATCH — consecutive small landings share one
-  full-suite run at the batch's end (each landing commit still carries exactly one row's delta
-  [INV-39]; a red at batch end bisects by landing order before anything else lands; a push still
-  requires the full gate green at HEAD [M-6]); the cheapest sufficient worker tier is the rule, senior
-  hours spent on judgment alone [INV-69].
+The pack surfaces the choice before pressure hits. At a project's SETUP, whether founding or adoption, the economy rung is asked, or the standing default told, alongside `project.kind` [INV-36]. So the preference is yours from day one.
+
+Three rungs each name their legal sheds. Every shed you actually take is SAID in the landing report. A silent economy is a silent micro-decision, and the report exists to prevent exactly that [INV-5].
+
+- **full [default]** — the full suite runs at every landing gate. The prover runs at its recorded cadence. The worker router picks tiers by the routing rule [INV-69].
+- **lean** — mid-work test runs may scope to the touched architecture node's rows. The full suite still runs at every LANDING gate and before every push. Surface-add prover passes stay CROSS-LINK. A FULL pass owed by the default cadence may defer to the next milestone; write the deferral as a dated debt line in its queue row, never just remembered. Mechanical work rides one worker tier cheaper when the brief is airtight [INV-69].
+- **tight** — everything lean, plus landing gates may BATCH: consecutive small landings share one full-suite run at the batch's end. Each landing commit still carries exactly one row's delta [INV-39]. A red at batch end bisects by landing order before anything else lands. Even so, a push still requires the full gate green at HEAD [M-6]. The cheapest sufficient worker tier is the rule, and senior hours go to judgment alone [INV-69].
 
 What NEVER bends, at any rung — the never-bend list, stated once [INV-40]:
-- the door law and its tripwires — poverty, like urgency, moves priority, never the door [T-12, INV-16];
-- red-before-fix — a bug still gets its failing test before its fix;
-- the human's gates — irreversible moves, publishing, authored content, taste [INV-9];
-- the landing report, carrying its taken-defaults AND its named sheds [INV-5, INV-31];
-- landing purity — one row's delta per commit, whatever the batching [INV-39];
-- the push gate — work leaves the machine at full rigor only: every check the diff can REACH green at
-  HEAD (the reach map's reading [INV-45]) plus the host's recorded prover cadence [M-6];
-- the safety net no work-kind and no scope-cut touches — poverty is its third non-toucher [T-15, T-16];
-- narration — it is cheap and stays whole at every rung [INV-35].
 
-An explicit host line outlives any rung: a host profile pinning a tighter cadence (this repo's own
-push gate) keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters — the
-rung is qualitative, moved by your word; no automatic rung-switching. Success measure [default]: the
-first budget-named session names its rung and its sheds aloud in its landing report, checked by your
-read of it. [T-19]
+- the door law and its tripwires: poverty, like urgency, moves priority, never the door [T-12, INV-16];
+- red-before-fix: a bug still gets its failing test before its fix;
+- the human's gates: irreversible moves, publishing, authored content, taste [INV-9];
+- the landing report, carrying its taken-defaults AND its named sheds [INV-5, INV-31];
+- landing purity: one row's delta per commit, whatever the batching [INV-39];
+- the push gate: work leaves the machine at full rigor only. Every check the diff can REACH is green at HEAD, per the reach map [INV-45], plus the host's recorded prover cadence [M-6];
+- the safety net that no work-kind and no scope-cut touches: poverty is its third non-toucher [T-15, T-16];
+- narration: it is cheap and stays whole at every rung [INV-35].
+
+An explicit host line outlives any rung. A host profile pinning a tighter cadence keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters, since the rung is qualitative and moves by your word; and no automatic rung-switching. Success measure [default]: the first budget-named session names its rung and its sheds aloud in its landing report, checked by your read [T-19].
 
 ## Publishing — the deposit owes what its kind owes
 
