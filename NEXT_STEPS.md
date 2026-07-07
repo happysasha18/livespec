@@ -15,8 +15,9 @@ prototype/work-board-sketch.html (self-refreshing; update it at every station ch
 ask). Clock-fence catches #21–23 today (all blocked at commit; the zero-drift owner row stays open).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **Next without-him row:** 47 (feedback-collection skill design — its gates rows 42/43 are
-   decided; re-scope against the success-measures reader per row 96) · then 12 tail · 56 router.
+1. **Next without-him rows:** 47 (feedback-collection skill design — gates 42/43 decided; re-scope
+   per row 96) · 168 (showing channel adapts to the session's seat — local HTML window vs remote
+   artifact page; his 10:57 word, full text in the row) · 12 tail · 56 router.
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition) · 148 Phase 3 go (the
    whole-doc rewrite by the migration plan, docs/research/2026-07-07-genre-migration-plan.md; epics
    proposal rides the first batch).
