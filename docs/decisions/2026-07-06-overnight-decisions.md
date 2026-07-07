@@ -1,6 +1,8 @@
 # live-spec — overnight decisions page (2026-07-06 night, session 22)
 
-**NEEDS YOUR WORD — in the morning, nothing burns: 1 decision below.** Everything else tonight is
+**NEEDS YOUR WORD — in the morning, nothing burns: 1 decision below.** Night's total: 25 rows landed
+and pushed · 23 new laws (all five of his night corrections + all eight promoter-audit lessons) ·
+suite 134 → 162 green · the public repo now runs its own gates in CI. Everything else tonight is
 just updates (chat carries them); no action needed there. The interactive version of this page (pick
 an option, add your word, save the JSON) is the .html twin opened in your browser — this .md is the
 repo record.
