@@ -1000,32 +1000,25 @@ the day a newer pack ships, the next session on another machine proposes it unas
 
 ## One rulebook behind the skills
 
-Open any skill of the pack and the same working rules greet you: ask, never guess; plain words with the
-code trailing quietly; one surface = one name; one canonical home per fact; work a junior can resume from
-a checkpoint after a cut-off. Until now each skill carried its own near-copy of those rules — and copies
-drift (the pack's own sweep caught the anchor convention told two ways, and the concurrent-edit fence
-stated only in the adoption text while every skill that writes shared files needs it).
+Open any skill in the pack and the same working rules greet you. Until now each skill carried its own near-copy of them. Copies drift, and the pack's own sweep proved it twice: the anchor convention was told two ways across skills, and the concurrent-edit fence appeared only in the adoption text, though every skill that writes shared files needs it.
 
-**So the shared rules live ONCE, in the base skill** — the pack's shared rulebook beside the working skills (folder:
-`live-spec-base`; pack structure decided: package-is-source, standalone repos read-only mirrors [D-4]). Every rule that belongs to every skill is stated there normatively, next to the
-package's default settings [E-13]; each working skill opens with one line naming the base skill and the
-base version it was written against — a pin the landing that bumps the base sweeps in the same session,
-never leaves stale — and REFERENCES the shared rules instead of restating them. A working
-skill elaborates only its own domain — communicator may teach HOW to speak plainly; THAT we speak plainly
-is the base's sentence. A skill used standalone, outside the pack, still stands: the pointer reads as
-plain advice and nothing in the skill's own domain depends on the base being installed. [E-12]
+The five rules every skill works by are these:
 
-While the pack evolves, one thing is always true: **a shared rule has exactly one normative home — the
-base skill; a second full statement inside a working skill is drift, a defect to fold, not a
-convenience.** Restatements older than the base skill are pruned at milestones through the compaction pass
-[M-1], skill by skill, never in one risky rewrite. [INV-13]
+- **Ask, never guess** — when a fact is missing, you ask for it.
+- **Plain words, with the code trailing quietly** at the end of the clause it anchors.
+- **One surface, one name** — a thing is called the same everywhere it appears.
+- **One canonical home per fact** — each fact is stated in a single place.
+- **A junior resumes from a checkpoint** after a cut-off, picking the work back up.
 
-**Every place the pack lists its skills names the same complete set.** The skill list lives in
-several reader-facing places — the working-skills sentence up top, the closing lists the skills
-themselves carry, the README's table — and a list is exactly the kind of fact that drifts: the
-communicator's closing list was found naming four skills after the pack had grown past six
-(2026-07-07, a worker's halt surfaced it, two skills missing since their birth). List parity is
-checked mechanically at every commit; a list missing a skill goes red. [INV-66]
+**So the shared rules live once, in the base skill.** The base skill is the pack's shared rulebook, and it sits beside the working skills in the folder `live-spec-base`. The package itself is the source; the standalone repos are read-only mirrors of it [D-4]. The base states each shared rule normatively, right next to the package's default settings [E-13].
+
+Every working skill opens with one line. That line names the base skill and the base version the skill was written against. This version pin is swept in the same session that bumps the base, so it never goes stale. After that line, the skill references the shared rules instead of restating them.
+
+A working skill elaborates only its own domain. The communicator skill, for example, teaches you how to speak plainly. The rule that we speak plainly at all belongs to the base. A skill used standalone, outside the pack, still stands on its own: the opening line reads as plain advice, and nothing in the skill's own domain needs the base to be installed [E-12].
+
+As the pack evolves, one thing stays true. **A shared rule has exactly one normative home, the base skill. A second full statement of it inside a working skill is drift, a defect to fold back.** The compaction pass prunes restatements older than the base at milestones, one skill at a time, so no single risky rewrite is needed [M-1]. [INV-13]
+
+**Every place the pack lists its skills names the same complete set.** That list lives in several reader-facing spots: the working-skills sentence up top, the closing lists the skills carry, and the README's table. A list is exactly the kind of fact that drifts. The communicator's closing list was found naming four skills after the pack had grown past six, on 2026-07-07, when a worker halted and surfaced it, with two skills missing since their birth. A check runs at every commit, and a list that misses a skill goes red [INV-66].
 
 ## Who decides what
 
