@@ -1,5 +1,11 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
+**LATEST (2026-07-07 16:37, session 24 cont.): COLD-START item 0 DONE.** `PLAYBOOK.md` and
+`~/.claude/CLAUDE.md` rewritten in the frozen technical-writer register and pushed to the playbook repo
+(commit 18ec7b0). Meaning preserved — section order, all dates, anchors, repo names, paths verified
+unchanged; scissors frames removed; CLAUDE.md touched gently and its stale skill count fixed four→seven.
+Both are now human-facing exemplars of the register. Next: the SPEC-humanize sweep (item 1).
+
 ## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
 (V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten
 (software house + conveyor + explicit prover edge-case stage) · `scripts/needle-extract.py` written (the
@@ -59,12 +65,6 @@ prototype/work-board-sketch.html (update at every station change — his standin
 
 ## Forward queue (mirrors ROADMAP.md)
 
-0. **COLD-START FIRST TASK (his idea 2026-07-07 ~16:01):** rewrite `PLAYBOOK.md` (in the private
-   playbook repo `~/.claude/playbook`, NOT this repo) and `~/.claude/CLAUDE.md` in the new writing
-   register (communicator skill's "The writing register" section) — they are human-facing and should
-   model the standard. Do it COLD (clean context writes prose better — the session's own lesson). Both
-   live OUTSIDE the live-spec tree: a deliberate separate pass. CLAUDE.md is the boot loader — edit the
-   STYLE gently and little, never the meaning. Then resume the SPEC sweep (item 1).
 1. **TOP — sweeping (batch 1 DONE):** next SPEC-humanize batches, each via a fresh-context spawn in the
    frozen V2 register. Order: small warm-ups ("Composing across axes", "Asking what the product does"),
    then the needled heavies (the wish walk, worker contract, milestone laws), governance last, template

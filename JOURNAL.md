@@ -4,6 +4,27 @@ Edit history lives here — the WHY behind every change. The spec and README sta
 
 ---
 
+## 2026-07-07 (session 24, ~16:37) — Cold-start item 0: PLAYBOOK + CLAUDE.md rewritten in the register
+
+**What:** The two human-facing method documents outside the live-spec tree — `PLAYBOOK.md` (in the
+private playbook repo) and `~/.claude/CLAUDE.md` (the boot loader) — now read in the pack's writing
+register (communicator's "The writing register" section: neutral native-English technical-writer voice).
+Pushed to `happysasha18/playbook` at commit 18ec7b0.
+
+**Why:** The register was frozen this session, and the documents that model the standard should follow
+it first. Alexander named this as the cold-start first task, to be done on a clean context because clean
+context writes prose better. PLAYBOOK got a full style pass: long dash-chained sentences split into short
+SVO ones, one idea per sentence, active voice with a named actor, filler cut, and the three bold
+scissors-frame rule titles ("a lead, not evidence" and siblings) rewritten as positive sentences.
+CLAUDE.md got a gentle touch only, since it loads every session: caps softened, `⇒` arrows spelled out,
+two semicolon run-ons split. Meaning was held constant and verified mechanically — all 15 section
+headers identical, every date preserved, every anchor and repo name and path present. On Alexander's
+"клод тоже правь" the one stale fact in CLAUDE.md was corrected: the pack has seven working skills now,
+not four.
+
+**Result:** Alexander read the rendered PLAYBOOK selectively and approved it ("sounds perfect"), and
+told me to keep the reporting register I used. Item 0 closed; next is the SPEC-humanize sweep (item 1).
+
 ## 2026-07-07 (session 24, ~13:20) — Row 56: the model router lands (INV-69), D-2 decided
 
 **What:** The pack now has a written rule for which model tier a piece of work is *proposed* at, and D-2
