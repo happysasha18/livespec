@@ -865,89 +865,30 @@ The seed proposes, a written line disposes. A host that already records its own 
 
 ## Attaching to a live project (adoption)
 
-Adoption is a sequence; each phase completes before the next. In practice the version-control gate [A-5]
-is performed FIRST — before anything is touched or moved — so the whole run is reversible; the codes below
-name meanings, not a frozen order (proven on the first real run, tlvphoto 2026-07-04). A phase marked
-[target] is recorded-and-skipped until its machine lands — the run's journal names the deferral (the
-pilot's baseline snapshot is the precedent). [A-0]
+Adoption runs as a sequence, and each phase completes before the next begins. You perform the version-control gate FIRST, before anything is touched or moved, so the whole run stays reversible [A-5]. The codes below name meanings only; they impose no fixed order (proven on the first real run, tlvphoto 2026-07-04). A phase marked [target] is recorded and skipped until its machine lands. The journal names the deferral (the pilot's baseline snapshot is the precedent) [A-0].
 
-1. **Orient — read everything first.** Every existing document is read BEFORE anything is touched: README,
-   any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption never assumes
-   a blank slate — and it owes the project the founding questions (personal-vs-reusable first; the rule
-   lives at the bootstrap [B-2]) about what it finds. [A-1]
-2. **Inventory** — code, user-facing surfaces (seeding the host's surface registry [E-10]), and the
-   document set from the orient pass, listed with owners (file:line for surfaces). [A-2] Adoption's
-   working artifacts — the orient digest, this inventory, reconcile notes — live in the host's
-   `.live-spec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own
-   folders (the pilot polluted the host's `data/`). [A-8]
-3. **Re-engineer the existing documents into live-spec shapes** — an existing spec becomes SPEC.md sections
-   (original claims kept, marked unverified); the inventory's `file:line` pins seed ARCHITECTURE.md [E-14]
-   (the nodes come from the real code structure, so the layer arrives at adoption, not as an afterthought);
-   existing tests become matrix rows citing them at their real level, organized under those nodes [E-15];
-   an existing roadmap/TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted
-   unreconciled. An unverified claim is reconciled (pinned to file:line, or removed) at the FIRST landing
-   that touches its surface — and all remaining ones at the first milestone, whichever comes first. [A-3]
-   One verdict is mandatory per unbacked LIVE surface: anything inventoried that reaches the user but has
-   no spec backing — a de-facto prototype, the adopted host's most common residue — is flagged at orient,
-   and the human decides per surface: **promote** (it enters at the spec step as a feature [INV-16]) ·
-   **quarantine** (moved into a prototype home and labelled [E-17] — itself a production change: the human
-   is choosing that users lose the surface or see it relabelled; the move leaves a dated one-line
-   provenance record at the prototype home — what, why, date — the attic manifest's mirror) · **attic**
-   [A-4]. [A-10]
-4. **Attic, not deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**
-   — the host's archive folder: append-only, one manifest line per file (what it was, why moved, date); on
-   a basename collision the source dir prefixes the name, and a name STILL taken appends a numeric
-   ordinal `-2`, `-3` — the pack's one collision law, stated once in the base skill (rule 18) [E-9].
-   Flat-with-manifest vs dated subfolders is
-   an open decision [D-1]. [A-4] The rule behind it never bends for anything authored: **no adopt or
-   rework run deletes a host file** — superseded files move to attic/ with a manifest line. [INV-7]
-   One exception, and only through a gate: adoption may OFFER a cruft sweep — clearly-regenerable junk
-   (caches, build leftovers, already gitignored) listed with file counts and sizes, deleted only on the
-   human's explicit OK, never silently; authored content never qualifies and always goes through the
-   attic. [A-9]
-5. **Version-control gate (done FIRST — see the note above).** If the host has no git: init it, write a
-   `.gitignore` that excludes heavy generated/media artifacts, make a pristine baseline commit (this
-   doubles as the diff baseline), and settle the remote as a NAMED deliverable: by the first landing a
-   remote (GitHub) either exists or the human has explicitly declined one, and the outcome is recorded in
-   the run's journal entry — a recommendation alone doesn't close the gate (the pilot ended local-only on
-   a mere recommendation) [INV-8]. [A-5]
-6. **Baseline snapshot [target]** — render/produce the current artifacts as they are and save them; this
-   is the diff baseline the snapshot machinery [E-7] will guard. [A-6]
-7. **Incremental thereafter** — the host now works by the same wish lifecycle as a bootstrapped project;
-   installed skill versions are recorded in `.live-spec/` at attach time. **On any version change (live-spec
-   or any installed skill), the agent RE-READS the changed SKILL.md before continuing** — never coasts on
-   the stale in-memory version — and writes a one-line journal note naming old → new. The check is not
-   event-only: at every safe breakpoint [M-2] the agent re-stats the installed skills and the package on
-   disk (version / file mtime) and re-reads what changed — a parallel session may have shipped an update
-   mid-flight; and once a day the same walk also asks the PUBLIC repo whether the pack itself has moved,
-   through the update check [E-25]. [A-7]
+1. **Orient — read everything first.** The agent reads every existing document BEFORE anything is touched: README, any roadmap, any spec, any test suite, journals, TODO files, wikis in the repo. Adoption never assumes a blank slate. It owes the project the founding questions about what it finds (personal-vs-reusable first; the rule lives at the bootstrap [B-2]) [A-1].
+2. **Inventory.** List the code, the user-facing surfaces (seeding the host's surface registry [E-10]), and the document set from the orient pass, each with its owners (file:line for surfaces) [A-2]. Adoption's working artifacts — the orient digest, this inventory, reconcile notes — live in the host's `.live-spec/adopt/`, tracked in git as the run's audit trail, never scattered into the host's own folders (the pilot polluted the host's `data/`) [A-8].
+3. **Re-engineer the existing documents into live-spec shapes.** An existing spec becomes SPEC.md sections; you keep the original claims and mark them unverified. The inventory's `file:line` pins seed ARCHITECTURE.md [E-14]. Its nodes come from the real code structure, so the architecture layer arrives at adoption. Existing tests become matrix rows that cite them at their real level, filed under those nodes [E-15]. An existing roadmap or TODO becomes queue rows. Nothing existing is ignored, and nothing is trusted unreconciled. You reconcile an unverified claim — pin it to file:line, or remove it — at the FIRST landing that touches its surface, and all remaining ones at the first milestone, whichever comes first [A-3].
+   One verdict is mandatory per unbacked LIVE surface. Some inventoried surface reaches the user but carries no spec backing — a de-facto prototype, the adopted host's most common residue. The agent flags it at orient [A-10]. The human then decides per surface:
+   - **promote** — it enters at the spec step as a feature [INV-16].
+   - **quarantine** — moved into a prototype home and labelled [E-17]. This is itself a production change: the human is choosing that users lose the surface or see it relabelled. The move leaves a dated one-line provenance record at the prototype home (what, why, date), the attic manifest's mirror.
+   - **attic** [A-4].
+4. **Attic over deletion.** Any file superseded during adoption or rework moves to the **attic (attic/)**, the host's archive folder. The attic is append-only, with one manifest line per file (what it was, why moved, date). On a basename collision the source directory prefixes the name. A name STILL taken appends a numeric ordinal `-2`, `-3`. This is the pack's one collision law, stated once in the base skill (rule 18) [E-9]. Flat-with-manifest versus dated subfolders stays an open decision [D-1] [A-4]. The rule behind it never bends for anything authored: no adopt or rework run deletes a host file, and superseded files move to attic/ with a manifest line [INV-7]. One exception passes only through a gate. Adoption may OFFER a cruft sweep: clearly-regenerable junk (caches, build leftovers, already gitignored) listed with file counts and sizes, deleted only on the human's explicit OK, never silently. Authored content never qualifies and always goes through the attic [A-9].
+5. **Version-control gate (done FIRST — see the note above).** If the host has no git, the agent inits it, writes a `.gitignore` that excludes heavy generated or media artifacts, and makes a pristine baseline commit (this doubles as the diff baseline). It settles the remote as a NAMED deliverable. By the first landing a remote (GitHub) either exists or the human has explicitly declined one, and the run's journal records the outcome. A recommendation alone does not close the gate; the pilot ended local-only on a mere recommendation [INV-8]. [A-5]
+6. **Baseline snapshot [target].** Render or produce the current artifacts as they are and save them. This is the diff baseline the snapshot machinery [E-7] will guard [A-6].
+7. **Incremental thereafter.** The host now works by the same wish lifecycle as a bootstrapped project. The agent records installed skill versions in `.live-spec/` at attach time. On any version change — live-spec or any installed skill — the agent RE-READS the changed SKILL.md before continuing. It never coasts on the stale in-memory version. It writes a one-line journal note naming old → new. The check is not event-only. At every safe breakpoint [M-2] the agent re-stats the installed skills and the package on disk (version and file mtime) and re-reads what changed, since a parallel session may have shipped an update mid-flight. The same walk asks the PUBLIC repo once a day whether the pack itself has moved, through the update check [E-25]. [A-7]
 
-**How the skills arrive on a machine.** The pack ships one installer, `install.sh`: it copies every pack
-skill into the agent's skills home (`~/.claude/skills/`), and it is idempotent — an existing copy is
-backed up with a timestamp before being overwritten, never deleted — and the backup lands in an attic
-folder BESIDE the skills home, never inside it, so the agent never scans a stale copy as a live skill
-(the attic principle applied at install time). What the installer just wrote is exactly what A-7's record clause writes down in
-`.live-spec/` — installing and recording are two halves of one seam. [E-21]
+**How the skills arrive on a machine.** The pack ships one installer, `install.sh`. It copies every pack skill into the agent's skills home (`~/.claude/skills/`). It is idempotent: an existing copy is backed up with a timestamp before being overwritten, never deleted. The backup lands in an attic folder BESIDE the skills home, never inside it, so the agent never scans a stale copy as a live skill (the attic principle at install time). What the installer wrote is exactly what A-7's record clause writes down in `.live-spec/`. Installing and recording are two halves of one seam [E-21].
 
-**How the machine learns a newer pack exists.** Freshness [A-7] re-reads what is already ON the
-machine; delivery of a newer pack used to be a hand job nobody's walk owned. So the pack carries an
-update check, `scripts/check-pack-update.sh`: once a day — at the first freshness point of the day,
-throttled by a dated stamp in the machine's pack home (`~/.claude/live-spec/update-check-stamp`) — it
-asks the public repo (the VERSION file on main) whether the pack moved past what this machine runs
-(the walk hands it the installed version from its recorded home [M-7]), and when the remote is newer
-it PROPOSES, in the session's own chat: both versions named, the what-changed pointer (the public
-journal), and the road named — `install.sh`, whose attic backup already guards the overwrite [E-21],
-or a plain pull where the repo itself runs the pack. It never installs anything: updating stays the
-human's word, like every install gate [ACT-1]. No network — or an unreadable answer — reads as one
-honest "check skipped" line naming the address it tried (a dead URL must not masquerade as a quiet
-offline day), never a block, never a guess, and an offline day leaves the stamp unwritten so the next
-session retries. A machine AHEAD of the public repo — the developer's, mid-work — reads as up to date:
-the check proposes forward only, never a downgrade. It is E-23's outward twin: sync-skills keeps the machine's
-copies true to the LOCAL repo, the update check tells when the PUBLIC repo has moved past both.
-Its edges: non-goals — no background daemon (a proposal belongs where the human reads, in the
-session), no auto-install ever, no per-skill remote diff (the pack version speaks for the whole);
-its only face is the proposal line, governed by the line law — facets N/A [INV-28]; success measure:
-the day a newer pack ships, the next session on another machine proposes it unasked [default]. [E-25]
+**How the machine learns a newer pack exists.** Freshness [A-7] re-reads what is already ON the machine. Delivery of a newer pack used to be a hand job nobody's walk owned. So the pack carries an update check, `scripts/check-pack-update.sh`. It runs once a day, at the first freshness point of the day, throttled by a dated stamp in the machine's pack home (`~/.claude/live-spec/update-check-stamp`). It asks the public repo — the VERSION file on main — whether the pack moved past what this machine runs; the walk hands it the installed version from its recorded home [M-7]. When the remote is newer the check PROPOSES in the session's own chat: both versions named, the what-changed pointer (the public journal), and the road named — `install.sh`, whose attic backup already guards the overwrite [E-21], or a plain pull where the repo itself runs the pack. It never installs anything; updating stays the human's word, like every install gate [ACT-1]. No network, or an unreadable answer, reads as one honest "check skipped" line naming the address it tried (a dead URL must not masquerade as a quiet offline day). It never blocks and never guesses. An offline day leaves the stamp unwritten, so the next session retries. A machine AHEAD of the public repo — the developer's, mid-work — reads as up to date; the check proposes forward only, never a downgrade. It is E-23's outward twin: sync-skills keeps the machine's copies true to the LOCAL repo, and the update check tells when the PUBLIC repo has moved past both.
+
+Its edges are non-goals:
+- no background daemon (a proposal belongs where the human reads, in the session),
+- no auto-install ever,
+- no per-skill remote diff (the pack version speaks for the whole).
+
+Its only face is the proposal line, governed by the line law, facets N/A [INV-28]. Success measure: the day a newer pack ships, the next session on another machine proposes it unasked [default]. [E-25]
 
 ## One rulebook behind the skills
 
