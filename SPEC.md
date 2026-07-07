@@ -1180,76 +1180,43 @@ inlined body goes stale the moment a sibling edits the file. [INV-55]
 
 ## From the spec to the tests: two layers that must not be skipped
 
-**The test method lives in one skill, and the pipeline invokes it.** The matrix derivation and the
-test writing (the pipeline's steps 5–6) are worked by the **test-author** skill — the level ladder
-(string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned
-skip-set, traceability as a standing test — invoked by build-pipeline exactly the way steps 1–2
-invoke spec-author and product-prover. The method's one home is the skill; the pipeline keeps the
-order and the gates. Born of a real failure: two visible bugs passed ~660 string-only tests, and the
-rebuild's method knowledge had no durable home until this extraction (track-coach, 2026-07-02..04;
-extracted 2026-07-07). [E-27]
+**The test method lives in one skill, and the pipeline invokes it.** The matrix derivation and the test writing (the pipeline's steps 5–6) are worked by the **test-author** skill: the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. build-pipeline invokes it exactly the way steps 1–2 invoke spec-author and product-prover. The method's one home is the skill; the pipeline keeps the order and the gates. This method was born of a real failure: two visible bugs passed ~660 string-only tests, and the rebuild's method knowledge had no durable home until this extraction (track-coach, 2026-07-02..04; extracted 2026-07-07) [E-27].
 
-The spec says WHAT the product is; tests prove facts about the shipped artifact. Between them live two
-documents that were once implicit — and an implicit layer is a lost layer (Alexander caught the gap
-2026-07-05: the pack taught a matrix template but not the layers that produce it).
+The spec says WHAT the product is. Tests prove facts about the shipped artifact. Between them live two documents that were once implicit, and an implicit layer is a lost layer. Alexander caught the gap 2026-07-05: the pack taught a matrix template but never the layers that produce it.
 
-**The architecture doc (ARCHITECTURE.md)** — how the product is BUILT: a short list of named nodes
-(pipeline stages, modules, the owners of surfaces), one responsibility each, one name each — the
-one-surface-one-name rule applied to structure. Every spec fact is OWNED by exactly one node; in a live
-codebase every node pins to its owning place — the NORMATIVE pin is the named thing (a function, a
-marker comment, a selector, a section heading), the `:line` beside it is a convenience cache that may
-lag; a reader resolves the name, and a drift check re-greps it (pins rot silently otherwise — a real
-host drifted 7 of 17 pins in ONE working session, and a wrong-with-confidence pin is worse than none).
-Drafting the architecture IS where spec claims
-get reconciled against shipped reality (each pin comes from a command actually run, never from the doc's
-own prose). It is written from the proven spec (template: `ARCHITECTURE.template.md`) and — like the spec
-— it is PROVEN before anything derives from it: a product-prover pass with the architecture lens (every
-spec fact has an owning node · no node stands without spec backing · the seams between nodes are named).
-A large or surface-class wish updates the doc before the matrix is touched; a bug or small wish cites the
-existing node it lands in — or, when its fact has no owner yet, ASSIGNS it to the fitting existing node
-(recorded in the doc; an assignment alone triggers no re-prove) — so no fix is ever the thing the rules
-forbid to land. The doc is re-proven when its structure CHANGES, not on every landing. And it is
-ITERATIVE, like the spec it serves: it maps the product as it stands plus the landing in flight — a node
-exists for what ships today, or for what the spec already promises under an owned queue row (marked
-[target] with an empty pin); it is never designed several milestones ahead. A future feature earns its
-node when its landing arrives — speculative nodes are unbacked structure, the architecture's version of
-a silent micro-decision. Re-carving the whole map IS legal — it arrives as a restructure placement's
-own queue row [INV-37], walks this step, and is re-proven like any structure change. [E-14]
+**The architecture doc (ARCHITECTURE.md)** describes how the product is BUILT. It is a short list of named nodes: pipeline stages, modules, and surface owners. Each node carries one responsibility and one name — the one-surface-one-name rule applied to structure. Every spec fact is OWNED by exactly one node.
 
-**The architecture owes numbers, not only names.** The architecture doc states MEASURABLE quality
-budgets for what it builds, plus each budget's INSTRUMENTATION home: where the real numbers are
-measured and where a human can read them (an export, a debug view, a report). And WHAT is measurable
-is not one-size — **the project's KIND [INV-36] proposes the dimensions**, the architecture step asks
-"what does quality MEAN here, in numbers?" before writing any: a user-facing product measures paint
-and interaction times ("the first image appears within 2 s on a cold visit"); a backend service
-measures latency, throughput, error rate; a CLI or pipeline measures run time on a typical input and
-per-unit cost; a skill pack measures its evals' pass rate and suite wall-time; prose measures what
-honestly HAS a number (a reader reaches X within one scroll) — and where a quality genuinely has no
-honest number, the architecture SAYS so by name instead of inventing a vanity metric. A budget is
-asserted by acceptance — a matrix row at a level that can see it — never a hope in prose; a surface
-whose architecture names no budgets and no instrumentation home
-is a derivation defect the prover flags, exactly like an unowned fact. The numbers themselves are the
-host's taste — proposed with a recommendation, set on the human's word at the surface's first budget
-landing. Like the two layers themselves [INV-15], the duty binds from the first landing that touches
-the surface after the clause exists — never retroactively across a host's whole map. (Born of a real
-miss: a gallery's first picture loaded long and the human found it before any check did — that
-architecture had named no budget and measured nothing, 2026-07-06.) [INV-41]
+In a live codebase every node pins to its owning place, and the NORMATIVE pin is the named thing: a function, a marker comment, a selector, a section heading. The `:line` beside it is a convenience cache that may lag. A reader resolves the name, and a drift check re-greps it. Pins rot silently otherwise: one real host drifted 7 of 17 pins in ONE working session, and a wrong-with-confidence pin is worse than none.
 
-**The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows.
-Derivation is a method with a checkable output: rows are organized **architecture node × spec fact**,
-every fact gets at least one row, every row pins a test level — and the derivation closes with the
-**coverage validation** — the checklist whose normative home is the matrix template, actually walked:
-every spec anchor appears in ≥1 row · every artifact-inventory entry owns ≥1 rendered-level row · every
-visibility/layout/colour/interaction fact sits at level ≥ browser-computed · every node carries its
-negative-side rows [INV-6] · no row cites an anchor or node that no longer exists (stale rows retire,
-never vanish). A fact with no row, or a row at a too-weak level, is a derivation defect — caught at
-derivation time, not by the user. [E-15]
+Drafting the architecture IS where spec claims get reconciled against shipped reality. Each pin comes from a command actually run, never from the doc's own prose. You write it from the proven spec (template: `ARCHITECTURE.template.md`). Like the spec, it is PROVEN before anything derives from it: a product-prover pass with the architecture lens. That lens checks that every spec fact has an owning node, that no node stands without spec backing, and that the seams between nodes are named.
 
-While both layers live, one thing holds: **no wish lands whose facts lack an owning architecture node and
-a matrix row at the right level** — the bridge from spec to tests is walked layer by layer, never jumped.
-A project that predates these layers — this pack itself included — brings them up as an OWNED landing:
-the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively
-(the pack's own bring-up is queue row 50). [INV-15]
+A large or surface-class wish updates the doc before the matrix is touched. A bug or small wish cites the existing node it lands in. When its fact has no owner yet, it ASSIGNS that fact to the fitting existing node — recorded in the doc, and an assignment alone triggers no re-prove — so no fix lands the thing the rules forbid. The doc is re-proven when its structure CHANGES, not on every landing.
+
+The doc is ITERATIVE, like the spec it serves. It maps the product as it stands plus the landing in flight. A node exists for what ships today, or for what the spec already promises under an owned queue row (marked [target] with an empty pin). It is never designed several milestones ahead. A future feature earns its node when its landing arrives. Speculative nodes are unbacked structure — the architecture's own silent micro-decision. Re-carving the whole map IS legal: it arrives as a restructure placement's own queue row [INV-37], walks this step, and is re-proven like any structure change [E-14].
+
+**The architecture owes numbers, not only names.** The architecture doc states MEASURABLE quality budgets for what it builds. It also states each budget's INSTRUMENTATION home: where the real numbers are measured, and where a human reads them — an export, a debug view, a report. What is measurable is not one-size; **the project's KIND [INV-36] proposes the dimensions**. The architecture step asks "what does quality MEAN here, in numbers?" before writing any. The answer depends on the kind:
+
+- A user-facing product measures paint and interaction times ("the first image appears within 2 s on a cold visit").
+- A backend service measures latency, throughput, and error rate.
+- A CLI or pipeline measures run time on a typical input and per-unit cost.
+- A skill pack measures its evals' pass rate and suite wall-time.
+- Prose measures what honestly HAS a number (a reader reaches X within one scroll).
+
+Where a quality genuinely has no honest number, the architecture SAYS so by name instead of inventing a vanity metric. A budget is asserted by acceptance: a matrix row at a level that can see it. A hope in prose does not count. A surface whose architecture names no budgets and no instrumentation home is a derivation defect the prover flags, exactly like an unowned fact.
+
+The numbers themselves are the host's taste. The architecture proposes them with a recommendation, set on the human's word at the surface's first budget landing. Like the two layers themselves [INV-15], the duty binds from the first landing that touches the surface after the clause exists. It never binds retroactively across a host's whole map. This duty was born of a real miss: a gallery's first picture loaded long, and the human found it before any check did — that architecture had named no budget and measured nothing (2026-07-06) [INV-41].
+
+**The test spec — the matrix is DERIVED, never just filled.** The matrix [E-5] is not a bucket of rows. Derivation is a method with a checkable output. Rows are organized **architecture node × spec fact**. Every fact gets at least one row. Every row pins a test level. Derivation closes with the **coverage validation**, a checklist whose home is the matrix template, actually walked:
+
+- Every spec anchor appears in ≥1 row.
+- Every artifact-inventory entry owns ≥1 rendered-level row.
+- Every visibility/layout/colour/interaction fact sits at level ≥ browser-computed.
+- Every node carries its negative-side rows [INV-6].
+- No row cites an anchor or node that no longer exists (stale rows retire, they never vanish).
+
+A fact with no row, or a row at a too-weak level, is a derivation defect. The prover catches it at derivation time, before the user ever hits it [E-15].
+
+While both layers live, one thing holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** You walk the bridge from spec to tests layer by layer, never jumping it. A project that predates these layers — this pack itself included — brings them up as an OWNED landing. The invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively. The pack's own bring-up is queue row 50 [INV-15].
 
 ## The machines that hold the bounds
 
