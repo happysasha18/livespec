@@ -758,6 +758,61 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
                       "ROADMAP template lost the decline-lists-absorbed rule")
 
 
+def _pack_list_gaps(skill_names, spec_body, footer_bodies, readme_body):
+    """Row 167 (M-168, INV-66): pure checker — which skill names are missing from
+    which pack list. Returns a list of "list-label: missing-name" strings."""
+    gaps = []
+    working = [s for s in skill_names if s != "live-spec-base"]
+    for name in working:
+        if name not in spec_body:
+            gaps.append("SPEC working-skills text: %s" % name)
+        if name not in readme_body:
+            gaps.append("README: %s" % name)
+    for label, body in footer_bodies.items():
+        for name in skill_names:
+            if name not in body:
+                gaps.append("%s closing list: %s" % (label, name))
+    return gaps
+
+
+class TestPackListParity(unittest.TestCase):
+    """Row 167 (M-168, INV-66): every place the pack lists its skills names the same
+    complete set — born of the communicator footer that predated publish."""
+
+    def all_skills(self):
+        return sorted(d for d in os.listdir(os.path.join(ROOT, "skills"))
+                      if os.path.isdir(os.path.join(ROOT, "skills", d)))
+
+    def footer_bodies(self):
+        out = {}
+        for s in self.all_skills():
+            body = read(os.path.join("skills", s, "SKILL.md"))
+            if "The pack, whole:" in body:
+                out[s] = re.sub(r"\s+", " ", body.split("The pack, whole:", 1)[1])
+        return out
+
+    def test_real_repo_lists_complete(self):
+        skills = self.all_skills()
+        self.assertGreaterEqual(len(skills), 7)
+        footers = self.footer_bodies()
+        self.assertGreaterEqual(len(footers), 2,
+                                "the closing pack lists disappeared — the parity check lost its subject")
+        gaps = _pack_list_gaps(skills, re.sub(r"\s+", " ", read("SPEC.md")),
+                               footers, re.sub(r"\s+", " ", read("README.md")))
+        self.assertEqual(gaps, [], "pack lists drifted: %s" % gaps)
+
+    def test_stripped_copy_goes_red(self):
+        # The never side, permanent: the pre-fix communicator footer (four skills,
+        # publish missing since its birth) must FAIL this checker.
+        old_footer = ("**spec-author** writes the spec · **product-prover** reviews it · "
+                      "**build-pipeline** ships it · **communicator** makes the human-facing exchange land.")
+        gaps = _pack_list_gaps(self.all_skills(), re.sub(r"\s+", " ", read("SPEC.md")),
+                               {"communicator": old_footer},
+                               re.sub(r"\s+", " ", read("README.md")))
+        self.assertTrue(any("communicator closing list" in g for g in gaps),
+                        "the checker passed the historic four-skill footer — it has no teeth")
+
+
 class TestTargetOwnership(unittest.TestCase):
     """Row 64 (M-095): SPEC S-0 mechanized. Every [target]-marked index fact maps to a still-open
     queue row (the map below is declared HERE, self-closing: a new [target] without a map entry is

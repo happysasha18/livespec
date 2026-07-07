@@ -1954,3 +1954,11 @@ the publish skill — four skills listed, two missing; the class (lists drift) g
 mechanical parity check; (2) my own skill file shipped a flat version key and no eval — both fixed by
 the senior, the worker never touched beyond its grant. Suite 165 green; pack 0.8.68; installed
 copies synced (test-author absent → 0.1.0).
+
+## 2026-07-07 ~10:41 — session 23: row 167 landed — pack lists can no longer drift silently
+**What:** one pure checker over the real files: every place the pack lists its skills (the SPEC's
+working-skills sentence, the skills' closing lists, the README table) must name the same complete
+set; a missing name goes red at every commit (SPEC v0.15.57 INV-66, M-168, suite 167). The never
+side is permanent: the second test runs the checker on the historic four-skill communicator footer —
+the exact artifact that drifted — and demands it fail. Second occurrence of the lists-drift class
+(cross-audit F2 was the first); the ledger's law fired, the class now has a mechanical owner.

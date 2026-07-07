@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.56, 2026-07-07)
+# live-spec — SPEC (v0.15.57, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -966,6 +966,13 @@ base skill; a second full statement inside a working skill is drift, a defect to
 convenience.** Restatements older than the base skill are pruned at milestones through the compaction pass
 [M-1], skill by skill, never in one risky rewrite. [INV-13]
 
+**Every place the pack lists its skills names the same complete set.** The skill list lives in
+several reader-facing places — the working-skills sentence up top, the closing lists the skills
+themselves carry, the README's table — and a list is exactly the kind of fact that drifts: the
+communicator's closing list was found naming four skills after the pack had grown past six
+(2026-07-07, a worker's halt surfaced it, two skills missing since their birth). List parity is
+checked mechanically at every commit; a list missing a skill goes red. [INV-66]
+
 ## Who decides what
 
 **You (the human)** own taste, design, irreversible calls, publish/push gates, domain wording — and your
@@ -1598,6 +1605,7 @@ meaning, this table is only the map.
 | INV-61 | process bookkeeping scales to the delta: the pre-push re-check keeps its rigor but scales its form — a small delta (skill/prose/infra, no new surface/structure) ships a three-line SHORT-FORM record (previous clean · delta one line · verdict), surface/structural deltas keep the full walk; claims batch per lane, journal + resume once per batch; the irreducible named (law text, red-first, delta prove, gates) | Rhythm |
 | INV-64 | anything shown FOR REVIEW carries per-claim provenance (artifact · his recorded word · the agent's inference — inferences loudest) and is commentable with answer capture (the decision page's JSON law extends to review pages); never a read-only wall, never an unmarked inference | Throwing a wish |
 | INV-65 | search for an existing skill at setup and at every struggle; adopt or reject by name; invoke as shipped · paraphrase + named credit · verbatim only under license | When the workshop itself misbehaves |
+| INV-66 | every place the pack lists its skills names the same complete set — checked mechanically, a missing name goes red | One rulebook behind the skills |
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
 | E-27 | the test method's one home — the test-author skill, invoked at the pipeline's matrix and test steps | From the spec to the tests |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
