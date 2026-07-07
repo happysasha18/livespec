@@ -118,65 +118,19 @@ Together the trail is the session's time accounting: read top to bottom, it answ
 
 **The stretch's end is unmissable.** A report that exists but drowns above tool noise was never delivered. This is his 2026-07-07 word after a 17-row night: the night ended in a way that read to him as nothing at all, unclear, with no closing word. When a stretch ends — a loop iteration going to sleep, an away-stretch closing, a session ending — the LAST rendered thing is one SHORT final line. It carries four fields: what closed, what's next, what's needed from him, and when the agent wakes. The long report lives ABOVE it. The final line comes LAST, after every tool call. A page deliverable repeats its passport [INV-51] in that final line. Delivery, not existence, is the law. Home: communicator. [INV-57]
 
-**A review surface shows its sources and takes his pen.** Anything shown FOR REVIEW — a dossier, a
-claims page, a draft with assertions — carries per-claim PROVENANCE: each claim chipped as read from
-the artifact · his own recorded word · or the agent's inference, and inferences are flagged LOUDEST
-(«я не знаю, откуда ты всё это взял» — the promoter case, where unmarked inference cost a review
-round). And the surface is COMMENTABLE, never a read-only wall: line-by-line room for his word with
-answer capture — the decision page's saved-answers law [INV-32] extends to review pages, one JSON
-round-trip home. His standing cross-project word, 2026-07-06. Home: communicator, beside the decision
-page rule. [INV-64]
+**A review surface shows its sources and takes his pen.** Anything you show for review carries per-claim provenance. That covers a dossier, a claims page, or a draft with assertions. The surface marks each claim by where it came from: read from the artifact, his own recorded word, or the agent's inference. The inferences are flagged LOUDEST. In the promoter case, unmarked inference cost a review round — he said he did not know where the agent had got it all from. The surface is COMMENTABLE, never a read-only wall. It gives line-by-line room for his word and captures his answers. The decision page's saved-answers law [INV-32] extends to review pages, as one JSON round-trip home. This is his standing cross-project word, 2026-07-06. Its home is the communicator, beside the decision page rule. [INV-64]
 
-**His word on a shown artifact is read as meant — and his cuts hold.** The lesson arrived through the
-promoter window (2026-07-06 — three review rounds of one document rejected in a single evening, the
-same failures repeating after they had been named; the confident-specialist VOICE core of that lesson
-lives in the promoter's own voice skill by his placement word — the pack keeps only the general
-spine). Two clauses. A phrasing the human KILLED in a review round stays killed in every later draft
-of that artifact — the writer keeps the kill-list WRITTEN where the artifact's project keeps its
-records (its journal, or the artifact's own notes file), never only in session memory: a wipe must not
-resurrect a cut; a cut word resurfacing two rounds later is a defect, not a fresh idea. And a vivid phrase of his is adopted only as MEANT: a human sometimes writes
-mockery of a bad draft, not guidance (the parody metaphor earnestly baked into copy as if prescribed),
-so before his colorful phrase shapes the work its intent is read from context or asked [INV-4] —
-never assumed prescriptive. The law's home is the communicator; two of the original wish's bans
-already live in the pack (no empty drama — the no-disclaimers rule; no approval-begging — silence is
-consent [INV-31]) and are cross-linked from there, never restated. [INV-42]
+**His word on a shown artifact is read as meant — and his cuts hold.** This lesson arrived through the promoter window on 2026-07-06. Three review rounds of one document were rejected in a single evening, the same failures repeating after they had been named. The confident-specialist voice core of that lesson lives in the promoter's own voice skill, by his placement word; the pack keeps only the general spine. Two clauses follow. First, a phrasing the human KILLED in a review round stays killed in every later draft of that artifact. The writer keeps the kill-list written where the artifact's project keeps its records — its journal, or the artifact's own notes file — never only in session memory. A wipe must not resurrect a cut. A cut word resurfacing two rounds later is a defect, not a fresh idea. Second, a vivid phrase of his is adopted only as meant. A human sometimes writes mockery of a bad draft, not guidance — the parody metaphor earnestly baked into copy as if prescribed. So before his colorful phrase shapes the work, the writer reads its intent from context or asks [INV-4], never assuming it prescriptive. The law's home is the communicator. Two of the original wish's bans already live in the pack: no empty drama, the no-disclaimers rule; and no approval-begging, since silence is consent [INV-31]. Both are cross-linked from there, never restated. [INV-42]
 
-**Approved text is frozen — a revision applies only the named correction.** Once the human approved a
-text, it is settled material: a later revision applies EXACTLY the correction he named — trim what he
-said to trim, swap what he said to swap — never a fresh rewrite around it (a rewrite of an approved
-opener once introduced a banned pattern the approved wording never had; promoter case, 2026-07-07).
-Churn of approved material is a defect, kin of a resurfaced cut [INV-42]. Home: communicator, beside
-the kill-list rule. [INV-58]
+**Approved text is frozen — a revision applies only the named correction.** Once the human approved a text, it is settled material. A later revision applies exactly the correction he named — trim what he said to trim, swap what he said to swap — never a fresh rewrite around it. A rewrite of an approved opener once introduced a banned pattern the approved wording never had; that was the promoter case, 2026-07-07. Churn of approved material is a defect, kin of a resurfaced cut [INV-42]. Its home is the communicator, beside the kill-list rule. [INV-58]
 
-**The kill-list has a mechanical face.** For a host with taste-reviewed artifacts the pack ships the
-kill-list TEMPLATE — the human's cuts as dated literals, appended the moment a cut happens, never
-removed — and the guardrails guidance for a SCANNER: a test reads the table and greps the artifact's
-surfaces; a killed literal reappearing turns the suite red (a banned pattern once returned into a
-campaign's most visible line after the ban was «written on the forehead» — only the executable
-scanner ended it; promoter case, 2026-07-07). The law stays INV-42's; this is its teeth. [E-26]
+**The kill-list has a mechanical face.** For a host with taste-reviewed artifacts, the pack ships the kill-list template. It holds the human's cuts as dated literals, appended the moment a cut happens, never removed. The pack also ships the guardrails guidance for a scanner. A test reads the table and greps the artifact's surfaces, and a killed literal reappearing turns the suite red. A banned pattern once returned into a campaign's most visible line, even after the ban was spelled out in the plainest terms; only the executable scanner ended it. That was the promoter case, 2026-07-07. The law stays INV-42's; this is its teeth. [E-26]
 
-**No question is asked twice — and dialogues converge.** Before ANY ask, the recorded word is
-searched — the decision archives, review records, the journal, the profile; a question a record
-already answers is a DEFECT, not a question (his escalation, promoter case: «на кучу похожих вопросов
-уже давали ответы… сделай так, чтобы диалоги сходились»). And exchanges CONVERGE: an answered
-question closes forever and is harvested into its row the same session; a problem he named returns
-SOLVED with evidence, never re-described; round N+1 carries only new material. Home: communicator's
-ask rules. [INV-59]
+**No question is asked twice — and dialogues converge.** Before any ask, the agent searches the recorded word — the decision archives, the review records, the journal, the profile. Here, a question a record already answers is a DEFECT, not a question. This was his escalation in the promoter case: a stack of similar questions had already been answered, and he asked that the dialogues converge. Exchanges also converge. An answered question closes forever and is harvested into its row the same session. A problem he named returns solved with evidence, never re-described, so round N+1 carries only new material. Its home is the communicator's ask rules. [INV-59]
 
-**A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question never
-arrives empty-handed: the agent mines the material first — exemplars, precedents, real options with
-citations — and asks WITH a chosen recommendation and its evidence; asking the human to supply what
-the agent should have mined is a defect (his word, promoter case: «сам нашёл, предложил — потом
-показывай»). Sharpens the recommended-option law [INV-4] for taste calls. Home: communicator. [INV-60]
+**A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question never arrives empty-handed. The agent mines the material first — exemplars, precedents, real options with citations. It then asks with a chosen recommendation and its evidence. Asking the human to supply what the agent should have mined is a defect. This was his word in the promoter case: find it yourself, propose, then show. This sharpens the recommended-option law [INV-4] for taste calls. Its home is the communicator. [INV-60]
 
-**Priority bends the lane order, visibly.** A critical bug lands before everything — it heads even the
-waiting-bug line (next section). Critical priority heads the QUEUE whatever its door — a critical-priority
-feature goes to the queue head too; but only the bug DOOR preempts the in-work lane [T-9]. A quick win may bubble up: when the lane frees, it may be taken ahead of
-larger queued wishes, the jump marked in its row, never silent; after one bubbled landing the queue head
-goes next, so a stream of quick wins cannot starve a big wish forever. An inbox wish's arrival IS its
-harvest moment — that is when it first becomes a row the ordering rules can see; a file's own date never
-competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom; within one sweep
-an inbox batch harvests in filename-sorted order. [T-11]
+**Priority bends the lane order, visibly.** A critical bug lands before everything, heading even the waiting-bug line (next section). Critical priority heads the queue whatever its door, so a critical-priority feature goes to the queue head too. But only the bug door preempts the in-work lane [T-9]. A quick win may bubble up. When the lane frees, the agent may take it ahead of larger queued wishes, marking the jump in its row, never silent. After one bubbled landing the queue head goes next, so a stream of quick wins cannot starve a big wish forever. An inbox wish's arrival is its harvest moment — that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch harvests in filename-sorted order. [T-11]
 
 **The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
 three axes, stated together in ONE intake line — size · priority · door · the work-kind (what the wish
