@@ -2026,3 +2026,39 @@ time saved); the footer/README edits stayed on the senior — smaller than their
 **Why:** decision pages carry work out; until today nothing owned what comes BACK. Now the exchange
 has both halves, and success measures have a place where real signals can accumulate — row 96's first
 loop can run on a real project.
+
+---
+
+## 2026-07-07 12:09 — Row 12 CLOSED: CLAUDE.md/PLAYBOOK mining complete (session 24)
+
+The large mining row (map every CLAUDE.md/PLAYBOOK rule → skill → gap, fold the gaps) is done. Its
+map had two remaining items after session 9's folds.
+
+**Gap 7 — standing default-delegate list (verify-only).** The claim in the map was "partial: tier
+examples exist but the standing category list isn't distilled into build-pipeline". Stale: the
+≥1-holds trigger list in build-pipeline §Junior delegation IS that standing list, just phrased as
+triggers — >3 files read for facts (audit across files), a known script/suite >~30s (run a suite),
+output is a report/list/dump, edit strings/command known verbatim (apply defined edits). Moved
+partial→folded in the map with the citation; no skill change. (Translate-text is the one category
+not spelled as its own trigger — falls under dump/command-known, not worth a bespoke line.)
+
+**Gap 11 — supersession sweep (folded).** "When a global rule supersedes an earlier one, sweep the
+project-level copies" was a real un-homed gap. Folded as a named clause on live-spec-base **rule 14**
+(fix-the-class sweep) rather than a new maintenance rule — a rule superseded at a broad scope makes
+its restatements at narrower scopes (a host CLAUDE.md, a project playbook copy, an installed skill)
+stale siblings, swept in the same change. Chose to extend rule 14 over inventing a rule so the pack
+does not grow where an existing class already owns the case (compaction discipline). base 0.1.24.
+
+**Class swept while here (rule 14 applied to the guard itself).** Bumping base 0.1.24 tripped the
+base-pin sweep: 7 skills cite `` `live-spec-base` (vX) ``, all moved to 0.1.24. But the pin-drift
+gate (`test_traceability.py`) only enforced 5 of the 7 — test-author and feedback-intake (newer
+skills) had added the pin without being added to the gate's list. Widened the gate to all 7 real
+citers, so the guard now covers the whole class it guards.
+
+**No delegation:** all edits were single-file reasoning edits or one verbatim sed (7 identical pin
+swaps) — sub-brief; a worker's saving would have been seconds. The real fan-out is reserved for the
+0.9.0 milestone audit.
+
+Pack 0.8.74, base 0.1.24, suite 174 green. Map banner-closed (all 11 ranked gaps resolved).
+**Next:** row 56 (model router) opens the 0.9.0 movement; the milestone (3-pass preventive audit +
+doc compaction) lands the MINOR bump — Alexander's ask this session.

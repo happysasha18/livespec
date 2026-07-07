@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.23
+  version: 0.1.24
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -88,7 +88,7 @@ a working skill still stands: its pointer here reads as plain advice.
     name, a jargon string, a design inconsistency: before calling the fix done, name the pattern behind the
     instance, search the whole repo for it, and check every user-facing surface (not just the one reported)
     — then fix all siblings in the same change. One instance reported means the whole class is owned; the
-    human never finds the second instance by eye. Each working skill applies this in its own domain: the
+    human never finds the second instance by eye. A rule superseded at a broad scope is the same class: its restatements at narrower scopes — a host's CLAUDE.md, a project's playbook copy, an installed skill — go stale the instant the broad rule changes, so the same change that supersedes the rule sweeps those copies, never leaving a narrower scope quoting the old rule. Each working skill applies this in its own domain: the
     pipeline sweeps code and surfaces on every bugfix, the prover sweeps the document before writing a
     point finding.
 

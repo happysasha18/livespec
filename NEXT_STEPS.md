@@ -8,7 +8,14 @@ its home, FEEDBACK.md ledger for field evidence (INV-21's first honest reading s
 wishes→items, two-arm eval honestly red, prover record docs/prover/2026-07-07-row47.md (5/5 folded) ·
 count-drift class swept again (SPEC header, README heading, seam cells) · test-author pin label fixed,
 pin gate fully clean.
-PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.73, SPEC v0.15.60, suite 174 green; CI live.**
+**Session 24 midday: row 12 CLOSED (CLAUDE.md/PLAYBOOK mining complete — last two gaps folded: #7
+default-delegate list verify-only into build-pipeline §Junior delegation; #11 supersession sweep into
+live-spec-base rule 14, base 0.1.24; pin-drift gate widened to all 7 base-pin citers). Now opening the
+0.9.0 movement on Alexander's word ("бампай на 0.9"): row 56 (model router) → then the MINOR milestone
+(3-pass preventive audit + doc compaction) lands 0.9.0. Row 56 is a large feature — runs by build-pipeline.**
+PUBLIC: github.com/happysasha18/live-spec. **Pack 0.8.74, base 0.1.24, SPEC v0.15.60, suite 174 green; CI live. NOT yet pushed (row 12 commit local).**
+This session runs on **Opus** by Alexander's word (Fable pulled from Claude Code today) — the Fable-only
+note below is relaxed for this session only.
 Verify on resume: `git status -sb` + suite. **Fable-only window (Anthropic pulls Fable from Claude
 Code today — if resuming on another model, ASK Alexander first.)** His language laws live in the
 profile (scissors ban · native-plain English · industry-vocabulary narration — no calques). Board:
@@ -17,9 +24,11 @@ NOTE: feedback-intake has no standalone mirror yet — mirrors ride row 51's law
 if a new GitHub repo is wanted.
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **Next without-him rows:** 96 tail (rows 48/49 re-scope against INV-21 — 47's part is DONE; the
-   first real feedback loop leg rides a live host window) · 12 tail · 56 router (after 52–54; check
-   52/53 statuses at take).
+1. **In flight (0.9.0 movement):** 56 router — spec'd by build-pipeline (queue class → proposed tier,
+   senior override logged per D-2, first routed landing recorded) → then the 0.9.0 MINOR milestone
+   (3-pass preventive audit + doc compaction). **Next without-him rows after:** 96 tail (rows 48/49
+   re-scope against INV-21 — 47's part is DONE; the first real feedback loop leg rides a live host
+   window). Row 12 tail is DONE (closed session 24).
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition; round 3 content updated
    all morning) · 148 Phase 3 go (whole-doc rewrite by docs/research/2026-07-07-genre-migration-plan.md;
    epics proposal rides the first batch).

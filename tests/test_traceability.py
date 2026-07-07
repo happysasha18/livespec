@@ -382,7 +382,8 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                                  read("skills/live-spec-base/SKILL.md")).group(1)
         for rel in ("skills/build-pipeline/SKILL.md", "skills/communicator/SKILL.md",
                     "skills/product-prover/SKILL.md", "skills/spec-author/SKILL.md",
-                    "skills/publish/SKILL.md"):
+                    "skills/publish/SKILL.md", "skills/test-author/SKILL.md",
+                    "skills/feedback-intake/SKILL.md"):
             self.assertIn("`live-spec-base` (v%s)" % base_version, read(rel),
                           "%s pins a stale base version" % rel)
 
