@@ -204,73 +204,40 @@ While it walks, four things are always true:
 - **No silent micro-decisions** — every choice not in your wish is either asked, or recorded in the spec AND surfaced in the same report. The batched report carries this as its own postcondition: EVERY taken default, trim, and deliberate narrowing of the walk appears in it. A decision absent from the report is silent by definition, whatever the spec recorded. Nothing decided-and-buried. [INV-5]
 - **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this exist" is always answerable. [INV-3]
 
-**Trains may roll — one pen writes.** Parallelism was born below the lane — workers on disjoint
-files, read-only analysis riding the background while another wish walked the pipeline — and this law
-lifts it to feature level where it is safe. One assigned session may hold UP TO THREE build lanes
-in-work at once when the senior judges them pairwise independent — no surface two of them touch, no
-spec section two of them must edit —
-and says so: opening every additional lane is narrated, and all rolling trains appear on the departures board [INV-27].
-What may overlap: everything that does not write the shared truth — a LATER train's code and tests,
-each written in its own isolated copy of the tree ONLY (its delta reaches the shared tree through integration
-under the pen; the brief-named disjoint-file road [ACT-3] stays legal WITHIN one lane, whose workers
-land with that lane's own commit), read-only analysis and research, a prover run reading committed law.
-What always takes the pen, one lane at a time: edits to every document both lanes share — the spec,
-the architecture doc, the matrix, the queue, the journal and the resume file among them — the
-integration (bringing a lane's delta into the shared tree and running its gate) and the closing of a
-row. So the document stages of two lanes never interleave mid-edit: each lane's spec-delta is drafted
-and proven against the spec as committed law, never against another lane's half-written draft — the
-pen passes between trains while their long mechanical stages run. At most three build lanes roll at once
-without asking [default] — his word 2026-07-06: don't sit on a hard two, take the independent work
-that exists; a FOURTH lane opens only on the human's asked word — when more independent work waits
-workable, the session ASKS whether he wants another train rolling, never opens it silently;
-read-only background analysis never counts against that. The board shows every rolling train: each
-in-flight row keeps its own station line [INV-27], and a lane waiting for the pen SAYS so and names
-the row it waits behind ("at integration, waiting behind row N"). When several trains want the human's
-word, the questions ride ONE batched decision page, every card naming its lane's row [E-22, INV-4].
-A bug still cuts the line [T-9]: it takes the pen and the senior's hand at the end of the current
-pen-stage — a pen-stage is never cut mid-edit; rolling background briefs may finish, but no lane takes
-the pen back until the bug lands. And a milestone's whole-spec operations run with one train only —
-no new lane opens mid-gate, and a milestone opens only once a single train rolls (the others land
-or park first) [M-1]. [T-18]
-While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**,
-and its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's
-unfinished work; half of another train never rides a landing. When a lane lands, the shared
-truth has moved — so every still-rolling lane's integration re-checks under the fence [INV-11] and re-runs its
-gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
+**Trains may roll — one pen writes.** Parallelism was born below the lane: workers split disjoint files, and read-only analysis rode the background while another wish walked the pipeline. This law lifts that parallelism to feature level, where it is safe. One assigned session may hold up to three build lanes in-work at once. The senior allows this only when the lanes are pairwise independent — no surface two of them touch, no spec section two of them must edit — and says so aloud. Opening every additional lane is narrated, and all rolling trains appear on the departures board [INV-27].
 
-The parallel-lanes law's edges, stated once. It fires when another workable, INDEPENDENT wish waits
-while a rolling lane's long mechanical stage runs — the correction is idle waiting gone, a feature's
-code hours no longer blocking another feature's document hours. It does NOT fire across sessions, on
-wishes that share a surface or a spec section (those serialize as before), mid-milestone, or while a
-bug holds the pen. Its only face is board and report lines, already governed by the line law — no
-other visible surface, facets N/A [INV-28]. Non-goals: cross-session double-landing — not this time
-(foreign sessions still back off); no automatic independence checker — the senior judges independence
-and says so aloud; no fourth build lane unasked — beyond three, his word opens each next train (his
-2026-07-06 word moved the cap itself from two); no per-lane sub-board. Success measure: the first real
-double-lane run lands both rows clean with the board readable throughout — the human can say at any
-moment where each train stands, checked by his own read of that run's reports [default]. [T-18]
+What may overlap — everything that does not write the shared truth:
+- a later train's code and tests, each written in its own isolated copy of the tree only (its delta reaches the shared tree through integration under the pen; the brief-named disjoint-file road [ACT-3] stays legal within one lane, whose workers land with that lane's own commit);
+- read-only analysis and research;
+- a prover run reading committed law.
 
-**Lanes are picked by a graph, never by mood.** At queue-take the session reads the runnable head —
-the next few rows workable without the human — and builds the mini DEPENDENCY GRAPH: an edge wherever
-two rows share a surface, a spec section, a skill file, or a doc region. Lanes open on a
-pairwise-independent set, up to the cap [T-18]; rows joined by an edge serialize inside one lane.
-Rows that collide only at their INTEGRATION (one file, different concerns) may pre-roll their
-isolated build stages with the integration ORDER DECLARED at claim time — first-declared lands first,
-the later re-fences on the new truth [INV-39]. And the graph knows when NOT to parallelize: parallel
-pays only when build stages dominate the pen work — tiny rows ride serial, and saying so aloud is
-part of the board (the first graph night proved both directions in one hour: three medium rows rolled
-as lanes, the next five, all tiny, went serial by the graph's own word, 2026-07-06). The chosen set
-and the order are NARRATED at opening [INV-27]. [INV-49]
+What always takes the pen, one lane at a time:
+- edits to every document both lanes share — the spec, the architecture doc, the matrix, the queue, the journal, and the resume file among them;
+- the integration, which brings a lane's delta into the shared tree and runs its gate;
+- the closing of a row.
 
-A wish can also end without landing; its row stays in the table: **declined** (you said no) · **deferred**
-(parked with a named revisit trigger) · **superseded** (absorbed by another wish; the row points to the
-absorbing one). And declining is not a black hole for what the declined wish had absorbed: a wish other
-rows were superseded INTO lists them at its decline, and each listed row is either declined BY NAME in
-the same breath (your no covered it too) or RETURNED to the queue as its own row again (your no was
-about the absorber's shape, not the need) — a superseded wish never dies by pointer [INV-1]. [T-8]
+So the document stages of two lanes never interleave mid-edit. Each lane's spec-delta is drafted and proven against the spec as committed law, never against another lane's half-written draft. The pen passes between trains while their long mechanical stages run.
 
-What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface
-= one name, everywhere. [E-4]
+At most three build lanes roll at once without asking [default]. His word on 2026-07-06 set this: don't sit on a hard two, take the independent work that exists. Beyond three, a FOURTH lane opens only on the human's asked word. When more independent work waits workable, the session asks whether he wants another train rolling, and never opens it silently. Read-only background analysis never counts against that cap.
+
+The board shows every rolling train. Each in-flight row keeps its own station line [INV-27]. A lane waiting for the pen SAYS so and names the row it waits behind ("at integration, waiting behind row N"). When several trains want the human's word, the questions ride one batched decision page, every card naming its lane's row [E-22, INV-4].
+
+A bug still cuts the line [T-9]. It takes the pen and the senior's hand at the end of the current pen-stage — a pen-stage is never cut mid-edit. Rolling background briefs may finish, but no lane takes the pen back until the bug lands. A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
+
+While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**. Its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's unfinished work. So half of another train never rides a landing. When a lane lands, the shared truth has moved. Every still-rolling lane's integration then re-checks under the fence [INV-11] and re-runs its gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
+
+Here are the parallel-lanes law's edges, stated once. It fires when another workable, INDEPENDENT wish waits while a rolling lane's long mechanical stage runs. The correction is idle waiting gone: a feature's code hours no longer block another feature's document hours. It does NOT fire across sessions, nor on wishes that share a surface or a spec section, which serialize as before. It also does not fire mid-milestone or while a bug holds the pen. Its only face is board and report lines, already governed by the line law — no other visible surface, so facets are N/A [INV-28]. Non-goals: cross-session double-landing is not for this time, since foreign sessions still back off; there is no automatic independence checker, because the senior judges independence and says so aloud; there is no fourth build lane unasked, since beyond three his word opens each next train (his 2026-07-06 word moved the cap itself from two); and there is no per-lane sub-board. Success measure: the first real double-lane run lands both rows clean with the board readable throughout — the human can say at any moment where each train stands, checked by his own read of that run's reports [default]. [T-18]
+
+**Lanes are picked by a graph, never by mood.** At queue-take the session reads the runnable head — the next few rows workable without the human — and builds the mini DEPENDENCY GRAPH. It draws an edge wherever two rows share a surface, a spec section, a skill file, or a doc region. Lanes open on a pairwise-independent set, up to the cap [T-18]. Rows joined by an edge serialize inside one lane. Rows that collide only at their INTEGRATION — one file, different concerns — may pre-roll their isolated build stages with the integration ORDER DECLARED at claim time: first-declared lands first, and the later re-fences on the new truth [INV-39]. The graph also knows when NOT to parallelize. Parallel pays only when build stages dominate the pen work, so tiny rows ride serial, and saying so aloud is part of the board. The first graph night proved both directions in one hour: three medium rows rolled as lanes, and the next five, all tiny, went serial by the graph's own word (2026-07-06). The chosen set and the order are NARRATED at opening [INV-27]. [INV-49]
+
+A wish can also end without landing, and its row stays in the table in one of three end-states:
+- **declined** — you said no;
+- **deferred** — parked with a named revisit trigger;
+- **superseded** — absorbed by another wish, so the row points to the absorbing one.
+
+And declining is not a black hole for what the declined wish had absorbed. A wish that other rows were superseded INTO lists them at its decline. Each listed row is then either declined BY NAME in the same breath, when your no covered it too, or RETURNED to the queue as its own row again, when your no was about the absorber's shape and not the need — a superseded wish never dies by pointer [INV-1]. [T-8]
+
+What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
 
 ## Sending feedback in
 
