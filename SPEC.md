@@ -132,79 +132,40 @@ Together the trail is the session's time accounting: read top to bottom, it answ
 
 **Priority bends the lane order, visibly.** A critical bug lands before everything, heading even the waiting-bug line (next section). Critical priority heads the queue whatever its door, so a critical-priority feature goes to the queue head too. But only the bug door preempts the in-work lane [T-9]. A quick win may bubble up. When the lane frees, the agent may take it ahead of larger queued wishes, marking the jump in its row, never silent. After one bubbled landing the queue head goes next, so a stream of quick wins cannot starve a big wish forever. An inbox wish's arrival is its harvest moment — that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch harvests in filename-sorted order. [T-11]
 
-**The door is named before any code.** Classification is an explicit step, not a feeling. A row carries
-three axes, stated together in ONE intake line — size · priority · door · the work-kind (what the wish
-builds — next paragraphs [T-16]); a wish too big for its worth is negotiated in scope, never in time [T-15]. Size (with priority) says how big
-and how urgent; the **door** says where the wish enters the pipeline: **feature · bug · refactor ·
-docs-only · skip**. The size and door axes share one word deliberately — a wish sized "bug" IS the bug door, one
-call stated once; the door axis only adds the other four entries. [T-12]
+**The door is named before any code.** Classification is an explicit step with fixed rules, settled by no one's gut feeling. A row carries three axes, stated together in ONE intake line: size · priority · door · the work-kind (what the wish builds — next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. The size and door axes share one word deliberately: a wish sized "bug" IS the bug door, one call stated once, and the door axis only adds the other four entries. [T-12]
 
-The door is decided by an ordered procedure, tripwires first — never judgment. (1) It IS a **feature** —
-however casually asked — when ANY of these holds: a new user-visible surface appears · new persistent
-state appears · a new interaction lands on an existing surface · the touched surface is marked [target]
-in the spec (the canonical, machine-checkable form of "not yet specified / later surface"; the
-plain-prose cousins bind too, but the author writes the tag) · the change adds behaviour no spec clause
-backs. (2) No tripwire fired, but shipped behaviour is wrong against what the spec or product already
-promises → **bug**. (3) Behaviour stays identical, structure moves → **refactor**. (4) Only prose OUTSIDE the
-normative spec changes (README, comments, guides) → **docs-only** — rewording a spec rule is NOT
-docs-only: it changes what behaviour the spec backs and routes as feature or bug. (5) The narrow all-hold boundary (single file · no new state, element, or visible
-behaviour · an existing test level already covers the touched fact) → **skip**. The tripwire verdict
-outranks a casual label: a wish called a "bugfix" that fires a feature tripwire is re-doored to feature
-and the intake line says so [INV-5]; queue-cutting [T-9] belongs ONLY to the bug door, so a re-doored
-wish takes no preemption — your word can still raise its priority (priority is yours), but no word makes
-a feature skip the spec step. The door is also re-checked mid-work: the moment running work is about to
-create a user-visible surface or persistent state its current door doesn't grant, work STOPS and the
-door step fires again — "it sounded like loading until the surface existed" is exactly the failure this
-catches; the re-doored wish KEEPS its lane and re-enters the walk in place (no re-queue, no park —
-parking stays a bug-preemption move [T-9]). One request lives outside the lane entirely: asking to merely
-SEE or TRY something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype
-is not the product" — the ask-when-unclear rule lives there). Casual
-loading stays the contract — a wish is routed through its door, never refused for being casual, and
-never hand-built past the pipeline because it sounded small. [INV-16]
+The door is decided by an ordered procedure. Tripwires fire first, before any judgment.
 
-**The intake line also names WHAT is being built.** Size says how big, the door says where the wish
-enters — the **work-kind** says what kind of thing the work produces, and with it which pipeline
-machinery earns its keep. Four kinds today: **product** — something the host's own user faces;
-**infra** — tooling that serves the project itself (scripts, hooks, CI, pipelines); **skill** — a
-behaviour document an agent works by (a SKILL.md, a prompt pack); **prose** — a document written for a
-human to read (an overview, an article, a spec's own text). The kind is called from what the wish
-PRODUCES, one kind per wish — a wish genuinely producing two kinds is two wishes, split at intake; a
-kind the classifier can't call is asked like an uncallable size [INV-12]. A host with ONE usual kind may
-record it as a host-profile default the intake line starts from [E-8, E-13] (track-coach's would be
-product); a host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra —
-records none and calls each wish on its own. The vocabulary is CURATED like the facet list [T-13]: each kind above is earned by real
-work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five
-skills — skill; OVERVIEW.md — prose), and a fifth joins only with a named wish the four mis-served,
-re-justified at milestones. The law binds forward: a row queued before it carries no kind and owes no
-retro-fill — it names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
+1. It IS a **feature** — however casually asked — when ANY of these holds: a new user-visible surface appears · new persistent state appears · a new interaction lands on an existing surface · the touched surface is marked [target] in the spec (the canonical, machine-checkable form of "not yet specified / later surface"; the plain-prose cousins bind too, but the author writes the tag) · the change adds behaviour no spec clause backs.
+2. No tripwire fired, but shipped behaviour is wrong against what the spec or product already promises → **bug**.
+3. Behaviour stays identical, structure moves → **refactor**.
+4. Only prose OUTSIDE the normative spec changes (README, comments, guides) → **docs-only**. Rewording a spec rule is NOT docs-only: it changes what behaviour the spec backs, and routes as feature or bug.
+5. The narrow all-hold boundary (single file · no new state, element, or visible behaviour · an existing test level already covers the touched fact) → **skip**.
 
-**A kind scales the steps — it never skips one silently.** The door picks WHICH steps run [T-12]; the
-kind picks the FORM each running step takes, never whether the walk happens: the per-kind meaning of every step (what "architecture" means for
-a one-file script, what "verify by deed" means for a document a human reads) has its normative home in
-the build-pipeline skill — one table for every project, the skill's own domain [E-12]. This spec binds
-the contract around it: at landing, every pipeline step has either APPLIED in the form the table states
-for the wish's kind, or STOOD DOWN by name in the landing's report ("design-sync — text product, stands
-down"), so a skipped step is always a written fact, never an omission. An unresolved kind scales nothing
-down — while the kind question rides the row [INV-12], every step applies in full, because standing a
-step down requires a NAMED kind to answer for it. What no kind may ever touch: the
-door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals,
-success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]; the kind dials the
-machinery, never the safety net — the same law a scope cut obeys [T-15]. [INV-22]
+The tripwire verdict outranks a casual label. A wish called a "bugfix" that fires a feature tripwire is re-doored to feature, and the intake line says so [INV-5]. Queue-cutting [T-9] belongs ONLY to the bug door, so a re-doored wish takes no preemption. Your word can still raise its priority (priority is yours), but no word makes a feature skip the spec step. The door is also re-checked mid-work. The moment running work is about to create a user-visible surface or persistent state its current door doesn't grant, work STOPS and the door step fires again — "it sounded like loading until the surface existed" is exactly the failure this catches. The re-doored wish KEEPS its lane and re-enters the walk in place (no re-queue, no park — parking stays a bug-preemption move [T-9]). One request lives outside the lane entirely: asking to merely SEE or TRY something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype stays a sketch" — the ask-when-unclear rule lives there). Casual loading stays the contract: a wish is routed through its door, never refused for being casual, and never hand-built past the pipeline because it sounded small. [INV-16]
 
-**Each step is worked in its craft's mindset.** A pipeline walked by one generalist head produces
-generalist artifacts — a spec that reads like a coder's notes, a matrix that checks what was convenient
-to check. So every step names the profession whose head you wear while walking it: the spec is written
-as a strong product manager, the architecture as a software architect, the matrix and the tests as a QA
-automation engineer, the code as a senior developer; the two prove steps are the prover's own
-formal-reviewer head, commit & show is a careful release hand whose reader is the human — and the
-verify walk is done with the visitor's own eyes, not the builder's [INV-30 kin]. The full step→craft
-ladder has ONE home, build-pipeline's step list [E-12]; each artifact is judged by its craft's
-standards, and the landing report's step accounting speaks in them. And the craft, like the step's
-form, wears the KIND's face [INV-22, INV-30 kin]: on a prose product the code step is worked as a
-strong writer, on infra as a toolsmith — the ladder names the archetypes, the wish's kind says what
-their standards look like in its medium. (His word 2026-07-06: «когда ты
-делаешь продукт-спеку — ты крутой продакт, когда архитектуру — крутой архитект, когда матрицу тестов —
-крутой QA-автоматчик».) [INV-33]
+**The intake line also names WHAT is being built.** Size says how big, the door says where the wish enters, and the **work-kind** says what kind of thing the work produces — and with it which pipeline machinery earns its keep. Four kinds today:
+
+- **product** — something the host's own user faces;
+- **infra** — tooling that serves the project itself (scripts, hooks, CI, pipelines);
+- **skill** — a behaviour document an agent works by (a SKILL.md, a prompt pack);
+- **prose** — a document written for a human to read (an overview, an article, a spec's own text).
+
+The kind is called from what the wish PRODUCES, one kind per wish. A wish genuinely producing two kinds is two wishes, split at intake; a kind the classifier can't call is asked like an uncallable size [INV-12]. A host with ONE usual kind may record it as a host-profile default the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records none and calls each wish on its own. The vocabulary is CURATED like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth joins only with a named wish the four mis-served, re-justified at milestones. The law binds forward: a row queued before it carries no kind and owes no retro-fill — it names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
+
+**A kind scales the steps — it never skips one silently.** The door picks WHICH steps run [T-12]; the kind picks the FORM each running step takes, never whether the walk happens. The per-kind meaning of every step — what "architecture" means for a one-file script, what "verify by deed" means for a document a human reads — has its normative home in the build-pipeline skill, one table for every project, the skill's own domain [E-12]. This spec binds the contract around it. At landing, every pipeline step has either APPLIED in the form the table states for the wish's kind, or STOOD DOWN by name in the landing's report ("design-sync — text product, stands down"), so a skipped step is always a written fact, never an omission. An unresolved kind scales nothing down: while the kind question rides the row [INV-12], every step applies in full, because standing a step down requires a NAMED kind to answer for it. What no kind may ever touch: the door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals, success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]. The kind dials the machinery, never the safety net — the same law a scope cut obeys [T-15]. [INV-22]
+
+**Each step is worked in its craft's mindset.** One generalist head walking the whole pipeline produces generalist artifacts — a spec that reads like a coder's notes, a matrix that checks what was convenient to check. So every step names the profession whose head you wear while walking it:
+
+- the spec — a strong product manager;
+- the architecture — a software architect;
+- the matrix and the tests — a QA automation engineer;
+- the code — a senior developer;
+- the two prove steps — the prover's own formal-reviewer head;
+- commit & show — a careful release hand whose reader is the human;
+- the verify walk — the visitor's own eyes, not the builder's [INV-30 kin].
+
+The full step→craft ladder has ONE home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them. And the craft, like the step's form, wears the KIND's face [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer, on infra as a toolsmith — the ladder names the archetypes, the wish's kind says what their standards look like in its medium. (His word 2026-07-06: when you write the product spec you are a strong product manager, when the architecture a strong software architect, when the test matrix a strong QA automation engineer.) [INV-33]
 
 **A feature is specified past what you know to ask.** You say "add a room where photos hang" — you don't
 say "and decide what happens on a phone", because you can't know that's a question. So when a wish's door
