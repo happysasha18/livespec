@@ -639,72 +639,68 @@ What the wishes grow is the **spec (SPEC.md)** — the living statement of what 
 
 ## Sending feedback in
 
-You look at what shipped and something occurs to you — a reaction, an answer, a screenshot with a red
-circle, a log file. **Feedback** is anything a person hands back to the project: any size, any moment,
-any channel. The person is usually the host's human; when the host's product has users of its own,
-their reports travel the same road once a session receives them. [E-28]
+You look at what shipped and something occurs to you. It might be a reaction, an answer, a screenshot with a red circle, or a log file. **Feedback** is anything a person hands back to the project, at any size, any moment, through any channel. The person is usually the host's human. When the host's product has users of its own, their reports travel the same road once a session receives them. [E-28]
 
-**The promise: nothing handed in is ever lost, and everything handed in is answered by a route.**
-Every received item lands, the same session, in the home its ROUTE owns — a wish in its queue row, an
-answer in its decision archive and harvested row, a fix in its commit and journal line, workshop noise
-in the problem ledger. The routes that had no home before this section get one: the **feedback ledger
-(FEEDBACK.md)** — an append-only file beside the queue at the host root [default], owning field
-evidence, plain reactions, and wordless drops awaiting their question, one dated line each: when it
-arrived · who handed it in and through which channel · what it concerns on the feature map · the item
-in plain words · where it went. Every arrival is echoed back in one sentence, one echo per item — a
-wish-shaped item's echo IS the wish echo [INV-27]; everything else hears what was heard and where it
-went. A re-mention of an already-recorded item appends its date to the existing line and changes
-nothing else — the problem ledger's own discipline, applied here. [INV-68]
+The promise is simple: nothing handed in is ever lost, and everything handed in is answered by a route. Every received item lands the same session, in the home its route owns:
+
+- a wish lands in its queue row;
+- an answer lands in its decision archive and harvested row;
+- a fix lands in its commit and journal line;
+- workshop noise lands in the problem ledger.
+
+Some routes had no home before this section. They get one now: the **feedback ledger (FEEDBACK.md)**. This is an append-only file beside the queue at the host root [default]. It owns field evidence, plain reactions, and wordless drops that still await their question. Each item is one dated line. The line records when it arrived, who handed it in and through which channel, what it concerns on the feature map, the item in plain words, and where it went.
+
+Every arrival is echoed back in one sentence, one echo per item. A wish-shaped item's echo IS the wish echo [INV-27]. Everything else hears what was heard and where it went.
+
+A re-mention of an already-recorded item appends its date to the existing line and changes nothing else. This is the problem ledger's own discipline, applied here. [INV-68]
 
 **Three channels, one contract.** [T-20]
+
 - **Spoken or typed** — a remark in the conversation, or a note in a file the human points at.
-- **A comment on something shown** — decision pages and review pages already capture answers as saved
-  JSON [INV-4, INV-64]; each saved answer is a feedback item whose home the capture law already names
-  (the archive and its harvested row).
-- **A dropped file** — a screenshot, a log, a document: from the human directly in the conversation, or
-  from any outside session through the host's inbox door — one NEW file per item, the same naming and
-  collision law wishes use [E-11], swept by the host's own sessions [T-10]. A file arriving with no
-  words gets one plain question about what it means; a guess is never written into the ledger.
+- **A comment on something shown** — decision pages and review pages already capture answers as saved JSON [INV-4, INV-64]. Each saved answer is a feedback item, and the capture law already names its home: the archive and its harvested row.
+- **A dropped file** — a screenshot, a log, or a document. It comes from the human directly in the conversation, or from any outside session through the host's inbox door. Each item arrives as one NEW file, under the same naming and collision law wishes use [E-11], and the host's own sessions sweep it in [T-10]. A file arriving with no words gets one plain question about what it means; the ledger never records a guess.
 
-**Every item takes exactly one route, and each route already has its law and its home.**
-- an item asking for new behaviour is a WISH — it walks wish intake with its own echo, door, and row;
-  the row is its home [T-12, INV-27];
-- a fix-sized comment on shown work is FIXED the same session — the commit and its journal line are
-  the home; a story-sized comment queues as a wish;
-- an answer to an open question CLOSES it forever and is harvested the same session — the decision
-  archive and the harvested row are the home [INV-59];
-- a reaction to a shipped feature is FIELD EVIDENCE and lands in the ledger: the line cites the
-  feature's scenario, and the feature's success-measure sentence [INV-21] gains a place where real
-  signals accumulate — the ledger is the reading machinery's first honest slice, while the machinery
-  itself (measurement plugins, aggregation) stays [target] under its own long-lived row (row 48);
-  evidence grows into a wish only by the human's word or a tripwire verdict;
-- workshop noise (a flaky tool, a missing dependency) belongs to the problem ledger [INV-23]; the seam
-  is the subject: the product's behaviour goes to FEEDBACK.md, the workshop's goes to PROBLEMS.md, one
-  home each.
+Every item takes exactly one route, and each route already has its law and its home.
 
-**The skill that owns this behaviour is feedback-intake** — the pack's intake half of the exchange:
-communicator carries work out to the human; feedback-intake carries what comes back. It FIRES the
-moment any session receives a handed-in item, and at every inbox sweep for files that carry feedback
-rather than a wish. It does NOT fire on the agent's own output, on a question the agent asked, or on
-something the human merely mentions without handing it in — unsure whether a remark was handed in is
-answered by one plain question. It never opens a queue row on its own judgment: the wish door owns
-that verdict. [T-20]
+- An item asking for new behaviour is a wish. It walks wish intake with its own echo, door, and row, and the row is its home [T-12, INV-27].
+- A fix-sized comment on shown work is fixed the same session; the commit and its journal line are the home. A story-sized comment queues as a wish.
+- An answer to an open question closes it forever and is harvested the same session; the decision archive and the harvested row are the home [INV-59].
+- A reaction to a shipped feature is FIELD EVIDENCE and lands in the ledger. The line cites the feature's scenario. The feature's success-measure sentence [INV-21] gains a place where real signals accumulate, and the ledger is the reading machinery's first honest slice. The machinery itself — measurement plugins, aggregation — stays [target] under its own long-lived row (row 48). Evidence grows into a wish only by the human's word or a tripwire verdict.
+- A flaky tool or a missing dependency is workshop noise, and it belongs to the problem ledger [INV-23]. The seam is the subject: the product's behaviour goes to FEEDBACK.md, and the workshop's behaviour goes to PROBLEMS.md, one home each.
 
-The section's edges, stated once. Fences its birth must hold: the inbox stays one new committed file
-per outside item [E-11] swept first [T-10]; the wish echo and intake path are unchanged [INV-27, T-12];
-answered questions still close and harvest by the convergence law [INV-59]; workshop noise still lives
-in the problem ledger alone [INV-23]; and the queue's no-wish-ever-lost law is extended, never amended
-[INV-1]. Composition: outside sessions never edit the ledger — they use the inbox door, and only the
-assigned session appends FEEDBACK.md (the write-ownership and fence laws carry it [INV-10, INV-11]);
-the ledger is append-only and archives like the queue, never trimmed [INV-1]. Facets, skill kind: the
-feature's surfaces are the ledger file and the chat echo — prose read in place; layout, touch,
-accessibility and performance belong to the media that carry them; the empty state is a ledger holding
-only its header, which is healthy; facets otherwise N/A [default]. Non-goals: no end-user feedback
-widget on a host's own product (a site's visitors writing in rides the measurement family, row 48, or
-its own wish); no automatic reading, scoring, or aggregation of the ledger (the reading machinery
-stays [target]); no new door mechanics (the inbox is reused as it stands). Success measure: the human
-never has to hand in the same item twice — every received item findable in the ledger with its route
-the same session [default].
+The skill that owns this behaviour is **feedback-intake**, the pack's intake half of the exchange. The pack splits the exchange: communicator carries work out to the human, and feedback-intake carries what comes back. It fires the moment any session receives a handed-in item. It also fires at every inbox sweep, for files that carry feedback rather than a wish.
+
+feedback-intake stays quiet in three cases: on the agent's own output, on a question the agent asked, and on something the human merely mentions without handing it in. When you are unsure whether a remark was handed in, ask one plain question. feedback-intake never opens a queue row on its own judgment; the wish door owns that verdict. [T-20]
+
+The section's edges, stated once.
+
+**Fences its birth must hold.**
+
+- The inbox stays one new committed file per outside item [E-11], swept first [T-10].
+- The wish echo and intake path are unchanged [INV-27, T-12].
+- Answered questions still close and harvest by the convergence law [INV-59].
+- The problem ledger still holds workshop noise alone [INV-23].
+- The queue's no-wish-ever-lost law is extended, never amended [INV-1].
+
+**Composition.**
+
+- Outside sessions never edit the ledger. They use the inbox door, and only the assigned session appends FEEDBACK.md. The write-ownership and fence laws carry this [INV-10, INV-11].
+- The ledger is append-only and archives like the queue, never trimmed [INV-1].
+
+**Facets and skill kind.**
+
+- The feature's surfaces are the ledger file and the chat echo, prose read in place.
+- Layout, touch, accessibility, and performance belong to the media that carry them.
+- The empty state is a ledger holding only its header, which is healthy.
+- Facets otherwise N/A [default].
+
+**Non-goals.**
+
+- No end-user feedback widget on a host's own product. A site's visitors writing in ride the measurement family (row 48) or their own wish.
+- No automatic reading, scoring, or aggregation of the ledger; the reading machinery stays [target].
+- No new door mechanics; the inbox is reused as it stands.
+
+**Success measure.** You never have to hand in the same item twice. Every received item is findable in the ledger, with its route, the same session [default].
 
 ## Asking what the product does (the feature map on demand)
 
