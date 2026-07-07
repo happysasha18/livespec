@@ -1523,36 +1523,34 @@ read of it. [T-19]
 
 ## Publishing — the deposit owes what its kind owes
 
-Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin
-directory, a release is cut, rendered cards go to a design project. **Publication is a surface of its
-own, and it owes the reader what the artifact's KIND owes** — the same work-kind axis [T-16], read at
-the door instead of the intake: a **skill** shows how to install it, the commands to run, when to use
-it (and when not); a **tool** shows real runs with real output; a visual **product** shows FRESH
-screenshots — a stale screenshot is a false claim in picture form; **prose** shows its reading path. A
-comparison or a diagram joins when it carries the argument, never as decoration. The per-kind publish
-checklist has ONE normative home — the publish skill, the pack's fifth working skill [E-12]; this spec
-binds the contract: nothing is deposited outward past the checklist, and the walk's result rides the
-landing report like any step [INV-22]. **Each publish TARGET is a plugin that embeds its own steps
-into the walk** (Alexander 2026-07-05: a GitHub plugin brings its stages): GitHub brings
-README-at-the-door + release notes; a plugin directory brings its manifest and forms; the design
-project brings its cards [E-18] — the target adds steps, it never removes the kind's owed minimum. And
-publishing never bypasses the gates that already stand: the human's publish gate for anything
-irreversible or outward (base rule 17 [ACT-1]), the host's own push gates [M-6] — the checklist runs
-BEFORE the gate, so what the human approves is already worth approving. [E-20]
+Sooner or later a piece of work leaves the machine. A repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**. **Publication is a surface of its own, and it owes the reader what the artifact's KIND owes.** This is the same work-kind axis you already apply, read at the door of publishing rather than at wish intake [T-16].
 
-**A version push re-opens the shopfront.** Publication is not only the first deposit: every push that
-ships a new version changes the truth a public reader will read tomorrow — even when the diff never
-touched a doc — so the shopfront rides every push. The README's CLAIMS (behaviour, counts, commands,
-version homes) still match the pushed truth, and the kind-owed visuals ride along: a skill pack
-re-checks its diagrams and flow pictures, a visual product re-shoots what changed on screen, a tool
-re-runs its example — a stale shopfront is a false claim exactly like a stale screenshot [E-20]. The
-walk is the publish skill's checklist read at push scale (the checklist's one home stays there); the
-pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]
-— a push whose delta touches none of the shopfront's claims says so in one line ("shopfront checked —
-current"), a stale claim found is fixed BEFORE the push. Freshness means claims, never cosmetics.
-Non-goals this landing: no mechanical README-vs-diff checker (the reach map, row 147, is the candidate
-owner); no auto-regenerated images. Success measure: no push lands whose README claims an older
-behaviour or count, checked at milestone audits [default]. [INV-44]
+Each kind owes its reader a different minimum:
+
+- a **skill** shows how to install it, the commands to run, and when to use it and when not;
+- a **tool** shows real runs with real output;
+- a visual **product** shows FRESH screenshots; a stale screenshot is a false claim in picture form;
+- **prose** shows its reading path.
+
+A comparison or a diagram joins when it carries the argument. It never rides along as decoration.
+
+The per-kind publish checklist has ONE home — the publish skill, the pack's fifth working skill [E-12]. This spec binds the contract. Nothing is deposited outward past the checklist, and the walk's result rides the landing report like any step [INV-22].
+
+**Each publish TARGET is a plugin that embeds its own steps into the walk** (Alexander 2026-07-05: a GitHub plugin brings its stages). GitHub brings a README-at-the-door plus release notes. A plugin directory brings its manifest and forms. The design project brings its cards [E-18]. The target adds steps. It never removes the kind's owed minimum.
+
+Publishing never bypasses the gates that already stand. The human's publish gate guards anything irreversible or outward (base rule 17 [ACT-1]), and the host's own push gates guard the push [M-6]. Here the checklist runs BEFORE the gate, so what the human approves is already worth approving [E-20].
+
+**A version push re-opens the shopfront.** Every push that ships a new version changes the truth a public reader will read tomorrow, even when the diff never touched a doc, so the shopfront rides every push. The README's CLAIMS — behaviour, counts, commands, version homes — still match the pushed truth. The kind-owed visuals ride along too:
+
+- a skill pack re-checks its diagrams and flow pictures;
+- a visual product re-shoots what changed on screen;
+- a tool re-runs its example.
+
+A stale shopfront is a false claim, exactly like a stale screenshot [E-20].
+
+The walk is the publish skill's checklist read at push scale; the checklist's one home stays there. The pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]. A push whose delta touches none of the shopfront's claims says so in one line, "shopfront checked — current", and a stale claim found is fixed BEFORE the push. Freshness is about the claims the README makes, not its styling.
+
+Non-goals this landing: no mechanical README-vs-diff checker, since the reach map, row 147, is the candidate owner; and no auto-regenerated images. Success measure: no push lands whose README claims an older behaviour or count, checked at milestone audits [default] [INV-44].
 
 ## Composing across axes
 
