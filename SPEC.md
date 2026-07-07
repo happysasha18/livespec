@@ -1247,93 +1247,48 @@ push coordination belongs to the human. Applies to live-spec AND to any host rep
 
 ## The rhythm: breakpoints, milestones, pushes
 
-- **Safe breakpoint (end of every movement):** NEXT_STEPS live-state replaced (never stacked) + dated
-  JOURNAL entry + committed ⇒ the session memory can be wiped with zero loss (NEXT_STEPS may be
-  gitignored — the journal entry is the durable safety net). A long session SHOULD take
-  that offer: at a breakpoint the agent compacts its own context to keep working — and SAYS so, never
-  silently; a full wipe/clear of the conversation is the human's move, not the agent's. On the way back
-  in, re-check skill freshness [A-7]. [M-2]
-- **The resume file is a digest with a hard cap:** NEXT_STEPS exists to be read in one minute at a
-  cold start — growth is a design failure, so the whole file holds at most 100 lines [default] and a
-  suite check owns the number (red on a bloated file, red-proven on a synthetic one). The cap and the
-  restate-every-open-leg law [INV-26] resolve by FORM, never by dropping: an open leg is restated as
-  ONE terse line — its name, what stays open, where the detail lives — and the detail flows to the
-  journal, the queue row, or the record the line points at. Compaction moves prose to its home; it
-  never silently drops an open leg. [INV-48]
-- **Milestone (MINOR gate):** full spec re-prove + matrix audit (the coverage validation [E-15] re-walked
-  against the CURRENT spec + architecture) + surface-composition check + the skill evals re-run [E-19] +
-  the pack's skills re-walked through the standard skill-making skill (skill-creator's format /
-  frontmatter / description-triggering lens — our evals test behaviour, this lens tests the CRAFT of the
-  skill file itself; findings folded or rejected with a written reason in a dated record; and a skill
-  newly JOINING the pack walks it at birth, not only at the gate) + doc
-  COMPACTION (pruning: redundancy removed from spec/matrix/queue/skills/ledger [E-24], and the TEST SUITE swept the
-  same way — a duplicate or superseded test is deleted only when the matrix audit shows its rows still
-  covered by a live test; nothing grows unboundedly, docs or suite;
-  queue compaction ARCHIVES closed rows, never deletes [INV-1]) + a
-  re-listing of every open human gate AND every unharvested inbox/ file, one line each, so a waiting wish
-  is never forgotten + the formal index re-checked against the prose (the index is a derived map and must
-  never drift into a second truth) + the derived docs' headers re-pinned to the spec version then proven
-  + **the thin loader stays thin** [E-16]: the personal layer's global instruction file is re-read line
-  by line, every line must pass the "must this hold BEFORE any pack file loads?" test, and the audit
-  report states the line count — a rule that survives there without passing the test migrates to its
-  real home (profile or pack), never lingers. [M-1]
-- **Documents are versioned** like code: the queue and this spec carry dated versions, so "decided under
-  which roadmap" is answerable. [M-3]
-- **Time is read off the clock, never invented.** Every date a session writes — a file name, a journal
-  or queue stamp, a ledger occurrence — comes from the machine's clock at write time; in doubt, git is
-  the arbiter. The fence is mechanical, in the suite (and so in the pre-push walk): no repo file NAME,
-  no journal entry heading, and no ledger date may sit LATER than the current clock — a future-dated
-  stamp is red, not a style nit; prose QUOTING a past incident's wrong date stays legal. And the fence
-  has a second arm for the family's TIME variant (the date fence cannot see same-day times, and the
-  hand guessed them ahead three sessions running): at COMMIT, an ADDED line that pairs today's date
-  with a clock time LATER than the commit moment is red — "pairs" means the ADJACENT stamp shape
-  (`date [~]time`), so a line legally quoting other moments' times beside today's date stays green
-  (the fence's own first live run proved the broader reading wrong — it flagged the ledger's history
-  lines); the commit clock is the reference, so the check is not racy; the known cost, taken
-  deliberately: a future plan is spelled without writing it as a date-time stamp. And the family has a
-  CHAT face no mechanical fence can reach: a human-facing timestamp — the [HH:MM] a reply leads with,
-  any moment spoken to the human — is read off the clock AT WRITE TIME, never continued or extrapolated
-  from an earlier stamp (mid-session leads ran up to seven minutes fast, twice in two days, 2026-07-05/06);
-  where no fence exists the rule is stated as law where the human-facing exchange shapes live — the
-  communicator skill — and quoting a past moment's recorded time stays legal on this face too. And
-  since the hand kept drifting even under the shipped law (the ledger's chat entry re-opened after
-  repeated catches), the chat face grew a mechanical HAND of its own: a harness hook installed on the
-  working machine — `scripts/clock-hook.sh`, wired as a prompt hook in the host's settings — injects
-  the wall clock into every prompt's context, so the lead stamp is read off the machine, not off
-  memory; where the hook is not installed, the law above stands alone. (The
-  invented-time family: six catches in two days, hand-swept twice before the fences.) [INV-24]
-- **Versions have named homes.** The package: a `VERSION` file at the repo root. Each skill: a version
-  line in its SKILL.md frontmatter, under `metadata:` — where the skill-format validator reads it. A host: the installed set recorded in `.live-spec/` at attach and on
-  every update. So the freshness check [A-7] compares version against version, not just file times, and
-  its "old → new" journal note is finally writable. [M-7]
-- **CI mirror** — the guardrails' native home is the local pre-push hook; a host may additionally
-  mirror the same checks in its CI (Jenkins, GitHub Actions) as a second net. Same checks, one source
-  of truth — CI runs the same scripts, never redefines them; and the second net runs the FULL set —
-  the reach map [INV-45] is a local latency optimization, never a CI shortcut. The worked example is
-  the pack repo's own workflow (`.github/workflows/gates.yml`); host guidance lives in the guardrails
-  README. (ROADMAP row 14.) [M-5]
-- **Push gate for live-spec itself** — this repo is public and is the method's own flagship, so EVERY push
-  is preceded, in the same session, by (a) the concurrent-edit fence [INV-11] and (b) a fresh whole-spec
-  re-check: a product-prover pass over SPEC.md as it stands, its record landing in docs/prover/ before the
-  push (record name `YYYY-MM-DD[-suffix].md`; suffix mandatory when the date's file exists). Findings that
-  are must-fix fold before pushing; folds produced by the gate's own pass do NOT re-trigger the gate — they
-  ship with the same record; the rest become queue rows. No re-check record for the pushed state ⇒ the
-  push should not have happened. The record ENUMERATES the folds applied from its own pass, and a fold
-  stays LOCAL to the sections its finding named — a fold reaching wider re-triggers the gate. [M-6]
+- **Safe breakpoint (end of every movement):** Every movement ends the same way. You replace the NEXT_STEPS live state (never stack it), add a dated JOURNAL entry, and commit. Then session memory can be wiped with zero loss. NEXT_STEPS may be gitignored, so the journal entry is the durable net. A long session SHOULD take this offer. At a breakpoint the agent compacts its own context and SAYS so, never silently. A full wipe or clear is the human's move. On the way back, re-check skill freshness [A-7]. [M-2]
 
-- **Process bookkeeping scales to the delta — the record's reach map.** A night of eighteen landings
-  measured it: a TINY row pays the same fixed bookkeeping as a whole surface — its own claim commit,
-  its own full-page re-check record, its own journal chapter, a resume rewrite — roughly forty percent
-  of its wall time, and none of it is the safety net (his 2026-07-07 question: «каждая итерация очень
-  длинная — если необходимо, ок; если нет — что можно сделать, не принося качество в жертву»). So the
-  reach idea [INV-45] applies to PROCESS: the re-check before a push keeps its RIGOR always (previous
-  records checked, the delta walked, a verdict) but scales its FORM — a SMALL delta (skill/prose/infra
-  kind, no new surface, no structure change) ships a SHORT-FORM record of three lines: previous
-  records clean · the delta in one line · the verdict; a surface-sized or structural delta keeps the
-  full walk. Claims batch per declared lane (one commit); the journal chapter and the resume rewrite
-  come once per landing BATCH, never per tiny row. And the irreducible is named: the law's own text
-  written well, the red-first test, the delta's cross-link prove, the gates — quality itself, never
-  scaled. [INV-61]
+- **The resume file is a digest with a hard cap:** You read NEXT_STEPS in one minute at a cold start. Growth is a design failure. The whole file holds at most 100 lines [default], and a suite check owns the number. It goes red on a bloated file and red-proven on a synthetic one. The cap and the restate-every-open-leg law [INV-26] resolve by FORM, never by dropping. An open leg is restated as ONE terse line: its name, what stays open, where the detail lives. The detail flows to the journal, the queue row, or the record the line points at. Compaction moves prose to its home. It never silently drops an open leg. [INV-48]
+
+- **Milestone (MINOR gate):** A milestone runs the full gate:
+  - full spec re-prove;
+  - matrix audit: the coverage validation [E-15] re-walked against the CURRENT spec and architecture;
+  - surface-composition check;
+  - skill evals re-run [E-19];
+  - the pack's skills re-walked through the standard skill-making skill. This applies skill-creator's format, frontmatter, and description-triggering lens. Our evals test behaviour; this lens tests the CRAFT of the skill file. Findings are folded or rejected with a written reason in a dated record. A newly JOINING skill walks it at birth, before it ever reaches the gate.
+  - doc COMPACTION: redundancy removed from spec/matrix/queue/skills/ledger [E-24], and the TEST SUITE swept the same way. A duplicate or superseded test is deleted only when the matrix audit shows its rows still covered by a live test. Nothing grows unboundedly. Queue compaction ARCHIVES closed rows, never deletes [INV-1].
+  - a re-listing of every open human gate AND every unharvested inbox/ file, one line each;
+  - the formal index re-checked against the prose, a derived map and never a second truth;
+  - the derived docs' headers re-pinned to the spec version, then proven;
+  - **the thin loader stays thin** [E-16]: the personal layer's global instruction file is re-read line by line. Every line must pass the "must this hold BEFORE any pack file loads?" test. The audit report states the line count. A rule that survives there without passing the test migrates to its real home (profile or pack), never lingers. [M-1]
+
+- **Documents are versioned** like code. The queue and this spec carry dated versions, so "decided under which roadmap" is answerable. [M-3]
+
+- **Time is read off the clock, never invented.** Every date a session writes comes from the machine's clock at write time. This covers a file name, a journal or queue stamp, and a ledger occurrence. In doubt, git is the arbiter.
+
+  The fence is mechanical. It lives in the suite, and so in the pre-push walk. No repo file NAME, no journal entry heading, and no ledger date may sit LATER than the current clock. A future-dated stamp turns the suite red as a real defect. Prose QUOTING a past incident's wrong date stays legal.
+
+  A second arm covers the TIME variant, since the date fence cannot see same-day times and the hand guessed them ahead three sessions running. At COMMIT, an ADDED line pairing today's date with a clock time LATER than the commit moment is red. "Pairs" means the ADJACENT stamp shape (`date [~]time`). So a line legally quoting other moments' times beside today's date stays green. The fence's first live run proved the broader reading wrong when it flagged the ledger's history lines. The commit clock is the reference, so the check is not racy. The known cost is taken deliberately: a future plan is spelled without writing it as a date-time stamp.
+
+  The family also has a CHAT face no mechanical fence can reach. A human-facing timestamp is the [HH:MM] a reply leads with, or any moment spoken to the human. It is read off the clock AT WRITE TIME, never continued or extrapolated from an earlier stamp. Mid-session leads ran up to seven minutes fast, twice in two days, 2026-07-05/06. Where no fence exists, the rule is stated as law where the human-facing exchange shapes live, the communicator skill. Quoting a past moment's recorded time stays legal here too.
+
+  The hand kept drifting even under the shipped law, and the ledger's chat entry re-opened after repeated catches. So the chat face grew a mechanical HAND of its own. A harness hook on the working machine — `scripts/clock-hook.sh`, wired as a prompt hook in the host's settings — injects the wall clock into every prompt's context. Every lead stamp is then read off the machine's clock. Where the hook is not installed, the law above stands alone. (The invented-time family: six catches in two days, hand-swept twice before the fences.) [INV-24]
+
+- **Versions have named homes.** The package uses a `VERSION` file at the repo root. Each skill carries a version line in its SKILL.md frontmatter under `metadata:`, where the skill-format validator reads it. A host records the installed set in `.live-spec/` at attach and on every update. So the freshness check [A-7] compares version against version and looks past bare file times. Its "old → new" journal note is finally writable. [M-7]
+
+- **CI mirror.** The guardrails' native home is the local pre-push hook. A host may also mirror the same checks in its CI, such as Jenkins or GitHub Actions, as a second net. There is one source of truth: CI runs the same scripts and never redefines them. The second net runs the FULL set. The reach map [INV-45] is a local latency optimization and never a CI shortcut. The worked example is the pack repo's own workflow (`.github/workflows/gates.yml`). Host guidance lives in the guardrails README (ROADMAP row 14). [M-5]
+
+- **Push gate for live-spec itself.** This repo is public and the method's own flagship. So EVERY push is preceded, in the same session, by two steps. First, the concurrent-edit fence [INV-11]. Second, a fresh whole-spec re-check: a product-prover pass over SPEC.md as it stands, with its record landing in docs/prover/ before the push. The record name is `YYYY-MM-DD[-suffix].md`, and the suffix is mandatory when the date's file exists. Must-fix findings fold before pushing. Folds produced by the gate's own pass do NOT re-trigger the gate; they ship with the same record. The rest become queue rows. No re-check record for the pushed state means the push should not have happened. The record ENUMERATES the folds applied from its own pass. A fold stays LOCAL to the sections its finding named, and a fold reaching wider re-triggers the gate. [M-6]
+
+- **Process bookkeeping scales to the delta — the record's reach map.** A night of eighteen landings measured it. A TINY row pays the same fixed bookkeeping as a whole surface: its own claim commit, its own full-page re-check record, its own journal chapter, and a resume rewrite. That runs roughly forty percent of its wall time, and none of it is the safety net. This answers his 2026-07-07 question, rendered in plain English: each iteration is very long — fine when necessary, but when not, find what can be done without sacrificing quality.
+
+  So the reach idea [INV-45] applies to PROCESS. The re-check before a push keeps its RIGOR always: previous records checked, the delta walked, a verdict. It scales its FORM. A SMALL delta (skill, prose, or infra kind, with no new surface and no structure change) ships a SHORT-FORM record of three lines:
+  - previous records clean
+  - the delta in one line
+  - the verdict
+
+  A surface-sized or structural delta keeps the full walk. Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing BATCH, never per tiny row. The irreducible is named: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
 
 ## When money or time run short (the economy ladder)
 
