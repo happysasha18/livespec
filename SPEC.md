@@ -98,63 +98,17 @@ Lines: a human-facing report or board line opens with what changed for the reade
 
 Bookkeeping numbers are handles too, and they kept walking into the message anyway — two consecutive eval runs put "all 64 checks green, v0.9.16" into the human's message body (2026-07-06). So the law carries an explicit never-list: a test count, a suite size, a version string, or a check tally is never message content. The message says what the number means for the reader — tested clean, saved, the method held — and the number may only trail as a quiet anchor or stay in the records. One carve-out, by law: where the number is the asked substance — a direct question about it, or the done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as the answer, not as bookkeeping. This law and the narration law live in skills a window may never load; the day the field showed it, three windows leaked raw codes to their reader (2026-07-06). So they have a mechanical voice on the working machine. A prompt hook, `scripts/chat-law-hook.sh`, installed beside the clock's hand by the human's own command, injects a one-line reminder of both laws into every prompt. The skills remain the laws' homes; the hook only reminds and never legislates. A window that ignores the line is breaking the same law, not a different one. [INV-28]
 
-**The report law is walked, not remembered.** The law above passed its evals and still failed on the
-senior's own chat: the session-13 closing report led with pack-internal names and loan-translated doc
-metaphors and was bounced by its reader («это ты на каком языке разговариваешь???» — 2026-07-06, the
-jargon family's fourth strike in two days and the first AFTER the law landed). Chat has no suite, so
-the enforcement is a STEP, not another sentence: before any movement-end or milestone report goes to
-the human, the communicator rules are RE-READ, and the draft is passed phrase by phrase through one
-question — does this sentence stand for a reader who does not live inside the pack; a pack surface it
-names is explained in the reader's own words or dropped (quiet trailing anchors stay legal — the walk
-governs what does the talking, never the handles that trail). The walk's one home is the communicator
-skill; its acceptance belongs to the reader — a movement-end report that draws "а это что?" is the walk
-not walked. [INV-34]
+**The report law is walked, not remembered.** The law above passed its evals and still failed on the senior's own chat: the session-13 closing report led with pack-internal names and loan-translated doc metaphors, and its reader bounced it — he asked what language the report was even written in (2026-07-06, the jargon family's fourth strike in two days and the first after the law landed). Chat has no suite, so the enforcement is a STEP, not another sentence. Before any movement-end or milestone report reaches the human, you re-read the communicator rules and pass the draft phrase by phrase through one question: does this sentence stand for a reader who does not live inside the pack. A pack surface it names is either explained in the reader's own words or dropped; quiet trailing anchors stay legal, since the walk governs what does the talking, never the handles that trail. The walk's one home is the communicator skill, and its acceptance belongs to the reader: a movement-end report that makes the reader ask "what is this?" is the walk not walked. [INV-34]
 
-**Work is narrated while it runs — the third voice between the echo and the report.** The intake has
-its echo [INV-27] and the landing has its report [INV-28], but between them a working session used to
-go quiet, and the human — who leads several windows at once — was left reading silence. His word came
-twice in one day (2026-07-06): the morning ask wrote a personal-profile line, and by afternoon the ask
-returned ("не забывай отчитываться и по ходу действия… это должно быть и в проекте коммуникации
-зафиксировано") — a habit held only in a personal profile did not carry across sessions, so it is pack
-law. While work runs, each beat worth a sentence — a pipeline station just passed, a load-bearing
-find, a change of direction — is SAID as it happens: one or two plain sentences in the roadmap's terms
-(which wish is in hand, what it gives, what just moved), the same voice as the reports. The mechanical
-grind stays quiet — narration marks beats, never a per-command commentary. His third word in the
-family (2026-07-06 evening — the landing reports had become good and the mid-work trail was still
-thin: «заход куда-то на полчаса-час, и непонятно, на что реально ушло время») gave the law three
-teeth. IDENTITY: every narration beat names the work it belongs to — which wish is in hand and which
-pipeline station it stands at (outside the pipeline — research, a harvest, a docs sweep — the work's
-own name serves), and whether it mends something broken or builds something new — so a
-reader dropping into the chat mid-session can tell what is being worked without scrolling back.
-DIGEST: a station's completion is itself a beat by law, and its line carries a short digest of what
-the station PRODUCED, in the work's own words — the spec station says what the delta promises, the
-architecture station says the shape (what parts, what changed structurally), the test station says
-what is now covered, the code station says what now works — two or three plain sentences, never the
-artifact pasted into chat; a station a delegated worker closed becomes the senior's beat the moment
-its result lands. HEARTBEAT: when a stretch runs long with no beat — a big suite, a worker
-batch, a long render — narration says what is grinding and roughly why it takes long; a beatless
-stretch past ~10 minutes owes its heartbeat [default]. The heartbeat has a second, forward-looking
-face — the OFFLINE WINDOW (his word 2026-07-06: «надо иногда писать, когда можно оффлайн — например,
-если тесты локально бегут»; the same evening's ask again — pulled back every half hour by a question):
-when the coming stretch needs NOTHING from the human — a local suite run, a delegated worker batch, a
-long render, a pipeline stretch with no gate or taste call ahead — narration says so BEFORE it starts:
-that he may step away, an honest range for how long (read from the work's known shape or observed
-runs; an unknown duration is said as unknown — never a guess dressed as a promise), and what he will
-be needed for when it ends; and when he IS needed again, that too is a beat — said plainly, naming the
-gate or decision that waits. The window is a read on the work, never a dismissal: beats keep landing
-during it so the returning reader finds the trail whole; questions born inside the window batch to its
-end [INV-4]; a window that ends off its spoken range says so — overrun, done sooner, or blocked on his
-word alone — the heartbeat's own duty; the needed-again beat is a chat line awaiting his return, never
-a summons (the machinery of reaching an absent human stays outside this law); and no offline sentence
-fires when the very next beat needs the human. Together the trail is the session's time accounting: read top to
-bottom it answers "where did the time go" in work terms — token and test counts stay bookkeeping
-[INV-28]. A narration line is chat,
-not a report: it walks no pre-report walk (the walk scopes to movement-end and milestone reports — a
-deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds —
-the outcome talks, handles trail, bookkeeping stays out of the content [INV-28]. Working notes marked
-as the writer's own remain a separate, skippable register; narration is FOR the reader, and it
-replaces no report — milestones still get the full one. The law's one home is the communicator (its
-narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
+**Work is narrated while it runs — the third voice between the echo and the report.** The intake has its echo [INV-27] and the landing has its report [INV-28], but between them a working session used to go quiet, leaving the human — who leads several windows at once — reading silence. His word came twice in one day (2026-07-06): the morning ask wrote a personal-profile line, and by afternoon it returned — don't forget to report as the work goes, and record this in the communication skill too. A habit held only in a personal profile did not carry across sessions, so it is now pack law. While work runs, each beat worth a sentence — a pipeline station just passed, a load-bearing find, a change of direction — is said as it happens: one or two plain sentences in the roadmap's terms (which wish is in hand, what it gives, what just moved), in the same voice as the reports. The mechanical grind stays quiet — narration marks beats, never a per-command commentary. His third word in the family gave the law three teeth (2026-07-06 evening, when the landing reports had become good but the mid-work trail was still thin): a session goes off for half an hour to an hour, and it is unclear where the time actually went.
+
+- **IDENTITY: every narration beat names the work it belongs to** — which wish is in hand and which pipeline station it stands at (outside the pipeline, in research, a harvest, or a docs sweep, the work's own name serves), and whether it mends something broken or builds something new. So a reader dropping into the chat mid-session can tell what is being worked without scrolling back.
+- **DIGEST:** a station's completion is itself a beat by law, and its line carries a short digest of what the station produced, in the work's own words. The spec station says what the delta promises; the architecture station says the shape (what parts, what changed structurally); the test station says what is now covered; the code station says what now works — two or three plain sentences, never the artifact pasted into chat; a station a delegated worker closed becomes the senior's beat the moment its result lands.
+- **HEARTBEAT:** when a stretch runs long with no beat — a big suite, a worker batch, a long render — narration says what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its heartbeat [default].
+
+The heartbeat has a second, forward-looking face — the OFFLINE WINDOW (his word 2026-07-06: sometimes say when he can go offline, for example while tests run locally; the same evening's ask again, pulled back every half hour by a question). When the coming stretch needs nothing from the human — a local suite run, a delegated worker batch, a long render, a pipeline stretch with no gate or taste call ahead — narration says so before it starts: that he may step away, an honest range for how long (read from the work's known shape or observed runs; an unknown duration is said as unknown, never a guess dressed as a promise), and what he will be needed for when it ends. When he is needed again, that too is a beat, said plainly, naming the gate or decision that waits. The window is a read on the work, never a dismissal: beats keep landing during it so the returning reader finds the trail whole; questions born inside the window batch to its end [INV-4]; a window that ends off its spoken range says so — overrun, done sooner, or blocked on his word alone — the heartbeat's own duty; the needed-again beat is a chat line awaiting his return, never a summons (the machinery of reaching an absent human stays outside this law); and no offline sentence fires when the very next beat needs the human.
+
+Together the trail is the session's time accounting: read top to bottom, it answers where the time went in work terms — token and test counts stay bookkeeping [INV-28]. A narration line is chat, not a report: it walks no pre-report walk (the walk scopes to movement-end and milestone reports, a deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out of the content [INV-28]. Working notes marked as the writer's own remain a separate, skippable register; narration is for the reader, and it replaces no report — milestones still get the full one. The law's one home is the communicator (its narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
 
 **Anything handed to the human opens with its passport.** A page opened in his browser at midnight
 either says WHICH project it is and WHETHER it wants him — or it is noise (his 2026-07-06 word, twice
