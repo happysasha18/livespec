@@ -6,6 +6,7 @@ This is the first slice of the guardrails' conflicts check (ROADMAP rows 3 and 1
 the pre-push hook generalizes it when row 3 lands.
 """
 
+import json
 import os
 import re
 import unittest
@@ -811,6 +812,36 @@ class TestPackListParity(unittest.TestCase):
                                re.sub(r"\s+", " ", read("README.md")))
         self.assertTrue(any("communicator closing list" in g for g in gaps),
                         "the checker passed the historic four-skill footer — it has no teeth")
+
+
+class TestPluginMetadata(unittest.TestCase):
+    """Row 169 (M-171, INV-44/INV-66): the shipped plugin metadata matches the pack's truth —
+    both .claude-plugin JSONs carry a description, plugin.json's version equals the VERSION
+    file, and a description naming ANY pack skill names them all (the row-167 drift class)."""
+
+    def _load(self, rel):
+        return json.loads(read(rel))
+
+    def test_metadata_described_and_current(self):
+        plugin = self._load(".claude-plugin/plugin.json")
+        market = self._load(".claude-plugin/marketplace.json")
+        self.assertTrue(market.get("description", "").strip(),
+                        "marketplace.json ships no description — the validator's warning (row 169)")
+        self.assertTrue(plugin.get("description", "").strip(),
+                        "plugin.json ships no description")
+        self.assertEqual(plugin.get("version"), read("VERSION").strip(),
+                         "plugin.json pins a version that drifted from the VERSION file")
+
+    def test_descriptions_never_carry_a_partial_skill_list(self):
+        skills = sorted(d for d in os.listdir(os.path.join(ROOT, "skills"))
+                        if os.path.isdir(os.path.join(ROOT, "skills", d)))
+        self.assertGreaterEqual(len(skills), 7)
+        for rel in (".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"):
+            desc = self._load(rel).get("description", "")
+            named = set(s for s in skills if s in desc)
+            self.assertTrue(named == set() or named == set(skills),
+                            "%s description names SOME pack skills, missing: %s"
+                            % (rel, sorted(set(skills) - named)))
 
 
 class TestTargetOwnership(unittest.TestCase):

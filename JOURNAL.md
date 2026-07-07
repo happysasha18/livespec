@@ -1980,3 +1980,22 @@ round-trip; the seat is detected from what the session can actually reach and th
 A local path handed to a remote reader is now a named defect. SPEC v0.15.59; communicator 0.1.37;
 the personal profile's show line marked as the local arm. Suite 169; pack 0.8.71. Field leg open:
 the first real cloud-seated session.
+
+## 2026-07-07 ~11:19 — session 24 opens: inbox swept, row 169 landed — the plugin shopfront tells the truth
+**What:** the resume file said "inbox EMPTY", the sweep found one unswept wish (promoter window,
+that morning): marketplace.json ships no description, the validator warns, directory submission runs
+the same check. Harvested as row 169 (bug door, infra kind) and fixed the same hour — and the class
+widened at the fix, exactly per the sweep law: plugin.json carried two SIBLINGS nobody had named —
+a five-skill description (the lists-drift class of row 167, alive in shipped metadata the parity
+scanner never reads) and a version pinned 0.8.0 against VERSION 0.8.71. All three fixed in one
+change; both descriptions now describe the pack without enumerating skills, so the list cannot
+drift again; plugin.json's version is asserted equal to VERSION on every suite run. M-171,
+`TestPluginMetadata` red-proven against the real shipped files, then green. Validator re-run:
+the description warning is gone; the icon warning stays by the wish's own word (agreed safe).
+Suite 171 green; pack 0.8.72.
+**Short-form record:** previous prover records clean (row 165's one open row is the field leg,
+riding); delta = plugin metadata truth + its matrix row and tests, no spec prose touched; verdict —
+green, push-ready.
+**Why:** the shopfront is the first thing a stranger reads; a five-skill list and a 0.8.0 pin were
+quietly lying about the pack. The fix follows the row-167 lesson to its metadata sibling: complete
+lists live where the parity check reads, everything else describes without counting.

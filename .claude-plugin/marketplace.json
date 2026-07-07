@@ -1,2 +1,3 @@
 { "name": "live-spec", "owner": { "name": "Community" },
+  "description": "Living-spec methodology pack: skills and guardrails that take every change through spec, prove, architecture, tests, and code.",
   "plugins": [ { "name": "live-spec", "source": "./", "strict": false } ] }
