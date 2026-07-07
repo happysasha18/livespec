@@ -80,66 +80,23 @@ The proposal proceeds on the recommended option; the lane never parks on it [INV
 
 **One wish = one user story; a row closes only whole.** This law is built on a failure: a project fused two stories, a door and a gallery, into one queue row, so the door half shipped, the row was declared complete, and the gallery stayed a rejected wall for four rebuilds. At intake, then, a wish carrying several user stories — several distinct things a person will do and see — is split, each story its own row through the full pipeline. This is kin to a stage split, but a different knife: stages slice one story's depth [T-15], while separate stories are never fused into one row to begin with. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, not new stories. Whether something is one story or two is asked at intake, never guessed [INV-12]. A split loses nothing: every row born of it cites the one spoken wish it came from [INV-1]. [T-17] Where a row nonetheless carries several legs — a legacy fusion or a harvested batch — its Done-when enumerates per-leg acceptance, and the row cannot close with an unmet leg — half-done is a status, never a landing. The resume file's LIVE-STATE supersession never compresses an unfinished leg out of existence: a leg still open at compaction is restated, not summarized away [M-2]. [INV-26]
 
-**A wish hears itself land, and progress reads like a departures board.** You toss a wish in passing —
-before sleep, mid-thought — and without an echo you cannot know it survived. So the intake line is not
-only WRITTEN into the queue, it is SPOKEN back: one plain sentence — what was heard, the door called,
-the name the work will answer to, its row number ("caught: …, it's a feature, we'll call it X, row N").
-A wish that arrives silently (an inbox file, a harvest) gets its echo in the next report, never as an
-interruption. And whenever status is reported, every in-flight feature is named by that name with its
-pipeline STATION — spec → prove → architecture → prove architecture → matrix → test → code → verify →
-commit & show, plus the terminal landed — so progress reads like a departures board at a glance, never
-prose archaeology; the station vocabulary is the pipeline's own step names, one station per step, all
-nine — a feature paused at proving the architecture or at commit & show reads under that station's own
-name, never an improvised one; landed is a state, not a step: it says the row closed whole. (His word 2026-07-05, before sleep: "captured this that
-request, it's a feature, we'll call it this and that — а потом рапортовать как каждая фича идет по
-пайплайну".) The echo carries one more part — the wish's place on the product's map; its law lives in
-the next paragraph [INV-37]. [INV-27]
+**A wish hears itself land, and progress reads like a departures board.** You toss a wish in passing, before sleep or mid-thought, and without an echo you cannot know it survived. So the intake line is not only written into the queue; the project speaks it back. One plain sentence says what was heard, the door called, the name the work will answer to, and its row number — caught this request, it's a feature, we'll call it X, row N. A wish that arrives silently, as an inbox file or a harvest, gets its echo in the next report, never as an interruption. Whenever status is reported, the project names every in-flight feature by that name with its pipeline STATION: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show, plus the terminal landed. Progress then reads like a departures board at a glance, never prose archaeology. The station vocabulary is the pipeline's own step names, one station per step, all nine. A feature paused at proving the architecture or at commit & show reads under that station's own name, never an improvised one. Landed is a state, not a step: it says the row closed whole. (His word 2026-07-05, before sleep: name the captured request in plain words, then report how each feature moves down the pipeline.) The echo carries one more part — the wish's place on the product's map; its law lives in the next paragraph [INV-37]. [INV-27]
 
-**Every wish is also PLACED on the product's map — "this changes feature X", "this is a new feature",
-or "the shape no longer fits" — and the placement is spoken, out of the box.** The echo above says what
-the work IS (heard · door · name · row); the same breath says WHERE it lands. The map is not a new
-document: the spec's scenario sections and the architecture's nodes ARE the product's feature map
-[E-14] — this law only makes the until-now implicit mapping SPOKEN. Three verdicts exist: **changes an
-existing feature** (the delta grows that scenario, names it) · **a new feature** (a new scenario
-section, and at the architecture step its own node) · **restructure** (the wish fits no existing
-carving cleanly, or fitting it in shows the modules have outgrown their shape — his words: the moment
-of «формирование продуктовой модульной архитектуры»). A restructure verdict never re-carves in
-passing: it queues its OWN row (refactor door when only structure moves; feature door when behaviour
-moves with it), and the re-carve walks the architecture step with its re-prove [E-14] — the placement
-may SAY the shape no longer fits, only a landing may change the shape. A bug's placement is the
-feature it repairs; a wish whose feature the classifier can't call is asked like any uncallable axis
-[INV-12]. And the verdict is WRITTEN as well as spoken: the wish's queue row carries a `map:` note —
-changes X · new · restructure — so placement stays greppable after the echo fades, the way the fences
-stay greppable in their rows [T-14 kin]. (His word 2026-07-06: «когда приходит новый запрос, ты должен понять, к какой фиче
-относится — меняем ли фичу, пишем ли новую, нужна ли структуризация… я ожидал бы, чтобы это было
-понятно из коробки».) [INV-37]
+**Every wish is also PLACED on the product's map — "this changes feature X", "this is a new feature", or "the shape no longer fits" — and the placement is spoken, out of the box.** The echo above says what the work is: heard, door, name, row. The same breath says where it lands. The map is not a new document. The spec's scenario sections and the architecture's nodes already are the product's feature map [E-14]; this law only makes the until-now implicit mapping spoken. Three verdicts exist:
 
-**The outcome does the talking: names are chosen plain, and every handle trails.** The first real
-departures board passed its eval and failed its READER — lines led with coined metaphor-names
-(«Прогулка по уликам», «Часы получают зубы») and row numbers he never opens, and squeezed facts into
-riddles only their writer could parse ("seven times — twice the fence"; 2026-07-06 morning, the jargon
-family's third strike in two days). Two arms, one law. NAMING: a feature's echo-name is a short
-DESCRIPTIVE phrase in the product's own words — what the thing does, parseable cold by a reader who
-missed its birth — never a private metaphor; a name that needs its story told first is a handle, not a
-name. LINES: a human-facing report or board line (chat reports, narration lines [INV-35], report pages,
-decision pages, the capture echo — method-internal docs keep their anchors) OPENS with what changed for the reader — what
-they can now do, see, or stop fearing; every internal handle — spec codes, row and session numbers, and
-any coined name the reader never chose to learn — may only TRAIL in parentheses; and one fact = one
-standalone sentence — a compression whose parsing needs the writer's context is a defect of the line,
-not a flourish. Bookkeeping numbers are handles too, and they kept walking into the message anyway —
-two consecutive eval runs put "all 64 checks green, v0.9.16" into the human's message body (2026-07-06)
-— so the law carries an explicit NEVER-list: a test count, a suite size, a version string, a check
-tally is never message CONTENT; the message says what the number means for the reader ("tested clean",
-"saved", "the method held"), and the number may only trail as a quiet anchor or stay in the records.
-One carve-out, by law: where the number IS the asked substance — a direct question about it, or the
-done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as
-the answer, not as bookkeeping. And because this law and the narration law live in skills a window
-may never load (the day the field showed it: three windows leaked raw codes to their reader in one
-day, 2026-07-06), they have a mechanical VOICE on the working machine: a prompt hook
-(`scripts/chat-law-hook.sh`, installed beside the clock's hand by the human's own command) injects a
-one-line reminder of both laws into every prompt — the skills remain the laws' homes, the hook only
-reminds and never legislates, and a window that ignores the line is breaking the same law, not a
-different one. [INV-28]
+- **changes an existing feature** — the delta grows that scenario and names it.
+- **a new feature** — a new scenario section, and at the architecture step its own node.
+- **restructure** — the wish fits no existing carving cleanly, or fitting it in shows the modules have outgrown their shape; his words, the moment of forming the product's modular architecture.
+
+A restructure verdict never re-carves in passing. It queues its own row — the refactor door when only structure moves, the feature door when behaviour moves with it — and the re-carve walks the architecture step with its re-prove [E-14]. The placement may say the shape no longer fits; only a landing may change the shape. A bug's placement is the feature it repairs, and a wish whose feature the classifier cannot call is asked like any uncallable axis [INV-12]. The verdict is written as well as spoken: the wish's queue row carries a `map:` note — changes X, new, or restructure — so placement stays greppable after the echo fades, the way the fences stay greppable in their rows [T-14 kin]. (His word 2026-07-06: when a new request arrives, understand which feature it concerns — whether it changes a feature, adds a new one, or needs restructuring — and this should be clear out of the box.) [INV-37]
+
+**The outcome does the talking: names are chosen plain, and every handle trails.** The first real departures board passed its eval and failed its reader. Lines led with coined metaphor-titles such as "a walk through the evidence" or "the clock grows teeth", carried row numbers he never opens, and squeezed facts into riddles only their writer could parse — the jargon family's third strike in two days (2026-07-06 morning). Two arms, one law.
+
+Naming: a feature's echo-name is a short descriptive phrase in the product's own words — what the thing does, parseable cold by a reader who missed its birth — never a private metaphor. A name that needs its story told first is a handle, not a name.
+
+Lines: a human-facing report or board line opens with what changed for the reader — what they can now do, see, or stop fearing. This covers chat reports, narration lines [INV-35], report pages, decision pages, and the capture echo, while method-internal docs keep their anchors. Every internal handle — spec codes, row and session numbers, and any coined name the reader never chose to learn — may only trail in parentheses. And one fact = one standalone sentence: a compression whose parsing needs the writer's context is a defect of the line, not a flourish.
+
+Bookkeeping numbers are handles too, and they kept walking into the message anyway — two consecutive eval runs put "all 64 checks green, v0.9.16" into the human's message body (2026-07-06). So the law carries an explicit never-list: a test count, a suite size, a version string, or a check tally is never message content. The message says what the number means for the reader — tested clean, saved, the method held — and the number may only trail as a quiet anchor or stay in the records. One carve-out, by law: where the number is the asked substance — a direct question about it, or the done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as the answer, not as bookkeeping. This law and the narration law live in skills a window may never load; the day the field showed it, three windows leaked raw codes to their reader (2026-07-06). So they have a mechanical voice on the working machine. A prompt hook, `scripts/chat-law-hook.sh`, installed beside the clock's hand by the human's own command, injects a one-line reminder of both laws into every prompt. The skills remain the laws' homes; the hook only reminds and never legislates. A window that ignores the line is breaking the same law, not a different one. [INV-28]
 
 **The report law is walked, not remembered.** The law above passed its evals and still failed on the
 senior's own chat: the session-13 closing report led with pack-internal names and loan-translated doc
