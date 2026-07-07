@@ -1028,90 +1028,36 @@ While both layers live, one thing holds: **no wish lands whose facts lack an own
 
 ## The machines that hold the bounds
 
-What keeps "it works" honest, each one a named machine:
+What keeps "it works" honest — each one a named machine:
 
-- **The matrix (TEST_MATRIX.md)** — at least one row per fact, each row pinned to a test level; organized
-  architecture node × spec fact, produced by the derivation method above [E-14, E-15]. [E-5] Every row states the
-  positive AND the negative side — what the fact does and what it must never do; the negative side is the
-  regression fence. [INV-6]
-- **The guardrails** — the mechanical checks wired to the pre-push hook. Live for the pack repo itself:
-  a today-dated prover record exists · the suite is green (its RUN scoped by the diff's reach — a
-  prose-only diff stands the suite down by name, everything else runs it whole [INV-45]) · every anchor
-  owned by exactly one node · no unchecked matrix-coverage box · the prototype fence (no prod file
-  references into a prototype home [E-17, INV-17]), plus the opt-in concurrent-edit fence on commit. Still [target]: the
-  host-facing set — completeness (against the surface registry) · tests-present · behaviour-traces-to-spec
-  · declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed: only where the host uses
-  git at all, and installed only after asking the human — with a plain-words explanation of what the hook
-  will check and block, because the human may not know what a git hook is (Alexander 2026-07-05). [E-6]
-- **The snapshot [target: the machine; the design is decided]** — the saved artifact of the last
-  accepted run (HTML, JSON, files, numbers — any product), the baseline the next run is diffed against.
-  Its home is the host's `.live-spec/snapshot/`: one folder per declared surface holding that surface's
-  last-accepted render, plus one manifest line per surface — what it is, the landing that set it (row,
-  date), a content hash — the attic manifest's sibling. The baseline advances only at *landed*, and
-  only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry
-  is what catches the unasked change: the guardrails' declared-scope check [E-6] goes red when a
-  rendered surface differs from its baseline while the landing never declared it. Adoption saves the
-  first baseline from the artifacts as found [A-6]. Retention is last-only in the working tree, and
-  git history is the archive: the snapshot folder is git-tracked (of `.live-spec/` only the checkpoints
-  stay ignored [E-8]), so any older baseline is one checkout away — a diff dispute reads git history,
-  never a second archive. A surface too heavy to track keeps its manifest line and hash while the bytes
-  live outside git — only the hash is diffed. (D-3 decided with this design, 2026-07-07; the machine
-  itself stays [target] — its first mechanical slice rides the guardrails scaffold, row 3.) [E-7]
-- **Design-sync [target: the machine; the wiring is live]** — an OPTIONAL machine for hosts with
-  visual components: it syncs the components a landing DECLARED (the same declared-scope notion the
-  snapshot diffs by [E-7]) to the team's design project (claude.ai/design), where the human reviews
-  rendered cards. It SUPPLEMENTS the in-session render — the real render stays the authority for the
-  landing gate; the design project is the team-review channel. WIRED today (row 93's pack-side half):
-  the switch lives off-by-default in the base skill's defaults table [E-13] under the name
-  `design-sync` — a host turning it on writes a recorded profile line [INV-14] — and the channel lines
-  stand in communicator (where the cards go, after the gate) and in the pipeline's commit-and-show step
-  (when a sync fires). STILL [target]: the machine itself — the first real sync on a visual host, shown
-  working through the human's gate, closes row 93. Every sync is gated by the human because a sync
-  PUBLISHES outside the machine [ACT-1]. The pack itself, a text product, never syncs — and the
-  work-kind axis is what says so mechanically [T-16]: the machine applies to product-kind work on a
-  visual host; every other kind stands it down by name [INV-22]. [E-18]
-- **The skill evals** — the pack's own skills are tested like any shipped artifact, at the level that
-  matters for a skill: BEHAVIOUR. Each working skill owns at least one recorded eval — a scenario where
-  a bare session (the skill not loaded) demonstrably errs and the skill's text corrects it: the skill's
-  own red-first test, proven red at authoring with a dated run record, never asserted from belief. The
-  eval home is `evals/` in the pack repo — one file per skill stating the scenario prompt, the recorded
-  bare failure (date + run record), what a with-skill run must show, and the checks a re-run walks.
-  Evals re-run at milestones (the M-1 list carries the item) and at any landing that changes a skill's
-  own BEHAVIOUR — a bump that only sweeps a pin or version line owes no re-run. The law binds from this
-  landing: a working skill without its eval is a defect the milestone audit flags. [E-19]
-- **The surface registry [target]** — one named list per host of every user-facing surface, and the
-  PREFERRED form is executable: the list lives as a declared map inside a completeness-gate test, so a
-  mismatch IS a failing test in both directions (rendered-but-unregistered · registered-but-empty); the
-  `.md` file stays the honest fallback for a host with no test harness (a real host arrived with the
-  executable form already working — adoption recognises it as satisfying this machine, never asks it to
-  step backwards into a document). The completeness check
-  scans the real rendered artifact against it; a surface that renders but isn't registered is RED, so the
-  registry is self-closing, never a trusted hand-list. [E-10]
+- **The matrix (TEST_MATRIX.md)** — at least one row per fact, each row pinned to a test level [E-5]. It is organized architecture node × spec fact, produced by the derivation method above [E-14, E-15]. Every row states the positive AND the negative side — what the fact does and what it must never do; the negative side is the regression fence [INV-6].
 
-**The gate is thorough by REACH, not by ritual.** "Run everything before any push" reads rigorous and
-double-misses: a README-only push pays minutes of behavioural tests that read no README line, while
-the checks a prose diff CAN break run never (found in a host audit, 2026-07-06 — a one-file README
-change paid a 795-test run; his word the same evening: understand what changed to know what to test —
-build the dependency graph, a little conservative). So the push gate derives its check-set from a
-declared **reach map** — which checks READ which file classes — mechanically from the diff's file
-list, never self-judged. Three teeth keep it honest: the map is EXPLICIT (a named file in guardrails/,
-patterns a human reads); it is CONSERVATIVE — an unmapped or new file means the FULL suite, fast paths
-exist only for explicitly claimed prose classes, and "just .md" is no class: this repo's SPEC, matrix,
-architecture, queue, and every SKILL.md are TESTED documents and stay full-reach; and it is
-SELF-TESTED — the deciding script is red-proven on fixtures, and anything it cannot classify falls to
-full by construction. The cheap gates (prover record, ownership, coverage, loadability, prototype
-fence) never scope — they run at every push. "Full rigor" [INV-40] reads as: every check the diff can
-reach, green — never fewer, and never a ritual run of checks that read nothing in the diff. [INV-45]
+- **The guardrails** — mechanical checks wired to the pre-push hook [E-6]. They run live for the pack repo itself, where each push must show:
+  - a today-dated prover record exists;
+  - the suite green — its RUN scoped by the diff's reach, so a prose-only diff stands the suite down by name and everything else runs it whole [INV-45];
+  - every anchor owned by exactly one node;
+  - no unchecked matrix-coverage box;
+  - the prototype fence — no prod file references into a prototype home [E-17, INV-17];
+  - plus the opt-in concurrent-edit fence on commit.
 
-**A gate that blocks speaks one language.** Today each gate script fails in its own words — an agent
-parses prose, a human hunts the fix. The contract (the neighbours' CLI lesson, row 107): every
-BLOCKING gate, on red, emits ONE typed failure line — a parseable JSON object `{severity, code,
-message, fix}` — beside its human lines, the `fix` field being the same sentence a person reads;
-every check DECLARES itself blocking or advisory (an advisory check prints and never flips the exit
-code); and a script that REBUILDS artifacts validates every output before writing any — no
-half-written artifact ever lands on disk. The contract's operational home is the guardrails README
-(the gate-authoring rules); it binds by deed from the first gate shipped under it and sweeps the rest
-as each is next touched, never retroactively en masse. [INV-47]
+  Still [target]: the host-facing set — completeness against the surface registry, tests-present, behaviour-traces-to-spec, and declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed. They install only where the host uses git, and only after asking the human with a plain-words explanation, because the human may not know what a git hook is (Alexander 2026-07-05).
+
+- **The snapshot [target: the machine; the design is decided]** — the saved artifact of the last accepted run (HTML, JSON, files, numbers), the baseline the next run is diffed against [E-7]. Its home is `.live-spec/snapshot/`: one folder per declared surface, plus one manifest line per surface — what it is, the landing that set it (row, date), and a content hash — the attic manifest's sibling. The baseline advances only at *landed*, and only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline. That asymmetry catches the unasked change: the guardrails' declared-scope check [E-6] goes red when a rendered surface differs from its baseline while the landing never declared it. Adoption saves the first baseline from the artifacts as found [A-6]. Retention is last-only in the working tree, and git history is the archive: the snapshot folder is git-tracked, and of `.live-spec/` only the checkpoints stay ignored [E-8], so any older baseline is one checkout away. A too-heavy surface keeps its manifest line and hash while the bytes live outside git — only the hash is diffed. (D-3 decided with this design, 2026-07-07; the machine itself stays [target], its first mechanical slice rides the guardrails scaffold, row 3.)
+
+- **Design-sync [target: the machine; the wiring is live]** — an OPTIONAL machine for hosts with visual components [E-18]. It syncs the components a landing DECLARED — the same declared-scope notion the snapshot diffs by [E-7] — to the team's design project (claude.ai/design), where the human reviews rendered cards. It SUPPLEMENTS the in-session render: the real render stays the authority for the landing gate, and the design project is the team-review channel. It is WIRED today (row 93's pack-side half): the switch lives off-by-default in the base skill's defaults table [E-13] under the name `design-sync`, a host turning it on writes a recorded profile line [INV-14], and the channel lines stand in communicator and in the pipeline's commit-and-show step. Still [target]: the machine itself — the first real sync on a visual host closes row 93. Every sync is gated by the human, because a sync PUBLISHES outside the machine [ACT-1]. The pack itself, a text product, never syncs, and the work-kind axis says so mechanically [T-16]: the machine applies to product-kind work on a visual host, and every other kind stands it down by name [INV-22].
+
+- **The skill evals** — the pack's own skills are tested at the level that matters for a skill: BEHAVIOUR [E-19]. Each working skill owns at least one recorded eval — a scenario where a bare session errs and the skill's text corrects it, the skill's own red-first test, proven red at authoring with a dated run record. The eval home is `evals/` in the pack repo, one file per skill: the scenario prompt, the recorded bare failure (date + run record), what a with-skill run must show, and the checks a re-run walks. Evals re-run at milestones (the M-1 list carries the item) and at any landing that changes a skill's own BEHAVIOUR; a bump that only sweeps a pin or version line owes no re-run. A working skill without its eval is a defect the milestone audit flags.
+
+- **The surface registry [target]** — one named list per host of every user-facing surface, and the PREFERRED form is executable [E-10]. The list lives as a declared map inside a completeness-gate test, so a mismatch IS a failing test in both directions — rendered-but-unregistered, and registered-but-empty. The `.md` file stays the honest fallback for a host with no test harness; a real host arrived with the executable form already working, and adoption recognises it rather than asking it to step backwards into a document. The completeness check scans the real rendered artifact against the list, so a surface that renders but isn't registered is RED, and the registry is self-closing.
+
+**The gate is thorough by REACH, not by ritual.** "Run everything before any push" reads rigorous and double-misses. A README-only push pays behavioural tests that read no README line, while the checks a prose diff CAN break run never — a host audit 2026-07-06 saw a one-file README change pay a 795-test run; his word: understand what changed to know what to test, build the dependency graph, a little conservative. So the push gate derives its check-set from a declared reach map — which checks READ which file classes — mechanically from the diff's file list, never self-judged. Three teeth keep it honest:
+- the map is EXPLICIT — a named file in guardrails/, patterns a human reads;
+- it is CONSERVATIVE — an unmapped or new file means the FULL suite, fast paths only for explicitly claimed prose classes; "just .md" is no class, so SPEC, matrix, architecture, queue, and every SKILL.md are TESTED documents and stay full-reach;
+- it is SELF-TESTED — the deciding script is red-proven on fixtures, and anything it cannot classify falls to full.
+
+The cheap gates (prover record, ownership, coverage, loadability, prototype fence) never scope; they run at every push. "Full rigor" [INV-40] reads as: every check the diff can reach, green. [INV-45]
+
+**A gate that blocks speaks one language.** Today each gate script fails in its own words — an agent parses prose, a human hunts the fix. The contract comes from the neighbours' CLI lesson, row 107: every BLOCKING gate on red emits ONE typed failure line — a parseable JSON object `{severity, code, message, fix}` — beside its human lines, the `fix` field the same sentence a person reads. Every check DECLARES itself blocking or advisory; an advisory check prints and never flips the exit code. A script that REBUILDS artifacts validates every output before writing any, so no half-written artifact lands on disk. The contract's operational home is the guardrails README. It binds by deed from the first gate shipped under it and sweeps the rest as each is next touched, never retroactively en masse. [INV-47]
 
 ## The package repo: who may write, and two sessions at once
 
