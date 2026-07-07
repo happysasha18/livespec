@@ -1061,51 +1061,19 @@ The cheap gates (prover record, ownership, coverage, loadability, prototype fenc
 
 ## The package repo: who may write, and two sessions at once
 
-live-spec eats its own cooking — this spec, this queue, these rules govern live-spec's own development,
-and the pack repo's own push gates run mechanically on the installed hooks (a fresh prover record, a
-green suite, anchor ownership, matrix coverage — `guardrails/`); the host-facing checks stay [target]
-with E-6. [M-4] That makes its repo a shared surface, and one evening
-of two parallel sessions taught us the rules:
+live-spec eats its own cooking: this spec, this queue, and these rules govern live-spec's own development. The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface, and one evening of two parallel sessions taught us the rules.
 
-**The developer's own machine keeps its skills fresh by name, not by habit.** The repo is the source
-[D-4]; the installed copies under the agent's skills home are mirrors — and a session that edits a
-skill syncs the installed copy the SAME session, through the named tool: `scripts/sync-skills.sh`,
-which copies each repo skill over its installed twin and reports every version change old → new — the
-exact line A-7's re-read rule fires on. A hand-copy is the anti-pattern the tool retires: it syncs
-silently, so nothing tells the next breakpoint what changed. [E-23]
+**The developer's own machine keeps its skills fresh by name, not by habit.** The repo is the source [D-4]. The installed copies under the agent's skills home are mirrors. A session that edits a skill syncs the installed copy the SAME session, through the named tool `scripts/sync-skills.sh`. That tool copies each repo skill over its installed twin, and it reports every version change old → new — the exact line A-7's re-read rule fires on. A hand-copy is the anti-pattern the tool retires: it syncs silently, so nothing tells the next breakpoint what changed. [E-23]
 
-**Only a session you assigned to live-spec itself writes this repo** (spec, queue, journal, skills,
-templates, adopt procedure). Every other session — a host adopt run, a skill install, anything that merely
-reads the package — is read-only here, with exactly one exception: creating a new wish file in the inbox.
-The test is crisp: if the session cannot say "the human asked ME, in this conversation — or via a standing
-routine the human created FOR live-spec — to change live-spec", it does not write. A host run's story lives
-in the HOST's journal, never here. [INV-10]
+**Only a session you assigned to live-spec itself writes this repo** (spec, queue, journal, skills, templates, adopt procedure). Every other session is read-only here — a host adopt run, a skill install, anything that merely reads the package. It has exactly one exception: creating a new wish file in the inbox. The test is crisp. If the session cannot say "the human asked ME, in this conversation, or via a standing routine the human created FOR live-spec, to change live-spec", it does not write. A host run's story lives in the HOST's journal, never here. [INV-10]
 
-**The inbox (inbox/)** is the parallel-safe intake door for wishes and feedback born outside a
-live-spec session: one
-NEW file per item (`YYYY-MM-DD-<source>-<slug>.md`; name taken → append `-2`, `-3`, … — the same one
-collision law, base rule 18; two sessions racing one slug add a short session token to the source mark),
-a few plain lines,
-never an edit to an existing file — creating a fresh file cannot collide, shared files can. The outsider
-COMMITS its one new file (a commit touching inbox/ only, message naming the source) — that commit is
-inside the read-only exception. The door is host-general: every host carries its own inbox/ under the
-same law, swept first by that host's own sessions — that is what keeps "no wish is ever lost" [INV-1]
-true when two contributors' sessions share one host. [E-11] A live-spec session sweeps the inbox as its FIRST act and harvests
-each file into the home its route owns — a wish file into a queue row as always, a feedback file by
-the routing law [T-20] — an item must not wait durably-recorded but operationally invisible; the
-harvest commit removes the file (git history keeps it — this internal removal is not an attic case, which
-protects HOST files). Each harvest is ONE commit that both lands the route (the row, the ledger line)
-and removes its file — the landing
-names the source file, so an interrupted harvest (nothing committed) leaves the file untouched for the
-next sweep, which harvests it exactly once — a committed harvest leaves no file behind to re-harvest. So
-"spoken means it exists" holds without the outside session touching the queue. [T-10]
+**The inbox (inbox/)** is the parallel-safe intake door for wishes and feedback born outside a live-spec session. Each item arrives as one NEW file, named `YYYY-MM-DD-<source>-<slug>.md`. If the name is taken, append `-2`, `-3`, and so on — the same one collision law, base rule 18. When two sessions race one slug, they add a short session token to the source mark. A file holds a few plain lines, and it never edits an existing file: creating a fresh file cannot collide, while shared files can.
 
-**Before writing to a repo — and again before every commit** — the agent re-checks `git status` + HEAD
-against what it last read. If HEAD moved or the tree holds changes it did not make: STOP, re-read the
-changed files, and only then proceed surgically — or back off to the inbox. New files under inbox/ are the
-expected benign case, not a fence trip. Never push while another session is known to be live in the repo —
-push coordination belongs to the human. Applies to live-spec AND to any host repo two sessions might share
-(the concurrency axis of the composition rule, made mechanical). [INV-11]
+The outsider COMMITS its one new file — a commit touching inbox/ only, its message naming the source. That commit is inside the read-only exception. The door is host-general: every host carries its own inbox/ under the same law, swept first by that host's own sessions. That is what keeps "no wish is ever lost" [INV-1] true when two contributors' sessions share one host. [E-11]
+
+A live-spec session sweeps the inbox as its FIRST act. It harvests each file into the home its route owns — a wish file into a queue row as always, a feedback file by the routing law [T-20]. An item must not wait durably-recorded but operationally invisible. The harvest commit removes the file; git history keeps it, and this internal removal is not an attic case, which protects HOST files. Each harvest is ONE commit that both lands the route — the row, the ledger line — and removes its file. The landing names the source file. So an interrupted harvest commits nothing and leaves the file untouched for the next sweep, which harvests it exactly once. A committed harvest leaves no file behind to re-harvest. So "spoken means it exists" holds without the outside session touching the queue. [T-10]
+
+**Before writing to a repo — and again before every commit** — the agent re-checks `git status` and HEAD against what it last read. Suppose HEAD moved, or the tree holds changes it did not make. Then it must STOP, re-read the changed files, and only then proceed surgically — or back off to the inbox. New files under inbox/ are the expected benign case, not a fence trip. The agent never pushes while another session is known to be live in the repo; push coordination belongs to the human. This applies to live-spec and to any host repo two sessions might share — the concurrency axis of the composition rule, made mechanical. [INV-11]
 
 ## The rhythm: breakpoints, milestones, pushes
 
