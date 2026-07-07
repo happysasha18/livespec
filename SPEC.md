@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.57, 2026-07-07)
+# live-spec — SPEC (v0.15.58, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -1198,10 +1198,20 @@ What keeps "it works" honest, each one a named machine:
   · declared-scope diff vs snapshot. On a host, hooks are OFFERED, never imposed: only where the host uses
   git at all, and installed only after asking the human — with a plain-words explanation of what the hook
   will check and block, because the human may not know what a git hook is (Alexander 2026-07-05). [E-6]
-- **The snapshot [target]** — the saved artifact of the last accepted run (HTML, JSON, files, numbers —
-  any product), the baseline the next run is diffed against. The baseline advances only at *landed*, and
-  only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry is
-  what catches the unasked change. Retention (last-only vs last-N) is an open decision [D-3]. [E-7]
+- **The snapshot [target: the machine; the design is decided]** — the saved artifact of the last
+  accepted run (HTML, JSON, files, numbers — any product), the baseline the next run is diffed against.
+  Its home is the host's `.live-spec/snapshot/`: one folder per declared surface holding that surface's
+  last-accepted render, plus one manifest line per surface — what it is, the landing that set it (row,
+  date), a content hash — the attic manifest's sibling. The baseline advances only at *landed*, and
+  only for the surfaces the change DECLARED; undeclared surfaces keep the old baseline — that asymmetry
+  is what catches the unasked change: the guardrails' declared-scope check [E-6] goes red when a
+  rendered surface differs from its baseline while the landing never declared it. Adoption saves the
+  first baseline from the artifacts as found [A-6]. Retention is last-only in the working tree, and
+  git history is the archive: the snapshot folder is git-tracked (of `.live-spec/` only the checkpoints
+  stay ignored [E-8]), so any older baseline is one checkout away — a diff dispute reads git history,
+  never a second archive. A surface too heavy to track keeps its manifest line and hash while the bytes
+  live outside git — only the hash is diffed. (D-3 decided with this design, 2026-07-07; the machine
+  itself stays [target] — its first mechanical slice rides the guardrails scaffold, row 3.) [E-7]
 - **Design-sync [target: the machine; the wiring is live]** — an OPTIONAL machine for hosts with
   visual components: it syncs the components a landing DECLARED (the same declared-scope notion the
   snapshot diffs by [E-7]) to the team's design project (claude.ai/design), where the human reviews
@@ -1484,8 +1494,9 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
   subfolders — revisit at the next real adopt run. [D-1]
 - ⟨DECIDE⟩ whether the queue's size classification also fixes the model tier mechanically, or the senior
   may override per wish (current pick: router proposes, senior may override, override is logged). [D-2]
-- ⟨DECIDE⟩ snapshot retention: last-only (current pick) vs last-N — revisit when a diff dispute needs
-  history. [D-3]
+- Decided 2026-07-07 (row 55): snapshot retention is **last-only in the working tree; git history is
+  the archive** — the snapshot folder is git-tracked, an older baseline is one checkout away; a heavy
+  surface keeps only its hash in git. Revisit if a dispute ever needs history git cannot serve. [D-3]
 - Decided 2026-07-05 (page 2): pack ↔ standalone-skill-repos structure is **package-is-source** — the
   pack repo is the single truth, standalone repos become read-only mirrors (Alexander's note: reusable
   parts must stay findable alone — exactly what mirrors give). The folder-NAME half had closed earlier

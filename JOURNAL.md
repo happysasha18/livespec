@@ -1962,3 +1962,12 @@ set; a missing name goes red at every commit (SPEC v0.15.57 INV-66, M-168, suite
 side is permanent: the second test runs the checker on the historic four-skill communicator footer —
 the exact artifact that drifted — and demands it fail. Second occurrence of the lists-drift class
 (cross-audit F2 was the first); the ledger's law fired, the class now has a mechanical owner.
+
+## 2026-07-07 ~10:51 — session 23: row 55 landed — the snapshot design is decided
+**What:** the last-accepted-baseline machine got its full design (SPEC v0.15.58): home
+`.live-spec/snapshot/` with a per-surface manifest (what · landing · hash), the baseline advances
+only at a landing and only for declared surfaces (the asymmetry that catches unasked change), and
+retention closed the open decision: last-only in the working tree, git history as the archive — an
+older baseline is one checkout away, so a second archive mechanism never exists; heavy surfaces keep
+only their hash in git. The machine itself stays a target: its first mechanical slice rides the
+guardrails scaffold row. Suite 168 green; pack 0.8.70.

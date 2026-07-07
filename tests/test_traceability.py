@@ -1710,6 +1710,21 @@ class TestProblemLedger(unittest.TestCase):
         readme = re.sub(r"\s+", " ", read("README.md"))
         self.assertIn("test-author", readme, "README missing the new skill")
 
+    def test_snapshot_design(self):
+        """Row 55 (M-169, E-7): the snapshot design decided — home, manifest,
+        advance-at-landed for declared surfaces only, git history as the archive."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in (".live-spec/snapshot/", "advances only at *landed*",
+                       "undeclared surfaces keep the old baseline",
+                       "git history is the archive",
+                       "only the hash is diffed"):
+            self.assertIn(needle, spec, "SPEC missing snapshot-design fact: %s" % needle)
+        decisions = spec.split("## Open decisions", 1)[1].split("## Formal index", 1)[0]
+        self.assertIn("Decided 2026-07-07 (row 55)", decisions,
+                      "D-3 not closed in the Open-decisions section")
+        self.assertNotIn("snapshot retention: last-only (current pick) vs last-N", decisions,
+                         "the old open D-3 wording survived the close")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

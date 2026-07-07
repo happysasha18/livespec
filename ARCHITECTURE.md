@@ -71,7 +71,11 @@ base-rulebook (a workshop-wide move, INV-23's own kin — the search fires at th
 the ledger owns; ADOPT's setup line and the SPEC's ledger-scenario paragraph are wiring, not second
 homes) — assignment + pin only, no node or seam change, no re-prove per this doc's own rule; the row-167 landing 2026-07-07 session 23: INV-66 →
 guardrails (a mechanical list-parity check, INV-24's first-slice-in-the-suite precedent) — assignment
-only, no node or seam change, no re-prove per this doc's own rule; the
+only, no node or seam change, no re-prove per this doc's own rule; the row-55 landing 2026-07-07
+session 23: E-7's DESIGN decided (home · manifest · advance-at-landed · last-only-with-git-archive,
+D-3 closed with it) — the snapshot node stays [target] with its pin empty until the machine lands
+(the guardrails scaffold, row 3, owns the first slice); prose update only, no node or seam change,
+no re-prove per this doc's own rule; the
 row-163 landing 2026-07-07 session 23: E-27 → NEW node test-author (the skill IS a node, the
 spec-author/product-prover precedent) — a node ADD is a structure change: the architecture lens ran
 with the landing (record `docs/prover/2026-07-07-row163.md`), the derivation seam named
