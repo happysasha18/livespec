@@ -906,7 +906,6 @@ class TestTargetOwnership(unittest.TestCase):
         "INV-17": 55, # build⊆spec honesty legs = the host-facing gate legs
         "INV-21": 96, # success-measure reading machinery = the feedback family
         "A-6": 55,    # adoption baseline rides the snapshot
-        "ACT-3": 56,  # the model router
     }
 
     def roadmap_rows(self):
@@ -1044,6 +1043,30 @@ class TestWorkerContract(unittest.TestCase):
                        "never resolves the settings ladder itself",
                        "never a silent retry on the same tier"):
             self.assertIn(phrase, bp, "build-pipeline lost the worker-contract elaboration: %s" % phrase)
+
+    def test_routing_rule(self):
+        """Row 56 (M-175, INV-69): the model router — a unit of work's tier is PROPOSED
+        (judgment→senior, mechanical→worker), the economy rung moves the threshold, and
+        the senior may override per wish with the override logged (D-2 decided advisory)."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("The routing rule",
+                       "propose the cheapest tier that can pass the brief",
+                       "proposes the senior",
+                       "economy rung moves the threshold",
+                       "The proposal is advisory",
+                       "proposed tier → chosen tier → why"):
+            self.assertIn(phrase, spec, "SPEC INV-69 lost the routing rule: %s" % phrase)
+        # D-2 is decided, no longer open
+        self.assertNotIn("tier routing override | Open decisions", spec,
+                         "D-2 still reads as an open override choice — row 56 decides it")
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        for phrase in ("The routing rule (SPEC INV-69)",
+                       "propose the cheapest tier that can pass the brief",
+                       "economy rung moves the threshold",
+                       "proposed tier → chosen tier → why"):
+            self.assertIn(phrase, bp, "build-pipeline lost the routing-rule elaboration: %s" % phrase)
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("test_routing_rule", matrix, "M-175 must pin this test (row 56)")
 
 
 class TestBootstrapScaffold(unittest.TestCase):

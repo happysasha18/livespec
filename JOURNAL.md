@@ -4,6 +4,42 @@ Edit history lives here — the WHY behind every change. The spec and README sta
 
 ---
 
+## 2026-07-07 (session 24, ~13:20) — Row 56: the model router lands (INV-69), D-2 decided
+
+**What:** The pack now has a written rule for which model tier a piece of work is *proposed* at, and D-2
+(the open question of whether size mechanically fixes the tier) is closed. SPEC INV-69 states it: a
+judgment step (spec, prove, architecture, matrix-level calls, taste) proposes the senior and is never
+routed down; a no-decision one-shot proposes haiku; a self-contained multi-step brief proposes sonnet.
+The economy rung moves the threshold (`full` = the map as written, `lean` = an airtight brief one tier
+cheaper, `tight` = the cheapest sufficient tier always). The proposal is advisory — the senior may
+override per wish, logged as `proposed → chosen → why`. Owned by the build-pipeline node; elaborated in
+its SKILL; matrix M-175, test `test_routing_rule`, red-proven then green. Pack 0.8.75, SPEC v0.15.61,
+suite 175 green.
+
+**Why the STEP, not the size:** the roadmap framed the router as "queue size-class → tier", but a large
+row still holds mechanical sub-briefs and a small one is often pure judgment. Keying the proposal on the
+step and kind (with size only a coarse prior) is what makes it honest — otherwise every large row would
+route its spec work to a worker.
+
+**Why advisory (D-2):** a mechanical tier-lock would strip the senior of the one call that catches a
+brief that *looks* mechanical but hides a decision. So the router proposes and the senior may overrule
+aloud; the log is the discipline that keeps the overrule from going silent.
+
+**First routed landing (the second done-when leg):** this build routed itself — spec/prove/architecture/
+matrix on the senior, the version-bump + installed-copy sync on a sonnet worker (~10 min saved,
+checkpoint `row56-versionsync.md`), with one override logged: the SPEC prose clause sat in the code step
+but was kept on the senior (routed up from the size-proposed sonnet) because spec prose is taste-heavy
+[INV-62]. That override line is the proof the rule works in the hand, not just on paper.
+
+**Prover:** CROSS-LINK, 4 findings, all folded — the one must-fix was the `[router target]` tag sweep
+(the target-ownership test would have gone red on landing with the tag still live); the fold dropped the
+tag from ACT-3's index fact, the header target-list, and the test's target map (the self-closing design).
+
+**Alexander's feedback at landing:** the step-zero intake echo read as spec-jargon — he didn't follow
+it. Two threads opened from that (both in NEXT_STEPS): (1) a human-first re-layout of the whole SPEC, to
+be done from a fresh session (a responsible, standalone step); (2) the reporting/orchestration persona is
+a **project manager** — reports to him in plain product-outcome language, jargon only trailing in parens.
+
 ## 2026-07-04 — Package born
 
 **What:** Created the livespec skeleton repo — directory structure, four bundled skills, templates, adopt procedure, guardrails outline, install script.

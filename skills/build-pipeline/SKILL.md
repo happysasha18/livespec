@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.38
+  version: 0.2.39
 ---
 
 # build-pipeline — ship a change by the method
@@ -317,7 +317,14 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →
-  Sonnet; judgment/design → senior. The junior pastes RAW output (command + exit + failing lines) into a
+  Sonnet; judgment/design → senior. **The routing rule (SPEC INV-69) picks the tier — propose the cheapest
+  tier that can pass the brief, the senior may overrule it aloud:** the proposal reads the STEP and kind of
+  the work, not the row's size alone — a judgment step (spec, prove, architecture, matrix-level calls,
+  findings triage, any taste call) proposes the senior and is never routed down, a mechanical step proposes
+  a worker at the tier above; the economy rung moves the threshold (at `lean` an airtight brief rides one
+  tier cheaper, at `tight` the cheapest sufficient tier is always the proposal); and the proposal is
+  ADVISORY — the senior may override per wish, the override logged as one line on the checkpoint and the
+  landing report, proposed tier → chosen tier → why. The junior pastes RAW output (command + exit + failing lines) into a
   persistent checkpoint file as it goes — that raw output is evidence, its prose is only a lead. **The
   brief is self-contained (the BMAD story-file lesson):** delegated work ships as one document embedding
   the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and the

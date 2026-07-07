@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.60, 2026-07-07)
+# live-spec — SPEC (v0.15.61, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -11,8 +11,7 @@ templates, the adoption procedure text, the inbox, the skill evals with their ru
 queue, and the first guardrails slice —
 the pack repo's own pre-push gates and the opt-in commit fence, installed and tested. Target (each owned
 by a ROADMAP row, not yet code): the guardrails' host-facing checks and surface registry [E-6, E-10], the
-snapshot machinery [E-7] (the adoption baseline A-6 rides it), the model router
-[ACT-3], the optional design-sync machine [E-18]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
+snapshot machinery [E-7] (the adoption baseline A-6 rides it), the optional design-sync machine [E-18]. This spec never claims shipped what isn't — clauses below marked [target] await their row, and
 the tag binds at the granularity it is written: a surface is [target] only if its OWN clause carries the
 tag, never merely a parent section or one leg of a split anchor. The promise is mechanized: the suite
 holds the map from every [target]-marked index fact to its owning, still-open queue row — a target whose
@@ -1130,11 +1129,11 @@ nothing in this migration writes a foreign repo [INV-10]. [E-16]
 
 **The senior agent** owns judgment: spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
-**Workers (tiered) [router: target]** own mechanical execution, with persistent checkpoint files in the
-host's `.live-spec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); the
-cheapest sufficient tier does the job (haiku one-shot / sonnet multi-step / senior judgment), budget-aware.
-Whether the queue's size class fixes the tier mechanically or the senior may override is an open decision
-[D-2]. **The worker contract** binds every delegation: a worker inherits its session's write-ownership
+**Workers (tiered)** own mechanical execution, with persistent checkpoint files in the
+host's `.live-spec/checkpoints/` (gitignored; never /tmp — a reboot must not erase a resume point); three
+tiers stand — a no-decision one-shot on haiku, multi-step mechanical on sonnet, judgment on the senior —
+and which tier a unit of work is PROPOSED at, before the senior may overrule it, is the routing rule below
+[INV-69]. **The worker contract** binds every delegation: a worker inherits its session's write-ownership
 [INV-10] NARROWED to the files its brief names — outside them it reads but never writes; a brief may
 instead name an ISOLATED copy of the tree (a parallel lane's build stages work there), and that copy's
 delta reaches the shared tree only through the senior's integration under the pen [T-18, INV-39]; files a
@@ -1150,6 +1149,29 @@ off the brief's clock, never invented [INV-24] (the day the briefs carried no cl
 their reports with a wrong hour, 2026-07-06); and a result that fails its brief's acceptance escalates
 ONE tier with a logged line (haiku → sonnet → senior), never a silent retry on the same tier, never a
 skipped rung. [ACT-3]
+
+**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it
+aloud.** Before a unit of work is delegated its tier is PROPOSED, never defaulted, and the proposal reads
+what the work IS — not the row's size alone. A judgment step — a spec delta, a prove pass, an architecture
+carve, the matrix's level calls, findings triage, any taste call — proposes the senior, ACT-2's own
+[ACT-2] and never routed down; a mechanical step proposes a worker: a no-decision one-shot (a grep, a dump,
+a known-string edit) the **haiku** tier, a self-contained multi-step brief (edits across named files, a
+pipeline run, tests written to a fixed matrix) the **sonnet** tier. The size class is only a coarse prior —
+a large row carries more delegable mechanical mass, a small one is often all-judgment — the STEP inside it
+decides. **The economy rung moves the threshold** [T-19]: at `full` the map stands as written; at `lean` an
+airtight brief rides one tier cheaper (a sonnet brief that leaves the worker nothing to decide may propose
+haiku, and the bar to keep a step on the senior rises); at `tight` the cheapest sufficient tier is always
+the proposal, the senior spending its hours on judgment alone. **The proposal is advisory — the senior may
+override per wish, and the override is LOGGED** [D-2]: a brief that looked mechanical but hides a real
+decision routes UP, a rare over-cautious default routes down, and either way one line rides the checkpoint
+and the landing report — proposed tier → chosen tier → why (this assignment-time override is distinct from
+ACT-3's failed-acceptance escalation — one is the senior's choice BEFORE the work, the other a runtime bump
+AFTER a miss; both logged, different lines). A silent tier change is the defect this closes;
+the router never hardens into a mechanical gate the senior cannot overrule, and it never touches the human's
+gates or ACT-2's ownership of judgment. No visible surface — facets N/A. Non-goals: no token meters or
+numeric budgets (the rung stays qualitative [T-19]); no fourth tier and no renaming of the three; no
+auto-routing that overrides the senior's word. Success measure [default]: the first routed landing names, in
+its report, the proposal → choice → why for each delegated unit, checked by your read of it. [INV-69]
 
 **A worker's green gets a second pair of eyes — verify can turn adversarial.** A worker's report is a
 lead, never evidence, and on a large delegated landing the blind spot is structural: the same head
@@ -1501,17 +1523,17 @@ rungs, each naming its legal sheds; every shed actually taken is SAID in the lan
 economy is a silent micro-decision, the exact thing the report exists to prevent [INV-5]:
 
 - **full [default]** — as today: the full suite at every landing gate, the prover at its recorded
-  cadence, the worker router picking tiers.
+  cadence, the worker router picking tiers by the routing rule [INV-69].
 - **lean** — mid-work test runs may scope to the touched architecture node's rows (the full suite
   still runs at every LANDING gate and before every push); surface-add prover passes stay CROSS-LINK,
   and a FULL pass owed by the default cadence may defer to the next milestone — the deferral written
   as a dated debt line in its queue row, never just remembered; mechanical work rides one worker tier
-  cheaper when the brief is airtight [D-2].
+  cheaper when the brief is airtight [INV-69].
 - **tight** — everything lean, plus: landing gates may BATCH — consecutive small landings share one
   full-suite run at the batch's end (each landing commit still carries exactly one row's delta
   [INV-39]; a red at batch end bisects by landing order before anything else lands; a push still
   requires the full gate green at HEAD [M-6]); the cheapest sufficient worker tier is the rule, senior
-  hours spent on judgment alone [D-2].
+  hours spent on judgment alone [INV-69].
 
 What NEVER bends, at any rung — the never-bend list, stated once [INV-40]:
 - the door law and its tripwires — poverty, like urgency, moves priority, never the door [T-12, INV-16];
@@ -1574,8 +1596,10 @@ differently (unverified until reconciled per the adoption rules [A-3]) from a na
 
 - ⟨DECIDE⟩ attic/ layout: flat with a manifest and source-dir prefix on collision (current pick) vs dated
   subfolders — revisit at the next real adopt run. [D-1]
-- ⟨DECIDE⟩ whether the queue's size classification also fixes the model tier mechanically, or the senior
-  may override per wish (current pick: router proposes, senior may override, override is logged). [D-2]
+- Decided 2026-07-07 (row 56): the model tier is **proposed, never mechanically fixed** — the routing rule
+  reads the work's STEP and kind (not size alone) and the economy rung, proposes the cheapest sufficient
+  tier, and the senior may override per wish with the override logged (proposed → chosen → why, on the
+  checkpoint and the landing report). The rule's home is the delegation scenario [INV-69]. [D-2]
 - Decided 2026-07-07 (row 55): snapshot retention is **last-only in the working tree; git history is
   the archive** — the snapshot folder is git-tracked, an older baseline is one checkout away; a heavy
   surface keeps only its hash in git. Revisit if a dispute ever needs history git cannot serve. [D-3]
@@ -1707,6 +1731,7 @@ meaning, this table is only the map.
 | INV-68 | nothing handed in is lost: every received item lands the same session in its route's own home (wish→row · fix→commit+journal · answer→archive+row · noise→problem ledger), and the routes with no prior home — field evidence, reactions, wordless drops — land as dated feedback-ledger lines (who · channel · concerns · plain words · route); one echo per item; a re-mention appends its date; only the assigned session writes the ledger, outsiders use the inbox door | Sending feedback in |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
+| INV-69 | the routing rule: a unit of work's tier is PROPOSED by its step and kind (judgment→senior, never routed down; one-shot→haiku; multi-step mechanical→sonnet), not its size alone; the economy rung moves the threshold; the proposal is advisory — the senior may override per wish, override logged (proposed→chosen→why) on the checkpoint and landing report; closes D-2 | Who decides what |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |
 | B-2 | founding questions asked, never inferred — personal-vs-reusable first; profile answers when it can | Bootstrap |
 | B-3 | onboarding: the profile found or founded at setup, every line on the human's word | Bootstrap |
@@ -1723,7 +1748,7 @@ meaning, this table is only the map.
 | A-10 | unbacked live surface at adoption: promote / quarantine / attic | Adoption step 3 |
 | ACT-1 | the human: taste, gates, wording | Who decides what |
 | ACT-2 | senior agent: judgment | Who decides what |
-| ACT-3 | tiered workers, checkpoints; every brief carries the ledger walk + the clock [router target]; a brief may name an isolated tree — its delta integrates only under the pen | Who decides what |
+| ACT-3 | tiered workers, checkpoints; every brief carries the ledger walk + the clock; a brief may name an isolated tree — its delta integrates only under the pen | Who decides what |
 | M-1 | milestone: re-prove + audit + compaction + gate list | Rhythm |
 | M-2 | safe breakpoint; announced self-compaction | Rhythm |
 | M-3 | documents versioned like code | Rhythm |
@@ -1733,7 +1758,7 @@ meaning, this table is only the map.
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
 | C-1 | canonical axes + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
-| D-2 | tier routing override | Open decisions |
+| D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |
 | D-3 | snapshot retention | Open decisions |
 | D-4 | pack structure: package-is-source decided; mirrors = row 51 | Open decisions |
 | D-5 | all-into-profile decided; rows 52–54 execute | Open decisions |
