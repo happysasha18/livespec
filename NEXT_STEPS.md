@@ -1,10 +1,25 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-07 16:37, session 24 cont.): COLD-START item 0 DONE.** `PLAYBOOK.md` and
-`~/.claude/CLAUDE.md` rewritten in the frozen technical-writer register and pushed to the playbook repo
-(commit 18ec7b0). Meaning preserved — section order, all dates, anchors, repo names, paths verified
-unchanged; scissors frames removed; CLAUDE.md touched gently and its stale skill count fixed four→seven.
-Both are now human-facing exemplars of the register. Next: the SPEC-humanize sweep (item 1).
+**LATEST (2026-07-07 18:31, session 24 cont.): item 0 done · first structured SPEC sheet landed ·
+register now deployed + always-on.** This ran on Opus (Fable pulled today); Alexander confirmed Opus is
+enough for the sweep, Fable optional only for a final full-doc prove.
+- **Item 0 done:** `PLAYBOOK.md` + `~/.claude/CLAUDE.md` rewritten in the register, pushed (18ec7b0).
+- **SPEC sweep, first heavy sheet:** the prototype section rewritten in the register, THEN restructured
+  (lists for the label forms / the three legs / the four-arm norm law; an H3), THEN retitled from the
+  scissors frame "A prototype is not the product" → **"A prototype stays a sketch"**. Rename coordinated
+  across 6 homes (SPEC header + 3 index cells + base rule 16 + 2 test_traceability checks). 11/11 phrases
+  preserved, anchors intact, suite 175 green, prover cross-link recorded.
+- **Format adopted for the whole sweep:** spec-author "How it reads" now says use lists inside a scenario
+  section (guarded against reopening structure-first). Applied to every later sheet.
+- **Register now in force (root cause of the leaks found + fixed):** the deployed `~/.claude/skills` copy
+  was STALE — the register lived only in the repo, so it never loaded. `install.sh` re-run, deployed==repo
+  now. Profile gained `language.register` (clean source, loaded each session). Goal (his word): minimal
+  per-turn hooks as the docs themselves model the voice.
+- **Iteration plan (his insight):** a fresh `/clear` converges better because the context is clean and the
+  source docs are cleaner each pass. Run the sweep as iterations: each next session takes sheets in the
+  structured format, shows + tunes; a final convergence pass over the whole doc closes it (his "1–2
+  iterations"). SAFE TO WIPE MEMORY here.
+Next: `/clear`, then the next SPEC sheets in the structured+register format (order below, item 1).
 
 ## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
 (V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten

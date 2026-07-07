@@ -4,6 +4,27 @@ Edit history lives here — the WHY behind every change. The spec and README sta
 
 ---
 
+## 2026-07-07 (session 24, ~18:31) — First structured SPEC sheet + register finally in force
+
+**What:** The prototype section was swept in two iterations. First a register rewrite of the two dense
+paragraphs into short sentences. Then a restructure into lists (the label forms, the guardrail's three
+legs, the norm law's four arms) with an H3, and a retitle from the scissors frame "A prototype is not
+the product" to the positive "A prototype stays a sketch". The rename touched six live homes in one
+commit: the SPEC header, three Formal-index cells, base rule 16 in live-spec-base, and two checks in
+test_traceability. 11/11 phrases preserved, anchors intact, suite 175 green, prover cross-link recorded.
+
+**Why:** Alexander pushed on three things this session, each a real gap. (1) The section titles and prose
+should be structured, not a wall — lists where content is a genuine enumeration; this became a spec-author
+rule ("use lists inside a scenario", guarded against the rejected structure-first shape). (2) The title
+itself broke the scissors ban, so it was renamed. (3) The register kept leaking into chat because the
+deployed `~/.claude/skills` copy was STALE — the register was committed to the repo but never installed,
+so it never loaded. Root cause found via audit; `install.sh` re-run, deployed==repo. The profile gained
+`language.register` as a clean always-on source, and the aim is to keep per-turn hooks minimal as the docs
+model the voice.
+
+**Result:** Format and register are now the standard for the rest of the sweep. Clean point to `/clear`;
+the next fresh session continues the sheets in the structured format. Memory safe to wipe.
+
 ## 2026-07-07 (session 24, ~16:37) — Cold-start item 0: PLAYBOOK + CLAUDE.md rewritten in the register
 
 **What:** The two human-facing method documents outside the live-spec tree — `PLAYBOOK.md` (in the
