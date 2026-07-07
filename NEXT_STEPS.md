@@ -1,7 +1,19 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-07 ~13:20, session 24 — **row 56 LANDED: the model router (SPEC INV-69), D-2
-decided.** The rule: a piece of work's model tier is PROPOSED by its STEP and kind (judgment→senior,
+## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
+(V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten
+(software house + conveyor + explicit prover edge-case stage) · `scripts/needle-extract.py` written (the
+section-scoped safety gate) · voice honed into spec-author (`## How it reads`, new "confident product
+person" bullet pointing at the opening as the exemplar). All gates green (needle · anchors E-12/E-1 ·
+station-chain not duplicated · 8 skills load · 175 suite). **The winning register = confident product
+PITCH (V2), NOT his flat promoter register — his promoter tone-card was tried and rejected for the spec.**
+METHOD forward (his word): each section is rewritten by a FRESH-CONTEXT spawn given the frozen register +
+the section's captured needles + hard constraints; the loaded main head only orchestrates + runs the
+gates (his loaded-head attempt at voice was weak, spawns win). Plan+fixes:
+`docs/research/2026-07-07-spec-humanize-plan.md`; Fable record `docs/prover/2026-07-07-spec-humanize-plan.md`
+(READY-WITH-FIXES, 5 MUST-FIX folded). Movement = ask #1 + row 148 Phase 3 + 0.9.0 compaction, ONE pass.
+tlvphoto = its first EXTERNAL run, SEPARATE process on his command, NEVER this session. Earlier session
+24 — **row 56 LANDED: the model router (SPEC INV-69), D-2 decided.** The rule: a piece of work's model tier is PROPOSED by its STEP and kind (judgment→senior,
 never routed down · one-shot→haiku · multi-step mechanical→sonnet), not its size alone; the economy rung
 moves the threshold; advisory — senior may override per wish, logged proposed→chosen→why. First routed
 landing = this build itself (senior on spec/prove/arch/matrix; sonnet on version-bump+sync, ~10 min saved;
@@ -39,8 +51,12 @@ the profile (scissors ban · native-plain English · industry-vocabulary narrati
 prototype/work-board-sketch.html (update at every station change — his standing ask).
 
 ## Forward queue (mirrors ROADMAP.md)
-1. **TOP — his ask (do from a fresh session):** the human-first SPEC re-layout (ask #1 above). Pairs with /
-   precedes the **0.9.0 MINOR milestone** (3-pass preventive audit + doc compaction). Row 56 is DONE.
+1. **TOP — sweeping (batch 1 DONE):** next SPEC-humanize batches, each via a fresh-context spawn in the
+   frozen V2 register. Order: small warm-ups ("Composing across axes", "Asking what the product does"),
+   then the needled heavies (the wish walk, worker contract, milestone laws), governance last, template
+   as one small batch, a final register-sweep pass to close. Per batch: capture needles → spawn rewrite →
+   section-scoped needle re-match + anchor→sentence diff + full suite + prover cross-link → show → commit.
+   This IS ask #1 + row 148 Phase 3 + 0.9.0 compaction as one movement. Row 56 is DONE.
    **Without-him rows available:** 96 tail (rows 48/49 re-scope against INV-21 — 47's part DONE; first real
    feedback loop rides a live host window).
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition) · 148 Phase 3 go (genre

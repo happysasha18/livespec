@@ -20,16 +20,27 @@ its pins became real. [S-0]
 
 ## What live-spec is
 
-A package a software project attaches to — at the start or in the middle — to work by one discipline:
-wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
-interrupted only for decisions that are genuinely theirs. The package is a **base skill** — the pack's
-shared rulebook and default settings [E-12] — plus the working skills (spec-author, product-prover,
-build-pipeline, test-author, communicator, publish, feedback-intake), document templates, an adoption
-procedure, and a set of mechanical guardrails a project instantiates.
+Pile on whatever you want — any wish, any size, any moment. live-spec slices it into small pieces and
+lays them on a conveyor. Every piece runs the same proven pipeline, converges to a landing, and ships
+tested. You stay free to think.
 
-The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
-registry, inbox, feedback ledger, and a `.live-spec/` folder (profile, checkpoints, installed-skill
-versions). [E-1]
+Behind the conveyor stands a whole software house in one package. An analyst who writes the spec. An
+architect who stress-tests the design and hunts its edge cases and dead ends before any code. A QA who
+derives and writes the tests. A project manager who runs the line and reports back to you. These roles
+are real, and they are the working skills (spec-author, product-prover, build-pipeline, test-author,
+communicator, publish, feedback-intake). One **base skill** carries the shared rulebook and the default
+settings every other skill works by [E-12].
+
+The discipline holds because machines hold the bounds at every step. Every wish takes the same route.
+Every claim earns a test, and nothing ships until that test passes. The automated guardrails never
+sleep. The process drives each wish all the way to a landing and keeps it from sprawling. You are
+pulled in for the decisions that are genuinely yours.
+
+A software project adopts live-spec at the start or halfway through work already under way. It brings
+document templates, an adoption procedure for joining a project midstream, and mechanical guardrails
+the project installs. The project that adopts it is the **host**, and the host owns everything about
+its own work — its spec, matrix, queue, journal, surface registry, inbox, feedback ledger, and a
+`.live-spec/` folder holding its profile, its checkpoints, and the versions of the skills it runs. [E-1]
 
 ## Throwing a wish
 
