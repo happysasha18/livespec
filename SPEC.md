@@ -708,34 +708,11 @@ the same session [default].
 
 ## Asking what the product does (the feature map on demand)
 
-**The whole map is readable on one ask — transparency is a command, not archaeology.** The departures
-board answers "how is the in-flight work going" at every report [INV-27], and intake places each arriving
-wish on the map [INV-37]; this scenario answers the third question — «покажи все фичи», "what does the
-product do today?" — with the map WHOLE, on demand. The answer is read off the living documents at
-ask-time: the spec's scenario sections name the features, the header's current-vs-target paragraph splits
-shipped from promised — at the granularity the [target] tag binds, so a scenario holding both shipped law
-and promised parts reads "shipped, with promised parts (named)", never one blanket status [S-0] — and the
-queue's open rows add the rest: each in-flight feature's station, and each wish whose `map:` verdict says
-NEW but whose scenario is not yet written, shown as queued — a feature the queue already knows is on the
-map before the spec meets it [INV-27, INV-37]. No
-third document exists to maintain or drift — no feature list file, no cached copy; the spec's scenarios
-and the architecture's nodes ARE the map [E-14], and the ask only reads them aloud. Each line of the
-answer obeys the line law: a short descriptive name in the product's own words, what it gives its person,
-the status trailing quietly — shipped · target · in-flight at its station [INV-28]. The map arrives in
-chat by default; a rendered page comes on your word (the show rule) [default]. And it never fires
-uninvited: routine reports keep the departures board's in-flight scope — the whole map comes only when
-asked. In a host with nothing to read yet — no spec, no scenario sections — the answer says exactly that
-and points at bootstrap or adoption, never an invented list. [INV-38]
+**Ask «покажи все фичи» and one answer hands you the whole product map — transparency is a command, not archaeology.** Two of the three standing questions already have homes: the departures board reports how the in-flight work is going at every report [INV-27], and intake places each arriving wish on the map [INV-37]. This scenario answers the third — "what does the product do today?" — with the map whole, on demand.
 
-The section's edges, stated once. Fences its birth must hold: the departures board's report scope is
-unchanged [INV-27], intake placement is unchanged [INV-37], the no-third-document law is reaffirmed, not
-amended [E-14]. Facets, skill kind: the feature's only surface is the answer itself (chat, or a rendered
-page on ask) — layout, touch, accessibility, and performance belong to the medium that carries it; the
-empty state is the nothing-to-read answer above; facets otherwise N/A [default]. Non-goals: no standing
-feature document, no auto-refreshing dashboard, no per-feature history timeline — not this time. Success
-measure: an ask yields a map whose feature set covers the spec's scenario sections one-to-one plus every
-open NEW-verdict queue row, and whose shipped-vs-promised marks agree with the header and the [target]
-tags at their own granularity — checkable by diffing the lists [default].
+The answer is read live off the living documents at ask-time. The spec's scenario sections name the features. The header's current-vs-target paragraph splits shipped from promised, at the granularity the [target] tag binds: a scenario that holds both shipped law and promised parts reads "shipped, with promised parts (named)", each status sitting at that same granularity [S-0]. The queue's open rows add the rest — each in-flight feature's station, and each wish whose `map:` verdict says NEW while its scenario is still unwritten, shown as queued, a feature the queue already knows is on the map before the spec meets it [INV-27, INV-37]. The spec's scenarios and the architecture's nodes ARE the map, so a third document to maintain or drift stays absent — no feature-list file, no cached copy [E-14] — and the ask only reads the living ones aloud. Each line obeys the line law: a short descriptive name in the product's own words, what it gives its person, and the status trailing quietly — shipped · target · in-flight at its station [INV-28]. The map arrives in chat by default; a rendered page comes on your word, the show rule [default]. Routine reports keep the departures board's in-flight scope; the whole map comes only when asked. In a host with nothing to read yet — no spec, no scenario sections — the answer says exactly that and points at bootstrap or adoption, staying honest to what is there [INV-38].
+
+The section's edges, stated once. Fences its birth must hold: the departures board's report scope stays as it was [INV-27], intake placement stays as it was [INV-37], and the no-third-document law is reaffirmed and left standing [E-14]. Facets, skill kind: the feature's only surface is the answer itself — chat, or a rendered page on ask; layout, touch, accessibility, and performance belong to the medium that carries it. The empty state is the nothing-to-read answer above. Facets otherwise N/A [default]. Non-goals: no standing feature document, no auto-refreshing dashboard, no per-feature history timeline — not this time. Success measure: an ask yields a map whose feature set covers the spec's scenario sections one-to-one plus every open NEW-verdict queue row, and whose shipped-vs-promised marks agree with the header and the [target] tags at their own granularity — checkable by diffing the lists [default].
 
 ## When a bug cuts the line
 
@@ -1598,10 +1575,9 @@ behaviour or count, checked at milestone audits [default]. [INV-44]
 
 ## Composing across axes
 
-Every stateful surface of a host is composed across the canonical axes (view · mode · tier · viewport ·
-persistence/reopen · concurrency where real) — and adoption adds one axis of its own: **document
-provenance** (native-live-spec × re-engineered-from-existing), because a re-engineered claim behaves
-differently (unverified until reconciled per the adoption rules [A-3]) from a native one. [C-1]
+Some parts of a host project hold state: a screen, a panel, a saved file — anything the user can change and find again later. The spec calls each of these a **stateful surface**, and it reviews every stateful surface from a fixed list of angles, called axes. Each axis is one question you ask about the surface: how it behaves in each view, in each mode, at each user tier, at each viewport size, and what happens when it is closed and reopened. Where two writers can genuinely act on the surface at once, concurrency joins the list. A surface's spec is complete once every axis on the list has an answer.
+
+Adoption adds one axis: **document provenance** — where a spec claim came from. A claim is *native* when it was written fresh under live-spec, and *re-engineered* when it was recovered from documents the project had before adoption. The two start in different states. A re-engineered claim starts unverified and stays unverified until it is reconciled under the adoption rules, which pin it to real code or remove it [A-3]. A native claim is born inside the pipeline, so it is trusted from the start. [C-1]
 
 ## Open decisions
 

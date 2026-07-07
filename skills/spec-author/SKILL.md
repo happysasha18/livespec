@@ -76,14 +76,12 @@ stopped being read — which kills a spec).
 - **Readable-first beats terse.** Clipped machine-fragment prose gets rejected by humans as hard as a wall of
   fluff does. Err toward a sentence that *reads well*; keep the structure, lose the jargon. Terseness is not
   the goal — a headline the eye lands on, then detail it can drill into, is.
-- **Speak like a confident product person pitching to someone with no time.** Lead a section with what the
-  reader GETS, in one punchy line, then a tight run of short active declaratives. Active voice throughout
-  ("machines hold the bounds at every step", "the host owns its own work"). Concrete, vivid nouns beat
-  abstract ones — a picture the reader can hold. No hedging, no hype adjectives, no exclamation marks, no
-  marketing clichés. The approved shape of this voice is the spec's own opening section, "What live-spec is"
-  (a whole software house in one package; wishes sliced onto a conveyor that converges and ships tested) —
-  read it before writing a new section and match its energy. The global no-scissors law binds here: never
-  frame by negation-contrast.
+- **Write in the pack's technical-writer register.** Spec prose reads like a native-English open-source
+  technical writer: neutral, precise, easy to follow. The full register (define abstract terms in plain
+  words at first use, one term per concept, concrete nouns, active voice, cut nominalizations and filler,
+  metaphors only as one-off color) and the per-section verification checklist live once in the
+  `communicator` skill's "writing register" section — spec prose follows it like every other human-facing
+  text.
 
 This is the shape `product-prover` is tuned to read, and the one a human will actually keep open.
 

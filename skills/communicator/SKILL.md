@@ -354,6 +354,73 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     - Born in the promoter case: «я не знаю, откуда ты всё это взял» — an unmarked inference costs a
       review round; his standing word since 2026-07-06: never a read-only wall.
 
+## The writing register — native open-source technical-writer voice
+
+Everything the pack writes for a human — spec prose, reports, decision cards, READMEs — reads in one
+register: a native-English technical writer for a serious open-source project. Neutral, precise, easy
+to follow. Not a marketing or pitch voice, not a personal brand, not quirky. (Defined 2026-07-07 after
+the owner rejected both a "confident product pitch" draft and a persona-flavored one; his words: "пиши
+языком нейтив спикера техникал райтера для опенсорса … последовательно и легкочитаемо".) Fourteen rules:
+
+1. **One idea per sentence.** Target 15–25 words. A sentence carrying two clauses joined by a dash and a
+   parenthetical gets split into two or three sentences.
+2. **One paragraph, one point.** State the point in the first sentence; the rest supports it. A reader
+   who reads only first sentences still follows the section.
+3. **Define every abstract term in plain words at first use, then reuse it unchanged.** Picture first,
+   term second: "Some parts of a project hold state — a screen, a panel, a saved file. The spec calls
+   each of these a *stateful surface*." After that, always say "stateful surface".
+4. **A term is never bare on its debut.** "axis", "surface", "canonical axes", "provenance" met without
+   a definition beside them is a defect. For a section readers may jump into directly, give a one-clause
+   reminder or a pointer to the defining section.
+5. **One term per concept, everywhere.** If the defining section says "queue", every section says
+   "queue" — never "roadmap", "backlog", or "the list" as a casual synonym. Synonym variety is a virtue
+   in essays and a bug in a spec.
+6. **Prefer the concrete noun.** "A screen, a panel, a saved file" carries more than "an entity". When
+   an abstraction is genuinely required, ground it with a two- or three-item example on first use, then
+   use the abstraction alone.
+7. **Active voice, named actor.** Say who does what: "the agent re-reads the file", "you approve the
+   change", "the suite turns red". Passive voice is acceptable only when the actor is truly irrelevant.
+8. **Address the reader as "you"** for what a person does; name the component ("the installer", "the
+   prover") for what software does. Never "one" or "the user is expected to".
+9. **Examples earn their place by resolving ambiguity.** Add an example where a reader could read a rule
+   two ways; cut examples that merely restate a clear rule. Use realistic values; one per rule is enough.
+10. **Cut nominalizations.** "Perform the reconciliation of" becomes "reconcile"; "the verification of
+    the claim occurs" becomes "the suite verifies the claim". Verbs carry the meaning.
+11. **Cut throat-clearing and filler.** Delete "It is important to note that", "In practice",
+    "Essentially", and intensifiers like "very", "actually", "of course". If deleting a phrase changes
+    nothing, delete it.
+12. **State rules positively.** Say what happens and when. Reserve negatives for genuine prohibitions
+    ("never delete a host file"), stated as a plain imperative. (This is the same law as the no-scissors
+    ban — never frame a point as "X, not Y".)
+13. **Use words a reader recognizes without living in your head.** Natural, well-understood industry
+    language is good, even when it is a metaphor — "pipeline", "software house", "conveyor", "streamline",
+    "ships" all land because a developer already holds them. The words to avoid are invented internal
+    terms and private interpretations: an abstraction that means something only inside this project. When
+    such a term is genuinely needed (for example "stateful surface" or "axis"), define it in plain words
+    at first use (rule 3); after that it is safe to reuse. The test: would someone outside the project
+    recognize this word naturally? If yes, keep it. If it is your own coinage, define it or replace it.
+14. **Machine codes stay quiet and trailing.** The bracket anchors (`[INV-7]`, `[A-3]`, `[C-1]`) sit at
+    the end of the sentence or clause they anchor. Prose never opens with a code or depends on one to be
+    understood.
+
+**Verify each finished or edited piece of writing** — the checklist a good technical writer runs:
+
+1. **First-use check.** List every specialized term in the piece. Each is defined in plain words at
+   first use here, or defined earlier with a reminder/pointer if this is a likely entry point.
+2. **Cold-reader check.** Read it pretending you know nothing beyond the opening. Mark every sentence
+   that only makes sense with prior system knowledge; each mark is a fix.
+3. **Consistency grep.** For each key term, search the whole document for near-synonyms and drifting
+   usage. One term per concept; fix strays at the source.
+4. **Read-aloud test.** Read it aloud. Anywhere you stumble, run out of breath, or restart a sentence,
+   rewrite that sentence.
+5. **Actor check.** Every rule sentence answers "who does this, to what, when". Fix missing or hidden
+   actors.
+6. **Example audit.** Each example resolves a real ambiguity; each ambiguous rule has one.
+7. **Deletion pass.** Try deleting each opener phrase, qualifier, and adjective. Keep only what changes
+   meaning.
+8. **Anchor integrity.** Every bracket code present before the edit is still present, still trailing,
+   and still listed correctly in the Formal index.
+
 ## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
 
 The rules above passed their evals and still failed on the senior's own chat: the session-13 closing

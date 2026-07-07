@@ -7,9 +7,16 @@ section-scoped safety gate) · voice honed into spec-author (`## How it reads`, 
 person" bullet pointing at the opening as the exemplar). All gates green (needle · anchors E-12/E-1 ·
 station-chain not duplicated · 8 skills load · 175 suite). **The winning register = confident product
 PITCH (V2), NOT his flat promoter register — his promoter tone-card was tried and rejected for the spec.**
-METHOD forward (his word): each section is rewritten by a FRESH-CONTEXT spawn given the frozen register +
-the section's captured needles + hard constraints; the loaded main head only orchestrates + runs the
-gates (his loaded-head attempt at voice was weak, spawns win). Plan+fixes:
+**REGISTER RE-DECIDED ~15:55: neutral native-English open-source technical-writer voice** (Fable-defined
+on this window), NOT the V2 pitch as a universal rule. Full 14-rule register + 8-item verify checklist now
+live in the communicator skill ("The writing register" section); spec-author points to it (one home). Key
+refinement (his 15:57 word): natural/industry words are fine even when metaphor ("software house",
+"conveyor", "pipeline"); what to kill is invented INTERNAL terms / my private interpretations ("axis",
+"surface") — define them plainly at first use or replace. So the V2 opening STAYS (its metaphors are
+natural); "Composing across axes" redone (Fable) with axis/surface defined in plain words. Sections done:
+opening (V2) · Composing · Asking-what-the-product-does · pilot "When a bug cuts the line". ~15 sections
+left. METHOD forward (his word): each section rewritten by a FRESH-CONTEXT agent given the register + the
+section's exact test-checked phrases + hard constraints; the main head only orchestrates + runs the gates. Plan+fixes:
 `docs/research/2026-07-07-spec-humanize-plan.md`; Fable record `docs/prover/2026-07-07-spec-humanize-plan.md`
 (READY-WITH-FIXES, 5 MUST-FIX folded). Movement = ask #1 + row 148 Phase 3 + 0.9.0 compaction, ONE pass.
 tlvphoto = its first EXTERNAL run, SEPARATE process on his command, NEVER this session. Earlier session
