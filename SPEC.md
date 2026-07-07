@@ -186,42 +186,13 @@ The facet list lives in one place, the spec-author skill, one list for every pro
 
 **A face you can enter once owes a way back — or a written one-way.** A surface's faces are entered under conditions: a first-visit door, an empty state, an onboarding screen, a one-time banner. A face whose condition can never re-arise is a dead end the state lenses miss. The states all have exits, yet the face has no re-entry (tlvphoto's door, 2026-07-05 — a prover pass found six seams and missed the one-way face; his words: a state machine should always have a loop: if there is a get, there is a set). The law: every conditionally-entered face states its deliberate RE-ENTRY path, or states the one-way as a decision, by name. Trigger wording is the tell. "only on first visit", "only on first run", "until dismissed" — each such clause owes its return sentence. The prover reads for it, through the entry-symmetry lens in product-prover's stress list. The fit walk's journey lens [INV-29] already asks "where NEXT from every state"; this law extends the question to faces over the visit's lifetime. [INV-50]
 
-**Verify-by-deed walks the visit and watches the feel.** "Eyes on the artifact" has meant "it renders
-and clicks" — and cheap-feeling motion or an ugly affordance shipped green through the whole pipeline
-(tlvphoto's transitions and its open-work button, 2026-07-06). So for the product kind the verify
-step includes a named VISITOR WALK — the whole journey as the person will live it: first visit,
-return visit, entry through another door, "where am I and how do I move on" from any point, the
-exits — and a FEEL pass: motion quality (easing, duration, choreography) and each affordance's craft,
-judged against the approved prototype as the bar [E-17]. Findings become rows or red — never vibes,
-never a mental note. The walk's checklist lives in the build-pipeline step-8 product cell [E-12,
-INV-22]; this clause binds THAT it runs for anything a person visits — and in the FORM the medium actually
-has: a browser product walks motion and affordance craft, a book walks its reading path and chapter
-flow, a CLI its command round-trip; the feel lens is a partial skill applied by the product's
-context, never a frontend checklist forced on prose (Alexander 2026-07-06). [INV-30]
+**Verify-by-deed walks the visit and watches the feel.** "Eyes on the artifact" used to mean only "it renders and clicks." Cheap-feeling motion and an ugly affordance both shipped green through the whole pipeline (tlvphoto's transitions, 2026-07-06). So for the product kind the verify step now includes a named VISITOR WALK: the whole journey as the person will live it. You walk the first visit, the return visit, entry through another door, "where am I and how do I move on" from any point, and the exits. You also run a FEEL pass: you judge motion quality — easing, duration, choreography — and each affordance's craft against the approved prototype as the bar [E-17]. Findings become rows or red, never a vibe or a mental note. The walk's checklist lives in the build-pipeline step-8 product cell [E-12, INV-22]; this clause binds THAT it runs for anything a person visits. It runs in the form the medium actually has: a browser product walks motion and affordance craft, a book walks its reading path and chapter flow, a CLI its command round-trip. The product's context applies the feel lens as a partial skill, never a frontend checklist forced on prose (Alexander 2026-07-06). [INV-30]
 
-**A taste choice made without asking is TOLD, never confirmed.** Building a feature, the walk makes
-small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a
-caption's wording — each written into the spec with its `[default]` tag [INV-18]. What went wrong the
-first time was silence: a product accumulated eight untold choices and read unfinished everywhere
-(tlvphoto, 2026-07-06). The law: the landing report NAMES each choice made without asking, in plain
-words with an example, marked as tweakable — and that is ALL. No confirmation is requested; silence
-is consent; nothing is re-asked later — the person asks when they want something changed, and the
-`[default]` tags keep every such choice findable in the spec forever (Alexander 2026-07-06: «если
-мне всё ок — не надо подтверждать… дальше уже, если надо, пользователь спросит»). [INV-31]
+**A taste choice made without asking is TOLD, never confirmed.** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. You write each one into the spec with its `[default]` tag [INV-18]. What went wrong the first time was silence: a product piled up eight untold choices and read unfinished everywhere (tlvphoto, 2026-07-06). The law: the landing report NAMES each choice made without asking, in plain words with an example, marked as tweakable — and that is ALL. You request no confirmation; silence is consent; you re-ask nothing later. The person asks when they want something changed, and the `[default]` tags keep every such choice findable in the spec forever (Alexander 2026-07-06: if everything is fine for him, no confirmation is needed, and later the user will ask if they want something changed). [INV-31]
 
-**The smallest sample is judged before the full artifact.** For a taste-heavy deliverable — voice,
-copy, visual style, spec prose — the build STOPS at the cheapest judgeable sample (one paragraph, one
-card, two sections) and the human's word on the sample sets the bar BEFORE the full build spends
-anything (a neighbour project shipped FIVE full media-packs that died on one tone failure a
-one-paragraph sample would have caught, 2026-07-06). Kin split, stated: the mockup-first entry
-condition [INV-43] is the HUMAN's declared "show me first"; this law is the AGENT's own discipline —
-build smallest first even unasked when taste rules the deliverable. [INV-62]
+**The smallest sample is judged before the full artifact.** For a taste-heavy deliverable — voice, copy, visual style, spec prose — the build STOPS at the cheapest judgeable sample: one paragraph, one card, two sections. The human's word on that sample sets the bar BEFORE the full build spends anything. A neighbour project shipped five full media-packs that died on one tone failure a one-paragraph sample would have caught (2026-07-06). Here is the kin split, stated: the mockup-first entry condition [INV-43] is the HUMAN's declared "show me first." This law is the AGENT's own discipline: build smallest first even unasked when taste rules the deliverable. [INV-62]
 
-**A rejected artifact reopens its SOURCE.** When the human rejects an artifact, the fix starts at the
-artifact's source — the spec clause, the card, the brief that produced it: the source is corrected
-first, the artifact rebuilt FROM it. Patching the rejected output line-by-line against an unchanged
-source is the five-round trap by name (each round re-patched the output, the unchanged card re-made
-the same failure; promoter case, 2026-07-06) — banned. [INV-63]
+**A rejected artifact reopens its SOURCE.** When the human rejects an artifact, the fix starts at the artifact's source — the spec clause, the card, or the brief that produced it. You correct the source first, then rebuild the artifact FROM it. Patching the rejected output line-by-line against an unchanged source is the five-round trap by name, and it is banned (each round re-patched the output while the unchanged card re-made the same failure; promoter case, 2026-07-06). [INV-63]
 
 **What already works is promised before you touch it.** When a feature-doored wish touches a surface
 that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
