@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.15.55, 2026-07-07)
+# live-spec — SPEC (v0.15.56, 2026-07-07)
 
 > How to read: each section is a scenario — what you do and what you see. The short codes in brackets are
 > quiet machine anchors (for the prover, the test matrix, and transcript greps); the Formal index at the end
@@ -24,8 +24,8 @@ its pins became real. [S-0]
 A package a software project attaches to — at the start or in the middle — to work by one discipline:
 wishes are thrown in passing, each one enters a proven process, machines hold the bounds, the human is
 interrupted only for decisions that are genuinely theirs. The package is a **base skill** — the pack's
-shared rulebook and default settings [E-12] — plus five working skills (spec-author, product-prover,
-build-pipeline, communicator, publish), document templates, an adoption procedure, and a set of
+shared rulebook and default settings [E-12] — plus six working skills (spec-author, product-prover,
+build-pipeline, test-author, communicator, publish), document templates, an adoption procedure, and a set of
 mechanical guardrails a project instantiates.
 
 The project it attaches to is the **host**. The host owns its own spec, matrix, queue, journal, surface
@@ -1103,6 +1103,15 @@ inlined body goes stale the moment a sibling edits the file. [INV-55]
 
 ## From the spec to the tests: two layers that must not be skipped
 
+**The test method lives in one skill, and the pipeline invokes it.** The matrix derivation and the
+test writing (the pipeline's steps 5–6) are worked by the **test-author** skill — the level ladder
+(string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned
+skip-set, traceability as a standing test — invoked by build-pipeline exactly the way steps 1–2
+invoke spec-author and product-prover. The method's one home is the skill; the pipeline keeps the
+order and the gates. Born of a real failure: two visible bugs passed ~660 string-only tests, and the
+rebuild's method knowledge had no durable home until this extraction (track-coach, 2026-07-02..04;
+extracted 2026-07-07). [E-27]
+
 The spec says WHAT the product is; tests prove facts about the shipped artifact. Between them live two
 documents that were once implicit — and an implicit layer is a lost layer (Alexander caught the gap
 2026-07-05: the pack taught a matrix template but not the layers that produce it).
@@ -1590,6 +1599,7 @@ meaning, this table is only the map.
 | INV-64 | anything shown FOR REVIEW carries per-claim provenance (artifact · his recorded word · the agent's inference — inferences loudest) and is commentable with answer capture (the decision page's JSON law extends to review pages); never a read-only wall, never an unmarked inference | Throwing a wish |
 | INV-65 | search for an existing skill at setup and at every struggle; adopt or reject by name; invoke as shipped · paraphrase + named credit · verbatim only under license | When the workshop itself misbehaves |
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
+| E-27 | the test method's one home — the test-author skill, invoked at the pipeline's matrix and test steps | From the spec to the tests |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
 | INV-63 | a rejected artifact reopens its SOURCE (spec clause / card / brief): source corrected first, artifact rebuilt from it; line-patching rejected output against an unchanged source = the five-round trap, banned | Throwing a wish |
 | B-1 | bootstrap: templates → gate → first wish | Bootstrap |

@@ -1937,3 +1937,20 @@ plan before the whole-doc rewrite; the WHEN/THEN/SHALL caps killed («псевд
 inventory (every mechanical consumer of SPEC.md's shape) delegated to a scout this session.
 **Row 166 born on his out-of-turn word:** a live work board — what the agent does at every moment, the
 whole process always visible. Mockup-first entry declared; prototype on real data goes to his eye.
+
+## 2026-07-07 ~10:36 — session 23: row 163 landed (build legs) — the test-author skill is born
+**What:** the pack's seventh skill. The test method that rebuilt track-coach's suite — the level
+ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the
+pinned skip-set, traceability as a standing test, the state-space walk — now lives in ONE home,
+skills/test-author (0.1.0), invoked by build-pipeline at the matrix and test steps the way the spec
+and prove steps invoke theirs (SPEC v0.15.56 E-27; architecture: new node, derivation seam named,
+lens re-proven with the landing). Credits in the skill name track-coach (MIT) per the borrowing law.
+**The eval ran for real (E-19):** two same-model arms on one derivation task. Honest red: the bare
+arm's craft was strong; the skill's edge is the method layer — the matrix as an artifact, a level
+pinned per row with its reason, red-first, the pinned skip-set, standing traceability — and it caught
+a planted anchor gap the bare arm walked past. evals/test-author.md holds the record.
+**Two worker HALTs, both correct:** (1) the communicator's closing pack list turned out to predate
+the publish skill — four skills listed, two missing; the class (lists drift) got row 167, a
+mechanical parity check; (2) my own skill file shipped a flat version key and no eval — both fixed by
+the senior, the worker never touched beyond its grant. Suite 165 green; pack 0.8.68; installed
+copies synced (test-author absent → 0.1.0).

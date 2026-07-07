@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, communicator, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.22
+  version: 0.1.23
 ---
 
 # live-spec-base — one rulebook, six skills
@@ -222,5 +222,5 @@ when it narrows the defaults, one line of WHY. Settings not listed above may be 
 table grows through the queue like everything else.
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
-> **product-prover** reviews it · **build-pipeline** ships the change · **communicator** makes the human
+> **product-prover** reviews it · **build-pipeline** ships the change · **test-author** derives the matrix and writes the tests · **communicator** makes the human
 > exchange land · **publish** sees the work out the door, owing its kind's checklist.

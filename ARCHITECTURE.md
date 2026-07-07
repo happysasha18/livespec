@@ -69,7 +69,11 @@ inside B-3, the templates node's anchor list unchanged) — assignment + pin onl
 change, no re-prove per this doc's own rule; the row-165 landing 2026-07-07 session 23: INV-65 →
 base-rulebook (a workshop-wide move, INV-23's own kin — the search fires at the same struggle moments
 the ledger owns; ADOPT's setup line and the SPEC's ledger-scenario paragraph are wiring, not second
-homes) — assignment + pin only, no node or seam change, no re-prove per this doc's own rule;
+homes) — assignment + pin only, no node or seam change, no re-prove per this doc's own rule; the
+row-163 landing 2026-07-07 session 23: E-27 → NEW node test-author (the skill IS a node, the
+spec-author/product-prover precedent) — a node ADD is a structure change: the architecture lens ran
+with the landing (record `docs/prover/2026-07-07-row163.md`), the derivation seam named
+(build-pipeline · test-author), the two working-skills seam cells recounted five → six;
 last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
@@ -107,6 +111,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | design-sync | optional machine, [target: machine; wiring live] — declared components of a landing synced to the team's design project, human-gated (ROADMAP row 93 — pack-side wiring landed session 8; the machine's first real run remains) | E-18 | wiring: `skills/live-spec-base/SKILL.md` (defaults table, `design-sync` row), `skills/communicator/SKILL.md` (rule 5 channel line), `skills/build-pipeline/SKILL.md` (step 9 sync line); machine: — |
 | skill-evals | behaviour tests for the pack's own skills: per working skill one scenario, red proven bare, re-run at milestones (added session 8, row 94 — node add re-proven, record `docs/prover/2026-07-05-row94.md`) | E-19 | `evals/README.md:1` (the method + honest boundary), `evals/` (one file per working skill), `tests/test_traceability.py` (`test_skill_evals_present`, self-closing over skills/) |
 | publish | the publish-quality gate: per-kind publication checklist (its one home) + the target-plugin seam; runs BEFORE the human's gate, never instead (added session 8, row 98 — node add re-proven, record `docs/prover/2026-07-05-row98.md`) | E-20, INV-44 | `skills/publish/SKILL.md:1` (frontmatter + when it fires), the kind-checklist table and target-plugin sections in the same file |
+| test-author | the test method's one home: derives TEST_MATRIX.md from the proven spec through the proven architecture and writes the tests — the level ladder, real-artifact assertions, red-first proof, the pinned skip-set, traceability as a standing test (added session 23, row 163 — node add re-proven, record `docs/prover/2026-07-07-row163.md`) | E-27 | `skills/test-author/SKILL.md:1` (frontmatter + boundary), the level-ladder table and the two step sections in the same file |
 
 ## Seams
 
@@ -120,15 +125,16 @@ crosses it and which side owns the format.
 | pipeline → shapes | build-pipeline · templates | the document shapes the steps produce, incl. the coverage checklist | templates |
 | outside wish → queue | inbox · package-docs | one wish file, harvested into a ROADMAP row at sweep | inbox (file naming law) |
 | attach → host state | attach · host-contract | `.live-spec/` (profile, installed versions, checkpoints home) | attach |
-| base → working skills | base-rulebook · the five working skills | the inherit pin (base name + version each skill opens with) | base-rulebook |
+| base → working skills | base-rulebook · the six working skills | the inherit pin (base name + version each skill opens with) | base-rulebook |
 | ladder resolution | host-contract · base-rulebook | the resolved working contract communicator reads before every exchange | base-rulebook (ladder rule); host-contract (the lines) |
 | report → human | communicator · the human | plain-language report · decision page + `<project>-decisions-<date>.json` | communicator |
 | checks → push [target] | guardrails · build-pipeline | pre-push verdict (red blocks the push) | guardrails |
 | baseline → checks [target] | snapshot · guardrails | declared-scope diff vs baseline | snapshot |
 | sync → design project [target] | design-sync · the human | a landing's DECLARED components as rendered cards; every sync passes the human's publish gate (base rule 17, ACT-1) | design-sync |
-| evals ↔ working skills | skill-evals · the five working skills | each scenario's green-criteria against the SKILL.md's promised behaviour | skill-evals |
+| evals ↔ working skills | skill-evals · the six working skills | each scenario's green-criteria against the SKILL.md's promised behaviour | skill-evals |
 | evals → milestone gate | skill-evals · package-docs | the re-run item in M-1's list + dated run records in docs/evals/ | package-docs (the gate list's home is the spec) |
 | publish → the human's gate | publish · the human | the prepared deposit (README/listing/cards, checklist walked) handed to the publish/push gate — the gate stays the human's (base rules 12/17, M-6) | publish (the checklist); the human (the gate) |
+| matrix & tests derivation | build-pipeline · test-author | the proven spec + architecture in; TEST_MATRIX.md + owning tests out (steps 5–6 invoke the skill the way steps 1–2 invoke theirs) | test-author (the ladder and the assertion shapes) |
 
 ## Prover record
 

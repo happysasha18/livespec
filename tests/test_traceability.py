@@ -1640,6 +1640,21 @@ class TestProblemLedger(unittest.TestCase):
         adopt = re.sub(r"\s+", " ", read(os.path.join("adopt", "ADOPT.md")))
         self.assertIn("Skill search rides the setup", adopt, "ADOPT.md missing the setup arm")
 
+    def test_test_author_skill(self):
+        """Row 163 (M-167, E-27): the test method's one home — the test-author
+        skill, wired from the pipeline's matrix and test steps."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("E-27", "six working skills", "test-author"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        skill = re.sub(r"\s+", " ", read(os.path.join("skills", "test-author", "SKILL.md")))
+        for needle in ("The level ladder", "Red first, proven", "Pin the skip-set",
+                       "Normally invoked by build-pipeline"):
+            self.assertIn(needle, skill, "test-author skill missing: %s" % needle)
+        bp = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        self.assertIn("invoke `test-author`", bp, "build-pipeline missing the invoke wiring")
+        readme = re.sub(r"\s+", " ", read("README.md"))
+        self.assertIn("test-author", readme, "README missing the new skill")
+
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""

@@ -2,7 +2,7 @@
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
-**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts). Two counters exist by design: `VERSION` counts package RELEASES; the `SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships. Six skills (the shared rulebook plus five working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
+**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts). Two counters exist by design: `VERSION` counts package RELEASES; the `SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships. Seven skills (the shared rulebook plus six working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
 
 **Lost in the folders?** [`OVERVIEW.md`](OVERVIEW.md) is the one-page map: what lives where (the pack, a
 user's personal layer, a host project) and where any given rule goes.
@@ -122,6 +122,7 @@ No CLI — you drive it in plain words, in your Claude session:
 | `product-prover` | Reviews the whole spec with formal-verification thinking — finds gaps, contradictions, missing invariants. Also maintained as a [standalone repo](https://github.com/happysasha18/product-prover) — it works on any product document, no pipeline required |
 | `build-pipeline` | Sequences all the steps — the orchestrator that runs the full arc from wish to shipped, tested, committed change |
 | `communicator` | Makes the human exchange land — how to show work, batch decisions, ask only what the human can actually decide |
+| `test-author` | Derives the test matrix from the proven spec and writes the tests — the level ladder, real-artifact assertions, red-first proof |
 | `publish` | The publish-quality gate — what a deposit owes per artifact kind (commands for a skill, real runs for a tool, fresh screenshots for a visual product), with publish targets plugging in their own steps |
 
 ### Standalone mirrors

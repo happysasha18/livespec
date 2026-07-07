@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.37
+  version: 0.2.38
 ---
 
 # build-pipeline — ship a change by the method
@@ -16,7 +16,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.22), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.23), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -182,7 +182,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    seam names what crosses it and who owns the format. Findings land in the same `docs/prover/` record
    discipline as step 2.
 
-5. **Test spec — DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture.** The
+5. **Test spec — invoke `test-author` to DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture (the method's one home, SPEC E-27).** The
    matrix is derived, never just filled: rows organized **architecture node × spec fact** (one block per
    node), every fact gets ≥ 1 row, **every row states BOTH sides — what the fact DOES and what it must
    NEVER do** (the never side IS the regression fence, SPEC INV-6; a row without it is a derivation
@@ -195,7 +195,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    matrix is the bridge: tests come from the matrix, not from the code. (The mechanical projection is
    junior work; choosing each row's level + assertion is the senior's.)
 
-6. **Test — write tests that assert the REAL shipped artifact.** Render the widget / produce the file /
+6. **Test — with `test-author`, write tests that assert the REAL shipped artifact.** Render the widget / produce the file /
    call the function and inspect the output — never a source-string match. Watch the new test FAIL first
    (red-on-bug), then implement. Never edit a test just to make a change pass.
 
@@ -356,6 +356,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 ## How it relates to the other skills
 - `spec-author` — writes/grows the spec (step 1). Public.
 - `product-prover` — reviews the whole spec with formal-verification thinking (step 2). Public.
+- `test-author` — derives the matrix and writes the tests (steps 5–6). Public.
 - `build-pipeline` (this) — the orchestrator that sequences them through to a shipped, verified, committed
   change.
 

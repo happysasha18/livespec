@@ -341,6 +341,14 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 ---
 
+### [node: test-author]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-167 | The test method's one home ships: the test-author skill (level ladder · real-artifact assertions · red-first proof · pinned skip-set · traceability standing) wired from build-pipeline steps 5–6 and listed in every pack list (SPEC · base footer · communicator footer · README); never a second home for the method, never an unlisted skill | E-27 | string | `test_test_author_skill` (red proven against HEAD — wiring absent there) | BUILT |
+
+---
+
 ## Coverage validation — walked 2026-07-05 at derivation; re-walked mechanically by `tests/test_traceability.py` at every run
 
 - [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 70/70 (E-16 added 2026-07-05, rows 52–53), mechanized in `test_matrix_covers_every_anchor`.
