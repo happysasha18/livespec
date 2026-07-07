@@ -1,16 +1,24 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-07 19:12, session 25, /loop dynamic — one section per tick): SPEC humanize at 11/18
-scenario sections.** This session landed 6 batches: Sending feedback in (677d8a7) · When the workshop
+**LATEST (2026-07-07 19:12, session 25, /loop dynamic — one section per tick): SPEC humanize: ALL 18/18
+scenario sections DONE.** This session landed 6 batches: Sending feedback in (677d8a7) · When the workshop
 itself misbehaves (7fb617f) · One rulebook behind the skills (db75387) · Publishing (eb9c687) · When
-money or time run short (96c35e1) · From the spec to the tests (e7517b8). Each via a fresh clean-context
+money or time run short (96c35e1) · From the spec to the tests (e7517b8) · Starting a new project/bootstrap (3946787) · Attaching to a live project/adoption (eab21d0) · The rhythm (b69cbcd) · Who decides what (9f2c60f) · The machines that hold the bounds (fa52cbb) · The package repo (c21b286). Each via a fresh clean-context
 agent in the technical-writer register; every batch gated: tested phrases preserved section-scoped,
 bracket-code multiset identical to baseline, full suite 175 green, prover cross-link under `docs/prover/`.
 Two case-sensitivity slips caught+fixed (a lowercase tested phrase must not land capitalized at a
 sentence start) — watch this on every batch.
-**SPEC sections still in old register (7):** Throwing a wish (heavy) · Starting a new project (bootstrap)
-· Attaching to a live project (adoption) · Who decides what (gov) · The machines that hold the bounds
-(gov) · The package repo (gov) · The rhythm (heavy). Order: mid/small first, heavies, governance last.
+The last and biggest, **Throwing a wish (the 595-line wish-walk), is DONE** — rewritten in 10 contiguous
+chunks (commits 9c780cd → c0c26d0), each gated against the WHOLE-section baseline (157 tested phrases / 165
+code occurrences held throughout). Also fixed a stale cross-reference in it ('A prototype is not the
+product' → 'A prototype stays a sketch', the earlier rename had missed it). LESSON logged: a chunk splice's
+end-anchor must be the NEXT bold-lead, not one further down — the whole-section verify caught a 2-paragraph
+deletion once, reverted before commit.
+**NEXT in the movement (loop continues):** (1) the SPEC template `templates/SPEC.template.md` — one small
+batch (D1); (2) a final whole-doc register-consistency sweep (touch up the earliest sections to the settled
+voice); (3) ARCHITECTURE.md rewrite (his 19:07 scope; check its test-protection first); (4) whole-document
+prover pass + 0.9.0 3-pass audit + stale-quote grep over untested prose (README/OVERVIEW/MIGRATION/docs);
+(5) VERSION bump; (6) my full-certification push on his word. Push stays BLOCKED until (1)-(5) all green.
 **SCOPE EXPANDED (his word 19:07): rewrite ALL the specs, not only SPEC.md — ARCHITECTURE.md too** (in
 the same register; check what tests assert about ARCHITECTURE content before rewriting, its facts are
 protected differently). After SPEC + ARCHITECTURE, confirm README/OVERVIEW/ROADMAP as candidates.
