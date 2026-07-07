@@ -194,61 +194,15 @@ The facet list lives in one place, the spec-author skill, one list for every pro
 
 **A rejected artifact reopens its SOURCE.** When the human rejects an artifact, the fix starts at the artifact's source — the spec clause, the card, or the brief that produced it. You correct the source first, then rebuild the artifact FROM it. Patching the rejected output line-by-line against an unchanged source is the five-round trap by name, and it is banned (each round re-patched the output while the unchanged card re-made the same failure; promoter case, 2026-07-06). [INV-63]
 
-**What already works is promised before you touch it.** When a feature-doored wish touches a surface
-that already lives, its spec-delta opens — before the facet sweep authors anything new [T-13] — with
-**regression fences**: one sentence per neighbouring promise that must stay true through the change
-("the catalog still opens on click", "the player keeps playing across a view switch"), each citing the
-existing spec clause it guards. A fence is not new law and earns NO new matrix row: the cited clause's
-own row already carries its never-side [INV-6], and the landing's full-suite run is what proves the
-fence held — so "fixed one thing, quietly broke the neighbour" turns red before it ships. The delta
-thereby splits everything it touches in two: promises that STAY — fenced, cited, untouched — and
-behaviour being CHANGED — never fenced, re-authored as new law through the normal walk. A fence that
-finds no clause behind it has discovered an unwritten promise: that promise is reconciled from the
-shipped truth like an adopted claim [A-3], written as its own spec fact with its own row, and surfaced,
-never silently assumed [INV-5]; likewise, touching a neighbour whose claim is adoption-born and still
-unverified triggers that claim's reconciliation before it can be fenced. The wish's queue row names its
-fences by the anchors they cite ("fences: …") — "untouched and still true" becomes a greppable claim —
-while the LANDING line stays its one-line self [T-7]. Fence-AUTHORING belongs to the feature door; the
-bug and refactor doors inherit only the catching (their full-suite runs exercise every never-side), and
-a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
+**What already works is promised before you touch it.** When a feature-doored wish touches a surface that already lives, its spec-delta opens with **regression fences**, before the facet sweep authors anything new [T-13]. A fence is one sentence for a neighbouring promise that must stay true through the change — for example, "the catalog still opens on click" or "the player keeps playing across a view switch". Each fence cites the existing spec clause it guards. A fence is not new law and earns NO new matrix row. The cited clause's own row already carries its never-side [INV-6], and the landing's full-suite run proves the fence held. So "fixed one thing, quietly broke the neighbour" turns red before it ships. The delta thereby splits everything it touches in two. Promises that STAY are fenced, cited, untouched. Behaviour being CHANGED is never fenced; you re-author it as new law through the normal walk. A fence that finds no clause behind it has discovered an unwritten promise. That promise is reconciled from the shipped truth like an adopted claim [A-3], written as its own spec fact with its own row, and surfaced, never silently assumed [INV-5]. Likewise, touching a neighbour whose claim is adoption-born and still unverified triggers that claim's reconciliation before it can be fenced. The wish's queue row names its fences by the anchors they cite ("fences: …"), so "untouched and still true" becomes a greppable claim; the LANDING line stays its one-line self [T-7]. Fence-AUTHORING belongs to the feature door. The bug and refactor doors inherit only the catching — their full-suite runs exercise every never-side — and a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
 
-**A feature also says what it is NOT doing — and how we'd know it worked.** Every feature's spec-delta
-closes with two short sentences, and both are ALWAYS written — like the facets, silence is not a legal
-state. **Non-goals**: what is deliberately left out ("version comparison — not this time"); "nothing
-deliberately left out this time" is itself a valid sentence — only a MISSING sentence is a hole. A
-non-goal that narrows what the wish asked for is a scope decision, so it rides the same batched report
-as every taken default [INV-4, INV-18], never a silent narrowing [INV-5]. [INV-20]
-**A success measure**: how we'd notice the feature worked for its person, a number where one exists
-("the producer opens the evidence panel at least once per session"), decided or `[default]`-tagged like
-any facet — the tag marking provenance only: no matrix row derives from a success measure while the
-machinery that READS them (KPI dashboards, A/B runs, segmentation) stays [target] under its own queue
-rows; until then a measure is a written promise the human checks by eye, honestly labelled so. The
-quantification questions — is there an analytics tag? how will we measure? is an A/B worth it? — ride
-the facet sweep's batched report [T-13, INV-18]. Both sentences bind forward from features specified
-after this rule lands; an adopted feature owes its pair at the first landing that touches it [A-3],
-never retroactively en masse. A prototype writes neither — it promises nothing [E-17]. [INV-21]
+**A feature also says what it is NOT doing — and how we'd know it worked.** Every feature's spec-delta closes with two short sentences. Both are ALWAYS written — like the facets, silence is not a legal state. **Non-goals**: what is deliberately left out ("version comparison — not this time"). "nothing deliberately left out this time" is itself a valid sentence — only a MISSING sentence is a hole. A non-goal that narrows what the wish asked for is a scope decision. So it rides the same batched report as every taken default [INV-4, INV-18], never a silent narrowing [INV-5]. [INV-20] **A success measure**: how we'd notice the feature worked for its person, a number where one exists ("the producer opens the evidence panel at least once per session"), decided or `[default]`-tagged like any facet — the tag marking provenance only. No matrix row derives from a success measure. The machinery that READS them — KPI dashboards, A/B runs, segmentation — stays [target] under its own queue rows. Until then a measure is a written promise the human checks by eye, honestly labelled so. The quantification questions — is there an analytics tag? how will we measure? is an A/B worth it? — ride the facet sweep's batched report [T-13, INV-18]. Both sentences bind forward from features specified after this rule lands. An adopted feature owes its pair at the first landing that touches it [A-3], never retroactively en masse. A prototype writes neither — it promises nothing [E-17]. [INV-21]
 
 While it walks, four things are always true:
-- Intake is parallel, integration is serial — **one landing at a time, per repo, under one PEN**: the
-  **pen** is the right to write the shared truth — the spec, the architecture doc, the matrix, the queue,
-  the integration of a delta into the shared tree, the closing of a row — and one lane holds it at a
-  time. CLAIMING a lane is an atomic committed act — the session commits the row→in-work flip first, then
-  re-checks under the fence [INV-11] immediately before its first shared-truth write; a re-check revealing
-  a FOREIGN session's committed in-work row means the later claimant backs off and re-queues — foreign
-  hands never share a repo's pen, so across sessions the law stands as it always stood. Within ONE
-  assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18] — but every pen-stage
-  still lands one at a time, and a landing commit carries exactly one row's delta [INV-39]. Bounded
-  delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated
-  tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting
-  (next section). [INV-2]
-- **A pending question for you never stops the work** — the lane proceeds on the recommended option; the
-  question stays open in the row, revisitable any time. [INV-4]
-- **No silent micro-decisions** — every choice not in your wish is either asked, or recorded in the spec
-  AND surfaced in the same report. The batched report carries this as its own postcondition: EVERY taken
-  default, trim, and deliberate narrowing of the walk appears in it — a decision absent from the report
-  is silent by definition, whatever the spec recorded. Nothing decided-and-buried. [INV-5]
-- **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this
-  exist" is always answerable. [INV-3]
+- Intake is parallel, integration is serial — **one landing at a time, per repo, under one PEN**. The **pen** is the right to write the shared truth — the spec, the architecture doc, the matrix, the queue, the integration of a delta into the shared tree, the closing of a row — and one lane holds it at a time. CLAIMING a lane is an atomic committed act. The session commits the row→in-work flip first, then re-checks under the fence [INV-11] immediately before its first shared-truth write. A re-check that finds a FOREIGN session's committed in-work row means the later claimant backs off and re-queues. Foreign hands never share a repo's pen, so across sessions the law stands as it always stood. Within ONE assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18]. But every pen-stage still lands one at a time, and a landing commit carries exactly one row's delta [INV-39]. Bounded delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting (next section). [INV-2]
+- **A pending question for you never stops the work** — the lane proceeds on the recommended option; the question stays open in the row, revisitable any time. [INV-4]
+- **No silent micro-decisions** — every choice not in your wish is either asked, or recorded in the spec AND surfaced in the same report. The batched report carries this as its own postcondition: EVERY taken default, trim, and deliberate narrowing of the walk appears in it. A decision absent from the report is silent by definition, whatever the spec recorded. Nothing decided-and-buried. [INV-5]
+- **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this exist" is always answerable. [INV-3]
 
 **Trains may roll — one pen writes.** Parallelism was born below the lane — workers on disjoint
 files, read-only analysis riding the background while another wish walked the pipeline — and this law
