@@ -44,85 +44,41 @@ its own work — its spec, matrix, queue, journal, surface registry, inbox, feed
 
 ## Throwing a wish
 
-You say, mid-anything: "and let the card also show…" — and go back to your thought. A **wish** is exactly
-that: one request in plain words, any size, spoken at any moment. [E-2]
+You are working on something else when you say "and let the card also show…", then go back to your thought. A **wish** is exactly that: one request, in plain words, of any size, spoken at any moment. [E-2]
 
-That same minute the wish becomes a row in the **queue (ROADMAP.md)** — the persistent, ordered home of
-every wish: your words · class (size, plus priority when it isn't normal) · status · acceptance criterion,
-one row each. [E-3] Spoken means the row
-exists before anything else happens; it survives even if the session dies a second later, and rows are
-never deleted — only closed with a named exit; at a milestone, rows closed with a TERMINAL exit (landed ·
-declined · superseded) MOVE to a dated queue archive — the attic principle applied to the queue: archived,
-never edited, never lost. A **deferred** row is not terminal: it stays in the active queue carrying its
-revisit trigger until the trigger fires or it re-resolves to a terminal exit — the archive never swallows
-a wish that is still due back. No wish is ever lost. [INV-1]
+Within that same minute, the wish becomes a row in the **queue (ROADMAP.md)** — the persistent, ordered home of every wish. Each wish is one row, holding these fields:
+- your words
+- class: size, plus priority when it isn't normal
+- status
+- acceptance criterion
 
-From the row the wish walks one path: classified by size, priority, door, and work-kind — stated back to
-you in one INTAKE line (the paragraphs below) → a
-spec-delta is drafted → validated against the WHOLE spec — here only genuinely-human questions go out to you, batched;
-everything else proceeds on the recommended option, marked in the row → queued → in-work → landed (green
-suite + guardrails + committed + the row closed with its acceptance met) → reported to you in one
-plain-language LANDING line: position on the map · what landed · what remains. [T-1..T-7]
+[E-3]
 
-**How batched questions reach you.** Several open picks never become a serialized chat questionnaire:
-they render as ONE interactive decision page — one card per question, the recommendation named, room for
-a free-form answer on every card — opened in its own window while the lane keeps moving [INV-4]. The
-answered file is read back, archived in the project's `docs/decisions/`, and every answer is harvested
-into its queue row the same session — an answer left un-harvested is a decision lost. And an answer is
-his WORD, not merely his click: a pick the human then disavows in plain speech ("я не понял, что
-подтверждал") is WITHDRAWN — recorded as answered-then-withdrawn, the pick re-opens with a plainer
-explanation owed before it is asked again; an uninformed pick never settles a verdict that needs his
-word [INV-9] (born 2026-07-05 night: the shell-separator verdict, picked at 23:49, disavowed minutes
-later). The page's
-mechanics (filename law, ordinals, the JSON round-trip) live once, in the communicator skill's rule 10
-[INV-13]. [E-22]
+A spoken wish means the row exists before anything else happens. It survives even if the session dies a second later. Rows are never deleted; you close a row only with a named exit. At a milestone, a row closed with a terminal exit — landed, declined, or superseded — moves to a dated queue archive, archived and never edited, never lost. A **deferred** row is not terminal. It stays in the active queue, carrying its revisit trigger, until the trigger fires or it re-resolves to a terminal exit. The archive never swallows a wish that is still due back. No wish is ever lost. [INV-1]
 
-**A decision card asks in consequences, not mechanisms.** The shell-separator card explained HOW the
-failure worked, and the reader still could not tell what he was deciding («я не понял проблему, не
-понял последствия, не понял что решать» — 2026-07-06, the same incident that already birthed the
-withdrawn-answer law above). So every card on a decision page OPENS with what the choice CHANGES for
-the person — what he will see, get, or stop suffering under each option, in the product's words; the
-mechanism follows only if it helps; and each option is labelled by its consequence, never by its
-implementation. A card whose question cannot be answered without understanding the mechanism is a
-defect of the card [INV-28 kin]. [INV-32]
+From its row, the wish walks one path:
+- The classifier reads its size, priority, door, and work-kind, then states them back to you in one INTAKE line (the paragraphs below explain each).
+- A spec-delta is drafted.
+- The delta is validated against the whole spec. Here only genuinely-human questions go out to you, batched; everything else proceeds on the recommended option, marked in the row.
+- The wish is queued, then goes in-work.
+- It lands: green suite, guardrails, committed, and the row closed with its acceptance met.
+- The pipeline reports to you in one plain-language LANDING line: position on the map, what landed, what remains.
 
-**How a wish is classified.** Size is one four-word vocabulary everywhere — **bug / small / surface /
-large** — and the queue's class column speaks the same four words, never a second SIZE scale (the door
-below is a different axis — where the wish ENTERS the pipeline, not how big it is). Priority is
-**normal** unless the row says otherwise; two marks exist: **critical** — the shipped product is broken for
-its user (an unusable surface, data being lost, a safety gate violated) — and **quick win** — low effort,
-immediate value, no design decision inside. When the classifier can't call a size, a priority, or a work-kind
-[T-16], it asks you at intake and never guesses; until you answer, the wish carries normal (a kind: the
-host's recorded default, else none — and a kind not yet named scales nothing down [INV-22]) and the open
-question rides in the row — the lane keeps moving [INV-4]. [INV-12]
+[T-1..T-7]
 
-**A big wish negotiates scope, never time.** Nobody here asks "how long will it take", and an answer in
-hours or days is not an input the walk accepts — a time estimate out of a builder is a guess dressed as
-a number (Alexander 2026-07-05: "можно играться со скоупом, а не с таймлайнами"). When a wish looks
-bigger than it is worth, the walk answers in scope terms and PROPOSES: **cut the scope** — fewer
-surfaces in, plainer defaults on what stays — or **split into stages**, each stage one landing through
-the full pipeline (the "large" size already decomposes this way [INV-12]). The proposal proceeds on the
-recommended option — the lane never parks on it [INV-4] — and every cut rides the same batched report
-as every taken default [INV-18], never silent [INV-5]: your re-widen is simply a new wish. A scope cut
-bends scope only, never order — it is not a quick-win mark, and only priority moves the lane [T-11].
-And what no cut may ever touch: the delta's MANDATORY sentences — the fences [T-14], a kept surface's
-facets [INV-18], the non-goals and the success measure [INV-20, INV-21]. Scope dials richness; it never
-touches the safety net. [T-15]
+**How batched questions reach you.** Several open picks never become a serialized chat questionnaire. They render as ONE interactive decision page: one card per question, the recommendation named, and room for a free-form answer on every card. The page opens in its own window while the lane keeps moving [INV-4]. The pipeline reads the answered file back, archives it in the project's `docs/decisions/`, and harvests every answer into its queue row the same session — an answer left un-harvested is a decision lost. An answer is the human's word, not merely his click. When he picks an option and then disavows it in plain speech — on 2026-07-05 he said in plain speech that he had not understood what he was confirming — the pick is withdrawn. It is recorded as answered-then-withdrawn, and the pick re-opens with a plainer explanation owed before it is asked again. An uninformed pick never settles a verdict that needs his word [INV-9]. That law was born the night of 2026-07-05, when the shell-separator verdict was picked at 23:49 and disavowed minutes later. The page's mechanics — the filename law, the ordinals, the JSON round-trip — live once, in the communicator skill's rule 10 [INV-13]. [E-22]
 
-**One wish = one user story; a row closes only whole.** The failure this law is built on: a project
-fused two stories — a door and a gallery — into one queue row; the door half shipped, the row was
-declared COMPLETE, and the gallery stayed a rejected wall for four rebuilds, each drop caught by the
-human's eyes, never by the pipeline. So, at intake: a wish carrying several USER STORIES — several
-distinct things a person will DO and SEE — is SPLIT, each story its own row through the full pipeline.
-Kin to a stage split, but a different knife: stages slice ONE story's depth [T-15]; separate stories
-are never fused into one row to begin with. Sub-behaviours of one story — its hover face, its phone
-face, a backpointer — are that story's ACCEPTANCE, not new stories; unclear whether it is one story or
-two is asked at intake, never guessed [INV-12]; and a split loses nothing — every row born of it cites
-the one spoken wish it came from [INV-1]. [T-17] Where a row nonetheless carries several legs (a
-legacy fusion, a harvested batch), its Done-when enumerates per-leg acceptance and the row CANNOT close
-with an unmet leg — half-done is a status, never a landing; and the resume file's LIVE-STATE
-supersession never compresses an unfinished leg out of existence: a leg still open at compaction is
-restated, not summarized away [M-2]. [INV-26]
+**A decision card asks in consequences, not mechanisms.** The shell-separator card explained how the failure worked, and the reader still could not tell what he was deciding; on 2026-07-06 he said he understood neither the problem, nor the consequences, nor what he was deciding — the same incident that birthed the withdrawn-answer law above. So every card on a decision page opens with what the choice CHANGES for the person: what he will see, get, or stop suffering under each option, in the product's words. The mechanism follows only if it helps. Each option is labelled by its consequence, never by its implementation. A card whose question cannot be answered without understanding the mechanism is a defect of the card [INV-28 kin]. [INV-32]
+
+**How a wish is classified.** Size uses one four-word vocabulary everywhere — **bug / small / surface / large** — and the queue's class column speaks the same four words, never a second size scale. The door below is a different axis: where the wish enters the pipeline, not how big it is. Priority is **normal** unless the row says otherwise. Two marks exist. The first, **critical**, means the shipped product is broken for its user: an unusable surface, data being lost, or a safety gate violated. The second, **quick win**, means low effort, immediate value, and no design decision inside. When the classifier cannot call a size, a priority, or a work-kind [T-16], it asks you at intake and never guesses. Until you answer, the wish carries normal — a kind here is the host's recorded default, else none, and a kind not yet named scales nothing down [INV-22] — and the open question rides in the row while the lane keeps moving [INV-4]. [INV-12]
+
+**A big wish negotiates scope, never time.** Nobody here asks "how long will it take", and an answer in hours or days is not an input the walk accepts. A time estimate out of a builder is a guess dressed as a number; on 2026-07-05 Alexander said you can play with scope rather than with timelines. When a wish looks bigger than it is worth, the walk answers in scope terms and proposes one of two moves:
+- **cut the scope** — fewer surfaces in, plainer defaults on what stays;
+- **split into stages** — each stage one landing through the full pipeline (the "large" size already decomposes this way [INV-12]).
+
+The proposal proceeds on the recommended option; the lane never parks on it [INV-4]. Every cut rides the same batched report as every taken default [INV-18], never silent [INV-5], and your re-widen is simply a new wish. A scope cut bends scope only, never order. It is not a quick-win mark, and only priority moves the lane [T-11]. No cut may ever touch the delta's mandatory sentences: the fences [T-14], a kept surface's facets [INV-18], the non-goals and the success measure [INV-20, INV-21]. Scope dials richness; it never touches the safety net. [T-15]
+
+**One wish = one user story; a row closes only whole.** This law is built on a failure: a project fused two stories, a door and a gallery, into one queue row, so the door half shipped, the row was declared complete, and the gallery stayed a rejected wall for four rebuilds. At intake, then, a wish carrying several user stories — several distinct things a person will do and see — is split, each story its own row through the full pipeline. This is kin to a stage split, but a different knife: stages slice one story's depth [T-15], while separate stories are never fused into one row to begin with. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, not new stories. Whether something is one story or two is asked at intake, never guessed [INV-12]. A split loses nothing: every row born of it cites the one spoken wish it came from [INV-1]. [T-17] Where a row nonetheless carries several legs — a legacy fusion or a harvested batch — its Done-when enumerates per-leg acceptance, and the row cannot close with an unmet leg — half-done is a status, never a landing. The resume file's LIVE-STATE supersession never compresses an unfinished leg out of existence: a leg still open at compaction is restated, not summarized away [M-2]. [INV-26]
 
 **A wish hears itself land, and progress reads like a departures board.** You toss a wish in passing —
 before sleep, mid-thought — and without an echo you cannot know it survived. So the intake line is not
