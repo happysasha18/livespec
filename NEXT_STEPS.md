@@ -26,73 +26,21 @@ Runs on Opus (Fable pulled today). Register deployed==repo. Language: no coined 
 OR docs — say "tested phrases"/"bracket codes" (his sharp word 18:47); durable fix rides row 170.
 SAFE TO WIPE MEMORY here.
 
-## LIVE STATE (2026-07-07 ~15:35, session 24 cont. — **SPEC-humanize BATCH 1 LANDED; register FROZEN
-(V2); sweeping the rest via fresh-context spawns.** Batch 1 = section "What live-spec is" rewritten
-(software house + conveyor + explicit prover edge-case stage) · `scripts/needle-extract.py` written (the
-section-scoped safety gate) · voice honed into spec-author (`## How it reads`, new "confident product
-person" bullet pointing at the opening as the exemplar). All gates green (needle · anchors E-12/E-1 ·
-station-chain not duplicated · 8 skills load · 175 suite). **The winning register = confident product
-PITCH (V2), NOT his flat promoter register — his promoter tone-card was tried and rejected for the spec.**
-**REGISTER RE-DECIDED ~15:55: neutral native-English open-source technical-writer voice** (Fable-defined
-on this window), NOT the V2 pitch as a universal rule. Full 14-rule register + 8-item verify checklist now
-live in the communicator skill ("The writing register" section); spec-author points to it (one home). Key
-refinement (his 15:57 word): natural/industry words are fine even when metaphor ("software house",
-"conveyor", "pipeline"); what to kill is invented INTERNAL terms / my private interpretations ("axis",
-"surface") — define them plainly at first use or replace. So the V2 opening STAYS (its metaphors are
-natural); "Composing across axes" redone (Fable) with axis/surface defined in plain words. Sections done:
-opening (V2) · Composing · Asking-what-the-product-does · pilot "When a bug cuts the line". ~15 sections
-left. METHOD forward (his word): each section rewritten by a FRESH-CONTEXT agent given the register + the
-section's exact test-checked phrases + hard constraints; the main head only orchestrates + runs the gates. Plan+fixes:
-`docs/research/2026-07-07-spec-humanize-plan.md`; Fable record `docs/prover/2026-07-07-spec-humanize-plan.md`
-(READY-WITH-FIXES, 5 MUST-FIX folded). Movement = ask #1 + row 148 Phase 3 + 0.9.0 compaction, ONE pass.
-tlvphoto = its first EXTERNAL run, SEPARATE process on his command, NEVER this session. Earlier session
-24 — **row 56 LANDED: the model router (SPEC INV-69), D-2 decided.** The rule: a piece of work's model tier is PROPOSED by its STEP and kind (judgment→senior,
-never routed down · one-shot→haiku · multi-step mechanical→sonnet), not its size alone; the economy rung
-moves the threshold; advisory — senior may override per wish, logged proposed→chosen→why. First routed
-landing = this build itself (senior on spec/prove/arch/matrix; sonnet on version-bump+sync, ~10 min saved;
-one override logged — spec prose kept on senior per INV-62). Prover CROSS-LINK docs/prover/2026-07-07-row56.md
-(4 findings, all folded; must-fix = the [router target] tag sweep). M-175/`test_routing_rule` red→green.
-**Pack 0.8.75, base 0.1.24, SPEC v0.15.61, suite 175 green.** Earlier session 24: row 169 (plugin
-shopfront) + row 47 (feedback-intake, 8th skill) + row 12 (CLAUDE.md/PLAYBOOK mining) all closed.
-PUBLIC: github.com/happysasha18/live-spec. **NOT yet pushed (rows 12 + 56 commits local, ahead of origin).**
-
-**⚠ ALEXANDER'S TWO ASKS at the row-56 landing (2026-07-07 ~13:03) — read before resuming:**
-1. **Human-first RE-LAYOUT of the whole SPEC** — the spec reads too much like "spec-language"; re-verstat it
-   so a product person reads it plainly (scenarios lead, jargon trails). He calls this a *responsible* step,
-   best done **from a fresh /clear session** (clean context — matches [[human-prose-polish-clean-context]]).
-   Do NOT start it mid-loaded-session. This is the TOP next item — likely folds with / precedes the 0.9.0
-   doc-compaction milestone. (Relation to row 148's genre whole-doc rewrite: overlapping but not identical —
-   148 is content migration, this is readability re-layout; reconcile at the fresh session.)
-2. **Reporting/orchestration persona = PROJECT MANAGER** — the one who runs the whole pipeline and reports
-   to him wears the PM hat: plain product-outcome language, jargon only in parens. His step-zero echo read
-   as spec-jargon and he didn't follow it. Adopt now in every report; may earn a pack line (craft-ladder /
-   communicator persona). See memory [[plain-language-communication]] + [[report-as-project-manager]].
-3. **⚠ DURABLE-GAP flagged by Alexander (2026-07-07 ~13:31) — carry into the new-rules migration.** The
-   board copy fix (three coined titles + "краснит"/"вслепую" swept) was POINTWISE — a sketch FILE edited
-   by hand. It survives a memory wipe (on disk) but is NOT a rule: nothing mechanically catches a coined
-   doc-metaphor on a HUMAN-FACING page, and the PM persona lives only in a memory note so far. The durable
-   fix (bake into the PACK, not one file): (a) name the PM reporting persona in communicator / craft-ladder;
-   (b) a guard/check that a shown page carries no coined-metaphor titles — extend the plain-language law to
-   rendered surfaces, not just chat. **Row 170 (harvested from the tlvphoto inbox this session) IS this
-   feature's home**: a mechanical pre-show lint in communicator that catches banned constructs before a
-   human sees them — the scissors ban first, the coined-metaphor titles folded in as a sibling pattern.
-   Ride it on the SPEC re-layout / new-rules move. Class rule: [[never-patch-pointwise-domain-language]] —
-   his exact worry.
-
-This session ran on **Opus** by his word (Fable pulled from Claude Code today). His language laws live in
-the profile (scissors ban · native-plain English · industry-vocabulary narration). Board:
-prototype/work-board-sketch.html (update at every station change — his standing ask).
+## LIVE STATE (2026-07-07 20:56, session 25) — SPEC.md fully humanized; movement continues (see LATEST).
+Versions: pack 0.8.75, base 0.1.24, SPEC v0.15.61, suite 175 green. The register (14 rules + 8-item verify)
+lives in communicator ("The writing register"); spec-author points to it; deployed==repo. Reporting persona
+= PROJECT MANAGER, plain product words (memory [[report-as-project-manager]] + [[plain-language-communication]]).
+**Row 170 = the durable fix for coined-metaphor/scissors leaks: a mechanical pre-show lint in communicator
+(scissors ban first, coined titles folded in) — extend the plain-language law to rendered surfaces, not just
+chat; ride it on the new-rules move.** Board: prototype/work-board-sketch.html (update at every station
+change). Runs on Opus (Fable pulled today). Row 56 (model router INV-69) and the genre plan (row 148) are
+folded into the humanize movement's remaining steps in LATEST.
 
 ## Forward queue (mirrors ROADMAP.md)
 
-1. **TOP — sweeping (batch 1 DONE):** next SPEC-humanize batches, each via a fresh-context spawn in the
-   frozen V2 register. Order: small warm-ups ("Composing across axes", "Asking what the product does"),
-   then the needled heavies (the wish walk, worker contract, milestone laws), governance last, template
-   as one small batch, a final register-sweep pass to close. Per batch: capture needles → spawn rewrite →
-   section-scoped needle re-match + anchor→sentence diff + full suite + prover cross-link → show → commit.
-   This IS ask #1 + row 148 Phase 3 + 0.9.0 compaction as one movement. Row 56 is DONE.
-   **Without-him rows available:** 96 tail (rows 48/49 re-scope against INV-21 — 47's part DONE; first real
-   feedback loop rides a live host window).
+1. **TOP — humanize movement:** all 18 SPEC sections DONE; remaining = template · whole-doc register sweep ·
+   ARCHITECTURE.md · whole-doc prover + 0.9.0 audit + stale-quote grep · VERSION bump · my-cert push (LATEST).
+   **Without-him rows:** 96 tail (rows 48/49 re-scope vs INV-21; 47 DONE; first real feedback loop rides a host window).
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition) · 148 Phase 3 go (genre
    whole-doc rewrite by docs/research/2026-07-07-genre-migration-plan.md — reconcile with ask #1).
 3. Field legs riding real windows with him: 47/96 first real feedback loop · 54 first-run · 163
