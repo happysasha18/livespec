@@ -33,9 +33,12 @@ PARKED — errors cleared, full register conversion needs his word (needle colli
   sentence", "VISITOR WALK"/"FEEL pass", "TOLD", "AUTHORS the facet sentences", "walks the sweep before work
   resumes", "A fenced prototype is NOT swept", "reconciled like any re-engineered claim", INV-70 sentences)
   pin second-person and CAPS in place. Removing them needs a needle re-point pass on his word.
+- "Parallel lanes, one pen" (errors cleared, commit 33d6b09): CAPS needles "declined BY NAME", "RETURNED to
+  the queue as its own row again", "superseded INTO", plus heavy PEN/train second-person prose. Full
+  conversion needs his word.
 
-REMAINING ornate (drive meter to 0 errors; now 21 errors / 317 warns): rest of "Naming" (outcome/naming/lines
-INV-28, report-walk INV-34, narration+offline INV-35), "Parallel lanes",
+REMAINING ornate (drive meter to 0 errors; now 19 errors / 317 warns): rest of "Naming" (outcome/naming/lines
+INV-28, report-walk INV-34, narration+offline INV-35),
 "Sending feedback in" +subs, "When a bug cuts the
 line", "When the workshop misbehaves" +subs, "A prototype stays a sketch" +sub, "Starting a project" +founding
 questions, "Attaching to a live project" +subs, "One rulebook", "Who decides what" +subs, "From spec to tests",
