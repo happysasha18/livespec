@@ -12,9 +12,11 @@ lines. VERIFIED SAFE before the cut: all ARCHITECTURE tests read only the Nodes/
 prose, so anchor-set/pins/pin-drift all unchanged. Suite: 174/175 green — the ONE red is the pre-PUSH
 prover-record gate demanding a `docs/prover/2026-07-08*.md` (expected: SPEC.md was touched today; NOT a code
 failure, and push is my-cert-gated anyway). SPEC.html regenerated from the new SPEC.md (untracked artifact).
-**Remaining before my full-certification push (all his-word/audit gated):** whole-document prover pass over
-SPEC.md (this also clears the red gate) · 0.9.0 3-pass audit · stale-quote grep over untested prose
-(README/OVERVIEW/MIGRATION/docs) · VERSION bump. Local commits only, none pushed.
+**DONE this session too:** whole-document FULL prover pass over SPEC.md v0.15.61 recorded + committed
+(`docs/prover/2026-07-08-humanize-whole-doc.md`) — no must-fix, one worth-considering (F1 = INV-67 seat
+detection is stated law, real-remote proof is the open field leg / row 168); the pre-push prover-record gate
+is now GREEN, suite 175/175. **Remaining before my full-certification push:** 0.9.0 3-pass audit · stale-quote
+grep over untested prose (README/OVERVIEW/MIGRATION/docs) · VERSION bump. 43 commits local, none pushed.
 **Two ROADMAP rows added this session (his ask 2026-07-08):** row 171 — the pack must work for a host with
 NO hooks and NO GitHub (classify core-vs-optional machinery, degrade gracefully, say what's off); row 168's
 open field leg sharpened — does a session actually KNOW it is remote, and how do we communicate then?
