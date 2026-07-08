@@ -91,9 +91,10 @@ status + heartbeat (INV-71); the HTML board sketch is dropped by his word. Runs 
 2. **Needs HIS word or a real window:** remote-seat session — this evening/tomorrow (also proves INV-67/71 in
    a real cloud seat) · make live-spec work with NO hooks / NO GitHub (row 171, large) · rewrite the spec as
    an even plainer document (row 148, large) · thin-loader tidy in his personal `~/.claude/CLAUDE.md` (move
-   the window-list + stale "Fable only" note to his profile — his file, offered).
+   the window-list + stale "Fable only" note to his profile — his file, offered) · pack orchestration
+   (2026-07-08, his ask): take independent work while a spawn runs (no idle-block) + spawn-liveness watchdog
+   (hung / silent-too-long / alive) — [[pack-orchestration-parallelism-and-spawn-liveness]], ROADMAP rows.
 3. Field legs riding real windows with him: 47/96 feedback loop · 54 first-run · 165 first-struggle · 168
    remote seat (this evening) · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133.
-4. Standing habits: `date` before ANY stamp · keep NOW/NEXT current in chat + a heartbeat past ~10 min
-   (INV-71) · plain product words to him, never a code leading a line (INV-28), never "пакет" — say
-   "live-spec" · echo speaks door·kind·name·row·map · inbox EMPTY.
+4. Standing habits: `date` before ANY stamp · NOW/NEXT current + heartbeat past ~10 min (INV-71) · plain
+   product words, never a code leading a line (INV-28), say "live-spec" not "пакет" · inbox EMPTY.
