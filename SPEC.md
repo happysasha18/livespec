@@ -124,7 +124,7 @@ Together the trail is the session's time accounting: read top to bottom, it answ
 
 **Anything handed to the human opens with a one-line identifier.** A page that opens in the human's browser at midnight states two things: which project it belongs to, and whether it needs the human's attention. A page that states neither reads as noise.
 - The project's name appears in the visible content, not only in the URL.
-- The page states what it needs from the human: "needs your word: what, by when," or "just an update, no action."
+- The page states what it needs from the human: "needs a word: what, by when," or "just an update, no action."
 
 Every artifact the agent hands over or opens leads with that one-line identifier, whether it is a report page, a decision page, or a rendered doc. The chat line announcing the artifact carries the same two facts. This rule lives in the communicator skill. [INV-51]
 
@@ -166,7 +166,7 @@ A quick win can be promoted: when the lane frees, the agent may take it ahead of
 
 An inbox wish is registered at the moment it arrives; that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch is registered in filename-sorted order. [T-11]
 
-**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it. A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door deliberately share one word: a wish sized "bug" is the bug door — one call stated once — and the door axis simply adds the other four entries. [T-12]
+**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it. A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door deliberately share one word: a wish sized "bug" is the bug door — one call stated once — and the door axis adds the other four entries. [T-12]
 
 The door is decided by an ordered procedure. The tripwires fire first, before any judgment:
 
@@ -323,7 +323,7 @@ Declining preserves what the declined wish had absorbed. A wish that other rows 
 What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
 ## Sending feedback in
 
-You look at what shipped and something occurs to you. It might be a reaction, an answer, a screenshot with a red circle, or a log file. **Feedback** is anything a person hands back to the project, at any size, any moment, through any channel. The person is usually the host's human. When the host's product has users of its own, their reports travel the same road once a session receives them. [E-28]
+A person looks at what shipped and something occurs to them. It might be a reaction, an answer, a screenshot with a red circle, or a log file. **Feedback** is anything a person hands back to the project, at any size, any moment, through any channel. The person is usually the host's human. When the host's product has users of its own, their reports travel the same road once a session receives them. [E-28]
 
 The promise is simple: nothing handed in is ever lost, and everything handed in is answered by a route. Every received item lands in the same session, in the home its route owns:
 
@@ -334,7 +334,7 @@ The promise is simple: nothing handed in is ever lost, and everything handed in 
 
 Some routes had no home before this section. They get one now: the **feedback ledger (FEEDBACK.md)**, an append-only file beside the queue at the host root [default]. It owns field evidence, plain reactions, and wordless drops that still await their question. Each item is one dated line. The line records when it arrived, who handed it in and through which channel, what it concerns on the feature map, the item in plain words, and where it went.
 
-The session echoes every arrival back in one sentence, one echo per item. A wish-shaped item's echo IS the wish echo [INV-27]. Anything else gets a note back saying what was heard and where it went.
+The session echoes every arrival back in one sentence, one echo per item. A wish-shaped item's echo is the wish echo [INV-27]. Anything else gets a note back saying what was heard and where it went.
 
 If someone mentions an already-recorded item again, the session appends its date to the existing line and changes nothing else. That's the problem ledger's own discipline, applied here. [INV-68]
 
@@ -342,7 +342,7 @@ If someone mentions an already-recorded item again, the session appends its date
 
 - **Spoken or typed** — a remark in the conversation, or a note in a file the human points at.
 - **A comment on something shown** — decision pages and review pages capture answers as saved JSON [INV-4, INV-64]. Each saved answer is a feedback item; the capture law already names its home, the archive and its harvested row.
-- **A dropped file** — a screenshot, a log, or a document. It comes straight from the human in the conversation, or from any outside session through the host's inbox door. Each one arrives as one new file, under the same naming and collision law that wishes use [E-11], and the host's own sessions sweep it in [T-10]. If a file arrives with no words, you ask one plain question about what it means; the ledger never records a guess.
+- **A dropped file** — a screenshot, a log, or a document. It comes straight from the human in the conversation, or from any outside session through the host's inbox door. Each one arrives as one new file, under the same naming and collision law that wishes use [E-11], and the host's own sessions sweep it in [T-10]. If a file arrives with no words, the session asks one plain question about what it means; the ledger never records a guess.
 
 ### The five routes
 
@@ -362,7 +362,7 @@ feedback-intake stays quiet in three cases:
 - a question the agent asked;
 - something the human merely mentions without handing it in.
 
-When you are unsure whether a remark was handed in, ask one plain question. feedback-intake never opens a queue row on its own judgment; the wish door owns that verdict. [T-20]
+When unsure whether a remark was handed in, ask one plain question. feedback-intake never opens a queue row on its own judgment; the wish door owns that verdict. [T-20]
 
 The section's edges, stated once.
 
@@ -392,7 +392,7 @@ The section's edges, stated once.
 - No automatic reading, scoring, or aggregation of the ledger; the reading machinery stays [target].
 - No new door mechanics; the inbox is reused as it stands.
 
-**Success measure.** You never have to hand in the same item twice. Every received item is findable in the ledger, with its route, in the same session [default].
+**Success measure.** The same item never has to be handed in twice. Every received item is findable in the ledger, with its route, in the same session [default].
 ## Asking what the product does (the feature map on demand)
 
 Three standing questions describe the product. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. Those two questions are answered on their own surfaces. This ask answers the third — what the product does today — with one answer containing the whole product map, current as of the request, on demand.
@@ -431,7 +431,7 @@ the bug takes the lane, and once no bug is waiting, the feature returns as the v
 finish.
 
 **Precondition:** a feature is in work when the bug report arrives (with nothing in work, the bug
-simply takes the lane).
+takes the lane).
 
 **Acceptance criteria:**
 1. A bug report arriving mid-feature moves the feature to **parked**, with a checkpoint written first:
@@ -450,7 +450,7 @@ original order; no red work was committed anywhere.
 
 ## When the workshop itself misbehaves (the problem ledger)
 
-Some noise comes from the workshop itself: the test harness flakes, a dependency goes missing, the shell eats a command, a tool times out. You retry and move on — but the same noise then eats the same minutes, session after session.
+Some noise comes from the workshop itself: the test harness flakes, a dependency goes missing, the shell eats a command, a tool times out. The session retries and moves on — but the same noise then eats the same minutes, session after session.
 
 **The problem ledger** is the host's dynamic list of this operational noise. It lives in one git-tracked file, `.live-spec/PROBLEMS.md` (the template ships in the pack). Within `.live-spec/`, only the checkpoints stay ignored [E-8]. The ledger is born on its first entry.
 
@@ -463,7 +463,7 @@ An entry is a **signature**: a short, greppable plain phrase, such as "element n
 
 ### The ledger walk
 
-The moment noise fires mid-work, grep the ledger for the signature. What you find decides the next move.
+The moment noise fires mid-work, grep the ledger for the signature. What the grep returns decides the next move.
 
 - **Not listed:** write one WATCHED line — signature, date, one line of context — then keep working. This write replaces the silent retry. It never takes the lane. A defect of the product is a bug; it goes to the bug lane instead [T-9].
 - **Listed (second occurrence):** it gets an owner right then: a queue row (someone will solve it) or a dated agreed non-problem in the human's own word. That verdict belongs to the human alone [INV-9]. Write the recommended owner right away, and let the ask ride the batched report [INV-4, E-22]. The lane never stalls on it.
@@ -515,7 +515,7 @@ Non-goals:
 Borrowing follows one practice: invoke a found skill as it ships. Paraphrase a lesson into our own documents and credit its source by name. Verbatim text travels only under its license, with the notice kept. Unlicensed text is never republished [INV-65].
 ## A prototype stays a sketch
 
-Exploring an idea before you commit to it is allowed — sometimes you sketch a room before building the house. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. Fenced off means the code sits apart, and nothing in the product reaches into it.
+Exploring an idea before committing to it is allowed — a room is sometimes sketched before the house is built. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. Fenced off means the code sits apart, and nothing in the product reaches into it.
 
 Every artifact a prototype produces carries the PROTOTYPE label, in whatever form its kind can show:
 
@@ -526,9 +526,9 @@ Every artifact a prototype produces carries the PROTOTYPE label, in whatever for
 
 **Is it a feature or just a sketch?** The boundary sits at the door step — the point where a request becomes a product feature.
 
-- A wish to HAVE something in the product is a feature. [INV-16]
-- A request to merely SEE or TRY something, with no commitment, may live as a sketch inside the fence — no lane (no path through the build pipeline) and no spec.
-- When you cannot tell which was meant, ask one plain question; do not guess.
+- A wish to have something in the product is a feature. [INV-16]
+- A request to merely see or try something, with no commitment, may live as a sketch inside the fence — no lane (no path through the build pipeline) and no spec.
+- When which was meant is unclear, ask one plain question; do not guess.
 
 Opening a prototype home is a repo write like any other:
 
@@ -548,7 +548,7 @@ Promotion enters the sketch's earned feature at the spec step, without merging i
 
 The machine enforces the fence with a guardrails check that has three legs:
 
-- **Live today** (for the pack repo): a prod file that references anything inside a prototype home turns RED. [E-6]
+- **Live today** (for the pack repo): a prod file that references anything inside a prototype home turns red. [E-6]
 - **Still a target**: the surface registry's completeness scan. [E-10]
 - **Still a target**: the behaviour-traces-to-spec check. [target, E-6]
 
@@ -562,7 +562,7 @@ Once the human approves a sketch as the look, that prototype becomes the **norm*
 
 1. **The clause cites its artifact.** A `norm: <path>` pointer sits at the clause's line end, beside its anchors. The prose carries the laws; the artifact keeps the look. spec-author owns the pointer's format.
 2. **Approval freezes the artifact** into the project's records. A copy lands in `docs/norms/` with a dated provenance line — what it is, when it was approved, and which sketch it came from. The pointer cites this frozen copy. A norm pointer never reaches into a live prototype home, so the one-way fence stays absolute and the sketch stays free to die. [E-17, INV-17]
-3. **The build reads the artifact.** When you build a surface whose clauses carry a norm pointer, open the artifact before the code step. The landing report records a one-line plan-vs-prototype diff — a missing line is a defect, caught at build-pipeline's code step. The verify step's feel bar reads the same pointer. [INV-30]
+3. **The build reads the artifact.** When building a surface whose clauses carry a norm pointer, open the artifact before the code step. The landing report records a one-line plan-vs-prototype diff — a missing line is a defect, caught at build-pipeline's code step. The verify step's feel bar reads the same pointer. [INV-30]
 4. **The prover reads visual clauses with the norm lens.** It flags a prototype-born clause with no pointer, or a clause contradicting its own artifact. Both belong to the "wordless door ≠ no question" class.
 
 A story can declare that the human must see a mockup before the build starts — "show me first, then build." Write this in the wish's queue row at intake as "entry: mockup-first." Only the human cancels it, by naming it; a general "go build" moves priority but never cancels that condition, which the door step holds.
@@ -587,7 +587,7 @@ The scaffold is the minimal runnable suite, and it defines what "green" means fo
 
 That green is a floor, not a ceiling — landing #1 ships its own first real test beside the scaffold, and traceability checks grow from there.
 
-Offer hooks at bootstrap the same way you do at adoption [E-6]: never impose them, plain words first. Then the first wish enters the queue, and the pipeline runs from intake [B-1].
+Offer hooks at bootstrap the same way as at adoption [E-6]: never impose them, plain words first. Then the first wish enters the queue, and the pipeline runs from intake [B-1].
 
 This is an always-rule: never land into an unversioned host. Version control has to exist, and a remote either exists or is explicitly declined — recorded, not just recommended — before the first landing [INV-8].
 
@@ -637,7 +637,7 @@ recorded and skipped until its machine ships, and the journal records the deferr
 1. **Orient — read everything first.** Adoption never assumes a blank slate.
    - Read every existing document before touching anything: README, any roadmap, any spec, any
      test suite, journals, TODO files, any wikis in the repo.
-   - Answer the project's founding questions about what you find — personal-vs-reusable comes
+   - Answer the project's founding questions about what is found — personal-vs-reusable comes
      first, per the rule at the bootstrap [B-2] [A-1].
 
 2. **Inventory.** List the code, the user-facing surfaces, and the document set from the orient
@@ -679,7 +679,7 @@ recorded and skipped until its machine ships, and the journal records the deferr
      taken, append a numeric ordinal — `-2`, `-3`. This is the pack's one collision law, stated
      once in the base skill (rule 18) [E-9].
    - Flat-with-manifest versus dated subfolders stays an open decision [D-1] [A-4].
-   - One exception passes only through a gate: adoption may OFFER a cruft sweep — clearly
+   - One exception passes only through a gate: adoption may offer a cruft sweep — clearly
      regenerable junk (caches, build leftovers, already-gitignored files) — listing file counts
      and sizes, and delete only on the human's explicit OK, never silently. Authored content
      never qualifies; it always goes through the attic [A-9].
@@ -749,11 +749,11 @@ measure: the day a newer pack ships, the next session on another machine propose
 </content>
 ## One rulebook behind the skills
 
-Open any skill in the pack and the same working rules greet you. Until now each skill carried its own near-copy of them. Copies drift, and the pack's own sweep proved it twice: the anchor convention was told two ways across skills, and the concurrent-edit fence appeared only in the adoption text, though every skill that writes shared files needs it.
+Open any skill in the pack and the same working rules greet the reader. Until now each skill carried its own near-copy of them. Copies drift, and the pack's own sweep proved it twice: the anchor convention was told two ways across skills, and the concurrent-edit fence appeared only in the adoption text, though every skill that writes shared files needs it.
 
 The five rules every skill works by are these:
 
-- **Ask, never guess** — when a fact is missing, you ask for it.
+- **Ask, never guess** — when a fact is missing, ask for it.
 - **Plain words, with the code trailing quietly** at the end of the clause it anchors.
 - **One surface, one name** — a thing is called the same everywhere it appears.
 - **One canonical home per fact** — each fact is stated in a single place.
@@ -763,7 +763,7 @@ The five rules every skill works by are these:
 
 Every working skill opens with one line. That line names the base skill and the base version the skill was written against. This version pin is swept in the same session that bumps the base, so it never goes stale. After that line, the skill references the shared rules instead of restating them.
 
-A working skill elaborates only its own domain. The communicator skill, for example, teaches you how to speak plainly. The rule that we speak plainly at all belongs to the base. A skill used standalone, outside the pack, still stands on its own: the opening line reads as plain advice, and nothing in the skill's own domain needs the base to be installed [E-12].
+A working skill elaborates only its own domain. The communicator skill, for example, teaches how to speak plainly. The rule that we speak plainly at all belongs to the base. A skill used standalone, outside the pack, still stands on its own: the opening line reads as plain advice, and nothing in the skill's own domain needs the base to be installed [E-12].
 
 As the pack evolves, one thing stays true. **A shared rule has exactly one normative home, the base skill. A second full statement of it inside a working skill is drift, a defect to fold back.** The compaction pass prunes restatements older than the base at milestones, one skill at a time, so no single risky rewrite is needed [M-1]. [INV-13]
 
@@ -900,9 +900,9 @@ The spec says what the product is. Tests prove facts about the shipped artifact.
 
 - Each node carries one responsibility and one name — the one-surface-one-name rule, applied to structure.
 - Every spec fact belongs to exactly one node.
-- In a live codebase, every node pins to its owning place. The named thing is the pin: a function, a marker comment, a selector, a heading. The `:line` beside it is a convenience cache and can lag, so you resolve the name and a drift check re-greps it. Skip that and pins rot silently — a wrong-with-confidence pin is worse than none.
+- In a live codebase, every node pins to its owning place. The named thing is the pin: a function, a marker comment, a selector, a heading. The `:line` beside it is a convenience cache and can lag, so the name is resolved and a drift check re-greps it. Skip that and pins rot silently — a wrong-with-confidence pin is worse than none.
 
-Drafting the architecture is where you reconcile spec claims against shipped reality. Every pin comes from a command you ran, never from the doc's own prose. You write it from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, you prove it before anything derives from it — a product-prover pass with the architecture lens. That lens checks three things:
+Drafting the architecture is where spec claims are reconciled against shipped reality. Every pin comes from a command that was run, never from the doc's own prose. It is written from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, proved before anything derives from it — a product-prover pass with the architecture lens. That lens checks three things:
 
 - every spec fact has an owning node;
 - no node stands without spec backing;
@@ -910,7 +910,7 @@ Drafting the architecture is where you reconcile spec claims against shipped rea
 
 Keeping the doc up to date:
 
-- A large or surface-class wish updates the doc before you touch the matrix. A bug or small wish just cites the node it lands in.
+- A large or surface-class wish updates the doc before the matrix is touched. A bug or small wish just cites the node it lands in.
 - A fact with no owner yet gets assigned to the nearest fitting node, recorded in the doc. Assignment alone triggers no re-prove, so the fix still lands.
 - Re-prove only when the structure changes, not on every landing.
 - The doc stays iterative: it maps the product as it stands, plus the landing in flight. A node exists for what ships today, or for what the spec already promises under an owned row (marked [target], pin empty). Never design it milestones ahead — a speculative node is unbacked structure. Re-carving the whole map is legal: it arrives as its own row under a restructure placement [INV-37], walks this step, and gets re-proven [E-14].
@@ -925,7 +925,7 @@ Keeping the doc up to date:
 
 Where a quality has no honest number, say so by name instead of inventing a vanity metric. A budget counts only once a matrix row at the right level can see it — a hope in prose does not. A surface with no budget and no instrumentation home is a derivation defect, flagged like an unowned fact. The numbers are the host's taste: the architecture proposes them with a recommendation, and the human's word sets them at the surface's first budget landing. Like the two layers themselves [INV-15], this duty binds from the first landing that touches the surface after the clause exists, never retroactively [INV-41].
 
-**The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact**, not a bucket of rows: every fact gets at least one row, and every row pins a test level. Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and you walk it:
+**The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact**, not a bucket of rows: every fact gets at least one row, and every row pins a test level. Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and it is walked:
 
 - every spec anchor appears in ≥ 1 row;
 - every artifact-inventory entry owns ≥ 1 rendered-level row;
@@ -935,7 +935,7 @@ Where a quality has no honest number, say so by name instead of inventing a vani
 
 A fact with no row, or a row at too weak a level, is a derivation defect. The prover catches it at derivation time, before any user hits it [E-15].
 
-While both layers live, one rule holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** You walk the bridge from spec to tests layer by layer, never jump it. A project that predates these layers brings them up as an owned landing, and the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively [INV-15].
+While both layers live, one rule holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** The bridge from spec to tests is walked layer by layer, never jumped. A project that predates these layers brings them up as an owned landing, and the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively [INV-15].
 ## The machines that hold the bounds
 
 What keeps "it works" honest — each one a named machine:
