@@ -47,36 +47,16 @@ Naming's first three rules (echo / status board / feature-map placement), "Showi
 decisions", "Doors, kinds, and craft", "Asking what the product does" (committed 3665f7b, night pass). Gold
 exemplars = the decision-page list + intake.
 
-NIGHT-PASS METHOD (kept): hard machine criterion = spec-style-lint 0 ERRORS. Warnings (second-person, CAPS)
-are advisory and often collide with exact-phrase test needles, so a section whose needles collide got its
-ERRORS cleared surgically and its full register conversion PARKED; a section with no collision got the full
-clean-agent conversion.
+NOTE: the earlier section-by-section "park the needle-colliding sections" plan is SUPERSEDED by stage 5's
+whole-doc rewrite — one clean pass converts every section at once, and the new done-gate (with anchor-multiset
++ needle-register-clean checks) proves nothing was lost. His two goals stand: (1) human-clear, easy to read,
+all info present; (2) it also helps the agent build next steps. SPEC prior state: lint 4 errors / 317 warns,
+all defects to be removed by the rewrite except the 2 Formal-index errors he chose to leave. Before ANY push:
+prover pass + commit its record (SPEC M-6); TestGateA_ProverRecord stays red until then (not a regression).
+Baseline (pushed, clean): pack 0.9.0, main = origin/main HEAD `1cff42b`. All session-28 + gate work is LOCAL.
+Memory: [[spec-prose-clean-agent-plus-linter]], [[prose-quality-gate-must-block-not-park]].
 
-FULL REGISTER CONVERSION PARKED (errors cleared; removing second-person + CAPS needs a supervised needle
-re-point pass on your word): "Specifying and building a feature" (~15 needles incl. facet-sweep headline
-"...you know to ask", FACETS tuple, "VISITOR WALK"/"FEEL pass", "AUTHORS the facet sentences"), "Parallel
-lanes" ("declined BY NAME"/"RETURNED"/"superseded INTO", PEN prose), "Reuse before reinventing", prototype
-promotion, founding-questions, adoption, Human authority, Settings ladder, Delegation and workers, From spec
-to tests, push-gate reach, package repo.
-STILL-ORNATE, NO NEEDLE COLLISION (full conversion whenever picked up): rest of "Naming" (INV-28/34/35),
-"Sending feedback in", "When a bug cuts the line", "One rulebook", "The rhythm", "When money/time run short",
-"Publishing", "Composing across axes", "Open decisions".
-THEN: same pipeline on ARCHITECTURE.md prose (already 0 errors / 14 warns; tables untouched); then a cross-project migration guide, sealed
-into spec-author + the playbook (his word: this is now for ALL projects).
-
-His two goals: (1) human-clear + easy to read + all info present; (2) it also helps the agent build next steps
-and communicate better. Do all prose work in a FRESH session (the sealed method) — a loaded session drifts.
-
-TESTS: suite 183 green; the ONLY red is `TestGateA_ProverRecord` — the WIP savepoint changed SPEC.md but
-committed no prover record after it. That is a push-gate reminder, NOT a regression. Before any PUSH: run the
-prover pass and commit its record (SPEC M-6). New this session: `scripts/spec-style-lint.py` + its tests
-(TestSpecStyleLint), rules R13/R14 + the mechanical-gate + clean-agent method in docs/spec-style.md.
-
-Baseline / WAY BACK (pushed, clean): pack 0.9.0, main=origin/main HEAD `1cff42b`. Session-28 work is LOCAL
-(uncommitted or WIP savepoint) — SPEC.md, tests/test_traceability.py, tests/test_guardrails.py,
-scripts/spec-style-lint.py, docs/spec-style.md. Memory: [[spec-prose-clean-agent-plus-linter]].
-
-SAFE TO WIPE MEMORY here (resume cold from this block + docs/spec-style.md).
+SAFE TO WIPE MEMORY here (resume cold from this block + docs/prose-quality-gate-design.md + docs/spec-style.md).
 
 ## LIVE STATE (2026-07-08, session 26) — humanize + 0.9.0 milestone + three new laws LANDED AND PUSHED.
 Versions: pack 0.9.0 (pushed) · base 0.1.24 · communicator 0.1.39 · build-pipeline 0.2.40 · SPEC v0.15.61;
