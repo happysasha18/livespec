@@ -76,6 +76,11 @@ two:
 
 This generalizes: any project re-styling its spec runs the same split. It belongs in spec-author.
 
+**The register comes from this document, never mirrored from the human's tone.** A human writing loosely,
+playfully, or in a hurry does not license loose or playful spec prose. The target register is fixed here; the
+writer holds it regardless of how the request was phrased. (This is also why the prose writer is a fresh agent
+that never sees the human's chat: it cannot mirror a voice it was never shown.)
+
 ## Exemplar — one real section in the target register
 
 Source register was the warm "colleague" voice; this is the same section, same anchors, in Flavor A:
