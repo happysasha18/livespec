@@ -128,3 +128,19 @@ general rule (2026-07-08). Small delta, no new node/seam (assigned to build-pipe
   grants and can withdraw [INV-9], resolving the same way live-spec's own push gate already does [M-6] — no
   contradiction with INV-9's "human owns the push gate" (the grant is the human's word). Verdict: clean,
   red-first test `test_parameter_default` (M-176) proven red on the missing skill elaboration then green.
+
+---
+
+## Short-form addendum — INV-28 pre-show lint arm (row 170, INV-61 small-delta form)
+
+A prose-only delta: INV-28 gained a sentence naming its mechanical PRE-SHOW arm (`scripts/preshow-lint.py`),
+its Formal-index line updated to match, plus the communicator pre-report walk's step 3 and matrix M-177.
+
+- **Previous records clean** — this delta adds the mechanical arm of an EXISTING law (INV-28), no new
+  invariant; it touches the INV-28 clause, its index line, communicator, and the matrix.
+- **The delta** — the lint reads a human-facing artifact's prose and flags a line that OPENS with an
+  internal handle (spec code / row / session number) before showing; a warning to clear, never a silent
+  rewrite; scans the shown surface only, so the spec's own trailing anchors stay legal.
+- **Verdict** — clean, and same shape as INV-24's clock hook (a mechanical arm enforcing a stated chat law,
+  the skill staying the law's home). Red-first proven: `test_leading_handle_goes_red` flags real leaks,
+  `test_outcome_led_and_trailing_anchor_pass` keeps clean text green. Stays LOCAL to INV-28.
