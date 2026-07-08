@@ -628,3 +628,62 @@ class TestPreShowLint(unittest.TestCase):
             r = self._lint(good)
             self.assertEqual(r.returncode, 0,
                              "outcome-led / trailing-anchor text must pass: %r\n%s" % (good, r.stdout))
+
+
+class TestSpecStyleLint(unittest.TestCase):
+    """The mechanical arm of the SPEC prose register (docs/spec-style.md): the durable fix for the
+    hand-rewrite drift that kept re-styling the spec into an ugly voice. It flags the register tells
+    a reader caught late — a rule that defines by exclusion ('X does not become Y') before saying
+    what it is, machine jargon, ALL-CAPS shout, the «X — not Y» scissors — so a section is driven to
+    clean against a machine at any length, not against a human's patience."""
+
+    SCRIPT = os.path.join(ROOT, "scripts", "spec-style-lint.py")
+
+    def _lint(self, text):
+        return subprocess.run(["python3", self.SCRIPT, "-"], input=text,
+                              capture_output=True, text=True)
+
+    def test_register_tells_go_red(self):
+        cases = [
+            ("Several open picks do not become a serialized questionnaire.", "negation-opener"),
+            ("The map is not a separate document.", "negation-opener"),
+            ("A wish carries a serialized questionnaire of open picks.", "machine-jargon"),
+            ("The card shows the outcome — not the mechanism.", "scissors"),
+        ]
+        for text, code in cases:
+            r = self._lint(text)
+            self.assertEqual(r.returncode, 1, "should flag %s: %r\n%s" % (code, text, r.stdout))
+            self.assertIn(code, r.stdout, "expected %s for %r\n%s" % (code, text, r.stdout))
+
+    def test_legit_register_passes_clean(self):
+        # a PROHIBITION ("does not ask" / "never re-carves") is correct register (R4), not a tell;
+        # a noun-negative ("no design decision inside") and a fronted condition are fine too.
+        for good in ("The walk does not ask how long a wish will take.",
+                     "A restructure verdict never re-carves in passing.",
+                     "Quick win: low effort, immediate value, no design decision inside.",
+                     "When the classifier cannot call a size, it asks the human at intake.",
+                     "Each question is a card, the recommended answer marked, with room to write a different one."):
+            r = self._lint(good)
+            self.assertEqual(r.returncode, 0,
+                             "correct-register prose must pass clean: %r\n%s" % (good, r.stdout))
+
+    def test_soft_signals_warn_but_do_not_fail(self):
+        # caps-shout and second-person are advisory: printed, but exit 0 (they do not block a gate
+        # the way an ERROR does — the whole un-converted spec still carries them).
+        r = self._lint("You open the page and it CHANGES the queue.")
+        self.assertEqual(r.returncode, 0, "warn-only text must exit 0\n%s" % r.stdout)
+        self.assertIn("second-person", r.stdout)
+        self.assertIn("caps-shout", r.stdout)
+
+    def test_converted_intake_section_is_clean(self):
+        # the calibration section, converted this session, is the standing gold: it must stay clean
+        # of register ERRORS, so a regression in the linter OR in the section trips here.
+        with open(os.path.join(ROOT, "SPEC.md"), encoding="utf-8") as f:
+            spec = f.read()
+        lines = spec.splitlines()
+        start = next(i for i, l in enumerate(lines) if l.startswith("### Intake:"))
+        end = next(i for i in range(start + 1, len(lines)) if lines[i].startswith("### "))
+        section = "\n".join(lines[start:end])
+        r = self._lint(section)
+        self.assertEqual(r.returncode, 0,
+                         "the converted intake section must stay register-clean:\n%s" % r.stdout)

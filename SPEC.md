@@ -21,97 +21,83 @@ red if that row ships with the tag still on, vanishes, or was never named. [S-0]
 
 ## What live-spec is
 
-Throw in whatever you want: any wish, any size, any moment. live-spec cuts it into small pieces and puts
-them on a conveyor. Each piece runs the same proven pipeline, comes to a landing, and ships tested. You
-stay free to think.
+The user submits any request, of any size, at any time. live-spec breaks it into small pieces and processes them one at a time. Each piece runs the same proven pipeline, reaches a landing, and ships tested. The user is free to keep thinking about other things.
 
-Behind the conveyor sits a whole software house. An analyst writes the spec. An architect stress-tests the
-design and hunts the edge cases and dead ends before anyone writes code. A QA works out the tests and
-writes them. A project manager runs the line and reports back to you. These roles are real: they're the
-working skills (spec-author, product-prover, build-pipeline, test-author, communicator, publish,
-feedback-intake). One **base skill** holds the shared rulebook and the default settings the others work by
-[E-12].
+Behind the pipeline is a full set of roles:
+- An analyst writes the spec.
+- An architect stress-tests the design and finds the edge cases and dead ends before any code is written.
+- A QA works out the tests and writes them.
+- A project manager runs the process and reports back to the user.
 
-It stays disciplined because machines hold the line at every step. Every wish takes the same route. Every
-claim earns a test, and nothing ships until that test passes. The guardrails never sleep. The pipeline
-drives each wish all the way to a landing and keeps it from sprawling. It pulls you in for the decisions
-that are yours to make.
+These roles are real: they are the working skills (spec-author, product-prover, build-pipeline, test-author, communicator, publish, feedback-intake). One **base skill** holds the shared rulebook and the default settings the other skills work by [E-12].
 
-A project can adopt live-spec at the start, or halfway through work already under way. It brings the
-document templates, a procedure for joining midstream, and the guardrails the project installs. The project
-that adopts it is the **host**. The host owns everything about its own work: its spec, matrix, queue,
-journal, surface registry, inbox, feedback ledger, and a `.live-spec/` folder that holds its profile, its
-checkpoints, and the versions of the skills it runs. [E-1]
+Machines enforce the process at every step, which keeps it disciplined. Every request follows the same route. Every claim earns a test, and nothing ships until that test passes. The guardrails run on every step. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
+
+A project can adopt live-spec at the start or partway through work already under way. Adoption brings the document templates, a procedure for joining midstream, and the guardrails the project installs. The project that adopts it is the **host**. The host owns everything about its own work: its spec, matrix, queue, journal, surface registry, inbox, feedback ledger, and a `.live-spec/` folder that holds its profile, its checkpoints, and the versions of the skills it runs. [E-1]
 
 ## Throwing a wish
 
-You're busy with something else when you say "and let the card also show…," then go back to your thought. That's a **wish**: one request, in plain words, any size, at any moment. [E-2]
+The user is busy with something else and says "and let the card also show…," then returns to their thought. That is a **wish**: one request, in plain words, any size, at any moment. [E-2]
 
 Within that same minute, the wish becomes a row in the **queue (ROADMAP.md)**, the persistent, ordered home of every wish. Each row holds these fields:
-- your words
-- class: size, plus priority when it isn't normal
+- the user's words
+- class: size, plus priority when it is not normal
 - status
 - acceptance criterion [E-3]
 
-When you speak a wish, its row exists before anything else happens. It survives even if the session dies the next second. Rows are never deleted. You close a row only with a named exit. At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive. It stays there, never edited, never lost. A **deferred** row is not terminal: it stays in the active queue, carrying its revisit trigger, until the trigger fires or it resolves to a terminal exit. The archive never swallows a wish still due back. No wish is ever lost. [INV-1]
+When the user speaks a wish, its row exists before anything else happens. It survives even if the session dies the next second. Rows are never deleted. A row closes only with a named exit. At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive, where it stays, never edited, never lost. A **deferred** row is not terminal: it stays in the active queue, carrying its revisit trigger, until the trigger fires or it resolves to a terminal exit. The archive holds only wishes no longer due back. No wish is ever lost. [INV-1]
 
-From its row, the wish walks one path:
-- The classifier reads its size, priority, door, and work-kind, then states them back to you in one INTAKE line (the paragraphs below explain each).
-- A spec-delta is drafted.
-- The delta gets validated against the whole spec. Only genuinely human questions go out to you, batched. Everything else proceeds on the recommended option, marked in the row.
-- The wish is queued, then goes in-work.
-- It lands when the suite is green, guardrails pass, the commit goes in, and the row closes with its acceptance met.
-- The pipeline reports to you in one plain-language LANDING line: position on the map, what landed, what remains. [T-1..T-7]
+From its row, the wish follows one path:
+1. The classifier reads its size, priority, door, and work-kind, then states them back to the user in one intake line (the paragraphs below explain each).
+2. A spec-delta is drafted.
+3. The delta is validated against the whole spec. Only genuinely human questions go to the user, batched. Everything else proceeds on the recommended option, marked in the row.
+4. The wish is queued, then goes in-work.
+5. It lands when the suite is green, guardrails pass, the commit goes in, and the row closes with its acceptance met.
+6. The pipeline reports to the user in one plain-language landing line: position on the map, what landed, what remains. [T-1..T-7]
 
 ### Intake: classifying and shaping a wish
 
-**How batched questions reach you.** Several open picks never turn into a serialized chat questionnaire. Instead:
-- They render as ONE interactive decision page: one card per question, the recommendation named, and room for a free-form answer on every card. The page opens in its own window while the lane keeps moving [INV-4].
-- The pipeline reads the answered file back, archives it in the project's `docs/decisions/`, and harvests every answer into its queue row the same session. An answer left un-harvested is a decision lost.
-- An answer is the human's word, not just his click: if he picks an option and then disavows it in plain speech, the pick is withdrawn. The pipeline records it as answered-then-withdrawn, and the pick re-opens with a plainer explanation before anyone asks it again. An uninformed pick never settles a verdict that needs his word [INV-9].
-- The page's mechanics — the filename law, the ordinals, the JSON round-trip — live once, in the communicator skill's rule 10 [INV-13].
+**Several open questions arrive on one decision page.** Several questions waiting on a decision arrive together on one page instead of one at a time in chat.
+- The page opens in its own window; the rest of the work carries on while it waits [INV-4].
+- Each question is a card — the recommended answer marked, with room to write a different one.
+- Once the page comes back answered, the pipeline files it in the project's `docs/decisions/` and folds every answer into its queue row the same session. An answer left unread is a decision lost.
+- The person's word settles it, not the click: an option picked and then taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. A pick made without understanding settles nothing that needs the person's considered word [INV-9].
+- How the page works — the filename, the ordering, the round-trip — is written down once, in the communicator skill's rule 10 [INV-13].
 
 [E-22]
 
-**A decision card asks in consequences, not mechanisms.** Every card on a decision page opens with what each option CHANGES for the person — what it gives them, or what problem it removes — in the product's own words.
-- The mechanism follows only if it helps.
-- Each option is labelled by its consequence, never its implementation.
-- A card whose question can't be answered without understanding the mechanism is a defect of the card [INV-28 kin].
+**A decision card asks in consequences, not mechanisms.** A decision card opens with what each option changes for the person: what it gives them, or what problem it removes, in the product's own words. The mechanism follows only where it aids the choice. Each option is labelled by its consequence, never by its implementation. A card that cannot be answered without understanding the mechanism is a defect of the card [INV-28 kin]. [INV-32]
 
-[INV-32]
+**A wish is classified by size, priority, and work-kind.** Size uses one four-word vocabulary everywhere: bug, small, surface, large. The queue's class column uses the same four words and no second size scale. The door is a separate axis — where the wish enters the pipeline, not how large it is.
 
-**How a wish is classified.** Size uses one four-word vocabulary everywhere: **bug / small / surface / large**. The queue's class column speaks the same four words, never a second size scale. The door (below) is a different axis: where the wish enters the pipeline, not how big it is.
-
-Priority is **normal** unless the row says otherwise, with two marks:
+Priority is normal unless the row states otherwise, with two marks:
 - **Critical** — the shipped product is broken for its user: an unusable surface, lost data, or a violated safety gate.
 - **Quick win** — low effort, immediate value, no design decision inside.
 
-When the classifier can't call a size, a priority, or a work-kind [T-16], it asks you at intake and never guesses. Until you answer, the wish carries normal — a kind here is the host's recorded default, else none, and a kind not yet named scales nothing down [INV-22] — and the open question rides in the row while the lane keeps moving [INV-4]. [INV-12]
+When the classifier cannot call a size, a priority, or a work-kind [T-16], it asks the human at intake and does not guess. Until the human answers, the wish carries normal priority; its kind is the host's recorded default, or none; a kind not yet named scales nothing down [INV-22]. The open question stays in the row while the lane keeps moving [INV-4]. [INV-12]
 
-**A big wish negotiates scope, never time.** Nobody here asks "how long will it take," and an answer in hours or days is not an input the walk accepts — a time estimate from a builder is a guess dressed as a number. When a wish looks bigger than it's worth, the walk answers in scope terms and proposes one of two moves:
+**A large wish negotiates scope, never time.** The walk does not ask how long a wish will take, and does not accept an estimate in hours or days as an input. When a wish is larger than its worth, the walk answers in scope terms and proposes one of two moves:
 - **cut the scope** — fewer surfaces in, plainer defaults on what stays;
-- **split into stages** — each stage lands through the full pipeline on its own (the "large" size already decomposes this way [INV-12]).
+- **split into stages** — each stage lands through the full pipeline on its own (the large size decomposes this way [INV-12]).
 
-The proposal proceeds on the recommended option; the lane never parks on it [INV-4]. Every cut rides the same batched report as every taken default [INV-18], never silent [INV-5], and if you want it back later, that's simply a new wish. A scope cut bends scope only, never order — it's not a quick-win mark, and only priority moves the lane [T-11]. No cut may ever touch the delta's mandatory sentences: the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope dials richness; it never touches the safety net. [T-15]
+The proposal proceeds on the recommended option; the lane does not park on it [INV-4]. Every cut appears in the same batched report as every taken default [INV-18], and is never silent [INV-5]. A cut surface returned later is a new wish. A scope cut changes scope only, never order: it is not a quick-win mark, and only priority moves the lane [T-11]. No cut touches the delta's mandatory sentences — the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope adjusts richness; it does not touch the mandatory sentences. [T-15]
 
-**One wish = one user story; a row closes only whole.** At intake, a wish carrying several user stories — several distinct things a person will do and see — gets split, each story its own row through the full pipeline. This is kin to a stage split, but a different knife: stages slice one story's depth [T-15], while separate stories never get fused into one row to begin with. Sub-behaviours of one story — its hover face, its phone face, a backpointer — count as that story's acceptance, not new stories. You ask at intake whether something is one story or two; you never guess [INV-12]. A split loses nothing: every row born from it cites the one spoken wish it came from [INV-1]. [T-17]
+**One wish is one user story; a row closes only whole.** A wish carrying several user stories — several distinct things a person will do and see — is split at intake, each story its own row through the full pipeline. This differs from a stage split: a stage slices one story's depth [T-15], while separate stories are never fused into one row. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, not new stories. The classifier asks the human at intake whether a wish is one story or two, and does not guess [INV-12]. A split loses nothing: every row it produces cites the one spoken wish it came from [INV-1]. [T-17]
 
-Where a row still carries several legs — a legacy fusion or a harvested batch — its Done-when enumerates per-leg acceptance, and the row can't close with an unmet leg. Half-done is a status, never a landing. The resume file's LIVE-STATE supersession never compresses an unfinished leg out of existence: a leg still open at compaction gets restated, not summarized away [M-2]. [INV-26]
+**A multi-leg row enumerates per-leg acceptance.** Where a row still carries several legs — a legacy fusion or a harvested batch — its Done-when enumerates per-leg acceptance, and the row does not close with an unmet leg. Half-done is a status, never a landing. The resume file's LIVE-STATE supersession does not compress an unfinished leg out of existence: a leg still open at compaction is restated, not summarized away [M-2]. [INV-26]
 
 ### Naming and reporting the work
 
-**A wish hears itself land, and progress reads like a departures board.** Without an echo, you can't know a tossed-off wish survived. So the intake line isn't only written into the queue — the project speaks it back. One plain sentence says what was heard, the door called, the name the work will answer to, and its row number: caught this request, it's a feature, we'll call it X, row N. A wish that arrives silently, as an inbox file or a harvest, gets its echo in the next report instead, never as an interruption.
+**The system speaks every captured wish back to the user.** When the system captures a wish, it immediately speaks the wish back (an "echo"), so the user knows the request was received and recorded. The echo is one plain sentence that states four things: what was heard, which door the wish entered, the name the work will go by, and its row number — for example, "caught this request; it is a feature; it will be called X; row N". A wish that arrives silently — dropped into an inbox as a file, or pulled from a batch — takes its echo in the next status report rather than as an interruption.
 
-Whenever it reports status, the project names every in-flight feature by that name with its pipeline STATION: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show, plus the terminal landed. Progress then reads like a departures board at a glance, never prose archaeology. The station vocabulary is just the pipeline's own step names, one station per step, all nine. A feature paused at proving the architecture or at commit & show reads under that station's own name, never an improvised one. Landed is a state, not a step — it says the row closed whole.
+**Every status report names each in-flight feature and the pipeline stage it sits at.** Each feature still moving through the pipeline is named in the report, together with the stage it currently occupies. The pipeline has nine steps, in fixed order: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. Each stage name is exactly one of these nine step names, one stage per step. A feature paused at a stage is reported under that stage's name. "landed" is a terminal state — the row closed completely — and is not itself a pipeline step. The echo also states where the wish sits on the product's feature map, specified in the next rule [INV-37]. [INV-27]
 
-The echo carries one more part, the wish's place on the product's map; that law lives in the next paragraph [INV-37]. [INV-27]
+**Every wish is placed on the product's feature map, and the placement is stated by default.** The feature map already lives in the documents the project keeps: the spec's scenario sections and the architecture's nodes together constitute it, so no separate map document exists [E-14]. Each wish's placement is exactly one of three verdicts:
+- **changes an existing feature** — the delta extends that scenario section and names it;
+- **a new feature** — a new scenario section, plus its own node at the architecture stage;
+- **restructure** — the wish fits no existing division cleanly, or fitting it reveals that the modules have outgrown their structure.
 
-**Every wish is also PLACED on the product's map — "this changes feature X", "this is a new feature", or "the shape no longer fits" — and the placement is spoken, out of the box.** The echo above says what the work is: heard, door, name, row. The same breath says where it lands. The map isn't a new document — the spec's scenario sections and the architecture's nodes already are the product's feature map [E-14]. This law just makes that until-now implicit mapping spoken. Three verdicts exist:
-- **changes an existing feature** — the delta grows that scenario and names it.
-- **a new feature** — a new scenario section, and at the architecture step its own node.
-- **restructure** — the wish fits no existing carving cleanly, or fitting it in shows the modules have outgrown their shape.
-
-A restructure verdict never re-carves in passing. It queues its own row — the refactor door when only structure moves, the feature door when behaviour moves with it — and the re-carve walks the architecture step with its re-prove [E-14]. The placement may say the shape no longer fits, but only a landing can actually change the shape. A bug's placement is the feature it repairs, and if the classifier can't call a wish's feature, it asks like any uncallable axis [INV-12]. The verdict gets written as well as spoken: the wish's queue row carries a `map:` note — changes X, new, or restructure — so placement stays greppable after the echo fades, the way the fences stay greppable in their rows [T-14 kin]. [INV-37]
+A restructure verdict does not re-divide the structure on the spot. It opens its own row — the refactor door when only structure moves, the feature door when behaviour moves with it — and the re-division goes through the architecture stage and its re-proof [E-14]. A placement may report that the structure no longer fits, but only a completed change alters the structure. A bug's placement is the feature it repairs. When the classifier cannot determine a wish's feature, it asks the user, as with any attribute it cannot decide [INV-12]. The verdict is recorded as well as spoken: the wish's row carries a note — changes X, new, or restructure — so the placement stays searchable after the report scrolls away, as the fences stay searchable in their rows [T-14 kin]. [INV-37]
 
 **The outcome does the talking: names are plain, and every handle trails.** Two arms, one law.
 
@@ -145,92 +131,92 @@ Together the trail is the session's time accounting: read top to bottom, it answ
 
 ### Showing work and asking for decisions
 
-**Anything handed to the human opens with its passport.** A page that opens in his browser at midnight has to say two things: which project it belongs to, and whether it wants him. A page that says neither is noise.
-- Put the project's name in the visible content, never only the URL.
-- Say what the page needs from him: "needs your word: what, by when," or "just an update, no action."
+**Anything handed to the human opens with a one-line identifier.** A page that opens in the human's browser at midnight states two things: which project it belongs to, and whether it needs the human's attention. A page that states neither reads as noise.
+- The project's name appears in the visible content, not only in the URL.
+- The page states what it needs from the human: "needs your word: what, by when," or "just an update, no action."
 
-Every artifact you hand or open leads with that one-line passport — a report page, a decision page, a rendered doc, all alike. The chat line announcing the artifact carries the same two facts. Home: communicator (the passport rule). [INV-51]
+Every artifact the agent hands over or opens leads with that one-line identifier, whether it is a report page, a decision page, or a rendered doc. The chat line announcing the artifact carries the same two facts. This rule lives in the communicator skill. [INV-51]
 
-**During an away-stretch, windows accumulate — one opening at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], nothing opens a browser window mid-stretch. Artifacts accumulate on ONE page: the stretch's decisions and report page. The stretch's end opens that single window once. Mid-stretch re-opening is legal only as the SAME page, refreshed in place. Home: communicator (the showing-cadence rule beside the offline window). [INV-52]
+**During an away-stretch, artifacts accumulate and one window opens at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], the agent does not open a browser window mid-stretch. Artifacts accumulate on one page: the stretch's decisions and report page. The end of the stretch opens that single window once. Mid-stretch re-opening is allowed only as the same page, refreshed in place. This rule lives in the communicator skill, beside the offline window, as the showing-cadence rule. [INV-52]
 
-**The showing channel matches the session's seat.** A session seated on the human's machine shows a rendered artifact as a local page in a browser window. A session seated remotely runs in the cloud and gets read through a browser, so it can't open anything local. The same content goes through the remote seat's own channel instead: an artifact page the host renders for the human, or the chat itself. Either way, same passport [INV-51], same round-trip. The session reads its seat from what it can actually reach — the platform, the display, whose filesystem — and names the channel it picked. So handing a local file path to a remote reader is a defect of the exchange, the twin of the window that never opened. The personal profile's show line is the local seat's arm, never the law itself. [INV-67]
+**The showing channel matches where the session runs.** A session running on the human's machine shows a rendered artifact as a local page in a browser window. A session running remotely runs in the cloud and is read through a browser, so it cannot open a local page. The same content goes through the remote session's own channel instead: an artifact page the host renders for the human, or the chat itself. Either channel carries the same identifier [INV-51] and the same round-trip. The session reads where it runs from what it can reach — the platform, the display, and whose filesystem it sees — and names the channel it picked. Handing a local file path to a remote reader is a defect of the exchange, the same failure as a window that never opened. The personal profile's show line applies to the local case; it is one instance of the rule, not the rule itself. [INV-67]
 
-**Where we are now is answerable at any moment, in any seat.** The harness's own task list and activity line are a local-terminal convenience. A remotely-seated session, run in the cloud and read through a browser, never shows them, and even on the local seat they go dark when the work becomes a long run of tool calls — hours pass and the human can't tell what's being worked on. So the live status doesn't live there. It lives in the chat, the one surface present in every seat [INV-67], as a short status kept current:
-- **NOW** — the piece of work in hand and its pipeline station;
-- **NEXT** — what the queue holds next.
+**The current state of the work is answerable at any moment, in any setting.** The harness's own task list and activity line are a convenience of the local terminal. A remotely-running session, read through a browser, never shows them, and even on a local session they go dark when the work becomes a long run of tool calls, so hours pass and the human cannot tell what is being worked on. The live status therefore lives in the chat, the one surface present in every setting [INV-67], as a short status kept current:
+- **Now** — the piece of work in hand and its pipeline stage;
+- **Next** — what the queue holds next.
 
-It refreshes at every station change and carries a heartbeat when a stretch runs long [INV-35], so a glance answers "what are we working on, and what comes next" whenever the human looks. The harness task list, when the seat shows it, is kept in plain product words as a courtesy [INV-28], never the status's home. On a local seat, a rendered status page is an optional richer view of the same NOW/NEXT [INV-67]. This binds for every project the pack runs, not just one host. [INV-71]
+The status refreshes at every stage change and carries a heartbeat when a stretch runs long [INV-35], so a glance answers "what are we working on, and what comes next" whenever the human looks. The harness task list, when the setting shows it, is kept in plain product words as a courtesy [INV-28] and is not the home of the status. On a local session, a rendered status page is an optional richer view of the same Now/Next [INV-67]. This applies to every project the pack runs, not only one host. [INV-71]
 
-**The stretch's end is unmissable.** A report that exists but drowns above tool noise was never delivered. When a stretch ends — a loop iteration going to sleep, an away-stretch closing, a session ending — the LAST rendered thing is one SHORT final line. It carries four fields: what closed, what's next, what's needed from him, and when the agent wakes. The long report lives ABOVE it. The final line comes LAST, after every tool call. A page deliverable repeats its passport [INV-51] in that final line. Delivery, not existence, is the law. Home: communicator. [INV-57]
+**The end of a stretch is delivered so the human cannot miss it.** A report that exists but sits above tool noise counts as undelivered. When a stretch ends — a loop iteration going to sleep, an away-stretch closing, or a session ending — the last rendered thing is one short final line. It carries four fields: what closed, what is next, what is needed from the human, and when the agent wakes. The long report sits above that line. The final line comes last, after every tool call. A page deliverable repeats its identifier [INV-51] in that final line. Delivery, not existence, is the rule. This lives in the communicator skill. [INV-57]
 
-**A review surface shows its sources and takes his pen.** Anything you show for review carries per-claim provenance — a dossier, a claims page, a draft with assertions, all the same. The surface marks each claim by where it came from: read from the artifact, his own recorded word, or the agent's inference. Inferences get flagged LOUDEST. The surface is COMMENTABLE, never a read-only wall. It gives line-by-line room for his word and captures his answers. The decision page's saved-answers law [INV-32] extends to review pages, as one JSON round-trip home. Its home is the communicator, beside the decision page rule. [INV-64]
+**A review surface shows its sources and accepts the human's edits.** Anything the agent shows for review carries per-claim provenance, whether it is a dossier, a claims page, or a draft with assertions. The surface marks each claim by where it came from: read from the artifact, the human's own recorded word, or the agent's inference. Inferences are flagged most prominently. The surface is commentable rather than a read-only wall. It gives line-by-line room for the human's word and captures the human's answers. The decision page's saved-answers rule [INV-32] extends to review pages, as one JSON round-trip back to the project. Its home is the communicator skill, beside the decision page rule. [INV-64]
 
-**His word on a shown artifact is read as meant — and his cuts hold.** The confident-specialist voice core of this lesson lives in the promoter's own voice skill, by his placement word; the pack keeps only the general spine. Two clauses follow.
+**The human's word on a shown artifact is read as meant, and the human's cuts hold.** The confident-specialist voice at the core of this lesson lives in the promoter's own voice skill, by the human's placement decision; the pack keeps only the general structure. Two clauses follow.
 
-First, a phrasing the human KILLED in a review round stays killed in every later draft of that artifact. The writer keeps the kill-list written where the artifact's project keeps its records — its journal, or the artifact's own notes file — never only in session memory. A wipe must not resurrect a cut. A cut word resurfacing two rounds later is a defect, not a fresh idea.
+First, a phrasing the human removed in a review round stays removed in every later draft of that artifact. The writer keeps the removal list written where the artifact's project keeps its records — its journal, or the artifact's own notes file — and not only in session memory. A memory wipe does not restore a cut phrasing. A cut word reappearing two rounds later is a defect, not a fresh idea.
 
-Second, a vivid phrase of his gets adopted only as meant. A human sometimes writes mockery of a bad draft, not guidance — the parody metaphor earnestly baked into copy as if prescribed. So before his colorful phrase shapes the work, the writer reads its intent from context or asks [INV-4], never assumes it's prescriptive.
+Second, a vivid phrase from the human is adopted only as meant. A human sometimes writes mockery of a bad draft rather than guidance, and the parody metaphor can end up baked into copy as if it were prescribed. So before a colorful phrase shapes the work, the writer reads its intent from context or asks [INV-4], rather than assuming it is prescriptive.
 
-The law's home is the communicator. Two of the original wish's bans already live in the pack: no empty drama, the no-disclaimers rule; and no approval-begging, since silence is consent [INV-31]. Both are cross-linked from there, never restated. [INV-42]
+The rule's home is the communicator skill. Two of the original wish's bans already live in the pack: no empty drama, which is the no-disclaimers rule; and no approval-begging, since silence is consent [INV-31]. Both are cross-linked from there and not restated. [INV-42]
 
-**Approved text is frozen — a revision applies only the named correction.** Once the human approves a text, it's settled material. A later revision applies exactly the correction he named — trim what he said to trim, swap what he said to swap — never a fresh rewrite around it. Churn of approved material is a defect, kin of a resurfaced cut [INV-42]. Its home is the communicator, beside the kill-list rule. [INV-58]
+**Approved text is frozen, and a revision applies only the named correction.** Once the human approves a text, it is settled material. A later revision applies exactly the correction the human named — trim what the human said to trim, swap what the human said to swap — and does not rewrite the surrounding text. Churn of approved material is a defect, related to a reappearing cut [INV-42]. Its home is the communicator skill, beside the removal-list rule. [INV-58]
 
-**The kill-list has a mechanical face.** For a host with taste-reviewed artifacts, the pack ships a kill-list template. It holds the human's cuts as dated literals, appended the moment a cut happens, never removed. The pack also ships guardrails guidance for a scanner: a test reads the table and greps the artifact's surfaces, and a killed literal reappearing turns the suite red. The law stays INV-42's; this is its teeth. [E-26]
+**The removal list has a mechanical form.** For a host with taste-reviewed artifacts, the pack ships a removal-list template. It holds the human's cuts as dated literals, appended the moment a cut happens and never removed. The pack also ships guardrails guidance for a scanner: a test reads the table and greps the artifact's surfaces, and a removed literal reappearing turns the suite red. The rule stays INV-42's; this is its enforcement. [E-26]
 
-**No question is asked twice — and dialogues converge.** Before any ask, the agent searches the recorded word — the decision archives, the review records, the journal, the profile. A question a record already answers is a DEFECT, not a question. Exchanges converge too: an answered question closes forever and gets harvested into its row the same session. A problem he named returns solved with evidence, never re-described, so round N+1 carries only new material. Its home is the communicator's ask rules. [INV-59]
+**No question is asked twice, and dialogues converge.** Before any ask, the agent searches the recorded word — the decision archives, the review records, the journal, and the profile. A question a record already answers is a defect, not a question. Exchanges converge as well: an answered question closes permanently and is recorded into its row the same session. A problem the human named returns solved with evidence rather than re-described, so round N+1 carries only new material. Its home is the communicator skill's ask rules. [INV-59]
 
-**A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question never arrives empty-handed. The agent mines the material first: exemplars, precedents, real options with citations. Then it asks, with a chosen recommendation and its evidence. Asking the human to supply what the agent should have mined is a defect. This sharpens the recommended-option law [INV-4] for taste calls. Its home is the communicator. [INV-60]
+**A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question arrives with work already done. The agent mines the material first: exemplars, precedents, and real options with citations. Then it asks, with a chosen recommendation and its evidence. Asking the human to supply what the agent should have mined is a defect. This sharpens the recommended-option rule [INV-4] for taste calls. Its home is the communicator skill. [INV-60]
 
 ### Doors, kinds, and craft
 
-**Priority bends the lane order, visibly.** A critical bug lands before everything, heading even the waiting-bug line (next section). Critical priority heads the queue whatever its door, so a critical-priority feature goes to the queue head too. But only the bug door preempts the in-work lane [T-9].
+**Priority changes the queue order, and the change is recorded.** A critical bug lands before everything, heading even the waiting-bug line (next section). Critical priority heads the queue whatever its door, so a critical-priority feature goes to the queue head too. Only the bug door preempts the in-work lane [T-9].
 
-A quick win may bubble up: when the lane frees, the agent may take it ahead of larger queued wishes, marking the jump in its row, never silently. After one bubbled landing, the queue head goes next, so a stream of quick wins can't starve a big wish forever.
+A quick win can be promoted: when the lane frees, the agent may take it ahead of larger queued wishes, marking the promotion in its row rather than making it silently. After one promoted landing, the queue head goes next, so a stream of quick wins cannot starve a big wish forever.
 
-An inbox wish's arrival is its harvest moment — that's when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch harvests in filename-sorted order. [T-11]
+An inbox wish is registered at the moment it arrives; that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch is registered in filename-sorted order. [T-11]
 
-**The door is named before any code.** Classification is an explicit step with fixed rules. Nobody's gut feeling settles it. A row carries three axes, stated together in ONE intake line: size · priority · door · the work-kind (what the wish builds — next paragraphs [T-16]). A wish too big for its worth gets negotiated in scope, never in time [T-15]. Size, with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door share one word deliberately: a wish sized "bug" IS the bug door, one call stated once, and the door axis just adds the other four entries. [T-12]
+**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it. A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door deliberately share one word: a wish sized "bug" is the bug door — one call stated once — and the door axis simply adds the other four entries. [T-12]
 
-The door gets decided by an ordered procedure. Tripwires fire first, before any judgment:
+The door is decided by an ordered procedure. The tripwires fire first, before any judgment:
 
-1. It IS a **feature** — however casually asked — when ANY of these holds: a new user-visible surface appears; new persistent state appears; a new interaction lands on an existing surface; the touched surface is marked [target] in the spec (the canonical, machine-checkable form of "not yet specified / later surface"; the plain-prose cousins bind too, but the author writes the tag); the change adds behaviour no spec clause backs.
+1. The wish is a **feature** — however casually it is asked — when any of these holds: a new user-visible surface appears; new persistent state appears; a new interaction lands on an existing surface; the touched surface is marked [target] in the spec (the canonical, machine-checkable form of "not yet specified / later surface"; the plain-prose equivalents bind too, but the author writes the tag); the change adds behaviour no spec clause backs.
 2. No tripwire fired, but shipped behaviour is wrong against what the spec or product already promises → **bug**.
 3. Behaviour stays identical, structure moves → **refactor**.
-4. Only prose OUTSIDE the normative spec changes (README, comments, guides) → **docs-only**. Rewording a spec rule is NOT docs-only: it changes what behaviour the spec backs, and routes as feature or bug.
-5. The narrow all-hold boundary (single file · no new state, element, or visible behaviour · an existing test level already covers the touched fact) → **skip**.
+4. Only prose outside the normative spec changes (README, comments, guides) → **docs-only**. Rewording a spec rule changes what behaviour the spec backs, so it routes as feature or bug rather than docs-only.
+5. The narrow case where all of these hold (a single file; no new state, element, or visible behaviour; an existing test level already covers the touched fact) → **skip**.
 
-The tripwire verdict outranks a casual label. A wish called a "bugfix" that fires a feature tripwire gets re-doored to feature, and the intake line says so [INV-5]. Queue-cutting [T-9] belongs ONLY to the bug door, so a re-doored wish takes no preemption. Your word can still raise its priority (priority is yours), but no word lets a feature skip the spec step.
+The tripwire verdict outranks a casual label. A wish called a "bugfix" that fires a feature tripwire is re-doored to feature, and the intake line records it [INV-5]. Queue-cutting [T-9] belongs only to the bug door, so a re-doored wish gets no preemption. The human's word can still raise its priority (priority belongs to the human), but no word lets a feature skip the spec step.
 
-The door also gets re-checked mid-work: the moment running work is about to create a user-visible surface or persistent state its current door doesn't grant, work STOPS and the door step fires again. "It sounded like loading until the surface existed" is exactly the failure this catches. The re-doored wish KEEPS its lane and re-enters the walk in place (no re-queue, no park — parking stays a bug-preemption move [T-9]).
+The door is also re-checked mid-work: the moment running work is about to create a user-visible surface or persistent state its current door does not grant, the work stops and the door step fires again. This catches the case where a change sounds like a simple edit until the surface actually exists. The re-doored wish keeps its lane and re-enters the pipeline in place, with no re-queue and no parking — parking stays a bug-preemption move [T-9].
 
-One request lives outside the lane entirely: asking to merely SEE or TRY something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype stays a sketch" — the ask-when-unclear rule lives there). Casual loading stays the contract: a wish is routed through its door, never refused for being casual, and never hand-built past the pipeline because it sounded small. [INV-16]
+One request lives outside the queue entirely: a request to merely see or try something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype stays a sketch", which holds the ask-when-unclear rule). Casual phrasing does not change the contract: a wish is routed through its door, never refused for being casual, and never hand-built past the pipeline because it sounded small. [INV-16]
 
-**The intake line also names WHAT is being built.** Size says how big, the door says where the wish enters, and the **work-kind** says what kind of thing the work produces — and with it, which pipeline machinery earns its keep. Four kinds today:
+**The intake line also names what is being built.** Size says how big, the door says where the wish enters, and the **work-kind** says what kind of thing the work produces, and with it, which pipeline machinery is warranted. There are four kinds today:
 - **product** — something the host's own user faces;
 - **infra** — tooling that serves the project itself (scripts, hooks, CI, pipelines);
 - **skill** — a behaviour document an agent works by (a SKILL.md, a prompt pack);
 - **prose** — a document written for a human to read (an overview, an article, a spec's own text).
 
-You call the kind from what the wish PRODUCES, one kind per wish. A wish genuinely producing two kinds is two wishes, split at intake; a kind the classifier can't call is asked like an uncallable size [INV-12]. A host with ONE usual kind may record it as a host-profile default the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records none and calls each wish on its own.
+The classifier calls the kind from what the wish produces, one kind per wish. A wish that genuinely produces two kinds is two wishes, split at intake; a kind the classifier cannot call is asked about, the same as an uncallable size [INV-12]. A host with one usual kind may record it as a host-profile default that the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records no default and calls each wish on its own.
 
-The vocabulary is CURATED like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth joins only with a named wish the four mis-served, re-justified at milestones. The law binds forward: a row queued before it carries no kind and owes no retro-fill. It names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
+The vocabulary is curated like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth kind joins only with a named wish the four failed to serve, re-justified at milestones. The law binds forward: a row queued before the kind axis existed carries no kind and owes no retroactive fill. It names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
 
-**A kind scales the steps — it never skips one silently.** The door picks WHICH steps run [T-12]. The kind picks the FORM each running step takes, never whether the walk happens. The per-kind meaning of every step — what "architecture" means for a one-file script, what "verify by deed" means for a document a human reads — has its normative home in the build-pipeline skill, one table for every project, the skill's own domain [E-12]. This spec binds the contract around it.
+**The kind scales the steps; it never silently skips one.** The door picks which steps run [T-12]. The kind picks the form each running step takes, never whether the pipeline runs at all. The per-kind meaning of every step — what "architecture" means for a one-file script, what "verify by deed" means for a document a human reads — has its normative home in the build-pipeline skill, one table for every project, and is that skill's own domain [E-12]. This spec sets the contract around it.
 
-At landing, every pipeline step has either APPLIED in the form the table states for the wish's kind, or STOOD DOWN by name in the landing's report ("design-sync — text product, stands down"), so a skipped step is always a written fact, never an omission. An unresolved kind scales nothing down: while the kind question rides the row [INV-12], every step applies in full, because standing a step down needs a NAMED kind to answer for it.
+At landing, every pipeline step has either applied in the form the table states for the wish's kind, or stood down by name in the landing report (for example, "design-sync — text product, stands down"), so a skipped step is always a written fact rather than an omission. An unresolved kind scales nothing down: while the kind question is still open on the row [INV-12], every step applies in full, because standing a step down requires a named kind to account for it.
 
-What no kind may ever touch: the door law and its tripwires [T-12, INV-16], the delta's mandatory sentences — fences, facets, non-goals, success measure [T-14, INV-18, INV-20, INV-21] — and ask-at-intake [INV-12]. The kind dials the machinery, never the safety net — the same law a scope cut obeys [T-15]. [INV-22]
+No kind may ever change the following: the door law and its tripwires [T-12, INV-16]; the delta's mandatory sentences — fences, facets, non-goals, success measure [T-14, INV-18, INV-20, INV-21]; and ask-at-intake [INV-12]. The kind adjusts the machinery, never the mandatory checks — the same rule a scope cut obeys [T-15]. [INV-22]
 
-**Each step is worked in its craft's mindset.** One generalist head walking the whole pipeline produces generalist artifacts — a spec that reads like a coder's notes, a matrix that checks whatever was convenient to check. So every step names the profession whose head you wear while walking it:
+**Each step is worked with its craft's standards.** A single generalist working the whole pipeline produces generalist artifacts: a spec that reads like a developer's notes, a matrix that checks whatever was convenient to check. Each step therefore names the profession the agent works it as:
 - the spec — a strong product manager;
 - the architecture — a software architect;
 - the matrix and the tests — a QA automation engineer;
 - the code — a senior developer;
-- the two prove steps — the prover's own formal-reviewer head;
-- commit & show — a careful release hand whose reader is the human;
+- the two prove steps — the prover's own formal-reviewer role;
+- commit & show — a careful release engineer whose reader is the human;
 - the verify walk — the visitor's own eyes, not the builder's [INV-30 kin].
 
-The full step→craft ladder has ONE home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them. And the craft, like the step's form, wears the KIND's face [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer, on infra as a toolsmith. The ladder names the archetypes; the wish's kind says what their standards look like in its medium. [INV-33]
+The full step-to-craft ladder has one home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them. The craft, like the step's form, follows the kind [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer; on infra, as a tool builder. The ladder names the archetypes; the wish's kind says what their standards look like in its medium. [INV-33]
 
 ### Specifying and building a feature
 

@@ -1,54 +1,48 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-08, session 27) — SPEC readability rework IN PROGRESS; register FOUND, scaling method still OPEN.**
-Attempted a full spec humanize. The warm "colleague at a whiteboard" voice read fine on SHORT samples but
-DRIFTED on long text. Alexander's diagnosis, the real problem: NOT the register — quality-drift when I rewrite
-long, constraint-heavy prose across many sections. On short chat and long ARTICLES my prose is fine; on a spec
-it degrades. Root cause I now see: I TRANSFORM old sentences (inherit their contortion, lose the thread)
-instead of RE-EXPRESSING each rule fresh.
+**LATEST (2026-07-08, session 28) — SPEC re-style: the drift is SOLVED by a mechanism; grind in progress.**
+Root cause of the ornate spec prose, proven with Alexander: the author is marinated in the pack's own
+register (doors/kinds/stations/coined metaphor), not the content and not text length. A fresh agent with the
+pack NOT loaded writes plain product-spec English from the same facts, consistently, at length. So the fix is
+mechanical + a division of labor — and it is SEALED in `docs/spec-style.md`:
 
-Kept and worth it (his two clear wins + more, all in the WORKING TREE, uncommitted):
-- provenance/history moved OUT of the body into JOURNAL (session-27 entry) — «выпилили рассказики»;
-- textual IDs separated (anchors trail as quiet brackets);
-- dense law-walls broken into bullets + `###` groups;
-- traceability tests RE-POINTED from exact-prose greps to anchors + stable terms (60 asserts / 31 tests) —
-  method lesson: a needle keys on the ANCHOR, not the sentence; suite 180 green;
-- ARCHITECTURE.md prose lightly humanized (tables untouched); 145 anchors byte-identical to baseline;
-  a fidelity prover found + fixed 1 real drift (rhythm date-fence).
+THE METHOD (run every section this way; it generalizes to all projects):
+- A **fresh spawned agent, pack NOT loaded**, writes the prose from the section's source/facts. Tell it: keep
+  every [anchor] verbatim, keep ALL info, keep headings + bold titles, use bullet/numbered lists for any
+  sequence, plain present-tense, no second person, no metaphor, do not open by saying what a thing is NOT,
+  no ALL-CAPS. Do NOT let the marinated session write the prose — even its chat drifts (his catch this session).
+- The marinated session does the mechanical half: gate with `scripts/spec-style-lint.py` to ZERO errors,
+  verify the anchor multiset is unchanged (grep `\[...\]` old vs new), splice, run suite, and re-point any
+  brittle traceability needle from the old exact phrase to an anchor + a register-invariant term.
 
-REGISTER FOUND + WRITTEN DOWN: `docs/spec-style.md` — Flavor A (declarative / Go-spec), from RFC 2119 +
-Diátaxis (reference) + a Fable brief, with warmth-quarantine rules (R7b/c: warmth → a marked informative note,
-quotes only when load-bearing + translated, gated by project.kind). His pick.
+CONVERTED so far (register-clean, gated, suite green): "What live-spec is", "Throwing a wish", "Intake",
+Naming's first three rules (echo / status board / feature-map placement), "Showing work and asking for
+decisions", "Doors, kinds, and craft". Gold exemplars = the decision-page list + intake. The style-doc already
+holds a READY register-A rewrite of "Asking what the product does" — apply it.
 
-THE OPEN PROBLEM (unsolved): drift on long text. Current SPEC.md prose is STILL the rejected voice and must be
-re-styled to register A. Method to TEST (his «multi-stage / piecewise» + my «re-express, don't transform»):
-per section — reduce to a bare rules+anchors list; write each rule FRESH in register A against the
-docs/spec-style.md exemplar (never edit the old sentence); re-attach anchors; fidelity-check; tests. TEST on
-ONE full dense section in a FRESH context first; scale only if it holds at length. Process lessons: research
-the genre FIRST (don't guess-iterate); calibrate on a FULL section, not 2 paragraphs; do prose work in a CLEAN
-context.
+REMAINING ornate (drive meter to 0 errors; now 24 errors / 323 warns): rest of "Naming" (outcome/naming/lines
+INV-28, report-walk INV-34, narration+offline INV-35), "Specifying and building a feature", "Parallel lanes",
+"Sending feedback in" +subs, "Asking what the product does" (apply the ready exemplar), "When a bug cuts the
+line", "When the workshop misbehaves" +subs, "A prototype stays a sketch" +sub, "Starting a project" +founding
+questions, "Attaching to a live project" +subs, "One rulebook", "Who decides what" +subs, "From spec to tests",
+"The machines that hold the bounds" +sub, "The package repo", "The rhythm" +subs, "When money/time run short",
+"Publishing" +subs, "Composing across axes" +sub, "Open decisions". Leave the Formal index (structured).
+THEN: same pipeline on ARCHITECTURE.md prose (tables untouched); then a cross-project migration guide, sealed
+into spec-author + the playbook (his word: this is now for ALL projects).
 
-Baseline / WAY BACK (pushed, clean): pack 0.9.0, main=origin/main HEAD `1cff42b`; INV-70 / INV-28-arm / INV-71
-landed (history in JOURNAL). Session-27 SAVEPOINT (local, NOT pushed): commit `1bdf9b1` — anchors separated +
-stories cut, VOICE pending (its message says the same). Files: SPEC.md, ARCHITECTURE.md, tests, JOURNAL.md,
-docs/spec-style.md.
-**SWITCH SIGNAL (how to know to change approach):** if a spec line reads flowery/associative instead of
-plain-normative, the voice is wrong → re-style to register A by the re-express method (bare rules list → each
-rule written FRESH in register A → re-attach anchors), in a FRESH context. Note the tell: in plain chat the
-prose is fine; it is the SPEC that flips me into "associative-poet" mode (Alexander's word). That mode is the
-thing to beat — beat it by writing each rule anew, never by editing the ornate original.
+His two goals: (1) human-clear + easy to read + all info present; (2) it also helps the agent build next steps
+and communicate better. Do all prose work in a FRESH session (the sealed method) — a loaded session drifts.
 
-**Open — needs a FRESH context or his word:**
-- Re-style whole SPEC to register A per `docs/spec-style.md` (the row-148 ask, now with a defined target) — DO IN A FRESH SESSION.
-- Bake the humanize/style method into spec-author, referencing stop-slop by NAME (INV-13 across skills), not copying.
-- BMAD/Kiro architecture enrichment (what the architecture defines + how to notate).
-- Still open from before: remote-seat session (168); no-hooks / no-GitHub (171); thin-loader tidy.
+TESTS: suite 183 green; the ONLY red is `TestGateA_ProverRecord` — the WIP savepoint changed SPEC.md but
+committed no prover record after it. That is a push-gate reminder, NOT a regression. Before any PUSH: run the
+prover pass and commit its record (SPEC M-6). New this session: `scripts/spec-style-lint.py` + its tests
+(TestSpecStyleLint), rules R13/R14 + the mechanical-gate + clean-agent method in docs/spec-style.md.
 
-**Terminology (his word 2026-07-08):** to HIM say "live-spec" or "the shared method", never "пакет/the pack"
-— he did not parse it. **Push gate:** my-certification (his 19:07 word), generalized by INV-70 — push when
-it's sound. Board discipline now law (INV-71): keep NOW/NEXT current in chat + heartbeat on long stretches.
+Baseline / WAY BACK (pushed, clean): pack 0.9.0, main=origin/main HEAD `1cff42b`. Session-28 work is LOCAL
+(uncommitted or WIP savepoint) — SPEC.md, tests/test_traceability.py, tests/test_guardrails.py,
+scripts/spec-style-lint.py, docs/spec-style.md. Memory: [[spec-prose-clean-agent-plus-linter]].
 
-SAFE TO WIPE MEMORY here.
+SAFE TO WIPE MEMORY here (resume cold from this block + docs/spec-style.md).
 
 ## LIVE STATE (2026-07-08, session 26) — humanize + 0.9.0 milestone + three new laws LANDED AND PUSHED.
 Versions: pack 0.9.0 (pushed) · base 0.1.24 · communicator 0.1.39 · build-pipeline 0.2.40 · SPEC v0.15.61;
