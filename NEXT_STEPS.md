@@ -1,19 +1,23 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**NIGHT PASS DONE (2026-07-08, autonomous loop, stopped clean).** SPEC lint errors 24 → 4; the 4 remaining
-are ALL parked on your word (preamble lines 4/18 = reader-facing second person by design; Formal index scissors
-1228/1263 = structured table). Every error a night pass could touch is cleared — one full register conversion
-("Asking what the product does") plus fresh-agent surgical fixes across ~9 dense sections; two brittle needles
-re-pointed by narrowing (logged in docs/restyle-repoint-log.md). Phase 2 ran: a fresh reviewer read the whole
-baseline→now diff, found 7, I fixed the 5 real ones (lost framing, added clause, narrowed word, lost contrast,
-dangling em-dash) and re-verified. Full-SPEC anchor multiset IDENTICAL to pre-restyle baseline `ca78876` —
-nothing lost. Suite 183 green throughout (only red = TestGateA_ProverRecord, the expected pre-push reminder).
-All work LOCAL commits 3665f7b..a9690c4; NOTHING pushed.
-WAITS ON YOUR WORD (then prover, then push): (1) full register conversion of the errors-cleared dense sections
-— removing their second-person + CAPS collides with ~15 exact-phrase test needles, needs a needle re-point pass
-on your say; (2) the preamble + Formal index 4 errors; (3) Phase 3 — ARCHITECTURE.md is already 0 errors (14
-warns), its full prose conversion is the same parked class; sealing the method into spec-author + playbook is
-premature before you sign off on the SPEC result. Before any push: run the prover pass and commit its record.
+**ACTIVE MOVEMENT (2026-07-08 night, autonomous loop, NO memory wipe) — DURABLE PROSE-QUALITY GATE.**
+Alexander reopened the night: the SAME prose defects (scissors, redundancy, second person) recurred after a
+full restyle round because the gate is holed — `caps-shout` (246) + `second-person` (71) are non-blocking
+WARNINGS that just accumulate, there is NO redundancy/verbosity check at all, and "parked" sections keep their
+known tells (he hit the parked preamble). His mandate: stop patching, build the mechanism so no defect class
+can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not stop until all done or blocked):
+1. RESEARCH — deep-research workflow running in background (run wf_d5338e62-3bd): durable anti-drift method.
+2. DESIGN — hand the report + `scratchpad/prose-gate-evidence.md` to a FRESH agent in a CLEAN context (pack
+   NOT loaded), max reasoning, to synthesize the mechanism. His words: think «в чистом контексте».
+3. IMPLEMENT — I write ALL the algorithms to completion (validator code is mine): a redundancy/verbosity
+   check, warnings promoted to blocking at the done-gate, an explicit machine-readable waiver replacing silent
+   parking. «доработай все алгоритмы до конца».
+4. VALIDATE — the prose validation itself runs through FRESH agents, never me. «валидацию тоже чистому агенту».
+5. APPLY — run the new gate over SPEC (incl. preamble: convert per his word — drop "you", the scissors, and
+   the doubled "not for you to read … you can ignore" redundancy) and over ARCHITECTURE.md.
+DECIDED BY HIM: preamble → CONVERT; Formal index → LEAVE as structure (its 2 errors stay, by his word).
+Prior restyle work is LOCAL commits 3665f7b..(88f228c bookkeeping); SPEC lint 4 errors / 317 warns; suite 183
+green (only red = TestGateA_ProverRecord). NOTHING pushed. Before any push: prover pass + commit its record.
 
 **LATEST (2026-07-08, session 28) — SPEC re-style: the drift is SOLVED by a mechanism; grind in progress.**
 Root cause of the ornate spec prose, proven with Alexander: the author is marinated in the pack's own
