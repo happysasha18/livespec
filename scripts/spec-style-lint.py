@@ -104,7 +104,7 @@ JARGON_RE = re.compile(r"(?<!\w)(%s)(?!\w)" % "|".join(sorted(JARGON)), re.IGNOR
 CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TTL", "MECE",
               "LLD", "HLD", "PRD", "README", "OK", "MD", "CLI", "ID", "IDE", "NLP", "SPEC",
               "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO", "HEAD",
-              "KPI", "UX",
+              "KPI", "UX", "FIXME",
               # defined prover/verify mode names — literal terms, not shout
               "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY",
               # defined bold law-part labels of the narration law (INV-35)

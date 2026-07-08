@@ -816,34 +816,34 @@ Sitting outside any repo fence [INV-11], a promotion re-reads the file immediate
 
 ### Delegation and workers
 
-**The senior agent** owns judgment — spec deltas, matrix levels, findings triage, this document. [ACT-2]
+**The senior agent owns judgment** — spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
-**Workers (tiered)** own mechanical execution. Each keeps a persistent checkpoint file in the host's `.live-spec/checkpoints/` (gitignored, never `/tmp`, since a reboot must not erase a resume point). Three tiers stand:
+**Workers (tiered) own mechanical execution.** Each keeps a persistent checkpoint file in the host's `.live-spec/checkpoints/` (gitignored, never `/tmp`, since a reboot must not erase a resume point). Three tiers stand:
 
 - a no-decision one-shot on **haiku**;
 - multi-step mechanical work on **sonnet**;
 - judgment on the **senior**.
 
-The routing rule below decides which tier a unit of work is PROPOSED at, before the senior may overrule it. [INV-69]
+The routing rule below decides which tier a unit of work is proposed at, before the senior may overrule it. [INV-69]
 
-**The worker contract** binds every delegation:
+**The worker contract binds every delegation:**
 
 - A worker inherits its session's write-ownership [INV-10], narrowed to the files its brief names. Outside those files it reads, and never writes.
-- A brief may instead name an ISOLATED copy of the tree, where a parallel lane builds its stages. That copy's delta reaches the shared tree only through the senior's integration, under the pen [T-18, INV-39].
-- Files a same-session SIBLING worker just wrote are fence-benign: the concurrent-edit fence [INV-11] alarms on foreign sessions and stays quiet for your own briefed hands. The senior who briefed both owns their seams.
-- The session's live setting lines [E-13] ride into the brief verbatim. A worker never resolves the ladder itself — it can't hear the human's spoken word.
-- The brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Any noise the worker hits goes into its checkpoint as a ledger line (signature, date, one line of context). The worker never silently retries. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
-- It carries the CLOCK — the date and time read at briefing — so a worker's stamps come off the brief's clock, never invented. [INV-24]
-- A result that fails its brief's acceptance escalates ONE tier with a logged line (haiku → sonnet → senior). It never retries silently on the same tier, and never skips a rung. [ACT-3]
+- A brief may instead name an isolated copy of the tree, where a parallel lane builds its stages. That copy's delta reaches the shared tree only through the senior's integration, under the pen [T-18, INV-39].
+- Files a same-session sibling worker just wrote are fence-benign: the concurrent-edit fence [INV-11] alarms on foreign sessions and stays quiet for the agent's own briefed hands. The senior who briefed both owns their seams.
+- The session's live setting lines [E-13] ride into the brief verbatim. A worker never resolves the ladder itself — it cannot hear the human's spoken word.
+- The brief arms the worker for the workshop: it carries the host's problem-ledger path with the watched-line duty. Any noise the worker hits goes into its checkpoint as a ledger line (signature, date, one line of context). The worker never silently retries. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
+- It carries the clock — the date and time read at briefing — so a worker's stamps come off the brief's clock, never invented. [INV-24]
+- A result that fails its brief's acceptance escalates one tier with a logged line (haiku → sonnet → senior). It never retries silently on the same tier, and never skips a rung. [ACT-3]
 
-**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it aloud.** Before anyone delegates a unit of work, they PROPOSE its tier (never default it) and the proposal reads what the work IS, looking past the row's size alone.
+**The routing rule proposes the cheapest tier that can pass the brief, and the senior may overrule it aloud.** Before anyone delegates a unit of work, they propose its tier (never default it), and the proposal reads what the work is, looking past the row's size alone.
 
-- A judgment step — a spec delta, a prove pass, an architecture carve, the matrix's level calls, findings triage, any taste call — proposes the senior. That's ACT-2's own ground [ACT-2], and it never routes down.
+- A judgment step — a spec delta, a prove pass, an architecture carve, the matrix's level calls, findings triage, any taste call — proposes the senior. That is ACT-2's own ground [ACT-2], and it never routes down.
 - A mechanical step proposes a worker:
   - a no-decision one-shot (a grep, a dump, a known-string edit) → the **haiku** tier;
   - a self-contained multi-step brief (edits across named files, a pipeline run, tests written to a fixed matrix) → the **sonnet** tier.
 
-The size class is only a coarse prior: a large row carries more delegable mechanical mass, a small one is often all-judgment, and the STEP inside it decides.
+The size class is only a coarse prior: a large row carries more delegable mechanical mass, a small one is often all-judgment, and the step inside it decides.
 
 **The economy rung moves the threshold** [T-19]:
 
@@ -851,27 +851,27 @@ The size class is only a coarse prior: a large row carries more delegable mechan
 - at `lean` an airtight brief rides one tier cheaper — a sonnet brief that leaves the worker nothing to decide may propose haiku, and the bar for keeping a step on the senior rises;
 - at `tight` the proposal is always the cheapest sufficient tier, and the senior spends its hours on judgment alone.
 
-**The proposal is advisory — the senior may override per wish, and the override is LOGGED.** [D-2] A brief that looked mechanical but hides a real decision routes UP; a rare over-cautious default routes down. Either way, one line rides the checkpoint and the landing report: proposed tier → chosen tier → why. This assignment-time override is distinct from ACT-3's failed-acceptance escalation — one is the senior's choice BEFORE the work, the other a runtime bump AFTER a miss. Both get logged, on different lines. A silent tier change is the defect this closes.
+**The proposal is advisory, the senior may override per wish, and the override is logged.** [D-2] A brief that looked mechanical but hides a real decision routes up; a rare over-cautious default routes down. Either way, one line rides the checkpoint and the landing report: proposed tier → chosen tier → why. This assignment-time override is distinct from ACT-3's failed-acceptance escalation — one is the senior's choice before the work, the other a runtime bump after a miss. Both get logged, on different lines. A silent tier change is the defect this closes.
 
-The router never hardens into a mechanical gate the senior can't overrule, and it never touches the human's gates or ACT-2's ownership of judgment. No visible surface — facets N/A.
+The router never hardens into a mechanical gate the senior cannot overrule, and it never touches the human's gates or ACT-2's ownership of judgment. No visible surface — facets N/A.
 
 Non-goals:
 - no token meters or numeric budgets (the rung stays qualitative [T-19]);
 - no fourth tier and no renaming of the three;
 - no auto-routing that overrides the senior's word.
 
-Success measure [default]: the first routed landing names, in its report, the proposal → choice → why for each delegated unit — and you check it by reading it. [INV-69]
+Success measure [default]: the first routed landing names, in its report, the proposal → choice → why for each delegated unit, and the human checks it by reading it. [INV-69]
 
-**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more — it never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green. So the verify step carries an ADVERSARIAL option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths, never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
+**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more. It never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green. So the verify step carries an adversarial option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths, never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
 
-- EXISTS — the artifact is there;
-- SUBSTANTIVE, not a stub (the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
-- WIRED — reachable from the surface that claims it;
-- FLOWS — real values move end to end.
+- exists — the artifact is there;
+- substantive, not a stub (the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
+- wired — reachable from the surface that claims it;
+- flows — real values move end to end.
 
-Findings become rows or red, never a nod. It fires MANDATORY when the code step was delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere else it stays the senior's option. A skill or prose landing walks the same ladder in its kind's form — the checker re-reads the SHIPPED text against the spec sentences. The checker is a worker like any other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
+Findings become rows or red, never a nod. It fires mandatory when the code step was delegated and the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere else it stays the senior's option. A skill or prose landing walks the same ladder in its kind's form — the checker re-reads the shipped text against the spec sentences. The checker is a worker like any other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
 
-**A brief is born from read files, never from memory of them.** Before writing a brief that edits existing files, the brief-writer READS IN FULL every file the work will modify. The brief records three lines per file:
+**A brief is born from read files, never from memory of them.** Before writing a brief that edits existing files, the brief-writer reads in full every file the work will modify. The brief records three lines per file:
 
 - current state;
 - what changes;
@@ -879,16 +879,17 @@ Findings become rows or red, never a nod. It fires MANDATORY when the code step 
 
 Every step carries a back-reference to the spec sentence it serves, and every technical claim in the brief cites its source — a file:line, a command's output. A brief written from memory hands the worker the senior's guess dressed up as fact. [INV-53]
 
-**A worker stops only on a named condition.** The brief carries the HALT list, closed and short:
+**A worker stops only on a named condition.** The brief carries the halt list, closed and short:
 
 - an ambiguous requirement;
 - two consecutive unexplained failures of one command;
 - a missing config or dependency;
 - acceptance impossible as briefed.
 
-On any of these the worker STOPS with evidence. Otherwise it runs to completion. This is sharper than "ask if unsure," and it composes with the one-tier escalation law [ACT-3]. [INV-54]
+On any of these the worker stops with evidence. Otherwise it runs to completion. This is sharper than "ask if unsure," and it composes with the one-tier escalation law [ACT-3]. [INV-54]
 
-**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context, and the work SPLITS above it. The default bound is concrete: the brief's own text stays within ~300 lines and names at most ~8 files to edit [default]. Above either limit, the work splits into staged briefs. A brief passes PATHS, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
+**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context, and the work splits above it. The default bound is concrete: the brief's own text stays within ~300 lines and names at most ~8 files to edit [default]. Above either limit, the work splits into staged briefs. A brief passes paths, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
+
 ## From the spec to the tests: two layers that must not be skipped
 
 **The test-author skill owns the test method; build-pipeline just calls it.** test-author runs the matrix derivation and the test writing (the pipeline's steps 5–6). It keeps the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. build-pipeline calls test-author the same way steps 1–2 call spec-author and product-prover: the method lives in the skill, the pipeline keeps order and gates [E-27].

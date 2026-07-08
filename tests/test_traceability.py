@@ -1029,8 +1029,8 @@ class TestWorkerContract(unittest.TestCase):
         spec = read("SPEC.md")
         flat_spec = " ".join(spec.split())
         for needle in (
-            "brief ARMS the worker for the workshop",
-            "carries the CLOCK",
+            "brief arms the worker for the workshop",
+            "carries the clock",
         ):
             self.assertIn(needle, flat_spec, "SPEC ACT-3 missing: %s" % needle)
         pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
@@ -1052,7 +1052,7 @@ class TestWorkerContract(unittest.TestCase):
                        "narrowed to the files its brief names",
                        "fence-benign",
                        "ride into the brief verbatim",
-                       "escalates ONE tier with a logged line",
+                       "escalates one tier with a logged line",
                        "[ACT-3]"):  # "It never retries silently on the same tier, and never skips a rung"
             self.assertIn(phrase, spec, "SPEC ACT-3 lost the worker-contract clause: %s" % phrase)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
@@ -1068,7 +1068,7 @@ class TestWorkerContract(unittest.TestCase):
         the senior may override per wish with the override logged (D-2 decided advisory)."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("The routing rule",
-                       "propose the cheapest tier that can pass the brief",
+                       "proposes the cheapest tier that can pass the brief",
                        "proposes the senior",
                        "economy rung moves the threshold",
                        "The proposal is advisory",
