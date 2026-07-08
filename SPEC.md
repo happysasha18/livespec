@@ -259,7 +259,7 @@ The walk's checklist lives in the build-pipeline step-8 product cell [E-12, INV-
 
 **A taste choice made without asking is TOLD, never confirmed.** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. You write each one into the spec with its `[default]` tag [INV-18]. The law: the landing report NAMES each choice made without asking, in plain words with an example, marked as tweakable — and that's ALL. You request no confirmation; silence is consent; you re-ask nothing later. The person asks when they want something changed, and the `[default]` tags keep every such choice findable in the spec forever. [INV-31]
 
-**A tunable parameter is set to a sensible default and told, never asked.** Some choices are a knob with a range — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each such knob to a sensible value itself and keeps the lane moving, the same way it makes a taste call [INV-31]. It chooses the value for a reasonable balance, cheaper or faster wherever quality allows (for example, a lower image resolution), writes it with its `[default]` tag [INV-18], and NAMES it in the landing report with what it trades. The human tunes it afterwards only if they want a different point on the range; at most the parameter gets updated together later, and re-asking is never owed.
+**A tunable parameter is set to a sensible default and told, never asked.** Some choices are a knob with a range rather than a taste call — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each such knob to a sensible value itself and keeps the lane moving, the same way it makes a taste call [INV-31]. It chooses the value for a reasonable balance, cheaper or faster wherever quality allows (for example, a lower image resolution), writes it with its `[default]` tag [INV-18], and NAMES it in the landing report with what it trades. The human tunes it afterwards only if they want a different point on the range; at most the parameter gets updated together later, and re-asking is never owed.
 
 This carries the taste-told law [INV-31] to numeric and config knobs, and it's the same idea the economy ladder applies to cost [T-19]. So the agent never stalls a task on a knob it can reasonably set. It moves every task it can and reserves a real question for what it genuinely can't decide [INV-4]. The push to production rides the same trust: where the human has GRANTED it, the agent ships to prod on its own certification once the work is sound, the push gate resolving to the agent's judgment — live-spec's own already does [M-6] — and the grant stays the human's to give or withdraw [INV-9]. [INV-70]
 
@@ -404,7 +404,7 @@ The section's edges, stated once.
 **Success measure.** You never have to hand in the same item twice. Every received item is findable in the ledger, with its route, in the same session [default].
 ## Asking what the product does (the feature map on demand)
 
-The ask answers a "show all features" request with one answer containing the whole product map, current as of the request. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. The ask answers the third of the three standing questions — what the product does today — with the whole map, on demand.
+Three standing questions describe the product. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. Those two questions are answered on their own surfaces. This ask answers the third — what the product does today — with one answer containing the whole product map, current as of the request, on demand.
 
 The ask reads its answer live from the living documents:
 
@@ -417,12 +417,12 @@ The spec's scenarios and the architecture's nodes constitute the map. No third d
 Each line follows the line law [INV-28]:
 
 - a short descriptive name, in the product's own words;
-- the value the feature gives its person;
+- what the feature gives its person;
 - the feature's status — shipped, target, or in-flight — followed by its station.
 
 The ask delivers the map in chat by default. The ask delivers a rendered page instead on request, per the show rule [default]. Routine reports retain the departures board's in-flight scope. The ask returns the whole map only on request.
 
-If a host has no spec and no scenario sections, the ask states that condition; otherwise the ask proceeds as described above. The ask directs the requester to bootstrap or adoption when that condition holds. The ask reports only what currently exists [INV-38].
+If a host has no spec and no scenario sections, the ask states that condition. The ask directs the requester to bootstrap or adoption when that condition holds. The ask reports only what currently exists [INV-38].
 
 The section's edges are stated once.
 
@@ -841,7 +841,7 @@ The routing rule below decides which tier a unit of work is PROPOSED at, before 
 - A brief may instead name an ISOLATED copy of the tree, where a parallel lane builds its stages. That copy's delta reaches the shared tree only through the senior's integration, under the pen [T-18, INV-39].
 - Files a same-session SIBLING worker just wrote are fence-benign: the concurrent-edit fence [INV-11] alarms on foreign sessions and stays quiet for your own briefed hands. The senior who briefed both owns their seams.
 - The session's live setting lines [E-13] ride into the brief verbatim. A worker never resolves the ladder itself — it can't hear the human's spoken word.
-- The brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Any noise the worker hits goes into its checkpoint as a ledger line — signature, date, one line of context, never a silent retry. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
+- The brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Any noise the worker hits goes into its checkpoint as a ledger line (signature, date, one line of context). The worker never silently retries. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
 - It carries the CLOCK — the date and time read at briefing — so a worker's stamps come off the brief's clock, never invented. [INV-24]
 - A result that fails its brief's acceptance escalates ONE tier with a logged line (haiku → sonnet → senior). It never retries silently on the same tier, and never skips a rung. [ACT-3]
 
