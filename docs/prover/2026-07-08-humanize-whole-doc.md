@@ -91,3 +91,20 @@ LOCAL (no wider re-trigger of the M-6 gate).
 Ready to push once the gate is green. The document is internally consistent, reads in one voice, and carries
 no unresolved must-fix. Suite context at this pass: 174/175, the single red being this very gate demanding a
 today-dated record — which this file supplies.
+
+---
+
+## Short-form addendum — Open-decisions compaction (same session, INV-61 small-delta form)
+
+A milestone prose-only delta after the pass above: the SPEC "Open decisions" section had four already-decided
+items (D-2/D-3/D-4/D-5) collapsed to one-line resolved pointers, their dated rationale moved to JOURNAL. No
+new surface, no structure change — three-line short-form record:
+
+- **Previous records clean** — the whole-doc pass above found no must-fix; this delta touches only the
+  Open-decisions section.
+- **The delta** — D-2/D-3/D-4/D-5 verbose bullets → one-line pointers, each KEEPING its anchor (anchors are
+  cited elsewhere and guarded by the anchor-set test); D-1 stays open; rationale preserved verbatim in the
+  JOURNAL session-26 entry.
+- **Verdict** — clean. Anchor set unchanged (test_architecture_owns + index tests green), the tested D-3
+  close-needle "Decided 2026-07-07 (row 55)" and the D-2 forbidden-open-string constraints both hold. The
+  fold stays LOCAL to the Open-decisions section, so it does not re-trigger the gate.

@@ -2,6 +2,36 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-08 (session 26) — Open decisions D-2..D-5 collapsed to pointers; rationale moved here
+
+**What:** the SPEC's "Open decisions" section held four already-decided items (D-2/D-3/D-4/D-5) carrying
+their full dated rationale — settled history living in a live doc. Milestone compaction collapsed each to
+a one-line resolved pointer that KEEPS its anchor (the anchors are cited elsewhere and belong to the
+anchor-set guard), and the rationale moved here. Only D-1 (attic layout) stays genuinely open. Tested
+constraints held: the D-3 close-needle "Decided 2026-07-07 (row 55)" stays in the section, the old open
+D-3 wording stays absent, and D-2's forbidden open-override string never returns.
+
+**The full rationale, as it stood in SPEC before the collapse:**
+
+- **D-2 — model tier (decided 2026-07-07, row 56):** the model tier is proposed, never mechanically fixed
+  — the routing rule reads the work's STEP and kind (not size alone) and the economy rung, proposes the
+  cheapest sufficient tier, and the senior may override per wish with the override logged (proposed →
+  chosen → why, on the checkpoint and the landing report). The rule's home is the delegation scenario
+  (INV-69).
+- **D-3 — snapshot retention (decided 2026-07-07, row 55):** last-only in the working tree; git history is
+  the archive — the snapshot folder is git-tracked, an older baseline is one checkout away; a heavy surface
+  keeps only its hash in git. Revisit if a dispute ever needs history git cannot serve.
+- **D-4 — pack structure (decided 2026-07-05):** pack ↔ standalone-skill-repos structure is
+  package-is-source — the pack repo is the single truth, standalone repos become read-only mirrors
+  (Alexander's note: reusable parts must stay findable alone — exactly what mirrors give). The folder-NAME
+  half had closed earlier the same day (`live-spec-base`). Execution: queue row 51 (mirrors + one sync
+  command).
+- **D-5 — personal-settings split (decided 2026-07-05):** all-into-profile — everything personal moves
+  into live-spec settings with servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a thin
+  loader, and setup gains an "understand who you're working with" onboarding step. The scope model and the
+  thin-loader shape are spec'd (the ladder and profile paragraphs, 2026-07-05, rows 52–53); the onboarding
+  step remains row 54's landing.
+
 ## 2026-07-08 (session 26) — Architecture assignment-history moved out of ARCHITECTURE.md
 
 **What:** ARCHITECTURE.md's intro carried a ~90-line inline log of every anchor-to-node assignment,

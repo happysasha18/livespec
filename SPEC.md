@@ -790,22 +790,19 @@ Adoption adds one axis: **document provenance** — where a spec claim came from
 
 - ⟨DECIDE⟩ attic/ layout: flat with a manifest and source-dir prefix on collision (current pick) vs dated
   subfolders — revisit at the next real adopt run. [D-1]
-- Decided 2026-07-07 (row 56): the model tier is **proposed, never mechanically fixed** — the routing rule
-  reads the work's STEP and kind (not size alone) and the economy rung, proposes the cheapest sufficient
-  tier, and the senior may override per wish with the override logged (proposed → chosen → why, on the
-  checkpoint and the landing report). The rule's home is the delegation scenario [INV-69]. [D-2]
-- Decided 2026-07-07 (row 55): snapshot retention is **last-only in the working tree; git history is
-  the archive** — the snapshot folder is git-tracked, an older baseline is one checkout away; a heavy
-  surface keeps only its hash in git. Revisit if a dispute ever needs history git cannot serve. [D-3]
-- Decided 2026-07-05 (page 2): pack ↔ standalone-skill-repos structure is **package-is-source** — the
-  pack repo is the single truth, standalone repos become read-only mirrors (Alexander's note: reusable
-  parts must stay findable alone — exactly what mirrors give). The folder-NAME half had closed earlier
-  the same day (`live-spec-base`). Execution: queue row 51 (mirrors + one sync command). [D-4]
-- Decided 2026-07-05 (page 2): the personal-settings split is **all-into-profile** — everything personal
-  moves into live-spec settings with servlet-style scopes (nested, inherited), CLAUDE.md shrinks to a
-  thin loader, and setup gains an "understand who you're working with" onboarding step. The scope model
-  and the thin-loader shape are spec'd (the ladder and profile paragraphs above, 2026-07-05, rows 52–53);
-  the onboarding step remains row 54's landing. [D-5]
+Resolved decisions stay here as one-line pointers so their anchors keep a live home; the full dated
+rationale moved to JOURNAL.md.
+
+- Decided 2026-07-07 (row 56): the model tier is proposed, never mechanically fixed — the routing rule
+  reads the work's step, kind, and the economy rung, and the senior may override per wish, logged. Home:
+  the delegation scenario [INV-69]. [D-2]
+- Decided 2026-07-07 (row 55): snapshot retention is last-only in the working tree, git history the
+  archive; a heavy surface keeps only its hash. Home: the snapshot machine [E-7]. [D-3]
+- Decided 2026-07-05: the pack structure is package-is-source — the pack repo is the single truth and the
+  standalone repos are read-only mirrors. Execution: queue row 51. [D-4]
+- Decided 2026-07-05: the personal-settings split is all-into-profile — every personal setting climbs the
+  nested scopes and CLAUDE.md shrinks to a thin loader. Home: the settings-ladder and thin-loader
+  paragraphs [E-13, E-16]; the onboarding step is row 54. [D-5]
 
 ## Formal index
 
