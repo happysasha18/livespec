@@ -42,3 +42,8 @@ Section "The package repo" driven to 0 gate-errors (emphasis caps lowercased, on
 ## Stage 5 chunk 8 — Breakpoints/resume/milestones (2026-07-09)
 
 Section driven to 0 gate-errors (emphasis caps lowercased, two second-person → the agent). One needle re-pointed (test_traceability TestLoaderStaysThin): `must this hold BEFORE any pack file loads?` → `must this hold before any pack file loads?` (same M-1 loader-thin law, register-clean).
+
+## Stage 5 chunk 9 — Parallel lanes, one pen (2026-07-09)
+
+Giant section (~48 lines) fresh-agent rewrite: second person → named actors, ~21 emphasis caps lowercased (PEN→pen defined term, CLAIMING/FOREIGN/DEPENDENCY GRAPH/INTEGRATION/ORDER DECLARED/NARRATED/etc.), region 25 gate-errors → 0. Two needles re-pointed by narrowing (TestDeclineListsAbsorbed): `declined BY NAME` → `declined by name`; `RETURNED to the queue as its own row again` → `returned to the queue as its own row again`. Anchors identical vs b05e199.
+Additional re-points same chunk: `DEPENDENCY GRAPH`→`dependency graph` (test_lanes_by_graph); `a FOURTH lane opens only on the human's asked word`→`a fourth lane...`, `waiting for the pen SAYS so...`→`...says so...`, `a pen-stage is never cut mid-edit`→`pen-stage is never cut mid-edit` (test_parallel_lanes_law).

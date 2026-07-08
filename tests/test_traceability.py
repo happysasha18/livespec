@@ -751,8 +751,8 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
     def test_spec_states_decline_absorbed(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("[T-8]",  # "declining is not a black hole" for what a decline absorbed
-                       "declined BY NAME",
-                       "RETURNED to the queue as its own row again",
+                       "declined by name",
+                       "returned to the queue as its own row again",
                        "superseded wish never dies by pointer"):
             self.assertIn(phrase, spec, "SPEC lost the decline-lists-absorbed clause: %s" % phrase)
         tpl = re.sub(r"\s+", " ", read("templates/ROADMAP.template.md"))
@@ -1671,7 +1671,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 149 (M-147, INV-49): lanes picked by a dependency graph, integration
         order declared at claim, tiny rows serial."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-49", "DEPENDENCY GRAPH", "rows ride serial",
+        for needle in ("INV-49", "dependency graph", "rows ride serial",
                        "first-declared lands first"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
@@ -1940,9 +1940,9 @@ class TestProblemLedger(unittest.TestCase):
         waiting lane readable on the board (communicator)."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("Trains may roll", "T-18", "At most three build lanes roll at once",
-                       "a FOURTH lane opens only on the human's asked word",
-                       "waiting for the pen SAYS so and names the row it waits behind",
-                       "a pen-stage is never cut mid-edit",
+                       "a fourth lane opens only on the human's asked word",
+                       "waiting for the pen says so and names the row it waits behind",
+                       "pen-stage is never cut mid-edit",
                        "never against another lane's half-written draft"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
