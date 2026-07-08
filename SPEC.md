@@ -597,17 +597,17 @@ This is an always-rule: never land into an unversioned host. Version control has
 
 First among them: **personal tool, or reusable product?**
 
-- A founding answer resolves like any setting [E-13]: check the human's profile first — if a personal-scope standing preference covers it, that seeds this project's default, and you say so out loud, never silently. Otherwise, ask.
-- Never derive the answer from examples: naming three of the human's own artifacts doesn't mean the product IS those artifacts — they might just be its first users [B-2].
-- This question is deliberately stronger than the walk's usual proceed-on-default habit [INV-4, INV-12]: an ordinary open question can ride the row while the lane keeps moving, but a founding answer can't — it blocks the first wish until you ask or read the profile.
+- A founding answer resolves like any setting [E-13]: check the human's profile first — if a personal-scope standing preference covers it, that seeds this project's default, and the agent says so out loud, never silently. Otherwise, ask.
+- Never derive the answer from examples: naming three of the human's own artifacts doesn't mean the product is those artifacts — they might just be its first users [B-2].
+- This question is deliberately stronger than the walk's usual proceed-on-default habit [INV-4, INV-12]: an ordinary open question can ride the row while the lane keeps moving, but a founding answer can't — it blocks the first wish until the agent asks or reads the profile.
 - Every later sentence leans on this answer, so an inferred one is the silent micro-decision [INV-5] at its most expensive.
 - Adoption owes the same question at orient — A-1 carries the pointer.
 
-**Learn who you're working with before any founding question resolves.** At founding, at adoption's orient [A-1], and at the first session on a new machine or with a new human, run one step first: look for the personal profile at its one home [E-13].
+**Learn who the agent is working with before any founding question resolves.** At founding, at adoption's orient [A-1], and at the first session on a new machine or with a new human, run one step first: look for the personal profile at its one home [E-13].
 
 - If the profile exists, load it and say so: name the file, and read any unrecognized line aloud rather than skip it silently, under the ladder's own law [E-13].
 - If it's absent, offer to create it from the template (`templates/profile.template.md`).
-- The human tells you about themselves — chat and docs language, how to address them, what they do, their own vocabulary — and can name sources for you to read: their repos, their docs, a public page. From a named source, propose lines.
+- The human tells the agent about themselves — chat and docs language, how to address them, what they do, their own vocabulary — and can name sources for the agent to read: their repos, their docs, a public page. From a named source, propose lines.
 - Every line lands on the human's word: write a told line faithfully, and accept or drop a proposed line one at a time — a dropped proposal stays dropped [INV-9 is this rule's ceiling: mode and trust move only on their word].
 - The human can decline the whole step. Then the session runs on package defaults and says so, and the offer comes back at the next project setup, never mid-work.
 - Skip the step where there's nothing left to do. Once the profile exists, a later session just loads it.
@@ -618,13 +618,13 @@ First among them: **personal tool, or reusable product?**
 
 These three intake verdicts stay separate from the per-wish work-kind [T-16]. Three verdicts share the intake breath, and they never collapse into one:
 
-- the project kind says what the product IS, and seeds project-wide defaults — the usual work-kind, which facets and feel-lenses apply by default [T-13, INV-30];
-- the wish's work-kind says what THIS wish builds;
+- the project kind says what the product is, and seeds project-wide defaults — the usual work-kind, which facets and feel-lenses apply by default [T-13, INV-30];
+- the wish's work-kind says what this wish builds;
 - the placement [INV-37] says where it lands on the map.
 
-The seed proposes; a written line decides. If a host already records its own default (`work-kind.host-default` [T-16, E-13]), keep it — the project kind never silently overrides an explicit profile line. The ask always belongs to the human: no personal-profile line can say what a host is, so B-2's profile-seeding arm never answers this question — you ask it at founding or orient, every time.
+The seed proposes; a written line decides. If a host already records its own default (`work-kind.host-default` [T-16, E-13]), keep it — the project kind never silently overrides an explicit profile line. The ask always belongs to the human: no personal-profile line can say what a host is, so B-2's profile-seeding arm never answers this question — the agent asks it at founding or orient, every time.
 
-Curate the kind vocabulary the same way you curate work-kinds [T-16]. The list above names the shapes real projects already wear, and a custom kind joins through the queue when a named project the list didn't serve well shows up. Expect custom kinds — the queue is their door.
+Curate the kind vocabulary the same way work-kinds are curated [T-16]. The list above names the shapes real projects already wear, and a custom kind joins through the queue when a named project the list didn't serve well shows up. Expect custom kinds — the queue is their door.
 
 The line stays alive, not a founding fossil: the moment work notices the project has outgrown its kind — the static site that grew a backend — update the line on the human's word, and journal it right then, never park it for an audit [INV-36]. A project attached before this law owes no retro-ask; the line arrives at the next landing that would lean on it, like any forward-binding intake law [T-16 kin].
 ## Attaching to a live project (adoption)
