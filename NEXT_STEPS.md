@@ -37,14 +37,18 @@ PARKED — errors cleared, full register conversion needs his word (needle colli
   the queue as its own row again", "superseded INTO", plus heavy PEN/train second-person prose. Full
   conversion needs his word.
 
-REMAINING ornate (drive meter to 0 errors; now 19 errors / 317 warns): rest of "Naming" (outcome/naming/lines
-INV-28, report-walk INV-34, narration+offline INV-35),
-"Sending feedback in" +subs, "When a bug cuts the
-line", "When the workshop misbehaves" +subs, "A prototype stays a sketch" +sub, "Starting a project" +founding
-questions, "Attaching to a live project" +subs, "One rulebook", "Who decides what" +subs, "From spec to tests",
-"The machines that hold the bounds" +sub, "The package repo", "The rhythm" +subs, "When money/time run short",
-"Publishing" +subs, "Composing across axes" +sub, "Open decisions", the "How to read this" preamble (lines 4/18,
-second-person by design — his taste call). Leave the Formal index (structured; scissors at E-25/INV-22 rows).
+ERRORS CLEARED this night pass (full register conversion parked, needle-heavy): "Reuse before reinventing"
+(524), "A prototype stays a sketch" promotion (556), founding-questions (605, 628) — all commit 95c8dc1.
+
+REMAINING errors (drive meter to 0; now 15 errors / 317 warns) — night pass fixes these surgically next ticks:
+lines 712 (adoption), 795 (Human authority), 808 (Settings ladder), 830/844/848/874/877 (Delegation and
+workers), 936 (From spec to tests), 1001 (push-gate reach), 1006 (package repo). PARKED (not touched by night
+pass): the "How to read this" preamble (lines 4/18, reader-facing second-person by design — his taste call) and
+the Formal index scissors (lines 1228/1263 E-25/INV-22 — structured index, his word). Full register conversion
+(warnings: second-person + CAPS) of every errors-cleared section awaits a supervised needle re-point pass.
+THEN full-conversion pass on the clean sections still ornate: rest of "Naming" (INV-28/34/35), "Sending
+feedback in", "When a bug cuts the line", "One rulebook", "The rhythm", "When money/time run short",
+"Publishing", "Composing across axes", "Open decisions".
 THEN: same pipeline on ARCHITECTURE.md prose (tables untouched); then a cross-project migration guide, sealed
 into spec-author + the playbook (his word: this is now for ALL projects).
 
