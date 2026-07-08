@@ -15,7 +15,7 @@ can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not s
    spec-done-gate.py, spec-waivers.json + spec-debt-cap.json, tests/test_prose_gate.py (18 tests). The judge
    (stage 4 VALIDATE) is now built INTO the gate — a fresh Opus agent judges the whole doc, --verify checks it.
    STAGE 5 IN PROGRESS: anchor-multiset baseline = commit `b05e199` (552 anchor tokens). Chunks DONE:
-   11 done, BOTH giants closed (Parallel lanes, Specifying, Delegation). Gate-errors 320 → 132; remaining ~76 across small/moderate sections (56 are the Formal index,
+   SPEC BODY FULLY CONVERTED — gate-errors 320 → 45, and all 45 are the Formal index table (parked by his word). Every body section is 0 gate-errors, anchors identical vs b05e199, suite 201 green. NEXT: whole-doc fresh-agent judge pass (spec-judge.py, redundancy/register over the whole doc) + add TestNeedleRegisterClean + TestAnchorInBlockquoteGuard + spec-done-gate.py GREEN; then ARCHITECTURE.md prose; then seal the gate into spec-author + playbook (awaits his sign-off) (56 are the Formal index,
    parked by his word → ~242 actionable, ~33 sections). Per chunk: fresh Opus writer (pack not loaded) →
    gate (anchor multiset identical + --gate 0 on region + suite green + re-point broken needles by
    narrowing, logged) → commit only on green. Hotspots ahead (needle-heavy): "Specifying and building a
