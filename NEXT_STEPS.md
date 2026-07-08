@@ -23,6 +23,12 @@ all ARCH tests read only the Nodes/Seams tables). Certification progress since, 
   JOURNAL entry, all pre-push gates green (prover record · suite 176 · anchor ownership · matrix coverage ·
   pin drift · loadability · prototype fence), `git push` succeeded — 52 commits to origin/main, remote
   HEAD a4c3e78, remote VERSION 0.9.0. The push gate is MY-certification (his 19:07 word); I certified.
+**Row 172 / INV-70 LANDED + PUSHED (2026-07-08 ~10:34):** his tlvphoto-born parametrization rule walked the
+full pipeline (SPEC INV-70 beside INV-31 · index · build-pipeline 0.2.40 landing-report elaboration · matrix
+M-176 · `test_parameter_default` red-proven then green · prover cross-link) — a tunable knob gets an
+agent-chosen sensible default, TOLD not asked, tuned together later at most; the agent moves every task it
+can [INV-4]; and where the human GRANTS it, the agent pushes to prod on its own certification [M-6, INV-9].
+Suite 177 green, pushed (HEAD 24738ab).
 **Autonomous queue DRAINED here:** every remaining open row needs his word (166 board round 2 · 148 genre
 Phase 3 · 170 pre-show lint priority · 171 no-hooks/no-GitHub), a real window with him (field legs 47/96/54/
 163-run/165/168-remote/134/141/143/144/140/117/129/133), or is observational (95 marathon-watch). One
