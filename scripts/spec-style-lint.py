@@ -105,7 +105,9 @@ CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TT
               "LLD", "HLD", "PRD", "README", "OK", "MD", "CLI", "ID", "IDE", "NLP", "SPEC",
               "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO",
               # defined prover/verify mode names — literal terms, not shout
-              "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY"}
+              "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY",
+              # defined bold law-part labels of the narration law (INV-35)
+              "IDENTITY", "DIGEST", "HEARTBEAT"}
 FILENAME_RE = re.compile(r"\b[\w./-]+\.(?:md|py|sh|json|txt|html|js|css|yml|yaml|toml)\b")
 # capture an ALL-CAPS token, including a hyphenated compound (CROSS-LINK) as one token, so a
 # defined mode name is judged whole against the allowlist rather than split into "LINK".

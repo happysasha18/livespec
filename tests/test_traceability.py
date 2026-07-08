@@ -1567,7 +1567,7 @@ class TestProblemLedger(unittest.TestCase):
         a chat line awaiting his return, never a summons; the superseded fence
         sentence survives in neither home."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("OFFLINE WINDOW",
+        for needle in ("offline window",
                        "he may step away, an honest range for how long",
                        "never a guess dressed as a promise",
                        "a chat line awaiting his return, never a summons",

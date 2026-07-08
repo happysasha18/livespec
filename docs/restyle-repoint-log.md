@@ -30,3 +30,7 @@ re-pointed by narrowing to the register-clean phrase in the new prose (test_trac
 `the economy rung is asked, or the standing default told` → `the pack asks the economy rung, or tells the standing default`;
 `What NEVER bends, at any rung` → `What never bends at any rung`;
 `a push still requires the full gate green at HEAD` → `a push still requires the full gate green at head`.
+
+## Stage 5 chunk 3 — Naming and reporting (2026-07-09)
+
+Section "Naming and reporting the work" driven to 0 gate-errors surgically (partly clean already): future-narration "will go by"/"will be called"→present; second person (agent) → named actor/passive on the preshow-lint, report-walk, and narration lines; inline caps IS/STEP/OPENS/OFFLINE WINDOW lowercased. Linter: IDENTITY/DIGEST/HEARTBEAT added to the caps allowlist (defined bold law-part labels of INV-35, kept caps). One needle re-pointed: `OFFLINE WINDOW` → `offline window` (test_traceability narration test).
