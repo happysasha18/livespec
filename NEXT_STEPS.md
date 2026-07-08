@@ -13,8 +13,13 @@ can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not s
    check, warnings promoted to blocking at the done-gate, an explicit machine-readable waiver replacing silent
    parking. «доработай все алгоритмы до конца».
 4. VALIDATE — the prose validation itself runs through FRESH agents, never me. «валидацию тоже чистому агенту».
-5. APPLY — run the new gate over SPEC (incl. preamble: convert per his word — drop "you", the scissors, and
-   the doubled "not for you to read … you can ignore" redundancy) and over ARCHITECTURE.md.
+5. APPLY — his steer: prefer ONE whole-document clean rewrite by a fresh max-reasoning agent (Opus max, clean
+   context; Fable pulled 2026-07-07) using the design stage's "right prompt", over section-by-section patching
+   — one mind over the whole doc kills cross-section redundancy + register drift. Gate HARD after: anchor
+   multiset identical, every needle survives, suite green, fresh checker confirms no fact lost; any gap →
+   re-feed. Covers SPEC (incl. preamble convert: drop "you", the scissors, the doubled "not for you … you can
+   ignore" redundancy) and ARCHITECTURE.md. Design studies Kiro (EARS constrained grammar) + BMAD (checklists)
+   as prior art — "their approach but better" = add the machine quality gate they lack. Detail: prose-gate-evidence.md.
 DECIDED BY HIM: preamble → CONVERT; Formal index → LEAVE as structure (its 2 errors stay, by his word).
 Prior restyle work is LOCAL commits 3665f7b..(88f228c bookkeeping); SPEC lint 4 errors / 317 warns; suite 183
 green (only red = TestGateA_ProverRecord). NOTHING pushed. Before any push: prover pass + commit its record.
