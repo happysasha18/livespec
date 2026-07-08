@@ -787,22 +787,22 @@ The answer states plainly what the walk verified, apart from what it merely asse
 
 ### Settings and the ladder
 
-**Settings climb a ladder of four nested scopes, and the narrowest word wins.** Every way the pack behaves for you is a named setting, and each setting has a home in exactly one scope, depending on what it describes:
+**Settings climb a ladder of four nested scopes, and the narrowest word wins.** Every way the pack behaves for the human is a named setting, and each setting has a home in exactly one scope, depending on what it describes:
 
 - about the pack itself → the **package defaults**, each value stated in the base skill beside the rule it tunes [E-12];
-- about YOU, following you across every project (language for docs/commits vs. conversation, proactivity mode, trust, your domain vocabulary) → your **personal profile**, one file per human at `~/.claude/live-spec/profile.md`;
-- about THIS project → the **host profile** [E-8];
-- about RIGHT NOW → the **session scope**, your live word in one conversation.
+- about the human, following the human across every project (language for docs/commits vs. conversation, proactivity mode, trust, the human's domain vocabulary) → the human's **personal profile**, one file per human at `~/.claude/live-spec/profile.md`;
+- about this project → the **host profile** [E-8];
+- about right now → the **session scope**, the human's live word in one conversation.
 
-The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it. A setting made at a broad scope is inherited down through the narrower ones, until a narrower one overrides it on your word — an all-English project overriding your Russian-chat line, or a "today, answer me in English" overriding both for one sitting. Resolution reads from the narrowest scope out: session beats host beats personal beats package default.
+The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it. A setting made at a broad scope is inherited down through the narrower ones, until a narrower one overrides it on the human's word — an all-English project overriding the human's Russian-chat line, or a "today, answer me in English" overriding both for one sitting. Resolution reads from the narrowest scope out: session beats host beats personal beats package default.
 
-Profiles are re-read at the same freshness points as skills [A-7]. If a profile line the current pack doesn't recognize (written under an older vocabulary), the pack ignores it ALOUD: a dated note in the host's journal, plus a line in the session's next report. The journal half is durable, so a session that dies before its report still leaves the trace, never a silent drop, never an error. [E-13]
+Profiles are re-read at the same freshness points as skills [A-7]. When a profile line falls outside the current pack's vocabulary (written under an older vocabulary), the pack ignores it aloud: a dated note in the host's journal, plus a line in the session's next report. The journal half is durable, so a session that dies before its report still leaves the trace, never a silent drop, never an error. [E-13]
 
-**No override is ever silent.** An override exists only as a written line in its profile file: setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5], applied to settings. Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a MINOR bump, and live-spec's own host contract tightens that to "before every push" — recorded, visible, never assumed.
+**No override is ever silent.** An override exists only as a written line in its profile file: setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5], applied to settings. Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a minor bump, and live-spec's own host contract tightens that to "before every push" — recorded, visible, never assumed.
 
-The session scope is the one that's never a file. A session override lives only in your spoken word and dies with the conversation; the agent never writes it anywhere on its own. If it should outlive the session, that's a PROMOTION into the profile it describes (personal or host), made on your word and journaled like any other override. An announced self-compaction [M-2] carries the live session lines forward in its summary. A full wipe ends the sitting, and the session lines die with it by design — that loss is your own move, never the agent's. [INV-14]
+The session scope is the one that's never a file. A session override lives only in the human's spoken word and dies with the conversation; the agent never writes it anywhere on its own. If it should outlive the session, that's a promotion into the profile it describes (personal or host), made on the human's word and journaled like any other override. An announced self-compaction [M-2] carries the live session lines forward in its summary. A full wipe ends the sitting, and the session lines die with it by design — that loss is the human's own move, never the agent's. [INV-14]
 
-**Your profile is the one home of the personal layer, and the global instruction file is a thin loader.** Everything personal — who you are, how you like to be spoken to, your standing working rules — lives in the personal profile, gathered in one place. The machine-global instruction file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: it points to the profile, and states only the bootstrap lines that must hold before any pack file loads. The which-project disambiguation rule is the type specimen — the rule that stops a session writing into a foreign repo can't itself wait for that repo's files to load. The loader is the one home for those bootstrap lines, and the profile never restates them. [INV-13]
+**The human's profile is the one home of the personal layer, and the global instruction file is a thin loader.** Everything personal — who the human is, how the human likes to be spoken to, the human's standing working rules — lives in the personal profile, gathered in one place. The machine-global instruction file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: it points to the profile, and states only the bootstrap lines that must hold before any pack file loads. The which-project disambiguation rule is the type specimen — the rule that stops a session writing into a foreign repo can't itself wait for that repo's files to load. The loader is the one home for those bootstrap lines, and the profile never restates them. [INV-13]
 
 Migrating an existing rule file into this shape is a fork by scope — each rule moves to the scope it describes:
 
@@ -810,9 +810,9 @@ Migrating an existing rule file into this shape is a fork by scope — each rule
 - a personal line moves to the profile;
 - a project line moves to that project's host profile.
 
-A rule-by-rule mapping proves the move lossless, and the old file stays in the attic [INV-7], so one move rolls the whole change back. The fork writes only what the running session owns: pack rules land in the pack, and the personal profile lives on the human's machine, outside any host or pack repo — a PRIVATE repo the human owns may serve as its git home.
+A rule-by-rule mapping proves the move lossless, and the old file stays in the attic [INV-7], so one move rolls the whole change back. The fork writes only what the running session owns: pack rules land in the pack, and the personal profile lives on the human's machine, outside any host or pack repo — a private repo the human owns may serve as its git home.
 
-Sitting outside any repo fence [INV-11], a promotion RE-READS the file immediately before appending, and that git home is its recovery net. A project line becomes a written migration note, and the project's own session lands it at its next update — so nothing in this migration writes a foreign repo [INV-10]. [E-16]
+Sitting outside any repo fence [INV-11], a promotion re-reads the file immediately before appending, and that git home is its recovery net. A project line becomes a written migration note, and the project's own session lands it at its next update — so nothing in this migration writes a foreign repo [INV-10]. [E-16]
 
 ### Delegation and workers
 
