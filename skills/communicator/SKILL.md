@@ -17,7 +17,7 @@ metadata:
 Not about code. About the exchange with the human: how to **show** what you did and how to ask for a decision
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
-internal ids). Seventeen rules, few enough to hold in your head — plus one walked step before the heavy
+internal ids). Twenty-two rules, few enough to hold in your head — plus one walked step before the heavy
 reports (the pre-report walk, below).
 
 ## When it fires

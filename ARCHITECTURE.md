@@ -8,20 +8,18 @@ below). One node carries one name and one responsibility — the one-surface-one
 structure.
 
 The doc is kept current by assignment. As each wish lands, its new facts go to the node that already
-owns their kind and the pin is refreshed; a fact with no home yet is assigned to the node that fits.
-An assignment alone changes no structure and triggers no re-prove — only a new node or a new seam
-does. The full landing-by-landing history of these assignments lives in JOURNAL.md, where history
-belongs; this doc states the structure as it stands today. [E-14]
+owns their kind and the pin is refreshed; a fact with no home yet is assigned to the node that fits. A
+large or surface-class wish updates the doc before the matrix is touched; a bug or small wish only
+cites the node it lands in. An assignment alone changes no structure and triggers no re-prove — only a
+new node or a new seam does, and only then is the doc re-proven. The full landing-by-landing history of
+these assignments lives in JOURNAL.md, where history belongs; this doc states the structure as it
+stands today. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact is
 the text. So a pin points to the `file:line` where a node's responsibility is stated or carried, and
 every pin below was taken from a grep or read actually run, never from memory. Two nodes are marked
 [target] — specified, not yet code — and the template lets their pin cells stay empty until the code
 lands.
-
-**When this doc changes.** A large or surface-class wish updates it before the matrix is touched; a
-bug or small wish only cites the node it lands in, or assigns an orphan fact to a fitting node. It is
-re-proven when the structure changes, not on every landing.
 ---
 
 ## Nodes
