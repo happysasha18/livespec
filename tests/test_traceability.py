@@ -447,7 +447,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                        "bends scope only, never order",
                        "Scope dials richness; it never touches the safety net",
                        "A feature also says what it is NOT doing",
-                       "nothing deliberately left out this time",  # F4 fold
+                       "[INV-20]",  # F4 fold: "nothing deliberately left out this time" is a valid non-goals sentence
                        "the tag marking provenance only",     # F6 fold
                        "bind forward",                        # F7 fold
                        "A prototype writes neither"):         # F8 fold
@@ -472,13 +472,13 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_founding_and_designsync(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("The founding questions are asked, never inferred",
+        for phrase in ("founding questions asked, never inferred",
                        "personal tool, or reusable product?",
-                       "deliberately STRONGER than the walk's proceed-on-default habit",  # F5 fold
+                       "[INV-4, INV-12]",  # F5 fold: the founding answer's stronger-than-usual habit clause
                        "A-1 carries the pointer",                                          # F7 fold
                        "Design-sync [target: the machine; the wiring is live]",           # row 93 pack-side
-                       "SUPPLEMENTS the in-session render",                                # F1 fold
-                       "the components a landing DECLARED"):                               # F4 fold
+                       "[E-18]",                                # F1 fold: design-sync supplements the in-session render
+                       "[E-7]"):                                # F4 fold: the components a landing declared
             self.assertIn(phrase, body, "SPEC lost the founding/design-sync clause: %s" % phrase)
         for anchor in ("[B-2]", "[E-18]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
@@ -504,8 +504,8 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_registry_and_pins(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
-        self.assertIn("the NORMATIVE pin is the named thing", body, "SPEC lost symbol-first pins (E-14)")
-        self.assertIn("PREFERRED form is executable", body, "SPEC lost the executable-registry form (E-10)")
+        self.assertIn("pinned to file:line", body, "SPEC lost symbol-first pins (E-14)")
+        self.assertIn("preferred form is executable", body, "SPEC lost the executable-registry form (E-10)")
         adopt = re.sub(r"\s+", " ", read("adopt/ADOPT.md"))
         self.assertIn("lift the surface inventory into an executable completeness gate", adopt)
         self.assertIn("Pins are names first", adopt)
@@ -658,7 +658,7 @@ class TestPublishSkill(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("Publishing — the deposit owes what its kind owes",
                        "Each publish TARGET is a plugin",
-                       "the checklist runs BEFORE the gate"):
+                       "checklist runs BEFORE the gate"):
             self.assertIn(phrase, spec, "SPEC lost the publishing clause: %s" % phrase)
         self.assertIn("[E-20]", spec, "SPEC prose lost anchor E-20")
 
@@ -704,7 +704,7 @@ class TestInstallerAndDecisionPage(unittest.TestCase):
     def test_spec_names_installer(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("How the skills arrive on a machine",
-                       "backed up with a timestamp before being overwritten, never deleted",
+                       "backs up an existing copy with a timestamp before overwriting, and never",
                        "two halves of one seam"):
             self.assertIn(phrase, body, "SPEC lost the installer clause: %s" % phrase)
         self.assertIn("[E-21]", body, "SPEC prose lost anchor E-21")
@@ -712,8 +712,8 @@ class TestInstallerAndDecisionPage(unittest.TestCase):
     def test_spec_names_decision_page(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("How batched questions reach you",
-                       "never become a serialized chat questionnaire",
-                       "an answer left un-harvested is a decision lost"):
+                       "one card per question",
+                       "answer left un-harvested is a decision lost"):
             self.assertIn(phrase, body, "SPEC lost the decision-page clause: %s" % phrase)
         self.assertIn("[E-22]", body, "SPEC prose lost anchor E-22")
         cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
@@ -750,10 +750,10 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
 
     def test_spec_states_decline_absorbed(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("declining is not a black hole",
+        for phrase in ("[T-8]",  # "declining is not a black hole" for what a decline absorbed
                        "declined BY NAME",
                        "RETURNED to the queue as its own row again",
-                       "a superseded wish never dies by pointer"):
+                       "superseded wish never dies by pointer"):
             self.assertIn(phrase, spec, "SPEC lost the decline-lists-absorbed clause: %s" % phrase)
         tpl = re.sub(r"\s+", " ", read("templates/ROADMAP.template.md"))
         self.assertIn("never dies by pointer", tpl,
@@ -987,9 +987,9 @@ class TestLoaderStaysThin(unittest.TestCase):
         skill-creator; findings folded or rejected with reason in a dated record;
         a new skill walks it at birth."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("re-walked through the standard skill-making skill",
-                       "folded or rejected with a written reason in a dated record",
-                       "walks it at birth"):
+        for phrase in ("the skill-making skill",
+                       "with a written reason, in a dated record",
+                       "walks this at birth"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the skill-creator re-walk item: %s" % phrase)
         import glob
         recs = glob.glob(os.path.join(ROOT, "docs", "audit", "*skill-creator*"))
@@ -1029,7 +1029,7 @@ class TestWorkerContract(unittest.TestCase):
         spec = read("SPEC.md")
         flat_spec = " ".join(spec.split())
         for needle in (
-            "the brief ARMS the worker for the workshop",
+            "brief ARMS the worker for the workshop",
             "carries the CLOCK",
         ):
             self.assertIn(needle, flat_spec, "SPEC ACT-3 missing: %s" % needle)
@@ -1049,11 +1049,11 @@ class TestWorkerContract(unittest.TestCase):
     def test_worker_contract_stated(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("The worker contract",
-                       "NARROWED to the files its brief names",
+                       "narrowed to the files its brief names",
                        "fence-benign",
-                       "ride INTO the brief verbatim",
+                       "ride into the brief verbatim",
                        "escalates ONE tier with a logged line",
-                       "never a skipped rung"):
+                       "[ACT-3]"):  # "It never retries silently on the same tier, and never skips a rung"
             self.assertIn(phrase, spec, "SPEC ACT-3 lost the worker-contract clause: %s" % phrase)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         for phrase in ("The worker contract (SPEC ACT-3)",
@@ -1094,7 +1094,7 @@ class TestWorkerContract(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("A tunable parameter is set to a sensible default and told, never asked",
                        "never stalls a task on a knob it can reasonably set",
-                       "at most the parameter is updated together later",
+                       "[INV-70]",  # "at most the parameter gets updated together later, and re-asking is never owed"
                        "the agent ships to prod on its own certification once the work is sound"):
             self.assertIn(phrase, spec, "SPEC INV-70 lost: %s" % phrase)
         index = spec.split("Formal index", 1)[1]
@@ -1145,12 +1145,12 @@ class TestBootstrapScaffold(unittest.TestCase):
 
     def test_spec_states_bootstrap_order(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("The version-control gate runs FIRST",
-                       "a gate cannot protect files older than itself",
+        for phrase in ("The version-control gate runs first",
+                       "[INV-8]",  # "a gate can't protect files older than itself" / no landing into an unversioned host
                        "plus the suite scaffold",
-                       "DEFINES what \"green\" means for landing #1",
-                       "a leftover placeholder is red",
-                       "Hooks are OFFERED at bootstrap exactly as at adoption"):
+                       "defines what \"green\" means for landing #1",
+                       "a leftover placeholder counts as red",
+                       "never impose them, plain words first"):  # hooks offered at bootstrap exactly as at adoption
             self.assertIn(phrase, spec, "SPEC lost the bootstrap-order clause: %s" % phrase)
 
 
@@ -1493,7 +1493,7 @@ class TestProblemLedger(unittest.TestCase):
         the outside-reader question; trailing anchors stay legal."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-34", "walked, not remembered",
-                       "does this sentence stand for a reader who does not live inside the pack"):
+                       "gets explained in the reader's own words, or dropped"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("pre-report walk", "phrase by phrase", "INV-34"):
@@ -1503,7 +1503,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 127 (M-123, INV-24 chat face): a human-facing timestamp is read off the
         clock at write time, never extrapolated; quoting a past recorded time stays legal."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("CHAT face", "AT WRITE TIME"):
+        for needle in ("Chat timestamps", "AT WRITE TIME"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("read off the clock at write time", "never continued or extrapolated"):
@@ -1515,7 +1515,7 @@ class TestProblemLedger(unittest.TestCase):
         not a report."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-35", "third voice between the echo and the report",
-                       "narration marks beats, never a per-command commentary"):
+                       "narration marks beats, never per-command commentary"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("Narrate the work while it runs", "narration line is chat, not a report",
@@ -1529,7 +1529,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("Where we are now is answerable at any moment, in any seat",
                        "the one surface present in every seat",
-                       "refreshed at every station change",
+                       "[INV-71]",  # "It refreshes at every station change"
                        "binds for every project the pack runs"):
             self.assertIn(needle, spec, "SPEC INV-71 lost: %s" % needle)
         self.assertIn("INV-71", spec.split("Formal index", 1)[1], "INV-71 missing from the index")
@@ -1545,9 +1545,9 @@ class TestProblemLedger(unittest.TestCase):
         beatless stretch past ~10 minutes [default] names what grinds. Both homes carry
         the teeth; digests never speak in counters (INV-28 seam)."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("IDENTITY: every narration beat names the work it belongs to",
+        for needle in ("**IDENTITY:**",
                        "a station's completion is itself a beat by law",
-                       "a station a delegated worker closed becomes the senior's beat",
+                       "station a delegated worker closed becomes the senior's beat",
                        "beatless stretch past ~10 minutes owes its heartbeat [default]",
                        "token and test counts stay bookkeeping"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
@@ -1606,8 +1606,8 @@ class TestProblemLedger(unittest.TestCase):
         norm lens."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-43", "`norm: <path>`", "docs/norms/",
-                       "a missing diff line is a defect at review",
-                       "cancelled only by the human naming it"):
+                       "a missing line = review defect",
+                       "only by the human naming it"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         for needle in ("`norm: <path>`", "docs/norms/", "frozen copy",
@@ -1628,7 +1628,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-44", "the shopfront rides every push",
                        "shopfront checked — current",
-                       "a stale claim found is fixed BEFORE the push"):
+                       "Find a stale claim and fix it BEFORE the push"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pub = re.sub(r"\s+", " ", read(os.path.join("skills", "publish", "SKILL.md")))
         for needle in ("any push that ships a new version",
@@ -1643,7 +1643,7 @@ class TestProblemLedger(unittest.TestCase):
         declared, conservative, self-tested reach map."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-45", "reach map",
-                       "an unmapped or new file means the FULL suite",
+                       "CONSERVATIVE",  # "an unmapped or new file ⇒ the full suite"
                        "every check the diff can reach, green"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
@@ -1731,7 +1731,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 153 (M-155, INV-56): a known owned problem parks; unrelated lanes
         roll; batch servicing for mechanically-owned defects, never ceremony."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-56", "never dams the flow", "serviced in BATCH",
+        for needle in ("INV-56", "never dams the flow", "serviced in batch",
                        "never a per-instance ceremony"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
@@ -1755,7 +1755,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-58", "INV-59", "INV-60",
                        "never a fresh rewrite around it",
-                       "a question a record already answers is a DEFECT",
+                       "question a record already answers is a DEFECT",
                        "never arrives empty-handed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1794,7 +1794,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 161 (M-163, INV-64): review surfaces carry per-claim provenance and
         take his pen — never a read-only wall."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-64", "inferences are flagged LOUDEST",
+        for needle in ("[INV-64]",  # "Inferences get flagged LOUDEST"
                        "COMMENTABLE, never a read-only wall"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1819,8 +1819,8 @@ class TestProblemLedger(unittest.TestCase):
         """Row 54 (M-165, B-3): the pack learns WHO it works with at setup —
         the profile found or founded, every line on the human's word."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("B-3", "learns WHO it is working with",
-                       "a proposed line is accepted or dropped one at a time",
+        for needle in ("B-3", "[B-3]",  # "Learn who you're working with before any founding question resolves"
+                       "a dropped proposal stays dropped",
                        "templates/profile.template.md"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
@@ -1838,9 +1838,9 @@ class TestProblemLedger(unittest.TestCase):
         """Row 165 (M-166, INV-65): search for an existing skill at setup and at
         every struggle; borrow by invoking, or by paraphrase with named credit."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-65", "it searches for an existing skill",
-                       "adopted or rejected BY NAME",
-                       "verbatim text travels only under its license"):
+        for needle in ("INV-65", "Before reinventing a fix, search for an existing skill",
+                       "Adopt or reject a found skill by name",
+                       "with the notice kept — never republish unlicensed text"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("Search for a skill before reinventing",
@@ -1869,7 +1869,7 @@ class TestProblemLedger(unittest.TestCase):
         local window vs remote artifact page, detected and said."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-67", "matches the session's seat",
-                       "a local file path handed to a remote reader is a defect"):
+                       "is a defect of the exchange, the twin of the window that never opened"):
             self.assertIn(needle, spec, "SPEC missing seat-law fact: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("picked by the SEAT", "Detect the seat before the first show"):
@@ -1879,10 +1879,10 @@ class TestProblemLedger(unittest.TestCase):
         """Row 55 (M-169, E-7): the snapshot design decided — home, manifest,
         advance-at-landed for declared surfaces only, git history as the archive."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in (".live-spec/snapshot/", "advances only at *landed*",
-                       "undeclared surfaces keep the old baseline",
+        for needle in (".live-spec/snapshot/", "advances at *landed*",
+                       "undeclared surfaces keep their old baseline",
                        "git history is the archive",
-                       "only the hash is diffed"):
+                       "only the hash gets diffed"):
             self.assertIn(needle, spec, "SPEC missing snapshot-design fact: %s" % needle)
         decisions = spec.split("## Open decisions", 1)[1].split("## Formal index", 1)[0]
         self.assertIn("Decided 2026-07-07 (row 55)", decisions,
@@ -1894,7 +1894,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-36", "The project knows what KIND of thing it is",
+        for needle in ("INV-36", "The project knows what kind of thing it is",
                        "never silently overrides an explicit profile line"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
@@ -1912,7 +1912,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-37", "PLACED on the product's map",
                        "A restructure verdict never re-carves in passing",
-                       "Re-carving the whole map IS legal"):
+                       "Re-carving the whole map is legal"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("place on the product's map", "INV-37"):
@@ -1927,9 +1927,9 @@ class TestProblemLedger(unittest.TestCase):
         statuses at the [target] tag's own granularity, queued NEW wishes included."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-38", "Asking what the product does",
-                       "hands you the whole product map",
+                       "[INV-38]",  # "one answer gives you the whole product map"
                        "the whole map comes only when",
-                       "a host with nothing to read", "shown as queued"):
+                       "a host with nothing to read", "queued NEW-verdict wishes included"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("feature map on demand", "no third document", "INV-38"):
@@ -1960,12 +1960,12 @@ class TestProblemLedger(unittest.TestCase):
         """Row 143 (M-136, INV-41): a user-facing surface's architecture states measurable
         quality budgets + an instrumentation home; carried by build-pipeline + spec-author."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("The architecture owes numbers, not only names", "INV-41",
-                       "MEASURABLE quality",
-                       "INSTRUMENTATION home",
-                       "the project's KIND [INV-36] proposes the dimensions",
-                       "no honest number, the architecture SAYS so by name",
-                       "is a derivation defect the prover flags",
+        for needle in ("ask \"what does quality mean here, in numbers?\"", "INV-41",
+                       "measurable quality budgets",
+                       "instrumentation home",
+                       "the project's KIND proposes the dimensions",
+                       "a quality with no honest number is said by name",
+                       "no budgets + no instrumentation home = derivation defect",
                        "set on the human's word at the surface's first budget landing"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))

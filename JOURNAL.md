@@ -2,6 +2,97 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-08 (session 27) — SPEC + ARCHITECTURE humanized (prose only; rules, anchors, tests unchanged)
+
+**What:** Alexander drove a readability pass over the whole spec and ARCHITECTURE.md's prose. The spec had
+accreted into dense, robotic law-walls over many sessions; he wanted it to read like a sharp colleague at a
+whiteboard — plain, direct, native English written clearly for non-native readers — aggressively shorter,
+with visual structure (bullets, `###` sub-headings), and the history pulled out of the body. His calibration,
+in order: not "conversational" but native-plain; unify one voice across the file; cut hard; provenance to
+this journal; and do not mirror his own multilingual chat register into the docs.
+
+**Method** (delegated section by section, each result anchor-diffed and rule-checked by the senior): a voice
+pass brought every dense section into the colleague voice; a structure+cut pass added bullets and `###`
+groups and moved all dated provenance here; a native-read pass caught the last stiff seams (dropped
+prepositions, "keep current" → "up to date", and one leftover incident clause); an adversarial fidelity
+prover compared every section old-vs-new for meaning drift and found exactly one (the rhythm date-fence
+carve-out had narrowed "wrong date" to "own date" — restored).
+
+**Validation** (Alexander's frame: a form-only change must be invisible to meaning): the 145-anchor set is
+identical before and after; every rule survives, verified per section; word counts held or dropped
+(−16%..+6%), line growth is only from bulleting. The suite stayed green — but 32 traceability tests first
+went red because they grepped the spec's exact old prose. That exposed a real brittleness in the method's
+own tests: a traceability test keyed to a sentence forbids ever improving the prose. Fix (Alexander's call,
+option B): re-point those tests to key on the ANCHOR plus a stable coined term, never a volatile sentence —
+60 assertions across 31 tests, no guard weakened (broadly-cited anchors like INV-1/INV-4 were avoided as
+sole guards). Suite 180 green. LESSON for test-author (own queue row to come): a traceability needle keys on
+the anchor, not the sentence. Two follow-ups queued: bake the humanize method (voice + structure +
+provenance→JOURNAL) into spec-author, referencing stop-slop by name rather than copying it (INV-13 across
+skill boundaries); and the BMAD/Kiro architecture enrichment.
+
+**Provenance moved out of the spec body (nothing lost — each was a dated incident the reworded rule no longer needs to carry):**
+- 2026-07-05 — INV-9 (decision-page withdrawal): Alexander picked the shell-separator verdict at 23:49 and disavowed it minutes later, saying he hadn't understood what he was confirming; birthed the withdrawn-answer law.
+- 2026-07-06 — INV-32 (decision cards in consequences): the shell-separator decision card explained the failure mechanism but not what was actually being decided; Alexander said he understood neither the problem, the consequences, nor the choice — the same incident behind INV-9.
+- 2026-07-05 — T-15 (scope negotiation): Alexander said the walk plays with scope, not timelines.
+- (undated) — T-17 (one wish = one user story): born from a project that fused two stories, a door and a gallery, into one queue row; the door half shipped, the row was declared complete, and the gallery stayed a rejected wall for four rebuilds.
+- 2026-07-05 — INV-27 (departures board): Alexander's word before sleep — name the captured request in plain words, then report how each feature moves down the pipeline.
+- 2026-07-06 — INV-37 (feature placement): Alexander's word — when a new request arrives, understand which feature it concerns (changes one, adds a new one, or needs restructuring), and this should be clear out of the box.
+- 2026-07-06 (morning) — INV-28 (naming/lines): the first real departures board passed its eval and failed its reader — lines led with coined metaphor-titles like "a walk through the evidence" or "the clock grows teeth," carried row numbers he never opens, and squeezed facts into riddles only the writer could parse; the jargon family's third strike in two days.
+- 2026-07-06 — INV-28 (bookkeeping never-list): two consecutive eval runs put "all 64 checks green, v0.9.16" straight into the human's message body.
+- 2026-07-06 — INV-28 (mechanical voice): three windows leaked raw codes to their reader on the same day, prompting the chat-law-hook and preshow-lint mechanical enforcement for both this law and the narration law.
+- 2026-07-08 — INV-28 (preshow-lint origin): a chat report led with "rows 166 and 148," which the reader couldn't parse.
+- 2026-07-06 — INV-34: the session-13 closing report led with pack-internal names and loan-translated doc metaphors; Alexander bounced it, asking what language the report was even written in — the jargon family's fourth strike in two days, the first after INV-28 landed.
+- 2026-07-06 — INV-35 (narration law): Alexander's word came twice in one day — a morning personal-profile line, then an afternoon repeat asking not to forget to report as the work goes, and to put it in the communication skill too; a habit held only in a personal profile hadn't carried across sessions, so it became pack law.
+- 2026-07-06 (evening) — INV-35 (heartbeat/offline window): Alexander's third word the same day, after landing reports had gotten good but the mid-work trail was still thin — a session can go off for half an hour to an hour with it unclear where the time went; the same evening he also asked to say when he can go offline (e.g. while tests run locally), a request that returned again, pulled back every half hour by a question.
+- 2026-07-06 — INV-51: Alexander's word, said twice in one minute — put the project's name in the visible content, never only the URL.
+- 2026-07-06 — INV-52: Alexander's word — he'd open everything at the very end, and if anything re-opens mid-stretch, it only accumulates onto the same page.
+- 2026-07-07 (morning) — INV-67: established as Alexander's word.
+- 2026-07-08 — INV-71: born from two real gaps Alexander named — hours of near-silent tool calls whose work he couldn't see, and the built-in board being simply absent in the browser.
+- 2026-07-07 — INV-57: after a 17-row night that ended, in Alexander's read, as nothing at all — unclear, with no closing word.
+- 2026-07-06 — INV-64: in the promoter case, unmarked inference cost a review round — Alexander said he didn't know where the agent had gotten it all from; standing cross-project word since.
+- 2026-07-06 — INV-42: born through the promoter window — three review rounds of one document got rejected in a single evening, the same failures repeating after they'd already been named.
+- 2026-07-07 — INV-58: a rewrite of an approved opener in the promoter case introduced a banned pattern the approved wording never had.
+- 2026-07-07 — E-26: a banned pattern returned into a campaign's most visible line even after the ban had been spelled out plainly, in the promoter case; only the executable scanner ended it.
+- 2026-07-06 (approx.) — INV-59: Alexander's escalation in the promoter case — a stack of similar questions had already been answered, and he asked that the dialogues converge.
+- (promoter case) — INV-60: Alexander's word — find it yourself, propose, then show.
+- 2026-07-06 — INV-33: Alexander's word — when you write the product spec you are a strong product manager, when the architecture a strong software architect, when the test matrix a strong QA automation engineer.
+- (undated) — INV-18 (facet holes): the exact hole the Room shipped through — hover-only openings, no phone layout — kept as a short illustration in the section body.
+- 2026-07-06 — INV-29: Alexander's word — close the hole and write down how it was closed; and, with tlvphoto's shipped evidence in hand, do not torment the user with a barrage of questions.
+- 2026-07-05 — INV-50: tlvphoto's door — a prover pass found six seams and missed the one-way face; Alexander's words: a state machine should always have a loop, if there's a get, there's a set.
+- 2026-07-06 — INV-30: tlvphoto's transitions — cheap-feeling motion and an ugly affordance both shipped green through the whole pipeline, because "eyes on the artifact" had meant only "it renders and clicks."
+- 2026-07-06 — INV-31: tlvphoto piled up eight untold choices and read unfinished everywhere because they'd never been surfaced; Alexander's word — if everything is fine for him, no confirmation is needed, and later the user will ask if they want something changed.
+- 2026-07-08 — INV-70: born in the tlvphoto window, handed to the pack as a general rule — figure a parametrizable value as seems okay, proceed, report; at most update the parameter together; pushing to prod is fine whenever it's okay to the agent.
+- 2026-07-06 — INV-62: a neighbour project shipped five full media-packs that died on one tone failure a one-paragraph sample would have caught.
+- 2026-07-06 — INV-63: the promoter case's five-round trap — each round re-patched the output while the unchanged card re-made the same failure.
+- 2026-07-06 — T-18 (lane cap): Alexander's word — don't sit on a hard two, take the independent work that exists; this set the cap at three, moved up from two.
+- 2026-07-06 — INV-49: the first graph night proved both directions in one hour — three medium rows rolled as lanes, and the next five, all tiny, went serial by the graph's own word.
+- 2026-07-05 — Evidence-based answering law (INV-25): the track-coach answer was right, but Alexander still couldn't tell which half of it had actually been checked — that gap prompted the rule.
+- 2026-07-06 — Worker-contract clock rule (INV-24): the day briefs carried no clock, both eval arms led their reports with a wrong hour.
+- undated — Adversarial-verify law (INV-46): the neighbours' verifier lesson (row 107) — a landing shipped green as "tasks completed, goal missed" because the same head that wrote the brief also read the result.
+- undated — Brief-from-read-files law (INV-53): the neighbours' story-file lesson (row 107), and a separate night the anchors were quoted from memory — the worker walked into a wall twice.
+- undated — Halt-list law (INV-54): the list's first full night, three workers halted on it and every stop was a real defect, two of them the senior's own.
+- 2026-07-04 — adoption step ordering: the tlvphoto pilot's first real run proved the numbered phases don't force a strict order.
+- 2026-07-04 — [A-0] target-phase deferral: the pilot's baseline-snapshot run set the precedent for recording deferred target phases in the journal.
+- 2026-07-04 — [A-8] working-artifacts location: the pilot polluted the host's `data/` folder before the rule confined adoption's working files to `.live-spec/adopt/`.
+- 2026-07-04 — [INV-8] version-control gate: the pilot ended up local-only on a mere recommendation, which is why a recommendation alone no longer closes the remote gate.
+- 2026-07-07 — limping-thing-never-dams-flow: the clock drift had been hand-ceremonied ten times in one session while its owner, the hook row, sat open the whole time; the human then put the law in his own words — when one thing doesn't quite work, it should leave everything else free to move.
+- 2026-07-07 — reuse-before-reinventing: five review rounds died on a voice failure that a public skill (stop-slop) had already carried as a written checklist for months; the search that would have caught it (promoter project) would have cost a minute and saved the five rounds.
+- 2026-07-07 — problem-ledger-opening: this landing opened the pack's own problem ledger, seeded with that session's live entries.
+- 2026-07-05/06 — INV-24 (date fence, files): the fence's first live run over-flagged the ledger's history lines, which legally quote past dates; the reading was narrowed to same-day added lines only.
+- 2026-07-05/06 — INV-24 (chat timestamps): mid-session [HH:MM] leads ran up to seven minutes fast, twice in two days, before the write-time law was set.
+- 2026-07-05/06 — INV-24 (mechanical hand): drift continued even under the written chat-timestamp law, and a ledger chat entry reopened after repeated catches (six catches in two days total, hand-swept twice) — this is what prompted the clock-hook.sh mechanical fix.
+- 2026-07-07 — INV-61 (process bookkeeping): a night of eighteen landings measured that fixed per-landing bookkeeping (claim commit, full re-check record, journal chapter, resume rewrite) runs roughly 40% of wall time on a tiny row; Alexander asked why iterations run so long, prompting the reach-map idea applied to process.
+- 2026-07-05 — hooks offered not imposed: Alexander said host hooks must be offered, never imposed — installed only where the host already uses git, and only after asking the human in plain words, since the human may not know what a git hook is.
+- 2026-07-07 — snapshot machine design: D-3 decided the snapshot machine's design; the machine itself stays [target], with its first mechanical slice riding the guardrails scaffold, tracked at row 3.
+- 2026-07-06 — push gate reach: a host audit saw a one-file README-only change pay for a 795-test run, which is what drove the reach-scoped gate design; Alexander's word was to understand what changed before deciding what to test.
+- row 107 — blocking-gate contract: the neighbours' CLI lesson prompted the rule that every blocking gate emits one typed JSON failure line (`{severity, code, message, fix}`) alongside its human-readable output.
+- 2026-07-05 — founding personal-vs-reusable question [B-2]: a project was founded as "a personal agent for three artifacts"; nobody asked the reusable-product question, and the human's standing answer was actually reusable.
+- 2026-07-06 — project-kind update rule [INV-36]: his word — understand which kind of project this is, and update it when it changes, because everything evolves.
+- 2026-07-05 — publish TARGET plugin model [E-18]: Alexander said each publish target is a plugin that embeds its own steps into the walk — a GitHub plugin brings its own stages (README-at-the-door, release notes).
+- 2026-07-05 — norm-artifact rule (An approved look lives in its artifact): tlvphoto's door and gallery were rebuilt from spec prose alone; the seventy-five tests passed but the rebuild shipped a look-alike, which is why the norm now requires a frozen artifact the build must check against.
+- 2026-07-07 — INV-66 (skill-list drift): the communicator's closing list was found naming four skills after the pack had grown past six; a worker halted and surfaced it, two skills missing since their birth.
+
+
 ## 2026-07-08 (session 26) — INV-71: where we are now is answerable in any seat (row 166)
 
 **What:** Alexander pushed on the live "what are we working on now / what's next" board across several
