@@ -2,6 +2,27 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-08 (session 26) — 0.9.0 milestone: preventive audit + doc compaction, MINOR bump
+
+**What:** the 0.9.0 milestone landed as Alexander framed it — a preventive audit plus doc compaction, then
+the MINOR bump (0.8.75 → 0.9.0; plugin.json matched). What ran, all committed across the session:
+- full whole-document SPEC re-prove (`docs/prover/2026-07-08-humanize-whole-doc.md`) — no must-fix;
+- three parallel read-only audit passes (skill craft lens · compaction candidates · thin-loader/gates/index),
+  record `docs/audit/2026-07-08/milestone-audit.md`; four craft/dedup folds landed (communicator 17→22
+  rules, product-prover blank line, ARCHITECTURE intro de-dup, spec-author "when NOT" clause);
+- stale-quote grep — fixed the OVERVIEW skill-roster drift (was five, omitted test-author + feedback-intake)
+  + README miscount + one scissors, and EXTENDED the parity check to scan OVERVIEW with a red-proof;
+- queue compaction — 38 terminally-landed rows archived (106 → 68 active), target-owner rows kept;
+- SPEC "Open decisions" — D-2..D-5 collapsed to anchor-keeping pointers, rationale moved here.
+
+**Honestly deferred:** the behavioural eval RE-RUN (spawning bare + with-skill arms per skill) was not run
+this milestone — the evals' presence and four-section shape are green in the suite, and the craft lens
+walked all 8 SKILL.md, but the behavioural arms are heavy and, per the evals' own honest-boundary note, a
+"bare" session on this installed machine already carries the loader; a real behavioural re-run rides a
+session that can spawn clean arms. Recorded, not silently skipped.
+
+**Suite 176 green at the bump.** Not pushed — the push stays gated on Alexander's full-certification word.
+
 ## 2026-07-08 (session 26) — Open decisions D-2..D-5 collapsed to pointers; rationale moved here
 
 **What:** the SPEC's "Open decisions" section held four already-decided items (D-2/D-3/D-4/D-5) carrying
