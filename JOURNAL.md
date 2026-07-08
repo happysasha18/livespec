@@ -2,6 +2,22 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-08 (session 26) — INV-71: where we are now is answerable in any seat (row 166)
+
+**What:** Alexander pushed on the live "what are we working on now / what's next" board across several
+messages: the harness's own task list and spinner are LOCAL-terminal only (a browser-seated session never
+shows them) and go dark through hours of tool calls, so the status can't live there. Also a terminology
+correction: "the pack" IS live-spec (the shared method every project runs by), not a thing inside it — so a
+rule written into live-spec binds track-coach and tlvphoto too. Walked the pipeline: new invariant INV-71 in
+the showing-cadence family beside the seat law (INV-67), index row, assigned to communicator (assignment
+only), communicator's narration rule 13 gained a "Live status, any seat" bullet, matrix M-178, test
+`test_live_status` red-proven then green, prover cross-link. The status is a short NOW (work + station) /
+NEXT kept current in the CHAT (the one cross-seat surface), refreshed at each station with a heartbeat on
+long stretches; the harness list stays a plain-worded courtesy, never the home. Also a landing today: the
+pre-show jargon guard (INV-28's mechanical arm, scripts/preshow-lint.py) — born of my own leaked report that
+led with "rows 166 and 148". Suite 180 green. Also DEMONSTRATED the discipline live: kept the harness task
+list current through this build.
+
 ## 2026-07-08 (session 26) — INV-70: the agent sets tunable parameters itself and tells (row 172)
 
 **What:** Alexander, from his tlvphoto conversation (handed to the pack as a general rule, no switch to

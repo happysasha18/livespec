@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.38
+  version: 0.1.39
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -247,6 +247,15 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
       beat needs the human. — *✅ "тесты побежали — минут десять я справлюсь без тебя; вернёшься —
       покажу, что закрыли" ✅ return-beat: "ты снова нужен: посмотреть посадку и сказать слово про
       деплой"*
+    - **Live status, any seat (SPEC INV-71)** — where we are NOW (the work in hand and its station)
+      and what is NEXT stays answerable at a glance, kept current in the CHAT — the one surface every
+      seat shows [INV-67]. Do NOT rely on the harness's own task list or spinner for this: a
+      browser-seated session never shows them, and even locally they go dark through a long run of
+      tool calls. So refresh a short NOW/NEXT line at every station change, and let the heartbeat carry
+      it through a long stretch. The harness task list, where the seat shows it, is kept in plain
+      product words as a courtesy (rule 6), never the status's home; on a local seat a rendered
+      status page is an optional richer view of the same NOW/NEXT. This binds for every project
+      live-spec runs, not one host. — *✅ "сейчас: чиню карту фич (стадия — код); дальше: тесты и пуш"*
     The mechanical grind stays quiet — narration marks beats, never a per-command
     commentary. A narration line is chat, not a report: no pre-report walk (that walk scopes to
     movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of

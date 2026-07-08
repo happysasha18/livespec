@@ -144,3 +144,22 @@ its Formal-index line updated to match, plus the communicator pre-report walk's 
 - **Verdict** — clean, and same shape as INV-24's clock hook (a mechanical arm enforcing a stated chat law,
   the skill staying the law's home). Red-first proven: `test_leading_handle_goes_red` flags real leaks,
   `test_outcome_led_and_trailing_anchor_pass` keeps clean text green. Stays LOCAL to INV-28.
+
+---
+
+## Short-form addendum — INV-71 live status in any seat (row 166, INV-61 small-delta form)
+
+A new invariant, from Alexander's live board asks (2026-07-08): the harness task list/spinner is
+local-only (absent in a browser) and intermittent (dark through long tool runs), so the live "where are we
+now / what's next" cannot live there. Owned by communicator; small delta, no new node/seam.
+
+- **Previous records clean** — adds one invariant + its rule; touches the "Throwing a wish" showing-cadence
+  family, the index, ARCHITECTURE (assignment only), the matrix, and communicator's narration rule.
+- **The delta** — INV-71: a short NOW (work in hand + station) and NEXT status kept current in the CHAT (the
+  one surface every seat shows, INV-67), refreshed at each station change with a heartbeat on a long stretch
+  (INV-35); the harness list is a courtesy kept plain-worded (INV-28), never the status's home; a rendered
+  page is the local seat's optional view; binds for every project live-spec runs.
+- **Seams checked** — composes with INV-35 (narration/heartbeat, now with an always-answerable NOW/NEXT),
+  INV-67 (chat as the cross-seat surface), and rule 6's task-list-plain-words point (INV-28) with no
+  contradiction — INV-71 says the task list is not the status's HOME, rule 6 says when shown it stays plain.
+  Red-first test `test_live_status` (M-178). Clean, stays LOCAL to the showing-cadence family.

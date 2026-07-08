@@ -1522,6 +1522,22 @@ class TestProblemLedger(unittest.TestCase):
                        "INV-35"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
+    def test_live_status(self):
+        """Row 166 (M-178, INV-71): where we are now is answerable in any seat — a NOW/NEXT
+        status kept current in the chat (present in every seat), never relying on the harness's
+        local-only task list; binds for every project live-spec runs."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for needle in ("Where we are now is answerable at any moment, in any seat",
+                       "the one surface present in every seat",
+                       "refreshed at every station change",
+                       "binds for every project the pack runs"):
+            self.assertIn(needle, spec, "SPEC INV-71 lost: %s" % needle)
+        self.assertIn("INV-71", spec.split("Formal index", 1)[1], "INV-71 missing from the index")
+        comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
+        for needle in ("Live status, any seat", "never the status's home"):
+            self.assertIn(needle, comm, "communicator lost the live-status rule: %s" % needle)
+        self.assertIn("test_live_status", read("TEST_MATRIX.md"), "M-178 must pin this test")
+
     def test_narration_three_teeth(self):
         """Row 139 (M-124, INV-35 grown): identity — every beat names the wish and
         station in hand; digest — a station's completion is a beat digesting what the
