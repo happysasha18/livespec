@@ -760,9 +760,12 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
                       "ROADMAP template lost the decline-lists-absorbed rule")
 
 
-def _pack_list_gaps(skill_names, spec_body, footer_bodies, readme_body):
+def _pack_list_gaps(skill_names, spec_body, footer_bodies, readme_body, overview_body=None):
     """Row 167 (M-168, INV-66): pure checker — which skill names are missing from
-    which pack list. Returns a list of "list-label: missing-name" strings."""
+    which pack list. Returns a list of "list-label: missing-name" strings.
+    overview_body is the OVERVIEW.md reader prose (the 2026-07-08 stale-quote grep
+    found it silently drifted to five working skills while the parity check never read
+    it — the INV-66 class on an uncovered surface); None skips it."""
     gaps = []
     working = [s for s in skill_names if s != "live-spec-base"]
     for name in working:
@@ -770,6 +773,8 @@ def _pack_list_gaps(skill_names, spec_body, footer_bodies, readme_body):
             gaps.append("SPEC working-skills text: %s" % name)
         if name not in readme_body:
             gaps.append("README: %s" % name)
+        if overview_body is not None and name not in overview_body:
+            gaps.append("OVERVIEW: %s" % name)
     for label, body in footer_bodies.items():
         for name in skill_names:
             if name not in body:
@@ -800,7 +805,8 @@ class TestPackListParity(unittest.TestCase):
         self.assertGreaterEqual(len(footers), 2,
                                 "the closing pack lists disappeared — the parity check lost its subject")
         gaps = _pack_list_gaps(skills, re.sub(r"\s+", " ", read("SPEC.md")),
-                               footers, re.sub(r"\s+", " ", read("README.md")))
+                               footers, re.sub(r"\s+", " ", read("README.md")),
+                               re.sub(r"\s+", " ", read("OVERVIEW.md")))
         self.assertEqual(gaps, [], "pack lists drifted: %s" % gaps)
 
     def test_stripped_copy_goes_red(self):
@@ -813,6 +819,18 @@ class TestPackListParity(unittest.TestCase):
                                re.sub(r"\s+", " ", read("README.md")))
         self.assertTrue(any("communicator closing list" in g for g in gaps),
                         "the checker passed the historic four-skill footer — it has no teeth")
+
+    def test_stripped_overview_goes_red(self):
+        # The never side, permanent: OVERVIEW.md drifted to five working skills for two
+        # skills' whole lifetime because the parity check never read it (2026-07-08). A
+        # reader body missing a working skill must FAIL the checker.
+        stripped_overview = ("live-spec-base spec-author product-prover build-pipeline "
+                             "communicator publish")  # test-author + feedback-intake absent
+        gaps = _pack_list_gaps(self.all_skills(), re.sub(r"\s+", " ", read("SPEC.md")),
+                               {}, re.sub(r"\s+", " ", read("README.md")),
+                               stripped_overview)
+        self.assertTrue(any(g.startswith("OVERVIEW:") for g in gaps),
+                        "the checker passed an OVERVIEW missing two working skills — no teeth")
 
 
 class TestPluginMetadata(unittest.TestCase):

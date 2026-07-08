@@ -25,7 +25,7 @@ live-spec pack. The file physically sits inside the playbook repo (so it has his
 `~/.claude/CLAUDE.md` is a link pointing at it. It used to hold every rule; now each rule lives in its
 real home and the note only points.
 
-## Inside the pack: one rulebook, five working skills
+## Inside the pack: one rulebook, seven working skills
 
 - **live-spec-base** — the shared rulebook: rules that bind EVERY skill (ask-never-guess, plain words,
   no calques, one home per fact, the door before code, prototype ≠ product…) stated ONCE, plus default
@@ -36,11 +36,17 @@ real home and the note only points.
   re-check that gates every push.
 - **build-pipeline** — runs a change end to end: door → spec → prove → architecture → prove
   architecture → matrix → test → code → verify → commit & show. The order is law.
+- **test-author** — derives the test matrix from the proven spec through the proven architecture and
+  writes the tests: the level ladder (string / DOM-text / browser-computed / pixel), real-artifact
+  assertions, red-first proof. build-pipeline invokes it at the matrix and test steps.
 - **communicator** — everything the human sees: plain-language reports, batched questions, decision
   pages, how a prototype may be shown.
 - **publish** — the moment work leaves the machine: what a good publication owes per kind of artifact
   (a skill shows its commands, a tool shows real runs, a visual product shows fresh screenshots), and
   how a target (GitHub, a plugin directory, a design project) plugs its own steps into the walk.
+- **feedback-intake** — the intake half of the exchange: it receives anything the human hands back (a
+  remark, an answer, a screenshot, a dropped file), routes each item to the home its law owns, and keeps
+  the feedback ledger. communicator carries work out; feedback-intake carries what comes back.
 
 Around them: `templates/` (the document shapes a project copies), `adopt/` (how to attach to an existing
 project), `guardrails/` (the automatic pre-push checks), `inbox/` (how an outside session files a wish
@@ -51,7 +57,7 @@ without write access).
 `~/live-spec` is also a PROJECT run by the method — so the repo carries its own SPEC.md (what the pack
 promises), ROADMAP.md (the wish queue), ARCHITECTURE.md, TEST_MATRIX.md, tests/, JOURNAL.md (the why,
 dated), NEXT_STEPS.md (cold-resume state), and docs/prover/ (every review record). These files are the
-flagship INSTANCE of the method, not extra machinery.
+flagship INSTANCE of the method — the pack held to the same rules it asks of every host.
 
 ## Where does a rule go? (the only table worth memorizing)
 
