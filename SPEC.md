@@ -773,17 +773,17 @@ As the pack evolves, one thing stays true. **A shared rule has exactly one norma
 
 ### Human authority and evidence
 
-**You own taste, design, irreversible calls, publish and push gates, domain wording — and your own working contract.** [INV-9] [ACT-1] The settings ladder resolves to that contract, as described below.
+**The human owns taste, design, irreversible calls, publish and push gates, domain wording, and the human's own working contract.** [INV-9] [ACT-1] The settings ladder resolves to that contract, as described below.
 
-- Your personal profile holds the lines about you — proactivity mode (ask-at-max | max-proactive), trust level, language, domain vocabulary — and follows you everywhere.
-- The **host profile**, at `.live-spec/profile.md`, narrows those lines for one project, when you say so. It is created at attach and lives git-tracked in the host repo, like the adopt artifacts [A-8]. Inside `.live-spec/`, only the checkpoints stay ignored [ACT-3] [E-8].
-- Communicator reads the resolved contract before every human-facing exchange — it resolves the whole ladder, never just one file [E-13].
+- The human's personal profile holds the lines about the human — proactivity mode (ask-at-max | max-proactive), trust level, language, domain vocabulary — and follows the human everywhere.
+- The **host profile**, at `.live-spec/profile.md`, narrows those lines for one project, when the human says so. It is created at attach and lives git-tracked in the host repo, like the adopt artifacts [A-8]. Inside `.live-spec/`, only the checkpoints stay ignored [ACT-3] [E-8].
+- Communicator reads the resolved contract before every human-facing exchange; it resolves the whole ladder, never just one file [E-13].
 
-**Mode and trust are written only on your word.** The agent may propose them; it never sets them, and never raises its own trust or proactivity level. [INV-9]
+**Mode and trust are written only on the human's word.** The agent may propose them; it never sets them, and never raises its own trust or proactivity level. [INV-9]
 
-**Answer "did you actually do X?" by walking the evidence, and let the answer wear its method version.** A fluent story can answer any done-claim — "did that project run the tests by the method?" — and the story might even be right, but it doesn't distinguish VERIFIED from NARRATIVE, which is the whole point of the method. So no one answers a done-claim from memory: every claim pins to a checkable artifact, walked now, not recalled — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. This is the claims-need-primary-source rule, applied to the answering exchange itself.
+**A done-claim is answered by walking the evidence, not from memory, and it carries the method version it was done by.** A fluent story can answer any done-claim — "did that project run the tests by the method?" — and the story might even be right, but it does not distinguish verified from narrative, which is the whole point of the method. So no one answers a done-claim from memory: every claim pins to a checkable artifact, walked now, not recalled — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. This is the claims-need-primary-source rule, applied to the answering exchange itself.
 
-The answer states plainly what the walk verified, apart from what it merely asserts, and it names the METHOD VERSION the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set (never adopted, or the work predates adoption), the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
+The answer states plainly what the walk verified, apart from what it merely asserts, and it names the method version the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set (never adopted, or the work predates adoption), the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
 
 ### Settings and the ladder
 
