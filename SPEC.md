@@ -404,32 +404,32 @@ The section's edges, stated once.
 **Success measure.** You never have to hand in the same item twice. Every received item is findable in the ledger, with its route, in the same session [default].
 ## Asking what the product does (the feature map on demand)
 
-**You ask "show all features," and one answer gives you the whole product map, as it stands right now.** Two of the three standing questions already have a home: the departures board reports how in-flight work is going, at every report [INV-27], and intake places each arriving wish on the map [INV-37]. This scenario answers the third question — what does the product do today? — with the whole map, on demand.
+The ask answers a "show all features" request with one answer containing the whole product map, current as of the request. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. The ask answers the third of the three standing questions — what the product does today — with the whole map, on demand.
 
-The ask reads its answer live, straight off the living documents:
+The ask reads its answer live from the living documents:
 
 - the spec's scenario sections name the features;
-- the header's current-vs-target paragraph splits shipped from promised, at the same granularity the [target] tag binds to — so a scenario holding both shipped law and promised parts reads "shipped, with promised parts (named)," each status at that same granularity [S-0];
-- the queue's open rows add the rest: each in-flight feature's station, and each wish whose `map:` verdict says NEW while its scenario is still unwritten. The queue already knows a feature is on the map before the spec meets it [INV-27, INV-37].
+- the header's current-vs-target paragraph separates shipped features from promised features, at the granularity the [target] tag binds to. A scenario containing both shipped law and named promised parts is marked "shipped, with promised parts (named)," each status stated at that same granularity [S-0];
+- the queue's open rows supply the remainder: each in-flight feature's station, and each wish whose `map:` verdict is new while its scenario is still unwritten. The queue shows a feature on the map before the spec documents it [INV-27, INV-37].
 
-The spec's scenarios and the architecture's nodes ARE the map. There's no third document to maintain and nothing to drift — no feature-list file, no cached copy [E-14]. The ask just reads the living documents aloud.
+The spec's scenarios and the architecture's nodes constitute the map. No third document exists to maintain. No separate copy exists to drift out of date — no feature-list file, no cached copy [E-14]. The ask reads the living documents directly.
 
 Each line follows the line law [INV-28]:
 
-- a short descriptive name, in the product's own words
-- what it gives its person
-- the status, trailing quietly — shipped, target, or in-flight, at its station
+- a short descriptive name, in the product's own words;
+- the value the feature gives its person;
+- the feature's status — shipped, target, or in-flight — followed by its station.
 
-The map arrives in chat by default. Say the word, and you get a rendered page instead — the show rule [default]. Routine reports still keep the departures board's in-flight scope; the whole map comes only when you ask for it.
+The ask delivers the map in chat by default. The ask delivers a rendered page instead on request, per the show rule [default]. Routine reports retain the departures board's in-flight scope. The ask returns the whole map only on request.
 
-If a host has nothing to read yet — no spec, no scenario sections — the answer says exactly that, and points you at bootstrap or adoption. It stays honest about what's actually there [INV-38].
+If a host has no spec and no scenario sections, the ask states that condition; otherwise the ask proceeds as described above. The ask directs the requester to bootstrap or adoption when that condition holds. The ask reports only what currently exists [INV-38].
 
-The section's edges, stated once.
+The section's edges are stated once.
 
-- **Fences** its birth must hold: the departures board keeps its report scope [INV-27], intake keeps its placement rule [INV-37], and the no-third-document law stands, reaffirmed [E-14].
-- **Facets** (skill kind): the feature's only surface is the answer itself — chat, or a rendered page on ask. Layout, touch, accessibility, and performance belong to the medium that carries it. The empty state is the nothing-to-read answer above. Facets are otherwise N/A [default].
-- **Non-goals**: no standing feature document, no auto-refreshing dashboard, no per-feature history timeline — not this time.
-- **Success measure**: an ask should yield a map whose feature set covers the spec's scenario sections one-to-one, plus every open NEW-verdict queue row. Its shipped-vs-promised marks should agree with the header and the [target] tags, at their own granularity. Check it by diffing the lists [default].
+- **Fences** the birth of this section holds: the departures board keeps its report scope [INV-27], intake keeps its placement rule [INV-37], and the no-third-document law stands, reaffirmed [E-14].
+- **Facets** (skill kind): the feature's only surface is the answer itself, in chat or a rendered page on request. Layout, touch, accessibility, and performance belong to the medium that carries the answer. The empty state is the nothing-to-read answer stated above. Facets are otherwise N/A [default].
+- **Non-goals**: the section adds no standing feature document, no auto-refreshing dashboard, and no per-feature history timeline for this iteration.
+- **Success measure**: an ask yields a map whose feature set covers the spec's scenario sections one-to-one, plus every open new-verdict queue row. Its shipped-versus-promised marks agree with the header and the [target] tags, at their own granularity. Verification proceeds by diffing the lists [default].
 ## When a bug cuts the line
 
 **User story:** as the product owner, I report a bug in the shipped product and it gets fixed before

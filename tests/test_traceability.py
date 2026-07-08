@@ -1927,7 +1927,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-38", "Asking what the product does",
                        "[INV-38]",  # "one answer gives you the whole product map"
-                       "the whole map comes only when",
+                       "the whole map only on request",
                        "a host with nothing to read", "queued NEW-verdict wishes included"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
