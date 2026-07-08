@@ -63,9 +63,11 @@ folded into the humanize movement's remaining steps in LATEST.
 
 ## Forward queue (mirrors ROADMAP.md)
 
-1. **TOP — humanize movement:** all 18 SPEC sections DONE; remaining = template · whole-doc register sweep ·
-   ARCHITECTURE.md · whole-doc prover + 0.9.0 audit + stale-quote grep · VERSION bump · my-cert push (LATEST).
-   **Without-him rows:** 96 tail (rows 48/49 re-scope vs INV-21; 47 DONE; first real feedback loop rides a host window).
+1. **DONE — humanize + 0.9.0 milestone + INV-70:** all 18 SPEC sections humanized, both his-decisions applied,
+   whole-doc prover, stale-quote grep, 3-pass audit + folds, queue compaction, open-decisions collapse, VERSION
+   0.9.0, and INV-70 — ALL PUSHED (see LATEST). No autonomous rows remain that don't need his word.
+   **Without-him tail (low value / deferred):** rows 48/49 re-scope vs INV-21 (deferred, revisit-triggered);
+   behavioural eval re-run (needs spawn-able clean arms).
 2. **Rows waiting HIS word:** 166 board sketch round 2 (look + composition) · 148 Phase 3 go (genre
    whole-doc rewrite by docs/research/2026-07-07-genre-migration-plan.md — reconcile with ask #1).
 3. Field legs riding real windows with him: 47/96 first real feedback loop · 54 first-run · 163
