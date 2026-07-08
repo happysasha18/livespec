@@ -18,11 +18,22 @@ Checks (each maps to a rule in docs/spec-style.md):
   WARN    caps-shout       an ALL-CAPS ordinary word; force comes from the statement, not caps (R12).
   WARN    second-person    "you"/"your" — the register speaks of named actors, not the reader (R3).
 
-Usage: spec-style-lint.py FILE            (or: cat text | spec-style-lint.py -)
+In --gate mode (the DONE-GATE, docs/prose-quality-gate-design.md) the two soft signals are PROMOTED to
+blocking errors, two more mechanical rules join them (reassurance, future-narration), the normative-only
+rules skip marked informative regions (a user-story line, a blockquote, a NOTE), and a machine-readable
+waiver file (scripts/spec-waivers.json) moves a still-unfixed finding into a dated, counted debt bucket
+instead of a silent pass. Default mode is unchanged (caps-shout and second-person stay advisory), so the
+section-by-section workflow and its tests keep their contract.
+
+Usage: spec-style-lint.py [--gate] FILE       (or: cat text | spec-style-lint.py [--gate] -)
 Exit 0 = no ERROR (WARN may still print) · exit 1 = at least one ERROR.
 """
+import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import gate_common  # noqa: E402  (sibling module in scripts/)
 
 # --- negation-opener -------------------------------------------------------------------------
 # A block (a paragraph line, a bullet, or a bold-titled rule) should open with what happens, not
@@ -99,12 +110,38 @@ CAPS_RE = re.compile(r"(?<![\w`\[])([A-Z]{2,})(?![\w`\]-])")
 # --- second person ---------------------------------------------------------------------------
 SECOND_PERSON = re.compile(r"(?<!\w)(you|your|you're|yours|yourself)(?!\w)", re.IGNORECASE)
 
+# --- reassurance / invitation (gate mode only, R4/R7) ----------------------------------------
+# Reassuring or inviting the reader has no place in a normative sentence. Curated phrases, kept
+# conservative so a legitimate word ("just one row" as a quantity) is not caught; "simply" and the
+# listed phrases are the unambiguous tells (the recurring intro-block leak said "you can ignore").
+REASSURANCE = ("don't worry", "no need to", "feel free", "of course", "rest assured",
+               "you can ignore", "you don't have to", "as we saw", "as noted above",
+               "needless to say", "simply put")
+REASSURANCE_RE = re.compile(r"(?<!\w)simply(?!\w)", re.IGNORECASE)  # bare 'simply' is a tell on its own
 
-def lint(text):
-    """Return (errors, warnings); each a list of (line_no, code, snippet)."""
+# --- future narration (gate mode only, R4) ---------------------------------------------------
+# A reference spec states what is true in the present. "the card will show", "the row that shall
+# carry" is future narration; rephrase to present. Scoped to will/shall + a spec verb to avoid
+# catching every "will".
+FUTURE_NARRATION = re.compile(
+    r"(?<!\w)(?:will|shall)\s+(?:be|show|shows|display|appear|open|contain|"
+    r"return|carry|report|hold|become|run|fire|land|ship)\b", re.IGNORECASE)
+
+
+def lint(text, gate=False):
+    """Return (errors, warnings); each a list of (line_no, code, snippet).
+
+    Default: negation-opener/scissors/machine-jargon are errors; caps-shout/second-person are
+    warnings. --gate: caps-shout and second-person are promoted to errors, reassurance and
+    future-narration join them, and the normative-only rules (negation-opener, second-person,
+    reassurance, future-narration) skip marked informative regions (user-story line, blockquote,
+    NOTE) — global rules (scissors, machine-jargon, caps-shout) always run."""
     errors, warnings = [], []
+    lines = text.splitlines()
+    exempt = gate_common.exempt_flags(lines) if gate else [False] * len(lines)
     prev_blank = True
-    for i, raw in enumerate(text.splitlines(), 1):
+    for idx, raw in enumerate(lines):
+        i = idx + 1
         line = raw.rstrip("\n")
         stripped = line.strip()
         if not stripped:
@@ -113,48 +150,92 @@ def lint(text):
         # strip a leading bullet/quote marker (so "- Never …" is not read as a dash-cut), then
         # inline code spans and bracketed anchors, so `docs/decisions/` and [INV-4] never trip
         # caps / jargon / scissors. A **bold title** is kept — jargon/caps inside it still count.
-        scrub = LEAD_MARKERS.sub("", stripped)
-        scrub = re.sub(r"`[^`]*`", " ", scrub)
-        scrub = re.sub(r"\[[^\]]*\]", " ", scrub)
-        scrub = FILENAME_RE.sub(" ", scrub)          # ROADMAP.md / SPEC.md are filenames, not shout
+        scrub = gate_common.scrub(stripped)
+        exempt_here = exempt[idx]
+        # bucket a rule by mode: in gate mode the promoted rules are errors, else warnings.
+        norm_bucket = errors if gate else warnings
 
         is_block_lead = prev_blank or bool(LEAD_MARKERS.match(line))
-        if is_block_lead and _is_negation_opener(_strip_lead(line)):
+        if is_block_lead and _is_negation_opener(_strip_lead(line)) and not exempt_here:
             errors.append((i, "negation-opener", stripped[:110]))
-        if SCISSORS.search(scrub):
+        if SCISSORS.search(scrub):                                   # global
             errors.append((i, "scissors", stripped[:110]))
-        for m in JARGON_RE.finditer(scrub):
+        for m in JARGON_RE.finditer(scrub):                          # global
             errors.append((i, "machine-jargon:%s" % m.group(1).lower(), stripped[:110]))
-        for m in CAPS_RE.finditer(scrub):
+        for m in CAPS_RE.finditer(scrub):                            # global
             if m.group(1) not in CAPS_ALLOW:
-                warnings.append((i, "caps-shout:%s" % m.group(1), stripped[:110]))
-        if SECOND_PERSON.search(scrub):
-            warnings.append((i, "second-person", stripped[:110]))
+                (errors if gate else warnings).append(
+                    (i, "caps-shout:%s" % m.group(1), stripped[:110]))
+        if SECOND_PERSON.search(scrub) and not exempt_here:          # normative-only
+            norm_bucket.append((i, "second-person", stripped[:110]))
+        if gate and not exempt_here:
+            low = scrub.lower()
+            hit = next((p for p in REASSURANCE if p in low), None) or \
+                (REASSURANCE_RE.search(scrub) and "simply")
+            if hit:
+                errors.append((i, "reassurance:%s" % hit, stripped[:110]))
+            if FUTURE_NARRATION.search(scrub):
+                errors.append((i, "future-narration", stripped[:110]))
         prev_blank = False
     return errors, warnings
 
 
+def apply_waivers(findings, filename, waivers, today=None):
+    """Split findings into (active_errors, waived). A finding is (line, code, snippet); its rule is
+    the code's head before ':'. Records which waiver ids matched, for stale-waiver reporting."""
+    active, waived, matched = [], [], set()
+    for line, code, snip in findings:
+        rule = code.split(":", 1)[0]
+        w = gate_common.match_waiver(rule, filename, snip, waivers, today)
+        if w:
+            waived.append((line, code, snip, w["id"]))
+            matched.add(w["id"])
+        else:
+            active.append((line, code, snip))
+    return active, waived, matched
+
+
+WAIVER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec-waivers.json")
+
+
 def main(argv):
-    if len(argv) != 2:
-        sys.stderr.write("usage: spec-style-lint.py FILE|-\n")
+    args = [a for a in argv[1:] if not a.startswith("--")]
+    gate = "--gate" in argv[1:]
+    if len(args) != 1:
+        sys.stderr.write("usage: spec-style-lint.py [--gate] FILE|-\n")
         return 2
-    src = argv[1]
+    src = args[0]
     text = sys.stdin.read() if src == "-" else open(src, encoding="utf-8").read()
-    errors, warnings = lint(text)
-    if not errors and not warnings:
-        print("OK (spec-style): no register tells found.")
+    errors, warnings = lint(text, gate=gate)
+
+    waived, stale = [], []
+    if gate:
+        waivers = gate_common.load_waivers(WAIVER_PATH)
+        errors, waived, matched = apply_waivers(errors, src, waivers)
+        stale = gate_common.stale_waivers(waivers, matched)
+
+    if not errors and not warnings and not waived:
+        print("OK (spec-style%s): no register tells found." % ("/gate" if gate else ""))
         return 0
     if errors:
         print("SPEC-STYLE LINT — ERROR (docs/spec-style.md): a rule opens with what it is NOT,")
-        print("shouts, uses machine jargon, or cuts with «X — not Y». Rewrite these:")
+        print("shouts, uses machine jargon, cuts with «X — not Y», reassures, or narrates the future.")
         for line_no, code, snip in errors:
             print("  line %d  [%s]  %s" % (line_no, code, snip))
     if warnings:
         print("SPEC-STYLE LINT — warn (soft signals; a fully-converted section clears these too):")
         for line_no, code, snip in warnings:
             print("  line %d  [%s]  %s" % (line_no, code, snip))
-    print('{"severity":"%s","code":"spec-style","errors":%d,"warnings":%d}'
-          % ("error" if errors else "advisory", len(errors), len(warnings)))
+    if waived:
+        print("SPEC-STYLE LINT — WAIVED (dated debt, scripts/spec-waivers.json; still counted):")
+        for line_no, code, snip, wid in waived:
+            print("  line %d  [%s]  (%s)  %s" % (line_no, code, wid, snip))
+    if stale:
+        print("SPEC-STYLE LINT — stale waivers (defect gone; remove these from spec-waivers.json):")
+        for w in stale:
+            print("  [%s]  %s" % (w.get("id"), w.get("snippet")))
+    print('{"severity":"%s","code":"spec-style","errors":%d,"warnings":%d,"waived":%d,"stale":%d}'
+          % ("error" if errors else "advisory", len(errors), len(warnings), len(waived), len(stale)))
     return 1 if errors else 0
 
 
