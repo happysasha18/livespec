@@ -14,11 +14,13 @@ can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not s
    waiver-aware), spec-redundancy-precheck.py, spec-judge.py + judge-rubric.md (hash-pinned + self-test),
    spec-done-gate.py, spec-waivers.json + spec-debt-cap.json, tests/test_prose_gate.py (18 tests). The judge
    (stage 4 VALIDATE) is now built INTO the gate — a fresh Opus agent judges the whole doc, --verify checks it.
-   STAGE 5 IN PROGRESS: anchor-multiset baseline = commit `b05e199` (552 anchor tokens). Chunk 1 DONE
-   (preamble converted through --gate, commit 0adf8f5, default errors 4→2, anchors identical, suite 201
-   green). Approach: rewrite the body in large coherent chunks through the new --gate (per-chunk anchor
-   multiset + lint + suite + needle re-point), then ONE whole-doc fresh-agent judge pass for cross-section
-   redundancy/coherence. ~30 sections remain + ARCHITECTURE.md. Then seal into spec-author + playbook.
+   STAGE 5 IN PROGRESS: anchor-multiset baseline = commit `b05e199` (552 anchor tokens). Chunks DONE:
+   1 preamble (0adf8f5); 2 economy ladder (this commit). Gate-errors 320 → 298 (56 are the Formal index,
+   parked by his word → ~242 actionable, ~33 sections). Per chunk: fresh Opus writer (pack not loaded) →
+   gate (anchor multiset identical + --gate 0 on region + suite green + re-point broken needles by
+   narrowing, logged) → commit only on green. Hotspots ahead (needle-heavy): "Specifying and building a
+   feature" (42), "Delegation and workers" (31), "Parallel lanes" (25). Then ONE whole-doc judge pass +
+   TestNeedleRegisterClean + TestAnchorInBlockquoteGuard, then ARCHITECTURE.md, then seal the method.
 5. APPLY — his steer: prefer ONE whole-document clean rewrite by a fresh max-reasoning agent (Opus max, clean
    context; Fable pulled 2026-07-07) using the design stage's "right prompt", over section-by-section patching
    — one mind over the whole doc kills cross-section redundancy + register drift. Gate HARD after with the NEW
