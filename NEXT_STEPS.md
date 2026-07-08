@@ -6,20 +6,23 @@ full restyle round because the gate is holed — `caps-shout` (246) + `second-pe
 WARNINGS that just accumulate, there is NO redundancy/verbosity check at all, and "parked" sections keep their
 known tells (he hit the parked preamble). His mandate: stop patching, build the mechanism so no defect class
 can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not stop until all done or blocked):
-1. RESEARCH — deep-research workflow running in background (run wf_d5338e62-3bd): durable anti-drift method.
-2. DESIGN — hand the report + `scratchpad/prose-gate-evidence.md` to a FRESH agent in a CLEAN context (pack
-   NOT loaded), max reasoning, to synthesize the mechanism. His words: think «в чистом контексте».
-3. IMPLEMENT — I write ALL the algorithms to completion (validator code is mine): a redundancy/verbosity
-   check, warnings promoted to blocking at the done-gate, an explicit machine-readable waiver replacing silent
-   parking. «доработай все алгоритмы до конца».
-4. VALIDATE — the prose validation itself runs through FRESH agents, never me. «валидацию тоже чистому агенту».
+1. RESEARCH — DONE (wf_d5338e62-3bd, 107 agents): layered gate; promote-all-to-blocking; no-park dated waiver;
+   redundancy = LLM-judge with verbatim quotes + self-test canary; broken-windows (parking breeds recurrence).
+2. DESIGN — DONE (fresh clean-context agent): full mechanism in docs/prose-quality-gate-design.md.
+3. IMPLEMENT — DONE (all code mine, suite 201 green): scripts/gate_common.py, spec-style-lint.py `--gate`
+   (promote caps+2nd-person, exemptions for user-story/blockquote/NOTE, new reassurance+future-narration,
+   waiver-aware), spec-redundancy-precheck.py, spec-judge.py + judge-rubric.md (hash-pinned + self-test),
+   spec-done-gate.py, spec-waivers.json + spec-debt-cap.json, tests/test_prose_gate.py (18 tests). The judge
+   (stage 4 VALIDATE) is now built INTO the gate — a fresh Opus agent judges the whole doc, --verify checks it.
+   NEXT — stage 5 APPLY:
 5. APPLY — his steer: prefer ONE whole-document clean rewrite by a fresh max-reasoning agent (Opus max, clean
    context; Fable pulled 2026-07-07) using the design stage's "right prompt", over section-by-section patching
-   — one mind over the whole doc kills cross-section redundancy + register drift. Gate HARD after: anchor
-   multiset identical, every needle survives, suite green, fresh checker confirms no fact lost; any gap →
-   re-feed. Covers SPEC (incl. preamble convert: drop "you", the scissors, the doubled "not for you … you can
-   ignore" redundancy) and ARCHITECTURE.md. Design studies Kiro (EARS constrained grammar) + BMAD (checklists)
-   as prior art — "their approach but better" = add the machine quality gate they lack. Detail: prose-gate-evidence.md.
+   — one mind over the whole doc kills cross-section redundancy + register drift. Gate HARD after with the NEW
+   done-gate: spec-done-gate.py GREEN (style-lint --gate 0 err + redundancy open 0 + judge selftest-passed & 0
+   surviving + anchor multiset identical vs baseline), every needle survives (add TestNeedleRegisterClean +
+   TestAnchorInBlockquoteGuard now), suite green; any gap → re-feed, never accept a lost anchor. Covers SPEC
+   (incl. preamble convert) and ARCHITECTURE.md. Prior art in the design doc: Kiro EARS + BMAD checklists,
+   ours adds the machine gate they lack. Then seal the gate into spec-author + playbook (after his sign-off).
 DECIDED BY HIM: preamble → CONVERT; Formal index → LEAVE as structure (its 2 errors stay, by his word).
 Prior restyle work is LOCAL commits 3665f7b..(88f228c bookkeeping); SPEC lint 4 errors / 317 warns; suite 183
 green (only red = TestGateA_ProverRecord). NOTHING pushed. Before any push: prover pass + commit its record.
