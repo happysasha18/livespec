@@ -1,23 +1,14 @@
 # live-spec — SPEC (v0.15.61, 2026-07-07)
 
-> **How to read this.** Each section describes one scenario: what you do, and what you see. The short codes
-> in brackets are not for you to read — they are markers the machine uses (the prover, the tests, and
-> searches), and the Formal index at the end lists where each one is defined. You can ignore them as you
-> read. Edit history is in JOURNAL.md. This spec states what is true today.
+> **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
-**What's built, and what's planned.** This spec keeps the two apart and never blurs them.
+**What's built, and what's planned.** This spec keeps the two apart.
 
-Built and working today: the skills (the base rulebook and the working skills), the templates, the adoption
-procedure, the inbox, the skill evals and their records, this spec, the queue, and the first guardrails —
-the repo's own pre-push checks and the opt-in commit fence.
+Built and working today: the skills (the base rulebook and the working skills), the templates, the adoption procedure, the inbox, the skill evals and their records, this spec, the queue, and the first guardrails: the repo's own pre-push checks and the opt-in commit fence.
 
-Planned, each tracked by a roadmap row: the host-facing guardrail checks and the surface registry
-[E-6, E-10]; the snapshot machinery [E-7], used by the adoption baseline (A-6); and the optional design-sync
-machine [E-18].
+Planned, each tracked by a roadmap row: the host-facing guardrail checks and the surface registry [E-6, E-10]; the snapshot machinery [E-7], used by the adoption baseline (A-6); and the optional design-sync machine [E-18].
 
-A planned item carries a [target] tag on its own line, and only that line — never the section around it.
-The tag is checked, not trusted: the suite ties each [target] to the open row that will build it, and goes
-red if that row ships with the tag still on, vanishes, or was never named. [S-0]
+A planned item carries a [target] tag on a line of its own; the tag never appears on the section around it. The suite enforces the tag rather than trusting it: the suite ties each [target] to the open row that builds it, and goes red if that row ships with the tag still on, if the tag vanishes, or if the tag was never named. [S-0]
 
 ## What live-spec is
 
