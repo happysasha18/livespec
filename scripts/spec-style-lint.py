@@ -216,7 +216,6 @@ def main(argv):
 
     if not errors and not warnings and not waived:
         print("OK (spec-style%s): no register tells found." % ("/gate" if gate else ""))
-        return 0
     if errors:
         print("SPEC-STYLE LINT — ERROR (docs/spec-style.md): a rule opens with what it is NOT,")
         print("shouts, uses machine jargon, cuts with «X — not Y», reassures, or narrates the future.")
