@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.37
+  version: 0.1.38
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -434,6 +434,11 @@ another sentence. Before any movement-end or milestone report goes to the human:
    does not live inside the pack?* A pack surface the draft names is explained in the reader's own words
    or dropped; quiet trailing anchors stay legal — the walk governs what does the TALKING, never the
    handles that trail (rule 6).
+3. **Run the mechanical check** — feed the drafted prose to `python3 scripts/preshow-lint.py -` and clear
+   every line it flags for OPENING with an internal handle (a spec code, a row or session number) before
+   the report goes out. It guards what a phrase-by-phrase read misses under load — its origin is a chat
+   report that led with "rows 166 and 148", which the reader could not parse (2026-07-08). It only warns;
+   you rewrite the line to lead with the outcome; it never rewrites for you (SPEC INV-28).
 
 The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
 INV-31). Acceptance belongs to the reader, not the writer: a movement-end report that draws "а это

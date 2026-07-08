@@ -599,3 +599,32 @@ class TestCIMirror(unittest.TestCase):
         local = run([script], extra_env={"CI": "", "HOME": "/nonexistent-ci-home"})
         self.assertEqual(local.returncode, 1,
                          "outside CI a missing machine-local pin must stay a hard FAIL")
+
+
+class TestPreShowLint(unittest.TestCase):
+    """Row 170 (M-177, INV-28 mechanical arm): the pre-show lint catches a human-facing
+    line that OPENS with an internal handle (a spec code or a row/session number) before
+    the human sees it — the leak that put 'Rows 166 …' at the head of a chat report."""
+
+    SCRIPT = os.path.join(ROOT, "scripts", "preshow-lint.py")
+
+    def _lint(self, text):
+        return subprocess.run(["python3", self.SCRIPT, "-"], input=text,
+                              capture_output=True, text=True)
+
+    def test_leading_handle_goes_red(self):
+        for bad in ("Rows 166 and 148 await your word.",
+                    "INV-70 landed and pushed.",
+                    "- row 170 is the durable fix.",
+                    "M-176 pins the test."):
+            r = self._lint(bad)
+            self.assertEqual(r.returncode, 1, "should flag a leading handle: %r" % bad)
+            self.assertIn("leading-handle", r.stdout)
+
+    def test_outcome_led_and_trailing_anchor_pass(self):
+        for good in ("The live board is now just chat narration, no HTML (row 166).",
+                     "A guard catches jargon before you see it (INV-28).",
+                     "The feature map is readable on demand."):
+            r = self._lint(good)
+            self.assertEqual(r.returncode, 0,
+                             "outcome-led / trailing-anchor text must pass: %r\n%s" % (good, r.stdout))
