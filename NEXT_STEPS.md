@@ -1,33 +1,28 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-08 ~09:18, session 26): both his-decisions taken and applied; SPEC.md humanize otherwise
-100% done and gated.** DEC-1 (his word: FULL ENGLISH) — the "Asking what the product does" bold lead is now
-"Ask \"show all features\" and a single answer hands you the whole product map, current as of that moment.":
-the scissors "transparency is a command, not archaeology" is gone from all three functional homes (SPEC
-prose, the tested needle in test_traceability, the communicator echo), the tested needle swapped to "hands
-you the whole product map"; «покажи все фичи» stays only as his real trigger phrase in the skill metadata
-and in history/matrix. DEC-2 (his word: LOG → JOURNAL) — ARCHITECTURE.md's ~90-line inline assignment-history
-log moved verbatim into JOURNAL (session-26 entry) and the intro register-cleaned; ARCHITECTURE 169 → 90
-lines. VERIFIED SAFE before the cut: all ARCHITECTURE tests read only the Nodes/Seams sections, never the
-prose, so anchor-set/pins/pin-drift all unchanged. Suite: 174/175 green — the ONE red is the pre-PUSH
-prover-record gate demanding a `docs/prover/2026-07-08*.md` (expected: SPEC.md was touched today; NOT a code
-failure, and push is my-cert-gated anyway). SPEC.html regenerated from the new SPEC.md (untracked artifact).
-**DONE this session too:** whole-document FULL prover pass over SPEC.md v0.15.61 recorded + committed
-(`docs/prover/2026-07-08-humanize-whole-doc.md`) — no must-fix, one worth-considering (F1 = INV-67 seat
-detection is stated law, real-remote proof is the open field leg / row 168); the pre-push prover-record gate
-is now GREEN. **Stale-quote grep DONE (2026-07-08, autonomous loop):** found the INV-66 skill-roster class
-on an UNCOVERED surface — OVERVIEW.md said "five working skills" and omitted test-author + feedback-intake
-(stale since both were born), README miscounted ("seven skills/six working" → eight/seven), plus one scissors
-in OVERVIEW. Fixed all reader surfaces AND extended the parity check to scan OVERVIEW.md with a permanent
-red-proof (`test_stripped_overview_goes_red`); MIGRATION has no skill list, clean. Suite 176 green.
-**Remaining before my full-certification push:** the 0.9.0 3-pass milestone audit (M-1: full re-prove DONE
-today · matrix audit · surface-composition · skill evals re-run · skill-creator craft lens · doc compaction ·
-gate/inbox re-list · thin-loader line audit · header re-pin) · VERSION bump. 44 commits local, none pushed.
-**Two ROADMAP rows added this session (his ask 2026-07-08):** row 171 — the pack must work for a host with
-NO hooks and NO GitHub (classify core-vs-optional machinery, degrade gracefully, say what's off); row 168's
-open field leg sharpened — does a session actually KNOW it is remote, and how do we communicate then?
-(seat-detection is spec'd but unverified in a real cloud seat; today's session is local, cannot prove from
-here).
+**LATEST (2026-07-08 session 26, autonomous loop) — humanize movement CLOSED; 0.9.0 certification underway.**
+Both his-decisions applied & committed: DEC-1 the feature-map lead is now full-English + de-scissored across
+its three homes ("Ask \"show all features\" … hands you the whole product map, current as of that moment");
+DEC-2 the ARCHITECTURE assignment-history log moved to JOURNAL (169→90 lines, anchor set/pins unchanged —
+all ARCH tests read only the Nodes/Seams tables). Certification progress since, all committed:
+- whole-doc FULL prover pass recorded (`docs/prover/2026-07-08-humanize-whole-doc.md`) — no must-fix, one
+  worth-considering (F1 = INV-67 seat detection stated but unproven in a real cloud seat / row 168); the
+  pre-push prover-record gate is GREEN.
+- stale-quote grep — fixed OVERVIEW skill-roster (said "five", omitted test-author + feedback-intake since
+  both were born) + README miscount + one scissors; EXTENDED the parity check to scan OVERVIEW with a
+  permanent red-proof (`test_stripped_overview_goes_red`).
+- 0.9.0 milestone audit, 3 parallel read-only passes → folded 4 craft/dedup fixes (communicator 17→22
+  rules · product-prover blank line · ARCHITECTURE intro de-dup · spec-author "when NOT" clause). Full
+  record `docs/audit/2026-07-08/milestone-audit.md`. Suite 176 green.
+**Remaining before my full-certification push (all autonomous — next loop ticks):**
+- ROADMAP compaction: archive ~65 terminally-landed rows to docs/queue-archive/ (STAY-list in the audit doc).
+- SPEC "Open decisions": collapse D-2/D-3/D-4/D-5 to one-line resolved pointers (KEEP anchors), rationale→JOURNAL.
+- then VERSION bump to 0.9.0 (also plugin.json version, skill sync, README shopfront) + a milestone JOURNAL entry.
+**For HIS word (recorded, not auto-done):** thin-loader `~/.claude/CLAUDE.md` window-list + "Fable only" note
+should migrate to the profile (his personal config); ROADMAP rows 166/148/121/122 await his priority word.
+**Two ROADMAP rows added 2026-07-08 (his ask):** 171 (pack must run with NO hooks / NO GitHub — classify
+core-vs-optional, degrade gracefully, say what's off); 168 open leg sharpened (does a session KNOW it is
+remote — spec'd, unverified in a real cloud seat). ~48 commits local, none pushed.
 **SCOPE EXPANDED (his word 19:07): rewrite ALL the specs, not only SPEC.md — ARCHITECTURE.md too** (in
 the same register; check what tests assert about ARCHITECTURE content before rewriting, its facts are
 protected differently). After SPEC + ARCHITECTURE, confirm README/OVERVIEW/ROADMAP as candidates.
