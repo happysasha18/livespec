@@ -314,7 +314,7 @@ While several trains roll, the landing stays pure: **a landing commit carries ex
 
 Here are the parallel-lanes law's edges, stated once. It fires when another workable, INDEPENDENT wish waits while a rolling lane's long mechanical stage runs. The correction is idle waiting gone: a feature's code hours no longer block another feature's document hours. It does NOT fire across sessions, nor on wishes that share a surface or a spec section — those still serialize as before. It also doesn't fire mid-milestone or while a bug holds the pen. Its only face is board and report lines, already governed by the line law — no other visible surface, so facets are N/A [INV-28].
 
-Non-goals: cross-session double-landing isn't for this time, since foreign sessions still back off; there's no automatic independence checker, because the senior judges independence and says so aloud; there's no fourth build lane unasked, since beyond three his word opens each next train; and there's no per-lane sub-board.
+Non-goals: this iteration adds no cross-session double-landing, since foreign sessions still back off; no automatic independence checker, because the senior judges independence and says so aloud; no fourth build lane unasked, since beyond three his word opens each next train; and no per-lane sub-board.
 
 Success measure: the first real double-lane run lands both rows clean with the board readable throughout — the human can say at any moment where each train stands, checked by his own read of that run's reports [default]. [T-18]
 
@@ -327,7 +327,7 @@ A wish can also end without landing, and its row stays in the table in one of th
 - **deferred** — parked with a named revisit trigger;
 - **superseded** — absorbed by another wish, so the row points to the absorbing one.
 
-Declining isn't a black hole for what the declined wish had absorbed. A wish that other rows were superseded INTO lists them at its decline. Each listed row then either gets declined BY NAME in the same breath, when your no covered it too, or RETURNED to the queue as its own row again, when your no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
+Declining preserves what the declined wish had absorbed. A wish that other rows were superseded INTO lists them at its decline. Each listed row then either gets declined BY NAME in the same breath, when your no covered it too, or RETURNED to the queue as its own row again, when your no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
 
 What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
 ## Sending feedback in
