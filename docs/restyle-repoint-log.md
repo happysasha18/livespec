@@ -38,3 +38,7 @@ Section "Naming and reporting the work" driven to 0 gate-errors surgically (part
 ## Stage 5 chunk 7 — Package repo + HEAD normalization (2026-07-09)
 
 Section "The package repo" driven to 0 gate-errors (emphasis caps lowercased, one second-person removed). Linter: `HEAD` added to the caps allowlist (git ref, a technical term, not shout). Consequent fix: the economy-ladder needle re-pointed BACK from `green at head` to `green at HEAD` (SPEC + test), so the git term reads HEAD consistently.
+
+## Stage 5 chunk 8 — Breakpoints/resume/milestones (2026-07-09)
+
+Section driven to 0 gate-errors (emphasis caps lowercased, two second-person → the agent). One needle re-pointed (test_traceability TestLoaderStaysThin): `must this hold BEFORE any pack file loads?` → `must this hold before any pack file loads?` (same M-1 loader-thin law, register-clean).

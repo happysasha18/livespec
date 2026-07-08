@@ -977,7 +977,7 @@ class TestLoaderStaysThin(unittest.TestCase):
     def test_m1_names_loader_thin_item(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("the thin loader stays thin",
-                       "must this hold BEFORE any pack file loads?",
+                       "must this hold before any pack file loads?",
                        "states the line count",
                        "migrates to its real home"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the loader-stays-thin item: %s" % phrase)

@@ -1015,27 +1015,27 @@ A live-spec session sweeps the inbox as its first act. It harvests each file int
 
 ### Breakpoints, resume, and milestones
 
-- **Safe breakpoint (end of every movement):** every movement ends the same way — replace the NEXT_STEPS live state (never stack it), add a dated JOURNAL entry, and commit. Session memory can then be wiped with zero loss. NEXT_STEPS may be gitignored, so the journal entry is the durable net. A long session should take this offer. At a breakpoint the agent compacts its own context and SAYS so, never silently. A full wipe or clear is the human's move. On the way back, re-check skill freshness [A-7]. [M-2]
+- **Safe breakpoint (end of every movement):** every movement ends the same way — replace the NEXT_STEPS live state (never stack it), add a dated journal entry, and commit. Session memory can then be wiped with zero loss. NEXT_STEPS may be gitignored, so the journal entry is the durable net. A long session should take this offer. At a breakpoint the agent compacts its own context and says so, never silently. A full wipe or clear is the human's move. On the way back, re-check skill freshness [A-7]. [M-2]
 
-- **The resume file is a digest with a hard cap:** you read NEXT_STEPS in one minute at a cold start — growth is a design failure. The whole file holds at most 100 lines [default], and a suite check owns the number. It goes red on a bloated file — proven with a synthetic one. The cap and the restate-every-open-leg law [INV-26] are reconciled by FORM, never by dropping content: you restate an open leg as ONE terse line —
+- **The resume file is a digest with a hard cap:** the agent reads NEXT_STEPS in one minute at a cold start — growth is a design failure. The whole file holds at most 100 lines [default], and a suite check owns the number. It goes red on a bloated file — proven with a synthetic one. The cap and the restate-every-open-leg law [INV-26] are reconciled by form, never by dropping content: the agent restates an open leg as one terse line —
   - its name,
   - what stays open,
   - where the detail lives.
 
   The detail itself flows to the journal, the queue row, or the record the line points at. Compaction moves prose to its home; it never silently drops an open leg. [INV-48]
 
-- **Milestone (MINOR gate):** a milestone runs the full gate:
+- **Milestone (minor gate):** a milestone runs the full gate:
   - full spec re-prove;
-  - matrix audit: re-walk the coverage validation [E-15] against the CURRENT spec and architecture;
+  - matrix audit: re-walk the coverage validation [E-15] against the current spec and architecture;
   - surface-composition check;
   - re-run skill evals [E-19];
-  - walk the pack's skills through skill-creator, the skill-making skill. It checks format, frontmatter, and the description-triggering lens — the CRAFT of the skill file. Our evals already test behaviour; this checks the craft. Fold or reject each finding, with a written reason, in a dated record.
-    - A newly JOINING skill walks this at birth, before it ever reaches the gate.
-  - doc COMPACTION: strip redundancy from spec/matrix/queue/skills/ledger [E-24], and sweep the test suite the same way. Delete a duplicate or superseded test only when the matrix audit shows its rows still covered by a live test. Nothing grows unboundedly. Queue compaction ARCHIVES closed rows, never deletes [INV-1].
-  - re-list every open human gate AND every unharvested inbox/ file, one line each;
+  - walk the pack's skills through skill-creator, the skill-making skill. It checks format, frontmatter, and the description-triggering lens — the craft of the skill file. Our evals already test behaviour; this checks the craft. Fold or reject each finding, with a written reason, in a dated record.
+    - A newly joining skill walks this at birth, before it ever reaches the gate.
+  - doc compaction: strip redundancy from spec/matrix/queue/skills/ledger [E-24], and sweep the test suite the same way. Delete a duplicate or superseded test only when the matrix audit shows its rows still covered by a live test. Nothing grows unboundedly. Queue compaction archives closed rows, never deletes [INV-1].
+  - re-list every open human gate and every unharvested inbox/ file, one line each;
   - re-check the formal index against the prose — it's a derived map, never a second truth;
   - re-pin the derived docs' headers to the spec version, then prove them;
-  - **the thin loader stays thin** [E-16]: re-read the personal layer's global instruction file line by line. Every line must pass one test — must this hold BEFORE any pack file loads? The audit report states the line count. A rule that survives there without passing the test migrates to its real home (profile or pack); it never lingers. [M-1]
+  - **the thin loader stays thin** [E-16]: re-read the personal layer's global instruction file line by line. Every line must pass one test — must this hold before any pack file loads? The audit report states the line count. A rule that survives there without passing the test migrates to its real home (profile or pack); it never lingers. [M-1]
 
 ### Versioning
 
