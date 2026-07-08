@@ -1988,10 +1988,10 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("economy ladder", "`budget.pressure`", "full [default]",
                        "moved only by the human's word",
-                       "the economy rung is asked, or the standing default told",
+                       "the pack asks the economy rung, or tells the standing default",
                        "every taken shed named in the landing report",
-                       "What NEVER bends, at any rung",
-                       "a push still requires the full gate green at HEAD",
+                       "What never bends at any rung",
+                       "a push still requires the full gate green at head",
                        "red at batch end bisects by landing order",
                        "an explicit host line outlives any rung"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)

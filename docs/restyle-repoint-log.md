@@ -20,3 +20,13 @@ call" contrast without a negation opener; fixed a dangling em-dash that made "ne
 list item. Two minor notes (aloud→directly; wording) left as-is. Full-SPEC anchor multiset verified IDENTICAL
 to the baseline. A confirming iteration 2 and full 0-errors convergence wait on the parked errors (preamble +
 Formal index), which need Alexander's word.
+
+## Stage 5 chunk 2 — economy ladder (2026-07-09)
+
+Section "When money or time run short" converted through --gate (second person → named actor, caps
+lowercased, 19 gate-errors → 0). Linter refined: CAPS_RE now captures hyphenated all-caps compounds whole
+and CROSS-LINK/FEATURE-FIT/RE-ENTRY join the caps allowlist (defined mode names, not shout). Three needles
+re-pointed by narrowing to the register-clean phrase in the new prose (test_traceability.py::test_economy_ladder):
+`the economy rung is asked, or the standing default told` → `the pack asks the economy rung, or tells the standing default`;
+`What NEVER bends, at any rung` → `What never bends at any rung`;
+`a push still requires the full gate green at HEAD` → `a push still requires the full gate green at head`.

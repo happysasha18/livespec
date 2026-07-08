@@ -103,9 +103,13 @@ JARGON_RE = re.compile(r"(?<!\w)(%s)(?!\w)" % "|".join(sorted(JARGON)), re.IGNOR
 # an ALL-CAPS alphabetic word of length >= 2 that is not a known acronym or defined term.
 CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TTL", "MECE",
               "LLD", "HLD", "PRD", "README", "OK", "MD", "CLI", "ID", "IDE", "NLP", "SPEC",
-              "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO"}
+              "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO",
+              # defined prover/verify mode names — literal terms, not shout
+              "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY"}
 FILENAME_RE = re.compile(r"\b[\w./-]+\.(?:md|py|sh|json|txt|html|js|css|yml|yaml|toml)\b")
-CAPS_RE = re.compile(r"(?<![\w`\[])([A-Z]{2,})(?![\w`\]-])")
+# capture an ALL-CAPS token, including a hyphenated compound (CROSS-LINK) as one token, so a
+# defined mode name is judged whole against the allowlist rather than split into "LINK".
+CAPS_RE = re.compile(r"(?<![\w`\[])([A-Z]{2,}(?:-[A-Z]{2,})*)(?![\w`\]-])")
 
 # --- second person ---------------------------------------------------------------------------
 SECOND_PERSON = re.compile(r"(?<!\w)(you|your|you're|yours|yourself)(?!\w)", re.IGNORECASE)

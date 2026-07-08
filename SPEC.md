@@ -1074,30 +1074,30 @@ A live-spec session sweeps the inbox as its FIRST act. It harvests each file int
   Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing BATCH, never per tiny row. The irreducible core stays fixed regardless of scale: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
 ## When money or time run short (the economy ladder)
 
-Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may LEGALLY shed, so economy is a setting you moved, never an improvisation under pressure. [T-19]
+Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may legally shed, so economy is a setting the human moved, never an improvisation under pressure. [T-19]
 
-The pressure lives as one setting on the ladder: `budget.pressure`, with package default `full`. It moves ONLY on your word — a session's word for today, or a profile line to stand. This works exactly like proactivity and trust [E-13, INV-9]. When you name money or time pressure, the agent may PROPOSE a rung. The agent never sets one.
+The pressure lives as one setting on the ladder: `budget.pressure`, with package default `full`. It moves only on the human's word: a session's word for today, or a profile line to stand. This works exactly like proactivity and trust [E-13, INV-9]. When the human names money or time pressure, the agent may propose a rung. The agent never sets one.
 
-The pack surfaces the choice before pressure hits. At a project's SETUP, whether founding or adoption, the economy rung is asked, or the standing default told, alongside `project.kind` [INV-36]. So the preference is yours from day one.
+The pack surfaces the choice before pressure arrives. At a project's setup, whether founding or adoption, the pack asks the economy rung, or tells the standing default, alongside `project.kind` [INV-36]. The preference is the human's from day one.
 
-Three rungs each name their legal sheds. Every shed you actually take is SAID in the landing report. A silent economy is a silent micro-decision, and the report exists to prevent exactly that [INV-5].
+Three rungs each name their legal sheds. Every shed the agent actually takes is said in the landing report. A silent economy is a silent micro-decision, and the landing report exists to prevent it [INV-5].
 
 - **full [default]** — the full suite runs at every landing gate. The prover runs at its recorded cadence. The worker router picks tiers by the routing rule [INV-69].
-- **lean** — mid-work test runs may scope to the touched architecture node's rows. The full suite still runs at every LANDING gate and before every push. Surface-add prover passes stay CROSS-LINK. A FULL pass owed by the default cadence may defer to the next milestone; write the deferral as a dated debt line in its queue row, never just remembered. Mechanical work rides one worker tier cheaper when the brief is airtight [INV-69].
-- **tight** — everything lean, plus landing gates may BATCH: consecutive small landings share one full-suite run at the batch's end. Each landing commit still carries exactly one row's delta [INV-39]. A red at batch end bisects by landing order before anything else lands. Even so, a push still requires the full gate green at HEAD [M-6]. The cheapest sufficient worker tier is the rule, and senior hours go to judgment alone [INV-69].
+- **lean** — mid-work test runs may scope to the touched architecture node's rows. The full suite still runs at every landing gate and before every push. Surface-add prover passes stay CROSS-LINK. A full pass owed by the default cadence may defer to the next milestone; the agent writes the deferral as a dated debt line in its queue row, never just from memory. Mechanical work rides one worker tier cheaper when the brief is airtight [INV-69].
+- **tight** — everything lean, plus landing gates may batch: consecutive small landings share one full-suite run at the batch's end. Each landing commit still carries exactly one row's delta [INV-39]. A red at batch end bisects by landing order before anything else lands. Even so, a push still requires the full gate green at head [M-6]. The cheapest sufficient worker tier is the rule, and senior hours go to judgment alone [INV-69].
 
-What NEVER bends, at any rung — the never-bend list, stated once [INV-40]:
+What never bends at any rung — the never-bend list, stated once [INV-40]:
 
 - the door law and its tripwires: poverty, like urgency, moves priority, never the door [T-12, INV-16];
 - red-before-fix: a bug still gets its failing test before its fix;
 - the human's gates: irreversible moves, publishing, authored content, taste [INV-9];
-- the landing report, carrying its taken-defaults AND its named sheds [INV-5, INV-31];
+- the landing report, carrying its taken-defaults and its named sheds [INV-5, INV-31];
 - landing purity: one row's delta per commit, whatever the batching [INV-39];
-- the push gate: work leaves the machine at full rigor only. Every check the diff can REACH is green at HEAD, per the reach map [INV-45], plus the host's recorded prover cadence [M-6];
+- the push gate: work leaves the machine at full rigor only. Every check the diff can reach is green at head, per the reach map [INV-45], plus the host's recorded prover cadence [M-6];
 - the safety net that no work-kind and no scope-cut touches: poverty is its third non-toucher [T-15, T-16];
 - narration: it is cheap and stays whole at every rung [INV-35].
 
-An explicit host line outlives any rung. A host profile pinning a tighter cadence keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters, since the rung is qualitative and moves by your word; and no automatic rung-switching. Success measure [default]: the first budget-named session names its rung and its sheds aloud in its landing report, checked by your read [T-19].
+An explicit host line outlives any rung. A host profile pinning a tighter cadence keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters, since the rung is qualitative and moves by the human's word; and no automatic rung-switching. Success measure [default]: the first budget-named session names its rung and its sheds aloud in its landing report, checked by the human's read [T-19].
 
 ## Publishing — the deposit owes what its kind owes
 
