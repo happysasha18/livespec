@@ -420,9 +420,9 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_regression_fences(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("What already works is promised before you touch it",
+        for phrase in ("What already works is promised before the agent touches it",
                        "regression fences",
-                       "earns NO new matrix row",              # F1 fold: no second home
+                       "earns no new matrix row",              # F1 fold: no second home
                        "fenced, cited, untouched",             # the stays/changed split
                        "reconciled from the shipped truth",    # F4/F5 fold
                        'fences by the anchors they cite',      # F8 fold: greppable marker
@@ -446,7 +446,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                        "split into stages",
                        "scope only, never order",
                        "does not touch the mandatory sentences",  # scope dials richness, safety net = the mandatory sentences
-                       "A feature also says what it is NOT doing",
+                       "A feature also says what it is not doing",
                        "[INV-20]",  # F4 fold: "nothing deliberately left out this time" is a valid non-goals sentence
                        "the tag marking provenance only",     # F6 fold
                        "bind forward",                        # F7 fold
@@ -541,16 +541,16 @@ class TestFacetSweep(unittest.TestCase):
 
     def test_spec_states_facet_sweep(self):
         body = re.sub(r"\s+", " ", read("SPEC.md"))
-        self.assertIn("A feature is specified past what you know to ask", body,
+        self.assertIn("A feature is specified past what the human knows to ask", body,
                       "SPEC lost the facet-sweep headline")
         for phrase in self.FACETS:
             self.assertIn(phrase, body, "SPEC lost the facet: %s" % phrase)
         for phrase in ("Every facet ends as a spec sentence",
                        "`[default]`",                       # the default tag (F1 fold)
                        "walks the sweep before work resumes",  # mid-work re-door (F3 fold)
-                       "A fenced prototype is NOT swept",       # prototype boundary (F7 fold)
+                       "A fenced prototype is not swept",       # prototype boundary (F7 fold)
                        "reconciled like any re-engineered claim",  # adopted surface (F6 fold)
-                       "AUTHORS the facet sentences"):          # sweep vs axes split (F5 fold)
+                       "authors the facet sentences"):          # sweep vs axes split (F5 fold)
             self.assertIn(phrase, body, "SPEC lost the facet-sweep clause: %s" % phrase)
         for anchor in ("[T-13]", "[INV-18]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
@@ -1448,7 +1448,7 @@ class TestProblemLedger(unittest.TestCase):
     def test_visitor_walk_feel_pass(self):
         """Row 117 (M-115, INV-30): product-kind verify walks the visit and watches the feel."""
         spec = read("SPEC.md")
-        for needle in ("INV-30", "VISITOR WALK", "FEEL pass"):
+        for needle in ("INV-30", "visitor walk", "feel pass"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
         for needle in ("VISITOR WALK", "FEEL pass"):
@@ -1457,7 +1457,7 @@ class TestProblemLedger(unittest.TestCase):
     def test_default_expiry_law(self):
         """Rows 118+120 (M-116, INV-31): a taste default is TOLD at landing, never confirmed."""
         spec = read("SPEC.md")
-        for needle in ("INV-31", "TOLD, never confirmed"):
+        for needle in ("INV-31", "told, never confirmed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         self.assertIn("unclaimed decision files", comm,
@@ -1683,7 +1683,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 150 (M-148, INV-50): a conditionally-entered face owes a re-entry
         path or a written one-way; the prover carries the lens."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-50", "deliberate RE-ENTRY path", "until dismissed"):
+        for needle in ("INV-50", "deliberate re-entry path", "until dismissed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
         for needle in ("Entry symmetry", "A get with no set is a finding", "SPEC INV-50"):
