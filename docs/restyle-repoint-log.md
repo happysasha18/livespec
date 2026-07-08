@@ -34,3 +34,7 @@ re-pointed by narrowing to the register-clean phrase in the new prose (test_trac
 ## Stage 5 chunk 3 — Naming and reporting (2026-07-09)
 
 Section "Naming and reporting the work" driven to 0 gate-errors surgically (partly clean already): future-narration "will go by"/"will be called"→present; second person (agent) → named actor/passive on the preshow-lint, report-walk, and narration lines; inline caps IS/STEP/OPENS/OFFLINE WINDOW lowercased. Linter: IDENTITY/DIGEST/HEARTBEAT added to the caps allowlist (defined bold law-part labels of INV-35, kept caps). One needle re-pointed: `OFFLINE WINDOW` → `offline window` (test_traceability narration test).
+
+## Stage 5 chunk 7 — Package repo + HEAD normalization (2026-07-09)
+
+Section "The package repo" driven to 0 gate-errors (emphasis caps lowercased, one second-person removed). Linter: `HEAD` added to the caps allowlist (git ref, a technical term, not shout). Consequent fix: the economy-ladder needle re-pointed BACK from `green at head` to `green at HEAD` (SPEC + test), so the git term reads HEAD consistently.

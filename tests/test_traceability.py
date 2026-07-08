@@ -1991,7 +1991,7 @@ class TestProblemLedger(unittest.TestCase):
                        "the pack asks the economy rung, or tells the standing default",
                        "every taken shed named in the landing report",
                        "What never bends at any rung",
-                       "a push still requires the full gate green at head",
+                       "a push still requires the full gate green at HEAD",
                        "red at batch end bisects by landing order",
                        "an explicit host line outlives any rung"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
