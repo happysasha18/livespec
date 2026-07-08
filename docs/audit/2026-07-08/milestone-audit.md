@@ -50,8 +50,9 @@ Suite 176 green after the folds; three skills re-synced to the installed copies.
   Section value resolves to a real heading. (Cosmetic only: a few Section labels are written two ways —
   "Machines" vs "The machines that hold the bounds" — all resolving correctly; normalization not worth the
   risk this pass.)
-- **Open human gates** (correctly NOT autonomous): rows 166 (board round 2), 148 (genre Phase 3), 121
-  (pre-show lint priority), 122 (generalization row). All need his word.
+- **Open human gates** (correctly NOT autonomous): rows 166 (board round 2), 148 (genre Phase 3), 170
+  (pre-show lint priority), 171 (no-hooks/no-GitHub generalization). All need his word. (The gates pass
+  mis-cited rows 121/122 here — both are cleanly landed since session 12, verified at compaction time.)
 - **Skill drift (INV-13):** no clear re-legislation of a base rule; build-pipeline's tripwire re-listing is
   borderline but cites base rule 15 and is the door's operational skill — left.
 
