@@ -2,6 +2,20 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-08 (session 26) — INV-70: the agent sets tunable parameters itself and tells (row 172)
+
+**What:** Alexander, from his tlvphoto conversation (handed to the pack as a general rule, no switch to
+tlvphoto), asked for a parametrization rule: move every task that can move, ask only genuine questions, and
+where a task carries a tunable KNOB (his example: image resolution) pick a sensible value as seems okay,
+proceed, and report it after — at most the parameter is updated together later; and pushing to prod is fine
+whenever the work is okay to the agent. Walked the full pipeline: new invariant INV-70 in the "Throwing a
+wish" scenario beside the taste-told law (INV-31), Formal index row, assigned to build-pipeline (assignment
+only, no re-prove), build-pipeline's landing-report step elaborates it (0.2.40), matrix M-176, test
+`test_parameter_default` red-proven then green, prover CROSS-LINK addendum on the day's record. INV-70
+carries INV-31's TELL to numeric/config knobs, is kin to the economy ladder (T-19), rests on INV-4, and
+frames push-on-own-certification as the human's granted trust (INV-9, resolving as M-6 already does).
+Suite 177 green.
+
 ## 2026-07-08 (session 26) — 0.9.0 milestone: preventive audit + doc compaction, MINOR bump
 
 **What:** the 0.9.0 milestone landed as Alexander framed it — a preventive audit plus doc compaction, then

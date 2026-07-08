@@ -1086,6 +1086,25 @@ class TestWorkerContract(unittest.TestCase):
         matrix = read("TEST_MATRIX.md")
         self.assertIn("test_routing_rule", matrix, "M-175 must pin this test (row 56)")
 
+    def test_parameter_default(self):
+        """Row 172 (M-176, INV-70): a tunable parameter is set by the agent to a
+        sensible default and TOLD (never asked), carrying the taste-told law (INV-31)
+        to numeric/config knobs; the agent moves every task it can (INV-4); and where
+        the human GRANTS it, the agent pushes to prod on its own certification (M-6)."""
+        spec = re.sub(r"\s+", " ", read("SPEC.md"))
+        for phrase in ("A tunable parameter is set to a sensible default and told, never asked",
+                       "never stalls a task on a knob it can reasonably set",
+                       "at most the parameter is updated together later",
+                       "the agent ships to prod on its own certification once the work is sound"):
+            self.assertIn(phrase, spec, "SPEC INV-70 lost: %s" % phrase)
+        index = spec.split("Formal index", 1)[1]
+        self.assertIn("INV-70", index, "INV-70 missing from the Formal index")
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("tunable parameter", bp,
+                      "build-pipeline lost the parameter-default elaboration (INV-70)")
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("test_parameter_default", matrix, "M-176 must pin this test (row 172)")
+
 
 class TestBootstrapScaffold(unittest.TestCase):
     """Row 62 (M-034 extension): the bootstrap ships a runnable suite scaffold that defines green

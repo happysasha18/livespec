@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.39
+  version: 0.2.40
 ---
 
 # build-pipeline — ship a change by the method
@@ -240,7 +240,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    version number in prose — "current version: vX.Y" always goes stale; point at the version's one home
    (the VERSION file, the frontmatter) or omit it. The landing report TELLS the taste choices made
    without asking — the open `[default]`s — each in plain words with an example and a tweakable mark;
-   no confirmation requested, silence is consent, never re-asked (SPEC INV-31). Show the human the REAL render in a new window; push/deposit only
+   no confirmation requested, silence is consent, never re-asked (SPEC INV-31). The same TELL covers a tunable parameter you set to a sensible default — a resolution, a batch size, a timeout, a sampling rate — named with what it trades, tuned together later at most, never a stall on a knob you can reasonably pick (SPEC INV-70). Show the human the REAL render in a new window; push/deposit only
    after they've reviewed it. A push re-renders all deposited artifacts, and a push shipping a new version walks the publish skill's shopfront check — README claims + kind-owed visuals fresh, the outcome line riding the landing report (SPEC INV-44). Where the host's design-sync is ON (base
    defaults; SPEC E-18), the landing's DECLARED components also sync to the team's design project — after
    the human's gate, never instead of the in-session show.

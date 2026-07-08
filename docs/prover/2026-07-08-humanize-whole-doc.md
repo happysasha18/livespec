@@ -108,3 +108,23 @@ new surface, no structure change — three-line short-form record:
 - **Verdict** — clean. Anchor set unchanged (test_architecture_owns + index tests green), the tested D-3
   close-needle "Decided 2026-07-07 (row 55)" and the D-2 forbidden-open-string constraints both hold. The
   fold stays LOCAL to the Open-decisions section, so it does not re-trigger the gate.
+
+---
+
+## Short-form addendum — INV-70 parameter-default law (row 172, CROSS-LINK)
+
+A new invariant added after the milestone, from Alexander's tlvphoto conversation handed to the pack as a
+general rule (2026-07-08). Small delta, no new node/seam (assigned to build-pipeline). Three-line record:
+
+- **Previous records clean** — this delta adds one invariant and its elaboration; it touches the "Throwing
+  a wish" scenario, the Formal index, ARCHITECTURE (assignment only), the matrix, and build-pipeline.
+- **The delta** — INV-70: a tunable parameter (resolution, batch size, timeout, sampling rate) is set by the
+  agent to a sensible default and TOLD with its `[default]` tag, never asked; carried to build-pipeline's
+  landing-report step; the human tunes it later at most; and where the human GRANTS it, the agent pushes to
+  prod on its own certification when sound.
+- **Seams checked** — composes cleanly: it is the taste-told law [INV-31] extended to numeric/config knobs
+  (same TELL, no new confirmation path), the same idea the economy ladder applies to cost [T-19], and rests
+  on the ask-only-real-questions rule [INV-4]. The push-autonomy clause is framed as a TRUST the human
+  grants and can withdraw [INV-9], resolving the same way live-spec's own push gate already does [M-6] — no
+  contradiction with INV-9's "human owns the push gate" (the grant is the human's word). Verdict: clean,
+  red-first test `test_parameter_default` (M-176) proven red on the missing skill elaboration then green.
