@@ -15,8 +15,14 @@ failure, and push is my-cert-gated anyway). SPEC.html regenerated from the new S
 **DONE this session too:** whole-document FULL prover pass over SPEC.md v0.15.61 recorded + committed
 (`docs/prover/2026-07-08-humanize-whole-doc.md`) — no must-fix, one worth-considering (F1 = INV-67 seat
 detection is stated law, real-remote proof is the open field leg / row 168); the pre-push prover-record gate
-is now GREEN, suite 175/175. **Remaining before my full-certification push:** 0.9.0 3-pass audit · stale-quote
-grep over untested prose (README/OVERVIEW/MIGRATION/docs) · VERSION bump. 43 commits local, none pushed.
+is now GREEN. **Stale-quote grep DONE (2026-07-08, autonomous loop):** found the INV-66 skill-roster class
+on an UNCOVERED surface — OVERVIEW.md said "five working skills" and omitted test-author + feedback-intake
+(stale since both were born), README miscounted ("seven skills/six working" → eight/seven), plus one scissors
+in OVERVIEW. Fixed all reader surfaces AND extended the parity check to scan OVERVIEW.md with a permanent
+red-proof (`test_stripped_overview_goes_red`); MIGRATION has no skill list, clean. Suite 176 green.
+**Remaining before my full-certification push:** the 0.9.0 3-pass milestone audit (M-1: full re-prove DONE
+today · matrix audit · surface-composition · skill evals re-run · skill-creator craft lens · doc compaction ·
+gate/inbox re-list · thin-loader line audit · header re-pin) · VERSION bump. 44 commits local, none pushed.
 **Two ROADMAP rows added this session (his ask 2026-07-08):** row 171 — the pack must work for a host with
 NO hooks and NO GitHub (classify core-vs-optional machinery, degrade gracefully, say what's off); row 168's
 open field leg sharpened — does a session actually KNOW it is remote, and how do we communicate then?
