@@ -521,7 +521,7 @@ Non-goals:
 - **At a project's setup** — founding, or adoption's orient, beside the founding questions [B-2, B-3] — the pack scans the skills already installed and the catalogs it can reach. It looks for matches to the project's kind and crafts, then proposes a fit list with a recommendation. The human's word picks.
 - **At a struggle** — a ledger entry reaching its second occurrence [INV-23], a taste artifact rejected twice [INV-62 kin], any failure family that keeps returning — the next attempt waits for one search. An existing skill or published checklist may already own this failure class. Adopt or reject a found skill by name, and record the verdict where the struggle lives: the ledger entry, the kill-list, or the row.
 
-Borrowing follows one practice: invoke a found skill as it ships. Paraphrase a lesson into our own documents and credit its source by name. Verbatim text travels only under its license, with the notice kept — never republish unlicensed text [INV-65].
+Borrowing follows one practice: invoke a found skill as it ships. Paraphrase a lesson into our own documents and credit its source by name. Verbatim text travels only under its license, with the notice kept. Unlicensed text is never republished [INV-65].
 ## A prototype stays a sketch
 
 Exploring an idea before you commit to it is allowed — sometimes you sketch a room before building the house. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. Fenced off means the code sits apart, and nothing in the product reaches into it.
@@ -553,7 +553,7 @@ The fence runs one way: influence crosses out of the prototype, never in.
 
 A prod surface is any part of the shipped product a user meets. Show a prototype to the human only under its label — nothing reaches the human as the product unless its surface walked the full pipeline.
 
-Promotion is not a merge. When a sketch earns its place, its feature enters at the spec step like any wish. [T-12, INV-16] The prototype serves as evidence for that spec; its code holds no rights.
+Promotion enters the sketch's earned feature at the spec step, without merging its code. When a sketch earns its place, its feature enters at the spec step like any wish. [T-12, INV-16] The prototype serves as evidence for that spec; its code holds no rights.
 
 The machine enforces the fence with a guardrails check that has three legs:
 
@@ -602,7 +602,7 @@ This is an always-rule: never land into an unversioned host. Version control has
 
 ### Founding questions
 
-**Ask the founding questions — never infer them.** Before the first wish walks, answer the questions that shape everything downstream, right in the new spec's opening.
+**Ask the founding questions; do not infer them.** Before the first wish walks, answer the questions that shape everything downstream, right in the new spec's opening.
 
 First among them: **personal tool, or reusable product?**
 
@@ -625,7 +625,7 @@ First among them: **personal tool, or reusable product?**
 
 **The project knows what kind of thing it is — and the kind can change.** Beside personal-vs-reusable, founding asks a second shaping question: **what is this project** — a book, a backend service, a static site, a fullstack app, a CLI, a skill pack. Record it in one plain line in the host profile (`project.kind`, the settings ladder's host scope [E-13]). Adoption owes the same ask at orient, alongside the other founding questions [A-1, B-2].
 
-This is not the per-wish work-kind [T-16]. Three verdicts share the intake breath, and they never collapse into one:
+These three intake verdicts stay separate from the per-wish work-kind [T-16]. Three verdicts share the intake breath, and they never collapse into one:
 
 - the project kind says what the product IS, and seeds project-wide defaults — the usual work-kind, which facets and feel-lenses apply by default [T-13, INV-30];
 - the wish's work-kind says what THIS wish builds;

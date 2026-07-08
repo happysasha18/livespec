@@ -1840,7 +1840,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-65", "Before reinventing a fix, search for an existing skill",
                        "Adopt or reject a found skill by name",
-                       "with the notice kept — never republish unlicensed text"):
+                       "Unlicensed text is never republished"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("Search for a skill before reinventing",
