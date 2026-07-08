@@ -64,3 +64,7 @@ Cleared the last actionable gate-errors across the bug section, the rhythm subse
 ## Stage 5 step 1-2 — whole-doc judge pass + content tests (2026-07-09)
 
 Fresh Opus whole-doc judge (self-test canary passed, 0 hallucinated quotes): 11 surviving definite/likely findings, all fixed via a fresh writer — 4 local redundancies (guardrails-every-step, scope/mandatory restatement, status-report title restatement, no-third-document double), 2 C5 metaphor/narration (live-spec "eats its own cooking" + "taught us"; "the Room shipped through"), 1 persona ("the senior's hand"), 3 mild title-restatements (decision page, echo, away-stretch window). One needle re-pointed (does not touch → No cut touches the delta's mandatory sentences). Added TestNeedleRegisterClean (every live BODY needle lints clean, Formal index excluded as parked) + TestAnchorInBlockquoteGuard. Suite now 203 green.
+
+## Stage 5 tail — ARCHITECTURE.md prose (2026-07-09)
+
+Intro prose converted to register: 5 second-person → agent/passive; VCS allowlisted (acronym). Tables untouched — 3 emphasis caps remain inside table cells (NEW/BEFORE/DECLARED), parked like the SPEC Formal index. Anchors identical; suite 203 green.

@@ -4,16 +4,16 @@ This is how live-spec is built: the named nodes that the spec's facts live in. O
 and one responsibility — the one-surface-one-name rule, applied to structure. The doc was itself proven
 with the architecture lens before the test matrix was derived (see the Prover record below).
 
-You keep this doc up to date by assignment. When a wish lands, its new facts go to the node that already
-owns their kind, and you refresh the pin. A fact with no home yet goes to the node that fits. A large or
-surface-class wish updates the doc before you touch the matrix; a bug or small wish just cites the node it
+The agent keeps this doc up to date by assignment. When a wish lands, its new facts go to the node that already
+owns their kind, and the pin is refreshed. A fact with no home yet goes to the node that fits. A large or
+surface-class wish updates the doc before the matrix is touched; a bug or small wish just cites the node it
 lands in. An assignment changes no structure and triggers no re-prove — only a new node or a new seam
-does, and only then do you re-prove the doc. The landing-by-landing history lives in JOURNAL.md; this doc
+does, and only then is the doc re-proved. The landing-by-landing history lives in JOURNAL.md; this doc
 states the structure as it stands today. [E-14]
 
 **What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact is the
 text. So a pin points to the `file:line` where a node's responsibility is stated or carried. Every pin
-below comes from a grep or read you actually ran, never from memory. Two nodes are marked [target] —
+below comes from a grep or read actually run, never from memory. Two nodes are marked [target] —
 specified, not yet built — and the template lets their pin cells stay empty until the code lands.
 
 ---
