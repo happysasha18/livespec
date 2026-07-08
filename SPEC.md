@@ -709,7 +709,7 @@ recorded and skipped until its machine ships, and the journal records the deferr
    - On any version change — live-spec itself or any installed skill — re-read the changed
      SKILL.md before continuing; never coast on the stale in-memory version. Write a one-line
      journal note naming old → new.
-   - This isn't event-only: at every safe breakpoint [M-2], re-stat the installed skills and the
+   - The re-check also runs at every safe breakpoint [M-2]: re-stat the installed skills and the
      package on disk (version and file mtime), and re-read whatever changed — a parallel session
      may have shipped an update mid-flight.
    - The same walk asks the public repo once a day whether the pack itself has moved, through the
@@ -792,7 +792,7 @@ As the pack evolves, one thing stays true. **A shared rule has exactly one norma
 
 **Answer "did you actually do X?" by walking the evidence, and let the answer wear its method version.** A fluent story can answer any done-claim — "did that project run the tests by the method?" — and the story might even be right, but it doesn't distinguish VERIFIED from NARRATIVE, which is the whole point of the method. So no one answers a done-claim from memory: every claim pins to a checkable artifact, walked now, not recalled — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. This is the claims-need-primary-source rule, applied to the answering exchange itself.
 
-The answer states plainly what the walk verified, apart from what it merely asserts, and it names the METHOD VERSION the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set — never adopted, or the work predates adoption — the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
+The answer states plainly what the walk verified, apart from what it merely asserts, and it names the METHOD VERSION the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set (never adopted, or the work predates adoption), the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
 
 ### Settings and the ladder
 
@@ -805,7 +805,7 @@ The answer states plainly what the walk verified, apart from what it merely asse
 
 The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it. A setting made at a broad scope is inherited down through the narrower ones, until a narrower one overrides it on your word — an all-English project overriding your Russian-chat line, or a "today, answer me in English" overriding both for one sitting. Resolution reads from the narrowest scope out: session beats host beats personal beats package default.
 
-Profiles are re-read at the same freshness points as skills [A-7]. If a profile line the current pack doesn't recognize (written under an older vocabulary), the pack ignores it ALOUD: a dated note in the host's journal, plus a line in the session's next report. The journal half is durable, so a session that dies before its report still leaves the trace — never a silent drop, never an error. [E-13]
+Profiles are re-read at the same freshness points as skills [A-7]. If a profile line the current pack doesn't recognize (written under an older vocabulary), the pack ignores it ALOUD: a dated note in the host's journal, plus a line in the session's next report. The journal half is durable, so a session that dies before its report still leaves the trace, never a silent drop, never an error. [E-13]
 
 **No override is ever silent.** An override exists only as a written line in its profile file: setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5], applied to settings. Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a MINOR bump, and live-spec's own host contract tightens that to "before every push" — recorded, visible, never assumed.
 
@@ -827,7 +827,7 @@ Sitting outside any repo fence [INV-11], a promotion RE-READS the file immediate
 
 **The senior agent** owns judgment — spec deltas, matrix levels, findings triage, this document. [ACT-2]
 
-**Workers (tiered)** own mechanical execution. Each keeps a persistent checkpoint file in the host's `.live-spec/checkpoints/` (gitignored — never `/tmp`, since a reboot must not erase a resume point). Three tiers stand:
+**Workers (tiered)** own mechanical execution. Each keeps a persistent checkpoint file in the host's `.live-spec/checkpoints/` (gitignored, never `/tmp`, since a reboot must not erase a resume point). Three tiers stand:
 
 - a no-decision one-shot on **haiku**;
 - multi-step mechanical work on **sonnet**;
@@ -841,11 +841,11 @@ The routing rule below decides which tier a unit of work is PROPOSED at, before 
 - A brief may instead name an ISOLATED copy of the tree, where a parallel lane builds its stages. That copy's delta reaches the shared tree only through the senior's integration, under the pen [T-18, INV-39].
 - Files a same-session SIBLING worker just wrote are fence-benign: the concurrent-edit fence [INV-11] alarms on foreign sessions and stays quiet for your own briefed hands. The senior who briefed both owns their seams.
 - The session's live setting lines [E-13] ride into the brief verbatim. A worker never resolves the ladder itself — it can't hear the human's spoken word.
-- The brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Any noise the worker hits goes into its checkpoint as a ledger line — signature, date, one line of context — never a silent retry. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
+- The brief ARMS the worker for the workshop: it carries the host's problem-ledger path with the WATCHED-line duty. Any noise the worker hits goes into its checkpoint as a ledger line — signature, date, one line of context, never a silent retry. The senior carries those lines into the ledger at verify, unless the brief names the ledger among the worker's own files [INV-23].
 - It carries the CLOCK — the date and time read at briefing — so a worker's stamps come off the brief's clock, never invented. [INV-24]
 - A result that fails its brief's acceptance escalates ONE tier with a logged line (haiku → sonnet → senior). It never retries silently on the same tier, and never skips a rung. [ACT-3]
 
-**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it aloud.** Before anyone delegates a unit of work, they PROPOSE its tier — never default it — and the proposal reads what the work IS, looking past the row's size alone.
+**The routing rule — propose the cheapest tier that can pass the brief, and the senior may overrule it aloud.** Before anyone delegates a unit of work, they PROPOSE its tier (never default it) and the proposal reads what the work IS, looking past the row's size alone.
 
 - A judgment step — a spec delta, a prove pass, an architecture carve, the matrix's level calls, findings triage, any taste call — proposes the senior. That's ACT-2's own ground [ACT-2], and it never routes down.
 - A mechanical step proposes a worker:
@@ -871,10 +871,10 @@ Non-goals:
 
 Success measure [default]: the first routed landing names, in its report, the proposal → choice → why for each delegated unit — and you check it by reading it. [INV-69]
 
-**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more — it never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green. So the verify step carries an ADVERSARIAL option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths — never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
+**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more — it never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green. So the verify step carries an ADVERSARIAL option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths, never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
 
 - EXISTS — the artifact is there;
-- SUBSTANTIVE — not a stub (the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
+- SUBSTANTIVE, not a stub (the grep list lives in the pipeline's step 8: TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
 - WIRED — reachable from the surface that claims it;
 - FLOWS — real values move end to end.
 
@@ -933,7 +933,7 @@ Keeping the doc up to date:
 
 Where a quality has no honest number, say so by name instead of inventing a vanity metric. A budget counts only once a matrix row at the right level can see it — a hope in prose does not. A surface with no budget and no instrumentation home is a derivation defect, flagged like an unowned fact. The numbers are the host's taste: the architecture proposes them with a recommendation, and the human's word sets them at the surface's first budget landing. Like the two layers themselves [INV-15], this duty binds from the first landing that touches the surface after the clause exists, never retroactively [INV-41].
 
-**The matrix is derived, never just filled in.** The matrix [E-5] is not a bucket of rows. Rows organize by **architecture node × spec fact**: every fact gets at least one row, and every row pins a test level. Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and you walk it:
+**The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact**, not a bucket of rows: every fact gets at least one row, and every row pins a test level. Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and you walk it:
 
 - every spec anchor appears in ≥ 1 row;
 - every artifact-inventory entry owns ≥ 1 rendered-level row;
@@ -998,12 +998,12 @@ What keeps "it works" honest — each one a named machine:
   - it is conservative: an unmapped or new file triggers the full suite, and fast paths exist only for explicitly claimed prose classes — "just .md" isn't a class, since SPEC, matrix, architecture, queue, and every SKILL.md are tested documents and stay full-reach;
   - it is self-tested: the deciding script is red-proven on fixtures, and anything it can't classify falls to full.
 
-  The cheap gates — prover record, ownership, coverage, loadability, prototype fence — never scope; they run at every push. "Full rigor" [INV-40] means every check the diff can reach, green [INV-45].
+  The cheap gates (prover record, ownership, coverage, loadability, prototype fence) never scope; they run at every push. "Full rigor" [INV-40] means every check the diff can reach, green [INV-45].
 
 - **A gate that blocks speaks one language.** Today each gate script fails in its own words: an agent has to parse prose, a human has to hunt for the fix. Every blocking gate, on red, emits one typed failure line — a parseable JSON object `{severity, code, message, fix}` — beside its human-readable lines. The `fix` field is the same sentence a person reads.
   - Every check declares itself blocking or advisory. An advisory check prints its finding and never flips the exit code.
   - A script that rebuilds artifacts validates every output before it writes any, so no half-written artifact lands on disk.
-  - The contract's operational home is the guardrails README. It binds by deed: the first gate ships under it now, and each other gate picks it up the next time someone touches it — never all at once [INV-47].
+  - The contract's operational home is the guardrails README. It binds by deed: the first gate ships under it now, and each other gate picks it up the next time someone touches it, never all at once [INV-47].
 ## The package repo: who may write, and two sessions at once
 
 live-spec eats its own cooking: this spec, this queue, and these rules govern live-spec's own development. The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface, and one evening of two parallel sessions taught us the rules.
