@@ -657,8 +657,8 @@ class TestPublishSkill(unittest.TestCase):
             self.assertIn(target, body, "publish skill lost target plugin: %s" % target)
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for phrase in ("Publishing — the deposit owes what its kind owes",
-                       "Each publish TARGET is a plugin",
-                       "checklist runs BEFORE the gate"):
+                       "Each publish target is a plugin",
+                       "checklist runs before the gate"):
             self.assertIn(phrase, spec, "SPEC lost the publishing clause: %s" % phrase)
         self.assertIn("[E-20]", spec, "SPEC prose lost anchor E-20")
 
@@ -1503,7 +1503,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 127 (M-123, INV-24 chat face): a human-facing timestamp is read off the
         clock at write time, never extrapolated; quoting a past recorded time stays legal."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("Chat timestamps", "AT WRITE TIME"):
+        for needle in ("Chat timestamps", "at write time"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("read off the clock at write time", "never continued or extrapolated"):
@@ -1628,7 +1628,7 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-44", "the shopfront rides every push",
                        "shopfront checked — current",
-                       "Find a stale claim and fix it BEFORE the push"):
+                       "Find a stale claim and fix it before the push"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pub = re.sub(r"\s+", " ", read(os.path.join("skills", "publish", "SKILL.md")))
         for needle in ("any push that ships a new version",
@@ -1767,7 +1767,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 155 (M-160, INV-61): the pre-push re-check scales its form to the
         delta; rigor and the safety net never scale."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-61", "SHORT-FORM record of three lines",
+        for needle in ("INV-61", "short-form record of three lines",
                        "never per tiny row", "quality itself, never"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))

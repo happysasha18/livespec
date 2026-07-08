@@ -426,7 +426,7 @@ The section's edges are stated once.
 **User story:** as the product owner, I report a bug in the shipped product and it gets fixed before
 anything else; the feature that was mid-build comes back on its own afterwards, and no work gets lost.
 
-Mid-feature, you report: "the card is broken on the phone." The feature is set aside at a checkpoint,
+Mid-feature, the human reports: "the card is broken on the phone." The feature is set aside at a checkpoint,
 the bug takes the lane, and once no bug is waiting, the feature returns as the very next thing to
 finish.
 
@@ -1040,39 +1040,39 @@ A live-spec session sweeps the inbox as its first act. It harvests each file int
 
 ### Versioning
 
-- **Documents are versioned** like code. The queue and this spec carry dated versions, so you can always tell which roadmap version a decision was made under. [M-3]
+- **Documents are versioned** like code. The queue and this spec carry dated versions, so a reader can always tell which roadmap version a decision was made under. [M-3]
 
 - **Versions have named homes.** The package uses a `VERSION` file at the repo root. Each skill carries a version line in its SKILL.md frontmatter under `metadata:`, where the skill-format validator reads it. A host records its installed set in `.live-spec/` at attach and on every update. The freshness check [A-7] compares version against version, not bare file times — its "old → new" journal note is now writable. [M-7]
 
 ### Time discipline
 
 - **Time is read off the clock, never invented.** Every date a session writes — a file name, a journal or queue stamp, a ledger occurrence — comes from the machine's clock at write time. In doubt, git is the arbiter. The rule takes four forms:
-  - **File and journal dates (mechanical, pre-push):** no repo file name, journal entry heading, or ledger date may sit LATER than the current clock. A future-dated stamp turns the suite red as a real defect. Prose that quotes a past incident's wrong date stays legal.
-  - **Same-day times (mechanical, at commit):** the check reddens any ADDED line that pairs today's date with a clock time LATER than the commit moment. "Pairs" means the ADJACENT stamp shape (`date [~]time`), so a line that legally quotes another moment's time beside today's date stays green. The commit clock is the reference, so the check can't race. The known cost is deliberate: you spell out a future plan without writing it as a date-time stamp.
-  - **Chat timestamps (law only, no mechanical fence):** a human-facing timestamp — the [HH:MM] a reply leads with, or any moment spoken to the human — is read off the clock AT WRITE TIME, never continued or extrapolated from an earlier stamp. This law lives in the communicator skill, where the human-facing exchange shapes live. Quoting a past moment's recorded time stays legal here too.
+  - **File and journal dates (mechanical, pre-push):** no repo file name, journal entry heading, or ledger date may sit later than the current clock. A future-dated stamp turns the suite red as a real defect. Prose that quotes a past incident's wrong date stays legal.
+  - **Same-day times (mechanical, at commit):** the check reddens any added line that pairs today's date with a clock time later than the commit moment. "Pairs" means the adjacent stamp shape (`date [~]time`), so a line that legally quotes another moment's time beside today's date stays green. The commit clock is the reference, so the check can't race. The known cost is deliberate: a future plan is spelled out without writing it as a date-time stamp.
+  - **Chat timestamps (law only, no mechanical fence):** a human-facing timestamp — the [HH:MM] a reply leads with, or any moment spoken to the human — is read off the clock at write time, never continued or extrapolated from an earlier stamp. This law lives in the communicator skill, where the human-facing exchange shapes live. Quoting a past moment's recorded time stays legal here too.
   - **The mechanical hand for chat:** a harness hook on the working machine — `scripts/clock-hook.sh`, wired as a prompt hook in the host's settings — injects the wall clock into every prompt's context, so every lead stamp is read off the machine's clock. Where the hook isn't installed, the law above stands alone.
 
   [INV-24]
 
 ### Push and CI gates
 
-- **CI mirror.** The guardrails' native home is the local pre-push hook. A host may also mirror the same checks in its CI, such as Jenkins or GitHub Actions, as a second net. There is one source of truth: CI runs the same scripts and never redefines them. The second net runs the FULL set — the reach map [INV-45] is a local latency optimization, never a CI shortcut. The pack repo's own workflow (`.github/workflows/gates.yml`) is the worked example; host guidance lives in the guardrails README (ROADMAP row 14). [M-5]
+- **CI mirror.** The guardrails' native home is the local pre-push hook. A host may also mirror the same checks in its CI, such as Jenkins or GitHub Actions, as a second net. There is one source of truth: CI runs the same scripts and never redefines them. The second net runs the full set — the reach map [INV-45] is a local latency optimization, never a CI shortcut. The pack repo's own workflow (`.github/workflows/gates.yml`) is the worked example; host guidance lives in the guardrails README (ROADMAP row 14). [M-5]
 
 - **Push gate for live-spec itself.** This repo is public and the method's own flagship, so every push is preceded, in the same session, by two steps:
   1. the concurrent-edit fence [INV-11];
   2. a fresh whole-spec re-check — a product-prover pass over SPEC.md as it stands, with its record landing in docs/prover/ before the push.
 
-  The record name is `YYYY-MM-DD[-suffix].md`, and the suffix is mandatory when the date's file already exists. Must-fix findings are folded before pushing. Folds produced by the gate's own pass do NOT re-trigger the gate; they ship with the same record. The rest become queue rows. No re-check record for the pushed state means the push should not have happened. The record ENUMERATES the folds applied from its own pass. A fold stays LOCAL to the sections its finding named; a fold reaching wider re-triggers the gate. [M-6]
+  The record name is `YYYY-MM-DD[-suffix].md`, and the suffix is mandatory when the date's file already exists. Must-fix findings are folded before pushing. Folds produced by the gate's own pass do not re-trigger the gate; they ship with the same record. The rest become queue rows. No re-check record for the pushed state means the push should not have happened. The record enumerates the folds applied from its own pass. A fold stays local to the sections its finding named; a fold reaching wider re-triggers the gate. [M-6]
 
 ### Scaling process to the delta
 
-- **Process bookkeeping scales to the delta — the record's reach map.** A TINY row pays the same fixed bookkeeping as a whole surface: its own claim commit, its own full-page re-check record, its own journal chapter, and a resume rewrite. That runs roughly forty percent of its wall time, and none of it is the safety net. The principle: an iteration should run long only when the work needs it — where it doesn't, find what can be cut without sacrificing quality.
+- **Process bookkeeping scales to the delta — the record's reach map.** A tiny row pays the same fixed bookkeeping as a whole surface: its own claim commit, its own full-page re-check record, its own journal chapter, and a resume rewrite. That runs roughly forty percent of its wall time, and none of it is the safety net. The principle: an iteration should run long only when the work needs it — where it doesn't, find what can be cut without sacrificing quality.
 
-  So the reach idea [INV-45] applies to PROCESS too. The re-check before a push keeps its RIGOR always — previous records checked, the delta walked, a verdict — but scales its FORM:
-  - a SMALL delta (skill, prose, or infra kind, with no new surface and no structure change) ships a SHORT-FORM record of three lines: previous records clean; the delta in one line; the verdict;
+  So the reach idea [INV-45] applies to process too. The re-check before a push keeps its rigor always — previous records checked, the delta walked, a verdict — but scales its form:
+  - a small delta (skill, prose, or infra kind, with no new surface and no structure change) ships a short-form record of three lines: previous records clean; the delta in one line; the verdict;
   - a surface-sized or structural delta keeps the full walk.
 
-  Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing BATCH, never per tiny row. The irreducible core stays fixed regardless of scale: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
+  Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing batch, never per tiny row. The irreducible core stays fixed regardless of scale: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
 ## When money or time run short (the economy ladder)
 
 Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may legally shed, so economy is a setting the human moved, never an improvisation under pressure. [T-19]
@@ -1102,7 +1102,7 @@ An explicit host line outlives any rung. A host profile pinning a tighter cadenc
 
 ## Publishing — the deposit owes what its kind owes
 
-Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**. **A publish owes the reader what the artifact's KIND owes.** You already use this work-kind axis at wish intake; here you apply it again at the door of publishing [T-16].
+Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**. **A publish owes the reader what the artifact's kind owes.** This work-kind axis is already used at wish intake; here it applies again at the door of publishing [T-16].
 
 ### What each kind owes
 
@@ -1110,7 +1110,7 @@ Each kind owes its reader a different minimum:
 
 - a **skill** shows how to install it, the commands to run, and when to use it and when not;
 - a **tool** shows real runs with real output;
-- a visual **product** shows FRESH screenshots — a stale screenshot is a false claim in picture form;
+- a visual **product** shows fresh screenshots — a stale screenshot is a false claim in picture form;
 - **prose** shows its reading path.
 
 A comparison or a diagram joins only when it carries the argument; it never rides along as decoration.
@@ -1121,7 +1121,7 @@ The publish skill owns the per-kind checklist — the pack's fifth working skill
 
 ### Targets add steps, never remove the minimum
 
-**Each publish TARGET is a plugin that embeds its own steps into the walk.** For example:
+**Each publish target is a plugin that embeds its own steps into the walk.** For example:
 
 - GitHub brings a README-at-the-door plus release notes;
 - a plugin directory brings its manifest and forms;
@@ -1131,11 +1131,11 @@ The target adds steps. It never removes the kind's owed minimum.
 
 ### Gates already standing
 
-The checklist never bypasses the gates already standing. The human's publish gate guards anything irreversible or outward (base rule 17 [ACT-1]), and the host's own push gates guard the push [M-6]. The checklist runs BEFORE the gate, so by the time the human approves, it is already worth approving [E-20].
+The checklist never bypasses the gates already standing. The human's publish gate guards anything irreversible or outward (base rule 17 [ACT-1]), and the host's own push gates guard the push [M-6]. The checklist runs before the gate, so by the time the human approves, it is already worth approving [E-20].
 
 ### A version push re-opens the shopfront
 
-**A version push re-opens the shopfront.** Every push that ships a new version changes the truth a public reader will read tomorrow — even when the diff never touched a doc — so the shopfront rides every push. The README's CLAIMS (behaviour, counts, commands, version homes) still have to match the truth you just pushed. The kind-owed visuals ride along too:
+**A version push re-opens the shopfront.** Every push that ships a new version changes the truth a public reader will read tomorrow — even when the diff never touched a doc — so the shopfront rides every push. The README's claims (behaviour, counts, commands, version homes) still have to match the truth just pushed. The kind-owed visuals ride along too:
 
 - a skill pack re-checks its diagrams and flow pictures;
 - a visual product re-shoots what changed on screen;
@@ -1143,7 +1143,7 @@ The checklist never bypasses the gates already standing. The human's publish gat
 
 A stale shopfront is a false claim, exactly like a stale screenshot [E-20].
 
-This shopfront check is the publish skill's checklist, read at push scale — same one home, no second checklist. The pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]. When a push's changes touch none of the shopfront's claims, say so in one line: "shopfront checked — current." Find a stale claim and fix it BEFORE the push. Freshness is about the claims the README makes, not its styling.
+This shopfront check is the publish skill's checklist, read at push scale — same one home, no second checklist. The pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]. When a push's changes touch none of the shopfront's claims, say so in one line: "shopfront checked — current." Find a stale claim and fix it before the push. Freshness is about the claims the README makes, not its styling.
 
 ### Non-goals
 

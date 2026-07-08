@@ -108,7 +108,7 @@ CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TT
               # doc / file names used as bare tokens
               "ARCHITECTURE", "ROADMAP", "JOURNAL", "VERSION", "LIVE-STATE",
               # defined problem-ledger status values (E-24) and the prototype label
-              "WATCHED", "OWNED", "AGREED", "NON-PROBLEM", "SOLVED", "ARCHIVED", "PROTOTYPE",
+              "WATCHED", "OWNED", "AGREED", "NON-PROBLEM", "SOLVED", "ARCHIVED", "PROTOTYPE", "DECIDE",
               # defined prover/verify mode names — literal terms, not shout
               "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY",
               # defined bold law-part labels of the narration law (INV-35)
