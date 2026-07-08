@@ -89,6 +89,19 @@ stopped being read — which kills a spec).
   metaphors only as one-off color) and the per-section verification checklist live once in the
   `communicator` skill's "writing register" section — spec prose follows it like every other human-facing
   text.
+- **The register is held by a machine gate, not by attention — and the prose is written by a clean agent.**
+  Re-styling a spec by hand drifts (a voice reads fine on a sample, then the same tells return round after
+  round). The durable fix, proven and sealed in `docs/prose-quality-gate-design.md`: (1) a fresh agent with
+  the pack NOT loaded writes the prose from bare facts — a pack-marinated context writes ornate prose, so it
+  only does the mechanical half; (2) `scripts/spec-style-lint.py --gate` blocks the tells a regex can see
+  (scissors, define-by-exclusion openers, jargon, ALL-CAPS shout, second person, reassurance, future
+  narration), with defined terms allowlisted and marked informative regions exempt; (3) `spec-redundancy-precheck.py`
+  catches lexical near-duplication and `spec-judge.py` runs a fresh LLM judge (locked hash-pinned rubric,
+  verbatim-quote evidence, a seeded self-test canary) for the redundancy/register a regex cannot see;
+  (4) an unfixed tell becomes a dated, tracked waiver, never a silent park; (5) `spec-done-gate.py` is the one
+  definition of done. Restyle each section through this loop: fresh writer → gate to 0 errors → anchor multiset
+  unchanged → suite green → re-point any broken traceability needle by narrowing to a register-clean phrase
+  (log it) → commit. The floor is the machine; the ceiling stays the exemplars + a human's read.
 
 This is the shape `product-prover` is tuned to read, and the one a human will actually keep open.
 
