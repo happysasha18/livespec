@@ -15,11 +15,14 @@ all ARCH tests read only the Nodes/Seams tables). Certification progress since, 
   rules · product-prover blank line · ARCHITECTURE intro de-dup · spec-author "when NOT" clause). Full
   record `docs/audit/2026-07-08/milestone-audit.md`. Suite 176 green.
 **Remaining before my full-certification push (all autonomous — next loop ticks):**
-- ROADMAP compaction: archive ~65 terminally-landed rows to docs/queue-archive/ (STAY-list in the audit doc).
+- ROADMAP compaction DONE (2026-07-08): 38 cleanly-landed rows archived to
+  `docs/queue-archive/2026-07-08-milestone-compaction.md`, active table 106→68; double-gated (audit read AND
+  status parser agree landed, target-owners 55/93/96 kept), suite 176 green.
 - SPEC "Open decisions": collapse D-2/D-3/D-4/D-5 to one-line resolved pointers (KEEP anchors), rationale→JOURNAL.
 - then VERSION bump to 0.9.0 (also plugin.json version, skill sync, README shopfront) + a milestone JOURNAL entry.
 **For HIS word (recorded, not auto-done):** thin-loader `~/.claude/CLAUDE.md` window-list + "Fable only" note
-should migrate to the profile (his personal config); ROADMAP rows 166/148/121/122 await his priority word.
+should migrate to the profile (his personal config); ROADMAP rows 166/148/170/171 await his priority word
+(the audit's gate pass mis-cited 121/122, which are landed).
 **Two ROADMAP rows added 2026-07-08 (his ask):** 171 (pack must run with NO hooks / NO GitHub — classify
 core-vs-optional, degrade gracefully, say what's off); 168 open leg sharpened (does a session KNOW it is
 remote — spec'd, unverified in a real cloud seat). ~48 commits local, none pushed.
