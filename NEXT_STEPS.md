@@ -80,7 +80,9 @@ status + heartbeat (INV-71); the HTML board sketch is dropped by his word. Runs 
    an even plainer document (row 148, large) · thin-loader tidy in his personal `~/.claude/CLAUDE.md` (move
    the window-list + stale "Fable only" note to his profile — his file, offered) · pack orchestration
    (2026-07-08, his ask): take independent work while a spawn runs (no idle-block) + spawn-liveness watchdog
-   (hung / silent-too-long / alive) — [[pack-orchestration-parallelism-and-spawn-liveness]], ROADMAP rows.
+   (hung / silent-too-long / alive) — [[pack-orchestration-parallelism-and-spawn-liveness]], ROADMAP rows ·
+   artifact registry (2026-07-08, his ask): a per-project index of handed-in artifacts surviving /clear,
+   recording WHERE each lives (Keychain name / path), never the secret value — [[artifact-registry-pointers-not-secrets]].
 3. Field legs riding real windows with him: 47/96 feedback loop · 54 first-run · 165 first-struggle · 168
    remote seat (this evening) · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133.
 4. Standing habits: `date` before ANY stamp · NOW/NEXT current + heartbeat past ~10 min (INV-71) · plain
