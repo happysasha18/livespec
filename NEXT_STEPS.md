@@ -1,5 +1,20 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
+**NIGHT PASS DONE (2026-07-08, autonomous loop, stopped clean).** SPEC lint errors 24 → 4; the 4 remaining
+are ALL parked on your word (preamble lines 4/18 = reader-facing second person by design; Formal index scissors
+1228/1263 = structured table). Every error a night pass could touch is cleared — one full register conversion
+("Asking what the product does") plus fresh-agent surgical fixes across ~9 dense sections; two brittle needles
+re-pointed by narrowing (logged in docs/restyle-repoint-log.md). Phase 2 ran: a fresh reviewer read the whole
+baseline→now diff, found 7, I fixed the 5 real ones (lost framing, added clause, narrowed word, lost contrast,
+dangling em-dash) and re-verified. Full-SPEC anchor multiset IDENTICAL to pre-restyle baseline `ca78876` —
+nothing lost. Suite 183 green throughout (only red = TestGateA_ProverRecord, the expected pre-push reminder).
+All work LOCAL commits 3665f7b..a9690c4; NOTHING pushed.
+WAITS ON YOUR WORD (then prover, then push): (1) full register conversion of the errors-cleared dense sections
+— removing their second-person + CAPS collides with ~15 exact-phrase test needles, needs a needle re-point pass
+on your say; (2) the preamble + Formal index 4 errors; (3) Phase 3 — ARCHITECTURE.md is already 0 errors (14
+warns), its full prose conversion is the same parked class; sealing the method into spec-author + playbook is
+premature before you sign off on the SPEC result. Before any push: run the prover pass and commit its record.
+
 **LATEST (2026-07-08, session 28) — SPEC re-style: the drift is SOLVED by a mechanism; grind in progress.**
 Root cause of the ornate spec prose, proven with Alexander: the author is marinated in the pack's own
 register (doors/kinds/stations/coined metaphor), not the content and not text length. A fresh agent with the
@@ -20,36 +35,21 @@ Naming's first three rules (echo / status board / feature-map placement), "Showi
 decisions", "Doors, kinds, and craft", "Asking what the product does" (committed 3665f7b, night pass). Gold
 exemplars = the decision-page list + intake.
 
-NIGHT-PASS POLICY (session 28, autonomous): the hard machine criterion is spec-style-lint = 0 ERRORS
-(negation-opener / machine-jargon / scissors). Warnings (caps-shout, second-person) are advisory and often
-COLLIDE with load-bearing exact-phrase test needles. So: a section whose needles don't collide gets the full
-clean-agent conversion (all warns gone); a section where full conversion would break needles gets its ERRORS
-cleared by a fresh-agent surgical rephrase and its full register conversion PARKED for a supervised morning
-session (where re-pointing needles can get his word). Parked-full list below.
+NIGHT-PASS METHOD (kept): hard machine criterion = spec-style-lint 0 ERRORS. Warnings (second-person, CAPS)
+are advisory and often collide with exact-phrase test needles, so a section whose needles collide got its
+ERRORS cleared surgically and its full register conversion PARKED; a section with no collision got the full
+clean-agent conversion.
 
-PARKED — errors cleared, full register conversion needs his word (needle collision):
-- "Specifying and building a feature" (errors cleared, commit 9892e64): facet-sweep headline
-  "...past what you know to ask" + ~15 exact-phrase needles (FACETS tuple, "Every facet ends as a spec
-  sentence", "VISITOR WALK"/"FEEL pass", "TOLD", "AUTHORS the facet sentences", "walks the sweep before work
-  resumes", "A fenced prototype is NOT swept", "reconciled like any re-engineered claim", INV-70 sentences)
-  pin second-person and CAPS in place. Removing them needs a needle re-point pass on his word.
-- "Parallel lanes, one pen" (errors cleared, commit 33d6b09): CAPS needles "declined BY NAME", "RETURNED to
-  the queue as its own row again", "superseded INTO", plus heavy PEN/train second-person prose. Full
-  conversion needs his word.
-
-ERRORS CLEARED this night pass (full register conversion parked, needle-heavy): "Reuse before reinventing"
-(524), "A prototype stays a sketch" promotion (556), founding-questions (605, 628) — all commit 95c8dc1.
-
-REMAINING errors (drive meter to 0; now 15 errors / 317 warns) — night pass fixes these surgically next ticks:
-lines 712 (adoption), 795 (Human authority), 808 (Settings ladder), 830/844/848/874/877 (Delegation and
-workers), 936 (From spec to tests), 1001 (push-gate reach), 1006 (package repo). PARKED (not touched by night
-pass): the "How to read this" preamble (lines 4/18, reader-facing second-person by design — his taste call) and
-the Formal index scissors (lines 1228/1263 E-25/INV-22 — structured index, his word). Full register conversion
-(warnings: second-person + CAPS) of every errors-cleared section awaits a supervised needle re-point pass.
-THEN full-conversion pass on the clean sections still ornate: rest of "Naming" (INV-28/34/35), "Sending
-feedback in", "When a bug cuts the line", "One rulebook", "The rhythm", "When money/time run short",
+FULL REGISTER CONVERSION PARKED (errors cleared; removing second-person + CAPS needs a supervised needle
+re-point pass on your word): "Specifying and building a feature" (~15 needles incl. facet-sweep headline
+"...you know to ask", FACETS tuple, "VISITOR WALK"/"FEEL pass", "AUTHORS the facet sentences"), "Parallel
+lanes" ("declined BY NAME"/"RETURNED"/"superseded INTO", PEN prose), "Reuse before reinventing", prototype
+promotion, founding-questions, adoption, Human authority, Settings ladder, Delegation and workers, From spec
+to tests, push-gate reach, package repo.
+STILL-ORNATE, NO NEEDLE COLLISION (full conversion whenever picked up): rest of "Naming" (INV-28/34/35),
+"Sending feedback in", "When a bug cuts the line", "One rulebook", "The rhythm", "When money/time run short",
 "Publishing", "Composing across axes", "Open decisions".
-THEN: same pipeline on ARCHITECTURE.md prose (tables untouched); then a cross-project migration guide, sealed
+THEN: same pipeline on ARCHITECTURE.md prose (already 0 errors / 14 warns; tables untouched); then a cross-project migration guide, sealed
 into spec-author + the playbook (his word: this is now for ALL projects).
 
 His two goals: (1) human-clear + easy to read + all info present; (2) it also helps the agent build next steps
