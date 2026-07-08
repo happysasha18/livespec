@@ -1,0 +1,93 @@
+# Whole-document prover pass — SPEC.md v0.15.61 (2026-07-08, session 26)
+
+**Mode:** FULL — the whole document, read end to end (959 lines), after the humanize movement closed all
+18 scenario sections and after today's two decision edits. Run to certify the register consolidation and to
+clear the M-6 pre-push prover-record gate.
+
+**TRIAGE: PROCEED** — a mature, shipped-and-target product spec with a full Formal index and an owning
+architecture doc; analyzable, and its facts are pinned (ARCHITECTURE.md node table + M-7 version homes).
+
+## Opening assessment
+
+SPEC.md describes the live-spec pack: a wish walks one proven pipeline from intake to a tested landing,
+with the human pulled in only for the calls that are genuinely theirs. After the humanize movement the whole
+document now reads in one technical-writer voice — scenarios lead, short codes trail as quiet anchors, the
+Formal index closes it. The two things I came to check both hold: today's decision edits are clean, and the
+consolidation introduced no structural drift. This was a register movement over a document already proven
+section by section (per-section cross-links under docs/prover/), so this pass is a whole-document
+composition and consistency check, not a from-scratch re-derivation of the model — I say that plainly rather
+than imply a fresh proof. One worth-considering item stands, and it is a known open field leg, not a hole.
+Confidence: ready to build / ready to push once the gate is green.
+
+## The two decision edits — validated
+
+**DEC-1 — the feature-map bold lead (SPEC L309).** The old lead carried a scissors construction
+("transparency is a command, not archaeology") and the Russian trigger «покажи все фичи» in the prose. His
+decision was the full English gate. The lead now reads:
+
+> "Ask \"show all features\" and a single answer hands you the whole product map, current as of that moment." — Section: Asking what the product does
+
+Checked: the scissors is gone from all three functional homes (this prose, the tested needle in
+`test_traceability.py`, the communicator echo at SKILL.md rule 14); the tested needle moved to a real
+substring of the new lead ("hands you the whole product map"); «покажи все фичи» survives only where it is
+his real trigger phrase (the skill's description/when-it-fires metadata) and in history/matrix. The rest of
+the section (L310–313) and the Formal-index line INV-38 (L893) already describe the mechanics without the
+old phrasing, so no cross-reference dangles. Consistent.
+
+**DEC-2 — ARCHITECTURE.md assignment-history log.** Outside this SPEC pass (separate doc), but noted for the
+record: the ~90-line inline log migrated verbatim to JOURNAL, the intro register-cleaned, 169 → 90 lines.
+Verified before the cut that every ARCHITECTURE test reads only the Nodes/Seams sections, so the anchor set,
+the pins, and pin-drift are unchanged.
+
+## Composition & consistency scan (whole document)
+
+- **Anchor ↔ index integrity:** every anchor cited in the prose resolves to a Formal-index row and an owning
+  architecture node (mechanized by `test_architecture_owns_every_anchor_once`, green). No orphan, no
+  double-owner surfaced by eye either.
+- **One voice:** the 18 sections read as one register. The three "— not" occurrences (L199 "version
+  comparison — not this time", L313 "per-feature history timeline — not this time", L572 "SUBSTANTIVE — not
+  a stub") are non-goal labels and a definitional gloss, not the banned define-by-negation scissors. Clean.
+- **Seam laws compose:** the passport (INV-51), away-stretch accumulation (INV-52), seat-matched channel
+  (INV-67), and unmissable end (INV-57) form a consistent showing-cadence family with no contradiction —
+  each names one home (communicator) and defers to the next by citation, not restatement.
+- **No new dead-end / entry-symmetry / unbacked-surface gap** was introduced by the humanize; the
+  register rewrites changed wording, not state or transition structure.
+
+## Findings
+
+Only one item rises above taste, and it is a known open leg rather than a defect.
+
+**F1 — The seat-detection law states an active behaviour whose real-remote proof is still an open field leg.**
+
+> "The session reads its seat from what it can actually reach — the platform, the display, whose filesystem — and names the channel it picked." — Section: Throwing a wish, INV-67
+
+The clause states seat detection as settled law, and the build legs did land (INV-67, communicator rule 5,
+`test_showing_seat`). But no run has yet exercised a real cloud-seated session, so whether a remote session
+actually detects "I am remote" and picks the right channel is asserted, not observed. A remotely-seated
+reader handed a local file path would meet exactly the defect the clause warns against, and nothing today
+proves that cannot happen. This is not a spec hole — the law is correctly stated and its field leg is
+tracked (ROADMAP row 168, sharpened today with the human's 2026-07-08 re-raise: "does a session actually
+know it is remote, and how do we communicate then?"). Action: keep it as the open field leg it is; the first
+real cloud-seated session is its proof, and no spec or code change is owed now.
+
+`worth-considering · unenforceable-until-proven (discharge)`
+
+## Coverage note
+
+The three coverage tables (CRUD / invariants-per-state / authorization) are N/A as a block: live-spec is a
+documentation-and-skills product with no user-mutated persistent entities and no multi-role authorization —
+its "state" is the queue/spec/journal under the one-pen serialization law (INV-2/INV-11), already covered by
+the suite. A table of N/A rows would be ritual noise.
+
+## Folds applied by this pass
+
+None — no must-fix or should-clarify finding surfaced that required a text change. The two edits under review
+were applied before the pass (DEC-1/DEC-2, his decisions this session) and are validated above, not folds of
+this pass. F1 is a worth-considering item already owned by ROADMAP row 168; it triggers no fold and stays
+LOCAL (no wider re-trigger of the M-6 gate).
+
+## Readiness
+
+Ready to push once the gate is green. The document is internally consistent, reads in one voice, and carries
+no unresolved must-fix. Suite context at this pass: 174/175, the single red being this very gate demanding a
+today-dated record — which this file supplies.
