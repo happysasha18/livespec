@@ -1,32 +1,25 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**LATEST (2026-07-07 20:56, session 25, /loop dynamic): SPEC humanize — ALL 18/18 scenario sections DONE,
-SPEC.md now fully in the technical-writer register.** Every section rewritten via a fresh clean-context
-agent and gated: tested phrases preserved section-scoped, bracket-code multiset identical to baseline, full
-suite 175 green, a prover cross-link per section under `docs/prover/`. The last and biggest, **Throwing a
-wish (595 lines)**, was done in 10 contiguous chunks each gated vs the WHOLE-section baseline (157 phrases /
-165 code occurrences held throughout); a stale cross-ref inside it was fixed ('A prototype is not the
-product' → 'A prototype stays a sketch'). 35 commits ahead of origin, none pushed. LESSONS logged: a
-lowercase tested phrase must never be capitalized at a sentence start; a chunk splice's end-anchor must be
-the NEXT bold-lead (both caught by the gate before any commit).
-**Movement progress:** template `templates/SPEC.template.md` AUDITED — already in the register, no rewrite
-(docs/prover/2026-07-07-template-audit-and-consistency-scan.md). Whole-SPEC consistency scan done: reads as
-one voice; the three '— not' hits are non-goal labels/a gloss (not scissors). **ONE his-decision item found**
-— the "Asking what the product does" bold lead still carries the Russian trigger «покажи все фичи» + a
-TESTED scissors "transparency is a command, not archaeology" (echoed in communicator); NOT auto-edited (his
-policy call, 3 options in that prover doc).
-**LOOP STOPPED (2026-07-07 21:13) at a clean milestone — SPEC.md humanize (his primary ask) 100% done,
-gated green; two his-decisions now block meaningful progress:**
-- **DEC-1 — "Asking what the product does":** its bold lead keeps the Russian trigger «покажи все фичи» + a
-  TESTED scissors "transparency is a command, not archaeology" (echoed in communicator). 3 options in
-  docs/prover/2026-07-07-template-audit-and-consistency-scan.md.
-- **DEC-2 — ARCHITECTURE.md:** its prose is ~15 reader-facing lines + a ~90-line inline assignment-history
-  log; tests protect only the Nodes table/pins/header/anchor-set, not prose. Recommend migrating the log to
-  JOURNAL (VERIFIED SAFE: 0 anchors drop) then register-cleaning the 15 lines. Options in
-  docs/prover/2026-07-07-architecture-scope-finding.md.
-**Remaining before my full-certification push (all his-word/audit gated):** DEC-1 · DEC-2 · whole-document
-prover pass over SPEC.md · 0.9.0 3-pass audit · stale-quote grep over untested prose (README/OVERVIEW/
-MIGRATION/docs) · VERSION bump. 39 commits local, none pushed. Restart the loop or hand decisions any time.
+**LATEST (2026-07-08 ~09:18, session 26): both his-decisions taken and applied; SPEC.md humanize otherwise
+100% done and gated.** DEC-1 (his word: FULL ENGLISH) — the "Asking what the product does" bold lead is now
+"Ask \"show all features\" and a single answer hands you the whole product map, current as of that moment.":
+the scissors "transparency is a command, not archaeology" is gone from all three functional homes (SPEC
+prose, the tested needle in test_traceability, the communicator echo), the tested needle swapped to "hands
+you the whole product map"; «покажи все фичи» stays only as his real trigger phrase in the skill metadata
+and in history/matrix. DEC-2 (his word: LOG → JOURNAL) — ARCHITECTURE.md's ~90-line inline assignment-history
+log moved verbatim into JOURNAL (session-26 entry) and the intro register-cleaned; ARCHITECTURE 169 → 90
+lines. VERIFIED SAFE before the cut: all ARCHITECTURE tests read only the Nodes/Seams sections, never the
+prose, so anchor-set/pins/pin-drift all unchanged. Suite: 174/175 green — the ONE red is the pre-PUSH
+prover-record gate demanding a `docs/prover/2026-07-08*.md` (expected: SPEC.md was touched today; NOT a code
+failure, and push is my-cert-gated anyway). SPEC.html regenerated from the new SPEC.md (untracked artifact).
+**Remaining before my full-certification push (all his-word/audit gated):** whole-document prover pass over
+SPEC.md (this also clears the red gate) · 0.9.0 3-pass audit · stale-quote grep over untested prose
+(README/OVERVIEW/MIGRATION/docs) · VERSION bump. Local commits only, none pushed.
+**Two ROADMAP rows added this session (his ask 2026-07-08):** row 171 — the pack must work for a host with
+NO hooks and NO GitHub (classify core-vs-optional machinery, degrade gracefully, say what's off); row 168's
+open field leg sharpened — does a session actually KNOW it is remote, and how do we communicate then?
+(seat-detection is spec'd but unverified in a real cloud seat; today's session is local, cannot prove from
+here).
 **SCOPE EXPANDED (his word 19:07): rewrite ALL the specs, not only SPEC.md — ARCHITECTURE.md too** (in
 the same register; check what tests assert about ARCHITECTURE content before rewriting, its facts are
 protected differently). After SPEC + ARCHITECTURE, confirm README/OVERVIEW/ROADMAP as candidates.

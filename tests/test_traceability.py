@@ -1874,7 +1874,7 @@ class TestProblemLedger(unittest.TestCase):
         statuses at the [target] tag's own granularity, queued NEW wishes included."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("INV-38", "Asking what the product does",
-                       "transparency is a command, not archaeology",
+                       "hands you the whole product map",
                        "the whole map comes only when",
                        "a host with nothing to read", "shown as queued"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)

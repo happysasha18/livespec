@@ -274,7 +274,7 @@ human will read. This skill fires when a PERSON must see, decide, or hear a resu
     uninvited — routine reports keep the departures board's in-flight scope (rule 9); the whole map
     comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
     is empty" plus the bootstrap/adoption pointer — never an invented list. (SPEC INV-38; his word
-    2026-07-06: «покажи все фичи» — transparency is a command, not archaeology.)
+    2026-07-06: «покажи все фичи» — one ask hands over the whole map, current as of that moment.)
 
 15. **His word is read as meant — and his cuts hold.** Two clauses, born in the promoter window
     (2026-07-06 — three review rounds of one document rejected in a single evening, the same failures

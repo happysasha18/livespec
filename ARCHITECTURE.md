@@ -1,106 +1,27 @@
 # live-spec — Architecture (v0.1, 2026-07-06)
 
-How the pack is BUILT: the named nodes the spec's facts live in. Written from the proven SPEC v0.7
-(record `docs/prover/2026-07-05-lost-layers.md`; the matrix cites v0.7.1 — the same proven spec after
-two already-decided questions were reworded to their decided state, no rule delta), proven itself
-with the architecture lens before the
-test matrix was derived (record: see Prover record below). One node = one name = one responsibility —
-the one-surface-one-name rule applied to structure. Kept current through SPEC v0.14.0 by assignment
-(E-16 → host-contract; the doors landing 2026-07-05: T-12/INV-16 → build-pipeline, E-17 → base-rulebook,
-INV-17 → guardrails, A-10 → attach; the facet-sweep landing 2026-07-05 evening: T-13/INV-18 →
-spec-author, the canonical facet list's one home; the fences landing 2026-07-05 night: T-14/INV-19 →
-spec-author (the fence-authoring rule); the intake-trio landing 2026-07-05 night: T-15 → build-pipeline
-(intake rider), INV-20/INV-21 → spec-author (the delta's closing sentences); the founding/design-sync
-landing 2026-07-05 night: B-2 → attach (deliberately apart from templates' B-1: templates own the SHAPES,
-attach owns the WALK that asks — the founding ask fires at bootstrap and at orient); the work-kind
-landing 2026-07-05 evening, session 8: T-16/INV-22 → build-pipeline (intake classification + the per-kind
-step table are its domain) — assignment only, no node or seam change, no re-prove per this doc's own
-rule; the row-57 landing 2026-07-05, session 9: E-21 → attach (the installer it already pinned),
-E-22 → communicator (rule 10, the seam report → human already carried the page) — assignment only;
-E-18 → NEW [target]
-node design-sync — a node ADD is a
-structure change, its architecture-lens re-prove rides tonight's milestone audit (row 84) — assignments + pins, no node or seam change, so no
-re-prove per this doc's own rule); the row-100 landing 2026-07-05 ~23:35, session 10: INV-23 →
-base-rulebook (the workshop-noise law joins the shared rules), E-24 → templates (the ledger's shape is
-a document shape; the pack's own `.live-spec/PROBLEMS.md` is package-docs' dogfood instance, pinned
-there without moving the anchor) — assignments + pins only, no node or seam change, no re-prove per
-this doc's own rule; the row-103 landing 2026-07-05 ~23:43, session 10: INV-24 → guardrails (the
-clock fence is a mechanical check, its first slice living in the suite like the rest of gate b) —
-assignment + pin only; the row-101 landing 2026-07-06 night, session 11: INV-25 → communicator (the
-done-claim evidence walk is an answering exchange — its shape lives in rule 11, the pin updated by the
-same landing) — assignment + pin only, no node or seam change, no re-prove per this doc's own rule; the row-102
-landing 2026-07-06 night, session 11: T-17/INV-26 → build-pipeline (the one-story intake split and the
-close-only-whole law are queue lifecycle, its domain; the resume template's per-leg line rides the
-templates node's existing pins) — assignment + pin only, no node or seam change, no re-prove per this
-doc's own rule; the row-105 landing 2026-07-06 night, session 11: INV-27 → communicator (the capture
-echo and the departures board are exchange shapes — rule 12 and rule 9's station line; build-pipeline's
-step zero cites the echo, the citation is not a second home) — assignment + pin only, no node or seam
-change, no re-prove per this doc's own rule; the row-124 landing 2026-07-06 ~13:05, session 13: INV-33 →
-build-pipeline (the craft ladder is the step list's own domain; four line pins re-run after the ladder's
-insertion shifted them) — assignment + pin refresh only, no node or seam change, no re-prove per this
-doc's own rule; the rows-126/127/128 landing 2026-07-06 ~13:47, session 14: INV-34 → communicator (the
-pre-report walk is an exchange shape — the SPEC paragraph states the law, the walked procedure lives in
-the skill); INV-28's bookkeeping NEVER-list rides communicator's existing INV-28 assignment; INV-24
-STAYS with guardrails (the invariant is the clock law and its fences) while its chat arm's shipped
-sentence pins in communicator — a wiring pin, not a second owner, same shape as design-sync's wiring
-pins — assignments + pin refresh only, no node or seam change, no re-prove per this doc's own rule;
-the row-131 landing 2026-07-06 session 15: INV-35 → communicator (working narration is an exchange
-shape — the third voice between the echo and the report, the rule lives in the skill) — assignment
-only, no node or seam change, no re-prove per this doc's own rule; the rows-129/132 landing
-2026-07-06 session 16: INV-36 → attach (the founding walk that asks is attach's domain — B-2's own
-precedent; the recorded `project.kind` line is a host-contract instance like every profile line),
-INV-37 → build-pipeline (intake classification is its domain — T-16's precedent; communicator's
-rule 12 carries the spoken arm as a wiring pin, not a second home) — assignments + pins only, no
-node or seam change, no re-prove per this doc's own rule; the row-133 landing 2026-07-06 session 17:
-INV-38 → communicator (the map on demand is an exchange shape — an answer to the human's ask, kin of
-the echo's spoken placement; the sources it reads — spec scenarios, header, queue — stay owned by
-their own nodes, the rule only reads them aloud) — assignment only, no node or seam change, no
-re-prove per this doc's own rule; the row-135 landing 2026-07-06 session 18: T-18/INV-39 →
-build-pipeline (the parallel-lanes law and the landing-purity invariant are wish-lifecycle law — INV-2
-and T-9's own domain; ACT-3's isolated-tree sentence rides base-rulebook's existing ACT-3 assignment;
-communicator's rule 9 carries the waiting-lane board face as a wiring pin, not a second home) —
-assignment + pins only, no node or seam change, no re-prove per this doc's own rule; the row-136
-landing 2026-07-06 session 18 (lane A of the first double-lane run): E-25 → attach (delivery and
-version awareness are its domain — E-21/A-7's own kin; the script pin runs beside install.sh) —
-assignment + pin only, no node or seam change, no re-prove per this doc's own rule; the row-54
-landing 2026-07-07 session 23: B-3 → attach (the who-am-I-working-with step is the founding walk's
-first breath — B-2 and INV-36's own precedent; the profile template ships as a document shape cited
-inside B-3, the templates node's anchor list unchanged) — assignment + pin only, no node or seam
-change, no re-prove per this doc's own rule; the row-165 landing 2026-07-07 session 23: INV-65 →
-base-rulebook (a workshop-wide move, INV-23's own kin — the search fires at the same struggle moments
-the ledger owns; ADOPT's setup line and the SPEC's ledger-scenario paragraph are wiring, not second
-homes) — assignment + pin only, no node or seam change, no re-prove per this doc's own rule; the row-168 landing 2026-07-07 session 23: INV-67 →
-communicator (the seat-switched showing channel is an exchange shape, rule 5's own domain; the
-personal profile's show line is the local arm, said in the law) — assignment only, no node or seam
-change, no re-prove per this doc's own rule; the row-167 landing 2026-07-07 session 23: INV-66 →
-guardrails (a mechanical list-parity check, INV-24's first-slice-in-the-suite precedent) — assignment
-only, no node or seam change, no re-prove per this doc's own rule; the row-55 landing 2026-07-07
-session 23: E-7's DESIGN decided (home · manifest · advance-at-landed · last-only-with-git-archive,
-D-3 closed with it) — the snapshot node stays [target] with its pin empty until the machine lands
-(the guardrails scaffold, row 3, owns the first slice); prose update only, no node or seam change,
-no re-prove per this doc's own rule; the
-row-163 landing 2026-07-07 session 23: E-27 → NEW node test-author (the skill IS a node, the
-spec-author/product-prover precedent) — a node ADD is a structure change: the architecture lens ran
-with the landing (record `docs/prover/2026-07-07-row163.md`), the derivation seam named
-(build-pipeline · test-author), the two working-skills seam cells recounted five → six;
-The row-47 landing 2026-07-07 session 24: E-28/T-20/INV-68 → NEW node feedback-intake (the skill IS a
-node, the test-author precedent) — a node ADD is a structure change: the architecture lens ran with
-the landing (record `docs/prover/2026-07-07-row47.md`), two seams named (item → its home;
-feedback ↔ communicator's echo), the outside-wish seam widened to outside ITEM (wish or feedback,
-harvest destination by route, T-20), and the two working-skills seam cells reworded count-free (the
-row-167/169 count-drift class: lists that enumerate stay complete, everything else describes without
-counting); last full architecture-lens prove: v0.1, 2026-07-05. [E-14]
+How the pack is built: the named nodes the spec's facts live in. It was written from the proven SPEC
+v0.7 (record `docs/prover/2026-07-05-lost-layers.md`; the matrix cites v0.7.1, the same proven spec
+after two already-settled questions were reworded to their decided state, no rule change) and was
+itself proven with the architecture lens before the test matrix was derived (see the Prover record
+below). One node carries one name and one responsibility — the one-surface-one-name rule applied to
+structure.
 
-**What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact IS the
-text. A pin therefore points to the file:line where the node's responsibility is normatively stated or
-carried — every pin below comes from a grep/read actually run on 2026-07-05, none from memory. Two nodes
-are [target] (spec'd, not yet code); the template allows their pin cells to start empty.
+The doc is kept current by assignment. As each wish lands, its new facts go to the node that already
+owns their kind and the pin is refreshed; a fact with no home yet is assigned to the node that fits.
+An assignment alone changes no structure and triggers no re-prove — only a new node or a new seam
+does. The full landing-by-landing history of these assignments lives in JOURNAL.md, where history
+belongs; this doc states the structure as it stands today. [E-14]
 
-**When this doc changes:** a large or surface-class wish updates it BEFORE the matrix is touched; a bug
-or small wish only cites the existing node it lands in — or assigns an orphan fact to a fitting node
-(recorded here; an assignment alone triggers no re-prove). Re-proven when structure changes, not on
-every landing.
+**What "pin" means here.** live-spec is a documentation-and-skills product: its shipped artifact is
+the text. So a pin points to the `file:line` where a node's responsibility is stated or carried, and
+every pin below was taken from a grep or read actually run, never from memory. Two nodes are marked
+[target] — specified, not yet code — and the template lets their pin cells stay empty until the code
+lands.
 
+**When this doc changes.** A large or surface-class wish updates it before the matrix is touched; a
+bug or small wish only cites the node it lands in, or assigns an orphan fact to a fitting node. It is
+re-proven when the structure changes, not on every landing.
 ---
 
 ## Nodes
