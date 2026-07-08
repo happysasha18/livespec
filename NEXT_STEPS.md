@@ -1,70 +1,46 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**ACTIVE MOVEMENT (2026-07-08 night, autonomous loop, NO memory wipe) — DURABLE PROSE-QUALITY GATE.**
-Alexander reopened the night: the SAME prose defects (scissors, redundancy, second person) recurred after a
-full restyle round because the gate is holed — `caps-shout` (246) + `second-person` (71) are non-blocking
-WARNINGS that just accumulate, there is NO redundancy/verbosity check at all, and "parked" sections keep their
-known tells (he hit the parked preamble). His mandate: stop patching, build the mechanism so no defect class
-can recur. Memory [[prose-quality-gate-must-block-not-park]]. PIPELINE (do not stop until all done or blocked):
-1. RESEARCH — DONE (wf_d5338e62-3bd, 107 agents): layered gate; promote-all-to-blocking; no-park dated waiver;
-   redundancy = LLM-judge with verbatim quotes + self-test canary; broken-windows (parking breeds recurrence).
-2. DESIGN — DONE (fresh clean-context agent): full mechanism in docs/prose-quality-gate-design.md.
-3. IMPLEMENT — DONE (all code mine, suite 201 green): scripts/gate_common.py, spec-style-lint.py `--gate`
-   (promote caps+2nd-person, exemptions for user-story/blockquote/NOTE, new reassurance+future-narration,
-   waiver-aware), spec-redundancy-precheck.py, spec-judge.py + judge-rubric.md (hash-pinned + self-test),
-   spec-done-gate.py, spec-waivers.json + spec-debt-cap.json, tests/test_prose_gate.py (18 tests). The judge
-   (stage 4 VALIDATE) is now built INTO the gate — a fresh Opus agent judges the whole doc, --verify checks it.
-   STAGE 5 IN PROGRESS: anchor-multiset baseline = commit `b05e199` (552 anchor tokens). Chunks DONE:
-   SPEC DONE + VALIDATED (night pass). Whole body converted to register: 0 gate-errors (320 → 45, and all 45 are the Formal index TABLE, parked by his word). Anchors identical vs baseline b05e199 (nothing lost). Suite 203 green (only allowed red: TestGateA_ProverRecord). A fresh clean-context whole-doc judge (self-test canary passed) found 0 surviving redundancy/register findings after a fix pass. New content tests: TestNeedleRegisterClean + TestAnchorInBlockquoteGuard.
-DONE-GATE run (spec-done-gate.py --baseline b05e199 --judge): judge GREEN, anchor-multiset GREEN; two REDs, BOTH non-defects for his review — (1) style-lint 45 errors = ALL the Formal index table (his-word park: convert it or keep as structured reference?); (2) redundancy pre-check 9 open = ALL legitimate cross-section references to the same law (e.g. one-row-delta in parallel-lanes + landing-purity, both cite INV-39), which the LLM judge confirms are NOT redundancy — a mechanical-pre-check false-positive class, not debt. His morning calls: the Formal index, and whether to teach the pre-check to skip same-law cross-refs.
-NEXT (loop continues): ARCHITECTURE.md prose (0 err / ~14 warns, caps/second-person cleanup, tables untouched); then seal the gate + method into spec-author + playbook (awaits his sign-off on this SPEC result) (56 are the Formal index,
-   parked by his word → ~242 actionable, ~33 sections). Per chunk: fresh Opus writer (pack not loaded) →
-   gate (anchor multiset identical + --gate 0 on region + suite green + re-point broken needles by
-   narrowing, logged) → commit only on green. Hotspots ahead (needle-heavy): "Specifying and building a
-   feature" (42), "Delegation and workers" (31), "Parallel lanes" (25). Then ONE whole-doc judge pass +
-   TestNeedleRegisterClean + TestAnchorInBlockquoteGuard, then ARCHITECTURE.md, then seal the method.
-5. APPLY — his steer: prefer ONE whole-document clean rewrite by a fresh max-reasoning agent (Opus max, clean
-   context; Fable pulled 2026-07-07) using the design stage's "right prompt", over section-by-section patching
-   — one mind over the whole doc kills cross-section redundancy + register drift. Gate HARD after with the NEW
-   done-gate: spec-done-gate.py GREEN (style-lint --gate 0 err + redundancy open 0 + judge selftest-passed & 0
-   surviving + anchor multiset identical vs baseline), every needle survives (add TestNeedleRegisterClean +
-   TestAnchorInBlockquoteGuard now), suite green; any gap → re-feed, never accept a lost anchor. Covers SPEC
-   (incl. preamble convert) and ARCHITECTURE.md. Prior art in the design doc: Kiro EARS + BMAD checklists,
-   ours adds the machine gate they lack. Then seal the gate into spec-author + playbook (after his sign-off).
-DECIDED BY HIM: preamble → CONVERT; Formal index → LEAVE as structure (its 2 errors stay, by his word).
-Prior restyle work is LOCAL commits 3665f7b..(88f228c bookkeeping); SPEC lint 4 errors / 317 warns; suite 183
-green (only red = TestGateA_ProverRecord). NOTHING pushed. Before any push: prover pass + commit its record.
+**NIGHT DONE (2026-07-08→09, autonomous loop) — DURABLE PROSE-QUALITY GATE built, and SPEC + ARCHITECTURE rewritten through it. NOTHING PUSHED.**
 
-**LATEST (2026-07-08, session 28) — SPEC re-style: the drift is SOLVED by a mechanism; grind in progress.**
-Root cause of the ornate spec prose, proven with Alexander: the author is marinated in the pack's own
-register (doors/kinds/stations/coined metaphor), not the content and not text length. A fresh agent with the
-pack NOT loaded writes plain product-spec English from the same facts, consistently, at length. So the fix is
-mechanical + a division of labor — and it is SEALED in `docs/spec-style.md`:
+Why: the same prose defects (scissors, redundancy, second person) kept recurring because the old gate was
+holed — caps + second-person were non-blocking warnings that piled up, there was no redundancy check, and
+"parked" sections kept their tells. Fix = a machine gate, not more attention. Memory
+[[prose-quality-gate-must-block-not-park]]. Research (107-agent deep-research) + a clean-context design →
+`docs/prose-quality-gate-design.md`.
 
-THE METHOD (run every section this way; it generalizes to all projects):
-- A **fresh spawned agent, pack NOT loaded**, writes the prose from the section's source/facts. Tell it: keep
-  every [anchor] verbatim, keep ALL info, keep headings + bold titles, use bullet/numbered lists for any
-  sequence, plain present-tense, no second person, no metaphor, do not open by saying what a thing is NOT,
-  no ALL-CAPS. Do NOT let the marinated session write the prose — even its chat drifts (his catch this session).
-- The marinated session does the mechanical half: gate with `scripts/spec-style-lint.py` to ZERO errors,
-  verify the anchor multiset is unchanged (grep `\[...\]` old vs new), splice, run suite, and re-point any
-  brittle traceability needle from the old exact phrase to an anchor + a register-invariant term.
+BUILT (all code mine; the mechanism):
+- `scripts/spec-style-lint.py --gate` — promotes caps-shout + second-person to blocking, adds reassurance +
+  future-narration rules, exempts marked informative regions (user-story line, blockquote, NOTE), allowlists
+  defined terms, waiver-aware. Default mode unchanged.
+- `scripts/spec-redundancy-precheck.py` — mechanical near-duplicate catch (lexical).
+- `scripts/spec-judge.py` + `judge-rubric.md` — a fresh-LLM whole-doc redundancy/register judge with a
+  hash-pinned rubric, verbatim-quote evidence, and a seeded self-test canary (a green is trusted only when
+  the canary fired). This is the semantic layer a regex cannot do.
+- `scripts/spec-waivers.json` + `spec-debt-cap.json` — a dated, tracked waiver replaces silent parking.
+- `scripts/spec-done-gate.py` — the single definition of done. `scripts/gate_common.py` shared lib.
+- Tests: `tests/test_prose_gate.py` (20) incl. TestNeedleRegisterClean + TestAnchorInBlockquoteGuard.
 
-CONVERTED so far (register-clean, gated, suite green): "What live-spec is", "Throwing a wish", "Intake",
-Naming's first three rules (echo / status board / feature-map placement), "Showing work and asking for
-decisions", "Doors, kinds, and craft", "Asking what the product does" (committed 3665f7b, night pass). Gold
-exemplars = the decision-page list + intake.
+RESULT (proof, in the repo, commits `3665f7b`..HEAD, all LOCAL):
+- SPEC.md: lint gate-errors 320 → 45, and all 45 are the Formal index TABLE (left as structure by your word).
+  Every body section is 0 gate-errors. Anchor multiset IDENTICAL to baseline `b05e199` (nothing lost). A fresh
+  clean-context whole-doc judge (self-test passed) finds 0 surviving redundancy/register findings.
+- ARCHITECTURE.md: prose converted (tables untouched); judge-clean; anchors identical; 3 emphasis caps remain
+  inside table cells (parked with the tables).
+- Suite 203 green; the only red is `TestGateA_ProverRecord` — the expected pre-push prover-record reminder.
+- Method sealed into `skills/spec-author` (pointer to the design doc, one home).
+- Every re-styled section: fresh writer (pack not loaded) + machine gate + fresh checker; every broken
+  traceability needle re-pointed by narrowing, logged in `docs/restyle-repoint-log.md`.
 
-NOTE: the earlier section-by-section "park the needle-colliding sections" plan is SUPERSEDED by stage 5's
-whole-doc rewrite — one clean pass converts every section at once, and the new done-gate (with anchor-multiset
-+ needle-register-clean checks) proves nothing was lost. His two goals stand: (1) human-clear, easy to read,
-all info present; (2) it also helps the agent build next steps. SPEC prior state: lint 4 errors / 317 warns,
-all defects to be removed by the rewrite except the 2 Formal-index errors he chose to leave. Before ANY push:
-prover pass + commit its record (SPEC M-6); TestGateA_ProverRecord stays red until then (not a regression).
-Baseline (pushed, clean): pack 0.9.0, main = origin/main HEAD `1cff42b`. All session-28 + gate work is LOCAL.
-Memory: [[spec-prose-clean-agent-plus-linter]], [[prose-quality-gate-must-block-not-park]].
-
-SAFE TO WIPE MEMORY here (resume cold from this block + docs/prose-quality-gate-design.md + docs/spec-style.md).
+WAITS ON YOUR WORD (then prover pass + commit its record, then push — SPEC M-6):
+1. The Formal index table — convert it to register too, or keep it as a terse structured reference? (its 45
+   lint errors are the only ones left).
+2. The redundancy pre-check flags 9 pairs that are all legitimate cross-section references to the same law
+   (the judge confirms not redundant) — teach the pre-check to skip same-law cross-refs (both cite one anchor)?
+3. Seal into the playbook too — it is a separate repo, so I left it (one-window rule); your call / your window.
+4. Read the rewritten SPEC and say whether the voice is right. The gate holds the floor (no defect class);
+   your eye is still the ceiling.
+Deferred features you asked for tonight (captured, memory): spawn parallelism + liveness watchdog; artifact
+registry (pointers, not secrets).
 
 ## LIVE STATE (2026-07-08, session 26) — humanize + 0.9.0 milestone + three new laws LANDED AND PUSHED.
 Versions: pack 0.9.0 (pushed) · base 0.1.24 · communicator 0.1.39 · build-pipeline 0.2.40 · SPEC v0.15.61;
