@@ -8,6 +8,7 @@ carries the register warnings the rewrite removes.
 import datetime
 import json
 import os
+import re
 import subprocess
 import sys
 import unittest
@@ -185,3 +186,53 @@ def tmpfile(content):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSpecContentRegisterClean(unittest.TestCase):
+    """Land after the SPEC body is converted (stage 5): the body carries no register defect the
+    gate would block, and no re-pointed needle hides one. These two guard the whole document, not
+    just the mechanism."""
+
+    def _spec(self):
+        return open(os.path.join(ROOT, "SPEC.md"), encoding="utf-8").read()
+
+    def _load_linter(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "specstylelint", os.path.join(SCRIPTS, "spec-style-lint.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def test_needles_are_register_clean(self):
+        """Every traceability-test string that is a LIVE SPEC needle (present verbatim in SPEC.md)
+        lints clean of the position-independent gate tells — so a needle can never be re-pointed to
+        a phrase that itself carries scissors, jargon, a shout-cap, second person, reassurance, or
+        future narration. Closes the re-point-to-a-defect loophole."""
+        lint = self._load_linter()
+        # scope to the BODY: the Formal index table is parked by his word and keeps its caps,
+        # so a needle that lives only there is not a converted-body defect.
+        full = self._spec()
+        spec = full.split("## Formal index")[0]
+        trace = open(os.path.join(ROOT, "tests", "test_traceability.py"), encoding="utf-8").read()
+        literals = set(re.findall(r'"([^"\\]{6,})"', trace)) | set(re.findall(r"'([^'\\]{6,})'", trace))
+        live = [s for s in literals if s in spec]
+        self.assertGreater(len(live), 30, "expected many live SPEC needles to check")
+        bad = []
+        for s in live:
+            errs, _ = lint.lint(s, gate=True)
+            # negation-opener is a block-lead judgement; a mid-sentence needle fragment can trip it
+            # spuriously, so this guard covers the position-independent tell classes.
+            hard = [c for _, c, _ in errs if not c.startswith("negation-opener")]
+            if hard:
+                bad.append((s[:60], hard))
+        self.assertEqual(bad, [], "needles carrying a register tell: %s" % bad)
+
+    def test_no_anchor_hides_in_a_blockquote(self):
+        """A bracketed anchor ([INV-…], [E-…], [T-…], [M-…], [A-…], [D-…], [B-…], [C-…], [S-…],
+        [ACT-…]) marks NORMATIVE content; it must never sit inside a `>` blockquote, the informative
+        lane the gate exempts — else a normative rule could hide there from the normative-only checks."""
+        anchor = re.compile(r"\[(?:INV|E|T|M|A|D|B|C|S|ACT)-")
+        offenders = [i for i, ln in enumerate(self._spec().splitlines(), 1)
+                     if ln.lstrip().startswith(">") and anchor.search(ln)]
+        self.assertEqual(offenders, [], "anchor inside a blockquote at SPEC lines %s" % offenders)

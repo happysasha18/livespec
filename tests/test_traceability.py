@@ -445,7 +445,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                        "in hours or days",              # time estimate refused as input
                        "split into stages",
                        "scope only, never order",
-                       "does not touch the mandatory sentences",  # scope dials richness, safety net = the mandatory sentences
+                       "No cut touches the delta's mandatory sentences",  # scope dials richness, safety net = the mandatory sentences
                        "A feature also says what it is not doing",
                        "[INV-20]",  # F4 fold: "nothing deliberately left out this time" is a valid non-goals sentence
                        "the tag marking provenance only",     # F6 fold

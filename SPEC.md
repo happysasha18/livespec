@@ -22,7 +22,7 @@ Behind the pipeline is a full set of roles:
 
 These roles are real: they are the working skills (spec-author, product-prover, build-pipeline, test-author, communicator, publish, feedback-intake). One **base skill** holds the shared rulebook and the default settings the other skills work by [E-12].
 
-Machines enforce the process at every step, which keeps it disciplined. Every request follows the same route. Every claim earns a test, and nothing ships until that test passes. The guardrails run on every step. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
+Machines enforce the process at every step, which keeps it disciplined. Every request follows the same route. Every claim earns a test, and nothing ships until that test passes. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
 
 A project can adopt live-spec at the start or partway through work already under way. Adoption brings the document templates, a procedure for joining midstream, and the guardrails the project installs. The project that adopts it is the **host**. The host owns everything about its own work: its spec, matrix, queue, journal, surface registry, inbox, feedback ledger, and a `.live-spec/` folder that holds its profile, its checkpoints, and the versions of the skills it runs. [E-1]
 
@@ -48,7 +48,7 @@ From its row, the wish follows one path:
 
 ### Intake: classifying and shaping a wish
 
-**Several open questions arrive on one decision page.** Several questions waiting on a decision arrive together on one page instead of one at a time in chat.
+**Several open questions arrive on one decision page.** They arrive together instead of one at a time in chat.
 - The page opens in its own window; the rest of the work carries on while it waits [INV-4].
 - Each question is a card — the recommended answer marked, with room to write a different one.
 - Once the page comes back answered, the pipeline files it in the project's `docs/decisions/` and folds every answer into its queue row the same session. An answer left unread is a decision lost.
@@ -71,7 +71,7 @@ When the classifier cannot call a size, a priority, or a work-kind [T-16], it as
 - **cut the scope** — fewer surfaces in, plainer defaults on what stays;
 - **split into stages** — each stage lands through the full pipeline on its own (the large size decomposes this way [INV-12]).
 
-The proposal proceeds on the recommended option; the lane does not park on it [INV-4]. Every cut appears in the same batched report as every taken default [INV-18], and is never silent [INV-5]. A cut surface returned later is a new wish. A scope cut changes scope only, never order: it is not a quick-win mark, and only priority moves the lane [T-11]. No cut touches the delta's mandatory sentences — the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope adjusts richness; it does not touch the mandatory sentences. [T-15]
+The proposal proceeds on the recommended option; the lane does not park on it [INV-4]. Every cut appears in the same batched report as every taken default [INV-18], and is never silent [INV-5]. A cut surface returned later is a new wish. A scope cut changes scope only, never order: it is not a quick-win mark, and only priority moves the lane [T-11]. No cut touches the delta's mandatory sentences — the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope adjusts richness. [T-15]
 
 **One wish is one user story; a row closes only whole.** A wish carrying several user stories — several distinct things a person will do and see — is split at intake, each story its own row through the full pipeline. This differs from a stage split: a stage slices one story's depth [T-15], while separate stories are never fused into one row. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, not new stories. The classifier asks the human at intake whether a wish is one story or two, and does not guess [INV-12]. A split loses nothing: every row it produces cites the one spoken wish it came from [INV-1]. [T-17]
 
@@ -79,9 +79,9 @@ The proposal proceeds on the recommended option; the lane does not park on it [I
 
 ### Naming and reporting the work
 
-**The system speaks every captured wish back to the user.** When the system captures a wish, it immediately speaks the wish back (an "echo"), so the user knows the request was received and recorded. The echo is one plain sentence that states four things: what was heard, which door the wish entered, the name the work goes by, and its row number — for example, "caught this request; it is a feature; it is called X; row N". A wish that arrives silently — dropped into an inbox as a file, or pulled from a batch — takes its echo in the next status report rather than as an interruption.
+**The system speaks every captured wish back to the user.** This immediate echo lets the user know the request was received and recorded. The echo is one plain sentence that states four things: what was heard, which door the wish entered, the name the work goes by, and its row number — for example, "caught this request; it is a feature; it is called X; row N". A wish that arrives silently — dropped into an inbox as a file, or pulled from a batch — takes its echo in the next status report rather than as an interruption.
 
-**Every status report names each in-flight feature and the pipeline stage it sits at.** Each feature still moving through the pipeline is named in the report, together with the stage it currently occupies. The pipeline has nine steps, in fixed order: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. Each stage name is exactly one of these nine step names, one stage per step. A feature paused at a stage is reported under that stage's name. "landed" is a terminal state — the row closed completely — and is not itself a pipeline step. The echo also states where the wish sits on the product's feature map, specified in the next rule [INV-37]. [INV-27]
+**Every status report names each in-flight feature and the pipeline stage it sits at.** The pipeline has nine steps, in fixed order: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. Each stage name is exactly one of these nine step names, one stage per step. A feature paused at a stage is reported under that stage's name. "landed" is a terminal state — the row closed completely — and is not itself a pipeline step. The echo also states where the wish sits on the product's feature map, specified in the next rule [INV-37]. [INV-27]
 
 **Every wish is placed on the product's feature map, and the placement is stated by default.** The feature map already lives in the documents the project keeps: the spec's scenario sections and the architecture's nodes together constitute it, so no separate map document exists [E-14]. Each wish's placement is exactly one of three verdicts:
 - **changes an existing feature** — the delta extends that scenario section and names it;
@@ -128,7 +128,7 @@ Together the trail is the session's time accounting: read top to bottom, it answ
 
 Every artifact the agent hands over or opens leads with that one-line identifier, whether it is a report page, a decision page, or a rendered doc. The chat line announcing the artifact carries the same two facts. This rule lives in the communicator skill. [INV-51]
 
-**During an away-stretch, artifacts accumulate and one window opens at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], the agent does not open a browser window mid-stretch. Artifacts accumulate on one page: the stretch's decisions and report page. The end of the stretch opens that single window once. Mid-stretch re-opening is allowed only as the same page, refreshed in place. This rule lives in the communicator skill, beside the offline window, as the showing-cadence rule. [INV-52]
+**During an away-stretch, artifacts accumulate and one window opens at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], the agent does not open a browser window mid-stretch. Artifacts accumulate on one page: the stretch's decisions and report page. Mid-stretch re-opening is allowed only as the same page, refreshed in place. This rule lives in the communicator skill, beside the offline window, as the showing-cadence rule. [INV-52]
 
 **The showing channel matches where the session runs.** A session running on the human's machine shows a rendered artifact as a local page in a browser window. A session running remotely runs in the cloud and is read through a browser, so it cannot open a local page. The same content goes through the remote session's own channel instead: an artifact page the host renders for the human, or the chat itself. Either channel carries the same identifier [INV-51] and the same round-trip. The session reads where it runs from what it can reach — the platform, the display, and whose filesystem it sees — and names the channel it picked. Handing a local file path to a remote reader is a defect of the exchange, the same failure as a window that never opened. The personal profile's show line applies to the local case; it is one instance of the rule, not the rule itself. [INV-67]
 
@@ -227,7 +227,7 @@ The sweep scopes to the feature's visible surfaces. A feature with none — new 
 
 **Every facet ends as a spec sentence; silence is not an option.** A facet sentence gets written one of two ways. Decided: the human, or the walk's batched questions, called it. Defaulted: the recommended option gets taken so the lane keeps moving. A defaulted sentence carries the literal tag `[default]` at its line end, so a later prover can tell a taken default from a hole, and the matrix derives the facet's test row either way [E-15]. The landing report's defaults list then tells the choice as a plain-words tradeoff in the human's product's terms ("on a phone this gallery stacks into one column — tweakable"). It never pings once per facet and never asks the human to confirm, because silence is consent [INV-31]; the human's veto becomes a new wish.
 
-A facet with no sentence — neither decided nor defaulted — is a spec defect the prover flags. That's the exact hole the Room shipped through: hover-only openings, no phone layout.
+A facet with no sentence — neither decided nor defaulted — is a spec defect the prover flags. That's the exact hole: hover-only openings, no phone layout.
 
 On an adopted or promoted surface that already lives [A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by time. The sweep authors the facet sentences when the feature is first specified. The axes compose and test them across views once the surface exists. [INV-18]
 
@@ -299,7 +299,7 @@ At most three build lanes roll at once without asking [default]: the session doe
 
 The board shows every rolling train. Each in-flight row keeps its own station line [INV-27]. A lane waiting for the pen says so and names the row it waits behind ("at integration, waiting behind row N"). When several trains want the human's word, the questions ride one batched decision page, every card naming its lane's row [E-22, INV-4].
 
-A bug still cuts the line [T-9]. It takes the pen and the senior's hand at the end of the current pen-stage. A pen-stage is never cut mid-edit. Rolling background briefs may finish, and no lane takes the pen back until the bug lands. A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
+A bug still cuts the line [T-9]. It takes the pen, and the senior takes over, at the end of the current pen-stage. A pen-stage is never cut mid-edit. Rolling background briefs may finish, and no lane takes the pen back until the bug lands. A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
 
 While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**. Its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's unfinished work. So half of another train never rides a landing. When a lane lands, the shared truth has moved. Every still-rolling lane's integration then re-checks under the fence [INV-11] and re-runs its gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
 
@@ -403,7 +403,7 @@ The ask reads its answer live from the living documents:
 - the header's current-vs-target paragraph separates shipped features from promised features, at the granularity the [target] tag binds to. A scenario containing both shipped law and named promised parts is marked "shipped, with promised parts (named)," each status stated at that same granularity [S-0];
 - the queue's open rows supply the remainder: each in-flight feature's station, and each wish whose `map:` verdict is new while its scenario is still unwritten. The queue shows a feature on the map before the spec documents it [INV-27, INV-37].
 
-The spec's scenarios and the architecture's nodes constitute the map. No third document exists to maintain. No separate copy exists to drift out of date — no feature-list file, no cached copy [E-14]. The ask reads the living documents directly.
+The spec's scenarios and the architecture's nodes constitute the map. No third document exists to maintain or drift out of date — no feature-list file, no cached copy [E-14]. The ask reads the living documents directly.
 
 Each line follows the line law [INV-28]:
 
@@ -998,7 +998,7 @@ What keeps "it works" honest — each one a named machine:
   - The contract's operational home is the guardrails README. It binds by deed: the first gate ships under it now, and each other gate picks it up the next time someone touches it, never all at once [INV-47].
 ## The package repo: who may write, and two sessions at once
 
-live-spec eats its own cooking: this spec, this queue, and these rules govern live-spec's own development. The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface, and one evening of two parallel sessions taught us the rules.
+live-spec runs on its own method: this spec, this queue, and these rules govern live-spec's own development. The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface.
 
 **The developer's own machine keeps its skills fresh by name, not by habit.** The repo is the source [D-4]. The installed copies under the agent's skills home are mirrors. A session that edits a skill syncs the installed copy the same session, through the named tool `scripts/sync-skills.sh`. That tool copies each repo skill over its installed twin, and it reports every version change old → new — the exact line A-7's re-read rule fires on. A hand-copy is the anti-pattern the tool retires: it syncs silently, so nothing tells the next breakpoint what changed. [E-23]
 
