@@ -17,12 +17,12 @@ THE METHOD (run every section this way; it generalizes to all projects):
 
 CONVERTED so far (register-clean, gated, suite green): "What live-spec is", "Throwing a wish", "Intake",
 Naming's first three rules (echo / status board / feature-map placement), "Showing work and asking for
-decisions", "Doors, kinds, and craft". Gold exemplars = the decision-page list + intake. The style-doc already
-holds a READY register-A rewrite of "Asking what the product does" — apply it.
+decisions", "Doors, kinds, and craft", "Asking what the product does" (committed 3665f7b, night pass). Gold
+exemplars = the decision-page list + intake.
 
-REMAINING ornate (drive meter to 0 errors; now 24 errors / 323 warns): rest of "Naming" (outcome/naming/lines
+REMAINING ornate (drive meter to 0 errors; now 23 errors / 318 warns): rest of "Naming" (outcome/naming/lines
 INV-28, report-walk INV-34, narration+offline INV-35), "Specifying and building a feature", "Parallel lanes",
-"Sending feedback in" +subs, "Asking what the product does" (apply the ready exemplar), "When a bug cuts the
+"Sending feedback in" +subs, "When a bug cuts the
 line", "When the workshop misbehaves" +subs, "A prototype stays a sketch" +sub, "Starting a project" +founding
 questions, "Attaching to a live project" +subs, "One rulebook", "Who decides what" +subs, "From spec to tests",
 "The machines that hold the bounds" +sub, "The package repo", "The rhythm" +subs, "When money/time run short",
