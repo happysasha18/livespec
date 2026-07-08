@@ -20,13 +20,28 @@ Naming's first three rules (echo / status board / feature-map placement), "Showi
 decisions", "Doors, kinds, and craft", "Asking what the product does" (committed 3665f7b, night pass). Gold
 exemplars = the decision-page list + intake.
 
-REMAINING ornate (drive meter to 0 errors; now 23 errors / 318 warns): rest of "Naming" (outcome/naming/lines
-INV-28, report-walk INV-34, narration+offline INV-35), "Specifying and building a feature", "Parallel lanes",
+NIGHT-PASS POLICY (session 28, autonomous): the hard machine criterion is spec-style-lint = 0 ERRORS
+(negation-opener / machine-jargon / scissors). Warnings (caps-shout, second-person) are advisory and often
+COLLIDE with load-bearing exact-phrase test needles. So: a section whose needles don't collide gets the full
+clean-agent conversion (all warns gone); a section where full conversion would break needles gets its ERRORS
+cleared by a fresh-agent surgical rephrase and its full register conversion PARKED for a supervised morning
+session (where re-pointing needles can get his word). Parked-full list below.
+
+PARKED — errors cleared, full register conversion needs his word (needle collision):
+- "Specifying and building a feature" (errors cleared, commit 9892e64): facet-sweep headline
+  "...past what you know to ask" + ~15 exact-phrase needles (FACETS tuple, "Every facet ends as a spec
+  sentence", "VISITOR WALK"/"FEEL pass", "TOLD", "AUTHORS the facet sentences", "walks the sweep before work
+  resumes", "A fenced prototype is NOT swept", "reconciled like any re-engineered claim", INV-70 sentences)
+  pin second-person and CAPS in place. Removing them needs a needle re-point pass on his word.
+
+REMAINING ornate (drive meter to 0 errors; now 21 errors / 317 warns): rest of "Naming" (outcome/naming/lines
+INV-28, report-walk INV-34, narration+offline INV-35), "Parallel lanes",
 "Sending feedback in" +subs, "When a bug cuts the
 line", "When the workshop misbehaves" +subs, "A prototype stays a sketch" +sub, "Starting a project" +founding
 questions, "Attaching to a live project" +subs, "One rulebook", "Who decides what" +subs, "From spec to tests",
 "The machines that hold the bounds" +sub, "The package repo", "The rhythm" +subs, "When money/time run short",
-"Publishing" +subs, "Composing across axes" +sub, "Open decisions". Leave the Formal index (structured).
+"Publishing" +subs, "Composing across axes" +sub, "Open decisions", the "How to read this" preamble (lines 4/18,
+second-person by design — his taste call). Leave the Formal index (structured; scissors at E-25/INV-22 rows).
 THEN: same pipeline on ARCHITECTURE.md prose (tables untouched); then a cross-project migration guide, sealed
 into spec-author + the playbook (his word: this is now for ALL projects).
 
