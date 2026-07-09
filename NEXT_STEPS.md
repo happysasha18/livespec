@@ -19,8 +19,10 @@ item 5** — see the amended item 5 line + wish files. **Item 7 (1.0 gate) waits
 never bumped/pushed without it. This
 NEXT_STEPS update is local; rides the next authorized push. Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
 + 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
-NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
-(bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
+The tlvphoto worker-liveness inbox wish is HARVESTED (2026-07-09 evening, session 30): moved to
+`docs/wishes/`, queued as row 181; the two evening wishes got their rows too — row 180 (architecture
+runtime+placement views, amends item 5) and rows 182-187 (the five test-method deltas + the pre-ask scan).
+Inbox EMPTY. The 2026-07-09 FULL re-prove folded
 3 real body defects (stray `</content>` tag, two stale skill-count ordinals, stale ARCHITECTURE header) and
 queued 7 latent design findings as rows 173-179; record: `docs/prover/2026-07-09-full-reprove-session29-body.md`.
 
@@ -86,5 +88,4 @@ artifact registry.
 - Field legs with him (real windows): 47/96 feedback loop · 54 first-run · 165 first-struggle · 168 remote
   seat · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133. (ROADMAP holds the full rows.)
 - Standing habits: `date` before ANY stamp · NOW/NEXT current + heartbeat past ~10 min (INV-71) · plain
-  product words, never a code leading a line (INV-28), say "live-spec" not "пакет" · inbox EMPTY · unharvested
-  inbox wish `2026-07-09-tlvphoto-worker-liveness-across-clear.md` awaits proper intake.
+  product words, never a code leading a line (INV-28), say "live-spec" not "пакет" · inbox EMPTY.
