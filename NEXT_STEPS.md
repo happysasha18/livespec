@@ -32,6 +32,42 @@ its record `docs/prover/2026-07-09-*.md` (SPEC M-6); (2) re-sync deployed==repo 
 profile count in the PLAYBOOK repo still reads "14 rules + 8-check" — separate repo, his window, his call to
 bump to "16 + 10".
 
+## ACTIVE PLAN (2026-07-09 afternoon — his ask, delegated to me; decisions locked below)
+
+He wants the whole pack to read in good native English with one complete thought per paragraph — these
+are GUIDELINES that every future project will inherit, so they come before terminology and before any
+migration. Order he and I agreed: **English + paragraph sweep → product-prover pass → build the
+feature/flow format → authoring-terminology corpus.**
+
+1. **English + one-thought-per-paragraph sweep** (ACTIVE, next). Every reader-facing file to good English,
+   long paragraphs split so each holds one thought. Three species of Russian, handled differently:
+   (a) prose + inline glosses → English (the flagged «покажи все фичи» → "show me all the features" is
+   DONE everywhere); (b) his dated verbatim quotes + the ❌/✅ teaching examples → English paraphrase
+   keeping date + attribution, but KEEP a minimal Russian token only where the lesson is literally about a
+   Russian-language pitfall (a Russian scissors form, a Russian calque) with an English gloss; (c)
+   FUNCTIONAL Russian STAYS untouched — the scissors detector `scripts/spec-style-lint.py` and the fixtures
+   in `tests/test_prose_gate.py` implement Russian-form detection, removing it breaks the feature.
+   CAUTION: some doc strings are matched verbatim by the suite (traceability check-phrases in
+   `tests/test_traceability.py`); translate the doc and its check-phrase IN LOCKSTEP, never one alone.
+   ROADMAP verbatim quotes (~big) = a separate later call. This sweep reads better from a clean pass; the
+   translation+splitting itself is faithful, so it can run from a loaded session gated by the linter + a
+   clean-agent voice check; new authoring goes to a clean agent.
+2. **Chat cleanliness (decided by me, per his delegation).** Harness recon done: Claude Code cannot edit or
+   block my outgoing reply before it shows — no hook rewrites it; the `Stop` hook can only READ
+   `last_assistant_message` and force a follow-up correction; clean pre-display gating needs a TypeScript-SDK
+   wrapper (`MessageDisplay`), which is outside Claude Code. PLAN: build a `Stop`-hook backstop that lints my
+   reply (scissors + honesty-preamble) and forces a visible correction + a defect-log line, PLUS a mandatory
+   self-scan before sending. This is why the prover never caught it — the prover and linter read DOCUMENTS,
+   chat passes through neither. Migration spreads the RULE to every project but cannot make chat a gated
+   surface; the backstop is the strongest available.
+3. **Feature/flow spec format (design DECIDED — see `docs/spec-format-by-project-type.md`).** Borrow Kiro's
+   ID + back-reference traceability; make the primary spec UNIT a per-project-type parameter (feature ·
+   command · rule/guarantee · argument), the way BMAD swaps templates by domain. Keep single documents — NO
+   per-feature file sprawl. Source stays plain MD with `[F-x]` codes + one index table; clickable links are
+   generated at render, not hand-written. Coverage check (both directions: every unit has an
+   implementer + test; every implementer traces to ≥1 unit) generalizes the existing `[target]`↔row and
+   M-x↔test checks. Build AFTER the prover. This is queued (b) architecture-tiers realized, ties to (a).
+
 ## Forward queue (mirrors ROADMAP.md)
 
 1. **DONE and PUSHED:** humanize movement · 0.9.0 milestone · three laws — INV-70 (agent sets tunable
