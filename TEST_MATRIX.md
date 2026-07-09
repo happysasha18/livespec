@@ -362,6 +362,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-167 | The test method's one home ships: the test-author skill (level ladder · real-artifact assertions · red-first proof · pinned skip-set · traceability standing) wired from build-pipeline steps 5–6 and listed in every pack list (SPEC · base footer · communicator footer · README); never a second home for the method, never an unlisted skill | E-27 | string | `test_test_author_skill` (red proven against HEAD — wiring absent there) | BUILT |
+| M-187 | The real-device boundary is named honestly: test-author's level ladder states that touch physics, scroll snapping, and background throttling live past a desktop headless browser, and mandates the real-device walk row — a matrix row the suite can never green, owed to the human's hands before ship, stating what the hands check and on which device class; never a green desktop run claiming such a fact | INV-77 | string | `test_real_device_boundary` (red proven against HEAD — no INV-77, no walk row there) | BUILT |
 
 ### [node: feedback-intake]
 

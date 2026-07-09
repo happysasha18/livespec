@@ -2409,3 +2409,19 @@ class TestWorkerLiveness(unittest.TestCase):
                           "base rules miss the liveness protocol piece: %s" % needle)
         # never framed finished before the verdict
         self.assertIn("never framed", spec.lower())
+
+
+class TestFieldLessons(unittest.TestCase):
+    """Rows 182-186: the tlvphoto week's escaped-bug classes folded back into the test method.
+    String level, each red-proven against the pre-delta text."""
+
+    def test_real_device_boundary(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-77 |", spec, "Formal index lost INV-77")
+        self.assertIn("real-device walk row", spec)
+        ta = re.sub(r"\s+", " ", read("skills/test-author/SKILL.md"))
+        self.assertIn("real-device walk row", ta)
+        for boundary in ("scroll snapping", "background throttling"):
+            self.assertIn(boundary, ta, "test-author lost the named boundary: %s" % boundary)
+        # the honest claim: the suite says what it cannot see
+        self.assertIn("what it cannot see", ta)

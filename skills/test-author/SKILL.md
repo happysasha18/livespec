@@ -65,6 +65,16 @@ take DOM-text. Wiring and config facts may take string, legally. Pixel is reserv
 against a frozen, approved norm. When in doubt, ask what the USER would see broken — the level must
 be able to see the same thing.
 
+**The ladder tops out below the real device (SPEC INV-77).** Touch physics, scroll snapping, and
+background throttling live past a desktop headless browser's reach — iOS ignores
+`scroll-snap-stop`, a backgrounded tab throttles timers, momentum has no faithful emulation. A
+behaviour living there gets a **real-device walk row**: a matrix row the suite can never turn
+green, owed to the human's own hands on a real phone before ship — kin of the feel gate (feel is
+the human's call, never shipped off green alone). The row states WHAT the hands check and on which
+device class; the suite says plainly what it cannot see. (Born of a real week: a momentum swipe
+flew through several works on a phone, and a backgrounded tab turned a 2.5 s failsafe into a black
+screen — both past every green desktop run.)
+
 ## Writing the tests (the pipeline's step 6)
 
 - **Assert the real shipped artifact**: render the page, produce the file, call the function — then
