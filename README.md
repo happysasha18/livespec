@@ -64,6 +64,7 @@ A bug takes a shortcut: matrix row, failing test, fix — the spec is touched on
 - [`docs/push-law.md`](docs/push-law.md) — commit and push gates
 - [`docs/worker-liveness.md`](docs/worker-liveness.md) — background workers: spawning, liveness, resume
 - [`docs/adoption.md`](docs/adoption.md) — adopting the pack in an existing project
+- [`docs/pair-adoption.md`](docs/pair-adoption.md) — adopting as a pair: an engine and its instance
 
 This repo runs on its own method: it carries its own `PRODUCT_SPEC.md`, queue, tests, and prover records (`docs/prover/`). The method has run in production on the sibling project [track-coach](https://github.com/happysasha18/track-coach) (700+ tests, 30-widget library). For an honest outside look, two independent source-level comparisons with the neighbouring frameworks (`BMAD`, [Kiro](https://kiro.dev), [Spec Kit](https://github.com/github/spec-kit)) are published unsoftened in [`docs/research/`](docs/research/).
 

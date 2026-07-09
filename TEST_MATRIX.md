@@ -92,6 +92,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Audit records | `docs/audit/` | records dir (non-empty) | `test_artifact_inventory` |
 | Prior-art survey | `docs/prior-art.md` | shipped text | `test_artifact_inventory` |
 | Adoption guide | `docs/adoption.md` | shipped text | `test_artifact_inventory` |
+| Pair adoption guide | `docs/pair-adoption.md` | shipped text | `test_artifact_inventory` |
 | Architecture method | `docs/architecture-method.md` | shipped text | `test_artifact_inventory` |
 | Onboarding and settings | `docs/onboarding-and-settings.md` | shipped text | `test_artifact_inventory` |
 | Pipeline walk | `docs/pipeline.md` | shipped text | `test_artifact_inventory` |
