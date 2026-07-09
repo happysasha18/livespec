@@ -2,7 +2,7 @@
 name: publish
 description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate, standing only as its preparation. NOT for in-session showing of work (communicator owns that) or for commits that stay local.
 metadata:
-  version: 0.1.4
+  version: 0.1.5
 ---
 
 # publish — the work leaves the machine looking like a product
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.28), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.29), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -23,8 +23,8 @@ approves has already earned approval. It never sends anything itself.
 ## When it fires
 
 Anything crossing the machine's edge: first public push of a repo · a push that changes what a public
-reader sees (README, docs, screenshots) · any push that ships a new version (the shopfront walk, SPEC
-INV-44) · a release/tag · a plugin-directory or marketplace submission
+reader sees (README, docs, screenshots) · any push that ships a new version (the shopfront walk below)
+· a release/tag · a plugin-directory or marketplace submission
 · a skill shipped for someone else's machine · design-project sync cards (SPEC E-18). If no reader
 outside this machine will meet the artifact, this skill stands down — showing work to your OWN human
 in-session is communicator's rule 5 rather than a publication.

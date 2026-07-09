@@ -66,3 +66,23 @@ ARCHITECTURE.md coverage row:
 English + one-thought-per-paragraph sweep → product-prover pass → build this feature/flow
 format → authoring-terminology corpus. This format sits on a clean, proven spec and is a
 pre-migration foundation.
+
+## Standard vocabulary — the field's names for our parts
+The pack's method is its own, but its concepts are the field's, and naming the lineage lets a reader who
+knows requirements engineering recognize what a live-spec document is doing.
+
+| our house term | the standard it maps to |
+|---|---|
+| a use-case-first scenario | a use case / user story (ISO 29148 §9.4; Kiro's requirements.md) |
+| entities · states · transitions · invariants | a state model + the "shall" requirements of ISO 29148 |
+| composition across axes | cross-cutting concerns (arc42 §8) / the relationships of a C4 model |
+| the Formal index + traceability check-phrases | a requirements traceability matrix (ISO 29148 §5.2.8) |
+| the primary unit + feature coverage | the traceable unit and its coverage (Kiro's `_Requirements:` back-reference) |
+| the facet sweep | non-functional requirements / quality attributes (ISO/IEC 25010; arc42 §10) |
+| a quality budget + its instrumentation home | an arc42 quality scenario (§10) with a measurable fit criterion |
+| the `[target]` tag | a backlog / roadmap item named but not yet specified for build |
+| architecture nodes + seams | C4 containers/components + their relationships; arc42 building-block view (§5) |
+| the runtime view (a flow's walk through the nodes) | arc42 runtime view (§6); a C4 dynamic diagram |
+| the placement view (what runs where, with its technology) | arc42 deployment view (§7); a C4 deployment diagram |
+| the shape at a glance (tiers-first reading order) | BMAD architecture's high-level overview; Kiro design.md's Overview section |
+| the runtime view's if-it-fails fallbacks | BMAD's error-handling strategy section; Kiro design.md's error handling |

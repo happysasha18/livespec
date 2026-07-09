@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.26
+  version: 0.1.27
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.28), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.29), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -350,26 +350,8 @@ own slug ids.)
 ## Standard vocabulary — what our house terms map to
 
 The pack's method is its own, but its concepts are the field's, and naming the lineage lets a reader who
-knows requirements engineering recognize what a live-spec document is doing. The crosswalk below grounds our
-terms in the standard corpus (ISO/IEC/IEEE 29148 requirements engineering; arc42 and C4 for architecture;
-Kiro and BMAD for the document shapes). Use the standard word when it is the plainer one; keep the house
-word only where it carries a distinction the standard lacks.
-
-| our house term | the standard it maps to |
-|---|---|
-| a use-case-first scenario | a use case / user story (ISO 29148 §9.4; Kiro's requirements.md) |
-| entities · states · transitions · invariants | a state model + the "shall" requirements of ISO 29148 |
-| composition across axes | cross-cutting concerns (arc42 §8) / the relationships of a C4 model |
-| the Formal index + traceability check-phrases | a requirements traceability matrix (ISO 29148 §5.2.8) |
-| the primary unit + feature coverage | the traceable unit and its coverage (Kiro's `_Requirements:` back-reference) |
-| the facet sweep | non-functional requirements / quality attributes (ISO/IEC 25010; arc42 §10) |
-| a quality budget + its instrumentation home | an arc42 quality scenario (§10) with a measurable fit criterion |
-| the `[target]` tag | a backlog / roadmap item named but not yet specified for build |
-| architecture nodes + seams | C4 containers/components + their relationships; arc42 building-block view (§5) |
-| the runtime view (a flow's walk through the nodes) | arc42 runtime view (§6); a C4 dynamic diagram |
-| the placement view (what runs where, with its technology) | arc42 deployment view (§7); a C4 deployment diagram |
-| the shape at a glance (tiers-first reading order) | BMAD architecture's high-level overview; Kiro design.md's Overview section |
-| the runtime view's if-it-fails fallbacks | BMAD's error-handling strategy section; Kiro design.md's error handling |
+knows requirements engineering recognize what a live-spec document is doing. The crosswalk to the field's
+vocabulary (ISO/arc42/C4) lives in `docs/spec-format-by-project-type.md`.
 
 Two boundaries the crosswalk does NOT erase: our spec stays a single use-case-first document (never the
 Entities/States/Actors chapters a naive reading of the standard invites — that shape gets rejected and

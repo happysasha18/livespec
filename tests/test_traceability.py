@@ -2292,12 +2292,16 @@ class TestAuthoringTerminology(unittest.TestCase):
             self.assertIn("check-phrase", body, "%s lost the plain 'check-phrase' term" % rel)
 
     def test_standard_vocabulary_crosswalk(self):
-        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
-        self.assertIn("Standard vocabulary", sa, "spec-author lost the vocabulary crosswalk")
+        # the crosswalk's one home moved to its design note (row 202); spec-author keeps a live pointer
+        doc = re.sub(r"\s+", " ", read(os.path.join("docs", "spec-format-by-project-type.md")))
+        self.assertIn("Standard vocabulary", doc, "the design note lost the vocabulary crosswalk")
         for std in ("ISO 29148", "arc42", "C4"):
-            self.assertIn(std, sa, "crosswalk lost the standard: %s" % std)
+            self.assertIn(std, doc, "crosswalk lost the standard: %s" % std)
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
         self.assertIn("measurable or verifiable here", sa,
-                      "crosswalk lost the borrowed-authority boundary")
+                      "spec-author lost the borrowed-authority boundary (its own adoption rule)")
+        self.assertIn("docs/spec-format-by-project-type.md", sa,
+                      "spec-author lost the live pointer to the crosswalk's home")
         arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
         for std in ("C4", "arc42"):
             self.assertIn(std, arch, "ARCHITECTURE lost the %s lineage pointer" % std)
@@ -2519,7 +2523,7 @@ class TestLLDReadingOrder(unittest.TestCase):
         self.assertTrue(rows, "runtime view parsed empty")
         for r in rows:
             self.assertEqual(r.count(" | "), 3, "runtime row misses its if-it-fails cell: %s" % r[:60])
-        crosswalk = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        crosswalk = re.sub(r"\s+", " ", read(os.path.join("docs", "spec-format-by-project-type.md")))
         self.assertIn("BMAD", crosswalk)
         self.assertIn("Kiro design.md", crosswalk)
 
