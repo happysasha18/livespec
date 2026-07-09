@@ -2436,3 +2436,17 @@ class TestFieldLessons(unittest.TestCase):
         self.assertIn("two or more viewport sizes", ta)
         self.assertIn("consecutive steps", ta)
         self.assertIn("cumulative drift", ta)
+
+    def test_engine_generic_fixtures(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-79 |", spec, "Formal index lost INV-79")
+        self.assertIn("its own generic fixtures", spec)
+        # both halves of the one law
+        ta = re.sub(r"\s+", " ", read("skills/test-author/SKILL.md"))
+        self.assertIn("engine-shaped fixtures", ta)
+        self.assertIn("works-without-it test", ta)
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("content contract", sa)
+        self.assertIn("donor", sa)
+        # the boundary: donor data legal as an extra, illegal as the only suite
+        self.assertIn("never as the only one", ta)

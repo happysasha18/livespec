@@ -334,6 +334,17 @@ coverage table maps it to its skills and its test. The machines that work behind
 host contract) implement guarantees rather than user-facing features, and stay outside the feature layer
 by the type's own definition of its unit. The decided design note is `docs/spec-format-by-project-type.md`.
 
+## The content contract — when a generic engine is extracted from an instance (SPEC INV-79)
+
+A generic engine carved out of a working project inherits the donor's assumptions silently: an id
+format, a hardcoded wordmark, a path, a language default. At extraction the spec opens a **content
+contract** section: every donor-specific constant the extraction finds becomes a named entry — what
+the engine requires from ANY instance's content, in the engine's own vocabulary — and each entry
+owes a test that the engine works without the donor's value (test-author's half of the same law).
+An assumption with no entry is a leak the next instance discovers in production. (Born of a real
+bug: the donor's digits-only id pattern rode into the engine's validator and rejected the engine's
+own slug ids.)
+
 ## Standard vocabulary — what our house terms map to
 
 The pack's method is its own, but its concepts are the field's, and naming the lineage lets a reader who

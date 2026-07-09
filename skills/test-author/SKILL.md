@@ -95,6 +95,13 @@ screen — both past every green desktop run.)
 - **Traceability is a standing, enforced test**: a test in the suite fails on a matrix row citing a
   missing test, a duplicate id, a spec fact with no row, or a resolved-but-live decision marker — so
   drift is caught at every commit.
+- **An engine extracted from an instance tests on its own generic fixtures (SPEC INV-79).** When a
+  generic engine is carved out of a working project, its suite runs on engine-shaped fixtures — its
+  own ids, its own content model; the donor's data may stay as an extra real-data suite, never as
+  the only one. Every donor constant the extraction finds gets a works-without-it test against the
+  content contract the spec names. (Born of a real bug: the donor's digits-only id pattern stayed in
+  the engine's validator and rejected the engine's own slug ids — every story call failed, and the
+  donor-shaped suite stayed green.)
 - **The bug protocol:** a bug fixes the matrix cell (or adds the missing invariant row) first, then a
   test proven red on the bug, then the code. Code chases the matrix.
 

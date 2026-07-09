@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.7, 2026-07-09)
+# live-spec — Product Spec (v0.16.8, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -574,6 +574,8 @@ build-pipeline calls test-author the same way steps 1–2 call spec-author and p
 **The ladder tops out below the real device — the suite names that boundary honestly.** Touch physics, scroll snapping, and background throttling live past a desktop headless browser's reach (a momentum swipe on a real phone, a tab throttled in the background). A behaviour living there gets a **real-device walk row**: a matrix row the suite can never turn green, owed to the human's own hands before ship — kin of the feel gate [INV-30]. The suite says what it cannot see; a green run over such a fact claims nothing about it. [INV-77]
 
 **A geometry fact is asserted relative, wide, and long.** A centering or positioning fact asserts relative geometry — |center(element) − center(viewport)| ≤ ε — at two or more viewport sizes, and after N consecutive steps of the interaction, so cumulative drift shows. An absolute-pixel assertion at one viewport after one step passes forever while each next step lands further off; the drift hides from it by construction. [INV-78]
+
+**An engine extracted from an instance tests on its own generic fixtures.** When a generic engine is carved out of a working project, the donor's data keeps the donor's shape — and a suite running only on it proves the donor, never the engine. The engine's suite runs on engine-shaped fixtures (its own ids, its own content model); the donor's data may stay as an extra real-data suite, never as the only one. And every donor-specific constant the extraction finds — an id format, a hardcoded wordmark, a path — becomes a named entry in the engine's content contract, with a test that the engine works without it. [INV-79]
 
 The spec says what the product is. Tests prove facts about the shipped artifact. Two documents sit between them, and if they stay implicit, they get skipped — a lost layer.
 
@@ -1675,6 +1677,7 @@ meaning, this table is only the map.
 | INV-76 | a background worker outlives a memory wipe: the handoff note records the worker's id (→ its checkpoint file), its briefed write-set [ACT-3], and the two liveness checks (file times over ~30 s [default] + one message to the id, ~2 min [default]); the OS process list and the harness task list are never proof of death; alive ⇒ reconnect, files claimed; quiet on both ⇒ declared dead in one written line; output never framed finished before the verdict; a prior-context worker is a foreign writer until verified (fence-benign never crosses a wipe); no second worker onto a shared tree until the first halts by its own reply or is declared dead [INV-11]; prefer halting workers before a wipe; a handoff says when a worker dies with the window/sleep | Rhythm |
 | INV-77 | the real-device boundary: touch physics, scroll snapping, background throttling live past a desktop headless browser; such a behaviour gets a real-device walk row the suite can never green, owed to the human's hands before ship (kin of the feel gate [INV-30]); the suite names what it cannot see | From the spec to the tests |
 | INV-78 | a geometry fact asserts relative, wide, and long: the distance between the element's center and the viewport's center stays ≤ ε, at ≥ 2 viewport sizes, after N consecutive interaction steps so cumulative drift shows; an absolute one-viewport one-step assertion hides the drift by construction | From the spec to the tests |
+| INV-79 | an engine extracted from an instance tests on its own generic fixtures (engine-shaped ids and content model), never only the donor's data (the donor's suite may stay as an extra); every donor-specific constant found at extraction becomes a named content-contract entry with a works-without-it test; two halves, one law: fixtures (test-author) + the contract entries (spec-author) | From the spec to the tests |
 | C-1 | canonical axes (view · mode · tier · viewport · reopen · concurrency · every other live surface) + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |
