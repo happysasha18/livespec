@@ -2214,3 +2214,55 @@ class TestFeatureCoverage(unittest.TestCase):
                         "the checker missed a fake implementer node")
         self.assertTrue(any("missing test" in g for g in gaps),
                         "the checker missed a fake test name")
+
+
+class TestSmallDesignHoles(unittest.TestCase):
+    """The seven small design holes from the 2026-07-09 full re-prove (ROADMAP rows 173-179 = findings
+    F5,F6,F7,F8,F9,F10,F4). Each is a SPEC/ARCHITECTURE prose clarification of an EXISTING invariant, so
+    no new anchor — the test asserts the clause now stands. Record:
+    docs/prover/2026-07-09-full-reprove-session29-body.md."""
+
+    def spec(self):
+        return re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+
+    def test_173_deferred_trigger_evaluation_point(self):
+        s = self.spec()
+        self.assertIn("re-scan every deferred queue row's revisit trigger", s,
+                      "milestone gate lost the deferred-trigger re-scan (F5)")
+        self.assertIn("a fired trigger returns the row to the runnable queue", s)
+
+    def test_174_bug_parked_resume_refences(self):
+        s = self.spec()
+        self.assertIn("re-fences and re-proves its delta against the now-committed truth", s,
+                      "T-9 resume lost the re-fence/re-prove step (F6)")
+        self.assertIn("never integrated blind", s)
+
+    def test_175_bug_during_running_milestone(self):
+        s = self.spec()
+        self.assertIn("A milestone gate is one indivisible pen-stage", s,
+                      "SPEC lost the milestone-as-indivisible-pen-stage rule (F7)")
+        self.assertIn("waits for the gate to finish rather than preempting a half-run audit", s)
+
+    def test_176_milestone_hold_state_named(self):
+        s = self.spec()
+        self.assertIn("held-for-milestone", s, "SPEC lost the distinct milestone-hold state name (F8)")
+        self.assertIn("named apart from bug-", s, "milestone-hold not distinguished from bug-parked")
+
+    def test_177_lane_claim_tiebreaker(self):
+        s = self.spec()
+        self.assertIn("the lower inbox session token breaks the tie", s,
+                      "SPEC lost the lane-claim tie-breaker ordering key (F9)")
+        self.assertIn("mutual back-off cannot happen", s)
+
+    def test_178_tight_rung_rollback(self):
+        s = self.spec()
+        self.assertIn("reverts the batch to its last green base and re-applies the clean landings", s,
+                      "economy ladder lost the tight-rung rollback path (F10)")
+        self.assertIn("HEAD never sits red across a breakpoint", s)
+
+    def test_179_architecture_inv67_ownership_prose(self):
+        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
+        self.assertNotIn("the invariant's owner is the guardrails node, INV-67", arch,
+                         "ARCHITECTURE still reads as if guardrails owns INV-67 (F4)")
+        self.assertIn("INV-67 (the showing channel matches the session's seat)", arch,
+                      "INV-67 no longer reads as communicator's own")

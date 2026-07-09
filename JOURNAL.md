@@ -2,6 +2,43 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-09 (session 29) — the seven small design holes closed (rows 173-179 / findings F4-F10)
+
+**What:** The 1.0 RUN's item 3. The 2026-07-09 full re-prove queued seven latent design questions; each is
+now a stated rule with a test. None was a regression — they were seams the spec had left implicit.
+
+- **Deferred rows now have an evaluation point (173/F5):** the milestone gate re-scans every deferred
+  queue row's revisit trigger, and a fired trigger returns the row to the runnable queue — so a deferred
+  wish can't wait forever on a trigger nobody reads.
+- **A bug-parked feature re-proves on resume (174/F6):** T-9 gained a sixth criterion — on resume, before
+  it integrates, a parked feature re-fences and re-proves its delta against the truth the bug's fix left
+  behind, the way a later parallel lane does under INV-39. It was previously resuming "in original order"
+  with no re-check, which could integrate a delta proven against stale law.
+- **Bug vs. running milestone is now defined (175/F7):** a milestone gate is one indivisible pen-stage; a
+  bug arriving mid-gate waits for the gate to finish (a half-run audit's verdict is incoherent), then
+  takes the pen the instant the milestone lands. This is the single exception to "a bug cuts at the end of
+  the current pen-stage."
+- **The milestone-hold state is named apart from bug-parked (176/F8):** lanes quiescing for a milestone
+  enter **held-for-milestone** — a clean checkpoint like a park, but named distinctly because nothing
+  failed — and resume in landing order once the milestone lands.
+- **The lane-claim back-off has a tie-breaker (177/F9):** "later claimant" is read by a total order —
+  git ancestry, and on a genuine concurrent claim the lower inbox session token — so exactly one session
+  backs off and mutual back-off can't happen.
+- **The tight economy rung states its rollback (178/F10):** a batch-end red bisects to the culprit, reverts
+  the batch to its last green base, re-applies the clean landings, and holds the culprit out for a fix —
+  HEAD never sits red across a breakpoint.
+- **An ARCHITECTURE prose nit fixed (179/F4):** the INV-67 note no longer reads as the guardrails node
+  owning it; INV-67 (the showing channel matches the seat) is communicator's own, the INV-24 chat-arm
+  wiring note kept separate. Mechanically unchanged — the owns-every-anchor-once check stayed green.
+
+**Why this shape:** each hole was a real reachable situation the spec left blank (the class INV-72 is
+about). All seven are clarifications of EXISTING invariants, so no new anchor — the fix is prose plus a
+string-level test (`TestSmallDesignHoles`), and the process scaled to a short-form prove record
+(`docs/prover/2026-07-09-small-holes.md`, INV-61). Also folded here: a scissors frame («guarantees, not
+features») that had slipped into item 2's ARCHITECTURE Feature-coverage prose — caught because this pass
+scanned ARCHITECTURE for tells, which item 2 had not. Suite 213 → 220 green (red-proven first). Versions:
+spec v0.16.2→v0.16.3, architecture v0.2.2→v0.2.3, pack 0.9.2→0.9.3. Committed local, NOT pushed (his go).
+
 ## 2026-07-09 (session 29) — the feature-coverage trace: a per-project-type unit above the anchor matrix (E-29, INV-73)
 
 **What:** The 1.0 RUN's item 2. The spec already traced facts at the anchor level (index ↔ architecture

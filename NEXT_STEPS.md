@@ -4,13 +4,14 @@ Sessions 28–29 landings (structure/openers/English/nesting/SPEC.md→PRODUCT_S
 prover-wish INV-72) are committed history — full detail in JOURNAL.md.
 
 ## LIVE STATE (2026-07-09, session 29)
-Versions: pack 0.9.2 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.21 ·
-build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.2 · ARCHITECTURE v0.2.2.
-**Suite 213 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
+Versions: pack 0.9.3 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.21 ·
+build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.3.
+**Suite 220 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
-**INV-72 (prover-wish) + the feature-coverage trace (E-29/INV-73, RUN item 2) both COMMITTED LOCAL this
-session, NOT pushed** — building the 1.0 run in a batch, push on his go. Records:
-`docs/prover/2026-07-09-feature-coverage-trace.md`. Last push 2026-07-09 ~15:04 (`20a458f`). Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
+**RUN items 1-3 all COMMITTED LOCAL this session, NOT pushed** (INV-72 prover-wish · feature-coverage trace
+E-29/INV-73 · the 7 small holes rows 173-179) — building the 1.0 run in a batch, push on his go. Records:
+`docs/prover/2026-07-09-feature-coverage-trace.md`, `docs/prover/2026-07-09-small-holes.md`. Rows 173-179
+marked landed in ROADMAP (archive at the item-7 milestone). Last push 2026-07-09 ~15:04 (`20a458f`). Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
 + 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
 (bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
@@ -41,10 +42,11 @@ plain-words) lives in his profile + the installed hooks, not memory.
    (M-180/M-181); live-spec's nine scenarios carry `[feature: F-x]` tags mapped in ARCHITECTURE's Feature
    coverage table. Deferred by name: render-time clickable cross-links (render-doc.py has no anchor
    resolution yet — named in spec-author as intended, not claimed built). Detail: JOURNAL 2026-07-09.
-3. **The 7 small design holes — LOOP.** ROADMAP rows 173-179 (deferred-trigger eval point · bug-parked
-   re-fence · bug preempts a running milestone · milestone-hold state named distinctly · concurrent lane-claim
-   tie-breaker · tight-rung rollback · ARCHITECTURE:33 INV-67 prose). Each: the SPEC/doc edit its Done-when
-   names + a test where it asks one.
+3. **The 7 small design holes — DONE** (rows 173-179; commit below). Each landed as a SPEC/ARCHITECTURE
+   clause + a string test in `TestSmallDesignHoles`: deferred-trigger re-scan in the milestone gate ·
+   T-9 resume re-fence (crit 6) · milestone = indivisible pen-stage vs bug · held-for-milestone state named
+   apart from bug-parked · lane-claim tie-breaker (git ancestry / session token) · tight-rung rollback ·
+   ARCHITECTURE INV-67 prose. No new anchors; short-form prove. Detail: JOURNAL 2026-07-09.
 4. **Authoring terminology + rename — LOOP.** Glossary-corpus (requirements-eng, arc42, C4, ISO 29148, BMAD,
    Kiro); rename code var `needles`→`trace_phrase`, speak "traceability check-phrases"; enrich spec-author +
    architecture vocabulary from the corpus.

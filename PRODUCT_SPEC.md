@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.2, 2026-07-09)
+# live-spec — Product Spec (v0.16.3, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -433,7 +433,7 @@ Both sentences bind forward from features specified after this rule lands. An ad
 While the session walks, four things hold:
 - Intake is parallel, integration is serial — **one landing at a time, per repo, under one pen**.
   - The **pen** is the right to write the shared truth: the spec, the architecture doc, the matrix, the queue, the integration of a delta into the shared tree, the closing of a row. One lane holds it at a time.
-  - Claiming a lane is an atomic committed act. The session commits the row→in-work flip first, then re-checks under the fence [INV-11] right before its first shared-truth write. If that re-check finds a foreign session's committed in-work row, the later claimant backs off and re-queues.
+  - Claiming a lane is an atomic committed act. The session commits the row→in-work flip first, then re-checks under the fence [INV-11] right before its first shared-truth write. If that re-check finds a foreign session's committed in-work row, the later claimant backs off and re-queues. "Later" is read by a total order, never by wall-clock: the claim whose commit is the ancestor in git history holds, and the descendant backs off; on a genuine concurrent claim with no ancestry between the two commits, the lower inbox session token breaks the tie. So exactly one session backs off and mutual back-off cannot happen. [INV-11]
   - Foreign hands never share a repo's pen, so across sessions the law stands as it always stood. Within one assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18]. Every pen-stage still lands one at a time, and a landing commit carries exactly one row's delta [INV-39].
   - Bounded delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting (next section). [INV-2]
 - **A pending question for the human never stops the work** — the lane proceeds on the recommended option; the question stays open in the row, revisitable any time. [INV-4]
@@ -466,7 +466,9 @@ When several trains want the human's word, the questions ride one batched decisi
 
 A bug still cuts the line [T-9]. It takes the pen, and the senior takes over, at the end of the current pen-stage. A pen-stage is never cut mid-edit. Rolling background briefs may finish, and no lane takes the pen back until the bug lands.
 
-A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
+A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls: the other lanes either land first or enter a distinct **held-for-milestone** state — each quiesced at a clean checkpoint the way a park writes one, but named apart from bug-**parked** because nothing failed. The gate runs on the quiesced tree, and every held lane resumes in its landing order once the milestone lands [M-1]. [T-18]
+
+A milestone gate is one indivisible pen-stage. A bug arriving mid-gate waits for the gate to finish rather than preempting a half-run audit — an audit stopped halfway leaves its verdict incoherent — and takes the pen the moment the milestone lands, ahead of the held lanes' resume. That is the one exception to "a bug cuts the line at the end of the current pen-stage" [T-9]: the milestone gate is the pen-stage, whole [T-18].
 
 While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**. Its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's unfinished work. So half of another train never rides a landing.
 
@@ -643,6 +645,7 @@ A project that predates these layers brings them up as an owned landing, and the
     - A newly joining skill walks this at birth, before it ever reaches the gate.
   - doc compaction: strip redundancy from spec/matrix/queue/skills/ledger [E-24], and sweep the test suite the same way. Delete a duplicate or superseded test only when the matrix audit shows its rows still covered by a live test. Nothing grows unboundedly. Queue compaction archives closed rows, never deletes [INV-1].
   - re-list every open human gate and every unharvested inbox/ file, one line each;
+  - re-scan every deferred queue row's revisit trigger; a fired trigger returns the row to the runnable queue, so a deferred wish never waits on a trigger nobody reads [INV-1];
   - re-check the formal index against the prose — it's a derived map, never a second truth;
   - re-pin the derived docs' headers to the spec version, then prove them;
   - **the thin loader stays thin** [E-16]: re-read the personal layer's global instruction file line by line. Every line must pass one test — must this hold before any pack file loads? The audit report states the line count. A rule that survives there without passing the test migrates to its real home (profile or pack); it never lingers. [M-1]
@@ -878,9 +881,14 @@ takes the lane).
    quick win included: a bubble jumps only fresh queued wishes. [T-11]
 5. At most one feature is parked per lane. When several trains were rolling [T-18], a bug parks them
    all, each at its own checkpoint, and they resume in their landing order.
+6. On resume, before it integrates, a parked feature re-fences and re-proves its delta against the
+   now-committed truth, the way a later lane does under [INV-39]: the bug's fix may have moved the law
+   the delta was built against, so a delta proven only against the pre-bug truth is re-verified on the
+   new tree, never integrated blind. [T-9, INV-39]
 
 **Postcondition:** the bug's fix is landed; every parked feature is back in work (or landed) in its
-original order; no red work was committed anywhere.
+original order, each re-fenced and re-proven against the truth the bug's fix left behind; no red work was
+committed anywhere.
 
 ### When the workshop itself misbehaves (the problem ledger)  [feature: F-problem-ledger]
 
@@ -1327,7 +1335,7 @@ Three rungs each name their legal sheds. Every shed the agent actually takes is 
 
 - **full [default]** — the full suite runs at every landing gate. The prover runs at its recorded cadence. The worker router picks tiers by the routing rule [INV-69].
 - **lean** — mid-work test runs may scope to the touched architecture node's rows. The full suite still runs at every landing gate and before every push. Surface-add prover passes stay CROSS-LINK. A full pass owed by the default cadence may defer to the next milestone; the agent writes the deferral as a dated debt line in its queue row, never just from memory. Mechanical work rides one worker tier cheaper when the brief is airtight [INV-69].
-- **tight** — everything lean, plus landing gates may batch: consecutive small landings share one full-suite run at the batch's end. Each landing commit still carries exactly one row's delta [INV-39]. A red at batch end bisects by landing order before anything else lands. Even so, a push still requires the full gate green at HEAD [M-6]. The cheapest sufficient worker tier is the rule, and senior hours go to judgment alone [INV-69].
+- **tight** — everything lean, plus landing gates may batch: consecutive small landings share one full-suite run at the batch's end. Each landing commit still carries exactly one row's delta [INV-39]. A red at batch end bisects by landing order to name the culprit, then reverts the batch to its last green base and re-applies the clean landings, holding the culprit row out for its own fix — so HEAD never sits red across a breakpoint. Even so, a push still requires the full gate green at HEAD [M-6]. The cheapest sufficient worker tier is the rule, and senior hours go to judgment alone [INV-69].
 
 What never bends at any rung — the never-bend list, stated once [INV-40]:
 
