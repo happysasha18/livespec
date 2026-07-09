@@ -107,4 +107,5 @@ def test_spec_carries_grows_by_one_duty():
     assert "grows by one per caught leak" in text, "SPEC lost the grows-by-one duty (INV-83)"
     assert "preshow-register-lint.py" in text, "SPEC does not name the register lint script (INV-83)"
     assert "clean-reader check" in text, "SPEC does not name the residual's owner (INV-83)"
+    assert "reach is the shown artifact" in text, "SPEC lost INV-83's reach sentence"
     assert "| INV-83 |" in text, "Formal index lost INV-83"

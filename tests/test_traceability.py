@@ -2548,6 +2548,7 @@ class TestPushToRemote(unittest.TestCase):
         # discover-first, one contextual question only when no remote
         self.assertIn("git remote -v", spec)
         self.assertIn("first push moment", spec)
+        self.assertIn("one question per gap", spec)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         self.assertIn("PUSH accepted work there by rule", bp)
         self.assertIn("GitLab", bp)
