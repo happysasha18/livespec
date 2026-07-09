@@ -7,7 +7,7 @@
 #            queue, skills, tests, scripts, guardrails — or anything NEW the map never met),
 #            or the diff/base cannot be established. Conservative by construction.
 #
-# The prose class is EXPLICIT and narrow — "just .md" is NOT a class: SPEC.md, TEST_MATRIX.md,
+# The prose class is EXPLICIT and narrow — "just .md" is NOT a class: PRODUCT_SPEC.md, TEST_MATRIX.md,
 # ARCHITECTURE.md, ROADMAP.md, JOURNAL.md, NEXT_STEPS.md and every SKILL.md are TESTED documents
 # (string rows read them) and must never be added below.
 #

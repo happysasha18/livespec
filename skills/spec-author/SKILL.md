@@ -1,6 +1,6 @@
 ---
 name: spec-author
-description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
+description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
   version: 0.1.19
 ---
@@ -14,7 +14,7 @@ metadata:
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
-You author and grow a **living spec** — a prose-first `SPEC.md` that says what the product IS, what every
+You author and grow a **living spec** — a prose-first `PRODUCT_SPEC.md` that says what the product IS, what every
 part is allowed to claim, and how the parts compose — *incrementally, as the project develops*. You are the
 front half of a pair: **you write the spec; [`product-prover`](https://github.com/happysasha18/live-spec/tree/main/skills/product-prover)
 reviews it.** A spec you write should be one the prover can check: same primitives, surfaces named once,
@@ -109,7 +109,7 @@ This is the shape `product-prover` is tuned to read, and the one a human will ac
 ## The spine — what every spec must CONTAIN (not its section order)
 
 The spine is a completeness checklist rather than a table of contents. The DOCUMENT is organized use-case-first
-(scenario sections, per "How it reads" and `templates/SPEC.template.md`); each spine item lives INSIDE the
+(scenario sections, per "How it reads" and `templates/PRODUCT_SPEC.template.md`); each spine item lives INSIDE the
 scenarios and is findable through the Formal index. Never let a new feature land without its entry.
 
 1. **Purpose** — why the product exists, in plain words: the opening "What [product] is" paragraph.
@@ -297,11 +297,11 @@ landing that touches it. A prototype writes neither — it promises nothing.
 
 ## How you work
 
-1. **Author / grow the relevant section** in `SPEC.md`, use-case-first: find (or open) the scenario the
+1. **Author / grow the relevant section** in `PRODUCT_SPEC.md`, use-case-first: find (or open) the scenario the
    change belongs to — the intake placement verdict made real: the scenario IS the wish's place on
    the feature map (SPEC INV-37) — and grow the walk, plain language, anchors at line-ends, the Formal index updated in
    the same edit. Reuse the existing vocabulary; don't introduce a second word for an existing concept.
-   Starting fresh? Copy `templates/SPEC.template.md`. (Template paths resolve from the PACK repo —
+   Starting fresh? Copy `templates/PRODUCT_SPEC.template.md`. (Template paths resolve from the PACK repo —
    github.com/happysasha18/live-spec; a standalone install of this skill fetches them there. They are
    deliberately NOT copied into the skill dir: the pack is the source, a copy would fork the truth.)
 2. **Ask, don't silently fill.** When the spec needs a decision only the author can make (a threshold, a
@@ -348,7 +348,7 @@ Ask each question out loud; a "no" or "don't know" is a gap to fill or mark ⟨D
 
 ## What you produce
 
-A `SPEC.md` (or an updated section of one) that is use-case-first — scenarios lead, anchors trail, the
+A `PRODUCT_SPEC.md` (or an updated section of one) that is use-case-first — scenarios lead, anchors trail, the
 Formal index closes the doc — complete against the spine, with surfaces named once and their cross-axis
 composition stated — ready for `product-prover` to review and for a test matrix to be derived from. You also surface, in your reply, the ⟨DECIDE⟩ points you couldn't
 resolve and the leading questions behind them.
@@ -380,7 +380,7 @@ resolve and the leading questions behind them.
 | | spec-author | product-prover |
 |---|---|---|
 | role | writes & grows the spec | reviews the spec |
-| output | structured `SPEC.md` sections | findings: gaps, contradictions, missing invariants |
+| output | structured `PRODUCT_SPEC.md` sections | findings: gaps, contradictions, missing invariants |
 | when | starting / adding a feature / a new surface | spec drafted or changed, before tests/code |
 
 Author with this skill, review with the prover, then derive matrix + tests. Same primitives on both sides

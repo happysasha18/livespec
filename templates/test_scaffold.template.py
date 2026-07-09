@@ -16,7 +16,7 @@ import unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DOCS = ("SPEC.md", "ARCHITECTURE.md", "TEST_MATRIX.md", "ROADMAP.md", "JOURNAL.md", "NEXT_STEPS.md")
+DOCS = ("PRODUCT_SPEC.md", "ARCHITECTURE.md", "TEST_MATRIX.md", "ROADMAP.md", "JOURNAL.md", "NEXT_STEPS.md")
 
 
 def read(rel):
@@ -32,7 +32,7 @@ class TestBootstrapComplete(unittest.TestCase):
             self.assertGreater(os.path.getsize(path), 100, "%s is an empty shell" % doc)
 
     def test_headers_filled_not_placeholders(self):
-        spec_head = read("SPEC.md").splitlines()[0]
+        spec_head = read("PRODUCT_SPEC.md").splitlines()[0]
         self.assertRegex(spec_head, r"\(v[\d.]+, \d{4}-\d{2}-\d{2}\)",
                          "SPEC header must carry a real version + date, not the template placeholder")
         for doc in DOCS:

@@ -2,7 +2,7 @@
 
 These lock the MECHANISM (promotion, exemptions, waivers, redundancy pre-check, LLM-judge protocol,
 the unified gate). The SPEC-CONTENT tests (every needle lints clean; no anchor hides in a blockquote;
-SPEC.md passes the whole gate) land after the whole-document rewrite, since the current SPEC still
+PRODUCT_SPEC.md passes the whole gate) land after the whole-document rewrite, since the current SPEC still
 carries the register warnings the rewrite removes.
 """
 import datetime
@@ -94,26 +94,26 @@ class TestScissorsCoverage(unittest.TestCase):
 
 class TestWaiverMechanism(unittest.TestCase):
     def _w(self, **kw):
-        base = {"id": "w1", "rule": "second-person", "file": "SPEC.md", "snippet": "you know",
+        base = {"id": "w1", "rule": "second-person", "file": "PRODUCT_SPEC.md", "snippet": "you know",
                 "reason": "r", "owner": "a", "date": "2026-07-08", "expiry": "2026-07-30"}
         base.update(kw)
         return base
 
     def test_active_waiver_matches_by_snippet(self):
         w = self._w()
-        m = gate_common.match_waiver("second-person", "SPEC.md", "past what you know to ask",
+        m = gate_common.match_waiver("second-person", "PRODUCT_SPEC.md", "past what you know to ask",
                                      [w], today=datetime.date(2026, 7, 10))
         self.assertIsNotNone(m)
 
     def test_expired_waiver_does_not_match(self):
         w = self._w(expiry="2026-07-09")
-        m = gate_common.match_waiver("second-person", "SPEC.md", "past what you know to ask",
+        m = gate_common.match_waiver("second-person", "PRODUCT_SPEC.md", "past what you know to ask",
                                      [w], today=datetime.date(2026, 7, 20))
         self.assertIsNone(m, "an expired waiver must not suppress — it reverts to a hard error")
 
     def test_wrong_rule_or_file_does_not_match(self):
         w = self._w()
-        self.assertIsNone(gate_common.match_waiver("caps-shout", "SPEC.md", "you know", [w]))
+        self.assertIsNone(gate_common.match_waiver("caps-shout", "PRODUCT_SPEC.md", "you know", [w]))
         self.assertIsNone(gate_common.match_waiver("second-person", "OTHER.md", "you know", [w]))
 
     def test_live_waiver_file_schema_and_bounded_expiry(self):
@@ -230,7 +230,7 @@ class TestSpecContentRegisterClean(unittest.TestCase):
     just the mechanism."""
 
     def _spec(self):
-        return open(os.path.join(ROOT, "SPEC.md"), encoding="utf-8").read()
+        return open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8").read()
 
     def _load_linter(self):
         import importlib.util
@@ -241,7 +241,7 @@ class TestSpecContentRegisterClean(unittest.TestCase):
         return mod
 
     def test_needles_are_register_clean(self):
-        """Every traceability-test string that is a LIVE SPEC needle (present verbatim in SPEC.md)
+        """Every traceability-test string that is a LIVE SPEC needle (present verbatim in PRODUCT_SPEC.md)
         lints clean of the position-independent gate tells — so a needle can never be re-pointed to
         a phrase that itself carries scissors, jargon, a shout-cap, second person, reassurance, or
         future narration. Closes the re-point-to-a-defect loophole."""

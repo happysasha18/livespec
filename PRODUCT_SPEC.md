@@ -1,4 +1,4 @@
-# live-spec — SPEC (v0.16.0, 2026-07-09)
+# live-spec — Product Spec (v0.16.0, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -324,7 +324,7 @@ A wish can also end without landing, and its row stays in the table in one of th
 
 Declining preserves what the declined wish had absorbed. A wish that other rows were superseded into lists them at its decline. Each listed row then either gets declined by name in the same breath, when the human's no covered it too, or returned to the queue as its own row again, when the human's no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
 
-What the wishes grow is the **spec (SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
+What the wishes grow is the **spec (PRODUCT_SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
 ### A prototype stays a sketch
 
 Exploring an idea before committing to it is allowed — a room is sometimes sketched before the house is built. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. Fenced off means the code sits apart, and nothing in the product reaches into it.
@@ -476,7 +476,7 @@ While both layers live, one rule holds: **no wish lands whose facts lack an owni
 
 - **Push gate for live-spec itself.** This repo is public and the method's own flagship, so every push is preceded, in the same session, by two steps:
   1. the concurrent-edit fence [INV-11];
-  2. a fresh whole-spec re-check — a product-prover pass over SPEC.md as it stands, with its record landing in docs/prover/ before the push.
+  2. a fresh whole-spec re-check — a product-prover pass over PRODUCT_SPEC.md as it stands, with its record landing in docs/prover/ before the push.
 
   The record name is `YYYY-MM-DD[-suffix].md`, and the suffix is mandatory when the date's file already exists. Must-fix findings are folded before pushing. Folds produced by the gate's own pass do not re-trigger the gate; they ship with the same record. The rest become queue rows. No re-check record for the pushed state means the push should not have happened. The record enumerates the folds applied from its own pass. A fold stays local to the sections its finding named; a fold reaching wider re-triggers the gate. [M-6]
 
@@ -820,7 +820,7 @@ recorded and skipped until its machine ships, and the journal records the deferr
 
 3. **Re-engineer the existing documents into live-spec shapes.** Nothing existing gets ignored,
    and nothing gets trusted unreconciled.
-   - An existing spec becomes SPEC.md sections — keep the original claims, but mark them
+   - An existing spec becomes PRODUCT_SPEC.md sections — keep the original claims, but mark them
      unverified.
    - The inventory's file:line seeds ARCHITECTURE.md [E-14]: its nodes come from the real code
      structure, so the architecture layer is already in place at adoption.

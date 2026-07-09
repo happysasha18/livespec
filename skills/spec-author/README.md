@@ -2,7 +2,7 @@
 
 **Author and grow a living product spec as your project develops — structured, honest, and ready for review. A [Claude Code](https://claude.com/claude-code) skill.**
 
-Point it at a feature you're about to build, and it writes (or grows) a prose-first `SPEC.md` that states what the product *is* and how its parts compose: entities, states, transitions, actors, invariants, and — the part most specs miss — the **cross-section composition** between surfaces and the views/modes they live under.
+Point it at a feature you're about to build, and it writes (or grows) a prose-first `PRODUCT_SPEC.md` that states what the product *is* and how its parts compose: entities, states, transitions, actors, invariants, and — the part most specs miss — the **cross-section composition** between surfaces and the views/modes they live under.
 
 It's the authoring half of a pair. **spec-author writes the spec; its sibling [product-prover](https://github.com/happysasha18/product-prover) reviews it.** Same formal-verification primitives on both sides, so the handoff is clean: author → prove → derive tests → code.
 

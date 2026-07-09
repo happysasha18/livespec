@@ -32,7 +32,7 @@ style, and what the coverage check means. For a book the check degrades graceful
 outline/structure check.
 
 ### No file explosion
-One SPEC.md, one ARCHITECTURE.md, one TEST_MATRIX.md. Feature IDs live inline in the
+One PRODUCT_SPEC.md, one ARCHITECTURE.md, one TEST_MATRIX.md. Feature IDs live inline in the
 scenario. Shard into per-feature files only for a genuinely huge project, by explicit call.
 
 ### Hypertext references in Markdown

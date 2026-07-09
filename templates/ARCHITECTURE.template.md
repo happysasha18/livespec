@@ -1,6 +1,6 @@
 # [Project Name] — Architecture
 
-How the product is BUILT: the named nodes the spec's facts live in. Written from the proven SPEC.md,
+How the product is BUILT: the named nodes the spec's facts live in. Written from the proven PRODUCT_SPEC.md,
 proven itself (product-prover, architecture lens) before the test matrix is derived from it. One node =
 one name = one responsibility — the one-surface-one-name rule, applied to structure.
 

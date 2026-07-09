@@ -129,7 +129,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
 ## The steps
 
-1. **Spec — invoke `spec-author`.** Write or grow the project `SPEC.md`: entities, states, transitions,
+1. **Spec — invoke `spec-author`.** Write or grow the project `PRODUCT_SPEC.md`: entities, states, transitions,
    actors, invariants, and the cross-section composition between surfaces. One surface = one name. Compose
    every stateful surface across **every** view/mode axis it lives under, not just its own. Real gaps are
    marked `⟨DECIDE⟩` and asked, never guessed. Use human-first language, with codes at line ends.

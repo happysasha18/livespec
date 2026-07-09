@@ -5,7 +5,7 @@
 Both arms get the same task; the with-skill arm first reads `skills/build-pipeline/SKILL.md` and works
 by it. Prompt (verbatim):
 
-> You maintain a small CLI project; the repo contains SPEC.md, ARCHITECTURE.md, TEST_MATRIX.md, a pytest
+> You maintain a small CLI project; the repo contains PRODUCT_SPEC.md, ARCHITECTURE.md, TEST_MATRIX.md, a pytest
 > suite in tests/, and the tool's source. A user reports: "mytool --export out/report.csv silently
 > writes an EMPTY file when the out/ directory doesn't exist."
 > Describe EXACTLY what you would do to handle this report — step by step, in order, from the moment you

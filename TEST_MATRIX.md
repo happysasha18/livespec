@@ -37,7 +37,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Product-prover skill | `skills/product-prover/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Build-pipeline skill | `skills/build-pipeline/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Communicator skill | `skills/communicator/SKILL.md` | shipped text | `test_artifact_inventory` |
-| Spec template | `templates/SPEC.template.md` | shipped text | `test_artifact_inventory` |
+| Spec template | `templates/PRODUCT_SPEC.template.md` | shipped text | `test_artifact_inventory` |
 | Architecture template | `templates/ARCHITECTURE.template.md` | shipped text | `test_artifact_inventory` |
 | Matrix template | `templates/TEST_MATRIX.template.md` | shipped text | `test_artifact_inventory` |
 | Roadmap template | `templates/ROADMAP.template.md` | shipped text | `test_artifact_inventory` |
@@ -70,7 +70,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Inbox door + law | `inbox/README.md` | shipped text | `test_artifact_inventory` |
 | Guardrails scaffold text | `scaffold/guardrails/README.md` | shipped text | `test_artifact_inventory` |
 | CI mirror workflow | `.github/workflows/gates.yml` | shipped config | `test_artifact_inventory` + `TestCIMirror` |
-| The pack's own spec | `SPEC.md` | flagship doc | `test_artifact_inventory` |
+| The pack's own spec | `PRODUCT_SPEC.md` | flagship doc | `test_artifact_inventory` |
 | The pack's own architecture | `ARCHITECTURE.md` | flagship doc | `test_artifact_inventory` |
 | The pack's own matrix | `TEST_MATRIX.md` | flagship doc | `test_artifact_inventory` |
 | The queue | `ROADMAP.md` | flagship doc | `test_artifact_inventory` |
@@ -146,7 +146,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
 |---|---|---|---|---|---|
 | M-160 | Process bookkeeping scales to the delta: the pre-push re-check keeps rigor (previous records · delta walked · verdict) and scales FORM — small deltas (skill/prose/infra, no new surface/structure) ride a three-line short-form record, surface/structural deltas the full walk; claims batch per lane, journal + resume once per batch; never the safety net scaled (law text, red-first, delta prove, gates), never a surface delta on the short form | INV-61 | string | `test_process_cost_scales` (red proven against HEAD's shipped state) | BUILT |
-| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/` — and the record is for the PUSHED STATE: the newest record commit is never older than the last SPEC.md commit (row 61); never a push without its record, never a today-dated-but-stale record passing | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails`, `test_stale_record_fails`, `test_record_with_spec_same_commit_passes` | BUILT |
+| M-015 | Every live-spec push is preceded, same session, by fence + a whole-spec re-check recorded in `docs/prover/` — and the record is for the PUSHED STATE: the newest record commit is never older than the last PRODUCT_SPEC.md commit (row 61); never a push without its record, never a today-dated-but-stale record passing | M-6 | string | `guardrails/pre-push` gate a: `test_real_repo_passes`, `test_missing_record_fails`, `test_stale_record_fails`, `test_record_with_spec_same_commit_passes` | BUILT |
 
 ### [node: build-pipeline]
 

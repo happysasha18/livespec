@@ -97,32 +97,32 @@ class TestGateA_ProverRecord(unittest.TestCase):
         run(["git", "commit", "-q", "-m", msg], cwd=tmp)
 
     def test_stale_record_fails(self):
-        """A record committed BEFORE the last SPEC.md change is stale (row 61,
+        """A record committed BEFORE the last PRODUCT_SPEC.md change is stale (row 61,
         SPEC M-6): the gate must refuse it even though it is dated today and
         committed — gate (a)'s original checks alone would wrongly pass this."""
         with tempfile.TemporaryDirectory() as tmp:
             self._init_repo(tmp)
-            self._write(tmp, "SPEC.md", "spec v1\n")
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1\n")
             self._commit_all(tmp, "spec v1")
             self._write(tmp, "docs/prover/2026-07-05-x.md", "prover record for v1\n")
             self._commit_all(tmp, "record for v1")
-            self._write(tmp, "SPEC.md", "spec v2 — changed after the record\n")
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v2 — changed after the record\n")
             self._commit_all(tmp, "spec v2, no new record")
             result = run(
                 [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
                 cwd=tmp,
             )
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-            self.assertIn("predates the last SPEC.md change", result.stdout)
+            self.assertIn("predates the last PRODUCT_SPEC.md change", result.stdout)
 
     def test_record_with_spec_same_commit_passes(self):
-        """A record committed in the SAME commit as the SPEC.md change it
+        """A record committed in the SAME commit as the PRODUCT_SPEC.md change it
         covers is fresh, not stale — this is the normal push shape."""
         with tempfile.TemporaryDirectory() as tmp:
             self._init_repo(tmp)
-            self._write(tmp, "SPEC.md", "spec v1\n")
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1\n")
             self._commit_all(tmp, "spec v1")
-            self._write(tmp, "SPEC.md", "spec v2\n")
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v2\n")
             self._write(tmp, "docs/prover/2026-07-05-x.md", "prover record for v2\n")
             self._commit_all(tmp, "spec v2 + its record, same commit")
             result = run(
@@ -136,7 +136,7 @@ class TestGateB_Tests(unittest.TestCase):
     """Gate (b): the test suite must be green (also covers gate c, anchor ownership).
 
     Both checks here run against a SCRATCH COPY of the whole repo (test_traceability.py
-    resolves its fixture paths — SPEC.md, ARCHITECTURE.md, etc. — relative to the repo
+    resolves its fixture paths — PRODUCT_SPEC.md, ARCHITECTURE.md, etc. — relative to the repo
     root, so a bare copy of tests/ alone would 404 on every one of them). The copy
     keeps test_guardrails.py — architecture pins and BUILT matrix rows now reference
     it, so a copy without it is not a green repo — and recursion is cut by an env
@@ -492,7 +492,7 @@ class TestGateReachMap(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
     def test_tested_documents_stay_full_reach(self):
-        for f in ("SPEC.md", "TEST_MATRIX.md", "ARCHITECTURE.md", "ROADMAP.md",
+        for f in ("PRODUCT_SPEC.md", "TEST_MATRIX.md", "ARCHITECTURE.md", "ROADMAP.md",
                   "skills/publish/SKILL.md", "tests/test_traceability.py",
                   "guardrails/pre-push", "JOURNAL.md", "NEXT_STEPS.md"):
             r = self.reach("README.md\n" + f)
@@ -678,7 +678,7 @@ class TestSpecStyleLint(unittest.TestCase):
     def test_converted_intake_section_is_clean(self):
         # the calibration section, converted this session, is the standing gold: it must stay clean
         # of register ERRORS, so a regression in the linter OR in the section trips here.
-        with open(os.path.join(ROOT, "SPEC.md"), encoding="utf-8") as f:
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             spec = f.read()
         lines = spec.splitlines()
         start = next(i for i, l in enumerate(lines) if l.startswith("#### Intake:"))

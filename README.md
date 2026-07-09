@@ -2,7 +2,7 @@
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
-**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts). Two counters exist by design: `VERSION` counts package RELEASES; the `SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships. Eight skills (the shared rulebook plus seven working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
+**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts). Two counters exist by design: `VERSION` counts package RELEASES; the `PRODUCT_SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships. Eight skills (the shared rulebook plus seven working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
 
 **Lost in the folders?** [`OVERVIEW.md`](OVERVIEW.md) is the one-page map: what lives where (the pack, a
 user's personal layer, a host project) and where any given rule goes.
@@ -22,7 +22,7 @@ diffs a run's actual changes against a per-task file declaration; credit where d
 the **integration**: the spec is the single authority binding the whole loop — intake validates every wish
 against it, scope declarations derive from it (not from an ad-hoc brief), a prover skill formally reviews
 it, adoption reverse-generates it from an existing codebase, and the development process itself is specced
-and proven the same way (this repo's own SPEC.md went through product-prover before its first publish —
+and proven the same way (this repo's own PRODUCT_SPEC.md went through product-prover before its first publish —
 findings in `docs/prover/`). Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search —
 found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md). If you know
 prior art we missed, open an issue — we would genuinely like to read it.
@@ -61,7 +61,7 @@ with how it goes.
 
 **Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep). Hard tripwires decide it; judgment plays no role: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17). A wish too big for its worth is negotiated in **scope** alone — cut surfaces or split into stages (SPEC T-15); time budgets and estimates play no part in that negotiation. A story's declared mockup-first entry condition ("show me first, then build") is written in its queue row and cancelled only by the human naming it — a general "go build" never cancels it (SPEC INV-43).
 
-1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. A feature's delta opens with **regression fences** when it touches a live surface (what must keep working, each citing the clause it guards — SPEC T-14), walks the **standard-facet sweep** (phone/touch/empty-error-loading/a11y/perf/visual-hierarchy/two-windows/missing-source — every facet ends as a spec sentence, decided or `[default]`-tagged and reported, SPEC T-13/INV-18), and closes with **non-goals** and a **success measure** (SPEC INV-20/INV-21). The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `SPEC.md` is the reference shape).
+1. **Spec** (`spec-author`). Write or grow `PRODUCT_SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. A feature's delta opens with **regression fences** when it touches a live surface (what must keep working, each citing the clause it guards — SPEC T-14), walks the **standard-facet sweep** (phone/touch/empty-error-loading/a11y/perf/visual-hierarchy/two-windows/missing-source — every facet ends as a spec sentence, decided or `[default]`-tagged and reported, SPEC T-13/INV-18), and closes with **non-goals** and a **success measure** (SPEC INV-20/INV-21). The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `PRODUCT_SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
 3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning place — the named thing first, the `:line` as a cached convenience a drift gate re-checks — this is where the spec is reconciled with shipped reality (the correction always runs from spec to truth).
 4. **Prove the architecture** (`product-prover`, architecture lens) whenever the doc changed: every fact has an owning node, no node without spec backing, every seam named.
@@ -153,7 +153,7 @@ Skills land in `~/.claude/skills/`, available in every project on the machine. E
 
 ## Project status
 
-- Published and self-hosted: this repo runs on its own method — own `SPEC.md` (use-case-first, prover-proven; every push preceded by a recorded prover re-check in `docs/prover/`), own queue (`ROADMAP.md`), own journal
+- Published and self-hosted: this repo runs on its own method — own `PRODUCT_SPEC.md` (use-case-first, prover-proven; every push preceded by a recorded prover re-check in `docs/prover/`), own queue (`ROADMAP.md`), own journal
 - Method proven in production: track-coach — 700+ tests, 30-widget library, running since 2025
 - First real adoption run completed on a live host (2026-07-04); guardrails scaffold and snapshot machinery are the next major queued items (see ROADMAP)
 

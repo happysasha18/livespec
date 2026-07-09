@@ -12,7 +12,7 @@ stay the one home.
 
 Flow per batch:
   1. BEFORE editing:  needle-extract.py --section "What live-spec is" --capture /tmp/nx.json
-  2. edit SPEC.md
+  2. edit PRODUCT_SPEC.md
   3. AFTER editing:   needle-extract.py --section "What live-spec is" --verify /tmp/nx.json
      -> exit 0 and "OK: N needles preserved"  |  exit 1 and the list of DROPPED needles.
 
@@ -23,7 +23,7 @@ import ast, re, sys, os, json, argparse
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TESTS = os.path.join(REPO, "tests", "test_traceability.py")
-SPEC = os.path.join(REPO, "SPEC.md")
+SPEC = os.path.join(REPO, "PRODUCT_SPEC.md")
 
 
 def norm(s):

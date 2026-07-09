@@ -1,6 +1,6 @@
 # [Project Name] — Test Matrix
 
-Derived from the proven SPEC.md **through the proven ARCHITECTURE.md** — the matrix is DERIVED, never just
+Derived from the proven PRODUCT_SPEC.md **through the proven ARCHITECTURE.md** — the matrix is DERIVED, never just
 filled. Rows are organized **architecture node × spec fact**: every fact gets at least one row under its
 owning node, every row pins a test level, and the derivation closes with the coverage validation at the
 bottom of this file — a checklist actually walked, item by item. Tests come from the matrix; the matrix

@@ -175,7 +175,7 @@ Check:
 - Does it describe a system with state, behavior, transitions — versus marketing copy, vision statements, or prose without operational content?
 - Is there enough material to extract a model?
 - **Does the doc claim to describe a SHIPPED system?** If so, require the architecture doc's node pins (each surface → owning `file:line`, written at the build-pipeline architecture step). Without them, every finding is CONDITIONAL on the doc being current — say so, and flag any section describing a surface with no owning code/test as possibly-removed (a spec that outran an excision will otherwise "prove" dead behaviour).
-- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line` citation; a prose description does not qualify. The paired SPEC.md must be in view — ownership is only checkable against the fact list it owns.
+- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line` citation; a prose description does not qualify. The paired PRODUCT_SPEC.md must be in view — ownership is only checkable against the fact list it owns.
 
 Output one of:
 

@@ -1,7 +1,7 @@
 # The map — what lives where, and why (one page)
 
 Written for the moment someone asks "where does X live?" or "why are there three repos?". No jargon;
-every claim here is answerable in one line. (Normative rules live in SPEC.md and the skills — this page
+every claim here is answerable in one line. (Normative rules live in PRODUCT_SPEC.md and the skills — this page
 only points.)
 
 ## Three homes on a machine, three different jobs
@@ -54,7 +54,7 @@ without write access).
 
 ## The pack eats its own cooking
 
-`~/live-spec` is also a PROJECT run by the method — so the repo carries its own SPEC.md (what the pack
+`~/live-spec` is also a PROJECT run by the method — so the repo carries its own PRODUCT_SPEC.md (what the pack
 promises), ROADMAP.md (the wish queue), ARCHITECTURE.md, TEST_MATRIX.md, tests/, JOURNAL.md (the why,
 dated), NEXT_STEPS.md (cold-resume state), and docs/prover/ (every review record). These files are the
 flagship INSTANCE of the method — the pack held to the same rules it asks of every host.

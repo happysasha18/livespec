@@ -12,7 +12,7 @@ one semantic check regex cannot do (redundancy), (c) turns "not fixed yet" into 
 instead of a silent warning, and (d) is the same definition a "humanize" and a "restyle" pass must both satisfy — which
 ends the oscillation, because a warm/second-person pass can no longer pass.
 
-Gate scope: the product spec files only (SPEC.md and section files), never meta-docs (spec-style.md, journals,
+Gate scope: the product spec files only (PRODUCT_SPEC.md and section files), never meta-docs (spec-style.md, journals,
 READMEs, which legitimately use CAPS/second person). The gate takes an explicit file list.
 
 ## 1. Rule set + severities (all blocking after promotion)

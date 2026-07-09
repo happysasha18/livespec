@@ -30,7 +30,7 @@ Every user-facing behaviour must trace to a SPEC clause. A behaviour with no spe
 
 This is what catches freelancing mechanically: you cannot ship an unasked, unrecorded behaviour because the test will look for its spec clause and find nothing. The spec clause does not have to be detailed; it must exist. A one-line spec entry ("stems play in full-mix order by default — CR-5") is enough. Silence is not.
 
-Implementation note: each user-facing module carries a `spec_refs` annotation (or equivalent per-project convention) naming the SPEC clause(s) it implements. The guardrail test checks that every annotation resolves to a real clause in SPEC.md, and that every clause reachable from the rendered surface is annotated.
+Implementation note: each user-facing module carries a `spec_refs` annotation (or equivalent per-project convention) naming the SPEC clause(s) it implements. The guardrail test checks that every annotation resolves to a real clause in PRODUCT_SPEC.md, and that every clause reachable from the rendered surface is annotated.
 
 ---
 
@@ -39,7 +39,7 @@ Implementation note: each user-facing module carries a `spec_refs` annotation (o
 Catches structural inconsistencies that accumulate over time:
 - Duplicate invariant IDs (two `INV-18` entries)
 - A spec invariant with no matrix row
-- A `⟨DECIDE⟩` marker that is still live in SPEC.md but marked RESOLVED in the prover findings
+- A `⟨DECIDE⟩` marker that is still live in PRODUCT_SPEC.md but marked RESOLVED in the prover findings
 - A surface named two ways in the same document (e.g. "stem lanes" and "#stemlanes" as if separate)
 - An id in TEST_MATRIX.md that references a test file or function that does not exist
 

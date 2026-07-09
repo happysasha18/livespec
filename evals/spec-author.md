@@ -5,7 +5,7 @@
 Both arms get the same task; the with-skill arm first reads `skills/spec-author/SKILL.md` and works by
 it. Prompt (verbatim):
 
-> Write the SPEC.md section for this new feature of a photo-gallery web app: "clicking a photo opens a
+> Write the PRODUCT_SPEC.md section for this new feature of a photo-gallery web app: "clicking a photo opens a
 > lightbox — the photo shown enlarged, with prev/next arrows".
 > Context you know about the app: it shows a folder of the user's photos and already ships two views, a
 > compact grid and a detailed list.

@@ -1,7 +1,7 @@
 # ADOPT — Mid-flight adoption procedure
 
 How to attach live-spec to an existing codebase — at the start or in the middle. This is the executable
-projection of SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
+projection of PRODUCT_SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
 has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
 
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
@@ -107,7 +107,7 @@ Done when: the inventory exists and every surface in the registry has a real `fi
 ## Phase 3 — Re-engineer existing documents into live-spec shapes (SPEC A-3)
 
 Turn what exists into the canonical set — **keeping original claims, marking them unverified**:
-- an existing spec → `SPEC.md` sections (entities / states & transitions / actors / invariants /
+- an existing spec → `PRODUCT_SPEC.md` sections (entities / states & transitions / actors / invariants /
   cross-section composition / glossary); if the host's spec is already in this shape, **do not rewrite it** —
   just confirm structure and fill the two things hosts usually lack: the **surface registry** (Phase 2) and
   the **test matrix** (Phase 5).

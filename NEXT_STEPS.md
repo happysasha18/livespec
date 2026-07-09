@@ -5,7 +5,7 @@
 
 The flat docs now read as trees, and every define-by-exclusion opener leads positively. Both were shown as a
 grouping proposal first and approved before any restructure.
-- SPEC.md — 20 flat `##` sections became one opener + 7 named parents (the build loop · what the human sends
+- PRODUCT_SPEC.md — 20 flat `##` sections became one opener + 7 named parents (the build loop · what the human sends
   back · when something breaks · starting and adopting a project · the rules and who applies them · what holds
   the bounds · reference). Done by a deterministic script: content + every bracket anchor preserved (431→431),
   each parent gained one plain orienting line. Version → v0.16.0.

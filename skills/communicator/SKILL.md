@@ -44,17 +44,20 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
 - **Show proactively, for approval — don't wait to be asked.** *(rule 3)* The moment there is a real was → became, put
    it in front of them. Don't sit on a finished change waiting for "show me"; surface it and ask.
 
-- **The capture echo — a wish hears itself land.** *(rule 12)* The moment a wish is intaken, the human hears the
-    intake line back as ONE plain sentence — what was heard, the door called (the door step's own
-    verdict, carried over unchanged), the name the work will answer to, its row number, and its
-    place on the product's map — changes feature X · a new feature · restructure (SPEC INV-37; the
-    map is the spec's scenarios + the architecture's nodes, and the verdict is also written into the
-    row's `map:` note): "caught: <the wish, compressed>. It's a feature, we'll call it X, row N — it
-    changes the catalog." No echo ⇒ the human
-    cannot know the request survived. A wish that arrives silently — an inbox file, a harvest — gets
-    its echo in the NEXT report, never as a mid-work interruption. A batch echoes one line per wish.
-    (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
-    we'll call it this and that".)
+- **The capture echo — a wish hears itself land.** *(rule 12)*
+    - The moment a wish is intaken, the human hears the
+      intake line back as ONE plain sentence — what was heard, the door called (the door step's own
+      verdict, carried over unchanged), the name the work will answer to, its row number, and its
+      place on the product's map — changes feature X · a new feature · restructure (SPEC INV-37; the
+      map is the spec's scenarios + the architecture's nodes, and the verdict is also written into the
+      row's `map:` note): "caught: <the wish, compressed>. It's a feature, we'll call it X, row N — it
+      changes the catalog."
+    - No echo ⇒ the human cannot know the request survived.
+    - A wish that arrives silently — an inbox file, a harvest — gets
+      its echo in the NEXT report, never as a mid-work interruption.
+    - A batch echoes one line per wish.
+      (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
+      we'll call it this and that".)
 
 - **Narrate the work while it runs — mark the beats.** *(rule 13)* Between the capture echo (rule 12)
     and the landing report the human is never left reading silence: when a beat lands — a pipeline
@@ -144,21 +147,24 @@ The form of the showing: one window, real data, retold as a small story, opened 
    one screen. Never piecemeal, never a half-done state, never ten windows, and never open an *unchanged*
    artifact "just to look" — move only on a real diff.
 
-- **Put the artifact where they'll actually see it — real data, never a path.** *(rule 5)* A local GUI → open it in the
-   browser/preview; a chat-only channel → inline the image or the example itself. Synthetic data only for your
-   own checks, always labelled `SYNTHETIC`. A sketch is shown ONLY under its `PROTOTYPE` label — opened,
-   framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
-   Never hand over a file path and make them go open it.
-   **The channel is picked by the SEAT (SPEC INV-67).** Seated locally (the human's machine: its
-   platform, its filesystem, a browser you can open) → render and open the window, per the profile's
-   show line. Seated remotely (running in the cloud, read through the human's browser) → the same
-   content as an artifact page the host renders, or inline in chat; a local path or an `open` that
-   lands nowhere is the unopened-window defect. Detect the seat before the first show of the session
-   and say which channel you picked. On a host that switched design-sync on (base
-   defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
-   project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
-   stays the authority for the landing itself. The design project is the team-review channel, never a
-   substitute for showing the real thing here.
+- **Put the artifact where they'll actually see it — real data, never a path.** *(rule 5)*
+   - A local GUI → open it in the
+     browser/preview; a chat-only channel → inline the image or the example itself.
+   - Synthetic data only for your
+     own checks, always labelled `SYNTHETIC`.
+   - A sketch is shown ONLY under its `PROTOTYPE` label — opened,
+     framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
+   - Never hand over a file path and make them go open it.
+   - **The channel is picked by the SEAT (SPEC INV-67).** Seated locally (the human's machine: its
+     platform, its filesystem, a browser you can open) → render and open the window, per the profile's
+     show line. Seated remotely (running in the cloud, read through the human's browser) → the same
+     content as an artifact page the host renders, or inline in chat; a local path or an `open` that
+     lands nowhere is the unopened-window defect. Detect the seat before the first show of the session
+     and say which channel you picked. On a host that switched design-sync on (base
+     defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
+     project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
+     stays the authority for the landing itself. The design project is the team-review channel, never a
+     substitute for showing the real thing here.
 
 - **Retell, don't reference.** *(rule 8)*
    - When reporting an event or a result, tell it as a small story — who did what, what would have
@@ -255,13 +261,15 @@ The register of the words themselves, and honesty about the result.
      list strongly helps exactly when it communicates in understandable words).
 
 
-- **Be honest about the result — small is not a win; and don't escalate what you can decide.** *(rule 7)* Don't sell a
-   micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak. And
-   only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
-   Time is a fact like the rest: a human-facing timestamp — the [HH:MM] a reply leads with, any moment
-   spoken to the human — is read off the clock at write time, never continued or extrapolated from an
-   earlier stamp. Quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
-   family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
+- **Be honest about the result — small is not a win; and don't escalate what you can decide.** *(rule 7)*
+   - Don't sell a
+     micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak.
+   - And
+     only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
+   - Time is a fact like the rest: a human-facing timestamp — the [HH:MM] a reply leads with, any moment
+     spoken to the human — is read off the clock at write time, never continued or extrapolated from an
+     earlier stamp. Quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
+     family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
 
 
 ### Asking for a decision
@@ -341,21 +349,26 @@ How the agent answers a question about the product or a done-claim.
       done by pack 0.8.x / prover 0.1.8; asserted (not re-checked): the adoption record's
       coverage claim"*
 
-- **The feature map on demand — the whole product readable on one ask.** *(rule 14)* When the human asks what
-    the product does — "show me all the features", "show the feature map", "what's in it today" — read the map
-    aloud AT ASK-TIME. The spec's scenario sections name the features. The current-vs-target header
-    splits shipped from promised at the [target] tag's own granularity — a scenario holding both reads
-    "shipped, with promised parts (named)", never one blanket status. The queue's open rows add each
-    in-flight feature's station (rule 9's vocabulary) and every queued NEW-verdict wish — its `map:`
-    note is its placement, so a wish the spec hasn't met yet is still on the map. The answer only
-    reads the living documents aloud — no third document, no feature list file, no cache: the spec's
-    scenarios and the architecture's nodes ARE the map (SPEC E-14). Each answer line obeys the line
-    law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
-    the status trailing quietly. Chat by default; a rendered page on the human's word. Never fire it
-    uninvited — routine reports keep the departures board's in-flight scope (rule 9). The whole map
-    comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
-    is empty" plus the bootstrap/adoption pointer. Never invent a list. (SPEC INV-38; his word
-    2026-07-06: "show me all the features" — one ask hands over the whole map, current as of that moment.)
+- **The feature map on demand — the whole product readable on one ask.** *(rule 14)*
+    - When the human asks what
+      the product does — "show me all the features", "show the feature map", "what's in it today" — read the map
+      aloud AT ASK-TIME. The spec's scenario sections name the features.
+    - The current-vs-target header
+      splits shipped from promised at the [target] tag's own granularity — a scenario holding both reads
+      "shipped, with promised parts (named)", never one blanket status. The queue's open rows add each
+      in-flight feature's station (rule 9's vocabulary) and every queued NEW-verdict wish — its `map:`
+      note is its placement, so a wish the spec hasn't met yet is still on the map.
+    - The answer only
+      reads the living documents aloud — no third document, no feature list file, no cache: the spec's
+      scenarios and the architecture's nodes ARE the map (SPEC E-14).
+    - Each answer line obeys the line
+      law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
+      the status trailing quietly. Chat by default; a rendered page on the human's word.
+    - Never fire it
+      uninvited — routine reports keep the departures board's in-flight scope (rule 9). The whole map
+      comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
+      is empty" plus the bootstrap/adoption pointer. Never invent a list. (SPEC INV-38; his word
+      2026-07-06: "show me all the features" — one ask hands over the whole map, current as of that moment.)
 
 
 ### Honoring his word
@@ -439,13 +452,17 @@ Who acts in the sentence, and which words a reader already knows.
    change", "the suite turns red". Passive voice is acceptable only when the actor is truly irrelevant.
 - **Address the reader as "you"** *(rule 8)* for what a person does; name the component ("the installer", "the
    prover") for what software does. Never "one" or "the user is expected to".
-- **Use words a reader recognizes without living in your head.** *(rule 13)* Natural, well-understood industry
-    language is good, even when it is a metaphor — "pipeline", "software house", "conveyor", "streamline",
-    "ships" all land because a developer already holds them. The words to avoid are invented internal
-    terms and private interpretations: an abstraction that means something only inside this project. When
-    such a term is genuinely needed (for example "stateful surface" or "axis"), define it in plain words
-    at first use (rule 3); after that it is safe to reuse. The test: would someone outside the project
-    recognize this word naturally? If yes, keep it. If it is your own coinage, define it or replace it.
+- **Use words a reader recognizes without living in your head.** *(rule 13)*
+    - Natural, well-understood industry
+      language is good, even when it is a metaphor — "pipeline", "software house", "conveyor", "streamline",
+      "ships" all land because a developer already holds them.
+    - The words to avoid are invented internal
+      terms and private interpretations: an abstraction that means something only inside this project.
+    - When
+      such a term is genuinely needed (for example "stateful surface" or "axis"), define it in plain words
+      at first use (rule 3); after that it is safe to reuse.
+    - The test: would someone outside the project
+      recognize this word naturally? If yes, keep it. If it is your own coinage, define it or replace it.
 
 ### Trim and shape
 
@@ -461,16 +478,21 @@ Cut what adds nothing, and shape the whole into a readable structure.
 - **Machine codes stay quiet and trailing.** *(rule 14)* The bracket anchors (`[INV-7]`, `[A-3]`, `[C-1]`) sit at
     the end of the sentence or clause they anchor. Prose never opens with a code or depends on one to be
     understood.
-- **A document is a tree of grouped topics, never one flat list.** *(rule 16)* Related rules or sections gather
-    under a named parent that says what the group is about, so a reader meets the few big areas first
-    and then the specifics under each. A long flat run of peer items at one level is the smell to fix:
-    gather them under two to five headed parents. Levels nest without skipping — one document title,
-    parts under it, topics under those, rarely deeper than three. Every heading names its group's
-    subject in a few plain words, so the outline alone tells a reader the document's shape. A numbered
-    item that stands as its own rule opens with a short bold title; a numbered item that is one step in
-    a procedure ("read the size, then draft the delta, then queue it") stays a bare ordered list, since
-    its order already carries the meaning. (Alexander 2026-07-09: flat is the defect — structure the
-    document, do more than label its items.)
+- **A document is a tree of grouped topics, never one flat list.** *(rule 16)*
+    - Related rules or sections gather
+      under a named parent that says what the group is about, so a reader meets the few big areas first
+      and then the specifics under each.
+    - A long flat run of peer items at one level is the smell to fix:
+      gather them under two to five headed parents.
+    - Levels nest without skipping — one document title,
+      parts under it, topics under those, rarely deeper than three.
+    - Every heading names its group's
+      subject in a few plain words, so the outline alone tells a reader the document's shape.
+    - A numbered
+      item that stands as its own rule opens with a short bold title; a numbered item that is one step in
+      a procedure ("read the size, then draft the delta, then queue it") stays a bare ordered list, since
+      its order already carries the meaning. (Alexander 2026-07-09: flat is the defect — structure the
+      document, do more than label its items.)
 
 
 ### Framing
@@ -481,17 +503,22 @@ Lead with what a thing is, and hold the contrast frame out.
     ("never delete a host file"), stated as a plain imperative. The contrast frame is banned outright by
     rule 15.
 - **Never the contrast frame — the hardest rule, and it holds in live chat too.** *(rule 15)* Never name a thing by
-    denying its neighbour: stating what something is by pairing it with a denial of the alternative. The
-    shapes are an em-dash or a comma leading into the denied neighbour in English, and the parallel Russian
-    constructions that set a negated word against the word meant to replace it. This governs casual replies
-    inside a running conversation as much as documents and artifacts; Alexander is allergic to the frame,
-    and it stays absent even mid-dialogue. Say what the thing IS in its own sentence. When a boundary
-    genuinely needs naming, give it its own plain sentence: "The prototype is the norm. The prose describes
-    it." The ban holds even when the frame feels like the sharpest available phrasing; that pull toward it
-    is the tell to rewrite. The linter's scissors check holds the floor (`scripts/spec-style-lint.py`); the
-    ceiling is a read-aloud that turns every denied-neighbour clause into its own positive sentence.
-    (Alexander 2026-07-09, restated with an explicit allergy: the frame stays out of chat replies to our
-    conversations, and every earlier text carrying it is a bug to sweep.)
+    denying its neighbour: stating what something is by pairing it with a denial of the alternative.
+    - The
+      shapes are an em-dash or a comma leading into the denied neighbour in English, and the parallel Russian
+      constructions that set a negated word against the word meant to replace it.
+    - This governs casual replies
+      inside a running conversation as much as documents and artifacts; Alexander is allergic to the frame,
+      and it stays absent even mid-dialogue.
+    - Say what the thing IS in its own sentence. When a boundary
+      genuinely needs naming, give it its own plain sentence: "The prototype is the norm. The prose describes
+      it."
+    - The ban holds even when the frame feels like the sharpest available phrasing; that pull toward it
+      is the tell to rewrite.
+    - The linter's scissors check holds the floor (`scripts/spec-style-lint.py`); the
+      ceiling is a read-aloud that turns every denied-neighbour clause into its own positive sentence.
+      (Alexander 2026-07-09, restated with an explicit allergy: the frame stays out of chat replies to our
+      conversations, and every earlier text carrying it is a bug to sweep.)
 
 
 **Verify each finished or edited piece of writing** — the checklist a good technical writer runs:

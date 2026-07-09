@@ -12,11 +12,11 @@
 # untracked scratch file sitting in the working tree.
 #
 # Freshness rule (row 61, SPEC M-6): a record dated-today-and-committed is not enough
-# on its own — it can be a record for a STALE state if SPEC.md changed again after it
+# on its own — it can be a record for a STALE state if PRODUCT_SPEC.md changed again after it
 # landed. So after the tracked-record check above passes, also require that the newest
-# commit touching <prover-dir> is at least as new as the newest commit touching SPEC.md
-# (equal, or SPEC.md's commit is an ancestor of the record's commit — a record may ship
-# in the very same commit as the SPEC.md change it covers).
+# commit touching <prover-dir> is at least as new as the newest commit touching PRODUCT_SPEC.md
+# (equal, or PRODUCT_SPEC.md's commit is an ancestor of the record's commit — a record may ship
+# in the very same commit as the PRODUCT_SPEC.md change it covers).
 
 set -euo pipefail
 
@@ -57,11 +57,11 @@ fi
 echo "OK (prover record): committed record(s) for $TODAY found:"
 printf '  %s\n' "${tracked[@]}"
 
-SPEC_COMMIT=$(git log -1 --format=%H -- SPEC.md)
+SPEC_COMMIT=$(git log -1 --format=%H -- PRODUCT_SPEC.md)
 RECORD_COMMIT=$(git log -1 --format=%H -- "$PROVER_DIR")
 
 if [ -z "$SPEC_COMMIT" ]; then
-  echo "OK (freshness): no SPEC.md in git history — freshness check skipped."
+  echo "OK (freshness): no PRODUCT_SPEC.md in git history — freshness check skipped."
   exit 0
 fi
 
@@ -73,11 +73,11 @@ elif git merge-base --is-ancestor "$SPEC_COMMIT" "$RECORD_COMMIT"; then
 fi
 
 if [ "$fresh" -ne 1 ]; then
-  echo "FAIL (prover record): the newest committed prover record predates the last SPEC.md change."
-  echo "  SPEC.md last changed in commit $SPEC_COMMIT; newest docs/prover/ commit is $RECORD_COMMIT."
+  echo "FAIL (prover record): the newest committed prover record predates the last PRODUCT_SPEC.md change."
+  echo "  PRODUCT_SPEC.md last changed in commit $SPEC_COMMIT; newest docs/prover/ commit is $RECORD_COMMIT."
   echo "  SPEC M-6 wants a re-check record for the PUSHED STATE — re-run the prover pass and commit its record after the SPEC change."
   exit 1
 fi
 
-echo "OK (freshness): record commit is not older than the last SPEC.md commit."
+echo "OK (freshness): record commit is not older than the last PRODUCT_SPEC.md commit."
 exit 0
