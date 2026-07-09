@@ -624,7 +624,7 @@ class TestDocRenderer(unittest.TestCase):
                                capture_output=True, text=True)
             self.assertEqual(r.returncode, 0, r.stderr)
             body = open(out).read()
-            for frag in ("<h1>Title</h1>", "<strong>bold</strong>", "<table>", "<td>2</td>"):
+            for frag in ('<h1 id="title">Title</h1>', "<strong>bold</strong>", "<table>", "<td>2</td>"):
                 self.assertIn(frag, body)
 
 

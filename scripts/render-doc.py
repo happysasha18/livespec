@@ -15,17 +15,53 @@ import sys
 from pathlib import Path
 
 
+def slugify(text):
+    """GitHub-style heading slug: strip inline markdown markers, lowercase,
+    drop punctuation (keep word chars, spaces, hyphens), spaces -> hyphens."""
+    text = re.sub(r"[`*]", "", text)
+    text = text.lower()
+    text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
+    return text.replace(" ", "-")
+
+
+def unique_slug(text, seen):
+    """Slug with GitHub dedupe: a repeated slug gains -1, -2, ..."""
+    base = slugify(text)
+    if base not in seen:
+        seen[base] = 0
+        return base
+    seen[base] += 1
+    return "%s-%d" % (base, seen[base])
+
+
+def rewrite_href(href):
+    """Resolve a doc cross-link: a relative .md target becomes its rendered
+    .html neighbour (path kept, extension swapped, fragment slugified); a bare
+    in-page #anchor is slugified to land on a heading id; http(s), mailto and
+    non-.md paths are left untouched."""
+    if href.startswith(("http://", "https://", "mailto:", "tel:", "//")):
+        return href
+    if href.startswith("#"):
+        return "#" + slugify(href[1:])
+    path, sep, frag = href.partition("#")
+    if path.endswith(".md"):
+        newpath = path[:-3] + ".html"
+        return newpath + ("#" + slugify(frag) if sep else "")
+    return href
+
+
 def inline(s):
     s = html.escape(s, quote=False)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"(?<!\w)\*([^*]+)\*(?!\w)", r"<em>\1</em>", s)
-    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', s)
+    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)",
+               lambda m: '<a href="%s">%s</a>' % (rewrite_href(m.group(2)), m.group(1)), s)
     return s
 
 
 def render(md):
-    out, i, lines = [], 0, md.split("\n")
+    out, i, lines, seen = [], 0, md.split("\n"), {}
     while i < len(lines):
         line = lines[i]
         if line.startswith("```"):
@@ -40,7 +76,8 @@ def render(md):
         m = re.match(r"^(#{1,6}) (.*)$", line)
         if m:
             n = len(m.group(1))
-            out.append("<h%d>%s</h%d>" % (n, inline(m.group(2)), n))
+            hid = unique_slug(m.group(2), seen)
+            out.append('<h%d id="%s">%s</h%d>' % (n, hid, inline(m.group(2)), n))
             i += 1
             continue
         if re.match(r"^(-{3,}|\*{3,})\s*$", line):

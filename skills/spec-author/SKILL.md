@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.25
+  version: 0.1.26
 ---
 
 # Spec Author
@@ -324,10 +324,11 @@ is the anchor-ownership machinery extended a level up, never a second machine to
 inline in the prose and the one coverage table binds them. Shard into per-feature files only for a
 genuinely huge project, and only by explicit call.
 
-**The links are rendered — resolution queued.** The source stays plain Markdown — a tag plus one table.
-Rendered pages do not yet resolve bracket codes or `.md` cross-links to their section anchors; that
-resolution is queued (ROADMAP row 195). Until it lands, a reader follows a tag by searching the source,
-not by clicking a rendered link.
+**The source is plain Markdown; the render resolves the links.** The source stays plain Markdown — a
+tag plus one table. When a doc is rendered, a relative `.md` cross-link opens its rendered `.html`
+neighbour and its `#anchor` lands on the target heading (ROADMAP row 195, shipped 2026-07-10). Linking
+a trailing bracket code to its Formal-index row stays an optional later leg; until that lands, a reader
+follows a bare tag by searching the source.
 
 **On live-spec itself.** live-spec is a package, but its scenarios ARE the product's features, so it
 dogfoods the web/app row: each person-facing scenario heading tags `[feature: F-x]` and the Feature
