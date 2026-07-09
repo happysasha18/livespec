@@ -36,6 +36,46 @@ theirs, in plain language, so customization is discoverable rather than hidden i
 - One home for the setting catalog so the card and the on-demand answer read from the SAME source
   (one-fact-one-home), and the coverage stays honest as new settings are added.
 
+## Field scan (2026-07-09 evening, researched on his ask — how the field does onboarding)
+
+Surveyed: CLI init wizards (npm/cargo/create-next-app, eslint --init), the zero-config movement
+(Prettier, Vite, Biome), IDE walkthroughs (VS Code), contextual tips (Figma/Linear), AI-agent packs
+(Claude Code /init + CLAUDE.md, Cursor rules, Copilot instruction files, BMAD installer), and the
+disclosure research (Nielsen Norman: linear tours of 8–12 steps cause drop-off; wizards are for 3–5
+required, sequence-dependent, uninferable decisions only).
+
+**The consensus, in one line: inspect first · ask one thing · tell one thing · write the rest to a
+skimmable file · let the other settings introduce themselves at first relevance.** CLI tooling migrated
+one-way from init questionnaires to defaults-plus-editable-file; AI tools converged on
+inspect-then-confirm (the agent reads the repo and drafts; the human corrects a draft, which is
+cheaper than answering questions). An upfront ask stays justified only for a fact that is uninferable
+AND forks everything downstream — and even then it is phrased as a stated default to confirm, never a
+blank menu.
+
+**Applied to live-spec's onboarding (the recommended shape for the spec delta):**
+1. At attach, INSPECT the project first; never ask what the tree already answers.
+2. ONE confirm-or-correct question: project.kind, stated as an inference ("this looks like a static
+   site — right?"). The kind law stays satisfied: the human's word still decides, the inference only
+   cheapens the deciding.
+3. budget.pressure is TOLD in one line with its escape ("full rigor; say 'work lean' when time is
+   short"), never asked.
+4. The settings card (mockup v2) shows ONCE after those two lines, and rebuilds on demand from the live
+   settings ("what can I customize?"). The settings ladder's files stay the one readable home; the card
+   is a projection, never a second truth.
+5. The remaining settings surface CONTEXTUALLY, one line at first relevance: the push gate at the first
+   push, design-sync at the first visual component, worker tiering at the first delegation. A tip whose
+   trigger can never fire for a newcomer is a defect.
+6. Never a multi-screen wizard; total forced interaction = one question + one told default.
+
+**Anti-patterns to keep out (each observed in the field):** wizard fatigue / question forms · a settings
+dump disguised as a summary (a card that itself needs onboarding) · asking what is inferable · defaults
+so often wrong that the confirm becomes a read-everything · an unsafe re-run that clobbers hand edits ·
+always-on rule bloat (everything loaded everywhere).
+
+Key sources: code.claude.com/docs/en/commands (/init) · cursor.com/docs/rules ·
+docs.github.com/copilot/customizing-copilot · code.visualstudio.com/api/ux-guidelines/walkthroughs ·
+docs.bmad-method.org/how-to/install-bmad · uxpin.com/studio/blog/what-is-progressive-disclosure.
+
 ## Grounding / kin
 
 - Kin to the departures board / feature-map-on-demand (communicator) — a SHOW surface, feature language.
