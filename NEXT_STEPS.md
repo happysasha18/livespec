@@ -18,7 +18,7 @@ Suite 207 green, 1 expected pre-push red (prover-record, M-6). deploy re-sync st
 ## LIVE STATE (2026-07-09, session 28)
 Versions: pack 0.9.0 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.13 · spec-author 0.1.19 ·
 build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.0. Suite 207 green (1 expected
-pre-push red). main HEAD LOCAL (rename+nesting commit); origin behind. Persona = PROJECT MANAGER, plain words.
+pre-push red). main HEAD LOCAL (session-29 readability + skill-count fixes, `8923969`); origin behind. Persona = PROJECT MANAGER, plain words.
 Opus (Fable pulled 2026-07-07). Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire`
 (not gated; a normal word, review as likely false positive).
 Owed before a push: (1) a product-prover pass over ALL of session 27+28 (sweep, restructure, English, rename),
@@ -29,13 +29,17 @@ rules + 8-check" — separate repo, his call to bump to "16 + 10".
 Approved order: **finish the English/nesting sweep → the prover-wish (2) → build the feature/flow format (3)
 → tlvphoto migration in ITS window (4) → authoring-terminology.** The product-prover pass is owed before any push.
 
-1. **Finish English + one-thought-per-paragraph + bullet-nesting** across the still-English docs (PRODUCT_SPEC,
-   ARCHITECTURE, README, OVERVIEW, remaining skills). Rules: (a) prose/glosses → English; (b) his dated quotes +
-   ❌/✅ examples → English paraphrase keeping date, a minimal Russian token only for a genuine Russian-language
-   pitfall, glossed — NEVER coined-metaphor gibberish; (c) FUNCTIONAL Russian STAYS (`spec-style-lint.py` +
-   `tests/test_prose_gate.py` fixtures). Very long bullets get an inner level, STRUCTURE-ONLY (words unchanged).
-   CAUTION: translate any suite-pinned check-phrase (`tests/test_traceability.py`) with its doc IN LOCKSTEP.
-   Best from a fresh clean pass; ROADMAP verbatim quotes = a separate later call.
+1. **DONE (session 29, 2026-07-09).** Readability sweep landed. README + PRODUCT_SPEC run-on paragraphs split
+   into one-thought-per-paragraph, long enumerations nested as sub-bullets — STRUCTURE-ONLY, word-token diff
+   empty vs HEAD, Formal index (tables) byte-identical, traceability green (commit `afab9b3`). ARCHITECTURE +
+   OVERVIEW prose already clean (their long lines are tables, not run-ons). De-Russification of live docs was
+   already complete (no Cyrillic in the four docs or any SKILL.md). SKILLS: a responsible review (his call —
+   "skills were probably fine") confirmed NO prose work needed — the recent scissors/opener/structure passes
+   hold, long instruction-bullets are coherent not bundled. The review DID surface two real staleness bugs,
+   both fixed (commit `8923969`): live-spec-base said "six skills"/listed five (→ seven, all listed);
+   product-prover "Two depths/Both modes" was stale against three review modes (→ "Three modes"). Copy/count
+   fixes only, no rule changed, not test-pinned. OPEN for push-prep: version-bump question on the two edited
+   skills (I left versions — no rule changed, so no banner cascade; his convention call if he wants a bump).
 2. **PROVER-WISH — from the tlvphoto window, queued here (`docs/wishes/2026-07-09-prover-unwritten-seams.md`).**
    Teach `product-prover` to flag a stateful surface whose behaviour is not stated for every situation it can
    reach — especially "when another surface is present/active" — beyond only the seams an author wrote; plus a
