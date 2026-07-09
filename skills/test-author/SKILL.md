@@ -81,6 +81,13 @@ screen — both past every green desktop run.)
   inspect the output. A source-string match on such a fact only reveals a matrix defect; the row still owes a real test.
 - **Red first, proven.** A new test runs against the pre-change state (or the bug) and FAILS before
   the implementation makes it pass; the red run is recorded. A test born green proves nothing.
+- **A geometry fact is asserted relative, wide, and long (SPEC INV-78).** A centering or
+  positioning fact asserts relative geometry — the element's center within ε of the viewport's
+  center — at two or more viewport sizes, and after N consecutive steps of the interaction, so
+  cumulative drift shows. An absolute-pixel assertion at one viewport after one step passes forever
+  while each next step lands further off-center. (Born of a real bug: centering computed by an
+  absolute shift that differed from the screen size — every next image further off, every one-step
+  test green.)
 - **Never edit a test to make a change pass.** A red test means the change or the matrix cell is
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned

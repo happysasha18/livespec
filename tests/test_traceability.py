@@ -2425,3 +2425,14 @@ class TestFieldLessons(unittest.TestCase):
             self.assertIn(boundary, ta, "test-author lost the named boundary: %s" % boundary)
         # the honest claim: the suite says what it cannot see
         self.assertIn("what it cannot see", ta)
+
+    def test_relative_geometry_assertions(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-78 |", spec, "Formal index lost INV-78")
+        self.assertIn("relative, wide, and long", spec)
+        ta = re.sub(r"\s+", " ", read("skills/test-author/SKILL.md"))
+        self.assertIn("relative, wide, and long", ta)
+        # the three axes: relative geometry, multiple viewports, consecutive steps
+        self.assertIn("two or more viewport sizes", ta)
+        self.assertIn("consecutive steps", ta)
+        self.assertIn("cumulative drift", ta)
