@@ -10,10 +10,13 @@ build-pipeline 0.2.42 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.1
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
 **RUN items 1-5 PUSHED 2026-07-09** on his gate ("after 3 and 5 you can push"): items 1-3 at `1eb7530`,
 items 4-5 at `584298a`. Pre-push gates green both times. Records under `docs/prover/2026-07-09-*`. Rows
-173-179 marked landed in ROADMAP (archive at the item-7 milestone). **Item 6 (onboarding) PARKED at the
-mockup** — a labelled prototype on real settings is built + opened for his eye
-(`scratchpad/onboarding-mockup.html`); the spec/build waits on his taste verdict, per mockup-first
-(prototype-norm). **Item 7 (1.0 gate) waits on his explicit "go"** — never bumped/pushed without it. This
+173-179 marked landed in ROADMAP (archive at the item-7 milestone). **Item 6 (onboarding): mockup v1 BOUNCED by his eye
+(2026-07-09 evening: parameters unexplained, no "why does the user need this"); v2 rewritten
+consequence-first (every row opens with what the setting changes for him; helpers get one-line jobs;
+ladder gets an example) + opened — PARKED again on his verdict** (v2 in the session scratchpad;
+`onboarding-mockup-v2.html`). **His same-evening verdict on the item-5 validation artifact REOPENED
+item 5** — see the amended item 5 line + wish files. **Item 7 (1.0 gate) waits on his explicit "go"** —
+never bumped/pushed without it. This
 NEXT_STEPS update is local; rides the next authorized push. Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
 + 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
@@ -60,7 +63,13 @@ plain-words) lives in his profile + the installed hooks, not memory.
    test `TestArchitectureTiers`. (c) ran the method READ-ONLY over tlvphoto (touched nothing; derived doc in
    scratchpad, opened for him) — found + folded two scaffold gaps: a derive-pipeline tier (data/ML) and the
    static-first + edge-backend blend. tlvphoto doc NOT committed (another project's internals stay out of the
-   public pack). Detail: JOURNAL 2026-07-09.
+   public pack). Detail: JOURNAL 2026-07-09. **REOPENED 2026-07-09 evening by his verdict on the derived
+   doc:** the method still owes a RUNTIME view (each product-spec flow traced through the nodes) and a
+   PLACEMENT view (what runs where: build-time / CDN / client / edge / external, + load-bearing tech), and
+   the validation run skipped the method's own mandated budgets + fact-ownership table. Wish:
+   `docs/wishes/2026-07-09-architecture-runtime-placement-views.md`. Sibling intake, same evening:
+   `docs/wishes/2026-07-09-test-method-lessons-tlvphoto-week.md` (5 escaped-bug classes from the
+   tlvphoto/exhibition-engine week → test-author/prover deltas; that project stays audit-only here).
 6. **Project onboarding — PARK at mockup.** Wish `docs/wishes/2026-07-09-project-onboarding-what-can-i-
    customize.md` (how the user discovers what they can customize: kind/budget/profiles/skill-fit/settings-
    ladder). VISIBLE surface ⇒ mockup-first (prototype-norm): build a labelled mockup on real data, STOP, his
