@@ -40,8 +40,11 @@ LOCAL scissors-sweep commit; origin still `1cff42b` (push owes a prover pass fir
 = PROJECT MANAGER, plain product words. Runs on Opus (Fable pulled 2026-07-07).
 Open before a push: (1) a product-prover pass on the sweep + its record `docs/prover/2026-07-09-*.md`;
 (2) the profile count in the PLAYBOOK repo still reads "14 rules + 8-check" — a separate repo, his window / his
-call to bump to "16 + 10"; (3) the kin "Not for X…" negation-openers (define-by-exclusion) — an optional
-separate pass, awaiting his yes/no.
+call to bump to "16 + 10".
+DECIDED 2026-07-09 (his word): also DO the "Not for X…" negation-opener pass — turn every define-by-exclusion
+OPENER across the living docs to a positive first move, the same playbook as scissors (the `negation-opener`
+linter is the finder). Keep the honest exclusion facts: a "when NOT to use" section still names what to skip
+and a genuine prohibition still stands, they only lead positively. Runs alongside the structure pass named above.
 
 ## Forward queue (mirrors ROADMAP.md)
 
