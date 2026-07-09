@@ -24,10 +24,10 @@ READMEs, which legitimately use CAPS/second person). The gate takes an explicit 
   (a) `**User story:**` lead → block to next blank line; (b) `>` blockquote → per line; (c)
   `NOTE (informative)` lead → block to next blank line. Guard: a pytest asserts no `[INV-…]` anchor sits
   inside a `>` region in gated files (a normative rule may not hide in the informative lane).
-- Needle collision: promoting second-person collides with pinned phrases (e.g. heading "…what you know to
-  ask"). Resolution: rewrite to register-clean + re-point the needle in the SAME commit (e.g. "what the
-  author knows to ask"); or exempt only if genuinely informative; never leave it. `TestNeedleRegisterClean`
-  lints every needle string and asserts 0 errors — closes the "re-point to a new defect" loophole.
+- Check-phrase collision: promoting second-person collides with pinned phrases (e.g. heading "…what you know to
+  ask"). Resolution: rewrite to register-clean + re-point the check-phrase in the SAME commit (e.g. "what the
+  author knows to ask"); or exempt only if genuinely informative; never leave it. `TestCheckPhraseRegisterClean`
+  lints every check-phrase string and asserts 0 errors — closes the "re-point to a new defect" loophole.
 
 ## 2. Mechanical redundancy pre-check (no LLM) — scripts/spec-redundancy-precheck.py
 Segment into sentence/bullet units; normalize (reuse linter scrub, lowercase, stoplist) → content tokens T +
@@ -60,13 +60,13 @@ always visible; expiry ≤ date+30d; expired reverts to error (time-travel fixtu
 ## 5. Unified DONE-GATE — scripts/spec-done-gate.py (+ tests/test_done_gate.py)
 GREEN iff ALL hold: (1) style-lint 0 errors with all promoted rules; (2) redundancy pre-check open == 0;
 (3) LLM-judge self-test passed + 0 surviving definite/likely; (4) anchor multiset unchanged vs baseline;
-(5) traceability needles green + TestNeedleRegisterClean; (6) full suite green minus pinned skips; (7) waiver
+(5) traceability check-phrases green + TestCheckPhraseRegisterClean; (6) full suite green minus pinned skips; (7) waiver
 hygiene (no expired-in-use, TestWaivers + TestDebtRatchet green); (8) whole-doc-rewrite path: fresh-checker
 fact-preservation artifact recorded. Prints GREEN + debt summary or RED + failing condition. Commit only GREEN.
 
 ## Build order
 1. Waiver + ratchet (prereq for landing the 317 accumulated findings as dated debt instead of a silent park).
-2. Promote warnings + new mechanical rules + exemptions + needle fix (highest ROI).
+2. Promote warnings + new mechanical rules + exemptions + check-phrase fix (highest ROI).
 3. Mechanical redundancy pre-check.
 4. LLM-judge protocol (most complex, least reliable → last, behind its mitigation stack).
 5. Unified done-gate wiring + 8 pytest classes.

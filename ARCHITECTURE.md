@@ -1,8 +1,10 @@
-# live-spec — Architecture (v0.2.3, 2026-07-09)
+# live-spec — Architecture (v0.2.4, 2026-07-09)
 
 This is how live-spec is built: the named nodes that the spec's facts live in. One node carries one name
 and one responsibility — the one-surface-one-name rule, applied to structure. The doc was itself proven
-with the architecture lens before the test matrix was derived (see the Prover record below).
+with the architecture lens before the test matrix was derived (see the Prover record below). In the
+field's vocabulary the nodes are the C4 model's building blocks and the arc42 building-block view (§5); the
+seams below are their relationships, and the quality budgets are arc42 quality scenarios (§10).
 
 The agent keeps this doc up to date by assignment. When a wish lands, its new facts go to the node that already
 owns their kind, and the pin is refreshed. A fact with no home yet goes to the node that fits. A large or

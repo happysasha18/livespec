@@ -2266,3 +2266,33 @@ class TestSmallDesignHoles(unittest.TestCase):
                          "ARCHITECTURE still reads as if guardrails owns INV-67 (F4)")
         self.assertIn("INV-67 (the showing channel matches the session's seat)", arch,
                       "INV-67 no longer reads as communicator's own")
+
+
+class TestAuthoringTerminology(unittest.TestCase):
+    """The 1.0 RUN item 4: plain-language rename (the coined 'needle' → 'traceability check-phrase') and
+    the standard-vocabulary crosswalk grounding the pack's terms in the requirements-engineering corpus
+    (ISO 29148, arc42, C4). String level."""
+
+    def test_extract_tool_speaks_check_phrase(self):
+        tool = read("scripts/needle-extract.py")
+        self.assertIn("def trace_phrases_in", tool, "the extract tool kept the coined 'needles_in'")
+        self.assertNotIn("def needles_in", tool)
+        self.assertIn("check-phrase", tool, "the tool no longer speaks 'check-phrase'")
+
+    def test_no_needle_metaphor_in_authoring_docs(self):
+        # the live authoring surfaces speak the plain term, never the old metaphor
+        for rel in ("skills/spec-author/SKILL.md", "docs/prose-quality-gate-design.md"):
+            body = read(rel).lower()
+            self.assertNotIn("needle", body, "%s still carries the coined 'needle' metaphor" % rel)
+            self.assertIn("check-phrase", body, "%s lost the plain 'check-phrase' term" % rel)
+
+    def test_standard_vocabulary_crosswalk(self):
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("Standard vocabulary", sa, "spec-author lost the vocabulary crosswalk")
+        for std in ("ISO 29148", "arc42", "C4"):
+            self.assertIn(std, sa, "crosswalk lost the standard: %s" % std)
+        self.assertIn("measurable or verifiable here", sa,
+                      "crosswalk lost the borrowed-authority boundary")
+        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
+        for std in ("C4", "arc42"):
+            self.assertIn(std, arch, "ARCHITECTURE lost the %s lineage pointer" % std)

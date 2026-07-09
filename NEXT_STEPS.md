@@ -4,14 +4,15 @@ Sessions 28–29 landings (structure/openers/English/nesting/SPEC.md→PRODUCT_S
 prover-wish INV-72) are committed history — full detail in JOURNAL.md.
 
 ## LIVE STATE (2026-07-09, session 29)
-Versions: pack 0.9.3 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.21 ·
-build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.3.
-**Suite 220 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
+Versions: pack 0.9.4 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.22 ·
+build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.4.
+**Suite 223 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
-**RUN items 1-3 all COMMITTED LOCAL this session, NOT pushed** (INV-72 prover-wish · feature-coverage trace
-E-29/INV-73 · the 7 small holes rows 173-179) — building the 1.0 run in a batch, push on his go. Records:
-`docs/prover/2026-07-09-feature-coverage-trace.md`, `docs/prover/2026-07-09-small-holes.md`. Rows 173-179
-marked landed in ROADMAP (archive at the item-7 milestone). Last push 2026-07-09 ~15:04 (`20a458f`). Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
+**RUN items 1-3 PUSHED 2026-07-09 (`1eb7530`)** on his go ("after 3 and 5 you can push") — INV-72
+prover-wish · feature-coverage trace E-29/INV-73 · the 7 small holes rows 173-179. Pre-push gate green.
+Records: `docs/prover/2026-07-09-feature-coverage-trace.md`, `docs/prover/2026-07-09-small-holes.md`. Rows
+173-179 marked landed in ROADMAP (archive at the item-7 milestone). **Next push gate: after item 5** (his
+word); items 4-5 land local, push together after 5. Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
 + 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
 (bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
@@ -47,9 +48,11 @@ plain-words) lives in his profile + the installed hooks, not memory.
    T-9 resume re-fence (crit 6) · milestone = indivisible pen-stage vs bug · held-for-milestone state named
    apart from bug-parked · lane-claim tie-breaker (git ancestry / session token) · tight-rung rollback ·
    ARCHITECTURE INV-67 prose. No new anchors; short-form prove. Detail: JOURNAL 2026-07-09.
-4. **Authoring terminology + rename — LOOP.** Glossary-corpus (requirements-eng, arc42, C4, ISO 29148, BMAD,
-   Kiro); rename code var `needles`→`trace_phrase`, speak "traceability check-phrases"; enrich spec-author +
-   architecture vocabulary from the corpus.
+4. **Authoring terminology + rename — DONE (local, pushes with 5).** Coined "needle" → "traceability
+   check-phrase" across live surfaces (the extract tool's `trace_phrases_in`, spec-author, prose-gate design
+   doc; test loop-vars left as internal iterators; filename kept for the dated records). Standard-vocabulary
+   crosswalk added to spec-author (ISO 29148 · arc42 · C4 · ISO 25010) + a lineage pointer in ARCHITECTURE.
+   Test `TestAuthoringTerminology`. Detail: JOURNAL 2026-07-09.
 5. **Architecture tiers by project type — LOOP build; its tlvphoto check is READ-ONLY + SHOW-not-ship.**
    (b) classifier-driven ARCHITECTURE structure (web: frontend/backend, template/renderer; package: skills/
    nodes) + per-type authoring instructions. (c) run the method read-only over tlvphoto, artifacts to

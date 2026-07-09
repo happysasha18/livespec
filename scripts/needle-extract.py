@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
-"""needle-extract — the mechanical safety gate for the SPEC-humanize migration.
+"""trace-phrase extract — the mechanical safety gate for the SPEC-humanize migration.
+
+A *traceability check-phrase* is a verbatim prose literal the test suite asserts a section still
+carries; this tool derives them live so a section rewrite can be proven lossless. (Filename kept for the
+dated records that reference it; the vocabulary is plain: "check-phrase", never the old "needle".)
 
 Direction matters (Fable MUST-FIX 2): we match the traceability suite's verbatim prose literals
 AGAINST a section, never grep the section's prose for fragments. And the check is SECTION-SCOPED
-(Fable MUST-FIX 1): a needle the OLD section carried must still live in the NEW section — a copy
+(Fable MUST-FIX 1): a check-phrase the OLD section carried must still live in the NEW section — a copy
 surviving elsewhere in the doc does NOT excuse dropping it here.
 
 The registry is `tests/test_traceability.py` (+ any skill doc that echoes a clause; pass extra files
-with --also). No copy of the needles is kept anywhere — this script derives them live, so the tests
-stay the one home.
+with --also). No copy of the check-phrases is kept anywhere — this script derives them live, so the
+tests stay the one home.
 
 Flow per batch:
   1. BEFORE editing:  needle-extract.py --section "What live-spec is" --capture /tmp/nx.json
   2. edit PRODUCT_SPEC.md
   3. AFTER editing:   needle-extract.py --section "What live-spec is" --verify /tmp/nx.json
-     -> exit 0 and "OK: N needles preserved"  |  exit 1 and the list of DROPPED needles.
+     -> exit 0 and "OK: N check-phrases preserved"  |  exit 1 and the list of DROPPED check-phrases.
 
-Also: --list dumps every needle the current section carries; --between A B uses a line range instead
-of a heading name (for sections whose heading text you don't want to type).
+Also: --list dumps every check-phrase the current section carries; --between A B uses a line range
+instead of a heading name (for sections whose heading text you don't want to type).
 """
 import ast, re, sys, os, json, argparse
 
@@ -34,8 +38,8 @@ def registry_literals(extra_files):
     """Every plain, prose-like string constant in the traceability suite (+ any --also file).
 
     Conservative on purpose: over-collecting is safe (we only ever ASSERT a phrase we kept stays),
-    under-collecting drops a needle. So we take every string constant that reads like prose and skip
-    only format strings / anchors / paths.
+    under-collecting drops a check-phrase. So we take every string constant that reads like prose and
+    skip only format strings / anchors / paths.
     """
     lits = set()
     for path in [TESTS] + list(extra_files):
@@ -67,9 +71,9 @@ def section_text(name=None, between=None):
     return "\n".join(out)
 
 
-def needles_in(text, extra_files):
+def trace_phrases_in(text, extra_files):
     body = norm(text)
-    return sorted(n for n in registry_literals(extra_files) if n in body)
+    return sorted(p for p in registry_literals(extra_files) if p in body)
 
 
 def main():
@@ -86,28 +90,28 @@ def main():
     if not text.strip():
         print("ERROR: empty section — check the heading text / line range", file=sys.stderr)
         return 2
-    current = needles_in(text, args.also)
+    current = trace_phrases_in(text, args.also)
 
     if args.capture:
         json.dump(current, open(args.capture, "w"), ensure_ascii=False, indent=0)
-        print("captured %d needles -> %s" % (len(current), args.capture))
+        print("captured %d check-phrases -> %s" % (len(current), args.capture))
         return 0
 
     if args.verify:
         want = json.load(open(args.verify))
         body = norm(text)
-        dropped = [n for n in want if n not in body]
+        dropped = [p for p in want if p not in body]
         if dropped:
-            print("DROPPED %d needle(s) — the rewrite lost verbatim prose the suite asserts:" % len(dropped))
-            for n in dropped:
-                print("  - " + (n[:110] + ("…" if len(n) > 110 else "")))
+            print("DROPPED %d check-phrase(s) — the rewrite lost verbatim prose the suite asserts:" % len(dropped))
+            for p in dropped:
+                print("  - " + (p[:110] + ("…" if len(p) > 110 else "")))
             return 1
-        print("OK: %d needles preserved (section-scoped)." % len(want))
+        print("OK: %d check-phrases preserved (section-scoped)." % len(want))
         return 0
 
-    for n in current:
-        print(n)
-    print("\n(%d needles in section)" % len(current), file=sys.stderr)
+    for p in current:
+        print(p)
+    print("\n(%d check-phrases in section)" % len(current), file=sys.stderr)
     return 0
 
 

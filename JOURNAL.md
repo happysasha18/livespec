@@ -2,6 +2,32 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-09 (session 29) — authoring terminology: the coined "needle" retired, a standard-vocabulary crosswalk added (RUN item 4)
+
+**What:** Two authoring cleanups. First, the plain-language sweep: the pack had a coined metaphor,
+"needle", for a *traceability check-phrase* — a verbatim prose literal the test suite asserts a section
+still carries. That metaphor is the exact thing the no-coined-names rule bans, so it's gone from every live
+surface — the `needle-extract.py` tool (its `needles_in` function → `trace_phrases_in`, its messages now
+say "check-phrase"), the spec-author skill, and the prose-quality-gate design doc. The 200-odd local loop
+variables named `needle` inside the test files were left as-is: an internal iterator name is not a surface
+a reader reads, and renaming them is churn without value; the sweep targeted the language a reader meets.
+The tool's filename stays `needle-extract.py` because the dated prover records reference it by that name.
+
+Second, a **standard-vocabulary crosswalk** in spec-author: a compact table mapping our house terms to the
+recognized requirements-engineering corpus — a use-case-first scenario ≈ a use case / user story (ISO
+29148); composition across axes ≈ cross-cutting concerns (arc42 §8) / C4 relationships; the Formal index +
+check-phrases ≈ a requirements traceability matrix; the facet sweep ≈ non-functional requirements (ISO
+25010); nodes + seams ≈ C4 building blocks + arc42 §5. A one-line lineage pointer went into ARCHITECTURE's
+intro too.
+
+**Why this shape:** the crosswalk grounds the pack in a language a requirements engineer already speaks
+without importing that field's document shapes — the table states the two boundaries it does not erase: the
+spec stays one use-case-first document (never the Entities/States/Actors chapters), and a borrowed term
+joins only when it is measurable or verifiable here, never for the authority alone. Behaviour-neutral
+refactor for the rename (the tool re-run by deed, output unchanged); the crosswalk is new prose with a
+string test (`TestAuthoringTerminology`). Suite 220 → 223 green. Versions: spec-author 0.1.21→0.1.22,
+architecture v0.2.3→v0.2.4, pack 0.9.3→0.9.4. Committed local; pushes with item 5 (his gate: "after 3 and 5").
+
 ## 2026-07-09 (session 29) — the seven small design holes closed (rows 173-179 / findings F4-F10)
 
 **What:** The 1.0 RUN's item 3. The 2026-07-09 full re-prove queued seven latent design questions; each is
