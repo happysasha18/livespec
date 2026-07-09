@@ -518,7 +518,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
         self.assertIn("Calques are the same bug across a language split", cm,
                       "communicator rule 6 lost the calque elaboration")
-        self.assertIn("вердикт растяжки старше ярлыка", cm, "communicator lost the field example")
+        self.assertIn("the stretch's verdict outranks the label", cm, "communicator lost the calque example")
 
 
 class TestFacetSweep(unittest.TestCase):
@@ -563,7 +563,7 @@ class TestFacetSweep(unittest.TestCase):
         self.assertIn("`[default]`", sa, "spec-author lost the [default] tag rule")
         cm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
         self.assertIn("standard-facet sweep", cm, "communicator lost the facet tradeoff-report line")
-        self.assertIn("a veto becomes a new wish", cm)
+        self.assertIn("veto becomes a new wish", cm)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         self.assertIn("standard-facet sweep", bp, "build-pipeline step 1 lost the sweep sentence")
         self.assertIn("canonical list lives in spec-author", bp)
@@ -1036,7 +1036,7 @@ class TestWorkerContract(unittest.TestCase):
         pipeline = read(os.path.join("skills", "build-pipeline", "SKILL.md"))
         flat_pipe = " ".join(pipeline.split())
         for needle in (
-            "the brief ARMS the worker for the workshop",
+            "the worker never hunts context",
             "WATCHED-line duty",
             "carries the CLOCK",
             "never an invented hour",
@@ -1303,7 +1303,7 @@ class TestMinedGapFolds(unittest.TestCase):
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         for phrase in ("The CHANGELOG speaks to the USER, the journal to the builder",
                        "one concrete example from real output",
-                       "function names, internal ids, and row numbers live in the journal instead",
+                       "Function names, internal ids, and row numbers live in the journal instead",
                        "no doc pins a drifting version number in prose"):
             self.assertIn(phrase, bp, "build-pipeline step 9 lost the docs discipline: %s" % phrase)
         sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
@@ -1426,7 +1426,7 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("INV-28", "never chose to learn", "one fact = one standalone sentence"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
-        for needle in ("coined feature name", "INV-28", "one fact = one standalone sentence"):
+        for needle in ("coined feature name", "INV-28", "One fact = one standalone sentence"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
         base = read(os.path.join("skills", "live-spec-base", "SKILL.md"))
         self.assertIn("coined feature name", base,
@@ -1555,7 +1555,7 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("Identity", "Digest", "Heartbeat",
                        "which wish is in hand and which station it stands at",
                        "digests what the station produced",
-                       "a worker-closed station becomes the senior's beat",
+                       "worker-closed station becomes the senior's beat",
                        "beatless stretch past ~10 minutes owes its heartbeat [default]",
                        "never a test count"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)

@@ -39,19 +39,16 @@ are GUIDELINES that every future project will inherit, so they come before termi
 migration. Order he and I agreed: **English + paragraph sweep → product-prover pass → build the
 feature/flow format → authoring-terminology corpus.**
 
-1. **English + one-thought-per-paragraph sweep** (ACTIVE, next). Every reader-facing file to good English,
-   long paragraphs split so each holds one thought. Three species of Russian, handled differently:
-   (a) prose + inline glosses → English (the flagged «покажи все фичи» → "show me all the features" is
-   DONE everywhere); (b) his dated verbatim quotes + the ❌/✅ teaching examples → English paraphrase
-   keeping date + attribution, but KEEP a minimal Russian token only where the lesson is literally about a
-   Russian-language pitfall (a Russian scissors form, a Russian calque) with an English gloss; (c)
-   FUNCTIONAL Russian STAYS untouched — the scissors detector `scripts/spec-style-lint.py` and the fixtures
-   in `tests/test_prose_gate.py` implement Russian-form detection, removing it breaks the feature.
-   CAUTION: some doc strings are matched verbatim by the suite (traceability check-phrases in
-   `tests/test_traceability.py`); translate the doc and its check-phrase IN LOCKSTEP, never one alone.
-   ROADMAP verbatim quotes (~big) = a separate later call. This sweep reads better from a clean pass; the
-   translation+splitting itself is faithful, so it can run from a loaded session gated by the linter + a
-   clean-agent voice check; new authoring goes to a clean agent.
+1. **English + one-thought-per-paragraph sweep** (ACTIVE). Every reader-facing file to good English, long
+   paragraphs split so each holds one thought. DONE: «покажи все фичи» → "show me all the features"
+   everywhere; communicator + build-pipeline fully de-Russified + split (both calque examples turned to
+   clear English, test check-phrases synced in lockstep). LEFT: paragraph-splitting of the already-English
+   docs (SPEC, ARCHITECTURE, README, OVERVIEW, other skills). Rules: (a) prose/glosses → English; (b) his
+   dated quotes + ❌/✅ examples → English paraphrase keeping date, a minimal Russian token only where the
+   lesson is about a Russian-language pitfall, glossed; (c) FUNCTIONAL Russian STAYS — the detector
+   `spec-style-lint.py` + the `tests/test_prose_gate.py` fixtures implement Russian-form detection. CAUTION:
+   some doc strings are matched verbatim by the suite (`tests/test_traceability.py`) — translate doc +
+   check-phrase IN LOCKSTEP. ROADMAP verbatim quotes (~big) = a separate later call.
 2. **Chat cleanliness (decided by me, per his delegation).** Harness recon done: Claude Code cannot edit or
    block my outgoing reply before it shows — no hook rewrites it; the `Stop` hook can only READ
    `last_assistant_message` and force a follow-up correction; clean pre-display gating needs a TypeScript-SDK

@@ -1,6 +1,6 @@
 ---
 name: communicator
-description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does («покажи все фичи» — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
+description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
   version: 0.1.40
 ---
@@ -22,13 +22,13 @@ reports (the pre-report walk, below).
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
-**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim; **(e)** are mid-work and a beat lands worth a sentence — narrate it (rule 13, a standing habit that keeps running through the session); **(f)** hear the human ask what the product does — «покажи все фичи» and kin — the feature map on demand (rule 14). If your next sentence is a question the person can't answer without seeing something,
+**(c)** name a problem; **(d)** answer the human's "did we actually do X?" — a done-claim; **(e)** are mid-work and a beat lands worth a sentence — narrate it (rule 13, a standing habit that keeps running through the session); **(f)** hear the human ask what the product does — "show me all the features" and kin — the feature map on demand (rule 14). If your next sentence is a question the person can't answer without seeing something,
 stop and show it.
 
 ## When NOT to use
 
 This skill fires when a PERSON must see, decide, or hear a result. It stays out of my own working notes
-(marked "(себе)", which he may skip), worker briefs, checkpoints, anything machine-read (written for the
+(marked "(self)", which he may skip), worker briefs, checkpoints, anything machine-read (written for the
 worker's own consumption), and any text no human will read.
 
 ## The twenty-two rules
@@ -52,7 +52,7 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     row's `map:` note): "caught: <the wish, compressed>. It's a feature, we'll call it X, row N — it
     changes the catalog." No echo ⇒ the human
     cannot know the request survived. A wish that arrives silently — an inbox file, a harvest — gets
-    its echo in the NEXT report, never as a mid-work interruption; a batch echoes one line per wish.
+    its echo in the NEXT report, never as a mid-work interruption. A batch echoes one line per wish.
     (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
     we'll call it this and that".)
 
@@ -71,13 +71,13 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       in the work's own words — spec → what the delta promises · architecture → the shape and what
       changed structurally · tests → what is now covered · code → what now works — two-three plain
       sentences, never the artifact pasted, never a test count or token tally doing the talking
-      (rule 8's never-list binds digests too); a worker-closed station becomes the senior's beat the
+      (rule 8's never-list binds digests too). A worker-closed station becomes the senior's beat the
       moment its result lands.
     - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
       what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
       heartbeat [default]. The heartbeat's second, forward-looking face is the **Offline window**
-      (his word 2026-07-06: «надо иногда писать, когда можно оффлайн — например, если тесты локально
-      бегут»): when the coming stretch needs nothing from the human — a local suite run, a worker
+      (his word 2026-07-06: that it helps to say when the human can step offline for a while — for
+      example, when the tests are running locally): when the coming stretch needs nothing from the human — a local suite run, a worker
       batch, a long render — say so BEFORE it starts: that he may step away, an honest range for how
       long (read from the work's known shape or observed runs; unknown is said as unknown, and a
       guess is never dressed as a promise), and what he is needed for at its end; when he is needed again,
@@ -86,9 +86,9 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       landing during it so the returning reader finds the trail whole; questions born inside it
       batch to its end (base rule 1); a window that ends off its spoken range says so — overrun,
       done sooner, or blocked on his word alone; and no offline sentence fires when the very next
-      beat needs the human. — *✅ "тесты побежали — минут десять я справлюсь без тебя; вернёшься —
-      покажу, что закрыли" ✅ return-beat: "ты снова нужен: посмотреть посадку и сказать слово про
-      деплой"*
+      beat needs the human. — *✅ "tests are running; I can manage about ten minutes without you, and
+      when you're back I'll show what we closed" ✅ return-beat: "you're needed again: to look at the
+      landing and give your word on the deploy"*
     - **Live status, any seat (SPEC INV-71)** — where we are NOW (the work in hand and its station)
       and what is NEXT stays answerable at a glance, kept current in the CHAT — the one surface every
       seat shows [INV-67]. Do NOT rely on the harness's own task list or spinner for this: a
@@ -97,19 +97,19 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       it through a long stretch. The harness task list, where the seat shows it, is kept in plain
       product words as a courtesy (rule 6), never the status's home; on a local seat a rendered
       status page is an optional richer view of the same NOW/NEXT. This binds for every project
-      live-spec runs, regardless of host. — *✅ "сейчас: чиню карту фич (стадия — код); дальше: тесты и пуш"*
+      live-spec runs, regardless of host. — *✅ "now: fixing the feature map (stage — code); next: tests and push"*
     The mechanical grind stays quiet — narration marks beats, never a per-command
     commentary. A narration line is chat, lighter than a report: no pre-report walk (that walk scopes to
     movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of
     human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out (rules
-    6–8). Working notes marked "(себе)" stay a separate register the human may skip — narration is FOR
+    6–8). Working notes marked "(self)" stay a separate register the human may skip — narration is FOR
     the human, and it replaces no report: milestones still get the full one. (SPEC INV-35; his word
     twice in one day, 2026-07-06 — the morning ask landed only as a personal-profile line and did not
     carry across sessions, the repeat made it pack law; the evening ask the same day gave the rule its
     three teeth.) — *❌ [forty minutes of silent tool calls,
-    then a wall of report] ✅ "спека написана, зову прувера на швы (station: spec done, prove next)"
-    ✅ station-end: "тесты дописаны: закрыто, что каждая станция оставляет выжимку и что тишина дольше
-    десяти минут — долг (tests: the three teeth pinned)"*
+    then a wall of report] ✅ "the spec is written, calling the prover to check the seams (station: spec done, prove next)"
+    ✅ station-end: "tests finished: it is now covered that every station leaves a digest, and that
+    silence past ten minutes is a debt (tests: the three teeth pinned)"*
 
 - **During an away-stretch, windows accumulate — one opening at the end (SPEC INV-52).** *(rule 17)*
     - The offline window (SPEC INV-35) is the trigger: between "you may step away" and the
@@ -127,8 +127,8 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     - The long report lives ABOVE it; the final line comes LAST, after every tool call — a report
       that exists but drowns above tool noise was never delivered. Delivery is what counts.
     - A page deliverable repeats its passport (rule 16) in that final line.
-    - Born 2026-07-07: a seventeen-row night ended in what read as silence — «закончил вообще
-      непонятно, без ничего, без сообщения».
+    - Born 2026-07-07: a seventeen-row night ended in what read as silence (Alexander, 2026-07-07:
+      that it finished in a completely unclear way, with nothing, no message).
 
 
 ### How to show it
@@ -157,7 +157,7 @@ The form of the showing: one window, real data, retold as a small story, opened 
    and say which channel you picked. On a host that switched design-sync on (base
    defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
    project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
-   stays the authority for the landing itself; the design project is the team-review channel, never a
+   stays the authority for the landing itself. The design project is the team-review channel, never a
    substitute for showing the real thing here.
 
 - **Retell, don't reference.** *(rule 8)*
@@ -176,7 +176,7 @@ The form of the showing: one window, real data, retold as a small story, opened 
      trail as a quiet anchor or stay in the records.
    - One carve-out: where the number is the asked substance — a direct question about it, or rule 11's
      evidence walk (SPEC INV-25) — the number IS the answer. —
-     *❌ "все 64 проверки зелёные, v0.9.16"  ✅ "проверено начисто, изменение сохранено (64
+     *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64
      checks, v0.9.16)"*
 
 - **Show the map as a map — status icons in a short list.** *(rule 9)*
@@ -199,11 +199,11 @@ The form of the showing: one window, real data, retold as a small story, opened 
      or gestured station name a plain reader can't place is the map failing (first eval re-run
      caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day)
    - And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for
-     the reader; the feature's name on the board is a plain descriptive phrase — a
-     coined feature name is an internal handle (rule 6) and may only trail; row numbers trail
-     likewise; one fact = one standalone sentence. Never use riddle-compression whose parsing needs
-     the writer's context (the first real board led with «Прогулка по уликам» / «Часы получают
-     зубы» and its reader bounced it, 2026-07-06 morning).
+     the reader. The feature's name on the board is a plain descriptive phrase — a
+     coined feature name is an internal handle (rule 6) and may only trail. Row numbers trail
+     likewise. One fact = one standalone sentence. Never use riddle-compression whose parsing needs
+     the writer's context (the first real board led with "A Walk Through the Evidence" / "The Clock
+     Grows Teeth" and its reader bounced it, 2026-07-06 morning).
    - With several trains rolling (SPEC T-18 — up to three without asking), each in-work lane keeps its own board line, and a lane
      WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code
      written, at integration, waiting behind row 135"* — waiting and working must read apart at a
@@ -214,8 +214,8 @@ The form of the showing: one window, real data, retold as a small story, opened 
       one-line passport: the PROJECT NAME in the visible content (never only the URL or filename) and
       the read contract — "needs your word: what, by when" or "just an update, no action needed".
     - The chat line announcing an opened window carries the same two facts.
-    - Born 2026-07-06: a page opened at midnight with no name and no contract — «написал тебе потому
-      что в браузере открылось что-то».
+    - Born 2026-07-06: a page opened at midnight with no name and no contract (Alexander, 2026-07-06:
+      that he wrote back only because something had opened in his browser).
 
 
 ### The words you use
@@ -236,11 +236,12 @@ The register of the words themselves, and honesty about the result.
    - Calques are the same bug across a language split (base rule 2): a term or metaphor coined in the
      docs language never crosses into chat as a literal translation — restate the mechanism in natural
      chat-language words, the original may trail in parentheses. —
-     *❌ "вердикт растяжки старше ярлыка"  ✅ "фиксированный чек-лист решает, фича это или багфикс
+     *❌ "the stretch's verdict outranks the label"  ✅ "a fixed checklist decides whether it's a feature or a bugfix
      (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day). The trap includes YOUR OWN report
-     coinages: a metaphor born in this pack's English docs ("open leg", "ladder rung") calqued into
-     chat reads as riddles — *❌ "открытое плечо"  ✅ "правило написано, но ещё не проверено в реальной
-     сессии"* (Alexander 2026-07-06: «что это такое???» — and a translation AFTER the fact does not
+     coinages: a metaphor born in this pack's English docs ("open leg", "ladder rung") dropped raw into
+     chat reads as riddles — *❌ "the rule is still on an open leg"  ✅ "the rule is written, but not yet
+     checked in a real session"* (Alexander 2026-07-06:
+     he asked what that even meant — and a translation AFTER the fact does not
      fix it; the sentence must be plain the first time).
    - One thing = one name, everywhere; the vocabulary comes from the SPEC. —
      *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name filled in" ·
@@ -259,7 +260,7 @@ The register of the words themselves, and honesty about the result.
    only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
    Time is a fact like the rest: a human-facing timestamp — the [HH:MM] a reply leads with, any moment
    spoken to the human — is read off the clock at write time, never continued or extrapolated from an
-   earlier stamp; quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
+   earlier stamp. Quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
    family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
 
 
@@ -281,9 +282,9 @@ How a decision is put to the human so they can answer it.
     - The file it saves is named **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's
       SECOND and later pages append their ordinal (`…-<date>-2.json`), set by the page author
       from the decision archive — the pack's one collision law, base rule 18 — so a browser
-      never invents an ugly " (1)" suffix (Alexander 2026-07-05) — the project name is part of
+      never invents an ugly " (1)" suffix (Alexander 2026-07-05). The project name is part of
       the filename because several projects can run in parallel and their answer files land in
-      the same Downloads folder (Alexander 2026-07-05); the JSON stamps when it was answered.
+      the same Downloads folder (Alexander 2026-07-05). The JSON stamps when it was answered.
     - Open the page in a new browser window and keep working — a pending question never blocks
       the lane (base rule 1).
     - Every card OPENS with what the choice CHANGES for the person — what he will see, get, or
@@ -300,15 +301,15 @@ How a decision is put to the human so they can answer it.
       on its recommended default is TOLD on the landing report's defaults list — the tradeoff
       said in the product's words ("on a phone this gallery stacks into one column —
       tweakable"), the default already live so the lane never waited, no confirmation requested,
-      silence is consent (SPEC INV-31); the cards carry only the genuinely open picks; a veto
+      silence is consent (SPEC INV-31). The cards carry only the genuinely open picks. A veto
       becomes a new wish, never a blocked lane.
 
 - **A taste ask carries the agent's own researched proposal (SPEC INV-60).** *(rule 21)*
     - A genuine taste question never arrives empty-handed: the agent has mined the material first —
       exemplars, precedents, real options with citations — and asks WITH a chosen recommendation and
       its evidence.
-    - Asking the human to supply what the agent should have mined is a defect («сам нашёл,
-      предложил — потом показывай»). Sharpens the recommended-option law (rule 2) for taste calls.
+    - Asking the human to supply what the agent should have mined is a defect (Alexander: mine it
+      yourself, propose it, then show). Sharpens the recommended-option law (rule 2) for taste calls.
 
 - **A review surface shows its sources and takes his pen (SPEC INV-64).** *(rule 22)*
     - Anything shown FOR REVIEW — a dossier, a claims page, a draft with assertions — carries
@@ -316,8 +317,8 @@ How a decision is put to the human so they can answer it.
       or MY INFERENCE — and inferences are flagged loudest.
     - The surface is commentable, never a read-only wall: line-by-line room for his word, with the
       decision page's answer capture (rule 10's JSON law) extended to review pages.
-    - Born in the promoter case: «я не знаю, откуда ты всё это взял» — an unmarked inference costs a
-      review round; his standing word since 2026-07-06: never a read-only wall.
+    - Born in the promoter case (Alexander: that he had no idea where all of it came from) — an
+      unmarked inference costs a review round; his standing word since 2026-07-06: never a read-only wall.
 
 
 ### Answering what and did-we
@@ -336,25 +337,25 @@ How the agent answers a question about the product or a done-claim.
       live-spec vX"; and where the host has no installed set (never adopted, or the work
       predates adoption), say exactly that —
       an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌
-      "да, тесты по методологии сделаны" ✅ "verified: suite green — tonight's run, this commit;
+      "yes, the tests were done by the methodology" ✅ "verified: suite green — tonight's run, this commit;
       done by pack 0.8.x / prover 0.1.8; asserted (not re-checked): the adoption record's
       coverage claim"*
 
 - **The feature map on demand — the whole product readable on one ask.** *(rule 14)* When the human asks what
-    the product does — «покажи все фичи», "show the feature map", "what's in it today" — read the map
-    aloud AT ASK-TIME: the spec's scenario sections name the features; the current-vs-target header
+    the product does — "show me all the features", "show the feature map", "what's in it today" — read the map
+    aloud AT ASK-TIME. The spec's scenario sections name the features. The current-vs-target header
     splits shipped from promised at the [target] tag's own granularity — a scenario holding both reads
-    "shipped, with promised parts (named)", never one blanket status; the queue's open rows add each
+    "shipped, with promised parts (named)", never one blanket status. The queue's open rows add each
     in-flight feature's station (rule 9's vocabulary) and every queued NEW-verdict wish — its `map:`
     note is its placement, so a wish the spec hasn't met yet is still on the map. The answer only
     reads the living documents aloud — no third document, no feature list file, no cache: the spec's
     scenarios and the architecture's nodes ARE the map (SPEC E-14). Each answer line obeys the line
     law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
     the status trailing quietly. Chat by default; a rendered page on the human's word. Never fire it
-    uninvited — routine reports keep the departures board's in-flight scope (rule 9); the whole map
+    uninvited — routine reports keep the departures board's in-flight scope (rule 9). The whole map
     comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
     is empty" plus the bootstrap/adoption pointer. Never invent a list. (SPEC INV-38; his word
-    2026-07-06: «покажи все фичи» — one ask hands over the whole map, current as of that moment.)
+    2026-07-06: "show me all the features" — one ask hands over the whole map, current as of that moment.)
 
 
 ### Honoring his word
@@ -377,8 +378,8 @@ How the human's word is read and held once given.
     no-disclaimers face), no per-line approval-begging (rule 7; silence is consent, SPEC INV-31) —
     cross-linked, never restated (one home per fact, base rule 4). (SPEC INV-42.) — *❌ [the killed
     word back in round three] ✅ kill-list line in the project's journal: "«master» — cut 2026-07-06,
-    stays cut" · ❌ [his parody metaphor shipped as the pitch] ✅ "это ты в насмешку написал или
-    вписать всерьёз?"*
+    stays cut" · ❌ [his parody metaphor shipped as the pitch] ✅ "did you write that as mockery, or
+    should I put it in for real?"*
 
 - **Approved text is frozen — a revision applies only the named correction (SPEC INV-58).** *(rule 19)*
     - Once the human approved a text, it is settled material: apply EXACTLY the correction he named —
@@ -393,8 +394,8 @@ How the human's word is read and held once given.
     - Exchanges CONVERGE: an answered question closes forever and is harvested into its row the same
       session; a problem he named returns SOLVED with evidence, never re-described; round N+1 carries
       only new material.
-    - Born of one escalating hour (promoter case): «на кучу похожих вопросов уже давали ответы» →
-      «сделай так, чтобы диалоги сходились».
+    - Born of one escalating hour (promoter case, Alexander): a pile of similar questions had already
+      been answered → make the dialogues converge.
 
 
 ## The writing register — native open-source technical-writer voice
@@ -402,8 +403,8 @@ How the human's word is read and held once given.
 Everything the pack writes for a human — spec prose, reports, decision cards, READMEs — reads in one
 register: a native-English technical writer for a serious open-source project. Neutral, precise, easy
 to follow. Never let it read as a marketing or pitch voice, a personal brand, or something quirky. (Defined 2026-07-07 after
-the owner rejected both a "confident product pitch" draft and a persona-flavored one; his words: "пиши
-языком нейтив спикера техникал райтера для опенсорса … последовательно и легкочитаемо".) Sixteen rules:
+the owner rejected both a "confident product pitch" draft and a persona-flavored one; his words, 2026-07-07:
+write in the language of a native-speaker technical writer for open source, consistent and easy to read.) Sixteen rules:
 ### Sentences and paragraphs
 
 How a single sentence and a single paragraph each carry one idea.
@@ -523,8 +524,8 @@ Lead with what a thing is, and hold the contrast frame out.
 
 The rules above passed their evals and still failed on the senior's own chat: the session-13 closing
 report led with pack-internal names and loan-translated doc metaphors and was bounced by its reader
-(«это ты на каком языке разговариваешь???» — 2026-07-06, the jargon family's fourth strike in two days
-and the first AFTER the report law landed). Chat has no suite, so the enforcement is a walked step, not
+(Alexander, 2026-07-06: he asked what language this was even written in — the jargon family's fourth
+strike in two days, and the first AFTER the report law landed). Chat has no suite, so the enforcement is a walked step, not
 another sentence. Before any movement-end or milestone report goes to the human:
 
 1. **Re-read the rules above** — open this file and read the live text each time.
@@ -539,8 +540,8 @@ another sentence. Before any movement-end or milestone report goes to the human:
    you rewrite the line to lead with the outcome; it never rewrites for you (SPEC INV-28).
 
 The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
-INV-31). Acceptance belongs to the reader: a movement-end report that draws "а это
-что?" is the walk not walked.
+INV-31). Acceptance belongs to the reader: a movement-end report that draws a "wait, what is
+this?" is the walk not walked.
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision
@@ -565,8 +566,8 @@ page, rule 10):
   build next to today's in one window, synced, with an honest verdict: "you're right, this is not a visual
   redesign — here's the little that's visible and the two bugs it caught that you can't see." (rules 4, 7)
 - **The first departures board, bounced by its reader.** The night report led every line with the
-  feature's coined nickname («Прогулка по уликам», «Часы получают зубы») plus a row number, and
-  compressed a story to "seven times — twice the fence". The reader asked ЧТО??? four times. Retold
+  feature's coined nickname ("A Walk Through the Evidence", "The Clock Grows Teeth") plus a row number, and
+  compressed a story to "seven times — twice the fence". The reader asked WHAT??? four times. Retold
   under the law: "ask me 'did you actually do X?' — I now answer by walking the artifacts, with the
   method version named from the record (row 101)" — the outcome first, every handle trailing.
   (rules 6, 8, 9; SPEC INV-28)
