@@ -355,7 +355,7 @@ Finish with one sentence on overall readiness: ready to build / needs another it
 - Phase pacing: PROCEED triage → Opening Assessment → Phase 1 → 2 → 3 → 3.5 → 4 → 5, all in one continuous response. Do not pause.
 - Note what's working as well as what's wrong, only if true and substantive.
 - Be explicit about what you assumed.
-- Persist the findings: they are written to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, separate from this skill's own repo) with a per-finding folded / rejected(+why) column (per build-pipeline step 2), so the fold is verifiable after a memory wipe and the next run can check the previous unfolded rows.
+- Persist the findings: they are written to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, separate from this skill's own repo) with a per-finding folded / rejected(+why) column (per build-pipeline step 2), so the fold is verifiable after a memory wipe and the next run can check the previous unfolded rows. The record OPENS by naming the prover skill version that ran the pass — a later session can then tell whether a "recently proven" spec was proven under the current lens set or an older one (a prover that grew a lens re-arms the full pass; the adoption walk reads exactly this line).
 
 ## Glossary mode
 

@@ -187,5 +187,7 @@ Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), 
    `spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show`.
 
 **First recommended action after adoption:** run `product-prover` on the whole spec to catch what the
-reverse-spec pass missed — UNLESS the spec was prover-proven recently with no drift since (then say so and
-skip the re-prove).
+reverse-spec pass missed — UNLESS the spec was prover-proven recently, with no drift since, AND by the
+same prover version as the one installed now (the record names the version that ran). A prover that grew
+a lens since that record re-arms the full pass: a spec proven under the old lens set has not met the new
+lens — that is exactly how a whole class of composition holes once kept a stale green (2026-07-09).

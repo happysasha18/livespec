@@ -2450,3 +2450,12 @@ class TestFieldLessons(unittest.TestCase):
         self.assertIn("donor", sa)
         # the boundary: donor data legal as an extra, illegal as the only suite
         self.assertIn("never as the only one", ta)
+
+    def test_prove_exemption_is_lens_aware(self):
+        # row 185 (bug door): the miss mechanism pinned — a spec proven under an OLD lens set kept
+        # its green; the exemption must read the prover version off the record
+        adopt = re.sub(r"\s+", " ", read("adopt/ADOPT.md"))
+        self.assertIn("same prover version", adopt)
+        self.assertIn("re-arms the full pass", adopt)
+        prover = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
+        self.assertIn("naming the prover skill version", prover)
