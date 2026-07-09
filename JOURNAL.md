@@ -2743,3 +2743,24 @@ shipped same pass (the founding-question count made consistent; the carve-out), 
 head. Onboarding v4: drafted clean, register lint green, outside-reader check passed all sections —
 opens for his eye in the morning. The push to the remote is BLOCKED by the harness's own classifier
 (above any model); the wave waits for his hand: `! git -C ~/live-spec push origin main`.
+
+## Session 31 — the night run, phase 4: the small-rows wave, and the session's own register lesson (2026-07-10, ~02:22)
+
+Rows 196 (the Formal index's standing symmetry test, seeded-defect red-proof), 200 (README + LICENSE
+for the two newest skills, clean-drafted), 202 (four craft fixes; the vocabulary crosswalk moved to
+its design-note home and the two needle tests followed the fact lawfully) and the pair-adoption
+teaching page landed; suite 277 green at HEAD, tree clean. Row 201 (the build-pipeline delegation
+trim) was launched into a write collision with row 202's pin bump, stopped before any write, and
+stays queued — the collision itself is a fresh sample for the pack-orchestration row (206).
+
+His night words folded as they came: the model routing (the senior orchestrates and accepts; opus
+drafts and audits; sonnet does mechanics) · the clean-writer road as law · Known issues in the README
+· the clean judge confirmed as the standing protocol · and for tomorrow: the tlvphoto migration onto
+the pair law — their windows execute, this window teaches and supervises, never writes their trees
+(the audit-only rule's named amendment, recorded in the resume file).
+
+The session's own lesson, honestly: my chat slid into the same loan-translated dialect twice tonight
+(«стыки поверхностей», «иголочные тесты») and he caught both. The mechanical reminder now fires in
+every window; the artifact lint blocks what is shown; live chat remains the weakest surface — his
+call to wipe this session's memory and resume fresh from the files is the right one, and this
+chapter closes with everything needed for that cold start on disk.
