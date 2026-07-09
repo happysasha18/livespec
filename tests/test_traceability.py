@@ -2517,3 +2517,16 @@ class TestLLDReadingOrder(unittest.TestCase):
         crosswalk = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
         self.assertIn("BMAD", crosswalk)
         self.assertIn("Kiro design.md", crosswalk)
+
+    def test_field_norm_pieces(self):
+        # row 189: the three adopted field-norm pieces (decisions pointer · schema homes · secrets place)
+        tpl = read("templates/ARCHITECTURE.template.md")
+        self.assertIn("## Decisions — where they live", tpl)
+        self.assertIn("never a second home", tpl)
+        self.assertIn("where that schema lives", tpl)
+        self.assertIn("where SECRETS live", tpl)
+        arch = read("ARCHITECTURE.md")
+        self.assertIn("## Decisions — where they live", arch)
+        self.assertIn("No secret lives in this pack", arch)
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("where secrets live", spec)

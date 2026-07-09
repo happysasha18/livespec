@@ -58,7 +58,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 ## Seams
 
 The places two nodes meet — named, because that is where composition bugs live. Each seam states what
-crosses it and which side owns the format.
+crosses it and which side owns the format. Where a crossing has a real schema, the row names the schema's home — for this pack the shapes ARE the templates (the templates node owns them).
 
 | Seam | Between | What crosses | Format owner |
 |---|---|---|---|
@@ -124,7 +124,7 @@ can fail.
 
 ## Placement view
 
-Where everything runs [INV-75]. A skill pack executes nowhere by itself: the skills are text a model
+Where everything runs [INV-75], secrets included. A skill pack executes nowhere by itself: the skills are text a model
 reads, so the "runtime" is the agent session that loads them. Five places carry the pack:
 
 | Place | What runs or lives there | Load-bearing technology |
@@ -134,6 +134,8 @@ reads, so the "runtime" is the agent session that loads them. Five places carry 
 | the pack repo `~/live-spec` (source: github.com/happysasha18/live-spec) | the source of truth: skills, templates, guardrails, docs, tests; the suite and gates run here at commit/push time | python3 + pytest; bash git hooks |
 | the host project's repo | the documents the method writes for that host: spec, queue, journal, checkpoints, ledgers | plain markdown in the host's tree |
 | GitHub + CI · the human's browser | the remote copy and the gates' second net; rendered artifacts and decision pages open here | `.github/workflows/gates.yml`; `scripts/render-doc.py` |
+
+No secret lives in this pack: the repo, the templates, and the installed skills carry none, and a HOST's secrets stay in that host's own keychain or platform bindings — its placement table names the holder (the pack's own validation derivations model this).
 
 ## Quality budgets
 
@@ -150,6 +152,14 @@ real number is read.
 
 A skill's judgment quality beyond the evals has no honest number; it is said by name here and judged
 by the human's eye on real landings, never given a vanity metric.
+
+## Decisions — where they live
+
+The pack's decisions live in three homes already: the queue's dated rows (each landing's verdicts
+inline), JOURNAL.md's chapters (the why), and the spec's open decision marks (the D-x rows of the
+Formal index — attic layout, snapshot retention, and kin). This section is the doc's one entry point
+to them; it holds pointers, never the decisions themselves. Structure-changing decisions also appear
+in the Prover record below, one line each.
 
 ## Prover record
 

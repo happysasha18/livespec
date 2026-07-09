@@ -74,7 +74,9 @@ new project the pin column starts empty and fills as code lands.
 ## Seams
 
 The places two nodes meet — named, because that is where composition bugs live. Each seam states what
-crosses it and which side owns the format.
+crosses it and which side owns the format. Where the crossing has a real SCHEMA (a JSON contract, an
+API shape, a file format), the row also says where that schema lives — the contract's one home; a
+data-heavy project lists each intermediate contract this way (the derive-pipeline tier above).
 
 | Seam | Between | What crosses | Format owner |
 |---|---|---|---|
@@ -99,7 +101,7 @@ failure point with no fallback sentence is an unfinished walk (SPEC INV-74).
 
 ## Placement view — the tiers and their technology
 
-THE tiers-and-technology table (kin of a definitive tech-stack table). Where every node runs (SPEC INV-75): build-time on the author's machine · static file on a CDN · client
+THE tiers-and-technology table (kin of a definitive tech-stack table). It also says where SECRETS live (a keychain, a binding, an env store) and which tier holds each verdict that must not be decided on the client — a secret's place is architecture, never an implementation footnote. Where every node runs (SPEC INV-75): build-time on the author's machine · static file on a CDN · client
 browser · edge worker · external service — plus the load-bearing technology choice where one exists (the
 embedding model, the render harness, the store). First-class, so the reader answers "where does this
 run" for any node at a glance: keep this table, or fold a "runs at" column into the Nodes table when the
@@ -134,6 +136,18 @@ is real.
 | Feature | Implemented by | Test |
 |---|---|---|
 | [F-example] | [node name(s)] | [test name] |
+
+## Decisions — where they live
+
+One pointer table, never a second home: this project's decisions already live in dated queue rows, the
+journal's chapters, and the spec's open decision marks — this section is the doc's single entry point
+to them (the content of an ADR log, held as an index). A structure-changing decision also leaves its
+line in the Prover record below.
+
+| Decision | Status | Lives at |
+|---|---|---|
+| [e.g. keep all axes, no prune] | resolved | [queue row N / journal YYYY-MM-DD] |
+| [e.g. attic retention window] | open ⟨DECIDE⟩ | [the spec's decision mark D-x] |
 
 ## Prover record
 
