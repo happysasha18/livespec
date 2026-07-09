@@ -53,32 +53,37 @@ ALSO LANDED THIS SESSION (outside the original bar, closed 2026-07-09/10): row 1
 (INV-76) · rows 182-186 the five test lessons (INV-77..80 + lens-aware exemption; record
 `docs/prover/2026-07-09-rows182-186.md`) · row 187 pre-ask scan (INV-81) — details in ROADMAP rows.
 
-POST-1.0 (his bar, NOT in the run): remote-seat cloud session · REAL tlvphoto migration (its own window).
+POST-1.0 (his bar, NOT in the run): remote-seat cloud session · REAL tlvphoto migration — HIS 2026-07-10
+~02:09 WORD: tomorrow, tlvphoto's windows execute onto the pair law (INV-85/86, first real pair:
+gallery-engine + site); THIS window teaches and SUPERVISES (pair-adoption brief, artifact review,
+direction) and never writes their trees — the audit-only rule's named amendment.
 His-word backlog, not 1.0 blockers: chat-cleanliness `Stop`-hook backstop · readability-restructure
 operation (word-preservation verifier) · row 171 no-hooks/no-GitHub · row 148 plainer-spec rewrite ·
 thin-loader tidy · pack orchestration · artifact registry · try a semantic code layer (Serena MCP) in a
 code-heavy window IF symbol search starts hurting twice a session (his 2026-07-09 question; trigger =
 rule-20 struggle, today's verdict: current projects too small to pay for it).
 
-## NIGHT RUN (2026-07-10, his charter ~00:07): docs pass → global pass → queue; SPAWN-PER-ITEM
-His words: work the maximum overnight; guard the orchestrator's context — EVERY item runs in a spawned
-worker (brief out, verdict + artifact paths back; raw detail stays in the worker); save tokens; no
-greeting messages, no "доброе утро" — work until the charter is done or truly blocked, then ONE batch
-report. Start after his memory wipe: he types `/loop` with "работай ночной план live-spec из NEXT_STEPS";
-the loop self-paces, long stretches between wakeups, each wakeup takes the next unchecked item.
+## NIGHT RUN (2026-07-10, his charter ~00:07): docs pass → global pass → queue — ALL THREE PHASES DONE.
+Charter: spawn-per-item, senior folds and gates; one batch report at the end (owed in the morning).
 
-- [x] **Phase 1 — THE DOCS PASS — DONE 2026-07-10 ~00:35** (9 docs: README + OVERVIEW rewritten, 7 new
-  docs/ pages; all lint-clean, render-checked, suite 239 green; detail in JOURNAL session 31).
-- [x] **Phase 2 — THE GLOBAL PASS — DONE 2026-07-10 ~01:26** (8 opus/sonnet auditors; INV-82 folded on
-  the prover's must-fix; folds + intake rows 195-210 landed; commit train 6fe54d7→5d4bed3; JOURNAL s31).
-- [x] **Phase 3 — queue wave DONE 2026-07-10 ~02:07:** rows 170/208/209/195/211/212 LANDED + row 190
-  method legs (INV-85/86 pair law; field validation rides its own window). Research recorded for his
-  word: row 191 (adopt: test-data hermeticity, property-based tests) · row 193 (adopt: release step
-  with rollback for hosted kinds, data/ML eval gate). Onboarding v4 clean-drafted, lint green,
-  outside-reader passed — HIS EYE IS THE GATE. **PUSH PENDING HIS HAND** (classifier):
   `! git -C ~/live-spec push origin main` — 12 commits ahead.
-- NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
+- Phases 1-3 all [x] DONE (details: JOURNAL session 31, four chapters). NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
+
+## RESUME POINT (2026-07-10 ~02:23, session pauses at the usage window; NO live workers — all halted or done)
+State: 18 commits ahead of origin; suite 277 green at HEAD; tree clean. PUSH waits his hand:
+`! git -C ~/live-spec push origin main`. Night landed: docs pass (9 reader docs) · global audit ·
+INV-82 grant+peer folds · register lint INV-83 (blocks the showing) · clean-writer law INV-84 ·
+pair law INV-85/86 + docs/pair-adoption.md · render links fixed (row 195) · rows 196/200/202/209/211/212.
+Queued next (fresh session takes in order): row 201 build-pipeline delegation trim (RELAUNCH — was
+stopped before writing, avoid concurrent pin edits) · row 210 plainer spec prose (worklist = the nine
+surviving clean-judge findings, judge-output-spec-v3.json in scratchpad) · row 213 pair wording seams ·
+morning batch report to Alexander. Waiting on HIS word: onboarding v4 verdict (open the file below in
+a browser) · rows 191/193 adoption picks · D-6/D-7 pair decisions · the push line · tlvphoto pair
+migration (their windows execute, THIS window supervises only). Scratchpad survivors (absolute paths):
+onboarding v4 = /private/tmp/claude-501/-Users-sashaabramovich/a95c99e5-09ea-4f98-ab97-05baccdeba88/scratchpad/onboarding-mockup-v4.html ·
+night-audit + night-queue reports under .../scratchpad/. Chat register: the no-calques hook line now
+fires every prompt — obey it; live chat was this session's weakest surface.
 
 ## Field legs + standing habits (ride real windows / always-on)
 - Field legs with him (real windows): 47/96 feedback loop · 54 first-run · 165 first-struggle · 168 remote
