@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.23
+  version: 0.1.24
 ---
 
 # Spec Author
@@ -366,6 +366,8 @@ word only where it carries a distinction the standard lacks.
 | architecture nodes + seams | C4 containers/components + their relationships; arc42 building-block view (§5) |
 | the runtime view (a flow's walk through the nodes) | arc42 runtime view (§6); a C4 dynamic diagram |
 | the placement view (what runs where, with its technology) | arc42 deployment view (§7); a C4 deployment diagram |
+| the shape at a glance (tiers-first reading order) | BMAD architecture's high-level overview; Kiro design.md's Overview section |
+| the runtime view's if-it-fails fallbacks | BMAD's error-handling strategy section; Kiro design.md's error handling |
 
 Two boundaries the crosswalk does NOT erase: our spec stays a single use-case-first document (never the
 Entities/States/Actors chapters a naive reading of the standard invites — that shape gets rejected and

@@ -2489,3 +2489,31 @@ class TestPreAskScan(unittest.TestCase):
             self.assertIn(place, comm, "communicator's scan misses the question's place: %s" % place)
         # a surviving question carries its recommendation
         self.assertIn("recommendation attached", comm)
+
+
+class TestLLDReadingOrder(unittest.TestCase):
+    """Row 188: the architecture doc reads as an LLD reader expects — tiers first, fallbacks per
+    failure point, the placement table framed as the tiers-and-technology table. String level."""
+
+    def test_lld_reading_order_and_fallbacks(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("what happens then", spec)
+        self.assertIn("reads tiers-first", spec)
+        tpl = read("templates/ARCHITECTURE.template.md")
+        self.assertIn("## The shape at a glance", tpl)
+        self.assertIn("| If it fails |", tpl)
+        self.assertIn("tiers-and-technology", tpl)
+        # the shape section comes BEFORE the nodes table
+        self.assertLess(tpl.index("## The shape at a glance"), tpl.index("## Nodes"))
+        arch = read("ARCHITECTURE.md")
+        self.assertIn("## The shape at a glance", arch)
+        self.assertLess(arch.index("## The shape at a glance"), arch.index("## Nodes"))
+        # every runtime-view row carries a fallback cell (4 pipes-cells per row)
+        runtime = arch.split("## Runtime view", 1)[1].split("## ", 1)[0]
+        rows = [l for l in runtime.split("\n") if l.startswith("| F-")]
+        self.assertTrue(rows, "runtime view parsed empty")
+        for r in rows:
+            self.assertEqual(r.count(" | "), 3, "runtime row misses its if-it-fails cell: %s" % r[:60])
+        crosswalk = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("BMAD", crosswalk)
+        self.assertIn("Kiro design.md", crosswalk)

@@ -21,6 +21,14 @@ specified, with their code still ahead — and the template lets their pin cells
 
 ---
 
+## The shape at a glance
+
+live-spec is a skill pack: eight skills (text a model reads) plus templates, guardrails, and its own
+dogfood documents, all in one repo. Everything EXECUTES inside an agent session on the host machine;
+the repo is the source of truth, the installed copies under `~/.claude/skills/` are what a session
+actually loads, git hooks and CI re-run the same gates, and the human reads rendered pages in a
+browser. No server, no runtime of its own.
+
 ## Nodes
 
 Every spec fact (anchor in PRODUCT_SPEC.md's Formal index) is OWNED by exactly one node. The one deliberate
@@ -102,17 +110,17 @@ unit is a wish (or a handed-in item) walking through the skills; each hop below 
 the Seams table, and the payload stays that table's fact. One line per flow: the walk, then where it
 can fail.
 
-| Flow | The walk through the nodes | Where it can fail |
-|---|---|---|
-| F-wish | the human speaks → build-pipeline (door, intake) → communicator (capture echo) → spec-author (delta) → product-prover (prove → record) → build-pipeline (architecture step, this doc) → test-author (matrix + tests) → build-pipeline (code, verify) → communicator (landing report, show) | a misread door (the tripwires outrank labels); an unfolded must-fix (the record's folded column); a red suite at the gate |
-| F-bug | build-pipeline (bug door, queue-cut) → test-author (red-on-bug row + test) → build-pipeline (fix, class sweep) → guardrails (gate) | a fix without its red test; a class fixed at one instance only |
-| F-feedback | any session receives → feedback-intake (routing table) → the item's home (a queue row · the fixing commit · the decision archive · FEEDBACK.md · PROBLEMS.md) → communicator (the one echo) | an item routed to two homes; an arrival with no echo |
-| F-prototype | a SEE/TRY ask → build-pipeline (prototype home, fenced) → guardrails (prototype fence) → promotion re-enters at F-wish's spec step | a sketch wired into a prod surface (the fence goes red) |
-| F-publish | a push intent → publish (kind checklist) → guardrails (pre-push, reach map) → the human's gate | a stale shopfront claim; a gate skipped on a "just docs" diff |
-| F-feature-map | the human asks → communicator reads the spec's scenario headings + the queue's open rows → the answer in chat | an answer from memory rather than the read documents |
-| F-problem-ledger | workshop noise fires → base-rulebook (the ledger walk) → PROBLEMS.md (WATCHED → OWNED → SOLVED) | a silent retry with no line; a third unowned recurrence |
-| F-bootstrap | scaffold → templates (copies) → attach (founding questions, B-3 profile step) | a founding question guessed rather than asked |
-| F-adoption | attach (orient → VCS gate → attic → attach record) → host-contract (profile, installed versions) | a host file overwritten with no attic line; an unbacked surface passed silently |
+| Flow | The walk through the nodes | Where it can fail | If it fails |
+|---|---|---|---|
+| F-wish | the human speaks → build-pipeline (door, intake) → communicator (capture echo) → spec-author (delta) → product-prover (prove → record) → build-pipeline (architecture step, this doc) → test-author (matrix + tests) → build-pipeline (code, verify) → communicator (landing report, show) | a misread door (the tripwires outrank labels); an unfolded must-fix (the record's folded column); a red suite at the gate | the tripwires re-door it mid-work; an unfolded must-fix blocks the landing until folded or rejected in the record; a red suite blocks the commit (the gate, not the narrator, says no) |
+| F-bug | build-pipeline (bug door, queue-cut) → test-author (red-on-bug row + test) → build-pipeline (fix, class sweep) → guardrails (gate) | a fix without its red test; a class fixed at one instance only | the traceability test goes red until the row and test exist; the class sweep is checked at review — a point fix reopens |
+| F-feedback | any session receives → feedback-intake (routing table) → the item's home (a queue row · the fixing commit · the decision archive · FEEDBACK.md · PROBLEMS.md) → communicator (the one echo) | an item routed to two homes; an arrival with no echo | the routing table has a home for every route by construction; an unroutable item gets one plain question, never a guess |
+| F-prototype | a SEE/TRY ask → build-pipeline (prototype home, fenced) → guardrails (prototype fence) → promotion re-enters at F-wish's spec step | a sketch wired into a prod surface (the fence goes red) | the fence turns the push red; the sketch stays in its home until promoted through the spec step |
+| F-publish | a push intent → publish (kind checklist) → guardrails (pre-push, reach map) → the human's gate | a stale shopfront claim; a gate skipped on a "just docs" diff | the reach map is conservative — an unmapped file runs the FULL suite; a stale claim blocks the push until fixed |
+| F-feature-map | the human asks → communicator reads the spec's scenario headings + the queue's open rows → the answer in chat | an answer from memory rather than the read documents | a host with nothing to read is answered honestly with the bootstrap/adoption pointer |
+| F-problem-ledger | workshop noise fires → base-rulebook (the ledger walk) → PROBLEMS.md (WATCHED → OWNED → SOLVED) | a silent retry with no line; a third unowned recurrence | a third unowned recurrence escalates to the pack's own queue — the method, not the day, owns it |
+| F-bootstrap | scaffold → templates (copies) → attach (founding questions, B-3 profile step) | a founding question guessed rather than asked | a founding question with no answer parks as an open decision marker, asked, never invented |
+| F-adoption | attach (orient → VCS gate → attic → attach record) → host-contract (profile, installed versions) | a host file overwritten with no attic line; an unbacked surface passed silently | the attic keeps every superseded file restorable; an unbacked surface goes red at the gate until specced or fenced |
 
 ## Placement view
 

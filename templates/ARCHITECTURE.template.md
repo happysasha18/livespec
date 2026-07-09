@@ -15,6 +15,17 @@ backing.
 
 ---
 
+## The shape at a glance
+
+The reader lands here first: the TIERS in a few lines — what runs where, top to bottom — before any
+table detail (the reading order an LLD reader expects; the placement table below is the full
+tiers-and-technology statement). Two to five lines, plain words; an ASCII sketch is welcome when it
+genuinely helps, never owed.
+
+> [e.g. "Everything heavy runs at build-time on the author's machine and bakes to static files; a CDN
+> serves every visitor byte; the browser runs the walk; one narrow edge worker holds secrets and
+> verdicts; the model API sits behind it."]
+
 ## Node structure by project.kind
 
 The project's kind (`project.kind`, SPEC INV-36 — set once at founding/adoption) PROPOSES the starting
@@ -79,13 +90,16 @@ the flow can fail. Each hop cites the seam it crosses by name — the payload an
 table's fact, stated once there. A flow the doc cannot walk end to end is a finding: a node is missing
 or a seam is unnamed.
 
-| Flow | The walk through the nodes | Where it can fail |
-|---|---|---|
-| [e.g. visitor plays a track] | [player loads analysis JSON (seam: analysis → render) → renderer draws the charts → player syncs the playhead] | [a stale analysis JSON; a chart drawn before data arrives] |
+Every named failure point carries its fallback — "if X fails, Y happens" is readable per flow; a
+failure point with no fallback sentence is an unfinished walk (SPEC INV-74).
 
-## Placement view
+| Flow | The walk through the nodes | Where it can fail | If it fails |
+|---|---|---|---|
+| [e.g. visitor plays a track] | [player loads analysis JSON (seam: analysis → render) → renderer draws the charts → player syncs the playhead] | [a stale analysis JSON; a chart drawn before data arrives] | [the version check refuses the stale file and shows the reload note; charts wait on the data-ready event] |
 
-Where every node runs (SPEC INV-75): build-time on the author's machine · static file on a CDN · client
+## Placement view — the tiers and their technology
+
+THE tiers-and-technology table (kin of a definitive tech-stack table). Where every node runs (SPEC INV-75): build-time on the author's machine · static file on a CDN · client
 browser · edge worker · external service — plus the load-bearing technology choice where one exists (the
 embedding model, the render harness, the store). First-class, so the reader answers "where does this
 run" for any node at a glance: keep this table, or fold a "runs at" column into the Nodes table when the
