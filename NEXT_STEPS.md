@@ -4,9 +4,9 @@ Sessions 28–29 landings (structure/openers/English/nesting/SPEC.md→PRODUCT_S
 prover-wish INV-72) are committed history — full detail in JOURNAL.md.
 
 ## LIVE STATE (2026-07-09, session 29)
-Versions: pack 0.9.4 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.22 ·
-build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.4.
-**Suite 223 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
+Versions: pack 0.9.5 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.22 ·
+build-pipeline 0.2.42 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.4.
+**Suite 225 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
 **RUN items 1-3 PUSHED 2026-07-09 (`1eb7530`)** on his go ("after 3 and 5 you can push") — INV-72
 prover-wish · feature-coverage trace E-29/INV-73 · the 7 small holes rows 173-179. Pre-push gate green.
@@ -53,11 +53,12 @@ plain-words) lives in his profile + the installed hooks, not memory.
    doc; test loop-vars left as internal iterators; filename kept for the dated records). Standard-vocabulary
    crosswalk added to spec-author (ISO 29148 · arc42 · C4 · ISO 25010) + a lineage pointer in ARCHITECTURE.
    Test `TestAuthoringTerminology`. Detail: JOURNAL 2026-07-09.
-5. **Architecture tiers by project type — LOOP build; its tlvphoto check is READ-ONLY + SHOW-not-ship.**
-   (b) classifier-driven ARCHITECTURE structure (web: frontend/backend, template/renderer; package: skills/
-   nodes) + per-type authoring instructions. (c) run the method read-only over tlvphoto, artifacts to
-   scratchpad ONLY, touch NOTHING in its tree; show him the yielded architecture doc. His word: do (c) after
-   the memory wipe — now OK.
+5. **Architecture tiers by project type — DONE (local, pushes with 4).** (b) node structure PROPOSED by
+   `project.kind` (INV-36): a per-kind scaffold in the ARCHITECTURE template + build-pipeline step 3 pointer;
+   test `TestArchitectureTiers`. (c) ran the method READ-ONLY over tlvphoto (touched nothing; derived doc in
+   scratchpad, opened for him) — found + folded two scaffold gaps: a derive-pipeline tier (data/ML) and the
+   static-first + edge-backend blend. tlvphoto doc NOT committed (another project's internals stay out of the
+   public pack). Detail: JOURNAL 2026-07-09.
 6. **Project onboarding — PARK at mockup.** Wish `docs/wishes/2026-07-09-project-onboarding-what-can-i-
    customize.md` (how the user discovers what they can customize: kind/budget/profiles/skill-fit/settings-
    ladder). VISIBLE surface ⇒ mockup-first (prototype-norm): build a labelled mockup on real data, STOP, his

@@ -2,6 +2,37 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-09 (session 29) — architecture structure by project.kind, validated read-only on tlvphoto (RUN item 5)
+
+**What (b):** the ARCHITECTURE doc's node structure is now PROPOSED by `project.kind` (INV-36 — the existing
+classifier, reused, not a new parallel setting). The architecture template gained a "Node structure by
+project.kind" scaffold: a fullstack app splits frontend / backend / template / store; a backend service
+entry / core / store / integrations; a CLI one node per command; a skill pack one node per skill; a book
+usually one docs node. Build-pipeline step 3 points at it. The scaffold is explicitly a shape to fit, never
+a frame to force — a node still earns its place by owning a spec fact, and a speculative node stays an
+unbacked-structure finding.
+
+**What (c):** ran the method READ-ONLY over the real tlvphoto tree (his standing word: do it after the
+memory wipe — now OK). Touched nothing there; the derived architecture doc lives in the session scratchpad
+and was opened for him. An Explore agent mapped tlvphoto's real components (11 nodes, 12 seams, every pin
+from a grep/read actually run) and the exercise earned its keep by finding two shapes the plain scaffold
+missed — both folded back into the template this session:
+- **a derive-pipeline tier** — a data/ML project's "build" is a multi-stage derive (catalog.json →
+  vector.json → gallery_data.json), each intermediate contract with its own format owner and a human-overlay
+  seam; not one "build" node but a chain;
+- **kinds blend** — tlvphoto is static-first (a deterministic bake on a CDN, crawlable JS-off) yet carries
+  ONE narrow edge backend (`_worker.js`: secrets, KV, the quiz verdict, abuse fences), with a private-data
+  seam (answers inlined into the worker at bake time because Pages never serves the worker as a static
+  asset). The honest kind is "fullstack, static-first", not "static site".
+
+**Why not commit the tlvphoto doc:** it names another private project's internal file structure; publishing
+that in the public pack repo isn't warranted, so the specific doc stays in scratchpad and only the
+generalizable learnings enter the template. **Why this validates the pack:** the per-kind scaffold had only
+ever been dogfooded on live-spec's own package kind; running it on a real fullstack/static web project is
+the first cross-kind proof, and it improved the scaffold rather than merely passing. Test
+`TestArchitectureTiers`; suite 223 → 225 green. Versions: build-pipeline 0.2.41→0.2.42, pack 0.9.4→0.9.5.
+Committed local; pushes with item 4 (his gate: "after 3 and 5").
+
 ## 2026-07-09 (session 29) — authoring terminology: the coined "needle" retired, a standard-vocabulary crosswalk added (RUN item 4)
 
 **What:** Two authoring cleanups. First, the plain-language sweep: the pack had a coined metaphor,

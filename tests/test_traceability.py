@@ -2296,3 +2296,28 @@ class TestAuthoringTerminology(unittest.TestCase):
         arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
         for std in ("C4", "arc42"):
             self.assertIn(std, arch, "ARCHITECTURE lost the %s lineage pointer" % std)
+
+
+class TestArchitectureTiers(unittest.TestCase):
+    """The 1.0 RUN item 5 (b): the ARCHITECTURE structure is proposed by project.kind (INV-36). The
+    template carries a per-kind node-structure scaffold and build-pipeline step 3 points at it. String
+    level."""
+
+    def test_template_carries_per_kind_node_structure(self):
+        tpl = re.sub(r"\s+", " ", read("templates/ARCHITECTURE.template.md"))
+        self.assertIn("Node structure by project.kind", tpl,
+                      "architecture template lost the per-kind node-structure scaffold")
+        self.assertIn("INV-36", tpl, "the scaffold no longer keys off project.kind (INV-36)")
+        for kind in ("fullstack app", "backend service", "CLI", "skill pack", "book"):
+            self.assertIn(kind, tpl, "per-kind scaffold lost the %s row" % kind)
+        # the scaffold-not-a-frame boundary: a node still earns its place by owning a fact
+        self.assertIn("a speculative node is unbacked structure", tpl)
+        # the two shapes the plain rows miss (learned from the 2026-07-09 tlvphoto read-only derivation)
+        self.assertIn("derive-pipeline tier", tpl, "scaffold lost the data/ML derive-tier learning")
+        self.assertIn("static-first", tpl, "scaffold lost the static-first + edge-backend blend learning")
+
+    def test_build_pipeline_points_at_the_scaffold(self):
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("Node structure by project.kind", bp,
+                      "build-pipeline step 3 lost the pointer to the per-kind scaffold")
+        self.assertIn("PROPOSES the starting node structure", bp)

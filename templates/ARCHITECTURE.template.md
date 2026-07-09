@@ -15,6 +15,40 @@ backing.
 
 ---
 
+## Node structure by project.kind
+
+The project's kind (`project.kind`, SPEC INV-36 — set once at founding/adoption) PROPOSES the starting
+node structure; the spec's facts then decide the final nodes. The proposal is a scaffold to fit, never a
+frame to force — a node still earns its place by owning a spec fact, and a speculative node is unbacked
+structure the prover flags. Pick the row for your kind, then adjust.
+
+| project.kind | the nodes it usually splits into | the seam composition bugs hide in |
+|---|---|---|
+| fullstack app / static site | a frontend (views / components / client state) · a backend (services, API, data) · a template or renderer that turns data into markup · a store | the browser↔server contract, and template↔data (a value rendered stale) |
+| backend service | an entry / handler layer · the domain core it calls · a data store · each external integration | the API contract and the store boundary (a partial write, a schema drift) |
+| CLI / library / API | a command / entry surface · the core modules behind it · an I/O boundary — one node per public surface | entry↔core (argument parsing) and core↔I/O (a missing or malformed input) |
+| skill pack (live-spec's own kind) | one node per skill · the shared rulebook · the templates · the guardrails — the skill IS a node | skill↔skill (the handoff) and base↔working-skill (the inherited rule) |
+| book / content | usually ONE docs node owns the whole outline; a new node only when the structure genuinely grows | section↔section (the narrative flow / a forward reference) |
+| a custom kind | derive the split from the spec's own surfaces; name the seams where two of them meet | wherever two surfaces share state or a format |
+
+The kind sets the SHAPE; the facts fill it. Two projects of the same kind can end with different node maps
+because their specs differ — the table saves a blank-page start, and the coverage rule below is what
+actually proves the map complete.
+
+**Two shapes the plain rows miss (learned by deriving a real project's map, 2026-07-09):**
+- **A derive-pipeline tier.** A data-heavy or ML project's "build" is not templating — it is a multi-stage
+  DERIVE: several nodes chained by intermediate data contracts (`raw → catalog.json → vector.json →
+  render-data.json`), each contract with its own format owner, often with a human-overlay seam where a
+  person's correction must win over the machine's guess. When the build is more than one hop from data to
+  output, give each stage its own node and name the contract between them; do not collapse six derive steps
+  into one "build" node.
+- **Kinds blend — static-first + a narrow edge backend.** A static site and a fullstack app are not
+  exclusive. A project can be static-first (the front is a deterministic bake on a CDN, crawlable without JS)
+  yet still carry ONE narrow server surface — an edge worker holding secrets, cache/state, and any verdict
+  that must not be decided on the client. Name that worker its own backend node and its private-data seam
+  (what the bake injects that never ships as a static asset); the kind is then "fullstack, static-first",
+  not "static site".
+
 ## Nodes
 
 Every spec fact is OWNED by exactly one node. In a live codebase every node pins to its owning

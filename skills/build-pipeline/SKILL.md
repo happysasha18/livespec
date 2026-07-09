@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.41
+  version: 0.2.42
 ---
 
 # build-pipeline — ship a change by the method
@@ -164,7 +164,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    `ARCHITECTURE.template.md` — template paths here and in step 5 resolve from the PACK repo,
    github.com/happysasha18/live-spec; a standalone install fetches them there, never from the skill
    dir: the pack is the source, a copy would fork the truth). Named nodes, one responsibility and one name
-   each. Every spec fact is OWNED by exactly one node. Named seams run between the nodes.
+   each. Every spec fact is OWNED by exactly one node. Named seams run between the nodes. The project's kind
+   (`project.kind`, SPEC INV-36) PROPOSES the starting node structure — a fullstack app splits frontend /
+   backend / template / store, a CLI one node per command, a skill pack one node per skill — and the
+   template's "Node structure by project.kind" table carries the per-kind scaffold; the spec's facts then
+   decide the final nodes, a speculative node still being unbacked structure the prover flags.
 
    In a live codebase every node pins to its owning `file:line`. **This step is where the spec is reconciled
    with reality:** each pin comes from a command you ran, never from the doc's own prose, your memory, or a
