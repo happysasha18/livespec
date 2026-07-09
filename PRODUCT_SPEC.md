@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.3, 2026-07-09)
+# live-spec — Product Spec (v0.16.4, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -62,7 +62,7 @@ When the user speaks a wish, its row exists before anything else happens. It sur
 
 At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive, where it stays, never edited, never lost.
 
-A **deferred** row is not terminal: it stays in the active queue, carrying its revisit trigger, until the trigger fires or it resolves to a terminal exit.
+A **deferred** row stays in the active queue, carrying its revisit trigger, until the trigger fires or the row resolves to a terminal exit.
 
 The archive holds only wishes no longer due back. No wish is ever lost. [INV-1]
 
@@ -409,7 +409,7 @@ Here's the kin split, stated: the mockup-first entry condition [INV-43] is the h
 
 A fence is one sentence for a neighbouring promise that must stay true through the change — for example, "the catalog still opens on click" or "the player keeps playing across a view switch." Each fence cites the existing spec clause it guards.
 
-A fence isn't new law and earns no new matrix row: the cited clause's own row already carries its never-side [INV-6], and the landing's full-suite run proves the fence held.
+A fence restates existing law and earns no new matrix row: the cited clause's own row already carries its never-side [INV-6], and the landing's full-suite run proves the fence held.
 
 So "fixed one thing, quietly broke the neighbour" turns red before it ships. The delta thereby splits everything it touches in two: promises that stay are fenced, cited, untouched; behaviour being changed is never fenced — the agent re-authors it as new law through the normal walk.
 
@@ -581,11 +581,16 @@ The spec says what the product is. Tests prove facts about the shipped artifact.
 
 Drafting the architecture is where spec claims are reconciled against shipped reality. Every pin comes from a command that was run, never from the doc's own prose.
 
-It is written from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, proved before anything derives from it — a product-prover pass with the architecture lens. That lens checks three things:
+It is written from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, proved before anything derives from it — a product-prover pass with the architecture lens. That lens checks six things, each judged at the project's kind scale:
 
 - every spec fact has an owning node;
 - no node stands without spec backing;
-- every seam between nodes is named.
+- every seam between nodes is named;
+- the quality budgets are stated with their instrumentation homes [INV-41];
+- the runtime view walks every promised flow [INV-74];
+- the placement view says where every node runs [INV-75].
+
+The lens grew from three items to six on observed evidence: a real derivation passed the three-item lens and shipped with no budgets and no views — a mandate with no checking seam gets skipped (tlvphoto validation, 2026-07-09).
 
 Keeping the doc up to date:
 
@@ -607,6 +612,12 @@ What is measurable depends on the project's kind [INV-36], so ask "what does qua
 Where a quality has no honest number, say so by name instead of inventing a vanity metric. A budget counts only once a matrix row at the right level can see it — a hope in prose does not. A surface with no budget and no instrumentation home is a derivation defect, flagged like an unowned fact.
 
 The numbers are the host's taste: the architecture proposes them with a recommendation, and the human's word sets them at the surface's first budget landing. Like the two layers themselves [INV-15], this duty binds from the first landing that touches the surface after the clause exists, never retroactively [INV-41].
+
+**The architecture traces each flow at runtime.** The spec's person-facing scenarios are flows — a visitor opens the door, walks the gallery, answers the quiz. The feature coverage table names which nodes implement a feature [E-29]; the runtime view shows how. For every flow the spec promises, the doc walks the running product: which node serves each step, what data crosses at each hop, and where the flow can fail. One short walk per flow is enough — a numbered line or a table row per hop. A flow the doc cannot walk end to end is a finding: a node is missing or a seam is unnamed [INV-74].
+
+**The architecture says where everything runs.** Every node states its place: build-time on the author's machine · static file on a CDN · client browser · edge worker · external service. Where a load-bearing technology choice exists (the embedding model, the render harness, the store), the place names it too. The placement is first-class — a column in the node table or its own small table — so a reader answers "where does this run" for any node at a glance [INV-75].
+
+Both views scale by the project's kind [INV-36]. A book runs in one place and its flows cross no machines: one sentence per view says so and satisfies the duty. A fullstack or data project owes both views in full. The duty binds from the first landing that touches the architecture after the clause exists, never retroactively [INV-15].
 
 **The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact** — a structured grid: every fact gets at least one row, and every row pins a test level.
 
@@ -1653,6 +1664,8 @@ meaning, this table is only the map.
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
 | INV-72 | the prover reads the whole axis list [C-1] actively, deriving each stateful surface's reachable situations for itself — every axis it passes through while already shown (view, mode, tier, viewport, reopen) and every other surface present at the same time (siblings on its screen, one step before and after it in the flow, stateful or not) — and asks for each whether behavior is stated there; a reachable situation with a blank answer is a finding, the same class as a fact no node owns [E-14]; rides the whole-spec and surface-add passes [M-6]; reports the gap, invents no answer and asks the human nothing, the author writing the sentence as a C-1 composition invariant tagged like the facet sweep [INV-18, INV-31] | Composing across axes |
 | INV-73 | the feature-coverage check is two-way: every tagged unit resolves to a real implementer node and a real test, and every scenario the pack promises carries its `[feature: F-x]` tag; a dropped tag or an orphan coverage row goes red; the infra machines implement guarantees not features and sit outside the layer; reuses the anchor-ownership machinery [E-29] | Machines |
+| INV-74 | the runtime view: for every flow the spec promises, the architecture walks the running product — which node serves each step, what data crosses at each hop, where the flow can fail; one short walk per flow (a numbered line or a table row per hop); a flow the doc cannot walk end to end is a finding (a missing node or an unnamed seam); scales by kind [INV-36] — a book's one sentence satisfies it; binds from the first landing that touches the architecture after the clause exists [INV-15] | From the spec to the tests |
+| INV-75 | the placement view: every node states its place (build-time on the author's machine · CDN static · client browser · edge worker · external service) plus the load-bearing technology choice where one exists; first-class — a column in the node table or its own small table, readable at a glance; scales by kind [INV-36] — a book's one sentence satisfies it; binds forward like INV-74 [INV-15] | From the spec to the tests |
 | C-1 | canonical axes (view · mode · tier · viewport · reopen · concurrency · every other live surface) + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |

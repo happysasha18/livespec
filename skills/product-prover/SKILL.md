@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 0.1.14
+  version: 0.1.15
 ---
 
 # Product Prover
@@ -175,7 +175,7 @@ Check:
 - Does it describe a system with state, behavior, transitions — versus marketing copy, vision statements, or prose without operational content?
 - Is there enough material to extract a model?
 - **Does the doc claim to describe a SHIPPED system?** If so, require the architecture doc's node pins (each surface → owning `file:line`, written at the build-pipeline architecture step). Without them, every finding is CONDITIONAL on the doc being current — say so, and flag any section describing a surface with no owning code/test as possibly-removed (a spec that outran an excision will otherwise "prove" dead behaviour).
-- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line` citation; a prose description does not qualify. The paired PRODUCT_SPEC.md must be in view — ownership is only checkable against the fact list it owns.
+- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens** — six checks, each judged at the project's kind scale: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · the quality budgets are stated with their instrumentation homes (SPEC INV-41) · the runtime view walks every flow the spec promises (SPEC INV-74) · the placement view says where every node runs, with its load-bearing technology where one exists (SPEC INV-75). Every pin is a real `file:line` citation; a prose description does not qualify. The paired PRODUCT_SPEC.md must be in view — ownership is only checkable against the fact list it owns. The lens grew from three checks to six on observed evidence: a real derivation passed the three-check lens and shipped with no budgets and no views (tlvphoto validation, 2026-07-09) — a mandate the lens never asks about gets skipped.
 
 Output one of:
 

@@ -1,10 +1,11 @@
-# live-spec — Architecture (v0.2.4, 2026-07-09)
+# live-spec — Architecture (v0.3.0, 2026-07-09)
 
 This is how live-spec is built: the named nodes that the spec's facts live in. One node carries one name
 and one responsibility — the one-surface-one-name rule, applied to structure. The doc was itself proven
 with the architecture lens before the test matrix was derived (see the Prover record below). In the
 field's vocabulary the nodes are the C4 model's building blocks and the arc42 building-block view (§5); the
-seams below are their relationships, and the quality budgets are arc42 quality scenarios (§10).
+seams below are their relationships, the runtime view is arc42's §6, the placement view its
+deployment view (§7), and the quality budgets are arc42 quality scenarios (§10).
 
 The agent keeps this doc up to date by assignment. When a wish lands, its new facts go to the node that already
 owns their kind, and the pin is refreshed. A fact with no home yet goes to the node that fits. A large or
@@ -31,7 +32,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, INV-23, INV-56, INV-65, T-19, INV-40, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence), `:95` (door + work-kind + prototype rules 15-16), `:132` (rule 19, INV-23 — the workshop-noise law), `:150` (rule 20, INV-65 — skill search at setup and struggle), `:152` (ladder), `:179` (defaults incl. `budget.pressure` — the economy ladder's setting; the rungs' one home is the SPEC's economy-ladder section) |
 | spec-author | authoring method for a living, use-case-first, prover-ready PRODUCT_SPEC.md | E-4, C-1, T-13, INV-18, INV-29, INV-50, T-14, INV-19, INV-20, INV-21; also carries the prototype-norm pointer's format sentence (`norm: <path>`, frozen copy in `docs/norms/`) — wiring, the invariant's owner is build-pipeline | `skills/spec-author/SKILL.md:109` (spine), `:134` ([target] tag tripwire), `:160` (axes composition), `:200` (fences), `:216` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6, INV-61, INV-72; also carries the entry-symmetry lens (the law's owner is spec-author) and the prototype-norm lens (prototype-born clause without pointer / text contradicting its artifact = finding) — wiring, the invariant's owner is build-pipeline | `skills/product-prover/SKILL.md:161` (review modes), `skills/product-prover/SKILL.md:271` (unwritten-seam hunt — the stress-lens family, INV-72), `.live-spec/profile.md:6` (gate cadence instance) |
-| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show → landed | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, T-17, T-18, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, INV-26, INV-30, INV-31, INV-33, INV-37, INV-39, INV-41, INV-43, INV-46, INV-49, INV-53, INV-54, INV-55, INV-62, INV-63, INV-69, INV-70, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:41` (step zero: the door + work-kind), `:31` (the craft ladder — step→craft one home), `:83` (the work-kind table — per-kind meanings' one home), `:107` (steps), `:233` (gates) |
+| build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show → landed | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, T-17, T-18, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, INV-26, INV-30, INV-31, INV-33, INV-37, INV-39, INV-41, INV-43, INV-46, INV-49, INV-53, INV-54, INV-55, INV-62, INV-63, INV-69, INV-70, INV-74, INV-75, E-14, E-15, INV-15, M-1 | `skills/build-pipeline/SKILL.md:41` (step zero: the door + work-kind), `:31` (the craft ladder — step→craft one home), `:83` (the work-kind table — per-kind meanings' one home), `:107` (steps), `:233` (gates) |
 | communicator | the human-facing exchange: reports, batched questions, decision pages, done-claim answers, the capture echo + departures board, the feature map on demand, the pre-report walk, working narration | T-7 (the report step; the walk before it is build-pipeline's), E-22, INV-25, INV-27, INV-28, INV-32, INV-34, INV-35, INV-38, INV-42, INV-51, INV-52, INV-57, INV-58, INV-59, INV-60, INV-64, INV-71, INV-67 (the showing channel matches the session's seat); also carries the clock law's chat-arm sentence as a wiring pin — that clock invariant's owner is the guardrails node | `skills/communicator/SKILL.md:33` (the rules), `:112` (rule 10 — the decision page), `:140` (rule 11 — the evidence walk), `:102` (rule 9 — the outcome-leads line shape), `:162` (the pre-report walk), `:82` (rule 7 — the chat-arm clock sentence) |
 | templates | the document shapes a host copies at bootstrap; the matrix's coverage checklist | E-3, E-5, INV-6, B-1, E-24, INV-48, E-26 | `templates/TEST_MATRIX.template.md:43` (coverage validation), `templates/ROADMAP.template.md:1`, `templates/PRODUCT_SPEC.template.md:58` (index), `templates/PROBLEMS.template.md:1` (E-24 — the ledger's shape) |
 | attach | attaching the pack to a host: adoption phases, VCS gate, attic, skill install + version record + the pack update check, the who-am-I-working-with step | E-1, E-9, INV-7, INV-8, B-2, B-3, INV-36, A-0, A-1, A-2, A-3, A-4, A-5, A-7, A-8, A-9, A-10, E-21, E-25 | `adopt/ADOPT.md:16` (VCS gate first), `:109` (unbacked-surface verdict), `:42` (attic), `:11` (attach record), `:50` (B-3 — who am I working with, first step of orient), `install.sh:2` (E-21 — the installer itself), `scripts/check-pack-update.sh:1` (E-25 — the update check) |
@@ -94,6 +95,54 @@ this layer by the project type's own definition.
 | F-bootstrap | attach, templates | test_scaffold_bootstrap_runs |
 | F-adoption | attach | test_adopt_phases_cite_spec |
 
+## Runtime view
+
+How each promised flow runs through the nodes [INV-74]. live-spec's kind is a skill pack, so its flow
+unit is a wish (or a handed-in item) walking through the skills; each hop below crosses a seam named in
+the Seams table, and the payload stays that table's fact. One line per flow: the walk, then where it
+can fail.
+
+| Flow | The walk through the nodes | Where it can fail |
+|---|---|---|
+| F-wish | the human speaks → build-pipeline (door, intake) → communicator (capture echo) → spec-author (delta) → product-prover (prove → record) → build-pipeline (architecture step, this doc) → test-author (matrix + tests) → build-pipeline (code, verify) → communicator (landing report, show) | a misread door (the tripwires outrank labels); an unfolded must-fix (the record's folded column); a red suite at the gate |
+| F-bug | build-pipeline (bug door, queue-cut) → test-author (red-on-bug row + test) → build-pipeline (fix, class sweep) → guardrails (gate) | a fix without its red test; a class fixed at one instance only |
+| F-feedback | any session receives → feedback-intake (routing table) → the item's home (a queue row · the fixing commit · the decision archive · FEEDBACK.md · PROBLEMS.md) → communicator (the one echo) | an item routed to two homes; an arrival with no echo |
+| F-prototype | a SEE/TRY ask → build-pipeline (prototype home, fenced) → guardrails (prototype fence) → promotion re-enters at F-wish's spec step | a sketch wired into a prod surface (the fence goes red) |
+| F-publish | a push intent → publish (kind checklist) → guardrails (pre-push, reach map) → the human's gate | a stale shopfront claim; a gate skipped on a "just docs" diff |
+| F-feature-map | the human asks → communicator reads the spec's scenario headings + the queue's open rows → the answer in chat | an answer from memory rather than the read documents |
+| F-problem-ledger | workshop noise fires → base-rulebook (the ledger walk) → PROBLEMS.md (WATCHED → OWNED → SOLVED) | a silent retry with no line; a third unowned recurrence |
+| F-bootstrap | scaffold → templates (copies) → attach (founding questions, B-3 profile step) | a founding question guessed rather than asked |
+| F-adoption | attach (orient → VCS gate → attic → attach record) → host-contract (profile, installed versions) | a host file overwritten with no attic line; an unbacked surface passed silently |
+
+## Placement view
+
+Where everything runs [INV-75]. A skill pack executes nowhere by itself: the skills are text a model
+reads, so the "runtime" is the agent session that loads them. Five places carry the pack:
+
+| Place | What runs or lives there | Load-bearing technology |
+|---|---|---|
+| the agent session on the host machine | every skill EXECUTES here — the pipeline, the prover, the exchange are behaviours of the model reading the installed SKILL.md text; session hooks (clock, chat laws) fire here | Claude Code; the pack's skills as markdown |
+| the installed skills dir `~/.claude/skills/` | the copies any session actually loads; synced from the repo | `scripts/sync-skills.sh` |
+| the pack repo `~/live-spec` (source: github.com/happysasha18/live-spec) | the source of truth: skills, templates, guardrails, docs, tests; the suite and gates run here at commit/push time | python3 + pytest; bash git hooks |
+| the host project's repo | the documents the method writes for that host: spec, queue, journal, checkpoints, ledgers | plain markdown in the host's tree |
+| GitHub + CI · the human's browser | the remote copy and the gates' second net; rendered artifacts and decision pages open here | `.github/workflows/gates.yml`; `scripts/render-doc.py` |
+
+## Quality budgets
+
+What quality means for a skill pack, in numbers [INV-41]. Numbers proposed by the agent, tunable on
+the human's word [INV-70]; each is asserted by a matrix row, and its instrumentation home is where the
+real number is read.
+
+| Budget | Number | Instrumentation home |
+|---|---|---|
+| full suite wall-time | ≤ 60 s on the dev machine [default] | the pytest tail line in the suite log |
+| skill evals | every per-skill scenario green at each milestone | dated run records in `docs/evals/` |
+| resume-file size | `NEXT_STEPS.md` ≤ 100 lines (INV-48, already asserted) | the suite's own check |
+| spec prose register | style lint: 0 errors on PRODUCT_SPEC.md | `scripts/spec-style-lint.py` JSON tail |
+
+A skill's judgment quality beyond the evals has no honest number; it is said by name here and judged
+by the human's eye on real landings, never given a vanity metric.
+
 ## Prover record
 
 | Date | Doc version proven | Record |
@@ -105,6 +154,7 @@ this layer by the project type's own definition.
 | 2026-07-07 | + test-author node (row 163) | `docs/prover/2026-07-07-row163.md` |
 | 2026-07-07 | + feedback-intake node (row 47) | `docs/prover/2026-07-07-row47.md` |
 | 2026-07-09 | v0.2 — FULL re-prove of the whole spec for the pre-push M-6 gate (sessions 27–29 body) | `docs/prover/2026-07-09-full-reprove-session29-body.md` |
+| 2026-07-09 evening | v0.3.0 — runtime view + placement view + budgets added (row 180; CROSS-LINK on INV-74/75, findings F1-F5 folded) | `docs/prover/2026-07-09-row180.md` |
 
 ---
 

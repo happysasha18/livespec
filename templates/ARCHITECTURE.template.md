@@ -69,6 +69,58 @@ crosses it and which side owns the format.
 |---|---|---|---|
 | [analysis → render] | [analyzer · renderer] | [analysis JSON] | [analyzer] |
 
+## Runtime view
+
+How each promised flow runs through the nodes (SPEC INV-74). The flow unit comes from the project's
+kind: a web or app product walks its visitor scenarios; a CLI walks one invocation per command; a skill
+pack walks a wish through the skills; a book crosses no machines and says so in one sentence, which
+satisfies the duty. One short walk per flow: which node serves each step, what crosses each hop, where
+the flow can fail. Each hop cites the seam it crosses by name — the payload and format stay the seam
+table's fact, stated once there. A flow the doc cannot walk end to end is a finding: a node is missing
+or a seam is unnamed.
+
+| Flow | The walk through the nodes | Where it can fail |
+|---|---|---|
+| [e.g. visitor plays a track] | [player loads analysis JSON (seam: analysis → render) → renderer draws the charts → player syncs the playhead] | [a stale analysis JSON; a chart drawn before data arrives] |
+
+## Placement view
+
+Where every node runs (SPEC INV-75): build-time on the author's machine · static file on a CDN · client
+browser · edge worker · external service — plus the load-bearing technology choice where one exists (the
+embedding model, the render harness, the store). First-class, so the reader answers "where does this
+run" for any node at a glance: keep this table, or fold a "runs at" column into the Nodes table when the
+map is small. A single-place project (a book, a local CLI) satisfies the duty with one sentence.
+
+| Node | Runs at | Load-bearing technology |
+|---|---|---|
+| [e.g. renderer] | [build-time, author's machine] | [python3 + jinja] |
+| [e.g. story API] | [edge worker] | [Cloudflare Worker + KV] |
+
+## Quality budgets
+
+Measurable numbers plus each budget's instrumentation home — where the number is measured and where a
+human reads it (SPEC INV-41). The project's kind proposes the dimensions (product: paint/interaction
+times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass
+rate, suite time; prose: what honestly has a number). A quality with no honest number is said by name,
+never given a vanity metric. Numbers are the host's taste: propose with a recommendation, set on the
+human's word at the surface's first budget landing.
+
+| Budget | Number | Instrumentation home |
+|---|---|---|
+| [e.g. first image on a cold visit] | [≤ 2 s] | [the perf line in the deploy check's output] |
+
+## Feature coverage
+
+The feature layer above the anchor matrix (SPEC E-29): the project's primary unit (a feature, command,
+guarantee, or argument — named by `project.kind`) carries an inline `[feature: F-x]` tag on its spec
+heading, and this table maps every unit to the node(s) that implement it and a test that exercises it.
+The check runs both ways: every tag is a row here, every row is a tagged unit, every named node and test
+is real.
+
+| Feature | Implemented by | Test |
+|---|---|---|
+| [F-example] | [node name(s)] | [test name] |
+
 ## Prover record
 
 | Date | Doc version proven | Record |

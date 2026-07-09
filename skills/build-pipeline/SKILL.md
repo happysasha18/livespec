@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.42
+  version: 0.2.43
 ---
 
 # build-pipeline — ship a change by the method
@@ -191,6 +191,16 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    and no instrumentation home is a derivation defect, exactly like an unowned fact. The numbers are the
    host's taste: propose with a recommendation, set on the human's word at the surface's first budget
    landing.
+
+   **The doc owes two more views beside the node map (SPEC INV-74, INV-75), scaled by kind:** the
+   **runtime view** walks every flow the spec promises through the nodes — which node serves each step,
+   what crosses each hop (citing the seam by name; the payload and format stay the seam table's fact),
+   where the flow can fail; a flow the doc cannot walk end to end is a finding. The **placement view**
+   states every node's place — build-time on the author's machine · CDN static · client browser · edge
+   worker · external service — plus the load-bearing technology choice where one exists, first-class (a
+   node-table column or its own small table), so the reader answers "where does this run" at a glance.
+   The per-kind flow unit and both section shapes live in the template; a book satisfies each view with
+   one sentence.
    **The doc is ITERATIVE, current only to what's shipped or in flight:** it maps the product as it stands
    plus the landing in flight. A node exists for what ships today, or for what the spec already promises
    under an owned queue row (marked [target], pin empty).
@@ -204,9 +214,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    longer fits; only a landing changes the shape.
 
 4. **Prove the architecture — invoke `product-prover` with the architecture lens** whenever the doc
-   changed in step 3: every spec fact has an owning node · no node stands without spec backing · every
-   seam names what crosses it and who owns the format. Findings land in the same `docs/prover/` record
-   discipline as step 2.
+   changed in step 3 — six checks, each at the project's kind scale: every spec fact has an owning node ·
+   no node stands without spec backing · every seam names what crosses it and who owns the format · the
+   quality budgets are stated with their instrumentation homes (INV-41) · the runtime view walks every
+   promised flow (INV-74) · the placement view says where every node runs (INV-75). Findings land in the
+   same `docs/prover/` record discipline as step 2.
 
 5. **Test spec — invoke `test-author` to DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture (the method's one home, SPEC E-27).** The
    matrix is derived, never just filled: rows organized **architecture node × spec fact** (one block per

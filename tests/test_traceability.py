@@ -2321,3 +2321,65 @@ class TestArchitectureTiers(unittest.TestCase):
         self.assertIn("Node structure by project.kind", bp,
                       "build-pipeline step 3 lost the pointer to the per-kind scaffold")
         self.assertIn("PROPOSES the starting node structure", bp)
+
+
+class TestArchitectureViews(unittest.TestCase):
+    """Row 180 (reopened RUN item 5): the architecture doc owes a runtime view (INV-74) and a
+    placement view (INV-75), the lens grows to six items, the template carries the sections, and
+    the pack's own ARCHITECTURE.md models all of it. String level."""
+
+    def test_spec_mandates_runtime_and_placement_views(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        for anchor in ("INV-74", "INV-75"):
+            self.assertIn("| %s |" % anchor, spec, "Formal index lost %s" % anchor)
+        self.assertIn("The architecture traces each flow at runtime.", spec)
+        self.assertIn("The architecture says where everything runs.", spec)
+        self.assertIn("where does this run", spec, "the placement view's at-a-glance question is gone")
+        # both views scale by kind, and the duty binds forward
+        self.assertIn("Both views scale by the project's kind", spec)
+
+    def test_architecture_lens_is_six_items(self):
+        # the lens's three homes all speak six items — the tlvphoto validation skipped budgets and
+        # views exactly because the three-item lens never asked
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("That lens checks six things", spec)
+        for home, needle in (
+            ("skills/product-prover/SKILL.md", "runtime view"),
+            ("skills/product-prover/SKILL.md", "placement"),
+            ("skills/product-prover/SKILL.md", "instrumentation home"),
+            ("skills/build-pipeline/SKILL.md", "runtime view"),
+            ("skills/build-pipeline/SKILL.md", "placement view"),
+        ):
+            text = re.sub(r"\s+", " ", read(home)).lower()
+            self.assertIn(needle.lower(), text,
+                          "%s does not carry the lens item '%s'" % (home, needle))
+
+    def test_template_carries_the_views(self):
+        tpl = re.sub(r"\s+", " ", read("templates/ARCHITECTURE.template.md"))
+        for section in ("## Runtime view", "## Placement view", "## Quality budgets",
+                        "## Feature coverage"):
+            self.assertIn(section, tpl, "architecture template misses the '%s' section" % section)
+        # the per-kind flow unit, so "every flow the spec promises" is answerable for any kind
+        for unit in ("visitor scenario", "one invocation per command",
+                     "a wish through the skills", "one sentence"):
+            self.assertIn(unit, tpl, "template's runtime view lost the per-kind flow unit: %s" % unit)
+        # the runtime view cites seams, the payload/format stay the seam table's fact (one home)
+        self.assertIn("cites the seam", tpl)
+        # placement is first-class and readable at a glance
+        self.assertIn("where does this run", tpl)
+
+    def test_own_architecture_carries_views_and_budgets(self):
+        arch = read("ARCHITECTURE.md")
+        flat = re.sub(r"\s+", " ", arch)
+        for section in ("## Runtime view", "## Placement view", "## Quality budgets"):
+            self.assertIn(section, arch, "live-spec's own ARCHITECTURE.md misses '%s'" % section)
+        # every feature in the coverage table walks in the runtime view
+        coverage = arch.split("## Feature coverage", 1)[1].split("## ", 1)[0]
+        runtime = arch.split("## Runtime view", 1)[1].split("## ", 1)[0]
+        features = re.findall(r"^\| (F-[a-z-]+) \|", coverage, re.M)
+        self.assertTrue(features, "feature coverage table parsed empty")
+        for f in features:
+            self.assertIn(f, runtime, "feature %s has no walk in the runtime view" % f)
+        # budgets carry numbers and instrumentation homes
+        self.assertIn("Instrumentation home", flat)
+        self.assertIn("suite wall-time", flat)
