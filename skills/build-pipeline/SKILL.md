@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.43
+  version: 0.2.44
 ---
 
 # build-pipeline — ship a change by the method
@@ -283,7 +283,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    option. A skill or prose landing walks the ladder in its kind's form: the checker re-reads the SHIPPED
    text against the spec sentences.
 
-9. **Commit & show.** Commit when green with no regression (unasked). Bump the version (PATCH by default).
+9. **Commit & show.** Commit when green with no regression (unasked) — same or better is enough, never wait for perfect. Where the host has a remote, PUSH accepted work there by rule (SPEC INV-82): every gate the diff reaches ran and passed (the verdict read from the suite log's own line), plus the host's own push lines; the remote is discovered from the tree, and only a host with no remote gets one contextual question at the first push moment (create one — GitHub, GitLab, whatever the human names — or stay local, recorded in the host profile). Every push re-walks the README against the pushed truth — crisp and current, a stale claim fixed before the push (the shopfront law at every-push cadence). The human's personally named gates still wait for his word. Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session. Diary the WHY
    in `JOURNAL.md`.
 

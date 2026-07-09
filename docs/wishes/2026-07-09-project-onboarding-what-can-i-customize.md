@@ -81,3 +81,10 @@ docs.bmad-method.org/how-to/install-bmad · uxpin.com/studio/blog/what-is-progre
 - Kin to the departures board / feature-map-on-demand (communicator) — a SHOW surface, feature language.
 - Must not become a wall of internal codes (INV-28): the card speaks in the human's words, codes trail.
 - Ties to spec-format-by-project-type (the `project.kind` unit) and the settings ladder (live-spec-base).
+
+## Addendum (2026-07-10, his word): the remote question joins the flow
+
+Setup also settles WHERE accepted work is pushed (SPEC INV-82): the remote is discovered from the
+tree (inspect-first); only a project with no remote gets one contextual question at the first push
+moment — create one (GitHub · GitLab · whatever they name) or stay local. The card's settings list
+shows the discovered remote like any other current value.

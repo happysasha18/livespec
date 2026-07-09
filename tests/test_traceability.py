@@ -2530,3 +2530,25 @@ class TestLLDReadingOrder(unittest.TestCase):
         self.assertIn("No secret lives in this pack", arch)
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("where secrets live", spec)
+
+
+class TestPushToRemote(unittest.TestCase):
+    """Row 194 (INV-82): accepted work reaches the host's remote by rule. String level."""
+
+    def test_push_to_remote_law(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-82 |", spec, "Formal index lost INV-82")
+        self.assertIn("Accepted work reaches the project's remote.", spec)
+        self.assertIn("never parked locally", spec)
+        # discover-first, one contextual question only when no remote
+        self.assertIn("git remote -v", spec)
+        self.assertIn("first push moment", spec)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("PUSH accepted work there by rule", bp)
+        self.assertIn("GitLab", bp)
+        # his named gates survive the law
+        self.assertIn("personally named gates still wait", bp)
+        # every push re-walks the README (his 2026-07-10 word)
+        self.assertIn("re-walks the README", bp)
+        spec2 = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("re-walks the README", spec2)

@@ -106,6 +106,9 @@ browser · edge worker · external service — plus the load-bearing technology 
 embedding model, the render harness, the store). First-class, so the reader answers "where does this
 run" for any node at a glance: keep this table, or fold a "runs at" column into the Nodes table when the
 map is small. A single-place project (a book, a local CLI) satisfies the duty with one sentence.
+Heavy binary content — an image archive, audio, video, model weights — names its home here too: object
+storage, or the machine's archive plus a named backup. A git repository of large binaries is the wrong
+home (hosting caps per file and per repo); if the derivation finds one, that is a finding to raise.
 
 | Node | Runs at | Load-bearing technology |
 |---|---|---|
