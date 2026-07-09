@@ -8,11 +8,13 @@ Versions: pack 0.9.5 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1
 build-pipeline 0.2.42 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.3 · ARCHITECTURE v0.2.4.
 **Suite 225 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
-**RUN items 1-3 PUSHED 2026-07-09 (`1eb7530`)** on his go ("after 3 and 5 you can push") — INV-72
-prover-wish · feature-coverage trace E-29/INV-73 · the 7 small holes rows 173-179. Pre-push gate green.
-Records: `docs/prover/2026-07-09-feature-coverage-trace.md`, `docs/prover/2026-07-09-small-holes.md`. Rows
-173-179 marked landed in ROADMAP (archive at the item-7 milestone). **Next push gate: after item 5** (his
-word); items 4-5 land local, push together after 5. Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
+**RUN items 1-5 PUSHED 2026-07-09** on his gate ("after 3 and 5 you can push"): items 1-3 at `1eb7530`,
+items 4-5 at `584298a`. Pre-push gates green both times. Records under `docs/prover/2026-07-09-*`. Rows
+173-179 marked landed in ROADMAP (archive at the item-7 milestone). **Item 6 (onboarding) PARKED at the
+mockup** — a labelled prototype on real settings is built + opened for his eye
+(`scratchpad/onboarding-mockup.html`); the spec/build waits on his taste verdict, per mockup-first
+(prototype-norm). **Item 7 (1.0 gate) waits on his explicit "go"** — never bumped/pushed without it. This
+NEXT_STEPS update is local; rides the next authorized push. Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
 + 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
 (bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
