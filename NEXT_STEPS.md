@@ -21,9 +21,9 @@ build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.1
 **Suite 208 green, 0 red — the FULL pre-push re-prove (M-6) is DONE and recorded, the prover-record gate is
 GREEN.** main HEAD LOCAL, origin behind 71. Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
-**PUSH is no longer mechanically blocked.** Still owed before a push: (1) his explicit "go"; (2) re-sync
-deployed==repo — the two edited skills (live-spec-base, product-prover) differ from `~/.claude/skills`, run
-`scripts/sync-skills.sh`; (3) PLAYBOOK profile count "14 rules + 8-check" — separate repo, his call to bump.
+**PUSHED 2026-07-09 ~15:04 on his "go" (HEAD `20a458f`, origin==HEAD, all gates green).** Deployed skills
+re-synced from repo (8 skills, `sync-skills.sh`). Pin drift cleaned. Still open, NOT push-blockers: PLAYBOOK
+profile count "14 rules + 8-check" — separate repo, his call to bump.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
 (bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
 3 real body defects (stray `</content>` tag, two stale skill-count ordinals, stale ARCHITECTURE header) and
