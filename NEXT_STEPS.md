@@ -71,10 +71,12 @@ the loop self-paces, long stretches between wakeups, each wakeup takes the next 
   docs/ pages; all lint-clean, render-checked, suite 239 green; detail in JOURNAL session 31).
 - [x] **Phase 2 — THE GLOBAL PASS — DONE 2026-07-10 ~01:26** (8 opus/sonnet auditors; INV-82 folded on
   the prover's must-fix; folds + intake rows 195-210 landed; commit train 6fe54d7→5d4bed3; JOURNAL s31).
-- [ ] **Phase 3 — queue, as the night allows:** row 170 register lint DONE (INV-83, blocks the showing);
-  rows 208/209 landed on his night words (clean-writer law INV-84 · README Known issues). STILL OPEN
-  tonight: row 195 render-doc link fix (INTENDED TONIGHT) · onboarding mockup v4 via the clean road ·
-  row 191 field test-norms diff · row 193 missing-stages gap analysis · row 190 remaining legs.
+- [x] **Phase 3 — queue wave DONE 2026-07-10 ~02:07:** rows 170/208/209/195/211/212 LANDED + row 190
+  method legs (INV-85/86 pair law; field validation rides its own window). Research recorded for his
+  word: row 191 (adopt: test-data hermeticity, property-based tests) · row 193 (adopt: release step
+  with rollback for hosted kinds, data/ML eval gate). Onboarding v4 clean-drafted, lint green,
+  outside-reader passed — HIS EYE IS THE GATE. **PUSH PENDING HIS HAND** (classifier):
+  `! git -C ~/live-spec push origin main` — 12 commits ahead.
 - NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
 

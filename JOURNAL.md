@@ -2714,3 +2714,32 @@ Versions: SPEC v0.16.13 → v0.16.16 (INV-83, INV-84; INV-82 amended) · base 0.
 0.1.42 · spec-author 0.1.25 · build-pipeline 0.2.45 · publish 0.1.4 · pack 0.9.12 · suite 239 → 266+
 green. Delegation: nine doc writers + eight auditors + two clean drafters + one judge pair on
 opus/sonnet; the senior's hands held folds, gates, and the train.
+
+## Session 31 — the night run, phase 3: the queue wave (2026-07-10, overnight, ~02:07)
+
+**Four more landings.** Row 195: rendered docs resolve their cross-links — render-doc.py rewrites
+relative .md links to rendered neighbours and gives headings GitHub-style ids; four tests red on the
+old script, green after; the false already-resolves claim corrected at both homes; the README's
+Known-issues bullet left the list the push its fix shipped. Rows 211/212: the post-fold re-check's
+wording seams folded — one question per gap at the first push moment; the register lint names its
+artifact-only reach; the clean-writer road names its unit (the touched section), its chat edge, and
+the mechanical-correction carve-out; base 0.1.28. Row 190 (method legs): the engine/instance split
+is proposed at founding and orient, never imposed; the pair is led as two full hosts with the inbox
+door as the only seam; the producer-wish walk stated entry to exit; two open decisions ride with
+recommended picks (D-6, D-7); the delta was drafted by a clean-road worker and folded by the senior.
+Field validation of the pair stays open by design — the first real pair executes in its own window.
+
+**Research recorded for his morning word.** Row 191 (field test norms): the level ladder measures
+what a test can SEE, the field's unit/integration/e2e measures how much it exercises — orthogonal
+axes, no replacement needed; two real adoptions proposed (test-data hermeticity as a standing duty;
+property-based tests for input-space invariants). Row 193 (missing stages): the pipeline's honest
+gaps are an executable release step with rollback for hosted products and a data/ML eval gate wired
+into the budgets law; monitoring stays deliberately deferred save a liveness eyeball at release.
+
+**Gates.** Judge v3 (fresh opus, canary passed): nine surviving findings, all in settled text, none
+touching tonight's delta — row 210's worklist. Pair-wave delta prover: zero must-fix, two folds
+shipped same pass (the founding-question count made consistent; the carve-out), three seams to row
+213; verdict safe to push v0.16.19. Style gate at the recorded 63; suite 273 green at the batch's
+head. Onboarding v4: drafted clean, register lint green, outside-reader check passed all sections —
+opens for his eye in the morning. The push to the remote is BLOCKED by the harness's own classifier
+(above any model); the wave waits for his hand: `! git -C ~/live-spec push origin main`.
