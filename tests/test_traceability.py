@@ -2548,7 +2548,6 @@ class TestPushToRemote(unittest.TestCase):
         # discover-first, one contextual question only when no remote
         self.assertIn("git remote -v", spec)
         self.assertIn("first push moment", spec)
-        self.assertIn("one question per gap", spec)
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         self.assertIn("PUSH accepted work there by rule", bp)
         self.assertIn("GitLab", bp)
@@ -2558,6 +2557,7 @@ class TestPushToRemote(unittest.TestCase):
         self.assertIn("re-walks the README", bp)
         spec2 = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("re-walks the README", spec2)
+        self.assertIn("one question per gap", spec2)
 
 
 class TestCleanWriterLaw(unittest.TestCase):
@@ -2572,5 +2572,23 @@ class TestCleanWriterLaw(unittest.TestCase):
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         self.assertIn("Human-facing prose is drafted by a clean writer (SPEC INV-84).", base)
         self.assertIn("do not write the prose yourself", base)
-        self.assertIn("the unit is the section the edit touches", re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")))
-        self.assertIn("binds the durable prose", re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")))
+        self.assertIn("the unit is the section the edit touches", spec)
+        self.assertIn("binds the durable prose", spec)
+
+
+class TestPairLaw(unittest.TestCase):
+    """Row 190 (INV-85/86): the engine/instance split and pair leadership. String level (M-200/201)."""
+
+    def test_pair_split_proposal(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-85 |", spec, "Formal index lost INV-85")
+        self.assertIn("founding proposes the split", spec)
+        self.assertIn("it never imposes it", spec)
+        self.assertIn("works-without-it test", spec)
+
+    def test_pair_leadership_law(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-86 |", spec, "Formal index lost INV-86")
+        self.assertIn("the pack attaches to each, never to the pair", spec)
+        self.assertIn("[feature: F-pair]", spec)
+        self.assertIn("a producer wish crosses the seam", spec)
