@@ -6,7 +6,7 @@
 > states today's truth.
 
 **Founding answers (B-2).** personal-vs-reusable: ⟨DECIDE⟩ · asked of the human or read from their
-profile at founding — never inferred from examples. Add the other answers that shape this product.
+profile at founding. Never inferred from examples. Add the other answers that shape this product.
 
 **Current vs target.** [If anything below is designed but not yet shipped, say so here and mark those
 sections `[target]` — the spec never claims shipped what isn't. Keep this block honest at every edit;
@@ -21,7 +21,7 @@ unit/valid range if it's a measure) and gets its anchor.] [E-1]
 ## [The main scenario — name it by what the person DOES: "Analysing a track", "Throwing a wish", …]
 
 [Walk it as prose: what the person does, what they see, what the system does underneath. Weave the formal
-content into the walk — never split it out into separate Entities/States/Actors chapters:]
+content into the walk. Never split it out into separate Entities/States/Actors chapters:]
 
 [Each **entity** is defined in bold where the walk first meets it, with its attributes and states. [E-2]]
 

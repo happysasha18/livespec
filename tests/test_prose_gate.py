@@ -56,6 +56,42 @@ class TestSpecStyleLintGate(unittest.TestCase):
         self.assertIn("future-narration", r.stdout)
 
 
+class TestScissorsCoverage(unittest.TestCase):
+    """The contrast frame in every shape, and the additive forms that must stay legal."""
+
+    def _flags_scissors(self, text):
+        r = run("spec-style-lint.py", "-", stdin=text + "\n")
+        return "scissors" in r.stdout
+
+    def test_comma_appositive_is_caught(self):
+        for t in ("It is a record, not a message.",
+                  "Show status icons, not a table wall.",
+                  "The map is a departures board, not a paragraph."):
+            self.assertTrue(self._flags_scissors(t), "comma appositive missed: %r" % t)
+
+    def test_russian_contrast_forms_are_caught(self):
+        for t in ("Это чек-лист решает, а не ярлык.",
+                  "Не ярлык, а чек-лист решает.",
+                  "Не столько скорость, сколько ясность."):
+            self.assertTrue(self._flags_scissors(t), "russian contrast missed: %r" % t)
+
+    def test_additive_and_prohibition_forms_stay_legal(self):
+        for t in ("This governs replies, not only documents.",
+                  "A slip, not just a typo, still counts.",
+                  "It informs, not merely enumerates.",
+                  "Never delete a host file.",
+                  "One term per concept, everywhere.",
+                  "If it is not ready, the lane waits."):
+            self.assertFalse(self._flags_scissors(t), "false positive on: %r" % t)
+
+    def test_russian_conditional_a_is_not_a_contrast(self):
+        # «а если / а бы / а когда / а также» continue a clause; they are not the «не X, а Y» contrast.
+        for t in ("деньги не заканчиваются, а если бы заканчивались, что делать",
+                  "не сработало, а также сломалось соседнее",
+                  "правило написано, а когда проверим — увидим"):
+            self.assertFalse(self._flags_scissors(t), "conditional «а» wrongly flagged: %r" % t)
+
+
 class TestWaiverMechanism(unittest.TestCase):
     def _w(self, **kw):
         base = {"id": "w1", "rule": "second-person", "file": "SPEC.md", "snippet": "you know",

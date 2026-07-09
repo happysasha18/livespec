@@ -5,7 +5,7 @@ description: >
   test → code → verify → commit & show pipeline, orchestrating the spec-author and product-prover skills. Use this whenever starting a new
   feature, a new stateful surface, or a behaviour change that deserves more than a one-line edit:
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
-  executable projection of the method (PLAYBOOK.md — in the private playbook repo, not this one — holds the principle) so the method survives memory
+  executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
   version: 0.2.40
@@ -29,11 +29,11 @@ Otherwise don't skip a step — the bugs that pass every test hide in the steps 
 the principle behind each step; this skill is its executable projection — keep the two in sync.)
 
 **The craft ladder — whose head you wear at each step (SPEC INV-33).** Each artifact is judged by its
-craft's standards, not a generalist's: **spec** — a strong product manager (the user's journey, the
+own craft's standards: **spec** — a strong product manager (the user's journey, the
 product's words) · **prove / prove architecture** — the prover's formal-methods reviewer ·
 **architecture** — a software architect (nodes, seams, one responsibility each) · **matrix** — a QA
 automation lead deriving coverage · **test** — the same QA engineer writing it · **code** — a senior
-developer · **verify** — the visitor's own eyes, not the builder's · **commit & show** — a careful
+developer · **verify** — the visitor's own fresh eyes, the builder's own view set aside · **commit & show** — a careful
 release hand whose reader is the human. The landing report's step accounting speaks in these standards,
 and the hat each artifact was made under is namable on ask. The craft wears the work-KIND's face
 (SPEC INV-22, INV-33): on a prose product the code step is worked as a strong writer, on infra as a
@@ -51,7 +51,7 @@ toolsmith — the ladder names the archetypes, the kind says what their standard
     third document, and a restructure verdict queues its OWN row (refactor door if only structure
     moves, feature door if behaviour moves too) — the re-carve happens only through the architecture
     step and its re-prove (SPEC INV-37).
-  - Tripwires decide, not judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
+  - Tripwires decide by rule, ahead of judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
     · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
     casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
     bug door alone — a re-doored wish takes no preemption.
@@ -63,14 +63,14 @@ toolsmith — the ladder names the archetypes, the kind says what their standard
     its queue row ("entry: mockup-first"); a later general "go build" moves priority, never the
     condition — only by the human naming it does the condition fall. A condition living only in chat
     memory is the defect this line kills (the tlvphoto door was built past its voiced mockup-first word).
-  - **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, not new stories; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
-    rule 16) — never into prod, never shown as product.
+  - **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth, T-15's knife; separate stories never fuse into one row); sub-behaviours (a hover face, a phone face, a backpointer) are the story's ACCEPTANCE, folded into the one story; unclear whether it is one story or two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to merely SEE/TRY with no commitment goes to a labelled prototype home instead (base
+    rule 16) — it stays a prototype, outside prod and unshown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
   also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample
   of its class (base rule 14):** before calling it done, name the pattern, grep the repo for it, check the
   visible text of every user-facing surface, and fix all siblings in the same change — the matrix row and
-  the red-on-bug test cover the CLASS, not the single instance. **A RECURRING bug re-doors to feature:**
+  the red-on-bug test cover the CLASS, beyond the single instance. **A RECURRING bug re-doors to feature:**
   a second bug in the same area within ~30 days is not another patch — the area is missing an INVARIANT,
   so it escalates to the full pipeline from step 1 (spec the invariant, re-prove, then fix under it).
   The journal is how you notice: before taking any bug, grep JOURNAL.md for the area's name and check
@@ -140,7 +140,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    present and named the same at prove-time — so a surface absent or unlinked then is invisible to it. Two
    modes (see product-prover): **FULL** (all phases, the WHOLE spec — required at MINOR gates and structural
    rewrites) and **CROSS-LINK** (the new surface's seams against the named existing surfaces — on every
-   surface add). **Write the findings to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, not in this
+   surface add). **Write the findings to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, separate from this
    skill's) with a per-finding folded / rejected(+why) column** so "fold every must-fix" is verifiable after a wipe; the next prover run opens by checking the
    previous file's unfolded rows. Fold every must-fix by the book; record should-clarify. Resolve every
    `⟨DECIDE⟩` that the surfaces under change TOUCH (ask the human when it's genuinely their call) and list the
@@ -153,7 +153,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    by exactly one node; named seams between nodes. In a live codebase every node pins to its owning
    `file:line` — **this step is where the spec is reconciled with reality**: each pin comes from a command
    you ran, never from the doc's own prose, your memory, or a worker's summary — those are leads to verify
-   (base rule 13). Specs drift from code; fix the spec to the shipped truth, not the other way. A large or
+   (base rule 13). Specs drift from code; fix the spec to the shipped truth — always in that one direction. A large or
    surface-class change updates the doc; a bug or small change just cites its existing node and skips to
    the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
    **The architecture owes NUMBERS, not only names (SPEC INV-41):** measurable quality budgets plus
@@ -168,11 +168,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    line and no instrumentation home is a derivation defect, exactly like an unowned fact. The numbers
    are the host's taste — propose with a recommendation, set on the human's word at the surface's
    first budget landing.
-   **The doc is ITERATIVE — never written milestones ahead:** it maps the product as it stands plus the
+   **The doc is ITERATIVE, current only to what's shipped or in flight:** it maps the product as it stands plus the
    landing in flight. A node exists for what ships today, or for what the spec already promises under an
    owned queue row (marked [target], pin empty). A future feature earns its node when its landing arrives;
    a speculative node is unbacked structure — the prover flags it, and "should I architect the next few
-   milestones now?" is answered NO by the method, not by taste. Re-carving the whole node map IS
+   milestones now?" is answered NO strictly by the method, taste playing no part. Re-carving the whole node map IS
    legal — it arrives as a restructure placement's own queue row (SPEC INV-37), walks this step, and
    is re-proven like any structure change; a placement may SAY the shape no longer fits, only a
    landing changes the shape.
@@ -192,15 +192,15 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    inventory entry owns at least one rendered-level row. Derivation CLOSES with the template's **coverage
    validation checklist, actually walked** (every anchor ≥ 1 row · every node's negative-side rows exist ·
    no stale refs); a fact with no row or at a too-weak level is a derivation defect, fixed here. The
-   matrix is the bridge: tests come from the matrix, not from the code. (The mechanical projection is
+   matrix is the bridge: tests come from the matrix, upstream of the code. (The mechanical projection is
    junior work; choosing each row's level + assertion is the senior's.)
 
 6. **Test — with `test-author`, write tests that assert the REAL shipped artifact.** Render the widget / produce the file /
-   call the function and inspect the output — never a source-string match. Watch the new test FAIL first
+   call the function and inspect the output as real behavior, apart from any source-string match. Watch the new test FAIL first
    (red-on-bug), then implement. Never edit a test just to make a change pass.
 
 7. **Code — implement until green.** Delegate well-scoped, mechanical implementation to a junior worker
-   with a precise brief + a persistent checkpoint file (so a cut-off resumes, not restarts). Keep the hard
+   with a precise brief + a persistent checkpoint file (so a cut-off resumes rather than restarts). Keep the hard
    parts (ambiguous specs, design, tricky debugging) on the senior model. Verify the junior's result by deed.
    **A norm-pointered surface builds with the artifact open (SPEC INV-43):** when the surface's spec
    clauses carry a `norm: <path>` pointer, OPEN the artifact before building — the frozen prototype is
@@ -218,13 +218,13 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 8. **Verify by deed.** Run it and see the result with your own eyes. Only call it done/working after that;
    otherwise label it an assumption. Run every check the diff can reach before any push — the reach map's law (SPEC INV-45): a prose-only diff runs the doc gates whole and says so; any code, spec, matrix, skill, or test file in the diff means the whole suite. **Green = zero failures AND the
    skip-set is exactly the expected pinned list** — an unexpected skip (Chrome absent, a real-data fixture
-   missing) is a FAILURE, not a pass. **If red at a pause / session end: never commit; write the failing test
+   missing) is a FAILURE outright. **If red at a pause / session end: never commit; write the failing test
    name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint IS the red test.
 
    **The adversarial option — a second pair of FRESH eyes (SPEC INV-46).** When the code step was
    delegated AND the delta is surface-sized (a new surface or a multi-file behaviour change), verify
    also runs a fresh-context checker: brief it with the SPEC sentences the landing claims (the
-   anchors) and the artifact paths — never the worker's summary, never your plan; its opening
+   anchors) and the artifact paths — primary sources only, apart from the worker's summary or your own plan; its opening
    hypothesis is "tasks completed, goal missed"; it walks each claimed fact up the ladder exists →
    substantive → wired → flows, and greps for stubs: TODO · FIXME · placeholder · lorem · hardcoded
    sample · empty function body. Findings become rows or red, never a nod; the checker is a worker
@@ -235,8 +235,8 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 9. **Commit & show.** Commit when green with no regression (unasked). Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session; diary the
    WHY in `JOURNAL.md`. **The CHANGELOG speaks to the USER, the journal to the builder:** each entry says
-   what changed for the person using the product, with one concrete example from real output — never
-   function names, internal ids, or row numbers (those live in the journal). And no doc pins a drifting
+   what changed for the person using the product, with one concrete example from real output, in outcome
+   terms only; function names, internal ids, and row numbers live in the journal instead. And no doc pins a drifting
    version number in prose — "current version: vX.Y" always goes stale; point at the version's one home
    (the VERSION file, the frontmatter) or omit it. The landing report TELLS the taste choices made
    without asking — the open `[default]`s — each in plain words with an example and a tweakable mark;
@@ -251,11 +251,11 @@ converging (a whole panel ships empty; a behaviour nobody asked for gets buried;
 So the pipeline is not trusted, it is ENFORCED: a `guardrails` check the project wires to a **git pre-push
 hook** (+ the suite), so a change that fails ANY of these is RED and CANNOT be pushed. `test_traceability`
 (below) is the first of these — generalise it to the full set. **Each project INSTANTIATES the checks for its
-own surfaces; the pipeline REQUIRES the check exists and is green.** This is a first-class step, not a per-project
-patch. The four mechanical guardrails:
+own surfaces; the pipeline REQUIRES the check exists and is green.** This is a first-class step, applied project-wide
+rather than as a per-project patch. The four mechanical guardrails:
 - **Completeness** — a SURFACE REGISTRY + a render-scan test that fails if any user-facing surface is empty OR
   is rendered but not in the registry (so a new surface goes red until registered + asserted). No partial/
-  stripped artifact can ship or be shown. Self-closing: the DOM is the source of truth, not a hand-list.
+  stripped artifact can ship or be shown. Self-closing: the DOM is the source of truth, checked directly instead of a hand-list.
 - **Tests-present** — a diff that touches a user-facing module MUST touch `tests/`. No change without a test.
 - **Bounds (behaviour ↔ spec)** — every user-facing behaviour traces to a SPEC clause; a behaviour with no
   spec backing (a silent micro-decision — a default, an auto-mute, a sort order) is RED. This is what catches
@@ -275,7 +275,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 | The thought | Why it is a trap |
 |---|---|
 | "it's a one-liner / just a prototype" | The Room was "just to see" — it shipped hover-only with no phone layout and no spec. Size never picks the door; the tripwires do (base rule 15). |
-| "I'll write the spec after it works" | Spec-after-code documents what you built, not what was asked; the prover can no longer catch the difference (spec-author anti-pattern). |
+| "I'll write the spec after it works" | Spec-after-code documents what you built, apart from what was asked; the prover can no longer catch the difference (spec-author anti-pattern). |
 | "the human is in a hurry" | Urgency moves PRIORITY, never the door — a critical feature heads the queue, it still enters at the spec step (SPEC T-12). |
 | "the suite is green, ship it" | Green proves the facts the matrix knows; an unspecced surface has no rows, so green says nothing about it (SPEC INV-15). |
 | "asking would bother them" | Batched questions exist exactly for this; a silent guess costs a re-build, the batch costs one read (SPEC INV-4, INV-5). |
@@ -294,7 +294,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   `bug → matrix → test → code`. Never code first and back-fill a spec — and never jump from spec straight
   to tests: the two layers between them (architecture, test-spec derivation) are where whole classes of
   holes get caught (SPEC E-14/E-15/INV-15).
-- **A row closes only whole (SPEC INV-26):** where a row carries several legs, its Done-when enumerates each, and the landing report may close the row only with EVERY leg met — half-done is a status, never a landing; an open leg keeps the row in-work, and the resume file's LIVE-STATE restates it at every supersession, never compresses it away (still open at compaction ⇒ restated, not summarized out).
+- **A row closes only whole (SPEC INV-26):** where a row carries several legs, its Done-when enumerates each, and the landing report may close the row only with EVERY leg met — half-done is a status, never a landing; an open leg keeps the row in-work, and the resume file's LIVE-STATE restates it at every supersession, never compresses it away (still open at compaction ⇒ restated in full).
 - **Trains, one pen (SPEC T-18, INV-39):** one session may roll up to three INDEPENDENT build lanes
   without asking (his 2026-07-06 word; a fourth opens only on the human's asked word, never silently) —
   pairwise independent: no shared surface, no shared spec section; opening each lane is narrated and
@@ -319,7 +319,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →
   Sonnet; judgment/design → senior. **The routing rule (SPEC INV-69) picks the tier — propose the cheapest
   tier that can pass the brief, the senior may overrule it aloud:** the proposal reads the STEP and kind of
-  the work, not the row's size alone — a judgment step (spec, prove, architecture, matrix-level calls,
+  the work, beyond the row's size alone — a judgment step (spec, prove, architecture, matrix-level calls,
   findings triage, any taste call) proposes the senior and is never routed down, a mechanical step proposes
   a worker at the tier above; the economy rung moves the threshold (at `lean` an airtight brief rides one
   tier cheaper, at `tight` the cheapest sufficient tier is always the proposal); and the proposal is
@@ -341,24 +341,24 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   [default], the work splitting above either — passing PATHS, never inlined file bodies. See the private playbook repo's PLAYBOOK.md. **The worker contract (SPEC
   ACT-3):** the brief NAMES the files the worker may write — its session's write-ownership narrowed to
   exactly those, reads free, writes fenced; same-session sibling-worker files are fence-benign (the
-  concurrent-edit fence alarms on foreign sessions, not on your own briefed hands — the senior who
+  concurrent-edit fence alarms on foreign sessions, staying quiet on your own briefed hands — the senior who
   briefed both owns the seams between briefs); the session's live setting lines ride into the brief
   verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's spoken
   word; the brief ARMS the worker for the workshop — it carries the host's problem-ledger path
   (`.live-spec/PROBLEMS.md`) with the WATCHED-line duty: workshop noise the worker hits (a flaky
   harness, a missing dependency, a tool misbehaving) goes into its checkpoint as a ledger line —
-  signature, date, one line of context — never a silent retry, and the senior carries the lines into
+  signature, date, one line of context, logged every time — and the senior carries the lines into
   the ledger at verify (SPEC INV-23); and it carries the CLOCK — the date and time read at briefing —
   so the worker stamps its checkpoint and any dated output from the brief's clock, never an invented
   hour (SPEC INV-24; a worker WITH a shell re-reads the machine clock itself — the brief's line is the
-  floor for one without, and elapsed time is never guessed); and a result failing its brief's acceptance escalates ONE tier with a logged
-  line — never a silent retry on the same tier, never a skipped rung. **Every delegation reports its saving:** the
+  floor for one without, and elapsed time is never guessed); and a result failing its brief's acceptance escalates exactly ONE tier every time, with a logged
+  line covering the move — one rung up, in order, always logged. **Every delegation reports its saving:** the
   landing report carries one line — what went to the worker and roughly how much senior work it saved.
   The line is what keeps the habit alive; a session that never writes it is a session that quietly
   stopped delegating.
-- **Traceability is a test, not a vow.** A standing `test_traceability.py` fails the suite on a matrix row
+- **Traceability is a test, enforced automatically.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
-  RESOLVED that still carries the live marker — so drift is caught every commit, not once per MINOR.
+  RESOLVED that still carries the live marker — so drift is caught every commit, continuously rather than once per MINOR.
 
 ## How it relates to the other skills
 - `spec-author` — writes/grows the spec (step 1). Public.

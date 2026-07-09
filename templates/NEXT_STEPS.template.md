@@ -4,7 +4,7 @@
 > leg (its name, what stays open, where the detail lives); detail flows to the journal and the queue
 > rows this file points at. Compaction moves prose to its home; it never drops an open leg.
 
-**This is a resume file, not a log.** It holds ONLY the current live state + the forward queue. When a new movement lands, REPLACE the live state block — never stack entries. Dated history and the WHY live in JOURNAL.md.
+**This is a resume file.** It holds ONLY the current live state + the forward queue. When a new movement lands, REPLACE the live state block. Never stack entries. Dated history and the WHY live in JOURNAL.md.
 
 ---
 

@@ -13,7 +13,7 @@ user's personal layer, a host project) and where any given rule goes.
 
 They are good, and they share the right instinct: spec before code. Use them if their shape fits your work.
 live-spec is built for a different shape of work — **continuous**: you throw wishes in passing, mid-anything,
-and each one enters the process in a sentence, not a planning session; the queue is persistent across
+and each one enters the process in a sentence; no planning session is required; the queue is persistent across
 sessions; execution runs asynchronously while you keep talking.
 
 Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
@@ -41,10 +41,10 @@ alternatives enforce their specs by prompt text (Spec Kit's consistency checks, 
 included, are LLM instructions — the only mechanical checks in its repo are file-existence tests).
 Six mechanisms the neighbours genuinely do better are queued to be absorbed (queue rows 110–115).
 
-The sharpest critique arrived the same week from use, not review: the first real project built under
+Where the analysts' verdicts came from review, the sharpest critique arrived the same week from use: the first real project built under
 the pack — a photo-portfolio site — reported that while no written promise ever regressed, everything
-that felt unfinished lived where the method wasn't looking. It specced SURFACES, not the visitor's
-PATH (nobody asked "and where does the guest go from here?"); verify-by-deed confirmed "works", never
+that felt unfinished lived where the method wasn't looking. It specced SURFACES. The visitor's PATH went unspecified
+(nobody asked "and where does the guest go from here?"); verify-by-deed confirmed "works", never
 "feels"; taste defaults accumulated silently until the product read eighty-percent-finished
 everywhere. This converges with the analysts' structural critique, so we treat it as the strongest
 entry in this section. The gap is now the pack's own shipped work — a product-fit interrogation on
@@ -59,11 +59,11 @@ with how it goes.
 
 ## The pipeline
 
-**Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep). Hard tripwires, not judgment: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17). A wish too big for its worth is negotiated in **scope** — cut surfaces or split into stages — never in time budgets or estimates (SPEC T-15). A story's declared mockup-first entry condition ("show me first, then build") is written in its queue row and cancelled only by the human naming it — a general "go build" never cancels it (SPEC INV-43).
+**Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep). Hard tripwires decide it; judgment plays no role: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17). A wish too big for its worth is negotiated in **scope** alone — cut surfaces or split into stages (SPEC T-15); time budgets and estimates play no part in that negotiation. A story's declared mockup-first entry condition ("show me first, then build") is written in its queue row and cancelled only by the human naming it — a general "go build" never cancels it (SPEC INV-43).
 
 1. **Spec** (`spec-author`). Write or grow `SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. A feature's delta opens with **regression fences** when it touches a live surface (what must keep working, each citing the clause it guards — SPEC T-14), walks the **standard-facet sweep** (phone/touch/empty-error-loading/a11y/perf/visual-hierarchy/two-windows/missing-source — every facet ends as a spec sentence, decided or `[default]`-tagged and reported, SPEC T-13/INV-18), and closes with **non-goals** and a **success measure** (SPEC INV-20/INV-21). The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
-3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning place — the named thing first, the `:line` as a cached convenience a drift gate re-checks — this is where the spec is reconciled with shipped reality (fix the spec to the truth, not the other way).
+3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning place — the named thing first, the `:line` as a cached convenience a drift gate re-checks — this is where the spec is reconciled with shipped reality (the correction always runs from spec to truth).
 4. **Prove the architecture** (`product-prover`, architecture lens) whenever the doc changed: every fact has an owning node, no node without spec backing, every seam named.
 5. **Test spec.** DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture: rows organized node × fact, each pinned to a test level (string / DOM / browser / pixel); visibility and layout facts get level ≥ browser; derivation closes with a coverage-validation checklist actually walked.
 6. **Test.** Write tests that assert the real shipped artifact — rendered widget, produced file, called function. Watch each new test fail first.

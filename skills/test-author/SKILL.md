@@ -35,7 +35,7 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
 1. **Open with the artifact inventory** — every file the user receives, each owning at least one
    rendered-level row. An artifact nobody renders in a test can ship broken with the suite green.
 2. **Blocks per architecture node; every spec fact ≥ 1 row.** A fact with no row is a derivation
-   defect, found here, fixed here — never discovered later by a user.
+   defect, found here, fixed here, always before a user could find it.
 3. **Every row states BOTH sides** — what the fact does, and what it must never do. The never side is
    the regression fence: a row without it proves the happy path and nothing else.
 4. **Every row pins a LEVEL** — the ladder below. The level is the row's most important judgment.
@@ -48,7 +48,7 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    table, a gate mechanism) may carry their own contract rows. The spec anchor cited is the parent
    fact; an audit finding "matrix id absent from the spec" for these two kinds is expected.
 7. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
-   node's never-side rows present · no stale references. Walked, not checked off from memory.
+   node's never-side rows present · no stale references. Walked in person, item by item.
 
 ## The level ladder — where green suites lie
 
@@ -68,14 +68,14 @@ be able to see the same thing.
 ## Writing the tests (the pipeline's step 6)
 
 - **Assert the real shipped artifact**: render the page, produce the file, call the function — then
-  inspect the output. A source-string match on such a fact is a matrix defect, not a test.
+  inspect the output. A source-string match on such a fact only reveals a matrix defect; the row still owes a real test.
 - **Red first, proven.** A new test runs against the pre-change state (or the bug) and FAILS before
   the implementation makes it pass; the red run is recorded. A test born green proves nothing.
 - **Never edit a test to make a change pass.** A red test means the change or the matrix cell is
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned
   set. An unexpected skip (a browser missing, a fixture absent) is a failure wearing a quieter color.
-- **Traceability is a standing test, not a vow**: a test in the suite fails on a matrix row citing a
+- **Traceability is a standing, enforced test**: a test in the suite fails on a matrix row citing a
   missing test, a duplicate id, a spec fact with no row, or a resolved-but-live decision marker — so
   drift is caught at every commit.
 - **The bug protocol:** a bug fixes the matrix cell (or adds the missing invariant row) first, then a

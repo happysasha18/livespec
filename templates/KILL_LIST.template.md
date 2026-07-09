@@ -8,4 +8,4 @@
 
 | Killed literal (exact) | Date | Context (one line) |
 |---|---|---|
-| "<example — not X, it's Y>" | YYYY-MM-DD | the negation frame, killed in review round N |
+| "<example phrase using the contrast frame>" | YYYY-MM-DD | the negation frame, killed in review round N |

@@ -494,7 +494,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("The excuses table", bp, "build-pipeline lost the excuses table")
         self.assertIn("Size never picks the door", bp)
         pp = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
-        self.assertIn("Report gaps, not taste", pp, "product-prover lost the anti-taste line")
+        self.assertIn("Report gaps. Taste is out of scope.", pp, "product-prover lost the anti-taste line")
         base = read("skills/live-spec-base/SKILL.md")
         self.assertRegex(base, r"(?m)^17\. \*\*Irreversible means gone, not merely public",
                          "base rule 17 missing")
@@ -534,7 +534,7 @@ class TestFacetSweep(unittest.TestCase):
 
     def test_facet_list_is_curated(self):
         sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
-        self.assertIn("The list is curated, not collected", sa, "spec-author lost the curation law")
+        self.assertIn("The list is curated, each facet earning its place by named incident", sa, "spec-author lost the curation law")
         self.assertIn("named real incident", sa)
         # every facet entry in the canonical list names its incident
         self.assertGreaterEqual(sa.count("(incident"), 3, "new facets must carry their incidents")
@@ -1016,7 +1016,7 @@ class TestWorkerContract(unittest.TestCase):
             "The craft ladder — whose head you wear at each step",
             "a strong product manager",
             "QA automation lead",
-            "the visitor's own eyes, not the builder's",
+            "the visitor's own fresh eyes, the builder's own view set aside",
             "a careful release hand",
         ):
             self.assertIn(needle, flat_pipe, "build-pipeline missing: %s" % needle)
@@ -1059,7 +1059,7 @@ class TestWorkerContract(unittest.TestCase):
         for phrase in ("The worker contract (SPEC ACT-3)",
                        "fence alarms on foreign sessions",
                        "never resolves the settings ladder itself",
-                       "never a silent retry on the same tier"):
+                       "escalates exactly ONE tier every time, with a logged line covering the move"):
             self.assertIn(phrase, bp, "build-pipeline lost the worker-contract elaboration: %s" % phrase)
 
     def test_routing_rule(self):
@@ -1175,7 +1175,7 @@ class TestSkillSync(unittest.TestCase):
 
     def test_spec_states_skill_sync(self):
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for phrase in ("keeps its skills fresh by name, not by habit",
+        for phrase in ("keeps its skills fresh by a named step, run deliberately",
                        "sync-skills.sh",
                        "reports every version change old → new",
                        "A hand-copy is the anti-pattern the tool retires"):
@@ -1303,7 +1303,7 @@ class TestMinedGapFolds(unittest.TestCase):
         bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
         for phrase in ("The CHANGELOG speaks to the USER, the journal to the builder",
                        "one concrete example from real output",
-                       "never function names, internal ids, or row numbers",
+                       "function names, internal ids, and row numbers live in the journal instead",
                        "no doc pins a drifting version number in prose"):
             self.assertIn(phrase, bp, "build-pipeline step 9 lost the docs discipline: %s" % phrase)
         sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
@@ -1468,7 +1468,7 @@ class TestProblemLedger(unittest.TestCase):
     def test_decision_card_consequences(self):
         """Row 119 (M-117, INV-32): a decision card asks in consequences, not mechanisms."""
         spec = read("SPEC.md")
-        for needle in ("INV-32", "consequences, not mechanisms"):
+        for needle in ("INV-32", "consequences; the mechanism trails"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         self.assertIn("what the choice CHANGES for the person", comm,
@@ -1480,7 +1480,7 @@ class TestProblemLedger(unittest.TestCase):
         question or the done-claim walk (INV-25) keeps the number as the answer."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
         for needle in ("Bookkeeping numbers are handles too", "NEVER-list",
-                       "speaks as the answer, not as bookkeeping"):
+                       "speaks as the answer: the number itself is the content, this once"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("test count", "version string", "tested clean",
@@ -1492,7 +1492,7 @@ class TestProblemLedger(unittest.TestCase):
         communicator rules are re-read and the draft passes phrase by phrase through
         the outside-reader question; trailing anchors stay legal."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-34", "walked, not remembered",
+        for needle in ("INV-34", "The report law is walked — a live step each time.",
                        "gets explained in the reader's own words, or dropped"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1518,7 +1518,7 @@ class TestProblemLedger(unittest.TestCase):
                        "narration marks beats, never per-command commentary"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
-        for needle in ("Narrate the work while it runs", "narration line is chat, not a report",
+        for needle in ("Narrate the work while it runs", "A narration line is chat, lighter than a report",
                        "INV-35"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
@@ -1576,7 +1576,7 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("Offline window", "may step away", "honest range",
-                       "never a guess dressed as a promise",
+                       "guess is never dressed as a promise",
                        "a chat line awaiting his return, never a summons"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
         for name, home in (("SPEC", spec), ("communicator", comm)):
@@ -1595,7 +1595,7 @@ class TestProblemLedger(unittest.TestCase):
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("stays killed", "kill-list",
                        "Sarcasm is not instruction",
-                       "never only in session memory"):
+                       "Never keep it only in session memory"):
             self.assertIn(needle, comm, "communicator missing: %s" % needle)
 
     def test_prototype_norm_pointer(self):
@@ -1611,7 +1611,7 @@ class TestProblemLedger(unittest.TestCase):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         for needle in ("`norm: <path>`", "docs/norms/", "frozen copy",
-                       "never into a live prototype home"):
+                       "a pointer into a live prototype home would break it"):
             self.assertIn(needle, author, "spec-author missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("plan-vs-prototype diff", "entry: mockup-first",
@@ -1664,7 +1664,7 @@ class TestProblemLedger(unittest.TestCase):
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("tasks completed, goal missed",
                        "TODO · FIXME · placeholder · lorem · hardcoded sample · empty function body",
-                       "never the worker's summary"):
+                       "primary sources only, apart from the worker's summary or your own plan"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
     def test_lanes_by_graph(self):
@@ -1742,7 +1742,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 154 (M-156, INV-57): the stretch's end is one short final line, last,
         after every tool call — delivery, not existence."""
         spec = re.sub(r"\s+", " ", read("SPEC.md"))
-        for needle in ("INV-57", "Delivery, not existence",
+        for needle in ("INV-57", "Delivery is the rule; existence alone does not satisfy it",
                        "the last rendered thing is one short final line"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))

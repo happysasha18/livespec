@@ -10,7 +10,7 @@ Generic code is the next movement — lifted from track-coach's working instance
 
 A surface registry plus a render-scan test that fails if any user-facing surface is empty OR is rendered but not in the registry. No partial or stripped artifact can ship or be shown.
 
-The DOM (or the rendered file) is the source of truth, not a hand-maintained list. The test scans the actual rendered output and compares against the registry — so a new surface going unregistered is immediately RED, and a registered surface going missing is immediately RED.
+The DOM (or the rendered file) is the source of truth; a hand-maintained list carries no authority. The test scans the actual rendered output and compares against the registry — so a new surface going unregistered is immediately RED, and a registered surface going missing is immediately RED.
 
 Self-closing: you cannot drift past it by forgetting to update a list. The registry is the list; the test compares the list against reality every run.
 
@@ -43,7 +43,7 @@ Catches structural inconsistencies that accumulate over time:
 - A surface named two ways in the same document (e.g. "stem lanes" and "#stemlanes" as if separate)
 - An id in TEST_MATRIX.md that references a test file or function that does not exist
 
-These are the inconsistencies that make a prover's findings unreliable and a matrix audit meaningless. Catching them mechanically means drift is caught every commit, not once per MINOR audit.
+These are the inconsistencies that make a prover's findings unreliable and a matrix audit meaningless. Catching them mechanically means drift is caught every commit instead of once per MINOR audit.
 
 ---
 

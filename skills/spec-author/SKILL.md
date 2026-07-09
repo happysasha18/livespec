@@ -40,7 +40,7 @@ what's wanted is a REVIEW — that is product-prover's half of the pair.
 
 A spec is read by a **human first** (a teammate, you in three months) and a prover second — and both from
 **one** document. Write it in the **language of the product**: plain words a product person speaks — what the
-thing IS and does — not machine fragments with markup. It doesn't have to read like a textbook/lesson either;
+thing IS and does, in whole sentences rather than machine fragments with markup. It doesn't have to read like a textbook/lesson either;
 **product language is the register**, whatever fits the project. Don't fork a "readable" copy and a
 "checkable" copy; they drift apart and one rots. The format below serves both at once (battle-tested on a real
 project: a prover-facing spec that read like "machine fragments with markup" was rejected by its author and
@@ -64,7 +64,7 @@ stopped being read — which kills a spec).
 - **Bold the headline, bury the threshold.** Lead each rule with a **bold plain-language headline** (the
   shape of it), then the exact number / condition in the detail after. The reader gets the gist from the
   bold; the builder drops into the detail for the precise value.
-- **Use lists inside a scenario, not a wall of prose.** The narrative leads, but a genuine enumeration
+- **Use lists inside a scenario to break up a wall of prose.** The narrative leads, but a genuine enumeration
   reads as a list, and a section with distinct parts can carry sub-headers. When a rule spells out
   several forms, legs, or arms — the PROTOTYPE label's forms, a check's three legs, a law's four arms —
   lay them out as bullet or numbered items so the eye scans them, and keep prose for the reasoning that
@@ -73,8 +73,8 @@ stopped being read — which kills a spec).
   2026-07-07).
 - **A "how to read" note at the very top.** Open the spec with a short front-matter: what the product is in
   two sentences, that each section is a scenario, that the codes are quiet machine anchors mapped by the
-  Formal index at the end, and that **edit history lives in the JOURNAL, not here.**
-- **The spec states the CURRENT truth, not a changelog.** No "changed in v0.8.3 from…" scars in the prose;
+  Formal index at the end, and that **edit history lives in the JOURNAL, apart from the spec itself.**
+- **The spec states the CURRENT truth — a changelog lives elsewhere.** No "changed in v0.8.3 from…" scars in the prose;
   the *why-we-changed-it* belongs in `JOURNAL.md` (dated, with the reason). A superseded rule may stay with a
   one-line "SUPERSEDED by §X" pointer when the old shape still needs explaining — but the prose reads as
   today's truth.
@@ -89,7 +89,7 @@ stopped being read — which kills a spec).
   metaphors only as one-off color) and the per-section verification checklist live once in the
   `communicator` skill's "writing register" section — spec prose follows it like every other human-facing
   text.
-- **The register is held by a machine gate, not by attention — and the prose is written by a clean agent.**
+- **A machine gate holds the register — attention alone drifts — and the prose is written by a clean agent.**
   Re-styling a spec by hand drifts (a voice reads fine on a sample, then the same tells return round after
   round). The durable fix, proven and sealed in `docs/prose-quality-gate-design.md`: (1) a fresh agent with
   the pack NOT loaded writes the prose from bare facts — a pack-marinated context writes ornate prose, so it
@@ -107,7 +107,7 @@ This is the shape `product-prover` is tuned to read, and the one a human will ac
 
 ## The spine — what every spec must CONTAIN (not its section order)
 
-The spine is a completeness checklist, not a table of contents. The DOCUMENT is organized use-case-first
+The spine is a completeness checklist rather than a table of contents. The DOCUMENT is organized use-case-first
 (scenario sections, per "How it reads" and `templates/SPEC.template.md`); each spine item lives INSIDE the
 scenarios and is findable through the Formal index. Never let a new feature land without its entry.
 
@@ -130,7 +130,7 @@ scenarios and is findable through the Formal index. Never let a new feature land
 Mark anything that needs a human's domain call with **⟨DECIDE⟩** and a one-line question. Never invent
 intent to fill a gap — flag it.
 
-**Name the future with the [target] tag — it is a tripwire, not a decoration.** A surface or phase the
+**Name the future with the [target] tag — it is a tripwire that drives the pipeline.** A surface or phase the
 spec names but does not yet specify for build carries the literal tag `[target]` (the header's
 current-vs-target paragraph lists them). That tag is the canonical, machine-checkable form of "not yet
 specified / later surface": the pipeline's feature tripwires key off it — touching a [target] surface
@@ -143,8 +143,8 @@ visual prototype as the look ("this is the door"), the clause that encodes it ca
 pointer at its line end, beside its anchors — the prose carries the laws, the artifact keeps the look;
 a build from text alone ships a cheap look-alike with a green suite (tlvphoto, 2026-07-05). Approval
 FREEZES the artifact into the project's records: copy it to `docs/norms/` with a dated provenance line
-(what, approved when, from which sketch) and point at the frozen copy — never into a live prototype
-home, so the one-way fence stays absolute (E-17). A text-born clause carries no pointer, and the law
+(what, approved when, from which sketch) and point at the frozen copy, keeping the one-way fence absolute
+(E-17) — a pointer into a live prototype home would break it. A text-born clause carries no pointer, and the law
 binds forward — a clause owes its pointer at the first landing that touches it.
 
 **Reshaping an existing spec? Hold the anchor-set guard.** A restructure (e.g. structure-first →
@@ -194,7 +194,7 @@ Author in this order; every part below is MANDATORY for a feature and no scope c
 4. **The fit walk** — how the feature sits in the person's path, kind-scaled (SPEC INV-29);
 5. **The two closing sentences** — non-goals + one success measure (SPEC INV-20, INV-21).
 
-A delta missing any numbered part is incomplete at authoring time — not something the prover has to catch.
+A delta missing any numbered part is incomplete at authoring time — the author catches it before the prover ever sees it.
 
 ## The regression fences — run FIRST when the wish touches a surface that already lives (SPEC T-14, INV-19)
 
@@ -205,7 +205,8 @@ clause's row already carries its never-side, and the landing's full-suite run is
 held. Split what the delta touches: promises that STAY are fenced; behaviour being CHANGED is
 re-authored as new law — a fact is fenced or re-authored, never both. A fence that finds no clause
 behind it has discovered an unwritten promise: reconcile it from the shipped truth (like an adopted
-claim), write it as its own spec fact with its own row, and surface it — never assume it silently. If
+claim), write it as its own spec fact with its own row, and surface it as an explicit statement rather than a
+silent assumption. If
 the cited neighbour claim is adoption-born and still unverified, its reconciliation runs before it can
 be fenced — you cannot fence a hope. Name the fences by cited anchor in the wish's queue row
 ("fences: …") so "untouched and still true" stays greppable. A prototype fences nothing — it promises
@@ -235,7 +236,7 @@ here**, one list for every project:
 - **a missing source** — an input file renamed, moved, or gone: the feature says what it shows and asks
   instead of guessing (incident family: the ask-don't-guess stem/source cases, track-coach 2026-06/07).
 
-**The list is curated, not collected.** A facet joins ONLY with a named real incident it would have
+**The list is curated, each facet earning its place by named incident.** A facet joins ONLY with a named real incident it would have
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
 that grows by taste rots into a forty-row form nobody walks (the Google launch-checklist lesson).
 
@@ -284,7 +285,7 @@ answer lands as a spec sentence — the same silence-is-not-an-option law as the
 ## The delta's two closing sentences — non-goals and the success measure (SPEC INV-20, INV-21)
 
 Every feature's spec-delta CLOSES with two short sentences, always written — silence is not a legal
-state for either. **Non-goals**: what is deliberately left out ("version comparison — not this time");
+state for either. **Non-goals**: what is deliberately left out ("version comparison waits for a later pass");
 "nothing deliberately left out this time" is itself valid — only a missing sentence is a hole, and a
 non-goal that narrows what the wish asked for rides the batched report, never a silent narrowing.
 **A success measure**: how we'd notice the feature worked for its person, a number where one exists;
@@ -303,9 +304,10 @@ landing that touches it. A prototype writes neither — it promises nothing.
    github.com/happysasha18/live-spec; a standalone install of this skill fetches them there. They are
    deliberately NOT copied into the skill dir: the pack is the source, a copy would fork the truth.)
 2. **Ask, don't silently fill.** When the spec needs a decision only the author can make (a threshold, a
-   policy, desired behavior on an edge), ask the leading question or mark ⟨DECIDE⟩ — never guess intent.
+   policy, desired behavior on an edge), ask the leading question or mark ⟨DECIDE⟩, treating intent as
+something to confirm rather than infer.
 3. **Run the completeness pass** (below) on what you wrote.
-4. **Hand off to `product-prover` on the WHOLE spec** — not just your delta. The prover catches a
+4. **Hand off to `product-prover` on the WHOLE spec — your delta included.** The prover catches a
    cross-section hole only when *both* sides of the seam are in the document; a surface you added in
    isolation, or left unlinked, is invisible to it. So re-prove the whole spec whenever a surface is added.
 5. **Then walk the two layers to the tests** — the architecture doc (nodes owning the spec's facts,
@@ -335,7 +337,7 @@ Ask each question out loud; a "no" or "don't know" is a gap to fill or mark ⟨D
 - **Honesty:** Is any claim here something the system can't actually deliver, or a guess dressed as a fact?
   Mark it ⟨DECIDE⟩ or cut it.
 - **Readability (human-first, product language):** Does each rule lead with a plain-language headline a
-  non-author grasps in one read? Is it in product words, not machine fragments? Are the codes/tags at
+  non-author grasps in one read? Is it phrased in product words a person would say? Are the codes/tags at
   line-*ends*, never opening the line? Is there any edit-history scar in the prose that belongs in the
   JOURNAL? Does the spec open with a "how to read" note?
 - **Shape (use-case-first):** Is every section a scenario named by what the person does — no

@@ -1,6 +1,6 @@
 ---
 name: publish
-description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate — never instead of it. NOT for in-session showing of work (communicator owns that), not for commits that stay local.
+description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate, standing only as its preparation. NOT for in-session showing of work (communicator owns that) or for commits that stay local.
 metadata:
   version: 0.1.2
 ---
@@ -27,7 +27,7 @@ reader sees (README, docs, screenshots) · any push that ships a new version (th
 INV-44) · a release/tag · a plugin-directory or marketplace submission
 · a skill shipped for someone else's machine · design-project sync cards (SPEC E-18). If no reader
 outside this machine will meet the artifact, this skill stands down — showing work to your OWN human
-in-session is communicator's rule 5, not a publication.
+in-session is communicator's rule 5 rather than a publication.
 
 **A version push always fires the shopfront walk (SPEC INV-44).** Shipping a new version changes the
 truth a public reader will read tomorrow even when the diff never touched a doc — so at every such
@@ -40,7 +40,7 @@ nothing was touched; a stale claim found is fixed BEFORE the push, the same law 
 ## The kind checklist — what every publication owes (one home: this table)
 
 First, the floor every kind shares: the README/landing surface answers, in its first screen, WHAT this
-is, WHO it serves, and HOW to start — in the reader's language, not the repo's internal vocabulary
+is, WHO it serves, and HOW to start — in the reader's language rather than the repo's internal vocabulary
 (base rule 2); every claim on it is TRUE of the shipped version today (a stale claim or picture is a
 false claim); the license/attribution state is explicit; and NOTHING secret or unshareable leaves —
 the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
@@ -66,10 +66,10 @@ The walk above is the trunk; the TARGET adds its own steps, never removes the ki
 - **GitHub repo** — README current at the root · screenshots re-shot where the host's rule says so ·
   release notes for a tagged release · repo description + topics set · third-party dependency licenses
   compatible with the release · the name checked for collisions where it matters (GitHub/PyPI/npm) ·
-  a fresh-clone check — install and run from scratch as an outside reader would, not "works on my
-  machine" · the push gate of the host ALWAYS holds (a publish never turns into a push authorization).
+  a fresh-clone check — install and run from scratch as an outside reader would, rather than assuming
+  "works on my machine" · the push gate of the host ALWAYS holds (a publish never turns into a push authorization).
 - **Plugin directory / marketplace** — the manifest complete and validated · the directory's forms
-  answered · the listing text reads as the directory's reader expects, not as repo prose.
+  answered · the listing text reads as the directory's reader expects, in the directory's own register rather than as repo prose.
 - **Design project (claude.ai/design)** — the landing's DECLARED components as rendered cards, through
   the human's gate; the in-session render stays the authority (SPEC E-18).
 - A new target = a new plugin section here, added through the queue like any wish.
@@ -95,7 +95,7 @@ project, get one offline page that shows where the arrangement is alive and wher
 `./install.sh`. Use: say 'analyse my track' with the file — deep mode runs itself. Not for mastering
 metrics or loudness compliance. Below: one real read of a real track."* — the first screen answers
 what/who/how in the reader's words, the commands are shown as typed, both boundary sides are stated,
-and the taste comes from a real run, not a promise.
+and the taste comes from a real run rather than a promise.
 
 ## When NOT to use
 

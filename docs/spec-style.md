@@ -5,11 +5,12 @@ Decided 2026-07-08 with Alexander, grounded in RFC 2119/8174, the RFC 7322 style
 POSIX — plus a register brief from Fable.
 
 **A spec is REFERENCE documentation**: austere, systematic, terse, factual, present tense, described
-without opinion. Not a tutorial, not an explainer, not a story. It is consulted, not read cover to cover.
+without opinion. It is material to consult, in whatever order a question requires, rather than a
+tutorial, an explainer, or a story read cover to cover.
 
 ## TARGET REGISTER — Flavor A (declarative / Go-spec)
 
-Force is carried by plain declarative statement, NOT by RFC keywords. State each rule as a fact of a
+Force is carried by plain declarative statement rather than by RFC keywords. State each rule as a fact of a
 conforming system ("A decision card opens with an Effect Statement."). Use "does not" / "never" for
 prohibitions. No MUST/SHALL machinery, no §-numbering, no NOTE-boilerplate required. Terse, dry,
 definitional — like the Go language specification. Readable. (A stricter full-RFC-2119 flavor was
@@ -23,21 +24,21 @@ plus the capitalized keyword system.)
 - **R4 — Declarative PRESENT tense.** Facts as facts, rules as rules. BANNED: future narration ("the card will show"), invitation ("let's"), reassurance ("don't worry", "you can ignore").
 - **R5 — Defined terms, used VERBATIM, forever.** No elegant variation; a different word asserts a different thing. Repetition is correct.
 - **R6 — NORMATIVE and INFORMATIVE are separated.** Rationale, motivation, examples live in a marked companion, never folded into a requirement sentence.
-- **R7 — The normative body has no metaphor, no warmth, no narration, no persona.** BANNED there: "simply/just/of course", sign-posting ("as we saw above"), apologies, jokes. Cross-reference by section, not by story.
-- **R7b — Warmth is quarantined, not deleted.** Human touches (a user quote, motivating voice) are legal ONLY as a separate, clearly-marked informative element beside the rule (`NOTE (informative):` or a `> quote`), never inside a normative sentence. The dry statement comes first; the note is an optional companion.
+- **R7 — The normative body has no metaphor, no warmth, no narration, no persona.** BANNED there: "simply/just/of course", sign-posting ("as we saw above"), apologies, jokes. Cross-reference by section rather than by story.
+- **R7b — Warmth is quarantined but never discarded.** Human touches (a user quote, motivating voice) are legal ONLY as a separate, clearly-marked informative element beside the rule (`NOTE (informative):` or a `> quote`), never inside a normative sentence. The dry statement comes first; the note is an optional companion.
 - **R7c — A quote earns its place or it is cut.** Keep a quote only when it adds something the formal rule does not capture, or is needed to understand the rule; drop decorative/redundant quotes. Any quote that stays is translated into idiomatic English, never verbatim source-language. The whole informative/voice lane is gated by the project's KIND and the aspect: a book, or a project with a distinctive interface, can warrant it; a backend service almost never does. Default is no quote.
 - **R8 — Testability is the acceptance test of a sentence.** Untestable qualifiers ("if it helps", "where sensible", "generally") are deleted, given a stated criterion, or moved to a note.
-- **R9 — Canonical conditional**: "If X, the Y does Z", with an explicit "otherwise" — never leave a case unaccounted.
+- **R9 — Canonical conditional**: "If X, the Y does Z", with an explicit "otherwise" that accounts for every case.
 - **R10 — Exact quantities and references.** BANNED: "a few", "small", "recently".
 - **R11 — Pronoun hygiene**: "it"/"this"/"they" only with an unambiguous same-sentence antecedent; else repeat the noun.
 - **R12 — Typographic shout is not force.** Remove ALL-CAPS/bold on ordinary verbs ("CHANGES"). Force comes from the declarative statement itself.
-- **R13 — Open with what a thing IS, never define it by exclusion.** A rule states what happens, then narrows. "X does not become Y" as an opener — saying what a thing is not, via a copula or a becoming verb, before saying what it is — is the tell that reads as dead machine prose. This is distinct from a PROHIBITION ("the walk does not ask how long", "a restructure never re-carves"): a prohibition on an action is correct register per R4 and is welcome. The ban is on define-by-exclusion openers, not on the words "not"/"never".
-- **R14 — A process is a list, not a paragraph.** When a rule describes a sequence of steps or a set of parallel parts (a wish arrives → a card → an answer → the pipeline files it → …), it is written as a bulleted or numbered list, one step per bullet, under a one-line lead. A multi-step process flattened into a running paragraph loses the thread — the failure this doc's own first drafts made.
+- **R13 — Open with what a thing IS, never define it by exclusion.** A rule states what happens, then narrows. "X does not become Y" as an opener — saying what a thing is not, via a copula or a becoming verb, before saying what it is — is the tell that reads as dead machine prose. This is distinct from a PROHIBITION ("the walk does not ask how long", "a restructure never re-carves"): a prohibition on an action is correct register per R4 and is welcome. The ban is only on define-by-exclusion openers; the words "not" and "never" remain otherwise unrestricted.
+- **R14 — A process is a list instead of a paragraph.** When a rule describes a sequence of steps or a set of parallel parts (a wish arrives → a card → an answer → the pipeline files it → …), it is written as a bulleted or numbered list, one step per bullet, under a one-line lead. A multi-step process flattened into a running paragraph loses the thread — the failure this doc's own first drafts made.
 
 **HARD (unchanged from the current doc):** every bracketed anchor token stays VERBATIM in place; never
 drop a rule; keep `##`/`###` headings and bold law-titles; provenance stays out of the body (in JOURNAL).
 
-## The mechanical gate — the register is checked by a machine, not by patience
+## The mechanical gate — a machine checks the register in place of patience
 
 Hand-rewriting the spec drifted five times: a voice read fine on a short sample, then degraded across
 long prose, and the tells surfaced only when a human read it late. The durable fix is the same move
@@ -47,7 +48,8 @@ against a machine at any length, drift-proof, and a human's eye is spent once on
 section by section.
 
 - **ERROR** (blocks): `negation-opener` (R13 define-by-exclusion), `machine-jargon` (R7 lexicon),
-  `scissors` (the global «X — not Y» ban).
+  `scissors` (the global ban on naming a thing by denying its neighbour — a dash or comma appositive,
+  or the parallel Russian negation-then-replacement forms).
 - **warn** (advisory): `caps-shout` (R12), `second-person` (R3) — the whole un-converted spec still
   carries these; they double as a progress meter for how much re-styling remains.
 
@@ -60,7 +62,7 @@ unambiguously wrong here.
 ## Who writes the prose — a clean agent, pack NOT loaded
 
 Proven 2026-07-08: the ornament comes from the author being marinated in the pack's own register
-(doors, kinds, stations, coined metaphors), not from the content and not from text length. A session
+(doors, kinds, stations, coined metaphors); neither the content nor the text length is the cause. A session
 with the pack loaded writes ornate spec prose; a fresh agent with the pack NOT loaded writes plain
 product-spec English from the same facts, consistently across a long stretch. So re-styling splits in
 two:
@@ -121,7 +123,7 @@ as a list under a one-line lead. It is register-clean (zero linter tells):
 - The page opens in its own window; the rest of the work carries on while it waits [INV-4].
 - Each question is a card — the recommended answer marked, with room to write a different one.
 - Once the page comes back answered, the pipeline files it in the project's `docs/decisions/` and folds every answer into its queue row the same session. An answer left unread is a decision lost.
-- The person's word settles it, not the click: an option picked and then taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. A pick made without understanding settles nothing that needs the person's considered word [INV-9].
+- The person's word settles it. A click alone is not enough: an option picked and then taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. A pick made without understanding settles nothing that needs the person's considered word [INV-9].
 - How the page works — the filename, the ordering, the round-trip — is written down once, in the communicator skill's rule 10 [INV-13].
 
 [E-22]

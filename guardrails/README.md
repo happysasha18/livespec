@@ -20,7 +20,7 @@ instead of things you have to remember.
 - **e. The prototype fence holds.** A prototype lives in a fenced home (a `prototype/`
   folder — SPEC `INV-17`); a PROD file referencing anything inside that home is RED.
   This gate catches STRUCTURAL wiring — a prod file naming or loading a fenced file
-  (a script src, an import, a link target) — not narrative mentions: `docs/`, `attic/`,
+  (a script src, an import, a link target). Narrative mentions stay clear of the gate: `docs/`, `attic/`,
   `inbox/`, `JOURNAL.md`, `ROADMAP.md`, `NEXT_STEPS.md`, any `README.md` under
   `guardrails/`, and `.live-spec/` are excluded, so a journal can talk *about* a
   prototype without tripping the gate. If no `prototype/` directory exists (or it's
@@ -61,7 +61,7 @@ fence) is the part worth copying as-is. What changes per host:
   whatever the host runs (`pytest`, `npm test`, …).
 - **Review cadence.** Not every host proves the whole spec before every push — a host may
   only require a full prover pass before a major version, checking something lighter
-  (or nothing) in between. That cadence is a host setting, not a pack default; state it in
+  (or nothing) in between. That cadence is a host setting; state it in
   the host's own profile and adjust `check-prover-record.sh`'s expectations (or drop gate a
   entirely) to match.
 - **File names/paths.** If the host's matrix or prover folder lives somewhere else, pass
@@ -88,7 +88,7 @@ neighbours' CLI lesson, ROADMAP row 114):
 3. **All-or-nothing writes.** A script that rebuilds artifacts validates every output before writing any — no half-written artifact ever lands on disk.
 
 Exempt by name: `check-push-reach.sh` — its exit code is a VERDICT (which checks the diff can
-reach), not a defect; it is a decider, not a blocking gate.
+reach) rather than a defect; it is a decider, informational rather than a blocking gate.
 
 ## The CI mirror (SPEC M-5, ROADMAP row 14)
 
@@ -98,7 +98,7 @@ and never redefines a check; **the full set, always** — the reach map (SPEC IN
 optimization, the second net stays conservative; **a plain workflow a host copies** — swap the test
 command for your own, keep the script calls. The worked example is this repo's own
 `.github/workflows/gates.yml` (note its `fetch-depth: 0` — the prover-record freshness rule reads
-history — and its `TZ` pin, so "today" is the author's day, not UTC's).
+history — and its `TZ` pin, so "today" is measured in the author's own timezone, distinct from UTC).
 
 ## The kill-list scanner (SPEC E-26)
 

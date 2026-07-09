@@ -1,54 +1,47 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**NIGHT DONE (2026-07-08→09, autonomous loop) — DURABLE PROSE-QUALITY GATE built, and SPEC + ARCHITECTURE rewritten through it. NOTHING PUSHED.**
+**SESSION 27 DONE (2026-07-09) — project-wide SCISSORS SWEEP + a document-structure norm. COMMITTED LOCAL, NOTHING PUSHED.**
 
-Why: the same prose defects (scissors, redundancy, second person) kept recurring because the old gate was
-holed — caps + second-person were non-blocking warnings that piled up, there was no redundancy check, and
-"parked" sections kept their tells. Fix = a machine gate, not more attention. Memory
-[[prose-quality-gate-must-block-not-park]]. Research (107-agent deep-research) + a clean-context design →
-`docs/prose-quality-gate-design.md`.
+He flagged the contrast frame (naming a thing by denying its neighbour) as a bad bug that must appear NOWHERE,
+chat replies included. Root cause: the scissors linter caught only the dash form, so the comma appositive and
+the Russian forms slipped past — that is why the night's "clean" SPEC still held ~39.
 
-BUILT (all code mine; the mechanism):
-- `scripts/spec-style-lint.py --gate` — promotes caps-shout + second-person to blocking, adds reassurance +
-  future-narration rules, exempts marked informative regions (user-story line, blockquote, NOTE), allowlists
-  defined terms, waiver-aware. Default mode unchanged.
-- `scripts/spec-redundancy-precheck.py` — mechanical near-duplicate catch (lexical).
-- `scripts/spec-judge.py` + `judge-rubric.md` — a fresh-LLM whole-doc redundancy/register judge with a
-  hash-pinned rubric, verbatim-quote evidence, and a seeded self-test canary (a green is trusted only when
-  the canary fired). This is the semantic layer a regex cannot do.
-- `scripts/spec-waivers.json` + `spec-debt-cap.json` — a dated, tracked waiver replaces silent parking.
-- `scripts/spec-done-gate.py` — the single definition of done. `scripts/gate_common.py` shared lib.
-- Tests: `tests/test_prose_gate.py` (20) incl. TestNeedleRegisterClean + TestAnchorInBlockquoteGuard.
+FIXED (all committed local, `git log` this session; origin still at `1cff42b`):
+- `scripts/spec-style-lint.py` now catches all four shapes (a denied neighbour after a dash or a comma, and the
+  parallel Russian negation-then-replacement forms), guarded against the additive "not only/just/merely" and the
+  conditional Russian «а» connectives. Regression tests in `tests/test_prose_gate.py::TestScissorsCoverage`.
+- Swept EVERY living reader-facing file to ZERO scissors: SPEC, ARCHITECTURE, README, OVERVIEW, ROADMAP,
+  TEST_MATRIX, all 8 skills, templates, adopt, guardrails, docs/spec-style.md, prose-quality-gate-design,
+  prior-art. ~250 rewrites over 20+ files by 11 parallel workers, each self-verified by the linter; anchors
+  preserved; meaning preserved. His verbatim quote in ROADMAP row 140 was restored after a detector false
+  positive on conditional «а если бы».
+- Traceability check-phrases (what I wrongly called "иголки" — grep slang for the exact quotes the tests
+  search for) re-pointed in lockstep; the negative-side "never" restored on TEST_MATRIX M-039/M-044.
+  Suite 207 green; only red = the pre-push prover-record reminder (`TestGateA_ProverRecord`).
+- communicator register: rule 15 = scissors ban hardened, chat-scoped, described without writing the frame;
+  rule 16 NEW = a document is a tree of grouped topics; checklist grew to 10 (scissors scan + structure check).
+  deployed==repo re-synced.
+- DATED HISTORY left untouched (JOURNAL, docs/prover, docs/audit, docs/evals, docs/decisions, research) —
+  rewriting logged history is itself a defect; sweep it only on his word.
+His verdict this session: the spec language is finally right («спеки хорошие по языку наконец то»), and this
+runs on every project from now on.
 
-RESULT (proof, in the repo, commits `3665f7b`..HEAD, all LOCAL):
-- SPEC.md: lint gate-errors 320 → 45, and all 45 are the Formal index TABLE (left as structure by your word).
-  Every body section is 0 gate-errors. Anchor multiset IDENTICAL to baseline `b05e199` (nothing lost). A fresh
-  clean-context whole-doc judge (self-test passed) finds 0 surviving redundancy/register findings.
-- ARCHITECTURE.md: prose converted (tables untouched); judge-clean; anchors identical; 3 emphasis caps remain
-  inside table cells (parked with the tables).
-- Suite 203 green; the only red is `TestGateA_ProverRecord` — the expected pre-push prover-record reminder.
-- Method sealed into `skills/spec-author` (pointer to the design doc, one home).
-- Every re-styled section: fresh writer (pack not loaded) + machine gate + fresh checker; every broken
-  traceability needle re-pointed by narrowing, logged in `docs/restyle-repoint-log.md`.
+## THE NEXT PASS he wants (after this memory wipe): STRUCTURE. The docs are FLAT.
+22 communicator rules sit in one list; ~20 SPEC `##` sections sit in one ribbon. He wants real hierarchy —
+related rules and sections grouped under named parents, a tree two to three levels deep, the outline alone
+telling a reader the shape. Rule 16 states the norm; APPLYING it is this next pass: restructure the flat SPEC
+and the skill rule-lists into grouped trees. Grouping is a taxonomy call — propose a concrete grouping and SHOW
+it before mass-restructuring. This ties to queued task (b) architecture-tiers and (a) authoring-terminology.
 
-WAITS ON YOUR WORD (then prover pass + commit its record, then push — SPEC M-6):
-1. The Formal index table — convert it to register too, or keep it as a terse structured reference? (its 45
-   lint errors are the only ones left).
-2. The redundancy pre-check flags 9 pairs that are all legitimate cross-section references to the same law
-   (the judge confirms not redundant) — teach the pre-check to skip same-law cross-refs (both cite one anchor)?
-3. Seal into the playbook too — it is a separate repo, so I left it (one-window rule); your call / your window.
-4. Read the rewritten SPEC and say whether the voice is right. The gate holds the floor (no defect class);
-   your eye is still the ceiling.
-Deferred features you asked for tonight (captured, memory): spawn parallelism + liveness watchdog; artifact
-registry (pointers, not secrets).
-
-## LIVE STATE (2026-07-08, session 26) — humanize + 0.9.0 milestone + three new laws LANDED AND PUSHED.
-Versions: pack 0.9.0 (pushed) · base 0.1.24 · communicator 0.1.39 · build-pipeline 0.2.40 · SPEC v0.15.61;
-suite 180 green; main = origin/main (HEAD 1cff42b). The writing register (14 rules + 8-item self-check) lives
-in communicator; spec-author points to it; deployed==repo. Reporting persona = PROJECT MANAGER, plain product
-words (memory [[report-as-project-manager]] + [[plain-language-communication]] + [[parametrize-defaults-and-push-when-ok]]).
-Jargon guard is now mechanical (`scripts/preshow-lint.py`, the INV-28 arm). The live board = a chat NOW/NEXT
-status + heartbeat (INV-71); the HTML board sketch is dropped by his word. Runs on Opus (Fable pulled 2026-07-07).
+## LIVE STATE (2026-07-09, session 27)
+Versions: pack 0.9.0 · base 0.1.24 · communicator 0.1.39 (register now 16 rules + 10-check) · build-pipeline
+0.2.40 · SPEC v0.15.61; suite 207 green (1 expected pre-push red). deployed==repo. main HEAD = this session's
+LOCAL scissors-sweep commit; origin still `1cff42b` (push owes a prover pass first, SPEC M-6). Reporting persona
+= PROJECT MANAGER, plain product words. Runs on Opus (Fable pulled 2026-07-07).
+Open before a push: (1) a product-prover pass on the sweep + its record `docs/prover/2026-07-09-*.md`;
+(2) the profile count in the PLAYBOOK repo still reads "14 rules + 8-check" — a separate repo, his window / his
+call to bump to "16 + 10"; (3) the kin "Not for X…" negation-openers (define-by-exclusion) — an optional
+separate pass, awaiting his yes/no.
 
 ## Forward queue (mirrors ROADMAP.md)
 
@@ -63,6 +56,20 @@ status + heartbeat (INV-71); the HTML board sketch is dropped by his word. Runs 
    (hung / silent-too-long / alive) — [[pack-orchestration-parallelism-and-spawn-liveness]], ROADMAP rows ·
    artifact registry (2026-07-08, his ask): a per-project index of handed-in artifacts surviving /clear,
    recording WHERE each lives (Keychain name / path), never the secret value — [[artifact-registry-pointers-not-secrets]].
+   · **NEW 2026-07-09 (his ask this session):**
+   (a) **Authoring terminology + corpus.** Research the accepted vocabulary for authoring specs and architecture
+   (requirements engineering, arc42, C4, ISO/IEC/IEEE 29148, plus BMAD and Kiro); build a small glossary-corpus;
+   replace coinages (the test check-phrases are called "needles" in code and "иголки" in chat — both grep slang,
+   his allergy-kin — rename the code variable to `trace_phrase` and speak of "traceability check-phrases");
+   enrich the spec-author and architecture vocabulary from the corpus.
+   (b) **Architecture tiers by project type.** ARCHITECTURE now reads as a flat technical reference; BMAD/Kiro
+   give architecture explicit layers. Make its structure classifier-driven: a web/app project names frontend /
+   backend, template / renderer; a methodology-package like live-spec names skills and nodes. Deliver explicit
+   architecture-authoring instructions per project type.
+   (c) **Validate (b) by a side test-run on a different project TYPE.** Run the method read-only over tlvphoto
+   (a web gallery) as a pack case study — touch nothing in its tree — to see what architecture doc the method
+   yields and whether the frontend/backend, template/renderer layers surface. His word: do this AFTER he resets
+   my memory.
 3. Field legs riding real windows with him: 47/96 feedback loop · 54 first-run · 165 first-struggle · 168
    remote seat (this evening) · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133.
 4. Standing habits: `date` before ANY stamp · NOW/NEXT current + heartbeat past ~10 min (INV-71) · plain

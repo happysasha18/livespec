@@ -5,9 +5,9 @@ proven itself (product-prover, architecture lens) before the test matrix is deri
 one name = one responsibility — the one-surface-one-name rule, applied to structure.
 
 **When this doc changes:** a large or surface-class wish updates it BEFORE the matrix is touched; a bug or
-small wish only cites the existing node it lands in. Re-proven when it changes, not on every landing.
+small wish only cites the existing node it lands in. Re-proven only when it changes.
 
-**This doc is ITERATIVE — never written milestones ahead.** It maps the product as it stands plus the
+**This doc is ITERATIVE. Never written milestones ahead.** It maps the product as it stands plus the
 landing in flight. A node exists for what ships today, or for what the spec already promises under an
 owned queue row (marked [target], pin empty until code lands). A future feature earns its node when its
 landing arrives; a speculative node is unbacked structure — the prover flags it as a node without spec
@@ -18,7 +18,7 @@ backing.
 ## Nodes
 
 Every spec fact is OWNED by exactly one node. In a live codebase every node pins to its owning
-`file:line` (each pin from a command actually run — a pin nobody verified is a claim, not a pin). In a
+`file:line` (each pin from a command actually run — an unverified pin is merely a claim). In a
 new project the pin column starts empty and fills as code lands.
 
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |

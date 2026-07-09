@@ -5,15 +5,17 @@ Why this exists: re-styling the spec by hand drifted five times — a picked voi
 short sample, then degraded across long, constraint-heavy prose, and the tells only surfaced when a
 human read it late. The tells are mechanical: a rule that OPENS with a negation instead of what
 happens, machine jargon in user-facing prose, ALL-CAPS shouting where the plain statement carries
-the force, and the banned «X — not Y» scissors. This scans the register and flags each tell with its
-line, so the author (or a fresh session rewriting from scratch) drives a section to clean against a
-machine — not against a reader's patience. The register lives in docs/spec-style.md; this only holds
+the force, and the banned contrast frame that names a thing by denying its neighbour. This scans the
+register and flags each tell with its line, so the author (or a fresh session rewriting from scratch)
+drives a section to clean against a machine, sparing a reader the patience. The register lives in docs/spec-style.md; this only holds
 the floor it can check. Positive elegance (flow, sharpness) the linter cannot judge — that is what
 the gold exemplars in docs/spec-style.md are for. Floor + exemplars = the whole quality system.
 
 Checks (each maps to a rule in docs/spec-style.md):
   ERROR   negation-opener  a block leads with what it is NOT before what it IS (R4/plainness).
-  ERROR   scissors         the «X — not Y» / «X — never Y» construction — a GLOBAL, PERMANENT ban.
+  ERROR   scissors         the contrast frame that names a thing by denying its neighbour, in a dash
+                           or comma appositive or the parallel Russian negation-then-replacement forms
+                           (a GLOBAL, PERMANENT ban).
   ERROR   machine-jargon   a dev/corporate word that has no place in this user-facing spec (R7).
   WARN    caps-shout       an ALL-CAPS ordinary word; force comes from the statement, not caps (R12).
   WARN    second-person    "you"/"your" — the register speaks of named actors, not the reader (R3).
@@ -92,7 +94,21 @@ def _is_negation_opener(body):
 
 
 # --- scissors --------------------------------------------------------------------------------
-SCISSORS = re.compile(r"[—–]\s*(?:not|never)\b|(?<!\w)-{1,2}\s+(?:not|never)\b", re.IGNORECASE)
+# The contrast frame: defining a thing by denying its neighbour. A GLOBAL, PERMANENT ban.
+# Four shapes are caught:
+#   em-dash + not/never       the neighbour denied after a dash
+#   comma appositive          the neighbour denied after a comma (the additive "… only" is exempt)
+#   Russian «… , а не …»       the neighbour denied after a comma with «а не»
+#   Russian «не … , а …» / «не столько … , сколько …»   the denial fronted
+SCISSORS = re.compile(
+    r"[—–]\s*(?:not|never)\b"                        # dash + not/never
+    r"|(?<!\w)-{1,2}\s+(?:not|never)\b"              # double-hyphen + not/never
+    r"|,\s+not\s+(?!only\b|just\b|merely\b|simply\b)"  # comma appositive, additive forms exempt
+    r"|,\s*а\s+не\b"                                 # «… , а не …»
+    r"|(?<!\w)не\s+столько\b"                        # «не столько … , сколько …»
+    r"|(?<!\w)не\s+[^,]{1,60}?,\s*а\s"               # «не … , а …» (contrast)
+    r"(?!не\b|если\b|когда\b|бы\b|то\b|также\b|тоже\b|потом\b|уже\b)",  # skip conditional/additive «а если/бы/…»
+    re.IGNORECASE)
 
 # --- machine jargon (curated, extensible — add a word only when it is unambiguously wrong here) --
 JARGON = {"serialized", "questionnaire", "instantiate", "instantiated", "functionality",

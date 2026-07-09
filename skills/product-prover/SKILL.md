@@ -23,12 +23,12 @@ You are not an auditor. You are not a linter. You are a reviewer who has read th
 ## When NOT to use
 
 Not for code or diffs (this skill reads DOCUMENTS — specs, PRDs, designs, architecture); not for style
-or wording critique (gaps, not taste); not for grading finished prose; and never as a substitute for
+or wording critique (it flags gaps; taste is out of scope); not for grading finished prose; and never as a substitute for
 tests — the prover finds holes in what a document CLAIMS, the suite proves what the artifact DOES.
 
 ## Communication principles
 
-**Report gaps, not taste.** A finding must affect correctness, safety, or a stated requirement; style
+**Report gaps. Taste is out of scope.** A finding must affect correctness, safety, or a stated requirement; style
 preferences, alternative phrasings that change no behaviour, and "I would have structured it
 differently" are not findings. When in doubt whether it is a gap or a preference, it is a preference.
 
@@ -124,13 +124,13 @@ CATEGORY — use the hybrid format `plain-label (formal-term)`:
 | confusing-for-users | cognitive-load | special cases or modes users have to remember |
 | hard-to-operate | ops-ux | debuggability, audit trails, traceability gaps |
 
-The plain label leads so a reader without FV background grasps the issue. The formal term in parens gives a precise handle for searching or learning. Categorization happens AFTER discovery — never let the category list constrain what you discover.
+The plain label leads so a reader without FV background grasps the issue. The formal term in parens gives a precise handle for searching or learning. Categorization happens AFTER discovery. Never let the category list constrain what you discover.
 
 ## Hidden gaps vs acknowledged gaps
 
 **Hidden gaps** — things the author didn't notice. These go in main findings (Phase 2, Phase 3). The juice.
 
-**Acknowledged gaps** — things the doc itself flags: explicit Open Items, TBDs, rhetorical questions in the doc body ("what happens if X?" with no answer), sections marked "in progress." These go in Phase 3.5, framed as commentary on known issues, not as discoveries.
+**Acknowledged gaps** — things the doc itself flags: explicit Open Items, TBDs, rhetorical questions in the doc body ("what happens if X?" with no answer), sections marked "in progress." These go in Phase 3.5, framed as commentary on known issues. They are not new discoveries.
 
 The reason for separation: when an author skims, they want to know what they MISSED first. Mixing the two muddies that signal.
 
@@ -162,9 +162,9 @@ Two depths, chosen by the caller (the build-pipeline skill picks one):
 
 - **FULL** — the whole spec, every phase below. Required before a MINOR (`0.x.0`) bump and after any structural rewrite; the default when someone just says "review the spec".
 - **CROSS-LINK** — a focused pass for a single added surface: Phases 1–2 plus the Phase 3e composition/stress lenses, aimed at the NEW surface's seams against the existing surfaces it composes with. Skip the whole-doc property sweep. Use on every surface add, where a FULL re-prove would cost more than the change warrants.
-- **FEATURE-FIT** — a focused pass on ONE feature's spec-delta at intake (SPEC INV-29): walk its journey seams — arrival, every next-step, return visit, cross-entry, implied neighbour state, feel bar, invited-next (or its kind's flow/trigger lenses) — against the whole spec, the way CROSS-LINK walks a new surface's seams. Verdict per lens: backed by a clause · closed trivially (written how) · `[default]`-tagged · a batched question. Runs with the spec step, before prove; it validates the FIT, not the document's internal consistency.
+- **FEATURE-FIT** — a focused pass on ONE feature's spec-delta at intake (SPEC INV-29): walk its journey seams — arrival, every next-step, return visit, cross-entry, implied neighbour state, feel bar, invited-next (or its kind's flow/trigger lenses) — against the whole spec, the way CROSS-LINK walks a new surface's seams. Verdict per lens: backed by a clause · closed trivially (written how) · `[default]`-tagged · a batched question. Runs with the spec step, before prove; it validates the FIT only. Document-internal consistency is out of scope for this mode.
 
-Both modes keep the whole document in view — a cross-section hole is only findable when both sides of the seam are present and named the same at prove-time. CROSS-LINK narrows the FINDINGS to the new surface's seams, not the reading.
+Both modes keep the whole document in view — a cross-section hole is only findable when both sides of the seam are present and named the same at prove-time. CROSS-LINK narrows the FINDINGS to the new surface's seams; the reading still covers the whole document.
 
 ## Phase 0 — Triage
 
@@ -175,13 +175,13 @@ Check:
 - Does it describe a system with state, behavior, transitions — versus marketing copy, vision statements, or prose without operational content?
 - Is there enough material to extract a model?
 - **Does the doc claim to describe a SHIPPED system?** If so, require the architecture doc's node pins (each surface → owning `file:line`, written at the build-pipeline architecture step). Without them, every finding is CONDITIONAL on the doc being current — say so, and flag any section describing a surface with no owning code/test as possibly-removed (a spec that outran an excision will otherwise "prove" dead behaviour).
-- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line`, not prose. The paired SPEC.md must be in view — ownership is only checkable against the fact list it owns.
+- **Is the input an ARCHITECTURE.md (the pack's architecture doc)?** Valid input; the review runs with the **architecture lens**: every spec fact is owned by exactly one node · no node stands without spec backing · every seam names what crosses it and which side owns the format · every pin is a real `file:line` citation; a prose description does not qualify. The paired SPEC.md must be in view — ownership is only checkable against the fact list it owns.
 
 Output one of:
 
 TRIAGE: PROCEED — analyzable. State a one-line reason. Continue immediately to Opening Assessment and Phase 1 in the SAME response. Do not pause.
 
-TRIAGE: NEEDS_CLARIFICATION — not enough operational content. List 2–4 observations, then 2–3 sharp clarifying questions. STOP and wait.
+TRIAGE: NEEDS_CLARIFICATION — insufficient operational content. List 2–4 observations, then 2–3 sharp clarifying questions. STOP and wait.
 
 TRIAGE: WRONG_ARTIFACT — vision deck, marketing copy, pitch, etc. Say so plainly. Offer to outline what would need to be specified to make it analyzable. STOP.
 
@@ -254,7 +254,7 @@ For every entity, transition, and operation, check whether the document specifie
 
 3e. Generative stress-testing — actively imagine, do not pattern-match:
 
-For every operation, transition, rule, or assumption, mentally stress-test it against nine families of questions. Specific cases are yours to invent based on what the operation actually does. These are habits of attention, not a checklist.
+For every operation, transition, rule, or assumption, mentally stress-test it against nine families of questions. Specific cases are yours to invent based on what the operation actually does. These are habits of attention. They are not a checklist.
 
 - **Ambiguity and ties** — when the spec selects, ranks, matches, or chooses, what if inputs are equivalent on the criterion? Is the resolution deterministic?
 - **Concurrency and order** — when actions happen in sequence or parallel, what if they overlap, repeat, or arrive out of expected order?
@@ -265,7 +265,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
 - **Sibling instances** — when a lens above (or any phase) surfaces a defect at one spot, treat it as a
   sample of a class (base rule 14): before writing the finding, sweep the whole document for the same
   pattern — the same wording, the same structure, the same omission — in every other section and surface,
-  and write ONE finding that names the class and lists every instance found, not the first point you hit.
+  and write ONE finding that names the class and lists every instance found. Do not stop at the first point you hit.
   A point finding on a class defect sends the author on the same sweep you skipped.
 - **Persistence and versions** — when the system persists anything beyond the session (localStorage, files, caches, saved preferences), what happens when state written by an OLDER version meets the current code and UI? Is the stored shape partial, orphaned by a removed feature, or read on reopen into a UI that no longer matches it? Is there a defined migrate / ignore / clear rule? (This is the family of "reopened the widget and it looked broken" — persisted state auto-restoring into a changed surface.)
 - **Unbacked surfaces and unlabelled sketches** — when the document (or the build it describes) exposes a user-facing surface, does a spec clause back it? A surface the spec marks [target] / "not yet specified" that nonetheless exists in the build, an exploratory sketch wired into or linked from a prod surface, or anything shown to the human as product without having walked the pipeline is the finding — the build must never contain what the spec doesn't name (SPEC INV-16, INV-17, E-17; this is the family of "the hand-built room shown as if shipped").
@@ -281,7 +281,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   sentence (born of a real door: six seams found, the one-way face missed — the dead-end lens tests
   STATES for exits, this lens tests FACES for re-entry over the visit's lifetime).
 
-For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining, not in producing a finding for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
+For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining. A finding is not owed for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 
 Write findings using the four-part format.
 
@@ -314,14 +314,14 @@ If there are no acknowledged gaps, write "No explicit Open Items or TBDs in the 
 Properties that aren't formally checkable but matter equally:
 
 - Human observability: can operators understand the system's state? Are identifiers readable? Are errors actionable?
-- Domain language on every user-facing surface: the visible text speaks the product's words — never an
-  internal identifier, code, or mechanism name leaking through (a card labelled by a dev tag, a page
+- Domain language on every user-facing surface: the visible text speaks the product's words. Never let an
+  internal identifier, code, or mechanism name leak through (a card labelled by a dev tag, a page
   titled by an id). Extract the visible strings the spec promises and read them as the USER would; a
   leaked internal word is a finding.
 - Cognitive load: mode-dependent behavior, exceptions, special cases users must remember.
 - Operational UX: debuggability, audit trails, traceability.
 - Performance and scale budgets: how big can the input get (size, count, duration) before the artifact is unusable? State the assumed ceiling rather than leaving it implicit.
-- Security / privacy: if genuinely out of scope for this product, say so explicitly — a named skip, not a blind spot.
+- Security / privacy: if genuinely out of scope for this product, name it as an explicit skip. Leaving it as a silent blind spot does not meet the bar.
 
 Use the four-part finding format. The same concreteness test applies — describe what the operator actually does and what they actually see. Vague claims like "operators may be confused" are not acceptable.
 
@@ -341,20 +341,20 @@ Finish with one sentence on overall readiness: ready to build / needs another it
 
 ## Meta rules
 
-- Senior architect's review, not a linter or proof. Surface what matters, communicate clearly, recommend rather than ask.
+- A senior architect's review. It is not a linter or formal proof; surface what matters, communicate clearly, recommend rather than ask.
 - Always quote or close-paraphrase the source. Never produce a finding the reader can't trace back to the document.
-- Claims about the SHIPPED system rest on primary sources — the reconciliation note's `file:line` citations, a command's output — never the document's own prose (prose that outran the code will otherwise "prove" dead behaviour) and never a summary of the document (base rule 13).
+- Claims about the SHIPPED system rest on primary sources — the reconciliation note's `file:line` citations, a command's output. Never rest a claim on the document's own prose (prose that outran the code will otherwise "prove" dead behaviour), and never on a summary of the document (base rule 13).
 - Consequences in operational terms; FV jargon stays in tags only.
 - Concrete proposed action always — questions are last resort.
 - Hidden gaps in main findings, acknowledged gaps in Phase 3.5.
 - Concreteness test: actor, trigger, failure mode, observable outcome (at least three of four). Action test: specific artifact or decision, banned vague verbs.
-- When the doc is too vague for a concrete consequence, escalate to "the spec needs to state X" — never write a vague consequence.
+- When the doc is too vague for a concrete consequence, escalate to "the spec needs to state X." Never write a vague consequence.
 - Each finding part is one or two sentences.
 - Diagrams as rendered visuals, never code.
 - Phase pacing: PROCEED triage → Opening Assessment → Phase 1 → 2 → 3 → 3.5 → 4 → 5, all in one continuous response. Do not pause.
 - Note what's working as well as what's wrong, only if true and substantive.
 - Be explicit about what you assumed.
-- Persist the findings: they are written to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, not in this skill's) with a per-finding folded / rejected(+why) column (per build-pipeline step 2), so the fold is verifiable after a memory wipe and the next run can check the previous unfolded rows.
+- Persist the findings: they are written to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, separate from this skill's own repo) with a per-finding folded / rejected(+why) column (per build-pipeline step 2), so the fold is verifiable after a memory wipe and the next run can check the previous unfolded rows.
 
 ## Glossary mode
 

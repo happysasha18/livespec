@@ -11,7 +11,7 @@ The pack's shared working rules live HERE, once. A working skill (spec-author, p
 build-pipeline, communicator, publish) opens by naming this base and the version it was written against, references
 these rules, and elaborates only its own domain — communicator teaches HOW to speak plainly; THAT we speak
 plainly is this file's sentence. A second full statement of a shared rule inside a working skill is drift —
-a defect to fold at the next milestone, not a convenience (SPEC INV-13). Used standalone, outside the pack,
+a defect to fold at the next milestone rather than a convenience (SPEC INV-13). Used standalone, outside the pack,
 a working skill still stands: its pointer here reads as plain advice.
 
 ## The shared rules
@@ -44,7 +44,7 @@ a working skill still stands: its pointer here reads as plain advice.
    junior's prose is only a lead, and the senior spot-checks by re-running.
 
 6. **Every long or delegated piece of work keeps a persistent checkpoint.** A file on disk (host home:
-   `.live-spec/checkpoints/`, gitignored — never a system temp dir) holding done / in-progress / next,
+   `.live-spec/checkpoints/`, gitignored and kept inside the repo tree) holding done / in-progress / next,
    updated AS the work runs — so a cut-off RESUMES from disk instead of restarting. Red at a pause is never
    committed; the failing test name + hypothesis becomes the top NEXT_STEPS item — the checkpoint IS the
    red test.
@@ -55,8 +55,8 @@ a working skill still stands: its pointer here reads as plain advice.
    file in its inbox). Applies to ANY skill that writes shared files, not just adoption (SPEC INV-10, INV-11). And within ONE session up to three build lanes may roll without asking (SPEC T-18; a fourth only on the human's asked word): every write to a document the lanes share serializes under the single PEN, one lane at a time; a later train's code and tests live in its own isolated copy of the tree until the senior integrates them; a landing commit carries exactly one row's delta, its gate run on a tree clean of any other lane's unfinished work (SPEC INV-39).
 
 8. **Freshness: versions are re-checked at every safe breakpoint.** Re-stat the installed skills, the pack,
-   and the profiles; on any version change re-read the changed file before continuing — never coast on the
-   in-memory copy — and journal one line naming old → new (SPEC A-7, M-7).
+   and the profiles; on any version change re-read the changed file before continuing, working only from
+   that freshly read copy, and journal one line naming old → new (SPEC A-7, M-7).
 
 9. **History lives in the JOURNAL; docs travel with the change.** The dated WHY of every movement goes to
    JOURNAL.md the same session; SPEC / NEXT_STEPS / ROADMAP prose states only current truth. A shipped
@@ -79,10 +79,10 @@ a working skill still stands: its pointer here reads as plain advice.
 
 13. **A claim needs its primary source.** Anything asserted as fact — what the code does, what happened,
     who decided — rests on evidence you can point to: an owning `file:line`, a commit, a command just run
-    and its output. Your memory, a worker's summary, a document's prose are LEADS, not evidence — before
-    attributing a decision to the human or calling a behaviour "by design", read the actual source line
-    (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure", then
-    check — never assert.
+    and its output. Your memory, a worker's summary, a document's prose are LEADS rather than evidence —
+    before attributing a decision to the human or calling a behaviour "by design", read the actual source
+    line (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure",
+    then check before asserting.
 
 14. **A found defect is a sample of its CLASS — fix the class, sweep the look-alikes.** A bug, a stale
     name, a jargon string, a design inconsistency: before calling the fix done, name the pattern behind the
@@ -97,7 +97,7 @@ a working skill still stands: its pointer here reads as plain advice.
     code. The same line names the **work-kind** — product · infra · skill · prose — what the request
     BUILDS: the door picks WHICH pipeline steps run, the kind picks the FORM each running step takes
     (the per-kind table's one home is build-pipeline), and at landing every door-granted step has
-    applied or been stood down BY NAME in the report — never a silent skip, never a kind touching the
+    applied or been stood down BY NAME in the report, so every skip is named and every kind touches the
     safety net (SPEC T-16, INV-22). Hard tripwires decide, never mood: a new user-visible surface · new persistent state · a new
     interaction on an existing surface · a spec [target] mark on the touched surface · behaviour no spec
     clause backs ⇒ FEATURE, however casually asked — and the tripwire verdict outranks a casual label
@@ -112,8 +112,8 @@ a working skill still stands: its pointer here reads as plain advice.
     prod surface, and shown to the human only under its label. A request to merely SEE or TRY may be
     sketched; a request to HAVE it in the product is a feature — unclear which ⇒ one plain question
     (rule 1). Promotion is not a merge: the feature enters at the spec step; the sketch is evidence, its
-    code holds no rights. Opening a prototype home is a repo write of the assigned senior — never a
-    worker's own move, never an outsider's (theirs is an inbox wish). (SPEC E-17, INV-17)
+    code holds no rights. Opening a prototype home is a repo write that belongs to the assigned senior
+    alone; a worker doesn't open one on their own, and an outsider's route is an inbox wish instead. (SPEC E-17, INV-17)
 17. **Irreversible means gone, not merely public.** Truly irreversible actions — spending money,
    deleting data, sending to a person or an audience you cannot unsend from — always STOP for the
    human's word, whatever the proactivity mode. A push to your own repository is NOT irreversible (it
@@ -137,14 +137,14 @@ a working skill still stands: its pointer here reads as plain advice.
    Listed → the SECOND occurrence gets an owner THAT MOMENT: a queue row (OWNED) or the human's dated
    AGREED NON-PROBLEM — his word alone, never the agent's; the agent recommends, writes the recommended
    owner now, and the ask rides the batched report. A THIRD recurrence arriving unowned is a defect of
-   the METHOD, not of the day — it goes to the pack's own queue (from a host window: one inbox file).
+   the METHOD rather than of the day — it goes to the pack's own queue (from a host window: one inbox file).
    A recurrence on an owned entry appends its date and changes nothing else; the landing that closes an
    OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23; born of tlvphoto's retried-never-owned
    noise, 2026-07-05.) **And a limping thing never dams the flow (SPEC INV-56):** a KNOWN, owned
    problem is PARKED — the ledger line, the owning row, or an expected-red note holds it — and every
    unrelated lane keeps rolling; hand-fixing loops cap at the two-strikes law above, and a defect with
    a NAMED mechanical owner is serviced in BATCH — instances fixed silently where the fence catches
-   them, one ledger append at the session's end — never a per-instance ceremony that interrupts the
+   them, one ledger append at the session's end, with no per-instance ceremony interrupting the
    work (born of a clock drift hand-ceremonied ten times in one night while its owner row sat open,
    2026-07-07). A real NEW bug still preempts; this governs the known limp.
 
@@ -161,7 +161,7 @@ a working skill still stands: its pointer here reads as plain advice.
 
 ## When NOT to load this
 
-Not for sessions outside the pack's work — this is the pack's rulebook, not a general style guide; and
+Not for sessions outside the pack's work — this is the pack's own rulebook rather than a general style guide; and
 never as a place to WRITE host- or person-specific values (those live in profiles; this file holds only
 package defaults and the rules themselves).
 
@@ -177,16 +177,16 @@ package default** (SPEC E-13):
 | package defaults | the table below, in this file | the pack out of the box |
 | personal profile | `~/.claude/live-spec/profile.md` | the HUMAN — follows them across every project |
 | host profile | `<host>/.live-spec/profile.md` | THIS project |
-| session | the human's live word — never a file | RIGHT NOW, one conversation |
+| session | the human's live word, held only in the conversation itself | RIGHT NOW, one conversation |
 
 An override exists only as a written line in its profile file, and setting one leaves a dated journal note
-in the home it governs — never a silent divergence (SPEC INV-14). The session scope is the one exception —
+in the home it governs, keeping every divergence visible (SPEC INV-14). The session scope is the one exception —
 it lives only in the human's spoken word and dies with the conversation; the agent never writes it
 anywhere on its own, and making it outlive the session is a PROMOTION into the profile it describes, on
 the human's word, journaled like any other override. Proactivity mode and trust are written
 only on the human's word — the agent may propose, never set (SPEC INV-9). Profiles are re-read at the same
 freshness points as skills (rule 8). A profile line the current pack does not recognize is ignored ALOUD —
-named once in the session's next report — never silently dropped, never an error.
+named once in the session's next report as a visible, ordinary skip, never an error.
 
 **The profile is found or founded at setup (SPEC B-3).** At founding, at adoption's orient, and at the
 first session on a new machine or with a new human, the pack looks for the personal profile before the

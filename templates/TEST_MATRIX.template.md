@@ -3,8 +3,8 @@
 Derived from the proven SPEC.md **through the proven ARCHITECTURE.md** — the matrix is DERIVED, never just
 filled. Rows are organized **architecture node × spec fact**: every fact gets at least one row under its
 owning node, every row pins a test level, and the derivation closes with the coverage validation at the
-bottom of this file — a checklist actually walked, not decoration. Tests come from the matrix; the matrix
-comes from the spec and the architecture — never from the code.
+bottom of this file — a checklist actually walked, item by item. Tests come from the matrix; the matrix
+comes from the spec and the architecture. Never from the code.
 
 **Test levels:**
 - `string` — assert against raw source text / Python output (fast, no render)
@@ -48,7 +48,7 @@ Derivation is not done until every line below is checked against the CURRENT spe
 - [ ] Every architecture node has ≥ 1 block, and its negative-side rows exist (the regression fence).
 - [ ] Every artifact-inventory entry owns ≥ 1 rendered-level row.
 - [ ] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed`.
-- [ ] No row cites a spec anchor or node that no longer exists (stale rows are RETIRED, not deleted).
+- [ ] No row cites a spec anchor or node that no longer exists (stale rows are RETIRED in place).
 
 A fact with no row, or a row at a too-weak level, is a **derivation defect** — fix it here, before it is
 a production bug.

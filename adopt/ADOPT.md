@@ -21,10 +21,10 @@ anything** — then the whole adopt run is reversible.
 1. If the host has no git: `git init`.
 2. Write a `.gitignore` that keeps source + structured data and excludes the virtualenv, caches, and heavy
    generated/media artifacts. (On the pilot this was ~7.6 GB of media out of a 7.7 GB tree — commit the
-   ~source, not the exports.)
+   ~source and exclude the exports.)
 3. Make ONE **baseline commit** of the pristine original — this is the restore point and the diff baseline
    (SPEC A-6 / E-7).
-4. **Settle the remote — a named deliverable, not a recommendation (SPEC A-5).** By the first landing a
+4. **Settle the remote — a named deliverable (SPEC A-5).** By the first landing a
    remote (GitHub) either EXISTS or the human has EXPLICITLY DECLINED one; record the outcome in the run's
    journal entry. Creating/pushing the remote is the human's gate — offer and follow through, don't do it
    silently and don't let "recommended" quietly become "never happened" (the pilot ended local-only that way).
@@ -39,7 +39,7 @@ remote outcome (exists / declined) is recorded.
 Writing the `.gitignore` usually surfaces pre-existing regenerable junk (caches, build leftovers, stale
 exports). Offer ONE sweep: list what qualifies as "N files, M MB" per group, get the human's explicit OK,
 delete ONLY the approved regenerable junk. Never silent, never authored content — anything a human wrote
-goes through the attic (INV-7), not this sweep. Skipping the offer is fine; deleting without the OK is not.
+goes through the attic (INV-7) instead of this sweep. Skipping the offer is fine; deleting without the OK is not.
 
 Done when: the sweep was offered and either declined or executed exactly as approved.
 
@@ -59,9 +59,9 @@ or reads from the human's profile — the answers that shape everything downstre
 first, and **what kind of project this is** — book · backend service · static site · fullstack app ·
 CLI · skill pack · a custom kind — recorded as the host profile's `project.kind` line; that one is
 always ASKED, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
-inferred from examples is a defect, not a reading. The same breath asks — or tells the standing
+inferred from examples is a defect. The same breath asks — or tells the standing
 default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
-choice at setup, not mid-crisis; the rung moves only on their word.
+choice at setup, before any crisis; the rung moves only on their word.
 
 **Skill search rides the setup (SPEC INV-65):** with the founding questions answered, scan the
 installed skills and the catalogs you can reach for ones matching the project's kind and its crafts;
@@ -77,7 +77,7 @@ Produce a **document digest** (`.live-spec/adopt/orient_digest.md` — ALL adopt
 per doc — kind (spec/roadmap/journal/notes/report/…) · one-paragraph what-it-says · CURRENT or STALE (and
 why) · what it overlaps/duplicates.
 
-> Delegate this read to a worker — it is fan-out fact-gathering, not judgment. The senior reads the digest.
+> Delegate this read to a worker — it is fan-out fact-gathering. Judgment stays with the senior, who reads the digest.
 
 Done when: every existing document has a digest entry.
 
@@ -131,7 +131,7 @@ is marked native or unverified, and every unbacked live surface carries its verd
 
 ---
 
-## Phase 4 — Attic, not deletion (SPEC A-4, INV-7)
+## Phase 4 — Attic over deletion (SPEC A-4, INV-7)
 
 Any document Phase 3 supersedes (an old spec, a stale resume, a folded notes file, a completed process
 checkpoint) **moves to `attic/`** with a one-line manifest entry (original path · why · absorbing doc ·
@@ -157,7 +157,7 @@ trusted.
 **First the architecture.** Seed `ARCHITECTURE.md` from Phase 2's inventory: the surfaces' `file:line`
 pins become named nodes (one responsibility, one name each — template: `ARCHITECTURE.template.md`), every
 spec fact is assigned an owning node, seams are named. The pins ARE the reconciliation of re-engineered
-claims (A-3) — they come from commands run in Phase 2, not from the old docs' prose. Run a
+claims (A-3) — they come from commands run in Phase 2, independent of the old docs' prose. Run a
 product-prover pass with the architecture lens before deriving anything from it.
 
 **Then DERIVE `TEST_MATRIX.md` through it**: rows organized node × fact, at least one row per invariant /

@@ -36,7 +36,7 @@ expandable module ecosystem.
   to our spec-delta → roadmap → code order
 
 **Lacks from our list:**
-- No continuous wish intake — you start a project session, not a persistent feed
+- No continuous wish intake — you start a project session instead of drawing from a persistent feed
 - No automated per-wish spec-delta validation or batching of questions
 - No persistent cross-session roadmap/queue (session-scoped)
 - No model tiering — uses whatever model you hand it
@@ -45,7 +45,7 @@ expandable module ecosystem.
 - No doc compaction/pruning at milestones
 
 **Verdict:** Closest thing to a structured agentic SDLC today, but session-scoped and human-orchestrated.
-The "agile simulation" is a metaphor, not a mechanical pipeline.
+The "agile simulation" is a metaphor rather than a mechanical pipeline.
 
 ---
 
@@ -145,11 +145,11 @@ The core pitch: institutionalize team conventions so AI agents follow them consi
 - No persistent roadmap/queue
 - No model tiering
 - No artifact snapshot diff
-- No process-self-validation (the "standards" are conventions, not formal invariants)
+- No process-self-validation (the "standards" are conventions rather than formal invariants)
 - No doc compaction at milestones
 - No test-per-change enforcement
 
-**Verdict:** A codebase-context injection tool, not an SDLC orchestrator. Useful as a component
+**Verdict:** A codebase-context injection tool rather than an SDLC orchestrator. Useful as a component
 (could supply the "declared scope" context to our guardrail), but far from our design.
 
 ---
@@ -192,7 +192,7 @@ everything via MCP so any editor can embed it. BMAD + Taskmaster is a common pai
 - Dependency ordering in the task queue
 
 **Lacks from our list:**
-- No continuous wish intake — PRD is a one-shot input, not a streaming feed
+- No continuous wish intake — PRD is a one-shot input instead of a streaming feed
 - No per-wish spec-delta validation or batching of questions
 - No artifact snapshot diff vs previous run
 - No process-self-validation
@@ -201,7 +201,7 @@ everything via MCP so any editor can embed it. BMAD + Taskmaster is a common pai
 
 **Verdict:** Best pure task-queue manager in the field. If our design needs a persistent queue
 component, Taskmaster or its conventions (PRD → task graph) are the closest prior art.
-Still batch-oriented, not continuous-intake.
+Still batch-oriented rather than continuous-intake.
 
 ---
 
@@ -298,7 +298,7 @@ Then browse to select skill-creator from the marketplace. This is Claude Code's 
 requires the plugin marketplace — filesystem copy is simpler for a single skill.
 
 Note from docs: "Copy to a writeable location before editing. The installed skill path may be
-read-only." — relevant if installed via plugin, not manual copy.
+read-only." — relevant when installed via plugin, as opposed to a manual copy.
 
 ## Maintenance / currency
 
