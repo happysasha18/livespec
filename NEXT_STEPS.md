@@ -67,15 +67,8 @@ greeting messages, no "доброе утро" — work until the charter is done
 report. Start after his memory wipe: he types `/loop` with "работай ночной план live-spec из NEXT_STEPS";
 the loop self-paces, long stretches between wakeups, each wakeup takes the next unchecked item.
 
-- [ ] **Phase 1 — THE DOCS PASS (the 1.0 condition).** The pack's reader-facing documentation catches up
-  with everything built. One spawn per document, each brief carrying: the exact sources (SPEC sections +
-  skill files), the register laws (native English, plain words, no coined metaphors — spec-style-lint +
-  preshow-lint MUST pass; the «это бред» class is the enemy), and the crisp-README bar. Documents:
-  README.md (четенький: what/who/install/one worked example/commands — publish-skill checklist) ·
-  OVERVIEW.md · docs/ pages: the pipeline walk · the architecture method (tiers/flows/fallbacks/
-  decisions/secrets/binaries) · the test method (ladder + the five lessons) · onboarding & settings ·
-  push law & gates · worker liveness/resume · adoption. Senior folds each spawn's draft, gates it, lands
-  it; render-check each page. Rows 173-187 archive can ride the milestone later, NOT tonight.
+- [x] **Phase 1 — THE DOCS PASS — DONE 2026-07-10 ~00:35** (9 docs: README + OVERVIEW rewritten, 7 new
+  docs/ pages; all lint-clean, render-checked, suite 239 green; detail in JOURNAL session 31).
 - [ ] **Phase 2 — THE GLOBAL PASS (after docs; spawns, opus-tier workers for judgment).** The
   milestone-style audit, parallel spawns: FULL spec re-prove · matrix audit (coverage validation
   re-walked) · surface-composition check · skill evals re-run · skill-creator craft walk over the 8

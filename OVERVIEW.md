@@ -1,78 +1,94 @@
-# The map — what lives where, and why (one page)
+# live-spec — the ideas in five minutes
 
-Written for the moment someone asks "where does X live?" or "why are there three repos?". No jargon;
-every claim here is answerable in one line. (Normative rules live in PRODUCT_SPEC.md and the skills — this page
-only points.)
+This page is for a developer who has read the README and wants the ideas before opening any skill
+file. Normative rules live in `PRODUCT_SPEC.md` and the skill files; this page explains and points.
 
-## Three homes on a machine, three different jobs
+## The living spec is the product's source of truth
 
-**1. The pack — `~/live-spec` (public, github.com/happysasha18/live-spec).**
-The PRODUCT. A package any software project can attach to so that work runs by one discipline: you throw
-wishes in passing, each one is classified before any code, specified, reviewed, tested, and lands with
-automatic pre-push checks. Anyone on the internet can read and use this repo — so nothing personal is in
-it.
+A project running under the pack keeps one document, `PRODUCT_SPEC.md`, stating what the product
+promises today. Scenarios lead: each section describes what a person does and sees. Short codes
+trail at line ends as anchors for the machine, and a Formal index closes the document. The pack's
+own spec is the reference shape; its header carries the document revision (0.16.x at this writing).
 
-**2. The personal layer — `~/.claude/playbook` (private).**
-Everything about ONE person that must follow them across projects: the personal profile (chat language,
-how proactive to be, "no calques", how to show work), working-principle notes, and the attic of
-superseded personal files. It is a git repo so every rule keeps its date, its reason, and a one-command
-rollback — but a private one, because it is personal.
+The spec is living in a precise sense. Work enters it before code: a new behaviour arrives as a spec
+delta, gets reviewed, and only then gets built. Shipped behaviour traces back to it: a guardrail
+check goes red when a user-facing behaviour has no spec sentence behind it. And it stays current:
+a removed feature leaves a dated tombstone, and history moves to `JOURNAL.md`.
 
-**3. The starter note — `~/.claude/CLAUDE.md`.**
-Not a storehouse — a twenty-line note the assistant reads first in every session. It says three things:
-one window = one project (ask if unsure) · load the personal profile from the playbook · work by the
-live-spec pack. The file physically sits inside the playbook repo (so it has history and a backup);
-`~/.claude/CLAUDE.md` is a link pointing at it. It used to hold every rule; now each rule lives in its
-real home and the note only points.
+## The pipeline — a wish becomes shipped, tested work
 
-## Inside the pack: one rulebook, seven working skills
+A wish is a request in plain words, thrown at any moment. Intake names its door aloud — feature,
+bug, refactor, docs-only, skip — before any code; fixed tripwires decide, so a casual ask that
+creates a new surface still enters as a feature (SPEC T-12). A feature walks nine stations in order.
 
-- **live-spec-base** — the shared rulebook: rules that bind EVERY skill (ask-never-guess, plain words,
-  no calques, one home per fact, the door before code, prototype ≠ product…) stated ONCE, plus default
-  settings. When two skills seem to disagree, this file wins.
-- **spec-author** — writes the spec. Owns the canonical checklists an author walks (the cross-view axes,
-  the standard facets of a feature).
-- **product-prover** — reviews the spec and the architecture like a formal-methods architect; runs the
-  re-check that gates every push.
-- **build-pipeline** — runs a change end to end: door → spec → prove → architecture → prove
-  architecture → matrix → test → code → verify → commit & show. The order is law.
-- **test-author** — derives the test matrix from the proven spec through the proven architecture and
-  writes the tests: the level ladder (string / DOM-text / browser-computed / pixel), real-artifact
-  assertions, red-first proof. build-pipeline invokes it at the matrix and test steps.
-- **communicator** — everything the human sees: plain-language reports, batched questions, decision
-  pages, how a prototype may be shown.
-- **publish** — the moment work leaves the machine: what a good publication owes per kind of artifact
-  (a skill shows its commands, a tool shows real runs, a visual product shows fresh screenshots), and
-  how a target (GitHub, a plugin directory, a design project) plugs its own steps into the walk.
-- **feedback-intake** — the intake half of the exchange: it receives anything the human hands back (a
-  remark, an answer, a screenshot, a dropped file), routes each item to the home its law owns, and keeps
-  the feedback ledger. communicator carries work out; feedback-intake carries what comes back.
+1. **Spec** — `spec-author` writes the delta: entities, states, transitions, invariants, regression
+   fences on touched live surfaces, a sweep of the standard facets, non-goals, one success measure.
+2. **Prove** — `product-prover` reviews the grown spec; findings are recorded and folded.
+3. **Architecture** — `ARCHITECTURE.md` maps named nodes, each owning spec facts, pinned to real
+   `file:line`. The document also owes a runtime view (each promised flow walked node by node, with
+   a fallback at every failure point) and a placement view saying where every node runs (INV-74/75).
+4. **Prove the architecture** — the prover again, with an architecture lens: every fact owned,
+   every node backed by the spec, every seam named, both views present.
+5. **Test matrix** — `test-author` derives `TEST_MATRIX.md`, one block per node, one row per fact;
+   every row states what the fact does and what it must never do, and pins a test level (string /
+   DOM-text / browser-computed / pixel).
+6. **Tests** — written against the real shipped artifact; each new test is watched failing first.
+7. **Code** — implement until green; mechanical work goes to cheaper worker models under precise
+   briefs, and judgment stays with the senior model.
+8. **Verify by deed** — run the real thing and look at it; green means zero failures and exactly
+   the expected skip list.
+9. **Commit and show** — docs travel with the change; the human sees the real render; accepted
+   work is pushed to the host's remote by rule, the README re-checked at every push (INV-82).
 
-Around them: `templates/` (the document shapes a project copies), `adopt/` (how to attach to an existing
-project), `guardrails/` (the automatic pre-push checks), `inbox/` (how an outside session files a wish
-without write access).
+A bug shortcuts to matrix → test → code. Mechanical guardrails on the pre-push hook enforce the
+structure: a change without a test, an empty surface, or a behaviour without a spec sentence turns
+the push red. The normative walk lives in `skills/build-pipeline/SKILL.md`.
 
-## The pack eats its own cooking
+## The prover is a formal-review step
 
-`~/live-spec` is also a PROJECT run by the method — so the repo carries its own PRODUCT_SPEC.md (what the pack
-promises), ROADMAP.md (the wish queue), ARCHITECTURE.md, TEST_MATRIX.md, tests/, JOURNAL.md (the why,
-dated), NEXT_STEPS.md (cold-resume state), and docs/prover/ (every review record). These files are the
-flagship INSTANCE of the method — the pack held to the same rules it asks of every host.
+`product-prover` reads documents the way a formal-methods reviewer reads a model: entities, states,
+transitions, invariants, safety, liveness, atomicity, and the composition between surfaces. It runs
+at two stations (spec and architecture) and, on the pack itself, again before every push. Findings
+land in dated files under `docs/prover/`, each marked folded or rejected with a reason, so the fate
+of every must-fix stays checkable after a memory wipe. The prover finds holes in what documents
+claim; the tests then cover the facts.
 
-## Where does a rule go? (the only table worth memorizing)
+## The settings ladder
 
-| The rule is about… | It lives in… |
-|---|---|
-| every project and every user of the pack | `live-spec-base` (one sentence of law), elaborated in the ONE working skill whose job it is |
-| how to write specs / review / run changes / talk to the human | that working skill |
-| one person, across all their projects | their profile in the private playbook |
-| one project (host) | that project's `.live-spec/profile.md` |
-| this minute only | said in the session; strongest word wins, never silently recorded |
+How the pack behaves is a named setting living in one of four nested scopes; a narrower scope wins.
+The normative table and the default values live in `skills/live-spec-base/SKILL.md` (SPEC E-13).
 
-One rule, one home. Everything else may point at the home, never restate it.
+| Scope | Home | Describes |
+|---|---|---|
+| package defaults | `live-spec-base` | the pack out of the box |
+| personal profile | `~/.claude/live-spec/profile.md` | one human, across all their projects |
+| host profile | `<project>/.live-spec/profile.md` | one project |
+| session | the human's spoken word | this conversation only |
 
-## Who reads what, in what order
+An override exists only as a written, dated line in its profile, with a journal note, so every
+divergence stays visible. The session scope is spoken only and dies with the conversation; making
+it permanent is a promotion into a profile, on the human's word.
 
-A session starts → reads the starter note (3 lines of substance) → loads the personal profile (how to
-work with this human) → loads the pack skills as work demands them → the project's own SPEC/ROADMAP say
-what the product is and what's next. A cold session resumes from NEXT_STEPS.md alone.
+## Eight skills, one division of labour
+
+- **live-spec-base** — the shared rulebook and the default settings, stated once; on any apparent
+  rule conflict, this file wins.
+- **spec-author** — writes and grows the living spec, use-case-first and prover-ready.
+- **product-prover** — reviews specs and architecture documents with formal-verification thinking.
+- **build-pipeline** — sequences the whole arc from wish to shipped, tested, committed change.
+- **test-author** — derives the matrix from the proven spec and writes the tests.
+- **communicator** — shows work plainly and asks only the decisions the human can actually make.
+- **feedback-intake** — receives everything a person hands back and routes each item to its home.
+- **publish** — the quality gate when work leaves the machine, owing what the artifact's kind owes.
+
+## What the spec learned recently
+
+The newest invariants each fix a field failure as a class. The architecture now owes the runtime
+and placement views above (INV-74, INV-75). A background worker outlives a memory wipe, so a
+resuming session proves it dead or alive before touching shared files (INV-76). The test layer
+gained a set of lessons: behaviour past a headless browser's reach gets a real-device walk row; a
+geometry fact asserts relative distances, at several viewport sizes, over repeated steps; an engine
+extracted from one project tests on its own generic fixtures; and the suite's own plumbing is itself
+tested, so a skip path or a wrapper's exit code can never fake a pass (INV-77–INV-80). Every
+question to the human first passes the gate "can I decide or verify this myself" (INV-81), and
+accepted work reaches the remote by rule, the pipeline's last station (INV-82).

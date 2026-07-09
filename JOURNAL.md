@@ -2640,3 +2640,24 @@ build-pipeline 0.2.43 · product-prover 0.1.15 · spec-author 0.1.23 · communic
 fact-gather rode a sonnet worker; everything else was judgment or sub-brief edits.
 **Next:** item 6 waits his eye on onboarding mockup v2; item 7 (M-1 audit → 1.0.0 → push) waits his
 explicit go and runs AFTER item 6 lands, so the audit covers it.
+
+## Session 31 — the night run, phase 1: the docs pass (2026-07-10, overnight)
+
+**The 1.0 docs condition landed.** Nine reader-facing documents were written by nine spawned
+workers, each draft folded and gated by the senior: README.md rewritten crisp at 72 lines
+(what / who / install / one worked example / the eight-skill table / docs map), OVERVIEW.md
+rewritten as the five-minute conceptual tour, and seven new pages under docs/ — pipeline.md (the
+station-by-station walk, wish to shown result), architecture-method.md (template sections, the
+runtime and placement views, budgets, the prover's six-check lens), test-method.md (matrix
+derivation, the level ladder, the five field lessons), onboarding-and-settings.md (the settings
+ladder, both profiles, session hooks), push-law.md (the done-gate, the commit rule, the push law,
+log-tail verdicts), worker-liveness.md (spawn briefs, the two liveness checks, git discipline,
+resume), adoption.md (the guide into ADOPT.md, migration, templates, what stays optional).
+
+Every page passed spec-style-lint and preshow-lint (worker's run re-verified by the senior's own),
+rendered clean through render-doc.py, and the full suite stayed at 239 green (~33 s), read from the
+run's own tail. One senior fix during folding: the README's worked example still claimed a push
+waits for the human's word; corrected to push-by-rule with the named-release exception (INV-82).
+Workers reported their unsourced-fact notes honestly; none invented content — two brief-vs-repo
+mismatches (MIGRATION.md's actual scope, the scaffold's planned-code note) were resolved from the
+real files. Docs-only wave: VERSION untouched, no skill file changed.
