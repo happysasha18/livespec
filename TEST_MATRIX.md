@@ -2,7 +2,7 @@
 
 Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** (records:
 `docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
-SPEC v0.14.0 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
+SPEC v0.16.14 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
 + the night-of-2026-07-05 landings (rows 72-92: facets/fences/intake-trio/founding/design-sync —
 anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083) + the work-kind landing (SPEC v0.15.0,
 session 8: T-16/INV-22, rows M-084/M-085; headers re-pin at each milestone per M-1) + the row-57 landing
@@ -43,6 +43,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Roadmap template | `templates/ROADMAP.template.md` | shipped text | `test_artifact_inventory` |
 | Journal template | `templates/JOURNAL.template.md` | shipped text | `test_artifact_inventory` |
 | Next-steps template | `templates/NEXT_STEPS.template.md` | shipped text | `test_artifact_inventory` |
+| Profile template | `templates/profile.template.md` | shipped text | `test_artifact_inventory` |
 | Problem-ledger template | `templates/PROBLEMS.template.md` | shipped text | `test_artifact_inventory` + `test_problems_template_shape` |
 | Kill-list template | `templates/KILL_LIST.template.md` | shipped text | `test_artifact_inventory` + `test_kill_list_mechanical` |
 | Bootstrap suite scaffold | `templates/test_scaffold.template.py` | shipped script | `test_artifact_inventory` + `test_scaffold_bootstrap_runs` (real simulated bootstrap, both ways) |
@@ -86,9 +87,18 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Queue archives | `docs/queue-archive/` | records dir (non-empty) | `test_artifact_inventory` |
 | Audit records | `docs/audit/` | records dir (non-empty) | `test_artifact_inventory` |
 | Prior-art survey | `docs/prior-art.md` | shipped text | `test_artifact_inventory` |
+| Adoption guide | `docs/adoption.md` | shipped text | `test_artifact_inventory` |
+| Architecture method | `docs/architecture-method.md` | shipped text | `test_artifact_inventory` |
+| Onboarding and settings | `docs/onboarding-and-settings.md` | shipped text | `test_artifact_inventory` |
+| Pipeline walk | `docs/pipeline.md` | shipped text | `test_artifact_inventory` |
+| Push law | `docs/push-law.md` | shipped text | `test_artifact_inventory` |
+| Test method | `docs/test-method.md` | shipped text | `test_artifact_inventory` |
+| Worker liveness | `docs/worker-liveness.md` | shipped text | `test_artifact_inventory` |
 | Publish skill | `skills/publish/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Publish README | `skills/publish/README.md` | shipped text | `test_artifact_inventory` |
 | Publish license | `skills/publish/LICENSE` | legal | `test_artifact_inventory` |
+| Test-author skill | `skills/test-author/SKILL.md` | shipped text | `test_artifact_inventory` |
+| Feedback-intake skill | `skills/feedback-intake/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Skill evals — method + honest boundary | `evals/README.md` | shipped text | `test_artifact_inventory`, `test_eval_readme_states_honest_boundary` |
 | Skill evals — one per working skill | `evals/` | shipped text dir | `test_skill_evals_present` (self-closing over skills/) |
 | Eval run records | `docs/evals/` | records dir (non-empty) | `test_artifact_inventory` |
@@ -384,8 +394,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 
 ## Coverage validation — walked 2026-07-05 at derivation; re-walked mechanically by `tests/test_traceability.py` at every run
 
-- [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 70/70 (E-16 added 2026-07-05, rows 52–53), mechanized in `test_matrix_covers_every_anchor`.
-- [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 12/12 blocks, every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
+- [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — 162/162 (counted from PRODUCT_SPEC.md's Formal index table, ranges expanded, via `spec_index_anchors()` — 156 index rows expand to 162 unique anchors), mechanized in `test_matrix_covers_every_anchor`.
+- [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 17/17 blocks (counted as the `### [node: ...]` headings under Matrix rows, via `matrix_blocks()`), every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
 - [x] Every artifact-inventory entry is asserted shipped-and-non-empty (`test_artifact_inventory`) — the text-product rendered level (prover F6).
 - [x] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed` — vacuously true: the pack ships no browser surface (prover F6); the clause re-arms the day one exists.
 - [x] No row cites a spec anchor or node that no longer exists — mechanized in `test_matrix_covers_every_anchor` (stale refs fail the suite; retirement, never deletion).

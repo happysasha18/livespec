@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.44
+  version: 0.2.45
 ---
 
 # build-pipeline — ship a change by the method
@@ -317,7 +317,7 @@ rather than as a per-project patch. The four mechanical guardrails:
   is rendered but not in the registry (so a new surface goes red until registered + asserted). No partial/
   stripped artifact can ship or be shown. Self-closing: the DOM is the source of truth, checked directly instead of a hand-list.
 - **Tests-present** — a diff that touches a user-facing module MUST touch `tests/`. No change without a test.
-- **Bounds (behaviour ↔ spec)** — every user-facing behaviour traces to a SPEC clause; a behaviour with no
+- **Behaviour-traces-to-spec (bounds)** — every user-facing behaviour traces to a SPEC clause; a behaviour with no
   spec backing (a silent micro-decision — a default, an auto-mute, a sort order) is RED. This is what catches
   freelancing mechanically: you cannot ship an unasked, unrecorded behaviour.
 - **Conflicts** — id duplicates, a spec invariant with no matrix row, a ⟨DECIDE⟩ marked RESOLVED but still

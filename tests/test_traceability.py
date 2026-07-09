@@ -276,7 +276,8 @@ class TestQueue(unittest.TestCase):
 
 
 class TestVersionsAndPins(unittest.TestCase):
-    SKILLS = ("live-spec-base", "spec-author", "product-prover", "build-pipeline", "communicator")
+    SKILLS = ("live-spec-base", "spec-author", "product-prover", "build-pipeline", "communicator",
+              "publish", "test-author", "feedback-intake")
 
     def test_version_homes(self):
         v = read("VERSION").strip()
@@ -292,11 +293,15 @@ class TestVersionsAndPins(unittest.TestCase):
                               "%s still carries a top-level version: line (must live under metadata:)" % s)
 
     def test_skills_inherit_base_pin(self):
+        base_version = re.search(r"(?m)^\s*version:\s*([0-9.]+)",
+                                  read("skills/live-spec-base/SKILL.md")).group(1)
         for s in self.SKILLS:
             if s == "live-spec-base":
                 continue
             body = read("skills/%s/SKILL.md" % s)
             self.assertIn("live-spec-base", body, "%s carries no base-skill inherit pin" % s)
+            self.assertIn("`live-spec-base` (v%s)" % base_version, body,
+                          "%s pins a stale (or missing) base version" % s)
 
     def test_settings_ladder_documented(self):
         body = read("skills/live-spec-base/SKILL.md")
@@ -2023,7 +2028,7 @@ class TestProblemLedger(unittest.TestCase):
                        "the pack asks the economy rung, or tells the standing default",
                        "every taken shed named in the landing report",
                        "What never bends at any rung",
-                       "a push still requires the full gate green at HEAD",
+                       "a push still requires the batch's reach-scoped gate [INV-45] green at HEAD",
                        "red at batch end bisects by landing order",
                        "an explicit host line outlives any rung"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)

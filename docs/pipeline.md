@@ -95,14 +95,13 @@ walk in plain words and points there for the letter of each law.
 - **Owner:** build-pipeline (step 7), as a senior developer.
 - **Blocks:** green tests are the exit condition; the next station adds eyes.
 
-## Station 9 — done-gate
+## Station 9 — verify by deed
 
 - **Enters:** the green implementation.
 - **Produces:** a verify-by-deed record: the builder runs the real thing and looks at the result with
   fresh eyes. Every check the diff can reach runs before any push (SPEC INV-45). For gated prose,
-  `scripts/spec-done-gate.py` runs the whole conjunction and gives a green verdict only when all of
-  it holds: the style lint at zero errors, the redundancy precheck at zero open findings, the judge
-  model passed with zero surviving findings, and the anchor multiset unchanged against the baseline.
+  `scripts/spec-done-gate.py` runs the prose gate; its conditions are described in
+  [docs/push-law.md](push-law.md).
 - **Owner:** build-pipeline (step 8), backed by the mechanical guardrails on the pre-push hook.
 - **Blocks:** green means zero failures and the skip list exactly matches the pinned expected set; an
   unexpected skip is a failure outright. Red at a pause is never committed — the failing test name

@@ -26,7 +26,7 @@ creates a new surface still enters as a feature (SPEC T-12). A feature walks nin
 2. **Prove** — `product-prover` reviews the grown spec; findings are recorded and folded.
 3. **Architecture** — `ARCHITECTURE.md` maps named nodes, each owning spec facts, pinned to real
    `file:line`. The document also owes a runtime view (each promised flow walked node by node, with
-   a fallback at every failure point) and a placement view saying where every node runs (INV-74/75).
+   a fallback at every failure point, INV-74) and a placement view saying where every node runs (INV-75).
 4. **Prove the architecture** — the prover again, with an architecture lens: every fact owned,
    every node backed by the spec, every seam named, both views present.
 5. **Test matrix** — `test-author` derives `TEST_MATRIX.md`, one block per node, one row per fact;
@@ -62,7 +62,7 @@ The normative table and the default values live in `skills/live-spec-base/SKILL.
 |---|---|---|
 | package defaults | `live-spec-base` | the pack out of the box |
 | personal profile | `~/.claude/live-spec/profile.md` | one human, across all their projects |
-| host profile | `<project>/.live-spec/profile.md` | one project |
+| host profile | `<host>/.live-spec/profile.md` | one project |
 | session | the human's spoken word | this conversation only |
 
 An override exists only as a written, dated line in its profile, with a journal note, so every

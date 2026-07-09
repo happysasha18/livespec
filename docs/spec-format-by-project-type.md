@@ -37,9 +37,9 @@ scenario. Shard into per-feature files only for a genuinely huge project, by exp
 
 ### Hypertext references in Markdown
 Source stays plain, standard MD: a bracket code `[F-wish]` plus one index table
-(ID → section → implementer → test). Clickable links are generated at RENDER time
-(`render-doc.py` resolves a code to its section anchor). No hand-written fragile links in
-the source.
+(ID → section → implementer → test). Rendered pages do not yet resolve a bracket code or a
+`.md` cross-link to its section anchor (`render-doc.py` renders `[text](href)` verbatim);
+that resolution is queued (ROADMAP row 195).
 
 ### On our live spec
 live-spec is a methodology package, but its SPEC scenarios are the product's features:

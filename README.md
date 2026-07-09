@@ -37,10 +37,10 @@ A wish arrives mid-conversation: "the report page needs a date filter."
 4. **Architecture.** `ARCHITECTURE.md` gains the filter's owning node, pinned to its place in the code, and the prover checks the updated document.
 5. **Tests.** `test-author` derives matrix rows for the new facts, pins each row to a test level on the ladder from plain string checks up to pixel comparison, and writes tests that assert the real rendered page. Each new test fails first, proving it can catch the missing behaviour.
 6. **Code.** Implement until the suite is green: zero failures, and the skipped tests match the expected list exactly.
-7. **Gate.** The guardrail scripts run before anything moves outward: traceability (every spec fact has an owning test) and freshness (the documents match the shipped truth). These are executable checks that block a push.
+7. **Verify by deed.** The guardrail scripts run before anything moves outward: traceability (every spec fact has an owning test) and freshness (the documents match the shipped truth). These are executable checks that block a push.
 8. **Commit and show.** The change lands in one commit together with its spec, matrix, and architecture updates, and accepted work reaches the project's remote by rule (see [`docs/push-law.md`](docs/push-law.md)). The report to the human is one plain line. A release the human reserved by name — a version milestone on their explicit word — waits for that word.
 
-A bug takes a shortcut: matrix row, failing test, fix — the spec is touched only when the broken fact was never written down.
+A bug takes a shortcut: matrix row, failing test, fix — the spec is touched only when the broken fact was never written down. The example compresses the pipeline; the full station-by-station walk is [`docs/pipeline.md`](docs/pipeline.md).
 
 ## The skills
 

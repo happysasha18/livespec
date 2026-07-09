@@ -88,3 +88,25 @@ Setup also settles WHERE accepted work is pushed (SPEC INV-82): the remote is di
 tree (inspect-first); only a project with no remote gets one contextual question at the first push
 moment — create one (GitHub · GitLab · whatever they name) or stay local. The card's settings list
 shows the discovered remote like any other current value.
+
+## Addendum — third mockup bounced (2026-07-10 ~00:50, his word)
+
+Mockup v3 was shown at night; verdict: still reads as bad machine text ("мы опять в яме?" —
+paraphrase: the same jargon pit again). Three exhibit lines from the mockup itself:
+
+1. "How setup feels — almost no questions" — understandable but a bare claim, reads dubious.
+2. "working at full rigor — say 'work lean' when time is short" — opaque: an internal economy
+   setting translated literally instead of the consequence in the user's words.
+3. "Everything else comes up naturally when it first matters:" — opaque: machine-flavoured
+   restatement of the deferred-questions mechanism.
+
+Consequences (the class fix, not the point fix):
+- These three lines are the red-proof fixtures for the pre-show register lint (queue row 170):
+  the lint MUST go red on all three before it counts as working; a failed pre-show check BLOCKS
+  the showing.
+- Authoring method changes: human-facing product text is drafted by a fresh writer session with
+  the reader's brief only (new user, first contact; every line answers "what do I do and what
+  happens"), then the lint, then a clean-context reader check. The pack-marinated session never
+  drafts it.
+- Mockup v4 goes through that road and is shown in the morning. The build stays parked until his
+  "годится".
