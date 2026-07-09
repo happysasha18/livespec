@@ -158,13 +158,13 @@ Actor-action assignments:
 
 ## Review modes
 
-Two depths, chosen by the caller (the build-pipeline skill picks one):
+Three modes, chosen by the caller (the build-pipeline skill picks one):
 
 - **FULL** — the whole spec, every phase below. Required before a MINOR (`0.x.0`) bump and after any structural rewrite; the default when someone just says "review the spec".
 - **CROSS-LINK** — a focused pass for a single added surface: Phases 1–2 plus the Phase 3e composition/stress lenses, aimed at the NEW surface's seams against the existing surfaces it composes with. Skip the whole-doc property sweep. Use on every surface add, where a FULL re-prove would cost more than the change warrants.
 - **FEATURE-FIT** — a focused pass on ONE feature's spec-delta at intake (SPEC INV-29): walk its journey seams — arrival, every next-step, return visit, cross-entry, implied neighbour state, feel bar, invited-next (or its kind's flow/trigger lenses) — against the whole spec, the way CROSS-LINK walks a new surface's seams. Verdict per lens: backed by a clause · closed trivially (written how) · `[default]`-tagged · a batched question. Runs with the spec step, before prove; it validates the FIT only. Document-internal consistency is out of scope for this mode.
 
-Both modes keep the whole document in view — a cross-section hole is only findable when both sides of the seam are present and named the same at prove-time. CROSS-LINK narrows the FINDINGS to the new surface's seams; the reading still covers the whole document.
+All three modes keep the whole document in view — a cross-section hole is only findable when both sides of the seam are present and named the same at prove-time. CROSS-LINK narrows the FINDINGS to the new surface's seams, and FEATURE-FIT to the feature's fit; the reading still covers the whole document.
 
 ## Phase 0 — Triage
 
