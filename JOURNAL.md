@@ -2661,3 +2661,56 @@ waits for the human's word; corrected to push-by-rule with the named-release exc
 Workers reported their unsourced-fact notes honestly; none invented content — two brief-vs-repo
 mismatches (MIGRATION.md's actual scope, the scaffold's planned-code note) were resolved from the
 real files. Docs-only wave: VERSION untouched, no skill file changed.
+
+## Session 31 — the night run, phase 2: the global pass + three landings on his night words (2026-07-10, overnight)
+
+**The audit.** Eight parallel reviewers (opus for judgment, sonnet for the mechanical eval run — his
+~00:38 word landed as the standing model routing: the senior orchestrates and accepts, workers carry
+the work). Full spec re-prove found one real contradiction — the new push law read as an automatic
+push grant and ignored the peer-session fence; folded as two clauses (INV-82, spec v0.16.14) with the
+tight rung's push line inheriting the reach map. Matrix audit: mechanized coverage airtight, the
+artifact inventory had drifted (two newest skills, seven reader docs, one template — folded; the
+base-pin test now covers all eight skills with the version half). Composition check: no contradiction
+of substance, three naming drifts folded (verify by deed / behaviour-traces-to-spec / host). Formal
+index: clean on all five axes, four of them manual-only — a standing symmetry test queued (row 196).
+Deferred-triggers re-scan: the render-doc cross-link deferral FIRED (nine cross-linking reader docs
+landed while the renderer resolves nothing — row 195, and the false resolution claim in spec-author
+and the format doc corrected to the truth the same hour); five his-word backlog items got durable
+queue homes (rows 203-207). Skill craft walk: no dead references; small fixes queued (rows 200-202);
+a stray stale SKILL.html removed. Eval protocol re-run over all seven skills: red-bare/green-with
+reproduced, no regression. Doc compaction: candidates listed, all milestone-gated.
+
+**Three landings on his words, same night.** Row 170 (his priority): the pre-show register lint —
+anything shown to a human passes scripts/preshow-register-lint.py, a red BLOCKS the showing (INV-83,
+spec v0.16.15); red-proven on tonight's real leaks (the onboarding mockup's three lines he bounced,
+the calques a sibling window's chat showed him — «швы с соседями», «смерть счёта» class), green on
+the nine reader docs; communicator 0.1.42 wires it as the walk's step 4; the chat-law hook gained the
+no-calques reminder, installed copy refreshed. Row 208 (his ~00:53 word): human-facing prose is
+drafted by a clean writer (INV-84, spec v0.16.16, base rule 21) — the marinated session briefs,
+reviews, lands, never writes; born of tonight's evidence: nine clean-drafted docs passed his bar
+first time, the marinated onboarding text bounced three times; the law's own wording came through the
+clean road. Row 209 (his ~01:17 word): the README owes a Known issues section — publish checklist
+floor (0.1.4) + the pack's own five honest issues as the first instance.
+
+**The clean judge, confirmed on his ~01:22 word.** Both prose judgments tonight ran as the protocol
+demands — a fresh opus spawn, locked rubric, planted-defect canary (all planted defects caught both
+runs). The judge's surviving findings on the settled text (eleven, all metaphor/redundancy family:
+«a limping thing never dams the flow», «the shell eats a command», the no-third-document restatement)
+are row 210's worklist — the plainer-prose rewrite gets its first concrete list. Tonight's added
+clauses drew zero findings. Style-gate debt unchanged at the recorded 63 (the parked Formal-index
+restyle); one new caps error introduced and fixed the same hour.
+
+**Onboarding.** Mockup v3 bounced (~00:50, the third bounce — a method defect, признан): his three
+exhibit lines are now the lint's red fixtures; v4 rides the clean-writer road and is shown in the
+morning; the build stays parked on his verdict.
+
+**Workshop honesty.** My own chat carried the same calque disease tonight («стыки поверхностей») —
+the lint's pattern list holds it now. Mid-train suite runs proved meaningless (the tree is a mixture
+between staged commits); the batch-end full gate is the verdict, exactly as the tight-rung clause
+folded tonight states. Commit train: 6fe54d7 (global pass) → 0e36780 (row 170) → e3e54a2 (row 208) →
+5d4bed3 (row 209), byte-verified against the gated finals before the closing commit.
+
+Versions: SPEC v0.16.13 → v0.16.16 (INV-83, INV-84; INV-82 amended) · base 0.1.27 · communicator
+0.1.42 · spec-author 0.1.25 · build-pipeline 0.2.45 · publish 0.1.4 · pack 0.9.12 · suite 239 → 266+
+green. Delegation: nine doc writers + eight auditors + two clean drafters + one judge pair on
+opus/sonnet; the senior's hands held folds, gates, and the train.

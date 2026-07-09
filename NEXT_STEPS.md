@@ -41,11 +41,11 @@ in his profile + the installed hooks, not memory.
    real ARCHITECTURE.md left no unnamed hole (one named deferral: the at-a-glance diagram stays optional).
    Derived doc: session scratchpad `tlvphoto-architecture-derived-v2.md` (not committed — foreign
    internals stay out of the public pack). Record: `docs/prover/2026-07-09-row180.md`.
-6. **Project onboarding — PARKED at mockup v3, HIS EYE IS THE GATE.** v1 bounced (params unexplained);
-   v2 consequence-first; v3 adds the whole-flow strip REWRITTEN in plain words after his «это бред» on the
-   jargon draft (opened 2026-07-10 ~00:10; session-30 scratchpad `onboarding-mockup-v3.html` — REBUILD
-   from the wish + addendum if gone: `docs/wishes/2026-07-09-project-onboarding-what-can-i-customize.md`).
-   On his verdict: fold → spec delta → full pipeline.
+6. **Project onboarding — v3 BOUNCED 2026-07-10 ~00:50 (third bounce = method defect, not wording).**
+   His three exhibit lines + the class fix are in the wish addendum
+   (`docs/wishes/2026-07-09-project-onboarding-what-can-i-customize.md`): the lines become row-170
+   red fixtures; human-facing text is drafted by a FRESH writer (reader's brief only), then lint,
+   then clean-reader check. v4 through that road, shown in the morning; BUILD stays parked on his «годится».
 7. **Then 1.0:** M-1 3-pass audit (runs AFTER item 6 lands so the audit covers it) → bump 1.0.0 → push on
    his explicit "go" (never without it). Rows 173-187 archive at this milestone.
 
@@ -69,16 +69,12 @@ the loop self-paces, long stretches between wakeups, each wakeup takes the next 
 
 - [x] **Phase 1 — THE DOCS PASS — DONE 2026-07-10 ~00:35** (9 docs: README + OVERVIEW rewritten, 7 new
   docs/ pages; all lint-clean, render-checked, suite 239 green; detail in JOURNAL session 31).
-- [ ] **Phase 2 — THE GLOBAL PASS (after docs; spawns, opus-tier workers for judgment).** The
-  milestone-style audit, parallel spawns: FULL spec re-prove · matrix audit (coverage validation
-  re-walked) · surface-composition check · skill evals re-run · skill-creator craft walk over the 8
-  skills · formal-index re-check · deferred-triggers re-scan · doc compaction candidates list. Findings
-  → folds (small) or queue rows; nothing silently parked.
-- [ ] **Phase 3 — queue, as the night allows (each its own spawn):** row 170 pre-show register lint
-  (HIS PRIORITY — pattern set incl. coined-metaphor/jargon detection on shown artifacts, EN+RU,
-  red-proven on tonight's real leak) · row 191 field test-norms diff · row 193 missing-stages gap
-  analysis (research spawns) · row 190 remaining legs (split-project method: spec delta drafted in a
-  spawn, senior folds).
+- [x] **Phase 2 — THE GLOBAL PASS — DONE 2026-07-10 ~01:26** (8 opus/sonnet auditors; INV-82 folded on
+  the prover's must-fix; folds + intake rows 195-210 landed; commit train 6fe54d7→5d4bed3; JOURNAL s31).
+- [ ] **Phase 3 — queue, as the night allows:** row 170 register lint DONE (INV-83, blocks the showing);
+  rows 208/209 landed on his night words (clean-writer law INV-84 · README Known issues). STILL OPEN
+  tonight: row 195 render-doc link fix (INTENDED TONIGHT) · onboarding mockup v4 via the clean road ·
+  row 191 field test-norms diff · row 193 missing-stages gap analysis · row 190 remaining legs.
 - NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
 
