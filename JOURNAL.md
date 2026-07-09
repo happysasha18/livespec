@@ -2575,3 +2575,68 @@ swaps) — sub-brief; a worker's saving would have been seconds. The real fan-ou
 Pack 0.8.74, base 0.1.24, suite 174 green. Map banner-closed (all 11 ranked gaps resolved).
 **Next:** row 56 (model router) opens the 0.9.0 movement; the milestone (3-pass preventive audit +
 doc compaction) lands the MINOR bump — Alexander's ask this session.
+
+## 2026-07-09 ~22:23–23:17 — session 30: the evening queue drained — rows 180-187, eight landings
+
+Alexander's word at open: continue the run, everything left, to the end. What was left after his
+evening verdicts: the reopened architecture item, the worker-liveness inbox wish, the five
+test-method lessons, and the pre-ask scan. All eight landed this session; items 6 (onboarding
+mockup) and 7 (the 1.0 gate) stay on his word, untouched.
+
+**Intake first (209f84e).** The tlvphoto worker-liveness inbox wish harvested (moved to
+docs/wishes/, inbox EMPTY), and the evening's wishes got queue rows 180-187 — the intake commit
+from the previous evening had written wish files without rows.
+
+**Row 180 (019d793) — the architecture owes a runtime view and a placement view (INV-74/75).** His
+verdict on the tlvphoto derivation reopened RUN item 5: the derived doc never traced a flow through
+the nodes and held placement only as prose. WHY the shape: the failure was an enforcement failure —
+the three-check architecture lens never ASKED for budgets or views, so the derivation skipped them.
+So the landing grew the lens to six checks in all three homes (SPEC prose, product-prover Phase 0,
+build-pipeline step 4), gave the template four missing sections (Runtime view · Placement view ·
+Quality budgets · Feature coverage — sections the law mandated and the template never prompted
+for), and made our own ARCHITECTURE.md (v0.3.0) model all three, skill-pack-scaled: the wish-walk
+runtime table, the five-places placement table, budgets (suite ≤ 60 s [default] — measured ~30 s).
+Validation re-ran read-only over tlvphoto with a sonnet worker's fact-gather (941 lines, citations;
+~15 min senior time saved): prose lint 0 errors, and the diff against tlvphoto's real hand-grown
+ARCHITECTURE.md left NO unnamed hole — one deferral by name (an at-a-glance diagram stays the
+author's option). The reverse diff (the real doc lacks the two views) went to tlvphoto's own window
+as one inbox wish, the sanctioned channel. En route, the class sweep also fixed two pre-existing
+negation-opener lint errors in old spec prose.
+
+**Row 181 (186ee8b) — a background worker outlives a memory wipe (INV-76).** The tlvphoto race
+distilled: ps and the harness task list are never proof of death; the handoff note records the
+worker's id (→ its checkpoint), its briefed write-set, and the two liveness checks (~30 s file-time
+watch + ~2 min reply window, both [default], told per INV-70); a prior-context worker is a FOREIGN
+writer until verified — the same-session fence-benign courtesy never crosses a wipe; no second
+worker until the first halts by its own reply or is declared dead; prefer halting workers before a
+wipe. Base rules 6 and 7 carry the elaboration; base 0.1.26, pins re-synced in all 7 skills.
+
+**Rows 182-186 (c16bbf3, 1a7010b, 352a822, ef00380, 2275300) — the tlvphoto week's five lessons.**
+Each a method rule, never a project patch: INV-77 the real-device boundary (a walk row the suite
+can never green, kin of the feel gate); INV-78 geometry asserts relative-wide-long so cumulative
+drift shows; INV-79 an extracted engine tests on engine-shaped fixtures + a content contract per
+donor constant (test-author + spec-author halves, one law); row 185 rode the bug door — the miss
+mechanism NAMED: the composition lens (INV-72) landed only that morning, and adoption's
+skip-the-re-prove exemption was lens-blind, so ADOPT.md now requires the same prover version and
+every prover record opens naming the version that ran; INV-80 the suite's plumbing must not lie
+(skip helper imports at module load · shim re-export completeness · a background/delegated run's
+verdict is the suite log's tail line, never the wrapper's exit).
+
+**Row 187 (3380c11) — the pre-ask scan covers questions (INV-81).** Before any question to the
+human: the outside-reader read plus the FIRST gate "can I decide or verify this myself?"; a
+surviving question carries its recommendation. Scoped so narration stays question-free (INV-35
+untouched).
+
+**The workshop's own lessons tonight, honestly:** the clock hook BLOCKED two commits for invented
+future stamps (~23:05, ~23:10 vs the real clock) — the mechanical hand works, and stamps are now
+read via `date` at write time; and one commit went through on a red suite because my command chain
+read the log's tail instead of the verdict — exactly INV-80's third leg, landed the same hour; the
+red was the gate's own record-ordering check, fixed by amending the same row's commit (ef00380),
+suite verified green after.
+
+Session totals: SPEC v0.16.3 → v0.16.10 (INV-74..81, eight new invariants) · base 0.1.26 ·
+build-pipeline 0.2.43 · product-prover 0.1.15 · spec-author 0.1.23 · communicator 0.1.41 · pack
+0.9.8 · suite 225 → 236 green, ~30 s wall (inside its new budget). Delegation: the tlvphoto
+fact-gather rode a sonnet worker; everything else was judgment or sub-brief edits.
+**Next:** item 6 waits his eye on onboarding mockup v2; item 7 (M-1 audit → 1.0.0 → push) waits his
+explicit go and runs AFTER item 6 lands, so the audit covers it.
