@@ -4,11 +4,27 @@
 
 **What's built, and what's planned.** This spec keeps the two apart.
 
-Built and working today: the skills (the base rulebook and the working skills), the templates, the adoption procedure, the inbox, the skill evals and their records, this spec, the queue, and the first guardrails: the repo's own pre-push checks and the opt-in commit fence.
+Built and working today:
+- the skills (the base rulebook and the working skills)
+- the templates
+- the adoption procedure
+- the inbox
+- the skill evals and their records
+- this spec
+- the queue
+- and the first guardrails: the repo's own pre-push checks and the opt-in commit fence.
 
-Planned, each tracked by a roadmap row: the host-facing guardrail checks and the surface registry [E-6, E-10]; the snapshot machinery [E-7], used by the adoption baseline (A-6); and the optional design-sync machine [E-18].
+Planned, each tracked by a roadmap row:
+- the host-facing guardrail checks and the surface registry [E-6, E-10];
+- the snapshot machinery [E-7], used by the adoption baseline (A-6);
+- and the optional design-sync machine [E-18].
 
-A planned item carries a [target] tag on a line of its own; the tag never appears on the section around it. The suite enforces the tag rather than trusting it: the suite ties each [target] to the open row that builds it, and goes red if that row ships with the tag still on, if the tag vanishes, or if the tag was never named. [S-0]
+A planned item carries a [target] tag on a line of its own; the tag never appears on the section around it.
+
+The suite enforces the tag rather than trusting it: the suite ties each [target] to the open row that builds it, and goes red
+- if that row ships with the tag still on,
+- if the tag vanishes,
+- or if the tag was never named. [S-0]
 
 ## What live-spec is
 
@@ -24,7 +40,9 @@ These roles are real: they are the working skills (spec-author, product-prover, 
 
 Machines enforce the process at every step, which keeps it disciplined. Every request follows the same route. Every claim earns a test, and nothing ships until that test passes. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
 
-A project can adopt live-spec at the start or partway through work already under way. Adoption brings the document templates, a procedure for joining midstream, and the guardrails the project installs. The project that adopts it is the **host**. The host owns everything about its own work: its spec, matrix, queue, journal, surface registry, inbox, feedback ledger, and a `.live-spec/` folder that holds its profile, its checkpoints, and the versions of the skills it runs. [E-1]
+A project can adopt live-spec at the start or partway through work already under way. Adoption brings the document templates, a procedure for joining midstream, and the guardrails the project installs. The project that adopts it is the **host**.
+
+The host owns everything about its own work: its spec, matrix, queue, journal, surface registry, inbox, feedback ledger, and a `.live-spec/` folder that holds its profile, its checkpoints, and the versions of the skills it runs. [E-1]
 
 ## The build loop — a wish becomes shipped, tested work
 
@@ -40,7 +58,13 @@ Within that same minute, the wish becomes a row in the **queue (ROADMAP.md)**, t
 - status
 - acceptance criterion [E-3]
 
-When the user speaks a wish, its row exists before anything else happens. It survives even if the session dies the next second. Rows are never deleted. A row closes only with a named exit. At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive, where it stays, never edited, never lost. A **deferred** row is not terminal: it stays in the active queue, carrying its revisit trigger, until the trigger fires or it resolves to a terminal exit. The archive holds only wishes no longer due back. No wish is ever lost. [INV-1]
+When the user speaks a wish, its row exists before anything else happens. It survives even if the session dies the next second. Rows are never deleted. A row closes only with a named exit.
+
+At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive, where it stays, never edited, never lost.
+
+A **deferred** row is not terminal: it stays in the active queue, carrying its revisit trigger, until the trigger fires or it resolves to a terminal exit.
+
+The archive holds only wishes no longer due back. No wish is ever lost. [INV-1]
 
 From its row, the wish follows one path:
 1. The classifier reads its size, priority, door, and work-kind, then states them back to the user in one intake line (the paragraphs below explain each).
@@ -75,31 +99,59 @@ When the classifier cannot call a size, a priority, or a work-kind [T-16], it as
 - **cut the scope** — fewer surfaces in, plainer defaults on what stays;
 - **split into stages** — each stage lands through the full pipeline on its own (the large size decomposes this way [INV-12]).
 
-The proposal proceeds on the recommended option; the lane does not park on it [INV-4]. Every cut appears in the same batched report as every taken default [INV-18], and is never silent [INV-5]. A cut surface returned later is a new wish. A scope cut changes scope only, never order: it is not a quick-win mark, and only priority moves the lane [T-11]. No cut touches the delta's mandatory sentences — the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope adjusts richness. [T-15]
+The proposal proceeds on the recommended option; the lane does not park on it [INV-4]. Every cut appears in the same batched report as every taken default [INV-18], and is never silent [INV-5].
 
-**One wish is one user story; a row closes only whole.** A wish carrying several user stories — several distinct things a person will do and see — is split at intake, each story its own row through the full pipeline. This differs from a stage split: a stage slices one story's depth [T-15], while separate stories are never fused into one row. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, folded into that same row. The classifier asks the human at intake whether a wish is one story or two, and does not guess [INV-12]. A split loses nothing: every row it produces cites the one spoken wish it came from [INV-1]. [T-17]
+A cut surface returned later is a new wish. A scope cut changes scope only, never order: it is not a quick-win mark, and only priority moves the lane [T-11].
+
+No cut touches the delta's mandatory sentences — the fences [T-14], a kept surface's facets [INV-18], the non-goals, and the success measure [INV-20, INV-21]. Scope adjusts richness. [T-15]
+
+**One wish is one user story; a row closes only whole.** A wish carrying several user stories — several distinct things a person will do and see — is split at intake, each story its own row through the full pipeline.
+
+This differs from a stage split: a stage slices one story's depth [T-15], while separate stories are never fused into one row. Sub-behaviours of one story — its hover face, its phone face, a backpointer — are that story's acceptance, folded into that same row.
+
+The classifier asks the human at intake whether a wish is one story or two, and does not guess [INV-12]. A split loses nothing: every row it produces cites the one spoken wish it came from [INV-1]. [T-17]
 
 **A multi-leg row enumerates per-leg acceptance.** Where a row still carries several legs — a legacy fusion or a harvested batch — its Done-when enumerates per-leg acceptance, and the row does not close with an unmet leg. Half-done is a status, never a landing. The resume file's LIVE-STATE supersession does not compress an unfinished leg out of existence: a leg still open at compaction is restated in full [M-2]. [INV-26]
 
 #### Naming and reporting the work
 
-**The system speaks every captured wish back to the user.** This immediate echo lets the user know the request was received and recorded. The echo is one plain sentence that states four things: what was heard, which door the wish entered, the name the work goes by, and its row number — for example, "caught this request; it is a feature; it is called X; row N". A wish that arrives silently — dropped into an inbox as a file, or pulled from a batch — takes its echo in the next status report rather than as an interruption.
+**The system speaks every captured wish back to the user.** This immediate echo lets the user know the request was received and recorded.
 
-**Every status report names each in-flight feature and the pipeline stage it sits at.** The pipeline has nine steps, in fixed order: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. Each stage name is exactly one of these nine step names, one stage per step. A feature paused at a stage is reported under that stage's name. "landed" is a terminal state — the row closed completely — and is not itself a pipeline step. The echo also states where the wish sits on the product's feature map, specified in the next rule [INV-37]. [INV-27]
+The echo is one plain sentence that states four things:
+- what was heard,
+- which door the wish entered,
+- the name the work goes by,
+- and its row number — for example, "caught this request; it is a feature; it is called X; row N".
 
-**Every wish is placed on the product's feature map, and the placement is stated by default.** The feature map already lives in the documents the project keeps: the spec's scenario sections and the architecture's nodes together constitute it, so no separate map document exists [E-14]. Each wish's placement is exactly one of three verdicts:
+A wish that arrives silently — dropped into an inbox as a file, or pulled from a batch — takes its echo in the next status report rather than as an interruption.
+
+**Every status report names each in-flight feature and the pipeline stage it sits at.** The pipeline has nine steps, in fixed order: spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show.
+
+Each stage name is exactly one of these nine step names, one stage per step. A feature paused at a stage is reported under that stage's name. "landed" is a terminal state — the row closed completely — and is not itself a pipeline step.
+
+The echo also states where the wish sits on the product's feature map, specified in the next rule [INV-37]. [INV-27]
+
+**Every wish is placed on the product's feature map, and the placement is stated by default.** The feature map already lives in the documents the project keeps: the spec's scenario sections and the architecture's nodes together constitute it, so no separate map document exists [E-14].
+
+Each wish's placement is exactly one of three verdicts:
 - **changes an existing feature** — the delta extends that scenario section and names it;
 - **a new feature** — a new scenario section, plus its own node at the architecture stage;
 - **restructure** — the wish fits no existing division cleanly, or fitting it reveals that the modules have outgrown their structure.
 
-A restructure verdict does not re-divide the structure on the spot. It opens its own row — the refactor door when only structure moves, the feature door when behaviour moves with it — and the re-division goes through the architecture stage and its re-proof [E-14]. A placement may report that the structure no longer fits, but only a completed change alters the structure. A bug's placement is the feature it repairs. When the classifier cannot determine a wish's feature, it asks the user, as with any attribute it cannot decide [INV-12]. The verdict is recorded as well as spoken: the wish's row carries a note — changes X, new, or restructure — so the placement stays searchable after the report scrolls away, as the fences stay searchable in their rows [T-14 kin]. [INV-37]
+A restructure verdict does not re-divide the structure on the spot. It opens its own row — the refactor door when only structure moves, the feature door when behaviour moves with it — and the re-division goes through the architecture stage and its re-proof [E-14].
+
+A placement may report that the structure no longer fits, but only a completed change alters the structure. A bug's placement is the feature it repairs. When the classifier cannot determine a wish's feature, it asks the user, as with any attribute it cannot decide [INV-12].
+
+The verdict is recorded as well as spoken: the wish's row carries a note — changes X, new, or restructure — so the placement stays searchable after the report scrolls away, as the fences stay searchable in their rows [T-14 kin]. [INV-37]
 
 **The outcome does the talking: names are plain, and every handle trails.** Two arms, one law.
 
 - **Naming:** a feature's echo-name is a short descriptive phrase in the product's own words. It says what the thing does, and a reader who missed its birth can parse it cold. Never a private metaphor. A name that needs its story told first is a handle. A real name stands on its own, understood without the story.
 - **Lines:** a human-facing report or board line opens with what changed for the reader — what they can now do, see, or stop fearing. This covers chat reports, narration lines [INV-35], report pages, decision pages, and the capture echo, while method-internal docs keep their anchors. Every internal handle — spec codes, row and session numbers, any coined name the reader never chose to learn — may only trail in parentheses. And one fact gets one standalone sentence: a compression that needs the writer's own context to parse is a defect of the line — clarity outranks cleverness.
 
-Bookkeeping numbers are handles too: a test count, a suite size, a version string, or a check tally is never message content. The message says what the number means for the reader — tested clean, saved, the method held — and the number may only trail as a quiet anchor or stay in the records. One carve-out, by law: when the number is the asked substance — a direct question about it, or the done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as the answer: the number itself is the content, this once.
+Bookkeeping numbers are handles too: a test count, a suite size, a version string, or a check tally is never message content. The message says what the number means for the reader — tested clean, saved, the method held — and the number may only trail as a quiet anchor or stay in the records.
+
+One carve-out, by law: when the number is the asked substance — a direct question about it, or the done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as the answer: the number itself is the content, this once.
 
 This law and the narration law live in skills a window may never load, so both also have a mechanical voice on the working machine:
 - A prompt hook, `scripts/chat-law-hook.sh`, installed beside the clock's hand, injects a one-line reminder of both laws into every prompt. The skills stay the laws' homes; the hook only reminds and never legislates. A window that ignores the line breaks the same law every time.
@@ -107,22 +159,36 @@ This law and the narration law live in skills a window may never load, so both a
 
 [INV-28]
 
-**The report law is walked — a live step each time.** Chat has no suite, so the enforcement takes the form of a step actually performed. Before any movement-end or milestone report reaches the human, the agent re-reads the communicator rules and passes the draft phrase by phrase through one question: does this sentence stand for a reader who doesn't live inside the pack? Any pack surface it names either gets explained in the reader's own words, or dropped. Quiet trailing anchors stay legal, since the walk governs what does the talking, never the handles that trail. The walk's one home is the communicator skill, and its acceptance belongs to the reader: a movement-end report that makes the reader ask "what is this?" is the walk not walked. [INV-34]
+**The report law is walked — a live step each time.** Chat has no suite, so the enforcement takes the form of a step actually performed.
 
-**Work is narrated while it runs — the third voice between the echo and the report.** The intake has its echo [INV-27] and the landing has its report [INV-28]; between them, work is narrated as it happens — the human leads several windows at once, so otherwise silence is all he gets. While work runs, the agent says each beat worth a sentence as it happens — a pipeline station just passed, a load-bearing find, a change of direction — in one or two plain sentences, in the roadmap's terms (which wish is in hand, what it gives, what just moved), in the same voice as the reports. The mechanical grind stays quiet; narration marks beats, never per-command commentary. The law has three parts:
+Before any movement-end or milestone report reaches the human, the agent re-reads the communicator rules and passes the draft phrase by phrase through one question: does this sentence stand for a reader who doesn't live inside the pack? Any pack surface it names either gets explained in the reader's own words, or dropped.
+
+Quiet trailing anchors stay legal, since the walk governs what does the talking, never the handles that trail. The walk's one home is the communicator skill, and its acceptance belongs to the reader: a movement-end report that makes the reader ask "what is this?" is the walk not walked. [INV-34]
+
+**Work is narrated while it runs — the third voice between the echo and the report.** The intake has its echo [INV-27] and the landing has its report [INV-28]; between them, work is narrated as it happens — the human leads several windows at once, so otherwise silence is all he gets.
+
+While work runs, the agent says each beat worth a sentence as it happens — a pipeline station just passed, a load-bearing find, a change of direction — in one or two plain sentences, in the roadmap's terms (which wish is in hand, what it gives, what just moved), in the same voice as the reports.
+
+The mechanical grind stays quiet; narration marks beats, never per-command commentary. The law has three parts:
 
 - **IDENTITY:** every narration beat names the work it belongs to — which wish is in hand and which pipeline station it stands at (outside the pipeline, in research, a harvest, or a docs sweep, the work's own name serves), and whether it mends something broken or builds something new. So a reader dropping into the chat mid-session can tell what's being worked on without scrolling back.
 - **DIGEST:** a station's completion is itself a beat by law, and its line carries a short digest of what the station produced, in the work's own words. The spec station says what the delta promises; the architecture station says the shape (what parts, what changed structurally); the test station says what's now covered; the code station says what now works — two or three plain sentences, never the artifact pasted into chat. A station a delegated worker closed becomes the senior's beat the moment its result lands.
 - **HEARTBEAT:** when a stretch runs long with no beat — a big suite, a worker batch, a long render — narration says what's grinding and roughly why it's taking so long. A beatless stretch past ~10 minutes owes its heartbeat [default].
 
-The heartbeat has a second, forward-looking face: the offline window. When the coming stretch needs nothing from the human — a local suite run, a delegated worker batch, a long render, a pipeline stretch with no gate or taste call ahead — narration says so before it starts: that he may step away, an honest range for how long (read from the work's known shape or observed runs — an unknown duration is said as unknown, never a guess dressed as a promise), and what he'll be needed for when it ends. When he's needed again, that's a beat too, said plainly, naming the gate or decision that waits. The window is a read on the work, never a dismissal:
+The heartbeat has a second, forward-looking face: the offline window. When the coming stretch needs nothing from the human — a local suite run, a delegated worker batch, a long render, a pipeline stretch with no gate or taste call ahead — narration says so before it starts: that he may step away, an honest range for how long (read from the work's known shape or observed runs — an unknown duration is said as unknown, never a guess dressed as a promise), and what he'll be needed for when it ends.
+
+When he's needed again, that's a beat too, said plainly, naming the gate or decision that waits. The window is a read on the work, never a dismissal:
 - beats keep landing during it so the returning reader finds the trail whole;
 - questions born inside the window batch to its end [INV-4];
 - a window that ends off its spoken range says so — overrun, done sooner, or blocked on his word alone, the heartbeat's own duty;
 - the needed-again beat is a chat line awaiting his return, never a summons (the machinery of reaching an absent human stays outside this law);
 - no offline sentence fires when the very next beat needs the human.
 
-Together the trail is the session's time accounting: read top to bottom, it answers where the time went in work terms — token and test counts stay bookkeeping [INV-28]. A narration line is an informal chat message, distinct from a report. It walks no pre-report walk (the walk scopes to movement-end and milestone reports, a deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out of the content [INV-28]. Working notes marked as the writer's own stay a separate, skippable register; narration is for the reader, and it replaces no report — milestones still get the full one. The law's one home is the communicator (its narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
+Together the trail is the session's time accounting: read top to bottom, it answers where the time went in work terms — token and test counts stay bookkeeping [INV-28].
+
+A narration line is an informal chat message, distinct from a report. It walks no pre-report walk (the walk scopes to movement-end and milestone reports, a deliberate line [INV-34]), it asks nothing [INV-31], and every law of human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out of the content [INV-28].
+
+Working notes marked as the writer's own stay a separate, skippable register; narration is for the reader, and it replaces no report — milestones still get the full one. The law's one home is the communicator (its narration rule); the personal profile holds only the person's own tuning of it. [INV-35]
 
 #### Showing work and asking for decisions
 
@@ -134,17 +200,37 @@ Every artifact the agent hands over or opens leads with that one-line identifier
 
 **During an away-stretch, artifacts accumulate and one window opens at the end.** When the human has stepped away for an overnight loop or an offline window [INV-35], the agent does not open a browser window mid-stretch. Artifacts accumulate on one page: the stretch's decisions and report page. Mid-stretch re-opening is allowed only as the same page, refreshed in place. This rule lives in the communicator skill, beside the offline window, as the showing-cadence rule. [INV-52]
 
-**The showing channel matches where the session runs.** A session running on the human's machine shows a rendered artifact as a local page in a browser window. A session running remotely runs in the cloud and is read through a browser, so it cannot open a local page. The same content goes through the remote session's own channel instead: an artifact page the host renders for the human, or the chat itself. Either channel carries the same identifier [INV-51] and the same round-trip. The session reads where it runs from what it can reach — the platform, the display, and whose filesystem it sees — and names the channel it picked. Handing a local file path to a remote reader is a defect of the exchange, the same failure as a window that never opened. The personal profile's show line applies to the local case; it is one instance of the general rule. [INV-67]
+**The showing channel matches where the session runs.** A session running on the human's machine shows a rendered artifact as a local page in a browser window. A session running remotely runs in the cloud and is read through a browser, so it cannot open a local page.
 
-**The current state of the work is answerable at any moment, in any setting.** The harness's own task list and activity line are a convenience of the local terminal. A remotely-running session, read through a browser, never shows them, and even on a local session they go dark when the work becomes a long run of tool calls, so hours pass and the human cannot tell what is being worked on. The live status therefore lives in the chat, the one surface present in every setting [INV-67], as a short status kept current:
+The same content goes through the remote session's own channel instead: an artifact page the host renders for the human, or the chat itself. Either channel carries the same identifier [INV-51] and the same round-trip.
+
+The session reads where it runs from what it can reach — the platform, the display, and whose filesystem it sees — and names the channel it picked. Handing a local file path to a remote reader is a defect of the exchange, the same failure as a window that never opened. The personal profile's show line applies to the local case; it is one instance of the general rule. [INV-67]
+
+**The current state of the work is answerable at any moment, in any setting.** The harness's own task list and activity line are a convenience of the local terminal. A remotely-running session, read through a browser, never shows them, and even on a local session they go dark when the work becomes a long run of tool calls, so hours pass and the human cannot tell what is being worked on.
+
+The live status therefore lives in the chat, the one surface present in every setting [INV-67], as a short status kept current:
 - **Now** — the piece of work in hand and its pipeline stage;
 - **Next** — what the queue holds next.
 
-The status refreshes at every stage change and carries a heartbeat when a stretch runs long [INV-35], so a glance answers "what are we working on, and what comes next" whenever the human looks. The harness task list, when the setting shows it, is kept in plain product words as a courtesy [INV-28] and is not the home of the status. On a local session, a rendered status page is an optional richer view of the same Now/Next [INV-67]. This applies to every project the pack runs, not only one host. [INV-71]
+The status refreshes at every stage change and carries a heartbeat when a stretch runs long [INV-35], so a glance answers "what are we working on, and what comes next" whenever the human looks.
 
-**The end of a stretch is delivered so the human cannot miss it.** A report that exists but sits above tool noise counts as undelivered. When a stretch ends — a loop iteration going to sleep, an away-stretch closing, or a session ending — the last rendered thing is one short final line. It carries four fields: what closed, what is next, what is needed from the human, and when the agent wakes. The long report sits above that line. The final line comes last, after every tool call. A page deliverable repeats its identifier [INV-51] in that final line. Delivery is the rule; existence alone does not satisfy it. This lives in the communicator skill. [INV-57]
+The harness task list, when the setting shows it, is kept in plain product words as a courtesy [INV-28] and is not the home of the status. On a local session, a rendered status page is an optional richer view of the same Now/Next [INV-67]. This applies to every project the pack runs, not only one host. [INV-71]
 
-**A review surface shows its sources and accepts the human's edits.** Anything the agent shows for review carries per-claim provenance, whether it is a dossier, a claims page, or a draft with assertions. The surface marks each claim by where it came from: read from the artifact, the human's own recorded word, or the agent's inference. Inferences are flagged most prominently. The surface is commentable rather than a read-only wall. It gives line-by-line room for the human's word and captures the human's answers. The decision page's saved-answers rule [INV-32] extends to review pages, as one JSON round-trip back to the project. Its home is the communicator skill, beside the decision page rule. [INV-64]
+**The end of a stretch is delivered so the human cannot miss it.** A report that exists but sits above tool noise counts as undelivered.
+
+When a stretch ends — a loop iteration going to sleep, an away-stretch closing, or a session ending — the last rendered thing is one short final line. It carries four fields:
+- what closed,
+- what is next,
+- what is needed from the human,
+- and when the agent wakes.
+
+The long report sits above that line. The final line comes last, after every tool call. A page deliverable repeats its identifier [INV-51] in that final line. Delivery is the rule; existence alone does not satisfy it. This lives in the communicator skill. [INV-57]
+
+**A review surface shows its sources and accepts the human's edits.** Anything the agent shows for review carries per-claim provenance, whether it is a dossier, a claims page, or a draft with assertions.
+
+The surface marks each claim by where it came from: read from the artifact, the human's own recorded word, or the agent's inference. Inferences are flagged most prominently.
+
+The surface is commentable rather than a read-only wall. It gives line-by-line room for the human's word and captures the human's answers. The decision page's saved-answers rule [INV-32] extends to review pages, as one JSON round-trip back to the project. Its home is the communicator skill, beside the decision page rule. [INV-64]
 
 **The human's word on a shown artifact is read as meant, and the human's cuts hold.** The confident-specialist voice at the core of this lesson lives in the promoter's own voice skill, by the human's placement decision; the pack keeps only the general structure. Two clauses follow.
 
@@ -158,7 +244,9 @@ The rule's home is the communicator skill. Two of the original wish's bans alrea
 
 **The removal list has a mechanical form.** For a host with taste-reviewed artifacts, the pack ships a removal-list template. It holds the human's cuts as dated literals, appended the moment a cut happens and never removed. The pack also ships guardrails guidance for a scanner: a test reads the table and greps the artifact's surfaces, and a removed literal reappearing turns the suite red. The rule stays INV-42's; this is its enforcement. [E-26]
 
-**No question is asked twice, and dialogues converge.** Before any ask, the agent searches the recorded word — the decision archives, the review records, the journal, and the profile. Asking a question a record already answers is a defect. Exchanges converge as well: an answered question closes permanently and is recorded into its row the same session. A problem the human named returns solved with evidence rather than re-described, so round N+1 carries only new material. Its home is the communicator skill's ask rules. [INV-59]
+**No question is asked twice, and dialogues converge.** Before any ask, the agent searches the recorded word — the decision archives, the review records, the journal, and the profile. Asking a question a record already answers is a defect.
+
+Exchanges converge as well: an answered question closes permanently and is recorded into its row the same session. A problem the human named returns solved with evidence rather than re-described, so round N+1 carries only new material. Its home is the communicator skill's ask rules. [INV-59]
 
 **A taste ask arrives carrying the agent's own researched proposal.** A genuine taste question arrives with work already done. The agent mines the material first: exemplars, precedents, and real options with citations. Then it asks, with a chosen recommendation and its evidence. Asking the human to supply what the agent should have mined is a defect. This sharpens the recommended-option rule [INV-4] for taste calls. Its home is the communicator skill. [INV-60]
 
@@ -170,7 +258,11 @@ A quick win can be promoted: when the lane frees, the agent may take it ahead of
 
 An inbox wish is registered at the moment it arrives; that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch is registered in filename-sorted order. [T-11]
 
-**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it. A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent. The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door deliberately share one word: a wish sized "bug" is the bug door — one call stated once — and the door axis adds the other four entries. [T-12]
+**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it.
+
+A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent.
+
+The **door** says where the wish enters the pipeline: **feature · bug · refactor · docs-only · skip**. Size and door deliberately share one word: a wish sized "bug" is the bug door — one call stated once — and the door axis adds the other four entries. [T-12]
 
 The door is decided by an ordered procedure. The tripwires fire first, before any judgment:
 
@@ -180,11 +272,15 @@ The door is decided by an ordered procedure. The tripwires fire first, before an
 4. Only prose outside the normative spec changes (README, comments, guides) → **docs-only**. Rewording a spec rule changes what behaviour the spec backs, so it routes as feature or bug rather than docs-only.
 5. The narrow case where all of these hold (a single file; no new state, element, or visible behaviour; an existing test level already covers the touched fact) → **skip**.
 
-The tripwire verdict outranks a casual label. A wish called a "bugfix" that fires a feature tripwire is re-doored to feature, and the intake line records it [INV-5]. Queue-cutting [T-9] belongs only to the bug door, so a re-doored wish gets no preemption. The human's word can still raise its priority (priority belongs to the human), but no word lets a feature skip the spec step.
+The tripwire verdict outranks a casual label. A wish called a "bugfix" that fires a feature tripwire is re-doored to feature, and the intake line records it [INV-5].
+
+Queue-cutting [T-9] belongs only to the bug door, so a re-doored wish gets no preemption. The human's word can still raise its priority (priority belongs to the human), but no word lets a feature skip the spec step.
 
 The door is also re-checked mid-work: the moment running work is about to create a user-visible surface or persistent state its current door does not grant, the work stops and the door step fires again. This catches the case where a change sounds like a simple edit until the surface actually exists. The re-doored wish keeps its lane and re-enters the pipeline in place, with no re-queue and no parking — parking stays a bug-preemption move [T-9].
 
-One request lives outside the queue entirely: a request to merely see or try something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype stays a sketch", which holds the ask-when-unclear rule). Casual phrasing does not change the contract: a wish is routed through its door, never refused for being casual, and never hand-built past the pipeline because it sounded small. [INV-16]
+One request lives outside the queue entirely: a request to merely see or try something, with no commitment to keep it, may be built as a labelled sketch (see "A prototype stays a sketch", which holds the ask-when-unclear rule).
+
+Casual phrasing does not change the contract: a wish is routed through its door, never refused for being casual, and never hand-built past the pipeline because it sounded small. [INV-16]
 
 **The intake line also names what is being built.** Size says how big, the door says where the wish enters, and the **work-kind** says what kind of thing the work produces, and with it, which pipeline machinery is warranted. There are four kinds today:
 - **product** — something the host's own user faces;
@@ -192,15 +288,26 @@ One request lives outside the queue entirely: a request to merely see or try som
 - **skill** — a behaviour document an agent works by (a SKILL.md, a prompt pack);
 - **prose** — a document written for a human to read (an overview, an article, a spec's own text).
 
-The classifier calls the kind from what the wish produces, one kind per wish. A wish that genuinely produces two kinds is two wishes, split at intake; a kind the classifier cannot call is asked about, the same as an uncallable size [INV-12]. A host with one usual kind may record it as a host-profile default that the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records no default and calls each wish on its own.
+The classifier calls the kind from what the wish produces, one kind per wish. A wish that genuinely produces two kinds is two wishes, split at intake; a kind the classifier cannot call is asked about, the same as an uncallable size [INV-12].
 
-The vocabulary is curated like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth kind joins only with a named wish the four failed to serve, re-justified at milestones. The law binds forward: a row queued before the kind axis existed carries no kind and owes no retroactive fill. It names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
+A host with one usual kind may record it as a host-profile default that the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records no default and calls each wish on its own.
+
+The vocabulary is curated like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth kind joins only with a named wish the four failed to serve, re-justified at milestones.
+
+The law binds forward: a row queued before the kind axis existed carries no kind and owes no retroactive fill. It names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
 
 **The kind scales the steps; it never silently skips one.** The door picks which steps run [T-12]. The kind picks the form each running step takes, never whether the pipeline runs at all. The per-kind meaning of every step — what "architecture" means for a one-file script, what "verify by deed" means for a document a human reads — has its normative home in the build-pipeline skill, one table for every project, and is that skill's own domain [E-12]. This spec sets the contract around it.
 
-At landing, every pipeline step has either applied in the form the table states for the wish's kind, or stood down by name in the landing report (for example, "design-sync — text product, stands down"), so a skipped step is always a written fact rather than an omission. An unresolved kind scales nothing down: while the kind question is still open on the row [INV-12], every step applies in full, because standing a step down requires a named kind to account for it.
+At landing, every pipeline step has either applied in the form the table states for the wish's kind, or stood down by name in the landing report (for example, "design-sync — text product, stands down"), so a skipped step is always a written fact rather than an omission.
 
-No kind may ever change the following: the door law and its tripwires [T-12, INV-16]; the delta's mandatory sentences — fences, facets, non-goals, success measure [T-14, INV-18, INV-20, INV-21]; and ask-at-intake [INV-12]. The kind adjusts the machinery, never the mandatory checks — the same rule a scope cut obeys [T-15]. [INV-22]
+An unresolved kind scales nothing down: while the kind question is still open on the row [INV-12], every step applies in full, because standing a step down requires a named kind to account for it.
+
+No kind may ever change the following:
+- the door law and its tripwires [T-12, INV-16];
+- the delta's mandatory sentences — fences, facets, non-goals, success measure [T-14, INV-18, INV-20, INV-21];
+- and ask-at-intake [INV-12].
+
+The kind adjusts the machinery, never the mandatory checks — the same rule a scope cut obeys [T-15]. [INV-22]
 
 **Each step is worked with its craft's standards.** A single generalist working the whole pipeline produces generalist artifacts: a spec that reads like a developer's notes, a matrix that checks whatever was convenient to check. Each step therefore names the profession the agent works it as:
 - the spec — a strong product manager;
@@ -211,7 +318,9 @@ No kind may ever change the following: the door law and its tripwires [T-12, INV
 - commit & show — a careful release engineer whose reader is the human;
 - the verify walk — the visitor's own outside eyes [INV-30 kin].
 
-The full step-to-craft ladder has one home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them. The craft, like the step's form, follows the kind [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer; on infra, as a tool builder. The ladder names the archetypes; the wish's kind says what their standards look like in its medium. [INV-33]
+The full step-to-craft ladder has one home, build-pipeline's step list [E-12]. Each artifact is judged by its craft's standards, and the landing report's step accounting speaks in them.
+
+The craft, like the step's form, follows the kind [INV-22, INV-30 kin]: on a prose product the code step is worked as a strong writer; on infra, as a tool builder. The ladder names the archetypes; the wish's kind says what their standards look like in its medium. [INV-33]
 
 #### Specifying and building a feature
 
@@ -225,15 +334,27 @@ The full step-to-craft ladder has one home, build-pipeline's step list [E-12]. E
 - two windows at once (the same stored state open twice)
 - a missing source (an input file renamed or gone)
 
-The facet list lives in one place, the spec-author skill, one list for every project. That list is curated: a facet joins only with a named real incident it would have caught, and it gets re-justified at milestones. A checklist that grows by taste rots into a forty-row form. This spec binds that the sweep runs, and what counts as done.
+The facet list lives in one place, the spec-author skill, one list for every project. That list is curated: a facet joins only with a named real incident it would have caught, and it gets re-justified at milestones.
 
-The sweep scopes to the feature's visible surfaces. A feature with none — new persistent state only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A," never a silent skip. A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes, because the late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is not swept, since a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
+A checklist that grows by taste rots into a forty-row form. This spec binds that the sweep runs, and what counts as done.
 
-**Every facet ends as a spec sentence; silence is not an option.** A facet sentence gets written one of two ways. Decided: the human, or the walk's batched questions, called it. Defaulted: the recommended option gets taken so the lane keeps moving. A defaulted sentence carries the literal tag `[default]` at its line end, so a later prover can tell a taken default from a hole, and the matrix derives the facet's test row either way [E-15]. The landing report's defaults list then tells the choice as a plain-words tradeoff in the human's product's terms ("on a phone this gallery stacks into one column — tweakable"). It never pings once per facet and never asks the human to confirm, because silence is consent [INV-31]; the human's veto becomes a new wish.
+The sweep scopes to the feature's visible surfaces. A feature with none — new persistent state only, say a cache — satisfies it with one explicit sentence, "no visible surface — facets N/A," never a silent skip.
+
+A wish re-doored to feature mid-work [INV-16] walks the sweep before work resumes, because the late-recognized surface is exactly the one whose facets nobody looked at. A fenced prototype is not swept, since a sketch has no facets to promise [E-17]; the sweep fires when promotion makes it a feature. [T-13]
+
+**Every facet ends as a spec sentence; silence is not an option.** A facet sentence gets written one of two ways.
+- Decided: the human, or the walk's batched questions, called it.
+- Defaulted: the recommended option gets taken so the lane keeps moving.
+
+A defaulted sentence carries the literal tag `[default]` at its line end, so a later prover can tell a taken default from a hole, and the matrix derives the facet's test row either way [E-15]. The landing report's defaults list then tells the choice as a plain-words tradeoff in the human's product's terms ("on a phone this gallery stacks into one column — tweakable").
+
+It never pings once per facet and never asks the human to confirm, because silence is consent [INV-31]; the human's veto becomes a new wish.
 
 A facet with no sentence — neither decided nor defaulted — is a spec defect the prover flags. That's the exact hole: hover-only openings, no phone layout.
 
-On an adopted or promoted surface that already lives [A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never invented greenfield against live behaviour. The sweep and the axis rule [C-1] split one dimension by time. The sweep authors the facet sentences when the feature is first specified. The axes compose and test them across views once the surface exists. [INV-18]
+On an adopted or promoted surface that already lives [A-10], a default is read from the shipped truth and reconciled like any re-engineered claim [A-3], never invented greenfield against live behaviour.
+
+The sweep and the axis rule [C-1] split one dimension by time. The sweep authors the facet sentences when the feature is first specified. The axes compose and test them across views once the surface exists. [INV-18]
 
 **A feature is interrogated for how it fits the product — a small prover on the wish itself.** The device facets above ask what every visible feature owes. Nobody's yet asked how this feature sits in the person's path. Path holes ship green because no clause ever promised the way out — enter, browse, re-enter, then stuck at the tenth picture with no way on.
 
@@ -242,33 +363,63 @@ So a feature-doored wish's spec-delta also walks the fit walk, scaled to the wis
 - An infra wish walks its flows: inputs to outputs, data lifecycle, failure paths.
 - A skill wish walks trigger, correction, and when not to fire.
 
-The walk interrogates the feature, never the person. The agent derives each answer from the existing spec and the shipped truth first. A hole that's trivially closable gets closed by the walker, and the closing gets written down. The rest get written decided or `[default]`-tagged, and only the genuine taste calls go out, batched [INV-4, INV-18].
+The walk interrogates the feature, never the person. The agent derives each answer from the existing spec and the shipped truth first.
 
-The prover gains the matching focused mode, FEATURE-FIT: given one feature's delta, it walks the journey seams against the whole spec the way CROSS-LINK walks a new surface's seams. The prover already thinks in flows, states, and transitions; this pulls that thinking forward to intake. Lens lists live once, in spec-author's sweep section, curated like the facet list [T-13]. The law binds forward: a landed feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21 kin]. [INV-29]
+A hole that's trivially closable gets closed by the walker, and the closing gets written down. The rest get written decided or `[default]`-tagged, and only the genuine taste calls go out, batched [INV-4, INV-18].
 
-**A face that can be entered once owes a way back — or a written one-way.** A surface's faces get entered under conditions: a first-visit door, an empty state, an onboarding screen, a one-time banner. A face whose condition can never re-arise is a dead end the state lenses miss. The law: every conditionally-entered face states its deliberate re-entry path, or states the one-way as a decision, by name. Trigger wording is the tell: "only on first visit," "only on first run," "until dismissed" — each such clause owes its return sentence. The prover reads for it, through the entry-symmetry lens in product-prover's stress list. The fit walk's journey lens [INV-29] already asks "where next from every state"; this law extends the question to faces over the visit's lifetime. [INV-50]
+The prover gains the matching focused mode, FEATURE-FIT: given one feature's delta, it walks the journey seams against the whole spec the way CROSS-LINK walks a new surface's seams. The prover already thinks in flows, states, and transitions; this pulls that thinking forward to intake.
 
-**Verify-by-deed walks the visit and watches the feel.** For the product kind, the verify step now includes a named visitor walk: the whole journey as the person will live it. The agent walks the first visit, the return visit, entry through another door, "where am I and how do I move on" from any point, and the exits. The agent also runs a feel pass: the agent judges motion quality — easing, duration, choreography — and each affordance's craft against the approved prototype as the bar [E-17]. Findings become rows or red, never a vibe or a mental note.
+Lens lists live once, in spec-author's sweep section, curated like the facet list [T-13]. The law binds forward: a landed feature owes its walk at the first landing that touches it, never retroactively en masse [INV-21 kin]. [INV-29]
 
-The walk's checklist lives in the build-pipeline step-8 product cell [E-12, INV-22]; this clause binds that it runs for anything a person visits. It runs in the form the medium actually has: a browser product walks motion and affordance craft, a book walks its reading path and chapter flow, a CLI its command round-trip. The product's context applies the feel lens as a partial skill, never a frontend checklist forced on prose. [INV-30]
+**A face that can be entered once owes a way back — or a written one-way.** A surface's faces get entered under conditions: a first-visit door, an empty state, an onboarding screen, a one-time banner. A face whose condition can never re-arise is a dead end the state lenses miss.
 
-**A taste choice made without asking is told, never confirmed.** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. The agent writes each one into the spec with its `[default]` tag [INV-18]. The law: the landing report names each choice made without asking, in plain words with an example, marked as tweakable — and that's all. The agent requests no confirmation; silence is consent; the agent re-asks nothing later. The person asks when they want something changed, and the `[default]` tags keep every such choice findable in the spec forever. [INV-31]
+The law: every conditionally-entered face states its deliberate re-entry path, or states the one-way as a decision, by name. Trigger wording is the tell: "only on first visit," "only on first run," "until dismissed" — each such clause owes its return sentence.
 
-**A tunable parameter is set to a sensible default and told, never asked.** Some choices are a knob with a range rather than a taste call — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each such knob to a sensible value itself and keeps the lane moving, the same way it makes a taste call [INV-31]. It chooses the value for a reasonable balance, cheaper or faster wherever quality allows (for example, a lower image resolution), writes it with its `[default]` tag [INV-18], and names it in the landing report with what it trades. The human tunes it afterwards only if they want a different point on the range; at most the parameter gets updated together later, and re-asking is never owed.
+The prover reads for it, through the entry-symmetry lens in product-prover's stress list. The fit walk's journey lens [INV-29] already asks "where next from every state"; this law extends the question to faces over the visit's lifetime. [INV-50]
 
-This carries the taste-told law [INV-31] to numeric and config knobs, and it's the same idea the economy ladder applies to cost [T-19]. So the agent never stalls a task on a knob it can reasonably set. It moves every task it can and reserves a real question for what it genuinely can't decide [INV-4]. The push to production rides the same trust: where the human has granted it, the agent ships to prod on its own certification once the work is sound, the push gate resolving to the agent's judgment — live-spec's own already does [M-6] — and the grant stays the human's to give or withdraw [INV-9]. [INV-70]
+**Verify-by-deed walks the visit and watches the feel.** For the product kind, the verify step now includes a named visitor walk: the whole journey as the person will live it. The agent walks the first visit, the return visit, entry through another door, "where am I and how do I move on" from any point, and the exits.
 
-**The smallest sample is judged before the full artifact.** For a taste-heavy deliverable — voice, copy, visual style, spec prose — the build stops at the cheapest judgeable sample: one paragraph, one card, two sections. The human's word on that sample sets the bar before the full build spends anything. Here's the kin split, stated: the mockup-first entry condition [INV-43] is the human's declared "show me first." This law is the agent's own discipline: build smallest first, even unasked, when taste rules the deliverable. [INV-62]
+The agent also runs a feel pass: the agent judges motion quality — easing, duration, choreography — and each affordance's craft against the approved prototype as the bar [E-17]. Findings become rows or red, never a vibe or a mental note.
+
+The walk's checklist lives in the build-pipeline step-8 product cell [E-12, INV-22]; this clause binds that it runs for anything a person visits.
+
+It runs in the form the medium actually has: a browser product walks motion and affordance craft, a book walks its reading path and chapter flow, a CLI its command round-trip. The product's context applies the feel lens as a partial skill, never a frontend checklist forced on prose. [INV-30]
+
+**A taste choice made without asking is told, never confirmed.** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. The agent writes each one into the spec with its `[default]` tag [INV-18].
+
+The law: the landing report names each choice made without asking, in plain words with an example, marked as tweakable — and that's all. The agent requests no confirmation; silence is consent; the agent re-asks nothing later.
+
+The person asks when they want something changed, and the `[default]` tags keep every such choice findable in the spec forever. [INV-31]
+
+**A tunable parameter is set to a sensible default and told, never asked.** Some choices are a knob with a range rather than a taste call — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each such knob to a sensible value itself and keeps the lane moving, the same way it makes a taste call [INV-31].
+
+It chooses the value for a reasonable balance, cheaper or faster wherever quality allows (for example, a lower image resolution), writes it with its `[default]` tag [INV-18], and names it in the landing report with what it trades. The human tunes it afterwards only if they want a different point on the range; at most the parameter gets updated together later, and re-asking is never owed.
+
+This carries the taste-told law [INV-31] to numeric and config knobs, and it's the same idea the economy ladder applies to cost [T-19]. So the agent never stalls a task on a knob it can reasonably set. It moves every task it can and reserves a real question for what it genuinely can't decide [INV-4].
+
+The push to production rides the same trust: where the human has granted it, the agent ships to prod on its own certification once the work is sound, the push gate resolving to the agent's judgment — live-spec's own already does [M-6] — and the grant stays the human's to give or withdraw [INV-9]. [INV-70]
+
+**The smallest sample is judged before the full artifact.** For a taste-heavy deliverable — voice, copy, visual style, spec prose — the build stops at the cheapest judgeable sample: one paragraph, one card, two sections. The human's word on that sample sets the bar before the full build spends anything.
+
+Here's the kin split, stated: the mockup-first entry condition [INV-43] is the human's declared "show me first." This law is the agent's own discipline: build smallest first, even unasked, when taste rules the deliverable. [INV-62]
 
 **A rejected artifact reopens its source.** When the human rejects an artifact, the fix starts at the artifact's source — the spec clause, the card, or the brief that produced it. The agent corrects the source first, then rebuilds the artifact from it. Patching the rejected output line-by-line against an unchanged source is the five-round trap by name, and it's banned. [INV-63]
 
-**What already works is promised before the agent touches it.** When a feature-doored wish touches a surface that already lives, its spec-delta opens with **regression fences**, before the facet sweep authors anything new [T-13]. A fence is one sentence for a neighbouring promise that must stay true through the change — for example, "the catalog still opens on click" or "the player keeps playing across a view switch." Each fence cites the existing spec clause it guards. A fence isn't new law and earns no new matrix row: the cited clause's own row already carries its never-side [INV-6], and the landing's full-suite run proves the fence held.
+**What already works is promised before the agent touches it.** When a feature-doored wish touches a surface that already lives, its spec-delta opens with **regression fences**, before the facet sweep authors anything new [T-13].
+
+A fence is one sentence for a neighbouring promise that must stay true through the change — for example, "the catalog still opens on click" or "the player keeps playing across a view switch." Each fence cites the existing spec clause it guards.
+
+A fence isn't new law and earns no new matrix row: the cited clause's own row already carries its never-side [INV-6], and the landing's full-suite run proves the fence held.
 
 So "fixed one thing, quietly broke the neighbour" turns red before it ships. The delta thereby splits everything it touches in two: promises that stay are fenced, cited, untouched; behaviour being changed is never fenced — the agent re-authors it as new law through the normal walk.
 
-A fence that finds no clause behind it has discovered an unwritten promise. That promise gets reconciled from the shipped truth like an adopted claim [A-3], written as its own spec fact with its own row, and surfaced, never silently assumed [INV-5]. Likewise, touching a neighbour whose claim is adoption-born and still unverified triggers that claim's reconciliation before it can be fenced.
+A fence that finds no clause behind it has discovered an unwritten promise. That promise gets reconciled from the shipped truth like an adopted claim [A-3], written as its own spec fact with its own row, and surfaced, never silently assumed [INV-5].
 
-The wish's queue row names its fences by the anchors they cite ("fences: …"), so "untouched and still true" becomes a greppable claim; the landing line stays its one-line self [T-7]. Fence-authoring belongs to the feature door. The bug and refactor doors inherit only the catching — their full-suite runs exercise every never-side — and a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
+Likewise, touching a neighbour whose claim is adoption-born and still unverified triggers that claim's reconciliation before it can be fenced.
+
+The wish's queue row names its fences by the anchors they cite ("fences: …"), so "untouched and still true" becomes a greppable claim; the landing line stays its one-line self [T-7].
+
+Fence-authoring belongs to the feature door. The bug and refactor doors inherit only the catching — their full-suite runs exercise every never-side — and a prototype fences nothing because it promises nothing [E-17]. [T-14, INV-19]
 
 **A feature also says what it is not doing — and how we'd know it worked.** Every feature's spec-delta closes with two short sentences. Both are always written — like the facets, silence is not an option.
 
@@ -280,12 +431,18 @@ Both sentences bind forward from features specified after this rule lands. An ad
 #### Parallel lanes, one pen
 
 While the session walks, four things hold:
-- Intake is parallel, integration is serial — **one landing at a time, per repo, under one pen**. The **pen** is the right to write the shared truth: the spec, the architecture doc, the matrix, the queue, the integration of a delta into the shared tree, the closing of a row. One lane holds it at a time. Claiming a lane is an atomic committed act. The session commits the row→in-work flip first, then re-checks under the fence [INV-11] right before its first shared-truth write. If that re-check finds a foreign session's committed in-work row, the later claimant backs off and re-queues. Foreign hands never share a repo's pen, so across sessions the law stands as it always stood. Within one assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18]. Every pen-stage still lands one at a time, and a landing commit carries exactly one row's delta [INV-39]. Bounded delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting (next section). [INV-2]
+- Intake is parallel, integration is serial — **one landing at a time, per repo, under one pen**.
+  - The **pen** is the right to write the shared truth: the spec, the architecture doc, the matrix, the queue, the integration of a delta into the shared tree, the closing of a row. One lane holds it at a time.
+  - Claiming a lane is an atomic committed act. The session commits the row→in-work flip first, then re-checks under the fence [INV-11] right before its first shared-truth write. If that re-check finds a foreign session's committed in-work row, the later claimant backs off and re-queues.
+  - Foreign hands never share a repo's pen, so across sessions the law stands as it always stood. Within one assigned session, up to three trains may roll under the parallel-lanes law (below) [T-18]. Every pen-stage still lands one at a time, and a landing commit carries exactly one row's delta [INV-39].
+  - Bounded delegated execution (workers) overlaps as it always did — disjoint brief-named files or an isolated tree, the edit fence armed [INV-11, ACT-3]. A new wish waits its turn unless it is a bug preempting (next section). [INV-2]
 - **A pending question for the human never stops the work** — the lane proceeds on the recommended option; the question stays open in the row, revisitable any time. [INV-4]
 - **No silent micro-decisions** — every choice not in the human's wish gets either asked, or recorded in the spec and surfaced in the same report. The batched report carries this as its own postcondition: every taken default, trim, and deliberate narrowing of the walk appears in it. A decision absent from the report is silent by definition, whatever the spec recorded. Nothing decided-and-buried. [INV-5]
 - **Every landing cites its wish row** — the commit message or journal entry names it, so "why does this exist" is always answerable. [INV-3]
 
-**Trains may roll — one pen writes.** Parallelism was born below the lane: workers split disjoint files, and read-only analysis rode the background while another wish walked the pipeline. This law lifts that parallelism to feature level, where it is safe. One assigned session may hold up to three build lanes in-work at once. The senior allows this only when the lanes are pairwise independent (no surface two of them touch, no spec section two of them must edit) and says so aloud. Opening every additional lane gets narrated, and all rolling trains appear on the departures board [INV-27].
+**Trains may roll — one pen writes.** Parallelism was born below the lane: workers split disjoint files, and read-only analysis rode the background while another wish walked the pipeline. This law lifts that parallelism to feature level, where it is safe.
+
+One assigned session may hold up to three build lanes in-work at once. The senior allows this only when the lanes are pairwise independent (no surface two of them touch, no spec section two of them must edit) and says so aloud. Opening every additional lane gets narrated, and all rolling trains appear on the departures board [INV-27].
 
 What may overlap — everything that does not write the shared truth:
 - a later train's code and tests, each written in its own isolated copy of the tree only (its delta reaches the shared tree through integration under the pen; the brief-named disjoint-file road [ACT-3] stays legal within one lane, whose workers land with that lane's own commit);
@@ -299,21 +456,37 @@ What always takes the pen, one lane at a time:
 
 So the document stages of two lanes never interleave mid-edit. Each lane's spec-delta is drafted and proven against the spec as committed law, never against another lane's half-written draft. The pen passes between trains while their long mechanical stages run.
 
-At most three build lanes roll at once without asking [default]: the session does not stop at two, taking the independent work that exists. Beyond three, a fourth lane opens only on the human's asked word. When more independent work waits workable, the session asks whether the human wants another train rolling, and never opens it silently. Read-only background analysis never counts against that cap.
+At most three build lanes roll at once without asking [default]: the session does not stop at two, taking the independent work that exists.
 
-The board shows every rolling train. Each in-flight row keeps its own station line [INV-27]. A lane waiting for the pen says so and names the row it waits behind ("at integration, waiting behind row N"). When several trains want the human's word, the questions ride one batched decision page, every card naming its lane's row [E-22, INV-4].
+Beyond three, a fourth lane opens only on the human's asked word. When more independent work waits workable, the session asks whether the human wants another train rolling, and never opens it silently. Read-only background analysis never counts against that cap.
 
-A bug still cuts the line [T-9]. It takes the pen, and the senior takes over, at the end of the current pen-stage. A pen-stage is never cut mid-edit. Rolling background briefs may finish, and no lane takes the pen back until the bug lands. A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
+The board shows every rolling train. Each in-flight row keeps its own station line [INV-27]. A lane waiting for the pen says so and names the row it waits behind ("at integration, waiting behind row N").
 
-While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**. Its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's unfinished work. So half of another train never rides a landing. When a lane lands, the shared truth has moved. Every still-rolling lane's integration then re-checks under the fence [INV-11] and re-runs its gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
+When several trains want the human's word, the questions ride one batched decision page, every card naming its lane's row [E-22, INV-4].
 
-Here are the parallel-lanes law's edges, stated once. It fires when another workable, independent wish waits while a rolling lane's long mechanical stage runs. The correction is idle waiting gone: a feature's code hours no longer block another feature's document hours. It does not fire across sessions, nor on wishes that share a surface or a spec section — those still serialize as before. It also does not fire mid-milestone or while a bug holds the pen. Its only face is board and report lines, already governed by the line law; no other visible surface, so facets are N/A [INV-28].
+A bug still cuts the line [T-9]. It takes the pen, and the senior takes over, at the end of the current pen-stage. A pen-stage is never cut mid-edit. Rolling background briefs may finish, and no lane takes the pen back until the bug lands.
 
-Non-goals: this iteration adds no cross-session double-landing, since foreign sessions still back off; no automatic independence checker, because the senior judges independence and says so aloud; no fourth build lane unasked, since beyond three the human's word opens each next train; and no per-lane sub-board.
+A milestone's whole-spec operations run with one train only. No new lane opens mid-gate, and a milestone opens only once a single train rolls, after the others land or park first [M-1]. [T-18]
+
+While several trains roll, the landing stays pure: **a landing commit carries exactly one row's delta**. Its gate — the full suite plus the guardrails — runs on a tree holding nothing of any other lane's unfinished work. So half of another train never rides a landing.
+
+When a lane lands, the shared truth has moved. Every still-rolling lane's integration then re-checks under the fence [INV-11] and re-runs its gate against the tree as it now stands: landed-first wins, the later lanes re-verify, never the reverse. [INV-39]
+
+Here are the parallel-lanes law's edges, stated once. It fires when another workable, independent wish waits while a rolling lane's long mechanical stage runs. The correction is idle waiting gone: a feature's code hours no longer block another feature's document hours.
+
+It does not fire across sessions, nor on wishes that share a surface or a spec section — those still serialize as before. It also does not fire mid-milestone or while a bug holds the pen. Its only face is board and report lines, already governed by the line law; no other visible surface, so facets are N/A [INV-28].
+
+Non-goals: this iteration adds
+- no cross-session double-landing, since foreign sessions still back off;
+- no automatic independence checker, because the senior judges independence and says so aloud;
+- no fourth build lane unasked, since beyond three the human's word opens each next train;
+- and no per-lane sub-board.
 
 Success measure: the first real double-lane run lands both rows clean with the board readable throughout — the human can say at any moment where each train stands, checked by the human's own read of that run's reports [default]. [T-18]
 
-**Lanes are picked by a graph, never by mood.** At queue-take the session reads the runnable head — the next few rows workable without the human — and builds the mini dependency graph. It draws an edge wherever two rows share a surface, a spec section, a skill file, or a doc region. Lanes open on a pairwise-independent set, up to the cap [T-18]. Rows joined by an edge serialize inside one lane. Rows that collide only at their integration — one file, different concerns — may pre-roll their isolated build stages with the integration order declared at claim time: first-declared lands first, and the later re-fences on the new truth [INV-39].
+**Lanes are picked by a graph, never by mood.** At queue-take the session reads the runnable head — the next few rows workable without the human — and builds the mini dependency graph. It draws an edge wherever two rows share a surface, a spec section, a skill file, or a doc region.
+
+Lanes open on a pairwise-independent set, up to the cap [T-18]. Rows joined by an edge serialize inside one lane. Rows that collide only at their integration — one file, different concerns — may pre-roll their isolated build stages with the integration order declared at claim time: first-declared lands first, and the later re-fences on the new truth [INV-39].
 
 The graph also knows when not to parallelize. Parallel pays only when build stages dominate the pen work, so tiny rows ride serial, and saying so aloud is part of the board. The chosen set and the order get narrated at opening [INV-27]. [INV-49]
 
@@ -322,7 +495,9 @@ A wish can also end without landing, and its row stays in the table in one of th
 - **deferred** — parked with a named revisit trigger;
 - **superseded** — absorbed by another wish, so the row points to the absorbing one.
 
-Declining preserves what the declined wish had absorbed. A wish that other rows were superseded into lists them at its decline. Each listed row then either gets declined by name in the same breath, when the human's no covered it too, or returned to the queue as its own row again, when the human's no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
+Declining preserves what the declined wish had absorbed. A wish that other rows were superseded into lists them at its decline.
+
+Each listed row then either gets declined by name in the same breath, when the human's no covered it too, or returned to the queue as its own row again, when the human's no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
 
 What the wishes grow is the **spec (PRODUCT_SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
 ### A prototype stays a sketch
@@ -364,7 +539,9 @@ The machine enforces the fence with a guardrails check that has three legs:
 - **Still a target**: the surface registry's completeness scan. [E-10]
 - **Still a target**: the behaviour-traces-to-spec check. [target, E-6]
 
-When all three legs land, the header's honesty rule holds in both directions: the spec never claims what isn't built [S-0], and the build never contains what the spec does not name. Today only the fence leg is enforced; the rest is promised, marked, and owned by its rows. [INV-17]
+When all three legs land, the header's honesty rule holds in both directions: the spec never claims what isn't built [S-0], and the build never contains what the spec does not name.
+
+Today only the fence leg is enforced; the rest is promised, marked, and owned by its rows. [INV-17]
 
 #### An approved look lives in its artifact
 
@@ -381,10 +558,16 @@ A story can declare that the human must see a mockup before the build starts —
 
 This rule looks forward only — add a clause's pointer at the first landing that touches it, never retroactively across the whole spec at once. A pointer names only a prototype the human approved as the look; an unapproved sketch stays plain evidence in its fence [E-17], and a text-born clause carries no pointer.
 
-This landing shows no visible surface, so facets are N/A. Non-goals for this landing: no mechanical pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free. Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur. [default] [INV-43]
+This landing shows no visible surface, so facets are N/A.
+
+Non-goals for this landing: no mechanical pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free.
+
+Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur. [default] [INV-43]
 ### From the spec to the tests: two layers that must not be skipped
 
-**The test-author skill owns the test method; build-pipeline just calls it.** test-author runs the matrix derivation and the test writing (the pipeline's steps 5–6). It keeps the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. build-pipeline calls test-author the same way steps 1–2 call spec-author and product-prover: the method lives in the skill, the pipeline keeps order and gates [E-27].
+**The test-author skill owns the test method; build-pipeline just calls it.** test-author runs the matrix derivation and the test writing (the pipeline's steps 5–6). It keeps the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test.
+
+build-pipeline calls test-author the same way steps 1–2 call spec-author and product-prover: the method lives in the skill, the pipeline keeps order and gates [E-27].
 
 The spec says what the product is. Tests prove facts about the shipped artifact. Two documents sit between them, and if they stay implicit, they get skipped — a lost layer.
 
@@ -394,7 +577,9 @@ The spec says what the product is. Tests prove facts about the shipped artifact.
 - Every spec fact belongs to exactly one node.
 - In a live codebase, every node pins to its owning place. The named thing is the pin: a function, a marker comment, a selector, a heading. The `:line` beside it is a convenience cache and can lag, so the name is resolved and a drift check re-greps it. Skip that and pins rot silently — a wrong-with-confidence pin is worse than none.
 
-Drafting the architecture is where spec claims are reconciled against shipped reality. Every pin comes from a command that was run, never from the doc's own prose. It is written from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, proved before anything derives from it — a product-prover pass with the architecture lens. That lens checks three things:
+Drafting the architecture is where spec claims are reconciled against shipped reality. Every pin comes from a command that was run, never from the doc's own prose.
+
+It is written from the proven spec (template: `ARCHITECTURE.template.md`), and, like the spec, proved before anything derives from it — a product-prover pass with the architecture lens. That lens checks three things:
 
 - every spec fact has an owning node;
 - no node stands without spec backing;
@@ -407,7 +592,9 @@ Keeping the doc up to date:
 - Re-prove exactly when the structure changes.
 - The doc stays iterative: it maps the product as it stands, plus the landing in flight. A node exists for what ships today, or for what the spec already promises under an owned row (marked [target], pin empty). Never design it milestones ahead — a speculative node is unbacked structure. Re-carving the whole map is legal: it arrives as its own row under a restructure placement [INV-37], walks this step, and gets re-proven [E-14].
 
-**The architecture owes numbers, not just names.** The doc states measurable quality budgets for what it builds, plus each budget's instrumentation home — where the numbers get measured and where a human reads them (an export, a debug view, a report). What is measurable depends on the project's kind [INV-36], so ask "what does quality mean here, in numbers?" before writing any:
+**The architecture owes numbers, not just names.** The doc states measurable quality budgets for what it builds, plus each budget's instrumentation home — where the numbers get measured and where a human reads them (an export, a debug view, a report).
+
+What is measurable depends on the project's kind [INV-36], so ask "what does quality mean here, in numbers?" before writing any:
 
 - a user-facing product — paint and interaction times ("first image within 2 s on a cold visit");
 - a backend service — latency, throughput, error rate;
@@ -415,9 +602,13 @@ Keeping the doc up to date:
 - a skill pack — its evals' pass rate and suite wall-time;
 - prose — whatever honestly has a number (a reader reaches X within one scroll).
 
-Where a quality has no honest number, say so by name instead of inventing a vanity metric. A budget counts only once a matrix row at the right level can see it — a hope in prose does not. A surface with no budget and no instrumentation home is a derivation defect, flagged like an unowned fact. The numbers are the host's taste: the architecture proposes them with a recommendation, and the human's word sets them at the surface's first budget landing. Like the two layers themselves [INV-15], this duty binds from the first landing that touches the surface after the clause exists, never retroactively [INV-41].
+Where a quality has no honest number, say so by name instead of inventing a vanity metric. A budget counts only once a matrix row at the right level can see it — a hope in prose does not. A surface with no budget and no instrumentation home is a derivation defect, flagged like an unowned fact.
 
-**The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact** — a structured grid: every fact gets at least one row, and every row pins a test level. Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and it is walked:
+The numbers are the host's taste: the architecture proposes them with a recommendation, and the human's word sets them at the surface's first budget landing. Like the two layers themselves [INV-15], this duty binds from the first landing that touches the surface after the clause exists, never retroactively [INV-41].
+
+**The matrix is derived, never just filled in.** The matrix [E-5] organizes rows by **architecture node × spec fact** — a structured grid: every fact gets at least one row, and every row pins a test level.
+
+Derivation closes with the **coverage validation** — a checklist that lives in the matrix template, and it is walked:
 
 - every spec anchor appears in ≥ 1 row;
 - every artifact-inventory entry owns ≥ 1 rendered-level row;
@@ -427,7 +618,9 @@ Where a quality has no honest number, say so by name instead of inventing a vani
 
 A fact with no row, or a row at too weak a level, is a derivation defect. The prover catches it at derivation time, before any user hits it [E-15].
 
-While both layers live, one rule holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** The bridge from spec to tests is walked layer by layer, never jumped. A project that predates these layers brings them up as an owned landing, and the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively [INV-15].
+While both layers live, one rule holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** The bridge from spec to tests is walked layer by layer, never jumped.
+
+A project that predates these layers brings them up as an owned landing, and the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively [INV-15].
 ### The rhythm: breakpoints, milestones, pushes
 
 #### Breakpoints, resume, and milestones
@@ -491,7 +684,9 @@ While both layers live, one rule holds: **no wish lands whose facts lack an owni
   Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing batch, never per tiny row. The irreducible core stays fixed regardless of scale: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
 ### Publishing — the deposit owes what its kind owes
 
-Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**. **A publish owes the reader what the artifact's kind owes.** This work-kind axis is already used at wish intake; here it applies again at the door of publishing [T-16].
+Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**.
+
+**A publish owes the reader what the artifact's kind owes.** This work-kind axis is already used at wish intake; here it applies again at the door of publishing [T-16].
 
 #### What each kind owes
 
@@ -532,7 +727,9 @@ The checklist never bypasses the gates already standing. The human's publish gat
 
 A stale shopfront is a false claim, exactly like a stale screenshot [E-20].
 
-This shopfront check is the publish skill's checklist, read at push scale — same one home, no second checklist. The pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22]. When a push's changes touch none of the shopfront's claims, say so in one line: "shopfront checked — current." Find a stale claim and fix it before the push. Freshness is about the claims the README makes; styling is a separate concern.
+This shopfront check is the publish skill's checklist, read at push scale — same one home, no second checklist. The pipeline's commit-and-show step points at it, and the walk's outcome rides the landing report [INV-22].
+
+When a push's changes touch none of the shopfront's claims, say so in one line: "shopfront checked — current." Find a stale claim and fix it before the push. Freshness is about the claims the README makes; styling is a separate concern.
 
 #### Non-goals
 
@@ -543,7 +740,9 @@ The two ways the human speaks back to the workshop: a piece of feedback, or a qu
 
 ### Sending feedback in
 
-A person looks at what shipped and something occurs to them. It might be a reaction, an answer, a screenshot with a red circle, or a log file. **Feedback** is anything a person hands back to the project, at any size, any moment, through any channel. The person is usually the host's human. When the host's product has users of its own, their reports travel the same road once a session receives them. [E-28]
+A person looks at what shipped and something occurs to them. It might be a reaction, an answer, a screenshot with a red circle, or a log file.
+
+**Feedback** is anything a person hands back to the project, at any size, any moment, through any channel. The person is usually the host's human. When the host's product has users of its own, their reports travel the same road once a session receives them. [E-28]
 
 The promise is simple: nothing handed in is ever lost, and everything handed in is answered by a route. Every received item lands in the same session, in the home its route owns:
 
@@ -552,7 +751,14 @@ The promise is simple: nothing handed in is ever lost, and everything handed in 
 - a fix lands in its commit and journal line;
 - workshop noise lands in the problem ledger.
 
-Some routes had no home before this section. They get one now: the **feedback ledger (FEEDBACK.md)**, an append-only file beside the queue at the host root [default]. It owns field evidence, plain reactions, and wordless drops that still await their question. Each item is one dated line. The line records when it arrived, who handed it in and through which channel, what it concerns on the feature map, the item in plain words, and where it went.
+Some routes had no home before this section. They get one now: the **feedback ledger (FEEDBACK.md)**, an append-only file beside the queue at the host root [default]. It owns field evidence, plain reactions, and wordless drops that still await their question.
+
+Each item is one dated line. The line records
+- when it arrived,
+- who handed it in and through which channel,
+- what it concerns on the feature map,
+- the item in plain words,
+- and where it went.
 
 The session echoes every arrival back in one sentence, one echo per item. A wish-shaped item's echo is the wish echo [INV-27]. Anything else gets a note back saying what was heard and where it went.
 
@@ -574,7 +780,9 @@ Every item takes exactly one route, and each route already has its law and its h
 - **Field evidence** — React to a shipped feature, and that's field evidence. It lands in the ledger, and the line cites the feature's scenario. The feature's success-measure sentence [INV-21] finally gets a place where real signals pile up — the ledger is the first honest slice of the reading machinery. That machinery itself (measurement plugins, aggregation) stays [target], under its own long-lived row (row 48). Evidence only grows into a wish when the human says so, or a tripwire fires a verdict.
 - **Workshop noise** — A flaky tool or a missing dependency is workshop noise; it belongs to the problem ledger [INV-23]. The seam decides it: the product's behaviour goes to FEEDBACK.md, the workshop's behaviour goes to PROBLEMS.md — one home each.
 
-The skill that owns this behaviour is **feedback-intake**, the pack's intake half of the exchange. The pack splits the exchange: communicator carries work out to the human, and feedback-intake carries what comes back. It fires the moment any session receives a handed-in item. It also fires at every inbox sweep, for files that carry feedback rather than a wish.
+The skill that owns this behaviour is **feedback-intake**, the pack's intake half of the exchange. The pack splits the exchange: communicator carries work out to the human, and feedback-intake carries what comes back.
+
+It fires the moment any session receives a handed-in item. It also fires at every inbox sweep, for files that carry feedback rather than a wish.
 
 feedback-intake stays quiet in three cases:
 
@@ -615,7 +823,9 @@ The section's edges, stated once.
 **Success measure.** The same item never has to be handed in twice. Every received item is findable in the ledger, with its route, in the same session [default].
 ### Asking what the product does (the feature map on demand)
 
-Three standing questions describe the product. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. Those two questions are answered on their own surfaces. This ask answers the third — what the product does today — with one answer containing the whole product map, current as of the request, on demand.
+Three standing questions describe the product. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. Those two questions are answered on their own surfaces.
+
+This ask answers the third — what the product does today — with one answer containing the whole product map, current as of the request, on demand.
 
 The ask reads its answer live from the living documents:
 
@@ -701,7 +911,9 @@ After the owner is written, the entry only collects dates:
 
 #### Keeping the limp parked
 
-**A limping thing never dams the flow.** A known, owned problem stays parked while every unrelated lane keeps rolling. That's either a recurring defect with a named mechanical owner, or a check held red for an understood, recorded reason. Its ledger line, or the owning row, or an expected-red note in the record, holds it in place: when one thing doesn't quite work, it should leave everything else free to move.
+**A limping thing never dams the flow.** A known, owned problem stays parked while every unrelated lane keeps rolling. That's either a recurring defect with a named mechanical owner, or a check held red for an understood, recorded reason.
+
+Its ledger line, or the owning row, or an expected-red note in the record, holds it in place: when one thing doesn't quite work, it should leave everything else free to move.
 
 Two rules keep the limp parked:
 
@@ -793,11 +1005,15 @@ These three intake verdicts stay separate from the per-wish work-kind [T-16]. Th
 - the wish's work-kind says what this wish builds;
 - the placement [INV-37] says where it lands on the map.
 
-The seed proposes; a written line decides. If a host already records its own default (`work-kind.host-default` [T-16, E-13]), keep it — the project kind never silently overrides an explicit profile line. The ask always belongs to the human: no personal-profile line can say what a host is, so B-2's profile-seeding arm never answers this question — the agent asks it at founding or orient, every time.
+The seed proposes; a written line decides. If a host already records its own default (`work-kind.host-default` [T-16, E-13]), keep it — the project kind never silently overrides an explicit profile line.
+
+The ask always belongs to the human: no personal-profile line can say what a host is, so B-2's profile-seeding arm never answers this question — the agent asks it at founding or orient, every time.
 
 Curate the kind vocabulary the same way work-kinds are curated [T-16]. The list above names the shapes real projects already wear, and a custom kind joins through the queue when a named project the list didn't serve well shows up. Expect custom kinds — the queue is their door.
 
-The line stays alive, continuously updated: the moment work notices the project has outgrown its kind — the static site that grew a backend — update the line on the human's word, and journal it right then, never park it for an audit [INV-36]. A project attached before this law owes no retro-ask; the line arrives at the next landing that would lean on it, like any forward-binding intake law [T-16 kin].
+The line stays alive, continuously updated: the moment work notices the project has outgrown its kind — the static site that grew a backend — update the line on the human's word, and journal it right then, never park it for an audit [INV-36].
+
+A project attached before this law owes no retro-ask; the line arrives at the next landing that would lean on it, like any forward-binding intake law [T-16 kin].
 ### Attaching to a live project (adoption)
 
 Adoption runs as a sequence; each phase finishes before the next starts. Run the version-control
@@ -924,7 +1140,9 @@ The shared rulebook, who holds authority over what, and how the work scales down
 
 ### One rulebook behind the skills
 
-Open any skill in the pack and the same working rules greet the reader. Until now each skill carried its own near-copy of them. Copies drift, and the pack's own sweep proved it twice: the anchor convention was told two ways across skills, and the concurrent-edit fence appeared only in the adoption text, though every skill that writes shared files needs it.
+Open any skill in the pack and the same working rules greet the reader. Until now each skill carried its own near-copy of them.
+
+Copies drift, and the pack's own sweep proved it twice: the anchor convention was told two ways across skills, and the concurrent-edit fence appeared only in the adoption text, though every skill that writes shared files needs it.
 
 The five rules every skill works by are these:
 
@@ -934,15 +1152,21 @@ The five rules every skill works by are these:
 - **One canonical home per fact** — each fact is stated in a single place.
 - **A junior resumes from a checkpoint** after a cut-off, picking the work back up.
 
-**So the shared rules live once, in the base skill.** The base skill is the pack's shared rulebook, and it sits beside the working skills in the folder `live-spec-base`. The package itself is the source; the standalone repos are read-only mirrors of it [D-4]. The base states each shared rule normatively, right next to the package's default settings [E-13].
+**So the shared rules live once, in the base skill.** The base skill is the pack's shared rulebook, and it sits beside the working skills in the folder `live-spec-base`.
+
+The package itself is the source; the standalone repos are read-only mirrors of it [D-4]. The base states each shared rule normatively, right next to the package's default settings [E-13].
 
 Every working skill opens with one line. That line names the base skill and the base version the skill was written against. This version pin is swept in the same session that bumps the base, so it never goes stale. After that line, the skill references the shared rules instead of restating them.
 
-A working skill elaborates only its own domain. The communicator skill, for example, teaches how to speak plainly. The rule that we speak plainly at all belongs to the base. A skill used standalone, outside the pack, still stands on its own: the opening line reads as plain advice, and nothing in the skill's own domain needs the base to be installed [E-12].
+A working skill elaborates only its own domain. The communicator skill, for example, teaches how to speak plainly. The rule that we speak plainly at all belongs to the base.
+
+A skill used standalone, outside the pack, still stands on its own: the opening line reads as plain advice, and nothing in the skill's own domain needs the base to be installed [E-12].
 
 As the pack evolves, one thing stays true. **A shared rule has exactly one normative home, the base skill. A second full statement of it inside a working skill is drift, a defect to fold back.** The compaction pass prunes restatements older than the base at milestones, one skill at a time, so no single risky rewrite is needed [M-1]. [INV-13]
 
-**Every place the pack lists its skills names the same complete set.** That list lives in several reader-facing spots: the working-skills sentence up top, the closing lists the skills carry, and the README's table. A list is exactly the kind of fact that drifts. The communicator's closing list was once found naming four skills after the pack had grown past six, with two skills missing since their birth. A check runs at every commit, and a list that misses a skill goes red [INV-66].
+**Every place the pack lists its skills names the same complete set.** That list lives in several reader-facing spots: the working-skills sentence up top, the closing lists the skills carry, and the README's table.
+
+A list is exactly the kind of fact that drifts. The communicator's closing list was once found naming four skills after the pack had grown past six, with two skills missing since their birth. A check runs at every commit, and a list that misses a skill goes red [INV-66].
 
 ### Who decides what
 
@@ -956,9 +1180,13 @@ As the pack evolves, one thing stays true. **A shared rule has exactly one norma
 
 **Mode and trust are written only on the human's word.** The agent may propose them; it never sets them, and never raises its own trust or proactivity level. [INV-9]
 
-**A done-claim is answered by walking the evidence fresh each time, and it carries the method version it was done by.** A fluent story can answer any done-claim — "did that project run the tests by the method?" — and the story might even be right, but it does not distinguish verified from narrative, which is the whole point of the method. So no one answers a done-claim from memory: every claim pins to a checkable artifact, walked now — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. This is the claims-need-primary-source rule, applied to the answering exchange itself.
+**A done-claim is answered by walking the evidence fresh each time, and it carries the method version it was done by.** A fluent story can answer any done-claim — "did that project run the tests by the method?" — and the story might even be right, but it does not distinguish verified from narrative, which is the whole point of the method.
 
-The answer states plainly what the walk verified, apart from what it merely asserts, and it names the method version the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]). One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set (never adopted, or the work predates adoption), the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
+So no one answers a done-claim from memory: every claim pins to a checkable artifact, walked now — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. This is the claims-need-primary-source rule, applied to the answering exchange itself.
+
+The answer states plainly what the walk verified, apart from what it merely asserts, and it names the method version the work was done by — the pack and skill versions read from that host's installed set (the version homes, [M-7]).
+
+One claim line reads claim → artifact → version, for example: "suite green — 795 tests, tonight's run, commit `193d39d` — done by live-spec 0.8.x, prover 0.1.8." If the host has no installed set (never adopted, or the work predates adoption), the answer says exactly that: an absent version is itself an honest answer, never an invented one. [INV-25]
 
 #### Settings and the ladder
 
@@ -969,15 +1197,27 @@ The answer states plainly what the walk verified, apart from what it merely asse
 - about this project → the **host profile** [E-8];
 - about right now → the **session scope**, the human's live word in one conversation.
 
-The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it. A setting made at a broad scope is inherited down through the narrower ones, until a narrower one overrides it on the human's word — an all-English project overriding the human's Russian-chat line, or a "today, answer me in English" overriding both for one sitting. Resolution reads from the narrowest scope out: session beats host beats personal beats package default.
+The scopes nest: the package holds every human, a personal profile holds every project that human touches, and a host holds every session run inside it.
 
-Profiles are re-read at the same freshness points as skills [A-7]. When a profile line falls outside the current pack's vocabulary (written under an older vocabulary), the pack ignores it aloud: a dated note in the host's journal, plus a line in the session's next report. The journal half is durable, so a session that dies before its report still leaves the trace, never a silent drop, never an error. [E-13]
+A setting made at a broad scope is inherited down through the narrower ones, until a narrower one overrides it on the human's word — an all-English project overriding the human's Russian-chat line, or a "today, answer me in English" overriding both for one sitting. Resolution reads from the narrowest scope out: session beats host beats personal beats package default.
 
-**No override is ever silent.** An override exists only as a written line in its profile file: setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5], applied to settings. Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a minor bump, and live-spec's own host contract tightens that to "before every push" — recorded, visible, never assumed.
+Profiles are re-read at the same freshness points as skills [A-7]. When a profile line falls outside the current pack's vocabulary (written under an older vocabulary), the pack ignores it aloud: a dated note in the host's journal, plus a line in the session's next report.
 
-The session scope is the one that's never a file. A session override lives only in the human's spoken word and dies with the conversation; the agent never writes it anywhere on its own. If it should outlive the session, that's a promotion into the profile it describes (personal or host), made on the human's word and journaled like any other override. An announced self-compaction [M-2] carries the live session lines forward in its summary. A full wipe ends the sitting, and the session lines die with it by design — that loss is the human's own move, never the agent's. [INV-14]
+The journal half is durable, so a session that dies before its report still leaves the trace, never a silent drop, never an error. [E-13]
 
-**The human's profile is the one home of the personal layer, and the global instruction file is a thin loader.** Everything personal — who the human is, how the human likes to be spoken to, the human's standing working rules — lives in the personal profile, gathered in one place. The machine-global instruction file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: it points to the profile, and states only the bootstrap lines that must hold before any pack file loads. The which-project disambiguation rule is the type specimen — the rule that stops a session writing into a foreign repo can't itself wait for that repo's files to load. The loader is the one home for those bootstrap lines, and the profile never restates them. [INV-13]
+**No override is ever silent.** An override exists only as a written line in its profile file: setting one leaves a dated journal note in the home it governs — the host's journal for a host line, the package's journal for a default change. This is the no-silent-micro-decisions rule [INV-5], applied to settings.
+
+Live-spec's own push gate [M-6] is the worked example: the package default asks for a full prover pass before a minor bump, and live-spec's own host contract tightens that to "before every push" — recorded, visible, never assumed.
+
+The session scope is the one that's never a file. A session override lives only in the human's spoken word and dies with the conversation; the agent never writes it anywhere on its own.
+
+If it should outlive the session, that's a promotion into the profile it describes (personal or host), made on the human's word and journaled like any other override. An announced self-compaction [M-2] carries the live session lines forward in its summary.
+
+A full wipe ends the sitting, and the session lines die with it by design — that loss is the human's own move, never the agent's. [INV-14]
+
+**The human's profile is the one home of the personal layer, and the global instruction file is a thin loader.** Everything personal — who the human is, how the human likes to be spoken to, the human's standing working rules — lives in the personal profile, gathered in one place.
+
+The machine-global instruction file (on this stack, `~/.claude/CLAUDE.md`) shrinks to a thin loader: it points to the profile, and states only the bootstrap lines that must hold before any pack file loads. The which-project disambiguation rule is the type specimen — the rule that stops a session writing into a foreign repo can't itself wait for that repo's files to load. The loader is the one home for those bootstrap lines, and the profile never restates them. [INV-13]
 
 Migrating an existing rule file into this shape is a fork by scope — each rule moves to the scope it describes:
 
@@ -1026,7 +1266,9 @@ The size class is only a coarse prior: a large row carries more delegable mechan
 - at `lean` an airtight brief rides one tier cheaper — a sonnet brief that leaves the worker nothing to decide may propose haiku, and the bar for keeping a step on the senior rises;
 - at `tight` the proposal is always the cheapest sufficient tier, and the senior spends its hours on judgment alone.
 
-**The proposal is advisory, the senior may override per wish, and the override is logged.** [D-2] A brief that looked mechanical but hides a real decision routes up; a rare over-cautious default routes down. Either way, one line rides the checkpoint and the landing report: proposed tier → chosen tier → why. This assignment-time override is distinct from ACT-3's failed-acceptance escalation — one is the senior's choice before the work, the other a runtime bump after a miss. Both get logged, on different lines. A silent tier change is the defect this closes.
+**The proposal is advisory, the senior may override per wish, and the override is logged.** [D-2] A brief that looked mechanical but hides a real decision routes up; a rare over-cautious default routes down. Either way, one line rides the checkpoint and the landing report: proposed tier → chosen tier → why.
+
+This assignment-time override is distinct from ACT-3's failed-acceptance escalation — one is the senior's choice before the work, the other a runtime bump after a miss. Both get logged, on different lines. A silent tier change is the defect this closes.
 
 The router never hardens into a mechanical gate the senior cannot overrule, and it never touches the human's gates or ACT-2's ownership of judgment. No visible surface — facets N/A.
 
@@ -1037,14 +1279,18 @@ Non-goals:
 
 Success measure [default]: the first routed landing names, in its report, the proposal → choice → why for each delegated unit, and the human checks it by reading it. [INV-69]
 
-**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more. It never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green. So the verify step carries an adversarial option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths, never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
+**A worker's green gets a second pair of eyes, and verify can turn adversarial.** A worker's report is a lead, no more. It never counts as evidence. On a large delegated landing the blind spot is structural: the same head that wrote the brief reads the result, so "tasks completed, goal missed" can ship green.
+
+So the verify step carries an adversarial option: a FRESH-context checker is briefed with the SPEC sentences the landing claims (the anchors) and the artifact paths, never the worker's summary, never the senior's plan. It opens on the hypothesis "tasks completed, goal missed" and walks each claimed fact up a fixed ladder:
 
 - exists — the artifact is there;
 - substantive — real content, checked against the pipeline's step 8 grep list (TODO / FIXME / placeholder / lorem / hardcoded sample / empty body);
 - wired — reachable from the surface that claims it;
 - flows — real values move end to end.
 
-Findings become rows or red, never a nod. It fires mandatory when the code step was delegated and the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere else it stays the senior's option. A skill or prose landing walks the same ladder in its kind's form — the checker re-reads the shipped text against the spec sentences. The checker is a worker like any other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
+Findings become rows or red, never a nod. It fires mandatory when the code step was delegated and the delta is surface-sized (a new surface or a multi-file behaviour change); anywhere else it stays the senior's option.
+
+A skill or prose landing walks the same ladder in its kind's form — the checker re-reads the shipped text against the spec sentences. The checker is a worker like any other — contract, checkpoint, ledger duty [ACT-3] — and its verdict rides the landing report. [INV-46]
 
 **A brief is born from read files, never from memory of them.** Before writing a brief that edits existing files, the brief-writer reads in full every file the work will modify. The brief records three lines per file:
 
@@ -1063,13 +1309,17 @@ Every step carries a back-reference to the spec sentence it serves, and every te
 
 On any of these the worker stops with evidence. Otherwise it runs to completion. This is sharper than "ask if unsure," and it composes with the one-tier escalation law [ACT-3]. [INV-54]
 
-**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context, and the work splits above it. The default bound is concrete: the brief's own text stays within ~300 lines and names at most ~8 files to edit [default]. Above either limit, the work splits into staged briefs. A brief passes paths, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
+**A brief is sized to its worker's head.** A brief targets a bounded share of the worker's context, and the work splits above it. The default bound is concrete: the brief's own text stays within ~300 lines and names at most ~8 files to edit [default].
+
+Above either limit, the work splits into staged briefs. A brief passes paths, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
 
 ### When money or time run short (the economy ladder)
 
 Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may legally shed, so economy is a setting the human moved, never an improvisation under pressure. [T-19]
 
-The pressure lives as one setting on the ladder: `budget.pressure`, with package default `full`. It moves only on the human's word: a session's word for today, or a profile line to stand. This works exactly like proactivity and trust [E-13, INV-9]. When the human names money or time pressure, the agent may propose a rung. The agent never sets one.
+The pressure lives as one setting on the ladder: `budget.pressure`, with package default `full`. It moves only on the human's word: a session's word for today, or a profile line to stand. This works exactly like proactivity and trust [E-13, INV-9].
+
+When the human names money or time pressure, the agent may propose a rung. The agent never sets one.
 
 The pack surfaces the choice before pressure arrives. At a project's setup, whether founding or adoption, the pack asks the economy rung, or tells the standing default, alongside `project.kind` [INV-36]. The preference is the human's from day one.
 
@@ -1090,7 +1340,11 @@ What never bends at any rung — the never-bend list, stated once [INV-40]:
 - the safety net that no work-kind and no scope-cut touches: poverty is its third non-toucher [T-15, T-16];
 - narration: it is cheap and stays whole at every rung [INV-35].
 
-An explicit host line outlives any rung. A host profile pinning a tighter cadence keeps it even under `tight` [E-13]. Non-goals: no numeric budgets or token meters, since the rung is qualitative and moves by the human's word; and no automatic rung-switching. Success measure [default]: the first budget-named session names its rung and its sheds aloud in its landing report, checked by the human's read [T-19].
+An explicit host line outlives any rung. A host profile pinning a tighter cadence keeps it even under `tight` [E-13].
+
+Non-goals: no numeric budgets or token meters, since the rung is qualitative and moves by the human's word; and no automatic rung-switching.
+
+Success measure [default]: the first budget-named session names its rung and its sheds aloud in its landing report, checked by the human's read [T-19].
 
 ## What holds the bounds
 
@@ -1158,19 +1412,37 @@ What keeps "it works" honest — each one a named machine:
   - The contract's operational home is the guardrails README. It binds by deed: the first gate ships under it now, and each other gate picks it up the next time someone touches it, never all at once [INV-47].
 ### The package repo: who may write, and two sessions at once
 
-live-spec runs on its own method: this spec, this queue, and these rules govern live-spec's own development. The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface.
+live-spec runs on its own method: this spec, this queue, and these rules govern live-spec's own development.
 
-**The developer's own machine keeps its skills fresh by a named step, run deliberately.** The repo is the source [D-4]. The installed copies under the agent's skills home are mirrors. A session that edits a skill syncs the installed copy the same session, through the named tool `scripts/sync-skills.sh`. That tool copies each repo skill over its installed twin, and it reports every version change old → new — the exact line A-7's re-read rule fires on. A hand-copy is the anti-pattern the tool retires: it syncs silently, so nothing tells the next breakpoint what changed. [E-23]
+The pack repo's push gates run mechanically on installed hooks — a fresh prover record, a green suite, anchor ownership, and matrix coverage, all under `guardrails/`. The host-facing checks stay [target] with E-6. [M-4] That makes its repo a shared surface.
 
-**Only a session assigned to live-spec itself writes this repo** (spec, queue, journal, skills, templates, adopt procedure). Every other session is read-only here — a host adopt run, a skill install, anything that merely reads the package. It has exactly one exception: creating a new wish file in the inbox. The test is crisp. If the session cannot say "the human asked me, in this conversation, or via a standing routine the human created for live-spec, to change live-spec", it does not write. A host run's story lives in the host's journal, never here. [INV-10]
+**The developer's own machine keeps its skills fresh by a named step, run deliberately.** The repo is the source [D-4]. The installed copies under the agent's skills home are mirrors.
 
-**The inbox (inbox/)** is the parallel-safe intake door for wishes and feedback born outside a live-spec session. Each item arrives as one new file, named `YYYY-MM-DD-<source>-<slug>.md`. If the name is taken, append `-2`, `-3`, and so on — the same one collision law, base rule 18. When two sessions race one slug, they add a short session token to the source mark. A file holds a few plain lines, and it never edits an existing file: creating a fresh file cannot collide, while shared files can.
+A session that edits a skill syncs the installed copy the same session, through the named tool `scripts/sync-skills.sh`. That tool copies each repo skill over its installed twin, and it reports every version change old → new — the exact line A-7's re-read rule fires on.
 
-The outsider commits its one new file — a commit touching inbox/ only, its message naming the source. That commit is inside the read-only exception. The door is host-general: every host carries its own inbox/ under the same law, swept first by that host's own sessions. That is what keeps "no wish is ever lost" [INV-1] true when two contributors' sessions share one host. [E-11]
+A hand-copy is the anti-pattern the tool retires: it syncs silently, so nothing tells the next breakpoint what changed. [E-23]
 
-A live-spec session sweeps the inbox as its first act. It harvests each file into the home its route owns — a wish file into a queue row as always, a feedback file by the routing law [T-20]. An item must never sit durably-recorded but operationally invisible. The harvest commit removes the file; git history keeps it, and this internal removal is not an attic case, which protects host files. Each harvest is one commit that both lands the route — the row, the ledger line — and removes its file. The landing names the source file. So an interrupted harvest commits nothing and leaves the file untouched for the next sweep, which harvests it exactly once. A committed harvest leaves no file behind to re-harvest. So "spoken means it exists" holds without the outside session touching the queue. [T-10]
+**Only a session assigned to live-spec itself writes this repo** (spec, queue, journal, skills, templates, adopt procedure). Every other session is read-only here — a host adopt run, a skill install, anything that merely reads the package. It has exactly one exception: creating a new wish file in the inbox.
 
-**Before writing to a repo — and again before every commit** — the agent re-checks `git status` and HEAD against what it last read. Suppose HEAD moved, or the tree holds changes it did not make. Then it must stop, re-read the changed files, and only then proceed surgically — or back off to the inbox. New files under inbox/ are the expected benign case; the fence stays clear for them. The agent never pushes while another session is known to be live in the repo; push coordination belongs to the human. This applies to live-spec and to any host repo two sessions might share — the concurrency axis of the composition rule, made mechanical. [INV-11]
+The test is crisp. If the session cannot say "the human asked me, in this conversation, or via a standing routine the human created for live-spec, to change live-spec", it does not write. A host run's story lives in the host's journal, never here. [INV-10]
+
+**The inbox (inbox/)** is the parallel-safe intake door for wishes and feedback born outside a live-spec session. Each item arrives as one new file, named `YYYY-MM-DD-<source>-<slug>.md`.
+
+If the name is taken, append `-2`, `-3`, and so on — the same one collision law, base rule 18. When two sessions race one slug, they add a short session token to the source mark. A file holds a few plain lines, and it never edits an existing file: creating a fresh file cannot collide, while shared files can.
+
+The outsider commits its one new file — a commit touching inbox/ only, its message naming the source. That commit is inside the read-only exception.
+
+The door is host-general: every host carries its own inbox/ under the same law, swept first by that host's own sessions. That is what keeps "no wish is ever lost" [INV-1] true when two contributors' sessions share one host. [E-11]
+
+A live-spec session sweeps the inbox as its first act. It harvests each file into the home its route owns — a wish file into a queue row as always, a feedback file by the routing law [T-20]. An item must never sit durably-recorded but operationally invisible.
+
+The harvest commit removes the file; git history keeps it, and this internal removal is not an attic case, which protects host files. Each harvest is one commit that both lands the route — the row, the ledger line — and removes its file. The landing names the source file.
+
+So an interrupted harvest commits nothing and leaves the file untouched for the next sweep, which harvests it exactly once. A committed harvest leaves no file behind to re-harvest. So "spoken means it exists" holds without the outside session touching the queue. [T-10]
+
+**Before writing to a repo — and again before every commit** — the agent re-checks `git status` and HEAD against what it last read. Suppose HEAD moved, or the tree holds changes it did not make. Then it must stop, re-read the changed files, and only then proceed surgically — or back off to the inbox.
+
+New files under inbox/ are the expected benign case; the fence stays clear for them. The agent never pushes while another session is known to be live in the repo; push coordination belongs to the human. This applies to live-spec and to any host repo two sessions might share — the concurrency axis of the composition rule, made mechanical. [INV-11]
 
 ## Reference
 
@@ -1178,7 +1450,9 @@ Supporting material: how the axes compose, the open questions still on the table
 
 ### Composing across axes
 
-Some parts of a host project hold state: a screen, a panel, a saved file — anything the user can change and find again later. Call each of these a **stateful surface**. Review every stateful surface from a fixed list of angles, called axes. Each axis is one question about the surface's behavior:
+Some parts of a host project hold state: a screen, a panel, a saved file — anything the user can change and find again later. Call each of these a **stateful surface**.
+
+Review every stateful surface from a fixed list of angles, called axes. Each axis is one question about the surface's behavior:
 
 - in each view
 - in each mode

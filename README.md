@@ -2,7 +2,11 @@
 
 A continuous, self-proving development pipeline for building with AI agents: throw wishes in passing; each enters a proven process — spec-delta, validation with few batched questions, tests at the right layer, mechanical guardrails, milestone audits.
 
-**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts). Two counters exist by design: `VERSION` counts package RELEASES; the `PRODUCT_SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships. Eight skills (the shared rulebook plus seven working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
+**Status:** the package release number lives in `VERSION` (one home, never pinned in prose — a pinned copy only drifts).
+
+Two counters exist by design: `VERSION` counts package RELEASES; the `PRODUCT_SPEC.md` header carries the spec's own document-revision number, which runs ahead because the spec is edited more often than the package ships.
+
+Eight skills (the shared rulebook plus seven working ones), templates, adoption procedure, self-hosted spec + queue; method proven in production on track-coach (700+ tests, 30-widget library). MIT.
 
 **Lost in the folders?** [`OVERVIEW.md`](OVERVIEW.md) is the one-page map: what lives where (the pack, a
 user's personal layer, a host project) and where any given rule goes.
@@ -12,46 +16,74 @@ user's personal layer, a host project) and where any given rule goes.
 ## Why live-spec, when [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [spec-kit](https://github.com/github/spec-kit) and [Kiro](https://kiro.dev) exist
 
 They are good, and they share the right instinct: spec before code. Use them if their shape fits your work.
+
 live-spec is built for a different shape of work — **continuous**: you throw wishes in passing, mid-anything,
 and each one enters the process in a sentence; no planning session is required; the queue is persistent across
 sessions; execution runs asynchronously while you keep talking.
 
 Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy,
-Chromatic). Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails)
-diffs a run's actual changes against a per-task file declaration; credit where due. live-spec's one claim is
-the **integration**: the spec is the single authority binding the whole loop — intake validates every wish
-against it, scope declarations derive from it (not from an ad-hoc brief), a prover skill formally reviews
-it, adoption reverse-generates it from an existing codebase, and the development process itself is specced
+Chromatic).
+
+Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails)
+diffs a run's actual changes against a per-task file declaration; credit where due.
+
+live-spec's one claim is
+the **integration**: the spec is the single authority binding the whole loop —
+
+- intake validates every wish
+against it,
+- scope declarations derive from it (not from an ad-hoc brief),
+- a prover skill formally reviews
+it,
+- adoption reverse-generates it from an existing codebase, and
+- the development process itself is specced
 and proven the same way (this repo's own PRODUCT_SPEC.md went through product-prover before its first publish —
-findings in `docs/prover/`). Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search —
-found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md). If you know
+findings in `docs/prover/`).
+
+Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search —
+found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md).
+
+If you know
 prior art we missed, open an issue — we would genuinely like to read it.
 
 An independent look, July 2026: two clean-context analysts — briefed to verify this repo's claims
 against its actual files and to criticize all three subjects — compared live-spec with BMAD and Kiro,
-and three more read Spec Kit, OpenSpec, GSD and BMAD at source level. Their verdicts are published
+and three more read Spec Kit, OpenSpec, GSD and BMAD at source level.
+
+Their verdicts are published
 unsoftened, including the uncomfortable parts: this project is young and single-author, its
 "production-proven" evidence largely belongs to a sibling project, and its judgment loop is one model
-reviewing itself — only the mechanical gates are independent. Full texts:
+reviewing itself — only the mechanical gates are independent.
+
+Full texts:
 [the comparison](docs/research/2026-07-06-bmad-kiro-livespec-comparison.md) and
 [the implementation-level harvest](docs/research/2026-07-06-neighbours-implementation-harvest.md).
+
 The one distinction both analysts confirmed by RUNNING things rather than reading claims: live-spec's
 traceability and freshness gates are executable scripts that block a push, while the surveyed
 alternatives enforce their specs by prompt text (Spec Kit's consistency checks, analyze and converge
 included, are LLM instructions — the only mechanical checks in its repo are file-existence tests).
+
 Six mechanisms the neighbours genuinely do better are queued to be absorbed (queue rows 110–115).
 
 Where the analysts' verdicts came from review, the sharpest critique arrived the same week from use: the first real project built under
 the pack — a photo-portfolio site — reported that while no written promise ever regressed, everything
-that felt unfinished lived where the method wasn't looking. It specced SURFACES. The visitor's PATH went unspecified
+that felt unfinished lived where the method wasn't looking.
+
+It specced SURFACES. The visitor's PATH went unspecified
 (nobody asked "and where does the guest go from here?"); verify-by-deed confirmed "works", never
 "feels"; taste defaults accumulated silently until the product read eighty-percent-finished
-everywhere. This converges with the analysts' structural critique, so we treat it as the strongest
-entry in this section. The gap is now the pack's own shipped work — a product-fit interrogation on
+everywhere.
+
+This converges with the analysts' structural critique, so we treat it as the strongest
+entry in this section.
+
+The gap is now the pack's own shipped work — a product-fit interrogation on
 every incoming feature, a visitor-walk and feel pass at verify (scaled to the medium: a site walks
 motion, a book walks its reading path), and landing reports that state every taste choice plainly,
-marked tweakable, never asking for confirmation (pack releases 0.8.28–0.8.29, July 2026). A
-retroactive walk of these lenses over the pack's own ten shipped features closed two more holes the
+marked tweakable, never asking for confirmation (pack releases 0.8.28–0.8.29, July 2026).
+
+A retroactive walk of these lenses over the pack's own ten shipped features closed two more holes the
 same day; the first run on a real incoming feature is still ahead — this paragraph will be updated
 with how it goes.
 
@@ -59,9 +91,21 @@ with how it goes.
 
 ## The pipeline
 
-**Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep). Hard tripwires decide it; judgment plays no role: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17). A wish too big for its worth is negotiated in **scope** alone — cut surfaces or split into stages (SPEC T-15); time budgets and estimates play no part in that negotiation. A story's declared mockup-first entry condition ("show me first, then build") is written in its queue row and cancelled only by the human naming it — a general "go build" never cancels it (SPEC INV-43).
+**Step 0 — Intake.** A wish arrives in plain words. Name its DOOR aloud before any code — feature · bug · refactor · docs-only · skip (a removal of a shipped feature enters as a change with its own sweep).
 
-1. **Spec** (`spec-author`). Write or grow `PRODUCT_SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name. A feature's delta opens with **regression fences** when it touches a live surface (what must keep working, each citing the clause it guards — SPEC T-14), walks the **standard-facet sweep** (phone/touch/empty-error-loading/a11y/perf/visual-hierarchy/two-windows/missing-source — every facet ends as a spec sentence, decided or `[default]`-tagged and reported, SPEC T-13/INV-18), and closes with **non-goals** and a **success measure** (SPEC INV-20/INV-21). The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `PRODUCT_SPEC.md` is the reference shape).
+Hard tripwires decide it; judgment plays no role: a new user-visible surface, new state, a new interaction, or touching a spec-`[target]` surface makes it a FEATURE however casually it was asked; a request to merely see/try something lives only in a labelled `prototype/` home, never in prod (SPEC T-12, INV-16, E-17).
+
+A wish too big for its worth is negotiated in **scope** alone — cut surfaces or split into stages (SPEC T-15); time budgets and estimates play no part in that negotiation.
+
+A story's declared mockup-first entry condition ("show me first, then build") is written in its queue row and cancelled only by the human naming it — a general "go build" never cancels it (SPEC INV-43).
+
+1. **Spec** (`spec-author`). Write or grow `PRODUCT_SPEC.md`: entities, states, transitions, actors, invariants, cross-section composition across every view/mode/tier axis. One surface, one name.
+
+   - A feature's delta opens with **regression fences** when it touches a live surface (what must keep working, each citing the clause it guards — SPEC T-14),
+   - walks the **standard-facet sweep** (phone/touch/empty-error-loading/a11y/perf/visual-hierarchy/two-windows/missing-source — every facet ends as a spec sentence, decided or `[default]`-tagged and reported, SPEC T-13/INV-18), and
+   - closes with **non-goals** and a **success measure** (SPEC INV-20/INV-21).
+
+   The document itself reads use-case-first — scenarios of what the human does and sees lead, the formal handles trail as bracketed anchors, a formal index closes the doc (live-spec's own `PRODUCT_SPEC.md` is the reference shape).
 2. **Prove** (`product-prover`). Review the whole spec with formal-verification thinking. Findings recorded in `docs/prover/`. Fold every must-fix; surface the open decisions.
 3. **Architecture.** Write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams. In a live codebase every node pins to its owning place — the named thing first, the `:line` as a cached convenience a drift gate re-checks — this is where the spec is reconciled with shipped reality (the correction always runs from spec to truth).
 4. **Prove the architecture** (`product-prover`, architecture lens) whenever the doc changed: every fact has an owning node, no node without spec backing, every seam named.
