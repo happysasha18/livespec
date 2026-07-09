@@ -1,3 +1,6 @@
 .live-spec/checkpoints/
 .live-spec-fence
 .claude/worktrees/
+
+# rendered doc pages (render-doc.py output) are not committed
+*.html
