@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.41
+  version: 0.1.42
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -547,7 +547,7 @@ Lead with what a thing is, and hold the contrast frame out.
     should reveal the document's shape — the few big areas and what groups under each. A long flat run of
     peer items with no parent grouping, a heading that hides its topic, or a skipped level is a fix.
 
-## The pre-report walk — run before any movement-end or milestone report (SPEC INV-34)
+## The pre-report walk — run before any movement-end or milestone report, and before any surface is shown (SPEC INV-34, INV-83)
 
 The rules above passed their evals and still failed on the senior's own chat: the session-13 closing
 report led with pack-internal names and loan-translated doc metaphors and was bounced by its reader
@@ -565,6 +565,21 @@ another sentence. Before any movement-end or milestone report goes to the human:
    the report goes out. It guards what a phrase-by-phrase read misses under load — its origin is a chat
    report that led with "rows 166 and 148", which the reader could not parse (2026-07-08). It only warns;
    you rewrite the line to lead with the outcome; it never rewrites for you (SPEC INV-28).
+4. **Run the register lint — a BLOCK, not a warning (SPEC INV-83).** Feed every human-facing
+   surface — a rendered page, an onboarding mockup, a decision page, a report artifact — to
+   `python3 scripts/preshow-register-lint.py FILE`. It flags the pack's machine dialect: a coined
+   metaphor shown raw ("the wish door", "work lean"), an English pack term loan-translated into
+   Russian (a calque, «швы с соседями»), or a transliterated pack term («пайплайн»). A red result
+   BLOCKS the showing — unlike step 3's advisory warning, the surface does not reach the human until
+   the flagged text is rewritten into the reader's own plain words, because a machine-dialect leak is
+   what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past
+   the lint becomes a pattern the same day (the set grows by one per caught leak).
+
+A pattern lint catches known coinages, known calques, and named term classes; it cannot judge a novel
+machine-flavoured abstraction it has never been shown. That residual is the clean-reader check: for a
+milestone showing, a fresh agent with the pack NOT loaded reads the surface as an outside reader
+(docs/spec-style.md, the clean-agent split). The register lint is the floor; the clean-reader check is
+the ceiling.
 
 The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
 INV-31). Acceptance belongs to the reader: a movement-end report that draws a "wait, what is
