@@ -2557,3 +2557,17 @@ class TestPushToRemote(unittest.TestCase):
         self.assertIn("re-walks the README", bp)
         spec2 = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("re-walks the README", spec2)
+
+
+class TestCleanWriterLaw(unittest.TestCase):
+    """Row 208 (INV-84): human-facing prose is drafted by a clean writer. String level (M-198)."""
+
+    def test_clean_writer_law(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-84 |", spec, "Formal index lost INV-84")
+        self.assertIn("Human-facing prose is drafted by a clean writer.", spec)
+        self.assertIn("does not have the package rules loaded", spec)
+        self.assertIn("refuses a blanket rewrite of settled text", spec)
+        base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
+        self.assertIn("Human-facing prose is drafted by a clean writer (SPEC INV-84).", base)
+        self.assertIn("do not write the prose yourself", base)

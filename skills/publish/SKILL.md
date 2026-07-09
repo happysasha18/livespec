@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.26), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.27), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -42,7 +42,8 @@ nothing was touched; a stale claim found is fixed BEFORE the push, the same law 
 First, the floor every kind shares: the README/landing surface answers, in its first screen, WHAT this
 is, WHO it serves, and HOW to start — in the reader's language rather than the repo's internal vocabulary
 (base rule 2); every claim on it is TRUE of the shipped version today (a stale claim or picture is a
-false claim); the license/attribution state is explicit; and NOTHING secret or unshareable leaves —
+false claim); the
+license/attribution state is explicit; and NOTHING secret or unshareable leaves —
 the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
 sample checked shareable (no copyrighted material we may not republish). (The sweep items entered from
 the first eval run, 2026-07-05 — the bare arm knew them and the skill didn't; evals cut both ways.)
