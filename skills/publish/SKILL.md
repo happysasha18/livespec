@@ -2,7 +2,7 @@
 name: publish
 description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate, standing only as its preparation. NOT for in-session showing of work (communicator owns that) or for commits that stay local.
 metadata:
-  version: 0.1.2
+  version: 0.1.3
 ---
 
 # publish — the work leaves the machine looking like a product
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.24), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.25), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -99,6 +99,6 @@ and the taste comes from a real run rather than a promise.
 
 ## When NOT to use
 
-Not for showing work in-session (communicator rule 5); not for local commits; not for a prototype —
+Reserve it for work leaving the machine: skip it for showing work in-session (communicator rule 5), for local commits, and for a prototype —
 a sketch is never published, it isn't a product (base rule 16); not as a substitute for the human's
 publish gate — this skill prepares the deposit, the human releases it.

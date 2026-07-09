@@ -681,8 +681,9 @@ class TestSpecStyleLint(unittest.TestCase):
         with open(os.path.join(ROOT, "SPEC.md"), encoding="utf-8") as f:
             spec = f.read()
         lines = spec.splitlines()
-        start = next(i for i, l in enumerate(lines) if l.startswith("### Intake:"))
-        end = next(i for i in range(start + 1, len(lines)) if lines[i].startswith("### "))
+        start = next(i for i, l in enumerate(lines) if l.startswith("#### Intake:"))
+        end = next(i for i in range(start + 1, len(lines))
+                   if lines[i].startswith(("#### ", "### ", "## ")))
         section = "\n".join(lines[start:end])
         r = self._lint(section)
         self.assertEqual(r.returncode, 0,

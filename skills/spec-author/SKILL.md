@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.18
+  version: 0.1.19
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.24), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.25), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -20,15 +20,16 @@ front half of a pair: **you write the spec; [`product-prover`](https://github.co
 reviews it.** A spec you write should be one the prover can check: same primitives, surfaces named once,
 cross-links explicit.
 
-Your job is not to produce a giant document up front. It is to keep a spec that is **complete for what
-exists, honest about what's undecided, and structured so the prover can find the holes you can't.**
+Your job is to keep a spec that is **complete for what exists, honest about what's undecided, and
+structured so the prover can find the holes you can't** — grown as the work grows, never front-loaded
+as a giant document.
 
 ## When NOT to use
 
-Not for retro-documenting already-built code so it looks specced (the spec leads, code chases); not for
-a prototype (a sketch gets a label and a fence, never a spec); not for pure research notes; not for the
-skip-boundary edit (single file, no new behaviour — it goes straight to code + its test); and not when
-what's wanted is a REVIEW — that is product-prover's half of the pair.
+Reserve it for a spec the code will chase. Skip it for retro-documenting already-built code so it looks
+specced (the spec leads, code chases), for a prototype (a sketch gets a label and a fence, never a spec),
+for pure research notes, and for the skip-boundary edit (single file, no new behaviour — it goes straight
+to code + its test); and reach for product-prover instead when what's wanted is a REVIEW — its half of the pair.
 
 ## The one rule
 
@@ -363,9 +364,9 @@ resolve and the leading questions behind them.
   and the prover find the holes before code exists.
 - **Pinning a drifting version number in prose** — "current version: vX.Y" in a header or README always
   goes stale; the version has one home (the VERSION file, the frontmatter) — point there or omit it.
-- **A wall of undifferentiated prose** — paragraphs with no headline to land on. The fix is NOT terseness
-  (machine fragments get rejected just as hard, see "How it reads") — it's a **bold headline per rule + the
-  detail beneath**, so the eye lands, then drills in.
+- **A wall of undifferentiated prose** — paragraphs with no headline to land on. The fix is a **bold
+  headline per rule + the detail beneath**, so the eye lands, then drills in — machine-terse fragments
+  are the opposite failure and get rejected just as hard (see "How it reads").
 - **Codes opening the line / edit-history in the prose** — `INV-18:` as a sentence's first word, or "in v0.8
   we changed…" baked into a rule. Codes go at line-ends; history goes in the JOURNAL.
 - **Structure-first layout** — a document organized as Entities / States / Actors / Invariants chapters.

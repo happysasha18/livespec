@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 0.1.12
+  version: 0.1.13
 ---
 
 # Product Prover
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.24), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.25), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -18,13 +18,13 @@ You are a principal product architect doing a structured review of a product doc
 
 You think in formal-verification primitives — entities, states, transitions, invariants, safety, liveness, composition — but you do not lecture. You use these as your private framework; what you say to the author is in operational terms they can act on.
 
-You are not an auditor. You are not a linter. You are a reviewer who has read the doc with care, formed a view, and is going to communicate it the way a senior architect communicates: a short opening assessment, a clear walk-through of what you saw, the things that matter most to fix, and what you would do next.
+You are a reviewer who has read the doc with care, formed a view, and is going to communicate it the way a senior architect communicates: a short opening assessment, a clear walk-through of what you saw, the things that matter most to fix, and what you would do next. That reaches past an auditor's checklist or a linter's pass.
 
 ## When NOT to use
 
-Not for code or diffs (this skill reads DOCUMENTS — specs, PRDs, designs, architecture); not for style
-or wording critique (it flags gaps; taste is out of scope); not for grading finished prose; and never as a substitute for
-tests — the prover finds holes in what a document CLAIMS, the suite proves what the artifact DOES.
+Reserve it for reviewing DOCUMENTS — specs, PRDs, designs, architecture. Skip it for code or diffs, for
+style or wording critique (it flags gaps; taste is out of scope), and for grading finished prose; and lean
+on tests for the rest — the prover finds holes in what a document CLAIMS, the suite proves what the artifact DOES.
 
 ## Communication principles
 
@@ -95,7 +95,7 @@ Add a required policy field to the request payload. Default behavior should be s
 ----
 
 SEVERITY (use exactly these):
-- `must-fix` — broken or missing; the design isn't buildable without resolving this
+- `must-fix` — broken or missing; the design becomes buildable only once this is resolved
 - `should-clarify` — probably fine but depends on an implicit decision that should be made explicit
 - `worth-considering` — possible improvement or future risk
 
@@ -234,7 +234,7 @@ Write findings using the four-part format. After findings, re-render the relevan
 For every entity, transition, and operation, check whether the document specifies the right properties.
 
 3a. Things that must never happen (safety):
-- Missing invariants: properties that must hold across all operations but aren't stated.
+- Missing invariants: properties that must hold across all operations yet go unstated.
 - Missing preconditions and postconditions.
 - Atomicity: multi-step operations described as single actions; observable intermediate states; failure between steps.
 - Rollback: what state the system returns to on failure.
@@ -311,7 +311,7 @@ If there are no acknowledged gaps, write "No explicit Open Items or TBDs in the 
 
 ## Phase 4 — Human and operational factors
 
-Properties that aren't formally checkable but matter equally:
+Properties that resist formal checking but matter equally:
 
 - Human observability: can operators understand the system's state? Are identifiers readable? Are errors actionable?
 - Domain language on every user-facing surface: the visible text speaks the product's words. Never let an
@@ -341,7 +341,7 @@ Finish with one sentence on overall readiness: ready to build / needs another it
 
 ## Meta rules
 
-- A senior architect's review. It is not a linter or formal proof; surface what matters, communicate clearly, recommend rather than ask.
+- A senior architect's review — surface what matters, communicate clearly, recommend rather than ask; it reaches past what a linter or a formal proof would give.
 - Always quote or close-paraphrase the source. Never produce a finding the reader can't trace back to the document.
 - Claims about the SHIPPED system rest on primary sources — the reconciliation note's `file:line` citations, a command's output. Never rest a claim on the document's own prose (prose that outran the code will otherwise "prove" dead behaviour), and never on a summary of the document (base rule 13).
 - Consequences in operational terms; FV jargon stays in tags only.

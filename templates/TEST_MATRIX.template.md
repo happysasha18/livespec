@@ -42,7 +42,7 @@ block. Every row states the positive AND the negative side — what the fact doe
 
 ## Coverage validation — walked at every derivation, re-walked at milestones
 
-Derivation is not done until every line below is checked against the CURRENT spec + architecture:
+Derivation is done only when every line below is checked against the CURRENT spec + architecture:
 
 - [ ] Every spec anchor (invariant / state / transition) appears in ≥ 1 row.
 - [ ] Every architecture node has ≥ 1 block, and its negative-side rows exist (the regression fence).
