@@ -2,7 +2,7 @@
 name: publish
 description: The publish-quality gate — run it whenever work is about to leave the machine: a repo going public, a push that updates a public README, a release, a plugin-directory submission, a skill deposited for others, rendered cards sent to a design project. It checks that the publication owes its reader what the artifact's KIND owes (a skill shows install + commands + when-to-use; a tool shows real runs; a visual product shows fresh screenshots; prose shows its reading path), lets each publish TARGET plug its own steps into the walk, and always finishes BEFORE the human's publish gate, standing only as its preparation. NOT for in-session showing of work (communicator owns that) or for commits that stay local.
 metadata:
-  version: 0.1.3
+  version: 0.1.4
 ---
 
 # publish — the work leaves the machine looking like a product
@@ -42,7 +42,9 @@ nothing was touched; a stale claim found is fixed BEFORE the push, the same law 
 First, the floor every kind shares: the README/landing surface answers, in its first screen, WHAT this
 is, WHO it serves, and HOW to start — in the reader's language rather than the repo's internal vocabulary
 (base rule 2); every claim on it is TRUE of the shipped version today (a stale claim or picture is a
-false claim); the
+false claim); the README carries a Known issues section while real known problems exist — each issue
+stated honestly with its fix status, the list re-read at every push and a resolved issue removed the
+push it ships (his word 2026-07-10); the
 license/attribution state is explicit; and NOTHING secret or unshareable leaves —
 the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
 sample checked shareable (no copyrighted material we may not republish). (The sweep items entered from

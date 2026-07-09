@@ -67,6 +67,16 @@ A bug takes a shortcut: matrix row, failing test, fix — the spec is touched on
 
 This repo runs on its own method: it carries its own `PRODUCT_SPEC.md`, queue, tests, and prover records (`docs/prover/`). The method has run in production on the sibling project [track-coach](https://github.com/happysasha18/track-coach) (700+ tests, 30-widget library). For an honest outside look, two independent source-level comparisons with the neighbouring frameworks (`BMAD`, [Kiro](https://kiro.dev), [Spec Kit](https://github.com/github/spec-kit)) are published unsoftened in [`docs/research/`](docs/research/).
 
+## Known issues
+
+We keep this list honest and current, and we review it at every push.
+
+- **Internal vocabulary can leak into human-facing text.** The pack's working terms, and loan-translations from other languages, sometimes appear in text meant for people. A register lint blocks any shown artifact that carries a known leaked term, and its pattern list grows with every catch. Chat messages have a reminder hook and stay the weakest surface.
+- **Rendered doc links do not resolve.** Rendered documentation pages do not yet turn Markdown cross-links and heading anchors into working links. A link between two rendered pages points at the raw .md file. The fix is queued as ROADMAP row 195.
+- **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 63 recorded style-lint findings and 10 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.
+- **First-run onboarding is a mockup only.** Onboarding exists as an approved-pending mockup and does not run yet. Today a new project is set up by hand, following the settings documentation.
+- **Guardrail checks ship as descriptions.** The scaffold describes four guardrail checks, and each project wires its own instance. Generic runnable check code has not shipped yet.
+
 ## License
 
 `MIT` (see the `LICENSE` file). Copyright Alexander Abramovich 2026.
