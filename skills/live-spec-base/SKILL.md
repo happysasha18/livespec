@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.25
+  version: 0.1.26
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -47,12 +47,17 @@ a working skill still stands: its pointer here reads as plain advice.
    `.live-spec/checkpoints/`, gitignored and kept inside the repo tree) holding done / in-progress / next,
    updated AS the work runs — so a cut-off RESUMES from disk instead of restarting. Red at a pause is never
    committed; the failing test name + hypothesis becomes the top NEXT_STEPS item — the checkpoint IS the
-   red test.
+   red test. A checkpoint or handoff note that records a LIVE background worker also records the worker's
+   id (pointing at the worker's own checkpoint file), its briefed write-set, and the two liveness checks a
+   resuming session runs before touching those files or spawning a sibling — and it never frames the
+   worker's output as finished while the worker may still run (SPEC INV-76). Before a memory wipe, prefer
+   halting the workers or letting them finish, so the next session starts single-writer; and say plainly
+   when a worker dies with a closed window or a sleeping machine.
 
 7. **The concurrent-edit fence, before every write and every commit.** Re-check `git status` + HEAD against
    what you last read; if HEAD moved or the tree holds changes you did not make — STOP, re-read, then
    proceed surgically or back off. A repo you were not assigned to is read-only (one exception: a new wish
-   file in its inbox). Applies to ANY skill that writes shared files, not just adoption (SPEC INV-10, INV-11). And within ONE session up to three build lanes may roll without asking (SPEC T-18; a fourth only on the human's asked word): every write to a document the lanes share serializes under the single PEN, one lane at a time; a later train's code and tests live in its own isolated copy of the tree until the senior integrates them; a landing commit carries exactly one row's delta, its gate run on a tree clean of any other lane's unfinished work (SPEC INV-39).
+   file in its inbox). Applies to ANY skill that writes shared files, not just adoption (SPEC INV-10, INV-11). And within ONE session up to three build lanes may roll without asking (SPEC T-18; a fourth only on the human's asked word): every write to a document the lanes share serializes under the single PEN, one lane at a time; a later train's code and tests live in its own isolated copy of the tree until the senior integrates them; a landing commit carries exactly one row's delta, its gate run on a tree clean of any other lane's unfinished work (SPEC INV-39). A background worker from a PRIOR context is a concurrent writer too: it survives a memory wipe, and the OS process list and the harness task list are never proof of death. Such a worker is a foreign writer until verified by the resume protocol's two checks — the write-set's file times watched over a short window, and one message to its recorded id — and no second worker goes onto a shared tree until the first has confirmed halted by its own reply or been declared dead by both checks; the same-session fence-benign courtesy never crosses a wipe (SPEC INV-76).
 
 8. **Freshness: versions are re-checked at every safe breakpoint.** Re-stat the installed skills, the pack,
    and the profiles; on any version change re-read the changed file before continuing, working only from

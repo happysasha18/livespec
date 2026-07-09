@@ -2383,3 +2383,29 @@ class TestArchitectureViews(unittest.TestCase):
         # budgets carry numbers and instrumentation homes
         self.assertIn("Instrumentation home", flat)
         self.assertIn("suite wall-time", flat)
+
+
+class TestWorkerLiveness(unittest.TestCase):
+    """Row 181 (INV-76): a background worker outlives a memory wipe — the resume protocol proves it
+    dead or alive before any file is touched or a sibling spawned. String level."""
+
+    def test_worker_liveness_protocol(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-76 |", spec, "Formal index lost INV-76")
+        self.assertIn("proves it dead or alive", spec)
+        # the two checks, with their told defaults
+        self.assertIn("file times", spec.lower())
+        self.assertIn("~30 s [default]", spec)
+        self.assertIn("~2 min [default]", spec)
+        # neither list is proof of death
+        self.assertIn("harness task list", spec)
+        # the boundary: fence-benign never crosses a wipe
+        self.assertIn("foreign writer until verified", spec)
+        # the base rules carry the working elaboration (checkpoint duty + fence extension)
+        base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))
+        for needle in ("prior context", "proof of death", "halting", "write-set",
+                       "INV-76"):
+            self.assertIn(needle.lower(), base.lower(),
+                          "base rules miss the liveness protocol piece: %s" % needle)
+        # never framed finished before the verdict
+        self.assertIn("never framed", spec.lower())
