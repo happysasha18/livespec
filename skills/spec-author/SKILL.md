@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.19
+  version: 0.1.20
 ---
 
 # Spec Author
@@ -161,11 +161,17 @@ When a surface (a player, a form, an editor, a panel) carries **state**, the sys
 
 - **view** (compact / detailed) · **mode** (quick / full, read / edit) · **tier** · **viewport size** ·
   **persistence / reopen** (any state that survives a reload — localStorage, a saved file) ·
-  **concurrency** where it applies.
+  **concurrency** where it applies ·
+  **every other live surface** — every other surface that can be present at the same time, whether or not
+  that other surface holds state: a sibling sharing the screen, or a surface the flow reaches just before
+  or after this one (a static end screen counts). For each, state what this surface does while that one is
+  present: hold, clear, or hand off.
 
 The bugs that pass every unit test live in the **product** of surface-state × axis, because each was
-specified alone. The two authors forget most: viewport size (a grid that reflows below some width) and
-persistence/reopen (state written last session auto-restoring into a changed UI).
+specified alone. The three authors forget most: viewport size (a grid that reflows below some width),
+persistence/reopen (state written last session auto-restoring into a changed UI), and every other live
+surface (a caption still naming the previous photo once the closing screen arrives, because "what the
+caption shows when the finale is in view" was never written).
 
 So, for every stateful surface, before you call its section done:
 
@@ -327,9 +333,11 @@ Ask each question out loud; a "no" or "don't know" is a gap to fill or mark ⟨D
 - **Invariants:** What must never happen here (safety)? What must eventually happen (liveness)? Is each
   stated, not just implied?
 - **Composition:** Does this surface carry state? Under which of the canonical axes (view / mode / tier /
-  viewport size / persistence-reopen / concurrency) is it shown? For each, is its state still visible and
-  reversible? Is the transition's effect (preserve / reset / block) stated? If it persists state, is the
-  older-stored-value × current-code case handled?
+  viewport size / persistence-reopen / concurrency / every other live surface) is it shown? For each, is
+  its state still visible and reversible? Is the transition's effect (preserve / reset / block) stated? If
+  it persists state, is the older-stored-value × current-code case handled? For every OTHER surface that
+  can be present at the same time — a sibling on the screen, the surface one step before or after in the
+  flow — is this surface's behaviour stated while that one is present?
 - **Facets (feature door):** Did the facet sweep run — does every entry of the canonical facet list end
   in a spec sentence, decided or `[default]`-tagged and reported?
 - **Naming:** Is anything in this section also referred to by another name elsewhere? Unify it.

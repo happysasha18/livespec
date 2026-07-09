@@ -1,33 +1,31 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**SESSION 28 DONE (2026-07-09) — a big foundation movement, ALL committed local, NOTHING pushed. He approved
-each step live.** Landings:
-- STRUCTURE: PRODUCT_SPEC (20 flat `##` → 1 opener + 7 named parents) and communicator (22 rules → 6 groups,
-  16 register → 5) read as trees; rule numbers kept as trailing `*(rule N)*` anchors (no renumber, a 15/16
-  collision between the two lists forbids it).
-- POSITIVE OPENERS: every "Not for X" / "You are not" opener across the skills + TEST_MATRIX template leads
-  positively, honest exclusions kept. (spec-style.md's R13 definition left as-is — it already leads positive.)
-- ENGLISH + one-thought-per-paragraph: communicator + build-pipeline fully de-Russified, run-ons split; both
-  coined-metaphor calque examples replaced with clear English (his flag: gibberish outside the project). «покажи
-  все фичи» → "show me all the features" everywhere. Traceability check-phrases synced IN LOCKSTEP.
-- NESTING: communicator's 7 wall-of-text bullets given an inner level (short lead + sub-bullets), words untouched.
-- RENAME: SPEC.md → PRODUCT_SPEC.md (+ its template; title "Product Spec"; pairs with the architecture spec);
-  path swept across all live files, dated history left, `SPEC INV-x` anchor namespace unchanged.
-Suite 207 green, 1 expected pre-push red (prover-record, M-6). deploy re-sync still owed.
+Sessions 28–29 landings (structure/openers/English/nesting/SPEC.md→PRODUCT_SPEC.md rename; readability sweep;
+prover-wish INV-72) are committed history — full detail in JOURNAL.md.
 
 ## LIVE STATE (2026-07-09, session 29)
-Versions: pack 0.9.0 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.13 · spec-author 0.1.19 ·
-build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.0 · ARCHITECTURE v0.2.
-**Suite 208 green, 0 red — the FULL pre-push re-prove (M-6) is DONE and recorded, the prover-record gate is
-GREEN.** main HEAD LOCAL, origin behind 71. Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
+Versions: pack 0.9.1 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.14 · spec-author 0.1.20 ·
+build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.1 · ARCHITECTURE v0.2.1.
+**Suite 209 green, 0 red.** Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
 Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
-**PUSHED 2026-07-09 ~15:04 on his "go" (HEAD `20a458f`, origin==HEAD, all gates green).** Deployed skills
-re-synced from repo (8 skills, `sync-skills.sh`). Pin drift cleaned. Still open, NOT push-blockers: PLAYBOOK
-profile count "14 rules + 8-check" — separate repo, his call to bump.
+**INV-72 (prover-wish) COMMITTED LOCAL this session, NOT pushed** — building the 1.0 run in a batch, push on his
+go. Last push 2026-07-09 ~15:04 (`20a458f`). Still open, NOT push-blockers: PLAYBOOK profile count "14 rules
++ 8-check" — separate repo, his call to bump. Deployed skills re-sync (`sync-skills.sh`) owed before push.
 NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
 (bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
 3 real body defects (stray `</content>` tag, two stale skill-count ordinals, stale ARCHITECTURE header) and
 queued 7 latent design findings as rows 173-179; record: `docs/prover/2026-07-09-full-reprove-session29-body.md`.
+
+## 1.0 BAR (2026-07-09, his decision this session — the finish line for this push)
+**1.0 = everything below done HERE, EXCEPT two field items that ride real windows post-1.0: the
+remote/cloud session, and the REAL tlvphoto migration (writing into tlvphoto's tree).** Still IN, before
+1.0, all in THIS window: prover-seam-hunt · spec-format-by-type · the 7 small holes (rows 173-179) ·
+authoring-terminology · **architecture tiers by type + its READ-ONLY validation over tlvphoto (his words:
+"кажется ДО, но это ТУТ, в стороне" — touch nothing)** · **NEW wish: project onboarding — how the user
+discovers what they can customize** (`docs/wishes/2026-07-09-project-onboarding-what-can-i-customize.md`;
+kind/budget/profiles/skill-fit/settings-ladder). MIGRATION READINESS (his Q): ADOPT.md is mature + proven
+once (tlvphoto 2026-07-04), BUT the type-aware format + prover-seam-hunt are prerequisites — build them
+here FIRST → read-only sim here → real migration in tlvphoto's OWN window (this window audit-only).
 
 ## ACTIVE PLAN (2026-07-09 — decisions locked; he approved "все как ты сказал")
 Approved order: **finish the English/nesting sweep → the prover-wish (2) → build the feature/flow format (3)
@@ -46,12 +44,12 @@ verifier + written procedure, through the pipeline) — his word this session; n
    product-prover "Two depths/Both modes" was stale against three review modes (→ "Three modes"). Copy/count
    fixes only, no rule changed, not test-pinned. OPEN for push-prep: version-bump question on the two edited
    skills (I left versions — no rule changed, so no banner cascade; his convention call if he wants a bump).
-2. **PROVER-WISH — from the tlvphoto window, queued here (`docs/wishes/2026-07-09-prover-unwritten-seams.md`).**
-   Teach `product-prover` to flag a stateful surface whose behaviour is not stated for every situation it can
-   reach — especially "when another surface is present/active" — beyond only the seams an author wrote; plus a
-   spec-author counterpart (compose-across-axes gains "every OTHER live surface" as an axis). Motivated by
-   tlvphoto's caption-over-finale hole (a seam nobody wrote); bundles the door×viewport-relayout sibling.
-   FEATURE, changes product-prover + spec-author. He agreed: do this BEFORE the tlvphoto migration.
+2. **PROVER-WISH — DONE (session 29, 2026-07-09).** SPEC INV-72 (the prover reads the whole axis list [C-1]
+   actively, deriving each stateful surface's reachable situations itself — every axis it passes through while
+   shown + every co-present surface, stateful or not — a blank answer is a finding of the E-14 class) + a new
+   C-1 axis "every other live surface". Prover pass folded 4 should-clarify (`docs/prover/2026-07-09-inv72-
+   prover-seam-hunt.md`). Shipped in product-prover (Unwritten-seams lens) + spec-author (compose axis);
+   ARCHITECTURE INV-72→product-prover; matrix M-179; `test_prover_hunts_unwritten_seam` red-first then green.
 3. **Feature/flow spec format (design DECIDED — `docs/spec-format-by-project-type.md`).** Kiro-style ID +
    back-reference; the primary spec UNIT is a per-project-type parameter (feature/command/rule/argument),
    BMAD-style. Single documents, no file sprawl; render generates the hypertext. Coverage check both directions.

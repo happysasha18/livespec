@@ -521,6 +521,38 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("the stretch's verdict outranks the label", cm, "communicator lost the calque example")
 
 
+class TestUnwrittenSeamHunt(unittest.TestCase):
+    """The prover hunts the unwritten seam (SPEC INV-72 + C-1 axis, row prover-wish 2026-07-09).
+    Normative homes: SPEC prose + index (INV-72 owned by product-prover, C-1 axis owned by spec-author),
+    the stress-lens in product-prover, the axis in spec-author's compose list. String-level, matrix M-179."""
+
+    SEAM = "every other surface that can be present at the same time"
+
+    def test_prover_hunts_unwritten_seam(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # SPEC: the invariant and its C-1 axis exist, both sides stated.
+        self.assertIn("[INV-72]", spec, "SPEC lost the unwritten-seam invariant anchor")
+        self.assertIn(self.SEAM, spec, "SPEC lost the every-other-live-surface axis")
+        self.assertIn("whether or not that other surface holds state", spec,
+                      "SPEC lost F4: a non-stateful co-present surface (a static end screen) is in scope")
+        self.assertIn("a reachable situation with a blank answer is a finding", spec.lower(),
+                      "SPEC lost the finding side of INV-72")
+        for anchor in ("[C-1]", "[E-14]", "[INV-18]", "[INV-31]"):
+            self.assertIn(anchor, spec, "SPEC INV-72 prose lost anchor %s" % anchor)
+
+        # product-prover skill: the active-hunt stress lens ships in the SKILL.md.
+        pp = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
+        self.assertIn("unwritten seam", pp.lower(), "product-prover lost the unwritten-seam lens headline")
+        self.assertIn(self.SEAM, pp, "product-prover lens lost the co-present-surface enumeration")
+        self.assertIn("[INV-72]", pp, "product-prover lens lost its anchor")
+        # never-side: the prover reports, it does not invent or ask the human.
+        self.assertIn("invents no answer", pp, "product-prover lost the never-invent side of the hunt")
+
+        # spec-author skill: the matching axis lives in the compose list (its operational home).
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn(self.SEAM, sa, "spec-author compose list lost the every-other-live-surface axis")
+
+
 class TestFacetSweep(unittest.TestCase):
     """The facet-sweep landing (SPEC v0.11.0, row 72): a feature-doored spec-delta walks the standard
     facets a layman can't name; every facet ends as a spec sentence — decided or [default]-tagged +

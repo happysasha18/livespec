@@ -2,6 +2,36 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-09 (session 29) — the prover hunts the unwritten seam (INV-72 + C-1 axis)
+
+**What:** Taught the method to catch the seam nobody wrote. A new invariant (INV-72): the prover reads the
+whole axis list actively, deriving each stateful surface's reachable situations for itself instead of
+trusting the author to have filled every one — every axis it passes through while already shown (view,
+mode, tier, viewport, reopen) and every other surface that can be present at the same time (siblings on the
+screen, one step before and after in the flow, stateful or not). A situation with a blank answer is a
+finding, of the same class as a fact no node owns. And a matching new axis in the canonical list: "every
+other live surface." The prover reports the gap; the author writes the sentence; the human is asked nothing.
+
+**Why:** A wish from the tlvphoto window (`docs/wishes/2026-07-09-prover-unwritten-seams.md`). On tlvphoto's
+live walk the caption kept showing the previous photo's title once the visitor reached the closing screen —
+a textbook cross-section hole (caption surface × finale surface) that shipped because "what does the caption
+show when the finale is in view?" was never written, so there was no seam for the prover to check. The prover
+read a spec that looked complete because the missing state was invisible in it. INV-72 makes the prover
+enumerate the reachable situations itself, so the absent seam becomes a finding rather than a silent pass.
+The door re-running its entry fade on a viewport relayout is the same class (an already-shown surface under a
+change nobody composed) and rides the same lens.
+
+**How it went through the pipeline:** spec (INV-72 + C-1 axis, prose at the style-gate baseline — one scissors
+tell caught by the linter and rewritten positively) → prove (product-prover on the delta; 4 should-clarify
+folded in-pass, record `docs/prover/2026-07-09-inv72-prover-seam-hunt.md` — chiefly: trim INV-72 to own only
+the prover's hunt so it derives to one node, cite C-1/INV-18 for the authoring half; a non-stateful co-present
+screen is in scope) → architecture (INV-72 → product-prover node, pinned to the new lens; assignment only,
+step 4 stood down) → matrix (M-179, skill-kind string row, both sides) → test (`test_prover_hunts_unwritten_seam`
+red-first, then the two skill edits made it green) → code (product-prover gains the "Unwritten seams" stress
+lens; spec-author's compose list gains the axis) → verify (full suite 209 green, pin-drift clean, the lens
+fired against the tlvphoto case and flagged it) → commit. Versions: pack 0.9.1, product-prover 0.1.14,
+spec-author 0.1.20, PRODUCT_SPEC v0.16.1, ARCHITECTURE v0.2.1. First of the run to 1.0.
+
 ## 2026-07-08 (session 27) — SPEC + ARCHITECTURE humanized (prose only; rules, anchors, tests unchanged)
 
 **What:** Alexander drove a readability pass over the whole spec and ARCHITECTURE.md's prose. The spec had

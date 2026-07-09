@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.0, 2026-07-09)
+# live-spec — Product Spec (v0.16.1, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -1460,8 +1460,13 @@ Review every stateful surface from a fixed list of angles, called axes. Each axi
 - at each viewport size
 - when it is closed and reopened
 - concurrency, wherever two writers can genuinely act on the surface at once
+- alongside every other surface that can be present at the same time, whether or not that other surface holds state — a sibling sharing the screen, or a surface the flow reaches just before or after this one (a static end screen counts)
 
 A surface's spec is complete once every axis on the list has an answer.
+
+**The axis authors forget is the last one: every other live surface.** A surface holding state rarely lives alone. Others share its screen, and the flow reaches it with a surface still showing from the step before. For each such neighbour, say what this surface does while that one is present — does it hold, clear, or hand off? The seam nobody writes is the classic stranding bug: a caption still naming the previous photo once the closing screen arrives, because "what the caption shows when the finale is in view" was never written as a sentence.
+
+**The prover hunts the seam the author never wrote.** The prover reads the whole axis list [C-1] actively, deriving each surface's reachable situations for itself rather than trusting the author to have filled every one. For a stateful surface it walks every axis: the views, modes, and tiers; the viewport shapes and reopens it passes through while already shown; and — the axis authors forget most — every other surface that can be present at the same time, siblings on its screen and the surfaces one step before and after it in the flow. For each situation it asks one question: is this surface's behavior stated there? A reachable situation with a blank answer is a finding, of the same class as a fact no node owns [E-14]; a state the spec leaves out while the running product still reaches it is the exact hole. The hunt rides both the whole-spec pass and the surface-add pass [M-6]. It reports the missing seam and leaves the sentence to the author, who writes it as a composition invariant [C-1], decided or `[default]`-tagged the same way the facet sweep tags its own [INV-18, INV-31]; the prover invents no answer and asks the human for nothing. [INV-72]
 
 #### Document provenance (the adoption axis)
 
@@ -1632,7 +1637,8 @@ meaning, this table is only the map.
 | M-5 | CI mirror of the same checks: same scripts, second net runs the FULL set (the reach map stays local); worked example `.github/workflows/gates.yml` + guardrails-README host guidance | Rhythm |
 | M-6 | push gate: prover re-check before every push | Rhythm |
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
-| C-1 | canonical axes + provenance axis | Composing across axes |
+| INV-72 | the prover reads the whole axis list [C-1] actively, deriving each stateful surface's reachable situations for itself — every axis it passes through while already shown (view, mode, tier, viewport, reopen) and every other surface present at the same time (siblings on its screen, one step before and after it in the flow, stateful or not) — and asks for each whether behavior is stated there; a reachable situation with a blank answer is a finding, the same class as a fact no node owns [E-14]; rides the whole-spec and surface-add passes [M-6]; reports the gap, invents no answer and asks the human nothing, the author writing the sentence as a C-1 composition invariant tagged like the facet sweep [INV-18, INV-31] | Composing across axes |
+| C-1 | canonical axes (view · mode · tier · viewport · reopen · concurrency · every other live surface) + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |
 | D-3 | snapshot retention | Open decisions |
