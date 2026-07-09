@@ -2459,3 +2459,15 @@ class TestFieldLessons(unittest.TestCase):
         self.assertIn("re-arms the full pass", adopt)
         prover = re.sub(r"\s+", " ", read("skills/product-prover/SKILL.md"))
         self.assertIn("naming the prover skill version", prover)
+
+    def test_suite_plumbing_must_not_lie(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-80 |", spec, "Formal index lost INV-80")
+        self.assertIn("plumbing must not lie", spec)
+        ta = re.sub(r"\s+", " ", read("skills/test-author/SKILL.md"))
+        # the three legs
+        self.assertIn("import the skip helper at module load", ta)
+        self.assertIn("re-export completeness test", ta)
+        self.assertIn("suite log", ta)
+        # the boundary that keeps CI legal
+        self.assertIn("background or delegated run", ta)

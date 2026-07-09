@@ -92,6 +92,14 @@ screen — both past every green desktop run.)
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned
   set. An unexpected skip (a browser missing, a fixture absent) is a failure wearing a quieter color.
+- **The suite's own plumbing must not lie (SPEC INV-80).** A skip path executes even when never
+  taken: import the skip helper at module load, so a skip that cannot run is red on every machine
+  instead of a silent pass on the one that needed it (a `skip()` NameError once hid exactly there).
+  An engine/instance shim owes a re-export completeness test — every name the instance re-exports
+  from the engine, asserted present (a missing re-export once kept a whole suite silently red). And
+  a wrapper's exit code is never the verdict for a background or delegated run: the gate reads the
+  suite log's own tail line ("N/N green"), because a wrapper's exit 0 is the wrapper's, never the
+  tests'.
 - **Traceability is a standing, enforced test**: a test in the suite fails on a matrix row citing a
   missing test, a duplicate id, a spec fact with no row, or a resolved-but-live decision marker — so
   drift is caught at every commit.

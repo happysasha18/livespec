@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.8, 2026-07-09)
+# live-spec — Product Spec (v0.16.9, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -576,6 +576,8 @@ build-pipeline calls test-author the same way steps 1–2 call spec-author and p
 **A geometry fact is asserted relative, wide, and long.** A centering or positioning fact asserts relative geometry — |center(element) − center(viewport)| ≤ ε — at two or more viewport sizes, and after N consecutive steps of the interaction, so cumulative drift shows. An absolute-pixel assertion at one viewport after one step passes forever while each next step lands further off; the drift hides from it by construction. [INV-78]
 
 **An engine extracted from an instance tests on its own generic fixtures.** When a generic engine is carved out of a working project, the donor's data keeps the donor's shape — and a suite running only on it proves the donor, never the engine. The engine's suite runs on engine-shaped fixtures (its own ids, its own content model); the donor's data may stay as an extra real-data suite, never as the only one. And every donor-specific constant the extraction finds — an id format, a hardcoded wordmark, a path — becomes a named entry in the engine's content contract, with a test that the engine works without it. [INV-79]
+
+**The suite's own plumbing must not lie.** Three legs of one class — the harness lying about its own verdict. A skip path executes even when never taken: the skip helper imports at module load, so a skip that cannot run is red instead of a silent pass on the machine that needed it. An engine/instance shim owes a re-export completeness test — a missing re-export once kept a whole suite silently red. And a wrapper's exit code is never the verdict for a background or delegated run — the gate reads the suite log's own tail line (the pinned skip-set law's sibling; a foreground gate reading its own child's exit stays legal). [INV-80]
 
 The spec says what the product is. Tests prove facts about the shipped artifact. Two documents sit between them, and if they stay implicit, they get skipped — a lost layer.
 
@@ -1678,6 +1680,7 @@ meaning, this table is only the map.
 | INV-77 | the real-device boundary: touch physics, scroll snapping, background throttling live past a desktop headless browser; such a behaviour gets a real-device walk row the suite can never green, owed to the human's hands before ship (kin of the feel gate [INV-30]); the suite names what it cannot see | From the spec to the tests |
 | INV-78 | a geometry fact asserts relative, wide, and long: the distance between the element's center and the viewport's center stays ≤ ε, at ≥ 2 viewport sizes, after N consecutive interaction steps so cumulative drift shows; an absolute one-viewport one-step assertion hides the drift by construction | From the spec to the tests |
 | INV-79 | an engine extracted from an instance tests on its own generic fixtures (engine-shaped ids and content model), never only the donor's data (the donor's suite may stay as an extra); every donor-specific constant found at extraction becomes a named content-contract entry with a works-without-it test; two halves, one law: fixtures (test-author) + the contract entries (spec-author) | From the spec to the tests |
+| INV-80 | the suite's own plumbing must not lie, three legs: a skip path executes even when never taken (skip helper imports at module load — an unrunnable skip is red); an engine/instance shim owes a re-export completeness test; a wrapper's exit code is never the verdict for a background or delegated run — the gate reads the suite log's own tail line (sibling of the pinned skip-set) | From the spec to the tests |
 | C-1 | canonical axes (view · mode · tier · viewport · reopen · concurrency · every other live surface) + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |
