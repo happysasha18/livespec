@@ -2090,3 +2090,127 @@ class TestClockDiscipline(unittest.TestCase):
         self.assertFalse(
             offenders,
             "future-dated stamps — the invented-time family (INV-24): %s" % offenders)
+
+
+def _feature_coverage_gaps(tags, rows, real_nodes, real_test_defs):
+    """Pure two-way checker for the feature-coverage trace (SPEC INV-73). tags = {F-id: heading} tagged
+    in the spec; rows = coverage table rows [{feature, nodes, tests}]; real_nodes = node-name stems;
+    real_test_defs = existing test fn names. Returns a list of gap strings — empty means clean."""
+    gaps = []
+    tag_ids = set(tags)
+    row_ids = [r["feature"] for r in rows]
+    for fid in sorted(tag_ids - set(row_ids)):
+        gaps.append("tagged feature with no coverage row: %s" % fid)
+    for fid in sorted(set(row_ids) - tag_ids):
+        gaps.append("coverage row for an untagged feature: %s" % fid)
+    for fid in sorted(f for f in set(row_ids) if row_ids.count(f) > 1):
+        gaps.append("duplicate coverage row: %s" % fid)
+    for r in rows:
+        if not r["nodes"]:
+            gaps.append("%s names no implementer node" % r["feature"])
+        for n in r["nodes"]:
+            if n not in real_nodes:
+                gaps.append("%s names a non-node implementer: %s" % (r["feature"], n))
+        if not r["tests"]:
+            gaps.append("%s names no test" % r["feature"])
+        for t in r["tests"]:
+            if t not in real_test_defs:
+                gaps.append("%s names a missing test: %s" % (r["feature"], t))
+    return gaps
+
+
+class TestFeatureCoverage(unittest.TestCase):
+    """The feature layer above the anchor matrix — the spec-format-by-project-type landing
+    (docs/spec-format-by-project-type.md; SPEC E-29, INV-73). A spec's PRIMARY UNIT is a parameter of the
+    project type; live-spec's unit is its person-facing scenario, so each such heading carries an inline
+    [feature: F-x] tag, and ARCHITECTURE.md's 'Feature coverage' table maps every unit to its implementer
+    node(s) and a real test. Two-way, string/structure level (matrix M-180/M-181)."""
+
+    # the person-facing scenarios the pack promises; each MUST carry its tag — a scenario stripped of its
+    # [feature:] tag goes red (the reverse guard)
+    SCENARIOS = {
+        "F-wish": "Throwing a wish",
+        "F-prototype": "A prototype stays a sketch",
+        "F-publish": "Publishing",
+        "F-feedback": "Sending feedback in",
+        "F-feature-map": "Asking what the product does",
+        "F-bug": "When a bug cuts the line",
+        "F-problem-ledger": "When the workshop itself misbehaves",
+        "F-bootstrap": "Starting a new project",
+        "F-adoption": "Attaching to a live project",
+    }
+
+    def feature_tags(self):
+        """{F-id: heading text} from PRODUCT_SPEC.md headings carrying an inline [feature: F-x] tag."""
+        spec = read("PRODUCT_SPEC.md")
+        tags = {}
+        for m in re.finditer(r"^#{2,4}\s+(.*?)\s*\[feature:\s*(F-[a-z-]+)\]\s*$", spec, re.M):
+            tags[m.group(2)] = m.group(1).strip()
+        return tags
+
+    def coverage_rows(self):
+        """[{feature, nodes, tests}] from ARCHITECTURE.md's Feature coverage table."""
+        arch = read("ARCHITECTURE.md")
+        if "## Feature coverage" not in arch:
+            return []
+        section = arch.split("## Feature coverage", 1)[1].split("\n## ", 1)[0]
+        rows = []
+        for line in section.splitlines():
+            if line.startswith("|") and not line.startswith("|---") and "implemented by" not in line:
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                if len(cells) == 3 and re.match(r"F-[a-z-]+$", cells[0]):
+                    nodes = [n.strip(" `") for n in re.split(r"[,·]", cells[1]) if n.strip(" `")]
+                    tests = re.findall(r"test_\w+", cells[2])
+                    rows.append({"feature": cells[0], "nodes": nodes, "tests": tests})
+        return rows
+
+    def real_test_defs(self):
+        tests_dir = os.path.join(ROOT, "tests")
+        blob = "\n".join(read(os.path.join("tests", f)) for f in sorted(os.listdir(tests_dir))
+                         if f.startswith("test_") and f.endswith(".py"))
+        return set(re.findall(r"def (test_\w+)", blob))
+
+    def real_nodes(self):
+        return {n.split(" [")[0] for n in architecture_nodes()}
+
+    def test_every_scenario_carries_its_feature_tag(self):
+        tags = self.feature_tags()
+        for fid, heading in self.SCENARIOS.items():
+            self.assertIn(fid, tags, "scenario %r lost its [feature: %s] tag" % (heading, fid))
+            self.assertIn(heading, tags[fid],
+                          "tag %s sits on %r, expected the %r heading" % (fid, tags[fid], heading))
+
+    def test_feature_coverage_two_way(self):
+        gaps = _feature_coverage_gaps(self.feature_tags(), self.coverage_rows(),
+                                      self.real_nodes(), self.real_test_defs())
+        self.assertEqual(gaps, [], "feature-coverage trace broke: %s" % gaps)
+
+    def test_spec_and_spec_author_carry_the_format(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("[E-29]", spec, "SPEC lost the feature-coverage-trace anchor")
+        self.assertIn("[INV-73]", spec, "SPEC lost the two-way coverage invariant anchor")
+        self.assertIn("feature-coverage trace", spec.lower(),
+                      "SPEC lost the feature-coverage-trace machine name")
+        self.assertIn("primary unit", spec.lower(), "SPEC lost the primary-unit notion")
+        sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
+        self.assertIn("primary unit", sa.lower(), "spec-author lost the primary-unit-by-type format")
+        self.assertIn("[feature:", sa, "spec-author lost the inline feature-tag mechanic")
+        for unit in ("feature", "command", "guarantee", "argument"):
+            self.assertIn(unit, sa.lower(), "spec-author unit table lost the %s row" % unit)
+
+    def test_stripped_coverage_goes_red(self):
+        # the never side, permanent: a tagged-but-unmapped unit, an orphan row, a fake node and a fake
+        # test must all be caught by the pure checker
+        tags = {"F-wish": "Throwing a wish", "F-x": "Ghost"}
+        rows = [{"feature": "F-wish", "nodes": ["build-pipeline"],
+                 "tests": ["test_every_scenario_carries_its_feature_tag"]},
+                {"feature": "F-orphan", "nodes": ["nope-node"], "tests": ["test_ghost_fn"]}]
+        gaps = _feature_coverage_gaps(tags, rows, self.real_nodes(), self.real_test_defs())
+        self.assertTrue(any("no coverage row: F-x" in g for g in gaps),
+                        "the checker missed a tagged-but-unmapped unit — no teeth")
+        self.assertTrue(any("untagged feature: F-orphan" in g for g in gaps),
+                        "the checker missed an orphan coverage row")
+        self.assertTrue(any("non-node implementer" in g for g in gaps),
+                        "the checker missed a fake implementer node")
+        self.assertTrue(any("missing test" in g for g in gaps),
+                        "the checker missed a fake test name")

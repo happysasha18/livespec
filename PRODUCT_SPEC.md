@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.1, 2026-07-09)
+# live-spec — Product Spec (v0.16.2, 2026-07-09)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -48,7 +48,7 @@ The host owns everything about its own work: its spec, matrix, queue, journal, s
 
 The everyday path a piece of work travels: a wish comes in, gets specified, gets tested, and ships.
 
-### Throwing a wish
+### Throwing a wish  [feature: F-wish]
 
 The user is busy with something else and says "and let the card also show…," then returns to their thought. That is a **wish**: one request, in plain words, any size, at any moment. [E-2]
 
@@ -500,7 +500,7 @@ Declining preserves what the declined wish had absorbed. A wish that other rows 
 Each listed row then either gets declined by name in the same breath, when the human's no covered it too, or returned to the queue as its own row again, when the human's no was about the absorber's shape and not the need. A superseded wish never dies by pointer [INV-1]. [T-8]
 
 What the wishes grow is the **spec (PRODUCT_SPEC.md)** — the living statement of what the product is, one surface = one name, everywhere. [E-4]
-### A prototype stays a sketch
+### A prototype stays a sketch  [feature: F-prototype]
 
 Exploring an idea before committing to it is allowed — a room is sometimes sketched before the house is built. A **prototype** is that sketch. It lives fenced off in its own clearly named home, such as a `prototype/` folder or branch. Fenced off means the code sits apart, and nothing in the product reaches into it.
 
@@ -682,7 +682,7 @@ A project that predates these layers brings them up as an owned landing, and the
   - a surface-sized or structural delta keeps the full walk.
 
   Claims batch per declared lane, one commit. The journal chapter and the resume rewrite come once per landing batch, never per tiny row. The irreducible core stays fixed regardless of scale: the law's own text written well, the red-first test, the delta's cross-link prove, and the gates. That is quality itself, never scaled. [INV-61]
-### Publishing — the deposit owes what its kind owes
+### Publishing — the deposit owes what its kind owes  [feature: F-publish]
 
 Sooner or later a piece of work leaves the machine: a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a **design project**.
 
@@ -738,7 +738,7 @@ Non-goals this landing: no mechanical README-vs-diff checker, since the reach ma
 
 The two ways the human speaks back to the workshop: a piece of feedback, or a question about what the product does.
 
-### Sending feedback in
+### Sending feedback in  [feature: F-feedback]
 
 A person looks at what shipped and something occurs to them. It might be a reaction, an answer, a screenshot with a red circle, or a log file.
 
@@ -821,7 +821,7 @@ The section's edges, stated once.
 - No new door mechanics; the inbox is reused as it stands.
 
 **Success measure.** The same item never has to be handed in twice. Every received item is findable in the ledger, with its route, in the same session [default].
-### Asking what the product does (the feature map on demand)
+### Asking what the product does (the feature map on demand)  [feature: F-feature-map]
 
 Three standing questions describe the product. The departures board reports in-flight work status at every report [INV-27]. Intake places each arriving wish on the map [INV-37]. Those two questions are answered on their own surfaces.
 
@@ -855,7 +855,7 @@ The section's edges are stated once.
 
 What happens when the normal flow is interrupted: a live bug, or the workshop itself misbehaving.
 
-### When a bug cuts the line
+### When a bug cuts the line  [feature: F-bug]
 
 **User story:** as the product owner, I report a bug in the shipped product and it gets fixed before
 anything else; the feature that was mid-build comes back on its own afterwards, and no work gets lost.
@@ -882,7 +882,7 @@ takes the lane).
 **Postcondition:** the bug's fix is landed; every parked feature is back in work (or landed) in its
 original order; no red work was committed anywhere.
 
-### When the workshop itself misbehaves (the problem ledger)
+### When the workshop itself misbehaves (the problem ledger)  [feature: F-problem-ledger]
 
 Some noise comes from the workshop itself: the test harness flakes, a dependency goes missing, the shell eats a command, a tool times out. The session retries and moves on — but the same noise then eats the same minutes, session after session.
 
@@ -953,7 +953,7 @@ Borrowing follows one practice: invoke a found skill as it ships. Paraphrase a l
 
 How live-spec enters a project: a fresh start, or attaching to work already under way.
 
-### Starting a new project (bootstrap)
+### Starting a new project (bootstrap)  [feature: F-bootstrap]
 
 **The version-control gate runs first**, in the same order adoption keeps [A-0].
 
@@ -1014,7 +1014,7 @@ Curate the kind vocabulary the same way work-kinds are curated [T-16]. The list 
 The line stays alive, continuously updated: the moment work notices the project has outgrown its kind — the static site that grew a backend — update the line on the human's word, and journal it right then, never park it for an audit [INV-36].
 
 A project attached before this law owes no retro-ask; the line arrives at the next landing that would lean on it, like any forward-binding intake law [T-16 kin].
-### Attaching to a live project (adoption)
+### Attaching to a live project (adoption)  [feature: F-adoption]
 
 Adoption runs as a sequence; each phase finishes before the next starts. Run the version-control
 gate first, before touching or moving anything, so the whole run stays reversible [A-5]. The step
@@ -1359,6 +1359,11 @@ What keeps "it works" honest — each one a named machine:
   - Rows are organized by architecture node × spec fact, produced by the derivation method above [E-14, E-15].
   - Each row states both sides: what the fact does, and what it must never do. That negative side is the regression fence [INV-6].
 
+- **The feature-coverage trace** — a second traceability layer above the matrix, keyed to the project's PRIMARY UNIT [E-29]. Every project declares its type once, and the type names the unit: a web or app product counts user-facing features, a CLI its commands, a package the guarantees it promises, a book its arguments. Each unit carries a stable inline tag on the heading where it lives, and one coverage table in ARCHITECTURE.md maps each unit to the node(s) that implement it and a test that exercises it. live-spec is a package, but its scenarios ARE its features, so each person-facing scenario heading tags itself `[feature: F-x]` and the table names its implementers and its test.
+  - The check reads BOTH directions and fails the push either way [INV-73]: every tagged unit resolves to a real implementer node and a real test, and every scenario the pack promises carries its tag — a scenario added without one, or a tag dropped, goes red.
+  - The machines that work behind the scenes — the guardrails, the host contract, the settings ladder — implement guarantees rather than user-facing features, and sit outside this layer by the project type's own definition of its unit.
+  - The mechanism reuses the anchor-ownership machinery a level up rather than adding a new one; the format's authoring home is the spec-author skill.
+
 - **The guardrails** — mechanical checks, wired to the pre-push hook [E-6]. They run live today for the pack repo itself. Each push must show:
   - a today-dated prover record exists
   - the suite runs green — the run scopes to the diff's reach, so a prose-only diff stands the suite down by name, and everything else runs it whole [INV-45]
@@ -1606,6 +1611,7 @@ meaning, this table is only the map.
 | E-26 | the kill-list's mechanical face: the pack's template (dated literals, appended, never removed) + guardrails scanner guidance — a killed literal reappearing in the artifact's surfaces goes red; the law is INV-42's, this is its teeth | Throwing a wish |
 | E-27 | the test method's one home — the test-author skill, invoked at the pipeline's matrix and test steps | From the spec to the tests |
 | E-28 | feedback: anything a person hands back to the project; its home is the feedback ledger FEEDBACK.md, append-only beside the queue | Sending feedback in |
+| E-29 | the feature-coverage trace: a per-project-type primary unit (a feature, command, guarantee, or argument) tagged inline on its heading, mapped in ARCHITECTURE.md to implementer node(s) + a test; a second traceability layer above the anchor matrix, reusing the anchor-ownership machinery; the format's authoring home is the spec-author skill | Machines |
 | T-20 | three intake channels (spoken/typed · comment on something shown · dropped file, outside sessions via the inbox door) → exactly one of five routes (wish intake · same-session fix · closing answer · field evidence beside the feature's success measure · problem ledger), the route named in the ledger line; the skill fires on receipt and at inbox sweep, never on the agent's own output, and never opens a queue row by itself | Sending feedback in |
 | INV-68 | nothing handed in is lost: every received item lands the same session in its route's own home (wish→row · fix→commit+journal · answer→archive+row · noise→problem ledger), and the routes with no prior home — field evidence, reactions, wordless drops — land as dated feedback-ledger lines (who · channel · concerns · plain words · route); one echo per item; a re-mention appends its date; only the assigned session writes the ledger, outsiders use the inbox door | Sending feedback in |
 | INV-62 | taste-heavy deliverables build smallest-first: the cheapest judgeable sample (a paragraph, a card, two sections) gets the human's word BEFORE the full build spends; the agent's own discipline, distinct from the human-side mockup-first entry (INV-43) | Throwing a wish |
@@ -1638,6 +1644,7 @@ meaning, this table is only the map.
 | M-6 | push gate: prover re-check before every push | Rhythm |
 | M-7 | version homes: VERSION file · SKILL.md frontmatter · host record | Rhythm |
 | INV-72 | the prover reads the whole axis list [C-1] actively, deriving each stateful surface's reachable situations for itself — every axis it passes through while already shown (view, mode, tier, viewport, reopen) and every other surface present at the same time (siblings on its screen, one step before and after it in the flow, stateful or not) — and asks for each whether behavior is stated there; a reachable situation with a blank answer is a finding, the same class as a fact no node owns [E-14]; rides the whole-spec and surface-add passes [M-6]; reports the gap, invents no answer and asks the human nothing, the author writing the sentence as a C-1 composition invariant tagged like the facet sweep [INV-18, INV-31] | Composing across axes |
+| INV-73 | the feature-coverage check is two-way: every tagged unit resolves to a real implementer node and a real test, and every scenario the pack promises carries its `[feature: F-x]` tag; a dropped tag or an orphan coverage row goes red; the infra machines implement guarantees not features and sit outside the layer; reuses the anchor-ownership machinery [E-29] | Machines |
 | C-1 | canonical axes (view · mode · tier · viewport · reopen · concurrency · every other live surface) + provenance axis | Composing across axes |
 | D-1 | attic layout | Open decisions |
 | D-2 | tier routing decided (row 56): proposed not fixed, senior overrides logged → the routing rule INV-69 | Open decisions |

@@ -2,6 +2,43 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-09 (session 29) — the feature-coverage trace: a per-project-type unit above the anchor matrix (E-29, INV-73)
+
+**What:** The 1.0 RUN's item 2. The spec already traced facts at the anchor level (index ↔ architecture
+node ↔ matrix row). This adds a layer above it, keyed to a project's PRIMARY UNIT — a parameter of the
+project type: a web/app counts features, a CLI its commands, a package its guarantees, a book its
+arguments. The unit carries a stable inline tag on its heading and one coverage table in ARCHITECTURE.md
+maps each unit to its implementer node(s) and a test. live-spec dogfoods the web/app row because its
+scenarios ARE its features: the nine person-facing scenarios (Throwing a wish, A prototype stays a sketch,
+Publishing, Sending feedback in, the feature map, When a bug cuts the line, the problem ledger, bootstrap,
+adoption) now each carry a `[feature: F-x]` tag, and the new "Feature coverage" table binds them to skills
+and tests.
+
+**Why this shape:** the mechanic reuses the existing anchor-ownership machinery a level up rather than
+standing up a second machine to drift — the same reason the matrix's node×fact grid is one grid. The check
+is two-way (`TestFeatureCoverage`): every tagged unit resolves to a real node and a real test, and every
+promised scenario carries its tag; a dropped tag, an orphan row, a fake node, or a fake test all go red
+(the never side runs the pure checker on a deliberately broken table). The infra machines (guardrails,
+host contract) implement guarantees, not user features, so they stay outside the feature layer by the
+project type's own definition — that boundary is stated in the spec so it reads as a decision, not an omission.
+
+**Deferred, on purpose:** the clickable cross-links from a tag are a render-time convenience; `render-doc.py`
+has no anchor resolution yet, so the source stays plain Markdown today (one tag + one table) and the
+render-hypertext half is named in spec-author as the intended form, not claimed as built. A known boundary
+(recorded in the prover record): the reverse guard is anchored to the known nine scenarios — it catches a
+dropped tag and all tag↔table drift, but not a brand-new scenario authored later without a tag, because
+telling a scenario H3 from a rule/reference H3 mechanically is itself ambiguous; the spec-author format
+section carries the instruction to tag each new scenario.
+
+**Where:** format's home = spec-author's new "primary unit — one per project type" section; the law =
+PRODUCT_SPEC E-29/INV-73 (a new machine bullet under "The machines that hold the bounds" + index rows);
+ownership = the guardrails node in ARCHITECTURE + the "unit → coverage" seam + the Feature coverage table;
+matrix rows M-180/M-181. Design note that decided it: `docs/spec-format-by-project-type.md`. Prover record:
+`docs/prover/2026-07-09-feature-coverage-trace.md` (CROSS-LINK, FOLD, one accepted boundary). Suite 209 → 213
+green (red-proven first). Versions: spec v0.16.1→v0.16.2, architecture v0.2.1→v0.2.2, spec-author
+0.1.20→0.1.21, pack 0.9.1→0.9.2. Committed local, NOT pushed (his go). The milestone 3-pass audit runs once
+at the 1.0 gate (run item 7), not per run-item.
+
 ## 2026-07-09 (session 29) — the prover hunts the unwritten seam (INV-72 + C-1 axis)
 
 **What:** Taught the method to catch the seam nobody wrote. A new invariant (INV-72): the prover reads the

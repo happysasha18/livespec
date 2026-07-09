@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 0.1.20
+  version: 0.1.21
 ---
 
 # Spec Author
@@ -300,6 +300,39 @@ decided or `[default]`-tagged — the tag marks provenance only, no test row der
 reading machinery lands. The quantification questions (analytics tag? how measured? A/B worth it?) ride
 the facet sweep's batched report. Both bind forward; an adopted feature owes its pair at the first
 landing that touches it. A prototype writes neither — it promises nothing.
+
+## The primary unit — one per project type, traced end to end (SPEC E-29, INV-73)
+
+A spec has a PRIMARY UNIT: the thing the reader counts, the product's spine repeated. The unit is a
+parameter of the project's TYPE — the way a domain swaps a template — declared once, then it sets the
+heading style, the acceptance-criterion shape, and what the coverage check means.
+
+| project type | primary unit | the coverage check validates |
+|---|---|---|
+| web / app | a user-facing **feature** (a visible flow) | every feature → architecture node(s) + a test |
+| CLI / library / API | a **command** / function / endpoint | every surface → its contract, an owning module + a test |
+| methodology package | a rule or **guarantee** the pack promises | every guarantee → an enforcing mechanism (a script, a gate, a template) |
+| content / book / article | an **argument** / chapter / section | every promised argument → a home in the outline (a structure check; no technical architecture) |
+
+**The mechanic is one, for every type.** Each unit carries a stable inline tag on its heading — the same
+family as the anchors, e.g. `[feature: F-wish]` — and the downstream artifacts back-reference it: one
+coverage table in ARCHITECTURE.md names the implementer node(s) and a test per unit. The guardrail reads
+BOTH directions — every unit has an implementer and a test, and every promised unit carries its tag. This
+is the anchor-ownership machinery extended a level up, never a second machine to keep in sync.
+
+**No file explosion.** One PRODUCT_SPEC.md, one ARCHITECTURE.md, one TEST_MATRIX.md; the unit tags live
+inline in the prose and the one coverage table binds them. Shard into per-feature files only for a
+genuinely huge project, and only by explicit call.
+
+**The links are rendered.** The source stays plain Markdown — a tag plus one table; the clickable
+cross-links a reader follows from a tag are generated at render time (a code resolves to its section
+anchor), so no fragile hand-written link rots in the source.
+
+**On live-spec itself.** live-spec is a package, but its scenarios ARE the product's features, so it
+dogfoods the web/app row: each person-facing scenario heading tags `[feature: F-x]` and the Feature
+coverage table maps it to its skills and its test. The machines that work behind the scenes (guardrails,
+host contract) implement guarantees rather than user-facing features, and stay outside the feature layer
+by the type's own definition of its unit. The decided design note is `docs/spec-format-by-project-type.md`.
 
 ## How you work
 
