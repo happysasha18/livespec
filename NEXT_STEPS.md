@@ -1,50 +1,36 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-**SESSION 27 DONE (2026-07-09) — project-wide SCISSORS SWEEP + a document-structure norm. COMMITTED LOCAL, NOTHING PUSHED.**
+**SESSION 28 DONE (2026-07-09) — STRUCTURE pass + positive-opener pass. He pre-approved the grouping
+(«отличная структура»). COMMITTED LOCAL (`21d9a34`), NOTHING PUSHED.**
 
-He flagged the contrast frame (naming a thing by denying its neighbour) as a bad bug that must appear NOWHERE,
-chat replies included. Root cause: the scissors linter caught only the dash form, so the comma appositive and
-the Russian forms slipped past — that is why the night's "clean" SPEC still held ~39.
+The flat docs now read as trees, and every define-by-exclusion opener leads positively. Both were shown as a
+grouping proposal first and approved before any restructure.
+- SPEC.md — 20 flat `##` sections became one opener + 7 named parents (the build loop · what the human sends
+  back · when something breaks · starting and adopting a project · the rules and who applies them · what holds
+  the bounds · reference). Done by a deterministic script: content + every bracket anchor preserved (431→431),
+  each parent gained one plain orienting line. Version → v0.16.0.
+- communicator — the 22 rules gather under 6 named groups, the 16 register rules under 5; each rule keeps its
+  OWN number as a quiet trailing anchor `*(rule N)*` (numbers are stable IDs cross-referenced widely, incl.
+  a 15/16 collision between the two lists — so no renumber). Version → 0.1.40.
+- positive-opener pass — the "Not for X" / "You are not" openers across product-prover, spec-author,
+  build-pipeline, live-spec-base, publish, test-author + the TEST_MATRIX template now lead with what to DO;
+  the honest exclusions stay. Borderline lines where the negation IS the content (missing / not-buildable)
+  reworded to lead positively without losing the fact. Living SPEC/ARCHITECTURE/README/OVERVIEW were already
+  clean. base → 0.1.25 with the pin swept across all 7 working skills; touched skills patch-bumped.
+- LEFT clean by design: docs/spec-style.md's own R13 rule DEFINITION ("Open with what a thing IS, never
+  define it by exclusion") already leads positively — distorting a definition to appease the linter is wrong.
+Suite 207 green, 1 expected pre-push red (prover-record, M-6). deployed NOT re-synced to repo yet (skills
+changed) — a `scripts/deploy` refresh is owed before he relies on the installed copy.
 
-FIXED (all committed local, `git log` this session; origin still at `1cff42b`):
-- `scripts/spec-style-lint.py` now catches all four shapes (a denied neighbour after a dash or a comma, and the
-  parallel Russian negation-then-replacement forms), guarded against the additive "not only/just/merely" and the
-  conditional Russian «а» connectives. Regression tests in `tests/test_prose_gate.py::TestScissorsCoverage`.
-- Swept EVERY living reader-facing file to ZERO scissors: SPEC, ARCHITECTURE, README, OVERVIEW, ROADMAP,
-  TEST_MATRIX, all 8 skills, templates, adopt, guardrails, docs/spec-style.md, prose-quality-gate-design,
-  prior-art. ~250 rewrites over 20+ files by 11 parallel workers, each self-verified by the linter; anchors
-  preserved; meaning preserved. His verbatim quote in ROADMAP row 140 was restored after a detector false
-  positive on conditional «а если бы».
-- Traceability check-phrases (what I wrongly called "иголки" — grep slang for the exact quotes the tests
-  search for) re-pointed in lockstep; the negative-side "never" restored on TEST_MATRIX M-039/M-044.
-  Suite 207 green; only red = the pre-push prover-record reminder (`TestGateA_ProverRecord`).
-- communicator register: rule 15 = scissors ban hardened, chat-scoped, described without writing the frame;
-  rule 16 NEW = a document is a tree of grouped topics; checklist grew to 10 (scissors scan + structure check).
-  deployed==repo re-synced.
-- DATED HISTORY left untouched (JOURNAL, docs/prover, docs/audit, docs/evals, docs/decisions, research) —
-  rewriting logged history is itself a defect; sweep it only on his word.
-His verdict this session: the spec language is finally right («спеки хорошие по языку наконец то»), and this
-runs on every project from now on.
-
-## THE NEXT PASS he wants (after this memory wipe): STRUCTURE. The docs are FLAT.
-22 communicator rules sit in one list; ~20 SPEC `##` sections sit in one ribbon. He wants real hierarchy —
-related rules and sections grouped under named parents, a tree two to three levels deep, the outline alone
-telling a reader the shape. Rule 16 states the norm; APPLYING it is this next pass: restructure the flat SPEC
-and the skill rule-lists into grouped trees. Grouping is a taxonomy call — propose a concrete grouping and SHOW
-it before mass-restructuring. This ties to queued task (b) architecture-tiers and (a) authoring-terminology.
-
-## LIVE STATE (2026-07-09, session 27)
-Versions: pack 0.9.0 · base 0.1.24 · communicator 0.1.39 (register now 16 rules + 10-check) · build-pipeline
-0.2.40 · SPEC v0.15.61; suite 207 green (1 expected pre-push red). deployed==repo. main HEAD = this session's
-LOCAL scissors-sweep commit; origin still `1cff42b` (push owes a prover pass first, SPEC M-6). Reporting persona
-= PROJECT MANAGER, plain product words. Runs on Opus (Fable pulled 2026-07-07).
-Open before a push: (1) a product-prover pass on the sweep + its record `docs/prover/2026-07-09-*.md`;
-(2) the profile count in the PLAYBOOK repo still reads "14 rules + 8-check" — a separate repo, his window / his
-call to bump to "16 + 10".
-DECIDED 2026-07-09 (his word): also DO the "Not for X…" negation-opener pass — turn every define-by-exclusion
-OPENER across the living docs to a positive first move, the same playbook as scissors (the `negation-opener`
-linter is the finder). Keep the honest exclusion facts: a "when NOT to use" section still names what to skip
-and a genuine prohibition still stands, they only lead positively. Runs alongside the structure pass named above.
+## LIVE STATE (2026-07-09, session 28)
+Versions: pack 0.9.0 · base 0.1.25 · communicator 0.1.40 (6 groups + register in 5) · product-prover 0.1.13 ·
+spec-author 0.1.19 · build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · SPEC v0.16.0. Suite 207 green
+(1 expected pre-push red). main HEAD = `21d9a34` (this session's restructure, LOCAL); origin behind. Reporting
+persona = PROJECT MANAGER, plain product words. Runs on Opus (Fable pulled 2026-07-07).
+Open before a push: (1) a product-prover pass covering BOTH the session-27 scissors sweep AND this restructure,
+its record `docs/prover/2026-07-09-*.md` (SPEC M-6); (2) re-sync deployed==repo (skills changed); (3) the
+profile count in the PLAYBOOK repo still reads "14 rules + 8-check" — separate repo, his window, his call to
+bump to "16 + 10".
 
 ## Forward queue (mirrors ROADMAP.md)
 
