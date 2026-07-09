@@ -292,7 +292,7 @@ The classifier calls the kind from what the wish produces, one kind per wish. A 
 
 A host with one usual kind may record it as a host-profile default that the intake line starts from [E-8, E-13] (track-coach's would be product). A host whose wishes genuinely span kinds — live-spec itself ships skills, prose, and infra — records no default and calls each wish on its own.
 
-The vocabulary is curated like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's five skills — skill; OVERVIEW.md — prose), and a fifth kind joins only with a named wish the four failed to serve, re-justified at milestones.
+The vocabulary is curated like the facet list [T-13]: each kind above is earned by real work the pack has already routed (track-coach's widget — product; render-doc.py — infra; the pack's own skills — skill; OVERVIEW.md — prose), and a fifth kind joins only with a named wish the four failed to serve, re-justified at milestones.
 
 The law binds forward: a row queued before the kind axis existed carries no kind and owes no retroactive fill. It names its kind the moment it next moves (its in-work claim is its intake for this axis). [T-16]
 
@@ -701,7 +701,7 @@ A comparison or a diagram joins only when it carries the argument; it never ride
 
 #### The checklist
 
-The publish skill owns the per-kind checklist — the pack's fifth working skill [E-12]. This spec sets the contract the checklist follows. Nothing gets deposited outward without passing the checklist first, and the walk's result rides the landing report like any other step [INV-22].
+The publish skill owns the per-kind checklist [E-12]. This spec sets the contract the checklist follows. Nothing gets deposited outward without passing the checklist first, and the walk's result rides the landing report like any other step [INV-22].
 
 #### Targets add steps, never remove the minimum
 
@@ -1133,7 +1133,7 @@ This has non-goals:
 The check's only face is the proposal line, governed by the line law, facets N/A [INV-28]. Success
 measure: the day a newer pack ships, the next session on another machine proposes it unasked
 [default]. [E-25]
-</content>
+
 ## The rules and who applies them
 
 The shared rulebook, who holds authority over what, and how the work scales down when money or time run short.

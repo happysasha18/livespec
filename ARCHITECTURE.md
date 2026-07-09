@@ -1,4 +1,4 @@
-# live-spec — Architecture (v0.1, 2026-07-06)
+# live-spec — Architecture (v0.2, 2026-07-09)
 
 This is how live-spec is built: the named nodes that the spec's facts live in. One node carries one name
 and one responsibility — the one-surface-one-name rule, applied to structure. The doc was itself proven
@@ -75,6 +75,11 @@ crosses it and which side owns the format.
 |---|---|---|
 | 2026-07-05 | v0.1 | `docs/prover/2026-07-05-architecture.md` |
 | 2026-07-05 night | v0.1 + design-sync node (structure change re-proven; 0.8.0 milestone pass 3) | `docs/audit/2026-07-05-night/composition-architecture.md` |
+| 2026-07-05 | + skill-evals node (row 94) | `docs/prover/2026-07-05-row94.md` |
+| 2026-07-05 | + publish node (row 98) | `docs/prover/2026-07-05-row98.md` |
+| 2026-07-07 | + test-author node (row 163) | `docs/prover/2026-07-07-row163.md` |
+| 2026-07-07 | + feedback-intake node (row 47) | `docs/prover/2026-07-07-row47.md` |
+| 2026-07-09 | v0.2 — FULL re-prove of the whole spec for the pre-push M-6 gate (sessions 27–29 body) | `docs/prover/2026-07-09-full-reprove-session29-body.md` |
 
 ---
 
