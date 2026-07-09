@@ -64,6 +64,10 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Spec-author license | `skills/spec-author/LICENSE` | legal | `test_artifact_inventory` |
 | Product-prover README | `skills/product-prover/README.md` | shipped text | `test_artifact_inventory` |
 | Product-prover license | `skills/product-prover/LICENSE` | legal | `test_artifact_inventory` |
+| Test-author README | `skills/test-author/README.md` | shipped text | `test_artifact_inventory` |
+| Test-author license | `skills/test-author/LICENSE` | legal | `test_artifact_inventory` |
+| Feedback-intake README | `skills/feedback-intake/README.md` | shipped text | `test_artifact_inventory` |
+| Feedback-intake license | `skills/feedback-intake/LICENSE` | legal | `test_artifact_inventory` |
 | Build-pipeline README | `skills/build-pipeline/README.md` | shipped text | `test_artifact_inventory` |
 | Build-pipeline license | `skills/build-pipeline/LICENSE` | legal | `test_artifact_inventory` |
 | Communicator README | `skills/communicator/README.md` | shipped text | `test_artifact_inventory` |
