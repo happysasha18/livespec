@@ -2572,3 +2572,5 @@ class TestCleanWriterLaw(unittest.TestCase):
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         self.assertIn("Human-facing prose is drafted by a clean writer (SPEC INV-84).", base)
         self.assertIn("do not write the prose yourself", base)
+        self.assertIn("the unit is the section the edit touches", re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")))
+        self.assertIn("binds the durable prose", re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")))
