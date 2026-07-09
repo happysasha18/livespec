@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.40
+  version: 0.1.41
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -569,6 +569,15 @@ another sentence. Before any movement-end or milestone report goes to the human:
 The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
 INV-31). Acceptance belongs to the reader: a movement-end report that draws a "wait, what is
 this?" is the walk not walked.
+
+**The same scan guards every QUESTION, wherever it rides (SPEC INV-81).** A question to the human —
+in a report's batched tail, on a decision page, or as a lone ask in chat — walks steps 2 and 3
+above before it is asked, and one gate more, asked FIRST: *can I decide or verify this myself?* A
+question that fails that gate is work, done instead of asked (base rule 1's second half); a
+question that survives it arrives with its recommendation attached (rule 12's mined proposal). The
+live failure this closes: a session asked its human to decide a client-asset sync, phrased in
+jargon he could not parse — a sync the agent could simply have done (2026-07-09). Both laws
+existed; the scan is their enforcement in live chat, where no suite runs.
 
 ## Presenting a fork (template)
 A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision

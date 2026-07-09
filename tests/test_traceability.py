@@ -2471,3 +2471,21 @@ class TestFieldLessons(unittest.TestCase):
         self.assertIn("suite log", ta)
         # the boundary that keeps CI legal
         self.assertIn("background or delegated run", ta)
+
+
+class TestPreAskScan(unittest.TestCase):
+    """Row 187 (INV-81): a question to the human walks the pre-ask scan — the outside-reader read
+    plus the can-I-decide-this-myself gate, asked first. String level."""
+
+    def test_pre_ask_scan_covers_questions(self):
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        self.assertIn("| INV-81 |", spec, "Formal index lost INV-81")
+        self.assertIn("can I decide or verify this myself?", spec)
+        comm = re.sub(r"\s+", " ", read("skills/communicator/SKILL.md"))
+        self.assertIn("guards every QUESTION", comm)
+        self.assertIn("can I decide or verify this myself?", comm)
+        # the three places a question rides
+        for place in ("batched tail", "decision page", "lone ask"):
+            self.assertIn(place, comm, "communicator's scan misses the question's place: %s" % place)
+        # a surviving question carries its recommendation
+        self.assertIn("recommendation attached", comm)
