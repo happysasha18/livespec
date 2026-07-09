@@ -15,19 +15,25 @@ each step live.** Landings:
   path swept across all live files, dated history left, `SPEC INV-x` anchor namespace unchanged.
 Suite 207 green, 1 expected pre-push red (prover-record, M-6). deploy re-sync still owed.
 
-## LIVE STATE (2026-07-09, session 28)
+## LIVE STATE (2026-07-09, session 29)
 Versions: pack 0.9.0 · base 0.1.25 · communicator 0.1.40 · product-prover 0.1.13 · spec-author 0.1.19 ·
-build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.0. Suite 207 green (1 expected
-pre-push red). main HEAD LOCAL (session-29 readability + skill-count fixes, `8923969`); origin behind. Persona = PROJECT MANAGER, plain words.
-Opus (Fable pulled 2026-07-07). Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire`
-(not gated; a normal word, review as likely false positive).
-Owed before a push: (1) a product-prover pass over ALL of session 27+28 (sweep, restructure, English, rename),
-record `docs/prover/2026-07-09-*.md` (M-6); (2) re-sync deployed==repo; (3) PLAYBOOK profile count still "14
-rules + 8-check" — separate repo, his call to bump to "16 + 10".
+build-pipeline 0.2.41 · publish 0.1.3 · test-author 0.1.1 · PRODUCT_SPEC v0.16.0 · ARCHITECTURE v0.2.
+**Suite 208 green, 0 red — the FULL pre-push re-prove (M-6) is DONE and recorded, the prover-record gate is
+GREEN.** main HEAD LOCAL, origin behind 71. Persona = PROJECT MANAGER, plain words. Opus (Fable pulled 2026-07-07).
+Minor pre-existing: communicator rule 10 trips `machine-jargon:questionnaire` (not gated; likely false positive).
+**PUSH is no longer mechanically blocked.** Still owed before a push: (1) his explicit "go"; (2) re-sync
+deployed==repo — the two edited skills (live-spec-base, product-prover) differ from `~/.claude/skills`, run
+`scripts/sync-skills.sh`; (3) PLAYBOOK profile count "14 rules + 8-check" — separate repo, his call to bump.
+NEW: a wish arrived from the tlvphoto window into `inbox/2026-07-09-tlvphoto-worker-liveness-across-clear.md`
+(bg-worker resume across /clear) — UNHARVESTED, deserves proper intake. The 2026-07-09 FULL re-prove folded
+3 real body defects (stray `</content>` tag, two stale skill-count ordinals, stale ARCHITECTURE header) and
+queued 7 latent design findings as rows 173-179; record: `docs/prover/2026-07-09-full-reprove-session29-body.md`.
 
 ## ACTIVE PLAN (2026-07-09 — decisions locked; he approved "все как ты сказал")
 Approved order: **finish the English/nesting sweep → the prover-wish (2) → build the feature/flow format (3)
-→ tlvphoto migration in ITS window (4) → authoring-terminology.** The product-prover pass is owed before any push.
+→ tlvphoto migration in ITS window (4) → authoring-terminology.** Task 1 DONE + FULL pre-push re-prove DONE.
+INSERTED (his ask, approved): build the safe, gated **readability-restructure operation** (word-preservation
+verifier + written procedure, through the pipeline) — his word this session; not a push blocker, build when he says.
 
 1. **DONE (session 29, 2026-07-09).** Readability sweep landed. README + PRODUCT_SPEC run-on paragraphs split
    into one-thought-per-paragraph, long enumerations nested as sub-bullets — STRUCTURE-ONLY, word-token diff
