@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.45
+  version: 0.2.46
 ---
 
 # build-pipeline — ship a change by the method
@@ -381,8 +381,8 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   graph" are board lines.
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
   >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
-  edit strings or command are known verbatim. Tier: no-decision one-shot → haiku; multi-step mechanical →
-  Sonnet; judgment/design → senior.
+  edit strings or command are known verbatim. The tier ladder and the raw-output law live in the base
+  skill's rule 5 (live-spec-base).
 
   **The routing rule (SPEC INV-69) picks the tier — propose the cheapest tier that can pass the brief, the
   senior may overrule it aloud:** the proposal reads the STEP and kind of the work, beyond the row's size
@@ -391,8 +391,7 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   economy rung moves the threshold (at `lean` an airtight brief rides one tier cheaper, at `tight` the
   cheapest sufficient tier is always the proposal). And the proposal is ADVISORY — the senior may override
   per wish, the override logged as one line on the checkpoint and the landing report, proposed tier → chosen
-  tier → why. The junior pastes RAW output (command + exit + failing lines) into a persistent checkpoint
-  file as it goes — that raw output is evidence, its prose is only a lead.
+  tier → why.
 
   **The brief is self-contained (the BMAD story-file lesson):** delegated work ships as one document
   embedding the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and
