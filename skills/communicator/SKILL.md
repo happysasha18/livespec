@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -56,6 +56,12 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     - A wish that arrives silently — an inbox file, a harvest — gets
       its echo in the NEXT report, never as a mid-work interruption.
     - A batch echoes one line per wish.
+    - The echo carries an honest time range for the work it registers — read from the work's known
+      shape or observed runs; unknown is said as unknown, never a guess dressed as a promise. Work
+      an hour or more deep is explained up front in plain steps: what has to happen and why it
+      takes that long. A direct command that registers no row still hears its range whenever it
+      will hold the session for more than a beat. (SPEC INV-93; his 2026-07-10 word at the release:
+      say how long it takes, then track it — raised the same day when reports ran loose on it.)
       (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
       we'll call it this and that".)
 
@@ -78,7 +84,8 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       moment its result lands.
     - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
       what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
-      heartbeat [default]. The heartbeat's second, forward-looking face is the **Offline window**
+      heartbeat [default]. On a long stretch the heartbeat also says, now and then,
+      roughly how much remains — so the human can plan his own time around the work (SPEC INV-93). The heartbeat's second, forward-looking face is the **Offline window**
       (his word 2026-07-06: that it helps to say when the human can step offline for a while — for
       example, when the tests are running locally): when the coming stretch needs nothing from the human — a local suite run, a worker
       batch, a long render — say so BEFORE it starts: that he may step away, an honest range for how
@@ -176,6 +183,8 @@ The form of the showing: one window, real data, retold as a small story, opened 
    - A LANDING report also names, in plain words, every pipeline step the wish's work-kind stood down
      ("design-sync — text product, stood down") — a skipped step is a written fact the human can read,
      never an omission (SPEC INV-22).
+   - A LANDING report settles the clock: it states the estimate beside the actual, overrun or under
+     said plainly — the settling is what keeps the next range honest (SPEC INV-93).
    - And the NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly this,
      2026-07-06): a test count, a suite size, a version string, a check tally is never message content —
      say what the number means for the reader ("tested clean", "saved", "the method held") and let it

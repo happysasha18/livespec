@@ -2935,3 +2935,14 @@ row 234 (this very session is the born-of example: the landing lane, the researc
 hand-off ran at once); the all-projects migration order stands answered from the fleet survey —
 tlvphoto pair first (his fire starts it), then track-coach, then the promoter family on his word,
 then the playbook name sweep.
+
+**Row 232 — the time-estimates law lands (~13:45, first of the law batch on his ~13:20 raise).**
+Every ask now hears an honest time range at its echo, long work is explained up front in plain
+steps, a long stretch occasionally says roughly how much remains, and the landing report settles
+estimate against actual (INV-93; communicator rules 12/13/8; M-222 red-proven). His reminder from
+the café was the second born-of case: the session gave ranges but no standing shape — now it is
+law, not manners. Also this hour: rows 234 (parallel lanes) and 235 (the leave-command: «я ухожу»
+winds down to a shutdown-safe stop and says «можно выключать») queued on his words; the playbook's
+old-name sweep done and pushed (one annotation — the other mention was already correct history);
+the cloud-seat facts fetched from the current docs for his browser-session question (same
+subscription price, local and cloud; notes in the session trail).
