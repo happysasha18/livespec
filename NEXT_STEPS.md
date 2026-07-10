@@ -1,7 +1,11 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
 ## BOARD — open lanes (2026-07-10 ~16:58)
-Lane row 241 (the gates as attachable code) ROLLING: spec contract landed (INV-97/M-226
+Lane row 241 FIRST LEG LANDED ~17:38 (1.0.8): the cloud worker delivered red-first (22 tests,
+write-set exact), verified by deed here (own planted defect caught), pack repo attached as its
+own first host (SURFACES.md + config + pre-push gate h), README boundary sentence + Known-issues
+line retired by the clean writer. Open leg: one EXTERNAL host (track-coach catch-up natural
+first). Catalog submission unblocked by this leg. Was: spec contract landed (INV-97/M-226
 red-proven), architecture assigned, brief for the CLOUD worker at
 docs/briefs/2026-07-10-row241-guardrails-brief.md — he fires the cloud session on the GitHub
 repo, branch row241-guardrails; integration (function rows, pack-repo attach, Known-issues

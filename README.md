@@ -1,6 +1,6 @@
 # live-spec
 
-live-spec is a pack of eight Claude Code skills for spec-driven development. A wish spoken in passing enters a fixed pipeline: it is classified, written into a living product spec, reviewed, covered by tests, coded to green, and committed with its documents in the same change. Eight executable checks wired into git gate this repository's own pipeline, blocking commits and pushes when the discipline slips, so it holds across session resets and memory wipes. A project that adopts the pack gets the scaffold for these hooks; its four project-side checks currently ship as written specifications the project wires up itself, with ready-to-run versions planned for the next release.
+live-spec is a pack of eight Claude Code skills for spec-driven development. A wish spoken in passing enters a fixed pipeline: it is classified, written into a living product spec, reviewed, covered by tests, coded to green, and committed with its documents in the same change. Eight executable checks wired into git gate this repository's own pipeline, blocking commits and pushes when the discipline slips, so it holds across session resets and memory wipes. A project that adopts the pack gets the same for its own side: four runnable checks under `scaffold/guardrails/` — completeness, tests-present, behaviour-traces-to-spec, and conflicts — each a standalone Python script driven by one config file the project fills in, attachable to its pre-push hook in about fifteen minutes. This repository is the first host to run them on its own pushes.
 
 The current release number lives in [`VERSION`](VERSION). [`OVERVIEW.md`](OVERVIEW.md) is the one-page map of what lives where.
 
@@ -109,7 +109,6 @@ This list is reviewed at every push; a resolved issue leaves it the moment its f
 - **Internal vocabulary can leak into human-facing text.** The pack's working terms, and loan-translations from other languages, sometimes appear in text meant for people. A register lint blocks any shown artifact that carries a known leaked term, and its pattern list grows with every catch. Chat messages have a reminder hook and stay the weakest surface.
 - **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 62 recorded style-lint findings and 11 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.
 - **The settings card is young.** Project setup now ends with a rendered settings card (`scripts/onboarding-card.py`) — one page showing what is set up and what is yours to change. It shipped today and has run on one real project; expect rough edges on unusual profile shapes, and report them.
-- **Guardrail checks ship as descriptions.** The scaffold describes four guardrail checks, and each project wires its own instance. Generic runnable check code has not shipped yet.
 
 ## License
 

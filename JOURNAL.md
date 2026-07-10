@@ -3001,3 +3001,24 @@ blocked two commits the same day — the claim is deed-backed), while a host's f
 specifications until the runnable versions land (row 241, already first major movement). Clean
 writer wrote the paragraph, the register lint passed it. The catalog submission waits for 241 —
 narrow the promise to the truth today, widen the truth to the promise in code next.
+
+## Session 34 — the gates go runnable, and the cloud passes its first exam (2026-07-10 ~16:50–~17:38)
+
+Row 241 landed its first leg end to end, split exactly along the method's seam: the head here
+(the contract clause, the architecture assignment, the matrix contract row, the self-contained
+brief), the hands in a CLOUD session Alexander fired himself — the first real cloud worker in
+the project's history. The worker held the whole contract without a reminder: red-first as two
+separate commits (22 recorded failures before any check code), the write-set exact to the file,
+the checkpoint force-added past the gitignore so the evidence survived, and an environmental
+caveat documented with a clean-main reproduction instead of hand-waving — the two container
+reds trace to a machine-local architecture pin, not to its work. Integration verified by deed:
+my own planted defect (an invented rendered section) went red with the right typed line before
+any merge was trusted. Then the pack ate its own cooking: SURFACES.md + guardrails.config.json
+written, and the attach walk's first real catch came at home — a bare-heading needle flagged as
+empty content, the registry corrected, the check stood its ground. The four checks now run as
+pre-push gate h on every push of this repo. The README's morning boundary sentence retired the
+same hour by the clean writer, the Known-issues line with it: the promise and the truth
+converged from both sides in one day. WHY it matters beyond the row: the moat claim — everyone
+else enforces by prompt text, we enforce by executable gates — is now attachable by any host in
+fifteen minutes, which is what the catalog submission was waiting for. Open leg: one external
+host attaches (track-coach's catch-up is the natural first).
