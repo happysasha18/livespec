@@ -1,6 +1,6 @@
 # live-spec
 
-live-spec is a pack of eight Claude Code skills for spec-driven development. A wish spoken in passing enters a fixed pipeline: it is classified, written into a living product spec, reviewed, covered by tests, coded to green, and committed with its documents in the same change. Executable scripts gate the pipeline, so the discipline holds across session resets and memory wipes.
+live-spec is a pack of eight Claude Code skills for spec-driven development. A wish spoken in passing enters a fixed pipeline: it is classified, written into a living product spec, reviewed, covered by tests, coded to green, and committed with its documents in the same change. Eight executable checks wired into git gate this repository's own pipeline, blocking commits and pushes when the discipline slips, so it holds across session resets and memory wipes. A project that adopts the pack gets the scaffold for these hooks; its four project-side checks currently ship as written specifications the project wires up itself, with ready-to-run versions planned for the next release.
 
 The current release number lives in [`VERSION`](VERSION). [`OVERVIEW.md`](OVERVIEW.md) is the one-page map of what lives where.
 
