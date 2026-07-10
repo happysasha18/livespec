@@ -1,0 +1,12 @@
+{
+  "spec_path": "PRODUCT_SPEC.md",
+  "matrix_path": "TEST_MATRIX.md",
+  "queue_path": "ROADMAP.md",
+  "tests_dir": "tests",
+  "user_facing_globs": ["src/**/*.py", "templates/**/*.html"],
+  "registry_path": "SURFACES.md",
+  "render_command": null,
+  "rendered_artifacts": ["dist/index.html"],
+  "surface_discovery_pattern": "<section id=\"([^\"]+)\"",
+  "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner Alexander"}
+}

@@ -1,52 +1,94 @@
-# Guardrails — the pipeline's mechanical teeth
+# Guardrails — the four host checks, runnable (SPEC INV-97)
 
-Four checks wired to a git pre-push hook (and run as part of the test suite). A change that fails any of them is RED and cannot be pushed. Each project instantiates these checks for its own surfaces; the pipeline requires the check exists and is green.
+The pipeline's mechanical teeth as code a host attaches, never prose it re-implements:
+**completeness**, **tests-present**, **behaviour-traces-to-spec**, **conflicts**. One
+config file parametrizes everything — you never edit check code. Each check reads the
+config and the tree, exits green (0) or red (1); on red it prints the human sentence
+AND one machine line (`GUARDRAIL-FAIL {...}`, valid JSON — SPEC INV-47). Python 3.9
+stdlib only; nothing to install.
 
-Generic code is the next movement — lifted from track-coach's working instance and made project-agnostic. What follows is the authoritative description of what each check does.
+Failure behaviour is honest by construction: a missing config is red with an attach-me
+line, never a silent pass; a config pointing at a path that does not exist is red; a
+precondition you genuinely lack is declared as a waiver IN the config, where a reader
+sees it — `WAIVED (<check>): <reason>`, exit 0, visible, never silent.
 
----
+## The attach walk (~15 minutes)
 
-## 1. Completeness
+1. **Copy the directory** into your repo:
 
-A surface registry plus a render-scan test that fails if any user-facing surface is empty OR is rendered but not in the registry. No partial or stripped artifact can ship or be shown.
+   ```sh
+   cp -r scaffold/guardrails your-repo/guardrails
+   ```
 
-The DOM (or the rendered file) is the source of truth; a hand-maintained list carries no authority. The test scans the actual rendered output and compares against the registry — so a new surface going unregistered is immediately RED, and a registered surface going missing is immediately RED.
+2. **Copy the config to your repo root and fill your paths**:
 
-Self-closing: you cannot drift past it by forgetting to update a list. The registry is the list; the test compares the list against reality every run.
+   ```sh
+   cp guardrails/guardrails.config.example.json guardrails.config.json
+   ```
 
----
+   - `spec_path` / `matrix_path` — your product spec and test matrix.
+   - `tests_dir` — where your tests live.
+   - `user_facing_globs` — globs (with `**`) naming the files whose change demands a test.
+   - `registry_path` — your surface registry: markdown rows
+     `| <surface-name> | <needle-or-regex> | <spec-anchors comma-sep> |`
+     (header and separator rows are ignored).
+   - `render_command` — command whose stdout is your rendered content, or `null` to
+     read the files in `rendered_artifacts` instead.
+   - `surface_discovery_pattern` — regex with one capture group that discovers surface
+     ids in the rendered content (the self-closing direction), or `null` to skip it.
+   - Checks read `$GUARDRAILS_CONFIG` if set, else `./guardrails.config.json` at the
+     repo root — run them from the root.
 
-## 2. Tests-present
+3. **Run each check once**:
 
-A diff that touches a user-facing module must also touch `tests/`. A change with no test delta is RED.
+   ```sh
+   python3 guardrails/check_completeness.py
+   python3 guardrails/check_tests_present.py --base origin/main
+   python3 guardrails/check_traces_to_spec.py
+   python3 guardrails/check_conflicts.py
+   ```
 
-This is the mechanical enforcement of "tests travel with every change." It does not check whether the test is good — that is the matrix and the prover's job. It checks whether a test exists at all. A one-line change to a rendered output with no test change fails this check; the developer must either add a test or explicitly justify the exemption in the matrix (SKIP with a reason).
+   Each prints `OK (<check>): <summary>` and exits 0, or the failure lines and exits 1.
 
----
+4. **Plant one defect and see red** — the walk's own red-first. Add a fake row to your
+   registry (`| ghost | id="ghost" | INV-1 |`), run `check_completeness.py`, and watch
+   it exit 1 with `completeness.registered-but-absent`. Remove the row, watch it green.
+   A gate you have never seen red is a gate you are trusting, not testing.
 
-## 3. Behaviour traces to spec
+5. **Add the four lines to your pre-push hook** (`.git/hooks/pre-push`, executable):
 
-Every user-facing behaviour must trace to a SPEC clause. A behaviour with no spec backing — a silent default, an auto-mute, a sort order, a colour — is RED.
+   ```sh
+   python3 guardrails/check_completeness.py || exit 1
+   python3 guardrails/check_tests_present.py || exit 1
+   python3 guardrails/check_traces_to_spec.py || exit 1
+   python3 guardrails/check_conflicts.py || exit 1
+   ```
 
-This is what catches freelancing mechanically: you cannot ship an unasked, unrecorded behaviour because the test will look for its spec clause and find nothing. The spec clause does not have to be detailed; it must exist. A one-line spec entry ("stems play in full-mix order by default — CR-5") is enough. Silence is not.
+6. **Declare waivers for what you honestly lack.** No rendered artifact yet? Say so in
+   the config, dated and owned, where a reader sees it:
 
-Implementation note: each user-facing module carries a `spec_refs` annotation (or equivalent per-project convention) naming the SPEC clause(s) it implements. The guardrail test checks that every annotation resolves to a real clause in PRODUCT_SPEC.md, and that every clause reachable from the rendered surface is annotated.
+   ```json
+   "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner Alexander"}
+   ```
 
----
+   The check prints `WAIVED (completeness): <your reason>` and exits 0. An undeclared
+   gap never passes quietly — that is the whole point.
 
-## 4. Conflicts
+## What each check catches
 
-Catches structural inconsistencies that accumulate over time:
-- Duplicate invariant IDs (two `INV-18` entries)
-- A spec invariant with no matrix row
-- A `⟨DECIDE⟩` marker that is still live in PRODUCT_SPEC.md but marked RESOLVED in the prover findings
-- A surface named two ways in the same document (e.g. "stem lanes" and "#stemlanes" as if separate)
-- An id in TEST_MATRIX.md that references a test file or function that does not exist
+| check | red when | codes |
+| --- | --- | --- |
+| `check_completeness.py` | a registered surface is absent or empty in the rendered content; a rendered surface is unregistered | `completeness.registered-but-absent`, `.registered-but-empty`, `.rendered-but-unregistered` |
+| `check_tests_present.py` | the diff against the base touches `user_facing_globs` but nothing under `tests_dir` | `tests-present.missing-test` |
+| `check_traces_to_spec.py` | a registry row cites no anchor, or cites one the spec does not contain | `traces.unanchored-surface`, `traces.dead-anchor` |
+| `check_conflicts.py` | duplicate index anchors; an indexed INV-* no matrix row cites; ⟨DECIDE⟩ on a RESOLVED line; a surface registered twice | `conflicts.duplicate-anchor`, `.invariant-without-row`, `.resolved-but-live`, `.surface-named-twice` |
 
-These are the inconsistencies that make a prover's findings unreliable and a matrix audit meaningless. Catching them mechanically means drift is caught every commit instead of once per MINOR audit.
-
----
+Every check also reds on `<check>.no-config` (config missing or unparseable) and
+`<check>.dead-path` (a declared path or glob base that does not exist).
 
 ## Honest boundary
 
-Guardrails catch **structural** defects: empty surface, missing test, untraced behaviour, partial artifact, id/naming conflict. They do NOT catch a subtle semantic bug (is the number right? is the recommendation correct?). That still needs `product-prover` and a human's eyes. Enforce structure mechanically; reason about meaning with the prover.
+Guardrails catch **structural** defects only: empty surface, missing test, untraced
+behaviour, id/naming conflict, partial artifact. A **semantic** bug — is the number
+right? is the recommendation correct? — stays the prover's and the human's. Enforce
+structure mechanically; reason about meaning with eyes open.
