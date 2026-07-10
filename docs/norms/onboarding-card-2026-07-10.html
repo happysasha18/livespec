@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>live-spec onboarding v4 — first contact, plain-word rewrite (PROTOTYPE)</title>
+<style>
+  :root{
+    --bg:#f6f7f5; --card:#fff; --ink:#1c2320; --muted:#5f6b64; --line:#e3e7e2;
+    --accent:#2f6f57; --accent-soft:#e6f0ea; --chip:#eef1ee; --chip-ink:#6a756e;
+    --warn:#8a5a12; --warn-bg:#fbf0dc;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#141815; --card:#1c221e; --ink:#e8ede9; --muted:#9aa8a0; --line:#2b332e;
+      --accent:#6cc39c; --accent-soft:#203029; --chip:#232a25; --chip-ink:#9aa8a0;
+      --warn:#e0b978; --warn-bg:#2a2416; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 72px}
+  .badge{display:inline-block;background:var(--warn-bg);color:var(--warn);font-weight:600;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;
+    border:1px solid color-mix(in srgb,var(--warn) 30%,transparent)}
+  h1{font-size:26px;line-height:1.25;margin:16px 0 10px;font-weight:680;letter-spacing:-.01em}
+  .lede{margin:0 0 24px;font-size:15.5px}
+  .lede b{font-weight:640}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 20px 8px;margin:0 0 16px}
+  section > h2{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);
+    margin:0 0 4px;font-weight:680}
+  section > .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .row{padding:14px 0;border-top:1px solid var(--line)}
+  .row:first-of-type{border-top:none}
+  .name{font-weight:640;font-size:15px}
+  .val{margin:3px 0 0}
+  .val .pill{display:inline-block;background:var(--accent-soft);color:var(--accent);
+    font-weight:600;font-size:13.5px;padding:2px 9px;border-radius:7px}
+  .val .plain{color:var(--ink)}
+  .means{margin:7px 0 0;font-size:14.5px}
+  .means b{font-weight:640}
+  .change{color:var(--muted);font-size:13.5px;margin:7px 0 0}
+  .change::before{content:"\2192  ";color:var(--accent)}
+  .ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2px 0 10px}
+  .ladder .step{background:var(--chip);border:1px solid var(--line);border-radius:8px;
+    padding:6px 11px;font-size:13.5px}
+  .ladder .step.win{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 35%,transparent);
+    color:var(--accent);font-weight:600}
+  .ladder .arrow{color:var(--muted);font-size:13px}
+  .example{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .ask{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+  .ask h2{color:var(--accent)}
+  .ask p{margin:0 0 12px;color:var(--ink);font-size:14.5px}
+  .foot{color:var(--muted);font-size:12.5px;margin-top:22px;line-height:1.5}
+  .helper{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:12px 0 14px}
+  .helper .h{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent);
+    font-weight:600;white-space:nowrap;padding-top:1px}
+  .helper .d{font-size:14px}
+  /* flow strip */
+  .flowstrip{margin:14px 0 22px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:20px}
+  .flowstrip h2{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);
+    margin:0 0 4px;font-weight:680}
+  .flowline{font-size:15.5px;margin:0 0 14px}
+  .flowline b{font-weight:660}
+  .flow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px}
+  .flow .node{background:var(--accent-soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+    border-radius:8px;padding:6px 11px;font-size:13px;font-weight:600}
+  .flow .arrow{color:var(--muted);font-size:13px}
+  .steps{margin:6px 0 4px;padding-left:0;list-style:none}
+  .steps li{position:relative;padding:8px 0 8px 30px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.55}
+  .steps li:first-child{border-top:none}
+  .steps li .n{position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:12px;font-weight:700;text-align:center;line-height:21px}
+  @media (prefers-color-scheme:dark){ .flow .node{background:var(--accent-soft)} .steps li .n{color:#0e1512} }
+  .steps em{font-style:normal;color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Prototype &middot; look and feel only</span>
+
+  <div class="flowstrip">
+    <h2>What setting up looks like</h2>
+    <p class="flowline">You answer <b>one question</b> and get told <b>one thing</b>. That is the whole
+      setup &mdash; here it is start to finish:</p>
+    <div class="flow">
+      <span class="node">reads your project</span><span class="arrow">&rarr;</span>
+      <span class="node">asks you 1 question</span><span class="arrow">&rarr;</span>
+      <span class="node">tells you 1 thing</span><span class="arrow">&rarr;</span>
+      <span class="node">shows this summary</span><span class="arrow">&rarr;</span>
+      <span class="node">asks the rest later, one at a time</span>
+    </div>
+    <ul class="steps">
+      <li><span class="n">1</span>It reads through your project on its own. It will never ask you about
+        anything it can find in your files.</li>
+      <li><span class="n">2</span>It asks you <em>one</em> question, to check what it found:
+        <em>&ldquo;This looks like a static website &mdash; is that right?&rdquo;</em> You say yes, or you
+        correct it.</li>
+      <li><span class="n">3</span>It tells you <em>one</em> thing, no answer needed: how thorough it will be
+        on each change, and the exact words that make it move faster when you are short on time.</li>
+      <li><span class="n">4</span>Then this summary appears, once. Any time later, type
+        <em>&ldquo;what can I customize?&rdquo;</em> and it is built again from your current settings and
+        shown to you.</li>
+      <li><span class="n">5</span>A few other choices are not decided now. It asks each of them later, at the
+        first moment it cannot go further without your answer &mdash; one question at a time. For example:
+        where your code gets pushed, the first time you push it; and the first time a change has a visual
+        result, it opens the drawn page in front of you and asks whether the look is right before it builds
+        any further.</li>
+    </ul>
+  </div>
+
+  <h1>live-spec is now set up on this project</h1>
+  <p class="lede">From here on, every change you ask for runs the same way: <b>first it writes down exactly
+    what you will get, checks that description for gaps, turns it into tests &mdash; and only then builds it
+    and shows you the result.</b> The settings below decide how that feels day to day: what language things
+    are written in, how often it stops to ask you, and how thorough it is on each change. Every setting
+    already has a value that works. You can change any of them, any time, by saying so in the chat.</p>
+
+  <section>
+    <h2>What setup settled about this project</h2>
+    <p class="sub">One you answered, one you were told. These two shape everything else, which is why they
+      are the only ones handled up front.</p>
+    <div class="row">
+      <div class="name">What kind of project this is</div>
+      <div class="val"><span class="pill">skill pack</span> <span class="plain">&mdash; a bundle of working
+        rules and tools for an AI agent</span></div>
+      <p class="means"><b>What it changes for you:</b> this decides what a change has to show you before it
+        counts as finished. For a bundle like this, every rule the pack promises must have code that enforces
+        it and a test proving that code works &mdash; you will see both before the change is marked done. For
+        a website instead, &ldquo;finished&rdquo; would mean a test that drives the page in a browser and a
+        fresh screenshot of it for you to look at.</p>
+      <div class="change">to change: name a different kind &mdash; book, backend service, static website,
+        full app, command-line tool, agent skill pack, or describe your own.</div>
+    </div>
+    <div class="row">
+      <div class="name">How thorough it is on each change</div>
+      <div class="val"><span class="pill">every step, every time</span></div>
+      <p class="means"><b>What it changes for you:</b> right now each change you ask for gets the whole
+        treatment &mdash; it writes down what you will get, checks that for gaps, writes the tests, then
+        builds it. When a deadline is tight, tell it so: on small changes it will then run fewer of those
+        checks and save the rest for the end, and it names out loud each step it skipped so you always know
+        what was traded. Whatever the pace, some things are never skipped: tests are written before the code,
+        nothing is deleted without telling you, and it stops to ask you before anything that cannot be
+        undone.</p>
+      <div class="change">to change: say &ldquo;we&rsquo;re in a hurry&rdquo; or &ldquo;take your time, be
+        thorough&rdquo; whenever the pace should shift.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>About you &mdash; these travel with you to every project</h2>
+    <p class="sub">They are remembered as your own preferences. Set one on any project and it holds on all of
+      them.</p>
+    <div class="row">
+      <div class="name">Language</div>
+      <div class="val"><span class="plain">Conversation happens in whatever language you write &mdash; it
+        follows you, with no setup. Written work &mdash; documents, code, commit messages &mdash; is always
+        in good <b>English</b>.</span></div>
+      <div class="change">to change: tell it which language to use where.</div>
+    </div>
+    <div class="row">
+      <div class="name">How often it stops to ask you</div>
+      <div class="val"><span class="pill">decides small things itself</span></div>
+      <p class="means"><b>What it changes for you:</b> when a choice has an obvious answer, it picks it, keeps
+        working, and tells you what it picked together with the result &mdash; so you read one short summary
+        instead of answering ten questions. It still stops and asks you about matters of taste, about
+        anything to do with how things look, and about anything that cannot be undone.</p>
+      <div class="change">to change: say &ldquo;check with me more often&rdquo; or &ldquo;decide more on your
+        own&rdquo;.</div>
+    </div>
+    <div class="row">
+      <div class="name">How it shows you results</div>
+      <div class="val"><span class="plain">Finished work opens in front of you as the real thing &mdash; the
+        actual page or file, not a description of it. While it works, you get short notes in the chat in
+        plain words. Every reply starts with the time, so if you step away and come back you can see at a
+        glance when the last update happened.</span></div>
+      <div class="change">to change: tell it what you want to see, and when to stay quiet.</div>
+    </div>
+    <div class="row">
+      <div class="name">What it calls you</div>
+      <div class="val"><span class="plain">Whatever name you introduce yourself with.</span></div>
+      <div class="change">to change: tell it the name to use.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Two rules this project sets for itself</h2>
+    <p class="sub">They apply only here, on top of your own preferences.</p>
+    <div class="row">
+      <div class="name">A full check before every push</div>
+      <p class="means">This repository is public &mdash; its readers can see the method itself &mdash; so
+        before every push it re-checks the whole written spec for gaps. On most projects that full check
+        runs only at version milestones, not on every push.</p>
+      <div class="change">to change: one word turns it back to the milestone-only default.</div>
+    </div>
+    <div class="row">
+      <div class="name">Your other projects stay look-but-don&rsquo;t-touch here</div>
+      <p class="means">If another of your projects comes up in this window, it reads that project only as an
+        example to learn from, and writes nothing into it.</p>
+      <div class="change">to change: say the word if a mention should turn into real work &mdash; that
+        happens in that project&rsquo;s own window.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What is attached to this project</h2>
+    <p class="sub">The pack comes in eight parts, each with one job. This set fits a skill pack; a different
+      kind of project gets a different set.</p>
+    <div class="helper">
+      <span class="h">spec-author</span><span class="d">writes down what each feature promises, before any code is written</span>
+      <span class="h">product-prover</span><span class="d">reads that promise back and hunts for holes and contradictions</span>
+      <span class="h">build-pipeline</span><span class="d">walks every change through the steps, in order</span>
+      <span class="h">test-author</span><span class="d">turns the promises into tests that keep watching afterward</span>
+      <span class="h">communicator</span><span class="d">shapes how results and questions reach you</span>
+      <span class="h">feedback-intake</span><span class="d">files every comment you give, so none is lost</span>
+      <span class="h">publish</span><span class="d">runs the final checklist before anything goes public</span>
+      <span class="h">live-spec-base</span><span class="d">the ground rules the other seven all follow</span>
+    </div>
+    <div class="change" style="border-top:1px solid var(--line);padding-top:12px">to change: ask what any of
+      these does in more detail, or ask to add or drop one for this project.</div>
+  </section>
+
+  <section>
+    <h2>When two settings disagree</h2>
+    <p class="sub">The closer a setting is to right now, the more it weighs.</p>
+    <div class="ladder">
+      <span class="step win">what you say right now</span><span class="arrow">wins over &rarr;</span>
+      <span class="step">this project&rsquo;s rules</span><span class="arrow">wins over &rarr;</span>
+      <span class="step">your own preferences</span><span class="arrow">wins over &rarr;</span>
+      <span class="step">the pack&rsquo;s defaults</span>
+    </div>
+    <p class="example">For example: we chat in the language you write in. Say &ldquo;let&rsquo;s do
+      today in English&rdquo; and this one conversation switches to English &mdash; every other project stays
+      the way it was.</p>
+  </section>
+
+  <section class="ask">
+    <h2>Any time</h2>
+    <p>Type <b>&ldquo;what can I customize?&rdquo;</b> and this summary comes back, built again from whatever
+      the settings are at that moment. To change one, just say it in plain words &mdash; &ldquo;switch our
+      chat to English&rdquo;, &ldquo;we&rsquo;re in a hurry today&rdquo;. It makes the change, tells you it is
+      done, and it holds from then on.</p>
+  </section>
+
+  <p class="foot">PROTOTYPE &mdash; this is the look, feel, and wording for your eye. The values shown are
+    this project&rsquo;s real ones. If it reads right, the next step writes it into the spec: this summary
+    shown once at setup, plus the &ldquo;what can I customize?&rdquo; answer on demand, both built from one
+    shared list of settings so the two never drift apart.</p>
+</div>
+</body>
+</html>

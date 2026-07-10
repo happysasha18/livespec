@@ -4,3 +4,6 @@
 
 # rendered doc pages (render-doc.py output) are not committed
 *.html
+
+# frozen norms are SOURCE artifacts, never regenerable junk — always tracked
+!docs/norms/*.html
