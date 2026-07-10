@@ -55,6 +55,12 @@ new inbox file into the other repo and journals the hand-off in its own tree. A 
 never writes a foreign repo. The normative home for pair leadership is the spec's pair clause
 (PRODUCT_SPEC.md, INV-86).
 
+A catch-up ask crosses the seam the same way. When the owner asks one window to bring the pair up
+to the current pack and means both halves, that window runs the catch-up walk (MIGRATION.md) for
+its own repo only, and files one inbox wish naming the other half's catch-up debt. The other
+repo's own session executes its half. A pair half that carries no `.live-spec` records of its own
+starts with the full adoption for that repo before any catch-up items.
+
 ## The worked walk — one wish crosses the seam
 
 A user wish arrives at the instance window, for example a wish to let a visitor filter the gallery

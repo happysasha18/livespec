@@ -41,6 +41,9 @@ Phase 6 states the one condition that lets a host skip it.
 
 ## What the host gains
 
+The canonical document set lives in `adopt/ADOPT.md` — one normative list; the lines below say what
+each document does for the host.
+
 - **A living spec** — `PRODUCT_SPEC.md`, use-case-first, with entities, states, transitions,
   invariants, and cross-section composition underneath.
 - **An architecture doc and a test matrix** — `ARCHITECTURE.md` names the nodes and seams;
@@ -69,12 +72,11 @@ command or endpoint for a CLI or API, a chapter for a book, a promised guarantee
 methodology package. The decided format lives in
 [docs/spec-format-by-project-type.md](spec-format-by-project-type.md).
 
-[MIGRATION.md](../MIGRATION.md) covers already-adopted hosts catching up with pack changes. It
-currently records two: the package rename (livespec to live-spec, including the `.live-spec/`
-folder and the skill names), and the matrix reshape, where an old flat matrix regroups its
-existing rows under architecture nodes at the host's first architecture landing. Each host's own
-session executes these steps at its next update; nothing outside a host's session writes that
-host's repo.
+[MIGRATION.md](../MIGRATION.md) covers the other entry: an already-adopted host catching up with
+a newer pack. That guide owns the catch-up walk — orient on the delta, one plan behind the
+owner's gate, execution that preserves facts, then verify and re-record — and holds the dated
+per-version migration chapters the walk applies, oldest first. Each host's own session executes
+the walk; nothing outside a host's session writes that host's repo.
 
 ## The scaffold and templates
 

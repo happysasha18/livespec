@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -227,6 +227,7 @@ any pack file is read, and it is those bootstrap lines' one home — the profile
 | `prover.cadence` | FULL pass before every MINOR bump; CROSS-LINK on every surface add | tighter (e.g. live-spec itself: before every push) or looser, recorded | internal |
 | `worker.tiering` | router proposes the cheapest sufficient tier; senior may override, logged | fixed tier per size class (SPEC D-2) | internal |
 | `checkpoints.home` | `<host>/.live-spec/checkpoints/`, gitignored | another host path | internal |
+| `spec.file` | `PRODUCT_SPEC.md` — the host's product spec file; every pack guide reads "PRODUCT_SPEC.md" as this file under its recorded name | a host that adopted under its own name keeps it, recorded as one host-profile line (e.g. `spec.file: SPEC.md`); a rename may be offered together with its pointer sweep, never forced (SPEC INV-90) | internal |
 | `work-kind.host-default` | none — each wish's kind is called at intake | a host with ONE usual kind names it as the intake default (SPEC T-16) | internal |
 | `project.kind` | none — asked at founding and at adoption's orient, always the human's answer, never profile-seeded or inferred (SPEC INV-36) | the host's own kind: book · backend service · static site · fullstack app · CLI · skill pack · a custom kind through the queue; seeds project-wide defaults, never overriding an explicit line; updated on the human's word the moment the project outgrows it, journaled | visible |
 | `design-sync` | off — a host with visual components may switch it on (recorded profile line, SPEC E-18, INV-14) | on: a landing's DECLARED components sync to the team's design project, every sync behind the human's publish gate (rule 17) | internal |

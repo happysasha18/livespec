@@ -4,7 +4,28 @@ How to attach live-spec to an existing codebase — at the start or in the middl
 projection of PRODUCT_SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
 has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
 
+**Routing:** this guide is the FIRST adoption. A host that already adopted and needs to come up to a
+newer pack goes to the catch-up walk instead — [MIGRATION.md](../MIGRATION.md) at the package root.
+
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
+
+## The canonical document set
+
+The one normative list of the documents a live-spec host carries; every other guide points here
+(SPEC INV-90). Adoption's Phase 3 produces this set; the catch-up walk re-homes facts into it.
+
+- `PRODUCT_SPEC.md` — the living product spec, use-case-first, invariants underneath. A host that
+  adopted under its own name (say `SPEC.md`) keeps it, recorded as one host-profile line
+  (`spec.file: SPEC.md`); every pack guide reads "PRODUCT_SPEC.md" as that file.
+- `ARCHITECTURE.md` — the named nodes and seams; every spec fact has an owning node.
+- `TEST_MATRIX.md` — derived through the architecture, one pinned-level row per spec fact.
+- `ROADMAP.md` — the queue; one wish, one row.
+- `JOURNAL.md` — dated history with the why.
+- `NEXT_STEPS.md` — the one resume file a cold session reads.
+- `SURFACE_REGISTRY.md` — or an equivalent executable gate test (E-10); doc form is the fallback.
+- `attic/` with its manifest — superseded host files rest here, never deleted (INV-7).
+- `.live-spec/` — the host's records: `profile.md` (host overrides), the installed-set record (M-7),
+  `adopt/` (run artifacts and plans), `checkpoints/` (gitignored).
 
 **The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a live-spec
 defect (a stale phase here, a template gap) does NOT edit the live-spec repo — it drops ONE new file into

@@ -1,88 +1,54 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-Sessions 28–30 landings are committed history — full detail in JOURNAL.md (session 30's chapter:
-"the evening queue drained — rows 180-187, eight landings").
+## LIVE STATE (2026-07-10 ~13:06, session 33)
+**1.0.0 SHIPPED 2026-07-10 ~11:26 on his «поехали»** — tag v1.0.0 pushed, CI read green, 289 green at
+the bump; versions aligned at the major (pack + all eight skills + spec header + pins); the M-1
+five-angle audit record: docs/prover/2026-07-10-m1-audit.md (zero must-fix, three convergence locks
+red-proven); rows 173-187 archived (docs/queue-archive/2026-07-10-v1.0.0-milestone.md). The 1.0 run's
+full charter and the night run (docs+global+queue phases) are JOURNAL chapters (sessions 28-32).
 
-## LIVE STATE (2026-07-10 ~10:49, session 32) — the detail lives in the RESUME POINT below
-Versions live in VERSION and each skill's frontmatter; earlier sessions' states are JOURNAL chapters
-(28-31). Still DEFERRED on his word: row 192 (scenario pre/postconditions, triggers recorded). Still
-queued from that era: 191 (field test norms) · 193 (missing pipeline stages) — both his adoption picks.
+Still queued from the pre-1.0 era, his adoption picks: rows 191 (field test norms) · 193 (missing
+pipeline stages); DEFERRED on his word: row 192. Waiting his word: rows 191/193 picks · D-6/D-7
+(recommendations stand).
 
-## 1.0 BAR (2026-07-09, his decision — the finish line for this push)
-**1.0 = everything below done HERE + THE DOCS PASS (his 2026-07-10 ~00:07 word: 1.0 only when the
-pack's documentation properly covers everything built — see the night run), EXCEPT two field items that
-ride real windows post-1.0: the remote/cloud session, and the REAL tlvphoto migration.** MIGRATION
-READINESS: the type-aware format + prover-seam-hunt prerequisites are BUILT; real migration goes in
-tlvphoto's OWN window.
-
-## 1.0 RUN — the loop's charter (ordered; resume COLD from here · project = live-spec · cwd ~/live-spec)
-Each item walks the full pipeline (build-pipeline skill). **PARK** = build to the named gate, then STOP
-for his word. The run is NOT done when the queue drains: each item's done-state is the proof. Memory may
-be wiped — all state lives in this file + `docs/wishes/` + ROADMAP + JOURNAL; the working contract lives
-in his profile + the installed hooks, not memory.
-
-1. **Prover-seam-hunt — DONE** (INV-72, `c1ef03b`; JOURNAL session 29).
-2. **Feature/flow spec format by project type — DONE** (E-29/INV-73, pushed). Deferred by name:
-   render-time clickable cross-links (render-doc.py has no anchor resolution; named in spec-author).
-3. **The 7 small design holes — DONE** (rows 173-179, pushed; `TestSmallDesignHoles`).
-4. **Authoring terminology + rename — DONE** (pushed; `TestAuthoringTerminology`).
-5. **Architecture tiers + views — DONE, reopening CLOSED 2026-07-09 evening** (row 180, `019d793`):
-   runtime view (INV-74) + placement view (INV-75) mandated, the architecture lens grew 3→6 checks in all
-   three homes, the template gained Runtime/Placement/Budgets/Feature-coverage sections, our own doc
-   models them; validation RE-RAN read-only over tlvphoto with budgets + fact-ownership — diff vs its
-   real ARCHITECTURE.md left no unnamed hole (one named deferral: the at-a-glance diagram stays optional).
-   Derived doc: session scratchpad `tlvphoto-architecture-derived-v2.md` (not committed — foreign
-   internals stay out of the public pack). Record: `docs/prover/2026-07-09-row180.md`.
-6. **Project onboarding — DONE 2026-07-10 ~10:45.** v4 accepted in the morning (his fix folded:
-   rules, never personal values); the BUILD landed the same day through the full pipeline — the
-   settings card renders from the base table + profiles per the frozen norm
-   (docs/norms/onboarding-card-2026-07-10.html), 8 owning tests incl. norm-conformance, one bounce
-   caught by his eye and closed by five worker rounds (JOURNAL session 32 holds the story).
-7. **Then 1.0:** M-1 audit — now FOUR passes on his 2026-07-10 ~10:24 word: the 3-pass audit + the
-   convergence pass (row 217: every quality lock tested to hold, 1.0-BLOCKING) — runs AFTER item 6
-   lands so it covers it → bump 1.0.0 → push on his explicit "go" (never without it). Rows 173-187
-   archive at this milestone.
-
-ALSO LANDED 2026-07-09/10 outside the original bar: rows 181-187 (worker liveness, the five test
-lessons, pre-ask scan) — details in ROADMAP rows and `docs/prover/2026-07-09-rows182-186.md`.
-
-POST-1.0 (his bar, NOT in the run): remote-seat cloud session · REAL tlvphoto migration — HIS 2026-07-10
-~02:09 WORD: tomorrow, tlvphoto's windows execute onto the pair law (INV-85/86, first real pair:
-gallery-engine + site); THIS window teaches and SUPERVISES (pair-adoption brief, artifact review,
-direction) and never writes their trees — the audit-only rule's named amendment.
-His-word backlog, not 1.0 blockers: chat-cleanliness `Stop`-hook backstop · readability-restructure
+POST-1.0 (his bar): remote-seat cloud session · REAL tlvphoto migration — his 2026-07-10 ~02:09 word:
+tlvphoto's windows execute onto the pair law (INV-85/86, first real pair: gallery-engine + site);
+THIS window teaches and SUPERVISES (brief, artifact review, direction), never writes their trees —
+the audit-only rule's named amendment. His ~12:21 word: EVERY project on this Mac migrates the same
+way after the tlvphoto pair; fleet survey (read-only, ~12:24) with proposed order:
+`~/.claude/playbook/migration/2026-07-10-fleet-survey.md` (committed there).
+His-word backlog, not blockers: chat-cleanliness Stop-hook backstop · readability-restructure
 operation (word-preservation verifier) · row 171 no-hooks/no-GitHub · row 148 plainer-spec rewrite ·
-thin-loader tidy · pack orchestration · artifact registry · try a semantic code layer (Serena MCP) in a
-code-heavy window IF symbol search starts hurting twice a session (his 2026-07-09 question; trigger =
-rule-20 struggle, today's verdict: current projects too small to pay for it).
+thin-loader tidy · pack orchestration · artifact registry · Serena MCP trial if symbol search hurts
+twice a session.
 
-## NIGHT RUN (2026-07-10, his charter ~00:07): docs pass → global pass → queue — ALL THREE PHASES DONE.
-Charter: spawn-per-item, senior folds and gates; one batch report at the end (owed in the morning).
+## RESUME POINT (2026-07-10 ~13:20, session 33 — row 221 LANDED, push + CI read are the last moves)
+**Row 221 (F-catchup) is DONE and proven:** spec section + guides landed whole (MIGRATION.md = the
+catch-up walk; ADOPT.md holds THE canonical-set list; adoption/pair-adoption route; `spec.file` row);
+verify-by-deed ran as TWO cold opus dry-reads — first NO (one hole: versionless record's chain
+start; two weak spots: pair blocked-verify, loader sweep), all three folded same hour, the hole
+red-proven by its own test; second read YES, zero holes. 268 green; 1.0.1 everywhere (VERSION, spec
+header, base + 7 pins, plugin.json, synced); prover record CLOSED
+(docs/prover/2026-07-10-row221.md); JOURNAL session-33 chapter written. Commits: README-restore
+(`4f2e50b`) → landing → research/README extension → queue rows; then push, read CI.
 
-  `! git -C ~/live-spec push origin main` — 12 commits ahead.
-- Phases 1-3 all [x] DONE (details: JOURNAL session 31, four chapters). NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
-  BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
+**Research lane LANDED the same hour (his ~12:57 word):** Superpowers + gstack read at source;
+verdict — our ground (living spec · invariants · formal review · traceability) is unoccupied, their
+execution discipline is the honest bar. README why-section extended (clean-writer road);
+docs/research/2026-07-10-superpowers-gstack.md holds the sourced notes; one inbox wish dropped at
+promoter-alexander/inbox/ for the live-spec campaign.
 
-## RESUME POINT (2026-07-10 ~11:30 — 1.0.0 SHIPPED; memory may be wiped; NO live workers)
-**1.0.0 IS OUT** — his «поехали» ~11:26; versions aligned at the major on his word (pack + all
-eight skills + spec header + pins = 1.0.0; when else to align = row 231); the M-1 five-angle audit
-record: docs/prover/2026-07-10-m1-audit.md (zero must-fix, all folds landed, three convergence locks
-now red-proven tests); rows 173-187 archived (docs/queue-archive/2026-07-10-v1.0.0-milestone.md);
-289 green; tag v1.0.0 pushed, CI verdict read green. NEXT, in his order: row 221 (make «подгрузи
-лайвспек и давай переверстывать документацию» work for the tlvphoto window — dry-read the adoption +
-pair guides as that session would, fix gaps HERE, teach-only, 30–60 min) → the LAW BATCH post-1.0
-(216 · 218 · 219 · 222 · 223 · 224 · 225 · 226 · 227 · 228 · 231, ~2-4 h, none needs him) → the
-post-1.0 field items: cloud session · the real migration (their windows execute) · rows 215/229/230
-(his words). Time-range + earliest-feedback habits practiced; papers ride the law batch. Waiting his word: rows
-191/193 picks · D-6/D-7 (recommendations stand). Earliest-feedback law: when he WAITS, show the
-first judgeable slice at once (memory sharpened). Chat register: the no-calques hook fires every
-prompt — session 32 leaked twice («иголочные», «зубы»); row 203's case grows.
+NEXT, in his order: (1) report «фраза работает» with the plan-status shape he demanded (~13:20) →
+he fires «подгрузи лайвспек и давай переверстывать документацию» in the tlvphoto windows (their
+windows execute; this one teaches/supervises, read-only, one inbox wish max); (2) the law batch,
+row 232 FIRST on his ~13:20 word (232 · 216 · 218 · 219 · 222-228 · 231 · 233 · 234, ~2-4 h, none
+needs him), parallel to their migration; (3) fleet migration order (survey, his word decides):
+tlvphoto pair → track-coach → promoter family (his word on hub+campaigns first) → playbook sweep.
 
 ## Field legs + standing habits (ride real windows / always-on)
-- Field legs with him (real windows): 47/96 feedback loop · 54 first-run · 165 first-struggle · 168 remote
-  seat · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133. (ROADMAP holds the full rows.)
-- Standing habits: `date` before ANY stamp (the hook BLOCKED two invented stamps tonight — read the clock
-  at write time, every time) · a background/delegated run's verdict is the suite log's tail, never a
-  wrapper's exit (INV-80 — violated once tonight, caught, law landed same hour) · NOW/NEXT current +
-  heartbeat past ~10 min (INV-71) · plain product words, never a code leading a line (INV-28), say
-  "live-spec" not "пакет" · inbox EMPTY.
+- Field legs with him (real windows): 47/96 feedback loop · 54 first-run · 165 first-struggle · 168
+  remote seat · 134/141 zero-drift · 143 · 144 · 140 · 117 · 129 · 133. (ROADMAP holds the full rows.)
+- Standing habits: `date` before ANY stamp · a delegated run's verdict is the suite log's tail, never
+  a wrapper's exit (INV-80) · NOW/NEXT current + heartbeat past ~10 min (INV-71) · plain product
+  words, never a code leading a line (INV-28), say "live-spec" not "пакет" · inbox EMPTY · chat
+  register: the no-calques hook fires every prompt (row 203's case grows).

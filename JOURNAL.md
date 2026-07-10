@@ -2890,3 +2890,48 @@ the run's list landed here, plus the docs pass; the two field items ride real wi
 cloud session, and the tlvphoto migration his one sentence will start. The morning's lesson rides
 into the release: the day's laws (norm-conformance, convergence, cleanup, cross-cutting, mirror-ban,
 CI-verdict) are queued post-1.0 by his word — the release is the floor they land on, not the ceiling.
+
+## Session 33 — the catch-up walk lands, and the field gets two new neighbours read (2026-07-10 ~12:00–13:20)
+
+**Row 221 — «подгрузи лайвспек и давай переверстывать документацию» now works.** The morning's dry
+run of that sentence had found the guides wanting: the old MIGRATION.md was a single stale rename
+note with a non-idempotent first step and no walk at all. The row went through the full pipeline.
+The spec grew the catch-up section (F-catchup: the four-phase walk, the half-done-state law, the
+preserve-and-re-home law, version-chained migration chapters, the before-and-after self-test with a
+named restore point — A-11, INV-89..92), seven prover findings folded at review and his two midday
+words folded as INV-91/INV-92 (docs/prover/2026-07-10-row221.md). Ten tests written and red-proven
+against the pre-rewrite guides, then the guides themselves: MIGRATION.md rewritten whole as the
+walk's operating guide with the 1.0.0 chapter absorbing the rename note idempotently (an opus
+worker drafted to the needle contract, senior-validated); ADOPT.md gained the routing fork and THE
+one canonical-document-set list; adoption.md and pair-adoption.md now point and route; the base
+defaults table gained the `spec.file` row (internal). Verify-by-deed ran as two cold opus reads
+role-playing the tlvphoto window, guides only. The first said NO and earned its keep: a real hole
+(a commit-pin record has no readable version — where does the chapter chain start?) plus two weak
+spots (the pair's blocked-verify tension; the machine-global loader sweep). All three folded the
+same hour, the hole red-proven first by its own test. The second cold read: YES, zero holes, every
+planted trap answered by a named clause. 268 green; VERSION 1.0.1 (spec header, base 1.0.1, seven
+base pins, plugin.json — synced to the machine).
+
+**The resume file shed its shipped history.** The 100-line cap caught NEXT_STEPS still carrying the
+1.0 run's finished charter; the file was cut to the live state (66 lines), the history already in
+these chapters — the cap did exactly what it was written for.
+
+**The field read: Superpowers and gstack (his ~12:57 word, row 233's material pulled forward).**
+Two source-verified research passes ran as parallel workers while the landing continued. The short
+truth: Superpowers (obra, ~251k stars) is the field's strongest process discipline and its design
+doc is a dated per-feature file closed at approval — process-centric by third-party reading, no
+living spec, no invariants, no requirement-to-code trail; gstack (garrytan, ~121k stars since
+March) is role-based review plus a Codex second opinion plus real-browser QA, and its /spec files a
+GitHub issue whose archive stays local — third parties name the missing spec-anchoring outright.
+The verdict he asked for: we are not late; the ground live-spec claims is still unoccupied, and
+their execution discipline is the honest bar to cite. The README's why-section was first restored
+whole (its own commit, the born-of incident of row 233's law), then extended with both frameworks
+by the clean-writer road; the full sourced notes landed as
+docs/research/2026-07-10-superpowers-gstack.md. One inbox wish carried the research to the promoter
+(promoter-alexander/inbox/), for the campaign that will promote live-spec and product-prover.
+
+**His words of the hour, registered:** managing one project's independent parallel lanes becomes
+row 234 (this very session is the born-of example: the landing lane, the research lane, and the
+hand-off ran at once); the all-projects migration order stands answered from the fleet survey —
+tlvphoto pair first (his fire starts it), then track-coach, then the promoter family on his word,
+then the playbook name sweep.
