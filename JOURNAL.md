@@ -2764,3 +2764,56 @@ The session's own lesson, honestly: my chat slid into the same loan-translated d
 every window; the artifact lint blocks what is shown; live chat remains the weakest surface — his
 call to wipe this session's memory and resume fresh from the files is the right one, and this
 chapter closes with everything needed for that cold start on disk.
+
+## Session 32 — the night run, phase 5: the leftover queue drained by the charter (2026-07-10, ~02:45–03:20)
+
+A fresh window resumed cold from the resume point and worked the night plan's leftover queue —
+rows 213, 210, 201, plus the tlvphoto inbox wish intaken as row 214 — one clean-writer spawn per
+item (opus, pack not loaded, self-contained briefs), the senior folding and gating each landing,
+one commit per row. Suite went 277 → 278 green; the tree is clean; the push still waits his hand.
+
+**Row 213** (e819b89, spec v0.16.20): the pair-wave's three seams discharged as the prover record
+demanded — the F-pair walk now names its liveness net (the dated blocked-on-engine debt line rides
+every instance status report [INV-27] — the one anchor the fix itself adds), INV-86's inbox sentence
+carries its carve-out inside itself ("beyond that one inbox file"), and the declined-split reuse
+note got the fixed key `reuse.split-declined: <date>` in body and index.
+
+**Row 210** (a760f1c, spec v0.16.21): the clean judge's nine surviving findings plus one filler nit
+reworded plain — and the flagged phrases' exact siblings swept where they still stood as current
+text: the "limping/dams" rule sentence in the base rulebook and matrix row M-155, "they go dark" in
+communicator. Two needle tests followed the reworded facts in lockstep (the facts stand, the wording
+moved lawfully — row 202's precedent). Base 0.1.30, communicator 0.1.43, seven base-version pins
+refreshed. The re-run judge came back with the canary fully caught and ZERO surviving findings;
+anchors proven identical by multiset; style debt 63 → 62, redundancy candidates 11 → 11. Row 148's
+first concrete worklist is done.
+
+**Row 201** (0b5aee8, bp 0.2.46): the delegation-block trim, relaunched after session 31's write
+collision, landed clean this time — and the audit narrowed the row's own claim: the true
+restatements of base rule 5 were just the tier ladder and the raw-output sentence (now one pointer);
+everything else in the block is build-pipeline's pinned own delta, asserted by the needle tests,
+and stays.
+
+**Row 214** (8b72248, test-author 0.1.3, bp 0.2.47): the tlvphoto wish — "state the small-fix
+red-first path" — answered the same night it arrived. The call: option (b) with red-first kept as
+the default order at every size; a one-batch fix+test on a tiny reversible edit inside the skip
+boundary is legal only when the batch closes with the mechanical red proof (restore the pre-change
+file, run, watch the new rows fail, restore) named in the landing record. Why (b): the law's own
+words already accept a red run "against the pre-change state", the field session's recovered proof
+was exactly this protocol, and a written escape valve with a mandatory proof holds better under
+time pressure than an order that already decayed once. M-205 pins the needle test, itself proven
+red against the pre-change tree. The wish file moved inbox → docs/wishes; inbox is empty.
+
+**Versions this session (A-7 line, old → new):** spec v0.16.19 → v0.16.21 · base 0.1.29 → 0.1.30 ·
+communicator 0.1.42 → 0.1.43 · build-pipeline 0.2.45 → 0.2.47 · test-author 0.1.2 → 0.1.3; installed
+copies synced at each landing. 22 commits ahead of origin.
+
+**The teeth worked, twice.** The clock hook blocked a commit whose record stamped ~03:15 against a
+03:12 wall clock — the stamp was reread and fixed (INV-24 doing its job). And the matrix id for the
+new row was first picked off a too-narrow grep (M-200, already taken past M-199); the duplicate-id
+test caught it at once and the row renumbered to M-205 — the traceability net catching its own
+author.
+
+**The register lesson continues, honestly.** This session's chat reused the exact calque session 31
+was caught on («иголочные» for the needle tests) before the journal's own lesson was reread. The
+hook now reminds every prompt and the lint blocks shown artifacts; live chat stays the weakest
+surface and row 203's case file grows by one more sample.
