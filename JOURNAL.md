@@ -2876,3 +2876,17 @@ Versions: spec v0.16.22 · base 0.1.31 · communicator 0.1.44 · VERSION 0.9.13;
 installed copies synced at every bump. Delegation carried the day: five clean-writer drafts, one
 inventory worker, five renderer rounds and a fresh-eyes check — the senior wrote briefs, folded,
 and gated.
+
+## Session 32 — 1.0.0 (2026-07-10 ~11:30, his «поехали» at ~11:26)
+
+The five-angle audit closed at ~11:21 (record: docs/prover/2026-07-10-m1-audit.md — zero must-fix,
+every fold landed the same hour, three convergence locks newly held by red-proven tests) and he gave
+the go five minutes later, with one release decision of his own: versions ALIGN at the major — the
+pack, all eight skills, the spec header and the pins all read 1.0.0 from this moment (each skill
+resumes its own patch rhythm from here; when else to align is row 231, his open half). Rows 173-187
+archived whole to docs/queue-archive/2026-07-10-v1.0.0-milestone.md per the standing milestone note.
+289 green on the aligned tree. What 1.0 means by his own bar, set 2026-07-09 and met: everything on
+the run's list landed here, plus the docs pass; the two field items ride real windows next — the
+cloud session, and the tlvphoto migration his one sentence will start. The morning's lesson rides
+into the release: the day's laws (norm-conformance, convergence, cleanup, cross-cutting, mirror-ban,
+CI-verdict) are queued post-1.0 by his word — the release is the floor they land on, not the ceiling.
