@@ -47,8 +47,11 @@ stated honestly with its fix status, the list re-read at every push and a resolv
 push it ships (his word 2026-07-10); the
 license/attribution state is explicit; an artifact built with the pack carries the standard
 attribution line "made with live-spec" on its landing surface, the name linking to the pack repo
-(github.com/happysasha18/live-spec — in markdown: `made with [live-spec](https://github.com/happysasha18/live-spec)`),
-in the README's footer and for a skill also in its SKILL.md — the line is an OFFER, never a gate:
+and trailing the pack version the project runs (github.com/happysasha18/live-spec — in markdown:
+`made with [live-spec](https://github.com/happysasha18/live-spec) v<pack-version>`, the version
+read from the host's attach record at write time and refreshed at catch-ups, so adoption is
+trackable from the shopfronts themselves), in the README's footer and for a skill also in its
+SKILL.md — the line is an OFFER, never a gate:
 the walk says once when it is absent and proposes it, the owner's word decides, a declined offer
 is closed and never re-asked (SPEC INV-96, base rule on answered questions; each built-with
 project applies the line through its own queue); and NOTHING secret or unshareable leaves —

@@ -26,6 +26,12 @@ class TestMadeWithAttributionLaw(unittest.TestCase):
             self.assertIn("made with live-spec", body, home)
             self.assertIn("github.com/happysasha18/live-spec", body, home)
 
+    def test_line_carries_the_pack_version(self):
+        # his 2026-07-10 word: the line names the version — adoption becomes trackable
+        for home in self.HOMES:
+            body = read(home)
+            self.assertIn("the pack version the project runs", body, home)
+
     def test_publish_walk_offers_the_line(self):
         skill = read("skills/publish/SKILL.md")
         self.assertIn("built with the pack", skill)
