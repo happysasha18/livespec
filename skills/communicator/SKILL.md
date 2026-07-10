@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.1
+  version: 1.0.2
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -189,6 +189,11 @@ The form of the showing: one window, real data, retold as a small story, opened 
      2026-07-06): a test count, a suite size, a version string, a check tally is never message content —
      say what the number means for the reader ("tested clean", "saved", "the method held") and let it
      trail as a quiet anchor or stay in the records.
+   - Self-certification is never content either (SPEC INV-94): a line that praises its own honesty
+     or directness — "we say so plainly", «честно говоря», «из честного» — says nothing the reader
+     can use; naming not-A informs only where not-A was a live alternative. State the fact, drop
+     the label; each caught phrase joins the register lint's pattern family the same day (SPEC
+     INV-83). Born of the pack's own README certifying itself twice in one day, 2026-07-10.
    - One carve-out: where the number is the asked substance — a direct question about it, or rule 11's
      evidence walk (SPEC INV-25) — the number IS the answer. —
      *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64

@@ -74,7 +74,7 @@ They are good, and they share the right instinct: spec before code. Use them if 
 
 live-spec is built for **continuous** work: you throw wishes in passing, mid-anything, and each one enters the process in a sentence. No planning session is required, the queue is persistent across sessions, and execution runs asynchronously while you keep talking.
 
-Two mechanisms this pack relies on are older than it, and we say so plainly. Comparing a result against a saved reference copy and flagging any difference is standard testing practice — Jest snapshots, Percy, and Chromatic built their products on it. Checking that an agent touched only the files it said it would touch also exists: [agent-guardrails](https://github.com/logi-cmd/agent-guardrails) compares a run's actual changes against the file list declared for the task. Neither idea is ours; the credit belongs to those tools.
+Two mechanisms this pack relies on are older than it. Comparing a result against a saved reference copy and flagging any difference is standard testing practice — Jest snapshots, Percy, and Chromatic built products on it. Checking that an agent touched only the files it declared also exists: [agent-guardrails](https://github.com/logi-cmd/agent-guardrails) compares a run's actual changes against the file list declared for the task. Ours is only the integration: the loop that binds these parts to one living spec.
 
 live-spec's one claim is the **integration**: the spec is the single authority binding the whole loop —
 
@@ -86,7 +86,7 @@ live-spec's one claim is the **integration**: the spec is the single authority b
 
 Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search — found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md) and [`docs/prior-art-frameworks.md`](docs/prior-art-frameworks.md). If you know prior art we missed, open an issue — we would genuinely like to read it.
 
-Two more frameworks rose to prominence while this pack was being built, and both deserve the same honest treatment; read as of July 2026, full notes in [`docs/research/2026-07-10-superpowers-gstack.md`](docs/research/2026-07-10-superpowers-gstack.md).
+Two more frameworks rose to prominence while this pack was being built; read as of July 2026, full notes in [`docs/research/2026-07-10-superpowers-gstack.md`](docs/research/2026-07-10-superpowers-gstack.md).
 
 [Superpowers](https://github.com/obra/superpowers) (Jesse Vincent) is the strongest of the field on process discipline, and it earns its roughly quarter-million GitHub stars. Its seven-phase workflow is mandatory and sequential — brainstorming through worktree isolation, planning, subagent implementation, test-driven development, code review, and branch finishing — and it holds the line where raw agents cut corners: tests come before production code by an explicit rule, and completion may be claimed only with fresh verification evidence. The difference from live-spec is structural. Its design document is a per-feature file dated in its own path and committed at approval, and no source describes it being revisited afterward; it is a one-time gate per feature. An [independent comparison](https://dev.to/truongpx396/spec-kit-vs-superpowers-a-comprehensive-comparison-practical-guide-to-combining-both-52jj) puts it plainly: Superpowers is process-centric, where a spec tool is artifact-centric — the procedure persists, and the artifact is whatever the procedure produces. Invariants as a first-class idea, a single spec living across the project's life, and a requirement-to-code audit trail are all absent by design.
 
@@ -94,7 +94,7 @@ Two more frameworks rose to prominence while this pack was being built, and both
 
 Both frameworks confirm the ground this section claims. The integration of one persistent living spec — the single authority that validates every wish at intake, derives the tests, passes a formal review, and stays the source of truth for the whole life of the project — is exactly the space these tools leave open. Their execution discipline is real, and we take it as the bar to meet on that layer.
 
-An independent look, July 2026: two clean-context analysts — briefed to verify this repo's claims against its actual files and to criticize all three subjects — compared live-spec with BMAD and Kiro, and three more read Spec Kit, OpenSpec, GSD and BMAD at source level. Their verdicts are published unsoftened, including the uncomfortable parts: this project is young and single-author, its "production-proven" evidence largely belongs to a sibling project, and its judgment loop is one model reviewing itself — only the mechanical gates are independent. Full texts: [the comparison](docs/research/2026-07-06-bmad-kiro-livespec-comparison.md) and [the implementation-level harvest](docs/research/2026-07-06-neighbours-implementation-harvest.md).
+An independent look, July 2026: two clean-context analysts — briefed to verify this repo's claims against its actual files and to criticize all three subjects — compared live-spec with BMAD and Kiro, and three more read Spec Kit, OpenSpec, GSD and BMAD at source level. Their verdicts are published in full, including the uncomfortable parts: this project is young and single-author, its "production-proven" evidence largely belongs to a sibling project, and its judgment loop is one model reviewing itself — only the mechanical gates are independent. Full texts: [the comparison](docs/research/2026-07-06-bmad-kiro-livespec-comparison.md) and [the implementation-level harvest](docs/research/2026-07-06-neighbours-implementation-harvest.md).
 
 One distinction both analysts confirmed by running things: live-spec's traceability and freshness gates are executable scripts that block a push, while the surveyed alternatives enforce their specs by prompt text (Spec Kit's consistency checks, analyze and converge included, are LLM instructions — the only mechanical checks in its repo are file-existence tests). Six mechanisms the neighbours genuinely do better were taken into our queue.
 
@@ -102,7 +102,7 @@ The sharpest critique arrived the same week from use. The first real project bui
 
 ## Known issues
 
-We keep this list honest and current, and we review it at every push.
+This list is reviewed at every push; a resolved issue leaves it the moment its fix ships.
 
 - **Internal vocabulary can leak into human-facing text.** The pack's working terms, and loan-translations from other languages, sometimes appear in text meant for people. A register lint blocks any shown artifact that carries a known leaked term, and its pattern list grows with every catch. Chat messages have a reminder hook and stay the weakest surface.
 - **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 62 recorded style-lint findings and 11 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.

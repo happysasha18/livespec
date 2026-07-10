@@ -2946,3 +2946,12 @@ winds down to a shutdown-safe stop and says «можно выключать») q
 old-name sweep done and pushed (one annotation — the other mention was already correct history);
 the cloud-seat facts fetched from the current docs for his browser-session question (same
 subscription price, local and cloud; notes in the session trail).
+
+**Row 237 — no line certifies its own sincerity (~13:57, his word at ~13:53, landed the same
+hour).** The README's fresh lineage paragraph opened with "we say so plainly" and he called it:
+when everything said is meant to be true, saying so distinguishes nothing — mention not-A only
+where not-A was a live alternative. Now law (INV-94, beside the register-lint law): the spec
+clause, the communicator's never-list, five caught phrases as lint patterns (floor 17→22), and
+the README swept — four self-certifying phrasings rewritten to carry the fact instead ("published
+in full", "reviewed at every push"). The same hour the clock hook blocked an invented ~13:58
+stamp written at 13:49 — both catches recorded as the day's convergence proof: the locks bite.

@@ -93,6 +93,21 @@ PATTERNS = [
      "transliterated pack term «воркер» ← 'worker'", "2026-07-07"),
     ("ru-steyshn", "ru", re.compile(r"(?<!\w)стейшн\w*", _F),
      "transliterated pack term «стейшн» ← 'station'", "2026-07-07"),
+
+    # ---- Self-certification of sincerity (SPEC INV-94) ------------------------------------------
+    # source: the pack's own README certified itself twice in one day; his word 2026-07-10 ~13:53
+    ("en-say-so-plainly", "en", re.compile(r"\bsay\s+so\s+plainly\b", _F),
+     "self-certification 'we say so plainly' — the content carries the honesty", "2026-07-10"),
+    ("en-honest-treatment", "en", re.compile(r"\bhonest\s+treatment\b", _F),
+     "self-certification 'deserves the same honest treatment'", "2026-07-10"),
+    ("en-unsoftened", "en", re.compile(r"\bunsoftened\b", _F),
+     "self-certification 'published unsoftened' — say what it IS (in full)", "2026-07-10"),
+    ("ru-iz-chestnogo", "ru", re.compile(r"(?<!\w)из\s+честного", _F),
+     "self-certification «из честного» — as if the rest were otherwise", "2026-07-10"),
+    ("ru-chestno-govorya", "ru", re.compile(r"(?<!\w)честно\s+говоря", _F),
+     "self-certification «честно говоря»", "2026-07-10"),
+    ("ru-ne-po-pamyati", "ru", re.compile(r"(?<!\w)не\s+по\s+памяти", _F),
+     "self-certification of diligence «проверил не по памяти» — state the source, drop the label", "2026-07-10"),
 ]
 
 # Comment example, deliberately NOT a pattern: a bare unevidenced claim like
