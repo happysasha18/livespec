@@ -1,6 +1,20 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## BOARD — open lanes (2026-07-10 ~16:58)
+## RESUME COLD FROM HERE (wind-down 2026-07-10 ~18:02 — machine sleeping, two clouds in flight)
+1. **Two cloud branches to collect** (check GitHub from any seat): tlvphotos — plain-language
+   spec rewrite (THEIR window integrates; this window read-only); product-prover repo — branch
+   row246-shopfront (THIS window integrates: verify claims by deed, reconcile the SKILL.md drift
+   report, then row 246 closes). Cloud sessions survive his laptop's sleep — collect any time.
+2. **Row 241 open leg**: one external host attaches the four checks — track-coach's catch-up is
+   first (his phrase in THEIR window: «обнови пакет и разбери входящие»; their inbox holds the
+   audit fixes + the versioned attribution offer).
+3. **The law batch continues**: 248 (long-work visibility, from track-coach's wish) · 249 (chat
+   hook reminds no-scissors) · 218 · 219 · 222 · 223-228 · 231 · 233 · 234 · 239 · 240 · 242 ·
+   236 · then 250 (prover cross-cutting sweep, surface-sized) · 247 (inbox over GitHub).
+4. Waiting his word: promoter command · rows 191/193 · D-6/D-7 · row 238.
+5. The MINOR (1.1.0) question rides the batch close: the 3-pass audit before any MINOR bump.
+
+## BOARD — open lanes (superseded by the wind-down above) (2026-07-10 ~16:58)
 Lane row 241 FIRST LEG LANDED ~17:38 (1.0.8): the cloud worker delivered red-first (22 tests,
 write-set exact), verified by deed here (own planted defect caught), pack repo attached as its
 own first host (SURFACES.md + config + pre-push gate h), README boundary sentence + Known-issues

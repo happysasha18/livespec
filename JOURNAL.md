@@ -3022,3 +3022,16 @@ converged from both sides in one day. WHY it matters beyond the row: the moat cl
 else enforces by prompt text, we enforce by executable gates — is now attachable by any host in
 fifteen minutes, which is what the catalog submission was waiting for. Open leg: one external
 host attaches (track-coach's catch-up is the natural first).
+
+## Session 34 — the evening close: two clouds fly, the machine sleeps safe (2026-07-10 ~18:02)
+
+The day ends with the seam between seats settled and USED: two cloud sessions run without this
+machine — tlvphotos rewrites its spec into plain language on its own branch, and a manual cloud
+order refreshes the standalone prover repo's shopfront (row 246, branch row246-shopfront) —
+while every local lane sits committed and pushed. The attribution line grew his version idea the
+same hour it was asked (1.0.9): the made-with line now names the pack version the project runs,
+so adoption reads off the shopfronts themselves. The cloud facts were settled by experiment, not
+belief: two probes proved a remote request from a terminal falls back local, so firing clouds is
+the owner's browser act, and the brief-in-repo (or brief-in-prompt) pattern bridges the seam.
+The first real leave-walk of the leave-command law closes this chapter: workers halted, lanes at
+their checkpoints, the closing line said — the law born at 14:40 fired for real the same evening.
