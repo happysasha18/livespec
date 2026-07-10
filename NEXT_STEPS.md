@@ -1,6 +1,6 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (wind-down 2026-07-10 ~18:08, resume COLD from here — machine sleeping, two clouds in flight)
+## LIVE STATE (2026-07-10 ~18:11, wind-down — resume COLD from here; machine sleeping, two clouds in flight)
 Day's landings all pushed, CI green, tree clean: 1.0.4 leave-command (INV-95) · 1.0.5/1.0.6
 attribution offer (INV-96, softened to an offer; line carries the pack version since 1.0.9) ·
 1.0.7 norm-conformance derivation rule (row 216) · 1.0.8 THE FOUR HOST CHECKS LIVE (row 241
