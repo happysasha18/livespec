@@ -5,7 +5,11 @@ Lane row 241 FIRST LEG LANDED ~17:38 (1.0.8): the cloud worker delivered red-fir
 write-set exact), verified by deed here (own planted defect caught), pack repo attached as its
 own first host (SURFACES.md + config + pre-push gate h), README boundary sentence + Known-issues
 line retired by the clean writer. Open leg: one EXTERNAL host (track-coach catch-up natural
-first). Catalog submission unblocked by this leg. Was: spec contract landed (INV-97/M-226
+first). Catalog submission unblocked by this leg. CLOUD FACTS settled (two probes 2026-07-10): a
+remote-agent request from a local session FALLS BACK to a local worktree — firing a real cloud
+session is the owner's browser action only; the brief-in-repo pattern bridges it (this window
+commits the brief, he fires, the branch comes back through git); local sub-agents never appear
+in his claude.ai/code list — only browser-side sessions and routines do. Facts feed row 247. Was: spec contract landed (INV-97/M-226
 red-proven), architecture assigned, brief for the CLOUD worker at
 docs/briefs/2026-07-10-row241-guardrails-brief.md — he fires the cloud session on the GitHub
 repo, branch row241-guardrails; integration (function rows, pack-repo attach, Known-issues
