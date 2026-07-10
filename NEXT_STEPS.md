@@ -25,8 +25,9 @@ docs/prover/2026-07-10-row*.md.
    hook reminds no-scissors) · 218 · 219 · 222 · 223-228 · 231 · 233 · 234 · 239 · 240 · 242 ·
    236 · then 250 (prover cross-cutting sweep, surface-sized) · 247 (inbox over GitHub — grant
    model; most facts settled, see CLOUD FACTS).
-4. Waiting his word: promoter command (adopt ~/promoter as engine, campaigns light) · rows
-   191/193 picks · D-6/D-7 · row 238 (rationalization table: re-decide or build).
+4. Waiting his word: rows 191/193 picks · D-6/D-7 · row 238 (rationalization table: re-decide
+   or build). The promoter command is DONE — he relayed it, their window landed the migration
+   (their resume file confirms, checked 2026-07-10 ~18:32); struck from this list.
 5. The MINOR (1.1.0) question rides the batch close: the 3-pass audit before any MINOR bump.
 6. Blocked/waiting on others: row 243 (README ↔ article series, waits on the campaign's
    publish; wishes filed in promoter inboxes 2026-07-10). tlvphoto pair migration: ahead, his
