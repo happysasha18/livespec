@@ -110,3 +110,13 @@ Consequences (the class fix, not the point fix):
   drafts it.
 - Mockup v4 goes through that road and is shown in the morning. The build stays parked until his
   "годится".
+
+## Addendum — v4 verdict (2026-07-10 ~09:16, his morning word)
+
+v4 ACCEPTED with one class fix, landed the same hour: the page hardcoded his personal setting values
+(the Language row said "Our conversation in Russian"; the name row said "Alexander."; the
+settings-ladder example leaned on Russian). His word: those are his own profile values; the page
+states the RULE instead — conversation happens in whatever language the user writes (the agent
+follows), written work is always in good English; the name is whatever the user introduces themselves
+with. Three spots fixed by a clean writer, register lint green, page re-shown. The BUILD gate is now
+OPEN on this accepted mockup (the mockup is the norm for look and feel).

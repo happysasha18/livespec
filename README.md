@@ -73,7 +73,7 @@ This repo runs on its own method: it carries its own `PRODUCT_SPEC.md`, queue, t
 We keep this list honest and current, and we review it at every push.
 
 - **Internal vocabulary can leak into human-facing text.** The pack's working terms, and loan-translations from other languages, sometimes appear in text meant for people. A register lint blocks any shown artifact that carries a known leaked term, and its pattern list grows with every catch. Chat messages have a reminder hook and stay the weakest surface.
-- **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 63 recorded style-lint findings and 10 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.
+- **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 62 recorded style-lint findings and 11 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.
 - **First-run onboarding is a mockup only.** Onboarding exists as an approved-pending mockup and does not run yet. Today a new project is set up by hand, following the settings documentation.
 - **Guardrail checks ship as descriptions.** The scaffold describes four guardrail checks, and each project wires its own instance. Generic runnable check code has not shipped yet.
 

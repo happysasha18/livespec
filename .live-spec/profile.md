@@ -20,3 +20,14 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   project that its own session was already handling ("тлвфото сам справится, не надо его тут
   менеджить… это только аудит").
 
+
+- `trust.push-grant: standing — accepted work pushes to origin main by rule on the agent's own
+  certification (every gate the diff reaches ran and passed, the verdict read from the suite log's own
+  line; the prover re-check before every push stays; version-milestone releases he reserved by name
+  still wait for his word)` — recorded 2026-07-10 ~09:16, Alexander's explicit word this morning
+  («сам пуши! не надо меня ждать»); this answers the push-law grant question (SPEC INV-82) for this host.
+
+- AMENDMENT to `other-projects` (named, dated): for the tlvphoto pair migration Alexander set on
+  2026-07-10 ~02:09, this window TEACHES and SUPERVISES — prepares briefs he hands over, reviews
+  artifacts, directs — and still never writes their trees; the audit-only line above keeps standing
+  for everything else. Recorded 2026-07-10 ~09:19 from his word of that night.

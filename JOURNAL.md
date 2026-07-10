@@ -2817,3 +2817,17 @@ author.
 was caught on («иголочные» for the needle tests) before the journal's own lesson was reread. The
 hook now reminds every prompt and the lint blocks shown artifacts; live chat stays the weakest
 surface and row 203's case file grows by one more sample.
+
+## Session 32, the morning after (2026-07-10 ~09:16–09:22) — his three words landed
+
+He read the night report and spoke three times. **The push grant**: «сам пуши! не надо меня ждать» —
+recorded as a standing host-profile line the same minute; the push-law's grant question for this host
+is answered, and the waiting-for-his-hand line retires. **The onboarding verdict**: v4 accepted with
+one class fix — the page had hardcoded his personal setting values (Russian for chat, "Alexander" for
+the name, a Russian-pinned example) as if the product prescribed them; his rule instead: conversation
+follows whatever language the user writes, written work is always good English, the name is whatever
+the user gives. Three spots fixed by a clean writer within the hour, lint green, page re-shown; the
+BUILD gate is now open on the accepted mockup. **The migration**: goes today — his window plan stands
+(tlvphoto windows execute, this window teaches and supervises); the audit-only amendment is now also
+written into the host profile where the original line lives. README's Known-issues counts refreshed
+at the push walk (style debt 62, redundancy candidates 11).

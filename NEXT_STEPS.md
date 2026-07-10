@@ -76,9 +76,12 @@ PUSH waits his hand: `! git -C ~/live-spec push origin main`. **The night queue 
 session 32 landed rows 213 (pair-law seams, v0.16.20) · 210 (plainer spec prose, judge re-run clean,
 v0.16.21, base 0.1.30, communicator 0.1.43) · 201 (delegation trim, bp 0.2.46) · 214 (the tlvphoto
 small-fix red-first path, test-author 0.1.3, bp 0.2.47, M-205) — details JOURNAL session 32 chapter.
-Waiting on HIS word: onboarding v4 verdict (open the file below in a browser) · rows 191/193 adoption
-picks · D-6/D-7 pair decisions · the push line · tlvphoto pair migration (their windows execute, THIS
-window supervises only). Morning batch report READY (register-linted):
+MORNING WORDS LANDED (2026-07-10 ~09:16): PUSH GRANT recorded in the host profile — the agent pushes
+by rule now, his hand no longer waited on · ONBOARDING v4 ACCEPTED with one class fix (personal
+values out of product copy — landed same hour, see the wish addendum; BUILD gate now OPEN, the
+mockup is the norm). Still waiting on HIS word: rows 191/193 adoption picks · D-6/D-7 pair decisions
+(recommendations stand). To 1.0: onboarding BUILD (next big piece in this window) → M-1 3-pass audit
+→ bump 1.0.0 + push on his explicit go. Morning batch report (register-linted, shown ~09:11):
 /private/tmp/claude-501/-Users-sashaabramovich/8cfc5ea9-bd5b-4f51-b8eb-6f4aee46e46f/scratchpad/morning-report-2026-07-10.md
 — render via scripts/render-doc.py into a new browser window at the morning session. Other scratchpad
 survivors: onboarding v4 =
