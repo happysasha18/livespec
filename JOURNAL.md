@@ -2955,3 +2955,16 @@ clause, the communicator's never-list, five caught phrases as lint patterns (flo
 the README swept — four self-certifying phrasings rewritten to carry the fact instead ("published
 in full", "reviewed at every push"). The same hour the clock hook blocked an invented ~13:58
 stamp written at 13:49 — both catches recorded as the day's convergence proof: the locks bite.
+
+**The originality audit (~14:16, his ~13:56 ask — inside the hour he gave).** Two passes: a
+borrowings inventory (eighteen mechanisms adopted from named neighbours, every one traceable —
+six credited in shipped text, twelve in the research docs and queue rows) and a verbatim scan
+(seven shipped files against eleven neighbour documents, zero shared runs of eight or more words;
+the scanner proven on a planted control first). Two findings, both closed the same hour: a dead
+provenance pointer in guardrails/README.md repointed to the audit, and the rationalization table
+he approved on 2026-07-05 turned out never built — re-queued as row 238 under the
+never-drop-a-sound-thought law. The record: docs/research/2026-07-10-originality-audit.md, linked
+from the README's why-section. Also this hour: the lineage paragraph redrafted by a clean writer
+as a plain acknowledgment (his read on my in-session rewrites: they drift — the clean-writer road
+now holds for every README touch), and row 222 grew its placement half (test files are born in a
+temp home; the bouncing Downloads icon is the born-of, his ~14:11 word).

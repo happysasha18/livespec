@@ -77,7 +77,9 @@ so they travel with the repo — is meant to hold for any host.
 ## The gate contract (SPEC INV-47)
 
 Every gate script authored or next touched in this directory obeys three conventions (the
-neighbours' CLI lesson, ROADMAP row 114):
+neighbours' CLI lesson, adopted from OpenSpec's gate contract — provenance and the full
+borrowings inventory: docs/research/2026-07-10-originality-audit.md; the adopting row rests in
+the queue archive):
 
 1. **A blocking red carries one typed line.** Beside its human lines, a BLOCKING gate that fails
    emits exactly one parseable JSON object — `{"severity": "...", "code": "...", "message": "...",
