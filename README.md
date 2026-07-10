@@ -25,7 +25,7 @@ Then attach the pack to a project:
 - New project: copy the document templates from [`templates/`](templates/) into the project root.
 - Existing codebase: follow [`docs/adoption.md`](docs/adoption.md) — inventory the code, write the spec from what actually ships, pin the architecture to the real files, derive the tests from there.
 
-The pack has no CLI. Everything is driven in plain words inside a Claude Code session: "attach live-spec to this project", any wish in passing, "status", "publish".
+The pack has no CLI. Everything is driven in plain words inside a Claude Code session: "attach live-spec to this project", any wish in passing, "status", "publish". Conversation happens in whatever language you write — it follows you, with no setup. Written work — documents, code, commit messages — is always in good English.
 
 ## A worked example
 
