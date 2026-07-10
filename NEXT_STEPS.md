@@ -1,5 +1,14 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
+## BOARD — open lanes (2026-07-10 ~16:58)
+Lane row 241 (the gates as attachable code) ROLLING: spec contract landed (INV-97/M-226
+red-proven), architecture assigned, brief for the CLOUD worker at
+docs/briefs/2026-07-10-row241-guardrails-brief.md — he fires the cloud session on the GitHub
+repo, branch row241-guardrails; integration (function rows, pack-repo attach, Known-issues
+retire) stays with this window. Row 235's second leg still open (his «я ухожу» never fired —
+he stayed). Rows 244+245 landed (1.0.5/1.0.6: attribution offer + README rescope); row 246
+queued (standalone product-prover README, 4 days stale).
+
 ## LIVE STATE (2026-07-10 ~16:39, session 34 — 1.0.5 pushed: rows 244+245 landed on top of 235; 315 green)
 Afternoon landings on his return: row 244 — made-with attribution (INV-96/M-225): the standard
 line "made with live-spec"+repo link lives in the publish floor, checked at every publish; first
