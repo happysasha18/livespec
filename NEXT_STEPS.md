@@ -63,20 +63,17 @@ Charter: spawn-per-item, senior folds and gates; one batch report at the end (ow
 - Phases 1-3 all [x] DONE (details: JOURNAL session 31, four chapters). NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
 
-## RESUME POINT (2026-07-10 ~11:02, session 32's SOLID STOP — memory may be wiped; NO live workers)
-State: pushed through `fe72aa0`, CI mirror GREEN (read it yourself after every push — row 228's law,
-already the habit); suite 286 green; tree = this file + ROADMAP registrations to commit; inbox holds
-the two tlvphoto wishes SWEPT into rows 222/223. Today landed: push grant + onboarding v4 verdict +
-the settings card (F-onboarding, one bounce closed by norm-as-template + conformance test; VERSION
-0.9.13; the .gitignore norm-file miss caught by CI, fixed) + the 24h tlvphoto audit (report:
-scratchpad/tlvphoto-24h-audit.md of THIS session, shown; 9 classes, all registered). NEXT — his ~11:02 word (no half-day waits): STRAIGHT
-to the M-1 FINAL AUDIT now (five angles in one piece: whole-spec read · matrix audit · composition ·
-convergence locks 217 · skill-creator sweep; honest estimate 1.5–3 h from observed runs) → 1.0.0 on
-his explicit go → row 221 (the one-sentence tlvphoto migration start, 30–60 min, teach-only) → THEN
-the whole LAW BATCH post-1.0 (216 · 218 · 219 · 222 · 223 · 224 · 225 · 226 · 227 · 228 — none
-critical pre-1.0; the CI-verdict habit 228 already practiced from ~10:57) + 215/229 (his post-1.0
-words). Communication law now practiced, paper post-1.0: every plan item carries an honest time
-range from observed runs + what the human's own time is needed for. Waiting his word: rows
+## RESUME POINT (2026-07-10 ~11:30 — 1.0.0 SHIPPED; memory may be wiped; NO live workers)
+**1.0.0 IS OUT** — his «поехали» ~11:26; versions aligned at the major on his word (pack + all
+eight skills + spec header + pins = 1.0.0; when else to align = row 231); the M-1 five-angle audit
+record: docs/prover/2026-07-10-m1-audit.md (zero must-fix, all folds landed, three convergence locks
+now red-proven tests); rows 173-187 archived (docs/queue-archive/2026-07-10-v1.0.0-milestone.md);
+289 green; tag v1.0.0 pushed, CI verdict read green. NEXT, in his order: row 221 (make «подгрузи
+лайвспек и давай переверстывать документацию» work for the tlvphoto window — dry-read the adoption +
+pair guides as that session would, fix gaps HERE, teach-only, 30–60 min) → the LAW BATCH post-1.0
+(216 · 218 · 219 · 222 · 223 · 224 · 225 · 226 · 227 · 228 · 231, ~2-4 h, none needs him) → the
+post-1.0 field items: cloud session · the real migration (their windows execute) · rows 215/229/230
+(his words). Time-range + earliest-feedback habits practiced; papers ride the law batch. Waiting his word: rows
 191/193 picks · D-6/D-7 (recommendations stand). Earliest-feedback law: when he WAITS, show the
 first judgeable slice at once (memory sharpened). Chat register: the no-calques hook fires every
 prompt — session 32 leaked twice («иголочные», «зубы»); row 203's case grows.
