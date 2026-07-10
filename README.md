@@ -74,7 +74,7 @@ They are good, and they share the right instinct: spec before code. Use them if 
 
 live-spec is built for **continuous** work: you throw wishes in passing, mid-anything, and each one enters the process in a sentence. No planning session is required, the queue is persistent across sessions, and execution runs asynchronously while you keep talking.
 
-Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy, Chromatic). Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails) diffs a run's actual changes against a per-task file declaration; credit where due.
+Two mechanisms this pack relies on are older than it, and we say so plainly. Comparing a result against a saved reference copy and flagging any difference is standard testing practice — Jest snapshots, Percy, and Chromatic built their products on it. Checking that an agent touched only the files it said it would touch also exists: [agent-guardrails](https://github.com/logi-cmd/agent-guardrails) compares a run's actual changes against the file list declared for the task. Neither idea is ours; the credit belongs to those tools.
 
 live-spec's one claim is the **integration**: the spec is the single authority binding the whole loop —
 
