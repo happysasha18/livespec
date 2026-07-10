@@ -8,7 +8,7 @@ description: >
   executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
   wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 0.2.46
+  version: 0.2.47
 ---
 
 # build-pipeline — ship a change by the method
@@ -24,7 +24,8 @@ One pipeline, each step has a tool. The order is **spec → prove → architectu
 matrix → test → code → verify → commit & show**. A bug shortcuts to **bug → matrix → test → code** (citing the
 existing architecture node it lands in). **Skip the pipeline only if ALL hold:** single
 file · no new state / element / user-visible behaviour · an existing test level already covers the touched
-fact (still ship a test). Anything touching visibility / layout / colour enters at the matrix step minimum.
+fact (still ship a test; the order of test and fix follows test-author's small-fix path — red first by
+default, and a one-batch fix owes the mechanical red proof). Anything touching visibility / layout / colour enters at the matrix step minimum.
 Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (The private playbook repo's PLAYBOOK.md holds
 the principle behind each step. This skill is its executable projection; keep the two in sync.)
 

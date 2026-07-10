@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 0.1.2
+  version: 0.1.3
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -80,7 +80,12 @@ screen — both past every green desktop run.)
 - **Assert the real shipped artifact**: render the page, produce the file, call the function — then
   inspect the output. A source-string match on such a fact only reveals a matrix defect; the row still owes a real test.
 - **Red first, proven.** A new test runs against the pre-change state (or the bug) and FAILS before
-  the implementation makes it pass; the red run is recorded. A test born green proves nothing.
+  the implementation makes it pass; the red run is recorded. A test born green proves nothing. Red
+  before code is the default order at every size. On a tiny reversible edit within the pipeline's skip
+  boundary, the fix and its test may be authored in one batch only when the batch closes with the
+  mechanical red proof: restore the pre-change file (`git show HEAD:<file>`), run the suite, watch the
+  new rows fail, restore the fix. The landing record names that proof. A batch without a recorded red
+  run is a defect.
 - **A geometry fact is asserted relative, wide, and long (SPEC INV-78).** A centering or
   positioning fact asserts relative geometry — the element's center within ε of the viewport's
   center — at two or more viewport sizes, and after N consecutive steps of the interaction, so

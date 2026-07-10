@@ -2461,6 +2461,23 @@ class TestFieldLessons(unittest.TestCase):
         # the boundary: donor data legal as an extra, illegal as the only suite
         self.assertIn("never as the only one", ta)
 
+    def test_small_fix_red_path(self):
+        """Row 214 (M-205, E-27): the small-fix path is stated — red before code is
+        the default at every size; a one-batch fix inside the skip boundary owes the
+        mechanical red proof, named in the landing record."""
+        ta = re.sub(r"\s+", " ", read("skills/test-author/SKILL.md"))
+        for needle in ("Red before code is the default order at every size",
+                       "mechanical red proof",
+                       "restore the pre-change file",
+                       "watch the new rows fail",
+                       "A batch without a recorded red run is a defect"):
+            self.assertIn(needle, ta, "test-author lost the small-fix path: %s" % needle)
+        bp = re.sub(r"\s+", " ", read("skills/build-pipeline/SKILL.md"))
+        self.assertIn("test-author's small-fix path", bp,
+                      "build-pipeline's skip sentence lost its pointer at the small-fix path")
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("test_small_fix_red_path", matrix, "M-205 must pin this test (row 214)")
+
     def test_prove_exemption_is_lens_aware(self):
         # row 185 (bug door): the miss mechanism pinned — a spec proven under an OLD lens set kept
         # its green; the exemption must read the prover version off the record
