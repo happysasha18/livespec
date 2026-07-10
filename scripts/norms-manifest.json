@@ -1,0 +1,7 @@
+{
+  "_comment": "content fingerprints of frozen norms \u2014 a norm changes only DELIBERATELY: update the hash in the same commit and name why in the landing (the convergence lock, row 217/F1)",
+  "sha256": {
+    "onboarding-card-2026-07-10.html": "7c6cee2ae453975c76f7f60c7cec90f147e1b83958012e3d55605d89868c4093",
+    "onboarding-card-2026-07-10.provenance.md": "9c2d87b1bce94d20ed7be1fce5f7073e5e29e3a07d669d418b2fee785629ef81"
+  }
+}

@@ -16,6 +16,7 @@ import argparse
 import html
 import re
 import sys
+import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -338,9 +339,12 @@ def main():
     ap.add_argument("--norm", default=str(DEFAULT_NORM))
     args = ap.parse_args()
 
+    t0 = time.monotonic()
     out_html = build(args.base, args.personal, args.host, args.norm)
+    render_ms = int((time.monotonic() - t0) * 1000)
     Path(args.out).write_text(out_html, encoding="utf-8")
     print(args.out)
+    print("render-ms: %d" % render_ms)
 
 
 if __name__ == "__main__":

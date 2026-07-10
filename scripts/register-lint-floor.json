@@ -1,0 +1,4 @@
+{
+  "_comment": "the register lint pattern set only GROWS - one per caught leak (INV-83); lowering this floor is illegal, raising it rides the pattern that grew the set (the convergence lock, row 217/F2)",
+  "min_patterns": 17
+}
