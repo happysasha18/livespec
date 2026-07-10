@@ -1768,18 +1768,19 @@ class TestProblemLedger(unittest.TestCase):
         """Row 153 (M-155, INV-56): a known owned problem parks; unrelated lanes
         roll; batch servicing for mechanically-owned defects, never ceremony."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-56", "never dams the flow", "serviced in batch",
+        for needle in ("INV-56", "never blocks unrelated work", "serviced in batch",
                        "never a per-instance ceremony"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
-        for needle in ("never dams the flow", "serviced in BATCH", "known limp"):
+        for needle in ("never blocks unrelated work", "serviced in BATCH",
+                       "governs only the known, owned problem"):
             self.assertIn(needle, base, "base missing: %s" % needle)
 
     def test_stretch_end_unmissable(self):
         """Row 154 (M-156, INV-57): the stretch's end is one short final line, last,
         after every tool call — delivery, not existence."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-57", "Delivery is the rule; existence alone does not satisfy it",
+        for needle in ("INV-57", "counts as undelivered",
                        "the last rendered thing is one short final line"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))

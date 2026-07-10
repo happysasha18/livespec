@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v0.16.20, 2026-07-10)
+# live-spec — Product Spec (v0.16.21, 2026-07-10)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -38,7 +38,7 @@ Behind the pipeline is a full set of roles:
 
 These roles are real: they are the working skills (spec-author, product-prover, build-pipeline, test-author, communicator, publish, feedback-intake). One **base skill** holds the shared rulebook and the default settings the other skills work by [E-12].
 
-Machines enforce the process at every step, which keeps it disciplined. Every request follows the same route. Every claim earns a test, and nothing ships until that test passes. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
+Machines enforce the process at every step, which keeps it disciplined. Every claim earns a test, and nothing ships until that test passes. The pipeline drives each request all the way to a landing and keeps its scope contained. It brings the user in for the decisions that are theirs to make.
 
 A project can adopt live-spec at the start or partway through work already under way. Adoption brings the document templates, a procedure for joining midstream, and the guardrails the project installs. The project that adopts it is the **host**.
 
@@ -58,13 +58,13 @@ Within that same minute, the wish becomes a row in the **queue (ROADMAP.md)**, t
 - status
 - acceptance criterion [E-3]
 
-When the user speaks a wish, its row exists before anything else happens. It survives even if the session dies the next second. Rows are never deleted. A row closes only with a named exit.
+When the user speaks a wish, its row exists before anything else happens. The row survives even if the session ends immediately after. Rows are never deleted. A row closes only with a named exit.
 
 At a milestone, a row closed with a terminal exit (landed, declined, or superseded) moves to a dated queue archive, where it stays, never edited, never lost.
 
 A **deferred** row stays in the active queue, carrying its revisit trigger, until the trigger fires or the row resolves to a terminal exit.
 
-The archive holds only wishes no longer due back. No wish is ever lost. [INV-1]
+The archive holds only wishes no longer due back. [INV-1]
 
 From its row, the wish follows one path:
 1. The classifier reads its size, priority, door, and work-kind, then states them back to the user in one intake line (the paragraphs below explain each).
@@ -163,7 +163,7 @@ This law and the narration law live in skills a window may never load, so both a
 
 [INV-83]
 
-**The report law is walked — a live step each time.** Chat has no suite, so the enforcement takes the form of a step actually performed.
+**The report law is walked — a live step each time.** Chat has no suite, so the enforcement takes the form of a performed step.
 
 Before any movement-end or milestone report reaches the human, the agent re-reads the communicator rules and passes the draft phrase by phrase through one question: does this sentence stand for a reader who doesn't live inside the pack? Any pack surface it names either gets explained in the reader's own words, or dropped.
 
@@ -212,7 +212,7 @@ The same content goes through the remote session's own channel instead: an artif
 
 The session reads where it runs from what it can reach — the platform, the display, and whose filesystem it sees — and names the channel it picked. Handing a local file path to a remote reader is a defect of the exchange, the same failure as a window that never opened. The personal profile's show line applies to the local case; it is one instance of the general rule. [INV-67]
 
-**The current state of the work is answerable at any moment, in any setting.** The harness's own task list and activity line are a convenience of the local terminal. A remotely-running session, read through a browser, never shows them, and even on a local session they go dark when the work becomes a long run of tool calls, so hours pass and the human cannot tell what is being worked on.
+**The current state of the work is answerable at any moment, in any setting.** The harness's own task list and activity line are a convenience of the local terminal. A remotely-running session, read through a browser, never shows them, and even on a local session they stop updating when the work becomes a long run of tool calls, so hours pass and the human cannot tell what is being worked on.
 
 The live status therefore lives in the chat, the one surface present in every setting [INV-67], as a short status kept current:
 - **Now** — the piece of work in hand and its pipeline stage;
@@ -230,7 +230,7 @@ When a stretch ends — a loop iteration going to sleep, an away-stretch closing
 - what is needed from the human,
 - and when the agent wakes.
 
-The long report sits above that line. The final line comes last, after every tool call. A page deliverable repeats its identifier [INV-51] in that final line. Delivery is the rule; existence alone does not satisfy it. This lives in the communicator skill. [INV-57]
+The long report sits above that line. The final line comes last, after every tool call. A page deliverable repeats its identifier [INV-51] in that final line. This lives in the communicator skill. [INV-57]
 
 **A review surface shows its sources and accepts the human's edits.** Anything the agent shows for review carries per-claim provenance, whether it is a dossier, a claims page, or a draft with assertions.
 
@@ -264,7 +264,7 @@ A quick win can be promoted: when the lane frees, the agent may take it ahead of
 
 An inbox wish is registered at the moment it arrives; that is when it first becomes a row the ordering rules can see. A file's own date never competes with spoken timestamps. Arrival ties resolve by queue row order, top to bottom. Within one sweep, an inbox batch is registered in filename-sorted order. [T-11]
 
-**The door is named before any code is written.** Classification is an explicit step with fixed rules. No one's gut feeling settles it.
+**The door is named before any code is written.** Classification is an explicit step with fixed rules. Personal judgment does not settle it.
 
 A row carries three axes, stated together in one intake line: size, priority, and door, plus the work-kind (what the wish builds, covered in the next paragraphs [T-16]). A wish too big for its worth is negotiated in scope, never in time [T-15]. Size, together with priority, says how big and how urgent.
 
@@ -362,7 +362,7 @@ On an adopted or promoted surface that already lives [A-10], a default is read f
 
 The sweep and the axis rule [C-1] split one dimension by time. The sweep authors the facet sentences when the feature is first specified. The axes compose and test them across views once the surface exists. [INV-18]
 
-**A feature is interrogated for how it fits the product — a small prover on the wish itself.** The device facets above ask what every visible feature owes. Nobody's yet asked how this feature sits in the person's path. Path holes ship green because no clause ever promised the way out — enter, browse, re-enter, then stuck at the tenth picture with no way on.
+**A feature is interrogated for how it fits the product — a small prover on the wish itself.** The device facets above ask what every visible feature owes. Nobody's yet asked how this feature sits in the person's path. Path holes ship green because no clause ever promised the way out. A visitor can enter, browse, and return, and still reach a point in the flow with no way to continue.
 
 So a feature-doored wish's spec-delta also walks the fit walk, scaled to the wish's kind:
 - A product or UX wish walks the visitor's journey: how the person arrives at the new thing, what they do there, where they go next from every state it can be in, what a return visit or entry through another door changes, what neighbouring behaviour it implies (no-repeat needs remembered state), what the feel owes against the approved prototype's bar [E-17], and what next feature it invites.
@@ -553,7 +553,7 @@ Today only the fence leg is enforced; the rest is promised, marked, and owned by
 
 #### An approved look lives in its artifact
 
-Text cannot carry a feel. A rebuild made from prose alone, with no artifact to check against, can pass every test and still ship a look-alike instead of the approved look.
+Prose alone cannot record how a design looks and feels. A rebuild made from prose alone, with no artifact to check against, can pass every test and still ship a look-alike instead of the approved look.
 
 Once the human approves a sketch as the look, that prototype becomes the **norm** for look and feel. One law with four arms guards it:
 
@@ -925,7 +925,7 @@ committed anywhere.
 
 ### When the workshop itself misbehaves (the problem ledger)  [feature: F-problem-ledger]
 
-Some noise comes from the workshop itself: the test harness flakes, a dependency goes missing, the shell eats a command, a tool times out. The session retries and moves on — but the same noise then eats the same minutes, session after session.
+Some noise comes from the workshop itself: the test harness flakes, a dependency goes missing, a shell command fails for a reason outside the product, a tool times out. The session retries and moves on — but the same noise then eats the same minutes, session after session.
 
 **The problem ledger** is the host's dynamic list of this operational noise. It lives in one git-tracked file, `.live-spec/PROBLEMS.md` (the template ships in the pack). Within `.live-spec/`, only the checkpoints stay ignored [E-8]. The ledger is born on its first entry.
 
@@ -950,18 +950,18 @@ After the owner is written, the entry only collects dates:
 - Re-raising an agreed non-problem is the human's move — he re-raises it from the growing date list.
 - When a landing closes an OWNED entry's queue row, that same session flips the entry to SOLVED. The entry never waits for an audit to learn its row landed.
 
-#### Keeping the limp parked
+#### Parking a known, owned problem
 
-**A limping thing never dams the flow.** A known, owned problem stays parked while every unrelated lane keeps rolling. That's either a recurring defect with a named mechanical owner, or a check held red for an understood, recorded reason.
+**A known, owned problem never blocks unrelated work.** It stays parked while every unrelated lane keeps rolling. That's either a recurring defect with a named mechanical owner, or a check held red for an understood, recorded reason.
 
 Its ledger line, or the owning row, or an expected-red note in the record, holds it in place: when one thing doesn't quite work, it should leave everything else free to move.
 
-Two rules keep the limp parked:
+Two rules keep a known problem parked:
 
 - Hand-fixing loops cap at the ledger's own two-strikes law: the second occurrence buys an owner, never another hand-pass.
 - Once a defect has its named mechanical owner, its instances get serviced in batch: the fence fixes them silently wherever it catches them, then appends one ledger line at session's end. It's never a per-instance ceremony that interrupts the work or the human reading it.
 
-A real new bug still preempts [T-9]. This law governs only the known limp [INV-56].
+A real new bug still preempts [T-9]. This law governs only the known, owned problem [INV-56].
 
 #### Seams
 
@@ -1663,7 +1663,7 @@ meaning, this table is only the map.
 | INV-53 | a brief editing existing files is born from READING them in full: three recorded lines per file (current state · what changes · what must survive); every step back-references its spec sentence; every technical claim cites a source (file:line / command output) | Who decides what |
 | INV-54 | the worker HALT list, closed: ambiguous requirement · two consecutive unexplained failures of one command · missing config/dependency · acceptance impossible as briefed — stop with evidence; otherwise run to completion; composes with one-tier escalation | Who decides what |
 | INV-55 | a brief targets a bounded share of the worker's context, splits above it (default bound: brief text ~300 lines, ~8 files to edit [default]); paths, never inlined file bodies | Who decides what |
-| INV-56 | a limping thing never dams the flow: a KNOWN owned problem is parked (ledger line / owning row / expected-red note) and unrelated lanes keep rolling; hand-fix loops cap at two-strikes (second occurrence buys an owner); a defect with a named mechanical owner is serviced in batch (silent fence-fixes, one ledger append at session end), never per-instance ceremony; a real NEW bug still preempts (T-9) | When the workshop itself misbehaves |
+| INV-56 | a known, owned problem never blocks unrelated work: it is parked (ledger line / owning row / expected-red note) and unrelated lanes keep rolling; hand-fix loops cap at two-strikes (second occurrence buys an owner); a defect with a named mechanical owner is serviced in batch (silent fence-fixes, one ledger append at session end), never per-instance ceremony; a real NEW bug still preempts (T-9) | When the workshop itself misbehaves |
 | INV-57 | the stretch's end is unmissable: the last rendered thing is one short final line (what closed · what's next · what's needed · when the agent wakes), the long report above it, a page deliverable repeating its passport; delivery required, existence alone falls short; home: communicator | Throwing a wish |
 | INV-58 | approved text is frozen: a revision applies exactly the named correction, never a fresh rewrite around it; churn of approved material = a defect, kin of a resurfaced cut; home: communicator | Throwing a wish |
 | INV-59 | no question asked twice: recorded answers searched before any ask (archives, records, journal, profile) — an already-answered question is a defect; dialogues converge (answered = closed + harvested same session; named problems return solved with evidence; round N+1 only new); home: communicator | Throwing a wish |
