@@ -63,27 +63,23 @@ Charter: spawn-per-item, senior folds and gates; one batch report at the end (ow
 - Phases 1-3 all [x] DONE (details: JOURNAL session 31, four chapters). NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
 
-## RESUME POINT (2026-07-10 ~10:45, session 32 continues in the morning; NO live workers)
-State: pushed through `8758a76` this morning (his standing push grant recorded in the host profile);
-suite 286 green; inbox EMPTY. Morning landed: his push grant + onboarding v4 verdict + the F-onboarding
-BUILD (the settings card, spec v0.16.22, base 0.1.31 with the Card column, bp/test-author/communicator
-bumped, 8 owning tests, one bounce closed) — night details in JOURNAL session 32 chapters. Queue order
-HIS: row 220 (audit 24h of tlvphoto exchanges — problems there must enter the pack) FIRST → rows
-216/218/219 (norm-conformance law · convergence principle in base · skill-creator walk on every
-skill-kind landing) → row 221 (the one-sentence tlvphoto migration start, teach-only) → M-1 audit
-(now FIVE passes: 3 classic + convergence locks 217 + skill-creator sweep) → 1.0 on his go.
-MORNING WORDS LANDED (2026-07-10 ~09:16): PUSH GRANT recorded in the host profile — the agent pushes
-by rule now, his hand no longer waited on · ONBOARDING v4 ACCEPTED with one class fix (personal
-values out of product copy — landed same hour, see the wish addendum; BUILD gate now OPEN, the
-mockup is the norm). Still waiting on HIS word: rows 191/193 adoption picks · D-6/D-7 pair decisions
-(recommendations stand). To 1.0: onboarding BUILD (next big piece in this window) → M-1 3-pass audit
-→ bump 1.0.0 + push on his explicit go. Morning batch report (register-linted, shown ~09:11):
-/private/tmp/claude-501/-Users-sashaabramovich/8cfc5ea9-bd5b-4f51-b8eb-6f4aee46e46f/scratchpad/morning-report-2026-07-10.md
-— render via scripts/render-doc.py into a new browser window at the morning session. Other scratchpad
-survivors: onboarding v4 =
-/private/tmp/claude-501/-Users-sashaabramovich/a95c99e5-09ea-4f98-ab97-05baccdeba88/scratchpad/onboarding-mockup-v4.html ·
-night-audit + night-queue reports under that same a95c… scratchpad. Chat register: the no-calques hook
-fires every prompt — obey it; session 32 still leaked one known calque, row 203's case grows.
+## RESUME POINT (2026-07-10 ~11:02, session 32's SOLID STOP — memory may be wiped; NO live workers)
+State: pushed through `fe72aa0`, CI mirror GREEN (read it yourself after every push — row 228's law,
+already the habit); suite 286 green; tree = this file + ROADMAP registrations to commit; inbox holds
+the two tlvphoto wishes SWEPT into rows 222/223. Today landed: push grant + onboarding v4 verdict +
+the settings card (F-onboarding, one bounce closed by norm-as-template + conformance test; VERSION
+0.9.13; the .gitignore norm-file miss caught by CI, fixed) + the 24h tlvphoto audit (report:
+scratchpad/tlvphoto-24h-audit.md of THIS session, shown; 9 classes, all registered). NEXT — his ~11:02 word (no half-day waits): STRAIGHT
+to the M-1 FINAL AUDIT now (five angles in one piece: whole-spec read · matrix audit · composition ·
+convergence locks 217 · skill-creator sweep; honest estimate 1.5–3 h from observed runs) → 1.0.0 on
+his explicit go → row 221 (the one-sentence tlvphoto migration start, 30–60 min, teach-only) → THEN
+the whole LAW BATCH post-1.0 (216 · 218 · 219 · 222 · 223 · 224 · 225 · 226 · 227 · 228 — none
+critical pre-1.0; the CI-verdict habit 228 already practiced from ~10:57) + 215/229 (his post-1.0
+words). Communication law now practiced, paper post-1.0: every plan item carries an honest time
+range from observed runs + what the human's own time is needed for. Waiting his word: rows
+191/193 picks · D-6/D-7 (recommendations stand). Earliest-feedback law: when he WAITS, show the
+first judgeable slice at once (memory sharpened). Chat register: the no-calques hook fires every
+prompt — session 32 leaked twice («иголочные», «зубы»); row 203's case grows.
 
 ## Field legs + standing habits (ride real windows / always-on)
 - Field legs with him (real windows): 47/96 feedback loop · 54 first-run · 165 first-struggle · 168 remote
