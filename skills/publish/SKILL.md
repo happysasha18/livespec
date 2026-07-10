@@ -48,9 +48,10 @@ push it ships (his word 2026-07-10); the
 license/attribution state is explicit; an artifact built with the pack carries the standard
 attribution line "made with live-spec" on its landing surface, the name linking to the pack repo
 (github.com/happysasha18/live-spec — in markdown: `made with [live-spec](https://github.com/happysasha18/live-spec)`),
-in the README's footer and for a skill also in its SKILL.md — checked here like any other floor
-item, a publication without it is a gap at the publish step, never silently waived (SPEC INV-96;
-each built-with project applies the line through its own queue); and NOTHING secret or unshareable leaves —
+in the README's footer and for a skill also in its SKILL.md — the line is an OFFER, never a gate:
+the walk says once when it is absent and proposes it, the owner's word decides, a declined offer
+is closed and never re-asked (SPEC INV-96, base rule on answered questions; each built-with
+project applies the line through its own queue); and NOTHING secret or unshareable leaves —
 the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
 sample checked shareable (no copyrighted material we may not republish). (The sweep items entered from
 the first eval run, 2026-07-05 — the bare arm knew them and the skill didn't; evals cut both ways.)

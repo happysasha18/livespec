@@ -26,15 +26,17 @@ class TestMadeWithAttributionLaw(unittest.TestCase):
             self.assertIn("made with live-spec", body, home)
             self.assertIn("github.com/happysasha18/live-spec", body, home)
 
-    def test_publish_walk_checks_the_line(self):
+    def test_publish_walk_offers_the_line(self):
         skill = read("skills/publish/SKILL.md")
         self.assertIn("built with the pack", skill)
-        self.assertIn("a publication without it is a gap at the publish step", skill)
+        self.assertIn("an OFFER, never a gate", skill)
 
-    def test_never_silently_waived(self):
+    def test_declined_offer_never_reasked(self):
+        # his same-day correction: a wish, never an obligation — and answered stays answered
         for home in self.HOMES:
             body = read(home)
-            self.assertIn("never silently waived", body, home)
+            self.assertIn("an OFFER, never a gate", body, home)
+            self.assertIn("never re-asked", body, home)
 
     def test_spec_anchor_and_index(self):
         spec = read("PRODUCT_SPEC.md")
