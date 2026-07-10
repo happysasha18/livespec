@@ -1,7 +1,16 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-10 ~15:05, session 34 — row 235 landed as 1.0.4, 311 green; track-coach spec audit running in background)
-Row 235 (the leave-command, INV-95) landed: «я ухожу» → workers halted/landed, lanes checkpointed,
+## LIVE STATE (2026-07-10 ~16:39, session 34 — 1.0.5 pushed: rows 244+245 landed on top of 235; 315 green)
+Afternoon landings on his return: row 244 — made-with attribution (INV-96/M-225): the standard
+line "made with live-spec"+repo link lives in the publish floor, checked at every publish; first
+application wish filed to track-coach inbox (second wish there today beside the doc-audit one, both
+on his word). Row 245 — README opening rescoped to the shipped truth by a clean writer (the eight
+git-wired gates hold THIS repo; a host's four checks are specifications until row 241); catalog
+submission gated on 241. Track-coach doc audit VERDICT: approve-with-fixes — prior two fixes
+landed, re-layout clean, four findings (one must-fix: duplicated §G.4 heading) — all in their inbox
+wish. Cloud probe: remote request fell back to a local worktree; real cloud seat = his browser on
+the GitHub repo (needs one-time GitHub link in the cloud env settings — told him); artifact-page
+show path PROVEN. Row 235 (the leave-command, INV-95) landed: «я ухожу» → workers halted/landed, lanes checkpointed,
 green committed, one closing line «можно выключать» + what resumes where; homes = spec clause +
 communicator leave-word rule + base rule 6 firing sentence; M-224 red-proven, installed copies
 synced. Second Done-when leg (first real firing) expected this hour — his café exit. A background

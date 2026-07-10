@@ -2984,3 +2984,20 @@ into a sleeping machine is exactly the defect the law kills. Red-proven (5 fails
 homes), then 311/311; traceability caught the unassigned anchor and the matrix row before any
 human could — the teeth work. Poetic justice logged: the row was built inside the very 30-minute
 café window it legislates, and its first real firing is expected within the hour.
+
+## Session 34 — attribution and the honest shopfront (2026-07-10 ~16:27–~16:39)
+
+Two of his words landed back to back. The made-with attribution (row 244, INV-96): every artifact
+built with the method says so — one standard line, "made with live-spec" linking to the pack repo,
+its wording living once in the publish skill's shared floor, checked at every publish like any
+floor item. The WHY of the shape: the floor already demanded "attribution state explicit", so the
+law sharpens an existing item instead of growing a second checklist; and the pack keeps its hands
+off foreign trees — track-coach got the first application wish in its inbox, the rest follow
+through their own queues. Distribution rides every future publication for free — his monetization
+lever, wired into the gate that cannot be skipped. Before that, row 245: the web session's curator
+read held — the README's opening claimed executable gates wider than a host's out-of-box truth.
+The fix went truth-first: the opening now says the eight git-wired checks gate THIS repo (they
+blocked two commits the same day — the claim is deed-backed), while a host's four checks ship as
+specifications until the runnable versions land (row 241, already first major movement). Clean
+writer wrote the paragraph, the register lint passed it. The catalog submission waits for 241 —
+narrow the promise to the truth today, widen the truth to the promise in code next.
