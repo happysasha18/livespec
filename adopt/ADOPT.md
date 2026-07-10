@@ -68,6 +68,11 @@ installed skills and the catalogs you can reach for ones matching the project's 
 propose the fit list with a recommendation — the human's word picks. Later, any struggle (a ledger
 entry seen twice, a taste artifact rejected twice) buys one search before the next attempt.
 
+**The settings card closes the setup (SPEC INV-87):** when setup finishes, once the project's kind
+and the working pace have been settled, the session renders the settings card with
+`scripts/onboarding-card.py` and opens it for the human. It is one page showing what is set up and
+what is theirs to change, and it asks nothing.
+
 Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
 these in live-spec shape** — then adoption is light and you rewrite nothing.

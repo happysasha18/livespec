@@ -54,6 +54,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 | publish | the publish-quality gate: per-kind publication checklist (its one home) + the target-plugin seam; runs BEFORE the human's gate, never instead (added session 8, row 98 — node add re-proven, record `docs/prover/2026-07-05-row98.md`) | E-20, INV-44 | `skills/publish/SKILL.md:1` (frontmatter + when it fires), the kind-checklist table and target-plugin sections in the same file |
 | test-author | the test method's one home: derives TEST_MATRIX.md from the proven spec through the proven architecture and writes the tests — the level ladder, real-artifact assertions, red-first proof, the pinned skip-set, traceability as a standing test (added session 23, row 163 — node add re-proven, record `docs/prover/2026-07-07-row163.md`) | E-27, INV-77, INV-78, INV-79, INV-80 | `skills/test-author/SKILL.md:1` (name + description), the level-ladder table and the two step sections in the same file |
 | feedback-intake | the intake half of the exchange: receives anything handed back through three channels, routes each item to the home its law owns, keeps the feedback ledger's shape, echoes every arrival (added session 24, row 47 — node add re-proven, record `docs/prover/2026-07-07-row47.md`) | E-28, T-20, INV-68 | `skills/feedback-intake/SKILL.md:1` (frontmatter + when it fires), the routing table and ledger-shape sections in the same file |
+| onboarding-card | the settings card: a build-time renderer parsing the base's package-defaults table + the profile files into the card page per the frozen norm; shown at founding/adoption end and on the standing "what can I customize?" question (added session 32, F-onboarding) | INV-87, INV-88 | `scripts/onboarding-card.py:1` (the renderer), `docs/norms/onboarding-card-2026-07-10.html` (the frozen norm), trigger wiring: `adopt/ADOPT.md` (setup-end line) + `skills/communicator/SKILL.md` (standing-question line) — wiring pins, ownership stays here |
 
 ## Seams
 
@@ -80,6 +81,9 @@ crosses it and which side owns the format. Where a crossing has a real schema, t
 | publish → the human's gate | publish · the human | the prepared deposit (README/listing/cards, checklist walked) handed to the publish/push gate — the gate stays the human's (base rules 12/17, M-6) | publish (the checklist); the human (the gate) |
 | matrix & tests derivation | build-pipeline · test-author | the proven spec + architecture in; TEST_MATRIX.md + owning tests out (steps 5–6 invoke the skill the way steps 1–2 invoke theirs) | test-author (the ladder and the assertion shapes) |
 | unit → coverage | package-docs · guardrails | each `[feature: F-x]` tag on a scenario heading, mapped to its implementer node(s) + a test in the Feature coverage table below (E-29, INV-73) | guardrails (the two-way check); spec-author (the tag format) |
+| catalog → card | base-rulebook · onboarding-card | the package-defaults table (with the per-row card-visible/internal mark) read at render time | base-rulebook (the table and the mark) |
+| profiles → card | host-contract · onboarding-card | the personal and host profile lines the card renders as the reader's own values and the project's rules | host-contract (the line format) |
+| card → human | onboarding-card · communicator | the rendered card page, through the pre-show register lint and the seat's showing channel (INV-83, INV-67) | communicator (the showing walk) |
 
 ## Feature coverage
 
@@ -103,6 +107,7 @@ this layer by the project type's own definition.
 | F-bootstrap | attach, templates | test_scaffold_bootstrap_runs |
 | F-adoption | attach | test_adopt_phases_cite_spec |
 | F-pair | attach | test_pair_leadership_law |
+| F-onboarding | onboarding-card, attach | test_onboarding_card_completeness |
 
 ## Runtime view
 
@@ -123,6 +128,7 @@ can fail.
 | F-bootstrap | scaffold → templates (copies) → attach (founding questions, B-3 profile step) | a founding question guessed rather than asked | a founding question with no answer parks as an open decision marker, asked, never invented |
 | F-adoption | attach (orient → VCS gate → attic → attach record) → host-contract (profile, installed versions) | a host file overwritten with no attic line; an unbacked surface passed silently | the attic keeps every superseded file restorable; an unbacked surface goes red at the gate until specced or fenced |
 | F-pair | attach (founding/adoption orient proposes the engine/instance split, human's word decides) → the two repos, each a full host (own spec/queue/journal/inbox) → the instance's inbox (lessons travel only through this door) | the split imposed rather than proposed; a third document across the seam; a window writing the pair's other tree beyond one inbox file | the human's word is the only decider, both outcomes recorded; each repo stays a full host with no third document; a window unsure of which repo it serves asks rather than writes |
+| F-onboarding | setup's end (founding or adoption's orient) or the standing question → onboarding-card reads the base table + profiles → the card page → the pre-show register lint → shown by the seat's channel | a malformed table row; a missing personal profile; a card row with no source | a malformed row fails the render loudly (never a silently dropped row); a missing profile renders package defaults with a plain absence notice naming the founding offer; the completeness test goes red on any card/table mismatch |
 
 ## Placement view
 
@@ -135,7 +141,7 @@ reads, so the "runtime" is the agent session that loads them. Five places carry 
 | the installed skills dir `~/.claude/skills/` | the copies any session actually loads; synced from the repo | `scripts/sync-skills.sh` |
 | the pack repo `~/live-spec` (source: github.com/happysasha18/live-spec) | the source of truth: skills, templates, guardrails, docs, tests; the suite and gates run here at commit/push time | python3 + pytest; bash git hooks |
 | the host project's repo | the documents the method writes for that host: spec, queue, journal, checkpoints, ledgers | plain markdown in the host's tree |
-| GitHub + CI · the human's browser | the remote copy and the gates' second net; rendered artifacts and decision pages open here | `.github/workflows/gates.yml`; `scripts/render-doc.py` |
+| GitHub + CI · the human's browser | the remote copy and the gates' second net; rendered artifacts, decision pages, and the settings card open here | `.github/workflows/gates.yml`; `scripts/render-doc.py`; `scripts/onboarding-card.py` (runs in the agent session on the host machine, output opens in the browser) |
 
 No secret lives in this pack: the repo, the templates, and the installed skills carry none, and a HOST's secrets stay in that host's own keychain or platform bindings — its placement table names the holder (the pack's own validation derivations model this).
 
@@ -151,6 +157,7 @@ real number is read.
 | skill evals | every per-skill scenario green at each milestone | dated run records in `docs/evals/` |
 | resume-file size | `NEXT_STEPS.md` ≤ 100 lines (INV-48, already asserted) | the suite's own check |
 | spec prose register | style lint: 0 errors on PRODUCT_SPEC.md | `scripts/spec-style-lint.py` JSON tail |
+| settings card render | ≤ 1 s on a pack-sized catalog [default] | the render script's own run, asserted by its matrix row |
 
 A skill's judgment quality beyond the evals has no honest number; it is said by name here and judged
 by the human's eye on real landings, never given a vanity metric.

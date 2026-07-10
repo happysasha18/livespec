@@ -2831,3 +2831,48 @@ BUILD gate is now open on the accepted mockup. **The migration**: goes today —
 (tlvphoto windows execute, this window teaches and supervises); the audit-only amendment is now also
 written into the host profile where the original line lives. README's Known-issues counts refreshed
 at the push walk (style debt 62, redundancy candidates 11).
+
+## Session 32, the morning build (2026-07-10 ~09:38–10:47) — the settings card lands, and the convergence principle is born
+
+The last construction piece before 1.0 walked the whole pipeline in one morning. A worker inventoried
+every setting the pack knows (14 keyed + the unkeyed founding answers); a clean writer drafted the
+scenario ("Meeting your settings": the card at setup's end + the standing "what can I customize?"
+answer, one catalog home, rules never personal values — his 09:16 law became INV-88); the prover's
+seam pass found one real conflict (every-table-row vs the curated approved page) folded by the base
+table's new Card column (visible/internal, base 0.1.31); architecture, five matrix rows, five tests
+proven red before any code.
+
+**Then the bounce that taught the day.** The first render shipped green and HE bounced it on sight:
+an invented "yours today — yours to change" chip on every row, raw keys as headings ("Address",
+"Trust commit"), the priority-ladder section stripped of its explaining example. A fresh-eyes check
+found two more real defects under it: multi-line profile entries truncated at the first physical
+line (raw markdown leaking into the shown page, a recorded project-kind value never reaching its
+row), and only 4 of the norm's 7 sections rendered. Root cause, honestly named: the approved norm
+was neither the template nor a test — it was held by my attention, and attention drifts at every
+model tier. My own briefing skipped two written laws (build with the norm OPEN and the
+plan-vs-prototype diff line; the verify walk against the norm side by side).
+
+**The fix was convergence, not patching.** The frozen norm became the LITERAL template (the renderer
+injects values into the approved file and can no longer invent markup); a norm-conformance test and
+a multi-line/robustness test were proven red on the bounced render, then five tight worker rounds
+closed them (v2 template rebuild · v3 example rules are data, replaced by the real host lines · v4
+long lines elided · v5 no raw key ever a heading + unmatched personal entries collapse into one
+counted summary row). The register lint BLOCKED one intermediate showing — his own profile's
+no-calques rule quotes banned words, and the gate caught them on the card — the first live proof of
+the INV-83 teeth catching their own author. Final: 286 green, lint clean, sections identical to the
+norm by diff, shown and — his word pending on the look — landed.
+
+**His words of the morning, all recorded as rows:** parallelism enters the architecture step's
+checks (215, post-1.0) · a norm-pointered surface owes a conformance row (216) · the convergence
+audit — every quality lock itself tested to hold — blocks 1.0 (217) · the convergence principle
+enters the base rulebook: every process names its goal as an artifact and moves toward it, always;
+a proxy never replaces the goal (218, his frame verbatim in my permanent memory) · every skill-kind
+landing walks skill-creator's review, the classifier is the trigger (219) · audit 24h of the
+tlvphoto exchanges first (220), then make his one-sentence migration start work, teach-only (221) ·
+tests clean up after themselves, a matrix-template law — and our own new card tests are the first
+caught leak (222).
+
+Versions: spec v0.16.22 · base 0.1.31 · communicator 0.1.44 · VERSION 0.9.13; pins refreshed twice;
+installed copies synced at every bump. Delegation carried the day: five clean-writer drafts, one
+inventory worker, five renderer rounds and a fresh-eyes check — the senior wrote briefs, folded,
+and gated.

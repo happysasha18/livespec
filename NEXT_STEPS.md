@@ -3,18 +3,10 @@
 Sessions 28–30 landings are committed history — full detail in JOURNAL.md (session 30's chapter:
 "the evening queue drained — rows 180-187, eight landings").
 
-## LIVE STATE (2026-07-10 ~00:16, session 30 closing)
-Versions: pack 0.9.11 · base 0.1.26 · communicator 0.1.41 · product-prover 0.1.15 · spec-author 0.1.24 ·
-build-pipeline 0.2.44 · publish 0.1.3 · test-author 0.1.2 · PRODUCT_SPEC v0.16.13 (INV-74..82) ·
-ARCHITECTURE v0.3.0+. **Suite 239 green, 0 red, ~30 s.** Everything PUSHED through `ab1581b`; installed
-skills synced. Landed this session: rows 180-189 + 194 (LLD reading order · field-norm pieces · push law:
-remote by rule, README re-walked crisp at EVERY push · worker liveness · five test lessons · pre-ask scan)
-+ row 190's first leg (heavy-binaries placement prompt). Queued: 190 (engine/instance split) · 191 (field
-test norms) · 193 (missing pipeline stages). DEFERRED on his word: 192 (scenario pre/postconditions,
-triggers recorded). Row 170 (pre-show register lint) PRIORITY RAISED by his word — a jargon strip shipped
-on the onboarding mockup («это бред» class; the next user just leaves). Trust grants recorded in his
-profile: commit same-or-better; push agent-certified (all reached gates green); INV-82 in the pack.
-Onboarding mockup v3 (flow strip in plain words) opened for his eye — his verdict still the gate.
+## LIVE STATE (2026-07-10 ~10:49, session 32) — the detail lives in the RESUME POINT below
+Versions live in VERSION and each skill's frontmatter; earlier sessions' states are JOURNAL chapters
+(28-31). Still DEFERRED on his word: row 192 (scenario pre/postconditions, triggers recorded). Still
+queued from that era: 191 (field test norms) · 193 (missing pipeline stages) — both his adoption picks.
 
 ## 1.0 BAR (2026-07-09, his decision — the finish line for this push)
 **1.0 = everything below done HERE + THE DOCS PASS (his 2026-07-10 ~00:07 word: 1.0 only when the
@@ -41,17 +33,18 @@ in his profile + the installed hooks, not memory.
    real ARCHITECTURE.md left no unnamed hole (one named deferral: the at-a-glance diagram stays optional).
    Derived doc: session scratchpad `tlvphoto-architecture-derived-v2.md` (not committed — foreign
    internals stay out of the public pack). Record: `docs/prover/2026-07-09-row180.md`.
-6. **Project onboarding — v3 BOUNCED 2026-07-10 ~00:50 (third bounce = method defect, not wording).**
-   His three exhibit lines + the class fix are in the wish addendum
-   (`docs/wishes/2026-07-09-project-onboarding-what-can-i-customize.md`): the lines become row-170
-   red fixtures; human-facing text is drafted by a FRESH writer (reader's brief only), then lint,
-   then clean-reader check. v4 through that road, shown in the morning; BUILD stays parked on his «годится».
-7. **Then 1.0:** M-1 3-pass audit (runs AFTER item 6 lands so the audit covers it) → bump 1.0.0 → push on
-   his explicit "go" (never without it). Rows 173-187 archive at this milestone.
+6. **Project onboarding — DONE 2026-07-10 ~10:45.** v4 accepted in the morning (his fix folded:
+   rules, never personal values); the BUILD landed the same day through the full pipeline — the
+   settings card renders from the base table + profiles per the frozen norm
+   (docs/norms/onboarding-card-2026-07-10.html), 8 owning tests incl. norm-conformance, one bounce
+   caught by his eye and closed by five worker rounds (JOURNAL session 32 holds the story).
+7. **Then 1.0:** M-1 audit — now FOUR passes on his 2026-07-10 ~10:24 word: the 3-pass audit + the
+   convergence pass (row 217: every quality lock tested to hold, 1.0-BLOCKING) — runs AFTER item 6
+   lands so it covers it → bump 1.0.0 → push on his explicit "go" (never without it). Rows 173-187
+   archive at this milestone.
 
-ALSO LANDED THIS SESSION (outside the original bar, closed 2026-07-09/10): row 181 worker-liveness
-(INV-76) · rows 182-186 the five test lessons (INV-77..80 + lens-aware exemption; record
-`docs/prover/2026-07-09-rows182-186.md`) · row 187 pre-ask scan (INV-81) — details in ROADMAP rows.
+ALSO LANDED 2026-07-09/10 outside the original bar: rows 181-187 (worker liveness, the five test
+lessons, pre-ask scan) — details in ROADMAP rows and `docs/prover/2026-07-09-rows182-186.md`.
 
 POST-1.0 (his bar, NOT in the run): remote-seat cloud session · REAL tlvphoto migration — HIS 2026-07-10
 ~02:09 WORD: tomorrow, tlvphoto's windows execute onto the pair law (INV-85/86, first real pair:
@@ -70,12 +63,15 @@ Charter: spawn-per-item, senior folds and gates; one batch report at the end (ow
 - Phases 1-3 all [x] DONE (details: JOURNAL session 31, four chapters). NEVER at night: the 1.0 bump/push of 1.0.0 (his go, after docs + his onboarding verdict) · onboarding
   BUILD past the mockup (his eye is the gate) · anything taste-gated · touching other projects' trees.
 
-## RESUME POINT (2026-07-10 ~03:20, session 32 closing; NO live workers — all spawns returned and folded)
-State: 22 commits ahead of origin; suite 278 green at HEAD (`8b72248`); tree clean; inbox EMPTY.
-PUSH waits his hand: `! git -C ~/live-spec push origin main`. **The night queue is DRAINED** —
-session 32 landed rows 213 (pair-law seams, v0.16.20) · 210 (plainer spec prose, judge re-run clean,
-v0.16.21, base 0.1.30, communicator 0.1.43) · 201 (delegation trim, bp 0.2.46) · 214 (the tlvphoto
-small-fix red-first path, test-author 0.1.3, bp 0.2.47, M-205) — details JOURNAL session 32 chapter.
+## RESUME POINT (2026-07-10 ~10:45, session 32 continues in the morning; NO live workers)
+State: pushed through `8758a76` this morning (his standing push grant recorded in the host profile);
+suite 286 green; inbox EMPTY. Morning landed: his push grant + onboarding v4 verdict + the F-onboarding
+BUILD (the settings card, spec v0.16.22, base 0.1.31 with the Card column, bp/test-author/communicator
+bumped, 8 owning tests, one bounce closed) — night details in JOURNAL session 32 chapters. Queue order
+HIS: row 220 (audit 24h of tlvphoto exchanges — problems there must enter the pack) FIRST → rows
+216/218/219 (norm-conformance law · convergence principle in base · skill-creator walk on every
+skill-kind landing) → row 221 (the one-sentence tlvphoto migration start, teach-only) → M-1 audit
+(now FIVE passes: 3 classic + convergence locks 217 + skill-creator sweep) → 1.0 on his go.
 MORNING WORDS LANDED (2026-07-10 ~09:16): PUSH GRANT recorded in the host profile — the agent pushes
 by rule now, his hand no longer waited on · ONBOARDING v4 ACCEPTED with one class fix (personal
 values out of product copy — landed same hour, see the wish addendum; BUILD gate now OPEN, the

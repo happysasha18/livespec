@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 0.1.30
+  version: 0.1.31
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -218,19 +218,21 @@ any pack file is read, and it is those bootstrap lines' one home — the profile
 
 ### Package defaults
 
-| Setting | Default | A profile may say |
-|---|---|---|
-| `language.docs` | English — docs, commits, code, artifacts | another docs language |
-| `language.chat` | mirror the human's language | pin one (e.g. Russian) |
-| `proactivity.mode` | ask-at-max — surface forks, wait on taste calls | max-proactive: proceed on recommendations, batch questions |
-| `trust` | low — human word before outward moves | raised only by the human (INV-9) |
-| `prover.cadence` | FULL pass before every MINOR bump; CROSS-LINK on every surface add | tighter (e.g. live-spec itself: before every push) or looser, recorded |
-| `worker.tiering` | router proposes the cheapest sufficient tier; senior may override, logged | fixed tier per size class (SPEC D-2) |
-| `checkpoints.home` | `<host>/.live-spec/checkpoints/`, gitignored | another host path |
-| `work-kind.host-default` | none — each wish's kind is called at intake | a host with ONE usual kind names it as the intake default (SPEC T-16) |
-| `project.kind` | none — asked at founding and at adoption's orient, always the human's answer, never profile-seeded or inferred (SPEC INV-36) | the host's own kind: book · backend service · static site · fullstack app · CLI · skill pack · a custom kind through the queue; seeds project-wide defaults, never overriding an explicit line; updated on the human's word the moment the project outgrows it, journaled |
-| `design-sync` | off — a host with visual components may switch it on (recorded profile line, SPEC E-18, INV-14) | on: a landing's DECLARED components sync to the team's design project, every sync behind the human's publish gate (rule 17) |
-| `budget.pressure` | full — full rigor everywhere; the economy ladder's rung (SPEC T-19, INV-40) | lean or tight, ONLY on the human's word (a session's word or a profile line; asked — or the default told — at a project's setup, founding or adoption, alongside `project.kind`; the agent proposes a rung when money/time pressure is named, never sets one); each rung's legal sheds and the never-bend list live in the SPEC's economy-ladder section — every taken shed is named in the landing report, and an explicit host line outlives any rung |
+| Setting | Default | A profile may say | Card |
+|---|---|---|---|
+| `language.docs` | English — docs, commits, code, artifacts | another docs language | visible |
+| `language.chat` | mirror the human's language | pin one (e.g. Russian) | visible |
+| `proactivity.mode` | ask-at-max — surface forks, wait on taste calls | max-proactive: proceed on recommendations, batch questions | visible |
+| `trust` | low — human word before outward moves | raised only by the human (INV-9) | internal |
+| `prover.cadence` | FULL pass before every MINOR bump; CROSS-LINK on every surface add | tighter (e.g. live-spec itself: before every push) or looser, recorded | internal |
+| `worker.tiering` | router proposes the cheapest sufficient tier; senior may override, logged | fixed tier per size class (SPEC D-2) | internal |
+| `checkpoints.home` | `<host>/.live-spec/checkpoints/`, gitignored | another host path | internal |
+| `work-kind.host-default` | none — each wish's kind is called at intake | a host with ONE usual kind names it as the intake default (SPEC T-16) | internal |
+| `project.kind` | none — asked at founding and at adoption's orient, always the human's answer, never profile-seeded or inferred (SPEC INV-36) | the host's own kind: book · backend service · static site · fullstack app · CLI · skill pack · a custom kind through the queue; seeds project-wide defaults, never overriding an explicit line; updated on the human's word the moment the project outgrows it, journaled | visible |
+| `design-sync` | off — a host with visual components may switch it on (recorded profile line, SPEC E-18, INV-14) | on: a landing's DECLARED components sync to the team's design project, every sync behind the human's publish gate (rule 17) | internal |
+| `budget.pressure` | full — full rigor everywhere; the economy ladder's rung (SPEC T-19, INV-40) | lean or tight, ONLY on the human's word (a session's word or a profile line; asked — or the default told — at a project's setup, founding or adoption, alongside `project.kind`; the agent proposes a rung when money/time pressure is named, never sets one); each rung's legal sheds and the never-bend list live in the SPEC's economy-ladder section — every taken shed is named in the landing report, and an explicit host line outlives any rung | visible |
+
+The Card column says what the settings card renders: a `visible` row appears on the card; an `internal` row is workshop machinery the card leaves out, reaching the reader only as a recorded host-profile line in the card's project-rules part. The card's own law lives in the SPEC (INV-87).
 
 A profile file is plain markdown: one `setting: value` line per override, each with a trailing date and,
 when it narrows the defaults, one line of WHY. Settings not listed above may be proposed as wishes — the

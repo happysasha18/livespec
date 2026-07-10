@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 0.1.43
+  version: 0.1.44
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.30), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v0.1.31), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -364,6 +364,10 @@ How the agent answers a question about the product or a done-claim.
     - Each answer line obeys the line
       law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
       the status trailing quietly. Chat by default; a rendered page on the human's word.
+    - The settings kin (SPEC INV-87): when the human asks what they can customize, in any wording
+      such as "what can I customize", the answer is the settings card, re-rendered from the current
+      profiles and settings at that moment and shown by the usual showing rule. A from-memory list
+      never answers.
     - Never fire it
       uninvited — routine reports keep the departures board's in-flight scope (rule 9). The whole map
       comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map

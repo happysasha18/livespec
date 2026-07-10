@@ -74,7 +74,7 @@ We keep this list honest and current, and we review it at every push.
 
 - **Internal vocabulary can leak into human-facing text.** The pack's working terms, and loan-translations from other languages, sometimes appear in text meant for people. A register lint blocks any shown artifact that carries a known leaked term, and its pattern list grows with every catch. Chat messages have a reminder hook and stay the weakest surface.
 - **The spec's Formal index has open style debt.** The product spec's closing Formal index section carries an unfinished style cleanup. It holds 62 recorded style-lint findings and 11 redundancy candidates. These stand as counted, dated debt until that section's restyle lands.
-- **First-run onboarding is a mockup only.** Onboarding exists as an approved-pending mockup and does not run yet. Today a new project is set up by hand, following the settings documentation.
+- **The settings card is young.** Project setup now ends with a rendered settings card (`scripts/onboarding-card.py`) — one page showing what is set up and what is yours to change. It shipped today and has run on one real project; expect rough edges on unusual profile shapes, and report them.
 - **Guardrail checks ship as descriptions.** The scaffold describes four guardrail checks, and each project wires its own instance. Generic runnable check code has not shipped yet.
 
 ## License

@@ -120,3 +120,11 @@ states the RULE instead — conversation happens in whatever language the user w
 follows), written work is always in good English; the name is whatever the user introduces themselves
 with. Three spots fixed by a clean writer, register lint green, page re-shown. The BUILD gate is now
 OPEN on this accepted mockup (the mockup is the norm for look and feel).
+
+## Addendum — the BUILD landed (2026-07-10 ~10:46)
+
+The settings card ships: `scripts/onboarding-card.py` renders the approved norm as the literal
+template with values injected from the base table (Card-marked rows) + the profiles; shown at
+setup's end and on the standing "what can I customize?" question. One bounce (his eye, 10:15) closed
+same hour by the convergence fix — norm-as-template + a conformance test; 8 owning tests (M-206..213);
+the full story in JOURNAL session 32.
