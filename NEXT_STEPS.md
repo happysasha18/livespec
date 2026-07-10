@@ -1,6 +1,15 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-10 ~14:28, session 33 — pack 1.0.3 pushed, CI green, tree clean)
+## LIVE STATE (2026-07-10 ~14:55, session 34 — row 235 landed as 1.0.4, 311 green; track-coach spec audit running in background)
+Row 235 (the leave-command, INV-95) landed: «я ухожу» → workers halted/landed, lanes checkpointed,
+green committed, one closing line «можно выключать» + what resumes where; homes = spec clause +
+communicator leave-word rule + base rule 6 firing sentence; M-224 red-proven, installed copies
+synced. Second Done-when leg (first real firing) expected this hour — his café exit. A background
+opus audit of track-coach's doc set (SPEC/ARCHITECTURE/TEST_MATRIX after their re-layout, prior
+verdict's two fixes checked) writes to the session scratchpad; verdict relayed in chat when it
+lands — read-only on their tree, findings go to them as a wish if needed.
+
+## PREVIOUS LIVE STATE (2026-07-10 ~14:28, session 33 — pack 1.0.3 pushed, CI green, tree clean)
 1.0.0 shipped ~11:26; since then three landings pushed the same day: row 221 (the catch-up walk —
 MIGRATION.md is the walk's guide, proven by two cold dry-reads, second YES/zero holes), row 232
 (time-estimates law INV-93: range at the echo, steps up front, remaining-time line, estimate beside
@@ -15,9 +24,8 @@ only brief → fresh writer (his drift catch). JOURNAL session-33 chapters hold 
 records in docs/prover/2026-07-10-*.md.
 
 ## RESUME POINT — the queue, in order (all committed+pushed; resume COLD from here, cwd ~/live-spec)
-1. **The law batch** (~2-3 h, none needs him), in order: 235 (the leave-command «я ухожу»: halt
-   workers — a sleeping machine kills them — checkpoint lanes, commit, say «можно выключать»; plus
-   the standing time-remaining line) · 216 · 218 · 219 · 222 (now BOTH halves: cleanup + files born
+1. **The law batch** (~2-3 h, none needs him), in order: 235 first leg LANDED 1.0.4 (open leg:
+   the first real «я ухожу» firing — likely this afternoon, close the row at that walk) · 216 · 218 · 219 · 222 (now BOTH halves: cleanup + files born
    in a temp home, never Downloads — the bouncing-icon word ~14:11) · 223-228 · 231 · 233 · 234
    (parallel-lanes management, this session is the born-of) · 239 (catch-up routing discriminator:
    the walk fires only when the recorded pack version LAGS; layout-only asks are host queue rows)

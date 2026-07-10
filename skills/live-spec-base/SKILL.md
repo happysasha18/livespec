@@ -52,7 +52,9 @@ a working skill still stands: its pointer here reads as plain advice.
    resuming session runs before touching those files or spawning a sibling — and it never frames the
    worker's output as finished while the worker may still run (SPEC INV-76). Before a memory wipe, prefer
    halting the workers or letting them finish, so the next session starts single-writer; and say plainly
-   when a worker dies with a closed window or a sleeping machine.
+   when a worker dies with a closed window or a sleeping machine. The human's leave-word fires this rule
+   for everything open at once: every lane to its checkpoint, workers halted or landed, green committed,
+   and one closing line only when the whole walk holds (SPEC INV-95; the communicator carries the walk).
 
 7. **The concurrent-edit fence, before every write and every commit.** Re-check `git status` + HEAD against
    what you last read; if HEAD moved or the tree holds changes you did not make — STOP, re-read, then

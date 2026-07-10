@@ -2968,3 +2968,19 @@ from the README's why-section. Also this hour: the lineage paragraph redrafted b
 as a plain acknowledgment (his read on my in-session rewrites: they drift — the clean-writer road
 now holds for every README touch), and row 222 grew its placement half (test files are born in a
 temp home; the bouncing Downloads icon is the born-of, his ~14:11 word).
+
+## Session 33 — the leave-command lands (2026-07-10 ~14:40–14:55)
+
+Row 235, his ~13:30 word from the café: one spoken «я ухожу» must reach a point where the laptop
+can close. The law landed as INV-95 with three homes — the spec clause beside the time-estimates
+law, a leave-word rule in the communicator's narration family (next to the offline window, its
+natural sibling: the window says when he MAY step away, the leave-word handles when he IS), and a
+firing sentence on base checkpoint rule 6, which already owned every piece the walk needs (red
+never committed, workers halted before sleep per the worker-liveness law). The WHY of the shape:
+the walk invents nothing — it fires standing laws all at once and adds only the two things that
+were missing: the minutes-to-safe first beat and the fenced closing line, said only when the whole
+walk holds. The never side is the point: an early «можно выключать» that leaves a worker writing
+into a sleeping machine is exactly the defect the law kills. Red-proven (5 fails on the pre-law
+homes), then 311/311; traceability caught the unassigned anchor and the matrix row before any
+human could — the teeth work. Poetic justice logged: the row was built inside the very 30-minute
+café window it legislates, and its first real firing is expected within the hour.

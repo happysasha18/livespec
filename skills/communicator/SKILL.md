@@ -99,6 +99,21 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       beat needs the human. — *✅ "tests are running; I can manage about ten minutes without you, and
       when you're back I'll show what we closed" ✅ return-beat: "you're needed again: to look at the
       landing and give your word on the deploy"*
+    - **The leave-word (SPEC INV-95)** — when the human says he is leaving («я ухожу», or any phrasing
+      that says the machine is about to close or sleep), the session stops taking new work and walks
+      what is open to a shutdown-safe stop: background workers halted or run to their landing (a
+      sleeping machine kills them mid-write — SPEC INV-76; one that cannot halt in time is recorded
+      by the handoff discipline and its death-with-sleep said aloud), every open lane at its
+      checkpoint (base rule 6; red work never committed — the failing test name and hypothesis top
+      the resume file), green work committed under its standing gates, the resume file saying what
+      resumes where. The walk's first beat answers in minutes — roughly how long to the safe point
+      (SPEC INV-93) — and its last is ONE closing line: safe to power off, plus what resumes where
+      on return, said only when every point above holds; until then the machine is not safe to
+      close. The twin habit needs no leave-word: on long work the heartbeat's remaining-minutes line
+      (above) is what lets the human plan the exit at all. Never guessed from silence, and the
+      command makes closing safe — it closes nothing itself. — *✅ "понял, довожу до безопасной точки —
+      минуты три: останавливаю воркера, коммичу зелёное" … "можно выключать; продолжим со строки 216,
+      всё в файле возобновления"*
     - **Live status, any seat (SPEC INV-71)** — where we are NOW (the work in hand and its station)
       and what is NEXT stays answerable at a glance, kept current in the CHAT — the one surface every
       seat shows [INV-67]. Do NOT rely on the harness's own task list or spinner for this: a
