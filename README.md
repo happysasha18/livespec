@@ -66,7 +66,31 @@ A bug takes a shortcut: matrix row, failing test, fix — the spec is touched on
 - [`docs/adoption.md`](docs/adoption.md) — adopting the pack in an existing project
 - [`docs/pair-adoption.md`](docs/pair-adoption.md) — adopting as a pair: an engine and its instance
 
-This repo runs on its own method: it carries its own `PRODUCT_SPEC.md`, queue, tests, and prover records (`docs/prover/`). The method has run in production on the sibling project [track-coach](https://github.com/happysasha18/track-coach) (700+ tests, 30-widget library). For an honest outside look, two independent source-level comparisons with the neighbouring frameworks (`BMAD`, [Kiro](https://kiro.dev), [Spec Kit](https://github.com/github/spec-kit)) are published unsoftened in [`docs/research/`](docs/research/).
+This repo runs on its own method: it carries its own `PRODUCT_SPEC.md`, queue, tests, and prover records (`docs/prover/`). The method has run in production on the sibling project [track-coach](https://github.com/happysasha18/track-coach) (700+ tests, 30-widget library).
+
+## Why live-spec, when [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), [spec-kit](https://github.com/github/spec-kit) and [Kiro](https://kiro.dev) exist
+
+They are good, and they share the right instinct: spec before code. Use them if their shape fits your work.
+
+live-spec is built for **continuous** work: you throw wishes in passing, mid-anything, and each one enters the process in a sentence. No planning session is required, the queue is persistent across sessions, and execution runs asynchronously while you keep talking.
+
+Honest lineage notes. Baseline snapshot-diffing is mature testing practice (Jest snapshots, Percy, Chromatic). Declared-scope enforcement for agents exists too — [agent-guardrails](https://github.com/logi-cmd/agent-guardrails) diffs a run's actual changes against a per-task file declaration; credit where due.
+
+live-spec's one claim is the **integration**: the spec is the single authority binding the whole loop —
+
+- intake validates every wish against it,
+- scope declarations derive from it,
+- a prover skill formally reviews it,
+- adoption reverse-generates it from an existing codebase, and
+- the development process itself is specced and proven the same way (this repo's own `PRODUCT_SPEC.md` went through product-prover before its first publish — findings in `docs/prover/`).
+
+Our July-2026 survey — 7 frameworks plus a long-tail skill-ecosystem search — found that integration nowhere; the raw notes are in [`docs/prior-art.md`](docs/prior-art.md) and [`docs/prior-art-frameworks.md`](docs/prior-art-frameworks.md). If you know prior art we missed, open an issue — we would genuinely like to read it.
+
+An independent look, July 2026: two clean-context analysts — briefed to verify this repo's claims against its actual files and to criticize all three subjects — compared live-spec with BMAD and Kiro, and three more read Spec Kit, OpenSpec, GSD and BMAD at source level. Their verdicts are published unsoftened, including the uncomfortable parts: this project is young and single-author, its "production-proven" evidence largely belongs to a sibling project, and its judgment loop is one model reviewing itself — only the mechanical gates are independent. Full texts: [the comparison](docs/research/2026-07-06-bmad-kiro-livespec-comparison.md) and [the implementation-level harvest](docs/research/2026-07-06-neighbours-implementation-harvest.md).
+
+One distinction both analysts confirmed by running things: live-spec's traceability and freshness gates are executable scripts that block a push, while the surveyed alternatives enforce their specs by prompt text (Spec Kit's consistency checks, analyze and converge included, are LLM instructions — the only mechanical checks in its repo are file-existence tests). Six mechanisms the neighbours genuinely do better were taken into our queue.
+
+The sharpest critique arrived the same week from use. The first real project built under the pack — a photo-portfolio site — reported that while no written promise ever regressed, everything that felt unfinished lived where the method wasn't looking: it specced surfaces, the visitor's path went unspecified, verify-by-deed confirmed "works" and stayed silent on "feels", and taste defaults accumulated until the product read eighty-percent-finished everywhere. This converges with the analysts' structural critique, so we treat it as the strongest entry in this section. The answer is shipped work: a product-fit interrogation on every incoming feature, a visitor-walk and feel pass at verify (scaled to the medium: a site walks motion, a book walks its reading path), and landing reports that state every taste choice plainly, marked tweakable. These lenses have since run on the pack's own features and on real incoming wishes.
 
 ## Known issues
 
