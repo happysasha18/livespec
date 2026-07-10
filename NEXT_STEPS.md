@@ -6,8 +6,9 @@ red-proven), architecture assigned, brief for the CLOUD worker at
 docs/briefs/2026-07-10-row241-guardrails-brief.md — he fires the cloud session on the GitHub
 repo, branch row241-guardrails; integration (function rows, pack-repo attach, Known-issues
 retire) stays with this window. Row 235's second leg still open (his «я ухожу» never fired —
-he stayed). Rows 244+245 landed (1.0.5/1.0.6: attribution offer + README rescope); row 246
-queued (standalone product-prover README, 4 days stale).
+he stayed). Rows 244+245 landed (1.0.5/1.0.6: attribution offer + README rescope); row 216 landed (1.0.7:
+norm-conformance derivation rule). Rows 246 (prover-repo README refresh) + 247 (inbox over
+GitHub — grant model + honest no-grant failure; waits on the cloud test's facts) queued.
 
 ## LIVE STATE (2026-07-10 ~16:39, session 34 — 1.0.5 pushed: rows 244+245 landed on top of 235; 315 green)
 Afternoon landings on his return: row 244 — made-with attribution (INV-96/M-225): the standard
