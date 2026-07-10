@@ -1,0 +1,42 @@
+"""A norm-pointered clause owes a norm-conformance matrix row — M-227 (SPEC INV-43, row 216).
+
+Born of the onboarding card's bounce, 2026-07-10 ~10:15: the first render invented its own row
+format, dropped three norm sections, and shipped green — no derivation rule demanded a row
+checking the render against the frozen norm. The law lands in test-author's derivation rules
+(the matrix half); build-pipeline's code step already carries the norm-open + diff-line half.
+"""
+
+import os
+import re
+import unittest
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def read(rel):
+    """Whitespace-normalized read: prose wraps must not hide a needle."""
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        return re.sub(r"\s+", " ", f.read())
+
+
+class TestNormConformanceLaw(unittest.TestCase):
+    def test_derivation_owes_the_conformance_row(self):
+        body = read("skills/test-author/SKILL.md")
+        self.assertIn("norm-conformance row", body)
+        self.assertIn("every norm section and row name present in the render", body)
+
+    def test_never_side_names_the_bounce(self):
+        body = read("skills/test-author/SKILL.md")
+        self.assertIn("never a render inventing its own structure shipped green", body)
+
+    def test_both_halves_cited_together(self):
+        body = read("skills/test-author/SKILL.md")
+        self.assertIn("plan-vs-prototype diff line", body)
+
+    def test_look_stays_the_humans_eye(self):
+        body = read("skills/test-author/SKILL.md")
+        self.assertIn("the look itself stays the human's eye", body)
+
+
+if __name__ == "__main__":
+    unittest.main()

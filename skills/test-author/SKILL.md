@@ -47,7 +47,17 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    several separately-testable rows (sub-variant suffixes), and node-level mechanics (a decoder
    table, a gate mechanism) may carry their own contract rows. The spec anchor cited is the parent
    fact; an audit finding "matrix id absent from the spec" for these two kinds is expected.
-7. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
+7. **A norm-pointered clause owes a norm-conformance row.** When a spec clause carries a
+   `norm: <path>` pointer (SPEC INV-43), the matrix owes a conformance row asserting the render's
+   STRUCTURE against the frozen norm — every norm section and row name present in the render, no
+   invented sections or value formats — at DOM-text level or above; the look itself stays the human's
+   eye at the feel gate, never a pixel row's claim. The never side: never a render inventing its own
+   structure shipped green. Its sibling half lives in build-pipeline's code step — the norm-open rule
+   with the plan-vs-prototype diff line in the landing report — and a review cites the two halves
+   together. (Born of the onboarding card's bounce, 2026-07-10: the first render invented its own row
+   format, dropped three norm sections, and shipped green; matrix row M-211 is the first live
+   instance of the conformance row this rule now demands.)
+8. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
    node's never-side rows present · no stale references. Walked in person, item by item.
 
 ## The level ladder — where green suites lie
