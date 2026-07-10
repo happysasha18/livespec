@@ -1,0 +1,11 @@
+{
+  "spec_path": "PRODUCT_SPEC.md",
+  "matrix_path": "TEST_MATRIX.md",
+  "tests_dir": "tests",
+  "user_facing_globs": ["src/**/*.py"],
+  "registry_path": "SURFACES.md",
+  "render_command": null,
+  "rendered_artifacts": ["dist/index.html"],
+  "surface_discovery_pattern": "<section id=\"([^\"]+)\"",
+  "waivers": {}
+}
