@@ -1,13 +1,17 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-10 ~14:55, session 34 — row 235 landed as 1.0.4, 311 green; track-coach spec audit running in background)
+## LIVE STATE (2026-07-10 ~15:05, session 34 — row 235 landed as 1.0.4, 311 green; track-coach spec audit running in background)
 Row 235 (the leave-command, INV-95) landed: «я ухожу» → workers halted/landed, lanes checkpointed,
 green committed, one closing line «можно выключать» + what resumes where; homes = spec clause +
 communicator leave-word rule + base rule 6 firing sentence; M-224 red-proven, installed copies
 synced. Second Done-when leg (first real firing) expected this hour — his café exit. A background
 opus audit of track-coach's doc set (SPEC/ARCHITECTURE/TEST_MATRIX after their re-layout, prior
 verdict's two fixes checked) writes to the session scratchpad; verdict relayed in chat when it
-lands — read-only on their tree, findings go to them as a wish if needed.
+lands — read-only on their tree, findings go to them as a wish if needed. Cloud-seat probe ran:
+a "remote" agent request silently fell back to a LOCAL isolated worktree (macOS, ~/live-spec
+worktree) — the real cloud seat opens only from HIS side (claude.ai/code on the GitHub repo),
+still ahead as the pause test; the SHOW path is proven though — the agent published an artifact
+page with a claude.ai URL (works from any seat), suite reproduced 311 green in the fresh copy.
 
 ## PREVIOUS LIVE STATE (2026-07-10 ~14:28, session 33 — pack 1.0.3 pushed, CI green, tree clean)
 1.0.0 shipped ~11:26; since then three landings pushed the same day: row 221 (the catch-up walk —
