@@ -13,11 +13,14 @@ docs/prover/2026-07-10-row*.md.
    laptop's sleep): tlvphotos — plain-language spec rewrite (THEIR window integrates; this
    window read-only); product-prover repo — branch row246-shopfront (THIS window integrates:
    verify claims by deed, reconcile the SKILL.md drift report, then row 246 closes).
-2. **Row 241 open leg**: one EXTERNAL host attaches the four checks — track-coach's catch-up is
-   first (his phrase in THEIR window: «обнови пакет и разбери входящие»; their inbox holds the
-   audit fixes + the versioned attribution offer). An adversarial outside check is INVITED and
-   can run any time: his web analyst clones the public repo, installs the hook
-   (guardrails/install.sh), plants a desync, and must see the blocked push.
+2. **Row 241 open leg**: one EXTERNAL host attaches the four checks — track-coach first, but
+   it is BUSY: a cloud session lays out its documentation (his word ~18:30); after it lands and
+   its audit passes, his phrase in THEIR window runs the catch-up + inbox sweep. The external
+   adversarial gate check already RAN and PASSED (record:
+   docs/prover/2026-07-10-external-gate-check.md).
+   **CATALOG FACT (his word ~18:30): the Anthropic skills-catalog submission was FILED TODAY**
+   — the gates fix landed while the shopfront is already under a curator's eye; tomorrow's
+   catalog item is monitoring + readiness for curator feedback, NOT preparing a submission.
 3. **The law batch continues**: 248 (long-work visibility, from track-coach's wish) · 249 (chat
    hook reminds no-scissors) · 218 · 219 · 222 · 223-228 · 231 · 233 · 234 · 239 · 240 · 242 ·
    236 · then 250 (prover cross-cutting sweep, surface-sized) · 247 (inbox over GitHub — grant
