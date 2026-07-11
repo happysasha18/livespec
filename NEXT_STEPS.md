@@ -33,7 +33,12 @@ docs/prover/2026-07-11-row246-mirror-attribution.md and 2026-07-10-external-push
    legs with him: 47/96 · 54 · 165 · 168 · 134/141 · 143 · 144 · 140 · 117 · 129 · 133.
 9. Small open note: gate g reports a non-strict pin drift — `scripts/onboarding-card.py:1 (the
    renderer)` label not found ±25 lines (ARCHITECTURE.md:57). One-line pin refresh, unclaimed.
-10. The MINOR (1.1.0) question rides the batch close: the 3-pass audit before any MINOR bump.
+10. The MINOR (1.1.0) question rides the batch close: the 3-pass audit before any MINOR bump
+    (+ the convergence pass, row 217) — PLUS one added audit item (his 2026-07-12 ~00:39 exchange):
+    walk the standing behavioural rules asking which live only in once-read files yet keep breaking
+    mid-turn — each such rule earns the every-prompt hook line or a mechanical after-the-fact check
+    (the rows-253/254 pattern). His ~00:31 word also stands: audit clean => bump 1.1.0 and push, his
+    morning word not required.
 
 ## CLOUD FACTS (settled by experiment 2026-07-10; feed row 247)
 A remote-agent request from a local session FALLS BACK to a local worktree (two probes, same
