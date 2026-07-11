@@ -2,13 +2,14 @@
 name: build-pipeline
 description: >
   Run a non-trivial change by the book — the spec → prove → architecture → prove architecture → matrix →
-  test → code → verify → commit & show pipeline, orchestrating the spec-author and product-prover skills. Use this whenever starting a new
+  test → code → verify → commit & show pipeline, orchestrating the pack's working skills (spec-author,
+  product-prover, test-author). Use this whenever starting a new
   feature, a new stateful surface, or a behaviour change that deserves more than a one-line edit:
-  "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is the
-  executable projection of the method (PLAYBOOK.md — in the private playbook repo, separate from this skill's repo — holds the principle) so the method survives memory
-  wipes. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
+  "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is also the
+  entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
+  step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # build-pipeline — ship a change by the method
@@ -124,7 +125,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 | 5 matrix | rendered-level rows (E-15) | function-level rows: run the tool, assert real output | string rows on the SHIPPED SKILL.md; behaviour eval when the eval machinery lands (row 94) | render-level: file shipped, sections present, links resolve |
 | 6 test | assert the real render | run on a fixture, assert output | string assertions against the installed artifact | assert the shipped file's content |
 | 7 code | as written | as written | as written | the writing IS the step |
-| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; findings become rows or red (SPEC INV-30) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap | render it by the show rule and READ it |
+| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; findings become rows or red (SPEC INV-30) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap; walk the installed skill-creator's review of the touched skill — format, frontmatter, description-triggering (does the skill load when it should), evals where applicable — findings folded or rejected by name in the landing record (SPEC INV-99) | render it by the show rule and READ it |
 | 9 commit & show | show the render | show the run's output | version bump + installed-copy sync, same session | open the rendered page for the human |
 | design-sync / snapshot | product with visuals: declared scope syncs (human-gated) | stands down | stands down | stands down |
 
