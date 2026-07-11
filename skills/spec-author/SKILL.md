@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # Spec Author
@@ -246,6 +246,8 @@ here**, one list for every project:
 **The list is curated, each facet earning its place by named incident.** A facet joins ONLY with a named real incident it would have
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
 that grows by taste rots into a forty-row form nobody walks (the Google launch-checklist lesson).
+
+**The declared-laws line rides every new section (SPEC INV-101).** Where the spec keeps a declared-laws home — the one place naming its cross-cutting laws (measurement, accessibility, error handling, a register: what the product declares) — a new surface's section states its line against each declared law, the clause or a dated exemption, before the prover ever reads the delta. The prover's cross-cutting station then audits instead of discovers; a spec with no such home yet earns the home first.
 
 **Every facet ends as a spec sentence — silence is not an option.** Either the human (or the walk's
 batched questions) DECIDED it, or the recommended option is taken so the lane keeps moving and the
