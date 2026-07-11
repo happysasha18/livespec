@@ -14,17 +14,22 @@ sees it — `WAIVED (<check>): <reason>`, exit 0, visible, never silent.
 
 ## The attach walk (~15 minutes)
 
+0. **Copy the example config first — every check is red until you do, by design:**
+
+   ```sh
+   cp scaffold/guardrails/guardrails.config.example.json your-repo/guardrails.config.json
+   ```
+
+   A missing config never passes silently. The red a first-time host sees before this
+   step is the attach-me line doing its job, not breakage.
+
 1. **Copy the directory** into your repo:
 
    ```sh
    cp -r scaffold/guardrails your-repo/guardrails
    ```
 
-2. **Copy the config to your repo root and fill your paths**:
-
-   ```sh
-   cp guardrails/guardrails.config.example.json guardrails.config.json
-   ```
+2. **Fill your paths in the config**:
 
    - `spec_path` / `matrix_path` — your product spec and test matrix.
    - `tests_dir` — where your tests live.
@@ -36,6 +41,10 @@ sees it — `WAIVED (<check>): <reason>`, exit 0, visible, never silent.
      read the files in `rendered_artifacts` instead.
    - `surface_discovery_pattern` — regex with one capture group that discovers surface
      ids in the rendered content (the self-closing direction), or `null` to skip it.
+     Skipping it disarms the rendered-but-unregistered check — the one hole an external
+     push-probe found on this pack's own repo (docs/prover/2026-07-10-external-push-probe.md);
+     set it to your artifacts' real surface marker, or declare the skip in your host
+     profile with the why.
    - Checks read `$GUARDRAILS_CONFIG` if set, else `./guardrails.config.json` at the
      repo root — run them from the root.
 

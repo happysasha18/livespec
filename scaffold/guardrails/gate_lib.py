@@ -14,7 +14,8 @@ import re
 import sys
 
 ATTACH_ME_FIX = ("copy guardrails.config.example.json to guardrails.config.json and "
-                 "fill your paths — see scaffold/guardrails/README.md")
+                 "fill your paths — the attach walk's step 0 in scaffold/guardrails/"
+                 "README.md; every check is red until the config exists, by design")
 
 
 def fail(check, reason, message, fix):

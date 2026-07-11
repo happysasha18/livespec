@@ -260,6 +260,26 @@ class TestShippedShape(unittest.TestCase):
         for script in SCRIPTS.values():
             self.assertIn(script, readme)
 
+    def test_walk_opens_with_the_config_step(self):
+        # Row 251: a first-time host reads the pre-config red as breakage unless the walk
+        # LEADS with the config and names the red as by-design; the no-config fix line
+        # points at that step.
+        with open(os.path.join(SCAFFOLD, "README.md"), encoding="utf-8") as f:
+            readme = f.read()
+        walk = readme.split("## The attach walk", 1)[1]
+        first_step = walk.split("1. ")[0]
+        self.assertIn("0. **Copy the example config first", first_step,
+                      "the attach walk no longer opens with the config step")
+        self.assertIn("red until you do, by design", first_step)
+        with open(os.path.join(SCAFFOLD, "gate_lib.py"), encoding="utf-8") as f:
+            gate_lib_src = f.read()
+        fix_assignment = gate_lib_src.split("ATTACH_ME_FIX", 1)[1].split("def ", 1)[0]
+        self.assertIn("step 0", fix_assignment,
+                      "the no-config fix line no longer points at the walk's step 0")
+        # the probe's lesson rides the discovery-pattern bullet: a null pattern is a named
+        # choice, never a silent default
+        self.assertIn("disarms the rendered-but-unregistered check", readme)
+
 
 if __name__ == "__main__":
     unittest.main()

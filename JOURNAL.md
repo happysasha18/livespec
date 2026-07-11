@@ -3035,3 +3035,35 @@ belief: two probes proved a remote request from a terminal falls back local, so 
 the owner's browser act, and the brief-in-repo (or brief-in-prompt) pattern bridges the seam.
 The first real leave-walk of the leave-command law closes this chapter: workers halted, lanes at
 their checkpoints, the closing line said — the law born at 14:40 fired for real the same evening.
+
+## Session 35 — the two clouds come home, and one of them brings a hole (2026-07-11 ~21:27–~22:05)
+
+Both evening branches collected, and the second changed the day's shape. The prover-shopfront
+branch (row 246) was verified by deed and SUPERSEDED rather than merged: the mirror's own README
+banner names sync-mirrors.sh as the one write channel, so the cloud's two fixes were landed in
+the PACK and the script itself learned to stamp the made-with line from the live VERSION file —
+a hand-written mirror footer would carry an invented number and be wiped by the next rsync (the
+class fixed, not the point: every future mirror now gets the line for free). A fresh-context
+prover pass on the delta returned zero must-fix and three findings, all folded the same hour:
+the self-mirror sentence into the attribution clause, a floor-lockstep drift guard, a dead-branch
+comment (INV-96, M-225). The mirror now stands byte-identical to canon plus footer.
+
+The second branch was the one Alexander had to point at twice — gate-check-protocol, from his
+"Gate push blocker verification" cloud window. Yesterday's record said the external check PASSED;
+the truth is there were TWO probes. The first (~18:18, three planted desyncs at the check level)
+did pass clean and its record was honest. The second — four real pushes through the installed
+hook against a decoy remote — landed its protocol at 18:34, two minutes after the leave-walk's
+last resume commit, and was never collected: Tests 0–2 held physically, and Test 3's invented
+rendered surface sailed through GREEN, because the pack's own guardrails.config.json left
+surface_discovery_pattern null and thereby disarmed the one branch of the completeness check
+that looks from the rendered content back to the registry. The machinery was sound; the first
+host never armed it on itself. Fixed the same hour and proven live in both directions: the
+pattern set, the analyst's exact planted break now turns the gate red with the typed line, the
+clean tree stays green, and a lock test keeps the pattern armed forever (red-proven on the
+nulled config — M-226; the protocol collected as its own record beside the first probe's,
+docs/prover/2026-07-10-external-push-probe.md). Row 251 closed in the same motion: the attach
+walk now OPENS with the config step and names the pre-config red as by-design, and the fresh
+FULL clone re-ran the whole suite 319/319 green, retiring the analyst's shallow-clone caveat.
+WHY it matters: the moat claim survived a real outside attack twice — but only the collected
+protocol, not the optimistic summary, told the whole truth. A cloud branch is not integrated
+until its file is ON main and read to the end.
