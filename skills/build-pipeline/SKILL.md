@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.1
+  version: 1.0.2
 ---
 
 # build-pipeline — ship a change by the method
@@ -431,7 +431,9 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   **Every delegation reports its saving:** the
   landing report carries one line — what went to the worker and roughly how much senior work it saved.
   The line is what keeps the habit alive; a session that never writes it is a session that quietly
-  stopped delegating.
+  stopped delegating. The line lives in the landed row's status cell, and a suite check reads it: a
+  landed row without the line goes red (SPEC INV-103, forward from 2026-07-12). The duty binds the
+  orchestrator seat regardless of model, whatever tier leads the seat.
 - **Traceability is a test, enforced automatically.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
   RESOLVED that still carries the live marker — so drift is caught every commit, continuously rather than once per MINOR.
