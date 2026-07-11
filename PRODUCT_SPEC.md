@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v1.0.10, 2026-07-12)
+# live-spec — Product Spec (v1.0.11, 2026-07-12)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -154,7 +154,7 @@ Bookkeeping numbers are handles too: a test count, a suite size, a version strin
 One carve-out, by law: when the number is the asked substance — a direct question about it, or the done-claim evidence walk, whose claim lines pin artifact and method version [INV-25] — it speaks as the answer: the number itself is the content, this once.
 
 This law and the narration law live in skills a window may never load, so both also have a mechanical voice on the working machine:
-- A prompt hook, `scripts/chat-law-hook.sh`, installed beside the clock's hand, injects a short reminder of the chat laws into every prompt: plain words with codes trailing, narration's beats, and the say-what-it-IS line — the contrast frame banned in every text, its home the personal profile (language.no-scissors). The skills and the profile stay the laws' homes; the hook only reminds and never legislates. A window that ignores the line breaks the same law every time.
+- A prompt hook, `scripts/chat-law-hook.sh`, installed beside the clock's hand, injects a short reminder of the chat laws into every prompt: plain words with codes trailing, narration's beats, the say-what-it-IS line — the contrast frame banned in every text, its home the personal profile (language.no-scissors) — and the routing line: the orchestrator seat routes work to the cheapest sufficient tier, whatever model leads, and workers locate their own anchors (base rule 5, the routing law [INV-69]). The skills and the profile stay the laws' homes; the hook only reminds and never legislates. A window that ignores the line breaks the same law every time.
 - Before a human-facing artifact — a report, a decision page, a rendered doc — is shown, `scripts/preshow-lint.py` reads its prose and flags any line that opens with an internal handle (a spec code, a row or session number), so the agent rewrites the line to lead with the reader's outcome before the human ever sees it. It's a warning to clear, never a silent rewrite, and it reads only the shown surface, never the spec's own internals, whose trailing anchors are legal by design.
 
 [INV-28]

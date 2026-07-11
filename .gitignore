@@ -7,3 +7,4 @@
 
 # frozen norms are SOURCE artifacts, never regenerable junk — always tracked
 !docs/norms/*.html
+.claude/
