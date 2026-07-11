@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.3
+  version: 1.0.4
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -618,6 +618,7 @@ another sentence. Before any movement-end or milestone report goes to the human:
    the flagged text is rewritten into the reader's own plain words, because a machine-dialect leak is
    what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past
    the lint becomes a pattern the same day (the set grows by one per caught leak).
+5. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. (Born of a compressed README section restored the same session, 2026-07-10.)
 
 A pattern lint catches known coinages, known calques, and named term classes; it cannot judge a novel
 machine-flavoured abstraction it has never been shown. That residual is the clean-reader check: for a

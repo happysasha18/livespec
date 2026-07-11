@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.5
+  version: 1.0.6
 ---
 
 # build-pipeline — ship a change by the method
@@ -95,6 +95,7 @@ standards look like in its medium.
   if the refactor moves node boundaries, ARCHITECTURE.md's pins update in the same change.
 - **Docs-only change:** re-read the changed section rendered + one grep that no stale claim contradicts the
   code; no spec/matrix step.
+- **A rewrite or restyle accounts for every removal of substance (SPEC INV-109):** A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. The accounting rides the landing report the communicator builds; the docs-only door above and the restyle loop both carry it. (Born of a compressed README section restored the same session, 2026-07-10.)
 - **Skip entirely** only under the single boundary above (pure research, fact-gathering, a one-file
   no-new-behaviour edit already covered by a test level).
 
