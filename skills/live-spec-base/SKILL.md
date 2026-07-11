@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.4
+  version: 1.0.5
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -187,6 +187,19 @@ a working skill still stands: its pointer here reads as plain advice.
    teeth are the norm-conformance rows and the convergence-lock tests (rows 216/217). (The
    owner's word, 2026-07-10: convergence covers every process and every kind of artifact — there
    is a goal, and we walk toward it, always.)
+
+23. **A behavioural rule that breaks mid-turn twice earns a live channel (SPEC INV-108).** A standing
+   behavioural rule keeps its normative home in a once-read file — the loader, a profile, a skill's
+   text. When the rule breaks mid-turn a second time despite that home, it earns a live channel that
+   same moment: an every-prompt hook line that reminds at the decision point, or a mechanical
+   after-the-fact check that turns the suite red. Record the pick where the rule lives. The once-read
+   homes stay the normative homes; the live channel only carries the rule to the moment it is needed.
+   Prose in a once-read file loses to mid-turn momentum, and attention alone holds nothing across
+   sessions. This rule is the convergence principle's hand for behaviour (rule 22), kin of rule 19's
+   second-occurrence law. The worked proof: the routing rule lived in once-read files since June and
+   broke mid-turn until the every-prompt hook line and the mechanical after-the-fact check landed
+   (rows 253/254, 2026-07-12), the same cure that killed invented clock stamps. The 1.1.0 audit's
+   once-read walk is this law's first sweep.
 
 
 ## When NOT to load this
