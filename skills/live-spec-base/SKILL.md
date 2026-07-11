@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.3
+  version: 1.0.4
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -45,7 +45,7 @@ a working skill still stands: its pointer here reads as plain advice.
 
 6. **Every long or delegated piece of work keeps a persistent checkpoint.** A file on disk (host home:
    `.live-spec/checkpoints/`, gitignored and kept inside the repo tree) holding done / in-progress / next,
-   updated AS the work runs — so a cut-off RESUMES from disk instead of restarting. Red at a pause is never
+   updated AS the work runs — so a cut-off RESUMES from disk instead of restarting. A landing that ships a checkpoint's items flips that checkpoint to its closed state in the same landing, so a returning session never reopens finished work. A checkpoint whose items all live in git history is stale by definition and reads as a resume defect (SPEC INV-107). Red at a pause is never
    committed; the failing test name + hypothesis becomes the top NEXT_STEPS item — the checkpoint IS the
    red test. A checkpoint or handoff note that records a LIVE background worker also records the worker's
    id (pointing at the worker's own checkpoint file), its briefed write-set, and the two liveness checks a
