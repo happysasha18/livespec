@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.2
+  version: 1.0.3
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -85,7 +85,18 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
       what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
       heartbeat [default]. On a long stretch the heartbeat also says, now and then,
-      roughly how much remains — so the human can plan his own time around the work (SPEC INV-93). The heartbeat's second, forward-looking face is the **Offline window**
+      roughly how much remains — so the human can plan his own time around the work (SPEC INV-93).
+      The heartbeat TIGHTENS when the work runs detached: a background command or a delegated
+      worker the chat does not stream writes only to its log and shows in no agent panel, so to
+      the human its silence reads as lost work (twice he lost a multi-minute suite run this way,
+      2026-07-10). Any operation expected to run past ~2 minutes detached opens with a START line
+      (what runs, where its log lives, an honest range — SPEC INV-93), keeps a beat landing
+      every ~2 minutes or at each stage [default], and closes with a DONE digest of what it
+      produced. The mechanism stays free — he said a background command and a worker are the
+      same to him; visibility is the requirement. A waiting timer earns no beat: the cadence
+      covers real work only. — *✅ start: "suite running in the background, log at
+      .live-spec/logs/suite.log, about six minutes" … beat: "suite past the render tests, two
+      minutes left" … done: "suite landed: 351 green"* The heartbeat's second, forward-looking face is the **Offline window**
       (his word 2026-07-06: that it helps to say when the human can step offline for a while — for
       example, when the tests are running locally): when the coming stretch needs nothing from the human — a local suite run, a worker
       batch, a long render — say so BEFORE it starts: that he may step away, an honest range for how
