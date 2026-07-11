@@ -3067,3 +3067,30 @@ FULL clone re-ran the whole suite 319/319 green, retiring the analyst's shallow-
 WHY it matters: the moat claim survived a real outside attack twice — but only the collected
 protocol, not the optimistic summary, told the whole truth. A cloud branch is not integrated
 until its file is ON main and read to the end.
+
+## Session 36 — the night the method got its teeth into its own keeper (2026-07-11 ~22:51 – 2026-07-12 ~01:28)
+
+Sixteen rows in one night, and the real story is HOW the last ten landed. The session started
+conventionally: the senior read anchors, wrote briefs, a sonnet worker applied (rows 248, 249, 218,
+219, 222, 223 — the detached-work visibility cadence, the no-scissors reminder, the convergence
+principle into the base rulebook and the playbook's opening chapter, skill-creator review bound to
+every skill-kind landing by the classifier, test hygiene with the suite's own leak check, the
+declared cross-cutting laws with a clean 33-cell first station run). Alexander watched the token
+meter and asked the two questions that reshaped the rest: why does the orchestrator do delegable
+work itself when the rules say otherwise, and why do those rules live in files read once. The
+answers landed as rows the same hour: the routing reminder joined the chat hook (253), the
+delegation line became a suite-checked queue fact (254), the drafter-applier overlap became
+pipeline law (255), and the general cure — a twice-broken behavioural rule earns a live channel
+that moment — became base rule 23 (256). From row 224 on, Opus drafters prepared each next row's
+exact strings while sonnet appliers landed the current one; the orchestrator's own hands touched
+only briefs, acceptance, and pushes. His grants moved the harness itself: hooks and installs by
+the agent's hand (trust.self-install, ~23:30), the next orchestrator session pinned to Opus
+(~00:31, settings.local.json + the loader line), the 1.1.0 bump on the agent's own certification
+if the audit runs clean (~00:35). Also landed mid-batch: the voiced-fix tripwire (225), one
+canonical state dir + worktree isolation on overlap (227), the CI verdict as the session's own
+immediate bug (228), landings close their checkpoints (226 — six of the night's own checkpoints
+swept closed as the law's first deed). Two rows were caught by drafters' reads before wasting a
+landing: 231 split (its core half waits his word on alignment moments), 234 routed to the full
+pipeline as a five-story surface. Drafts for 233/239/240 wait on disk under checkpoints/. The
+worker fleet: five opus drafters, ten sonnet appliers, two extraction hands — every landing's
+delegation line is in its queue row, as the new law demands.
