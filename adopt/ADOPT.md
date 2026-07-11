@@ -27,6 +27,8 @@ The one normative list of the documents a live-spec host carries; every other gu
 - `.live-spec/` — the host's records: `profile.md` (host overrides), the installed-set record (M-7),
   `adopt/` (run artifacts and plans), `checkpoints/` (gitignored).
 
+**One canonical state directory (SPEC INV-105).** Here the canonical state directory is named `.live-spec`, once, and no second directory competes for that role. A near-miss directory found at attach or resume is a red finding: `.livespec`, `.live_spec`, a bare `livespec/`, any look-alike carrying a rival profile. The sweep records it in `.live-spec/adopt/inventory.md`, then it is retired to the attic under a manifest line naming the path, the reason, and the canonical directory that absorbs it (INV-7, A-4). Never a look-alike left standing beside `.live-spec`. (Born of the audit's ghost `.livespec` dir, found beside the real `.live-spec` with a different profile, 2026-07-10.)
+
 **The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a live-spec
 defect (a stale phase here, a template gap) does NOT edit the live-spec repo — it drops ONE new file into
 live-spec's `inbox/` (see `inbox/README.md`) and records the finding in the HOST's own journal. Learned the
