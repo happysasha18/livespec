@@ -1,7 +1,7 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-11 ~22:02 — resume COLD from here)
-Both evening cloud branches COLLECTED tonight; tree clean, CI green at c506c8f + the docs close.
+## LIVE STATE (2026-07-11 ~22:10, leave-walk before his laptop reboot — resume COLD from here)
+Both evening cloud branches COLLECTED tonight and deleted on his word; tree clean, CI green.
 Rows 246 + 251 landed. JOURNAL session-35 chapter holds the day; prover records
 docs/prover/2026-07-11-row246-mirror-attribution.md and 2026-07-10-external-push-probe.md.
 
@@ -19,14 +19,11 @@ docs/prover/2026-07-11-row246-mirror-attribution.md and 2026-07-10-external-push
    sync script stamps the made-with line from live VERSION (INV-96 self-mirror sentence, M-225,
    floor-lockstep guard), prover record 0 must-fix / all folded. Mirror at 4ea6612 byte-identical
    to canon + footer, "made with live-spec v1.0.9" on README + SKILL.md.
-3. **Two remote branches await HIS deletion** (classifier blocks; both fully collected):
-   `! gh api -X DELETE repos/happysasha18/product-prover/git/refs/heads/row246-shopfront`
-   `! gh api -X DELETE repos/happysasha18/live-spec/git/refs/heads/gate-check-protocol`
+3. Both cloud branches DELETED on his word (~22:09), fully collected before deletion.
 4. **Row 241 open leg**: one EXTERNAL host attaches the four checks — track-coach first, still
    behind its cloud documentation session + audit; his phrase in THEIR window runs the catch-up.
-5. **Catalog watch**: awesome-claude-code issue #2187 "Live Spec" — bot validation passed,
-   labels validation-passed/resource-submission, NO maintainer reply yet (checked ~21:42).
-   The Anthropic-catalog channel (if form-based) answers to his email, invisible from here.
+5. **Catalog watch is NOT this window's job** (his word 2026-07-11 ~22:09): the promoter agent
+   owns submission monitoring (awesome-claude-code issue #2187 et al.) — struck from here.
 6. **The law batch continues**: 248 (long-work visibility) · 249 (chat hook reminds
    no-scissors) · 218 · 219 · 222 · 223-228 · 231 · 233 · 234 · 239 · 240 · 242 · 236 · then
    250 (prover cross-cutting sweep, surface-sized) · 247 (inbox over GitHub — grant model).
