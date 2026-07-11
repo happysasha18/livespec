@@ -39,6 +39,18 @@ class TestChatLawHookScript(unittest.TestCase):
         ):
             self.assertIn(needle, out, "law line missing: %r" % needle)
 
+    def test_output_carries_the_no_scissors_law(self):
+        result = subprocess.run([SCRIPT], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        out = result.stdout
+        for needle in (
+            "its own positive sentence",     # say what a thing IS
+            "contrast frame",                # the banned shape, named
+            "banned in every text",          # the scope
+            "language.no-scissors",          # the law's home stays the profile
+        ):
+            self.assertIn(needle, out, "no-scissors line missing: %r" % needle)
+
     def test_installer_covers_both_hooks(self):
         self.assertTrue(os.path.isfile(INSTALLER), "missing installer: %s" % INSTALLER)
         self.assertTrue(os.access(INSTALLER, os.X_OK), "%s is not executable" % INSTALLER)
