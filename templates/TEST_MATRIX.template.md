@@ -49,6 +49,7 @@ Derivation is done only when every line below is checked against the CURRENT spe
 - [ ] Every artifact-inventory entry owns ≥ 1 rendered-level row.
 - [ ] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed`.
 - [ ] No row cites a spec anchor or node that no longer exists (stale rows are RETIRED in place).
+- [ ] Every test removes what it creates and its files are born in a temp home (never Downloads/Desktop/Documents); the suite carries its leak check — a session before/after diff of the temp home.
 
 A fact with no row, or a row at a too-weak level, is a **derivation defect** — fix it here, before it is
 a production bug.

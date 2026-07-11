@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -96,6 +96,15 @@ screen — both past every green desktop run.)
   mechanical red proof: restore the pre-change file (`git show HEAD:<file>`), run the suite, watch the
   new rows fail, restore the fix. The landing record names that proof. A batch without a recorded red
   run is a defect.
+- **Tests clean up after themselves; test files are born in a temp home (SPEC INV-100).** Every
+  test removes what it creates — temp files, fixtures on disk, spawned processes, mutated shared
+  state — and a suite run leaves the machine as it found it; a leak is a defect of the test. A
+  test's files are born in the system temp home or the host's gitignored state dir and erased at
+  the run's end; a user-visible folder — Downloads, Desktop, Documents — is never a test's
+  workspace, and a headless browser's download directory is pointed at the temp home explicitly
+  (the 42-files-in-Downloads incident, 2026-07-10). Give temp artifacts the suite's own prefix and
+  keep one session-scoped before/after diff of the temp home in the suite, so a leak turns the run
+  red instead of waiting for a human eye.
 - **A geometry fact is asserted relative, wide, and long (SPEC INV-78).** A centering or
   positioning fact asserts relative geometry — the element's center within ε of the viewport's
   center — at two or more viewport sizes, and after N consecutive steps of the interaction, so

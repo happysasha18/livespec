@@ -60,26 +60,45 @@ def visible_keys():
     return keys
 
 
+_TEMP_PATHS = []
+
+
+def _temp(suffix, content=None):
+    """A tracked temp file with the suite's own prefix — the hygiene law (SPEC INV-100, M-236)."""
+    mode = "w" if content is not None else "w+b"
+    kwargs = {"encoding": "utf-8"} if content is not None else {}
+    fh = tempfile.NamedTemporaryFile(mode=mode, suffix=suffix, delete=False,
+                                     prefix="livespec-test-", **kwargs)
+    if content is not None:
+        fh.write(content)
+    fh.close()
+    _TEMP_PATHS.append(fh.name)
+    return fh.name
+
+
+def tearDownModule():
+    for p in _TEMP_PATHS:
+        try:
+            os.unlink(p)
+        except FileNotFoundError:
+            pass
+
+
 def render(personal, host=HOST_PROFILE, base=BASE, expect_ok=True):
     """Run the real renderer into a temp dir; return (exitcode, html_or_stderr)."""
-    out = tempfile.NamedTemporaryFile(suffix=".html", delete=False)
-    out.close()
+    out_name = _temp(".html")
     proc = subprocess.run(
         [sys.executable, RENDERER, "--base", base, "--personal", personal,
-         "--host", host, "--out", out.name],
+         "--host", host, "--out", out_name],
         capture_output=True, text=True, timeout=30)
     if expect_ok and proc.returncode == 0:
-        with open(out.name, encoding="utf-8") as fh:
+        with open(out_name, encoding="utf-8") as fh:
             return proc.returncode, fh.read()
     return proc.returncode, proc.stderr + proc.stdout
 
 
 def write_fixture(text):
-    fh = tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False,
-                                     encoding="utf-8")
-    fh.write(text)
-    fh.close()
-    return fh.name
+    return _temp(".md", content=text)
 
 
 class TestOnboardingCard(unittest.TestCase):
@@ -92,12 +111,11 @@ class TestOnboardingCard(unittest.TestCase):
         code, html = render(write_fixture(FIXTURE_PERSONAL))
         self.assertEqual(code, 0, "renderer failed: %s" % html[:400])
         # the 1 s budget, read from the script's own instrumentation (spawn excluded)
-        out = tempfile.NamedTemporaryFile(suffix=".html", delete=False)
-        out.close()
+        out_name = _temp(".html")
         proc = subprocess.run(
             [sys.executable, RENDERER, "--base", BASE,
              "--personal", write_fixture(FIXTURE_PERSONAL),
-             "--host", HOST_PROFILE, "--out", out.name],
+             "--host", HOST_PROFILE, "--out", out_name],
             capture_output=True, text=True, timeout=30)
         ms = re.search(r"render-ms: (\d+)", proc.stdout)
         self.assertIsNotNone(ms, "the renderer must report its own render time")
