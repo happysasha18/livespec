@@ -18,8 +18,9 @@
 #   2. If it exists, clone it into a scratch directory, replace its contents
 #      with the current skills/<skill-name>/ folder from the pack (keeping the
 #      mirror's own .git history), make sure its README.md opens with a banner
-#      explaining it's a read-only mirror, and if anything actually changed,
-#      commit and push that to the mirror repo.
+#      explaining it's a read-only mirror, stamp the "made with live-spec" line
+#      (current pack version) on its README.md and SKILL.md, and if anything
+#      actually changed, commit and push that to the mirror repo.
 #   3. If nothing changed, we say "up to date" and don't make an empty commit.
 #
 # This script only ever pushes to the STANDALONE MIRROR repos, never to the
@@ -46,6 +47,29 @@ PACK_SHA="$(git -C "$PACK_ROOT" rev-parse --short HEAD)"
 banner_for() {
   local skill_name="$1"
   echo "**${skill_name}** — one skill from the [live-spec pack](https://github.com/${GITHUB_OWNER}/live-spec), installable on its own. Read-only mirror: do not open PRs here; changes land in the pack and are synced by scripts/sync-mirrors.sh."
+}
+
+# Every publication built with the pack carries the "made with live-spec" line (SPEC INV-96).
+# A mirror is rebuilt from the pack folder on every sync, so the line is stamped HERE, from the
+# live VERSION file — never hand-written on a mirror, where it would go stale and be wiped by
+# the next rsync anyway. Stamped on the two landing files a skill owes: README.md and SKILL.md.
+# Wording home: skills/publish/SKILL.md (the publish floor) — this is a reproduction, kept in
+# lockstep by test_script_wording_locksteps_with_the_publish_floor.
+ATTRIBUTION_LINE="made with [live-spec](https://github.com/${GITHUB_OWNER}/live-spec) v${PACK_VERSION}"
+
+stamp_attribution() {
+  local file="$1"
+  [ -f "$file" ] || return 0
+  if grep -q '^made with \[live-spec\]' "$file"; then
+    # dead in normal operation (rsync rebuilds from the pack, which carries no line) —
+    # guards a future where a pack source file ships the line itself; refresh its version
+    local tmp_stamp
+    tmp_stamp="$(mktemp)"
+    sed "s|^made with \[live-spec\].*|${ATTRIBUTION_LINE}|" "$file" > "$tmp_stamp"
+    mv "$tmp_stamp" "$file"
+  else
+    printf '\n---\n\n%s\n' "$ATTRIBUTION_LINE" >> "$file"
+  fi
 }
 
 # One status line per skill, collected here and printed again at the end as a summary.
@@ -125,6 +149,10 @@ for skill_path in "$SKILLS_DIR"/*/; do
       fi
     } > "$readme"
   fi
+
+  # The attribution line, stamped from the live pack version (SPEC INV-96).
+  stamp_attribution "$mirror_dir/README.md"
+  stamp_attribution "$mirror_dir/SKILL.md"
 
   # Anything to commit?
   ( cd "$mirror_dir" && git add -A )
