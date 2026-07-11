@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.1
+  version: 1.0.2
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -174,6 +174,19 @@ a working skill still stands: its pointer here reads as plain advice.
    type live in chat stays your own words under the register laws; the road binds the durable prose
    a human returns to. Leave settled text alone until a human rejects a specific page or your edit
    opens that page.
+
+22. **Every process converges on its goal (SPEC INV-98).** Name the goal up front as an artifact
+   the work can be held against — a frozen norm, an exemplar bank, a failing test, a written
+   acceptance. A paraphrase cannot serve as the goal. Measure every iteration against the goal
+   itself; a proxy never replaces the goal, and measuring against a proxy is where a look-alike
+   is born. The distance only shrinks, and a reached level locks by a mechanism — a norm template,
+   a conformance test, a lint floor that only grows, a cap that only ratchets down; attention
+   alone holds nothing across sessions. A deliberately divergent stretch — exploration, a labelled
+   prototype (rule 16) — is legal only when named and bounded by its convergence point. The
+   principle's chapter lives in the private playbook repo's PLAYBOOK.md; the pack's own first
+   teeth are the norm-conformance rows and the convergence-lock tests (rows 216/217). (The
+   owner's word, 2026-07-10: convergence covers every process and every kind of artifact — there
+   is a goal, and we walk toward it, always.)
 
 
 ## When NOT to load this
