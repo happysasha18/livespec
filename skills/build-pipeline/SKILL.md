@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.6
+  version: 1.0.7
 ---
 
 # build-pipeline — ship a change by the method
@@ -57,7 +57,7 @@ standards look like in its medium.
     restructure** — spoken in the echo and written in the row's `map:` note. The map is the spec's scenario
     sections plus the architecture's nodes, never a third document. A restructure verdict queues its OWN row
     (refactor door if only structure moves, feature door if behaviour moves too); the re-carve happens only
-    through the architecture step and its re-prove (SPEC INV-37).
+    through the architecture step and its re-prove (SPEC INV-37). A same-version docs-layout pass rides one sanctioned light vehicle: the pass builds on a clean pushed base, locks the owner's decisions in a checkpoint first, and proves content survived by a word-token multiset check AND a punctuation multiset check (SPEC INV-111).
   - Tripwires decide by rule, ahead of judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
     · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
     casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the

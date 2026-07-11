@@ -8,7 +8,7 @@ The walk is the executable projection of PRODUCT_SPEC.md, "Bringing an adopted h
 
 The ask arrives in any wording. It might read "re-layout the documentation" or "catch up to the current pack"; it names no procedure, so the package names one, and that procedure is this walk.
 
-Route the ask before doing anything else. A host that never adopted the pack goes to adoption (`adopt/ADOPT.md`) — the first-adoption phases, not this walk. A host that already adopted goes to this catch-up walk. A single-document edit is not this walk; it belongs to the ordinary docs-only edit. A restructure of the host's own product is not this walk either; it is the host's own queue row through the build pipeline. This walk fires only to move an adopted host's own live-spec documents and records onto a newer package version.
+Route the ask before doing anything else. A host that never adopted the pack goes to adoption (`adopt/ADOPT.md`) — the first-adoption phases, not this walk. A host that already adopted goes to this catch-up walk. A single-document edit is not this walk; it belongs to the ordinary docs-only edit. A restructure of the host's own product is not this walk either; it is the host's own queue row through the build pipeline. This walk fires only to move an adopted host's own live-spec documents and records onto a newer package version. The catch-up walk fires only when the host's recorded package version is behind the current package VERSION. A docs restructure that carries no version delta is the host's own queue row through its pipeline, whatever wording the ask used. The trigger wordings are examples under this test. A wording never decides the routing; the version delta decides. (INV-110)
 
 ## The walk
 

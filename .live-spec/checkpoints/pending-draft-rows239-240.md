@@ -292,3 +292,7 @@ INV-89, INV-90, INV-91, INV-92, INV-110, INV-111, E-21, E-25, INV-85, INV-86 |
 - Anchors quoted from the LIVE tree (239 and the 240 edits that don't depend on 239); the three 240 anchors on 239-written text are flagged with the order dependency.
 - No banned contrast frame in any drafted prose: prohibitions are plain `never` sentences ("A wording never decides the routing", "A host never improvises a layout pass"); matrix "never …, never …" is the standard regression-fence list, not a scissors.
 - Dates only from the rows' own record (2026-07-10 audit timestamps ~14:19 / ~14:23) or 2026-07-12 (the red-proof date).
+
+---
+
+APPLIED + CLOSED at landing 2026-07-12 (rows239-240-worker.md)
