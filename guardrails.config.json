@@ -3,10 +3,19 @@
   "matrix_path": "TEST_MATRIX.md",
   "queue_path": "ROADMAP.md",
   "tests_dir": "tests",
-  "user_facing_globs": ["skills/**/SKILL.md", "scripts/*.py", "guardrails/*.sh", "scaffold/guardrails/*.py", "README.md"],
+  "user_facing_globs": [
+    "skills/**/SKILL.md",
+    "scripts/*.py",
+    "guardrails/*.sh",
+    "scaffold/guardrails/*.py",
+    "README.md"
+  ],
   "registry_path": "SURFACES.md",
   "render_command": null,
-  "rendered_artifacts": ["README.md", "OVERVIEW.md"],
-  "surface_discovery_pattern": null,
+  "rendered_artifacts": [
+    "README.md",
+    "OVERVIEW.md"
+  ],
+  "surface_discovery_pattern": "<section id=\"([^\"]+)\"",
   "waivers": {}
 }
