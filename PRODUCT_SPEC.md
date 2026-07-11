@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v1.0.20, 2026-07-12)
+# live-spec — Product Spec (v1.0.21, 2026-07-12)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
@@ -1591,6 +1591,8 @@ If the name is taken, append `-2`, `-3`, and so on — the same one collision la
 
 The outsider commits its one new file — a commit touching inbox/ only, its message naming the source. That commit is inside the read-only exception.
 
+**The inbox has a remote arm.** A shared filesystem is not the only way in. A remote seat — a cloud session, a scheduled routine, another machine — reaches a repo only through git. A remote seat reaches a repo only through git. Its deposit stays one new file in inbox/, committed touching inbox/ only with the source named in the message, and then pushed. The push runs under a per-repo grant: the owner links the Claude environment to the GitHub account once, and grants each repo to the app once, and the grant is recorded in the host profile like the push grant [INV-82]. A seat with no grant fails honestly. It names the grant it lacks and hands the owner the one action that supplies it, the same honest failure as a window that never opened [INV-67]; it never fails silently and never guesses a workaround. (Born of the owner thinking the cloud seat through mid-session, 2026-07-10: today's inbox law assumed a shared filesystem, and a live routine alert was the first seat to hit the gap.) [INV-112]
+
 The door is host-general: every host carries its own inbox/ under the same law, swept first by that host's own sessions. That is what keeps "no wish is ever lost" [INV-1] true when two contributors' sessions share one host. [E-11]
 
 A live-spec session sweeps the inbox as its first act. It harvests each file into the home its route owns — a wish file into a queue row as always, a feedback file by the routing law [T-20]. An item must never sit durably-recorded but operationally invisible.
@@ -1721,6 +1723,7 @@ meaning, this table is only the map.
 | INV-9 | trust set only by the human | Who decides what |
 | INV-10 | write-ownership of the package repo | Package repo |
 | INV-11 | concurrent-edit fence before write/commit | Package repo |
+| INV-112 | the inbox door's remote arm: a seat that reaches a repo only through git deposits one new file in inbox/, commits it touching inbox/ only with the source named, and pushes it, under a per-repo grant recorded in the host profile like the push grant [INV-82] (the owner links the Claude environment to GitHub once, grants each repo once); a seat with no grant fails honestly — it names the grant it lacks and hands the owner the one action, the honest failure of a window that never opened [INV-67], never silent, never a guessed workaround; born of the owner thinking the cloud seat through (2026-07-10) | Package repo |
 | INV-12 | ambiguous size/priority/work-kind is asked at intake, never guessed | Throwing a wish |
 | INV-13 | one normative home per shared rule: the base skill | One rulebook |
 | INV-14 | no silent override; every profile line recorded + journaled | Who decides what |

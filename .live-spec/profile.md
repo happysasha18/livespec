@@ -27,6 +27,12 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   still wait for his word)` — recorded 2026-07-10 ~09:16, Alexander's explicit word this morning
   («сам пуши! не надо меня ждать»); this answers the push-law grant question (SPEC INV-82) for this host.
 
+- `trust.github-grant: standing — the Claude environment is linked to Alexander's GitHub account (his
+  one-time click), and this repo is granted to the app, so a remote seat's inbox deposit may push here
+  under the remote arm (SPEC INV-112)` — recorded 2026-07-10, the account link and repo grant done that
+  day; a seat that ever finds this line absent for a repo runs the grant ask (scripts/grant-ask.md) rather
+  than failing silently.
+
 - AMENDMENT to `other-projects` (named, dated): for the tlvphoto pair migration Alexander set on
   2026-07-10 ~02:09, this window TEACHES and SUPERVISES — prepares briefs he hands over, reviews
   artifacts, directs — and still never writes their trees; the audit-only line above keeps standing

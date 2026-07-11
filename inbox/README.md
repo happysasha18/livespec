@@ -16,3 +16,8 @@ Commit your one new file (a commit touching inbox/ only, message naming the sour
 of the exception. A live-spec session sweeps this folder as its first act, harvests each file into the home
 its route owns (a wish into a ROADMAP row, feedback by the routing law — SPEC T-20), and removes the file
 in the harvest commit (git history keeps it).
+
+**From a remote seat, over git.** A remote seat reaches a repo only through git, so it also pushes.
+The deposit stays one new file here, committed touching inbox/ only with the source named, and then pushed
+under a per-repo grant recorded in the host profile like the push grant. A seat with no grant fails honestly:
+it names the grant it lacks and hands the owner the one action that supplies it (SPEC INV-112).

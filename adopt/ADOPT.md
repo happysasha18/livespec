@@ -51,6 +51,13 @@ anything** — then the whole adopt run is reversible.
    remote (GitHub) either EXISTS or the human has EXPLICITLY DECLINED one; record the outcome in the run's
    journal entry. Creating/pushing the remote is the human's gate — offer and follow through, don't do it
    silently and don't let "recommended" quietly become "never happened" (the pilot ended local-only that way).
+   Where a remote seat will reach this repo — a cloud session, a scheduled routine, another machine — the
+   remote arm of the inbox door applies (SPEC INV-112). A remote seat reaches a repo only through git, so
+   its deposit stays one new file in inbox/, committed touching inbox/ only with the source named, and then
+   pushed under a per-repo grant: the owner links the Claude environment to the GitHub account once, and
+   grants each repo to the app once, and the grant is recorded in the host profile like the push grant. A
+   seat with no grant fails honestly — it names the grant it lacks and hands the owner the one action that
+   supplies it. Script that ask with its exact settings path (see the grant-ask template, scripts/grant-ask.md).
 
 Done when: the host is a git repo with a clean baseline commit, heavy artifacts are gitignored, and the
 remote outcome (exists / declined) is recorded.
