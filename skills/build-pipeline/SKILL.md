@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.3
+  version: 1.0.4
 ---
 
 # build-pipeline — ship a change by the method
@@ -26,7 +26,7 @@ matrix → test → code → verify → commit & show**. A bug shortcuts to **bu
 existing architecture node it lands in). **Skip the pipeline only if ALL hold:** single
 file · no new state / element / user-visible behaviour · an existing test level already covers the touched
 fact (still ship a test; the order of test and fix follows test-author's small-fix path — red first by
-default, and a one-batch fix owes the mechanical red proof). Anything touching visibility / layout / colour enters at the matrix step minimum.
+default, and a one-batch fix owes the mechanical red proof). A skip still owes the door step's spec-backed-literal tripwire: does this edit touch a spec-backed literal or clause? A yes routes the docs and the test into the same session as the fix (SPEC INV-104). Anything touching visibility / layout / colour enters at the matrix step minimum.
 Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (The private playbook repo's PLAYBOOK.md holds
 the principle behind each step. This skill is its executable projection; keep the two in sync.)
 
@@ -79,7 +79,7 @@ standards look like in its medium.
     prototype, outside prod and unshown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
-  also lives in SPEC prose, update the spec sentence in the same change. **The reported defect is a sample
+  also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (born of the row 220 audit: one-line fixes touching spec-backed literals shipped without same-session doc sync, 2026-07-10; SPEC INV-104). **The reported defect is a sample
   of its class (base rule 14):** before calling it done, name the pattern, grep the repo for it, check the
   visible text of every user-facing surface, and fix all siblings in the same change — the matrix row and
   the red-on-bug test cover the CLASS, beyond the single instance. **A RECURRING bug re-doors to feature:**
