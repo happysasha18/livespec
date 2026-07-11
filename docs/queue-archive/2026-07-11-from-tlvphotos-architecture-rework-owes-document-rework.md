@@ -1,3 +1,5 @@
+> Harvested into ROADMAP row 257 (2026-07-12).
+
 # Wish: an architecture REWORK owes a rework of ARCHITECTURE.md itself — state it as a law
 
 **The item.** When the structure of a product is deliberately redesigned (layers restacked, ownership

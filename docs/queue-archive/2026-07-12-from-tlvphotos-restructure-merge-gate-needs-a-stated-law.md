@@ -1,3 +1,5 @@
+> Harvested into ROADMAP row 258 (2026-07-12).
+
 # Wish: the pack owes a stated law for restructure/migration MERGE gates
 
 **The item.** When a document restructure (a plain-language rewrite, a big reflow) is gated for
