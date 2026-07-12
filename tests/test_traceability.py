@@ -2251,8 +2251,8 @@ class TestSmallDesignHoles(unittest.TestCase):
 
     def test_177_lane_claim_tiebreaker(self):
         s = self.spec()
-        self.assertIn("the lower inbox session token breaks the tie", s,
-                      "SPEC lost the lane-claim tie-breaker ordering key (F9)")
+        self.assertIn("session identity [INV-117] sorts lower", s,
+                      "SPEC lost the lane-claim tie-breaker ordering key (F9's inbox-token key superseded by F1's session-identity ordering, INV-117 row 277)")
         self.assertIn("mutual back-off cannot happen", s)
 
     def test_178_tight_rung_rollback(self):
