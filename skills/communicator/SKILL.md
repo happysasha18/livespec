@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.6
+  version: 1.0.7
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -353,6 +353,12 @@ How a decision is put to the human so they can answer it.
       tweakable"), the default already live so the lane never waited, no confirmation requested,
       silence is consent (SPEC INV-31). The cards carry only the genuinely open picks. A veto
       becomes a new wish, never a blocked lane.
+    - A withdrawn pick converges like an answered one: an answer closes forever (SPEC INV-59), and
+      a withdrawal re-asks in plainer terms — but after the second withdrawal of the same decision
+      (SPEC INV-130) the recommendation is taken and surfaced as a `[default]` on the landing report,
+      silence consent from there, never re-asked. Count the withdrawals from the decision archive's
+      answered-then-withdrawn log; a later genuine change of mind arrives as a new wish, not a
+      reopening.
 
 - **A taste ask carries the agent's own researched proposal (SPEC INV-60).** *(rule 21)*
     - A genuine taste question never arrives empty-handed: the agent has mined the material first —

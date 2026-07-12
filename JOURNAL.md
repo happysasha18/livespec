@@ -3421,3 +3421,25 @@ block. Red-first: `test_deferred_revisit_cadence` (four assertions) red against 
 green; full suite 529 green. Door: feature; kind: skill; footprint: single-module (the build-pipeline node).
 Delegation: none — the delta is judgment-dense wiring across spec, index, architecture, matrix, and skill on
 one node; proposed senior / chosen senior. SPEC v1.1.6, build-pipeline 1.0.19, pack 1.1.6.
+
+## 2026-07-12 (session 40) — a withdrawn decision converges after two withdrawals (row 285, INV-130, prover F6)
+
+**What.** Prover finding F6: an answered question closes forever [INV-59], but a withdrawn decision re-asked
+"in plainer terms" [INV-9] with no cap of its own, so a genuine taste call could loop unbounded. INV-130
+bounds it: on the second withdrawal of the same decision the session takes the recommended option and
+surfaces it as a `[default]` on the landing report — silence stays consent from there [INV-31], never
+re-asked. It is the same convergence an answered question already has, now given to the withdrawal path. A
+later real change of mind rides the ordinary channel as a new wish, never a reopening of the closed decision.
+
+**Why the bound is two, and why it does not run over the human.** The finding proposed N=2, and two is the
+natural bound: the first ask, one re-ask "in plainer terms", and if the second phrasing still bounces the
+question is not going to resolve by re-wording — a genuine taste call. INV-9 (the human owns the decision) is
+bounded, not overridden: the converged pick carries only as a tweakable `[default]`, which is exactly
+INV-31's silence-is-consent contract, so the human still has the last word without the loop.
+
+**Homes.** New invariant INV-130 (the decision-page clause is its home, in the E-22 block), its Formal-index
+row, communicator's rule 10 (v1.0.7 — counts withdrawals from the decision archive's answered-then-withdrawn
+log), and matrix M-271 under the communicator block. Red-first: `test_withdrawal_convergence` (4 assertions)
+red against the pre-delta tree, then green; full suite 533 green. Door: feature; kind: skill; footprint:
+single-module (communicator node). Delegation: none — judgment-dense wiring across spec, index, architecture,
+matrix, and skill on one node; proposed senior / chosen senior. SPEC v1.1.6, communicator 1.0.7, pack 1.1.6.
