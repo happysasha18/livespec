@@ -79,7 +79,7 @@ Cut what adds nothing, and shape the whole into a readable structure.
     - A numbered
       item that stands as its own rule opens with a short bold title; a numbered item that is one step in
       a procedure ("read the size, then draft the delta, then queue it") stays a bare ordered list, since
-      its order already carries the meaning. (Alexander 2026-07-09: flat is the defect — structure the
+      its order already carries the meaning. (2026-07-09: flat is the defect — structure the
       document, do more than label its items.)
 
 
@@ -96,7 +96,7 @@ Lead with what a thing is, and hold the contrast frame out.
       shapes are an em-dash or a comma leading into the denied neighbour in English, and the parallel Russian
       constructions that set a negated word against the word meant to replace it.
     - This governs casual replies
-      inside a running conversation as much as documents and artifacts; Alexander is allergic to the frame,
+      inside a running conversation as much as documents and artifacts; the human is allergic to the frame,
       and it stays absent even mid-dialogue.
     - Say what the thing IS in its own sentence. When a boundary
       genuinely needs naming, give it its own plain sentence: "The prototype is the norm. The prose describes
@@ -105,7 +105,7 @@ Lead with what a thing is, and hold the contrast frame out.
       is the tell to rewrite.
     - The linter's scissors check holds the floor (`scripts/spec-style-lint.py`); the
       ceiling is a read-aloud that turns every denied-neighbour clause into its own positive sentence.
-      (Alexander 2026-07-09, restated with an explicit allergy: the frame stays out of chat replies to our
+      (2026-07-09, restated with an explicit allergy: the frame stays out of chat replies to our
       conversations, and every earlier text carrying it is a bug to sweep.)
 
 
@@ -126,11 +126,11 @@ Lead with what a thing is, and hold the contrast frame out.
    meaning.
 8. **Anchor integrity.** Every bracket code present before the edit is still present, still trailing,
    and still listed correctly in the Formal index.
-9. **Scissors scan (rule 15).** Before sending, scan the piece — chat replies to Alexander included — for
+9. **Scissors scan (rule 15).** Before sending, scan the piece — chat replies to the human included — for
    the contrast frame in every shape: a denied-neighbour clause after an em dash or a comma, and its
    Russian equivalents that set a negated word against its replacement. Rewrite each hit into a positive
    sentence first. Run `scripts/spec-style-lint.py` for the mechanical floor; this scan runs on every
-   message to Alexander, and on documents.
+   message to the human, and on documents.
 10. **Structure check (rule 16).** Read only the headings and the titles of numbered rules. They alone
     should reveal the document's shape — the few big areas and what groups under each. A long flat run of
     peer items with no parent grouping, a heading that hides its topic, or a skipped level is a fix.

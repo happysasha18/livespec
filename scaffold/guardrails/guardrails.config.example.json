@@ -8,5 +8,5 @@
   "render_command": null,
   "rendered_artifacts": ["dist/index.html"],
   "surface_discovery_pattern": "<section id=\"([^\"]+)\"",
-  "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner Alexander"}
+  "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner <maintainer>"}
 }

@@ -79,8 +79,7 @@ stopped being read — which kills a spec).
   several forms, legs, or arms — the PROTOTYPE label's forms, a check's three legs, a law's four arms —
   lay them out as bullet or numbered items so the eye scans them, and keep prose for the reasoning that
   connects them. This is layout inside the use-case-first shape. It is not a return to the rejected
-  structure-first document, which organized the WHOLE spec as entity and state tables (Alexander
-  2026-07-07).
+  structure-first document, which organized the WHOLE spec as entity and state tables (2026-07-07).
 - **A "how to read" note at the very top.** Open the spec with a short front-matter: what the product is in
   two sentences, that each section is a scenario, that the codes are quiet machine anchors mapped by the
   Formal index at the end, and that **edit history lives in the JOURNAL, apart from the spec itself.**

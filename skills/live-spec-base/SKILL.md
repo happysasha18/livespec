@@ -34,7 +34,7 @@ a working skill still stands: its pointer here reads as plain advice.
    Never open a line with a code. And when chat runs in one language while the docs run in another, a term
    or metaphor coined in the docs language is never loan-translated into chat — **no calques**: say what
    actually happens in natural chat-language words; the original term may trail in parentheses like any
-   anchor (Alexander 2026-07-05 — a calque reads as machine-speak and degrades the product).
+   anchor (2026-07-05 — a calque reads as machine-speak and degrades the product).
 
 3. **One surface = one name, everywhere.** The moment one thing answers to two names, every cross-check
    silently loses the seam between them. The vocabulary comes from the host's SPEC.
@@ -84,7 +84,7 @@ a working skill still stands: its pointer here reads as plain advice.
    change updates its README / CHANGELOG / SKILL.md before the session ends. **Entries and harvested
    records carry date AND time of day** — "yesterday evening you wrote X, so I did Y" is answerable later
    only if the record holds the moment, not just the day; a decision file keeps its answered-at stamp, a
-   journal entry opens with when it happened (Alexander 2026-07-05).
+   journal entry opens with when it happened (2026-07-05).
 
 10. **Nothing is silently deleted.** A superseded host file moves to the attic with a manifest line; a
     removed feature leaves a dated tombstone in the spec and RETIRED matrix rows; only clearly-regenerable
@@ -147,7 +147,7 @@ a working skill still stands: its pointer here reads as plain advice.
    human's word, whatever the proactivity mode. A push to your own repository is NOT irreversible (it
    reverts); it rides the mode and the project's own push gates. When unsure which side an action is
    on, treat it as irreversible and ask — the criterion is "can we get back to before, ourselves,
-   losing nothing?" (Alexander 2026-07-05: money yes, deletion yes, a push no).
+   losing nothing?" (2026-07-05: money yes, deletion yes, a push no).
 
 18. **One name-collision law.** A new file whose name is taken differentiates in TWO moves, the same
    everywhere in the pack: first the semantic mark its home already defines (the attic prefixes the

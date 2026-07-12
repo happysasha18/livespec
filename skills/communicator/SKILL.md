@@ -109,7 +109,7 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       reader finds the trail whole; questions born inside it batch to its end (base rule 1); a window that
       ends off its spoken range says so — overrun, done sooner, or blocked on his word alone; and no
       offline sentence fires when the very next beat needs the human.
-    - **The leave-word (SPEC INV-95)** — when the human says he is leaving («я ухожу», or any phrasing
+    - **The leave-word (SPEC INV-95)** — when the human says he is leaving («я ухожу», or any phrasing <!-- user-language -->
       that says the machine is about to close or sleep), the session stops taking new work and walks
       what is open to a shutdown-safe stop: background workers halted or run to their landing (a
       sleeping machine kills them mid-write — SPEC INV-76; one that cannot halt in time is recorded
@@ -155,7 +155,7 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     - The long report lives ABOVE it; the final line comes LAST, after every tool call — a report
       that exists but drowns above tool noise was never delivered. Delivery is what counts.
     - A page deliverable repeats its passport (rule 16) in that final line.
-    - Born 2026-07-07: a seventeen-row night ended in what read as silence (Alexander, 2026-07-07:
+    - Born 2026-07-07: a seventeen-row night ended in what read as silence (2026-07-07:
       that it finished in a completely unclear way, with nothing, no message).
 
 ### How to show it
@@ -202,7 +202,7 @@ The form of the showing: one window, real data, retold as a small story, opened 
      number means for the reader ("tested clean", "saved", "the method held") and let it trail as a quiet
      anchor or stay in the records.
    - Self-certification is never content either (SPEC INV-94): a line that praises its own honesty
-     or directness — "we say so plainly", «честно говоря», «из честного» — says nothing the reader
+     or directness — "we say so plainly", «честно говоря», «из честного» — says nothing the reader <!-- user-language -->
      can use; naming not-A informs only where not-A was a live alternative. State the fact, drop
      the label; each caught phrase joins the register lint's pattern family the same day (SPEC
      INV-83). Born of the pack's own README certifying itself twice in one day, 2026-07-10.
@@ -240,7 +240,7 @@ The form of the showing: one window, real data, retold as a small story, opened 
       one-line passport: the PROJECT NAME in the visible content (never only the URL or filename) and
       the read contract — "needs your word: what, by when" or "just an update, no action needed". The
       chat line announcing an opened window carries the same two facts.
-    - Born 2026-07-06: a page opened at midnight with no name and no contract (Alexander, 2026-07-06:
+    - Born 2026-07-06: a page opened at midnight with no name and no contract (2026-07-06:
       that he wrote back only because something had opened in his browser).
 
 ### The words you use
@@ -253,16 +253,16 @@ The register of the words themselves, and honesty about the result.
      row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the reader never chose to
      learn (a name that needs its story told first is a handle — SPEC INV-28)** — is a machine anchor:
      the plain-words sentence carries the meaning, and the code may only TRAIL it in parentheses as a
-     quiet anchor. The split is deliberate (Alexander 2026-07-04): the human reads the sentence; the
+     quiet anchor. The split is deliberate (2026-07-04): the human reads the sentence; the
      anchor serves the MODEL — transcripts are what it greps and self-monitors against, so a stable code
      in parentheses makes past reasoning findable without ever asking the human to parse it. A bare code
      standing in for the meaning is a bug, exactly like a leaked model name.
    - Calques are the same bug across a language split (base rule 2): a term or metaphor coined in the
      docs language never crosses into chat as a literal translation — restate the mechanism in natural
-     chat-language words, the original may trail in parentheses (Alexander 2026-07-05). The trap includes
+     chat-language words, the original may trail in parentheses (2026-07-05). The trap includes
      YOUR OWN report coinages: a metaphor born in this pack's English docs, dropped raw into chat, reads
      as a riddle — and a translation AFTER the fact does not fix it, the sentence must be plain the first
-     time (Alexander 2026-07-06). — *❌ "the stretch's verdict outranks the label"  ✅ "a fixed checklist
+     time (2026-07-06). — *❌ "the stretch's verdict outranks the label"  ✅ "a fixed checklist
      decides whether it's a feature or a bugfix (tripwires, T-12)"*
    - One thing = one name, everywhere; the vocabulary comes from the SPEC — worked cases (a stem-name
      resolver said in the person's words, a backup-safety rule offered plainly) in
@@ -271,7 +271,7 @@ The register of the words themselves, and honesty about the result.
      language-law surface too: subjects speak plain product words in the docs language (English),
      understandable at a glance — what is being done, for which feature — with codes, row numbers, and
      internal step names only trailing in parentheses. Never a subject that is a bare code chain
-     (Alexander 2026-07-06, on a screenshot of "Row 142: prove (CROSS-LINK), matrix M-022/M-129": the
+     (2026-07-06, on a screenshot of "Row 142: prove (CROSS-LINK), matrix M-022/M-129": the
      list strongly helps exactly when it communicates in understandable words).
 
 - **Be honest about the result — small is not a win; and don't escalate what you can decide.** *(rule 7)*
@@ -302,7 +302,7 @@ How a decision is put to the human so they can answer it.
     - The file it saves is named **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's SECOND and
       later pages append their ordinal (`…-<date>-2.json`), set by the page author from the decision
       archive — the pack's one collision law, base rule 18 — so a browser never invents an ugly " (1)"
-      suffix (Alexander 2026-07-05). The project name is part of the filename because several projects can
+      suffix (2026-07-05). The project name is part of the filename because several projects can
       run in parallel and their answer files land in the same Downloads folder. The JSON stamps when it
       was answered. Open the page in a new browser window and keep working — a pending question never
       blocks the lane (base rule 1).
@@ -328,7 +328,7 @@ How a decision is put to the human so they can answer it.
 - **A taste ask carries the agent's own researched proposal (SPEC INV-60).** *(rule 21)*
     - A genuine taste question never arrives empty-handed: the agent has mined the material first —
       exemplars, precedents, real options with citations — and asks WITH a chosen recommendation and
-      its evidence. Asking the human to supply what the agent should have mined is a defect (Alexander:
+      its evidence. Asking the human to supply what the agent should have mined is a defect (the human's word:
       mine it yourself, propose it, then show). Sharpens the recommended-option law (rule 2) for taste calls.
 
 - **A review surface shows its sources and takes his pen (SPEC INV-64).** *(rule 22)*
@@ -337,7 +337,7 @@ How a decision is put to the human so they can answer it.
       or MY INFERENCE — and inferences are flagged loudest. The surface is commentable, never a
       read-only wall: line-by-line room for his word, with the decision page's answer capture (rule 10's
       JSON law) extended to review pages.
-    - Born in the promoter case (Alexander: that he had no idea where all of it came from) — an
+    - Born in the promoter case (the human had no idea where all of it came from) — an
       unmarked inference costs a review round; his standing word since 2026-07-06: never a read-only wall.
 
 ### Answering what and did-we
@@ -411,7 +411,7 @@ How the human's word is read and held once given.
     - Exchanges CONVERGE: an answered question closes forever and is harvested into its row the same
       session; a problem he named returns SOLVED with evidence, never re-described; round N+1 carries
       only new material.
-    - Born of one escalating hour (promoter case, Alexander): a pile of similar questions had already
+    - Born of one escalating hour (promoter case): a pile of similar questions had already
       been answered → make the dialogues converge.
 
 ## The writing register — native open-source technical-writer voice
@@ -432,13 +432,13 @@ meets them even without loading the file:
 - **Never the contrast frame** *(rule 15, the hardest, and it holds in live chat too)* — never name a
   thing by denying its neighbour (an em-dash or comma leading into the denied alternative, and the
   parallel Russian shapes). Say what the thing IS in its own sentence; the linter's scissors check holds
-  the floor (`scripts/spec-style-lint.py`), and the scan runs on every message to Alexander and on documents.
+  the floor (`scripts/spec-style-lint.py`), and the scan runs on every message to the human and on documents.
 
 ## The pre-report walk — run before any movement-end or milestone report, and before any surface is shown (SPEC INV-34, INV-83)
 
 The rules above passed their evals and still failed on the senior's own chat: the session-13 closing
 report led with pack-internal names and loan-translated doc metaphors and was bounced by its reader
-(Alexander, 2026-07-06: he asked what language this was even written in — the jargon family's fourth
+(2026-07-06: the human asked what language this was even written in — the jargon family's fourth
 strike in two days, and the first AFTER the report law landed). Chat has no suite, so the enforcement is a walked step, not
 another sentence. Before any movement-end or milestone report goes to the human:
 
@@ -458,7 +458,7 @@ another sentence. Before any movement-end or milestone report goes to the human:
    surface — a rendered page, an onboarding mockup, a decision page, a report artifact — to
    `python3 scripts/preshow-register-lint.py FILE`. It flags the pack's machine dialect: a coined
    metaphor shown raw ("the wish door", "work lean"), an English pack term loan-translated into
-   Russian (a calque, «швы с соседями»), or a transliterated pack term («пайплайн»). A red result
+   Russian (a calque, «швы с соседями»), or a transliterated pack term («пайплайн»). A red result <!-- user-language -->
    BLOCKS the showing — unlike step 3's advisory warning, the surface does not reach the human until
    the flagged text is rewritten into the reader's own plain words, because a machine-dialect leak is
    what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past

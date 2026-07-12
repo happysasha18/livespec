@@ -2,6 +2,29 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-12 ~21:06 (build-worker) — LANE A of row 279: the pack's own shipped docs adopt the impersonal voice; owner attributions move here (INV-118)
+
+**What:** the owner (Alexander) flipped row 279 from the recommended exemption to ADOPT, so live-spec's own shipped tree now obeys INV-118 and INV-120 like any product it ships for others. The former standing exemption (INV-118's "this pack's own spec/matrix/roadmap keep a deliberate owner-attribution provenance… pending the owner's decision") is retired. Every owner-name attribution in the shipped set was rewritten impersonally in place — the name dropped, the date and the load-bearing reason kept — and the WHO/WHEN provenance is preserved HERE, in this journal, its one home from now on.
+
+**The provenance that moved (WHO, so it is not lost):** every dated decision the sweep touched was Alexander's own word on the date it already carries. The shipped sentence keeps that date and its reason; only the personal name comes off. The moved attributions, grouped by shipped file:
+
+- **PRODUCT_SPEC.md** (8): INV-128 entry-station clause + its Formal-index row (Alexander live 2026-07-12); INV-106 push-walk clause + index row (Alexander's word 2026-07-10 ~11:00); INV-127 scenario-edges clause + index row (Alexander 2026-07-09); INV-115 compaction-definition index row (Alexander 2026-07-12); INV-116 architecture-proof index row (Alexander's word 2026-07-12). Each rewritten to "recorded <date>" / "the owner's word (<date>)".
+- **TEST_MATRIX.md** (2): M-245 (born of Alexander's word, 2026-07-10 ~11:00); M-269 (Alexander live 2026-07-12).
+- **skills/live-spec-base/SKILL.md** (3): rule 2 no-calques, rule 9 dated-journal, rule 17 irreversible-push — each an Alexander 2026-07-05 decision.
+- **skills/communicator/SKILL.md** (12): the born-of notes and register rules dated 2026-07-04 … 2026-07-07, plus three "to Alexander"/"(Alexander:)" references reworded to "the human".
+- **skills/communicator/references/writing-register.md** (5): the 2026-07-09 flatness/allergy notes and two "to Alexander" references → "the human".
+- **skills/product-prover/SKILL.md** (1): scenario-edges note (Alexander 2026-07-09).
+- **skills/spec-author/SKILL.md** (1): the structure-first-rejection note (Alexander 2026-07-07).
+- **scripts/render-doc.py** (1): the docstring's why-line — the name and its Russian aside ("как когда-то на VT220") both dropped for an impersonal reason (2026-07-06).
+- **scripts/preshow-register-lint.py** (2): two source-comment attributions (Alexander 2026-07-10 / 2026-07-05·07) → dates only.
+- **scaffold/guardrails/README.md + guardrails.config.example.json** (2): the example waiver's "owner Alexander" → the placeholder "owner <maintainer>" (it is sample config, not a real owner line).
+
+**Kept in place by an INV-120 carve-out (not attributions, not moved):** the six authorship bylines "© Alexander Abramovich" / "Copyright Alexander Abramovich 2026" in README.md and the five skill READMEs are legitimate authorship, spared by a dated `name_waivers` allowlist entry (INV-120's "authorship bylines" carve-out). The gate's own machinery — `scripts/check-shipped-language.py` (its regex names the very names it catches) and `scripts/shipped-language-allowlist.json` (it lists the debt) — is now excluded from the scan the way the fixture homes already are, because scanning the detector against itself is a false positive by construction.
+
+**Cyrillic (INV-120's other mechanical offence), resolved as deliberate user-language, not process-notes:** the register-example phrases embedded in PRODUCT_SPEC.md (INV-94, INV-95), TEST_MATRIX.md (M-196, M-223) and communicator/SKILL.md carry an inline `<!-- user-language -->` marker — they are the forbidden/spoken phrases the rule teaches, deliberate samples. Whole files that are Russian by function — `scripts/chat-law-hook.sh` (it emits the reminder in the human's language), `prototype/work-board-sketch.html` (mock UI in the user's language), `skills/communicator/references/field-examples.md` (a bank of chat-register examples) — are allowlisted as `user_language_globs`. No candid Russian process-note survives in the shipped set; those live only here and in NEXT_STEPS.
+
+**Proof:** `python3 scripts/check-shipped-language.py --root .` reports `offences: 0` on the swept tree (was 134: 88 Cyrillic + 46 owner-name). LANE B wires this gate into the pack's own pre-push and CI.
+
 ## 2026-07-12 ~20:48 (build-worker, session 42) — INV-134's footprint check no longer lets a cutoff-day no-time row escape (ROADMAP row 297, M-275)
 
 **What:** the footprint-note check treated a cutoff-day (2026-07-12) feature/refactor row with no `~HH:MM` stamp as time-None → not-required, so a post-law row that omitted both its time and its footprint note escaped unseen. The missing-time case now keys off the row's landing ORDER: a no-time cutoff-day feature/refactor row is required (fail-closed) unless it is one of the pinned genuinely-pre-law rows.

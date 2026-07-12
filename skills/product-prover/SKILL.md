@@ -302,7 +302,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   view's flow walks (SPEC INV-74). A trivially-none edge stated as such — a top-level scenario entered from
   nowhere, a terminal one exiting to nowhere — is a decided answer, not a gap; a silent edge is the gap.
   The duty binds forward (SPEC INV-127, INV-15): flag an existing scenario's unstated edge as a finding,
-  never blocking the lane on the backlog of edges older scenarios never wrote. (Alexander 2026-07-09: the
+  never blocking the lane on the backlog of edges older scenarios never wrote. (recorded 2026-07-09: the
   prover should say which preconditions and postconditions hold at a scenario's entry and exit.) [INV-127]
 - **Three-source disagreement** — the entry impact read reads a change against the spec, the architecture,
   and the code together (SPEC INV-128); carry the lens that names where they DISAGREE. A surface the spec

@@ -16,7 +16,11 @@ a clean bill on (3).
 
 SHIPPED SET (the files a reader outside this machine meets). Spared, by design, are the
 local-only diaries and the fixture homes: JOURNAL.md, ROADMAP.md, NEXT_STEPS.md, MIGRATION.md,
-and everything under docs/, attic/, inbox/, .live-spec/, tests/, evals/.
+and everything under docs/, attic/, inbox/, .live-spec/, tests/, evals/, prototype/ (a
+fenced sketch is not shipped product, SPEC INV-17 — and a prod allowlist may not point into
+it, so the exclude, not a glob, is its home). The gate's own
+machinery is spared too — this detector's own source and its allowlist name the very tokens
+they exist to catch, so scanning them would report the detector's patterns as offences.
 
 ALLOWLIST (scripts/shipped-language-allowlist.json — same dated-debt shape as spec-waivers.json,
 the equivalence-gate rule: a NEW offence reds, a listed one is counted debt, never a silent pass):
@@ -50,8 +54,9 @@ USER_REGION_MARK = re.compile(r"(?:#|<!--)\s*user-language")
 FENCE_USER_OPEN = re.compile(r"^\s*```+\s*user\b")
 FENCE_ANY = re.compile(r"^\s*```")
 
-EXCLUDE_DIRS = ("docs/", "attic/", "inbox/", ".live-spec/", "tests/", "evals/")
-EXCLUDE_FILES = ("JOURNAL.md", "ROADMAP.md", "NEXT_STEPS.md", "MIGRATION.md")
+EXCLUDE_DIRS = ("docs/", "attic/", "inbox/", ".live-spec/", "tests/", "evals/", "prototype/")
+EXCLUDE_FILES = ("JOURNAL.md", "ROADMAP.md", "NEXT_STEPS.md", "MIGRATION.md",
+                 "check-shipped-language.py", "shipped-language-allowlist.json")
 TEXT_EXT = (".md", ".py", ".sh", ".json", ".txt", ".yml", ".yaml", ".html", ".js", ".css")
 
 

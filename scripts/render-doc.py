@@ -2,7 +2,7 @@
 """render-doc.py — render a Markdown doc into one readable, self-contained HTML page.
 
 Why this exists: documents a human must READ deserve typography, not a code editor
-(Alexander, 2026-07-06: Sublime for prose reads "как когда-то на VT220"). Zero
+(2026-07-06: a rendered page reads far better than a plain code-editor view). Zero
 dependencies — a deliberately modest converter covering what our docs actually use:
 headings, paragraphs, bold/italic, inline code, fenced code blocks, lists, tables,
 blockquotes, links, horizontal rules.

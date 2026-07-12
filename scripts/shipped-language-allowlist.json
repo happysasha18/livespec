@@ -2,7 +2,9 @@
   "user_language_globs": [
     "scripts/spec-style-lint.py",
     "scripts/preshow-register-lint.py",
-    "scripts/register-lint-floor.json"
+    "scripts/register-lint-floor.json",
+    "scripts/chat-law-hook.sh",
+    "skills/communicator/references/field-examples.md"
   ],
   "authorship_globs": [
     "LICENSE",
@@ -10,5 +12,7 @@
     "**/plugin.json"
   ],
   "cyrillic_waivers": [],
-  "name_waivers": []
+  "name_waivers": [
+    {"file": "*README.md", "snippet": "Alexander Abramovich", "note": "authorship byline — the copyright/attribution line the license names, not a requirement statement", "added": "2026-07-12"}
+  ]
 }

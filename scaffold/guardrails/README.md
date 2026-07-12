@@ -77,7 +77,7 @@ sees it — `WAIVED (<check>): <reason>`, exit 0, visible, never silent.
    the config, dated and owned, where a reader sees it:
 
    ```json
-   "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner Alexander"}
+   "waivers": {"completeness": "no rendered artifact yet — declared 2026-07-10, owner <maintainer>"}
    ```
 
    The check prints `WAIVED (completeness): <your reason>` and exits 0. An undeclared

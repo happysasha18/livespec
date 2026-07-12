@@ -45,7 +45,7 @@ import sys
 _F = re.IGNORECASE | re.UNICODE
 PATTERNS = [
     # ---- English: internal SETTING / MECHANISM names shown raw ---------------------------------
-    # source: onboarding mockup jargon strip, «это бред» (Alexander, 2026-07-10 ~00:14)
+    # source: onboarding mockup jargon strip, «это бред» (2026-07-10 ~00:14)
     ("en-full-rigor", "en", re.compile(r"\bfull\s+rigou?r\b", _F),
      "onboarding mockup — internal setting name 'full rigor' shown raw", "2026-07-10"),
     ("en-work-lean", "en", re.compile(r"\bwork\s+lean\b", _F),
@@ -75,7 +75,7 @@ PATTERNS = [
      "chat calque «стыки поверхностей» ← 'surface seams'", "2026-07-10"),
 
     # ---- Russian: the known-bad calque list from the profile (language.no-calques) -------------
-    # source: profile.md language.no-calques (Alexander 2026-07-05 / 2026-07-07)
+    # source: profile.md language.no-calques (2026-07-05 / 2026-07-07)
     ("ru-rastyazhki", "ru", re.compile(r"растяжк\w*", _F),
      "profile known-bad calque «растяжки» ← 'tripwires'", "2026-07-05"),
     ("ru-ta-zhe-semya", "ru", re.compile(r"(?<!\w)т[аяойеу]\w*\s+же\s+семь\w+", _F),
