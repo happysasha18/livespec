@@ -3365,3 +3365,36 @@ green. Prover record with the Fable fold: docs/prover/2026-07-12-s40-inv128-entr
 v1.1.5, build-pipeline 1.0.17, product-prover 1.0.8, communicator 1.0.6, pack 1.1.5. The deeper mechanical
 enforcement (footprint-note check, per-kind layers declaration, interface-test machinery, cross-cut counter)
 rides the architect draft's follow-on rows R0/R1/R3/R5.
+
+## 2026-07-12 (session 40) — the adversarial audit becomes a standing station (row 290, INV-46 broadened)
+
+**The wish.** After the Fable audit of row 259 caught a real contradiction with the door law that my own
+author's prover pass had read clean, Alexander's live word: as you see, an audit is always needed — think
+how best to write it in and at what stages. The lesson stared back: a self-review shares the author's blind
+spot, so the fresh-context audit cannot be the senior's option exactly where it is most needed.
+
+**What landed.** INV-46's mandatory trigger broadens. It was mandatory only when the code step was delegated
+AND the delta was surface-sized. It fires mandatory now when the change is high-stakes AND its only review
+is the author's own. High-stakes means surface-sized, or a change to the method itself — a rule whose
+meaning changed (a wording-only edit that changes no meaning is not a method edit). The author's own review
+means no independent read has happened, where an independent read is a differently-contexted head briefed
+from the primary sources on the goal-missed hypothesis; a prover pass in the author's own context never
+counts, and delegation never makes the review independent. One fresh checker per landing batch covers the
+batch. A sharpening in place — no new invariant code, since the trigger's one home is INV-46.
+
+**Dogfood — the audit of the audit-law fixed the audit-law.** This change edits a method invariant, so by
+its own new rule it owed a fresh audit. A Fable pass ran and caught a must-fix I would have shipped: a
+pre-existing briefing phrase, "primary sources only, apart from the worker's summary or your own plan",
+reads as its own opposite ("apart from" as "besides") and its own test pinned the broken string green. It
+also caught two definitional gaps in my first draft of the trigger — no proportionality floor (a one-word
+invariant tweak would have forced a spawned worker) and a case that both leaked and swallowed (in normal
+solo mode every landing is self-built, so "the only reviewer is the author" made the audit near-universal).
+The high-stakes-AND-author-only redesign, the meaning-change threshold, the one-checker-per-batch rule, and
+the defined "independent read" fold all three. The very first instance of the broadened law obeyed the
+broadened law.
+
+**Method notes.** Door: refactor; kind: skill; footprint: single-module (INV-46's own homes). Red-first —
+the extended `test_adversarial_verify_option` red against the pre-delta build-pipeline copy then green; suite
+525 green. Prover record with the Fable fold:
+docs/prover/2026-07-12-s40-inv46-audit-trigger-broadened.md. A register-lint catch on a shout-cap in the
+spec prose ("MEANING") was fixed the same landing. SPEC v1.1.6, build-pipeline 1.0.18, pack 1.1.6.

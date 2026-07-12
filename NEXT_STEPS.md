@@ -13,13 +13,13 @@ product-prover 1.0.8, communicator 1.0.6, spec-author 1.0.5.
 **s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) on defaults; 262 (adopt audit de-dup)
 decided, execution pending his nod (edits his playbook); F3-F7 filed as rows 282-286. Row 280 (register
 thinning) ATTEMPTED + FINDING: an auto-tighten draft dropped four normative sub-rules; reverted (green at
-565), STAYS OPEN needing a rule-preserving pass. **BUILDING NEXT (his live wish 2026-07-12): the
-adversarial audit becomes a STANDING station with a broadened trigger** — a fresh-context audit REQUIRED (not
-the senior's option) whenever the change edits the method/law, the delta is surface-sized, OR the only
-reviewer is the author; because self-review shares the author's blind spot (today: my prover read 259 clean,
-Fable caught a real INV-16 contradiction). Homes: build-pipeline verify step (INV-46) + a spec clause. Also
-queued: architect-draft follow-ons R0/R1/R3/R5. **On HIM:** a real remote deposit from his browser (row 247
-leg); a nod on 262's playbook edit; flips on 261/279.
+565), STAYS OPEN needing a rule-preserving pass. Row 290 LANDED (INV-46 broadened: the adversarial audit
+fires mandatory when the change is high-stakes — surface-sized OR method-meaning-changing — AND its only
+review is the author's own; one checker per batch; DOGFOOD — the audit ran on its own landing and caught a
+must-fix). **NEXT (queued, his standing wish): the architect-draft follow-ons R0/R1/R3/R5** — the footprint-
+note suite check, per-kind concrete-layers declaration, interface-test machinery, cross-cut counter (the
+mechanical halves INV-128 deferred). **On HIM:** a real remote deposit from his browser (row 247 leg); a nod
+on 262's playbook edit; flips on 261/279; the register-thinning pass (row 280).
 **s39 (pushed, CI green):** eleven smalls landed (263,273,269,264-268,270,260a,260b); INV-121/122/123.
 
 **THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**

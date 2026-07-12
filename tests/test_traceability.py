@@ -1690,13 +1690,17 @@ class TestProblemLedger(unittest.TestCase):
         checker re-derives from the spec sentences, never the worker's summary."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("INV-46", "tasks completed, goal missed",
-                       "never the worker's summary",
-                       "MANDATORY when the code step was delegated"):
+                       "never the worker's summary, never the senior's plan",
+                       "mandatory when the change is high-stakes and its only review is the author's own",
+                       "a rule whose meaning changed",
+                       "a differently-contexted head briefed from the primary sources",
+                       "One fresh checker per landing batch covers every law in the batch"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("tasks completed, goal missed",
                        "TODO · FIXME · placeholder · lorem · hardcoded sample · empty function body",
-                       "primary sources only, apart from the worker's summary or your own plan"):
+                       "primary sources only: never the worker's summary, never the senior's own plan",
+                       "REQUIRED where the stakes are high and only the author has judged"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
 
     def test_lanes_by_graph(self):
