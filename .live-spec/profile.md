@@ -13,6 +13,17 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   instance` — recorded 2026-07-06 at the INV-36 landing, the law's own founding-ask applied to its
   birthplace; updated on Alexander's word if the pack outgrows it (SPEC INV-36).
 
+- `project.layers: the rulebook and spec · the working skills · the guardrails, templates, and suite` —
+  the concrete fill of the three abstract footprint categories for a skill pack: a presentation-only
+  change touches one shipped doc or skill surface, a single-module change stays inside one skill or one
+  guardrail, a cross-cutting change moves a shared rule or law across skills (SPEC INV-135, recorded at
+  the INV-135 landing 2026-07-12).
+
+- `project.proofs: the pytest suite (string and render assertions against the shipped files) · the
+  docs/prover records · the owner's read` — the concrete fill of the test ladder's rungs for a text
+  product: the pack's rendered level is a string assertion against the shipped file, so no fact needs a
+  browser-computed rung (SPEC INV-135, recorded 2026-07-12).
+
 - `other-projects: AUDIT-ONLY — when Alexander speaks about another project in this window, it is a
   CASE STUDY for improving the pack, never a task in that project; this window NEVER intervenes
   actively there — no fixes, no managing, not even an inbox wish (narrower than the pack-wide inbox

@@ -89,7 +89,15 @@ or reads from the human's profile — the answers that shape everything downstre
 first, and **what kind of project this is** — book · backend service · static site · fullstack app ·
 CLI · skill pack · a custom kind — recorded as the host profile's `project.kind` line; that one is
 always ASKED, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
-inferred from examples is a defect. The same breath asks — or tells the standing
+inferred from examples is a defect. **With the kind, the founding declares this project's concrete
+layers and its concrete proof kinds (SPEC INV-135):** the same host profile gains a `project.layers`
+line (this kind's concrete footprint categories — a codebase's frontend/backend/store, a photo site's
+content/rendering-engine/deployment, a campaign's message/channels/assets) and a `project.proofs` line
+(this kind's concrete test-ladder rungs — tests and rendered checks, a byte-diff and an eye-walk, a
+register lint and the owner's review). The stations are kind-abstract; these two lines are the project's
+own fill, and a `project.kind` recorded with neither is incomplete, flagged the way an unbacked surface
+is. The per-kind footprint-and-proof table in ARCHITECTURE.md is the scaffold each founding fills. The
+same breath asks — or tells the standing
 default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
 choice at setup, before any crisis; the rung moves only on their word.
 

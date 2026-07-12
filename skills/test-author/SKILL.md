@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.8), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.9), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -74,6 +74,16 @@ higher — a string test on such a fact is the exact class that shipped the two 
 take DOM-text. Wiring and config facts may take string, legally. Pixel is reserved for look-and-feel
 against a frozen, approved norm. When in doubt, ask what the USER would see broken — the level must
 be able to see the same thing.
+
+**The ladder is a kind-abstract shape; read the project's declared proofs, do not assume code (SPEC
+INV-135).** The four levels above are the codebase's rungs. A project of another kind fills the ladder
+with its own concrete proof kinds, declared at founding in the host profile's `project.proofs` line
+(SPEC INV-36, INV-135) — a photo site's rendered level is a byte-diff of the baked output plus the
+owner's eye-walk, a promotion campaign's is a register lint plus the owner's review, and the pack's own
+rendered level is a string assertion against the shipped file (live-spec's matrix records that no fact
+needs a browser-computed rung). So read the declared proof kinds before pinning levels: the rung a fact
+takes is the project's own, and mapping every fact onto the code ladder for a non-code kind is the
+derivation defect this reading closes.
 
 **The ladder tops out below the real device (SPEC INV-77).** Touch physics, scroll snapping, and
 background throttling live past a desktop headless browser's reach — iOS ignores

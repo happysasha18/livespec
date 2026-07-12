@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.8), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.9), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -239,7 +239,14 @@ nothing.
 A person asks for a feature in the words they have; the dimensions below exist whether or not anyone
 names them ("add a room where photos hang" never says "and decide what happens on a phone"). When the
 door says feature, drafting the spec-delta walks this checklist — the **canonical facet list; its home is
-here**, one list for every project:
+here**, one list for every project.
+
+**Read the project's declared layers, do not assume code (SPEC INV-135).** Which surfaces a facet sweep
+reaches, and what a footprint's layer means for this project, come from the host profile's declared
+`project.layers` line (SPEC INV-36, INV-135) — a photo site's layers are content, rendering engine, and
+deployment, a campaign's are message, channels, and assets, and the pack's own are the rulebook, the
+working skills, and the guardrails. The facet dimensions below are kind-abstract; read the declared
+layers so the sweep names this project's real surfaces rather than assuming a codebase's.
 
 - **layout on a phone or narrow window** — what the feature does below desktop width;
 - **touch where the design assumed a mouse** — anything hover-only needs a touch answer;

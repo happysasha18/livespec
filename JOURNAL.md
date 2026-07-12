@@ -3584,3 +3584,47 @@ buildable deliverable is the check + template field); footprint: cross-cutting (
 the landing. SPEC v1.1.6→1.1.8, VERSION/plugin 1.1.7→1.1.8. Full suite 553 green. Delegation accounting
 (INV-103): proposed senior → chosen senior → why — the check-scoping (the forward cutoff at INV-128's
 landing time, the colon-note match) was the judgment; no mechanical grunt worth routing down.
+
+## 2026-07-12 (session 41) — per-kind concrete-layers and proofs declaration (row 292, INV-135)
+
+**What.** P0k of the fourteen-principle architect draft: the entry impact read, the footprint categories,
+and the test ladder are kind-ABSTRACT stations. They read cleanly as presentation/single-module/cross-cutting
+and string/DOM/browser/pixel only for a codebase — a photo site, a promotion campaign, and a music project
+each decompose and prove differently. New invariant INV-135 (base rule 24): the pack states the abstract
+station once, and each project's founding declares its own concrete layers (`project.layers`) and its
+concrete proof kinds (`project.proofs`) in the host profile beside `project.kind` (INV-36). A founding check
+reds a kind recorded with neither.
+
+**Why it matters.** A principle set that assumes code fits one project and breaks the rest. The three
+footprints generalize (a presentation-only change touches what the audience meets, a single-module change
+stays in one owned layer, a cross-cutting change moves a shared law) but the LAYERS are the project's own:
+a codebase's frontend/backend/store, a photo site's content/rendering-engine/deployment, a campaign's
+message/channels/assets. The proofs follow: tests and rendered checks for code, a byte-diff plus an eye-walk
+for a photo site, a register lint plus the owner's review for a campaign. So the one method fits every
+window instead of a code method worn awkwardly by a photo site.
+
+**Homes (seven).** base rule 24 (the rule's home); the spec founding clause after INV-36 + Formal index;
+the live host profile now declares live-spec's own layers (the rulebook and spec · the working skills · the
+guardrails, templates, and suite) and proofs (the pytest suite · the docs/prover records · the owner's
+read); ARCHITECTURE gains the per-kind footprint-and-proof table (skill-pack, code, photo, prose, music
+rows); ADOPT.md's founding step prompts the two lines; spec-author reads the declared layers, test-author
+the declared proofs; the founding check `tests/test_founding_layers_proofs.py`.
+
+**Red-first, and a real trap caught.** 9 tests. The founding check reds against a kind-only fixture and a
+missing-only-proofs fixture; the three passing fixtures are the three real hosts (track-coach=code/music,
+tlvphotos=photo, promotion=prose). One trap: the check first read the live host profile via read_flat,
+which flattens newlines, so its line-anchored `project.*:` regexes matched nothing and the incomplete live
+profile passed FALSELY. Fixed to read raw — then the live profile went red until its own layers/proofs
+lines landed, so the check has real teeth. A second placement trap: M-276 first sat under the build-pipeline
+matrix block, but INV-135 is base-rulebook-owned, so the matrix-row-under-owner check red-caught it; moved
+to the base-rulebook block.
+
+**Scope.** This lands the declaration and the founding check. The footprint check (INV-134) and the
+test-level rule actually READING the declared categories mechanically, rather than a hardcoded code list,
+is named as the ratchet but left to the R3/R5 machinery — a stated non-goal.
+
+**Versions.** Door: feature; kind: skill+infra; footprint: cross-cutting (seven homes), HELD. SPEC
+v1.1.8→1.1.9, base 1.0.8→1.0.9 (pins lockstepped ×7), spec-author 1.0.6, test-author 1.0.2, VERSION/plugin
+1.1.8→1.1.9. Full suite 562 green. Prover: CROSS-LINK 0 must-fix. Delegation (INV-103): proposed senior →
+chosen senior → why — the per-kind vocabulary, the founding-check format, and the seven-home wiring were the
+judgment; no mechanical grunt worth routing down.

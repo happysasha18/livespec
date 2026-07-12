@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-three rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-four rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.8
+  version: 1.0.9
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -221,6 +221,27 @@ a working skill still stands: its pointer here reads as plain advice.
    broke mid-turn until the every-prompt hook line and the mechanical after-the-fact check landed
    (rows 253/254, 2026-07-12), the same cure that killed invented clock stamps. The 1.1.0 audit's
    once-read walk is this law's first sweep.
+
+24. **The process stations are kind-abstract; a project declares its concrete layers and proofs (SPEC
+   INV-135).** The entry impact read, the footprint categories, and the test ladder are stations the pack
+   states once, and the stations are kind-abstract: each project kind fills them with its own concrete
+   layers and its own concrete proof kinds. The three footprints generalize past code — a
+   presentation-only change touches what the audience meets and nothing behind it, a single-module change
+   stays inside one owned layer, a cross-cutting change moves a shared law or several layers at once — but
+   the LAYERS themselves are the project's own: a codebase splits frontend, backend, and store; a photo
+   site content, rendering engine, and deployment; a promotion campaign message, channels, and assets; a
+   music project arrangement, stems, and mix. The proofs follow the same shape, each kind naming the
+   rungs its test ladder really has: a codebase proves with unit tests and rendered or pixel checks, a
+   photo site with a byte-diff of the baked output and the owner's eye-walk, a promotion campaign with a
+   register lint and the owner's review. So each project kind, recorded at founding as `project.kind`
+   (SPEC INV-36) in the host profile, declares its concrete layers and its concrete proof kinds there —
+   one `project.layers` line and one `project.proofs` line. A profile that records a kind with neither is
+   incomplete, flagged at adoption the way an unbacked surface is; the per-kind fill is then the
+   project's own ratchet — the footprint check and the test-level check read the project's declared
+   categories rather than a hardcoded code list. ARCHITECTURE.md carries the per-kind
+   footprint-and-proof table, and spec-author and test-author read the declared layers and proofs
+   instead of assuming code. The one method fits every window this way — one abstract station, each
+   kind's own concrete fill — rather than a code method worn awkwardly by a photo site.
 
 
 ## When NOT to load this
