@@ -104,3 +104,40 @@ expected or observed.
 Test-internal refactor only; no PRODUCT_SPEC.md, plugin.json, or VERSION touch — matches the
 lane's instruction, and (bonus) means Lane 2 does not re-trigger M-6's prover-freshness gate the
 way Lane 1 did.
+
+## Lane 3 — bookkeeping, no version bump
+
+### 3a — live-spec-base rule count
+Body has 23 numbered rules (verified by grep-counting `^[0-9]+\.` between "## The shared rules" and
+"## When NOT to load this"), description said "twenty-one" -> corrected to "twenty-three". Searched
+tests/ for a pinned needle on the phrase: none found (only the SKILL.md itself carries the string),
+so no test needle to update.
+
+### 3b — ROADMAP rows 266-269 (new, five-cell format matching neighbors)
+- 266: communicator body over size ideal (679 lines vs ~500 ideal), extract the 16-rule writing
+  register to references/ — lifted from docs/audit/2026-07-12-skill-creator-walk.md finding #2.
+- 267: INV-39 stated three times (lines 459/495/1481), spec-author judgment call — lifted from
+  docs/audit/2026-07-12-compaction-pass.md finding D1.
+- 268: eval-craft follow-ups S1 (communicator INV-27 PARTIAL x3) / S2 (build-pipeline delegation
+  eval scenario gap) + N1/N2/N3 notes — lifted from docs/audit/2026-07-12-skill-evals-rerun.md.
+- 269: CI's check-prover-record.sh needs the same inbox-deposit carve-out M-6's prose just gained —
+  lifted from pending-draft-composition-fixes.md's disposition section ("Mechanical arm of FIX-M").
+All four rows verified against TestQueue's parser (tests/test_traceability.py): 5 pipe-cells,
+cells[0].isdigit(), cells[2] matches the class-vocabulary pattern ("small" for all four).
+
+### 3c — ROADMAP row 192 trigger fired
+Appended to the status/trigger cell: "Trigger fired 2026-07-12 (new prover lenses landed, rows
+257/258); activates as its own movement (per docs/audit/2026-07-12-deferred-trigger-rescan.md)" —
+wording matches the rescan doc's own line 29/50 verdict (FIRED, its own movement, not this gate's
+rider).
+
+### 3d — three checkpoints promoted to tracked audit records
+Copied byte-for-byte (plus a one-line HTML-comment header naming source + date) — the checkpoint
+originals are LEFT IN PLACE, this is copy-promote not move:
+- .live-spec/checkpoints/pending-audit-minor-gate.md -> docs/audit/2026-07-12-minor-gate-walk.md
+- .live-spec/checkpoints/pending-audit-once-read-rules.md -> docs/audit/2026-07-12-once-read-rules-sweep.md
+- .live-spec/checkpoints/pending-audit-delegation-dedup.md -> docs/audit/2026-07-12-delegation-dedup.md
+
+### Full suite after Lane 3
+`python3 -m pytest -q --tb=short` -> `422 passed in 35.22s`. No PRODUCT_SPEC.md touch this lane, so
+no M-6 prover-freshness re-trigger (unlike Lane 1).
