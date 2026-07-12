@@ -37,6 +37,7 @@ class TestGuardrailFilesShip(unittest.TestCase):
         "check-matrix-coverage.sh",
         "fence-refresh.sh",
         "install.sh",
+        "check-shipped-language.sh",
     )
 
     def test_hooks_and_scripts_exist_and_executable(self):
@@ -708,3 +709,68 @@ class TestSpecStyleLint(unittest.TestCase):
         r = self._lint(section)
         self.assertEqual(r.returncode, 0,
                          "the converted intake section must stay register-clean:\n%s" % r.stdout)
+
+
+class TestGateShippedLanguage(unittest.TestCase):
+    """The shipped-language gate (SPEC INV-120, ROADMAP row 275, matrix M-260): a shipped
+    artifact carries no Cyrillic outside a deliberate user-language string, and no owner or
+    personal name in a requirement's statement. Proven on fixtures only here — NOT wired
+    into live-spec's own pre-push/CI in this landing (queued as row 279)."""
+
+    ENGINE = os.path.join(ROOT, "scripts", "check-shipped-language.py")
+    WRAPPER = os.path.join(GUARDRAILS, "check-shipped-language.sh")
+
+    def _write(self, tmp, relpath, content):
+        path = os.path.join(tmp, relpath)
+        os.makedirs(os.path.dirname(path) or tmp, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return path
+
+    def test_engine_and_wrapper_ship_executable(self):
+        self.assertTrue(os.path.isfile(self.ENGINE), "missing engine: %s" % self.ENGINE)
+        self.assertTrue(os.path.isfile(self.WRAPPER), "missing wrapper: %s" % self.WRAPPER)
+        mode = os.stat(self.WRAPPER).st_mode
+        self.assertTrue(mode & stat.S_IXUSR, "wrapper is not executable")
+
+    def test_offence_fixture_fails_with_file_line(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self._write(tmp, "SKILL.md",
+                "A clean English line.\n"
+                "Alexander wants the card to open calm.\n"
+                "Это требование написано по-русски.\n")
+            result = run(["python3", self.ENGINE, "--root", tmp, path])
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("SKILL.md:2", result.stdout)
+            self.assertIn("[owner-name]", result.stdout)
+            self.assertIn("SKILL.md:3", result.stdout)
+            self.assertIn("[cyrillic]", result.stdout)
+
+    def test_clean_fixture_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self._write(tmp, "README.md",
+                "This feature landed 2026-07-12 after review.\n"
+                "It ships with no personal names and no untranslated text.\n")
+            result = run(["python3", self.ENGINE, "--root", tmp, path])
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_deliberate_user_language_region_is_spared(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self._write(tmp, "SKILL.md",
+                "Before the fence, clean English.\n"
+                "```user\n"
+                "Это пример пользовательского текста.\n"
+                "```\n"
+                "After the fence, clean English.\n")
+            result = run(["python3", self.ENGINE, "--root", tmp, path])
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_allowlisted_authorship_byline_is_spared(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            allowlist_path = self._write(tmp, "allowlist.json",
+                json.dumps({"authorship_globs": ["LICENSE"]}))
+            license_path = self._write(tmp, "LICENSE",
+                "Copyright (c) 2026 Alexander Abramovich\n")
+            result = run(["python3", self.ENGINE, "--root", tmp,
+                          "--allowlist", allowlist_path, license_path])
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)

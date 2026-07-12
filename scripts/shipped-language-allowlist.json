@@ -1,0 +1,14 @@
+{
+  "user_language_globs": [
+    "scripts/spec-style-lint.py",
+    "scripts/preshow-register-lint.py",
+    "scripts/register-lint-floor.json"
+  ],
+  "authorship_globs": [
+    "LICENSE",
+    ".claude-plugin/plugin.json",
+    "**/plugin.json"
+  ],
+  "cyrillic_waivers": [],
+  "name_waivers": []
+}
