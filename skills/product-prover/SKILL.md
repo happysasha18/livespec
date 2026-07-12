@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 1.0.6
+  version: 1.0.7
 ---
 
 # Product Prover
@@ -292,6 +292,18 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   "only on first visit", "only on first run", "until dismissed" — each such clause owes its return
   sentence (born of a real door: six seams found, the one-way face missed — the dead-end lens tests
   STATES for exits, this lens tests FACES for re-entry over the visit's lifetime).
+- **Scenario entry and exit** — for every person-facing SCENARIO (a flow: "walking the gallery",
+  "answering the quiz", "when a bug cuts the line"), check that the spec states how it is ENTERED — from
+  which prior scenario or state, with what already true (the preconditions the walk assumes) — and how it
+  EXITS — to where the person lands, and what it leaves true for the next scenario (the postcondition). A
+  flow whose entry or exit is unstated is a finding, the same blank-answer class as an unwritten seam. This
+  is the per-operation precondition and postcondition lenses lifted to the scenario level, kin of the entry
+  symmetry lens above (that tests a face's re-entry; this tests a whole flow's edges) and the runtime
+  view's flow walks (SPEC INV-74). A trivially-none edge stated as such — a top-level scenario entered from
+  nowhere, a terminal one exiting to nowhere — is a decided answer, not a gap; a silent edge is the gap.
+  The duty binds forward (SPEC INV-127, INV-15): flag an existing scenario's unstated edge as a finding,
+  never blocking the lane on the backlog of edges older scenarios never wrote. (Alexander 2026-07-09: the
+  prover should say which preconditions and postconditions hold at a scenario's entry and exit.) [INV-127]
 
 For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining. A finding is not owed for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 

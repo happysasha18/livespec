@@ -3291,3 +3291,34 @@ red against the pre-delta tree, then green. Suite 509 green. Prover short form (
 facet joins spec-author's canonical list carrying its named incident, satisfying the curated-list rule.
 Delegation: none — a law across spec + facet list + prover + matrix + owns-list, senior inline. SPEC v1.1.3,
 spec-author 1.0.4, product-prover 1.0.6, pack 1.1.3.
+
+## 2026-07-12 (session 40) — scenario entry/exit contracts (row 192 → 289, INV-127)
+
+**The wish, revived.** Alexander asked for this on 2026-07-09 late evening — the prover should say, where
+needed, which preconditions and postconditions hold, how a scenario is ENTERED and how it is EXITED (his
+tlvphoto example: how we exit scenarios, how we enter). He called it "большая тема" and deferred it with a
+recorded revisit trigger: the next prover-method landing. Today's INV-125 and INV-126 both touched the
+prover, so the trigger fired; on his word this session, it was built.
+
+**What landed.** INV-127: a person-facing scenario is a flow with edges. It states how the walk ARRIVES —
+from which prior scenario or state, with what already true (the preconditions) — and how it LEAVES — to
+where the person lands, and what it leaves true for the next scenario (the postcondition). This lifts the
+per-operation precondition and postcondition lenses (already in the prover's phase-3 list) to the SCENARIO
+level. It is kin of the entry-symmetry lens (INV-50, which asks a conditionally-entered face for its
+re-entry path) and the runtime view's flow walks (INV-74, which trace a flow through the nodes). The prover
+carries the scenario-level lens; a flow whose entry or exit is unstated is a finding.
+
+**Bounded, not a retrofit.** The row was tagged "large" because it could mean writing entry/exit on every
+scenario in the spec. The LAW is bounded: it binds forward (INV-15). A new scenario states its edges from
+the first draft; the prover flags an existing scenario's silent edge as a finding rather than blocking the
+lane on a backlog older scenarios never wrote. So the large theme landed as a bounded skill-kind law.
+
+**Validated on one real spec.** The pack's own F-bug scenario ("When a bug cuts the line") already states an
+explicit Precondition and Postcondition — the convention grounded in a working example — while other
+scenarios leave their edges implicit, exactly the gaps the new lens flags.
+
+**Method notes.** Door: feature; kind: skill. Red-first — `tests/test_scenario_entry_exit.py` (6
+assertions) red against the pre-delta tree, then green. Suite 515 green. Prover short form (INV-61): 0
+must-fix. Owned by the spec-author node (M-268); the prover lens is wiring, as with INV-50. Delegation:
+none — a law across spec + spec-author + prover + matrix + owns-list, senior inline. SPEC v1.1.4,
+spec-author 1.0.5, product-prover 1.0.7, pack 1.1.4.

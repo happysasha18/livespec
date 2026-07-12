@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.4
+  version: 1.0.5
 ---
 
 # Spec Author
@@ -54,6 +54,15 @@ stopped being read — which kills a spec).
   sentences. Never organize the document as Entities / States / Actors chapters — that shape reads like a
   database dump and stops being read (proven on the flagship: the structure-first v0.3 was rejected, the
   use-case-first v0.4 is the shape that survived).
+- **Each scenario states how it is entered and how it exits (SPEC INV-127).** A scenario is a flow with
+  edges: state how the walk ARRIVES at it — from which prior scenario or state, with what already true (the
+  preconditions the walk assumes) — and how it LEAVES — to where the person lands, and what it leaves true
+  for the next scenario to inherit (the postcondition). Write both as plain sentences inside the scenario,
+  usually at its open and its close. An entry or exit that is trivially none — a top-level scenario entered
+  from nowhere, a terminal one exiting to nowhere — is said so in one short clause rather than left silent,
+  so a reader tells a decided edge from an overlooked one. The duty binds forward: a new scenario carries
+  its edges from the first draft, and product-prover flags an existing scenario's unstated edge as a finding
+  (its scenario-level precondition/postcondition lens, kin of the entry-symmetry lens INV-50).
 - **Prose carries the meaning; the machine handles stay quiet.** Every rule is a plain sentence a person
   reads straight through. The short codes — `CR-1`, `INV-18`, `⟨DECIDE⟩`, a `tags:` line — sit at the **END**
   of the line as quiet handles for the prover and the test matrix. A reader skims past them; the prover keys
