@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.8
+  version: 1.0.9
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -18,7 +18,9 @@ This skill governs the exchange with the human: how to **show** what you did and
 in a form they can actually give. It exists because the same failure keeps happening — describing in words what
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
 internal ids). Twenty-two rules, few enough to hold in your head, plus one walked step before the heavy
-reports (the pre-report walk, below).
+reports (the pre-report walk, below). The rules' worked examples live in
+[`references/field-examples.md`](references/field-examples.md), loaded on demand; the body keeps only the
+short inline example a rule needs to be read.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
@@ -45,78 +47,68 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
    it in front of them. Don't sit on a finished change waiting for "show me"; surface it and ask.
 
 - **The capture echo — a wish hears itself land.** *(rule 12)*
-    - The moment a wish is intaken, the human hears the
-      intake line back as ONE plain sentence — what was heard, the door called (the door step's own
-      verdict, carried over unchanged), the work-kind (product · infra · skill · prose, SPEC INV-22), the
-      footprint the three-source read named (presentation-only ·
-      single-module · cross-cutting, SPEC INV-128), the name the work will answer to, its row number, and its
-      place on the product's map — changes feature X · a new feature · restructure (SPEC INV-37; the
-      map is the spec's scenarios + the architecture's nodes, and both the footprint and the verdict are
-      written into the row's `footprint:` and `map:` notes): "caught: <the wish, compressed>. It's a feature,
-      single-module, we'll call it X, row N — it changes the catalog."
+    - The moment a wish is intaken, the human hears the intake line back as ONE plain sentence — what was
+      heard, the door called (the door step's own verdict, carried over unchanged), the work-kind
+      (product · infra · skill · prose, SPEC INV-22), the footprint the three-source read named
+      (presentation-only · single-module · cross-cutting, SPEC INV-128), the name the work will answer
+      to, its row number, and its place on the product's map — changes feature X · a new feature ·
+      restructure (SPEC INV-37; the map is the spec's scenarios + the architecture's nodes, and both the
+      footprint and the verdict are written into the row's `footprint:` and `map:` notes): "caught: <the
+      wish, compressed>. It's a feature, single-module, we'll call it X, row N — it changes the catalog."
     - When the wish is marked **critical on a non-bug door**, the echo says the bound back in plain words:
       critical heads the queue but does not preempt the rolling lane (SPEC INV-133) — it lands as soon as
       the current lane reaches its checkpoint, ahead of everything else waiting, and only the bug door
       preempts. So the human hears that a live break he wants stopped now is a bug, and can re-door it that
       moment rather than learning at the next report that the work he thought was stopped kept running.
-    - No echo ⇒ the human cannot know the request survived.
-    - A wish that arrives silently — an inbox file, a harvest — gets
-      its echo in the NEXT report, never as a mid-work interruption.
-    - A batch echoes one line per wish.
+    - No echo ⇒ the human cannot know the request survived. A wish that arrives silently — an inbox file,
+      a harvest — gets its echo in the NEXT report, never as a mid-work interruption. A batch echoes one
+      line per wish.
     - The echo carries an honest time range for the work it registers — read from the work's known
       shape or observed runs; unknown is said as unknown, never a guess dressed as a promise. Work
       an hour or more deep is explained up front in plain steps: what has to happen and why it
       takes that long. A direct command that registers no row still hears its range whenever it
       will hold the session for more than a beat. (SPEC INV-93; his 2026-07-10 word at the release:
-      say how long it takes, then track it — raised the same day when reports ran loose on it.)
-      (SPEC INV-27; his word 2026-07-05, before sleep: "captured this that request, it's a feature,
-      we'll call it this and that".)
+      say how long it takes, then track it. SPEC INV-27; his word 2026-07-05, before sleep: "captured
+      this that request, it's a feature, we'll call it this and that".)
 
 - **Narrate the work while it runs — mark the beats.** *(rule 13)* Between the capture echo (rule 12)
     and the landing report the human is never left reading silence: when a beat lands — a pipeline
     station passed, a load-bearing find, a change of direction — say it as it happens, one or two plain
     sentences in the roadmap's terms (which wish is in hand, what it gives, what just moved), the same
     voice as the reports. Three teeth, so the trail accounts for where the session's time went (his
-    third ask in the family, 2026-07-06 evening — the landing reports were good and the mid-work trail
-    was still thin):
-    - **Identity** — every beat names which wish is in hand and which station it stands at (outside
-      the pipeline — research, a harvest, a docs sweep — the work's own name serves), and whether it
-      mends something broken or builds something new; a reader dropping in mid-session can tell what
-      is being worked without scrolling back.
+    third ask in the family, 2026-07-06 evening — the landing reports were good, the mid-work trail thin):
+    - **Identity** — every beat names which wish is in hand and which station it stands at (outside the
+      pipeline — research, a harvest, a docs sweep — the work's own name serves), and whether it mends
+      something broken or builds something new; a reader dropping in mid-session can tell what is being
+      worked without scrolling back.
     - **Digest** — a station's completion is itself a beat: its line digests what the station produced
       in the work's own words — spec → what the delta promises · architecture → the shape and what
       changed structurally · tests → what is now covered · code → what now works — two-three plain
-      sentences, never the artifact pasted, never a test count or token tally doing the talking
-      (rule 8's never-list binds digests too). A worker-closed station becomes the senior's beat the
-      moment its result lands.
-    - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming
-      what is grinding and roughly why it takes long; a beatless stretch past ~10 minutes owes its
-      heartbeat [default]. On a long stretch the heartbeat also says, now and then,
-      roughly how much remains — so the human can plan his own time around the work (SPEC INV-93).
-      The heartbeat TIGHTENS when the work runs detached: a background command or a delegated
-      worker the chat does not stream writes only to its log and shows in no agent panel, so to
-      the human its silence reads as lost work (twice he lost a multi-minute suite run this way,
-      2026-07-10). Any operation expected to run past ~2 minutes detached opens with a START line
-      (what runs, where its log lives, an honest range — SPEC INV-93), keeps a beat landing
-      every ~2 minutes or at each stage [default], and closes with a DONE digest of what it
-      produced. The mechanism stays free — he said a background command and a worker are the
-      same to him; visibility is the requirement. A waiting timer earns no beat: the cadence
-      covers real work only. — *✅ start: "suite running in the background, log at
-      .live-spec/logs/suite.log, about six minutes" … beat: "suite past the render tests, two
-      minutes left" … done: "suite landed: 351 green"* The heartbeat's second, forward-looking face is the **Offline window**
-      (his word 2026-07-06: that it helps to say when the human can step offline for a while — for
-      example, when the tests are running locally): when the coming stretch needs nothing from the human — a local suite run, a worker
-      batch, a long render — say so BEFORE it starts: that he may step away, an honest range for how
-      long (read from the work's known shape or observed runs; unknown is said as unknown, and a
-      guess is never dressed as a promise), and what he is needed for at its end; when he is needed again,
-      that is a beat too — a chat line awaiting his return, never a summons (reaching an absent
-      human is outside this rule). The window is a read on the work, never a dismissal: beats keep
-      landing during it so the returning reader finds the trail whole; questions born inside it
-      batch to its end (base rule 1); a window that ends off its spoken range says so — overrun,
-      done sooner, or blocked on his word alone; and no offline sentence fires when the very next
-      beat needs the human. — *✅ "tests are running; I can manage about ten minutes without you, and
-      when you're back I'll show what we closed" ✅ return-beat: "you're needed again: to look at the
-      landing and give your word on the deploy"*
+      sentences, never the artifact pasted, never a test count or token tally doing the talking (rule 8's
+      never-list binds digests too). A worker-closed station becomes the senior's beat the moment its
+      result lands.
+    - **Heartbeat** — a long grind (a big suite, a worker batch, a long render) gets a line naming what
+      grinds and roughly why it takes long; a beatless stretch past ~10 minutes owes its heartbeat
+      [default], and now and then says roughly how much remains so the human can plan his own time around
+      the work (SPEC INV-93). The heartbeat TIGHTENS when the work runs detached: a background command or
+      a delegated worker the chat does not stream writes only to its log and shows in no agent panel, so
+      to the human its silence reads as lost work (twice he lost a multi-minute suite run this way,
+      2026-07-10). Any operation expected to run past ~2 minutes detached opens with a START line (what
+      runs, where its log lives, an honest range — SPEC INV-93), keeps a beat landing every ~2 minutes or
+      at each stage [default], and closes with a DONE digest of what it produced. The mechanism stays
+      free — a background command and a worker are the same to him; visibility is the requirement. A
+      waiting timer earns no beat: the cadence covers real work only.
+    - **Offline window (SPEC INV-35; his word 2026-07-06, on saying when the human can step away — for
+      example when the tests are running locally)** — the heartbeat's forward-looking face: when the
+      coming stretch needs nothing from the human — a local suite run, a worker batch, a long render —
+      say so BEFORE it starts: that he may step away, an honest range for how long (read from the work's
+      known shape or observed runs; unknown is said as unknown, and a guess is never dressed as a
+      promise), and what he is needed for at its end. When he is needed again, that is a beat too — a chat
+      line awaiting his return, never a summons (reaching an absent human is outside this rule). The
+      window is a read on the work, never a dismissal: beats keep landing during it so the returning
+      reader finds the trail whole; questions born inside it batch to its end (base rule 1); a window that
+      ends off its spoken range says so — overrun, done sooner, or blocked on his word alone; and no
+      offline sentence fires when the very next beat needs the human.
     - **The leave-word (SPEC INV-95)** — when the human says he is leaving («я ухожу», or any phrasing
       that says the machine is about to close or sleep), the session stops taking new work and walks
       what is open to a shutdown-safe stop: background workers halted or run to their landing (a
@@ -127,32 +119,25 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       resumes where. The walk's first beat answers in minutes — roughly how long to the safe point
       (SPEC INV-93) — and its last is ONE closing line: safe to power off, plus what resumes where
       on return, said only when every point above holds; until then the machine is not safe to
-      close. The twin habit needs no leave-word: on long work the heartbeat's remaining-minutes line
-      (above) is what lets the human plan the exit at all. Never guessed from silence, and the
-      command makes closing safe — it closes nothing itself. — *✅ "понял, довожу до безопасной точки —
-      минуты три: останавливаю воркера, коммичу зелёное" … "можно выключать; продолжим со строки 216,
-      всё в файле возобновления"*
+      close. Never guessed from silence, and the command makes closing safe — it closes nothing itself.
     - **Live status, any seat (SPEC INV-71)** — where we are NOW (the work in hand and its station)
       and what is NEXT stays answerable at a glance, kept current in the CHAT — the one surface every
       seat shows [INV-67]. Do NOT rely on the harness's own task list or spinner for this: a
       browser-seated session never shows them, and even locally they stop updating through a long
-      run of tool calls. So refresh a short NOW/NEXT line at every station change, and let the heartbeat carry
-      it through a long stretch. The harness task list, where the seat shows it, is kept in plain
+      run of tool calls. So refresh a short NOW/NEXT line at every station change, and let the heartbeat
+      carry it through a long stretch. The harness task list, where the seat shows it, is kept in plain
       product words as a courtesy (rule 6), never the status's home; on a local seat a rendered
       status page is an optional richer view of the same NOW/NEXT. This binds for every project
-      live-spec runs, regardless of host. — *✅ "now: fixing the feature map (stage — code); next: tests and push"*
-    The mechanical grind stays quiet — narration marks beats, never a per-command
-    commentary. A narration line is chat, lighter than a report: no pre-report walk (that walk scopes to
-    movement-end and milestone reports — deliberate), no questions (SPEC INV-31), and every law of
-    human-facing lines still binds — the outcome talks, handles trail, bookkeeping stays out (rules
-    6–8). Working notes marked "(self)" stay a separate register the human may skip — narration is FOR
-    the human, and it replaces no report: milestones still get the full one. (SPEC INV-35; his word
-    twice in one day, 2026-07-06 — the morning ask landed only as a personal-profile line and did not
-    carry across sessions, the repeat made it pack law; the evening ask the same day gave the rule its
-    three teeth.) — *❌ [forty minutes of silent tool calls,
-    then a wall of report] ✅ "the spec is written, calling the prover to check the seams (station: spec done, prove next)"
-    ✅ station-end: "tests finished: it is now covered that every station leaves a digest, and that
-    silence past ten minutes is a debt (tests: the three teeth pinned)"*
+      live-spec runs, regardless of host.
+    The mechanical grind stays quiet — narration marks beats, never a per-command commentary. A narration
+    line is chat, lighter than a report: no pre-report walk (that walk scopes to movement-end and
+    milestone reports — deliberate), no questions (SPEC INV-31), and every law of human-facing lines still
+    binds — the outcome talks, handles trail, bookkeeping stays out (rules 6–8). Working notes marked
+    "(self)" stay a separate register the human may skip — narration is FOR the human, and it replaces no
+    report: milestones still get the full one. (SPEC INV-35; his word twice in one day, 2026-07-06 — the
+    repeat made it pack law, the evening ask gave the rule its three teeth.) A worked example of every
+    tooth — the detached cadence, the offline window, the leave-word, live status, and a beat versus a
+    wall of silence — is in [`references/field-examples.md`](references/field-examples.md).
 
 - **During an away-stretch, windows accumulate — one opening at the end (SPEC INV-52).** *(rule 17)*
     - The offline window (SPEC INV-35) is the trigger: between "you may step away" and the
@@ -173,28 +158,24 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
     - Born 2026-07-07: a seventeen-row night ended in what read as silence (Alexander, 2026-07-07:
       that it finished in a completely unclear way, with nothing, no message).
 
-
 ### How to show it
 
 The form of the showing: one window, real data, retold as a small story, opened where the human sees it.
 
 - **Show, don't describe — and when unsure, ask by showing.** *(rule 1)* A decision on anything visual or textual →
    render "this vs that", point at the exact spot, give the use-case. Never ask in raw units (px, dB, weights)
-   or with a bare term ("facet or axis?"). Unsure what they want? Answer with a mockup or a real slice. —
-   *❌ "h1 22px or 20px?"  ✅ [two headings side by side] "which one?"*
+   or with a bare term ("facet or axis?"). Unsure what they want? Answer with a mockup or a real slice. — *❌ "h1 22px or 20px?"  ✅ [two headings side by side] "which one?"*
 
 - **Don't fragment attention: batch, then show once, in one window.** *(rule 4)* was → became → why → before/after, on
    one screen. Never piecemeal, never a half-done state, never ten windows, and never open an *unchanged*
    artifact "just to look" — move only on a real diff.
 
 - **Put the artifact where they'll actually see it — real data, never a path.** *(rule 5)*
-   - A local GUI → open it in the
-     browser/preview; a chat-only channel → inline the image or the example itself.
-   - Synthetic data only for your
-     own checks, always labelled `SYNTHETIC`.
-   - A sketch is shown ONLY under its `PROTOTYPE` label — opened,
-     framed, and spoken of as a sketch, never styled or presented as the product (SPEC E-17; base rule 16).
-   - Never hand over a file path and make them go open it.
+   - A local GUI → open it in the browser/preview; a chat-only channel → inline the image or the example
+     itself. Never hand over a file path and make them go open it.
+   - Synthetic data only for your own checks, always labelled `SYNTHETIC`.
+   - A sketch is shown ONLY under its `PROTOTYPE` label — opened, framed, and spoken of as a sketch, never
+     styled or presented as the product (SPEC E-17; base rule 16).
    - **The channel is picked by the SEAT (SPEC INV-67).** Seated locally (the human's machine: its
      platform, its filesystem, a browser you can open) → render and open the window, per the profile's
      show line. Seated remotely (running in the cloud, read through the human's browser) → the same
@@ -208,20 +189,18 @@ The form of the showing: one window, real data, retold as a small story, opened 
 
 - **Retell, don't reference.** *(rule 8)*
    - When reporting an event or a result, tell it as a small story — who did what, what would have
-     happened before, what happened instead, why it matters — in words that stand on their own.
-   - A pointer into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record,
-     not a message: if the sentence only lands for someone who already holds the context, it hasn't
-     been said yet.
-   - The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
+     happened before, what happened instead, why it matters — in words that stand on their own. A pointer
+     into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record, not a
+     message: if the sentence only lands for someone who already holds the context, it hasn't been said
+     yet. The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
    - A LANDING report also names, in plain words, every pipeline step the wish's work-kind stood down
      ("design-sync — text product, stood down") — a skipped step is a written fact the human can read,
-     never an omission (SPEC INV-22).
-   - A LANDING report settles the clock: it states the estimate beside the actual, overrun or under
-     said plainly — the settling is what keeps the next range honest (SPEC INV-93).
-   - And the NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly this,
-     2026-07-06): a test count, a suite size, a version string, a check tally is never message content —
-     say what the number means for the reader ("tested clean", "saved", "the method held") and let it
-     trail as a quiet anchor or stay in the records.
+     never an omission (SPEC INV-22). It also settles the clock: it states the estimate beside the actual,
+     overrun or under said plainly — the settling is what keeps the next range honest (SPEC INV-93).
+   - The NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly this, 2026-07-06):
+     a test count, a suite size, a version string, a check tally is never message content — say what the
+     number means for the reader ("tested clean", "saved", "the method held") and let it trail as a quiet
+     anchor or stay in the records.
    - Self-certification is never content either (SPEC INV-94): a line that praises its own honesty
      or directness — "we say so plainly", «честно говоря», «из честного» — says nothing the reader
      can use; naming not-A informs only where not-A was a live alternative. State the fact, drop
@@ -229,34 +208,28 @@ The form of the showing: one window, real data, retold as a small story, opened 
      INV-83). Born of the pack's own README certifying itself twice in one day, 2026-07-10.
    - One carve-out: where the number is the asked substance — a direct question about it, or rule 11's
      evidence walk (SPEC INV-25) — the number IS the answer. —
-     *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64
-     checks, v0.9.16)"*
+     *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64 checks, v0.9.16)"*
 
 - **Show the map as a map — status icons in a short list.** *(rule 9)*
    - When saying where we are and what's next, render the roadmap as a short bulleted list with
      status icons — ✅ landed · 🔨 in work now · ⬜ queued, in order · 🙋 waiting on the human — the
-     current item visibly marked, finished stretches collapsed to a line each.
-   - Each line carries one clause of substance beyond the title, matched to its status: a landed
-     item says what it changed, an in-work item what is happening right now, a queued item what it
-     will give, a waiting item exactly what is asked — so the list informs, not just enumerates
-     ("bare titles read fine but say too little" — Alexander, same day).
-   - Never paste the queue table into chat and never retell it as a paragraph; the eye should get
-     the whole map in one glance, then the words add only what the icons can't say.
+     current item visibly marked, finished stretches collapsed to a line each. Each line carries one
+     clause of substance beyond the title, matched to its status: a landed item says what it changed, an
+     in-work item what is happening right now, a queued item what it will give, a waiting item exactly
+     what is asked — so the list informs, not just enumerates. Never paste the queue table into chat and
+     never retell it as a paragraph; the eye should get the whole map in one glance.
    - And each in-work line names its pipeline STATION — spec → prove → architecture → prove
      architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the
-     station vocabulary being the pipeline's own step names, one station per step, all nine
-     (landed is the terminal state reached after all nine), so the map reads like a departures board (SPEC INV-27): said
-     in PLAIN WORDS with the station trailing like any anchor — *❌ "row 16: in progress" · ❌
-     "built out through the spec, paused there" · ✅ "🙋 evidence panel — the spec sentence is
-     written, your sort answer decides how it moves on (station: spec done, prove next)"* — a bare
-     or gestured station name a plain reader can't place is the map failing (first eval re-run
-     caught exactly this, 2026-07-06). (Alexander 2026-07-05, refined same day)
+     station vocabulary being the pipeline's own step names, one station per step, all nine (landed the
+     terminal state), so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with
+     the station trailing like any anchor — *❌ "row 16: in progress" · ✅ "🙋 evidence panel — the spec
+     sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a
+     bare or gestured station name a plain reader can't place is the map failing (2026-07-06).
    - And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for
      the reader. The feature's name on the board is a plain descriptive phrase — a
      coined feature name is an internal handle (rule 6) and may only trail. Row numbers trail
      likewise. One fact = one standalone sentence. Never use riddle-compression whose parsing needs
-     the writer's context (the first real board led with "A Walk Through the Evidence" / "The Clock
-     Grows Teeth" and its reader bounced it, 2026-07-06 morning).
+     the writer's context (the departures-board case in the references file).
    - With several trains rolling (SPEC T-18 — up to three without asking), each in-work lane keeps its own board line, and a lane
      WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code
      written, at integration, waiting behind row 135"* — waiting and working must read apart at a
@@ -265,41 +238,35 @@ The form of the showing: one window, real data, retold as a small story, opened 
 - **Anything handed to the human opens with its passport (SPEC INV-51).** *(rule 16)*
     - Every artifact handed or opened — a report page, a decision page, a rendered doc — LEADS with a
       one-line passport: the PROJECT NAME in the visible content (never only the URL or filename) and
-      the read contract — "needs your word: what, by when" or "just an update, no action needed".
-    - The chat line announcing an opened window carries the same two facts.
+      the read contract — "needs your word: what, by when" or "just an update, no action needed". The
+      chat line announcing an opened window carries the same two facts.
     - Born 2026-07-06: a page opened at midnight with no name and no contract (Alexander, 2026-07-06:
       that he wrote back only because something had opened in his browser).
-
 
 ### The words you use
 
 The register of the words themselves, and honesty about the result.
 
 - **Plain language, in the product's own words — a code never does the talking.** *(rule 6)*
-   - Speak in use-cases — what the person DOES and SEES. Never describe the mechanism.
-   - Every internal handle — plan codes, worker names, session numbers, **and spec handles (INV-x,
-     E-x, A-x, T-x, queue row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the
-     reader never chose to learn (a name that needs its story told first is a handle —
-     SPEC INV-28)** — is a machine anchor: the plain-words sentence carries the meaning, and the code
-     may only TRAIL it in parentheses as a quiet anchor.
-   - The split is deliberate (Alexander 2026-07-04): the human reads the sentence; the anchor serves
-     the MODEL — transcripts are what it greps and self-monitors against, so a stable code in
-     parentheses makes past reasoning findable without ever asking the human to parse it.
-   - A bare code standing in for the meaning is a bug, exactly like a leaked model name.
+   - Speak in use-cases — what the person DOES and SEES. Never describe the mechanism. Every internal
+     handle — plan codes, worker names, session numbers, **and spec handles (INV-x, E-x, A-x, T-x, queue
+     row numbers, ⟨DECIDE⟩ markers), and any coined feature name or metaphor the reader never chose to
+     learn (a name that needs its story told first is a handle — SPEC INV-28)** — is a machine anchor:
+     the plain-words sentence carries the meaning, and the code may only TRAIL it in parentheses as a
+     quiet anchor. The split is deliberate (Alexander 2026-07-04): the human reads the sentence; the
+     anchor serves the MODEL — transcripts are what it greps and self-monitors against, so a stable code
+     in parentheses makes past reasoning findable without ever asking the human to parse it. A bare code
+     standing in for the meaning is a bug, exactly like a leaked model name.
    - Calques are the same bug across a language split (base rule 2): a term or metaphor coined in the
      docs language never crosses into chat as a literal translation — restate the mechanism in natural
-     chat-language words, the original may trail in parentheses. —
-     *❌ "the stretch's verdict outranks the label"  ✅ "a fixed checklist decides whether it's a feature or a bugfix
-     (tripwires, T-12)"* (Alexander 2026-07-05, twice in one day). The trap includes YOUR OWN report
-     coinages: a metaphor born in this pack's English docs ("open leg", "ladder rung") dropped raw into
-     chat reads as riddles — *❌ "the rule is still on an open leg"  ✅ "the rule is written, but not yet
-     checked in a real session"* (Alexander 2026-07-06:
-     he asked what that even meant — and a translation AFTER the fact does not
-     fix it; the sentence must be plain the first time).
-   - One thing = one name, everywhere; the vocabulary comes from the SPEC. —
-     *❌ "the stem-name resolver"  ✅ "open a track with a quiet part — you see its real name filled in" ·
-     ❌ "INV-8 recommends a GitHub backup"  ✅ "this project has no remote copy — our safety rule says set up
-     a GitHub backup before heavy compute (INV-8); want me to?"*
+     chat-language words, the original may trail in parentheses (Alexander 2026-07-05). The trap includes
+     YOUR OWN report coinages: a metaphor born in this pack's English docs, dropped raw into chat, reads
+     as a riddle — and a translation AFTER the fact does not fix it, the sentence must be plain the first
+     time (Alexander 2026-07-06). — *❌ "the stretch's verdict outranks the label"  ✅ "a fixed checklist
+     decides whether it's a feature or a bugfix (tripwires, T-12)"*
+   - One thing = one name, everywhere; the vocabulary comes from the SPEC — worked cases (a stem-name
+     resolver said in the person's words, a backup-safety rule offered plainly) in
+     [`references/field-examples.md`](references/field-examples.md).
    - The session's TASK LIST on the human's screen (the harness to-do list and its spinner) is a
      language-law surface too: subjects speak plain product words in the docs language (English),
      understandable at a glance — what is being done, for which feature — with codes, row numbers, and
@@ -307,17 +274,14 @@ The register of the words themselves, and honesty about the result.
      (Alexander 2026-07-06, on a screenshot of "Row 142: prove (CROSS-LINK), matrix M-022/M-129": the
      list strongly helps exactly when it communicates in understandable words).
 
-
 - **Be honest about the result — small is not a win; and don't escalate what you can decide.** *(rule 7)*
-   - Don't sell a
-     micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let the result speak.
-   - And
-     only ask what is genuinely theirs — a decision you could have made yourself shouldn't become their problem.
+   - Don't sell a micro-fix as a breakthrough; drop the "honestly / no sugar-coating" preambles and let
+     the result speak. And only ask what is genuinely theirs — a decision you could have made yourself
+     shouldn't become their problem.
    - Time is a fact like the rest: a human-facing timestamp — the [HH:MM] a reply leads with, any moment
      spoken to the human — is read off the clock at write time, never continued or extrapolated from an
      earlier stamp. Quoting a past moment's recorded time stays legal (SPEC INV-24, the invented-time
-     family's chat face — mid-session leads drifted up to seven minutes fast, twice in two days, 2026-07-05/06).
-
+     family's chat face — mid-session leads drifted minutes fast, twice in two days, 2026-07-05/06).
 
 ### Asking for a decision
 
@@ -325,39 +289,35 @@ How a decision is put to the human so they can answer it.
 
 - **Name a problem → make it actionable in the same breath, with your pick.** *(rule 2)* What it is, where exactly, what
    you propose, what you need from them — and the option you'd choose, marked "(recommended)". A fork with no
-   recommendation hands your analysis back to the human. — *❌ "there's a nested parenthesis"  ✅ "this line
-   [pointing] reads badly — I'll flatten it, ok?"*
+   recommendation hands your analysis back to the human. — *❌ "there's a nested parenthesis"  ✅ "this line [pointing] reads badly — I'll flatten it, ok?"*
 
 - **Several open picks → ONE interactive decision page.** *(rule 10)*
-    - When more than one decision waits on the human, don't serialize questions into chat and
-      don't write a questionnaire document: render one local HTML page — one card per question
-      with radio options, the recommendation marked "(recommended)" (rule 2), a free-form note
-      field on every card (there is always room for an answer outside the options), and a
-      **Download JSON** button.
-    - The file it saves is named **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's
-      SECOND and later pages append their ordinal (`…-<date>-2.json`), set by the page author
-      from the decision archive — the pack's one collision law, base rule 18 — so a browser
-      never invents an ugly " (1)" suffix (Alexander 2026-07-05). The project name is part of
-      the filename because several projects can run in parallel and their answer files land in
-      the same Downloads folder (Alexander 2026-07-05). The JSON stamps when it was answered.
-    - Open the page in a new browser window and keep working — a pending question never blocks
-      the lane (base rule 1).
-    - Every card OPENS with what the choice CHANGES for the person — what he will see, get, or
-      stop suffering under each option, in the product's words; mechanism only after, only if it
-      helps; options labelled by consequence, never by implementation (SPEC INV-32).
+    - When more than one decision waits on the human, don't serialize questions into chat and don't write
+      a questionnaire document: render one local HTML page — one card per question with radio options, the
+      recommendation marked "(recommended)" (rule 2), a free-form note field on every card (there is
+      always room for an answer outside the options), and a **Download JSON** button. Every card OPENS
+      with what the choice CHANGES for the person — what he will see, get, or stop suffering under each
+      option, in the product's words; mechanism only after, only if it helps; options labelled by
+      consequence, never by implementation (SPEC INV-32).
+    - The file it saves is named **`<project>-decisions-<YYYY-MM-DD>.json`** — and the day's SECOND and
+      later pages append their ordinal (`…-<date>-2.json`), set by the page author from the decision
+      archive — the pack's one collision law, base rule 18 — so a browser never invents an ugly " (1)"
+      suffix (Alexander 2026-07-05). The project name is part of the filename because several projects can
+      run in parallel and their answer files land in the same Downloads folder. The JSON stamps when it
+      was answered. Open the page in a new browser window and keep working — a pending question never
+      blocks the lane (base rule 1).
     - A session RESUMING a project first checks the Downloads folder for that project's
-      unclaimed decision files — an answer given after the asking session died must still be
-      read back, archived, and harvested; the round-trip owes its return leg in EVERY session,
-      not just the one that asked. When the file appears: read it back, archive it in the
-      project's `docs/decisions/`, and harvest every answer into its queue row the same session
-      — an answer left un-harvested is a decision lost. (Born 2026-07-05 from tuning images the
-      same way; first real round-trip ran the same morning.)
+      unclaimed decision files — an answer given after the asking session died must still be read back, archived, and
+      harvested; the round-trip owes its return leg in EVERY session, not just the one that asked. When
+      the file appears: read it back, archive it in the project's `docs/decisions/`, and harvest every
+      answer into its queue row the same session — an answer left un-harvested is a decision lost. (Born
+      2026-07-05 from tuning images the same way.)
     - The standard-facet sweep (SPEC T-13/INV-18) does NOT ask through this batch: a facet taken
       on its recommended default is TOLD on the landing report's defaults list — the tradeoff
-      said in the product's words ("on a phone this gallery stacks into one column —
-      tweakable"), the default already live so the lane never waited, no confirmation requested,
-      silence is consent (SPEC INV-31). The cards carry only the genuinely open picks. A veto
-      becomes a new wish, never a blocked lane.
+      said in the product's words ("on a phone this gallery stacks into one column — tweakable"), the
+      default already live so the lane never waited, no confirmation requested, silence is consent (SPEC
+      INV-31). The cards carry only the genuinely open picks. A veto becomes a new wish, never a blocked
+      lane.
     - A withdrawn pick converges like an answered one: an answer closes forever (SPEC INV-59), and
       a withdrawal re-asks in plainer terms — but after the second withdrawal of the same decision
       (SPEC INV-130) the recommendation is taken and surfaced as a `[default]` on the landing report,
@@ -368,19 +328,17 @@ How a decision is put to the human so they can answer it.
 - **A taste ask carries the agent's own researched proposal (SPEC INV-60).** *(rule 21)*
     - A genuine taste question never arrives empty-handed: the agent has mined the material first —
       exemplars, precedents, real options with citations — and asks WITH a chosen recommendation and
-      its evidence.
-    - Asking the human to supply what the agent should have mined is a defect (Alexander: mine it
-      yourself, propose it, then show). Sharpens the recommended-option law (rule 2) for taste calls.
+      its evidence. Asking the human to supply what the agent should have mined is a defect (Alexander:
+      mine it yourself, propose it, then show). Sharpens the recommended-option law (rule 2) for taste calls.
 
 - **A review surface shows its sources and takes his pen (SPEC INV-64).** *(rule 22)*
     - Anything shown FOR REVIEW — a dossier, a claims page, a draft with assertions — carries
       per-claim provenance: each claim chipped as read from the ARTIFACT · his own RECORDED WORD ·
-      or MY INFERENCE — and inferences are flagged loudest.
-    - The surface is commentable, never a read-only wall: line-by-line room for his word, with the
-      decision page's answer capture (rule 10's JSON law) extended to review pages.
+      or MY INFERENCE — and inferences are flagged loudest. The surface is commentable, never a
+      read-only wall: line-by-line room for his word, with the decision page's answer capture (rule 10's
+      JSON law) extended to review pages.
     - Born in the promoter case (Alexander: that he had no idea where all of it came from) — an
       unmarked inference costs a review round; his standing word since 2026-07-06: never a read-only wall.
-
 
 ### Answering what and did-we
 
@@ -388,54 +346,46 @@ How the agent answers a question about the product or a done-claim.
 
 - **"Did we actually do X?" is answered by walking the evidence — wearing its method version.** *(rule 11)*
     - A done-claim ("is it done / adopted / true?") is never answered from memory: it is the
-      claims-need-primary-source rule (base rule 13) applied to the exchange itself.
-    - Walk the records NOW — adoption record, prover record, suite run, git commit, matrix row —
-      and pin each claim to its artifact, one line per claim: **claim → artifact → version**.
-    - Say verified apart from asserted, in plain words: what you opened and saw versus what you
-      merely believe.
+      claims-need-primary-source rule (base rule 13) applied to the exchange itself. Walk the records
+      NOW — adoption record, prover record, suite run, git commit, matrix row — and pin each claim to its
+      artifact, one line per claim: **claim → artifact → version**. Say verified apart from asserted, in
+      plain words: what you opened and saw versus what you merely believe.
     - The answer names the METHOD VERSION the work was done by — pack + skill versions read from
       that host's installed set (SPEC M-7) — so "done by live-spec" always means "done by
       live-spec vX"; and where the host has no installed set (never adopted, or the work
       predates adoption), say exactly that —
-      an absent version is itself an honest answer, never an invented one (SPEC INV-25). — *❌
-      "yes, the tests were done by the methodology" ✅ "verified: suite green — tonight's run, this commit;
-      done by pack 0.8.x / prover 0.1.8; asserted (not re-checked): the adoption record's
-      coverage claim"*
+      an absent version is itself an honest answer, never an invented one (SPEC INV-25). A worked answer
+      is in [`references/field-examples.md`](references/field-examples.md).
 
 - **The feature map on demand — the whole product readable on one ask.** *(rule 14)*
-    - When the human asks what
-      the product does — "show me all the features", "show the feature map", "what's in it today" — read the map
-      aloud AT ASK-TIME. The spec's scenario sections name the features.
-    - The current-vs-target header
-      splits shipped from promised at the [target] tag's own granularity — a scenario holding both reads
-      "shipped, with promised parts (named)", never one blanket status. The queue's open rows add each
-      in-flight feature's station (rule 9's vocabulary) and every queued NEW-verdict wish — its `map:`
-      note is its placement, so a wish the spec hasn't met yet is still on the map.
-    - The answer only
-      reads the living documents aloud — no third document, no feature list file, no cache: the spec's
-      scenarios and the architecture's nodes ARE the map (SPEC E-14).
-    - Each answer line obeys the line
-      law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives its person,
-      the status trailing quietly. Chat by default; a rendered page on the human's word.
+    - When the human asks what the product does — "show me all the features", "show the feature map",
+      "what's in it today" — read the map aloud AT ASK-TIME. The spec's scenario sections name the
+      features. The current-vs-target header splits shipped from promised at the [target] tag's own
+      granularity — a scenario holding both reads "shipped, with promised parts (named)", never one
+      blanket status. The queue's open rows add each in-flight feature's station (rule 9's vocabulary) and
+      every queued NEW-verdict wish — its `map:` note is its placement, so a wish the spec hasn't met yet
+      is still on the map.
+    - The answer only reads the living documents aloud — no third document, no feature list file, no
+      cache: the spec's scenarios and the architecture's nodes ARE the map (SPEC E-14). Each answer line
+      obeys the line law (rules 6, 8, 9): a short descriptive name in the product's words, what it gives
+      its person, the status trailing quietly. Chat by default; a rendered page on the human's word.
     - The settings kin (SPEC INV-87): when the human asks what they can customize, in any wording
       such as "what can I customize", the answer is the settings card, re-rendered from the current
       profiles and settings at that moment and shown by the usual showing rule. A from-memory list
       never answers.
-    - Never fire it
-      uninvited — routine reports keep the departures board's in-flight scope (rule 9). The whole map
-      comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet, the map
-      is empty" plus the bootstrap/adoption pointer. Never invent a list. (SPEC INV-38; his word
+    - Never fire it uninvited — routine reports keep the departures board's in-flight scope (rule 9). The
+      whole map comes only on ask. A host with nothing to read yet is answered honestly — "no spec yet,
+      the map is empty" plus the bootstrap/adoption pointer. Never invent a list. (SPEC INV-38; his word
       2026-07-06: "show me all the features" — one ask hands over the whole map, current as of that moment.)
-
 
 ### Honoring his word
 
 How the human's word is read and held once given.
 
 - **His word is read as meant — and his cuts hold.** *(rule 15)* Two clauses, born in the promoter window
-    (2026-07-06 — three review rounds of one document rejected in a single evening, the same failures
-    repeating after they had been named; the confident-specialist VOICE core of that lesson lives in
-    the promoter's own voice skill by his placement word — the pack keeps the general spine):
+    (2026-07-06 — three review rounds of one document rejected in one evening, the same named failures
+    repeating; the confident-specialist VOICE core of that lesson lives in the promoter's own voice skill
+    by his placement word — the pack keeps the general spine):
     - **Cuts stay cut.** A phrasing the human killed in a review round stays killed in every later
       draft of that artifact. Keep the kill-list WRITTEN where the artifact's project keeps its
       records (its journal, or the artifact's own notes file). Never keep it only in session memory: a wipe
@@ -446,10 +396,7 @@ How the human's word is read and held once given.
       shapes the work, read its intent from context or ask (base rule 1). Never assume the phrase is prescriptive.
     The original wish's other bans already live in the pack — no empty drama (rule 7's
     no-disclaimers face), no per-line approval-begging (rule 7; silence is consent, SPEC INV-31) —
-    cross-linked, never restated (one home per fact, base rule 4). (SPEC INV-42.) — *❌ [the killed
-    word back in round three] ✅ kill-list line in the project's journal: "«master» — cut 2026-07-06,
-    stays cut" · ❌ [his parody metaphor shipped as the pitch] ✅ "did you write that as mockery, or
-    should I put it in for real?"*
+    cross-linked, never restated (one home per fact, base rule 4). (SPEC INV-42.)
 
 - **Approved text is frozen — a revision applies only the named correction (SPEC INV-58).** *(rule 19)*
     - Once the human approved a text, it is settled material: apply EXACTLY the correction he named —
@@ -466,7 +413,6 @@ How the human's word is read and held once given.
       only new material.
     - Born of one escalating hour (promoter case, Alexander): a pile of similar questions had already
       been answered → make the dialogues converge.
-
 
 ## The writing register — native open-source technical-writer voice
 
@@ -538,39 +484,14 @@ live failure this closes: a session asked its human to decide a client-asset syn
 jargon he could not parse — a sync the agent could simply have done (2026-07-09). Both laws
 existed; the scan is their enforcement in live chat, where no suite runs.
 
-## Presenting a fork (template)
-A choice is never a paragraph. For ONE decision, generate a tiny HTML (several at once → the decision
-page, rule 10):
-- **Option A (recommended, if you have a pick)** — a picture/example + one line "when this is better".
-- **Option B** — a picture/example + one line "when this is better".
-- Question at the bottom: "this or that?" — with your recommendation named. Every option still stays open.
-
-## Anti-patterns (what the rules don't already spell out)
-- Opening an unchanged artifact "just to look" — move only on a real was → became.
-- Ending a fork with no recommendation — that hands your analysis back to the human.
-- Escalating a decision you could have made yourself — ask only what is genuinely theirs.
-
-## Live examples (from the field)
-- **Typography decision.** Instead of "fold weights 620/640/650 to 600/700?", rendered every weight as the
-  same sample sentence side by side so the person could SEE that 620/640/650 are near-identical to 600 — the
-  decision made itself. (rules 1, 7)
-- **A "which name?" question with a real conflict.** An auto-generated label was sometimes misleading, so the
-  honest wording wasn't obvious. Rather than guess or ask in the abstract, rendered three concrete naming
-  options side by side as real examples and let the person pick the one that read right. (rules 1, 2)
-- **A day of work that looked like nothing.** Instead of claiming the audits were valuable, put yesterday's
-  build next to today's in one window, synced, with an honest verdict: "you're right, this is not a visual
-  redesign — here's the little that's visible and the two bugs it caught that you can't see." (rules 4, 7)
-- **The first departures board, bounced by its reader.** The night report led every line with the
-  feature's coined nickname ("A Walk Through the Evidence", "The Clock Grows Teeth") plus a row number, and
-  compressed a story to "seven times — twice the fence". The reader asked WHAT??? four times. Retold
-  under the law: "ask me 'did you actually do X?' — I now answer by walking the artifacts, with the
-  method version named from the record (row 101)" — the outcome first, every handle trailing.
-  (rules 6, 8, 9; SPEC INV-28)
-- **The same event, told twice.** First telling: "the inbox worked — a session dropped three findings,
-  harvested into rows 19–21" — the human had to ask what that meant. Second telling: "the other project's
-  session found three gaps in the adoption procedure; before tonight it would have edited the package's
-  files directly; instead it left one new file in the inbox and touched nothing else; I turned its findings
-  into queue rows." Same fact — only the second one communicated. (rules 6, 8)
+## Worked examples, forks, and anti-patterns
+The rules' worked examples — a fork template (one decision → a tiny HTML), and the field cases (a
+typography decision shown side by side, a "which name?" conflict, a day that looked like nothing, the
+departures board bounced by its reader, one event told twice) — live in
+[`references/field-examples.md`](references/field-examples.md). Three anti-patterns the rules already
+forbid, gathered for a quick self-check: opening an unchanged artifact "just to look" (move only on a
+real was → became, rule 4); ending a fork with no recommendation (rule 2); escalating a decision you
+could have made yourself (rule 7).
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **build-pipeline** ships the change · **test-author** derives the matrix

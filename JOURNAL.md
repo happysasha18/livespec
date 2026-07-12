@@ -2,6 +2,43 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-12 (build-worker) — communicator body thinned under the ~500-line ideal (ROADMAP row 280)
+
+**What:** the communicator SKILL.md body dropped from 578 to 499 lines, under the ~500 ideal row 280
+chases, with all 22 rules and every normative sub-rule preserved and the suite green (579/579). A new
+`skills/communicator/references/field-examples.md` holds the relocated worked examples; communicator
+metadata is 1.0.9.
+
+**Why the careful path (and not the s40 attempt's):** row 280 had failed once — a fresh clean-writer,
+pack not loaded, tightened the body to 441 lines but silently dropped four load-bearing normative
+sub-rules (live-status, offline-window, kill-list, frozen-text); the suite caught it and the draft was
+reverted. The lesson: an auto-tighten-to-500 loses rules, not just anecdotes. So this pass inverted the
+order — the conservation set was read FIRST off the test suite itself (149 phrases the tests pin to
+`communicator/SKILL.md`, extracted by walking the test AST), and the rewrite was held to keeping every
+one of those phrases in SKILL.md. That matters because the tests read `SKILL.md` directly (not its
+`references/`), so a rule's test-pinned phrase cannot move to a sibling file without breaking the suite —
+which bounds what may be relocated to genuinely-unpinned worked EXAMPLES.
+
+**What moved (INV-109 accounting — each relocated, none cut):** rule 13's five worked examples (the
+detached START/beat/DONE cadence, the offline window, the leave-word, live status, and a beat versus a
+wall of silence), rule 6's two illustrations (the own-coinage "open leg" case and the one-name
+resolver/backup case), rule 11's worked answer, the "Presenting a fork" template, and the five "Live
+examples (from the field)" cases all moved to `references/field-examples.md` with pointers left in the
+body; the three "Anti-patterns" bullets folded into a one-paragraph body note that still names each rule
+they restate. Every rule's normative sentences (and every test-pinned phrase) stayed in the body; only
+illustrations relocated. The remaining reduction was line-level tightening INV-109 leaves free —
+collapsed blank-line separators, trimmed redundant provenance wording, and replaced the departures-board
+case's duplicated inline provenance with a pointer to its now-single home.
+
+**Verification:** all 22 `*(rule N)*` tags present; the pre-report walk's step-1 pointer to
+`references/writing-register.md` resolves and the new `references/field-examples.md` pointers resolve;
+three residual failures during the pass were line-wrap artifacts (phrases the non-flattening tests read
+per physical line) and were fixed by re-wrapping, not by cutting; full suite 579/579 green; guardrails
+(skill-loadability, matrix-coverage, pin-drift) pass. The register lint on SKILL.md reports only its
+pre-existing intentional teaching-quotes of its own pattern catalogue (unchanged in kind) and is not a
+CI gate. Out of scope for this ~/live-spec pass: the global installed copy at
+`~/.claude/skills/communicator/` was not synced.
+
 ## 2026-07-09 (session 29) — architecture structure by project.kind, validated read-only on tlvphoto (RUN item 5)
 
 **What (b):** the ARCHITECTURE doc's node structure is now PROPOSED by `project.kind` (INV-36 — the existing
