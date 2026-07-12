@@ -3260,3 +3260,34 @@ guardrail. Owned by the product-prover node (owns-list + M-266).
 assertions) red against the pre-delta tree, then green. Suite 503 green. Prover short form (INV-61): 0
 must-fix. Delegation: none — a law across three skill homes + spec + matrix + owns-list, senior inline. SPEC
 v1.1.2, product-prover 1.0.5, build-pipeline 1.0.16, pack 1.1.2.
+
+## 2026-07-12 (session 40) — paired-transition symmetry (row 288, INV-126), the temporal twin
+
+**The wish.** From the tlvphotos window, another phone test: opening the polaroid side-room plays a soft
+transition — the room dresses under a black veil and is revealed in one breath — but closing it is a hard
+cut, one click and gone, no transition at all. The way in and the way out of the same surface do not match,
+and nobody decided that on purpose: the entry got the crafted breath, the exit was left instant. A soft way
+in with a hard way out, passing every test (the exit "works" — the room does close), reading fine in the
+spec (each direction described on its own), caught only by a human feeling the asymmetry on a real device.
+
+**What landed.** INV-126: when a surface has a pair of opposite state changes (open/close, enter/exit,
+expand/collapse, show/hide), a transition crafted for one direction is a decision about the pair, so the
+other direction is stated too. The default is symmetry — the exit mirrors the enter's feel unless a reason
+is written — and a shorter or deliberately-instant exit is a valid STATED answer rather than a silence. It
+rides the standard-facet sweep as its own facet (his option 2, the cheapest true home, plus option 3's
+default-and-ask as the resolution). Because motion feel is the human's own gate (INV-30), an undecidable
+pair is surfaced to him rather than shipping a crafted-in and instant-out pair silently. The prover flags a
+pair with one direction's transition described and the opposite unstated.
+
+**The family, now three deep.** These three landings are one wish-family from his phone test, all about a
+decision made for one member of a set and silently not carried to the rest: INV-124 (the class hunt — sweep
+the siblings of a confirmed bug), INV-125 (cross-surface uniformity — hold a policy the same across sibling
+surfaces in space), and INV-126 (paired-transition symmetry — hold a transition the same across the two
+directions of one change in time). INV-125 and INV-126 are spatial and temporal twins; INV-124 is the
+reactive cousin that fires once a bug is already filed.
+
+**Method notes.** Door: feature; kind: skill. Red-first — `tests/test_paired_transition.py` (6 assertions)
+red against the pre-delta tree, then green. Suite 509 green. Prover short form (INV-61): 0 must-fix. The new
+facet joins spec-author's canonical list carrying its named incident, satisfying the curated-list rule.
+Delegation: none — a law across spec + facet list + prover + matrix + owns-list, senior inline. SPEC v1.1.3,
+spec-author 1.0.4, product-prover 1.0.6, pack 1.1.3.

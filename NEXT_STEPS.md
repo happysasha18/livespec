@@ -3,12 +3,14 @@
 ## LIVE STATE (2026-07-12 ~15:40, session 40 — closing the remaining list on his word "делаем всё подряд, закончим сегодня")
 **s40 IN PROGRESS. A tlvphotos wish-family landing (uniformity/consistency laws).** Row 281 (INV-124,
 class-hunt: a confirmed bug drives four moves before close — find siblings · check architecture · check
-spec · escalate) LANDED + PUSHED, CI green. Row 287 (INV-125, cross-surface uniformity: a policy governing
-a KIND across sibling surfaces/elements/transitions is stated at the surface-CLASS level and held uniform —
-prover lens + DOM-wide completeness guardrail; the preventive twin of INV-124) LANDED, pushing. **Building
-now: INV-126 (paired-transition symmetry** — a soft-in/hard-out pair is an asymmetry the facet sweep must
-catch; his default = symmetry, else ASK; the temporal twin of INV-125). Suites: 497 then 503 green, prover
-short-forms 0 must-fix each. **Next free codes: INV-126, M-267** (INV-126 in flight). SPEC v1.1.2, pack 1.1.2.
+spec · escalate) LANDED + PUSHED, CI green. Row 287 (INV-125, cross-surface uniformity: a policy governing a KIND across sibling surfaces/elements/
+transitions is stated at the surface-CLASS level, held uniform — prover lens + DOM-wide completeness
+guardrail) LANDED + PUSHED, CI green. Row 288 (INV-126, paired-transition symmetry: both directions of a
+paired state change get the same craft or a stated reason — rides the facet sweep, default symmetry else
+ASK since motion feel is his gate; the temporal twin of INV-125) LANDED, pushing. Three laws are one
+wish-family from his phone test (a decision made for one member of a set, silently not carried to the rest).
+Suites 497→503→509 green, prover short-forms 0 must-fix each. **Next free codes: INV-127, M-268.** SPEC
+v1.1.3, pack 1.1.3, spec-author 1.0.4, product-prover 1.0.6.
 **s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) resolved on recommended defaults, 262
 (adopt audit's de-dup rec) decided, execution pending his nod (deletes from his personal playbook); prover
 findings F3-F7 filed as rows 282-286 (each a should-clarify/worth-considering, own movement). **REMAINING

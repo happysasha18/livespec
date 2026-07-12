@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.3
+  version: 1.0.4
 ---
 
 # Spec Author
@@ -247,7 +247,14 @@ here**, one list for every project:
 - **two windows at once** — the same stored state open in two windows; what one window's change does to
   the other (incident: track-coach's persisted aim auto-swapping cards, 2026-07-02);
 - **a missing source** — an input file renamed, moved, or gone: the feature says what it shows and asks
-  instead of guessing (incident family: the ask-don't-guess stem/source cases, track-coach 2026-06/07).
+  instead of guessing (incident family: the ask-don't-guess stem/source cases, track-coach 2026-06/07);
+- **paired-transition symmetry** — when a surface has a pair of opposite state changes (open/close,
+  enter/exit, expand/collapse, show/hide), the exit's motion mirrors the enter's unless a reason is written;
+  the default is symmetry, and because motion feel is the human's own gate (SPEC INV-30) an undecidable pair
+  is surfaced as a real question rather than shipping a crafted-in and instant-out pair silently; the answer
+  ends as a spec sentence — mirror, a named shorter exit, or deliberately instant — decided or
+  `[default]`-tagged like any facet (SPEC INV-126; incident: tlvphotos's polaroid room revealed under a soft
+  veil in one breath and closed on a hard cut with no transition, found by hand on a real phone, 2026-07-12).
 
 **The list is curated, each facet earning its place by named incident.** A facet joins ONLY with a named real incident it would have
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
