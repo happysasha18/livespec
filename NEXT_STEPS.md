@@ -19,9 +19,8 @@ offline-window, kill-list, promoter frozen-text) — auto-tighten-to-500 loses r
 row STAYS OPEN needing a rule-preserving pass. **REMAINING:** row 192 (scenario contracts). **On HIM:** a
 real remote deposit from his browser (row 247 leg); row 259 (his design-principles comments); a nod on 262's
 playbook edit; flips on 261/279 if he wants the other option.
-**s39 (pushed 49d84e0..a2b3edd, CI green):** eleven smalls landed (263,273,269,264,265,266,267,268,270,260a,260b);
-INV-121 (derive-before-fork), INV-122 (node fitness), INV-123 (code compaction); a Fable adversarial pass
-folded 1 must-fix + 2 should-clarify (docs/prover/2026-07-12-s39-backlog-batch.md).
+**s39 (pushed, CI green):** eleven smalls landed (263,273,269,264-268,270,260a,260b); INV-121/122/123; a
+Fable adversarial pass folded 1 must-fix + 2 should-clarify (docs/prover/2026-07-12-s39-backlog-batch.md).
 
 **THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
 - **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the
