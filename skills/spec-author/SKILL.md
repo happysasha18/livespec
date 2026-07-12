@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.5
+  version: 1.0.6
 ---
 
 # Spec Author
@@ -359,6 +359,16 @@ dogfoods the web/app row: each person-facing scenario heading tags `[feature: F-
 coverage table maps it to its skills and its test. The machines that work behind the scenes (guardrails,
 host contract) implement guarantees rather than user-facing features, and stay outside the feature layer
 by the type's own definition of its unit. The decided design note is `docs/spec-format-by-project-type.md`.
+
+**The heading convention makes the reverse direction mechanical (SPEC INV-132).** For the two-way check to
+catch a scenario whose tag was forgotten, an untagged heading has to be unambiguous — and it is not on its
+own, since the checker cannot tell a new scenario missing its tag from a machinery or reference section
+that never had one. So every H3 heading carries either its `[feature: F-x]` tag (a person-facing scenario)
+or the explicit `[not a scenario]` marker (a machinery, rules, or reference section, legitimately
+untagged), and an untagged, unmarked H3 is unambiguously red. Put the convention on H3 headings, the level
+every scenario uses; sub-parts nest under a heading already tagged or marked, so a `####` sub-heading owes
+nothing. When you add a section that is not a person-facing scenario, state its `[not a scenario]` marker
+in the same edit — a new machinery heading that passes silently is the gap this closes.
 
 ## The content contract — when a generic engine is extracted from an instance (SPEC INV-79)
 

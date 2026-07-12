@@ -605,7 +605,7 @@ This landing shows no visible surface, so facets are N/A.
 Non-goals for this landing: no mechanical pointer-grep guardrail (a candidate after real usage); the norm artifact's own format stays free.
 
 Success measure: the next prototype-born surface lands with its pointer and its plan-vs-prototype diff line in the landing report, and the look-alike class does not recur. [default] [INV-43]
-### From the spec to the tests: two layers that must not be skipped
+### From the spec to the tests: two layers that must not be skipped  [not a scenario]
 
 **The test-author skill owns the test method; build-pipeline just calls it.** test-author runs the matrix derivation and the test writing (the pipeline's steps 5–6). It keeps the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test.
 
@@ -692,7 +692,7 @@ A fact with no row, or a row at too weak a level, is a derivation defect. The pr
 While both layers live, one rule holds: **no wish lands whose facts lack an owning architecture node and a matrix row at the right level.** The bridge from spec to tests is walked layer by layer, never jumped.
 
 A project that predates these layers brings them up as an owned landing, and the invariant binds from the landing that creates its ARCHITECTURE.md and matrix, never retroactively [INV-15].
-### The rhythm: breakpoints, milestones, pushes
+### The rhythm: breakpoints, milestones, pushes  [not a scenario]
 
 #### Breakpoints, resume, and milestones
 
@@ -1320,7 +1320,7 @@ measure: the day a newer pack ships, the next session on another machine propose
 
 The shared rulebook, who holds authority over what, and how the work scales down when money or time run short.
 
-### One rulebook behind the skills
+### One rulebook behind the skills  [not a scenario]
 
 Open any skill in the pack and the same working rules greet the reader. Until now each skill carried its own near-copy of them.
 
@@ -1350,7 +1350,7 @@ As the pack evolves, one thing stays true. **A shared rule has exactly one norma
 
 A list is exactly the kind of fact that drifts. The communicator's closing list was once found naming four skills after the pack had grown past six, with two skills missing since their birth. A check runs at every commit, and a list that misses a skill goes red [INV-66].
 
-### Who decides what
+### Who decides what  [not a scenario]
 
 #### Human authority and evidence
 
@@ -1498,7 +1498,7 @@ On any of these the worker stops with evidence. Otherwise it runs to completion.
 
 Above either limit, the work splits into staged briefs. A brief passes paths, never inlined file bodies — the worker reads its own truth from disk, and an inlined body goes stale the moment a sibling edits the file. [INV-55]
 
-### When money or time run short (the economy ladder)
+### When money or time run short (the economy ladder)  [not a scenario]
 
 Rigor costs money and time: suite runs, prover passes, senior-model hours. Today the pack always spends full rigor. This section names what a tight budget may legally shed, so economy is a setting the human moved, never an improvisation under pressure. [T-19]
 
@@ -1539,7 +1539,7 @@ The machinery that enforces the rules: the checks and gates, and the write-acces
 
 **A behavioural rule that breaks mid-turn twice earns a live channel.** A standing behavioural rule keeps its normative home in a once-read file — the loader, a profile, a skill's text. When such a rule breaks mid-turn a second time despite that home, it earns a live channel that same moment: an every-prompt hook line that reminds at the decision point, or a mechanical after-the-fact check that turns the suite red. The pick is recorded where the rule lives. The once-read homes remain the rule's normative homes; the live channel only carries the rule to the moment it is needed. Prose in a once-read file loses to mid-turn momentum, and attention alone holds nothing across sessions. This is the convergence principle's hand for behaviour, kin of the problem-ledger's second-occurrence law: a thing that recurs twice gets a mechanism that moment, never a third suffering. The worked proof: the routing rule lived in once-read files since June and broke mid-turn until the every-prompt hook line and the mechanical after-the-fact check landed (rows 253/254, 2026-07-12), the same cure that killed invented clock stamps. The 1.1.0 audit's once-read walk is this law's first sweep. A rule's mid-turn breaks are recorded in one home — the problem ledger PROBLEMS.md — so this sweep reads one source; the live-channel landing (the ROADMAP row, the hook, the check) points back to that ledger entry rather than standing as a second break-record (the one-home principle, base rule 4). [INV-108]
 
-### The machines that hold the bounds
+### The machines that hold the bounds  [not a scenario]
 
 What keeps "it works" honest — each one a named machine:
 
@@ -1550,6 +1550,7 @@ What keeps "it works" honest — each one a named machine:
 
 - **The feature-coverage trace** — a second traceability layer above the matrix, keyed to the project's PRIMARY UNIT [E-29]. Every project declares its type once, and the type names the unit: a web or app product counts user-facing features, a CLI its commands, a package the guarantees it promises, a book its arguments. Each unit carries a stable inline tag on the heading where it lives, and one coverage table in ARCHITECTURE.md maps each unit to the node(s) that implement it and a test that exercises it. live-spec is a package, but its scenarios ARE its features, so each person-facing scenario heading tags itself `[feature: F-x]` and the table names its implementers and its test.
   - The check reads BOTH directions and fails the push either way [INV-73]: every tagged unit resolves to a real implementer node and a real test, and every scenario the pack promises carries its tag — a scenario added without one, or a tag dropped, goes red.
+  - **The reverse direction has teeth through a heading convention.** For the check to catch a scenario whose tag was forgotten, an untagged heading must be unambiguous, and it is not on its own — the checker cannot tell a new scenario missing its tag from a machinery, rules, or reference section that never had one. So every H3 heading in this spec carries either its `[feature: F-x]` tag, marking it a person-facing scenario the coverage table maps, or the explicit `[not a scenario]` marker, marking it a section that states machinery, a rule, or reference and is legitimately untagged. An H3 that carries neither is unambiguously red — a forgotten scenario tag can no longer ship uncovered, and a new machinery section states its marker rather than passing silently. The convention lives on H3 headings, the level every scenario uses; its sub-parts nest under a heading already tagged or marked. This makes the reverse direction of the two-way check mechanical rather than a hand-walk, and its home beside the tag law is the spec-author skill. [INV-132]
   - The machines that work behind the scenes — the guardrails, the host contract, the settings ladder — implement guarantees rather than user-facing features, and sit outside this layer by the project type's own definition of its unit.
   - The mechanism reuses the anchor-ownership machinery a level up rather than adding a new one; the format's authoring home is the spec-author skill.
 
@@ -1607,7 +1608,7 @@ What keeps "it works" honest — each one a named machine:
 
 - **The four project-side checks are code a host attaches, never prose it re-implements.** The pack ships, under `scaffold/guardrails/`, a generic runnable form of the four checks the pipeline's teeth name — completeness, tests-present, behaviour-traces-to-spec, conflicts — parametrized by one host config file, never by editing check code. The config declares the host's real shape: document paths (spec, matrix, queue), the tests directory, the user-facing source globs, the surface registry's path, and — where a check needs the artifact itself — the host's own render command. Each check reads the config and the tree, exits green or red, and on red emits the typed failure line beside its human sentence [INV-47]. Failure behaviour is honest by construction: a missing config is red with an attach-me line, never a silent pass; a config pointing at a path that does not exist is red; a host that genuinely lacks a check's precondition (no render command yet) declares the waiver IN the config, where a reader sees it — an undeclared gap never passes quietly. Attachment is the adopt walk's step: the checks wire into the host's pre-push hook beside its suite, and the pack repo itself attaches them as the first host — proof by its own gates. Acceptance for a new host is measured: attach by config alone in about fifteen minutes [default], and each check proves itself red-first on one planted defect before it counts as attached. Non-goals, stated where they bind: the checks catch structural defects only — a semantic bug stays the prover's and the human's [E-6]; the registry's content stays the host's authorship, never auto-generated [E-10]. (Raised by the web session's read, 2026-07-10 — the curator gap the README now names; this contract's code landing retires it.) [INV-97]
 
-### The package repo: who may write, and two sessions at once
+### The package repo: who may write, and two sessions at once  [not a scenario]
 
 live-spec runs on its own method: this spec, this queue, and these rules govern live-spec's own development.
 
@@ -1649,7 +1650,7 @@ New files under inbox/ are the expected benign case; the fence stays clear for t
 
 Supporting material: how the axes compose, the open questions still on the table, and the index of every short code.
 
-### Composing across axes
+### Composing across axes  [not a scenario]
 
 Some parts of a host project hold state: a screen, a panel, a saved file — anything the user can change and find again later. Call each of these a **stateful surface**.
 
@@ -1681,7 +1682,7 @@ Adoption adds one axis: **document provenance** — where a spec claim came from
 
 - A claim is *native* when it was written fresh under live-spec. It is trusted from the start [C-1].
 - A claim is *re-engineered* when it was recovered from documents the project had before adoption. It starts unverified and stays unverified until it is reconciled under the adoption rules, which pin it to real code or remove it [A-3].
-### Open decisions
+### Open decisions  [not a scenario]
 
 - ⟨DECIDE⟩ attic/ layout: flat with a manifest and source-dir prefix on collision (current pick) vs dated
   subfolders — revisit at the next real adopt run. [D-1]
@@ -1705,7 +1706,7 @@ rationale moved to JOURNAL.md.
   nested scopes and CLAUDE.md shrinks to a thin loader. Home: the settings-ladder and thin-loader
   paragraphs [E-13, E-16]; the onboarding step is row 54. [D-5]
 
-### Formal index
+### Formal index  [not a scenario]
 
 Machine handles → home section. For the prover, the matrix, and transcript greps; the prose above is the
 meaning, this table is only the map.
@@ -1755,6 +1756,7 @@ meaning, this table is only the map.
 | INV-129 | deferred rows are revisited at every queue-take, not only at milestones: a deferred row's revisit trigger [T-8] can be time-bound (before the next release, when the campaign ships) and so come true and lapse between two milestone gates, making the milestone re-scan [M-1] too rare a reader; at every queue-take the session also re-scans each deferred row's trigger against the current moment, a fired trigger returning its row to the runnable head [INV-49] right then; the two cadences read the same triggers by the same rule so a deferred wish never waits on a trigger nobody reads [INV-1] whichever cadence comes first, and the trigger vocabulary stays free-form since a reader now runs at queue cadence; homes — the queue-take clause + build-pipeline's queue-take walk; prover finding F3, 2026-07-12 | Throwing a wish |
 | INV-130 | a withdrawn decision converges: after two withdrawals the recommended option is taken as a surfaced `[default]`; an answered question closes forever [INV-59] but a withdrawal re-asks in plainer terms with no cap of its own [INV-9], so a genuine taste call could loop unbounded — the bound is two, and on the second withdrawal of the same decision the session takes the recommended option and surfaces it as a `[default]` in the landing report, silence staying consent from there and it never re-asked [INV-31], the same convergence an answered question already has now given to the withdrawal path; a later real change of mind rides the ordinary channel as a new wish, never a reopening of the closed decision; homes — the decision-page clause + communicator's rule 10; prover finding F6, 2026-07-12 | Throwing a wish |
 | INV-131 | a mid-work re-door [INV-16] rebuilds the parallel-lanes independence graph: when the re-door creates a surface or state that did not exist when the lanes opened, the same re-check re-runs the independence edges [INV-49] against every rolling lane, since the new surface can now collide with a sibling that was independent a moment ago; a new edge pulls the re-doored lane back to serial (it waits behind the lane it now shares a surface with) and the departures board says so in a line, so the board never asserts a stale independence after the ground moved; the integration re-fence [INV-39] still catches the collision at landing, so this closes the observability gap the board owed rather than adding a safety net — the board tells the truth the moment the edge appears, not only when two landings collide; the senior still judges independence and says it aloud, the re-door being the moment that judgement is owed again; homes — the mid-work re-door clause + build-pipeline's door re-fire; prover finding F7, 2026-07-12 | Throwing a wish |
+| INV-132 | the reverse direction of the feature-coverage check [INV-73] has teeth through a heading convention: every H3 heading carries either its `[feature: F-x]` tag (a person-facing scenario the coverage table maps [E-29]) or the explicit `[not a scenario]` marker (a machinery, rules, or reference section legitimately untagged), and an H3 carrying neither is unambiguously red — the checker could not otherwise tell a scenario whose tag was forgotten from a section that never had one, so an untagged scenario could ship green and uncovered; the convention lives on H3 headings (the level every scenario uses, sub-parts nesting under an already-tagged-or-marked heading), making the reverse direction mechanical rather than a hand-walk; homes — this feature-coverage clause + spec-author; prover finding F4, 2026-07-12 | Machines |
 | INV-105 | one canonical state directory named `.live-spec`, stated once and no second directory competing; a near-miss directory (`.livespec`, `.live_spec`, `livespec/`) found at attach or resume is a red finding retired to the attic under a manifest line [INV-7]; worktree isolation is the default when two concurrent lanes' write-sets overlap, the later lane building in its own isolated copy and integrating under the pen [INV-11, T-18, INV-39]; born of the audit's ghost `.livespec` dir found beside the real `.live-spec` with a different profile (2026-07-10) | Package repo |
 | INV-106 | the push walk does not end at the push: the pushing session reads the remote gate's own verdict (the CI run the push triggered, one `gh run` read, minutes, no human wait); a red verdict is the session's own immediate bug, preempting by the bug lane [INV-2], fixed and re-pushed the same session, so the human never meets the red first in a GitHub email; a slow gate is watched to its verdict on the detached-work cadence [INV-35]; born of Alexander's word (2026-07-10 ~11:00) | Rhythm |
 | T-17 | one wish = one user story: multi-story wishes split at intake, each story its own row; sub-behaviours are acceptance, folded into that same row; unclear count asked | Throwing a wish |

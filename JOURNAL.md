@@ -3466,3 +3466,31 @@ Red-first: `test_redoor_independence_rebuild` (4 assertions) red against the pre
 suite 537 green. Door: feature; kind: skill; footprint: single-module (build-pipeline node). Delegation:
 none — judgment-dense wiring across spec, index, architecture, matrix, and skill on one node; proposed
 senior / chosen senior. SPEC v1.1.6, build-pipeline 1.0.20, pack 1.1.6.
+
+## 2026-07-12 (session 40) — every scenario heading carries its tag, untagged is red (row 283, INV-132, prover F4)
+
+**What.** Prover finding F4: INV-73's reverse direction ("every scenario carries its tag") was not
+mechanically enforceable as written — the checker could not tell an untagged NEW scenario from a
+legitimately-untagged machinery, rules, or reference section, so an untagged scenario could ship green and
+uncovered. INV-132 adds a heading convention: every H3 heading in PRODUCT_SPEC.md carries either its
+`[feature: F-x]` tag (a person-facing scenario the coverage table maps) or the explicit `[not a scenario]`
+marker (a machinery/rules/reference section, legitimately untagged). An H3 carrying neither is unambiguously
+red, so a forgotten scenario tag can no longer ship uncovered.
+
+**The taste call — the marker.** The finding offered two arms: require every H3 under a person-facing parent
+to carry a tag, or mark the non-scenario sections explicitly. A parent-based rule fails here because the
+build-loop H2 mixes scenario H3s (Throwing a wish, Publishing) with machinery H3s (The rhythm, From the spec
+to the tests), so "under a person-facing parent" has no clean boundary. The explicit marker is the robust
+choice: one `[not a scenario]` marker on the 10 machinery/rules/reference H3s, and the rule becomes
+spec-wide and unambiguous. Chose `[not a scenario]` as the marker word — plainly true of every one of them
+(machinery, rules, reference), greppable, and carrying no anchor token so the Formal-index and split parsers
+are unaffected.
+
+**Homes.** New invariant INV-132 (the feature-coverage clause is its home), its Formal-index row, spec-author
+(v1.0.6 — states the convention beside the tag law), the 10 marked headings, and matrix M-273 under the
+guardrails block. Red-first: `test_scenario_heading_tag` — the mechanical check listed exactly the 10
+unmarked H3s against the pre-delta tree, and a seeded untagged-H3 red-proof stands permanent; then green,
+full suite 542. The existing forward-direction check (`test_every_scenario_carries_its_feature_tag`) is
+untouched, so both directions now hold. Door: feature; kind: skill; footprint: single-module (guardrails
+node). Delegation: none — the marker design and the 10-heading classification were the judgment; proposed
+senior / chosen senior. SPEC v1.1.6, spec-author 1.0.6, pack 1.1.6.
