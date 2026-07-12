@@ -33,7 +33,10 @@ case's duplicated inline provenance with a pointer to its now-single home.
 **Verification:** all 22 `*(rule N)*` tags present; the pre-report walk's step-1 pointer to
 `references/writing-register.md` resolves and the new `references/field-examples.md` pointers resolve;
 three residual failures during the pass were line-wrap artifacts (phrases the non-flattening tests read
-per physical line) and were fixed by re-wrapping, not by cutting; full suite 579/579 green; guardrails
+per physical line) and were fixed by re-wrapping, not by cutting; a conservation test rides the refactor
+(the push gate requires a test alongside a user-facing change) — `tests/test_communicator_body_thinned.py`
+(5 checks: body under 500, all 22 rule tags, the field-examples reference + pointer, the relocated
+examples reachable, the register pointer resolving); full suite 584/584 green; guardrails
 (skill-loadability, matrix-coverage, pin-drift) pass. The register lint on SKILL.md reports only its
 pre-existing intentional teaching-quotes of its own pattern catalogue (unchanged in kind) and is not a
 CI gate. Out of scope for this ~/live-spec pass: the global installed copy at
