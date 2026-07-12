@@ -18,12 +18,12 @@ strictly by it. Prompt (verbatim core):
 |---|---|---|
 | The matrix is an ARTIFACT: inventory first, rows derived, coverage checklist walked at close | RED — tests derived directly, no inventory, no checklist walk | GREEN — artifact inventory opens; per-row derivation; the checklist walk closes and FLAGS a real gap |
 | Every row states BOTH sides (do + never) | PARTIAL — strong negative assertions present, but per-scenario, not a per-row discipline | GREEN — every row carries its never side; several rows exist purely for it |
-| A LEVEL pinned per row, by what the user would see broken | PARTIAL — levels chosen sensibly (DOM parse vs headless) but implicitly, per test, with parse-level as the default | GREEN — level named per row with the reason; the empty-shell fact forced to browser-computed because DOM-text would falsely pass an empty div |
+| A LEVEL pinned per row, by what the user would see broken | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the loader-fed bare arm now names a level per test with a reason (previously partial, implicit parse-level default). | GREEN — level named per row with the reason; the empty-shell fact forced to browser-computed because DOM-text would falsely pass an empty div |
 | State space named before cells (view axes × data axes) | PARTIAL — fixtures per run-type exist; axes never named, cells not crossed systematically | GREEN — axes named for both sections before any row |
-| Red-first proof discipline | RED — absent | GREEN — the bug protocol stated: matrix cell first, red proven, then code |
-| Pinned skip-set (an unexpected skip is a failure) | RED — absent | GREEN — browser rows must RUN; a silent engine-missing skip named as the failure class |
+| Red-first proof discipline | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the bare arm now states "each test proven red-first against the pre-feature state" (previously RED-absent). | GREEN — the bug protocol stated: matrix cell first, red proven, then code |
+| Pinned skip-set (an unexpected skip is a failure) | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the bare arm now names "a pinned skip-set rather than silently dropped or flaky" (previously RED-absent). | GREEN — browser rows must RUN; a silent engine-missing skip named as the failure class |
 | Traceability as a STANDING test | PARTIAL — tests named after anchors for visibility | GREEN — a suite-level check that fails on unanchored rows and uncovered facts |
-| Derivation defects routed to their source | RED — the two anchor-less criteria went unnoticed | GREEN — flagged as a spec-derivation defect, routed back to spec-author before the matrix closes |
+| Derivation defects routed to their source | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the bare arm now flags the two anchor-less criteria and routes them to spec authoring (previously went unnoticed). | GREEN — flagged as a spec-derivation defect, routed back to spec-author before the matrix closes; matrix-local ids held as not-a-substitute |
 
 ## The red
 

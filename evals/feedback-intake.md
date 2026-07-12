@@ -18,8 +18,8 @@ strictly by it. Prompt (verbatim core):
 
 | Criterion (the skill's promise) | bare | with-skill |
 |---|---|---|
-| Field evidence has ONE home (the feedback ledger) tied to the feature's success measure | RED — the friend's map remark became a "low-confidence backlog" queue row; the visitor's praise went to the journal against a decision file; no single place field signals accumulate | GREEN — both landed as dated FEEDBACK.md lines citing the feature's scenario |
-| A reaction never becomes a queue row on the agent's own judgment | RED — the vague secondhand remark was queued | GREEN — "в задачу пока не превращаю"; a wish only by the human's word or a tripwire |
+| Field evidence has ONE home (the feedback ledger) tied to the feature's success measure | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the loader-fed bare arm now routes items 1/4/6 all to FEEDBACK.md; the original red (the friend's map remark became a "low-confidence backlog" queue row; the visitor's praise went to the journal against a decision file) no longer reproduces bare. The skill's marginal value sits in the one-commit sweep and the re-mention-append discipline. | GREEN — both landed as dated FEEDBACK.md lines citing the feature's scenario |
+| A reaction never becomes a queue row on the agent's own judgment | FLOOR ROSE 2026-07-12 (row 268/N1) to MET BARE — the bare arm now keeps the map remark and the friend's remark as FEEDBACK, unqueued; the original red (the vague secondhand remark was queued) no longer reproduces bare. | GREEN — "в задачу пока не превращаю"; a wish only by the human's word or a tripwire |
 | Wish-shaped items walk wish intake (door, echo, row) | GREEN — the slow-gallery report queued for diagnosis | GREEN — same |
 | An answer closes forever and is harvested (archive + row) | GREEN — decision archived, waiting row closed, build queued | GREEN — same |
 | A fix-sized comment is fixed the same session, journal line, no queue | GREEN | GREEN |
