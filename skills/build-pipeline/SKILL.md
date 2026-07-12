@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.19
+  version: 1.0.20
 ---
 
 # build-pipeline — ship a change by the method
@@ -89,7 +89,12 @@ standards look like in its medium.
     bug door alone — a re-doored wish takes no preemption.
   - Re-fire the door mid-work the moment the work is
     about to create a surface or state its door doesn't grant: STOP, reclassify, continue by the right
-    door.
+    door. When the re-door creates a surface or state that did not exist when the lanes opened, the same
+    re-check **re-runs the independence edges against every rolling lane (SPEC INV-131)** — the new surface
+    can collide with a sibling that was independent a moment ago; a new edge pulls the re-doored lane back
+    to serial (waiting behind the lane it now shares a surface with) with a board line, so the departures
+    board never asserts a stale independence after the ground moved. The integration re-fence [INV-39]
+    still catches the collision at landing; this closes the board's observability gap, not a new net.
   - **A declared mockup-first entry condition is honoured from the row, cancelled only by name (SPEC
     INV-43).** A story whose intake said "show me first, then build" carries the condition WRITTEN in
     its queue row ("entry: mockup-first"); a later general "go build" moves priority, never the

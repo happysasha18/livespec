@@ -3443,3 +3443,26 @@ log), and matrix M-271 under the communicator block. Red-first: `test_withdrawal
 red against the pre-delta tree, then green; full suite 533 green. Door: feature; kind: skill; footprint:
 single-module (communicator node). Delegation: none — judgment-dense wiring across spec, index, architecture,
 matrix, and skill on one node; proposed senior / chosen senior. SPEC v1.1.6, communicator 1.0.7, pack 1.1.6.
+
+## 2026-07-12 (session 40) — a mid-work re-door rebuilds the independence graph (row 286, INV-131, prover F7)
+
+**What.** Prover finding F7: a lane re-doored to feature mid-work [INV-16] can create a surface overlapping a
+rolling sibling, but the parallel-lanes independence graph [INV-49] was not rebuilt, so the departures board
+kept saying "independent" after it stopped being true. INV-131 makes the same mid-work re-check re-run the
+independence edges against every rolling lane; a new edge pulls the re-doored lane back to serial (waiting
+behind the lane it now shares a surface with) with a board line, so the board never asserts a stale
+independence after the ground moved.
+
+**Why this is an observability fix, not a new safety net.** The integration re-fence [INV-39] already caught
+such a collision at landing, so correctness was never at risk — the gap was that the board lied between the
+re-door and the landing. The clause is honest about this: it closes the observability gap (the board tells
+the truth the moment the edge appears, not only when two landings collide), and it does NOT introduce an
+automatic independence checker — the spec's existing "the senior judges independence and says so aloud" line
+stands, the re-door named only as the moment that judgement is owed again.
+
+**Homes.** New invariant INV-131 (the mid-work re-door clause is its home, in the door section), its
+Formal-index row, build-pipeline's door re-fire (v1.0.20), and matrix M-272 under the build-pipeline block.
+Red-first: `test_redoor_independence_rebuild` (4 assertions) red against the pre-delta tree, then green; full
+suite 537 green. Door: feature; kind: skill; footprint: single-module (build-pipeline node). Delegation:
+none — judgment-dense wiring across spec, index, architecture, matrix, and skill on one node; proposed
+senior / chosen senior. SPEC v1.1.6, build-pipeline 1.0.20, pack 1.1.6.
