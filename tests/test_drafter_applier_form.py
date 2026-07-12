@@ -25,6 +25,21 @@ class TestDrafterApplierForm(unittest.TestCase):
         self.assertIn("still moved at two rows an hour", body)
         self.assertIn("[T-18, INV-39, INV-49]", body)
 
+    def test_standing_self_verify_list(self):
+        """Row 263: the drafter brief carries a standing self-verify list for the
+        suite's cross-reference laws, walked before handoff."""
+        body = read_flat(HOME)
+        self.assertIn(
+            "walks a standing self-verify list against the suite's cross-reference laws", body
+        )
+        self.assertIn("index density (every new INV anchor gets its Formal-index row)", body)
+        self.assertIn(
+            "owning node (every new anchor's node stands in ARCHITECTURE.md's owns-list)", body
+        )
+        self.assertIn(
+            "matrix-row-under-owner (every new M-row sits under its owning node)", body
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

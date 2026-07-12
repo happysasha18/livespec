@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.10
+  version: 1.0.11
 ---
 
 # build-pipeline — ship a change by the method
@@ -395,7 +395,11 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   **The drafter-applier pipeline is the standard colliding-rows form (SPEC INV-49):** on colliding rows
   the penless DRAFT stage overlaps the current landing: a drafter worker at the judgment tier prepares the
   next row's exact edit strings with self-verified needles while the applier lands the current row under
-  the pen. The landing order stays declared and the numbers follow it. This form ran live 2026-07-12, the
+  the pen. Before handoff the drafter walks a standing self-verify list against the suite's cross-reference
+  laws — index density (every new INV anchor gets its Formal-index row), owning node (every new anchor's
+  node stands in ARCHITECTURE.md's owns-list), and matrix-row-under-owner (every new M-row sits under its
+  owning node) — so the draft catches these suite-enforced cross-references itself, sparing the applier a
+  red-first STOP the drafter's own read could have closed. The landing order stays declared and the numbers follow it. This form ran live 2026-07-12, the
   night the law batch serialized on the spec/matrix/version chain and still moved at two rows an hour
   [T-18, INV-39, INV-49].
 - **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
