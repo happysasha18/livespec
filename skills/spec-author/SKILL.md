@@ -106,6 +106,12 @@ stopped being read — which kills a spec).
 
 This is the shape `product-prover` is tuned to read, and the one a human will actually keep open.
 
+## Shipped docs state each requirement impersonally
+
+A shipped product doc — the spec, the test matrix, the README, a skill card — is read by everyone the project reaches: a contributor, an auditor, a future user, you in three months. Write each requirement as three plain parts: the rule, the actor as a role (the user, the producer, the target user), and the reason it holds. The reason is load-bearing and stays; the personal attribution drops, and a dated decision keeps the date as a plain anchor and drops the name — "chosen 2026-07-06 for a cold-start reader" carries what the next reader can act on, where a person's name carries nothing they can.
+
+For that reason, personal attribution and candid process voice have one home: the local-only diaries, the JOURNAL and NEXT_STEPS, which no publish ships. Who decided a thing, and a session's own frank notes about how it went, belong there — the shipped clause carries the rule and its reason, the diary carries the story. Write the shipped clause impersonally from the first draft rather than scrubbing names at publish time; the publish floor is the backstop, not the author. (Born of a shipped spec that had accumulated many owner attributions over months, found in a 2026-07-12 audit — SPEC INV-118.)
+
 ## The spine — what every spec must CONTAIN (not its section order)
 
 The spine is a completeness checklist rather than a table of contents. The DOCUMENT is organized use-case-first

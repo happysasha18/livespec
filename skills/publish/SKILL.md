@@ -58,6 +58,7 @@ project applies the line through its own queue); and NOTHING secret or unshareab
 the tree AND history swept for secrets, tokens, personal paths and data, and every bundled fixture or
 sample checked shareable (no copyrighted material we may not republish). (The sweep items entered from
 the first eval run, 2026-07-05 — the bare arm knew them and the skill didn't; evals cut both ways.)
+Shipped docs speak impersonally: every requirement in the spec, matrix, README, or skill card reads as the rule, the actor as a role (the user, the producer, the target user), and the reason — the rationale stays, the personal name drops, and a dated decision keeps the date as a plain anchor while the name comes off; personal attribution and candid process voice stay in the local-only diaries (JOURNAL, NEXT_STEPS), which no publish ships (SPEC INV-118). The publish walk reads the shipped docs for a stray personal name before the deposit leaves; the mechanical enforcement — a lint that reports each offending file:line, red-proven on a fixture — lands with the shipped-artifact language gate (roadmap row 275), and this floor states the duty the lint holds.
 
 | Kind (SPEC T-16) | The publication additionally owes |
 |---|---|
