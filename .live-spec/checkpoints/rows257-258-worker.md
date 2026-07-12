@@ -137,8 +137,31 @@ dependency, flagged by the draft itself (§258.8) with a fallback (anchor on INV
 after it) if 257 is not yet landed. Since lane 1 lands first in this walk, the intended anchor should
 exist; verify post-lane-1 text before applying lane 2's index insert, per the brief.
 
+### Pre-check per the orchestrator's message: does 258's draft carry the same ARCHITECTURE.md gap?
+
+Yes, same shape as lane 1, but NOT ambiguous. The draft's own DELTA section states plainly: "Owner
+node = product-prover (it owns the pass whose findings the gate routes), so the matrix row sits in
+the `[node: product-prover]` block." No block among 258.1-258.8 edits ARCHITECTURE.md. Following the
+orchestrator's instruction, added `INV-114` to ARCHITECTURE.md:42's `product-prover` node Owns column
+proactively (before running the full suite), plus a `:168` pin for the new restructure-merge-gate
+paragraph, alongside the existing three pins.
+
 ### Status
-NOT STARTED — begins after lane 1 lands and commits.
+DONE, 2026-07-12 ~03:1x. All five drafted edits (258.2 spec clause, 258.3 product-prover home, 258.4
+build-pipeline home, 258.5 formal-index row, 258.6 matrix row) applied exactly as drafted, zero
+content deviation. Plus the ARCHITECTURE.md addition above (not in the draft's declared write-set,
+added per the orchestrator's instruction).
+
+- RED FIRST: confirmed. `tests/test_restructure_merge_gate.py` run alone against the pre-lane-2 tree
+  failed all 4 tests before any edit.
+- Version bumps: VERSION 1.0.30->1.0.31, plugin.json lockstep, build-pipeline SKILL.md 1.0.8->1.0.9,
+  product-prover SKILL.md 1.0.1->1.0.2, PRODUCT_SPEC.md header v1.0.22->v1.0.23.
+- `tests/test_restructure_merge_gate.py` run alone after edits: 4 passed.
+- FULL SUITE after edits (ARCHITECTURE.md fix applied proactively, before the first full-suite run):
+  `python3 -m pytest tests/` -> 422 passed, 0 failed. No unpredicted red this lane — the traceability
+  gap that stopped lane 1 was headed off by adding the owning-node edit alongside the drafted edits.
+- Prover short form: docs/prover/2026-07-12-row258-restructure-merge-gate.md, 0 must-fix, with a line
+  recording the same-shape gap and the proactive fix.
 
 ## LANE 3 — bookkeeping (row 260 split + row 261 add)
 
