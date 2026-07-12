@@ -17,7 +17,7 @@ import subprocess
 import tempfile
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 SCAFFOLD = os.path.join(ROOT, "scaffold", "guardrails")
 CLEAN = os.path.join(ROOT, "tests", "fixtures", "scaffold_guardrails", "host-clean")
 

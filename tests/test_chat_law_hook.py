@@ -15,7 +15,7 @@ import os
 import subprocess
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 SCRIPT = os.path.join(ROOT, "scripts", "chat-law-hook.sh")
 INSTALLER = os.path.join(ROOT, "scripts", "install-session-hooks.sh")
 

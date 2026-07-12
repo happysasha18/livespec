@@ -11,16 +11,10 @@ import os
 import re
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT, read_flat
 
 LANDED = re.compile(r"\*\*landed (20\d\d-\d\d-\d\d)")
 BINDS_FROM = "2026-07-12"
-
-
-def read_flat(rel):
-    """The file's text with whitespace collapsed, so wrapped lines match needles."""
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
-        return " ".join(f.read().split())
 
 
 class TestDelegationLineLaw(unittest.TestCase):

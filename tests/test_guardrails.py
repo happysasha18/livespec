@@ -16,7 +16,7 @@ import subprocess
 import tempfile
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 GUARDRAILS = os.path.join(ROOT, "guardrails")
 
 

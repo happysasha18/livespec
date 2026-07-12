@@ -12,7 +12,7 @@ import tempfile
 import time
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT, read
 RENDERER = os.path.join(ROOT, "scripts", "onboarding-card.py")
 BASE = os.path.join(ROOT, "skills", "live-spec-base", "SKILL.md")
 HOST_PROFILE = os.path.join(ROOT, ".live-spec", "profile.md")
@@ -42,11 +42,6 @@ FIXTURE_HOST_MULTILINE = """# Host profile (test fixture, multi-line entries)
   certification, wrapped across three physical lines to prove the
   join` — recorded 2026-07-10 (fixture).
 """
-
-
-def read(rel):
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
-        return fh.read()
 
 
 def visible_keys():

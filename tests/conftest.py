@@ -9,6 +9,20 @@ import tempfile
 
 import pytest
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def read(rel):
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        return f.read()
+
+
+def read_flat(rel):
+    """The file's text with whitespace collapsed, so wrapped lines match needles."""
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        return " ".join(f.read().split())
+
+
 _PREFIXES = ("livespec-test-", "row241-host-")
 
 

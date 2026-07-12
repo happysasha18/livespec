@@ -11,13 +11,7 @@ verified by deed at its own repo).
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def read_flat(rel):
-    """The file's text with whitespace collapsed, so wrapped lines match needles."""
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
-        return " ".join(f.read().split())
+from conftest import ROOT, read_flat
 
 
 class TestConvergenceRule(unittest.TestCase):

@@ -16,7 +16,7 @@ import re
 import subprocess
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 SCRIPT = os.path.join(ROOT, "scripts", "clock-hook.sh")
 
 

@@ -45,3 +45,62 @@ red tests now pass, nothing else broke.
 ### Status
 Prose + tests + version landed. Addendum appended to docs/audit/2026-07-12-composition-walk.md, draft
 closed. Commit next.
+
+### Commit + self-reference note
+Committed as 94f0a3f, then amended once to fill the addendum's `<commit>` placeholder with that hash
+-> the amend itself produced a new hash, 94f206b (amending changes the tree, which always changes the
+hash — a self-referential hash inside a commit's own content cannot converge by construction). Content
+commit hash: **94f206b**. The addendum's printed hash (94f0a3f) is one generation stale by this
+unavoidable git mechanic; recorded here as the authoritative pointer. Not chasing further amends.
+
+### DEVIATION — Lane 1 landed as two commits, not one
+After the content commit (94f206b), the full suite went to `1 failed, 421 passed`:
+tests/test_guardrails.py::TestGateA_ProverRecord::test_real_repo_passes red — the M-6 push-gate
+freshness check I had just amended correctly detected that PRODUCT_SPEC.md changed with no docs/prover/
+record newer than it (the newest prior record, a30a299, predates this lane's spec edit). This is the
+gate working as designed, not a content defect; the pre-commit "full suite green" check (422 passed,
+run before staging) is what the lane's own instruction gated on. Resolving it requires a committed
+docs/prover/2026-07-12*.md record — writing one and folding it into 94f206b via a second amend would
+have re-broken the addendum's self-referential hash a second time, so instead landed it as a second
+commit: **866f47c** — docs/prover/2026-07-12-composition-fixes-fold.md, short form per the row233-worker
+precedent (0 must-fix, 0 should-clarify, citing the composition-walk audit + full-pass-pre-1.1.0 as
+prior records). Full suite re-verified green after: 422 passed. check-prover-record.sh: OK.
+Lane 1 final commits: 94f206b (content) + 866f47c (prover record).
+
+## Lane 2 — test-helper extraction (compaction-pass audit, C1)
+
+### Write-set
+- tests/conftest.py (ROOT, read, read_flat added — plain module-level functions, not fixtures)
+- 36 test files carrying a local ROOT line: local ROOT/read/read_flat defs deleted, replaced with
+  `from conftest import ROOT[, read][, read_flat]` per file
+- docs/audit/2026-07-12-compaction-pass.md ("C1 landed <commit>" note appended)
+
+### Classification (mechanical, verified byte-exact before touching)
+- ROOT line: identical in all 36 files (`ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))`) — one grep -u pass confirmed a single variant.
+- read_flat: byte-identical in all 20 files carrying it (docstring + body diffed to one variant via awk dedup).
+- read (plain): byte-identical in 8 of the 9 files carrying a function named `read` (one file used
+  `fh` instead of `f` as the context-manager variable — behaviourally identical, extracted).
+- **Deviation from the literal "read" merge**: tests/test_norm_conformance_law.py's `read(rel)` is
+  NOT the same function — it whitespace-normalizes via `re.sub(r"\s+", " ", ...)`, a distinct
+  semantic (kin to read_flat but without split()'s implicit strip). This is a same-named,
+  different-bodied function, not a duplicate. Left it in place, untouched; only its ROOT line was
+  replaced with an import. Merging it into the shared `read` would have silently changed its
+  behavior (and every other file's `read`), so it was excluded from extraction by design, not
+  overlooked — flagged here since the brief's "byte-identical semantics" instruction is exactly
+  the check that ruled this file out.
+
+### Mechanism
+Wrote a one-off Python transform (regex-matched the exact ROOT line and the exact read_flat/read
+function bodies, deleted them, inserted the equivalent `from conftest import ...` line) and ran it
+across all 36 files in one pass; `python3 -m py_compile tests/*.py tests/conftest.py` confirmed no
+syntax breakage before running the suite.
+
+### Full suite after extraction
+`python3 -m pytest -q --tb=short` -> `422 passed in 35.67s` — same count as Lane 1's post-fix
+baseline; no test body was touched, only the helper-definition lines, so no behavior change
+expected or observed.
+
+### No version bump
+Test-internal refactor only; no PRODUCT_SPEC.md, plugin.json, or VERSION touch — matches the
+lane's instruction, and (bonus) means Lane 2 does not re-trigger M-6's prover-freshness gate the
+way Lane 1 did.

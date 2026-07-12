@@ -9,12 +9,7 @@ the two homes: the spec clause and the publish skill's floor.
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def read(rel):
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
-        return f.read()
+from conftest import ROOT, read
 
 
 class TestMadeWithAttributionLaw(unittest.TestCase):

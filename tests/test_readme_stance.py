@@ -12,13 +12,7 @@ live-spec, when BMAD…" critique block, before "## Known issues".
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def read_flat(rel):
-    """The file's text with whitespace collapsed, so wrapped lines match needles."""
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
-        return " ".join(f.read().split())
+from conftest import ROOT, read_flat
 
 
 class TestReadmeStanceParagraph(unittest.TestCase):

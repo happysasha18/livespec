@@ -12,7 +12,7 @@ import json
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 NORMS_DIR = os.path.join(ROOT, "docs", "norms")
 NORMS_MANIFEST = os.path.join(ROOT, "scripts", "norms-manifest.json")
 LINT = os.path.join(ROOT, "scripts", "preshow-register-lint.py")

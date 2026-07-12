@@ -10,13 +10,7 @@ both homes: the spec's skill-behaviour paragraph and the guide's "When to run th
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def read_flat(rel):
-    """The file's text with whitespace collapsed, so wrapped lines match needles."""
-    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
-        return " ".join(f.read().split())
+from conftest import ROOT, read_flat
 
 
 class TestCatchupDiscriminator(unittest.TestCase):

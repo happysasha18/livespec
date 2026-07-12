@@ -5,7 +5,7 @@ and queue rows it points at; an open leg is never dropped, only stated tersely."
 import os
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from conftest import ROOT
 CAP = 100
 
 
