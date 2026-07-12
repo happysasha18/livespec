@@ -23,15 +23,32 @@ BINDS_FROM_DATE = "2026-07-12"      # the day the footprint read became law
 BINDS_FROM_TIME = (17, 1)          # INV-128 (row 259) landed ~17:01 that day
 ENFORCED_DOORS = ("feature", "refactor")
 
+# The cutoff-day feature/refactor rows that landed BEFORE the impact-analysis station
+# became law (INV-128, commit d1bb6c4, 2026-07-12 17:07) and so carry no footprint note by
+# right. Each carries no ~HH:MM stamp, so a bare timestamp cannot place it before or after the
+# law — its landing ORDER does, read from the commit that added its landed status, every one
+# earlier than d1bb6c4:
+#   row 242 — 270edb6 (2026-07-12 02:20)   ·   row 274 — 0692931 (2026-07-12 10:39)
+#   row 275 — 48204a8 (2026-07-12 11:00)   ·   row 276 — 0cfa0d7 (2026-07-12 10:48)
+# A cutoff-day feature/refactor row with no time that is NOT in this pinned pre-law set is
+# treated as REQUIRED (fail-closed), so a forward no-time row can no longer silently escape.
+PRE_LAW_NO_TIME_ROWS = frozenset({"242", "274", "275", "276"})
 
-def _required(date, hm):
-    """A feature-or-refactor row owes a footprint note once the impact-analysis
-    station was law. Later dates always owe it; on the cutoff day only rows stamped
-    at or after INV-128's landing time owe it (rows before it predate the read)."""
+
+def _required(date, hm, rownum=None):
+    """A feature-or-refactor row owes a footprint note once the impact-analysis station was
+    law. Later dates always owe it; on the cutoff day a stamped row owes it iff stamped at or
+    after INV-128's landing time. A cutoff-day row with NO parseable time no longer escapes on
+    the missing time alone: it is placed by its landing ORDER — exempt only when it is one of
+    the pinned genuinely-pre-law rows, otherwise required (fail-closed)."""
     if date > BINDS_FROM_DATE:
         return True
-    if date == BINDS_FROM_DATE and hm is not None and hm >= BINDS_FROM_TIME:
-        return True
+    if date == BINDS_FROM_DATE:
+        if hm is not None:
+            return hm >= BINDS_FROM_TIME
+        # No parseable time: place the row by its landing ORDER, not the absent stamp — exempt
+        # only when it is one of the pinned genuinely-pre-law rows, otherwise required.
+        return rownum not in PRE_LAW_NO_TIME_ROWS
     return False
 
 
@@ -78,12 +95,13 @@ class TestFootprintNoteLaw(unittest.TestCase):
                 date = m.group(1)
                 hm = (int(m.group(2)), int(m.group(3))) if m.group(2) else None
                 cells = line.split("|")
+                rownum = cells[1].strip() if len(cells) > 1 else ""
                 status = next((c for c in cells if re.search("landed", c, re.IGNORECASE)), "")
                 d = DOOR.search(status)
                 door = d.group(1).lower() if d else ""
                 if door not in ENFORCED_DOORS:
                     continue
-                if not _required(date, hm):
+                if not _required(date, hm, rownum):
                     continue
                 self.assertRegex(
                     status,
@@ -92,6 +110,23 @@ class TestFootprintNoteLaw(unittest.TestCase):
                 )
                 checked += 1
         self.assertGreater(checked, 0, "no forward-landed feature/refactor rows found to scan")
+
+    def test_missing_time_cutoff_day_row_does_not_escape(self):
+        """A cutoff-day feature/refactor row with no ~HH:MM stamp no longer escapes the footprint
+        requirement on the missing time alone. A forward (not-pre-law) no-time row is REQUIRED
+        (fail-closed); the pinned genuinely-pre-law rows stay exempt; after the cutoff day every
+        row is required regardless of time (SPEC INV-134's mechanism, hardened)."""
+        # a forward cutoff-day no-time row (not in the pre-law set) is required — the escape closed
+        self.assertTrue(_required(BINDS_FROM_DATE, None, "999"),
+                        "a forward no-time cutoff-day feature/refactor row must not silently escape")
+        # each pinned genuinely-pre-law row stays exempt (landed before INV-128's commit)
+        for pre_law in sorted(PRE_LAW_NO_TIME_ROWS):
+            self.assertFalse(_required(BINDS_FROM_DATE, None, pre_law),
+                             "a genuinely-pre-law no-time row (%s) must stay exempt" % pre_law)
+        # a stamped cutoff-day row still keys off its time; after the day, always required
+        self.assertTrue(_required(BINDS_FROM_DATE, (17, 1), "999"), "17:01 cutoff-day row is required")
+        self.assertFalse(_required(BINDS_FROM_DATE, (2, 20), "999"), "an early stamped row is exempt")
+        self.assertTrue(_required("2026-07-13", None, "999"), "after the cutoff day, always required")
 
 
 if __name__ == "__main__":

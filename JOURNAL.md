@@ -2,7 +2,15 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
-## 2026-07-12 ~20:40 (build-worker, session 42) — INV-132's heading-tag check widened for numeric and multi-feature ids (ROADMAP row 296, M-273)
+## 2026-07-12 ~20:48 (build-worker, session 42) — INV-134's footprint check no longer lets a cutoff-day no-time row escape (ROADMAP row 297, M-275)
+
+**What:** the footprint-note check treated a cutoff-day (2026-07-12) feature/refactor row with no `~HH:MM` stamp as time-None → not-required, so a post-law row that omitted both its time and its footprint note escaped unseen. The missing-time case now keys off the row's landing ORDER: a no-time cutoff-day feature/refactor row is required (fail-closed) unless it is one of the pinned genuinely-pre-law rows.
+
+**Why not blanket fail-closed:** four real cutoff-day rows carry no time and no footprint note — 242, 274, 275, 276 — and all landed BEFORE INV-128 became law, so they owe no note by right. Blanket fail-closed would have wrongly reddened them. I verified each is pre-law by the commit that added its landed status, every one earlier than INV-128's landing commit d1bb6c4 (2026-07-12 17:07): row 242 @ 270edb6 (02:20), 274 @ 0692931 (10:39), 275 @ 48204a8 (11:00), 276 @ 0cfa0d7 (10:48). Those four are pinned exempt (documented with their SHAs in the test); every other no-time cutoff-day row is required. This is the task's "key off landing SHA/order rather than a bare timestamp" — the order settles what the absent timestamp cannot.
+
+**Red-first:** `test_missing_time_cutoff_day_row_does_not_escape` went red against the escape-open `_required` (a forward no-time row `_required("2026-07-12", None, "999")` returned False — the escape), green after the fail-closed-unless-pinned fix. The real-file scan still passes, confirming the four pre-law rows stay exempt and every forward row carries its note. The escape is same-day only — after 2026-07-12 every feature/refactor row is required regardless of time — so the window this closes is nearly shut, but the floor is now honest.
+
+
 
 **What:** the H3 heading-tag recognizer in `tests/test_scenario_heading_tag.py` accepted only `[feature: F-<lowercase>]`, so a heading validly tagged `[feature: F-12]` (a numeric id) or `[feature: F-a, F-b]` (several features) was read as untagged and reddened as a forgotten scenario tag. The recognizer now reads `F-[a-z0-9-]+(?:\s*,\s*F-[a-z0-9-]+)*` — numeric ids and comma-separated multi-feature tags both count as validly tagged; a truly untagged/unmarked H3 still reddens.
 
