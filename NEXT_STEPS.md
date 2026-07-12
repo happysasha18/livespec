@@ -15,7 +15,8 @@ communicator 1.0.5, spec-author 1.0.3. Next free codes: INV-124, M-265 (read the
 **THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
 - **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the
   Done-when's "under ~500" is arithmetically unreachable by this extraction alone (the 22-rules core is
-  ~423 lines). **OWNER-CALL owed:** accept ~565, OR a follow-up row splits the 22-rules core. Recommend accept.
+  ~423 lines). **His call 2026-07-12: chase it** — the under-500 target is now row 280 (thin the 22-rules
+  core, a heavy sub-block to a second references/ file, no rule cut). 266's register extraction is complete.
 - **Row 270** — the derive-before-fork law is live; leg 3 ("row 259's station cites INV-121") is
   WIRED INTO row 259's Done-when and closes when 259 lands.
 - **Row 260b** — the code-compaction law is live; its first real pass fires at the NEXT milestone audit
@@ -84,6 +85,6 @@ grant (INV-112; grant-ask template at scripts/grant-ask.md).
   swept · one lane one commit · README paragraphs via clean writer (INV-84) · the leave-walk
   before any machine sleep (INV-95) · every landed row's status cell carries its delegation
   line (INV-103, suite-checked) · landings close their checkpoints (INV-107) · a rewrite that
-  removes substance lists every removal (INV-109) · drafter briefs get the self-verify trio
-  until row 263 lands it durably (index density · owning node · matrix-under-owner).
+  removes substance lists every removal (INV-109) · the drafter self-verify list (index density ·
+  owning node · matrix-under-owner) is now DURABLE in the drafter-applier law (row 263 landed s39).
 - Machine: caffeinate KILLED at s37 close (~04:27); re-arm it at the next night batch.
