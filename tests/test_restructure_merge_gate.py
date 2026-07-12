@@ -62,6 +62,11 @@ class TestRestructureMergeGateLaw(unittest.TestCase):
             for line in f:
                 if line.startswith("| INV-114 |"):
                     self.assertIn("delta", line)
+                    self.assertTrue(
+                        line.rstrip().endswith("| Catch-up |"),
+                        "INV-114 index Section cell must read Catch-up, "
+                        "the section the clause lives in (prover F1, 2026-07-12)",
+                    )
                     return
         self.fail("INV-114 index row missing")
 
