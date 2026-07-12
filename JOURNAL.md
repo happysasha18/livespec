@@ -3094,3 +3094,45 @@ landing: 231 split (its core half waits his word on alignment moments), 234 rout
 pipeline as a five-story surface. Drafts for 233/239/240 wait on disk under checkpoints/. The
 worker fleet: five opus drafters, ten sonnet appliers, two extraction hands — every landing's
 delegation line is in its queue row, as the new law demands.
+
+## Session 37 — the audit that shipped 1.1.0 (2026-07-12 ~01:30 – ~04:27)
+
+The Fable seat opened on a /loop word: work NEXT_STEPS to empty, delegate everything, standing
+push grant. Session 36's mode carried the whole night unchanged — opus drafts, sonnet applies,
+the orchestrator briefs and accepts — and the queue emptied through it. The pending drafts
+landed first: row 233 stopped the moment the formal-index density test met the INV-109/M-247
+reservation (a reserved number and a dense index cannot coexist; the orchestrator lifted the
+reservation, codes now consume in landing order, 233 renumbered to INV-109/M-247), then 239/240,
+then 242 — whose prose came from a fresh clean writer and whose landing gate h correctly blocked
+until the paragraph got its M-250 string pin. Row 250 closed as a duplicate of row 223 by an
+opus analysis with no build. Row 247 landed the inbox remote arm with one orchestrator call (the
+stable settings path over the session-scoped installation URL) and one leg left honestly open —
+the first real remote deposit is Alexander's browser click, never self-certified. The inbox
+swept three wishes into rows 257-260, among them Alexander's live design-principles wish (entry
+impact analysis over spec+architecture+code, footprint-proportional routing, per-project-kind
+process modularity, tests as part of the set, periodic compaction) — a deep-thinking architect
+drafted the fourteen-principle set (P0-P12), rendered to his browser for comments. Rows 257/258
+landed after both drafts missed the same ARCHITECTURE.md owning-node edit — the applier's
+red-first pass caught each, and the twice-seen class became row 263 (a standing self-verify list
+for drafter briefs). Row 260 split into 260a/260b as the bundle it was.
+
+Then the 1.1.0 audit ran end-to-end by delegation: the full prover pass (0 must-fix; its three
+should-fixes folded the same hour with a ratchet test pinning the index's Section column), the
+minor-gate walk, the once-read-rules sweep (clean), the delegation de-dup (7 duplicate clusters,
+3 divergences between playbook and pack — row 262, his word owed), the composition walk — whose
+one must-fix was the method catching its own contradiction: M-6 ordered a prover re-check before
+every push while the hours-old INV-112 ordered a remote seat to push an inbox file with no
+prover; the inbox-only carve-out plus three scope clauses landed before the gate — the skill
+evals re-run (7/7 green on fresh behavioural arms), the skill-creator craft sweep (zero
+must-fix), the first code compaction pass (the shared test-read helpers extracted to
+tests/conftest.py, 36 copies deleted, same 422 green), and the deferred-trigger rescan (row 192
+fired, row 260's premise died). 1.1.0 shipped on the standing grant: single push, CI read green,
+installed copies and mirrors synced (over the night: build-pipeline 1.0.5→1.0.10, communicator
+1.0.3→1.0.4, product-prover 1.0.1→1.0.3 — the A-7 lines). Skill/pin version alignment stayed
+deliberately open per row 231's half that waits his word.
+
+WHY it matters: the whole MINOR audit — five judgment passes, three fix batches, a bump — ran
+with the orchestrator's hands touching only briefs, acceptances, and two design calls; and the
+method caught its own drafts three times (index density, owning node twice) plus its own
+push-law contradiction the same night the conflicting law was born, before the first remote
+seat could ever hit it.

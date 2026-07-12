@@ -1,62 +1,63 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~01:27, session 36's handoff point — resume COLD from here)
-Night batch: SIXTEEN rows landed and pushed this session (248, 249, 218, 219, 252, 222, 223,
-224, 253, 254, 255, 225, 227, 228, 226, 256 — HEAD a5afd2e), suite 400 green, CI green on every
-push, installed copies synced after each. The working MODE this session built (keep it):
-Opus DRAFTER prepares row N+1's exact edit strings while a Sonnet APPLIER lands row N; the
-orchestrator only briefs and accepts (now pipeline law, M-242; routing reminder in the chat hook;
-delegation line mechanically checked, M-241). Orchestrator model: next session opens on OPUS
-(.claude/settings.local.json pins it; his ~00:31 word, Fable weekly near its cap).
+## LIVE STATE (2026-07-12 ~04:27, session 37's close — resume COLD from here)
+**1.1.0 SHIPPED** (7a78ae8 + the s37 closing commit; suite 422 green; CI read green on every
+push; installed copies and mirrors synced). The night landed rows 233, 239, 240, 242, 247, 257,
+258, closed 250 as a duplicate of 223, swept three wishes into rows 257-260, split 260 into
+260a/260b, added rows 261-269, and ran the FULL MINOR audit (five passes, records under
+docs/audit/2026-07-12-*), folding its findings the same night: the prover's three should-fixes
+(with a ratchet on the index's Section column), the composition walk's must-fix (M-6's
+inbox-only carve-out against INV-112) plus three scope clauses, and the C1 test-helper
+extraction (tests/conftest.py). Working mode KEPT: opus drafts / sonnet applies / the
+orchestrator (Opus seat by default, settings pin stands) briefs and accepts; every landed row's
+status cell carries its delegation line. Morning report DELIVERED in s37 chat (~04:30) — if his
+answers came in another window, sweep them by name below.
 
-1. **READY TO APPLY, drafts on disk** (brief a sonnet applier per delta; the row-225 brief is the
-   shape; versions: read live values +0.0.1; every landed row's status cell needs its delegation
-   line — the suite checks it):
-   - row 233 → `.live-spec/checkpoints/pending-draft-row233.md` (INV-110, M-248);
-   - rows 239+240 → `.live-spec/checkpoints/pending-draft-rows239-240.md` (INV-111/112,
-     M-249/250; 239 STRICTLY before 240 — 240's anchors sit on 239's text).
-2. **Then rows 242 and 236**: read each in ROADMAP, opus-draft (same drafter brief shape as the
-   239/240 round; STOP rule for surface/bundle/blocked), sonnet-apply, land. Next free numbers
-   after 240: INV-113, M-251 (INV-109/M-247 stay RESERVED for row 231a).
-3. **Then the two surface rows**: 250 (prover cross-cutting sweep — the declared-laws station,
-   INV-101, may cover part; de-dup first) and 247 (inbox-over-GitHub grant model; CLOUD FACTS
-   below feed it). Full pipeline each.
-4. **Then the 1.1.0 audit** (the MINOR gate list in the spec + the convergence pass, row 217, +
-   the once-read-rules walk item — INV-108's first sweep — + the playbook/base delegation de-dup
-   he flagged). A lens grew this session (the declared-laws station), so the FULL prover pass is
-   re-armed by the prover's own record law. HIS GRANT stands (~00:35): audit clean ⇒ bump 1.1.0
-   and push without waiting for morning. Mirrors: run scripts/sync-mirrors.sh after the bump.
-5. **Waiting his word (morning report items)**: row 231a — the version-alignment moments beyond
-   MAJOR (INV-109 reserved); row 231's F5 branch protection = his one GitHub click; rows 191/193
-   picks · D-6/D-7 · row 238; the prover-freshness midnight-rollover ledger entry — recommended
-   AGREED NON-PROBLEM, his word owed; the INV-24 homing observation (shopfront prose dates ride
-   the stale-claim net — one sentence candidate, row-223 record).
-6. **Routed, not tonight's work**: row 234 = surface bundle (five stories, per-lane resume-file
-   structure) — full pipeline with a story split, sequenced with rows 215/206; row 231c
-   (skill-description polish trio) = clean-writer road, its own small row.
-7. Blocked/waiting on others: row 243 (README ↔ articles) waits the campaign; row 241 open leg
-   (track-coach attaches the four checks) runs in THEIR window. Field legs with him: 47/96 · 54 ·
-   165 · 168 · 134/141 · 143 · 144 · 140 · 117 · 129 · 133.
-8. Morning report owes: the estimate-vs-actual settle (promised «малые закрою, два крупных — как
-   пойдёт»), the night's row list with one-line outcomes, the asks from item 5, and the
-   delegation-savings summary (every landing carries its line — read them from ROADMAP).
+1. **Waiting HIS word (the morning asks; relay on resume if unanswered)**:
+   - the ARCHITECT PRINCIPLES draft (fourteen principles, P0-P12) — rendered page opened in his
+     browser; his comments route into row 259's pipeline run;
+   - row 262: delegation de-dup, two OWNER-DECIDES (does the playbook keep any parallel copy;
+     where the concrete task-list lives); the three divergences are listed in
+     docs/audit/2026-07-12-delegation-dedup.md;
+   - row 261: GitHub Issues as the strangers' wish door — DECIDE, no build yet;
+   - row 247's open field leg: one REAL remote deposit from his browser (claude.ai/code) closes
+     it; never self-certified (INV-94);
+   - row 231's two halves: F5 branch protection (his one GitHub click) and the skill/pin
+     version-alignment moments beyond MAJOR (the 1.1.0 bump left skill versions unaligned
+     deliberately; INV-115 next free if it mints);
+   - row 217's two human-held gaps (F4 standing anchor guard policy; F5 as above);
+   - carried from before: rows 191/193 picks · D-6/D-7 · row 238 · the prover-freshness
+     midnight-rollover ledger entry (recommended AGREED NON-PROBLEM, his word owed) · the INV-24
+     homing observation (row-223 record).
+2. **Next build work (new session, cold)**: row 259 (SURFACE, full pipeline with story split) —
+   the entry impact-analysis station; working material: .live-spec/checkpoints/
+   pending-design-principles-architect-draft.md + the archived wish's two addenda + his
+   comments; then row 192 (activated 2026-07-12: scenario entry/exit contracts — its own
+   movement); then the smalls 260a, 260b, 263, 264, 265, 266, 267, 268, 269 (opus-draft →
+   sonnet-apply; row 263 FIRST is cheap and protects every later draft: the drafter self-verify
+   list — index density, owning node, matrix-under-owner).
+3. **Blocked/waiting on others**: row 243 (README ↔ articles) waits the campaign; row 241 open
+   leg runs in track-coach's window. Field legs with him: 47/96 · 54 · 165 · 168 · 134/141 ·
+   143 · 144 · 140 · 117 · 129 · 133.
+4. Next free codes: read the live Formal index before minting (INV-115/M-254 were free at s37
+   close); codes consume in landing order — reservations are dead (s37, row 233's lesson).
 
-## CLOUD FACTS (settled 2026-07-10; feed row 247)
+## CLOUD FACTS (settled 2026-07-10; row 247 landed the law, its field leg open)
 A remote-agent request from a local session FALLS BACK to a local worktree; real cloud sessions
 fire only from HIS browser (claude.ai/code). Bridge = brief-in-repo or brief-in-prompt; the
 branch returns through git; integrated only when its FILE is on main and read to the end.
-Local sub-agents never appear in his browser list (INV-67).
+Local sub-agents never appear in his browser list (INV-67). The remote inbox arm: one new
+inbox/ file per deposit, per-repo grant in the host profile, honest failure names the missing
+grant (INV-112; grant-ask template at scripts/grant-ask.md).
 
 ## Standing habits (always-on)
-- `date` before ANY stamp; chat leads use the prompt hook's wall clock, never extrapolation
-  (drift recurred this session mid-turn — leads ran ahead until the fences caught them; the
-  ledger's owned entry, occurrence appended).
+- `date` before ANY stamp; chat leads use the prompt hook's wall clock, never extrapolation.
 - No self-certification (INV-94) · no calques · plain words, codes trail (INV-28) · every ask
   hears its time range, landings settle estimate vs actual (INV-93) · a delegated run's verdict
-  is the suite log's tail (INV-80) · NOW/NEXT current, heartbeat + detached-work START/beats/DONE
-  (INV-35 tightened) · push walk reads the CI verdict itself — now law (INV-106) · inbox swept ·
-  one lane one commit · README paragraphs via clean writer (INV-84) · the leave-walk before any
-  machine sleep (INV-95) · every landed row's status cell carries its delegation line (INV-103,
-  suite-checked) · landings close their checkpoints (INV-107).
-- Machine: caffeinate holds the laptop awake (kill it when the night ends); hooks + installs run
-  by the agent's own hand, said aloud (trust.self-install, his 2026-07-11 ~23:30 word).
+  is the suite log's tail (INV-80) · push walk reads the CI verdict itself (INV-106) · inbox
+  swept · one lane one commit · README paragraphs via clean writer (INV-84) · the leave-walk
+  before any machine sleep (INV-95) · every landed row's status cell carries its delegation
+  line (INV-103, suite-checked) · landings close their checkpoints (INV-107) · a rewrite that
+  removes substance lists every removal (INV-109) · drafter briefs get the self-verify trio
+  until row 263 lands it durably (index density · owning node · matrix-under-owner).
+- Machine: caffeinate KILLED at s37 close (~04:27); re-arm it at the next night batch.
