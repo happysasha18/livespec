@@ -3177,3 +3177,46 @@ code-compaction pass fires at the next milestone audit (the 1.1.0 audit already 
 
 **Not yet pushed** — the batch is committed locally and the prover record clears the push gate, but the
 eleven-row batch waits on his OK before it goes to main.
+
+## 2026-07-12 (session 40) — a confirmed bug drives a class hunt before it closes (row 281, INV-124)
+
+**The wish.** From the tlvphotos window: Alexander's standing frustration that friends' bugs cluster in
+roughly the same district of the product, visit after visit, because each report gets its one instance
+fixed and the siblings right next to it are left standing — so the next friend trips over the next one. A
+point fix looks done and is not; the class is never swept. His instruction: when one bug is caught, look
+for ALL the look-alikes, look at the architecture, check the specs, and talk to the human when the class
+boundary needs a read.
+
+**What landed.** A new invariant, INV-124: a confirmed bug is not closed on its single instance; before it
+is called done the method drives four moves — (1) name the defect abstractly and actively SEARCH every
+surface for the un-seen siblings, fixing all in the same change; (2) check the architecture for a
+structural cause (a boundary drawn wrong or left silent) and update ARCHITECTURE.md when there is one; (3)
+check the spec — a spec silent on or under-describing the broken behaviour is the real defect, fixed first
+so the prover can flag it, then the code lands under it; (4) escalate to the human when the class boundary
+needs his read. The four moves are the bug door's close condition, so a point fix that leaves the siblings
+standing is a status, never a landing (INV-26).
+
+**Where it lives.** Four homes, one fact each: the F-bug spec clause + Formal-index row (INV-124);
+build-pipeline's bug entry (the four moves at the bug door, v1.0.15); product-prover's class lens (the
+former "Sibling instances" lens widened from the document sweep to the three questions — same kind
+elsewhere · architecture accounts for it · spec describes it — v1.0.4); and base rule 14, sharpened from
+"fix the class you already see" to "go FIND the class not yet seen" plus the escalate line (live-spec-base
+v1.0.7, all working-skill base-version pins lockstepped). This is the wish's own worked example turned into
+law: the exhibition's pinch-zoom bug, where naming the class — a browser zoom desyncing the scroll animator,
+guarded on only some gestures — turned one report into five live siblings, all real and all fixed together.
+
+**Why base rule 14 needed the sharpening.** The old rule already said "search the whole repo and every
+surface," so move 1 was partly present — but it read as sweeping the class you already recognise. The wish
+asked for the active hunt: name the KIND abstractly and go looking for the siblings you have NOT seen yet.
+The three added moves (architecture, spec, escalate) were genuinely new: the architecture check catches a
+structural cause a code fix would paper over; the spec check generalizes the spec-under-describes-composition
+lesson (a prover cannot catch what the spec never states) to every bug; the escalate line names when to
+stop and ask rather than guess the class boundary.
+
+**Method notes.** Door: feature; kind: skill. Red-first proven — `tests/test_class_hunt.py` (7 assertions)
+written against the pre-delta repo tree, run RED (the repo skill copies and M-265 lacked the strings), then
+green after the four homes + matrix + owns-list landed. Suite 497 green (490 + 7). Prover cross-link short
+form (INV-61, small skill-kind delta): 0 must-fix — `docs/prover/2026-07-12-s40-inv124-class-hunt.md`.
+Delegation: none — a law edit spanning eight homes with cross-reference precision (Formal index, owning
+node, matrix row under owner); routing override logged (mechanical by tier, senior-held for the pack-tree
+git-contamination risk + the eight-home precision, as rows 260b/270). SPEC v1.1.1, pack 1.1.1.

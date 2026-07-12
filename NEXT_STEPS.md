@@ -1,6 +1,19 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~13:49, session 39 close — resume COLD from here)
+## LIVE STATE (2026-07-12 ~15:40, session 40 — closing the remaining list on his word "делаем всё подряд, закончим сегодня")
+**s40 IN PROGRESS — landing the remaining list.** Row 281 LANDED (INV-124, the class-hunt law from the
+tlvphotos inbox wish): a confirmed bug drives four moves before it closes — find the un-seen siblings,
+check the architecture, check the spec, escalate to the human — homed in the F-bug spec clause,
+build-pipeline bug entry, product-prover class lens, and base rule 14 (sharpened). Red-proven
+(`tests/test_class_hunt.py`, 7 assertions), suite 497 green, prover short-form 0 must-fix
+(`docs/prover/2026-07-12-s40-inv124-class-hunt.md`). Versions: SPEC v1.1.1, pack 1.1.1, base 1.0.7,
+build-pipeline 1.0.15, product-prover 1.0.4. Next free codes: INV-125, M-266. Inbox swept clean (wish
+archived). STILL IN THIS SESSION's list: row 280 (register thinning), F3-F7 → rows, rows 279/262/261
+(owner-decides, applying recommended defaults), row 192 (scenario contracts), row 259 (blocked on his
+design-principles comments OR proceed on the draft). Two items physically on HIM: one real remote deposit
+from his browser (row 247 field leg), and row 259's design-principles comments.
+
+## LIVE STATE (2026-07-12 ~13:49, session 39 close — superseded, kept for the open legs below)
 **s39 CLEARED the buildable smalls backlog: ELEVEN rows landed (263, 273, 269, 264, 265, 266, 267,
 268, 270, 260a, 260b) + row 280 queued (266's under-500 follow-up) + a delta-scoped prover record;
 suite 490 GREEN, PUSHED to main (49d84e0..a2b3edd), CI read GREEN.** Every row red-first proven, one

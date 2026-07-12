@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.14
+  version: 1.0.15
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.6), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.7), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -79,10 +79,20 @@ standards look like in its medium.
     prototype, outside prod and unshown as product.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
-  also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (born of the row 220 audit: one-line fixes touching spec-backed literals shipped without same-session doc sync, 2026-07-10; SPEC INV-104). **The reported defect is a sample
-  of its class (base rule 14):** before calling it done, name the pattern, grep the repo for it, check the
-  visible text of every user-facing surface, and fix all siblings in the same change — the matrix row and
-  the red-on-bug test cover the CLASS, beyond the single instance. **A RECURRING bug re-doors to feature:**
+  also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (born of the row 220 audit: one-line fixes touching spec-backed literals shipped without same-session doc sync, 2026-07-10; SPEC INV-104). **A confirmed bug drives a class hunt before it closes (SPEC INV-124) —
+  four moves, not one:** (1) name the defect abstractly (the KIND of mistake — a scope too narrow, a
+  missing guard, an assumption that holds in one place and fails in the neighbour), then actively SEARCH
+  every surface where that kind could live and fix all siblings in the same change — the search goes
+  finding the siblings not yet seen, the matrix row and the red-on-bug test covering the CLASS beyond the
+  single instance (base rule 14); (2) check the architecture — a structural cause (a boundary drawn wrong
+  or left silent, a node owning what it should not) updates ARCHITECTURE.md in the same change, a cluster
+  in one district reading as an architecture smell; (3) check the spec — a spec silent on or
+  under-describing the broken behaviour is the real defect, fixed FIRST so the prover can flag it, then
+  the code fix lands under it (the spec-under-describes-composition lesson, generalized); (4) escalate to
+  the human when the class boundary needs his read — which behaviours are one class, what the intended
+  design was, whether a whole area wants a rethink — the method stops and asks rather than guessing the
+  boundary. The four moves are the bug door's close condition; a point fix that leaves the siblings
+  standing is a status, never a landing (SPEC INV-26). **A RECURRING bug re-doors to feature:**
   a second bug in the same area within ~30 days is not another patch — the area is missing an INVARIANT,
   so it escalates to the full pipeline from step 1 (spec the invariant, re-prove, then fix under it).
   The journal is how you notice: before taking any bug, grep JOURNAL.md for the area's name and check

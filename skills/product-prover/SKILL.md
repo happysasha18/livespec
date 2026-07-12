@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 1.0.3
+  version: 1.0.4
 ---
 
 # Product Prover
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.6), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.7), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -264,11 +264,17 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
 - **Dependency reality** — when the spec relies on something external, what if it's unavailable, delayed, or returns something unexpected?
 - **Reference integrity** — when the spec uses identifiers or pointers, what if the referent is missing, has changed, or is shared?
 - **Surface authority** — when an operation creates, modifies, or removes an object of some category, is there another component in the system that the document mentions or implies should be the authoritative management surface for that category? If yes, does this operation publish to it, register with it, or otherwise keep that authoritative surface complete? Fire this lens ONLY when the document itself provides clear evidence of a competing authoritative surface — do not speculate about phantom components or assume authorities that are not stated. When in doubt, stay silent rather than produce a finding.
-- **Sibling instances** — when a lens above (or any phase) surfaces a defect at one spot, treat it as a
-  sample of a class (base rule 14): before writing the finding, sweep the whole document for the same
-  pattern — the same wording, the same structure, the same omission — in every other section and surface,
-  and write ONE finding that names the class and lists every instance found. Do not stop at the first point you hit.
-  A point finding on a class defect sends the author on the same sweep you skipped.
+- **Class lens** — when a lens above (or any phase) surfaces a defect at one spot, treat it as a
+  sample of a class (base rule 14; SPEC INV-124) and ask its three questions before writing the finding.
+  First, does the same KIND live elsewhere: sweep the whole document for the same pattern — the same
+  wording, the same structure, the same omission — in every other section and surface, and write ONE
+  finding that names the class and lists every instance found; do not stop at the first point you hit, a
+  point finding on a class defect sends the author on the same sweep you skipped. Second, does the
+  architecture account for the defect's cause, or does a boundary drawn wrong or left silent let the class
+  exist — a structural cause is a finding against ARCHITECTURE.md, not only the instance. Third, does the
+  spec describe the broken behaviour at all — a spec silent on it or under-describing its composition is
+  the real defect the finding names, since a prover cannot catch what the spec never states. The three
+  questions are the document-side face of the confirmed-bug class hunt (SPEC INV-124).
 - **Persistence and versions** — when the system persists anything beyond the session (localStorage, files, caches, saved preferences), what happens when state written by an OLDER version meets the current code and UI? Is the stored shape partial, orphaned by a removed feature, or read on reopen into a UI that no longer matches it? Is there a defined migrate / ignore / clear rule? (This is the family of "reopened the widget and it looked broken" — persisted state auto-restoring into a changed surface.)
 - **Unwritten seams** — for every stateful surface, do not settle for the axes the author remembered to fill; derive the surface's reachable situations yourself and check each for a written answer. Walk every axis it passes through while already shown (view, mode, tier, viewport, reopen — a relayout when the window changes shape re-runs an entry animation nobody composed), and — the axis authors forget most — every other surface that can be present at the same time: siblings on its screen, the surface one step before and one step after it in the flow, whether or not that other surface itself holds state (a static end screen counts). For each situation ask: is this surface's behaviour stated while that other one is present, or through that change? A reachable situation with a blank answer is a finding, of the same class as a fact no node owns — a state the spec leaves out while the running product still reaches it. Report the missing seam; the prover invents no answer and asks the human nothing — the author writes the sentence as a composition invariant, `[default]`-tagged like the facet sweep (SPEC INV-72, C-1, INV-18, INV-31; born of a real door: a caption stranded over the closing screen because "what the caption shows when the finale is in view" was never a sentence). [INV-72]
 - **Unbacked surfaces and unlabelled sketches** — when the document (or the build it describes) exposes a user-facing surface, does a spec clause back it? A surface the spec marks [target] / "not yet specified" that nonetheless exists in the build, an exploratory sketch wired into or linked from a prod surface, or anything shown to the human as product without having walked the pipeline is the finding — the build must never contain what the spec doesn't name (SPEC INV-16, INV-17, E-17; this is the family of "the hand-built room shown as if shipped").
