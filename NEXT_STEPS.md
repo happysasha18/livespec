@@ -1,17 +1,32 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~04:27, session 37's close — resume COLD from here)
-**1.1.0 SHIPPED** (7a78ae8 + the s37 closing commit; suite 422 green; CI read green on every
-push; installed copies and mirrors synced). The night landed rows 233, 239, 240, 242, 247, 257,
-258, closed 250 as a duplicate of 223, swept three wishes into rows 257-260, split 260 into
-260a/260b, added rows 261-269, and ran the FULL MINOR audit (five passes, records under
-docs/audit/2026-07-12-*), folding its findings the same night: the prover's three should-fixes
-(with a ratchet on the index's Section column), the composition walk's must-fix (M-6's
-inbox-only carve-out against INV-112) plus three scope clauses, and the C1 test-helper
-extraction (tests/conftest.py). Working mode KEPT: opus drafts / sonnet applies / the
-orchestrator (Opus seat by default, settings pin stands) briefs and accepts; every landed row's
-status cell carries its delegation line. Morning report DELIVERED in s37 chat (~04:30) — if his
-answers came in another window, sweep them by name below.
+## LIVE STATE (2026-07-12 ~09:46, session 38 — resume COLD from here)
+**1.1.0 shipped (s37); s38 added two method laws, suite 401 green, four commits LOCAL (pushed
+if the s38 push ran — check `git log origin/main..main`).** s38 work, all by the drafter-applier
+pipeline (opus drafts / sonnet applies / Opus orchestrator briefs+accepts):
+- **Branch protection** set by API on the PUBLIC repos (live-spec, track-coach, product-prover):
+  force-push and deletion blocked, direct pushes still allowed, admins not enforced. This closes
+  the F5 branch-protection half of row 231 without his click. Private repos (tlvphotos,
+  exhibition-engine) need a paid plan — left undone, his call.
+- **Row 272 landed (INV-115)** — the full-pass doc-compaction step now states his compaction rule
+  verbatim (a fact lives once, in one home; remove only redundancy; keep anything whose removal
+  changes meaning or understanding; per-item judgment, the index-flatten finding its worked proof).
+- **Row 271 landed (INV-116)** — the product-prover runs over ARCHITECTURE.md at both the M-1
+  milestone gate and the M-6 push gate; guardrails/check-prover-record.sh gained an ARCHITECTURE.md
+  freshness block; matrix M-255; two red-first tests.
+- **Fresh prover record** over spec + architecture committed (5349964): Ready, 0 must-fix; the
+  architecture was proved this pass (discharging INV-116). Two small non-blocking findings queued
+  as row 273 (F-arch-1 seam row, F-arch-2 record-table drift).
+- **A "for fun" prover pass over the spec** (before the two landings) found seven real items,
+  captured in `.live-spec/checkpoints/2026-07-12-prover-spec-findings.md`, NOT yet roadmap rows:
+  F1 + F2 are silent-corruption seams in the concurrency model (session-token tie-break with no
+  token; a compute-bound worker declared dead) — the NEXT big movement, his priority word welcome.
+  F3-F7 are lighter (trigger cadence, tag-symmetry, critical-on-any-door, withdrawn-decision loop,
+  mid-work re-door independence).
+- **GitHub Issues as the stranger wish-door (row 261)** — recommendation recorded to DEFER (open
+  repo spam + response obligation, no signal yet); wait a first real contribution case. His word
+  still formally closes the row.
+Morning s37 asks below stand unless his answers came in another window — sweep by name.
 
 1. **Waiting HIS word (the morning asks; relay on resume if unanswered)**:
    - the ARCHITECT PRINCIPLES draft (fourteen principles, P0-P12) — rendered page opened in his
