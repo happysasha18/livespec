@@ -219,11 +219,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
    **Every new or carved node passes a three-question fitness test at its birth (SPEC INV-122):** can it be
    tested alone · does a real second place need it · can it and its neighbour be worked in parallel without
-   queuing on shared files — three yes answers make the node right, two no answers make it premature. The
+   queuing on shared files — three yes answers make the node right, a single no is a flag to answer (name the plan that turns it to a yes, or fold the carve back), and two or more no make it premature. The
    test's first home is here, the architecture step, where new abstractions are born; a carve that fails it
    is folded back into its caller until a real second need or a real testability gain arrives. Its second
    home is product-prover, extending the speculative-node flag: a node with one caller and no promised
-   second is flagged. (Born of the six-principle design wish, principle 7, 2026-07-12.)
+   second is flagged for that answer (the one-no case), never auto-rejected. (Born of the six-principle design wish, principle 7, 2026-07-12.)
 
    Re-carving the whole node map IS legal: it arrives as a restructure placement's own queue row (SPEC
    INV-37), walks this step, and is re-proven like any structure change. A placement may SAY the shape no
@@ -369,9 +369,11 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   audit + a surface-composition check. Fix holes by the book; record the rest. The gate also runs
   **code compaction as a station beside doc compaction (SPEC INV-123):** duplicate logic merges, dead weight
   leaves with its listing (INV-109), a ripened abstraction is extracted only through the three-question
-  fitness gate (INV-122), and each pass locks its reached level with a test or lint (rows 216-218). The
+  fitness gate (INV-122), and each pass locks its reached level with a test or lint where newly reached, else the existing suite that holds it green (rows 216-218). The
   station has a second trigger beyond this gate — the second occurrence of the same problem (base rule 19)
-  compacts it the moment it recurs, not only at the milestone.
+  opens the duplication's own compaction row that moment (rule 19's owner), not only at the milestone; the
+  row lands through the ordinary pipeline (one row's delta, INV-39; a known duplication never blocks its
+  lane, INV-56), rather than an instant in-place fix.
 - **Process bookkeeping scales to the delta (SPEC INV-61):** the pre-push re-check keeps its rigor and
   scales its FORM — a small delta (skill/prose/infra kind, no new surface, no structure change) ships a
   three-line SHORT-FORM record (previous records clean · the delta in one line · the verdict). A
