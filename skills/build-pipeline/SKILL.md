@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.18
+  version: 1.0.19
 ---
 
 # build-pipeline — ship a change by the method
@@ -460,7 +460,10 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   collide only at integration pre-roll isolated build stages with the landing order DECLARED at claim
   (first-declared lands first, the later re-fences). Tiny rows ride serial — parallel pays only when
   build stages dominate the pen work — and the chosen set, the order, and a said-aloud "serial by the
-  graph" are board lines.
+  graph" are board lines. The same queue-take also re-scans every deferred row's revisit trigger against
+  the current moment (SPEC INV-129): a time-bound trigger can come true and lapse between two milestone
+  gates, so the milestone re-scan is not its only reader — a fired trigger returns its row to the runnable
+  head right then, so a deferred wish never waits on a trigger nobody reads whichever cadence comes first.
 
   **The drafter-applier pipeline is the standard colliding-rows form (SPEC INV-49):** on colliding rows
   the penless DRAFT stage overlaps the current landing: a drafter worker at the judgment tier prepares the

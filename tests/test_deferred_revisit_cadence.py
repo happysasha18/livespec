@@ -1,0 +1,53 @@
+"""Deferred rows are revisited at every queue-take, not only at milestones — INV-129 (row 282, prover F3).
+
+A deferred row carries a revisit trigger [T-8]; a time-bound one ("before the next release", "when the
+campaign ships") can come true and lapse between two milestone gates, so the milestone re-scan [M-1] read
+the triggers too rarely. The fix states a second cadence: at every queue-take the session re-scans each
+deferred row's revisit trigger, and a fired trigger returns its row to the runnable head [INV-49] right
+then — the same triggers read by the same rule at both cadences, so a deferred wish never waits on a
+trigger nobody reads [INV-1], whichever comes first. Homes: the queue-take clause + build-pipeline's
+queue-take walk. String level, matrix M-270.
+"""
+
+import os
+import unittest
+
+from conftest import ROOT, read_flat
+
+
+class TestDeferredRevisitCadence(unittest.TestCase):
+    def test_spec_clause_stands(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "Deferred rows are revisited at every queue-take, not only at milestones",
+            spec,
+        )
+        self.assertIn("[INV-129]", spec)
+
+    def test_spec_states_both_cadences(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in (
+            "at every queue-take the session also re-scans each deferred row's revisit trigger",
+            "a fired trigger returns its row to the runnable head",
+            "a deferred wish never waits on a trigger nobody reads",
+        ):
+            self.assertIn(needle, spec, needle)
+
+    def test_formal_index_row(self):
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-129 |"):
+                    self.assertIn("queue-take", line.lower())
+                    return
+        self.fail("INV-129 Formal-index row missing")
+
+    def test_build_pipeline_carries_the_queue_take_rescan(self):
+        bp = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn(
+            "re-scans every deferred row's revisit trigger against the current moment (SPEC INV-129)",
+            bp,
+        )
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

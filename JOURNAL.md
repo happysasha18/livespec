@@ -3398,3 +3398,26 @@ the extended `test_adversarial_verify_option` red against the pre-delta build-pi
 525 green. Prover record with the Fable fold:
 docs/prover/2026-07-12-s40-inv46-audit-trigger-broadened.md. A register-lint catch on a shout-cap in the
 spec prose ("MEANING") was fixed the same landing. SPEC v1.1.6, build-pipeline 1.0.18, pack 1.1.6.
+
+## 2026-07-12 (session 40) — deferred-row revisit at every queue-take (row 282, INV-129, prover F3)
+
+**What.** Prover finding F3: a deferred queue row carries a revisit trigger, and a time-bound one ("before
+the next release", "when the campaign ships") can come true and lapse in the gap between two milestone
+gates — the milestone re-scan [M-1] was the trigger's only reader, so the promise that no deferred row waits
+on a trigger nobody reads [INV-1] held only at milestone cadence. The fix names a second reader: at every
+queue-take the session re-scans each deferred row's revisit trigger against the current moment, and a fired
+trigger returns its row to the runnable head [INV-49] right then. The two cadences read the same triggers by
+the same rule, whichever comes first.
+
+**Why the taste fork went this way.** The finding offered two arms — add the queue-take cadence, or restrict
+the trigger vocabulary to milestone-safe conditions. A queue-cadence reader is strictly the more capable of
+the two (it keeps free-form, human-worded triggers working while closing the window), so restricting the
+vocabulary would have been a narrowing with no gain once the reader runs often enough. Chose the added
+cadence; the vocabulary stays free-form, noted in the clause.
+
+**Homes.** New invariant INV-129 (the queue-take clause is its home, beside the graph-picks-lanes paragraph),
+its Formal-index row, the build-pipeline queue-take walk (v1.0.19), and matrix M-270 under the build-pipeline
+block. Red-first: `test_deferred_revisit_cadence` (four assertions) red against the pre-delta tree, then
+green; full suite 529 green. Door: feature; kind: skill; footprint: single-module (the build-pipeline node).
+Delegation: none — the delta is judgment-dense wiring across spec, index, architecture, matrix, and skill on
+one node; proposed senior / chosen senior. SPEC v1.1.6, build-pipeline 1.0.19, pack 1.1.6.
