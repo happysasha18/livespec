@@ -3628,3 +3628,39 @@ v1.1.8→1.1.9, base 1.0.8→1.0.9 (pins lockstepped ×7), spec-author 1.0.6, te
 1.1.8→1.1.9. Full suite 562 green. Prover: CROSS-LINK 0 must-fix. Delegation (INV-103): proposed senior →
 chosen senior → why — the per-kind vocabulary, the founding-check format, and the seven-home wiring were the
 judgment; no mechanical grunt worth routing down.
+
+## 2026-07-12 (session 41) — the cross-cut counter (row 293, boundary-health mechanized)
+
+**What.** P6 of the fourteen-principle architect draft. The boundary-health law (INV-128) already states
+the bar — a right node boundary keeps a typical request in one node — and the signal — repeated
+cross-cutting landings on the same node pair mean the boundary sits in the wrong place — and it deferred
+the mechanical half. This builds it: `guardrails/crosscut_counter.py` reads the closed queue's
+cross-cutting landings, counts per unordered node pair how many cross-cutting changes touched both nodes,
+and flags a pair reaching the threshold (3 by default) as a boundary-move candidate for the MINOR audit —
+the mechanized "seen twice, own it" (base rule 19) applied to boundaries.
+
+**Advisory, not a gate.** The flag is an audit SIGNAL, never a per-push red: a boundary moves only through
+the architecture step and its re-prove (INV-37), so the counter's `__main__` exits 0 always and just prints
+the flagged pairs for the MINOR audit to weigh. No new invariant — this mechanizes the already-stated
+INV-128 boundary-health law and rides INV-37 for the re-carve, the derive-before-invent choice (INV-128
+itself named this counter as its follow-on).
+
+**Homes.** ARCHITECTURE's Boundary-health section now names the landed counter, its threshold, and its
+advisory nature (was a deferral sentence); build-pipeline's before-a-MINOR gate runs it. Red-first:
+`tests/test_crosscut_counter.py` (8 tests) — red as an ImportError before the module existed, then a
+synthetic queue proves the over-threshold pair is flagged, the below-threshold pair is not, and moving the
+threshold moves the line; the ROADMAP adapter reads cross-cutting rows. Run on the live queue the counter
+flags exactly `architecture <-> spec` (3 cross-cutting landings — the recent method-law rows, which by
+nature touch spec and architecture together), a true advisory reading the MINOR audit weighs.
+
+**Structural re-prove.** Because this touches the node-map's own law, the architecture was re-proven with
+the architecture lens (`docs/prover/2026-07-12-s41-crosscut-counter-architecture.md`, 0 must-fix, no new
+node or seam) and the ARCHITECTURE Prover-record table gained its dated row (INV-116). Swept live along the
+way: build-pipeline's INV-128 deferral note repointed — the footprint check (INV-134), the per-kind
+declaration (INV-135), and this counter marked landed, only the interface-test machinery still deferred
+(rule 4, pointers kept live).
+
+**Versions.** Door: feature; kind: infra; footprint: cross-cutting, HELD. build-pipeline 1.0.20→1.0.21,
+VERSION/plugin 1.1.9→1.1.10. No spec change (the law was already stated). Full suite green. Delegation
+(INV-103): proposed senior → chosen senior → why — the per-pair tally design, the advisory-not-blocking
+decision, and the architecture re-prove were the judgment; no mechanical grunt worth routing down.

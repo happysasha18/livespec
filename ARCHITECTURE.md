@@ -215,6 +215,7 @@ than trailing it.
 | 2026-07-10 | v1.0.x — M-1 milestone audit, architecture swept beside the spec | `docs/prover/2026-07-10-m1-audit.md` |
 | 2026-07-12 | v1.1.0 — FULL pre-1.1.0 milestone pass (M-1), architecture proved beside the whole spec | `docs/prover/2026-07-12-full-pass-pre-1.1.0.md` |
 | 2026-07-12 s38 | v1.1.0 — architecture proved at the push gate beside the spec, discharging INV-115/INV-116 (findings F-arch-1/F-arch-2 → row 273) | `docs/prover/2026-07-12-s38-inv115-inv116-and-architecture.md` |
+| 2026-07-12 s41 | v1.1.x — the cross-cut counter lands under the boundary-health law (row 293); architecture-lens re-prove, no new node or seam, 0 must-fix | `docs/prover/2026-07-12-s41-crosscut-counter-architecture.md` |
 
 ---
 
@@ -228,5 +229,11 @@ single-module. When requests repeatedly cut across the same several nodes — th
 cross-cutting footprint on the same node pair again and again — the boundary sits in the wrong place, and
 the recorded footprints are the evidence, not a hunch. A boundary moves only through the architecture step
 and its re-prove, as a restructure row [E-14, and INV-37 in the spec]; it never moves on a guess, and it
-never stays wrong in denial while the cross-cuts pile up. The cross-cut counter that flags a boundary for
-the MINOR audit is a follow-on row's mechanical half; this law states the bar and the signal.
+never stays wrong in denial while the cross-cuts pile up. The **cross-cut counter** mechanizes the signal:
+`guardrails/crosscut_counter.py` reads the closed queue's cross-cutting landings and counts, per unordered
+node pair, how many cross-cutting changes touched both nodes; a pair reaching the threshold (3 by default,
+tunable) is FLAGGED for the MINOR audit as a boundary-move candidate — the mechanized form of "seen twice,
+own it" (base rule 19) applied to boundaries. The flag is an audit SIGNAL, never a per-push red: the count
+is evidence the MINOR audit weighs, and the boundary still moves only through the architecture step and its
+re-prove [INV-37]. This law states the bar and the signal; the counter is the recorded footprints made
+countable.

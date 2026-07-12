@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""crosscut_counter — the boundary-health signal, mechanized (SPEC INV-128 boundary-health, INV-37 re-carve).
+
+The boundary-health law states the bar and the signal: a right node boundary keeps a typical request in
+one node, and repeated cross-cutting landings on the same node pair are the signal that a boundary sits in
+the wrong place (ARCHITECTURE.md, SPEC INV-128). This counter is the mechanical half INV-128 deferred to a
+follow-on row: it reads the closed queue's cross-cutting landings and counts, per unordered NODE PAIR, how
+many cross-cutting changes touched both nodes. A pair reaching the threshold within the window is FLAGGED
+for the MINOR audit as a boundary-move candidate — the mechanized form of "seen twice, own it" (base rule
+19) applied to module boundaries.
+
+The flag is an AUDIT SIGNAL, not a per-push red: a boundary moves only through the architecture step and
+its re-prove (SPEC INV-37), never on a hunch and never on a bare count. So the `__main__` runner exits 0
+always and prints the flagged pairs for the MINOR audit to weigh; it never blocks a push.
+
+Usage:  crosscut_counter.py [ROADMAP.md] [threshold]
+"""
+
+import itertools
+import re
+import sys
+
+DEFAULT_THRESHOLD = 3  # a pair cross-cut this many times is a boundary-move candidate; [default], tunable
+
+
+def count_pairs(landings, threshold=DEFAULT_THRESHOLD):
+    """landings: an iterable of node-sets, one per cross-cutting landing.
+    Returns {frozenset(pair): count} for every unordered node pair reaching the threshold."""
+    tally = {}
+    for nodes in landings:
+        uniq = sorted(set(nodes))
+        for a, b in itertools.combinations(uniq, 2):
+            key = frozenset((a, b))
+            tally[key] = tally.get(key, 0) + 1
+    return {k: c for k, c in tally.items() if c >= threshold}
+
+
+def flagged_pairs(landings, threshold=DEFAULT_THRESHOLD):
+    """The flagged pairs as a sorted list of (sorted-pair-tuple, count), highest count first."""
+    flagged = count_pairs(landings, threshold)
+    return sorted(
+        ((tuple(sorted(k)), c) for k, c in flagged.items()),
+        key=lambda kc: (-kc[1], kc[0]),
+    )
+
+
+def crosscut_landings_from_roadmap(text, known_nodes):
+    """Best-effort adapter for the real queue: for each landed row carrying a
+    `footprint: cross-cutting` note, collect the known node names named in its status cell. A row naming
+    fewer than two known nodes contributes no pair. This is ADVISORY input to the MINOR audit — a
+    cross-cutting note names its nodes in prose, not a structured field, so the auditor reads the flag and
+    weighs it, never a green/red gate."""
+    landings = []
+    for line in text.splitlines():
+        cells = line.split("|")
+        status = next(
+            (c for c in cells if re.search(r"footprint:\s*cross-cutting", c, re.IGNORECASE)),
+            None,
+        )
+        if status is None:
+            continue
+        named = {n for n in known_nodes if re.search(r"\b" + re.escape(n) + r"\b", status)}
+        if len(named) >= 2:
+            landings.append(named)
+    return landings
+
+
+# The pack's own node names, from ARCHITECTURE.md's node map — the known vocabulary for the adapter.
+PACK_NODES = [
+    "base-rulebook", "spec-author", "product-prover", "build-pipeline", "publish",
+    "communicator", "feedback-intake", "test-author", "attach", "inbox", "guardrails",
+    "templates", "skill-evals", "snapshot", "design-sync", "onboarding-card",
+    "spec", "architecture", "matrix",
+]
+
+
+def main(argv):
+    roadmap = argv[1] if len(argv) > 1 else "ROADMAP.md"
+    threshold = int(argv[2]) if len(argv) > 2 else DEFAULT_THRESHOLD
+    with open(roadmap, encoding="utf-8") as f:
+        text = f.read()
+    landings = crosscut_landings_from_roadmap(text, PACK_NODES)
+    ranked = flagged_pairs(landings, threshold)
+    if not ranked:
+        print("cross-cut counter: no node pair reached threshold %d — boundaries look healthy" % threshold)
+    else:
+        print("cross-cut counter: %d node pair(s) at or above threshold %d — boundary-move candidates for "
+              "the MINOR audit (SPEC INV-128, INV-37):" % (len(ranked), threshold))
+        for (a, b), c in ranked:
+            print("  %s <-> %s : %d cross-cutting landings" % (a, b, c))
+    return 0  # advisory only — never blocks a push
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.20
+  version: 1.0.21
 ---
 
 # build-pipeline — ship a change by the method
@@ -80,9 +80,10 @@ standards look like in its medium.
     the verdict derive-before-fork (SPEC INV-121) rests on. The footprint **re-classifies mid-work** the moment
     an edit reaches past its named layer (presentation → single-module, single-module → cross-cutting), the
     landing report recording footprint held or re-classified to X at step N — the sibling of the door's
-    mid-work re-fire below. (The mechanical `footprint:`-note suite check, the declared-module-interface and
-    interface-level test machinery, the per-kind concrete-layers declaration, and the cross-cut counter ride
-    the follow-on rows; this step states the read and the routing.)
+    mid-work re-fire below. (The mechanical `footprint:`-note suite check [INV-134], the per-kind
+    concrete-layers-and-proofs declaration [INV-135], and the cross-cut counter [INV-128 boundary-health,
+    `guardrails/crosscut_counter.py`] have landed; the declared-module-interface and interface-level test
+    machinery rides its own follow-on row; this step states the read and the routing.)
   - Tripwires decide by rule, ahead of judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
     · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
     casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the
@@ -424,7 +425,11 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
-  audit + a surface-composition check. Fix holes by the book; record the rest. The gate also runs
+  audit + a surface-composition check. The gate also runs the **cross-cut counter** (`guardrails/crosscut_counter.py`,
+  SPEC INV-128 boundary-health, INV-37): it counts the closed queue's cross-cutting landings per node pair,
+  and a pair reaching the threshold (3 by default) is flagged as a boundary-move candidate for the audit to
+  weigh — the flag is a signal, never a push-blocking red, and a boundary still moves only through the
+  architecture step and its re-prove. Fix holes by the book; record the rest. The gate also runs
   **code compaction as a station beside doc compaction (SPEC INV-123):** duplicate logic merges, dead weight
   leaves with its listing (INV-109), a ripened abstraction is extracted only through the three-question
   fitness gate (INV-122), and each pass locks its reached level with a test or lint where newly reached, else the existing suite that holds it green (rows 216-218). The
