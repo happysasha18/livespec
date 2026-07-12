@@ -15,6 +15,8 @@ appended (INV-46, high-stakes: surface-sized + a method/invariant meaning change
 - guardrails/pre-push + .github/workflows/gates.yml: gate i runs check-shipped-language.sh.
 - scripts/check-shipped-language.py: the gate's own machinery and prototype/ excluded from the scan.
 - scripts/shipped-language-allowlist.json: user-language data files + one authorship-byline name_waiver.
+- ARCHITECTURE.md guardrails node: the INV-120 pin note synced from "proven on fixtures only" to
+  "wired into pre-push (gate i) + CI mirror" (docs-travel sync, same landing).
 
 ## Findings
 
