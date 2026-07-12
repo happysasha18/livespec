@@ -1,34 +1,30 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~11:05, session 38 close — resume COLD from here)
-**1.1.0 shipped (s37); s38 landed SEVEN rows + a fresh prover record, suite 428 green, all
-PUSHED to main, CI read green.** Everything through the drafter-applier pipeline (opus drafts /
-sonnet applies / Opus orchestrator briefs+accepts); every landed row's status cell carries its
-delegation line. Last pushed commit 739214d.
+## LIVE STATE (2026-07-12 ~13:49, session 39 close — resume COLD from here)
+**s39 CLEARED the buildable smalls backlog: ELEVEN rows landed (263, 273, 269, 264, 265, 266, 267,
+268, 270, 260a, 260b) + a delta-scoped prover record, suite 490 GREEN, all COMMITTED locally —
+NOT YET PUSHED (awaiting his OK; push grant is standing but the batch is large, so a nod first).**
+Every row red-first proven, one lane one commit, every landed status cell carries its delegation
+line. New invariants: INV-121 (derive-before-fork), INV-122 (node fitness test), INV-123 (code
+compaction). Skills bumped: live-spec-base 1.0.6 (all seven working skills re-pinned), build-pipeline
+1.0.14, product-prover 1.0.3, communicator 1.0.5, spec-author 1.0.3. Last commit 035c914 + the prover
+record commit. Next free codes: INV-124, M-265 (read the live index before minting).
+
+**THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
+- **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the
+  Done-when's "under ~500" is arithmetically unreachable by this extraction alone (the 22-rules core is
+  ~423 lines). **OWNER-CALL owed:** accept ~565, OR a follow-up row splits the 22-rules core. Recommend accept.
+- **Row 270** — the derive-before-fork law is live; leg 3 ("row 259's station cites INV-121") is
+  WIRED INTO row 259's Done-when and closes when 259 lands.
+- **Row 260b** — the code-compaction law is live; its first real pass fires at the NEXT milestone audit
+  (the 1.1.0 audit already ran at s37, before the law existed).
+
+**Carried from s38 (still true):** branch protection set by API on the public repos; prover findings
+F3-F7 still open (not yet rows); the earlier morning asks (below) stand unless answered elsewhere.
 - **Branch protection** set by API on the PUBLIC repos (live-spec, track-coach, product-prover):
   force-push + deletion blocked, direct pushes allowed, admins not enforced. Closes the F5 half of
   row 231 without his click. Private repos (tlvphotos, exhibition-engine) need a paid plan — his call.
-- **Row 272 (INV-115)** — the full-pass doc-compaction step states his compaction rule verbatim
-  (a fact lives once, in one home; remove only redundancy; keep anything whose removal changes
-  meaning; per-item judgment). **Row 271 (INV-116)** — the prover runs over ARCHITECTURE.md at the
-  M-1 and M-6 gates; check-prover-record.sh gained an ARCHITECTURE.md freshness block; matrix M-255.
-- **Inbox swept** — three wishes (from track-coach x2, tlvphotos x1) harvested into rows 274-276,
-  files removed. Then all three BUILT this session:
-- **Row 277 / F1 (INV-117)** — every session mints a stable identity at its start; the parallel-lanes
-  pen tie-break orders on it; the inbox source-mark is its projection. Fixes a silent-corruption seam.
-  **Row 278 / F2 (INV-76 amended)** — the worker-death verdict needs a stale heartbeat as a third
-  signal (worker touches its checkpoint ~60s); a busy compute-bound worker is never declared dead.
-  Both F1/F2 came from the s38 for-fun prover pass; both now FIXED and prover-confirmed non-colliding.
-- **Row 274 (INV-118)** — shipped docs state requirements impersonally (rule + role-actor + reason;
-  dated decision keeps the date, drops the name); the pack's own attribution-heavy spec kept under a
-  dated exemption. **Row 275 (INV-120)** — a lint (scripts/check-shipped-language.py) holds the
-  English + no-personal-names line on shipped artifacts, proven on FIXTURES only, NOT wired to
-  live-spec's own tree (measured 126 own offences: 39 owner-name = provenance debt, 87 Cyrillic =
-  mostly a prototype sketch + fixtures). **Row 276 (INV-119)** — provenance + naming convention at
-  the instance→engine boundary (reconciliation-log framing, engine's own public-commit provenance,
-  neutral mechanism names).
-- **Two prover records** committed (5349964 for rows 271/272; 739214d for the F1/F2/274/275/276
-  batch): both Ready, 0 must-fix; architecture proved each pass (discharging INV-116).
+  (s38 landed rows 271/272/274/275/276/277/278 — detail in JOURNAL; all prover-confirmed, 0 must-fix.)
 - **GitHub Issues stranger-door (row 261)** — recommendation recorded to DEFER; his word still closes it.
 
 **OPEN / next:**
@@ -38,7 +34,7 @@ delegation line. Last pushed commit 739214d.
   exemption. Also the 274-fork A/B is this row.
 - **Prover findings F3-F7** (`.live-spec/checkpoints/2026-07-12-prover-spec-findings.md`) still open,
   NOT yet rows: trigger cadence, tag-symmetry, critical-on-any-door, withdrawn-decision loop, mid-work
-  re-door independence. **Row 273** (F-arch-1 seam row, F-arch-2 record-table drift) still queued.
+  re-door independence. (Row 273 LANDED s39: the seam row + record-table catch-up.)
 Morning s37 asks below stand unless his answers came in another window — sweep by name.
 
 1. **Waiting HIS word (the morning asks; relay on resume if unanswered)**:
@@ -57,20 +53,18 @@ Morning s37 asks below stand unless his answers came in another window — sweep
    - carried from before: rows 191/193 picks · D-6/D-7 · row 238 · the prover-freshness
      midnight-rollover ledger entry (recommended AGREED NON-PROBLEM, his word owed) · the INV-24
      homing observation (row-223 record).
-2. **Next build work (new session, cold)**: row 259 (SURFACE, full pipeline with story split) —
-   the entry impact-analysis station; working material: .live-spec/checkpoints/
-   pending-design-principles-architect-draft.md + the archived wish's two addenda + his
-   comments; then row 192 (activated 2026-07-12: scenario entry/exit contracts — its own
-   movement); then the smalls 260a, 260b, 263, 264, 265, 266, 267, 268, 269, 270 (270 = derive a
-   requirement from a proven artifact before offering the human a fork — track-coach's morning
-   deposit through the inbox door, swept ~08:35; the ask-never-guess twin) (opus-draft →
-   sonnet-apply; row 263 FIRST is cheap and protects every later draft: the drafter self-verify
-   list — index density, owning node, matrix-under-owner).
+2. **Next build work (new session, cold)**: the eleven smalls (263, 264, 265, 266, 267, 268, 269,
+   270, 273, 260a, 260b) are DONE (s39). Remaining: row 259 (SURFACE, full pipeline with story
+   split) — the entry impact-analysis station, BLOCKED on his design-principles comments; working
+   material: .live-spec/checkpoints/pending-design-principles-architect-draft.md + the archived
+   wish's two addenda + his comments. When 259 lands it MUST cite INV-121 (row 270's leg 3, now in
+   259's Done-when). Then row 192 (activated 2026-07-12: scenario entry/exit contracts — its own
+   movement).
 3. **Blocked/waiting on others**: row 243 (README ↔ articles) waits the campaign; row 241 open
    leg runs in track-coach's window. Field legs with him: 47/96 · 54 · 165 · 168 · 134/141 ·
    143 · 144 · 140 · 117 · 129 · 133.
-4. Next free codes: read the live Formal index before minting (INV-115/M-254 were free at s37
-   close); codes consume in landing order — reservations are dead (s37, row 233's lesson).
+4. Next free codes: INV-124, M-265 at s39 close — read the live Formal index before minting;
+   codes consume in landing order — reservations are dead (s37, row 233's lesson).
 
 ## CLOUD FACTS (settled 2026-07-10; row 247 landed the law, its field leg open)
 A remote-agent request from a local session FALLS BACK to a local worktree; real cloud sessions

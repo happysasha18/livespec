@@ -3136,3 +3136,44 @@ with the orchestrator's hands touching only briefs, acceptances, and two design 
 method caught its own drafts three times (index density, owning node twice) plus its own
 push-law contradiction the same night the conflicting law was born, before the first remote
 seat could ever hit it.
+
+## 2026-07-12 (session 39) — the buildable smalls backlog cleared: eleven rows, three new invariants
+
+**What:** eleven queued smalls landed in one serial-by-the-graph batch (the rows all collided on the
+shared spec/matrix/architecture, so parallelism bought nothing — INV-49's own "tiny rows ride serial"
+verdict, said aloud). In landing order: 263 (the drafter self-verify list made durable in the
+drafter-applier law — index density, owning node, matrix-under-owner), 273 (the `architecture → prove`
+seam row + the Prover-record table's append-duty and catch-up), 269 (the CI prover-freshness script's
+inbox-only carve-out, mirroring M-6's prose so an inbox deposit on a recordless day no longer reds CI),
+264 (behavioural-rule breaks route to one home, PROBLEMS.md, with the routing/delegation break logged
+there and rows 253/254/256 pointing back), 265 (the derived-doc header version policy — no frozen
+spec-version, point at VERSION, a dated Last-reconciled line; both headers reconciled), 266 (the
+communicator writing register extracted to `references/writing-register.md`, 679→565 lines), 267
+(spec-author judged INV-39's three statements KEEP-ALL-THREE, derived from the spec's own compaction
+clause that names it as the canonical reinforcement example), 268 (eval-craft: S1 a dated decision that
+the plain-words form of INV-27 is acceptable, S2 a delegation-forcing scenario variant, N1 the risen
+bare-arm floors folded), 270 (derive-from-a-proven-artifact-before-a-fork, the read-the-doc twin of
+ask-never-guess, INV-121), 260a (the three-question node fitness test, INV-122), 260b (compaction as a
+scheduled station for code as well as docs with its second trigger, INV-123).
+
+**New invariants:** INV-121 (derive-before-fork), INV-122 (node fitness test), INV-123 (code compaction),
+matrix rows M-261..M-264. INV-108 edited (one-home for behavioural breaks). Skills: live-spec-base 1.0.6
+(all seven working skills re-pinned to it), build-pipeline 1.0.14, product-prover 1.0.3, communicator
+1.0.5, spec-author 1.0.3. Delta-scoped prover pass, 0 must-fix (docs/prover/2026-07-12-s39-backlog-batch.md).
+Suite 490 green.
+
+**WHY it matters:** the backlog of "no owner word needed" smalls is the debt that quietly accretes between
+milestones; clearing it in one batch keeps the pack's own spec honest before the next feature movement
+(row 259, still blocked on his design-principles comments). Two of the rows are his own design-principles
+wish made real — the fitness test (P7) and the code-compaction station (P4-6) — so the pack now gates its
+own abstractions the way he asked, and the derive-before-fork law (born of a track-coach fork he corrected)
+is the discipline this very session ran on: rows 265 and 267 were both DERIVED from existing artifacts
+rather than forked to him.
+
+**Three honestly-flagged forward legs** (INV-26, restated in the resume file): row 266's "under ~500" is
+arithmetically unreachable by the register extraction alone (the 22-rules core is ~423 lines) — an owner
+call owed; row 270's leg 3 (row 259 cites INV-121) is wired into 259's Done-when; row 260b's first real
+code-compaction pass fires at the next milestone audit (the 1.1.0 audit already ran at s37).
+
+**Not yet pushed** — the batch is committed locally and the prover record clears the push gate, but the
+eleven-row batch waits on his OK before it goes to main.
