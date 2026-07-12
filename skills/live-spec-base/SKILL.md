@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-three rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.7
+  version: 1.0.8
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -43,11 +43,17 @@ a working skill still stands: its pointer here reads as plain advice.
    kept live — a doc superseded or moved gets every inbound reference repointed the same session. Two
    documents claiming authority over one fact is undefined behaviour when they disagree.
 
-5. **Mechanical work goes to a junior; judgment stays senior.** If the steps can be written precisely
-   (known edit strings, a known command, fan-out fact-gathering), a cheaper worker runs them — the cheapest
-   tier that can (one-shot → haiku; multi-step mechanical → sonnet; judgment/design → senior). The junior
-   pastes RAW output (command + exit code + failing lines) as it works; raw output is evidence, the
-   junior's prose is only a lead, and the senior spot-checks by re-running.
+5. **The lead orchestrates; each unit routes to the cheapest tier that passes its brief (SPEC INV-69).**
+   The lead — the orchestrator seat, whatever tier holds it — orchestrates, briefs, and accepts the work;
+   it does not do the grunt itself. Every unit of work is routed on its own merits, PER UNIT: the trigger
+   is judgment against mechanical, and the tier is PROPOSED for that unit — a one-shot with no decision to
+   haiku, multi-step mechanical work to sonnet, anything carrying judgment or design to the senior, and a
+   judgment step is never routed down. Size is a weak hint only, never the decider. The worker pastes RAW
+   output (command + exit code + failing lines) as it works; raw output is evidence, the worker's prose is
+   only a lead, and a worker's green is a lead the lead ACCEPTS by re-checking it, taken on trust never. A
+   large or high-stakes landing earns an independent fresh-context checker beyond that re-check (SPEC
+   INV-46). Every override of a proposed tier and every failed-acceptance escalation is logged, proposed
+   tier → chosen tier → why (SPEC INV-69).
 
 6. **Every long or delegated piece of work keeps a persistent checkpoint.** A file on disk (host home:
    `.live-spec/checkpoints/`, gitignored and kept inside the repo tree) holding done / in-progress / next,

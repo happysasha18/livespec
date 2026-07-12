@@ -3520,3 +3520,38 @@ capture echo rule 12 (v1.0.8), and matrix M-274 under the build-pipeline block. 
 Door: feature; kind: skill; footprint: single-module (build-pipeline node). Delegation: none — the fork
 choice and echo wording were the judgment; proposed senior / chosen senior. SPEC v1.1.6, communicator 1.0.8,
 pack 1.1.6.
+
+## 2026-07-12 (session 41) — delegation/routing rule de-duplicated: the pack side crisped (row 262)
+
+**What.** Base rule 5 in `skills/live-spec-base/SKILL.md` is rewritten as the ONE clear statement of
+delegation, anchored to the routing law SPEC INV-69. The settled rule now reads: the lead — the
+orchestrator seat, whatever tier holds it — orchestrates, briefs, and accepts, and does no grunt itself;
+every unit of work routes on its own merits, PER UNIT, the trigger being judgment against mechanical with
+size only a weak hint; the tier is PROPOSED (one-shot → haiku, multi-step mechanical → sonnet, judgment or
+design → senior, a judgment step never routed down); a worker's green is a lead the lead ACCEPTS by
+re-checking; a large or high-stakes landing earns an independent fresh-context checker (SPEC INV-46); every
+override of a proposed tier and every failed-acceptance escalation is logged, proposed → chosen → why. The
+raw-output-is-evidence clause is kept intact — base rule 13 points at it as its delegation face.
+
+**Why / what left.** Row 262's audit found the delegation rule stated in two homes (the pack and the
+personal cross-project playbook) with three divergent bars. Per base rule 4 (one home per fact) the pack's
+routing law is the normative home; the playbook's Delegation section was already collapsed to a pointer in
+its own repo, so this landing finishes the job on the pack side. The three superseded bars are gone from
+base rule 5: the numeric >3-files / >30s / edit-strings-known triggers (replaced by judgment-against-
+mechanical, size a weak hint), "default to the junior" (replaced by propose-per-unit, never default), and
+the one-per-session spot-check (replaced by accept-by-re-checking plus the fresh-context checker on
+high-stakes landings). OD-1 answered: the pack is the normative home outright. OD-2 answered: the standing
+junior task-list lives in the project's own ROADMAP/NEXT_STEPS, the playbook holding only cross-project
+principle.
+
+**No parallel restatement remains.** Grep confirmed no other pack file nor the personal profile
+(`~/.claude/live-spec/profile.md`) restates the full mechanism. build-pipeline's "Junior delegation"
+section elaborates the routing law as its own pipeline domain and points back to base rule 5 — that is the
+pack's by-design elaboration (the base header names it), not a second full statement, so it stays.
+
+**Homes / versions.** Base rule 5 (its one home); base skill 1.0.7 → 1.0.8 with the seven working-skill
+inherit-pins lockstepped; VERSION and plugin.json 1.1.6 → 1.1.7. Door: refactor; kind: prose; footprint:
+cross-cutting (the base rulebook plus its version/pin lockstep). No new spec code — INV-69 already carries
+its Formal-index row and its owning node (build-pipeline). Full suite 546/546 green. Delegation accounting
+(INV-103): proposed senior → chosen senior → why — prose judgment on the shared rulebook, no mechanical
+grunt worth routing down (the seven-pin lockstep was one inline sed).

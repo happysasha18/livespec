@@ -2630,3 +2630,41 @@ class TestPairLaw(unittest.TestCase):
         self.assertIn("the pack attaches to each, never to the pair", spec)
         self.assertIn("[feature: F-pair]", spec)
         self.assertIn("a producer wish crosses the seam", spec)
+
+
+class TestBaseRuleDelegation(unittest.TestCase):
+    """Row 262 (INV-69/INV-103): base rule 5 is the pack's ONE delegation statement,
+    anchored to the routing law INV-69, with the three superseded bars removed
+    (numeric >3-files/>30s/edit-strings-known triggers, default-to-the-junior, the
+    one-per-session spot-check). The playbook side was collapsed to a pointer in its
+    own repo; this locks the pack side."""
+
+    def _rule5(self):
+        body = read(os.path.join("skills", "live-spec-base", "SKILL.md"))
+        m = re.search(r"(?ms)^5\. \*\*The lead orchestrates.*?(?=^6\. \*\*)", body)
+        self.assertTrue(m, "base rule 5 heading changed — the delegation statement moved")
+        return re.sub(r"\s+", " ", m.group(0))
+
+    def test_rule5_states_the_settled_delegation_rule(self):
+        r5 = self._rule5()
+        for phrase in (
+            "The lead orchestrates; each unit routes to the cheapest tier that passes its brief (SPEC INV-69).",
+            "orchestrates, briefs, and accepts",
+            "it does not do the grunt itself",
+            "PER UNIT",
+            "the trigger is judgment against mechanical",
+            "a judgment step is never routed down",
+            "Size is a weak hint only",
+            "raw output is evidence",  # base rule 13's delegation face, kept
+            "a worker's green is a lead the lead ACCEPTS by re-checking",
+            "independent fresh-context checker",
+            "(SPEC INV-46)",
+            "failed-acceptance escalation is logged, proposed tier → chosen tier → why (SPEC INV-69)",
+        ):
+            self.assertIn(phrase, r5, "base rule 5 lost the delegation statement: %s" % phrase)
+
+    def test_rule5_drops_the_three_superseded_bars(self):
+        r5 = self._rule5()
+        for bar in (">3 files", ">30s", "known edit strings",
+                    "default to the junior", "spot-check"):
+            self.assertNotIn(bar, r5, "base rule 5 still restates a superseded bar: %s" % bar)
