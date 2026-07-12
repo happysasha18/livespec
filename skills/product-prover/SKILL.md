@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 1.0.7
+  version: 1.0.8
 ---
 
 # Product Prover
@@ -304,6 +304,15 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   The duty binds forward (SPEC INV-127, INV-15): flag an existing scenario's unstated edge as a finding,
   never blocking the lane on the backlog of edges older scenarios never wrote. (Alexander 2026-07-09: the
   prover should say which preconditions and postconditions hold at a scenario's entry and exit.) [INV-127]
+- **Three-source disagreement** — the entry impact read reads a change against the spec, the architecture,
+  and the code together (SPEC INV-128); carry the lens that names where they DISAGREE. A surface the spec
+  promises with no owning node, a behaviour in the code no spec clause backs, a node pinned to a line that
+  moved — each is a finding routed to the home that owns it (a bug row for code past spec, a spec fix for a
+  moved pin, a restructure row for a missing node, SPEC INV-37), never a silent pick of one source as the
+  winner. This pulls the architecture step's spec-to-code reconciliation forward to intake, so drift is a
+  finding at entry rather than a surprise at code. Kin of the unwritten-seam hunt (a drift with no routed
+  home is itself the finding); it is also the read that produces the derive-before-fork verdict — the three
+  sources are what tell whether a proven artifact already settles a question (SPEC INV-121). [INV-128]
 
 For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining. A finding is not owed for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 

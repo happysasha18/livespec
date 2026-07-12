@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.16
+  version: 1.0.17
 ---
 
 # build-pipeline — ship a change by the method
@@ -58,6 +58,31 @@ standards look like in its medium.
     sections plus the architecture's nodes, never a third document. A restructure verdict queues its OWN row
     (refactor door if only structure moves, feature door if behaviour moves too); the re-carve happens only
     through the architecture step and its re-prove (SPEC INV-37). A same-version docs-layout pass rides one sanctioned light vehicle: the pass builds on a clean pushed base, locks the owner's decisions in a checkpoint first, and proves content survived by a word-token multiset check AND a punctuation multiset check (SPEC INV-111).
+  - **The same line reads the FOOTPRINT — a three-source impact read that decides the route (SPEC INV-128).**
+    Beside the door and the work-kind, read the change against three sources at once: the spec (what
+    behaviour changes), the architecture (which module owns it), the code (what actually gets touched). Name
+    one footprint — **presentation-only** (touches what the audience meets, nothing behind it) · **single-module**
+    (stays inside one owned layer) · **cross-cutting** (moves a shared law or several layers) — spoken in the
+    echo and written in the row's `footprint:` note beside `door:`, `kind:`, `map:`. **The footprint composes
+    with the door, never overriding it:** the door decides which steps run, the footprint decides how far each
+    step reaches, and the door's guarantees always hold — a feature never skips the spec step whatever its
+    footprint (SPEC INV-16). A cross-cutting change opens the full pipeline from step 1, its architecture and
+    matrix work spanning every layer it moves. A single-module change runs the steps its door grants with their
+    scope narrowed to the one owned module (its architecture read, its matrix rows, its tests bounded to that
+    module's block and interface); a single-module bug or refactor takes the existing matrix-step entry, a
+    single-module feature keeps its spec step with the rest scoped down. A presentation-only change takes the
+    lightest road its door already grants — the skip boundary or the docs-only door where the door routes it
+    there, and the matrix-step minimum focused on the visible layer where it is a visible feature. The
+    footprint, not the size, sizes the reach — a heavy process on a light change is as much a defect as the
+    reverse. When the three sources DISAGREE (a spec-promised surface with no owning node, code behaviour no
+    clause backs, a node pinned to a moved line), name the disagreement and route it to its owner (a bug row, a
+    spec fix, a restructure row — SPEC INV-37), never silently trusting one source; the three-source read is
+    the verdict derive-before-fork (SPEC INV-121) rests on. The footprint **re-classifies mid-work** the moment
+    an edit reaches past its named layer (presentation → single-module, single-module → cross-cutting), the
+    landing report recording footprint held or re-classified to X at step N — the sibling of the door's
+    mid-work re-fire below. (The mechanical `footprint:`-note suite check, the declared-module-interface and
+    interface-level test machinery, the per-kind concrete-layers declaration, and the cross-cut counter ride
+    the follow-on rows; this step states the read and the routing.)
   - Tripwires decide by rule, ahead of judgment — a new user-visible surface · new persistent state · a new interaction on an existing surface
     · the spec marks the touched surface [target] · behaviour no spec clause backs ⇒ FEATURE, however
     casually asked. The tripwire verdict outranks a casual "bugfix" label, and queue-cutting belongs to the

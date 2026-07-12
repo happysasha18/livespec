@@ -1,26 +1,26 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
 ## LIVE STATE (2026-07-12 ~15:40, session 40 — closing the remaining list on his word "делаем всё подряд, закончим сегодня")
-**s40 IN PROGRESS. FOUR laws landed, one wish-family (a decision made for one member of a set, silently not
-carried to the rest):** Row 281 (INV-124, class-hunt — a confirmed bug drives four moves before close: find
-siblings · check architecture · check spec · escalate). Row 287 (INV-125, cross-surface uniformity — a
-policy across sibling surfaces/elements/transitions stated at the surface-CLASS level, prover lens + DOM-wide
-guardrail). Row 288 (INV-126, paired-transition symmetry — both directions of a paired state change get the
-same craft or a stated reason; default symmetry else ASK; temporal twin of INV-125). Row 289 (INV-127,
-scenario entry/exit contracts — the old large row 192, revived: each scenario states how it is entered and
-exited, prover scenario-level lens, binds forward; validated on F-bug). 281/287/288 PUSHED CI-green, 289
-pushing. Suites 497→503→509→515 green, prover 0 must-fix each. **Next free: INV-128, M-269.** SPEC v1.1.4,
-pack 1.1.4, spec-author 1.0.5, product-prover 1.0.7.
-**s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) on recommended defaults; 262 (adopt
-audit de-dup rec) decided, execution pending his nod (edits his playbook); F3-F7 filed as rows 282-286. Row
-280 (register thinning) ATTEMPTED + FINDING: a clean-writer draft hit 441 lines but the suite caught it
-dropping four normative sub-rules — auto-tighten loses rules; reverted (green at 565), STAYS OPEN needing a
-rule-preserving pass. Row 192 LANDED as 289 (INV-127). **BUILDING NEXT: row 259**
-(entry impact-analysis station) on the 14-principle draft as accepted, then a Fable audit + prover, then his
-review (his word). **On HIM:** a real remote deposit from his browser (row 247 leg); a nod on 262's playbook
-edit; flips on 261/279; his review of 259 after the Fable/prover audit.
-**s39 (pushed, CI green):** eleven smalls landed (263,273,269,264-268,270,260a,260b); INV-121/122/123; a
-Fable adversarial pass folded 1 must-fix + 2 should-clarify (docs/prover/2026-07-12-s39-backlog-batch.md).
+**s40: FIVE laws landed (detail → JOURNAL + ROADMAP rows).** Row 281 INV-124 (class-hunt: a confirmed bug
+drives four moves before close). Row 287 INV-125 (cross-surface uniformity: a policy across sibling
+surfaces/transitions/elements at the surface-CLASS level). Row 288 INV-126 (paired-transition symmetry:
+both directions get the same craft or a stated reason). Row 289 INV-127 (scenario entry/exit contracts — the
+old large 192). Row 259 INV-128 (entry impact-analysis station: every request read against spec+architecture+
+code → a named footprint composing with the door; boundary-health law; cites INV-121, closing row 270 leg 3;
+a FABLE audit caught 2 must-fix, folded). 281/287/288/289 PUSHED CI-green, 259 pushing. Suites →525 green,
+prover 0 must-fix each. **Next free: INV-129, M-270.** SPEC v1.1.5, pack 1.1.5, build-pipeline 1.0.17,
+product-prover 1.0.8, communicator 1.0.6, spec-author 1.0.5.
+**s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) on defaults; 262 (adopt audit de-dup)
+decided, execution pending his nod (edits his playbook); F3-F7 filed as rows 282-286. Row 280 (register
+thinning) ATTEMPTED + FINDING: an auto-tighten draft dropped four normative sub-rules; reverted (green at
+565), STAYS OPEN needing a rule-preserving pass. **BUILDING NEXT (his live wish 2026-07-12): the
+adversarial audit becomes a STANDING station with a broadened trigger** — a fresh-context audit REQUIRED (not
+the senior's option) whenever the change edits the method/law, the delta is surface-sized, OR the only
+reviewer is the author; because self-review shares the author's blind spot (today: my prover read 259 clean,
+Fable caught a real INV-16 contradiction). Homes: build-pipeline verify step (INV-46) + a spec clause. Also
+queued: architect-draft follow-ons R0/R1/R3/R5. **On HIM:** a real remote deposit from his browser (row 247
+leg); a nod on 262's playbook edit; flips on 261/279.
+**s39 (pushed, CI green):** eleven smalls landed (263,273,269,264-268,270,260a,260b); INV-121/122/123.
 
 **THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
 - **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the

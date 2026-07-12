@@ -3322,3 +3322,46 @@ assertions) red against the pre-delta tree, then green. Suite 515 green. Prover 
 must-fix. Owned by the spec-author node (M-268); the prover lens is wiring, as with INV-50. Delegation:
 none — a law across spec + spec-author + prover + matrix + owns-list, senior inline. SPEC v1.1.4,
 spec-author 1.0.5, product-prover 1.0.7, pack 1.1.4.
+
+## 2026-07-12 (session 40) — the entry impact-analysis station (row 259, INV-128), Fable-audited
+
+**The wish.** Alexander live 2026-07-12: every incoming request gets an entry analysis reading the spec AND
+the architecture AND the code together; presentation-only, single-module, and cross-cutting are three kinds
+of work; the footprint is named before any work starts and decides the route. The fourteen-principle
+architect draft (P0-P12) worked it out; row 259 is the entry station (P1-P6). His word this session: build
+on the draft as accepted, then a Fable audit and the prover, then his review — later softened to "you
+handle it" once the audit proved it could catch what a self-review misses.
+
+**What landed.** INV-128: beside the door (which steps run) and the work-kind (what form each step takes), a
+THIRD dimension is read at intake — the FOOTPRINT, read from three sources at once (spec · architecture ·
+code), producing one named footprint (presentation-only · single-module · cross-cutting), spoken in the
+capture echo and written in the row's `footprint:` note. The footprint COMPOSES with the door and never
+overrides it: the door picks the steps, the footprint sizes how far each step reaches, and a feature never
+skips the spec step whatever its footprint. A source disagreement is a finding routed to its owner (a bug
+row, a spec fix, a restructure row); the three-source read is the verdict the derive-before-fork rule
+(INV-121) rests on — which closes row 270's leg 3. The footprint re-classifies mid-work, the sibling of the
+door's mid-work re-fire. And the station carries the boundary-health law in ARCHITECTURE: a right boundary
+keeps a typical request in one node, repeated cross-cuts on the same node pair being the signal to move a
+boundary through the architecture step. Homes: the intake clause + Formal index, build-pipeline step zero,
+ARCHITECTURE's boundary-health law, product-prover's three-source lens, communicator's capture echo (grown
+with the work-kind and footprint fields). Owned by the build-pipeline node (M-269).
+
+**The Fable audit earned its keep — the case for auditing always.** I built this myself and my own prover
+pass read it clean (0 must-fix). A fresh Fable context, adversarial hypothesis "goal missed", primary
+sources only, caught a real contradiction my own review shared the blind spot on: the single-module road as
+first written let a feature enter at the matrix step, silently skipping the spec step the door law forbids
+(INV-16). It also caught the docs-only/skip widening asserted only inside INV-128 (a one-fact-two-homes
+divergence), the omitted interface-test deferral, and the missing work-kind field in the echo. All folded
+before landing. Alexander's read: a self-review shares the author's blind spot, so the adversarial audit
+should be a standing station with a broadened trigger, not the senior's option — its own row next.
+
+**Dogfood.** Row 259's own landing is the law's first act, and it obeys the law: its footprint is
+cross-cutting (five homes across the method), recorded in the row's `footprint:` note, held through the
+landing with no re-classification.
+
+**Method notes.** Door: feature; kind: skill; footprint: cross-cutting. Red-first —
+`tests/test_impact_analysis_entry.py` (10 assertions) red against the pre-delta tree, then green. Suite 525
+green. Prover record with the Fable fold: docs/prover/2026-07-12-s40-inv128-entry-impact-analysis.md. SPEC
+v1.1.5, build-pipeline 1.0.17, product-prover 1.0.8, communicator 1.0.6, pack 1.1.5. The deeper mechanical
+enforcement (footprint-note check, per-kind layers declaration, interface-test machinery, cross-cut counter)
+rides the architect draft's follow-on rows R0/R1/R3/R5.

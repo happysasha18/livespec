@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.5
+  version: 1.0.6
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -47,11 +47,13 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
 - **The capture echo — a wish hears itself land.** *(rule 12)*
     - The moment a wish is intaken, the human hears the
       intake line back as ONE plain sentence — what was heard, the door called (the door step's own
-      verdict, carried over unchanged), the name the work will answer to, its row number, and its
+      verdict, carried over unchanged), the work-kind (product · infra · skill · prose, SPEC INV-22), the
+      footprint the three-source read named (presentation-only ·
+      single-module · cross-cutting, SPEC INV-128), the name the work will answer to, its row number, and its
       place on the product's map — changes feature X · a new feature · restructure (SPEC INV-37; the
-      map is the spec's scenarios + the architecture's nodes, and the verdict is also written into the
-      row's `map:` note): "caught: <the wish, compressed>. It's a feature, we'll call it X, row N — it
-      changes the catalog."
+      map is the spec's scenarios + the architecture's nodes, and both the footprint and the verdict are
+      written into the row's `footprint:` and `map:` notes): "caught: <the wish, compressed>. It's a feature,
+      single-module, we'll call it X, row N — it changes the catalog."
     - No echo ⇒ the human cannot know the request survived.
     - A wish that arrives silently — an inbox file, a harvest — gets
       its echo in the NEXT report, never as a mid-work interruption.
