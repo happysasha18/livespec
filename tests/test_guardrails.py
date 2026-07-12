@@ -115,6 +115,26 @@ class TestGateA_ProverRecord(unittest.TestCase):
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("predates the last PRODUCT_SPEC.md change", result.stdout)
 
+    def test_stale_when_architecture_changed_after_record(self):
+        """A record committed BEFORE the last ARCHITECTURE.md change is stale too (INV-116,
+        row 271): the architecture pass records beside the spec's and carries the spec's
+        freshness rule, so the gate must refuse a record a later ARCHITECTURE.md change
+        outdates, even though it is dated today and committed."""
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1\n")
+            self._commit_all(tmp, "spec v1")
+            self._write(tmp, "docs/prover/2026-07-05-x.md", "prover record for v1\n")
+            self._commit_all(tmp, "record for v1")
+            self._write(tmp, "ARCHITECTURE.md", "architecture v2 — changed after the record\n")
+            self._commit_all(tmp, "architecture v2, no new record")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
+                cwd=tmp,
+            )
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("FAIL (prover record)", result.stdout)
+
     def test_record_with_spec_same_commit_passes(self):
         """A record committed in the SAME commit as the PRODUCT_SPEC.md change it
         covers is fresh, not stale — this is the normal push shape."""
