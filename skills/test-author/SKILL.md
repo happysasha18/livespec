@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 1.0.2
+  version: 1.0.3
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -58,7 +58,9 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    format, dropped three norm sections, and shipped green; matrix row M-211 is the first live
    instance of the conformance row this rule now demands.)
 8. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
-   node's never-side rows present · no stale references. Walked in person, item by item.
+   node's never-side rows present · every module block owns an interface-level row (P9) · every row's
+   level follows its footprint layer, presentation at browser-computed or above (P8) · no stale
+   references. Walked in person, item by item.
 
 ## The level ladder — where green suites lie
 
@@ -84,6 +86,27 @@ rendered level is a string assertion against the shipped file (live-spec's matri
 needs a browser-computed rung). So read the declared proof kinds before pinning levels: the rung a fact
 takes is the project's own, and mapping every fact onto the code ladder for a non-code kind is the
 derivation defect this reading closes.
+
+**The level follows the footprint's layer (SPEC INV-128).** In one line: the test level follows the layer
+the change touches. A presentation change is asserted at browser-computed or above, because the user sees
+it. A single-module change is asserted at its module's interface — the row asserts the module's contract,
+not its internals or a neighbour's render. A cross-cutting law is asserted by a string or traceability test
+that holds across every surface it governs. Tying the level to the footprint layer makes the right level a
+derivation rule rather than a judgment call each time; a presentation fact tested as a string is the exact
+defect the ladder was born to kill (the visibility rule above — any visibility/layout/colour fact takes
+browser-computed — is the first instance of this mapping).
+
+**A module's tests run against its interface; a cross-cutting law gets a test per surface (SPEC INV-101).**
+Each module declares its interface, and each module block in the matrix owns at least one interface-level
+row: each module's tests assert its declared interface rather than its internals or a neighbour's render.
+A test bound to a module's internals breaks on every refactor and proves nothing about the contract; a test
+bound to a neighbour's render couples two modules the boundary meant to separate. This gives the
+three-question fitness test's "testable alone" [INV-122] a concrete home — one interface-level row per
+architecture-node block. A cross-cutting law lives in the spec's declared-laws home [INV-101], is
+enumerated once, and gets one test per surface it governs, at string or traceability level. The
+traceability test enforces both: a declared law with a surface that has no test row goes red (the shape of
+a spec invariant with no matrix row), and a module block with no interface-level row is a derivation defect
+at the coverage walk (`tests/test_interface_coverage.py`).
 
 **The ladder tops out below the real device (SPEC INV-77).** Touch physics, scroll snapping, and
 background throttling live past a desktop headless browser's reach — iOS ignores

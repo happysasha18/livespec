@@ -46,6 +46,9 @@ Derivation is done only when every line below is checked against the CURRENT spe
 
 - [ ] Every spec anchor (invariant / state / transition) appears in ≥ 1 row.
 - [ ] Every architecture node has ≥ 1 block, and its negative-side rows exist (the regression fence).
+- [ ] Every module block owns ≥ 1 **interface-level row** — a row asserting the module's declared interface, not its internals or a neighbour's render (P9).
+- [ ] Every row's level follows its footprint **layer**: a presentation fact at `browser-computed` or above, a single-module fact at its module's interface, a cross-cutting law by a string/traceability test across surfaces (P8).
+- [ ] Every declared cross-cutting law owns a test per surface it governs (INV-101).
 - [ ] Every artifact-inventory entry owns ≥ 1 rendered-level row.
 - [ ] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed`.
 - [ ] No row cites a spec anchor or node that no longer exists (stale rows are RETIRED in place).

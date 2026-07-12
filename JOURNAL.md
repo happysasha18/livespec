@@ -3664,3 +3664,39 @@ declaration (INV-135), and this counter marked landed, only the interface-test m
 VERSION/plugin 1.1.9→1.1.10. No spec change (the law was already stated). Full suite green. Delegation
 (INV-103): proposed senior → chosen senior → why — the per-pair tally design, the advisory-not-blocking
 decision, and the architecture re-prove were the judgment; no mechanical grunt worth routing down.
+
+## 2026-07-12 (session 41) — interface-test machinery (row 294, P8+P9, INV-101)
+
+**What.** Two architect principles, one landing. P8 — the test level follows the footprint's layer: a
+presentation change is asserted at browser-computed or above (the user sees it), a single-module change at
+its module's interface, a cross-cutting law by a string/traceability test across every surface. P9 — each
+module's tests assert its declared INTERFACE (one interface-level row per architecture-node block, not the
+internals or a neighbour's render), and a cross-cutting law from the declared-laws home (INV-101) gets one
+test per surface it governs.
+
+**Homes.** test-author gains the layer-to-level rule and the interface-test requirement, and its coverage
+checklist (step 8) gains both; the matrix template's coverage checklist gains all three items (interface
+row per block · level follows the layer · every declared law a test per surface); product-prover's
+declared-laws station gains the per-surface-test duty — a law stated everywhere but tested nowhere is a
+finding of the same class as an untested surface (anchor INV-101). No spec or ARCHITECTURE change — the
+rules extend the existing INV-101 and the level ladder, so no new invariant and no re-prove.
+
+**Mechanical floor, green-on-real / red-on-synthetic.** `tests/test_interface_coverage.py` (9 tests)
+extends traceability in two directions: (A) a declared law with a surface that has no test row goes red,
+(B) a module block with no interface-level row goes red. Each is red-proven on a synthetic fixture (a law
+governing three surfaces with one untested; an empty and a note-only block). The real matrix satisfies
+both — all 18 node blocks own an interface row (a BUILT row at a ladder level with an owning test), and the
+pack's three declared laws each have a covering row — so the suite stays green while the checks bite on a
+real violation. This is the same shape as the cross-cut counter and INV-134's scan: state the rule in prose,
+hold it with a check that reds on a violation, prove the red synthetically without reddening the shipped
+state.
+
+**Scope.** Full per-surface register wiring across every surface stays its own work; this lands the rule
+and the mechanical floor. Door: feature; kind: skill+infra; footprint: cross-cutting, HELD. test-author
+1.0.2→1.0.3, product-prover 1.0.8→1.0.9, VERSION/plugin 1.1.10→1.1.11. Full suite 579 green. Delegation
+(INV-103): proposed senior → chosen senior → why — the two check designs, the green-on-real/red-on-synthetic
+split, and the P8/P9 prose were the judgment; no mechanical grunt worth routing down.
+
+This closes the architect-draft follow-ons R0/R1/R3/R5 (rows 291-294): the footprint-note check, the
+per-kind concrete-layers-and-proofs declaration, the cross-cut counter, and the interface-test machinery —
+the mechanical halves INV-128 deferred.

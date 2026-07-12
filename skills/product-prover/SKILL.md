@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS.
 metadata:
-  version: 1.0.8
+  version: 1.0.9
 ---
 
 # Product Prover
@@ -285,7 +285,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   contradict its own artifact (prose demanding a question the approved door shows wordless — the
   tlvphoto class)? A prototype-born clause with no pointer, or clause text contradicting its own
   artifact, is a finding (SPEC INV-43).
-- **Declared cross-cutting laws** — read the spec's declared-laws home (the one place it names the laws that cut across every surface: measurement, accessibility, error handling, a register — what the product declares); per declared law, enumerate every surface and transition and demand the law's clause or a dated exemption on each item. A missing clause ranks as a broken invariant. A spec with no declared-laws home earns ONE finding naming that; the per-item walk starts only once the home exists. The author's twin habit (spec-author) writes each section's line first, so this station audits instead of discovers. (SPEC INV-101 — the law's owner is spec-author; the worked miss: analytics covered some beats while whole surfaces emitted nothing, only the human's eye found it, 2026-07-10.)
+- **Declared cross-cutting laws** — read the spec's declared-laws home (the one place it names the laws that cut across every surface: measurement, accessibility, error handling, a register — what the product declares); per declared law, enumerate every surface and transition and demand the law's clause or a dated exemption on each item. A missing clause ranks as a broken invariant. A spec with no declared-laws home earns ONE finding naming that; the per-item walk starts only once the home exists. The author's twin habit (spec-author) writes each section's line first, so this station audits instead of discovers. **And every declared law owns a test per surface, not only a prose clause (P9):** the station demands, per declared law, a test row on each surface the law governs, so a law stated everywhere but tested nowhere is a finding of the same class as an untested surface — the traceability test carries the mechanical floor (a declared law with a surface that has no test row goes red, `tests/test_interface_coverage.py`), and this station is its semantic reviewer. (SPEC INV-101 — the law's owner is spec-author; the worked miss: analytics covered some beats while whole surfaces emitted nothing, only the human's eye found it, 2026-07-10.)
 - **Entry symmetry** — for every FACE, MODE, or PANEL entered under a condition (first visit, empty
   state, onboarding, a one-time banner): what deliberate path re-enters it later? A get with no set is
   a finding unless the spec states the one-way as a decision, by name (SPEC INV-50). Trigger patterns:
