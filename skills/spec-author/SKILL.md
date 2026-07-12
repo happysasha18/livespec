@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.2
+  version: 1.0.3
 ---
 
 # Spec Author
@@ -88,8 +88,8 @@ stopped being read — which kills a spec).
   technical writer: neutral, precise, easy to follow. The full register (define abstract terms in plain
   words at first use, one term per concept, concrete nouns, active voice, cut nominalizations and filler,
   metaphors only as one-off color) and the per-section verification checklist live once in the
-  `communicator` skill's "writing register" section — spec prose follows it like every other human-facing
-  text.
+  `communicator` skill's writing register — `skills/communicator/references/writing-register.md` (its home
+  since row 266) — spec prose follows it like every other human-facing text.
 - **A machine gate holds the register — attention alone drifts — and the prose is written by a clean agent.**
   Re-styling a spec by hand drifts (a voice reads fine on a sample, then the same tells return round after
   round). The durable fix, proven and sealed in `docs/prose-quality-gate-design.md`: (1) a fresh agent with
