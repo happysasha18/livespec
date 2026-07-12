@@ -13,8 +13,11 @@ Suites 497→503→509 green, prover short-forms 0 must-fix each. **Next free co
 v1.1.3, pack 1.1.3, spec-author 1.0.4, product-prover 1.0.6.
 **s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) resolved on recommended defaults, 262
 (adopt audit's de-dup rec) decided, execution pending his nod (deletes from his personal playbook); prover
-findings F3-F7 filed as rows 282-286 (each a should-clarify/worth-considering, own movement). **REMAINING
-this session:** row 280 (register thinning — a clean-writer draft is running), row 192 (scenario
+findings F3-F7 filed as rows 282-286 (each a should-clarify/worth-considering, own movement). Row 280
+(register thinning) ATTEMPTED + FINDING: a clean-writer draft hit 441 lines but the suite caught it dropping
+four load-bearing normative sub-rules (live-status, offline-window, kill-list, promoter frozen-text) — auto-
+tighten-to-500 loses rules, reverted (tree green at 565), row STAYS OPEN needing a careful rule-preserving
+pass (draft kept at scratchpad/communicator-tightened.md). **REMAINING this session:** row 192 (scenario
 contracts). **On HIM:** one real remote deposit from his browser (row 247 leg); row 259 (design-principles
 comments OR proceed on the draft); a nod on 262's playbook edit; flips on 261/279 if he wants the other option.
 **s39 (pushed 49d84e0..a2b3edd, CI green):** eleven smalls landed (263,273,269,264,265,266,267,268,270,260a,260b);
