@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.13
+  version: 1.0.14
 ---
 
 # build-pipeline — ship a change by the method
@@ -366,7 +366,12 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
-  audit + a surface-composition check. Fix holes by the book; record the rest.
+  audit + a surface-composition check. Fix holes by the book; record the rest. The gate also runs
+  **code compaction as a station beside doc compaction (SPEC INV-123):** duplicate logic merges, dead weight
+  leaves with its listing (INV-109), a ripened abstraction is extracted only through the three-question
+  fitness gate (INV-122), and each pass locks its reached level with a test or lint (rows 216-218). The
+  station has a second trigger beyond this gate — the second occurrence of the same problem (base rule 19)
+  compacts it the moment it recurs, not only at the milestone.
 - **Process bookkeeping scales to the delta (SPEC INV-61):** the pre-push re-check keeps its rigor and
   scales its FORM — a small delta (skill/prose/infra kind, no new surface, no structure change) ships a
   three-line SHORT-FORM record (previous records clean · the delta in one line · the verdict). A

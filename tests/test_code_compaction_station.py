@@ -1,0 +1,43 @@
+"""Compaction is a scheduled station for code as well as docs, with its second trigger — row 260b (SPEC INV-123).
+
+Milestone DOC compaction already stands (INV-115). This widens the station to CODE — duplicate logic
+merges, dead weight leaves with its listing (INV-109), a ripened abstraction is extracted only through
+the three-question fitness gate (INV-122) — and gives it a SECOND trigger: apart from the milestone, the
+second occurrence of the same problem (base rule 19) fires it. Each pass locks the reached level with a
+test or a lint (the convergence law, rows 216-218 / INV-98). Homes: the milestone-rhythm compaction
+section + build-pipeline's before-a-MINOR gate.
+"""
+
+import os
+import unittest
+
+from conftest import ROOT, read_flat
+
+
+class TestCodeCompactionStation(unittest.TestCase):
+    def test_spec_clause_and_index(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("Compaction is a scheduled station for code as well as docs", spec)
+        self.assertIn("[INV-123]", spec)
+
+    def test_spec_names_second_trigger_and_gate(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        # the second trigger (base rule 19's second occurrence) and the extraction gate (INV-122)
+        self.assertIn("the second occurrence of the same problem", spec)
+        self.assertIn("[INV-122]", read_flat("PRODUCT_SPEC.md"))
+
+    def test_build_pipeline_minor_gate_carries_code_compaction(self):
+        bp = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn("code compaction", bp)
+
+    def test_formal_index_row(self):
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-123 |"):
+                    self.assertIn("code", line.lower())
+                    return
+        self.fail("INV-123 Formal-index row missing")
+
+
+if __name__ == "__main__":
+    unittest.main()
