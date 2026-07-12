@@ -60,6 +60,11 @@ if ! "$GUARDRAILS/check-prototype-fence.sh"; then
   fail=1
 fi
 
+echo "-- gate i: shipped-language (no owner name or stray Cyrillic in the shipped set, SPEC INV-120) --"
+if ! "$GUARDRAILS/check-shipped-language.sh"; then
+  fail=1
+fi
+
 echo ""
 echo "-- gate h: the four host checks (this repo attached as its own first host, SPEC INV-97) --"
 for hostcheck in completeness tests_present traces_to_spec conflicts; do

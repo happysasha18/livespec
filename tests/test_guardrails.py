@@ -358,6 +358,7 @@ class TestPrePush(unittest.TestCase):
             "check-push-reach.sh",
             "check-matrix-coverage.sh",
             "check-prototype-fence.sh",
+            "check-shipped-language.sh",
         ):
             self.assertIn(script, body, "pre-push no longer wires in %s" % script)
         self.assertIn("gate c", body.lower())
@@ -636,7 +637,7 @@ class TestCIMirror(unittest.TestCase):
             body = f.read()
         for needle in ("pytest", "check-prover-record.sh", "check-matrix-coverage.sh",
                        "check-pin-drift.sh", "check-skill-loadability.sh",
-                       "check-prototype-fence.sh", "fetch-depth: 0"):
+                       "check-prototype-fence.sh", "check-shipped-language.sh", "fetch-depth: 0"):
             self.assertIn(needle, body, "gates.yml missing: %s" % needle)
 
     def test_readme_carries_the_mirror_guidance(self):
@@ -752,8 +753,9 @@ class TestSpecStyleLint(unittest.TestCase):
 class TestGateShippedLanguage(unittest.TestCase):
     """The shipped-language gate (SPEC INV-120, ROADMAP row 275, matrix M-260): a shipped
     artifact carries no Cyrillic outside a deliberate user-language string, and no owner or
-    personal name in a requirement's statement. Proven on fixtures only here — NOT wired
-    into live-spec's own pre-push/CI in this landing (queued as row 279)."""
+    personal name in a requirement's statement. Proven on fixtures here, and (row 279, adopt)
+    wired into the pack's own pre-push hook and CI mirror so a new attribution in a shipped
+    doc goes red."""
 
     ENGINE = os.path.join(ROOT, "scripts", "check-shipped-language.py")
     WRAPPER = os.path.join(GUARDRAILS, "check-shipped-language.sh")
@@ -812,3 +814,25 @@ class TestGateShippedLanguage(unittest.TestCase):
             result = run(["python3", self.ENGINE, "--root", tmp,
                           "--allowlist", allowlist_path, license_path])
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_gate_wired_into_pre_push_and_ci(self):
+        """Row 279 (adopt): the shipped-language gate runs in the pack's own pre-push hook
+        AND the CI mirror, the way the other guardrails run, so a new attribution in a
+        shipped doc is blocked on both nets."""
+        with open(os.path.join(GUARDRAILS, "pre-push"), encoding="utf-8") as f:
+            pre_push = f.read()
+        self.assertIn("check-shipped-language.sh", pre_push,
+                      "pre-push does not wire the shipped-language gate")
+        with open(os.path.join(ROOT, ".github", "workflows", "gates.yml"), encoding="utf-8") as f:
+            gates = f.read()
+        self.assertIn("check-shipped-language.sh", gates,
+                      "gates.yml does not mirror the shipped-language gate")
+
+    def test_gate_green_on_the_swept_tree(self):
+        """Row 279 (adopt): after the attribution sweep the gate reports zero active
+        offences over the pack's own real shipped set — the wiring runs clean, not red."""
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("real-tree offence count — meaningless in a git-less scratch copy")
+        result = run(["python3", self.ENGINE, "--root", ROOT])
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn('"offences":0', result.stdout.replace(" ", ""))

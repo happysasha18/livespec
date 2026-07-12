@@ -40,3 +40,5 @@ jobs:
         run: guardrails/check-skill-loadability.sh
       - name: gate e — prototype fence
         run: guardrails/check-prototype-fence.sh
+      - name: gate i — shipped language (no owner name / stray Cyrillic in the shipped set, SPEC INV-120)
+        run: guardrails/check-shipped-language.sh
