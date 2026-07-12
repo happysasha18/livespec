@@ -1,12 +1,14 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
 ## LIVE STATE (2026-07-12 ~15:40, session 40 — closing the remaining list on his word "делаем всё подряд, закончим сегодня")
-**s40 IN PROGRESS. Row 281 LANDED + PUSHED** (INV-124, class-hunt law from the tlvphotos inbox wish): a
-confirmed bug drives four moves before it closes — find the un-seen siblings · check the architecture ·
-check the spec · escalate to the human — homed in the F-bug spec clause, build-pipeline bug entry,
-product-prover class lens, base rule 14 (sharpened). Red-proven (`tests/test_class_hunt.py`, 7), suite 497
-green, prover short-form 0 must-fix. SPEC v1.1.1, pack 1.1.1, base 1.0.7, build-pipeline 1.0.15,
-product-prover 1.0.4. **Next free codes: INV-125, M-266.** Inbox swept clean.
+**s40 IN PROGRESS. A tlvphotos wish-family landing (uniformity/consistency laws).** Row 281 (INV-124,
+class-hunt: a confirmed bug drives four moves before close — find siblings · check architecture · check
+spec · escalate) LANDED + PUSHED, CI green. Row 287 (INV-125, cross-surface uniformity: a policy governing
+a KIND across sibling surfaces/elements/transitions is stated at the surface-CLASS level and held uniform —
+prover lens + DOM-wide completeness guardrail; the preventive twin of INV-124) LANDED, pushing. **Building
+now: INV-126 (paired-transition symmetry** — a soft-in/hard-out pair is an asymmetry the facet sweep must
+catch; his default = symmetry, else ASK; the temporal twin of INV-125). Suites: 497 then 503 green, prover
+short-forms 0 must-fix each. **Next free codes: INV-126, M-267** (INV-126 in flight). SPEC v1.1.2, pack 1.1.2.
 **s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) resolved on recommended defaults, 262
 (adopt audit's de-dup rec) decided, execution pending his nod (deletes from his personal playbook); prover
 findings F3-F7 filed as rows 282-286 (each a should-clarify/worth-considering, own movement). **REMAINING

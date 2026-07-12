@@ -3220,3 +3220,43 @@ form (INV-61, small skill-kind delta): 0 must-fix — `docs/prover/2026-07-12-s4
 Delegation: none — a law edit spanning eight homes with cross-reference precision (Formal index, owning
 node, matrix row under owner); routing override logged (mechanical by tier, senior-held for the pack-tree
 git-contamination risk + the eight-home precision, as rows 260b/270). SPEC v1.1.1, pack 1.1.1.
+
+## 2026-07-12 (session 40) — cross-surface policy uniformity (row 287, INV-125), the preventive twin
+
+**The wish.** From the tlvphotos window, during a phone test: a gesture policy — "browser pinch-zoom is
+refused" — was decided and shipped, but the clause and the code wrote it for the walk alone. The door, the
+series side-room, and the polaroid table kept the browser default, so pinch still zoomed there. Every test
+was green (the suite asserted the one surface the clause named), the spec read fine (each surface described
+on its own), and the gap surfaced only when Alexander pinched each surface by hand on a real phone. A policy
+uniform in intent, non-uniform in fact, and nothing caught it. His steer: let the prover write itself a
+check — or let live-spec decide the best mechanism.
+
+**What landed.** INV-125: when a decision governs a KIND that recurs across sibling surfaces or elements,
+the spec states it once at the surface-CLASS level (the clause names the class and enumerates its members),
+and a policy written for one surface while siblings of the same kind exist is a spec defect. Three
+enforcement faces, following his (1)+(3) lean and the derive-from-his-steer read: the spec-class rule is the
+upstream root; the product-prover carries the cross-surface-policy lens (enumerate the surfaces of that kind
+from the surface registry, flag any the clause does not cover — the check he asked the prover to write for
+itself); and a rendered product's completeness guardrail asserts the policy DOM-wide, red until every
+sibling root carries it, so the walk-only fix goes red the day it lands rather than under a thumb on a real
+device. The pack itself has no DOM, so it ships the rule and the lens and leaves the DOM-wide assertion to
+the products it serves.
+
+**Broadened the same landing.** Mid-work he clarified that uniformity is not only spatial (a policy across
+sibling surfaces) but also covers repeating state transitions (the same open/close animation on every card)
+and features / repeated elements shared across places (a filter, a caption, a control that should look and
+behave alike everywhere). The clause and index now name all three, and state plainly that consistency of
+this kind is itself an invariant — the thing that must hold the same across a class of similar surfaces,
+transitions, and elements.
+
+**Where it sits in the family.** INV-125 is the preventive twin of INV-124 (the class hunt): the class hunt
+sweeps the siblings once a bug is confirmed, this holds the policy uniform before a bug is ever filed. It is
+the class-level companion of INV-72 (the unwritten-seam hunt asks whether a surface's behaviour is stated
+while a sibling is present; INV-125 asks whether a decided policy holds across the whole class). Homes: the
+composition clause, product-prover's lens (beside the unwritten-seams lens), build-pipeline's completeness
+guardrail. Owned by the product-prover node (owns-list + M-266).
+
+**Method notes.** Door: feature; kind: skill. Red-first — `tests/test_cross_surface_policy.py` (6
+assertions) red against the pre-delta tree, then green. Suite 503 green. Prover short form (INV-61): 0
+must-fix. Delegation: none — a law across three skill homes + spec + matrix + owns-list, senior inline. SPEC
+v1.1.2, product-prover 1.0.5, build-pipeline 1.0.16, pack 1.1.2.
