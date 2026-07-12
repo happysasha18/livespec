@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-three rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.5
+  version: 1.0.6
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -19,7 +19,13 @@ a working skill still stands: its pointer here reads as plain advice.
 1. **Ask, never guess.** A gap only the human can fill — a threshold, a policy, a taste call — is asked or
    marked `⟨DECIDE⟩` with a one-line question and a recommended pick. Never invent intent; and never ask
    what you can decide or verify yourself — a pending question rides in its row while the lane keeps moving
-   on the recommendation (SPEC INV-4, INV-5, INV-12).
+   on the recommendation (SPEC INV-4, INV-5, INV-12). And before offering the human a fork, check whether
+   a proven artifact already settles it: when the architecture, the spec, or the invariants already
+   determine the answer, DERIVE the requirement and say it back with the section cited as its ground,
+   offering no fork; a fork reaches the human only for what the artifacts leave genuinely open — a taste
+   call, or a real trade-off with no artifact-grounded winner. This is the read-the-doc twin of
+   ask-never-guess: that half forbids inventing an answer, this half forbids offering a choice the
+   documents have already made (SPEC INV-121).
 
 2. **Plain words carry the meaning; the code trails, quietly.** Every human-facing sentence stands on its
    own in the product's language; internal handles (INV-x, row numbers, worker names, model names, coined feature names or metaphors the reader never chose to learn) never do
