@@ -2415,6 +2415,23 @@ class TestWorkerLiveness(unittest.TestCase):
         # never framed finished before the verdict
         self.assertIn("never framed", spec.lower())
 
+    def test_worker_death_requires_stale_heartbeat(self):
+        """F2 (row 278): the death verdict needs a THIRD signal — a stale heartbeat —
+        because a compute-bound worker can legitimately go quiet on the old two checks
+        while still alive mid-computation."""
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")).lower()
+        self.assertIn("stale heartbeat", spec)
+        self.assertIn("all three", spec)
+        self.assertIn("life on any one check", spec)
+        self.assertIn("touches its checkpoint file", spec)
+        self.assertIn("~60 s [default]", read("PRODUCT_SPEC.md"))
+        base = read("skills/live-spec-base/SKILL.md")
+        self.assertIn("heartbeat", base.lower(),
+                       "base rules miss the F2 heartbeat check")
+        doc = read("docs/worker-liveness.md")
+        self.assertIn("heartbeat", doc.lower(),
+                       "docs/worker-liveness.md misses the F2 heartbeat check")
+
 
 class TestFieldLessons(unittest.TestCase):
     """Rows 182-186: the tlvphoto week's escaped-bug classes folded back into the test method.

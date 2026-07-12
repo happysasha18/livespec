@@ -6,9 +6,10 @@ This page explains how the pack runs background workers. A background worker is 
 
 A session delegates mechanical work and keeps judgment for itself (ACT-2, ACT-3). A delegation starts with a brief: one self-contained document carrying the exact spec sentences the work serves, the exact edits or commands, the checks to run, and the checkpoint path. The brief names the files the worker may write. Outside those files the worker reads and never writes (ACT-3).
 
-Three brief duties matter most for liveness and resume:
+Four brief duties matter most for liveness and resume:
 
 - The worker keeps a persistent checkpoint file in the host's `.live-spec/checkpoints/` directory (gitignored, inside the repo tree). It records done / in-progress / next and is updated as the work runs, so a cut-off run resumes from disk (live-spec-base rule 6).
+- The worker touches that same checkpoint file on a fixed interval (~60 s [default]) as a bare heartbeat, whatever else its work writes. A compute-bound run — a long render, a large test pass — can write no product file for minutes; the heartbeat is what proves it still alive to the resume protocol's death check (INV-76).
 - The brief carries the clock: the date and time read at briefing, so the worker stamps its checkpoint from a real clock (INV-24).
 - The brief carries a closed halt list: an ambiguous requirement, two consecutive unexplained failures of one command, a missing config or dependency, or acceptance impossible as briefed. On any of these the worker stops with evidence; otherwise it runs to completion (INV-54).
 
@@ -22,14 +23,15 @@ The checkpoint or handoff note that records a live worker states three things (l
 
 - the worker's recorded id, pointing at the worker's own checkpoint file;
 - the exact files its brief lets it write (the write-set);
-- the two liveness checks a resuming session runs before touching those files or spawning a sibling.
+- the three liveness checks a resuming session runs before touching those files or spawning a sibling.
 
-The two checks:
+The three checks:
 
 1. Watch the write-set's file modification times over a short window (~30 s [default]). Any change means a live writer.
-2. Send one message to the recorded id. A live worker answers; allow ~2 min [default].
+2. Read the worker's heartbeat on its checkpoint file: a worker touches that file on a fixed interval (~60 s [default]) whatever its work writes, so a heartbeat moved within the last ~2 min [default] means a live writer even when no product file has — the case of a compute-bound run mid-computation.
+3. Send one message to the recorded id. A live worker answers; allow ~2 min [default].
 
-Alive on either check means reconnect and treat the worker's files as claimed. Quiet on both means declare the worker dead in one written line, then proceed. Until that verdict the worker's output is never framed as finished. A worker from a prior context counts as a foreign writer until verified; the same-session courtesy of the concurrent-edit fence ends at the wipe. No second worker goes onto a shared tree until the first has confirmed halted by its own reply or has been declared dead by both checks (INV-11, INV-76).
+Life on any one check means reconnect and treat the worker's files as claimed. A dead verdict requires all three quiet together — a still write-set, a stale heartbeat, and an unanswered probe — declared in one written line, then proceed. Until that verdict the worker's output is never framed as finished. A worker from a prior context counts as a foreign writer until verified; the same-session courtesy of the concurrent-edit fence ends at the wipe. No second worker goes onto a shared tree until the first has confirmed halted by its own reply or has been declared dead by all three checks (INV-11, INV-76).
 
 Before a wipe, prefer halting the workers or letting them finish, so the next session starts single-writer. A handoff also says plainly when a worker dies with a closed window or a sleeping machine, so nobody is told the worker will simply be recognized. The rule was born from a real two-writer race: a resuming session declared a worker dead off the empty process list and spawned a second worker onto the same files (2026-07-09; wish: `docs/wishes/2026-07-09-tlvphoto-worker-liveness-across-clear.md`, landed as queue row 181).
 
@@ -54,4 +56,4 @@ Every movement ends the same way: replace the NEXT_STEPS live state, add a dated
 
 The resume file is a digest with a hard cap: the whole NEXT_STEPS file holds at most 100 lines [default], and a suite check owns the number. An open leg restates as one terse line — its name, what stays open, and where the detail lives — while the detail itself flows to the journal or the queue row (INV-48, INV-26).
 
-A cold session reads NEXT_STEPS first. If the pause left a red test, the failing test name plus a hypothesis stands as the top item; the checkpoint is the red test, and red is never committed (live-spec-base rule 6). If the note records a live worker, the session runs the two liveness checks above before touching that worker's files or spawning any sibling (INV-76). On the way back it also re-checks skill freshness (A-7).
+A cold session reads NEXT_STEPS first. If the pause left a red test, the failing test name plus a hypothesis stands as the top item; the checkpoint is the red test, and red is never committed (live-spec-base rule 6). If the note records a live worker, the session runs the three liveness checks above before touching that worker's files or spawning any sibling (INV-76). On the way back it also re-checks skill freshness (A-7).
