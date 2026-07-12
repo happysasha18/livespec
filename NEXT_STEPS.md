@@ -2,13 +2,15 @@
 
 ## LIVE STATE (2026-07-12 ~13:49, session 39 close — resume COLD from here)
 **s39 CLEARED the buildable smalls backlog: ELEVEN rows landed (263, 273, 269, 264, 265, 266, 267,
-268, 270, 260a, 260b) + a delta-scoped prover record, suite 490 GREEN, all COMMITTED locally —
-NOT YET PUSHED (awaiting his OK; push grant is standing but the batch is large, so a nod first).**
-Every row red-first proven, one lane one commit, every landed status cell carries its delegation
-line. New invariants: INV-121 (derive-before-fork), INV-122 (node fitness test), INV-123 (code
-compaction). Skills bumped: live-spec-base 1.0.6 (all seven working skills re-pinned), build-pipeline
-1.0.14, product-prover 1.0.3, communicator 1.0.5, spec-author 1.0.3. Last commit 035c914 + the prover
-record commit. Next free codes: INV-124, M-265 (read the live index before minting).
+268, 270, 260a, 260b) + row 280 queued (266's under-500 follow-up) + a delta-scoped prover record;
+suite 490 GREEN, PUSHED to main (49d84e0..a2b3edd), CI read GREEN.** Every row red-first proven, one
+lane one commit, every landed status cell carries its delegation line. New invariants: INV-121
+(derive-before-fork), INV-122 (node fitness test), INV-123 (code compaction). An independent FABLE
+adversarial pass at the pre-push verify step found + folded 1 must-fix (INV-108 mis-cited [INV-11] →
+base rule 4) and 2 should-clarify (INV-122's one-no verdict + prover-flag agreement; INV-123's second
+trigger opens a row, not an instant fix) — record in docs/prover/2026-07-12-s39-backlog-batch.md.
+Skills: live-spec-base 1.0.6 (all seven re-pinned), build-pipeline 1.0.14, product-prover 1.0.3,
+communicator 1.0.5, spec-author 1.0.3. Next free codes: INV-124, M-265 (read the live index before minting).
 
 **THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
 - **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the
