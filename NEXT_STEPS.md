@@ -1,31 +1,44 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~09:46, session 38 — resume COLD from here)
-**1.1.0 shipped (s37); s38 added two method laws, suite 401 green, four commits LOCAL (pushed
-if the s38 push ran — check `git log origin/main..main`).** s38 work, all by the drafter-applier
-pipeline (opus drafts / sonnet applies / Opus orchestrator briefs+accepts):
+## LIVE STATE (2026-07-12 ~11:05, session 38 close — resume COLD from here)
+**1.1.0 shipped (s37); s38 landed SEVEN rows + a fresh prover record, suite 428 green, all
+PUSHED to main, CI read green.** Everything through the drafter-applier pipeline (opus drafts /
+sonnet applies / Opus orchestrator briefs+accepts); every landed row's status cell carries its
+delegation line. Last pushed commit 739214d.
 - **Branch protection** set by API on the PUBLIC repos (live-spec, track-coach, product-prover):
-  force-push and deletion blocked, direct pushes still allowed, admins not enforced. This closes
-  the F5 branch-protection half of row 231 without his click. Private repos (tlvphotos,
-  exhibition-engine) need a paid plan — left undone, his call.
-- **Row 272 landed (INV-115)** — the full-pass doc-compaction step now states his compaction rule
-  verbatim (a fact lives once, in one home; remove only redundancy; keep anything whose removal
-  changes meaning or understanding; per-item judgment, the index-flatten finding its worked proof).
-- **Row 271 landed (INV-116)** — the product-prover runs over ARCHITECTURE.md at both the M-1
-  milestone gate and the M-6 push gate; guardrails/check-prover-record.sh gained an ARCHITECTURE.md
-  freshness block; matrix M-255; two red-first tests.
-- **Fresh prover record** over spec + architecture committed (5349964): Ready, 0 must-fix; the
-  architecture was proved this pass (discharging INV-116). Two small non-blocking findings queued
-  as row 273 (F-arch-1 seam row, F-arch-2 record-table drift).
-- **A "for fun" prover pass over the spec** (before the two landings) found seven real items,
-  captured in `.live-spec/checkpoints/2026-07-12-prover-spec-findings.md`, NOT yet roadmap rows:
-  F1 + F2 are silent-corruption seams in the concurrency model (session-token tie-break with no
-  token; a compute-bound worker declared dead) — the NEXT big movement, his priority word welcome.
-  F3-F7 are lighter (trigger cadence, tag-symmetry, critical-on-any-door, withdrawn-decision loop,
-  mid-work re-door independence).
-- **GitHub Issues as the stranger wish-door (row 261)** — recommendation recorded to DEFER (open
-  repo spam + response obligation, no signal yet); wait a first real contribution case. His word
-  still formally closes the row.
+  force-push + deletion blocked, direct pushes allowed, admins not enforced. Closes the F5 half of
+  row 231 without his click. Private repos (tlvphotos, exhibition-engine) need a paid plan — his call.
+- **Row 272 (INV-115)** — the full-pass doc-compaction step states his compaction rule verbatim
+  (a fact lives once, in one home; remove only redundancy; keep anything whose removal changes
+  meaning; per-item judgment). **Row 271 (INV-116)** — the prover runs over ARCHITECTURE.md at the
+  M-1 and M-6 gates; check-prover-record.sh gained an ARCHITECTURE.md freshness block; matrix M-255.
+- **Inbox swept** — three wishes (from track-coach x2, tlvphotos x1) harvested into rows 274-276,
+  files removed. Then all three BUILT this session:
+- **Row 277 / F1 (INV-117)** — every session mints a stable identity at its start; the parallel-lanes
+  pen tie-break orders on it; the inbox source-mark is its projection. Fixes a silent-corruption seam.
+  **Row 278 / F2 (INV-76 amended)** — the worker-death verdict needs a stale heartbeat as a third
+  signal (worker touches its checkpoint ~60s); a busy compute-bound worker is never declared dead.
+  Both F1/F2 came from the s38 for-fun prover pass; both now FIXED and prover-confirmed non-colliding.
+- **Row 274 (INV-118)** — shipped docs state requirements impersonally (rule + role-actor + reason;
+  dated decision keeps the date, drops the name); the pack's own attribution-heavy spec kept under a
+  dated exemption. **Row 275 (INV-120)** — a lint (scripts/check-shipped-language.py) holds the
+  English + no-personal-names line on shipped artifacts, proven on FIXTURES only, NOT wired to
+  live-spec's own tree (measured 126 own offences: 39 owner-name = provenance debt, 87 Cyrillic =
+  mostly a prototype sketch + fixtures). **Row 276 (INV-119)** — provenance + naming convention at
+  the instance→engine boundary (reconciliation-log framing, engine's own public-commit provenance,
+  neutral mechanism names).
+- **Two prover records** committed (5349964 for rows 271/272; 739214d for the F1/F2/274/275/276
+  batch): both Ready, 0 must-fix; architecture proved each pass (discharging INV-116).
+- **GitHub Issues stranger-door (row 261)** — recommendation recorded to DEFER; his word still closes it.
+
+**OPEN / next:**
+- **Row 279 — OWNER-DECIDES**: does live-spec's OWN tree adopt the impersonal voice (drop ~138 owner
+  attributions into JOURNAL) + wire the shipped-language gate into its own pre-push/CI, OR keep
+  attribution as the pack's provenance (the standing dated exemption)? Recommended default: keep the
+  exemption. Also the 274-fork A/B is this row.
+- **Prover findings F3-F7** (`.live-spec/checkpoints/2026-07-12-prover-spec-findings.md`) still open,
+  NOT yet rows: trigger cadence, tag-symmetry, critical-on-any-door, withdrawn-decision loop, mid-work
+  re-door independence. **Row 273** (F-arch-1 seam row, F-arch-2 record-table drift) still queued.
 Morning s37 asks below stand unless his answers came in another window — sweep by name.
 
 1. **Waiting HIS word (the morning asks; relay on resume if unanswered)**:
