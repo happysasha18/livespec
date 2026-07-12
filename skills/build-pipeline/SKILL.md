@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.7
+  version: 1.0.8
 ---
 
 # build-pipeline — ship a change by the method
@@ -92,7 +92,11 @@ standards look like in its medium.
   is the step that actually got skipped once: an excision cleaned code + tests but left four doc surfaces dangling.)
 - **Refactor (behaviour-neutral):** no spec/matrix delta, but enter at step 8 with the FULL suite + the
   visual sample set + a matrix audit of the touched sections (a monolith refactor re-risks everything);
-  if the refactor moves node boundaries, ARCHITECTURE.md's pins update in the same change.
+  if the refactor moves node boundaries but leaves the document's shape standing, ARCHITECTURE.md's pins
+  update in the same change — the pins-only path is scoped to a boundary shift that leaves the document's
+  shape standing. A deliberate redesign (layers restacked, a surface's ownership moved, nodes merged or
+  split) is not a pins-only change: the architecture document is re-shaped to the new form and re-proven
+  with the architecture lens in the same movement (SPEC INV-113).
 - **Docs-only change:** re-read the changed section rendered + one grep that no stale claim contradicts the
   code; no spec/matrix step.
 - **A rewrite or restyle accounts for every removal of substance (SPEC INV-109):** A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. The accounting rides the landing report the communicator builds; the docs-only door above and the restyle loop both carry it. (Born of a compressed README section restored the same session, 2026-07-10.)
@@ -214,7 +218,11 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
    Re-carving the whole node map IS legal: it arrives as a restructure placement's own queue row (SPEC
    INV-37), walks this step, and is re-proven like any structure change. A placement may SAY the shape no
-   longer fits; only a landing changes the shape.
+   longer fits; only a landing changes the shape. **When structure is deliberately redesigned — layers
+   restacked, a surface's ownership moved, nodes merged or split — the architecture document is re-shaped
+   to the new form and re-proven with the architecture lens in the same movement (SPEC INV-113). Updating
+   the pins alone is scoped to a boundary shift that leaves the document's shape standing; after a real
+   redesign the old shape itself lies, so fresh pins on a stale shape are a defect.**
 
 4. **Prove the architecture — invoke `product-prover` with the architecture lens** whenever the doc
    changed in step 3 — six checks, each at the project's kind scale: every spec fact has an owning node ·
