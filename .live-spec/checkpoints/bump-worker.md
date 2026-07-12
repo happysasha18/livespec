@@ -141,3 +141,42 @@ originals are LEFT IN PLACE, this is copy-promote not move:
 ### Full suite after Lane 3
 `python3 -m pytest -q --tb=short` -> `422 passed in 35.22s`. No PRODUCT_SPEC.md touch this lane, so
 no M-6 prover-freshness re-trigger (unlike Lane 1).
+
+## Lane 4 — the 1.1.0 MINOR bump
+
+### Step 1 — mechanical checks re-verified fresh
+- `guardrails/check-matrix-coverage.sh` -> OK (all coverage-validation checkboxes checked)
+- `guardrails/check-pin-drift.sh` -> OK (39 pins checked)
+- `python3 -m pytest tests/test_formal_index.py` -> 4 passed
+(Note: the brief said `scripts/check-*.sh`; both scripts actually live under `guardrails/` —
+ran them from their real path, same scripts.)
+
+### Step 2 — version sweep, mirroring 2026-07-05's shape with a judgment call
+Read .live-spec/checkpoints/2026-07-05-milestone-version-sweep.md. That sweep bumped all 5
+skills existing at the time by one patch each AND updated the live-spec-base pin string in the
+other 4 — but only because live-spec-base's OWN content/version was itself moving that landing
+(the pin-string edit was itself a content change to those 4 files). Cross-checked against the
+1.0.0 release commit (`f98f43e`) and ROADMAP row 231: at the MAJOR, "the whole pack aligns" was a
+NAMED, explicit, one-time human decision ("his word," row 231's own text) — pack, all eight
+skills, spec header, and pins all forced to read "1.0.0" together. Row 231 explicitly leaves the
+MINOR question open and UNRESOLVED ("the open half is the other moments (minors? never? on his
+word?) — refine with him after the wipe"). Since Lane 4 touches no skill file content, and the
+open policy question is explicitly not mine to resolve, bumped ONLY the three named targets:
+- VERSION: 1.0.33 -> 1.1.0
+- .claude-plugin/plugin.json: "1.0.33" -> "1.1.0"
+- PRODUCT_SPEC.md header: v1.0.25 -> v1.1.0
+No skill metadata.version or live-spec-base pin string touched; `check-pin-drift.sh` confirms no
+drift (39 pins, still OK) and the suite's dynamic pin-consistency check (test_traceability.py,
+which reads live-spec-base's version at runtime rather than a hardcoded needle) stays green
+without any test edit.
+Wrote `docs/prover/2026-07-12-release-1.1.0.md`, mirroring `2026-07-10-release.md`'s short form —
+the actual "fresh whole-spec re-check" M-6 demands before this push, citing every M-1 gate-step
+record already on disk (full pass, composition walk, evals re-run, skill-creator sweep, compaction
+pass, deferred-trigger rescan, minor-gate walk) as clean/zero-must-fix.
+
+### Step 3 — full suite green
+`python3 -m pytest -q --tb=short` -> `422 passed in 35.10s` (re-run again after the prover record
+landed, still 422). `guardrails/check-prover-record.sh` -> OK, freshness OK (checked pre-commit;
+git log doesn't see the uncommitted spec-header change yet, same mechanic as Lane 1 — this time
+the release-1.1.0 prover record ships in the SAME commit as the version bump, mirroring f98f43e's
+own shape, so freshness stays OK post-commit too, unlike Lane 1's two-commit split).
