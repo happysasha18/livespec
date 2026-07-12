@@ -3494,3 +3494,29 @@ full suite 542. The existing forward-direction check (`test_every_scenario_carri
 untouched, so both directions now hold. Door: feature; kind: skill; footprint: single-module (guardrails
 node). Delegation: none — the marker design and the 10-heading classification were the judgment; proposed
 senior / chosen senior. SPEC v1.1.6, spec-author 1.0.6, pack 1.1.6.
+
+## 2026-07-12 (session 40) — critical-priority preemption bound, echoed at intake (row 284, INV-133, prover F5)
+
+**What.** Prover finding F5: "critical" is defined in bug terms but liftable onto any door, so a critical
+non-bug (a violated safety gate the tripwires route to the feature door) headed the queue and then waited for
+the current lane — only the bug door preempts — while a human who said "critical" for a live break expected
+bug-like preemption. INV-133 states the boundary unambiguously: a critical non-bug heads the queue but never
+preempts a rolling lane (it lands at the current lane's checkpoint, ahead of everything else waiting); a
+genuine live break that must stop the work now is a bug; and the capture echo [INV-27] says the bound back
+when a wish is marked critical on a non-bug door, so the human can re-door it a bug rather than discovering at
+the next report that the work he thought was stopped kept running.
+
+**The taste call — the fork.** The finding offered two arms: restrict "critical" to bug-door conditions with
+a separate urgency mark for a non-bug break, or state the no-preempt bound plainly and echo it at intake.
+Chose the second. The first would need a second urgency word and would re-touch every intake surface for a
+distinction the queue already draws (preemption is bug-door-only, T-9); stating the bound and echoing it at
+intake keeps one urgency vocabulary and closes the gap at the exact moment the human could be misled. The
+spec already stated the bound at line 274 (critical heads the queue whatever its door; only the bug door
+preempts) — the new work is the unambiguous no-preempt sentence and, above all, the intake echo.
+
+**Homes.** New invariant INV-133 (the priority clause is its home), its Formal-index row, communicator's
+capture echo rule 12 (v1.0.8), and matrix M-274 under the build-pipeline block. Red-first:
+`test_critical_preempt_bound` (4 assertions) red against the pre-delta tree, then green; full suite 546.
+Door: feature; kind: skill; footprint: single-module (build-pipeline node). Delegation: none — the fork
+choice and echo wording were the judgment; proposed senior / chosen senior. SPEC v1.1.6, communicator 1.0.8,
+pack 1.1.6.

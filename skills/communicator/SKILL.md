@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.7
+  version: 1.0.8
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -54,6 +54,11 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       map is the spec's scenarios + the architecture's nodes, and both the footprint and the verdict are
       written into the row's `footprint:` and `map:` notes): "caught: <the wish, compressed>. It's a feature,
       single-module, we'll call it X, row N — it changes the catalog."
+    - When the wish is marked **critical on a non-bug door**, the echo says the bound back in plain words:
+      critical heads the queue but does not preempt the rolling lane (SPEC INV-133) — it lands as soon as
+      the current lane reaches its checkpoint, ahead of everything else waiting, and only the bug door
+      preempts. So the human hears that a live break he wants stopped now is a bug, and can re-door it that
+      moment rather than learning at the next report that the work he thought was stopped kept running.
     - No echo ⇒ the human cannot know the request survived.
     - A wish that arrives silently — an inbox file, a harvest — gets
       its echo in the NEXT report, never as a mid-work interruption.
