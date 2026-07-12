@@ -26,7 +26,10 @@ def h3_tag_gaps(spec_text):
     gaps = []
     for m in re.finditer(r"^### (.*)$", spec_text, re.M):
         heading = m.group(1).strip()
-        if re.search(r"\[feature:\s*F-[a-z-]+\]\s*$", heading):
+        # A valid tag ends the heading with `[feature: F-x]`: a feature id is `F-` plus
+        # alphanumerics/hyphens (so a numeric id like `F-12` counts), and a heading may
+        # carry several comma-separated ids (`[feature: F-a, F-b]`) — all validly tagged.
+        if re.search(r"\[feature:\s*F-[a-z0-9-]+(?:\s*,\s*F-[a-z0-9-]+)*\s*\]\s*$", heading):
             continue
         if heading.endswith(SCENARIO_MARKER):
             continue
@@ -56,6 +59,22 @@ class TestScenarioHeadingTag(unittest.TestCase):
         tagged = spec + "\n### A real scenario  [feature: F-demo]\n\nBody.\n"
         self.assertNotIn("A real scenario", " ".join(h3_tag_gaps(tagged)),
                          "the checker flagged a properly feature-tagged scenario")
+
+    def test_numeric_and_multi_feature_headings_are_accepted(self):
+        """A feature id may be numeric (`F-12`) and a heading may carry several features
+        (`[feature: F-a, F-b]`) — both are validly tagged, never reddened, while a truly
+        untagged/unmarked heading stays red (SPEC INV-132's mechanism, hardened)."""
+        spec = read("PRODUCT_SPEC.md")
+        numeric = spec + "\n### A numeric-id scenario  [feature: F-12]\n\nBody.\n"
+        self.assertNotIn("A numeric-id scenario", " ".join(h3_tag_gaps(numeric)),
+                         "the checker flagged a validly numeric-id-tagged scenario (F-12)")
+        multi = spec + "\n### A multi-feature scenario  [feature: F-a, F-b]\n\nBody.\n"
+        self.assertNotIn("A multi-feature scenario", " ".join(h3_tag_gaps(multi)),
+                         "the checker flagged a validly multi-feature-tagged scenario (F-a, F-b)")
+        # the never side holds: an untagged, unmarked heading is still red
+        untagged = spec + "\n### Still nobody tagged this one\n\nBody.\n"
+        self.assertIn("Still nobody tagged this one", h3_tag_gaps(untagged),
+                      "widening the recognizer must not swallow a genuinely untagged heading")
 
     def test_spec_states_heading_convention(self):
         spec = read_flat("PRODUCT_SPEC.md")

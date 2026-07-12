@@ -2,7 +2,15 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
-## 2026-07-12 ~20:34 (build-worker, session 42) — a surviving numeric delegation trigger removed from build-pipeline (ROADMAP row 295, M-277)
+## 2026-07-12 ~20:40 (build-worker, session 42) — INV-132's heading-tag check widened for numeric and multi-feature ids (ROADMAP row 296, M-273)
+
+**What:** the H3 heading-tag recognizer in `tests/test_scenario_heading_tag.py` accepted only `[feature: F-<lowercase>]`, so a heading validly tagged `[feature: F-12]` (a numeric id) or `[feature: F-a, F-b]` (several features) was read as untagged and reddened as a forgotten scenario tag. The recognizer now reads `F-[a-z0-9-]+(?:\s*,\s*F-[a-z0-9-]+)*` — numeric ids and comma-separated multi-feature tags both count as validly tagged; a truly untagged/unmarked H3 still reddens.
+
+**Why:** a latent false-positive. No real heading uses a numeric or multi-feature id today, so nothing was broken in the shipped spec — but the check would block a legitimate heading the moment one appeared, which is exactly the "scope too narrow" class base rule 14 names. Red-first: `test_numeric_and_multi_feature_headings_are_accepted` went red against the lowercase-only recognizer (F-12 flagged as a gap) and green after the widening; the same test asserts a genuinely untagged heading still reddens, so the widening did not swallow a real gap.
+
+**Class note (left as-is, on purpose):** the sibling recognizer in `tests/test_traceability.py` (the INV-73 feature-coverage MAPPING regex) still reads `F-[a-z-]+`. That is a different check — it maps a heading's feature id to the coverage table — and widening it to accept multi-feature headings would owe multi-feature coverage-table support, out of this lane's scope. With no real numeric/multi heading in the spec there is no active divergence; the note records the sibling so a future numeric/multi heading routes the coverage-mapping widening as its own row.
+
+
 
 **What:** build-pipeline's junior-delegation passage carried a present-tense operative trigger — "delegate when ≥1 holds — >3 files touched/read for facts · a known script/suite runs >~30s · ... the edit strings or command are known verbatim". That is exactly the size/time trigger base rule 5 demoted ("Size is a weak hint only, never the decider") and the routing rule INV-69 replaced (the tier is proposed "beyond the row's size alone"). The passage now states delegation only as the judgment-vs-mechanical test and points at base rule 5 / INV-69 as the trigger's one home; the numeric bars are gone.
 
