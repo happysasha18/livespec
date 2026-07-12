@@ -1,100 +1,60 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~15:40, session 40 — closing the remaining list on his word "делаем всё подряд, закончим сегодня")
-**s40: FIVE laws landed (detail → JOURNAL + ROADMAP rows).** Row 281 INV-124 (class-hunt: a confirmed bug
-drives four moves before close). Row 287 INV-125 (cross-surface uniformity: a policy across sibling
-surfaces/transitions/elements at the surface-CLASS level). Row 288 INV-126 (paired-transition symmetry:
-both directions get the same craft or a stated reason). Row 289 INV-127 (scenario entry/exit contracts — the
-old large 192). Row 259 INV-128 (entry impact-analysis station: every request read against spec+architecture+
-code → a named footprint composing with the door; boundary-health law; cites INV-121, closing row 270 leg 3;
-a FABLE audit caught 2 must-fix, folded). 281/287/288/289 PUSHED CI-green, 259 pushing. Suites →525 green,
-prover 0 must-fix each. **Next free: INV-129, M-270.** SPEC v1.1.5, pack 1.1.5, build-pipeline 1.0.17,
-product-prover 1.0.8, communicator 1.0.6, spec-author 1.0.5.
-**s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) on defaults; 262 (adopt audit de-dup)
-decided, execution pending his nod (edits his playbook); F3-F7 filed as rows 282-286. Row 280 (register
-thinning) ATTEMPTED + FINDING: an auto-tighten draft dropped four normative sub-rules; reverted (green at
-565), STAYS OPEN needing a rule-preserving pass. Row 290 LANDED (INV-46 broadened: the adversarial audit
-fires mandatory when the change is high-stakes — surface-sized OR method-meaning-changing — AND its only
-review is the author's own; one checker per batch; DOGFOOD — the audit ran on its own landing and caught a
-must-fix). **NEXT (queued, his standing wish): the architect-draft follow-ons R0/R1/R3/R5** — the footprint-
-note suite check, per-kind concrete-layers declaration, interface-test machinery, cross-cut counter (the
-mechanical halves INV-128 deferred). **On HIM:** a real remote deposit from his browser (row 247 leg); a nod
-on 262's playbook edit; flips on 261/279; the register-thinning pass (row 280).
-**s39 (pushed, CI green):** eleven smalls landed (263,273,269,264-268,270,260a,260b); INV-121/122/123.
+## LIVE STATE (2026-07-12 ~21:31, session 41 — the free-work queue closed autonomously under /loop)
+**s41: the whole free queue landed — twelve rows. VERSION 1.1.16, suite 590 green, CI green on every push,
+tree clean, everything pushed.** Read this section then wipe memory; the detail lives in JOURNAL + ROADMAP.
 
-**THREE landed rows carry honestly-flagged forward legs (resume owes them, INV-26):**
-- **Row 266** — the register extracted to `references/writing-register.md` (679→565 lines), but the
-  Done-when's "under ~500" is arithmetically unreachable by this extraction alone (the 22-rules core is
-  ~423 lines). **His call 2026-07-12: chase it** — the under-500 target is now row 280 (thin the 22-rules
-  core, a heavy sub-block to a second references/ file, no rule cut). 266's register extraction is complete.
-- **Row 270** — the derive-before-fork law is live; leg 3 ("row 259's station cites INV-121") is
-  WIRED INTO row 259's Done-when and closes when 259 lands.
-- **Row 260b** — the code-compaction law is live; its first real pass fires at the NEXT milestone audit
-  (the 1.1.0 audit already ran at s37, before the law existed).
+- **Five prover findings F3-F7 → rows 282-286 (INV-129..133):** deferred rows are re-scanned for a fired
+  revisit trigger at every queue-take; a withdrawn decision converges to a surfaced default after the second
+  withdrawal; a mid-work re-door rebuilds the parallel-lanes independence graph and serialises a new collision;
+  every person-facing heading carries its tag or an explicit marker (untagged is red); a critical non-bug heads
+  the queue yet never preempts a rolling lane (only the bug door preempts), echoed at intake.
+- **Delegation consolidated → row 262 (anchored INV-69):** base rule 5 is the single statement; the personal
+  playbook collapsed to a pointer plus its own "why #2" note; the three superseded bars (numeric file/time
+  triggers, default-not-propose, once-per-session spot-check) removed. A guard test greps the whole pack so a
+  size/time numeric trigger can never regress. Row 295 removed the one the audit caught surviving in build-pipeline.
+- **The four architect-draft mechanical halves → rows 291-294:** the footprint-note suite check (INV-134);
+  per-kind concrete layers + proofs declared at founding (INV-135); the cross-cut counter (an advisory signal to
+  the next MINOR audit); the interface-test machinery (layer→level rule + a per-block interface row).
+- **Communicator body thinned 578→499 lines with no rule cut → row 280;** worked examples spilled to
+  references/field-examples.md, all 22 rules and every test-pinned phrase kept in the body.
+- **Impersonal voice ADOPTED in the pack's own docs → row 279:** 46 owner-name attributions rewritten in place
+  (date + reason kept, the who/when moved to JOURNAL); the shipped-language gate now runs in pre-push AND CI with
+  zero active offences. Six authorship bylines kept under a dated carve-out. The former self-exemption is retired.
+- **An independent adversarial audit (INV-46) ran over the seven new laws:** one must-fix (found and fixed as
+  row 295), two latent hardenings folded (rows 296/297 — numeric/multi-feature heading ids; the footprint
+  cutoff-day missing-time escape). Four string-only process-laws (129/130/131/133) sit at the accepted prose floor.
 
-**Carried from s38 (still true):** branch protection set by API on the public repos; prover findings
-F3-F7 still open (not yet rows); the earlier morning asks (below) stand unless answered elsewhere.
-- **Branch protection** set by API on the PUBLIC repos (live-spec, track-coach, product-prover):
-  force-push + deletion blocked, direct pushes allowed, admins not enforced. Closes the F5 half of
-  row 231 without his click. Private repos (tlvphotos, exhibition-engine) need a paid plan — his call.
-  (s38 landed rows 271/272/274/275/276/277/278 — detail in JOURNAL; all prover-confirmed, 0 must-fix.)
-- **GitHub Issues stranger-door (row 261)** — recommendation recorded to DEFER; his word still closes it.
+## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
+- **Row 261** — GitHub Issues as the strangers' wish door for public repos: still a DECIDE. Recommendation: defer.
+- **Install the pack globally** — the installed copies at ~/.claude/skills/ drifted from the repo this session
+  (communicator, build-pipeline, spec-author, test-author, live-spec-base, product-prover all changed). Running
+  `bash install.sh` makes 1.1.16 live for the other windows; held for the owner's word, since it changes every window.
+- **One real remote deposit** — the local cross-project inbox works; the browser arm (claude.ai/code) still owes
+  one live deposit to close its field leg (never self-certified, INV-94). The owner's optional action.
+- **tlvphotos** — an impersonal-voice wish sits in its inbox (591 attributions in shipped docs); it runs in the
+  tlvphotos window. track-coach is already clean.
 
-**OPEN / next:**
-- **Row 279 — OWNER-DECIDES**: does live-spec's OWN tree adopt the impersonal voice (drop ~138 owner
-  attributions into JOURNAL) + wire the shipped-language gate into its own pre-push/CI, OR keep
-  attribution as the pack's provenance (the standing dated exemption)? Recommended default: keep the
-  exemption. Also the 274-fork A/B is this row.
-- **Prover findings F3-F7** (`.live-spec/checkpoints/2026-07-12-prover-spec-findings.md`) still open,
-  NOT yet rows: trigger cadence, tag-symmetry, critical-on-any-door, withdrawn-decision loop, mid-work
-  re-door independence. (Row 273 LANDED s39: the seam row + record-table catch-up.)
-Morning s37 asks below stand unless his answers came in another window — sweep by name.
+## Non-blocking debt (recorded, not urgent)
+- The ARCHITECTURE pin note "check-shipped-language.py (its engine)" drifts — the label word is absent from the
+  file head; present at baseline bbf7790, not this session's delta.
+- The sibling INV-73 coverage-mapping regex still reads `F-[a-z-]`; no live heading uses a numeric or multi id, so
+  there is no active divergence (row 296 widened the INV-132 side).
+- Next free codes at s41 close: INV-136, M-278 — read the live Formal index before minting; codes consume in
+  landing order, reservations are dead.
 
-1. **Waiting HIS word (the morning asks; relay on resume if unanswered)**:
-   - the ARCHITECT PRINCIPLES draft (fourteen principles, P0-P12) — rendered page opened in his
-     browser; his comments route into row 259's pipeline run;
-   - row 262: delegation de-dup, two OWNER-DECIDES (does the playbook keep any parallel copy;
-     where the concrete task-list lives); the three divergences are listed in
-     docs/audit/2026-07-12-delegation-dedup.md;
-   - row 261: GitHub Issues as the strangers' wish door — DECIDE, no build yet;
-   - row 247's open field leg: one REAL remote deposit from his browser (claude.ai/code) closes
-     it; never self-certified (INV-94);
-   - row 231's two halves: F5 branch protection (his one GitHub click) and the skill/pin
-     version-alignment moments beyond MAJOR (the 1.1.0 bump left skill versions unaligned
-     deliberately; INV-115 next free if it mints);
-   - row 217's two human-held gaps (F4 standing anchor guard policy; F5 as above);
-   - carried from before: rows 191/193 picks · D-6/D-7 · row 238 · the prover-freshness
-     midnight-rollover ledger entry (recommended AGREED NON-PROBLEM, his word owed) · the INV-24
-     homing observation (row-223 record).
-2. **Next build work (new session, cold)**: the eleven smalls (263, 264, 265, 266, 267, 268, 269,
-   270, 273, 260a, 260b) are DONE (s39). Remaining: row 259 (SURFACE, full pipeline with story
-   split) — the entry impact-analysis station, BLOCKED on his design-principles comments; working
-   material: .live-spec/checkpoints/pending-design-principles-architect-draft.md + the archived
-   wish's two addenda + his comments. When 259 lands it MUST cite INV-121 (row 270's leg 3, now in
-   259's Done-when). Then row 192 (activated 2026-07-12: scenario entry/exit contracts — its own
-   movement).
-3. **Blocked/waiting on others**: row 243 (README ↔ articles) waits the campaign; row 241 open
-   leg runs in track-coach's window. Field legs with him: 47/96 · 54 · 165 · 168 · 134/141 ·
-   143 · 144 · 140 · 117 · 129 · 133.
-4. Next free codes: INV-124, M-265 at s39 close — read the live Formal index before minting;
-   codes consume in landing order — reservations are dead (s37, row 233's lesson).
-
-## CLOUD FACTS (settled 2026-07-10; row 247 landed the law, its field leg open)
-A remote-agent request from a local session FALLS BACK to a local worktree; real cloud sessions
-fire only from HIS browser (claude.ai/code). Bridge = brief-in-repo or brief-in-prompt; the
-branch returns through git; integrated only when its FILE is on main and read to the end.
-Local sub-agents never appear in his browser list (INV-67). The remote inbox arm: one new
-inbox/ file per deposit, per-repo grant in the host profile, honest failure names the missing
-grant (INV-112; grant-ask template at scripts/grant-ask.md).
+## CLOUD FACTS (settled 2026-07-10; row 247 law live, its field leg open)
+A remote-agent request from a local session falls back to a local worktree; real cloud sessions fire only from
+the browser (claude.ai/code). The remote inbox arm: one new inbox/ file per deposit, a per-repo grant in the host
+profile, honest failure that names the missing grant (INV-112; grant-ask template at scripts/grant-ask.md).
 
 ## Standing habits (always-on)
-- `date` before ANY stamp; chat leads use the prompt hook's wall clock, never extrapolation.
-- No self-certification (INV-94) · no calques · plain words, codes trail (INV-28) · every ask
-  hears its time range, landings settle estimate vs actual (INV-93) · a delegated run's verdict
-  is the suite log's tail (INV-80) · push walk reads the CI verdict itself (INV-106) · inbox
-  swept · one lane one commit · README paragraphs via clean writer (INV-84) · the leave-walk
-  before any machine sleep (INV-95) · every landed row's status cell carries its delegation
-  line (INV-103, suite-checked) · landings close their checkpoints (INV-107) · a rewrite that
-  removes substance lists every removal (INV-109) · the drafter self-verify list (index density ·
-  owning node · matrix-under-owner) is now DURABLE in the drafter-applier law (row 263 landed s39).
-- Machine: caffeinate KILLED at s37 close (~04:27); re-arm it at the next night batch.
+- `date` before any stamp; chat leads use the prompt hook's wall clock, never extrapolation.
+- Shipped docs stay impersonal — the language gate runs in pre-push + CI (INV-118/INV-120); provenance lives in
+  JOURNAL. Delegation runs by base rule 5 → INV-69: one home, guarded by a whole-pack test.
+- No self-certification (INV-94) · no calques · plain words, codes trail (INV-28) · the say-what-it-is rule with
+  no contrast frames · inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail
+  (INV-80) · the push walk reads the CI verdict itself (INV-106) · a high-stakes change whose only review is its
+  author's gets an independent fresh-context checker (INV-46) · a landed row carries its footprint note (INV-134)
+  and its delegation line (INV-103) · landings close their checkpoints and list every substance move (INV-107/109).
+- Machine: re-arm caffeinate at the next night batch if a long run is queued.
