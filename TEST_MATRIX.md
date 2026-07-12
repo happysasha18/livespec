@@ -1,12 +1,12 @@
-# live-spec — Test Matrix (v0.1, 2026-07-05)
+# live-spec — Test Matrix
 
-Derived from the proven SPEC v0.7.1 **through the proven ARCHITECTURE.md v0.1** (records:
-`docs/prover/2026-07-05-lost-layers.md`, `docs/prover/2026-07-05-architecture.md`); kept current through
-SPEC v0.16.14 by assignment + the 2026-07-05 audit folds + the doors landing (rows 70-71, M-067..M-071)
-+ the night-of-2026-07-05 landings (rows 72-92: facets/fences/intake-trio/founding/design-sync —
-anchors T-13..T-15, INV-18..INV-21, B-2, E-18, rows M-072..M-083) + the work-kind landing (SPEC v0.15.0,
-session 8: T-16/INV-22, rows M-084/M-085; headers re-pin at each milestone per M-1) + the row-57 landing
-(SPEC v0.15.1, session 9: E-21/E-22, rows M-091/M-092). Rows are organized
+Derived from PRODUCT_SPEC.md **through the proven ARCHITECTURE.md**; the package version has one home,
+the VERSION file, and is not pinned here where it would read stale (row 265, which supersedes the old
+"headers re-pin at each milestone" line this header used to carry). Last reconciled with the spec:
+2026-07-12. The first derivation and its prover records: `docs/prover/2026-07-05-lost-layers.md`,
+`docs/prover/2026-07-05-architecture.md`; the full milestone-by-milestone derivation history — which
+spec versions and landings kept it current — lives in JOURNAL.md and the git log, not frozen in this
+header. Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
 mechanized in `tests/test_traceability.py` so it re-walks at every run. [E-15]
@@ -135,6 +135,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-104 | The workshop-noise law (base rule): first sight of operational noise = one WATCHED ledger line, never a silent retry; the SECOND occurrence gets an owner that moment — a queue row or the human's dated agreed non-problem (his word alone, INV-9); a third unowned recurrence is a METHOD defect that goes to the pack's queue; never ledger noise preempting the bug lane | INV-23 | string | `test_base_rule_problem_ledger` | BUILT |
 | M-011 | A safe breakpoint = LIVE STATE replaced (one block, never stacked) + dated journal entry + commit | M-2 | string | `test_next_steps_live_state` (shape; the discipline audits at M-1) | BUILT |
 | M-012 | Versions have named homes: VERSION file, a version line under `metadata:` in its SKILL.md frontmatter, host record; never scattered or absent | M-7 | string | `test_version_homes` | BUILT |
+| M-261 | A derived doc's header (ARCHITECTURE.md, TEST_MATRIX.md) carries no frozen spec-version number that reads as current — it names what it derives from, points at the version's one home (VERSION), and carries a dated "Last reconciled" provenance line instead; never a header pinning a stale `(vX.Y, date)` a reader mistakes for the current version (row 265) | M-7 | string | `test_no_frozen_version_pin_in_header` + `test_header_points_at_version_and_reconcile_date` (red proven against the pre-delta headers, 2026-07-12) | BUILT |
 | M-066 | The base skill states each shared rule once and no working skill restates one normatively; never a second normative home for a shared rule | E-12 | string | milestone compaction pass (M-1) | TODO |
 | M-069 | A prototype lives fenced (own home) with a PROTOTYPE label per artifact kind, opened only by the assigned senior, shown only as a sketch; never wired into or presented as the product | E-17 | string | `test_base_rules_door_and_prototype`, `test_working_skills_carry_the_door` | BUILT |
 | M-134 | The economy ladder: SPEC names `budget.pressure` (full [default] · lean · tight) moved only by the human's word and asked — or the default told — at a project's setup (founding/adoption) alongside project.kind, each rung's legal sheds (node-scoped mid-work test runs with the full suite kept at landing gates; CROSS-LINK with an owed FULL deferrable as a dated debt line; batched landing gates whose batch-end red bisects by landing order; cheaper worker tiers), and the base skill's settings table carries the `budget.pressure` row; never a rung moved by the agent's own word, never a shed taken silently — every taken shed named in the landing report | T-19 | string | `test_economy_ladder` | BUILT |

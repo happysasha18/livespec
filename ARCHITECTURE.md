@@ -1,4 +1,7 @@
-# live-spec — Architecture (v0.3.0, 2026-07-09)
+# live-spec — Architecture
+
+Derived from PRODUCT_SPEC.md; the package version has one home, the VERSION file, and is not pinned
+here where it would read stale (row 265). Last reconciled with the spec: 2026-07-12.
 
 This is how live-spec is built: the named nodes that the spec's facts live in. One node carries one name
 and one responsibility — the one-surface-one-name rule, applied to structure. The doc was itself proven
