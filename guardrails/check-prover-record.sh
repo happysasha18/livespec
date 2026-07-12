@@ -29,6 +29,36 @@ cd "$REPO_ROOT"
 PROVER_DIR="${1:-docs/prover}"
 TODAY="${2:-$(date +%Y-%m-%d)}"
 
+# Carve-out (row 269, SPEC M-6/INV-112): a push whose diff is exactly one NEW file under
+# inbox/ — the remote-deposit shape — changes no spec-backed content, so it owes no fresh
+# prover record. This mirrors the spec-level carve-out into the gate script, so an inbox
+# deposit on a day with no committed record does not red the CI. A diff carrying anything
+# more (a second file, an edit, a delete) rides the full gate below.
+#   The diff is measured against a BASE ref: LIVE_SPEC_DIFF_BASE if set (CI passes
+#   github.event.before, a planted test passes the base commit), else origin/main, else
+#   HEAD~1. If no base resolves, the carve-out cannot be judged and the full gate runs.
+DIFF_BASE=""
+if [ -n "${LIVE_SPEC_DIFF_BASE:-}" ] && \
+   [ "${LIVE_SPEC_DIFF_BASE}" != "0000000000000000000000000000000000000000" ] && \
+   git rev-parse --verify --quiet "${LIVE_SPEC_DIFF_BASE}^{commit}" >/dev/null 2>&1; then
+  DIFF_BASE="${LIVE_SPEC_DIFF_BASE}"
+elif git rev-parse --verify --quiet origin/main >/dev/null 2>&1; then
+  DIFF_BASE="origin/main"
+elif git rev-parse --verify --quiet "HEAD~1" >/dev/null 2>&1; then
+  DIFF_BASE="HEAD~1"
+fi
+
+if [ -n "$DIFF_BASE" ]; then
+  changed="$(git diff --name-status "$DIFF_BASE" HEAD)"
+  # exactly one line, status A (added), path under inbox/
+  if [ "$(printf '%s' "$changed" | grep -c '')" -eq 1 ] && \
+     printf '%s\n' "$changed" | grep -qE '^A[[:space:]]+inbox/'; then
+    echo "OK (prover record): carve-out — the pushed diff is exactly one new inbox/ file"
+    echo "  (the remote-deposit shape, SPEC M-6/INV-112); no fresh prover record is owed."
+    exit 0
+  fi
+fi
+
 shopt -s nullglob
 candidates=("$PROVER_DIR"/"$TODAY"*.md)
 shopt -u nullglob

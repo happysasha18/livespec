@@ -25,6 +25,12 @@ jobs:
       - name: test suite (gate b, full — the reach map stays local)
         run: python3 -m pytest -q
       - name: gate a — fresh prover record
+        # LIVE_SPEC_DIFF_BASE lets the script judge the inbox-only carve-out (row 269,
+        # SPEC M-6/INV-112): a push whose diff is exactly one new inbox/ file owes no
+        # fresh record. github.event.before is the pre-push SHA on a push; on a PR it is
+        # empty and the script falls back to origin/main.
+        env:
+          LIVE_SPEC_DIFF_BASE: ${{ github.event.before }}
         run: guardrails/check-prover-record.sh
       - name: gate d — matrix coverage
         run: guardrails/check-matrix-coverage.sh

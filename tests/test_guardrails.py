@@ -152,6 +152,44 @@ class TestGateA_ProverRecord(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_inbox_only_push_carve_out_needs_no_record(self):
+        """Row 269 (INV-112/M-6): a push whose diff is exactly one new inbox/ file owes
+        no fresh prover record — the CI script must carry the same diff-scoped carve-out
+        the spec gained, so an inbox deposit on a day with no committed record stays green."""
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1\n")
+            self._commit_all(tmp, "spec v1")
+            base = run(["git", "rev-parse", "HEAD"], cwd=tmp).stdout.strip()
+            self._write(tmp, "inbox/2026-07-12-from-track-coach-wish.md", "a new wish\n")
+            self._commit_all(tmp, "inbox deposit")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
+                cwd=tmp,
+                extra_env={"LIVE_SPEC_DIFF_BASE": base},
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("carve-out", result.stdout)
+
+    def test_diff_beyond_one_inbox_file_still_needs_a_record(self):
+        """The carve-out is diff-scoped: a push that touches anything beyond one new
+        inbox/ file rides the full gate and still owes a fresh record (row 269)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            self._init_repo(tmp)
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1\n")
+            self._commit_all(tmp, "spec v1")
+            base = run(["git", "rev-parse", "HEAD"], cwd=tmp).stdout.strip()
+            self._write(tmp, "inbox/2026-07-12-from-track-coach-wish.md", "a new wish\n")
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v2 — a real change\n")
+            self._commit_all(tmp, "inbox deposit + a spec edit")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh"), "docs/prover", "2026-07-05"],
+                cwd=tmp,
+                extra_env={"LIVE_SPEC_DIFF_BASE": base},
+            )
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("FAIL (prover record)", result.stdout)
+
 
 class TestGateB_Tests(unittest.TestCase):
     """Gate (b): the test suite must be green (also covers gate c, anchor ownership).
