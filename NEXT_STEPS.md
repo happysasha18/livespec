@@ -7,9 +7,12 @@ check the spec · escalate to the human — homed in the F-bug spec clause, buil
 product-prover class lens, base rule 14 (sharpened). Red-proven (`tests/test_class_hunt.py`, 7), suite 497
 green, prover short-form 0 must-fix. SPEC v1.1.1, pack 1.1.1, base 1.0.7, build-pipeline 1.0.15,
 product-prover 1.0.4. **Next free codes: INV-125, M-266.** Inbox swept clean.
-**STILL IN THIS SESSION's list:** row 280 (register thinning) · F3-F7 → rows · rows 279/262/261
-(owner-decides, applying recommended defaults + reporting) · row 192 (scenario contracts) · row 259. Two
-items physically on HIM: one real remote deposit from his browser (row 247 leg) + row 259's design-principles comments.
+**s40 progress:** owner-decides 261 (DEFER) + 279 (KEEP EXEMPTION) resolved on recommended defaults, 262
+(adopt audit's de-dup rec) decided, execution pending his nod (deletes from his personal playbook); prover
+findings F3-F7 filed as rows 282-286 (each a should-clarify/worth-considering, own movement). **REMAINING
+this session:** row 280 (register thinning — a clean-writer draft is running), row 192 (scenario
+contracts). **On HIM:** one real remote deposit from his browser (row 247 leg); row 259 (design-principles
+comments OR proceed on the draft); a nod on 262's playbook edit; flips on 261/279 if he wants the other option.
 **s39 (pushed 49d84e0..a2b3edd, CI green):** eleven smalls landed (263,273,269,264,265,266,267,268,270,260a,260b);
 INV-121 (derive-before-fork), INV-122 (node fitness), INV-123 (code compaction); a Fable adversarial pass
 folded 1 must-fix + 2 should-clarify (docs/prover/2026-07-12-s39-backlog-batch.md).
