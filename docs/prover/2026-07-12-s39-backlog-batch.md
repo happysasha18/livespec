@@ -51,3 +51,24 @@ one edited invariant consistent with its family. Three rows carry honestly-flagg
 in their status cells (266's under-500 size call — owner's word owed; 270's leg 3 — wired into row 259's
 Done-when; 260b's first code-compaction pass — fires at the next milestone audit). The full suite reads
 489 green with this record committed (gate-a's freshness satisfied for the pushed state). Ready to push.
+
+## Fable adversarial-review fold (pre-push verify step, 2026-07-12)
+
+Before the push, an independent Fable prover pass re-read the four changes (opening hypothesis: "these
+laws have a hole"). It found what the inline pass missed — one must-fix and two should-clarify, all
+wording-level, no false product claim. All folded before the push:
+
+- **must-fix (INV-108):** the one-source claim cited [INV-11] (the concurrent-edit fence) at three sites
+  where it meant the one-home principle (base rule 4). The fence anchor was wrong and had propagated into
+  the milestone-re-checked index. Replaced with a plain "base rule 4" pointer.
+- **should-clarify (INV-122):** the one-no case (2 yes, 1 no) had no verdict, and the prover's
+  speculative-node flag (a single second-question no) diverged from the birth gate (two-no = premature).
+  Defined the one-no case as a flag to answer (name the plan or fold) and scoped the prover flag to that
+  same flag raised for an answer — both homes now agree.
+- **should-clarify (INV-123):** the second-occurrence trigger said "compacted the instant it recurs",
+  overriding base rule 19 (owner/row that moment), INV-56 (owned work batches), and INV-39 (one row's
+  delta). Fixed to "opens the duplication's own compaction row that moment", landing through the ordinary
+  pipeline. Level-lock softened so a merge does not owe a brand-new lint when the existing suite holds it.
+- INV-121: added a kinship pointer to the pre-ask scan (INV-4/INV-81) per the review's redundancy note.
+
+Re-verdict after the fold: **zero must-fix, zero should-clarify open.** Suite 490 green. Ready to push.
