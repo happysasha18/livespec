@@ -3555,3 +3555,32 @@ cross-cutting (the base rulebook plus its version/pin lockstep). No new spec cod
 its Formal-index row and its owning node (build-pipeline). Full suite 546/546 green. Delegation accounting
 (INV-103): proposed senior → chosen senior → why — prose judgment on the shared rulebook, no mechanical
 grunt worth routing down (the seven-pin lockstep was one inline sed).
+
+## 2026-07-12 (session 41) — the footprint note is enforced on every landed feature/refactor row (row 291, INV-134)
+
+**What.** INV-128 (row 259) states the three-source footprint read and writes the verdict in the row's
+`footprint:` note, but it explicitly deferred the mechanical enforcement to a follow-on row. This is that
+follow-on. New invariant INV-134: a landed feature-or-refactor row carries its footprint note, and a suite
+check reads the queue (ROADMAP.md) and reddens a landed feature-or-refactor row that omits it. This is the
+mechanical floor under INV-128's read, built to the same shape the delegation-accounting check (INV-103)
+gives the routing rule — prose states the read, the check holds it on every landing.
+
+**The forward-binding problem, and its cut.** INV-128 only landed mid-session-40 (~17:01, 2026-07-12), so
+the rows that landed earlier that same day predate the footprint concept and carry no note; binding the
+check from the bare date (as INV-103 could, because delegation lines predated their check) would have
+reddened ~39 historical rows. The honest cut is INV-128's own landing moment: a feature/refactor row landed
+on 2026-07-12 at or after ~17:01, or on any later date, owes the note; rows before it stay as they landed.
+The scan parses the landed date and, on the cutoff day, the `~HH:MM` stamp. It matches the `footprint:`
+note itself (the colon form with one of the three values), not the bare word — prose uses "footprint"
+freely (row 259's own status says "footprint HELD"), and an early red-proof attempt was foiled by exactly
+that until the match was tightened.
+
+**Homes / red-first.** New clause after INV-128's in the spec + its Formal-index row; the ROADMAP row
+template gains the footprint field (beside door/kind/map); the capture echo already carried the field from
+INV-128. `tests/test_footprint_note.py` (5 tests): the string tests red against the pre-delta tree, and the
+queue-scan red-proven by stripping row 259's footprint note and watching it go red, then restored.
+ARCHITECTURE's build-pipeline node gains INV-134; TEST_MATRIX gains M-275. Door: feature; kind: infra (the
+buildable deliverable is the check + template field); footprint: cross-cutting (five homes), HELD through
+the landing. SPEC v1.1.6→1.1.8, VERSION/plugin 1.1.7→1.1.8. Full suite 553 green. Delegation accounting
+(INV-103): proposed senior → chosen senior → why — the check-scoping (the forward cutoff at INV-128's
+landing time, the colon-note match) was the judgment; no mechanical grunt worth routing down.

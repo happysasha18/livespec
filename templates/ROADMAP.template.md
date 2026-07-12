@@ -5,7 +5,12 @@ the current landing finishes before the next starts. Every row names its size, i
 normal, and its DOOR — feature · bug · refactor · docs-only · skip — said at intake, before any code
 (SPEC T-12, INV-16). It also names its WORK-KIND — product · infra · skill · prose — what the wish
 builds; the kind scales the form each pipeline step takes, and a stood-down step is named in the
-landing report, never silently skipped (SPEC T-16, INV-22).
+landing report, never silently skipped (SPEC T-16, INV-22). It also names its FOOTPRINT —
+presentation-only · single-module · cross-cutting — the three-source impact read taken at intake
+(the spec says what behaviour changes, the architecture which module owns it, the code what is
+touched); the footprint is written in the row's `footprint:` note beside `door:`, `kind:`, and
+`map:`, and every landed feature-or-refactor row carries it — a suite check reddens one that omits
+it (SPEC INV-128, INV-134).
 
 | # | Wish (plain words) | Class | Status | Decision / acceptance |
 |---|---|---|---|---|
