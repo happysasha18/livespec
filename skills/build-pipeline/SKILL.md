@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.12
+  version: 1.0.13
 ---
 
 # build-pipeline — ship a change by the method
@@ -216,6 +216,14 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    A future feature earns its node when its landing arrives. A speculative node is unbacked structure — the
    prover flags it. "Should I architect the next few milestones now?" is answered NO strictly by the method,
    taste playing no part.
+
+   **Every new or carved node passes a three-question fitness test at its birth (SPEC INV-122):** can it be
+   tested alone · does a real second place need it · can it and its neighbour be worked in parallel without
+   queuing on shared files — three yes answers make the node right, two no answers make it premature. The
+   test's first home is here, the architecture step, where new abstractions are born; a carve that fails it
+   is folded back into its caller until a real second need or a real testability gain arrives. Its second
+   home is product-prover, extending the speculative-node flag: a node with one caller and no promised
+   second is flagged. (Born of the six-principle design wish, principle 7, 2026-07-12.)
 
    Re-carving the whole node map IS legal: it arrives as a restructure placement's own queue row (SPEC
    INV-37), walks this step, and is re-proven like any structure change. A placement may SAY the shape no

@@ -1,0 +1,42 @@
+"""A new or carved architecture node proves itself by three questions — row 260a (SPEC INV-122).
+
+Every extraction or new/carved node is gated by a three-question fitness test at its birth: can it be
+tested alone, does a real second place need it, can it and its neighbour be worked in parallel without
+queuing on shared files — three yes make it right, two no make it premature. First home: build-pipeline's
+architecture step (the gate a new node passes). Second home: product-prover, extending the
+speculative-node flag — a node with one caller and no promised second is flagged.
+"""
+
+import os
+import unittest
+
+from conftest import ROOT, read_flat
+
+
+class TestNodeFitnessTest(unittest.TestCase):
+    def test_build_pipeline_carries_the_three_questions(self):
+        bp = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn("three-question fitness test", bp)
+        self.assertIn("can it be tested alone", bp)
+        self.assertIn("worked in parallel without queuing on shared files", bp)
+
+    def test_prover_flags_the_speculative_node(self):
+        pp = read_flat("skills/product-prover/SKILL.md")
+        self.assertIn("one caller and no promised second is flagged", pp)
+
+    def test_spec_clause_and_index(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("three-question fitness test", spec)
+        self.assertIn("[INV-122]", spec)
+
+    def test_formal_index_row(self):
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-122 |"):
+                    self.assertIn("fitness", line.lower())
+                    return
+        self.fail("INV-122 Formal-index row missing")
+
+
+if __name__ == "__main__":
+    unittest.main()
