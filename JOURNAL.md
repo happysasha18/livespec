@@ -2,6 +2,16 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-12 ~20:34 (build-worker, session 42) — a surviving numeric delegation trigger removed from build-pipeline (ROADMAP row 295, M-277)
+
+**What:** build-pipeline's junior-delegation passage carried a present-tense operative trigger — "delegate when ≥1 holds — >3 files touched/read for facts · a known script/suite runs >~30s · ... the edit strings or command are known verbatim". That is exactly the size/time trigger base rule 5 demoted ("Size is a weak hint only, never the decider") and the routing rule INV-69 replaced (the tier is proposed "beyond the row's size alone"). The passage now states delegation only as the judgment-vs-mechanical test and points at base rule 5 / INV-69 as the trigger's one home; the numeric bars are gone.
+
+**Why it mattered:** an independent audit found it as the surviving arm of row 262's delegation consolidation — the consolidation shipped incomplete, leaving one skill still legislating a rule its own base skill had superseded. Base rule 14: a rule superseded at a broad scope goes stale at every narrower restatement the instant the broad rule changes, and the same change must sweep the copies. The broad rule (base rule 5 / INV-69) moved; this build-pipeline copy was the copy left quoting the old rule.
+
+**Red-first, and why the scan is shaped the way it is:** the guard `tests/test_delegation_trigger_no_size.py` scans every `skills/**/SKILL.md`. It could not simply grep the bare numbers — product-prover legitimately says "scan in 30 seconds" and build-pipeline itself says the brief is "SIZED — at most ~8 files to edit". So the scan keys on the TRIGGER SHAPE a benign mention cannot wear: a `>` comparison threshold on a file count or a running time (">3 files", ">~30s"), or the "N files touched/read" file-count vocabulary. A demoted-proxy sentence ("size is a weak hint only, never the decider") carries neither, so a future sentence that mentions the proxy while pointing at INV-69 stays green. The scan went RED against the surviving trigger at build-pipeline line 489 and green after the rewrite; a companion `test_scan_has_teeth` proves the discriminator catches the three trigger forms and spares the two benign ones.
+
+**Class hunt:** the whole-pack threshold-shape grep confirmed build-pipeline was the only skill carrying the numeric trigger — no sibling to sweep. The guard now holds the class shut for the whole pack going forward.
+
 ## 2026-07-12 (build-worker) — communicator body thinned under the ~500-line ideal (ROADMAP row 280)
 
 **What:** the communicator SKILL.md body dropped from 578 to 499 lines, under the ~500 ideal row 280

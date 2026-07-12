@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.21
+  version: 1.0.22
 ---
 
 # build-pipeline — ship a change by the method
@@ -485,10 +485,12 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   red-first STOP the drafter's own read could have closed. The landing order stays declared and the numbers follow it. This form ran live 2026-07-12, the
   night the law batch serialized on the spec/matrix/version chain and still moved at two rows an hour
   [T-18, INV-39, INV-49].
-- **Junior delegation (decided from the request, BEFORE the first tool call):** delegate when ≥1 holds —
-  >3 files touched/read for facts · a known script/suite runs >~30s · the output is a report/list/dump · the
-  edit strings or command are known verbatim. The tier ladder and the raw-output law live in the base
-  skill's rule 5 (live-spec-base).
+- **Junior delegation (decided from the request, BEFORE the first tool call):** the trigger is judgment
+  against mechanical — work whose steps can be written precisely (known edit strings, a known command,
+  fan-out fact-gathering, a report or list or dump to produce) routes to a worker, while anything carrying
+  judgment or design stays senior. Size is a weak hint only, never the decider. The trigger, the tier
+  ladder, and the raw-output law all live in the base skill's rule 5 and the routing rule — this passage is
+  their reference, not a second home (live-spec-base rule 5, SPEC INV-69).
 
   **The routing rule (SPEC INV-69) picks the tier — propose the cheapest tier that can pass the brief, the
   senior may overrule it aloud:** the proposal reads the STEP and kind of the work, beyond the row's size
