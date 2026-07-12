@@ -6,7 +6,8 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
 - `prover.cadence: a re-check before EVERY push, record in docs/prover/ — rigor whole, FORM scaled by the delta (SPEC INV-61): small deltas ride the three-line short form, surface/structural deltas the full walk` — this repo is
   public and the method's own flagship; tightened from the package default (before MINOR bumps) on
   Alexander's explicit word, 2026-07-04. This line and the push gate [M-6] are one fact; M-6 is its
-  normative home.
+  normative home, and M-6 names the one carve-out: a push whose diff is exactly one new inbox/ file
+  (the remote deposit, SPEC INV-112) owes the fence and no re-check record.
 
 - `project.kind: skill pack — the live-spec method itself; this repo doubles as the flagship host
   instance` — recorded 2026-07-06 at the INV-36 landing, the law's own founding-ask applied to its

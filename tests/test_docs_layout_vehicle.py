@@ -40,6 +40,7 @@ class TestDocsLayoutVehicle(unittest.TestCase):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("The owner's decisions are locked in a checkpoint before any file moves", spec)
         self.assertIn("builds on a clean pushed base", spec)
+        self.assertIn("full suite green on the restructured tree", spec)
         self.assertIn("lands one journal chapter", spec)
 
     def test_spec_anchor_and_index(self):

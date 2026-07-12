@@ -48,6 +48,8 @@ class TestInboxRemoteArm(unittest.TestCase):
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-112]", spec)
+        self.assertIn("holds no bar over the deposit", spec)
+        self.assertIn("owes the fence and no re-check record", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-112 |"):

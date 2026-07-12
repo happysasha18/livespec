@@ -38,6 +38,9 @@ class TestRestructureMergeGateLaw(unittest.TestCase):
             body = read_flat(home)
             self.assertIn("merge gate judges the delta", body, home)
             self.assertIn("blocking set is delta-scoped", body, home)
+            self.assertIn(
+                "scopes to a content-preserving restructure", body, home
+            )
 
     def test_preexisting_findings_route_not_block_in_all_homes(self):
         for home in self.HOMES:
