@@ -33,7 +33,9 @@ answers came in another window, sweep them by name below.
    the entry impact-analysis station; working material: .live-spec/checkpoints/
    pending-design-principles-architect-draft.md + the archived wish's two addenda + his
    comments; then row 192 (activated 2026-07-12: scenario entry/exit contracts — its own
-   movement); then the smalls 260a, 260b, 263, 264, 265, 266, 267, 268, 269 (opus-draft →
+   movement); then the smalls 260a, 260b, 263, 264, 265, 266, 267, 268, 269, 270 (270 = derive a
+   requirement from a proven artifact before offering the human a fork — track-coach's morning
+   deposit through the inbox door, swept ~08:35; the ask-never-guess twin) (opus-draft →
    sonnet-apply; row 263 FIRST is cheap and protects every later draft: the drafter self-verify
    list — index density, owning node, matrix-under-owner).
 3. **Blocked/waiting on others**: row 243 (README ↔ articles) waits the campaign; row 241 open
