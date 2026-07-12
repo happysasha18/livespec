@@ -355,6 +355,19 @@ An assumption with no entry is a leak the next instance discovers in production.
 bug: the donor's digits-only id pattern rode into the engine's validator and rejected the engine's
 own slug ids.)
 
+## Crossing the instance→engine boundary — provenance and naming (SPEC INV-119)
+
+A feature usually proves itself first on a live instance and then generalizes into the engine. When that history goes into the engine's spec, write it as the engine's own record: the reader is anyone who runs the engine, so every provenance handle points at something that reader can reach, and the spec reads as generic from the first line.
+
+Four conventions carry the boundary:
+
+- **The history reads as a reconciliation.** Head the history section "Reconciliation log — how each behaviour landed in code", and let each entry trace a behaviour to where it landed in the engine's own code. This is a spec-versus-code reconciliation the engine's reader can follow, rather than a fork's delta against an instance's reference implementation.
+- **Provenance cites the engine's own public commit.** Each entry names where the behaviour landed in the engine — "landed in engine commit `<hash>`" — a commit any reader can check out in the engine's own history. A private instance's commit is invisible to that reader, so an instance hash stays out of the engine's provenance.
+- **One intro sentence states the normal intake path, once.** Open the log with a single sentence naming the usual route — "Most rows record a feature proven first on a live instance and then generalized into the engine" — so no per-entry line re-explains where features come from.
+- **A mechanism carries a neutral internal name; a visible instance label is marked as instance copy.** Name a mechanism by what it does in the engine's own vocabulary — "the unfold step", "the show-more control". Where a running instance shows locale-specific words for it, the spec notes that string as instance-supplied copy the instance plugs in [INV-79], and the neutral term stays the mechanism's one name [E-4].
+
+(Born of the exhibition-engine public-publish pass, 2026-07-12: the spec carried a "Deltas from the <instance> reference implementation" heading citing private-instance commit hashes, and named a generic mechanism by the instance's own locale UI label across eight clauses.)
+
 ## Standard vocabulary — what our house terms map to
 
 The pack's method is its own, but its concepts are the field's, and naming the lineage lets a reader who

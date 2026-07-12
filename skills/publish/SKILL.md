@@ -71,6 +71,13 @@ Comparisons and diagrams JOIN when they carry the argument — a comparison tabl
 alternatives, a diagram where structure beats words — and never as decoration; an empty comparison
 ("we're better at everything") is worse than none.
 
+## When the package is a generalized engine (SPEC INV-119)
+
+An engine carved out of an instance and published as a generic package owes its reader a spec that reads generic — so the walk adds two leak checks before the package leaves the machine. The convention the walk holds the spec to is spec-author's own: a reconciliation log headed "how each behaviour landed in code", each entry citing the engine's own public commit ("landed in engine commit `<hash>`"), opened by one sentence naming the normal intake path — a feature proven first on a live instance, then generalized [SPEC INV-119]. The check fires only when the package is a generalized engine (its queue row carries the engine kind or the pair-split [INV-85]); a single-instance product owes it nothing.
+
+- **No foreign provenance.** Every commit hash the spec cites as provenance resolves in the engine's OWN public history (`git cat-file -e <hash>` in the engine repo); a hash that fails to resolve is an instance's private commit riding along, and the fork-diff framing that carries it ("Deltas from the <instance> reference implementation") is rewritten to the reconciliation-log framing with the engine's own commit [INV-119]. This part is mechanically reliable: the hash either resolves in the engine's history or it does not, and the fork-diff heading is a fixed phrase.
+- **No instance label as a mechanism name.** A mechanism is named by a neutral internal term; a locale-specific instance label appears only inside a span marked as instance-supplied copy. A non-Latin token standing in a heading or a mechanism name is a tripwire the walk flags (kin to the shipped-artifact language lint, row 275). Whether a Latin-script instance label is being used as the mechanism's name is an advisory read — the walk surfaces the candidate and the author confirms.
+
 ## Targets are plugins — each embeds its steps
 
 The walk above is the trunk; the TARGET adds its own steps, never removes the kind's owed minimum
