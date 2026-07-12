@@ -176,4 +176,11 @@ bump, ROADMAP.md edits only plus the two draft-file append lines.
   260a/260b queued)")
 
 ### Status
-NOT STARTED.
+DONE, 2026-07-12 ~03:1x. ROADMAP row 260 replaced with rows 260a (abstraction fitness, P7) and 260b
+(code compaction with its second trigger, P11), five-cell format matching neighbors, both `queued
+2026-07-12`, both born-of pointing to the six-principle wish + the architect draft, per
+pending-draft-row260.md's recommended split. Row 261 added (GitHub Issues as a public repo's stranger
+door, a DECIDE, no build) per pending-row247-analysis.md's split recommendation. Both draft files
+closed with their append lines. No version bump (precedent: commit 30a62f9). Full suite re-run after
+the ROADMAP edits: `python3 -m pytest tests/` -> 422 passed, 0 failed (unchanged count — pure
+bookkeeping, no new tests).
