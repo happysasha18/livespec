@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.11
+  version: 1.0.12
 ---
 
 # build-pipeline — ship a change by the method
@@ -230,7 +230,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    no node stands without spec backing · every seam names what crosses it and who owns the format · the
    quality budgets are stated with their instrumentation homes (INV-41) · the runtime view walks every
    promised flow (INV-74) · the placement view says where every node runs (INV-75). Findings land in the
-   same `docs/prover/` record discipline as step 2.
+   same `docs/prover/` record discipline as step 2. A full pass at an M-1 or M-6 gate that proves
+   ARCHITECTURE.md beside the spec (INV-116) also **appends its dated row to the Prover record** table in
+   ARCHITECTURE.md, so that table tracks the architecture's freshness rule instead of drifting behind it.
 
 5. **Test spec — invoke `test-author` to DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture (the method's one home, SPEC E-27).** The
    matrix is derived, never just filled: rows organized **architecture node × spec fact** (one block per

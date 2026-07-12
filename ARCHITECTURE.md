@@ -64,6 +64,7 @@ crosses it and which side owns the format. Where a crossing has a real schema, t
 | Seam | Between | What crosses | Format owner |
 |---|---|---|---|
 | spec → prove | package-docs · product-prover | PRODUCT_SPEC.md, whole document | spec-author (the shape both sides speak) |
+| architecture → prove | package-docs · product-prover | ARCHITECTURE.md, whole document — sent into the prover at every M-1 and M-6 gate beside the spec (INV-116) | build-pipeline (the architecture step's shape, `ARCHITECTURE.template.md`) |
 | prove → record | product-prover · package-docs | prover record `docs/prover/YYYY-MM-DD[-suffix].md`, folded/rejected column | product-prover |
 | pipeline → shapes | build-pipeline · templates | the document shapes the steps produce, incl. the coverage checklist | templates |
 | outside item → its home | inbox · package-docs | one item file (wish or feedback), harvested at sweep into the home its route owns — a ROADMAP row, or by the routing law (T-20) | inbox (file naming law); feedback-intake (the routing) |
@@ -170,7 +171,10 @@ The pack's decisions live in three homes already: the queue's dated rows (each l
 inline), JOURNAL.md's chapters (the why), and the spec's open decision marks (the D-x rows of the
 Formal index — attic layout, snapshot retention, and kin). This section is the doc's one entry point
 to them; it holds pointers, never the decisions themselves. Structure-changing decisions also appear
-in the Prover record below, one line each.
+in the Prover record below, one line each. And every full pass at an M-1 milestone gate or an M-6 push
+gate that proves this document beside the spec (INV-116) appends its dated row to the Prover record — the
+gate walk carries the duty, so this table stays current with the architecture's freshness rule rather
+than trailing it.
 
 ## Prover record
 
@@ -184,6 +188,9 @@ in the Prover record below, one line each.
 | 2026-07-07 | + feedback-intake node (row 47) | `docs/prover/2026-07-07-row47.md` |
 | 2026-07-09 | v0.2 — FULL re-prove of the whole spec for the pre-push M-6 gate (sessions 27–29 body) | `docs/prover/2026-07-09-full-reprove-session29-body.md` |
 | 2026-07-09 evening | v0.3.0 — runtime view + placement view + budgets added (row 180; CROSS-LINK on INV-74/75, findings F1-F5 folded) | `docs/prover/2026-07-09-row180.md` |
+| 2026-07-10 | v1.0.x — M-1 milestone audit, architecture swept beside the spec | `docs/prover/2026-07-10-m1-audit.md` |
+| 2026-07-12 | v1.1.0 — FULL pre-1.1.0 milestone pass (M-1), architecture proved beside the whole spec | `docs/prover/2026-07-12-full-pass-pre-1.1.0.md` |
+| 2026-07-12 s38 | v1.1.0 — architecture proved at the push gate beside the spec, discharging INV-115/INV-116 (findings F-arch-1/F-arch-2 → row 273) | `docs/prover/2026-07-12-s38-inv115-inv116-and-architecture.md` |
 
 ---
 

@@ -104,3 +104,9 @@ INV-115 and INV-116 ship as landed. F-arch-1 and F-arch-2 are the only new items
 INV-116 and neither blocking; they become queue rows (the Seams-table row and the Prover-record-table
 upkeep line), each a one-line ARCHITECTURE.md edit. The architecture was proved this pass, discharging
 INV-116 for the current state of both documents.
+
+**FOLDED 2026-07-12 s39 (row 273):** F-arch-1 — the `architecture → prove` Seams-table row now stands.
+F-arch-2 — the Prover record section and build-pipeline step 4 (the gate walk) carry the append-duty,
+and the table is caught up to the 1.1.0 full pass and this s38 architecture pass. Red-proven by
+`tests/test_architecture_prove_seam.py`. Both new items closed; the prior seven remain open (rows 273's
+siblings, still queued).
