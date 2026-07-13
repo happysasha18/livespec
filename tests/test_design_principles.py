@@ -180,6 +180,22 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         self.assertIn("project.design-principles", adopt)
         self.assertIn("INV-136", adopt)
 
+    def test_prover_carries_the_interactive_overlap_lens(self):
+        # the deposit asked for the overlap rule as a spec-time prover lens, sibling to the
+        # cross-surface and paired-transition lenses; the verify-time design principle is its
+        # floor, this lens catches it earlier on the spec (SPEC INV-136)
+        pv = read_flat("skills/product-prover/SKILL.md")
+        self.assertIn("Interactive-overlap across layers", pv)
+        self.assertIn("retract the lower layer's chrome", pv)
+        self.assertIn("[INV-136]", pv)
+
+    def test_spec_and_index_home_the_prover_lens(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        # the clause states the prover carries the spec-time lens for the overlap blind spot
+        self.assertIn("The prover carries the spec-time lens for this blind spot", spec)
+        # the Formal-index row's homes list names the prover lens as a home
+        self.assertIn("product-prover's interactive-overlap lens", spec)
+
 
 if __name__ == "__main__":
     unittest.main()

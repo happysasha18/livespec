@@ -41,15 +41,11 @@ placeholder in the sibling promoter repo was routed to its inbox.
   product-prover) — set up entirely from the CLI, no owner action, no broad token. Fixes the drift found 2026-07-13.
   The prover stays ONE copy in the pack; the mirror is showcase-only — extracting it would break install/manifest/Prove.
 
-## OPEN DECISION (2026-07-13 — needs Alexander's read)
-- **The overlap rule got a verify-time home, not the prover lens the deposit asked for.** The tlvphotos deposit
-  asked for a visual-overlap lens IN product-prover, sibling to INV-125 (cross-surface uniformity) and INV-126
-  (paired-transition symmetry) — both of which are product-prover Phase-3 lenses. Row 298 homed it instead as a
-  verify-time design principle + browser-test projection, and left product-prover untouched. Question: add the
-  matching product-prover lens too (spec-time, completes the INV-125/126 family), or is verify-time the correct
-  sole home for a rendered z-order defect? Recommendation: a short prover lens completes the family — but it is
-  his method-taste call. Do NOT start a build lane on it without his word (a background-worker collision already
-  happened on this wish today; see JOURNAL 2026-07-13 ~14:39).
+- **Interactive-overlap prover lens — row 299, v1.1.20, Fable-audited.** The open decision closed: the overlap rule
+  now also has a spec-time lens in product-prover, sibling to INV-125/126, as another home of INV-136 (no new code).
+  The finding is stated as the spec's silence (the INV-72 blank-answer class), not rendered geometry — a Fable
+  adversarial audit (INV-46) caught that must-fix and two clarity folds before commit. The verify-time principle
+  stays the render-time floor; the lens catches the blind spot earlier on the spec.
 
 ## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
 - **Future mirror repos need their own deploy key.** The CI mirror-sync auth is a deploy key scoped to

@@ -2,6 +2,16 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-13 ~15:35 (opus, orchestrator seat, full autonomy) — the interactive-overlap rule gains a spec-time prover lens (row 299, pack v1.1.20)
+
+**Why:** row 298 (the background worker) homed the tlvphotos interactive-overlap rule as a verify-time design principle and left product-prover untouched, but the deposit had asked for it IN the prover, sibling to the cross-surface-policy [INV-125] and paired-transition [INV-126] lenses (both of which ARE prover lenses). Alexander's call: add the lens, and audit it with Fable, full autonomy. The lens is another HOME of the existing INV-136 — no new invariant.
+
+**What:** a new "Interactive-overlap across layers" lens in `skills/product-prover/SKILL.md`, right after the paired-transition entry; one sentence in the INV-136 clause + "product-prover's interactive-overlap lens" appended to its Formal-index homes; two red-first tests in `tests/test_design_principles.py`. The division both homes now state: the verify-time design principle and its browser projection are the render-time floor; the prover lens catches the blind spot earlier, reading the spec's layered surfaces.
+
+**The Fable audit earned its keep.** The adversarial fresh-context pass (INV-46) ran on Fable at Alexander's word — verdict GOAL MET, but it caught a real must-fix: my first lens stated the finding as rendered geometry ("two controls sharing one screen region"), which a document reader cannot observe, which drifted from how both siblings frame a finding (a property of the spec's TEXT), and which dropped the [INV-72] blank-answer kinship the spec clause gives it — it even misfired, since a spec that DOES state the retraction still has two controls overlapping at the instant of opening. Rewrote the finding as the spec's SILENCE: a spec that opens one surface over another and leaves the lower layer's control's fate unstated while the overlay stands. Two should-clarify folds too — unpacked loose pronouns and settled on one name ("browser projection") across the homes, and relabelled the kin-line "the third lens of this family … apart in depth on one screen" (the old "spatial" clashed with INV-125's space axis in the space/time twin). All three folded before commit; record in `docs/prover/2026-07-13-prover-overlap-lens.md`.
+
+**Design note:** the two homes are complementary. INV-136's verify-time principle catches the real rendered collision (where the tlvphotos bug lived, green suite and all); this prover lens catches the blind spot earlier, on the spec, the way its two kin do. Neither replaces the other.
+
 ## 2026-07-13 ~15:15 (opus, orchestrator seat) — the CI mirror-sync arm turned on with a deploy key, no owner action (pack v1.1.19)
 
 **Why:** Alexander asked whether I could set up the CI arm's credential myself rather than hand him a "create a token" task. I can: a GitHub personal token can only be minted through the website, but a per-repo SSH deploy key is fully creatable from the CLI, and it is the cleaner credential anyway — scoped to the one mirror repo and write-only, no broad user token stored in a public repo's secrets.
