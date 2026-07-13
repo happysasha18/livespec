@@ -19,8 +19,7 @@ in a form they can actually give. It exists because the same failure keeps happe
 should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB, weights,
 internal ids). Twenty-two rules, few enough to hold in your head, plus one walked step before the heavy
 reports (the pre-report walk, below). The rules' worked examples live in
-[`references/field-examples.md`](references/field-examples.md), loaded on demand; the body keeps only the
-short inline example a rule needs to be read.
+[`references/field-examples.md`](references/field-examples.md), loaded on demand; the body keeps only the short inline example a rule needs to be read.
 
 ## When it fires
 Every time you: **(a)** need the human to DECIDE something; **(b)** finish or advance a piece of work;
@@ -463,7 +462,8 @@ another sentence. Before any movement-end or milestone report goes to the human:
    the flagged text is rewritten into the reader's own plain words, because a machine-dialect leak is
    what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past
    the lint becomes a pattern the same day (the set grows by one per caught leak).
-5. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. (Born of a compressed README section restored the same session, 2026-07-10.)
+5. **Legibility floor (a BLOCK, SPEC INV-139).** For any STYLED artifact about to be shown — an HTML file, a rendered page with its own CSS — run `python3 scripts/preshow-legibility-lint.py FILE`. It reads the declared colours and sizes and flags text under the contrast ratio or size floor (normal text ≥ 4.5:1, large ≥ 3:1, body/caption ≥ 12px). A red result BLOCKS the showing until the text is lifted to the floor. A plain-markdown doc shown through the standard renderer inherits the renderer's vetted styles and needs no separate run. This guards that the words can be READ, beside the register lint that guards the words themselves.
+6. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. (Born of a compressed README section restored the same session, 2026-07-10.)
 
 A pattern lint catches known coinages, known calques, and named term classes; it cannot judge a novel
 machine-flavoured abstraction it has never been shown. That residual is the clean-reader check: for a

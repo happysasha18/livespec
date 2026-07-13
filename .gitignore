@@ -7,4 +7,6 @@
 
 # frozen norms are SOURCE artifacts, never regenerable junk — always tracked
 !docs/norms/*.html
+# test fixtures are SOURCE too — the suite reads them, they must be tracked
+!tests/fixtures/*.html
 .claude/
