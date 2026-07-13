@@ -2,6 +2,22 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-13 ~22:25 (opus, orchestrator seat, full autonomy under /loop) — MINOR milestone, the pack reaches 1.2.0 and the prover 1.1.0 (row 306)
+
+**Why:** Alexander's word after the four method laws landed: bump the prover and the pack to a MINOR — we added things nicely. A MINOR bump earns the 3-pass preventive audit, and with the Fable budget available this session, the milestone is exactly where its deep pass pays.
+
+**The audit that earned its keep.** A fresh Fable context ran the product-prover FULL over the whole spec and the architecture lens over ARCHITECTURE.md, reading the four new laws as a family and against the existing ~136 invariants. It confirmed the four laws are sound and orthogonal — and it caught five cross-seam defects the four per-gap passes, each scoped to its own delta, could not see:
+
+- **D1:** base rule 25 ("the lead never reads a file to brief them") read as a flat contradiction of INV-53 ("the brief-writer reads in full every file the work will modify"). A lead briefing an 8-file edit cannot obey both as written. The fold composes them: the brief's read is dispatched to a reader whose distillation returns the per-file lines, or is a bounded decide-read for a small edit — so the reading discipline and the brief-from-read-files rule are one practice seen twice, not two rules at war.
+- **D2:** the finding-kind law's "every defect blocks" re-armed the exact over-sharpening Alexander corrected on 2026-07-12 — it contradicted the delta-scoped merge gate (INV-114), where a pre-existing defect queues and never blocks the merge it did not create. The fold names the exception explicitly.
+- **D3:** a defect inherited from a prior session — ARCHITECTURE assigned the design-principles invariants to the base rulebook, which carried no text about design principles at all, so the ownership had no home. A new base rule 26 gives them one, and this session's Gap 2 had quietly repeated the same mis-ownership for the legibility floor; both are closed now.
+- **D4:** seven landings of version drift — five skills and the spec header still carried old numbers, and the installed copies had diverged from the repo. Swept, and the deploy re-installs.
+- **D5:** the chat-law hook cited base rule 5 but never carried the reading-discipline sentence its own homes list claimed. Extended.
+
+**The lesson.** A per-gap prover pass scoped to one delta is necessary but not sufficient; the milestone's whole-spec pass is where the seams BETWEEN this session's laws — and between them and the standing method — actually get read. Three of the five defects were contradictions across two laws; none could have been seen from inside one gap. Delegating that deep read to Fable, once, at the gate, is what the milestone is for.
+
+Door: refactor / version milestone; kind: skill; footprint: cross-cutting, HELD. Base rule 26 NEW · INV-137/INV-140 reconciled · five skill versions + spec header + VERSION/plugin swept to the 1.2.0 line (prover 1.1.0) · README rule count fresh via a clean-context writer. Suite 632 green. Delegation (INV-103): the deep audit to Fable, the README walk to a fresh writer, the five folds' judgment senior, the version sweep a bounded mechanical command by the lead.
+
 ## 2026-07-13 ~22:05 (opus, orchestrator seat, full autonomy under /loop) — the prover labels each finding a defect or a recommendation (row 305, pack v1.1.25)
 
 **Why:** Alexander asked it straight, from the tlvphotos session: when the prover reports, can it say which findings are defects and which are recommendations? A walk today returns findings in one list and leaves the human to sort by hand — is a missing copy-guard on the door a bug, or a suggestion toward uniformity? The kind changes what the human does with it: a defect blocks, a recommendation queues for a taste call.

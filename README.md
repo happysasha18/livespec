@@ -130,7 +130,7 @@ The method's job is to bring the right call to a human at the right moment. Not 
 
 | Skill | When to use it |
 |---|---|
-| `live-spec-base` | The rulebook above: twenty-four shared rules and the settings ladder. Loaded whenever another pack skill runs; when two skills seem to disagree, this one wins. |
+| `live-spec-base` | The rulebook above: twenty-six shared rules and the settings ladder. Loaded whenever another pack skill runs; when two skills seem to disagree, this one wins. |
 | `build-pipeline` | Start here for any non-trivial change: *"build X properly"*, *"spec and ship Y"*. It sequences the whole arc from wish to committed change. |
 | `spec-author` | Writes and grows the living spec: a new feature, a new stateful surface. Scenarios lead; formal codes trail as anchors. |
 | `product-prover` | Reviews a spec or design document: *"poke holes in this"*. Reads documents; code review and tests stay elsewhere. Also published [standalone](https://github.com/happysasha18/product-prover). |
