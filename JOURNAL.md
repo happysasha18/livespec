@@ -2,6 +2,22 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-13 ~16:40 (opus, orchestrator seat, full autonomy) — the prover run on the prover skill itself; six folds (row 300, pack v1.1.21)
+
+**Why:** Alexander asked to point the prover at the product-prover skill itself, on Fable, "just to see it's all in order." The verdict was in good order — the method is sound and the three composition lenses are a coherent family — but the fresh eyes caught six real facts to fix, two of them mechanical must-fixes and one of them a miss in my own row-299 landing.
+
+**The six folds** (record: `docs/prover/2026-07-13-prover-self-review.md`):
+1. The stress-lens intro said "nine families of questions" while the list had grown to eighteen bullets — the count drifted 9→18 as lenses were appended over many landings, and a guardrail test pinned the literal word "nine families" so it guarded the word without ever verifying the count. Dropped the number for "the families of questions below" and changed the test needle to "families of questions" so it can no longer go stale.
+2. **My row-299 miss:** the lens landed without bumping product-prover's own frontmatter version (stuck at 1.0.9 since row 294), yet the record-opens-by-naming-the-version rule stakes the full-pass re-arm on that line. Bumped to 1.0.10.
+3. The entry-symmetry lens named its finding "A get with no set" — a coined getter/setter metaphor absent from INV-50 and against the no-coined-names law, and a guardrail test had pinned the coinage. Restated plainly ("A conditionally-entered face with no deliberate re-entry path is a finding"), test needle updated in lockstep.
+4. The interactive-overlap lens named one referent twice ("control's fate" then "chrome"); "chrome" → "controls".
+5. The FULL-mode line wrote the MINOR pattern `0.x.0`; the pack is at 1.1.x, so rewritten `x.Y.0`.
+6. Two comma-led contrast frames restated as their own positive sentences (the no-contrast-frame law).
+
+**Note on the two pinned coinages:** two of these (the "nine families" count and the "A get with no set" metaphor) were held in place by guardrail tests — the suite enshrined the very drift and coinage the law forbids. Fixed the prose and the pin together each time, so the test now guards the plain form.
+
+**Suite:** 609 green after the folds; no new invariant, no spec/architecture change (the skill and one test only).
+
 ## 2026-07-13 ~15:35 (opus, orchestrator seat, full autonomy) — the interactive-overlap rule gains a spec-time prover lens (row 299, pack v1.1.20)
 
 **Why:** row 298 (the background worker) homed the tlvphotos interactive-overlap rule as a verify-time design principle and left product-prover untouched, but the deposit had asked for it IN the prover, sibling to the cross-surface-policy [INV-125] and paired-transition [INV-126] lenses (both of which ARE prover lenses). Alexander's call: add the lens, and audit it with Fable, full autonomy. The lens is another HOME of the existing INV-136 — no new invariant.

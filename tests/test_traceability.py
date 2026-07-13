@@ -368,8 +368,8 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         self.assertIn("feature · bug · refactor · docs-only · skip", bp)
         pp = read("skills/product-prover/SKILL.md")
         self.assertIn("Unbacked surfaces and unlabelled sketches", pp,
-                      "product-prover lost the ninth lens")
-        self.assertIn("nine families", pp, "prover lens count not updated")
+                      "product-prover lost the unbacked-surfaces lens")
+        self.assertIn("families of questions", pp, "prover lost its stress-lens families line")
         cm = read("skills/communicator/SKILL.md")
         self.assertIn("shown ONLY under its `PROTOTYPE` label", cm,
                       "communicator lost the prototype-showing rule")
@@ -1722,7 +1722,7 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("INV-50", "deliberate re-entry path", "until dismissed"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
-        for needle in ("Entry symmetry", "A get with no set is a finding", "SPEC INV-50"):
+        for needle in ("Entry symmetry", "A conditionally-entered face with no deliberate re-entry path is a finding", "SPEC INV-50"):
             self.assertIn(needle, prover, "product-prover missing: %s" % needle)
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         self.assertIn("re-entry path", author,

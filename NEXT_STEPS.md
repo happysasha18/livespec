@@ -46,6 +46,11 @@ placeholder in the sibling promoter repo was routed to its inbox.
   The finding is stated as the spec's silence (the INV-72 blank-answer class), not rendered geometry — a Fable
   adversarial audit (INV-46) caught that must-fix and two clarity folds before commit. The verify-time principle
   stays the render-time floor; the lens catches the blind spot earlier on the spec.
+- **Prover self-review — row 300, v1.1.21, Fable.** Pointed the prover at the product-prover skill itself: verdict
+  in good order, six folds — a "nine families" count that had drifted to 18 (pinned by a test that guarded the word),
+  a missed prover-skill version bump from row 299 (1.0.9→1.0.10), a coined "get/set" metaphor (also test-pinned),
+  and three smaller register/notation fixes. Two of the six were enshrined by guardrail tests; prose and pin fixed
+  together. No lens meaning changed.
 
 ## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
 - **Future mirror repos need their own deploy key.** The CI mirror-sync auth is a deploy key scoped to

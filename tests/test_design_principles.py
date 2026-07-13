@@ -186,7 +186,7 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         # floor, this lens catches it earlier on the spec (SPEC INV-136)
         pv = read_flat("skills/product-prover/SKILL.md")
         self.assertIn("Interactive-overlap across layers", pv)
-        self.assertIn("retract the lower layer's chrome", pv)
+        self.assertIn("retract the lower layer's controls", pv)
         self.assertIn("[INV-136]", pv)
 
     def test_spec_and_index_home_the_prover_lens(self):
