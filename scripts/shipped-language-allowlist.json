@@ -9,7 +9,9 @@
   "authorship_globs": [
     "LICENSE",
     ".claude-plugin/plugin.json",
-    "**/plugin.json"
+    "**/plugin.json",
+    ".claude-plugin/marketplace.json",
+    "**/marketplace.json"
   ],
   "cyrillic_waivers": [],
   "name_waivers": [
