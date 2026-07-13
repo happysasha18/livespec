@@ -2,6 +2,18 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-13 ~22:05 (opus, orchestrator seat, full autonomy under /loop) — the prover labels each finding a defect or a recommendation (row 305, pack v1.1.25)
+
+**Why:** Alexander asked it straight, from the tlvphotos session: when the prover reports, can it say which findings are defects and which are recommendations? A walk today returns findings in one list and leaves the human to sort by hand — is a missing copy-guard on the door a bug, or a suggestion toward uniformity? The kind changes what the human does with it: a defect blocks, a recommendation queues for a taste call.
+
+**What landed.** INV-140: each finding carries a kind beside its severity. A defect is a finding where a stated invariant is violated, a spec claim is false, or a required invariant is missing; it blocks. A recommendation is a finding where nothing is broken and a consistency or quality gain is on offer; it queues. The prover skill carries it across the finding tag line, a KIND block beside SEVERITY, a Phase 5 recommendations block, and the prover-record's kind column.
+
+**The reconciliation the fresh eyes forced.** The first draft made kind an axis that "carries the blocks-or-queues verdict" while the push gate (M-6) still keyed folding on severity ("must-fix findings folded"). The adversarial prover — dogfooding the very feature to label its own findings — caught that these are two homes for one fact that can disagree: a low-impact false claim is a defect (INV-140 says fold) but a should-clarify (M-6 says queue). The fix keeps one home: the kind is the COARSE reading of the severity — a defect is exactly a must-fix, a recommendation a should-clarify or worth-considering — so the two can never disagree on blocking, and M-6's rule stays untouched. This is a design choice I made autonomously, derived from the wish's own "defect blocks" intent; it is flagged in NEXT_STEPS for the morning in case Alexander prefers the heavier reading where kind overrides severity.
+
+**A clean applier run.** The earlier edge-completeness gap taught the lesson: a new invariant needs its ARCHITECTURE ownership and a single matrix row under the owning node. This brief carried both, and the applier landed all five homes with no traceability red.
+
+Door: feature; kind: skill; footprint: cross-cutting, HELD. SPEC INV-140 NEW · product-prover finding format · ARCHITECTURE product-prover anchor · TEST_MATRIX M-282 · VERSION/plugin 1.1.24→1.1.25. Suite 632 green. Delegation (INV-103): design, the F1 reconciliation, and the folds senior; the application to a sonnet applier, the fresh-eyes prover to an independent general-purpose worker, the placement reads to an Explore worker.
+
 ## 2026-07-13 ~21:42 (opus, orchestrator seat, full autonomy under /loop) — a legibility floor (row 304, pack v1.1.24)
 
 **Why:** The same first real Hebrew-speaking visitor who found the unbounded timing lines also met faint, small Hebrew text on a phone. The measurement bore it out: the door's ask line sat near 3.3 to 1 contrast at 11 pixels, under the 4.5 to 1 a reader needs. The register lint already guards that a surface's words are the product's own plain language; nothing guarded that those words can be read.
