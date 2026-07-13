@@ -4,6 +4,10 @@
 **s41: the whole free queue landed — twelve rows. VERSION 1.1.16, suite 590 green, CI green on every push,
 tree clean, everything pushed.** Read this section then wipe memory; the detail lives in JOURNAL + ROADMAP.
 
+**Follow-ups 2026-07-13:** the rewritten READMEs landed (live-spec + the product-prover mirror synced) and the
+marketplace owner placeholder became the real owner (name + GitHub profile); all pushed, CI green. The same
+placeholder in the sibling promoter repo was routed to its inbox.
+
 - **Five prover findings F3-F7 → rows 282-286 (INV-129..133):** deferred rows are re-scanned for a fired
   revisit trigger at every queue-take; a withdrawn decision converges to a surfaced default after the second
   withdrawal; a mid-work re-door rebuilds the parallel-lanes independence graph and serialises a new collision;
@@ -24,6 +28,14 @@ tree clean, everything pushed.** Read this section then wipe memory; the detail 
 - **An independent adversarial audit (INV-46) ran over the seven new laws:** one must-fix (found and fixed as
   row 295), two latent hardenings folded (rows 296/297 — numeric/multi-feature heading ids; the footprint
   cutoff-day missing-time escape). Four string-only process-laws (129/130/131/133) sit at the accepted prose floor.
+
+## INCOMING WISH (2026-07-13 — awaiting the tlvphotos deposit for the concrete case)
+- **Per-kind design principles.** Keyed to project.kind, composing with INV-135 (per-kind layers + proofs): a
+  frontend/visual kind carries a checkable set of design principles. First member, from a tlvphotos bug — the
+  interactive controls of two layers overlapped (the image-pinch controls sat over the room's controls). The
+  principle: interactive controls of different layers must not overlap; overlap is fine for a non-interactive
+  element (a plaque, a picture) and a defect for an interactive one (a player, a close button). tlvphotos will
+  drop the concrete case in inbox/; open the full ROADMAP row and run the pipeline when it lands.
 
 ## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
 - **Row 261** — GitHub Issues as the strangers' wish door for public repos: still a DECIDE. Recommendation: defer.
