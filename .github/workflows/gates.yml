@@ -42,3 +42,31 @@ jobs:
         run: guardrails/check-prototype-fence.sh
       - name: gate i — shipped language (no owner name / stray Cyrillic in the shipped set, SPEC INV-120)
         run: guardrails/check-shipped-language.sh
+
+  # After the gates pass on a real push to main, sync the standalone mirror repos from the
+  # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the
+  # local hook covers this machine; CI covers any machine, including a browser/cloud session).
+  # Token-gated: it skips cleanly until a MIRROR_SYNC_TOKEN secret with write access to the
+  # mirror repos exists, so CI never reds for a missing token (honest failure by name, SPEC
+  # INV-112). Extends the push gate (SPEC M-6) and scripts/sync-mirrors.sh (SPEC INV-96).
+  sync-mirrors:
+    needs: gates
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false   # the mirror push authenticates with the PAT below, not the default token
+      - name: sync standalone mirrors from the pack
+        env:
+          GH_TOKEN: ${{ secrets.MIRROR_SYNC_TOKEN }}
+        run: |
+          if [ -z "${GH_TOKEN}" ]; then
+            echo "MIRROR_SYNC_TOKEN not set — skipping mirror sync (add the secret to enable the CI arm)."
+            exit 0
+          fi
+          gh auth setup-git   # route git pushes through gh, so the mirror push uses the PAT
+          git config --global user.name "live-spec mirror bot"
+          git config --global user.email "mirror-bot@users.noreply.github.com"
+          bash scripts/sync-mirrors.sh
