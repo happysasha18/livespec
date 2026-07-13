@@ -1,90 +1,66 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-12 ~21:31, session 41 — the free-work queue closed autonomously under /loop)
-**s41: the whole free queue landed — twelve rows. VERSION 1.1.16, suite 590 green, CI green on every push,
-tree clean, everything pushed.** Read this section then wipe memory; the detail lives in JOURNAL + ROADMAP.
+## LIVE STATE (2026-07-13 ~22:41 — MINOR milestone shipped under /loop, autonomous)
+**PACK v1.2.0, PROVER v1.1.0. Suite 632 green, CI green on every push, tree clean, everything pushed and
+installed globally.** Read this, then wipe memory; every landing's full story lives in JOURNAL + ROADMAP.
 
-**Follow-ups 2026-07-13:** the rewritten READMEs landed (live-spec + the product-prover mirror synced) and the
-marketplace owner placeholder became the real owner (name + GitHub profile); all pushed, CI green. The same
-placeholder in the sibling promoter repo was routed to its inbox.
+This session's landings (all 2026-07-13, rows 301–306), following Alexander's plan (install → overlap-lens
+wish → process the three tlvphotos gaps → he then added a fourth law and the MINOR bump):
+- **Row 301 / INV-137 + base rule 25 — the orchestrator reads to decide, not to discover.** A read to
+  discover or understand past a bounded glance is dispatched to a reader worker; a read to verify or decide
+  stays with the lead. His steer after a sibling window filled its own context with reads a worker should
+  have done. Made visible in the delegation accounting.
+- **Row 303 / INV-138 — edge-condition completeness.** A transition gated on a running quantity states both
+  ends of its range; async content in a reserved slot names pending/arrived/failed with a visible pending.
+  A prover completeness-sweep lens + a spec-author facet, the range-and-lifecycle member of the
+  composition-lens family (INV-72/125/126/136).
+- **Row 304 / INV-139 — a legibility floor.** Min contrast ratio + min text size, checked at the verify
+  feel pass and the pre-show gate beside the register lint, with a real script `scripts/preshow-legibility-lint.py`.
+- **Row 305 / INV-140 — the prover labels each finding a defect or a recommendation.** The kind is the
+  coarse reading of severity (a defect = must-fix = blocks, a recommendation = should-clarify/worth-considering
+  = queues), so it never disagrees with the M-6 push gate.
+- **Row 306 / MINOR milestone (pack 1.2.0, prover 1.1.0).** A deep Fable FULL audit over the whole spec +
+  architecture caught FIVE cross-seam defects the per-gap passes could not see (D1 rule 25↔INV-53, D2
+  INV-140↔INV-114, D3 design-principle ownership had no base home → new base rule 26, D4 version drift, D5
+  the chat-law hook); all folded, plus R1/R5. README rule count refreshed via a clean-context writer.
 
-- **Five prover findings F3-F7 → rows 282-286 (INV-129..133):** deferred rows are re-scanned for a fired
-  revisit trigger at every queue-take; a withdrawn decision converges to a surfaced default after the second
-  withdrawal; a mid-work re-door rebuilds the parallel-lanes independence graph and serialises a new collision;
-  every person-facing heading carries its tag or an explicit marker (untagged is red); a critical non-bug heads
-  the queue yet never preempts a rolling lane (only the bug door preempts), echoed at intake.
-- **Delegation consolidated → row 262 (anchored INV-69):** base rule 5 is the single statement; the personal
-  playbook collapsed to a pointer plus its own "why #2" note; the three superseded bars (numeric file/time
-  triggers, default-not-propose, once-per-session spot-check) removed. A guard test greps the whole pack so a
-  size/time numeric trigger can never regress. Row 295 removed the one the audit caught surviving in build-pipeline.
-- **The four architect-draft mechanical halves → rows 291-294:** the footprint-note suite check (INV-134);
-  per-kind concrete layers + proofs declared at founding (INV-135); the cross-cut counter (an advisory signal to
-  the next MINOR audit); the interface-test machinery (layer→level rule + a per-block interface row).
-- **Communicator body thinned 578→499 lines with no rule cut → row 280;** worked examples spilled to
-  references/field-examples.md, all 22 rules and every test-pinned phrase kept in the body.
-- **Impersonal voice ADOPTED in the pack's own docs → row 279:** 46 owner-name attributions rewritten in place
-  (date + reason kept, the who/when moved to JOURNAL); the shipped-language gate now runs in pre-push AND CI with
-  zero active offences. Six authorship bylines kept under a dated carve-out. The former self-exemption is retired.
-- **An independent adversarial audit (INV-46) ran over the seven new laws:** one must-fix (found and fixed as
-  row 295), two latent hardenings folded (rows 296/297 — numeric/multi-feature heading ids; the footprint
-  cutoff-day missing-time escape). Four string-only process-laws (129/130/131/133) sit at the accepted prose floor.
+## ⟨DECIDE⟩ — two autonomous choices I made; overturn either in the morning if you meant otherwise
+1. **Main version → 1.2.0.** You said "make the prover and main 1.1." The prover went 1.0.10 → **1.1.0**
+   (literal). The pack was already 1.1.25, so "1.1" for it can only mean the next MINOR milestone — I shipped
+   **1.2.0**. If you meant the pack should stay on the 1.1 line, say so and I retag (nothing external
+   announced yet).
+2. **Gap 3's block/queue reconciliation.** The finding-kind law first made "kind" a second axis that could
+   disagree with the severity-based push gate. I resolved it by making the kind the COARSE READING of the
+   severity (M-6 untouched, kind defers to it) rather than editing M-6 or demoting kind to a bare label.
+   This derives from the wish's "defect blocks" intent; if you prefer kind to OVERRIDE severity (fold every
+   defect regardless), that is a one-clause change.
 
-## LANDED 2026-07-13 (after the s41 close)
-- **Per-kind design principles — row 298, INV-136 (v1.1.17), CI green.** The tlvphotos deposit landed and a
-  background worker shipped it: a project.kind now declares checkable design principles the verify/feel pass
-  runs; the frontend kind's starter set names the interactive-overlap rule (interactive controls of different
-  layers hold separate clickable regions; a passive element may overlap freely). Homed in the spec founding
-  clause + ARCHITECTURE + spec-author/build-pipeline wiring, NOT in base rule 24 (avoids a base-version pin sweep).
-- **Mirror auto-sync — v1.1.19, both arms LIVE.** The standalone mirror (product-prover) now syncs on its own from
-  two homes: the local pre-push green-gate tail (proven live on the push) and a CI `sync-mirrors` job. The CI arm's
-  credential is a per-repo SSH deploy key (secret `MIRROR_SYNC_DEPLOY_KEY` on live-spec, read-write deploy key on
-  product-prover) — set up entirely from the CLI, no owner action, no broad token. Fixes the drift found 2026-07-13.
-  The prover stays ONE copy in the pack; the mirror is showcase-only — extracting it would break install/manifest/Prove.
+## START HERE NEXT SESSION
+1. **Every project owes a fresh FULL prover pass** (your question, answered yes — the prover grew INV-138 +
+   INV-140 + the overlap lens). **tlvphotos:** the wish is already in its inbox (the overlap sweep + a
+   re-prove under v1.2.0) — runs in the tlvphotos window. **track-coach:** it has no inbox folder and its dev
+   is closed (promotion phase); re-prove its spec under v1.2.0 when its window next opens.
+2. **The queued recommendations from the MINOR audit** — rows 307–309 (cross-cite the async face to the
+   loading facet · complete the prover node's wiring note · a `project.design-principles` defaults row) and
+   row 302 (make `test_missing_record_fails` hermetic). All are should-clarify, non-blocking; take at a queue-take.
 
-- **Interactive-overlap prover lens — row 299, v1.1.20, Fable-audited.** The open decision closed: the overlap rule
-  now also has a spec-time lens in product-prover, sibling to INV-125/126, as another home of INV-136 (no new code).
-  The finding is stated as the spec's silence (the INV-72 blank-answer class), not rendered geometry — a Fable
-  adversarial audit (INV-46) caught that must-fix and two clarity folds before commit. The verify-time principle
-  stays the render-time floor; the lens catches the blind spot earlier on the spec.
-- **Prover self-review — row 300, v1.1.21, Fable.** Pointed the prover at the product-prover skill itself: verdict
-  in good order, six folds — a "nine families" count that had drifted to 18 (pinned by a test that guarded the word),
-  a missed prover-skill version bump from row 299 (1.0.9→1.0.10), a coined "get/set" metaphor (also test-pinned),
-  and three smaller register/notation fixes. Two of the six were enshrined by guardrail tests; prose and pin fixed
-  together. No lens meaning changed.
-
-## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
-- **Future mirror repos need their own deploy key.** The CI mirror-sync auth is a deploy key scoped to
-  product-prover alone. If another skill (e.g. spec-author) later gets a standalone mirror repo, add a read-write
-  deploy key on it and either reuse one key across mirrors or store a second secret — a one-command CLI step, no owner action.
+## OWNER-HELD / OPEN (each needs your word — no autonomous move taken)
 - **Row 261** — GitHub Issues as the strangers' wish door for public repos: still a DECIDE. Recommendation: defer.
-- **Install the pack globally** — the installed copies at ~/.claude/skills/ drifted from the repo this session
-  (communicator, build-pipeline, spec-author, test-author, live-spec-base, product-prover all changed). Running
-  `bash install.sh` makes 1.1.16 live for the other windows; held for the owner's word, since it changes every window.
-- **One real remote deposit** — the local cross-project inbox works; the browser arm (claude.ai/code) still owes
-  one live deposit to close its field leg (never self-certified, INV-94). The owner's optional action.
-- **tlvphotos** — an impersonal-voice wish sits in its inbox (591 attributions in shipped docs); it runs in the
-  tlvphotos window. track-coach is already clean.
-
-## Non-blocking debt (recorded, not urgent)
-- The ARCHITECTURE pin note "check-shipped-language.py (its engine)" drifts — the label word is absent from the
-  file head; present at baseline bbf7790, not this session's delta.
-- The sibling INV-73 coverage-mapping regex still reads `F-[a-z-]`; no live heading uses a numeric or multi id, so
-  there is no active divergence (row 296 widened the INV-132 side).
-- Next free codes at s41 close: INV-136, M-278 — read the live Formal index before minting; codes consume in
-  landing order, reservations are dead.
-
-## CLOUD FACTS (settled 2026-07-10; row 247 law live, its field leg open)
-A remote-agent request from a local session falls back to a local worktree; real cloud sessions fire only from
-the browser (claude.ai/code). The remote inbox arm: one new inbox/ file per deposit, a per-repo grant in the host
-profile, honest failure that names the missing grant (INV-112; grant-ask template at scripts/grant-ask.md).
+- **One real remote deposit** — the browser arm (claude.ai/code) still owes one live deposit to close its
+  field leg (never self-certified, INV-94). Your optional action.
+- **tlvphotos** — an impersonal-voice wish still sits in its own inbox (591 attributions in shipped docs);
+  runs in the tlvphotos window.
 
 ## Standing habits (always-on)
-- `date` before any stamp; chat leads use the prompt hook's wall clock, never extrapolation.
-- Shipped docs stay impersonal — the language gate runs in pre-push + CI (INV-118/INV-120); provenance lives in
-  JOURNAL. Delegation runs by base rule 5 → INV-69: one home, guarded by a whole-pack test.
-- No self-certification (INV-94) · no calques · plain words, codes trail (INV-28) · the say-what-it-is rule with
-  no contrast frames · inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail
-  (INV-80) · the push walk reads the CI verdict itself (INV-106) · a high-stakes change whose only review is its
-  author's gets an independent fresh-context checker (INV-46) · a landed row carries its footprint note (INV-134)
-  and its delegation line (INV-103) · landings close their checkpoints and list every substance move (INV-107/109).
-- Machine: re-arm caffeinate at the next night batch if a long run is queued.
+- **When a method skill changes, run a fresh-eyes adversarial pass** (INV-46); the MILESTONE gate earns the
+  deep Fable whole-spec pass — this session it caught five cross-law contradictions no per-gap pass could.
+- `date` before any stamp; chat leads use the prompt hook's wall clock. Shipped docs stay impersonal
+  (INV-118/120), provenance in JOURNAL. Delegation by base rule 5 → INV-69, and the lead dispatches its
+  discovery reads (base rule 25 → INV-137, new this session).
+- No self-certification (INV-94) · no calques · plain words, codes trail (INV-28) · say-what-it-is, no
+  contrast frames · inbox swept first · one lane one commit · a delegated run's verdict is the suite log's
+  tail (INV-80) · the push walk reads the CI verdict itself (INV-106) · a landed row carries its footprint
+  (INV-134) and delegation (INV-103) lines · public READMEs edited ONLY via a fresh clean-context agent (your
+  word 2026-07-13, bilingual safety).
+- Next free codes: read the live Formal index before minting (INV-140 consumed; codes consume in landing
+  order, reservations dead). Machine: re-arm caffeinate at the next night batch if a long run is queued.
