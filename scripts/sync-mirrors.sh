@@ -98,17 +98,33 @@ for skill_path in "$SKILLS_DIR"/*/; do
   echo "== ${skill_name} =="
 
   # Does a standalone mirror repo exist for this skill? We never create one here.
-  if ! gh repo view "$repo" >/dev/null 2>&1; then
-    echo "${skill_name}: skipped (no mirror repo yet)"
-    SUMMARY_LINES+=("${skill_name}: skipped (no mirror repo yet)")
-    continue
+  # Two auth paths. Locally we use gh + HTTPS (the developer's own gh login). In CI we set
+  # MIRROR_SSH=1 and clone over SSH with a per-mirror deploy key; that key is registered on
+  # exactly one mirror repo, so every OTHER skill's would-be mirror fails to authenticate and
+  # naturally reads as "no mirror yet" — the correct outcome, no allow-list to maintain.
+  if [ -n "${MIRROR_SSH:-}" ]; then
+    if ! git ls-remote "git@github.com:${repo}.git" >/dev/null 2>&1; then
+      echo "${skill_name}: skipped (no mirror repo reachable with the deploy key)"
+      SUMMARY_LINES+=("${skill_name}: skipped (no mirror repo yet)")
+      continue
+    fi
+  else
+    if ! gh repo view "$repo" >/dev/null 2>&1; then
+      echo "${skill_name}: skipped (no mirror repo yet)"
+      SUMMARY_LINES+=("${skill_name}: skipped (no mirror repo yet)")
+      continue
+    fi
   fi
 
   work_dir="$(mktemp -d)"
   trap 'rm -rf "$work_dir"' EXIT
 
   echo "cloning ${repo} into scratch dir..."
-  gh repo clone "$repo" "$work_dir/mirror" -- -q
+  if [ -n "${MIRROR_SSH:-}" ]; then
+    git clone --quiet "git@github.com:${repo}.git" "$work_dir/mirror"
+  else
+    gh repo clone "$repo" "$work_dir/mirror" -- -q
+  fi
 
   mirror_dir="$work_dir/mirror"
 

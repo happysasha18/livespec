@@ -46,9 +46,10 @@ jobs:
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the
   # local hook covers this machine; CI covers any machine, including a browser/cloud session).
-  # Token-gated: it skips cleanly until a MIRROR_SYNC_TOKEN secret with write access to the
-  # mirror repos exists, so CI never reds for a missing token (honest failure by name, SPEC
-  # INV-112). Extends the push gate (SPEC M-6) and scripts/sync-mirrors.sh (SPEC INV-96).
+  # Auth is a per-mirror SSH deploy key held in the MIRROR_SYNC_DEPLOY_KEY secret. The job
+  # skips cleanly when that secret is absent, so CI never reds for a missing key (honest
+  # failure by name, SPEC INV-112). Extends the push gate (SPEC M-6) and scripts/sync-mirrors.sh
+  # (SPEC INV-96).
   sync-mirrors:
     needs: gates
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -57,16 +58,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false   # the mirror push authenticates with the PAT below, not the default token
+          persist-credentials: false   # the mirror push authenticates with the deploy key below, not the default token
       - name: sync standalone mirrors from the pack
         env:
-          GH_TOKEN: ${{ secrets.MIRROR_SYNC_TOKEN }}
+          MIRROR_SYNC_DEPLOY_KEY: ${{ secrets.MIRROR_SYNC_DEPLOY_KEY }}
         run: |
-          if [ -z "${GH_TOKEN}" ]; then
-            echo "MIRROR_SYNC_TOKEN not set — skipping mirror sync (add the secret to enable the CI arm)."
+          if [ -z "${MIRROR_SYNC_DEPLOY_KEY}" ]; then
+            echo "MIRROR_SYNC_DEPLOY_KEY not set — skipping mirror sync (add the secret to enable the CI arm)."
             exit 0
           fi
-          gh auth setup-git   # route git pushes through gh, so the mirror push uses the PAT
+          key_file="$(mktemp)"
+          printf '%s\n' "${MIRROR_SYNC_DEPLOY_KEY}" > "$key_file"
+          chmod 600 "$key_file"
+          export GIT_SSH_COMMAND="ssh -i $key_file -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes"
+          export MIRROR_SSH=1   # tell sync-mirrors.sh to reach the mirror over SSH, not gh/HTTPS
           git config --global user.name "live-spec mirror bot"
           git config --global user.email "mirror-bot@users.noreply.github.com"
           bash scripts/sync-mirrors.sh

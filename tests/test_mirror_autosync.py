@@ -38,11 +38,14 @@ class TestMirrorAutosync(unittest.TestCase):
         # calls the one source-of-truth script, never a reimplementation
         self.assertIn("scripts/sync-mirrors.sh", ci)
 
-    def test_ci_arm_is_token_gated_and_skips_gracefully(self):
+    def test_ci_arm_is_key_gated_and_skips_gracefully(self):
         ci = read(".github/workflows/gates.yml")
-        self.assertIn("MIRROR_SYNC_TOKEN", ci)
-        # a missing token is a clean skip, never a red CI (honest-failure by name, SPEC INV-112)
+        # auth is a per-mirror SSH deploy key held as a secret
+        self.assertIn("MIRROR_SYNC_DEPLOY_KEY", ci)
+        # a missing key is a clean skip, never a red CI (honest-failure by name, SPEC INV-112)
         self.assertIn("skipping mirror sync", ci)
+        # CI reaches the mirror over SSH (the deploy key), the script's MIRROR_SSH path
+        self.assertIn("MIRROR_SSH=1", ci)
 
 
 if __name__ == "__main__":

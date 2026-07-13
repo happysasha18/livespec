@@ -2,6 +2,16 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-13 ~15:15 (opus, orchestrator seat) — the CI mirror-sync arm turned on with a deploy key, no owner action (pack v1.1.19)
+
+**Why:** Alexander asked whether I could set up the CI arm's credential myself rather than hand him a "create a token" task. I can: a GitHub personal token can only be minted through the website, but a per-repo SSH deploy key is fully creatable from the CLI, and it is the cleaner credential anyway — scoped to the one mirror repo and write-only, no broad user token stored in a public repo's secrets.
+
+**What:** generated an ed25519 keypair; registered the public half as a read-write deploy key on `happysasha18/product-prover` (`gh repo deploy-key add --allow-write`); stored the private half as the `MIRROR_SYNC_DEPLOY_KEY` secret on `happysasha18/live-spec` (`gh secret set`). `scripts/sync-mirrors.sh` gained a `MIRROR_SSH=1` branch: existence via `git ls-remote` over SSH and an SSH clone, the local path staying gh + HTTPS untouched. Because the deploy key is registered on exactly one mirror, every other skill's would-be mirror fails SSH auth and reads as "no mirror yet" — the correct outcome with no allow-list. The CI job (`.github/workflows/gates.yml`) now writes the key, sets `GIT_SSH_COMMAND`, exports `MIRROR_SSH=1`, and runs the script; it still skips cleanly if the secret is ever absent (INV-112).
+
+**Proven by deed before the push:** ran the exact CI auth locally — `GIT_SSH_COMMAND=… MIRROR_SSH=1 bash scripts/sync-mirrors.sh` — and it cloned product-prover over SSH with the deploy key and reported "up to date". The version bump to 1.1.19 in this push gives the mirror a real diff, so the CI job exercises the write path for the first time on this run.
+
+**Test:** `tests/test_mirror_autosync.py` updated — the CI arm now asserts `MIRROR_SYNC_DEPLOY_KEY` and the `MIRROR_SSH=1` SSH path, keeping the graceful-skip assertion. Suite green.
+
 ## 2026-07-13 ~14:39 (opus, orchestrator seat) — the standalone mirrors sync automatically from two homes (pack v1.1.18)
 
 **Why now:** Alexander asked why product-prover exists both inside the pack and as a standalone repo — worried it was two instances of the method. It is not: the prover lives ONCE in `skills/product-prover/`; `happysasha18/product-prover` is a read-only mirror for people who want the one skill without the whole pipeline (its own README, stars, awesome-list line). The machine never needs the mirror. Pulling the prover OUT of the pack would break `install.sh` (copies from `skills/`), the plugin manifest (packs what is in the repo), and build-pipeline's Prove step (calls product-prover) — so the copy-in-pack + mirror-for-showcase scheme is the only working one. The real defect was not the architecture but that the sync ran only by hand and drifted: on 2026-07-13 the mirror was found one pack version behind. His word: fix the automation, not the architecture.

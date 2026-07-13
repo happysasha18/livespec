@@ -35,9 +35,10 @@ placeholder in the sibling promoter repo was routed to its inbox.
   runs; the frontend kind's starter set names the interactive-overlap rule (interactive controls of different
   layers hold separate clickable regions; a passive element may overlap freely). Homed in the spec founding
   clause + ARCHITECTURE + spec-author/build-pipeline wiring, NOT in base rule 24 (avoids a base-version pin sweep).
-- **Mirror auto-sync — v1.1.18, CI green (run 29247199159).** The standalone mirrors (product-prover) now sync on
-  their own from two homes: the local pre-push green-gate tail (proven live on this push) and a token-gated CI
-  `sync-mirrors` job (skips cleanly until the token). Fixes the drift found 2026-07-13 (mirror one version behind).
+- **Mirror auto-sync — v1.1.19, both arms LIVE.** The standalone mirror (product-prover) now syncs on its own from
+  two homes: the local pre-push green-gate tail (proven live on the push) and a CI `sync-mirrors` job. The CI arm's
+  credential is a per-repo SSH deploy key (secret `MIRROR_SYNC_DEPLOY_KEY` on live-spec, read-write deploy key on
+  product-prover) — set up entirely from the CLI, no owner action, no broad token. Fixes the drift found 2026-07-13.
   The prover stays ONE copy in the pack; the mirror is showcase-only — extracting it would break install/manifest/Prove.
 
 ## OPEN DECISION (2026-07-13 — needs Alexander's read)
@@ -51,9 +52,9 @@ placeholder in the sibling promoter repo was routed to its inbox.
   happened on this wish today; see JOURNAL 2026-07-13 ~14:39).
 
 ## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
-- **CI mirror-sync token** — to turn on the durable CI arm of the mirror auto-sync, create a fine-grained PAT with
-  `contents:write` on `happysasha18/product-prover` (and any future mirror repo) and add it as the repo secret
-  `MIRROR_SYNC_TOKEN`. Until then the local pre-push arm carries it on every push from this Mac; CI skips cleanly.
+- **Future mirror repos need their own deploy key.** The CI mirror-sync auth is a deploy key scoped to
+  product-prover alone. If another skill (e.g. spec-author) later gets a standalone mirror repo, add a read-write
+  deploy key on it and either reuse one key across mirrors or store a second secret — a one-command CLI step, no owner action.
 - **Row 261** — GitHub Issues as the strangers' wish door for public repos: still a DECIDE. Recommendation: defer.
 - **Install the pack globally** — the installed copies at ~/.claude/skills/ drifted from the repo this session
   (communicator, build-pipeline, spec-author, test-author, live-spec-base, product-prover all changed). Running
