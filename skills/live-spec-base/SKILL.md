@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-four rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-five rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.9
+  version: 1.0.10
 ---
 
 # live-spec-base — one rulebook, seven working skills
@@ -242,6 +242,19 @@ a working skill still stands: its pointer here reads as plain advice.
    footprint-and-proof table, and spec-author and test-author read the declared layers and proofs
    instead of assuming code. The one method fits every window this way — one abstract station, each
    kind's own concrete fill — rather than a code method worn awkwardly by a photo site.
+
+25. **The orchestrator reads to decide, not to discover (SPEC INV-137).** The lead's context holds only
+   what orchestration needs — the human's words, the decisions taken, the distilled results workers hand
+   back, and the few anchors the lead must cite. Reading a file to UNDERSTAND or DESIGN, past a glance, is
+   itself work, so it routes like any work (rule 5): the lead dispatches it to a reader — a search-and-locate
+   pass or a read-and-distill brief — and reads the distillation the worker returns, not the raw file bodies.
+   A glance is bounded: one small file, or a handful of targeted lines whose result IS the deliverable (a
+   version string, one clause to quote). Past the glance, dispatch. The duty binds the reads done to DISCOVER or UNDERSTAND, where a distillation is the right return. A read to VERIFY a claim or settle a decision stays with the lead: checking the real artifact and re-reading a primary source are the lead's own hands (rules 11, 13), and a dispatched verification returns the raw evidence the lead re-checks (rule 5). The leanness is load-bearing — a lead
+   that fills its own context with source it could have had distilled loses the room to hold the whole arc,
+   and its judgment degrades as the context bloats. Workers locate their own anchors from the brief, so the
+   lead never reads a file to brief them (rule 5, SPEC INV-69). And the discipline is made visible rather
+   than trusted to memory: the landing report's delegation accounting names the reads dispatched beside the
+   work delegated (SPEC INV-103, INV-137), so a session that slid into reading-to-discover shows it.
 
 
 ## When NOT to load this

@@ -1,0 +1,44 @@
+"""INV-137 / base rule 25 — the orchestrator reads to decide, not to discover.
+Enshrines the read-discipline law across its homes so it cannot silently drift out.
+Landed 2026-07-13."""
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def _read(rel):
+    return (ROOT / rel).read_text(encoding="utf-8")
+
+
+def test_base_rule_states_read_discipline():
+    text = _read("skills/live-spec-base/SKILL.md")
+    assert "reads to decide, not to discover" in text
+    # promoted to its own numbered rule, not a buried clause
+    assert "25. **The orchestrator reads to decide, not to discover" in text
+    assert "SPEC INV-137" in text
+
+
+def test_spec_invariant_137_present_and_indexed():
+    spec = _read("PRODUCT_SPEC.md")
+    # prose clause
+    assert "reads to decide, not to discover" in spec
+    assert "[INV-137]" in spec
+    # Formal-index row (a table row starting with the code)
+    assert "| INV-137 |" in spec
+
+
+def test_delegation_accounting_names_reads():
+    # the discipline is made visible in the landing report's delegation accounting
+    bp = _read("skills/build-pipeline/SKILL.md")
+    assert "reads dispatched" in bp
+    assert "INV-137" in bp
+
+
+def test_architecture_owns_137():
+    arch = _read("ARCHITECTURE.md")
+    assert "INV-137" in arch
+
+
+def test_matrix_row_for_137():
+    matrix = _read("TEST_MATRIX.md")
+    assert "INV-137" in matrix

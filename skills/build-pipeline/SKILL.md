@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.9), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.10), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -538,7 +538,8 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   landing report carries one line — what went to the worker and roughly how much senior work it saved.
   The line is what keeps the habit alive; a session that never writes it is a session that quietly
   stopped delegating. The line lives in the landed row's status cell, and a suite check reads it: a
-  landed row without the line goes red (SPEC INV-103, forward from 2026-07-12). The duty binds the
+  landed row without the line goes red (SPEC INV-103, forward from 2026-07-12).
+   The same accounting also names the reads dispatched beside the work delegated, so a session that filled its own context with a read it should have dispatched shows that in the report (SPEC INV-137). The duty binds the
   orchestrator seat regardless of model, whatever tier leads the seat.
 - **Traceability is a test, enforced automatically.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
