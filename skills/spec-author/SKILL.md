@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.6
+  version: 1.0.7
 ---
 
 # Spec Author
@@ -246,6 +246,16 @@ reaches, and what a footprint's layer means for this project, come from the host
 deployment, a campaign's are message, channels, and assets, and the pack's own are the rulebook, the
 working skills, and the guardrails. The facet dimensions below are kind-abstract; read the declared
 layers so the sweep names this project's real surfaces rather than assuming a codebase's.
+
+**Read the kind's declared design principles too (SPEC INV-136).** Beside its layers and proofs a
+project kind carries a set of design principles — checkable design rules the kind's products must hold,
+homed in the per-kind design-principles table in ARCHITECTURE.md and declared for a visual kind on the
+host profile's `project.design-principles` line. When the wish touches a surface a declared design
+principle governs, write the principle's answer as a spec sentence the same way a facet ends as a
+sentence — the frontend kind's interactive-overlap rule (interactive controls that belong to different
+layers occupy separate screen space) is answered wherever a covering overlay opens over floating chrome,
+so the delta states which controls retract while the overlay stands. The verify feel pass runs the
+declared design principles; the spec names the answer so the pass has something to check.
 
 - **layout on a phone or narrow window** — what the feature does below desktop width;
 - **touch where the design assumed a mouse** — anything hover-only needs a touch answer;

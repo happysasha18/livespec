@@ -3799,3 +3799,69 @@ split, and the P8/P9 prose were the judgment; no mechanical grunt worth routing 
 This closes the architect-draft follow-ons R0/R1/R3/R5 (rows 291-294): the footprint-note check, the
 per-kind concrete-layers-and-proofs declaration, the cross-cut counter, and the interface-test machinery —
 the mechanical halves INV-128 deferred.
+
+---
+
+## 2026-07-13 ~13:40 — Row 298: per-kind design principles (INV-136), a sibling to INV-135
+
+**Why.** tlvphotos fed back a real bug and Alexander's word "this you should have caught": a floating
+audio player (higher z-index) stayed pressable directly over a zoom overlay's own close button — two
+interactive controls competing for one corner. Every zoom test and player test passed; nothing in the
+spec or the prover flagged that two independently-correct controls occupy one screen place when one
+surface opens over another. It is the third cross-surface-composition gap this project has fed back
+(after policy uniformity INV-125 and paired-transition symmetry INV-126). The method answer is not a
+one-off patch in a product — it is a standing per-kind capability.
+
+**What landed.** INV-135 already makes a kind declare its concrete layers and proof kinds. INV-136
+extends the same founding shape: a kind also carries a set of DESIGN PRINCIPLES — checkable design rules
+specific to the kind — and the verify/feel pass reads and runs them. The pack ships a per-kind starter
+set in a new ARCHITECTURE section "Design principles by project.kind" (sibling to the footprint-and-proof
+scaffold). The frontend/visual kind's starter set gathers the frontend guidance the pack had scattered —
+the visitor walk, the feel pass scaled to a whole site, motion/scroll feel — so they stop living only in
+INV-30's prose, and adds the founding design principle stated positively: interactive controls that
+belong to different layers occupy separate screen space (two interactive controls from different visual
+layers hold separate clickable regions so every press lands on one alone; a non-interactive element may
+overlap freely, the rule binding the clickable regions).
+
+**Design forks decided (not asked).**
+- *Where INV-136 homes.* Beside INV-135 in the spec founding clause + Formal index + ARCHITECTURE table +
+  wiring, NOT as a new sentence in base rule 24. Reason: adding to base rule 24 would bump the base skill
+  version and force a pin sweep across seven skills, and the task's enumerated homes omit base rule; the
+  law is fully expressed via the spec founding clause + ARCHITECTURE + spec-author/build-pipeline/ADOPT.
+  Base rule 24 stays the layers+proofs home, the spec founding clause the design-principles home — both
+  under one founding-declaration family.
+- *Founding-check scope.* The check requires `project.design-principles` only for a VISUAL/frontend kind
+  (detected by tokens: frontend, fullstack, static site, photo, gallery, visual, website, ui); a
+  non-visual kind (skill pack, prose, backend, CLI) is not required and passes. Reason: the concrete
+  requirement and the shipped starter set are the frontend kind's; other kinds get design-principle
+  entries as their needs are named. live-spec's own host (a skill pack) is therefore not reddened and
+  needs no `project.design-principles` line.
+- *The overlap check's home.* live-spec has no UI, so its own suite cannot run a pixel/overlap test.
+  The pack ships the LAW and the starter set; the pixel/DOM assertion (for each covering overlay, open it
+  and assert every other interactive control is not rendered or not pressable) lives in the ADOPTING
+  project's own suite — the same ship-the-law/leave-the-pixel-assertion split INV-125 takes. In tlvphotos
+  this is INV-77 (EX-CHROME), already built and tested red-first there.
+
+**Red-first.** The wiring doc-assertion tests (spec-author, build-pipeline verify, ADOPT) went red before
+the wiring prose was written; the founding-check teeth tests were green from the start, proving the check
+reds a visual kind with no principles and passes a non-visual one. `tests/test_design_principles.py`, 12
+tests. One comma-appositive scissors ("lives in the adopting project, not here") was caught by
+spec-style-lint and folded during authoring — the permanent contrast-frame ban.
+
+**Prove.** FULL on the new law + CROSS-LINK of its seams against INV-135/125/30/77 + architecture lens on
+the new section: `docs/prover/2026-07-13-row298-design-principles.md`, 0 must-fix on the documents. The
+independent fresh-context adversarial audit (INV-46), run before commit, EARNED its keep: it caught a
+real must-fix the author's own pass missed — the founding check's `kind_is_visual` detector used bare
+substring matching, so the token "ui" misclassified non-visual kinds ("build tool", "test suite",
+"guide", "requirements") as visual and would have falsely reddened their founding, while real visual
+kinds named without the fullstack/static-site words ("mobile app", "dashboard", "iOS client") escaped
+the requirement. Folded: the detector is now word-boundaried and the token list widened, locked by two
+new tests (a "ui"-lookalike kind passes, a mobile/dashboard/iOS kind reds). A further external audit is
+scheduled per the task brief.
+
+Door: feature; kind: skill; footprint: cross-cutting, HELD. SPEC INV-136 NEW · ARCHITECTURE per-kind
+design-principles table + Prover-record row · TEST_MATRIX M-278 · spec-author 1.0.6→1.0.7 · build-pipeline
+1.0.22→1.0.23 · adopt/ADOPT.md · VERSION/plugin 1.1.16→1.1.17. Full suite 604 green (was 590, +12).
+Delegation (INV-103): the composition judgment, the founding-check scope, the positive-register principle
+statement, and the architecture prove were the senior's; the fresh-eyes adversarial audit went to a
+general-purpose worker (~20 min senior saved on the independent read).

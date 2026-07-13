@@ -40,7 +40,7 @@ build-pipeline) and the report step (T-7, communicator); both sides are named he
 
 | Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |
 |---|---|---|---|
-| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, INV-23, INV-56, INV-65, INV-76, INV-84, INV-98, INV-108, T-19, INV-40, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17, INV-105, INV-107, INV-117, INV-135 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence + rule 6's closing half, INV-107), `:95` (door + work-kind + prototype rules 15-16), `:132` (rule 19, INV-23 — the workshop-noise law), `:150` (rule 20, INV-65 — skill search at setup and struggle), `:166` (rule 21, INV-84 — the clean-writer road), `:178` (rule 22, INV-98 — the convergence principle), `:191` (rule 23, INV-108 — the live-channel law), `:152` (ladder), `:179` (defaults incl. `budget.pressure` — the economy ladder's setting; the rungs' one home is the SPEC's economy-ladder section) |
+| base-rulebook | shared working rules stated once + package defaults + the settings ladder | E-12, E-13, INV-5, INV-9, INV-11, INV-13, INV-14, INV-23, INV-56, INV-65, INV-76, INV-84, INV-98, INV-108, T-19, INV-40, ACT-1, ACT-2, ACT-3, M-2, M-7, E-17, INV-105, INV-107, INV-117, INV-135, INV-136 | `skills/live-spec-base/SKILL.md:17` (rules), `:52` (fence + rule 6's closing half, INV-107), `:95` (door + work-kind + prototype rules 15-16), `:132` (rule 19, INV-23 — the workshop-noise law), `:150` (rule 20, INV-65 — skill search at setup and struggle), `:166` (rule 21, INV-84 — the clean-writer road), `:178` (rule 22, INV-98 — the convergence principle), `:191` (rule 23, INV-108 — the live-channel law), `:152` (ladder), `:179` (defaults incl. `budget.pressure` — the economy ladder's setting; the rungs' one home is the SPEC's economy-ladder section) |
 | spec-author | authoring method for a living, use-case-first, prover-ready PRODUCT_SPEC.md | E-4, C-1, T-13, INV-18, INV-29, INV-50, T-14, INV-19, INV-20, INV-21, INV-101, INV-118, INV-126, INV-127; also carries the prototype-norm pointer's format sentence (`norm: <path>`, frozen copy in `docs/norms/`) — wiring, the invariant's owner is build-pipeline | `skills/spec-author/SKILL.md:109` (spine), `:134` ([target] tag tripwire), `:160` (axes composition), `:200` (fences), `:216` (facet sweep — the canonical facet list) |
 | product-prover | formal review of spec and architecture; executes the push-gate re-check | M-6, INV-61, INV-72, INV-114, INV-125; also carries the entry-symmetry lens (the law's owner is spec-author), the declared-laws station (the law's owner is spec-author), and the prototype-norm lens (prototype-born clause without pointer / text contradicting its artifact = finding) — wiring, the invariant's owner is build-pipeline | `skills/product-prover/SKILL.md:161` (review modes), `skills/product-prover/SKILL.md:271` (unwritten-seam hunt — the stress-lens family, INV-72), `.live-spec/profile.md:6` (gate cadence instance), `skills/product-prover/SKILL.md:168` (restructure-merge gate — INV-114 delta-judging) |
 | build-pipeline | the wish lifecycle: intake → classify → spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show → landed | E-2, T-1..T-6, T-8, T-9, T-11, T-12, T-15, T-16, T-17, T-18, INV-1, INV-2, INV-3, INV-4, INV-12, INV-16, INV-22, INV-26, INV-30, INV-31, INV-33, INV-37, INV-39, INV-41, INV-43, INV-46, INV-49, INV-53, INV-54, INV-55, INV-62, INV-63, INV-69, INV-70, INV-74, INV-75, INV-82, INV-99, INV-103, INV-104, INV-106, INV-113, E-14, E-15, INV-15, M-1, INV-115, INV-116, INV-121, INV-122, INV-123, INV-124, INV-128, INV-129, INV-131, INV-133, INV-134 | `skills/build-pipeline/SKILL.md:41` (step zero: the door + work-kind), `:31` (the craft ladder — step→craft one home), `:83` (the work-kind table — per-kind meanings' one home), `:107` (steps), `:233` (gates), `:215` (re-carve paragraph — INV-113 redesign-owes-rework) |
@@ -172,6 +172,38 @@ The three real hosts fix the fixtures for the founding check: a code/music kind 
 kind (tlvphotos), a prose kind (the promotion campaign) — each with its own layers and proofs, plus a
 kind-only profile that must go red.
 
+## Design principles by project.kind
+
+Beside its layers and proofs, a project kind carries a set of **design principles** — checkable design
+rules the kind's products must hold, of the family of cross-surface policy uniformity [INV-125] and
+paired-transition symmetry [INV-126] (SPEC INV-136). The pack ships the starter set below; a founding
+that records a visual kind declares its design principles in the host profile on a `project.design-principles`
+line (the starter set plus any the project adds), and a founding check reds a visual kind recorded with
+none. The verify pass reads the declared principles and runs each in the medium's own form beside the
+visitor walk and the feel pass [INV-30]: a principle the suite cannot green (motion feel, a real-device
+gesture) is the human's own eye-walk [INV-77]; one the suite can hold becomes a matrix row in the
+ADOPTING project's own suite. This table is the per-kind scaffold; a kind with no entry yet carries none.
+
+| project.kind | starter design principles | how each is checked |
+|---|---|---|
+| frontend / visual (fullstack app · static site · photo portfolio) | the visitor walk (first visit · return · cross-entry · from-any-point navigation · exits) · the feel pass scaled to a whole site (motion quality, affordance craft against the prototype bar) · motion and scroll feel as the human's gate · **interactive controls that belong to different layers occupy separate screen space** (the interactive-overlap rule) · cross-surface policy uniformity [INV-125] · paired-transition symmetry [INV-126] | the walk and the feel pass are the human's eye-walk [INV-30, INV-77]; the interactive-overlap rule, the policy-uniformity and paired-transition rules each get a browser or pixel-level row in the adopting project's suite |
+| code / backend service | the promised flows all reachable · error and empty states answered · latency and error-rate budgets held | integration tests and the budget rows [INV-41] |
+| prose / promotion campaign | the register held across every surface · one thought per paragraph · the reading path stated | the register lint and the owner's review |
+| skill pack | the description triggers when it should · install and commands shown · when-to-use stated | the skill-creator review [INV-99] and the eval suite |
+
+**The interactive-overlap rule, stated in full (the frontend kind's founding design principle, SPEC INV-136):**
+Interactive controls that belong to different layers occupy separate screen space. Two interactive
+controls from different visual layers — a player, a close button, a zoom handle — hold separate clickable
+regions, so every press lands on one control alone. A non-interactive element — a plaque, a picture, a
+caption — may overlap anything freely; the rule binds the interactive, clickable regions. A per-surface
+review sees each surface alone, so this composition rule catches the case one surface's floating control
+still floats above another surface's control when the second opens over the first. Its projection lives in
+the adopting project's own suite: for each covering overlay the project defines, a browser or pixel-level
+row opens the overlay and asserts every other interactive control is not rendered or not pressable
+(computed `pointer-events:none`, `opacity:0`, or off-screen) while it stands. The pack ships the law and
+the starter set and leaves the pixel assertion to the products it serves — live-spec itself has no UI —
+the same split cross-surface uniformity takes [INV-125].
+
 ## Quality budgets
 
 What quality means for a skill pack, in numbers [INV-41]. Numbers proposed by the agent, tunable on
@@ -216,6 +248,7 @@ than trailing it.
 | 2026-07-12 | v1.1.0 — FULL pre-1.1.0 milestone pass (M-1), architecture proved beside the whole spec | `docs/prover/2026-07-12-full-pass-pre-1.1.0.md` |
 | 2026-07-12 s38 | v1.1.0 — architecture proved at the push gate beside the spec, discharging INV-115/INV-116 (findings F-arch-1/F-arch-2 → row 273) | `docs/prover/2026-07-12-s38-inv115-inv116-and-architecture.md` |
 | 2026-07-12 s41 | v1.1.x — the cross-cut counter lands under the boundary-health law (row 293); architecture-lens re-prove, no new node or seam, 0 must-fix | `docs/prover/2026-07-12-s41-crosscut-counter-architecture.md` |
+| 2026-07-13 | v1.1.17 — per-kind design principles (row 298, INV-136): new "Design principles by project.kind" section beside the footprint-and-proof scaffold; architecture-lens re-prove, no new node or seam (INV-136 owned by base-rulebook), 0 must-fix | `docs/prover/2026-07-13-row298-design-principles.md` |
 
 ---
 

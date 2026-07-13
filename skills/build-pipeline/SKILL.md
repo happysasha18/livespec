@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.22
+  version: 1.0.23
 ---
 
 # build-pipeline — ship a change by the method
@@ -172,7 +172,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 | 5 matrix | rendered-level rows (E-15) | function-level rows: run the tool, assert real output | string rows on the SHIPPED SKILL.md; behaviour eval when the eval machinery lands (row 94) | render-level: file shipped, sections present, links resolve |
 | 6 test | assert the real render | run on a fixture, assert output | string assertions against the installed artifact | assert the shipped file's content |
 | 7 code | as written | as written | as written | the writing IS the step |
-| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; findings become rows or red (SPEC INV-30) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap; walk the installed skill-creator's review of the touched skill — format, frontmatter, description-triggering (does the skill load when it should), evals where applicable — findings folded or rejected by name in the landing record (SPEC INV-99) | render it by the show rule and READ it |
+| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; the feel pass also reads the kind's declared design principles (the host profile's `project.design-principles`, the pack's per-kind starter set in ARCHITECTURE.md) and runs each in the medium's own form — the frontend kind's interactive-overlap rule (interactive controls that belong to different layers occupy separate screen space) is walked wherever a covering overlay opens over floating chrome, its pixel/DOM row living in this project's own suite; findings become rows or red (SPEC INV-30, INV-136) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap; walk the installed skill-creator's review of the touched skill — format, frontmatter, description-triggering (does the skill load when it should), evals where applicable — findings folded or rejected by name in the landing record (SPEC INV-99) | render it by the show rule and READ it |
 | 9 commit & show | show the render | show the run's output | version bump + installed-copy sync, same session | open the rendered page for the human |
 | design-sync / snapshot | product with visuals: declared scope syncs (human-gated) | stands down | stands down | stands down |
 

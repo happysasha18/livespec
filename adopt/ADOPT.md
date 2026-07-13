@@ -96,8 +96,14 @@ content/rendering-engine/deployment, a campaign's message/channels/assets) and a
 (this kind's concrete test-ladder rungs — tests and rendered checks, a byte-diff and an eye-walk, a
 register lint and the owner's review). The stations are kind-abstract; these two lines are the project's
 own fill, and a `project.kind` recorded with neither is incomplete, flagged the way an unbacked surface
-is. The per-kind footprint-and-proof table in ARCHITECTURE.md is the scaffold each founding fills. The
-same breath asks — or tells the standing
+is. The per-kind footprint-and-proof table in ARCHITECTURE.md is the scaffold each founding fills.
+**A visual kind declares its design principles too (SPEC INV-136):** a founding that records a
+frontend/visual kind gains a `project.design-principles` line — the pack's per-kind starter set from
+the ARCHITECTURE per-kind design-principles table (the visitor walk, the feel pass scaled to a whole
+site, motion/scroll feel, and the interactive-overlap rule) plus any the project adds — and a visual
+`project.kind` recorded with none is flagged the way a kind with no layers or proofs is; the verify
+feel pass runs these principles, the interactive-overlap rule's pixel/DOM row living in this project's
+own suite. The same breath asks — or tells the standing
 default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
 choice at setup, before any crisis; the rung moves only on their word.
 
