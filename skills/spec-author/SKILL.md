@@ -280,6 +280,15 @@ declared design principles; the spec names the answer so the pass has something 
   ends as a spec sentence — mirror, a named shorter exit, or deliberately instant — decided or
   `[default]`-tagged like any facet (SPEC INV-126; incident: tlvphotos's polaroid room revealed under a soft
   veil in one breath and closed on a hard cut with no transition, found by hand on a real phone, 2026-07-12).
+- **Edge completeness — both ends of a gate, and the three faces of a wait.** When the surface has a
+  behaviour gated on a quantity that runs on a line (elapsed time since a last visit, a count, a distance, a
+  size), write what it does at both ends of the range — below the low end and above the high end — not only
+  at the one point the wish named; "on return", "after a while", "once there are several" each owe their two
+  bounds. And when a slot is filled by asynchronously produced content, write the three faces of a wait —
+  pending, arrived, failed — with a visible pending face while the content is in flight; this is the
+  empty/error/loading facet above made specific for a reserved slot, its loading state named and shown. Each edge becomes a
+  spec sentence, decided or `[default]`-tagged like any facet (SPEC INV-138; born of a returning-visitor line
+  unbounded at both ends and a story slot left blank in flight, tlvphotos 2026-07-13).
 
 **The list is curated, each facet earning its place by named incident.** A facet joins ONLY with a named real incident it would have
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
