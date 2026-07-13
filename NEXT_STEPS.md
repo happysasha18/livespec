@@ -29,15 +29,31 @@ placeholder in the sibling promoter repo was routed to its inbox.
   row 295), two latent hardenings folded (rows 296/297 — numeric/multi-feature heading ids; the footprint
   cutoff-day missing-time escape). Four string-only process-laws (129/130/131/133) sit at the accepted prose floor.
 
-## INCOMING WISH (2026-07-13 — awaiting the tlvphotos deposit for the concrete case)
-- **Per-kind design principles.** Keyed to project.kind, composing with INV-135 (per-kind layers + proofs): a
-  frontend/visual kind carries a checkable set of design principles. First member, from a tlvphotos bug — the
-  interactive controls of two layers overlapped (the image-pinch controls sat over the room's controls). The
-  principle: interactive controls of different layers must not overlap; overlap is fine for a non-interactive
-  element (a plaque, a picture) and a defect for an interactive one (a player, a close button). tlvphotos will
-  drop the concrete case in inbox/; open the full ROADMAP row and run the pipeline when it lands.
+## LANDED 2026-07-13 (after the s41 close)
+- **Per-kind design principles — row 298, INV-136 (v1.1.17), CI green.** The tlvphotos deposit landed and a
+  background worker shipped it: a project.kind now declares checkable design principles the verify/feel pass
+  runs; the frontend kind's starter set names the interactive-overlap rule (interactive controls of different
+  layers hold separate clickable regions; a passive element may overlap freely). Homed in the spec founding
+  clause + ARCHITECTURE + spec-author/build-pipeline wiring, NOT in base rule 24 (avoids a base-version pin sweep).
+- **Mirror auto-sync — v1.1.18, CI green (run 29247199159).** The standalone mirrors (product-prover) now sync on
+  their own from two homes: the local pre-push green-gate tail (proven live on this push) and a token-gated CI
+  `sync-mirrors` job (skips cleanly until the token). Fixes the drift found 2026-07-13 (mirror one version behind).
+  The prover stays ONE copy in the pack; the mirror is showcase-only — extracting it would break install/manifest/Prove.
+
+## OPEN DECISION (2026-07-13 — needs Alexander's read)
+- **The overlap rule got a verify-time home, not the prover lens the deposit asked for.** The tlvphotos deposit
+  asked for a visual-overlap lens IN product-prover, sibling to INV-125 (cross-surface uniformity) and INV-126
+  (paired-transition symmetry) — both of which are product-prover Phase-3 lenses. Row 298 homed it instead as a
+  verify-time design principle + browser-test projection, and left product-prover untouched. Question: add the
+  matching product-prover lens too (spec-time, completes the INV-125/126 family), or is verify-time the correct
+  sole home for a rendered z-order defect? Recommendation: a short prover lens completes the family — but it is
+  his method-taste call. Do NOT start a build lane on it without his word (a background-worker collision already
+  happened on this wish today; see JOURNAL 2026-07-13 ~14:39).
 
 ## OWNER-HELD / OPEN (each needs the owner's word — no autonomous move taken)
+- **CI mirror-sync token** — to turn on the durable CI arm of the mirror auto-sync, create a fine-grained PAT with
+  `contents:write` on `happysasha18/product-prover` (and any future mirror repo) and add it as the repo secret
+  `MIRROR_SYNC_TOKEN`. Until then the local pre-push arm carries it on every push from this Mac; CI skips cleanly.
 - **Row 261** — GitHub Issues as the strangers' wish door for public repos: still a DECIDE. Recommendation: defer.
 - **Install the pack globally** — the installed copies at ~/.claude/skills/ drifted from the repo this session
   (communicator, build-pipeline, spec-author, test-author, live-spec-base, product-prover all changed). Running
