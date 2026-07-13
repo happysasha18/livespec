@@ -19,11 +19,8 @@ class TestReadmeStanceParagraph(unittest.TestCase):
     def test_stance_paragraph_present(self):
         body = read_flat("README.md")
         self.assertIn("A spec owns what a project can write down and test.", body)
-        self.assertIn("The method answers taste by routing", body)
-        self.assertIn(
-            "The photo-portfolio project stays cited here as the case that taught the boundary.",
-            body,
-        )
+        self.assertIn("It routes instead.", body)
+        self.assertIn("photo-portfolio", body)
 
     def test_stance_paragraph_before_known_issues(self):
         with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as f:

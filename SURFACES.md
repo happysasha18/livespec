@@ -8,7 +8,7 @@ this registry must keep up.
 
 | Surface | Needle | Spec anchors |
 |---|---|---|
-| readme-opening | live-spec is a pack of eight Claude Code skills | INV-44, INV-82 |
-| readme-pipeline | The pipeline | INV-44 |
-| readme-known-issues | This list is reviewed at every push | INV-44 |
+| readme-opening | A software house under your fingertips | INV-44, INV-82 |
+| readme-pipeline | A wish, end to end | INV-44 |
+| readme-known-issues | Reviewed at every push | INV-44 |
 | overview-map | the ideas in five minutes | INV-48 |
