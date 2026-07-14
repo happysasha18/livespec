@@ -1,20 +1,24 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 — the design-review pass shipped under /loop, autonomous)
-**PACK v1.3.0, PROVER v1.1.1. Suite 649 green whole; committed and pushed under Alexander's standing
-grant (his 2026-07-14 word: push on green when confident).** Read this, then wipe memory; every landing's
-full story lives in JOURNAL + ROADMAP (row 310).
+## LIVE STATE (2026-07-14 — the whole queue cleared and pushed)
+**PACK v1.3.0, PROVER v1.1.1** (rows 311-314 were skill-patch/rule changes, no pack bump). **Suite 659
+green whole; all committed and pushed under Alexander's standing grant** (his 2026-07-14 word: push on
+green when confident). Read this, then wipe memory; every landing's full story lives in JOURNAL + ROADMAP.
 
-**What landed (row 310 / INV-141 + INV-142) — the design-review pass.** A new working skill,
-`design-reviewer`, that reads a proven spec AFTER the prover and judges the design itself: it builds its
-own element inventory below the page-level surface registry, proposes the same-kind groupings no clause
-declared, checks behaviour parity within each, and echoes the strongest likely divergence to the human as
-one batched question with two objects in hand. Every finding is a recommendation or a question, never a
-blocking defect — so the pass can never hold a landing (the structural safety that lets the echo be
-generous). Born of a real miss: a polaroid photo and a gallery photo, element-level siblings no clause
-declared, that every declared-class lens (INV-125/126/136/138) was structurally blind to. The whole
-pipeline walked (spec → prove → fold → architecture → matrix → test → code → verify-by-deed via an eval →
-a Fable MINOR-gate 3-pass audit → land); the pack is now nine skills (eight working + base).
+**What landed this batch.** The whole queue is done: rows 310-314, the cheap backlog (302, 307-309), and
+inbox hygiene. Row 310 (the design-review pass, INV-141/142) shipped the prior movement. This batch closed
+four more, each born of one of Alexander's mid-session steers:
+- **Row 311** — better time estimates: wall-clock-with-parallelism + a cross-session обещал→вышло
+  calibration log + a landing retrospective, homed in communicator's echo/report rules. communicator
+  1.0.12→1.0.13. Commit `0667120`.
+- **Row 312** — the README now states plainly there's no command surface to learn; the onboarding card
+  turned out to be the wrong home (a settings card), so the README carries it. Commit `3e1dc62`.
+- **Row 313** — one unified emoji done/remaining report format, communicator rule 9, reconciling two
+  prior legends into one. communicator 1.0.11→1.0.12. Commit `79db54e`.
+- **Row 314** — a brief-time disjoint-write-set check before a second concurrent writer spawns (the
+  tlvphotos worker-collision gap), extending ACT-3/INV-11 — no new invariant. Independent opus prove.
+  build-pipeline 1.0.25→1.0.26, live-spec-base 1.0.12→1.0.13 (base-pin ripple, all 8 skills). Commit
+  `15fe3e0`.
 
 ## ⟨DECIDE⟩ — two taste-call defaults I set (overturn either if you meant otherwise)
 1. **Scoped design review at every surface add** (vs milestone-only). The born-of miss arrived as a
@@ -28,25 +32,15 @@ a Fable MINOR-gate 3-pass audit → land); the pack is now nine skills (eight wo
    its own clause and wish row. Overturnable if you want the wider channel now.
 
 ## Queue (take at a queue-take — all QUEUED, none blocking)
-- **Row 311** — improve time estimations: wall-clock-with-parallelism + a cross-session обещал→вышло
-  calibration log in MEMORY + a landing retrospective (Alexander's task, "не спрашивай меня" — do NOT ask;
-  mine to run). Plans annotate parallel/tier per step.
-- **Row 312** — explain live-spec needs no command surface, at onboarding + README (resolve the
-  commands-vs-team ambiguity at build; do not hardcode personal settings).
-- **Row 313** — the unified done/remaining emoji report format (✅ 🔄 ⏳ ⚠️ ⏱ 📖); ADOPTED in-session as a
-  voiced fix, the queued part is capturing it as a communicator status-format rule.
-- **Row 314** — a spawn-time disjoint-write-set check before a second concurrent writer (the confirmed
-  narrow fence gap: the fence is silent between same-session siblings, so it cannot catch two of my own
-  helpers colliding — the tlvphotos failure mode). Home: build-pipeline ACT-3 (~:522) + spec ACT-3
-  (~PRODUCT_SPEC.md:1448).
+- **Row 261** — GitHub Issues as the strangers' wish door: still a DECIDE, awaiting Alexander's word.
+- The one real remote deposit still owes its live run.
+- The tlvphotos impersonal-voice wish sits in its own inbox.
 
 ## OWNER-HELD (needs your hand — no autonomous move taken)
 - **`~/.claude/CLAUDE.md` says "its seven working skills"** — now stale (the pack is eight working +
-  base). This is a host-side file on your machine, outside this project's tree, so this window does NOT
-  edit it — it is your one out-of-tree edit for this landing ("seven working skills" → "eight working
+  base, since row 310). This is a host-side file on your machine, outside this project's tree, so this
+  window does NOT edit it — it is your one out-of-tree edit ("seven working skills" → "eight working
   skills").
-- Carried from before: Row 261 (GitHub Issues as the strangers' wish door) still a DECIDE; the one real
-  remote deposit still owes its live run; the tlvphotos impersonal-voice wish sits in its own inbox.
 
 ## Standing habits (always-on)
 - When a method skill changes, run a fresh-eyes adversarial pass (INV-46); a MILESTONE earns the deep
