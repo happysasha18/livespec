@@ -29,6 +29,14 @@ The bridge serves both Issues and Discussions: Issues over the `gh issue` comman
 over the GraphQL path (`gh api graphql`). Both are recorded by a hidden marker comment carrying
 the surfaced generation, so neither needs a label.
 
+Where two hosts' monitors watch one repo they converge on a single surfacing (INV-149): before a
+host deposits, it posts a claim comment on the shared item carrying its host identity and deposits
+only when its own claim wins the shared comment log (the earliest live claim, the lower host id
+breaking a tie — a pure reading every host computes alike). A claim is the per-host lock lifted
+onto the repo and stolen by age the same way, so a host that claims then dies cannot swallow the
+wish — a surviving host wins past the stale claim and surfaces it. claim_winner / parse_claims are
+pure and unit-tested; _claim wires the `gh` comment post and the read-back.
+
 The core (items_to_surface / surface_key / single_instance / run) carries no I/O and is unit
 -tested in tests/test_stranger_door.py. main() wires the `gh` CLI and the inbox/ directory.
 """
@@ -42,9 +50,10 @@ import time
 from pathlib import Path
 
 SURFACED_MARKER = "<!-- live-spec surfaced-gen:"  # a hidden marker comment records the generation
+CLAIM_MARKER = "<!-- live-spec claim-gen:"  # a hidden marker comment claims a surfacing round (INV-149)
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INBOX = REPO_ROOT / "inbox"
-LOCK_STALE_SECONDS = 3600  # a lock older than this is stolen (a hard-killed run left it behind)
+LOCK_STALE_SECONDS = 3600  # a lock (and a claim) older than this is stolen (a hard-killed run left it behind)
 
 
 # ---- the pure core -------------------------------------------------------------------------
@@ -66,16 +75,91 @@ def items_to_surface(open_items: list[dict], existing_inbox_sources: set[str]) -
     out = []
     for it in open_items:
         surfaced_gen = it.get("surfaced_gen")
-        # Skip an item whose latest activity is no newer than the generation we last recorded.
-        # `surfaced_gen` is the generation as it stood AFTER the monitor's own marker, so the
-        # monitor's own recording never reads back as fresh activity: only another actor's edit
-        # or comment advances the item's generation past it and re-surfaces it (INV-146, INV-138).
-        if surfaced_gen is not None and it.get("activity_gen", "") <= surfaced_gen:
+        # The baseline the item's latest activity is measured against is the newest of ANY monitor
+        # marker the item carries — a surfaced-generation record OR a cross-host claim (INV-149).
+        # A claim is a real comment, so posting it bumps the item's activity generation (updatedAt);
+        # measuring against the confirm alone would let a losing host's trailing claim read back as
+        # fresh activity and loop a re-surface every run in the two-host contended case. A claim is a
+        # monitor marker, so it advances this ceiling in lockstep with the activity it bumps and reads
+        # as no new activity — the post-marker reasoning INV-146 uses, now covering claims too. Genuine
+        # third-party activity (an edit, a reopen, a stranger's comment) bumps updatedAt WITHOUT adding
+        # a marker, so it rises above the ceiling and re-surfaces (INV-146, INV-138). The confirm
+        # (surfaced_gen) still answers whether the item was ever surfaced. Absent an explicit ceiling
+        # the confirm is the ceiling (a single monitor's own marker is always its last comment).
+        marker_ceiling = it.get("marker_ceiling") or surfaced_gen
+        if surfaced_gen is not None and marker_ceiling is not None \
+                and it.get("activity_gen", "") <= marker_ceiling:
             continue
         if surface_key(it) in existing_inbox_sources:
             continue
         out.append(it)
     return out
+
+
+# ---- the cross-host claim: two hosts on one repo converge on a single surfacing (INV-149) ----
+
+def _iso_to_epoch(s: str):
+    """Parse an ISO 8601 UTC timestamp (a GitHub createdAt) to epoch seconds, or None."""
+    from datetime import datetime
+    if not s:
+        return None
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
+    except ValueError:
+        return None
+
+
+def claim_body(host_id: str, gen) -> str:
+    """The claim comment a host posts on the source item before it deposits (INV-149).
+
+    It carries the host's identity [INV-117] under CLAIM_MARKER — a marker DISTINCT from
+    SURFACED_MARKER, so a claim never reads back as a recorded surfacing and never perturbs the
+    re-surface generation the surfaced-gen record owns [INV-146].
+    """
+    return (f"A live-spec monitor on one host is surfacing this into the maintainers' inbox. "
+            f"Where two hosts watch this repo, they converge on a single surfacing.\n\n"
+            f"{CLAIM_MARKER} {gen} host:{host_id} -->")
+
+
+def parse_claims(comments: list[dict]) -> list[dict]:
+    """The claim records on one item — {host, created} per CLAIM_MARKER comment.
+
+    `created` is the comment's own createdAt (the shared clock every host reads alike); `host` is
+    the identity carried in the marker. A surfaced-gen record and an ordinary comment are not claims.
+    """
+    claims = []
+    for c in comments:
+        body = c.get("body", "")
+        if CLAIM_MARKER in body:
+            host = ""
+            frag = body.split(CLAIM_MARKER, 1)[1]
+            if "host:" in frag:
+                host = frag.split("host:", 1)[1].split("-->", 1)[0].strip()
+            claims.append({"host": host, "created": c.get("createdAt", "")})
+    return claims
+
+
+def claim_winner(claims: list[dict], now_epoch, stale_seconds: float = LOCK_STALE_SECONDS):
+    """The host that owns this surfacing round — a pure reading every host computes alike (INV-149).
+
+    The winner is the earliest LIVE claim by the comment's own creation time, the lower host
+    identity breaking a tie [INV-117]. A claim older than stale_seconds is read as abandoned — a
+    host that claimed then died before recording the surfacing — and is stolen by age the same way
+    the per-host lock is [INV-147], so a surviving host wins past a dead winner and surfaces the
+    wish itself [INV-1]. Returns the winning host id, or None when no live claim stands.
+    """
+    live = []
+    for c in claims:
+        ce = _iso_to_epoch(c.get("created", ""))
+        if ce is None:
+            continue
+        if now_epoch is not None and now_epoch - ce > stale_seconds:
+            continue  # abandoned claim — stolen by age
+        live.append(c)
+    if not live:
+        return None
+    winner = min(live, key=lambda c: (c.get("created", ""), c.get("host", "")))
+    return winner.get("host", "")
 
 
 @contextlib.contextmanager
@@ -116,12 +200,20 @@ def single_instance(lock_path, stale_seconds: float = LOCK_STALE_SECONDS):
                 pass
 
 
-def run(fetch_open_items, list_inbox_sources, deposit, log) -> dict:
+def run(fetch_open_items, list_inbox_sources, deposit, log, claim=None) -> dict:
     """One monitor pass over injected I/O — honest on an unreachable repo, silent-drop never.
 
     `deposit` returns True when the item was durably surfaced (file committed AND generation
     recorded); an item whose deposit fails is logged and NOT counted surfaced, so the next run
     retries it rather than leaving a half-done deposit to masquerade as done [INV-67].
+
+    `claim` is the cross-host coordinator (INV-149): for each item owing a surfacing it posts this
+    host's claim on the shared item and returns True only when this host's claim wins the shared
+    comment log, so where two hosts watch one repo exactly one deposits. A losing host stands down
+    for the round, deposits nothing, and retries next run. `claim=None` runs the un-coordinated path
+    (every item proceeds) — the shape the pre-INV-149 tests exercise. Production `main` always wires a
+    real claim, so a lone host coordinates too and simply wins its own claim every time, at the cost
+    of one claim comment per surfacing; a lone host cannot know it is alone, so it always claims.
     """
     try:
         open_items = fetch_open_items()
@@ -132,6 +224,10 @@ def run(fetch_open_items, list_inbox_sources, deposit, log) -> dict:
     existing = list_inbox_sources()
     surfaced = []
     for item in items_to_surface(open_items, existing):
+        if claim is not None and not claim(item):
+            log(f"stranger-wish-monitor: did not hold the winning claim for {surface_key(item)} "
+                f"this round; standing down, retrying next run (INV-149)")
+            continue
         if deposit(item):
             surfaced.append(item)
         else:
@@ -176,6 +272,23 @@ def _surfaced_gen_from_comments(comments: list[dict]) -> str | None:
     return gen
 
 
+def _marker_ceiling_from_comments(comments: list[dict]) -> str | None:
+    """The newest createdAt among ALL monitor markers — a surfaced-gen record OR a claim (INV-149).
+
+    A claim comment bumps the item's activity generation the same way a surfaced-gen record does, so
+    the re-surface baseline must count both; measuring against the confirm alone would let a losing
+    host's trailing claim loop a re-surface every run in the two-host contended case.
+    """
+    ceiling = None
+    for c in comments:
+        body = c.get("body", "")
+        if SURFACED_MARKER in body or CLAIM_MARKER in body:
+            created = c.get("createdAt", "")
+            if ceiling is None or created > ceiling:
+                ceiling = created
+    return ceiling
+
+
 def _owner_repo() -> tuple[str, str]:
     nwo = _gh_json(["repo", "view", "--json", "nameWithOwner"])["nameWithOwner"]
     owner, repo = nwo.split("/", 1)
@@ -196,6 +309,7 @@ def _fetch_issues():
             "body": iss.get("body", ""),
             "activity_gen": iss.get("updatedAt", ""),
             "surfaced_gen": _surfaced_gen_from_comments(comments),
+            "marker_ceiling": _marker_ceiling_from_comments(comments),
         })
     return items
 
@@ -224,6 +338,7 @@ def _fetch_discussions():
             "body": d.get("body", ""),
             "activity_gen": d.get("updatedAt", ""),
             "surfaced_gen": _surfaced_gen_from_comments(comments),
+            "marker_ceiling": _marker_ceiling_from_comments(comments),
         })
     return items
 
@@ -290,6 +405,67 @@ def _deposit(item: dict) -> bool:
     return rec.returncode == 0
 
 
+def _host_id() -> str:
+    """This host's identity for the cross-host claim [INV-117, INV-149].
+
+    The arbitration asks only that two hosts contending for one item carry different ids, so an
+    explicit LIVE_SPEC_HOST_ID (when the host records one) else the machine hostname suffices —
+    a contributor's own machine and a GitHub Actions runner never share a hostname, and two Action
+    runs never overlap (the concurrency group serializes them). No identity stable beyond the round
+    is needed.
+    """
+    import socket
+    return os.environ.get("LIVE_SPEC_HOST_ID") or socket.gethostname()
+
+
+def _fetch_item_comments(item: dict) -> list[dict]:
+    """Re-read the source item's comments (Issue over `gh issue`, Discussion over GraphQL)."""
+    if item["kind"] == "discussion":
+        owner, repo = _owner_repo()
+        q = ("query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){"
+             "discussion(number:$number){comments(first:100){nodes{body createdAt}}}}}")
+        data = _gh_graphql(q, owner=owner, repo=repo, number=item["number"])
+        disc = (data.get("data", {}).get("repository", {}) or {}).get("discussion", {}) or {}
+        return disc.get("comments", {}).get("nodes", [])
+    return _gh_json(["issue", "view", str(item["number"]), "--json", "comments"]).get("comments", [])
+
+
+def _claim(item: dict, host_id: str) -> bool:
+    """Post this host's claim on the shared item, re-read, and report whether it won (INV-149).
+
+    The claim is a single-instance guard over the shared item — the per-host lock lifted onto the
+    repo. This host posts its claim, then reads the item's claim comments back and wins only when
+    its own claim is the earliest live one (the lower host id breaking a tie). A losing host returns
+    False and stands down; a claim it cannot post fails honestly (False) and retries next run [INV-67].
+    """
+    body = claim_body(host_id, item.get("activity_gen", ""))
+    if item["kind"] == "discussion":
+        mut = ("mutation($discussionId:ID!,$body:String!){addDiscussionComment("
+               "input:{discussionId:$discussionId,body:$body}){comment{id}}}")
+        posted = subprocess.run(
+            ["gh", "api", "graphql", "-f", f"query={mut}",
+             "-F", f"discussionId={item['id']}", "-F", f"body={body}"],
+            capture_output=True, text=True)
+    else:
+        posted = subprocess.run(
+            ["gh", "issue", "comment", str(item["number"]), "--body", body],
+            capture_output=True, text=True)
+    if posted.returncode != 0:
+        # could not post the claim (a missing issues/discussions write while the repo is still
+        # reachable for the fetch) — stand down honestly and retry, naming the real cause [INV-67]
+        print(f"stranger-wish-monitor: could not post the claim for {surface_key(item)} "
+              f"({posted.stderr.strip()}); standing down, retrying next run")
+        return False
+    try:
+        claims = parse_claims(_fetch_item_comments(item))
+    except Exception as exc:
+        # could not read the claims back — stand down and retry rather than risk a duplicate
+        print(f"stranger-wish-monitor: could not read the claims for {surface_key(item)} "
+              f"({exc}); standing down, retrying next run")
+        return False
+    return claim_winner(claims, time.time()) == host_id
+
+
 def main() -> int:
     lock = REPO_ROOT / ".live-spec" / "stranger-monitor.lock"
     lock.parent.mkdir(exist_ok=True)
@@ -297,7 +473,9 @@ def main() -> int:
         if not acquired:
             print("stranger-wish-monitor: another instance holds the lock; standing down")
             return 0
-        result = run(_fetch_open_items, _list_inbox_sources, _deposit, print)
+        host_id = _host_id()
+        result = run(_fetch_open_items, _list_inbox_sources, _deposit, print,
+                     claim=lambda item: _claim(item, host_id))
         return 0 if result["reachable"] else 1
 
 

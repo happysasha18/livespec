@@ -1,10 +1,13 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 19:25 — the stranger door is OPEN AND WATCHED; pack v1.4.2)
-**PACK v1.4.2, PROVER v1.1.4.** Three lanes landed and pushed this session; local == origin, every push's CI
-went green (confirmed by `gh run`), suite 701 green. The actionable queue is CLEARED — what remains is three
-field beats, each genuinely blocked on Alexander or on a real external event (none can be closed autonomously).
-Read this, then memory can be wiped — the whole story lives in JOURNAL + the prover records.
+## LIVE STATE (2026-07-14 21:05 — the stranger door is OPEN, WATCHED, and cross-host safe; pack v1.4.2)
+**PACK v1.4.2, PROVER v1.1.4.** The cross-host duplicate coordinator (INV-149, M-291) is BUILT this
+session — a local commit awaiting the orchestrator's review and push; suite 710 green. (Version held at
+1.4.2 like its sibling stranger-door landings; the PATCH bump is the orchestrator's coarser-cadence call.) Two hosts' monitors
+on one repo now converge on a single surfacing by a claim on the shared source item, so one wish reaches
+the shared inbox exactly once, never lost (INV-1), the door never blinded if a host dies. What remains is
+the same three field beats, each genuinely blocked on Alexander or on a real external event. Read this,
+then memory can be wiped — the whole story lives in JOURNAL + the prover records.
 
 ## What landed this session
 1. **The monitor's schedule — the door is now live (INV-148).** A scheduled GitHub Action
@@ -28,9 +31,6 @@ Read this, then memory can be wiped — the whole story lives in JOURNAL + the p
   READ path is verified by deed; the scheduled monitor now exercises both fetch paths on every run.
 - **Row 261's remote deposit field beat [INV-112]** — still owes its one real remote deposit run, unchanged
   (needs a real remote seat push, not simulable here).
-- **Cross-host duplicate coordinator** — INV-147 states the bound (two hosts' monitors on one repo can surface
-  one wish twice, a duplicate the maintainers drop, never a wish lost [INV-1]). The coordinator is a named later
-  stage, not built. Surface only if Alexander asks what's left.
 
 ## OWNER-HELD
 - **Memory can be wiped** — every push's CI is confirmed green; the whole story is in JOURNAL + prover records.
@@ -45,7 +45,7 @@ Read this, then memory can be wiped — the whole story lives in JOURNAL + the p
 - No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
   inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80) · the
   local push gate and CI run the same test runner (pytest), never a weaker local net (M-154).
-- Next free codes: INV-149, M-291 (read the live Formal index before minting; codes consume in landing order).
+- Next free codes: INV-150, M-292 (read the live Formal index before minting; codes consume in landing order).
 
 ## Memory
 Once you have read this, memory can be wiped — JOURNAL + the prover records + ROADMAP carry the whole story.

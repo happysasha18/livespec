@@ -2,6 +2,60 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus worker seat, full pipeline) — the cross-host duplicate coordinator (INV-149, M-291)
+
+**Why.** INV-147 opened the stranger door but named one gap it deferred: a repo watched by two hosts'
+monitors could surface one wish twice, since the single-instance lock guards only within one host. The
+deferred "cross-host coordinator" is now built. The goal: two hosts on one repo surface one stranger
+Issue/Discussion into the shared inbox exactly once, never losing a wish (INV-1), never blinding the door
+if one host dies.
+
+**The mechanism.** The two hosts already share one coordination point — the source Issue/Discussion, which
+both read and both may comment on. Before a host deposits, it posts a claim comment on the item carrying
+its host identity (INV-117) under a hidden claim marker, then re-reads the item's claim comments and
+deposits only when its own claim wins the shared log: the earliest claim by the comment's own createdAt,
+the lower host id breaking a tie — a pure reading (`claim_winner`) every host computes identically, so
+exactly one deposits. A loser stands down and retries. The claim is the per-host filesystem lock lifted
+onto the repo: it is stolen by age at the SAME stale bound (`LOCK_STALE_SECONDS`), so a winner that claims
+then dies before recording the surfacing has its stale claim stolen by a surviving host, which surfaces the
+wish itself — a dead winner delays by the stale bound and never swallows the wish, and the door is never
+blinded. The claim rides the monitor's existing Issue/Discussion write, so no new grant and no workflow
+change. Exactly-once rests on the comment store's read-your-writes ordering; a simultaneity finer than that
+ordering is the rare residual duplicate INV-147 already bounds (the maintainers drop it), now the exception
+where before it was every overlap.
+
+**Design choice (the taste call for Alexander).** The claim uses a post-then-read primitive — an atomic
+claim over a medium (GitHub comments) that offers no compare-and-swap — so a losing host leaves a claim
+comment on a contended round. Read-first-then-post would be quieter but reopens a check/use race that could
+let both hosts deposit. Correctness kept the post-then-read form. Whether a claim comment is acceptable
+visual noise on a stranger's own thread, or the claim should move to a quieter shared point (a git ref, a
+state file) at the cost of more machinery, is surfaced in the design-review record for his eye.
+
+**How it was built.** Full pipeline: spec (INV-149 use-case-first section + Formal-index row; INV-147's
+deferral clause rewritten to point at INV-149), CROSS-LINK prover pass (two must-fixes folded — the
+distinct claim/surfaced markers so a claim never reads as a surfaced-generation record, and the honest
+statement that the arbitration needs only per-round-distinct host identities, not cross-run-stable ones),
+scoped design review (the two same-kind groupings, single-instance guards and hidden item markers, checked
+for parity), architecture pin update (inbox node gains INV-149 + the claim function pin — a pins-only
+change, no new node so step 4's re-prove stood down), matrix row M-291 with six function-behaviour tests
+red-proven before the code, then the implementation in `scripts/stranger-wish-monitor.py` (the pure
+`claim_winner`/`parse_claims` core plus the `_claim` gh-comment shell and the `run` claim parameter,
+`claim=None` preserving single-host behaviour). Records: `docs/prover/2026-07-14-cross-host-coordinator.md`,
+`docs/design-review/2026-07-14-cross-host-coordinator.md`.
+
+**The audit earned its keep.** An independent fresh-eyes read (INV-46) on the primary sources, under the
+"goal missed" hypothesis, caught a correctness bug the author's own tests missed: a losing host's claim
+comment bumps the source item's updatedAt past the winner's surfaced-generation record, so — measuring
+new activity against the confirm alone — the next run read the trailing claim as fresh activity and
+re-surfaced, a duplicate inbox file plus a re-surface loop every run in the very two-host contended case
+the coordinator targets (the wish stayed safe, INV-1, but exactly-once failed). The fold: measure activity
+against the newest of ANY monitor marker (claim or confirm, `_marker_ceiling_from_comments`), so a trailing
+claim advances the baseline in step with the activity it adds and reads as no new activity, while a genuine
+edit, reopen, or stranger comment still rises above every marker and re-surfaces. Three more audit SHOULDs
+folded (honest cross-host determinism wording near the stale bound; `_claim` logging the real cause of a
+failed post/read rather than a mislabelled lost race; the docstring's single-host framing corrected). All
+six audit findings are tabled in the prover record. Full suite 710 green (701 + 9 new).
+
 ## 2026-07-14 (opus orchestrator seat, bug → test → code) — M-212: close the malformed-backtick scrub blind spot
 
 **Why.** Two TEST_MATRIX cells (M-260, M-212) showed literal markdown syntax inline — a bare triple-backtick

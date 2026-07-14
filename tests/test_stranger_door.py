@@ -3,6 +3,10 @@
 M-288 asserts the stranger-arm law lives in its prose homes and the templated door ships.
 M-289 asserts the monitor's surfacing logic is a pure, idempotent, crash-safe function,
 single-instance by a lock, and honest on an unreachable repo.
+M-290 asserts the package repo's scheduled monitor action ships and is single-instance.
+M-291 asserts the cross-host coordinator: two hosts on one repo converge on a single
+surfacing by a claim on the shared item, arbitrated by a pure winner reading, the claim
+stolen by age like the per-host lock, its marker distinct from the surfaced-gen record.
 """
 import importlib.util
 import os
@@ -211,3 +215,149 @@ def test_monitor_schedule_runs_and_pushes():
     # it runs the monitor script and pushes whatever inbox commit it made
     assert "stranger-wish-monitor.py" in text
     assert "git push" in text
+
+
+# ---- M-291: the cross-host coordinator (INV-149) ----
+
+def test_parse_claims_reads_host_and_time():
+    m = _load_monitor()
+    comments = [
+        {"body": f"claiming\n\n{m.CLAIM_MARKER} 2026-07-14T09:00:00Z host:mac -->",
+         "createdAt": "2026-07-14T09:00:01Z"},
+        {"body": "an ordinary human comment", "createdAt": "2026-07-14T09:05:00Z"},
+        {"body": f"{m.SURFACED_MARKER} 2026-07-14T09:02:00Z -->", "createdAt": "2026-07-14T09:02:00Z"},
+    ]
+    claims = m.parse_claims(comments)
+    # only the claim-marker comment is a claim — the human comment and the surfaced-gen record are not;
+    # the claim carries its host id (from the marker) and its creation time (from the comment field)
+    assert len(claims) == 1
+    assert claims[0]["host"] == "mac"
+    assert claims[0]["created"] == "2026-07-14T09:00:01Z"
+
+
+def test_claim_winner_earliest_then_host_tiebreak():
+    m = _load_monitor()
+    now = m._iso_to_epoch("2026-07-14T10:00:00Z")
+    # the earliest claim by creation time wins outright
+    claims = [
+        {"host": "mac", "created": "2026-07-14T09:00:05Z"},
+        {"host": "action", "created": "2026-07-14T09:00:01Z"},
+    ]
+    assert m.claim_winner(claims, now) == "action"
+    # a tie on creation time breaks to the lower host identity
+    tied = [
+        {"host": "mac", "created": "2026-07-14T09:00:00Z"},
+        {"host": "action", "created": "2026-07-14T09:00:00Z"},
+    ]
+    assert m.claim_winner(tied, now) == "action"  # 'action' < 'mac'
+
+
+def test_claim_winner_identical_across_hosts():
+    m = _load_monitor()
+    now = m._iso_to_epoch("2026-07-14T10:00:00Z")
+    # both hosts read the SAME shared comment log and compute the SAME winner — so exactly one deposits
+    shared_log = [
+        {"host": "mac", "created": "2026-07-14T09:00:03Z"},
+        {"host": "action", "created": "2026-07-14T09:00:01Z"},
+    ]
+    winner_by_mac = m.claim_winner(shared_log, now)
+    winner_by_action = m.claim_winner(shared_log, now)
+    assert winner_by_mac == winner_by_action == "action"
+
+
+def test_stale_claim_stolen_by_age():
+    m = _load_monitor()
+    now = m._iso_to_epoch("2026-07-14T12:00:00Z")
+    # 'action' claimed first, but its claim is older than the stale bound with no surfacing recorded
+    # behind it (it died mid-round); the surviving host 'mac' wins past the abandoned claim
+    claims = [
+        {"host": "action", "created": "2026-07-14T09:00:00Z"},  # ~3h old > LOCK_STALE_SECONDS
+        {"host": "mac", "created": "2026-07-14T11:59:00Z"},
+    ]
+    assert m.claim_winner(claims, now) == "mac"
+    # with only the abandoned claim present there is no live winner — the survivor's next run re-claims
+    assert m.claim_winner([claims[0]], now) is None
+
+
+def test_claim_loser_stands_down_and_deposits_nothing():
+    m = _load_monitor()
+    deposited = []
+    logged = []
+    result = m.run(
+        fetch_open_items=lambda: [{"kind": "issue", "number": 1, "activity_gen": "t0"}],
+        list_inbox_sources=lambda: set(),
+        deposit=lambda item: deposited.append(item) or True,
+        log=lambda msg: logged.append(msg),
+        claim=lambda item: False,  # this host lost the claim to another host this round
+    )
+    # a losing host deposits nothing and is not counted surfaced; it retries next run
+    assert result["reachable"] is True
+    assert result["surfaced"] == []
+    assert deposited == []
+    assert any("stood down" in msg or "claim" in msg for msg in logged)
+
+
+def test_claim_winner_deposits():
+    m = _load_monitor()
+    deposited = []
+    result = m.run(
+        fetch_open_items=lambda: [{"kind": "issue", "number": 1, "activity_gen": "t0"}],
+        list_inbox_sources=lambda: set(),
+        deposit=lambda item: deposited.append(item) or True,
+        log=lambda msg: None,
+        claim=lambda item: True,  # this host won the claim
+    )
+    assert len(result["surfaced"]) == 1
+    assert len(deposited) == 1
+
+
+def test_claim_marker_never_reads_as_surfaced():
+    m = _load_monitor()
+    # a claim comment must NOT register as a surfaced-generation record, or a claim would falsely
+    # advance the re-surface generation [INV-146]; the two markers are distinct strings
+    assert m.CLAIM_MARKER != m.SURFACED_MARKER
+    claim_only = [{"body": f"{m.CLAIM_MARKER} 2026-07-14T09:00:00Z host:mac -->",
+                   "createdAt": "2026-07-14T09:00:01Z"}]
+    assert m._surfaced_gen_from_comments(claim_only) is None
+    # and a surfaced-gen record is not read as a claim
+    surfaced_only = [{"body": f"{m.SURFACED_MARKER} 2026-07-14T09:00:00Z -->",
+                      "createdAt": "2026-07-14T09:00:00Z"}]
+    assert m.parse_claims(surfaced_only) == []
+
+
+def test_marker_ceiling_counts_claims_and_confirms():
+    m = _load_monitor()
+    # the re-surface baseline is the NEWEST of any monitor marker — a claim OR a surfaced-gen record
+    comments = [
+        {"body": f"{m.SURFACED_MARKER} g -->", "createdAt": "2026-07-14T09:00:03Z"},  # confirm
+        {"body": f"{m.CLAIM_MARKER} g host:mac -->", "createdAt": "2026-07-14T09:00:05Z"},  # later claim
+        {"body": "a human comment", "createdAt": "2026-07-14T09:00:01Z"},
+    ]
+    # the ceiling is the later claim's time, not the confirm's — so a trailing claim raises the baseline
+    assert m._marker_ceiling_from_comments(comments) == "2026-07-14T09:00:05Z"
+    # no markers at all → None
+    assert m._marker_ceiling_from_comments([{"body": "just a human", "createdAt": "t"}]) is None
+
+
+def test_trailing_claim_does_not_reloop_surfacing():
+    m = _load_monitor()
+    # The two-host contended case: a winner surfaced (confirm at t3), then a LOSING host posted its
+    # claim at t4 — later than the confirm, so the claim is now the item's newest comment and bumps
+    # updatedAt to t4. Measured against the confirm alone this would read as fresh activity and
+    # re-surface a duplicate every run. Measured against the newest marker (the claim itself), it
+    # reads as no new activity, so the round stays closed (INV-149).
+    looping = [{
+        "kind": "issue", "number": 1,
+        "activity_gen": "2026-07-14T09:00:04Z",       # updatedAt bumped by the loser's trailing claim
+        "surfaced_gen": "2026-07-14T09:00:03Z",       # the winner's confirm
+        "marker_ceiling": "2026-07-14T09:00:04Z",     # newest marker = the trailing claim
+    }]
+    assert m.items_to_surface(looping, existing_inbox_sources=set()) == []
+    # but a GENUINE stranger comment or edit AFTER every marker rises above the ceiling → re-surfaced
+    real_activity = [{
+        "kind": "issue", "number": 1,
+        "activity_gen": "2026-07-14T10:00:00Z",       # a stranger commented, no new marker
+        "surfaced_gen": "2026-07-14T09:00:03Z",
+        "marker_ceiling": "2026-07-14T09:00:04Z",
+    }]
+    assert len(m.items_to_surface(real_activity, existing_inbox_sources=set())) == 1
