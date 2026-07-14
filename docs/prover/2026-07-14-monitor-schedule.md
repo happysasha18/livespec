@@ -54,3 +54,10 @@ to INV-147/INV-146 and register-clean; traceability holds structurally.
 
 **Post-fold:** full suite 698 green; the two folds each carry a red-proven test; register lint clean on the
 changed sentences.
+
+**Post-push reconciliation.** The push's CI (pytest) went red on `test_minor_versions_on_the_1_4_0_line`:
+the 1.4.2 PATCH bump updated VERSION and plugin.json but not the two literals that travel with them [INV-104]
+— the spec title stamp and that reconciliation test. Fixed both. This also surfaced a gate hole worth its own
+row: the local push gate's `check-tests.sh` runs `python3 -m unittest discover`, which cannot collect the
+plain-function pytest-style tests (fixtures like `monkeypatch`/`tmp_path`), so it false-greened while CI's
+`pytest` caught the failure — the local net must run the same runner CI runs. Queued in NEXT_STEPS.
