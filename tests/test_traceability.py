@@ -2668,3 +2668,35 @@ class TestBaseRuleDelegation(unittest.TestCase):
         for bar in (">3 files", ">30s", "known edit strings",
                     "default to the junior", "spot-check"):
             self.assertNotIn(bar, r5, "base rule 5 still restates a superseded bar: %s" % bar)
+
+
+class TestDocBacktickWellformedness(unittest.TestCase):
+    """M-212 (its own small row): a malformed inline-backtick run in a doc cell — an escaped
+    backtick inside a code span, a bare triple-backtick shown inline — leaves an ODD count of
+    inline backticks on the line, which desyncs gate_common.scrub's `...` pairing and silently
+    hides part of the line from every register check that scrubs it. Well-formed inline code
+    spans always come in pairs (an even count outside fenced blocks), so this guard keeps the
+    scrub blind spot from ever reopening."""
+
+    @staticmethod
+    def _odd_backtick_lines(text):
+        odd, in_fence = [], False
+        for i, line in enumerate(text.splitlines(), 1):
+            if line.strip().startswith("```"):   # a fenced-block delimiter toggles; skip it
+                in_fence = not in_fence
+                continue
+            if in_fence:
+                continue
+            if line.count("`") % 2 == 1:
+                odd.append(i)
+        return odd
+
+    def test_matrix_inline_backticks_balanced(self):
+        odd = self._odd_backtick_lines(read("TEST_MATRIX.md"))
+        self.assertEqual(odd, [], "TEST_MATRIX.md lines with an odd inline-backtick count "
+                                  "(a malformed code span that desyncs scrub): %s" % odd)
+
+    def test_spec_inline_backticks_balanced(self):
+        odd = self._odd_backtick_lines(read("PRODUCT_SPEC.md"))
+        self.assertEqual(odd, [], "PRODUCT_SPEC.md lines with an odd inline-backtick count "
+                                  "(a malformed code span that desyncs scrub): %s" % odd)

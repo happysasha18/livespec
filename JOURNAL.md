@@ -2,6 +2,19 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus orchestrator seat, bug → test → code) — M-212: close the malformed-backtick scrub blind spot
+
+**Why.** Two TEST_MATRIX cells (M-260, M-212) showed literal markdown syntax inline — a bare triple-backtick
+fence marker, and an escaped backtick inside a code span — which left an ODD number of inline backticks on the
+line. `gate_common.scrub` pairs `...` greedily, so an odd count desyncs the pairing and silently hides part of
+that line from every register check that scrubs it: a latent lint blind spot.
+
+**Fix (the class).** Both cells reworded to describe the fragments in words (meaning preserved; anchors,
+levels, tests, never-sides unchanged) so the inline backticks balance. A guard test
+(`TestDocBacktickWellformedness`) now reds the suite on any non-fenced line in TEST_MATRIX.md or PRODUCT_SPEC.md
+with an odd inline-backtick count, so the blind spot cannot reopen — red-proven by the identical logic flagging
+the two lines before the fix. Suite 701 green.
+
 ## 2026-07-14 (opus orchestrator seat, bug → matrix → test → code) — close a false-green gate hole: the local test gate now runs the same runner as CI
 
 **Why.** Landing the monitor schedule, CI (pytest) went red on a version-pin test while the local push gate
