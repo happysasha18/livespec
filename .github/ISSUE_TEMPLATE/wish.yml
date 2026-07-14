@@ -1,0 +1,33 @@
+name: Wish or feedback
+description: Suggest a change, report a problem, or share feedback on live-spec.
+title: "[wish] "
+labels: ["wish"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing. A live session sweeps this into the maintainers' inbox and
+        routes it — no need to open a pull request. Please name where this comes from so we can
+        follow up in the right place.
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Who is asking and where from — your name, project, or the context this came out of.
+      placeholder: e.g. "Jordan, adopting live-spec on an internal docs repo"
+    validations:
+      required: true
+  - type: textarea
+    id: wish
+    attributes:
+      label: The wish or feedback
+      description: What you would like changed, or what you observed. Plain words are fine.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description: Screenshots, links, or steps that help us understand it. Optional.
+    validations:
+      required: false

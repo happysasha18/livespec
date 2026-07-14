@@ -47,10 +47,10 @@ def test_d5_chat_law_hook_carries_reading_discipline():
 
 
 def test_minor_versions_on_the_1_4_0_line():
-    # the milestone version numbers are current (moved to 1.4.0 at the
-    # cleanup-movement landing, 2026-07-14 — the pack's second MINOR under
-    # the Fable gate; product-prover carries the finding-kind format at 1.1.4)
-    assert _read("VERSION").strip() == "1.4.0"
-    assert '"version": "1.4.0"' in _read(".claude-plugin/plugin.json")
+    # the milestone version numbers are current (1.4.0 at the cleanup movement,
+    # 2026-07-14; PATCH 1.4.1 the stranger-door landing the same day — rows 261/315;
+    # product-prover carries the finding-kind format at 1.1.4)
+    assert _read("VERSION").strip() == "1.4.1"
+    assert '"version": "1.4.1"' in _read(".claude-plugin/plugin.json")
     assert "version: 1.1.4" in _read("skills/product-prover/SKILL.md")
-    assert "v1.4.0, 2026-07-14" in _read("PRODUCT_SPEC.md")
+    assert "v1.4.1, 2026-07-14" in _read("PRODUCT_SPEC.md")

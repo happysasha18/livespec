@@ -1,0 +1,20 @@
+title: "[wish] "
+labels: ["wish"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A live session sweeps this discussion into the maintainers' inbox and routes it. Please
+        name your source so we can follow up. (A discussion form cannot strictly require a field;
+        if the source is missing we will simply ask for it in a comment before routing.)
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Who is asking and where from — your name, project, or the context this came out of.
+      placeholder: e.g. "Jordan, adopting live-spec on an internal docs repo"
+  - type: textarea
+    id: wish
+    attributes:
+      label: The wish or feedback
+      description: What you would like changed, or what you observed.

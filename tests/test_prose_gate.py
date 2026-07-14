@@ -294,7 +294,10 @@ class TestProvenanceOutOfBody(unittest.TestCase):
 
     def _bodies(self):
         import glob
-        paths = [os.path.join(ROOT, "PRODUCT_SPEC.md")]
+        # ROADMAP row 315: TEST_MATRIX.md joined scope 2026-07-14 — the matrix carried 17 birth-story
+        # cells ("; born of <case> (<date>); never …") swept to docs/lenses.md, keyed by the cell's
+        # INV-code, with the M-code noted back at that entry.
+        paths = [os.path.join(ROOT, "PRODUCT_SPEC.md"), os.path.join(ROOT, "TEST_MATRIX.md")]
         paths += sorted(glob.glob(os.path.join(ROOT, self.SKILL_GLOB)))
         return paths
 
@@ -312,6 +315,27 @@ class TestProvenanceOutOfBody(unittest.TestCase):
             "a birth-story sits in a normative body — move it to docs/lenses.md, the JOURNAL, or a "
             "prover record (docs/spec-style.md R15). %d found:\n%s"
             % (len(offenders), "\n".join("  %s:%d  %s" % o for o in offenders)))
+
+    def test_matrix_carries_no_birth_story_clause(self):
+        """ROADMAP row 315: TEST_MATRIX.md's 'born of' occurrences after the sweep. Every dated
+        birth-story clause ("; born of <case> (<date>); never …", or a "(born of …)" parenthetical)
+        moved to docs/lenses.md, keyed by the cell's INV-code with the M-code noted back. The one
+        survivor is M-191's ordinary restrictive verb ("a silent pass born of broken skip plumbing")
+        — no date, no story, mid-clause, the exact shape test_ordinary_verb_born_of_is_not_flagged
+        blesses and R15 exempts by name ("a row born of a split cites its wish").
+
+        This checks the raw file text by substring rather than routing every hit through
+        lint()/gate_common.scrub(): one cell (M-212) carries a stray escaped backtick inside a code
+        span ("`- \\``") that desyncs scrub's backtick pairing and can swallow a later parenthetical
+        whole, hiding a birth-story from the shaped regex. The substring scan does not depend on that
+        pairing, so it still catches the class the shaped check can miss."""
+        text = open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8").read()
+        hits = [ln for ln in text.splitlines() if re.search(r"\bborn of\b", ln, re.IGNORECASE)]
+        offenders = [ln for ln in hits if "M-191" not in ln]
+        self.assertEqual(
+            offenders, [],
+            "a birth-story clause still sits in TEST_MATRIX.md — move it to docs/lenses.md (R15): %s"
+            % offenders)
 
     def test_ordinary_verb_born_of_is_not_flagged(self):
         """The lint keys on SHAPE, so the ordinary restrictive verb survives while the story is caught."""

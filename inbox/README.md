@@ -21,3 +21,15 @@ in the harvest commit (git history keeps it).
 The deposit stays one new file here, committed touching inbox/ only with the source named, and then pushed
 under a per-repo grant recorded in the host profile like the push grant. A seat with no grant fails honestly:
 it names the grant it lacks and hands the owner the one action that supplies it (SPEC INV-112).
+
+**From a stranger, through GitHub.** A stranger is a contributor with no push rights and no per-repo grant —
+a read-only collaborator on a private repo, or anyone at all on a public one. The git deposit is closed to
+them, so their door is a GitHub Issue or Discussion opened by the wish template
+(`.github/ISSUE_TEMPLATE/wish.yml`, `.github/DISCUSSION_TEMPLATE/wish.yml`), which requests a source. A stranger
+never writes the queue or the repo. The **monitor** bridges the gap: `scripts/stranger-wish-monitor.py` runs on
+a schedule, converts each open un-surfaced Issue or Discussion into one new inbox file here (naming the source
+and its origin) and commits it, then records the item's update generation on a marker comment — from that
+committed file on it is an ordinary inbox wish under the sweep above. The monitor holds no verdict; whether an
+item is a wish, feedback, or neither stays the inbox sweep's call (SPEC T-20). A missing source is asked for in a
+comment before routing, and newer activity on a surfaced item re-surfaces it, so nothing pressed onto a closed
+wish is lost (SPEC INV-146, INV-147).

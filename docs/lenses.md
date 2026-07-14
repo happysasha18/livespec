@@ -17,7 +17,7 @@ Format: `### CODE — short name    (date)` then the story.
 ### INV-28 — internal handles trail, never lead    (2026-07-08)
 A report to the owner opened with "rows 166 and 148" — bookkeeping numbers as the first thing he read,
 where the reader's outcome should lead and every handle only trail. The pre-show lint grew to flag a
-human-facing line that opens with an internal handle.
+human-facing line that opens with an internal handle. Matrix row M-177 cites this note.
 
 ### INV-41 — a performance budget is a measurable sentence    (2026-07-06)
 A gallery whose first picture loaded long with nothing measuring it — "fast enough" as the only
@@ -45,11 +45,16 @@ silently in batch where the fence catches it, with one ledger append at the sess
 Born of a real two-writer race (2026-07-09), and of the prover finding that a compute-bound worker —
 writing no file for minutes and slow to service the probe — read dead on both original checks though
 it was live (2026-07-12). The third check (a heartbeat on the checkpoint file) was added so a
-mid-computation worker is not declared dead.
+mid-computation worker is not declared dead. Matrix row M-257 cites this note.
 
 ### INV-84 — human-facing prose is drafted by a clean writer    (2026-07-10)
 Born in the field: nine clean-drafted reader docs passed the owner's bar the first time, while a
 marinated session's onboarding text bounced three times the same night.
+
+A second case (2026-07-12) taught the same boundary from the test side: gate h's
+`check_tests_present.py` (INV-97) correctly blocked a README-only push carrying a new taste claim
+with no owning test — the case behind the README's feels-boundary stance paragraph. Matrix row
+M-250 (INV-84/INV-83, no new invariant minted) cites this note.
 
 ### INV-88 — product copy states rules; personal values stay the reader's own    (2026-07-10)
 Set by the owner after a mockup showed his own language and name as if the product prescribed them.
@@ -80,21 +85,22 @@ a prose clause.
 ### INV-102 — a test's expected value derives independently of the code    (2026-07-10)
 Row 220's audit: green suites missed real walk bugs because the tests recomputed the code's own
 formula and asserted the result as the expected value — a mirror that only ever proves the code
-equals itself.
+equals itself. Matrix row M-238 cites this note.
 
 ### INV-104 — a fix touching a spec-backed literal owes its docs and test the same session    (2026-07-10)
 The row 220 audit: one-line fixes touching spec-backed literals (a version string, a pinned count, a
 named vocabulary, a promised wording) shipped without same-session doc sync. The size of the diff had
-been treated as an exemption; it grants none.
+been treated as an exemption; it grants none. Matrix row M-239 cites this note.
 
 ### INV-105 — one canonical state directory named `.live-spec`    (2026-07-10)
 The audit's ghost `.livespec` directory, found standing beside the real `.live-spec` with a different
-profile — two directories each claiming to be the host's records.
+profile — two directories each claiming to be the host's records. Matrix row M-244 cites this note.
 
 ### INV-106 — the push walk reads the remote gate's verdict    (2026-07-10 ~11:00)
 The owner's word: why does a GitHub email tell him a deploy failed that the session should have caught
 and fixed itself? A red remote-gate verdict is now the pushing session's own immediate bug, fixed and
-re-pushed the same session, so he never meets the red first in his mailbox.
+re-pushed the same session, so he never meets the red first in his mailbox. Matrix row M-245 cites this
+note.
 
 ### INV-107 — a landing closes the checkpoints it shipped    (2026-07-10)
 The audit: two engine checkpoints still read "not started" after everything in them had shipped, so a
@@ -104,31 +110,35 @@ resuming session would have redone finished work.
 The night docs pass compressed the README's account of why live-spec stands beside BMAD, Kiro, and
 spec-kit down to a single pointer line; the section was restored the same session on the owner's word.
 A rewrite that drops a section, an argument, a rationale, or a worked example now lists every removal.
+Matrix row M-247 cites this note.
 
 ### INV-110 — the catch-up routing keys on a version delta, not a wording    (2026-07-10)
 The track-coach audit: the catch-up walk fires only when the host's recorded package version is behind
 the current VERSION; a docs restructure carrying no version delta is the host's own queue row,
-whatever wording the ask used.
+whatever wording the ask used. Matrix row M-248 cites this note.
 
 ### INV-111 — a same-version docs-layout pass rides one sanctioned vehicle    (2026-07-10)
 The track-coach s63 audited pass: a host restructuring its own documents with no package-version delta
 now runs one named shape — decisions locked in a checkpoint first, a clean pushed base, content proven
-by a word-token AND a punctuation multiset check, the full suite green, one journal chapter.
+by a word-token AND a punctuation multiset check, the full suite green, one journal chapter. Matrix row
+M-249 cites this note.
 
 ### INV-112 — the inbox has a remote arm    (2026-07-10)
 The owner thinking the cloud seat through mid-session: the day's inbox law assumed a shared
 filesystem, and a live routine alert was the first seat to hit the gap. A remote seat reaches a repo
-only through git, depositing one new file in `inbox/` under a per-repo grant.
+only through git, depositing one new file in `inbox/` under a per-repo grant. Matrix row M-251 cites
+this note.
 
 ### INV-113 — a deliberate redesign re-shapes the document, not only its pins    (2026-07-11)
 The tlvphotos second-finger redesign: a UI-layer rethink was ordered and the pack forced only a pins
-update, not a re-shaping — so the old document shape lied while fresh pins sat on it.
+update, not a re-shaping — so the old document shape lied while fresh pins sat on it. Matrix row M-252
+cites this note.
 
 ### INV-114 — a restructure or migration merge gate judges the delta    (2026-07-12)
 A strictly-improving restructure merge was parked on the old side's pre-existing clarity debts because
 a spoken «prover finds nothing both sides» had been over-sharpened into «any finding parks the merge».
 Corrected live: the gate blocks only on the delta, and pre-existing findings equal on both sides route
-to queue rows.
+to queue rows. Matrix row M-253 cites this note.
 
 ### INV-115 — the full pass compacts every living document, meaning preserved    (2026-07-12)
 The owner's compaction definition: compact means no redundant information — a fact lives once, in one
@@ -147,12 +157,13 @@ identity to order a genuine concurrent claim with no git ancestry, so exactly on
 Track-coach's shipped-artifact audit found a shipped spec carrying many owner attributions accumulated
 over months. The load-bearing reason stays and the personal attribution drops; candid attribution
 lives only in the local-only diaries. The pack retired its own former self-exemption in the same pass.
+Matrix row M-258 cites this note.
 
 ### INV-119 — the engine's spec crosses the boundary clean    (2026-07-12)
 The exhibition-engine public-publish pass: the spec carried a "Deltas from the <instance> reference
 implementation" heading citing private-instance commit hashes, and named a generic mechanism by the
 instance's own locale UI label across eight clauses. The engine now records its own public commits and
-carries neutral internal names.
+carries neutral internal names. Matrix row M-259 cites this note.
 
 ### INV-120 — a shipped artifact carries no Cyrillic outside a deliberate user-language string, and no owner name in a requirement    (2026-07-12)
 Track-coach's audit: the publish gate grew a machine (`guardrails/check-shipped-language.sh`) reporting
@@ -236,6 +247,10 @@ only the rule.
 The onboarding card's bounce: the first render invented its own row format, dropped three norm sections,
 and shipped green. Matrix row M-211 is the first live instance of the conformance row this rule now
 demands.
+
+The same bounce carried a sibling defect: a multi-line keyed host-profile entry rendered mangled
+(the flagship's own profile broke) while single-line fixtures kept the suite green. Matrix row M-212
+(INV-87) is that second live instance.
 
 ### Real-device-walk trap — the suite cannot see the phone    (a real week)
 A momentum swipe flew through several works on a phone, and a backgrounded tab turned a 2.5 s failsafe

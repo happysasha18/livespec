@@ -2,6 +2,50 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus orchestrator seat, full pipeline) — the stranger door: a public repo takes an outsider's wish (rows 261 + 315, pack → 1.4.1, INV-146/147)
+
+**Why.** Alexander flipped the long-deferred DECIDE (row 261): a public live-spec repo should accept a
+wish from a stranger — a contributor with no push rights and no per-repo grant, whom the git inbox arm
+[INV-112] cannot serve. His word was "все сразу": both channels (Issues and Discussions), landed in one
+movement.
+
+**What it does.** A stranger opens a templated GitHub Issue or Discussion that requests a source. They
+never touch the queue or the repo. One scheduled monitor (`scripts/stranger-wish-monitor.py`) bridges each
+open un-surfaced item into ONE committed inbox/ file naming the source, and records the item's update
+generation on a marker comment — from that file on it is an ordinary inbox wish under the git-atomic
+harvest already proven safe [T-10, INV-11]. Re-surface has a named actor: the monitor re-surfaces an item
+whose current generation is newer than the one it recorded, so content pressed onto a closed wish is seen.
+
+**Why the design is what it is (the two adversarial passes earned their keep).** The first draft tried to
+build a claim-race lock on GitHub labels and scoped the door to public repos. An independent fresh-context
+prove [INV-46] found nine holes, two must-fix: the GitHub claim-race was unsound (label-add is no
+compare-and-swap, unlike the inbox's atomic git commit), and a private-repo read-only collaborator was a
+stranger with no door. The fold was a redesign, not a patch: make the monitor the sole bridge Issue→inbox
+file, so routing rides the inbox's already-proven race-safety — the race is dissolved, not re-solved — and
+scope the door on the property "no push, no grant" so private readers are covered. A second fresh-context
+pass on the fold caught the incomplete re-surface actor (spec promised a behaviour the code lacked), an
+uncommitted-file break (the design leans on E-11's committed file), a silent deposit failure, and a
+stale-lock wedge — all folded.
+
+**The field beat that waits [INV-94].** The live Discussion WRITE round-trip is not self-certified: the
+auto-mode classifier rightly declined the agent creating a test discussion under Alexander's identity. The
+Discussion read path is verified by deed; the write round-trip waits for a real stranger or his hand, the
+same posture INV-112's one-real-remote-deposit beat holds.
+
+**Rode along (row 315).** A sonnet worker swept 17 of the 18 TEST_MATRIX "; born of …" provenance cells to
+docs/lenses.md (the 18th is the ordinary-verb case R15 exempts) and widened the provenance gate test to
+cover the matrix. A process lesson: that worker edited TEST_MATRIX.md while the senior seat was also
+editing it — a concurrent-write fence slip [INV-11] that survived only because both used surgical string
+replaces. Two writers on one file want an isolated worktree or serialization next time.
+
+Door: feature; kind: skill; footprint: cross-cutting (a new arm on the shared inbox law), HELD. SPEC
+INV-146/147 NEW + index rows · ARCHITECTURE inbox node + pins · TEST_MATRIX M-288/289 ·
+`tests/test_stranger_door.py` (8 tests, red-first) · `scripts/stranger-wish-monitor.py` ·
+`.github/ISSUE_TEMPLATE/wish.yml` + `.github/DISCUSSION_TEMPLATE/wish.yml` · inbox/README.md · prover
+record `docs/prover/2026-07-14-stranger-door.md` · VERSION/plugin 1.4.0→1.4.1. Suite 692 green. Delegation
+(INV-103): the born-of sweep to a sonnet worker, the two adversarial passes to independent opus workers;
+the spec, the redesign, and every fold held on the senior seat.
+
 ## 2026-07-14 (opus orchestrator seat + a Fable gate, full autonomy) — the full-pass cleanup movement, pack → 1.4.0 (rows 316-320, INV-143/144/145)
 
 **Why.** Alexander read the spec and skills with fresh eyes and did not like what he saw ("позор, до
