@@ -40,6 +40,13 @@ writing no file for minutes and slow to service the probe — read dead on both 
 it was live (2026-07-12). The third check (a heartbeat on the checkpoint file) was added so a
 mid-computation worker is not declared dead.
 
+### INV-101 — declared cross-cutting laws, each with a per-surface test    (2026-07-10)
+His ~10:38 word from a worked miss: analytics covered some beats while whole surfaces emitted nothing,
+and only the human's eye found it. The spec now names its cross-cutting laws in one declared-laws home,
+each surface's section states its line against every declared law before the prover reads it, and the
+prover's station enumerates every surface and transition per law — demanding a test row on each, not only
+a prose clause.
+
 ### INV-102 — a test's expected value derives independently of the code    (2026-07-10)
 Row 220's audit: green suites missed real walk bugs because the tests recomputed the code's own
 formula and asserted the result as the expected value — a mirror that only ever proves the code

@@ -22,7 +22,7 @@ version-N-1 stored state.
 |---|---|---|
 | Finds the view×persistence composition hole (the stranding bug) | MET BARE | GREEN (F2, must-fix, with the view-ladder reading recommended) |
 | Finds the export liveness hole (no failure path) | MET BARE | GREEN (F6) |
-| Severity triage: must-fix / should-clarify / worth-considering on every finding | RED — no severities; a reader can't sort blockers from musings | GREEN — every finding tagged |
+| Finding kind: defect or recommendation on every finding (SPEC INV-140) | RED — no kinds; a reader can't sort blockers from musings | GREEN — every finding tagged defect or recommendation |
 | Four-part findings: headline · quoted source pin · operational consequence · concrete action | RED — flowing essay, no per-finding actions or pins | GREEN |
 | The model extracted first + "What I assumed" stated | RED — assumptions implicit | GREEN — states/entities/actors + 5 named assumptions |
 | Coverage tables (CRUD / invariants-per-state) or a named N/A | RED — absent | GREEN — tables + named authorization skip |

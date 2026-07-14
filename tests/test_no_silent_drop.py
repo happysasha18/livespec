@@ -16,13 +16,14 @@ from conftest import ROOT, read_flat
 
 
 class TestNoSilentDropLaw(unittest.TestCase):
+    # build-pipeline reduced to a pointer at the one home (R6 compaction, 2026-07-14);
+    # the full rule text lives in the spec and its owning skill, communicator.
     HOMES = (
         "PRODUCT_SPEC.md",
         "skills/communicator/SKILL.md",
-        "skills/build-pipeline/SKILL.md",
     )
 
-    def test_removal_rule_in_all_three_homes(self):
+    def test_removal_rule_in_both_full_homes(self):
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("lists every removal in its landing report", body, home)
@@ -32,7 +33,13 @@ class TestNoSilentDropLaw(unittest.TestCase):
             )
             self.assertIn("Never a silent cut of substance", body, home)
 
-    def test_scope_carveout_in_all_homes(self):
+    def test_build_pipeline_points_at_the_one_home(self):
+        bp = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn("(SPEC INV-109)", bp, "build-pipeline lost the INV-109 anchor")
+        self.assertIn("communicator rule 6", bp,
+                      "build-pipeline no longer points at the removal-accounting's one home")
+
+    def test_scope_carveout_in_both_full_homes(self):
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("line-level wording", body, home)

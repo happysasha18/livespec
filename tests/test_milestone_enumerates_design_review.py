@@ -1,0 +1,50 @@
+"""The M-1 milestone gate enumerates the design-review pass — SPEC INV-141 (audit D1, 2026-07-14).
+
+INV-141 says the design review "runs in full at every full prover pass", and a milestone runs a full
+spec re-prove — so the design review is owed at the milestone. But the enumerated M-1 milestone-gate
+step list (the checklist a session actually walks) never named it, so a pure-milestone movement ran the
+prover, stood the design review down at the push gate, and skipped it silently with every gate green.
+This is the red-first fence: the M-1 list must name the design-review pass, and the architecture's
+"Decisions — where they live" append duty must land its dated record beside the prover record.
+String level against the shipped docs.
+"""
+
+import os
+import unittest
+
+from conftest import ROOT, read
+
+
+def _milestone_list(spec):
+    """The enumerated Milestone (minor gate) step list, up to the next #### section heading."""
+    head = "**Milestone (minor gate):**"
+    start = spec.index(head)
+    tail = spec.index("\n#### ", start)
+    return spec[start:tail]
+
+
+class TestMilestoneEnumeratesDesignReview(unittest.TestCase):
+    def test_m1_list_names_the_design_review(self):
+        block = _milestone_list(read("PRODUCT_SPEC.md"))
+        self.assertIn("design review", block.lower(),
+                      "the M-1 milestone-gate list never enumerates the design-review pass (D1)")
+        self.assertIn("[INV-141]", block,
+                      "the M-1 design-review step carries no [INV-141] anchor")
+
+    def test_m1_step_lands_the_dated_record(self):
+        block = _milestone_list(read("PRODUCT_SPEC.md")).lower()
+        # the design-review step names its outcome AND its dated record, not just "runs"
+        i = block.find("design review")
+        self.assertNotEqual(i, -1, "no design-review step to check for a record")
+        self.assertIn("record", block[i:i + 420],
+                      "the M-1 design-review step never lands its dated record")
+
+    def test_architecture_append_duty_names_the_design_review_record(self):
+        arch = read("ARCHITECTURE.md")
+        section = arch.split("## Decisions — where they live", 1)[1].split("## Prover record", 1)[0]
+        self.assertIn("design-review record", section.lower(),
+                      "ARCHITECTURE's append duty never names the design-review record beside the prover's")
+
+
+if __name__ == "__main__":
+    unittest.main()

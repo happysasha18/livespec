@@ -147,14 +147,24 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         for needle in ("the visitor walk", "the feel pass", "project.design-principles"):
             self.assertIn(needle, arch, "ARCHITECTURE per-kind design-principles table lost: %s" % needle)
 
-    def test_frontend_starter_set_names_interactive_overlap(self):
-        """The shipped frontend starter set names the interactive-overlap principle in full."""
-        arch = read_flat("ARCHITECTURE.md")
+    def test_interactive_overlap_has_one_full_home_the_spec(self):
+        """The full interactive-overlap rule text lives in ONE home — the spec's founding
+        design-principle clause (INV-136). ARCHITECTURE points there rather than restating it
+        (one-home-per-fact; the pack's own R6 compaction, 2026-07-14)."""
+        spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "Interactive controls that belong to different layers occupy separate screen space",
-            arch, "the frontend starter set does not name the interactive-overlap rule")
-        # the non-interactive allowance is stated as its own sentence
-        self.assertIn("may overlap anything freely", arch)
+            "interactive controls that belong to different layers occupy separate screen space",
+            spec.lower(), "the spec no longer states the interactive-overlap rule in full")
+        # the non-interactive allowance is stated as its own sentence, in the spec home
+        self.assertIn("may overlap anything freely", spec)
+        # ARCHITECTURE reduced to a pointer at the spec home, not a second full statement
+        arch = read_flat("ARCHITECTURE.md")
+        self.assertIn("stated in full in", arch,
+                      "ARCHITECTURE no longer points at the spec home for the overlap rule")
+        self.assertIn("SPEC INV-136", arch)
+        self.assertNotIn(
+            "Two interactive controls from different visual layers", arch,
+            "ARCHITECTURE still carries the full overlap rule text — pointer expected")
 
     def test_adopting_project_pixel_projection_specified(self):
         """The overlap check's testable projection is specified for the ADOPTING project, not faked

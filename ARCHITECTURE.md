@@ -195,13 +195,8 @@ ADOPTING project's own suite. This table is the per-kind scaffold; a kind with n
 | prose / promotion campaign | the register held across every surface · one thought per paragraph · the reading path stated | the register lint and the owner's review |
 | skill pack | the description triggers when it should · install and commands shown · when-to-use stated | the skill-creator review [INV-99] and the eval suite |
 
-**The interactive-overlap rule, stated in full (the frontend kind's founding design principle, SPEC INV-136):**
-Interactive controls that belong to different layers occupy separate screen space. Two interactive
-controls from different visual layers — a player, a close button, a zoom handle — hold separate clickable
-regions, so every press lands on one control alone. A non-interactive element — a plaque, a picture, a
-caption — may overlap anything freely; the rule binds the interactive, clickable regions. A per-surface
-review sees each surface alone, so this composition rule catches the case one surface's floating control
-still floats above another surface's control when the second opens over the first. Its projection lives in
+**The interactive-overlap rule** (the frontend kind's founding design principle) is stated in full in
+the spec's founding design-principle clause, SPEC INV-136; ARCHITECTURE carries only its projection into
 the adopting project's own suite: for each covering overlay the project defines, a browser or pixel-level
 row opens the overlay and asserts every other interactive control is not rendered or not pressable
 (computed `pointer-events:none`, `opacity:0`, or off-screen) while it stands. The pack ships the law and
@@ -234,7 +229,9 @@ to them; it holds pointers, never the decisions themselves. Structure-changing d
 in the Prover record below, one line each. And every full pass at an M-1 milestone gate or an M-6 push
 gate that proves this document beside the spec (INV-116) appends its dated row to the Prover record — the
 gate walk carries the duty, so this table stays current with the architecture's freshness rule rather
-than trailing it.
+than trailing it. The M-1 milestone gate also runs the design review on the re-proven spec (INV-141);
+its dated design-review record lands in `docs/design-review/` beside the prover record, and a
+structure-changing design decision it settles appears in the Prover record row like any other.
 
 ## Prover record
 
