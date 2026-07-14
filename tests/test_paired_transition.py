@@ -52,6 +52,19 @@ class TestPairedTransition(unittest.TestCase):
         self.assertIn("Paired-transition symmetry", pv)
         self.assertIn("The temporal twin of the cross-surface lens above", pv)
 
+    def test_reversibility_of_means_half(self):
+        """INV-126's second half: a continuous, reversible opening gesture carries its inverse
+        among the ways to close, or a decided sentence states why not; silence blocks, the
+        sentence's rightness stays the human's gate. (Born of the tlvphotos openable-face miss:
+        a pinch opened a layer with no reverse pinch to close it, 2026-07-14.)"""
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in ("two halves", "reversibility of the means", "reversible gesture"):
+            self.assertIn(needle, spec, needle)
+        pv = read_flat("skills/product-prover/SKILL.md")
+        self.assertIn("reversibility of the means", pv)
+        sa = read_flat("skills/spec-author/SKILL.md")
+        self.assertIn("reversibility of the means", sa)
+
     def test_matrix_row_covers_the_paired_transition_law(self):
         with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
             for line in f:

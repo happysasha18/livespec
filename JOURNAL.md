@@ -2,6 +2,73 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus worker seat, full pipeline) — property routing between the prover and the design review (INV-150, INV-125/INV-126 sharpened, M-292/M-293/M-294)
+
+**Why.** A Fable audit of the boundary between the prover and the design review, driven by a real miss on
+tlvphotos: a family of surfaces a visitor opens over everything and later closes, where one member stated
+the mirror principle in words ("the way out mirrors the way in") and a pinch-to-open sibling closed only by
+a control with a fade exit. The morning design-review pass never drew that same-kind group, so the
+asymmetry went unnamed, and Alexander caught it himself on a phone. The audit's verdict: the miss was a
+law-shaped property that lived only as prose on one member, never promoted into the declared space where
+the prover enumerates. The fix routes each cross-cutting property to its owning review by declaration
+status, and gives the promotion pipeline a verifier.
+
+**What landed.** Four coherent edits, one lane.
+
+- **INV-150 — every declared cross-cutting law names its net.** A law is the prover's where its violation
+  pins to a stated sentence and blocks, or the design review's where the deciding fact lives only in the
+  human's intent and it recommends. The net is recorded beside the law in the declared-laws home (INV-101),
+  the INV-101 station demands one per law, and a law with no named net ranks as a broken invariant; a
+  watch-level law names the design review with a dated reason. Declaration is the promotion lever: an
+  undeclared grouping is the design review's, and the moment the author declares it the property becomes the
+  prover's. The architecture's every-fact-owned-once check is the backstop. This is the primary gap control.
+- **INV-125 sharpened.** The cross-surface trigger now also fires on a kind-general rule worded inside one
+  member's own section while siblings of that kind exist — textually recognizable before any class is
+  declared, demanding lift-to-class or scope-by-decision. This is what would have caught the tlvphotos miss
+  with the design review asleep, and it is the prover-catchable core the enumeration alone missed (since
+  enumeration presupposes the kind is declared).
+- **INV-126's means half.** The paired-transition law now reads as two halves: continuity of the transition
+  (unchanged, the prover's already) and reversibility of the means (new, promoted from a soft design-review
+  recommendation to a blocking obligation). Where a surface opens over everything by a continuous, reversible
+  gesture, the same gesture reversed stands among its ways to close, or a decided sentence states why it is
+  absent; silence blocks (the blank-answer class of INV-72), and the rightness of any deciding sentence
+  stays the human's gate (INV-30). Kept as one self-contained paragraph so it can be softened if Alexander
+  waves the bar-change off.
+- **The routing split** is stated on the design review's own side: a declared class (or a class-general
+  sentence homed on one member) is the prover's defect (INV-125); a genuinely undeclared grouping is the
+  design review's discovery (INV-141). Neither pass claims it twice and neither drops it.
+
+**Homes.** Spec clauses INV-101 (extended) + INV-150 (new) + INV-125/INV-126 (sharpened) with their index
+rows; the prover skill's declared-laws station, cross-surface lens, and paired-transition lens; the
+spec-author declared-laws line and paired-transition facet; the design-reviewer routing-split section; the
+architecture spec-author node (owns INV-150) and the prover node's net-check note; matrix rows M-292
+(INV-150), M-293 (INV-125 sentence-form), M-294 (INV-126 means half). Records: prover
+`docs/prover/2026-07-14-property-routing.md`, design review `docs/design-review/2026-07-14-property-routing.md`.
+
+**Process.** Red-first: eight assertions written and proven red on the pre-delta tree, then greened by the
+edits. The prover pass folded one must-fix (INV-150 lacked the audit's dated-reason for a watch-level net)
+and queued one recommendation (whether INV-150 carries the presence-versus-rightness split as one explicit
+sentence or by reference to INV-30). Suite 710 → 718 green. The inbox wish
+`2026-07-14-tlvphotos-openable-face-exit-symmetry.md` is harvested with this landing (its wish is now
+realized). This lane is property-routing only; the request-layer classifier the audit also covers is a
+separate lane the orchestrator builds next. Version held; the orchestrator owns the bump at push, runs the
+independent fresh-eyes adversarial pass (INV-46), and pushes.
+
+**Fold (later worker pass, same lane).** A follow-up review folded four findings into this landing. (1)
+INV-126's means half dropped its "over everything" wording in every home — the reversibility duty now binds
+any surface opened by a continuous, reversible gesture, not only a full-screen overlay, so a drag-opened
+drawer or a partial pinch panel carries it too. (2) The net vocabulary grew from two kinds to three: a
+mechanical gate (a named guardrail script or a dedicated test, deterministic, blocking in CI), the prover's
+judgment station, and the design review's recommendation. The pack's three cross-cutting laws are mechanical
+gates, not prover lenses, and now name their real gates — register by `check-shipped-language.sh` +
+`test_preshow_register_lint.py`, clock-honesty by `check-future-times.sh`, no-self-certification by
+`test_no_self_certification.py`; the prover-vs-design-review split still governs the design properties
+(INV-125, INV-126). (3) The orphan `test_cross_sibling_routing_split` is now cited in M-292, with the
+design-reviewer routing-split added to its homes. (4) A net-floor test
+(`test_pack_declared_laws_each_name_a_net`) parses the declared-laws home and reds if any enumerated law
+names no net — red-first proven by dropping the clock net, then restored. Suite 718 → 721 green, the
+shipped-language and clock gates clean. Version still held for the orchestrator.
+
 ## 2026-07-14 (opus worker seat, full pipeline) — the cross-host duplicate coordinator (INV-149, M-291)
 
 **Why.** INV-147 opened the stranger door but named one gap it deferred: a repo watched by two hosts'

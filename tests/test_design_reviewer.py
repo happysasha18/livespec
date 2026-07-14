@@ -73,6 +73,17 @@ def test_unanswered_held():
         "skill lost the do-not-re-fire rule [INV-130]"
 
 
+def test_cross_sibling_routing_split():
+    """Cross-sibling propagation routes by declaration status: a declared class (or a class-
+    general sentence homed on one member) is the prover's defect [INV-125]; a genuinely
+    undeclared grouping is the design review's own discovery [INV-141]. Neither pass both-claims
+    it nor drops it. (Born of the tlvphotos openable-face miss, 2026-07-14.)"""
+    flat = read_flat(SKILL)
+    assert "routes by declaration status" in flat, \
+        "skill lost the declaration-status routing split"
+    assert "INV-125" in flat and "INV-141" in flat, "routing split lost its two homes"
+
+
 # --- the spec clauses and index rows ---
 
 def test_spec_clauses_stand():

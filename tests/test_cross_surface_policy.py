@@ -53,6 +53,18 @@ class TestCrossSurfacePolicy(unittest.TestCase):
         self.assertIn("cross-surface policy uniformity (SPEC INV-125)", bp)
         self.assertIn("EVERY registered sibling root", bp)
 
+    def test_sentence_form_trigger(self):
+        """The sharpened trigger fires on a kind-general rule worded inside one member's own
+        section while siblings exist — the prose-law form the declared-class enumeration misses.
+        (Born of the tlvphotos openable-face miss: one member stated 'the way out mirrors the way
+        in' and a pinch-to-zoom sibling closed only by a control, 2026-07-14.)"""
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("kind-general rule", spec)
+        self.assertIn("lift", spec)
+        pv = read_flat("skills/product-prover/SKILL.md")
+        self.assertIn("kind-general rule", pv)
+        self.assertIn("scope it to the one member", pv)
+
     def test_matrix_row_covers_the_uniformity_law(self):
         with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
             for line in f:

@@ -1,15 +1,32 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 21:05 — the stranger door is OPEN, WATCHED, and cross-host safe; pack v1.4.2)
-**PACK v1.4.2, PROVER v1.1.4.** The cross-host duplicate coordinator (INV-149, M-291) is BUILT this
-session — a local commit awaiting the orchestrator's review and push; suite 710 green. (Version held at
-1.4.2 like its sibling stranger-door landings; the PATCH bump is the orchestrator's coarser-cadence call.) Two hosts' monitors
-on one repo now converge on a single surfacing by a claim on the shared source item, so one wish reaches
-the shared inbox exactly once, never lost (INV-1), the door never blinded if a host dies. What remains is
-the same three field beats, each genuinely blocked on Alexander or on a real external event. Read this,
-then memory can be wiped — the whole story lives in JOURNAL + the prover records.
+## LIVE STATE (2026-07-14 22:11 — property routing between the two reviews is DECLARED, four review findings folded; pack v1.4.2)
+**PACK v1.4.2, PROVER v1.1.4.** Property routing between the prover and the design review is BUILT this
+session (INV-150 + INV-125/INV-126 sharpened, M-292/M-293/M-294) — a local commit awaiting the
+orchestrator's review and push; suite 721 green. Each declared cross-cutting law now names its enforcing
+net, one of three kinds (a mechanical gate — a named guardrail script or test; the prover's judgment station;
+or the design review's recommendation), verified at the INV-101 station; the pack's three laws are mechanical
+gates naming their real guardrails/tests. The cross-surface trigger catches a kind-general rule homed on one
+member; the paired-transition law grew its reversibility-of-means half (a blocking obligation, promoted from a
+soft recommendation — named to Alexander as a bar-change, kept isolated so it can be softened), now binding
+any continuous-gesture opening (the "over everything" narrowing removed). A net-floor test reds if any
+declared law names no net. This realizes and harvests the inbox openable-faces wish. Two local
+commits now await the orchestrator (this one and the cross-host coordinator, INV-149 M-291). The
+request-layer classifier the same audit covers is a SEPARATE lane the orchestrator builds next. Field beats
+below are unchanged, each genuinely blocked on Alexander or a real external event. Read this, then memory
+can be wiped — the whole story lives in JOURNAL + the prover/design-review records.
 
 ## What landed this session
+0. **Property routing between the two reviews (INV-150, INV-125/INV-126, M-292/M-293/M-294).** Each declared
+   cross-cutting law names its net; the class trigger fires on a kind-general rule homed on one member; the
+   paired-transition law reads as two halves (continuity + reversibility of means). Records:
+   `docs/prover/2026-07-14-property-routing.md`, `docs/design-review/2026-07-14-property-routing.md`. Inbox
+   openable-faces wish harvested. One must-fix folded (the watch-level net's dated reason), one recommendation
+   queued (whether INV-150 states the presence-versus-rightness split explicitly or by reference). Four review
+   findings folded in a later worker pass: the means-half "over everything" narrowing removed; the net
+   vocabulary given three kinds (mechanical gate / prover station / design review) with the pack's three laws
+   named as mechanical gates; the orphan `test_cross_sibling_routing_split` cited in M-292; a net-floor test
+   (`test_pack_declared_laws_each_name_a_net`) added, red-first proven.
 1. **The monitor's schedule — the door is now live (INV-148).** A scheduled GitHub Action
    (`.github/workflows/stranger-monitor.yml`) runs the monitor daily (and on manual dispatch), commits any
    bridged inbox file, and pushes it as github-actions[bot]; single-instance by `concurrency`. This is the act
@@ -45,7 +62,7 @@ then memory can be wiped — the whole story lives in JOURNAL + the prover recor
 - No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
   inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80) · the
   local push gate and CI run the same test runner (pytest), never a weaker local net (M-154).
-- Next free codes: INV-150, M-292 (read the live Formal index before minting; codes consume in landing order).
+- Next free codes: INV-151, M-295 (read the live Formal index before minting; codes consume in landing order).
 
 ## Memory
 Once you have read this, memory can be wiped — JOURNAL + the prover records + ROADMAP carry the whole story.

@@ -279,6 +279,11 @@ declared design principles; the spec names the answer so the pass has something 
   ends as a spec sentence — mirror, a named shorter exit, or deliberately instant — decided or
   `[default]`-tagged like any facet (SPEC INV-126; incident: tlvphotos's polaroid room revealed under a soft
   veil in one breath and closed on a hard cut with no transition, found by hand on a real phone, 2026-07-12).
+  The facet has a second half, the reversibility of the means: where the surface opens by a
+  continuous, reversible gesture — a pinch, a drag, a lift — the same gesture reversed is written among its
+  ways to close, or a decided sentence states why it is absent; silence there is a finding, and the rightness
+  of the reason stays the human's gate (SPEC INV-126; incident: tlvphotos's pinch-to-zoom layer opened by a
+  finger-tracked scale-up and closed only by a control, no reverse pinch, felt on a phone, 2026-07-14).
 - **Edge completeness — both ends of a gate, and the three faces of a wait.** When the surface has a
   behaviour gated on a quantity that runs on a line (elapsed time since a last visit, a count, a distance, a
   size), write what it does at both ends of the range — below the low end and above the high end — not only
@@ -292,7 +297,7 @@ declared design principles; the spec names the answer so the pass has something 
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
 that grows by taste rots into a forty-row form nobody walks (the Google launch-checklist lesson).
 
-**The declared-laws line rides every new section (SPEC INV-101).** Where the spec keeps a declared-laws home — the one place naming its cross-cutting laws (measurement, accessibility, error handling, a register: what the product declares) — a new surface's section states its line against each declared law, the clause or a dated exemption, before the prover ever reads the delta. The prover's cross-cutting station then audits instead of discovers; a spec with no such home yet earns the home first.
+**The declared-laws line rides every new section (SPEC INV-101).** Where the spec keeps a declared-laws home — the one place naming its cross-cutting laws (measurement, accessibility, error handling, a register: what the product declares) — a new surface's section states its line against each declared law, the clause or a dated exemption, before the prover ever reads the delta. Each declared law also carries its net — the review or gate that enforces it — written beside the law in that home, so the assignment lives where the laws are declared (SPEC INV-150); a law is a mechanical gate's where a deterministic guardrail or test decides the violation, the prover's where the violation pins to a stated sentence, and the design review's where the deciding fact lives only in the human's intent. The prover's cross-cutting station then audits instead of discovers; a spec with no such home yet earns the home first, and a declared law with no named net is a finding there.
 
 **Every facet ends as a spec sentence — silence is not an option.** Either the human (or the walk's
 batched questions) DECIDED it, or the recommended option is taken so the lane keeps moving and the
