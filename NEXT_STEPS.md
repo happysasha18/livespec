@@ -39,8 +39,6 @@ a Fable MINOR-gate 3-pass audit → land); the pack is now nine skills (eight wo
   narrow fence gap: the fence is silent between same-session siblings, so it cannot catch two of my own
   helpers colliding — the tlvphotos failure mode). Home: build-pipeline ACT-3 (~:522) + spec ACT-3
   (~PRODUCT_SPEC.md:1448).
-- Still open from before: rows 307–309 (MINOR-audit should-clarifies) and row 302 (make
-  `test_missing_record_fails` hermetic).
 
 ## OWNER-HELD (needs your hand — no autonomous move taken)
 - **`~/.claude/CLAUDE.md` says "its seven working skills"** — now stale (the pack is eight working +
