@@ -39,7 +39,7 @@ walk in plain words and points there for the letter of each law.
   per finding, so the folding is verifiable after a memory wipe.
 - **Owner:** product-prover, the reviewing half of the pair. It reads documents; the test suite
   proves what the artifact does.
-- **Blocks:** every must-fix finding is folded into the spec before the walk continues. Open
+- **Blocks:** every defect finding is folded into the spec before the walk continues. Open
   questions the change touches are resolved or asked; the rest are listed, and they carry no gate.
 
 ## Station 4 — architecture delta

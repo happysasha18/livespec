@@ -50,7 +50,7 @@ the push red. The normative walk lives in `skills/build-pipeline/SKILL.md`.
 transitions, invariants, safety, liveness, atomicity, and the composition between surfaces. It runs
 at two stations (spec and architecture) and, on the pack itself, again before every push. Findings
 land in dated files under `docs/prover/`, each marked folded or rejected with a reason, so the fate
-of every must-fix stays checkable after a memory wipe. The prover finds holes in what documents
+of every defect stays checkable after a memory wipe. The prover finds holes in what documents
 claim; the tests then cover the facts.
 
 ## The settings ladder

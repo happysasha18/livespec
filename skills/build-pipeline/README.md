@@ -25,7 +25,7 @@ Tiny reversible edits skip the ceremony — but they still ship a test.
 ## The steps
 
 1. **Spec** — invoke `spec-author`: entities, states, transitions, actors, invariants, and the cross-section composition between surfaces. Real gaps are marked `⟨DECIDE⟩` and asked, never guessed.
-2. **Prove** — invoke `product-prover` on the *whole* spec, not the delta. Fold every must-fix by the book. A surface absent or unlinked at prove-time is invisible to the prover. Two modes: a full pass or a focused cross-link pass for a single new surface. Findings persist to a dated file so the next review starts from the last one's open rows.
+2. **Prove** — invoke `product-prover` on the *whole* spec, not the delta. Fold every defect by the book. A surface absent or unlinked at prove-time is invisible to the prover. Two modes: a full pass or a focused cross-link pass for a single new surface. Findings persist to a dated file so the next review starts from the last one's open rows.
 3. **Architecture** — write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams; in a live codebase every node pins to its owning `file:line` — this is where the spec is reconciled with shipped reality (cite `file:line` from a command you ran, fix the spec to the truth).
 4. **Prove the architecture** — `product-prover` with the architecture lens, whenever the doc changed: every fact owned, no node without spec backing, every seam named.
 5. **Test spec** — DERIVE the matrix from the proven spec through the proven architecture: rows organized node × fact, one row per invariant / state / transition, each pinned to a test level; derivation closes with a coverage-validation checklist actually walked.

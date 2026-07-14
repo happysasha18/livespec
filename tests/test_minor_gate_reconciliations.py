@@ -32,7 +32,7 @@ def test_d2_finding_kind_names_delta_scoped_exception():
     # D2: INV-140's "every defect blocks" carves out the delta-scoped gate (INV-114)
     spec = _read("PRODUCT_SPEC.md")
     prover = _read("skills/product-prover/SKILL.md")
-    needle = "At a delta-scoped gate [INV-114] a pre-existing defect"
+    needle = "at a delta-scoped gate [INV-114] a pre-existing defect outside the delta queues"
     assert needle in spec
     assert needle in prover
 

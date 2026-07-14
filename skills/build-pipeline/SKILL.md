@@ -203,9 +203,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    modes (see product-prover): **FULL** (all phases, the WHOLE spec — required at MINOR gates and structural
    rewrites) and **CROSS-LINK** (the new surface's seams against the named existing surfaces — on every
    surface add). **Write the findings to the project's `docs/prover/YYYY-MM-DD.md` (in the repo under review, separate from this
-   skill's) with a per-finding folded / rejected(+why) column** so "fold every must-fix" is verifiable after
-   a wipe. The next prover run opens by checking the previous file's unfolded rows. Fold every must-fix by
-   the book, and record should-clarify. Resolve every `⟨DECIDE⟩` that the surfaces under change TOUCH (ask
+   skill's) with a per-finding folded / rejected(+why) column** so "fold every defect" is verifiable after
+   a wipe. The next prover run opens by checking the previous file's unfolded rows. Fold every defect by
+   the book, and record the recommendations. Resolve every `⟨DECIDE⟩` that the surfaces under change TOUCH (ask
    the human when it's genuinely their call), and list the remaining open ones in the reply so the count is
    visible — don't gate on resolving all of them.
 

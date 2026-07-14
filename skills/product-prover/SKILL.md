@@ -78,7 +78,7 @@ If the doc is too vague to support a concrete consequence, do NOT write a vague 
 
 If multiple options exist, list them tersely (a/b/c) WITH a one-phrase tradeoff each, and state your preference if you have one.
 
-End each finding with a single short tag: `kind · severity · plain-label (formal-term)`, where `kind` is `defect` or `recommendation` (see the KIND block below).
+End each finding with a single short tag: `kind · plain-label (formal-term)`, where `kind` is `defect` or `recommendation` (see the KIND block below).
 
 Example:
 
@@ -91,21 +91,14 @@ Without an explicit field in the API contract, the downstream system defaults to
 
 Add a required policy field to the request payload. Default behavior should be set per tier and documented as part of the contract.
 
-`defect · must-fix · boundary-issue (composition)`
+`defect · boundary-issue (composition)`
 ----
 
-SEVERITY (use exactly these):
-- `must-fix` — broken or missing; the design becomes buildable only once this is resolved
-- `should-clarify` — probably fine but depends on an implicit decision that should be made explicit
-- `worth-considering` — possible improvement or future risk
+KIND — the finding's verdict; every finding is a defect or a recommendation, and the tag says which:
+- `defect` — a stated invariant is violated, a claim the spec makes is false, or a required invariant or answer the spec owes is missing (a completeness gap). A defect BLOCKS: it folds at the push gate and the design becomes buildable only once it is folded [M-6]. The one exception: at a delta-scoped gate [INV-114] a pre-existing defect outside the delta queues by that law and never blocks the merge it did not create.
+- `recommendation` — nothing stated is broken and nothing required is missing; a consistency or quality gain is on offer. It does not block; it queues for a taste call. When the queue order matters, a recommendation may carry a light priority grade inside its tag — `recommendation · now · unclear-owner (actors)` or `recommendation · later · …`; a defect never carries a grade.
 
-Severity reflects what could plausibly go wrong in production, not just formal imperfection. The same atomicity issue is `should-clarify` for a manual quarterly operation, `must-fix` for an automated path running thousands of times daily. Pick the severity that matches operational impact; explain briefly when non-obvious.
-
-KIND (defect or recommendation — say which for every finding):
-- `defect` — a stated invariant is violated, a claim the spec makes is false, or a required invariant or answer the spec owes is missing (a completeness gap). A defect BLOCKS: the design becomes buildable only once it is folded. A defect is a `must-fix`.
-- `recommendation` — nothing stated is broken and nothing required is missing; a consistency or quality gain is on offer. A recommendation does not block; it queues for a taste call. A recommendation is a `should-clarify` or a `worth-considering`.
-
-The kind is the coarse reading of the severity: a defect is exactly a `must-fix`, and a recommendation is a `should-clarify` or a `worth-considering`. So the kind and the severity never disagree on whether a finding blocks — the kind names the blocks-or-queues verdict in one word, the severity grades the impact behind it, and the push gate folds every defect (every `must-fix`) and queues every recommendation, its rule living at the gate itself [M-6]. At a delta-scoped gate [INV-114] a pre-existing defect routes to a queue row by that law and never blocks the merge it did not create — the fold-every-defect rule is the ordinary push gate's, not an override of the delta-scoped one. Derive the kind from the finding's own ground: a finding that names a broken or missing invariant or a false claim is a defect; a finding standing only on "these siblings should match" or "this could read clearer", with no invariant behind it, is a recommendation. A Phase 3.5 acknowledged gap keeps its `acknowledged` tag and carries no kind — it is the document's own known issue, not a new finding. (SPEC INV-140)
+Read the kind from the finding's own ground: a broken or missing invariant or a false claim is a defect; a finding standing only on "these siblings should match" or "this could read clearer", with no invariant behind it, is a recommendation. Production impact is the reasoning behind that call — an atomicity gap on an automated path run thousands of times a day is a defect, the same gap on a manual quarterly operation a recommendation — and it belongs in the finding's consequence, not in a tag token. A Phase 3.5 acknowledged gap keeps its `acknowledged` tag and carries no kind — it is the document's own known issue, not a new finding. (SPEC INV-140)
 
 CATEGORY — use the hybrid format `plain-label (formal-term)`:
 
