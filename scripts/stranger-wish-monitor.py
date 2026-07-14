@@ -11,13 +11,18 @@ committed file on, the item is an ordinary inbox wish swept by the inbox law und
 git-atomic harvest [T-10, INV-11]. The monitor holds NO verdict: whether an item is a wish,
 feedback, or neither stays the inbox sweep's call [T-20].
 
-New stranger activity has an actor: the monitor records, at surfacing time, the Issue's update
-generation AS IT STANDS AFTER ITS OWN MARKER — the marker comment's createdAt — and on each run
-re-surfaces an Issue whose current generation is newer than the one it recorded. Recording the
-post-marker generation is what keeps the monitor from re-surfacing an Issue on its own marker
-every run: next run the Issue's updatedAt equals that createdAt, so it reads as no new activity,
-and only another actor's edit or comment advances it. So a reopened, edited, or commented swept
-Issue is seen again rather than sitting durably-recorded but operationally invisible [INV-138].
+New stranger activity has an actor: the monitor reads an item's activity generation from activity
+that is NOT its own writes — the newest comment that is not one of its marker comments — and on each
+run re-surfaces an item whose activity generation is newer than the one it last recorded. Reading a
+generation the monitor's own comments cannot advance is what keeps it from re-surfacing an item on
+its own marker every run. A live round-trip exposed why the raw updatedAt cannot serve here: GitHub
+advances an item's updatedAt to a moment STRICTLY LATER than the createdAt of the comment that caused
+the bump, so the monitor's own claim and confirm comments push updatedAt a hair past their own
+timestamps, and a next run comparing that raw updatedAt against the markers read it as fresh outside
+activity and looped a duplicate every run. Reading the generation from non-marker comments closes
+that loop: the monitor's own writes add no non-marker comment, so only another actor's comment
+advances the generation. So a swept item a stranger comments on again is surfaced afresh rather than
+sitting durably-recorded but operationally invisible [INV-138].
 
 The surfacing decision is a PURE function of (open items, the generation each was last surfaced
 at, existing inbox files), so a crash between depositing and recording still surfaces an item
@@ -75,17 +80,16 @@ def items_to_surface(open_items: list[dict], existing_inbox_sources: set[str]) -
     out = []
     for it in open_items:
         surfaced_gen = it.get("surfaced_gen")
-        # The baseline the item's latest activity is measured against is the newest of ANY monitor
-        # marker the item carries — a surfaced-generation record OR a cross-host claim (INV-149).
-        # A claim is a real comment, so posting it bumps the item's activity generation (updatedAt);
-        # measuring against the confirm alone would let a losing host's trailing claim read back as
-        # fresh activity and loop a re-surface every run in the two-host contended case. A claim is a
-        # monitor marker, so it advances this ceiling in lockstep with the activity it bumps and reads
-        # as no new activity — the post-marker reasoning INV-146 uses, now covering claims too. Genuine
-        # third-party activity (an edit, a reopen, a stranger's comment) bumps updatedAt WITHOUT adding
-        # a marker, so it rises above the ceiling and re-surfaces (INV-146, INV-138). The confirm
-        # (surfaced_gen) still answers whether the item was ever surfaced. Absent an explicit ceiling
-        # the confirm is the ceiling (a single monitor's own marker is always its last comment).
+        # `activity_gen` is read from the item's non-marker activity (its newest comment that is not
+        # one of the monitor's own markers), never the raw updatedAt the monitor's own comments perturb
+        # [INV-146, INV-138]. So the monitor's own claim and confirm — however far they push updatedAt —
+        # never advance it, and the item settles at no new activity after its own surfacing. The marker
+        # ceiling is the newest of ANY monitor marker the item carries — a surfaced-generation record OR
+        # a cross-host claim (INV-149) — the belt-and-suspenders baseline that also holds a losing host's
+        # trailing claim below the line in the two-host contended case. A genuine third-party comment is
+        # a non-marker comment, so it advances `activity_gen` above both and re-surfaces the item once.
+        # The confirm (surfaced_gen) still answers whether the item was ever surfaced. Absent an explicit
+        # ceiling the confirm is the ceiling (a single monitor's own marker is always its last comment).
         marker_ceiling = it.get("marker_ceiling") or surfaced_gen
         if surfaced_gen is not None and marker_ceiling is not None \
                 and it.get("activity_gen", "") <= marker_ceiling:
@@ -255,13 +259,12 @@ def _gh_graphql(query: str, **variables):
 
 
 def _surfaced_gen_from_comments(comments: list[dict]) -> str | None:
-    """The generation last recorded — the createdAt of the newest live-spec marker comment (or None).
+    """Whether (and when) the item was last surfaced — the createdAt of the newest surfaced-gen marker
+    comment, or None if the monitor never surfaced it.
 
-    The marker's OWN createdAt is the item's generation as it stands after the monitor surfaced it,
-    because posting the marker is what last bumped the item's updatedAt. Reading that createdAt (rather
-    than a timestamp captured before the comment was posted) is what stops the monitor re-surfacing an
-    item on its own marker every run: next run the item's updatedAt equals this createdAt, so it reads
-    as no new activity. Only another actor commenting or editing pushes updatedAt past it (INV-146).
+    This answers only "was it ever surfaced" and pins the round for the crash-safety key; the
+    re-surface DECISION is made against `_activity_gen_from_comments`, which reads the item's activity
+    from non-marker comments so the monitor's own markers can never advance it (INV-146, INV-138).
     """
     gen = None
     for c in comments:
@@ -289,6 +292,38 @@ def _marker_ceiling_from_comments(comments: list[dict]) -> str | None:
     return ceiling
 
 
+def _is_monitor_marker(body: str) -> bool:
+    """Whether a comment body is one of the monitor's OWN markers — a claim or a surfaced-gen record."""
+    return SURFACED_MARKER in body or CLAIM_MARKER in body
+
+
+def _activity_gen_from_comments(comments: list[dict]) -> str:
+    """The item's activity generation — the newest createdAt among comments that are NOT the monitor's
+    own markers (an empty string when the item carries no third-party comment).
+
+    The item's raw updatedAt is NOT a safe activity signal. A live round-trip exposed why: GitHub
+    advances an item's updatedAt to a moment STRICTLY LATER than the createdAt of the comment that
+    caused the bump. So when the monitor posts its own claim and confirm marker comments, the item's
+    updatedAt lands a hair past the newest marker's createdAt; feeding that raw updatedAt as the
+    generation, the next run reads it as fresh outside activity, clears the marker ceiling, and
+    deposits a duplicate — a self-triggered re-surface loop that fires every run on any open item.
+
+    So the activity generation is read from activity that is NOT the monitor's own writes: the newest
+    non-marker comment. The monitor's own claim and confirm — however far they push the raw updatedAt —
+    add no non-marker comment, so they never advance this generation, and the item settles at no new
+    activity after its own surfacing. A genuine third-party comment is a non-marker comment, so it
+    advances the generation and re-surfaces the item once, exactly as INV-146 intends [INV-138].
+    """
+    gen = ""
+    for c in comments:
+        if _is_monitor_marker(c.get("body", "")):
+            continue
+        created = c.get("createdAt", "")
+        if created > gen:
+            gen = created
+    return gen
+
+
 def _owner_repo() -> tuple[str, str]:
     nwo = _gh_json(["repo", "view", "--json", "nameWithOwner"])["nameWithOwner"]
     owner, repo = nwo.split("/", 1)
@@ -307,7 +342,9 @@ def _fetch_issues():
             "number": iss["number"],
             "title": iss.get("title", ""),
             "body": iss.get("body", ""),
-            "activity_gen": iss.get("updatedAt", ""),
+            # the activity generation is read from non-marker activity, never the raw updatedAt the
+            # monitor's own marker comments perturb past their own createdAt [INV-146, INV-138]
+            "activity_gen": _activity_gen_from_comments(comments),
             "surfaced_gen": _surfaced_gen_from_comments(comments),
             "marker_ceiling": _marker_ceiling_from_comments(comments),
         })
@@ -336,7 +373,9 @@ def _fetch_discussions():
             "id": d["id"],  # the node id, needed to post a comment
             "title": d.get("title", ""),
             "body": d.get("body", ""),
-            "activity_gen": d.get("updatedAt", ""),
+            # the activity generation is read from non-marker activity, never the raw updatedAt the
+            # monitor's own marker comments perturb past their own createdAt [INV-146, INV-138]
+            "activity_gen": _activity_gen_from_comments(comments),
             "surfaced_gen": _surfaced_gen_from_comments(comments),
             "marker_ceiling": _marker_ceiling_from_comments(comments),
         })

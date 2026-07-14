@@ -10,8 +10,11 @@ gates naming their real guardrails/tests. The cross-surface trigger catches a ki
 member; the paired-transition law grew its reversibility-of-means half (a blocking obligation, promoted from a
 soft recommendation — named to Alexander as a bar-change, kept isolated so it can be softened), now binding
 any continuous-gesture opening (the "over everything" narrowing removed). A net-floor test reds if any
-declared law names no net. This realizes and harvests the inbox openable-faces wish. Two local
-commits now await the orchestrator (this one and the cross-host coordinator, INV-149 M-291). The
+declared law names no net. This realizes and harvests the inbox openable-faces wish. A THIRD local commit
+(this worker) fixes a monitor idempotency bug a live round-trip exposed (M-295): the monitor re-surfaced an
+item because GitHub bumps `updatedAt` past its own marker comments — now the activity generation is read from
+non-marker comments, both channels, suite 724 green. Three local
+commits now await the orchestrator (this one, the cross-host coordinator INV-149 M-291, and the M-295 fix). The
 request-layer classifier the same audit covers is a SEPARATE lane the orchestrator builds next. Field beats
 below are unchanged, each genuinely blocked on Alexander or a real external event. Read this, then memory
 can be wiped — the whole story lives in JOURNAL + the prover/design-review records.
@@ -42,10 +45,13 @@ can be wiped — the whole story lives in JOURNAL + the prover/design-review rec
    balance, plus a guard test that reds on any odd inline-backtick line in the spec or matrix.
 
 ## Queue / field beats (none blocking, none autonomously closable)
-- **Field beat [INV-94]** — the live Discussion WRITE round-trip (a real discussion bridged end-to-end, then a
-  second run proven idempotent). Waits on a real stranger's Discussion or the owner's hand: the auto-mode
-  classifier rightly declined the agent creating a test discussion under Alexander's identity. The Discussion
-  READ path is verified by deed; the scheduled monitor now exercises both fetch paths on every run.
+- **Field beat [INV-94]** — the live Discussion WRITE round-trip was RUN (a real discussion bridged
+  end-to-end, then a second run) and it EXPOSED a real idempotency bug: the monitor re-surfaced the same
+  discussion into a second inbox file because GitHub bumps `updatedAt` strictly past the monitor's own marker
+  comments. Fixed this session (M-295): the activity generation is read from non-marker comments, both
+  channels; suite 724 green; record `docs/prover/2026-07-14-monitor-idempotency-updatedat-skew.md`. A local
+  commit awaiting the orchestrator's review + push. A fresh live round-trip on the real repo (Discussion or
+  Issue) to re-confirm exactly-once end-to-end still waits on a real stranger's item or the owner's hand.
 - **Row 261's remote deposit field beat [INV-112]** — still owes its one real remote deposit run, unchanged
   (needs a real remote seat push, not simulable here).
 
@@ -62,7 +68,8 @@ can be wiped — the whole story lives in JOURNAL + the prover/design-review rec
 - No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
   inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80) · the
   local push gate and CI run the same test runner (pytest), never a weaker local net (M-154).
-- Next free codes: INV-151, M-295 (read the live Formal index before minting; codes consume in landing order).
+- Next free codes: INV-151, M-296 (M-295 landed this session for the monitor idempotency fix; read the live
+  Formal index before minting; codes consume in landing order).
 
 ## Memory
 Once you have read this, memory can be wiped — JOURNAL + the prover records + ROADMAP carry the whole story.

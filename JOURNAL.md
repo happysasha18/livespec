@@ -2,6 +2,40 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 22:40 IDT (opus worker seat, bug fix by the method) — the monitor's activity signal excludes its own writes (M-295, INV-146/147/149 wording corrected)
+
+**Why — a live round-trip on the package repo exposed it.** A real end-to-end round-trip on GitHub
+Discussion #1 (then cleaned up) surfaced the same open discussion into two inbox files: the monitor was not
+idempotent. Run 1 read generation 18:36:55Z, surfaced, and posted its claim + confirm marker comments; those
+comments bumped the discussion's `updatedAt` to ~19:20:53Z, a hair past the newest marker's `createdAt`
+(19:20:52Z); run 2 read the raw `updatedAt` as fresh outside activity, cleared the marker ceiling, and wrote
+a second inbox file plus a second claim/confirm pair. The monitor's own writes advanced the very signal it
+used to detect outside activity — a self-triggered loop firing every run on any open item, amplified daily
+by INV-148's cron.
+
+**Root cause.** Both `_fetch_issues` and `_fetch_discussions` fed the raw GitHub `updatedAt` into the
+surfacing decision as `activity_gen`. This was the residual of the earlier INV-148 audit fold (F1,
+`docs/prover/2026-07-14-monitor-schedule.md`), which recorded the marker's own `createdAt` on the premise
+that "next run the item's `updatedAt` equals the marker's `createdAt`." The premise was false: GitHub sets
+`updatedAt` strictly later than the comment that caused the bump, so the marker ceiling narrowed the gap but
+never closed it. The Issue channel shared the identical defect (both fed raw `updatedAt`).
+
+**The fix.** `scripts/stranger-wish-monitor.py` now reads the activity generation from
+`_activity_gen_from_comments` — the newest `createdAt` among the item's comments that are not one of its own
+markers (claim or confirm). Both fetchers use it. The monitor's own writes add no non-marker comment, so
+they never advance the generation and a second run settles at exactly-once; a genuine third-party comment
+advances it and re-surfaces once, as INV-146 intends. The `marker_ceiling` reading stays in the pure core
+as a belt-and-suspenders baseline for INV-149's trailing-claim case. A bare edit/reopen with no comment now
+re-surfaces on its next comment rather than on the raw `updatedAt` bump — data-safe (no wish lost;
+`gh issue list` exposes no `lastEditedAt`, so one comment-based signal keeps both channels consistent).
+
+**Method.** Entered at the matrix with a red-first test (both channels deposited a second file on the
+pre-fix tree), then the fix greened it with the existing tests still green. Spec INV-146/147/149 bodies +
+index + matrix rows corrected off the false "updatedAt equals the marker createdAt" premise; the invariants
+stand, their wording was sharpened. Prover record:
+`docs/prover/2026-07-14-monitor-idempotency-updatedat-skew.md`. Suite 724 green; shipped-language clean.
+Matrix code M-295 minted (no new INV — this corrects the implementation of existing invariants).
+
 ## 2026-07-14 (opus worker seat, full pipeline) — property routing between the prover and the design review (INV-150, INV-125/INV-126 sharpened, M-292/M-293/M-294)
 
 **Why.** A Fable audit of the boundary between the prover and the design review, driven by a real miss on

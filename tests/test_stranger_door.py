@@ -136,20 +136,20 @@ def test_monitor_honest_failure_on_unreachable():
 
 
 def test_monitor_does_not_retrigger_on_own_marker():
-    # The monitor's own marker comment bumps the item's updatedAt. The recorded generation is that
-    # marker's createdAt (the post-marker generation), so on the next run the item's updatedAt equals
-    # the recorded generation and it reads as NO new activity — no re-surface loop. A daily cron would
-    # otherwise manufacture one duplicate inbox file and one comment per open item every run.
+    # The activity generation is read from non-marker activity, so the monitor's own marker comment
+    # never advances it and an already-surfaced item reads as NO new activity — no re-surface loop.
+    # A daily cron would otherwise manufacture one duplicate inbox file and one comment per open item
+    # every run (the live round-trip failure M-295 guards at the fetch layer).
     m = _load_monitor()
     marker = m.SURFACED_MARKER
     tm = "2026-07-14T10:00:00Z"
     comments = [{"body": f"Surfaced for review.\n\n{marker} 2026-07-14T09:00:00Z -->", "createdAt": tm}]
-    # the recorded generation is the marker's own createdAt, not the pre-comment value in its body
+    # surfaced_gen answers "was it surfaced" — the marker's own createdAt, not the pre-comment body value
     assert m._surfaced_gen_from_comments(comments) == tm
-    # the item's updatedAt was bumped to the marker's time by the marker itself → not re-surfaced
+    # a surfaced item whose only activity is the monitor's own marker → not re-surfaced
     same = [{"kind": "issue", "number": 1, "activity_gen": tm, "surfaced_gen": tm}]
     assert m.items_to_surface(same, existing_inbox_sources=set()) == []
-    # a genuine actor comment AFTER the marker advances updatedAt past it → re-surfaced once
+    # a genuine actor comment AFTER the marker advances the activity generation past it → re-surfaced once
     newer = [{"kind": "issue", "number": 1, "activity_gen": "2026-07-14T11:00:00Z", "surfaced_gen": tm}]
     assert len(m.items_to_surface(newer, existing_inbox_sources=set())) == 1
 
@@ -361,3 +361,77 @@ def test_trailing_claim_does_not_reloop_surfacing():
         "marker_ceiling": "2026-07-14T09:00:04Z",
     }]
     assert len(m.items_to_surface(real_activity, existing_inbox_sources=set())) == 1
+
+
+# ---- M-295: a run's own marker comments do not advance the activity signal (both channels) ----
+# A live round-trip on the package repo's GitHub discussion #1 exposed a duplicate: GitHub advances
+# an item's updatedAt to a moment STRICTLY LATER than the createdAt of the very comment that caused
+# the bump. So after the monitor posts its own claim (18:36:55-gen) and confirm markers, the item's
+# updatedAt reads ~19:20:53Z while the newest marker's createdAt is ~19:20:52Z. Feeding the raw
+# updatedAt as the activity generation, the next run reads it as fresh outside activity, clears the
+# marker ceiling, and deposits a SECOND inbox file — a self-triggered re-surface loop that fires
+# every run on any open item. The activity generation must exclude the monitor's own marker comments.
+
+def _own_marker_state(kind):
+    # The state one item is in on the SECOND run: the monitor's own claim + confirm markers stand,
+    # and GitHub has bumped the item's updatedAt a hair PAST the newest marker's createdAt. There is
+    # no third-party activity — the only comments are the monitor's own two markers.
+    claim = {"body": f"claiming\n\n{_load_monitor().CLAIM_MARKER} 2026-07-14T18:36:55Z host:h -->",
+             "createdAt": "2026-07-14T19:20:51Z"}
+    confirm = {"body": f"Surfaced.\n\n{_load_monitor().SURFACED_MARKER} 2026-07-14T18:36:55Z -->",
+               "createdAt": "2026-07-14T19:20:52Z"}
+    bumped = "2026-07-14T19:20:53Z"  # updatedAt bumped by the monitor's own confirm, strictly later
+    return claim, confirm, bumped
+
+
+def test_own_marker_updatedat_bump_does_not_reloop_discussion(monkeypatch):
+    m = _load_monitor()
+    claim, confirm, bumped = _own_marker_state("discussion")
+
+    def fake_gh_json(args):
+        if "hasDiscussionsEnabled" in args:
+            return {"hasDiscussionsEnabled": True}
+        if "nameWithOwner" in args:
+            return {"nameWithOwner": "owner/repo"}
+        raise AssertionError("no other gh json call expected for the discussion arm: %r" % args)
+
+    def fake_graphql(query, **kw):
+        return {"data": {"repository": {"discussions": {"nodes": [{
+            "number": 1, "id": "D_1", "title": "a wish", "body": "please",
+            "updatedAt": bumped,
+            "comments": {"nodes": [claim, confirm]},
+        }]}}}}
+
+    monkeypatch.setattr(m, "_gh_json", fake_gh_json)
+    monkeypatch.setattr(m, "_gh_graphql", fake_graphql)
+    items = m._fetch_discussions()
+    # exactly-once: the second run, seeing only the monitor's OWN markers, surfaces nothing
+    assert m.items_to_surface(items, existing_inbox_sources=set()) == []
+
+
+def test_own_marker_updatedat_bump_does_not_reloop_issue(monkeypatch):
+    m = _load_monitor()
+    claim, confirm, bumped = _own_marker_state("issue")
+
+    def fake_gh_json(args):
+        if args[:2] == ["issue", "list"]:
+            return [{"number": 1, "title": "a wish", "body": "please", "updatedAt": bumped}]
+        if args[:2] == ["issue", "view"]:
+            return {"comments": [claim, confirm]}
+        raise AssertionError("no other gh json call expected for the issue arm: %r" % args)
+
+    monkeypatch.setattr(m, "_gh_json", fake_gh_json)
+    items = m._fetch_issues()
+    # the Issue channel shares the same latent defect and must be exactly-once too
+    assert m.items_to_surface(items, existing_inbox_sources=set()) == []
+
+
+def test_activity_gen_excludes_the_monitors_own_markers():
+    m = _load_monitor()
+    claim, confirm, _ = _own_marker_state("issue")
+    # a genuine third-party comment newer than the markers IS activity
+    human = {"body": "a stranger adds context", "createdAt": "2026-07-14T20:00:00Z"}
+    # with only the monitor's own markers, the activity generation does not advance past them
+    assert m._activity_gen_from_comments([claim, confirm]) <= "2026-07-14T19:20:52Z"
+    # a genuine non-marker comment advances it
+    assert m._activity_gen_from_comments([claim, confirm, human]) == "2026-07-14T20:00:00Z"
