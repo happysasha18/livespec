@@ -1,73 +1,59 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 — the cleanup movement is done, about to push)
-**PACK v1.4.0, PROVER v1.1.4.** A MINOR bump under the Fable pre-MINOR gate. **Suite: 682 passed, 1
-expected red** (`test_guardrails.py::TestGateA_ProverRecord::test_real_repo_passes`, red only because the
-new prover record is not yet committed — it clears at the lead's commit; 683 green once landed). The tree
-is left UNCOMMITTED for the lead's review; the lead commits and pushes, not this window. Read this, then
-wipe memory once it pushes; every landing's full story lives in JOURNAL + ROADMAP.
+## LIVE STATE (2026-07-14 — the stranger door landed + pushed; pack v1.4.1)
+**PACK v1.4.1, PROVER v1.1.4.** The stranger door (rows 261 + 315) is COMMITTED (`4278681`) and PUSHED to
+origin/main; local == origin. Suite 692 green, all local gates green. The remote CI run (`gates`, push
+`4278681`) was in flight at hand-off — **on resume, confirm it went green** (`gh run list --limit 1`); a red
+verdict is this session's own immediate bug to fix before anything else (INV-106). Read this, then memory can
+be wiped — the whole story lives in JOURNAL + ROADMAP (rows 261/315) + `docs/prover/2026-07-14-stranger-door.md`.
 
-## What the cleanup movement did (five pieces, rows 316-320)
-Alexander's word 2026-07-14 ("позор, до победного"): the spec and skills carried rule/lens BIOGRAPHIES
-inline that bloated what the model loads each call, INV-140's KIND block argued itself, and the quality
-would have failed the skill-creator's own bar. A full-pass response — three fresh-eyes reviews → five
-serial chunks → a Fable three-pass gate → 1.4.0:
-- **Row 316 (chunks 1+5)** — 88 provenance biographies swept to `docs/lenses.md`; a new
-  `provenance-narrative` lint (docs/spec-style.md **R15**) holds the class on every push.
-- **Row 317 (chunk 2)** — INV-140's KIND collapsed to one rule: defect/recommendation is the sole verdict,
-  the three-level **severity axis retired**.
-- **Row 318 (chunk 3)** — the design review wired into the M-1 milestone gate (it was skipped silently
-  before) + structural compaction (narrated lens cross-refs cut to bare anchors, base rule 7 split,
-  one-home dedupe, INV-133 reworded).
-- **Row 319 (chunk 4)** — two new base rules: **INV-143** the seat acts by default (max-agency, never parks
-  derivable work), **INV-144** the spec is the definition of correct (a code/spec divergence defaults to a
-  possible code error; silently rewriting the spec to match code is forbidden).
-- **Row 320 (chunk 5)** — **INV-145** a periodic full audit (two layers: continuous lints for KNOWN drift +
-  a full audit every ten landings for UNKNOWN drift), and "an audit is adversarial by nature" folded into
-  INV-46 as a definition.
+## What landed
+A stranger (a contributor with no push rights and no per-repo grant — a private-repo read-only collaborator
+or anyone on a public repo) opens a templated GitHub Issue or Discussion requesting a source; the monitor
+`scripts/stranger-wish-monitor.py` bridges each open un-surfaced item into ONE committed inbox/ file and
+records the item's update generation on a marker comment, so from that file on it is an ordinary inbox wish
+under the git-atomic harvest already proven safe [T-10, INV-11]. INV-146 (the door) + INV-147 (the monitor),
+both channels served (Issue over `gh issue`, Discussion over GraphQL). Two independent adversarial passes
+(INV-46) folded 9+ holes incl. two must-fix. Row 315 rode along: 17/18 TEST_MATRIX provenance cells swept to
+docs/lenses.md, the gate widened to cover the matrix.
 
-Three new invariants (143/144/145). Records: prover re-check `docs/prover/2026-07-14-cleanup-movement.md`
-(Fable + product-prover 1.1.4, six defects folded, CLEAR to 1.4.0); the first M-1 design-review record
-`docs/design-review/2026-07-14.md` (STOOD DOWN by INV-141 — live-spec is a skill pack with no acted-on
-elements). Skill versions: base 1.0.16, product-prover 1.1.4, build-pipeline 1.0.28.
+## ⟨FIRST ON RESUME⟩ — the door is open but unwatched
+The Issue/Discussion templates are live in the repo, so a stranger can open a wish NOW — but no schedule runs
+the monitor yet, and the spec requires a schedule where the door is open [INV-147]. **Set the monitor's
+schedule** (this is the act that truly "opens" the door). Recommended shape: a GitHub Action (`.github/workflows/`)
+on a cron (e.g. daily) that runs `python3 scripts/stranger-wish-monitor.py` with `contents:write`, `issues:write`,
+`discussions:write` permissions — build it through the pipeline (it is a new autonomous writer to main, so it
+owes its own prove: two overlapping scheduled runs, what token it commits under). Until it is set, the
+maintainer runs the monitor by hand (`python3 scripts/stranger-wish-monitor.py` — verified a clean no-op today).
 
-## ⟨DECIDE⟩ — two taste-call defaults I set (overturn either if you meant otherwise)
-1. **Scoped design review at every surface add** (vs milestone-only). The born-of miss arrived as a
-   surface add, and the scoped form (the new surface's elements against the existing inventory) is cheap
-   by construction — so I default to running it on every surface add rather than deferring to the next
-   MINOR gate. Overturnable to milestone-only.
-2. **The v1 echo channel holds exactly ONE producer** (the same-kind divergence). The design memo framed
-   two producers; the independent prove showed the second — a "likely-missed edge" the running product
-   reaches — is the INV-72/138 blank-answer class the existing lenses already treat as BLOCKING, which
-   would collide with the never-blocks promise. So I narrowed v1 to one producer; a later producer earns
-   its own clause and wish row. Overturnable if you want the wider channel now.
+## Queue / field beats (none blocking)
+- **Field beat [INV-94]** — the live Discussion WRITE round-trip (a real discussion bridged end-to-end, then
+  a second run proven idempotent). Waits on a real stranger's Discussion or the owner's hand: the auto-mode
+  classifier rightly declined the agent creating a test discussion under Alexander's identity. The Discussion
+  READ path is verified by deed.
+- **Cross-host duplicate** — INV-147 states the bound: the single-instance lock holds within one host; two
+  hosts' monitors on one repo can surface one wish twice (a duplicate the maintainers drop, never a wish lost
+  [INV-1]). The cross-host coordinator is a named later stage, not built.
+- **M-212 markdown glitch** (found by row 315's sweep) — an escaped backtick inside a code span in one
+  TEST_MATRIX cell desyncs `gate_common.scrub`'s backtick pairing, a latent lint blind spot; left untouched,
+  its own small row's worth.
+- **Row 261's old remote deposit field beat** (INV-112) still owes its one real remote run, unchanged.
 
-## Queue (take at a queue-take — all QUEUED, none blocking)
-- **Row 315** — the TEST_MATRIX provenance cells (18 "; born of …" cells outside the lint's scope): sweep
-  them to docs/lenses.md and widen the gate test's scope, OR record the matrix as a stated boundary of R15.
-- **Row 261** — GitHub Issues as the strangers' wish door: still a DECIDE, awaiting Alexander's word.
-- The one real remote deposit still owes its live run.
-- The tlvphotos impersonal-voice wish sits in its own inbox.
-
-## OWNER-HELD (needs your hand — no autonomous move taken)
-- **`~/.claude/CLAUDE.md` says "seven working skills"** — the pack now has EIGHT working skills + base
-  (design-reviewer since row 310). This is a host-side file on your machine, outside this project's tree,
-  so this window does NOT edit it — your one out-of-tree edit ("seven working skills" → "eight working
-  skills").
+## OWNER-HELD
+- **Memory can be wiped** once CI is confirmed green.
+- `~/.claude/CLAUDE.md` "seven→eight working skills" — DONE this session (Alexander's word: fix obvious things,
+  don't ask).
 
 ## Standing habits (always-on)
-- When a method skill changes, run a fresh-eyes adversarial pass (INV-46); a MILESTONE earns the deep
-  Fable whole-spec + architecture pass. A full audit also runs on a landing-count cadence (INV-145).
-  `date` before any stamp. Shipped docs stay impersonal (INV-118/120), provenance in docs/lenses.md +
-  JOURNAL — never inline in the body (R15/INV-83). The seat decides and acts on derivable work and reports
-  (INV-143); the spec is the definition of correct (INV-144). Delegation by base rule 5 → INV-69; the lead
-  dispatches its discovery reads (base rule 25 → INV-137). Public READMEs edited ONLY via a fresh
-  clean-context agent (bilingual safety).
-- No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames
-  · inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80).
-- Next free codes: read the live Formal index before minting (INV-145 consumed; codes consume in landing
-  order, reservations dead).
+- When a method skill changes, run a fresh-eyes adversarial pass (INV-46); a MILESTONE earns the deep Fable
+  whole-spec + architecture pass; a full audit runs on a landing-count cadence (INV-145). `date` before any
+  stamp. Shipped docs stay impersonal (INV-118/120), provenance in docs/lenses.md + JOURNAL, never inline
+  (R15/INV-83). The seat decides and acts on derivable work and reports (INV-143); the spec is the definition
+  of correct (INV-144). Delegation by base rule 5 → INV-69; before spawning a worker whose write-set overlaps
+  the senior's own in-flight edits, give it an isolated worktree or serialize (the row-261/315 fence slip).
+- No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
+  inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80).
+- Next free codes: INV-148, M-290 (read the live Formal index before minting; codes consume in landing order).
 
 ## Memory
-Once this movement pushes, memory can be wiped — its whole story lives in JOURNAL + ROADMAP + the two
-records above.
+Once CI confirms green, memory can be wiped — the whole story lives in JOURNAL + ROADMAP + the prover record.
