@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.12
+  version: 1.0.13
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -69,6 +69,9 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       will hold the session for more than a beat. (SPEC INV-93; his 2026-07-10 word at the release:
       say how long it takes, then track it. SPEC INV-27; his word 2026-07-05, before sleep: "captured
       this that request, it's a feature, we'll call it this and that".)
+    - The range reads the parallel critical path as the wall-clock — the longest chain of steps forced to serialize (sharing the
+      write-lane or depending on one another's output); read-only checks and disjoint-file workers run alongside and add ~0 wall-clock,
+      so a sum of every step overstates the finish, and heavy fan-out collapses the real clock to the critical path. (SPEC INV-93; row 311.)
 
 - **Narrate the work while it runs — mark the beats.** *(rule 13)* Between the capture echo (rule 12)
     and the landing report the human is never left reading silence: when a beat lands — a pipeline
@@ -194,8 +197,10 @@ The form of the showing: one window, real data, retold as a small story, opened 
      yet. The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
    - A LANDING report also names, in plain words, every pipeline step the wish's work-kind stood down
      ("design-sync — text product, stood down") — a skipped step is a written fact the human can read,
-     never an omission (SPEC INV-22). It also settles the clock: it states the estimate beside the actual,
-     overrun or under said plainly — the settling is what keeps the next range honest (SPEC INV-93).
+     never an omission (SPEC INV-22). It also settles the clock: it states the estimate beside the actual, overrun or under said
+     plainly, and names why they matched or missed — a serial chain longer than read, or a fan-out that collapsed the wall-clock.
+     This retrospective persists across sessions in the agent's memory, so before quoting any range the estimate is informed by the
+     accumulated record of estimate against actual — the settling keeps the next range honest (SPEC INV-93; row 311).
    - The NEVER-list, with teeth (SPEC INV-28; two consecutive eval runs leaked exactly this, 2026-07-06):
      a test count, a suite size, a version string, a check tally is never message content — say what the
      number means for the reader ("tested clean", "saved", "the method held") and let it trail as a quiet
