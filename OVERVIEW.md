@@ -69,12 +69,15 @@ An override exists only as a written, dated line in its profile, with a journal 
 divergence stays visible. The session scope is spoken only and dies with the conversation; making
 it permanent is a promotion into a profile, on the human's word.
 
-## Eight skills, one division of labour
+## Nine skills, one division of labour
 
 - **live-spec-base** — the shared rulebook and the default settings, stated once; on any apparent
   rule conflict, this file wins.
 - **spec-author** — writes and grows the living spec, use-case-first and prover-ready.
 - **product-prover** — reviews specs and architecture documents with formal-verification thinking.
+- **design-reviewer** — reviews the design itself once the spec is proven: groups the same-kind
+  things the text never declared, checks each kind behaves alike, and brings the strongest likely
+  difference to the human. It recommends and questions, leaving the landing free.
 - **build-pipeline** — sequences the whole arc from wish to shipped, tested, committed change.
 - **test-author** — derives the matrix from the proven spec and writes the tests.
 - **communicator** — shows work plainly and asks only the decisions the human can actually make.

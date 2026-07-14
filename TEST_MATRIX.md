@@ -3,7 +3,7 @@
 Derived from PRODUCT_SPEC.md **through the proven ARCHITECTURE.md**; the package version has one home,
 the VERSION file, and is not pinned here where it would read stale (row 265, which supersedes the old
 "headers re-pin at each milestone" line this header used to carry). Last reconciled with the spec:
-2026-07-12. The first derivation and its prover records: `docs/prover/2026-07-05-lost-layers.md`,
+2026-07-14. The first derivation and its prover records: `docs/prover/2026-07-05-lost-layers.md`,
 `docs/prover/2026-07-05-architecture.md`; the full milestone-by-milestone derivation history — which
 spec versions and landings kept it current — lives in JOURNAL.md and the git log, not frozen in this
 header. Rows are organized
@@ -104,6 +104,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Publish license | `skills/publish/LICENSE` | legal | `test_artifact_inventory` |
 | Test-author skill | `skills/test-author/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Feedback-intake skill | `skills/feedback-intake/SKILL.md` | shipped text | `test_artifact_inventory` |
+| Design-reviewer skill | `skills/design-reviewer/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Skill evals — method + honest boundary | `evals/README.md` | shipped text | `test_artifact_inventory`, `test_eval_readme_states_honest_boundary` |
 | Skill evals — one per working skill | `evals/` | shipped text dir | `test_skill_evals_present` (self-closing over skills/) |
 | Eval run records | `docs/evals/` | records dir (non-empty) | `test_artifact_inventory` |
@@ -487,12 +488,19 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-213 | The card survives real-shaped and hostile inputs: markup inside a recorded value is escaped (never raw injection); a missing HOST profile renders with the project-rules part present and no crash; nested sub-bullets and wrapped lines (the live profiles' shape) leak no raw markdown; the template personal profile renders clean on a fresh project; never a crash or an injection on any of these | INV-87 | DOM-text | `test_onboarding_card_robustness` (red proven by the mechanical protocol — renderer removed, rows fail, renderer restored; the v2 renderer already carried these guards) | BUILT |
 | M-210 | The trigger wiring stands: the adoption guide carries the setup-end card line, communicator carries the standing-question line, and the spec's norm pointer resolves to the frozen file in docs/norms/; never a promised trigger with no home sentence | INV-87 | string | `test_onboarding_card_wiring` (red proven against HEAD — the wiring absent there) | BUILT |
 
+### [node: design-reviewer]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-283 | The design-review pass ships in `skills/design-reviewer/SKILL.md`: it reads a proven spec after the prover, builds its own element inventory below the page-level surface list (photo, caption, control, slot) that is never written into the surface registry [E-10], describes each element by the person's action words, proposes same-kind groups, checks behaviour parity, and names two concrete objects with their spec sentences per finding; it runs full at every full prover pass and scoped at every surface add, standing down at intake and the push gate; every finding is a recommendation or an ask and never a blocking defect, so it never holds a landing; each run writes a dated `docs/design-review/YYYY-MM-DD.md` record; a confirmed grouping lands as a class sentence [INV-125], a confirmed difference as a decided sentence [INV-59]; never an auto-generated rival registry, never a finding that blocks a landing (INV-141, design-review wish) | INV-141 | string | `test_skill_ships` + `test_similarity_lens_ships` + `test_inventory_never_a_rival_registry` + `test_never_blocks` + `test_record_discipline` + `test_spec_clauses_stand` + `test_formal_index_rows` + `test_architecture_node_and_seams` + `test_matrix_rows_cite_the_node` (red proven against the pre-delta tree, 2026-07-14) | BUILT |
+| M-284 | Every design-review finding carries a confidence read of confident or likely: confident when the grouping and divergence stand on the spec text alone (written as a recommendation, queues, never blocks), likely when the deciding fact is the human's intent; a likely finding fires as one ask only when the strong-signal bar holds (shared role in one plain sentence, a whole behaviour one member lacks rather than a parameter, no spec sentence already deciding it), shown as two objects each with its spec sentence plus a recommended default on the batched-question path [INV-30], at most three per pass strongest first, a signal below the bar staying silent; an unanswered ask is held on the dated record and not re-raised on its own until answered; the channel carries exactly one producer for now, the same-kind divergence; never an ask below the strong-signal bar, never more than three asks per pass, never an unanswered ask re-firing as noise each pass (INV-142, design-review wish) | INV-142 | string | `test_confidence_read_two_values` + `test_echo_bar_and_cap` + `test_unanswered_held` + `test_spec_clauses_stand` + `test_formal_index_rows` + `test_matrix_rows_cite_the_node` (red proven against the pre-delta tree, 2026-07-14) | BUILT |
+
 ---
 
 ## Coverage validation — walked 2026-07-05 at derivation; re-walked mechanically by `tests/test_traceability.py` at every run
 
 - [x] Every spec anchor (invariant / state / transition) appears in ≥ 1 row — the count is recomputed mechanically at every run by `test_matrix_covers_every_anchor` (`spec_index_anchors()` expands the Formal index's ranges; 170 unique anchors from 164 index rows at the 2026-07-10 audit), so this line never pins a number that can drift.
-- [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 17/17 blocks (counted as the `### [node: ...]` headings under Matrix rows, via `matrix_blocks()`), every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
+- [x] Every architecture node has ≥ 1 block, and its negative-side rows exist — 18/18 blocks (counted as the `### [node: ...]` headings under Matrix rows, via `matrix_blocks()`), every row carries a NEVER clause (`test_matrix_rows_have_level_and_negative_side`).
 - [x] Every artifact-inventory entry is asserted shipped-and-non-empty (`test_artifact_inventory`) — the text-product rendered level (prover F6).
 - [x] Every visibility / layout / colour / interaction fact sits at level ≥ `browser-computed` — vacuously true: the pack ships no browser surface (prover F6); the clause re-arms the day one exists.
 - [x] No row cites a spec anchor or node that no longer exists — mechanized in `test_matrix_covers_every_anchor` (stale refs fail the suite; retirement, never deletion).

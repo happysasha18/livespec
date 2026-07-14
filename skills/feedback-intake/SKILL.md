@@ -2,7 +2,7 @@
 name: feedback-intake
 description: Receive anything a person hands back to the project — a remark, an answer, a screenshot, a reaction, a dropped file — and route it to the home its law owns; nothing handed in is ever lost. Use whenever feedback arrives in any form (a comment on shown work, an answered decision page, a file appearing in inbox/, a user's report relayed by the human), when sweeping the inbox, when opening or appending the feedback ledger (FEEDBACK.md), or when deciding where a handed-in item belongs. It is the intake half of the exchange — communicator carries work out to the human, this skill carries what comes back. NOT for the agent's own outputs or questions; it never opens a queue row on its own judgment (the wish door owns that verdict); and it is no analytics machine — reading, scoring, and aggregating the collected signals stay with the measurement family.
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # feedback-intake — nothing handed in is ever lost
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.11), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.12), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -88,6 +88,6 @@ aggregation of the ledger — the reading machinery stays a named target of the 
 No new door mechanics — the inbox is reused exactly as it stands.
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
-> **product-prover** reviews it · **build-pipeline** ships the change · **test-author** derives the matrix
+> **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix
 > and writes the tests · **communicator** makes the human exchange land · **feedback-intake** brings what
 > comes back to its home · **publish** sees the work out the door, owing its kind's checklist.

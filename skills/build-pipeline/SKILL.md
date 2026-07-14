@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.24
+  version: 1.0.25
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.11), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.12), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -208,6 +208,15 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    the book, and record should-clarify. Resolve every `⟨DECIDE⟩` that the surfaces under change TOUCH (ask
    the human when it's genuinely their call), and list the remaining open ones in the reply so the count is
    visible — don't gate on resolving all of them.
+
+   **Then, when the cadence calls for it, invoke `design-reviewer` over the same proven spec** (SPEC INV-141):
+   a second pass right after the prover, judging the design rather than verifying it — it proposes the
+   same-kind groupings the text never declared and checks behaviour parity within each. The cadence decides
+   whether it runs at all: full on a FULL prover pass, scoped on a surface add, and standing down at
+   FEATURE-FIT intake and the push gate (at those two it is not invoked). Every finding is a recommendation or a
+   question and never a defect, so it never holds the lane; a confirmed grouping lands as a class clause
+   through spec-author before the tests are derived. Its strongest likely divergence rides the batched
+   questions as one ask with two objects in hand (SPEC INV-142); its record is `docs/design-review/YYYY-MM-DD[-suffix].md`.
 
 3. **Architecture — write or update `ARCHITECTURE.md` from the proven spec** (template:
    `ARCHITECTURE.template.md` — template paths here and in step 5 resolve from the PACK repo,
@@ -425,7 +434,9 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
-  audit + a surface-composition check. The gate also runs the **cross-cut counter** (`guardrails/crosscut_counter.py`,
+  audit + a surface-composition check. The full **design review** runs here too, beside the
+  surface-composition check (SPEC INV-141): the whole element inventory, every proposed same-kind grouping,
+  its likely divergences echoed as at most three asks — recommendations and questions only, never a block. The gate also runs the **cross-cut counter** (`guardrails/crosscut_counter.py`,
   SPEC INV-128 boundary-health, INV-37): it counts the closed queue's cross-cutting landings per node pair,
   and a pair reaching the threshold (3 by default) is flagged as a boundary-move candidate for the audit to
   weigh — the flag is a signal, never a push-blocking red, and a boundary still moves only through the
@@ -548,6 +559,9 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
 ## How it relates to the other skills
 - `spec-author` — writes/grows the spec (step 1). Public.
 - `product-prover` — reviews the whole spec with formal-verification thinking (step 2). Public.
+- `design-reviewer` — a second pass right after the prover (step 2): judges the design, proposes the
+  same-kind groupings the text never declared, and echoes the strongest likely divergence to the human;
+  recommendations and questions only, never a block. Public.
 - `test-author` — derives the matrix and writes the tests (steps 5–6). Public.
 - `build-pipeline` (this) — the orchestrator that sequences them through to a shipped, verified, committed
   change.

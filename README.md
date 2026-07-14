@@ -134,6 +134,7 @@ The method's job is to bring the right call to a human at the right moment. Not 
 | `build-pipeline` | Start here for any non-trivial change: *"build X properly"*, *"spec and ship Y"*. It sequences the whole arc from wish to committed change. |
 | `spec-author` | Writes and grows the living spec: a new feature, a new stateful surface. Scenarios lead; formal codes trail as anchors. |
 | `product-prover` | Reviews a spec or design document: *"poke holes in this"*. Reads documents; code review and tests stay elsewhere. Also published [standalone](https://github.com/happysasha18/product-prover). |
+| `design-reviewer` | Reviews the design itself once the spec is proven: proposes the same-kind groupings the text never declared, checks each kind behaves alike, and brings you the strongest likely difference with both objects in hand. Recommends and questions; leaves the landing free. |
 | `test-author` | Derives `TEST_MATRIX.md` from the proven spec and writes the tests. Call it directly for *"why did green tests miss this bug?"*. |
 | `communicator` | Shows work and asks for decisions you can actually make: milestone reports, decision pages, evidence walks. |
 | `feedback-intake` | Receives whatever you hand back — a remark, an answer, a screenshot, a dropped file — and routes each item to the file that owns it. |
