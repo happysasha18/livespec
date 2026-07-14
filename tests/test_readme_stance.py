@@ -35,5 +35,15 @@ class TestReadmeStanceParagraph(unittest.TestCase):
         )
 
 
+class TestReadmeNoCommandSurface(unittest.TestCase):
+    """Row 312: the README states plainly there is no command surface to learn — you drive
+    it by talking and the pipeline runs underneath. Pins the strengthened intro sentence."""
+
+    def test_no_command_surface_stated(self):
+        body = read_flat("README.md")
+        self.assertIn("There are no commands to memorize", body)
+        self.assertIn("no command list to hunt for", body)
+
+
 if __name__ == "__main__":
     unittest.main()

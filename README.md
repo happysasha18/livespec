@@ -4,7 +4,7 @@
 
 You say *"the report page needs a date filter"* in the middle of something else. No ticket, no planning session, no form. It gets classified, written into the living spec, reviewed by a formal-verification pass, covered by tests derived from that spec, coded until green, and committed together with its documents in the same change.
 
-There is no CLI. You talk to it.
+There is no CLI. You talk to it. There are no commands to memorize: a wish arrives in one sentence mid-conversation and the pipeline runs underneath, so a newcomer has no command list to hunt for.
 
 ---
 
