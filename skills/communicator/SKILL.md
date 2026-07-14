@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 1.0.11
+  version: 1.0.12
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -209,19 +209,13 @@ The form of the showing: one window, real data, retold as a small story, opened 
      evidence walk (SPEC INV-25) — the number IS the answer. —
      *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64 checks, v0.9.16)"*
 
-- **Show the map as a map — status icons in a short list.** *(rule 9)*
-   - When saying where we are and what's next, render the roadmap as a short bulleted list with
-     status icons — ✅ landed · 🔨 in work now · ⬜ queued, in order · 🙋 waiting on the human — the
-     current item visibly marked, finished stretches collapsed to a line each. Each line carries one
-     clause of substance beyond the title, matched to its status: a landed item says what it changed, an
-     in-work item what is happening right now, a queued item what it will give, a waiting item exactly
-     what is asked — so the list informs, not just enumerates. Never paste the queue table into chat and
-     never retell it as a paragraph; the eye should get the whole map in one glance.
+- **Show the map as a map — one legend, done through remaining.** *(rule 9)*
+   - When saying where we are and what's next, render it as a short bulleted list under one legend used the same way in every status report — ✅ done · 🔄 in progress (name the pipeline station) · ⏳ remaining/queued, in order · ⚠️ needs the human's word · ⏱ time/estimate · 📖 docs — the current item visibly marked, finished stretches collapsed to a line each; the emoji carry the state, plain words carry the content, so the list stays readable without turning noisy. Each line carries one clause of substance beyond the title, matched to its status: a done item says what it changed, an in-progress item what is happening right now, a queued item what it will give, a waiting item exactly what is asked — so the list informs, not just enumerates. Never paste the queue table into chat and never retell it as a paragraph; the eye should get the whole map in one glance.
    - And each in-work line names its pipeline STATION — spec → prove → architecture → prove
      architecture → matrix → test → code → verify → commit & show, plus the terminal landed — the
      station vocabulary being the pipeline's own step names, one station per step, all nine (landed the
      terminal state), so the map reads like a departures board (SPEC INV-27): said in PLAIN WORDS with
-     the station trailing like any anchor — *❌ "row 16: in progress" · ✅ "🙋 evidence panel — the spec
+     the station trailing like any anchor — *❌ "row 16: in progress" · ✅ "⚠️ evidence panel — the spec
      sentence is written, your sort answer decides how it moves on (station: spec done, prove next)"* — a
      bare or gestured station name a plain reader can't place is the map failing (2026-07-06).
    - And the line's SHAPE obeys the outcome-leads law (SPEC INV-28): open with what changed for
@@ -230,9 +224,10 @@ The form of the showing: one window, real data, retold as a small story, opened 
      likewise. One fact = one standalone sentence. Never use riddle-compression whose parsing needs
      the writer's context (the departures-board case in the references file).
    - With several trains rolling (SPEC T-18 — up to three without asking), each in-work lane keeps its own board line, and a lane
-     WAITING for the pen says so, naming whom it waits behind — *✅ "🔨 update checker — code
+     WAITING for the pen says so, naming whom it waits behind — *✅ "🔄 update checker — code
      written, at integration, waiting behind row 135"* — waiting and working must read apart at a
      glance.
+   - A reported PLAN — steps not yet run — names, per step, whether it runs in PARALLEL with its neighbors and, when known, the MODEL tier doing the work: opus for judgment, sonnet for mechanical work, haiku for a one-shot, Fable only for the hard passes (his word) — both trailing in brackets like any anchor (rule 6).
 
 - **Anything handed to the human opens with its passport (SPEC INV-51).** *(rule 16)*
     - Every artifact handed or opened — a report page, a decision page, a rendered doc — LEADS with a
