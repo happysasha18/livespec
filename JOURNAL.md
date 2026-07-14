@@ -2,6 +2,17 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 22:47 IDT (opus orchestrator seat) — the Discussion write field beat is closed by a live re-verify
+
+**Why.** The M-295 fix was verified live end-to-end, not by tests alone. After the fix pushed (6c17bd8), a
+fresh GitHub discussion (#2) was created, the monitor run twice, and the outcome watched directly: run 1
+deposited exactly one inbox file and posted its claim + confirm markers; run 2 deposited nothing and added no
+comment (the discussion held exactly two comments throughout). So exactly-once holds on the real repo, not
+only in the mocked tests. The test discussion was deleted and the local deposit commit reset, leaving the tree
+clean and origin untouched. This closes the field beat that first exposed the bug: the round-trip that broke on
+discussion #1 now runs clean on discussion #2. The remaining remote-deposit field beat still needs a real
+remote seat push, which this local seat cannot manufacture.
+
 ## 2026-07-14 22:40 IDT (opus worker seat, bug fix by the method) — the monitor's activity signal excludes its own writes (M-295, INV-146/147/149 wording corrected)
 
 **Why — a live round-trip on the package repo exposed it.** A real end-to-end round-trip on GitHub
