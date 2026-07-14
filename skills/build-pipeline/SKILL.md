@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.25
+  version: 1.0.26
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.12), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.13), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -531,7 +531,11 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   **The worker contract (SPEC ACT-3):** the brief NAMES the files the worker may write — its session's
   write-ownership narrowed to exactly those, reads free, writes fenced. Same-session sibling-worker files
   are fence-benign (the concurrent-edit fence alarms on foreign sessions, staying quiet on your own briefed
-  hands — the senior who briefed both owns the seams between briefs). The session's live setting lines ride
+  hands — the senior who briefed both owns the seams between briefs). Owning those seams is a brief-time
+  act: before spawning another concurrent writer, the senior confirms its brief's write-set is disjoint
+  from every already-running writer's brief, or gives it an isolated worktree (SPEC INV-105) — because
+  the fence stays silent between same-session siblings, this disjointness is settled when the briefs are
+  written, ahead of the new worker's first write. The session's live setting lines ride
   into the brief verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's
   spoken word.
 
