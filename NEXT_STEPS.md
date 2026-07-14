@@ -1,6 +1,6 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 22:47 — three lanes pushed + CI green, Discussion write field beat CLOSED; pack v1.4.2)
+## LIVE STATE (2026-07-14 23:24 — four lanes pushed + CI green, Discussion field beat CLOSED; a MINOR release awaits Alexander's word; pack v1.4.2)
 **PACK v1.4.2, PROVER v1.1.4.** Three lanes landed on origin this session, every push's CI green (`gh run`),
 suite 724 green: (1) the cross-host duplicate coordinator (INV-149, M-291); (2) property routing between the
 prover and the design review (INV-150 + INV-125/INV-126 sharpened, M-292/M-293/M-294) — each declared
@@ -13,12 +13,18 @@ continuous-gesture opening; the inbox openable-faces wish is realized and harves
 folded before push; (3) a monitor idempotency fix (M-295) that a LIVE round-trip exposed — the monitor
 re-surfaced an item because GitHub bumps `updatedAt` past its own marker comments, now the activity generation
 reads from non-marker comments on both channels. **The request-layer classifier (INV-151/152/153, M-296/297/298)
-is now BUILT LOCALLY** — suite 724→736 green, shipped-language clean, NOT yet pushed: the door set is written
-CLOSED at build-pipeline's door step with the entry-layer criterion + the one-plain-question fallback, the
-deferral-must-justify-itself clause is base rulebook rule 29, and the unification is stated once (INV-153).
-The orchestrator owns the pack version bump, the mandatory INV-46 fresh-eyes adversarial pass (this edits the
-method), the deep whole-spec pass, and the push. Read this, then memory can be wiped — the whole story lives in
-JOURNAL + the prover/design-review records.
+is PUSHED** (`bccfad3`, CI green) — suite 736 green: the door set is written CLOSED at build-pipeline's door
+step with the entry-layer criterion + the one-plain-question fallback, the deferral-must-justify-itself clause
+is base rulebook rule 29, and the unification is stated once (INV-153). Its mandatory fresh-eyes adversarial
+pass ran and its one real finding was folded before push (the intake back-check test was vacuous — now
+red-first on a phrase unique to the new wiring; design-reviewer added to the base-pin guard).
+
+**A MINOR release awaits Alexander's word.** The session added five invariants of new capability
+(INV-149 through INV-153), which is a MINOR bump by semver (1.4.2 → 1.5.0). The bump and its deep Fable
+whole-spec + architecture audit are held for Alexander: he reserved the version/pin alignment for his own word
+(row 231), and the deep Fable pass runs only on his word. Everything is landed, green, and CI-confirmed at
+1.4.2; the release is one word away. Read this, then memory can be wiped — the whole story lives in JOURNAL +
+the prover/design-review records.
 
 ## What landed this session
 0. **Property routing between the two reviews (INV-150, INV-125/INV-126, M-292/M-293/M-294).** Each declared
