@@ -54,9 +54,7 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    eye at the feel gate, never a pixel row's claim. The never side: never a render inventing its own
    structure shipped green. Its sibling half lives in build-pipeline's code step — the norm-open rule
    with the plan-vs-prototype diff line in the landing report — and a review cites the two halves
-   together. (Born of the onboarding card's bounce, 2026-07-10: the first render invented its own row
-   format, dropped three norm sections, and shipped green; matrix row M-211 is the first live
-   instance of the conformance row this rule now demands.)
+   together.
 8. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
    node's never-side rows present · every module block owns an interface-level row (P9) · every row's
    level follows its footprint layer, presentation at browser-computed or above (P8) · no stale
@@ -114,9 +112,7 @@ background throttling live past a desktop headless browser's reach — iOS ignor
 behaviour living there gets a **real-device walk row**: a matrix row the suite can never turn
 green, owed to the human's own hands on a real phone before ship — kin of the feel gate (feel is
 the human's call, never shipped off green alone). The row states WHAT the hands check and on which
-device class; the suite says plainly what it cannot see. (Born of a real week: a momentum swipe
-flew through several works on a phone, and a backgrounded tab turned a 2.5 s failsafe into a black
-screen — both past every green desktop run.)
+device class; the suite says plainly what it cannot see.
 
 ## Writing the tests (the pipeline's step 6)
 
@@ -145,16 +141,12 @@ screen — both past every green desktop run.)
   only ever asserted equal to itself. Three sources are legal: a hand-computed constant, an independent
   derivation, or a recorded real output reviewed by a human. A round-trip or property test over the
   outputs stays legal, because it asserts an invariant rather than a recomputed value; the ban strikes
-  only an assertion whose expected value is produced by the same formula the code runs. (Born of row
-  220's audit: green suites missed real walk bugs because tests recomputed the code's own formula as
-  the expected value, 2026-07-10.)
+  only an assertion whose expected value is produced by the same formula the code runs.
 - **A geometry fact is asserted relative, wide, and long (SPEC INV-78).** A centering or
   positioning fact asserts relative geometry — the element's center within ε of the viewport's
   center — at two or more viewport sizes, and after N consecutive steps of the interaction, so
   cumulative drift shows. An absolute-pixel assertion at one viewport after one step passes forever
-  while each next step lands further off-center. (Born of a real bug: centering computed by an
-  absolute shift that differed from the screen size — every next image further off, every one-step
-  test green.)
+  while each next step lands further off-center.
 - **Never edit a test to make a change pass.** A red test means the change or the matrix cell is
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned
@@ -174,9 +166,7 @@ screen — both past every green desktop run.)
   generic engine is carved out of a working project, its suite runs on engine-shaped fixtures — its
   own ids, its own content model; the donor's data may stay as an extra real-data suite, never as
   the only one. Every donor constant the extraction finds gets a works-without-it test against the
-  content contract the spec names. (Born of a real bug: the donor's digits-only id pattern stayed in
-  the engine's validator and rejected the engine's own slug ids — every story call failed, and the
-  donor-shaped suite stayed green.)
+  content contract the spec names.
 - **The bug protocol:** a bug fixes the matrix cell (or adds the missing invariant row) first, then a
   test proven red on the bug, then the code. Code chases the matrix.
 

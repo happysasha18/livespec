@@ -272,3 +272,68 @@ class TestSpecContentRegisterClean(unittest.TestCase):
         offenders = [i for i, ln in enumerate(self._spec().splitlines(), 1)
                      if ln.lstrip().startswith(">") and anchor.search(ln)]
         self.assertEqual(offenders, [], "anchor inside a blockquote at SPEC lines %s" % offenders)
+
+
+class TestProvenanceOutOfBody(unittest.TestCase):
+    """Provenance stays out of the normative body: no birth-story ("(Born of …)", a Formal-index
+    "; born of …" cell, or a "Born of …" / "was born of …" sentence) lives in PRODUCT_SPEC.md or any
+    skill body — its home is the code-keyed docs index (docs/lenses.md), the JOURNAL, or a prover
+    record (docs/spec-style.md R/HARD). The lint's provenance-narrative arms enforce it; this is the
+    standing completeness gate for the sweep — red while a story sits in a body, green when the last
+    one has moved to its docs home."""
+
+    SKILL_GLOB = "skills/*/SKILL.md"
+
+    def _load_linter(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "specstylelint", os.path.join(SCRIPTS, "spec-style-lint.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def _bodies(self):
+        import glob
+        paths = [os.path.join(ROOT, "PRODUCT_SPEC.md")]
+        paths += sorted(glob.glob(os.path.join(ROOT, self.SKILL_GLOB)))
+        return paths
+
+    def test_no_provenance_narrative_in_any_body(self):
+        lint = self._load_linter()
+        offenders = []
+        for path in self._bodies():
+            text = open(path, encoding="utf-8").read()
+            errs, _ = lint.lint(text)
+            rel = os.path.relpath(path, ROOT)
+            offenders += [(rel, ln, snip) for ln, code, snip in errs
+                          if code == "provenance-narrative"]
+        self.assertEqual(
+            offenders, [],
+            "a birth-story sits in a normative body — move it to docs/lenses.md, the JOURNAL, or a "
+            "prover record (docs/spec-style.md R/HARD). %d found:\n%s"
+            % (len(offenders), "\n".join("  %s:%d  %s" % o for o in offenders)))
+
+    def test_ordinary_verb_born_of_is_not_flagged(self):
+        """The lint keys on SHAPE, so the ordinary restrictive verb survives while the story is caught."""
+        lint = self._load_linter()
+        for legal in ("every row born of a split cites the one spoken wish it came from.",
+                      "A clause born of an approved look points at its norm."):
+            errs, _ = lint.lint(legal)
+            codes = [c for _, c, _ in errs]
+            self.assertNotIn("provenance-narrative", codes,
+                             "ordinary-verb 'born of' wrongly flagged: %r" % legal)
+        for pointer in ("A prototype-born clause cites norm: docs/norms/x.html at line end.",
+                        "Each entry citing the engine's own public commit abc1234."):
+            errs, _ = lint.lint(pointer)
+            self.assertNotIn("provenance-narrative", [c for _, c, _ in errs],
+                             "one-token pointer wrongly flagged: %r" % pointer)
+
+    def test_each_story_shape_is_caught(self):
+        lint = self._load_linter()
+        for story in ("The gate blocks a defect. (Born of a real prover walk, 2026-07-13.)",
+                      "| INV-x | the rule holds; born of the row 220 audit (2026-07-10) | Door |",
+                      "The rule holds. Born of two windows filling their own context (2026-07-13).",
+                      "This tripwire was born of the row 220 audit (2026-07-10)."):
+            errs, _ = lint.lint(story)
+            self.assertIn("provenance-narrative", [c for _, c, _ in errs],
+                          "a birth-story shape slipped past the lint: %r" % story)

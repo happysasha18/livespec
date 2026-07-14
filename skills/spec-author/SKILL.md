@@ -118,7 +118,7 @@ This is the shape `product-prover` is tuned to read, and the one a human will ac
 
 A shipped product doc — the spec, the test matrix, the README, a skill card — is read by everyone the project reaches: a contributor, an auditor, a future user, you in three months. Write each requirement as three plain parts: the rule, the actor as a role (the user, the producer, the target user), and the reason it holds. The reason is load-bearing and stays; the personal attribution drops, and a dated decision keeps the date as a plain anchor and drops the name — "chosen 2026-07-06 for a cold-start reader" carries what the next reader can act on, where a person's name carries nothing they can.
 
-For that reason, personal attribution and candid process voice have one home: the local-only diaries, the JOURNAL and NEXT_STEPS, which no publish ships. Who decided a thing, and a session's own frank notes about how it went, belong there — the shipped clause carries the rule and its reason, the diary carries the story. Write the shipped clause impersonally from the first draft rather than scrubbing names at publish time; the publish floor is the backstop, not the author. (Born of a shipped spec that had accumulated many owner attributions over months, found in a 2026-07-12 audit — SPEC INV-118.)
+For that reason, personal attribution and candid process voice have one home: the local-only diaries, the JOURNAL and NEXT_STEPS, which no publish ships. Who decided a thing, and a session's own frank notes about how it went, belong there — the shipped clause carries the rule and its reason, the diary carries the story. Write the shipped clause impersonally from the first draft rather than scrubbing names at publish time; the publish floor is the backstop, not the author. (SPEC INV-118.)
 
 ## The spine — what every spec must CONTAIN (not its section order)
 
@@ -264,8 +264,7 @@ declared design principles; the spec names the answer so the pass has something 
 - **the performance envelope** — at what input size it must stay usable; for a user-facing surface
   this facet ends as a MEASURABLE budget sentence ("the first image appears within 2 s on a cold
   visit"), never an unmeasurable "fast enough" — the architecture step pairs the budget with an
-  instrumentation home and acceptance asserts it (SPEC INV-41; born of a gallery whose first picture
-  loaded long with nothing measuring it, 2026-07-06);
+  instrumentation home and acceptance asserts it (SPEC INV-41);
 - **visual hierarchy** — the gap BETWEEN separate things larger than the gap WITHIN one thing (nesting
   depth drives spacing, never per-element guesswork); a heading never dimmer or smaller than the body it
   heads, sizes from one scale (incident: track-coach's inverted panel margins, 2026-07-05);
@@ -287,8 +286,7 @@ declared design principles; the spec names the answer so the pass has something 
   bounds. And when a slot is filled by asynchronously produced content, write the three faces of a wait —
   pending, arrived, failed — with a visible pending face while the content is in flight; this is the
   empty/error/loading facet above made specific for a reserved slot, its loading state named and shown. Each edge becomes a
-  spec sentence, decided or `[default]`-tagged like any facet (SPEC INV-138; born of a returning-visitor line
-  unbounded at both ends and a story slot left blank in flight, tlvphotos 2026-07-13).
+  spec sentence, decided or `[default]`-tagged like any facet (SPEC INV-138).
 
 **The list is curated, each facet earning its place by named incident.** A facet joins ONLY with a named real incident it would have
 caught — each entry above carries its incident — and the list is re-justified at milestones; a checklist
@@ -402,9 +400,7 @@ format, a hardcoded wordmark, a path, a language default. At extraction the spec
 contract** section: every donor-specific constant the extraction finds becomes a named entry — what
 the engine requires from ANY instance's content, in the engine's own vocabulary — and each entry
 owes a test that the engine works without the donor's value (test-author's half of the same law).
-An assumption with no entry is a leak the next instance discovers in production. (Born of a real
-bug: the donor's digits-only id pattern rode into the engine's validator and rejected the engine's
-own slug ids.)
+An assumption with no entry is a leak the next instance discovers in production.
 
 ## Crossing the instance→engine boundary — provenance and naming (SPEC INV-119)
 
@@ -416,8 +412,6 @@ Four conventions carry the boundary:
 - **Provenance cites the engine's own public commit.** Each entry names where the behaviour landed in the engine — "landed in engine commit `<hash>`" — a commit any reader can check out in the engine's own history. A private instance's commit is invisible to that reader, so an instance hash stays out of the engine's provenance.
 - **One intro sentence states the normal intake path, once.** Open the log with a single sentence naming the usual route — "Most rows record a feature proven first on a live instance and then generalized into the engine" — so no per-entry line re-explains where features come from.
 - **A mechanism carries a neutral internal name; a visible instance label is marked as instance copy.** Name a mechanism by what it does in the engine's own vocabulary — "the unfold step", "the show-more control". Where a running instance shows locale-specific words for it, the spec notes that string as instance-supplied copy the instance plugs in [INV-79], and the neutral term stays the mechanism's one name [E-4].
-
-(Born of the exhibition-engine public-publish pass, 2026-07-12: the spec carried a "Deltas from the <instance> reference implementation" heading citing private-instance commit hashes, and named a generic mechanism by the instance's own locale UI label across eight clauses.)
 
 ## Standard vocabulary — what our house terms map to
 

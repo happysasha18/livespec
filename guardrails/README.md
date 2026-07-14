@@ -107,7 +107,5 @@ history — and its `TZ` pin, so "today" is measured in the author's own timezon
 A host with taste-reviewed artifacts keeps a kill-list beside them (template:
 `templates/KILL_LIST.template.md` — the human's cuts as dated literals, appended, never removed) and
 wires a SCANNER: a test that reads the kill-list table and greps the artifact's surfaces for each
-literal — a killed phrase reappearing turns the suite red. Born of a real case: a banned pattern
-returned into a campaign's most visible line after the ban was "written on the forehead"; only the
-executable scanner ended it (promoter, 2026-07-07). Same shape as every gate here: the list is the
+literal — a killed phrase reappearing turns the suite red. Same shape as every gate here: the list is the
 declared truth, the test re-walks it every run.

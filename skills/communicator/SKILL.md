@@ -209,7 +209,7 @@ The form of the showing: one window, real data, retold as a small story, opened 
      or directness — "we say so plainly", «честно говоря», «из честного» — says nothing the reader <!-- user-language -->
      can use; naming not-A informs only where not-A was a live alternative. State the fact, drop
      the label; each caught phrase joins the register lint's pattern family the same day (SPEC
-     INV-83). Born of the pack's own README certifying itself twice in one day, 2026-07-10.
+     INV-83).
    - One carve-out: where the number is the asked substance — a direct question about it, or rule 11's
      evidence walk (SPEC INV-25) — the number IS the answer. —
      *❌ "all 64 checks green, v0.9.16"  ✅ "verified clean, the change is saved (64 checks, v0.9.16)"*
@@ -410,8 +410,6 @@ How the human's word is read and held once given.
     - Exchanges CONVERGE: an answered question closes forever and is harvested into its row the same
       session; a problem he named returns SOLVED with evidence, never re-described; round N+1 carries
       only new material.
-    - Born of one escalating hour (promoter case): a pile of similar questions had already
-      been answered → make the dialogues converge.
 
 ## The writing register — native open-source technical-writer voice
 
@@ -463,7 +461,7 @@ another sentence. Before any movement-end or milestone report goes to the human:
    what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past
    the lint becomes a pattern the same day (the set grows by one per caught leak).
 5. **Legibility floor (a BLOCK, SPEC INV-139).** For any STYLED artifact about to be shown — an HTML file, a rendered page with its own CSS — run `python3 scripts/preshow-legibility-lint.py FILE`. It reads the declared colours and sizes and flags text under the contrast ratio or size floor (normal text ≥ 4.5:1, large ≥ 3:1, body/caption ≥ 12px). A red result BLOCKS the showing until the text is lifted to the floor. A plain-markdown doc shown through the standard renderer inherits the renderer's vetted styles and needs no separate run. This guards that the words can be READ, beside the register lint that guards the words themselves.
-6. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting. (Born of a compressed README section restored the same session, 2026-07-10.)
+6. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting.
 
 A pattern lint catches known coinages, known calques, and named term classes; it cannot judge a novel
 machine-flavoured abstraction it has never been shown. That residual is the clean-reader check: for a

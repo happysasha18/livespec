@@ -167,14 +167,12 @@ a working skill still stands: its pointer here reads as plain advice.
    owner now, and the ask rides the batched report. A THIRD recurrence arriving unowned is a defect of
    the METHOD rather than of the day — it goes to the pack's own queue (from a host window: one inbox file).
    A recurrence on an owned entry appends its date and changes nothing else; the landing that closes an
-   OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23; born of tlvphoto's retried-never-owned
-   noise, 2026-07-05.) **And a known, owned problem never blocks unrelated work (SPEC INV-56):** it is PARKED — the
+   OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23.) **And a known, owned problem never blocks unrelated work (SPEC INV-56):** it is PARKED — the
    ledger line, the owning row, or an expected-red note holds it — and every
    unrelated lane keeps rolling; hand-fixing loops cap at the two-strikes law above, and a defect with
    a NAMED mechanical owner is serviced in BATCH — instances fixed silently where the fence catches
    them, one ledger append at the session's end, with no per-instance ceremony interrupting the
-   work (born of a clock drift hand-ceremonied ten times in one night while its owner row sat open,
-   2026-07-07). A real NEW bug still preempts; this governs only the known, owned problem.
+   work. A real NEW bug still preempts; this governs only the known, owned problem.
 
 20. **Search for a skill before reinventing (SPEC INV-65).** At a project's setup (founding, or
    adoption's orient, beside the founding questions) scan the installed skills and the catalogs you

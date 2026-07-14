@@ -16,6 +16,10 @@ Checks (each maps to a rule in docs/spec-style.md):
   ERROR   scissors         the contrast frame that names a thing by denying its neighbour, in a dash
                            or comma appositive or the parallel Russian negation-then-replacement forms
                            (a GLOBAL, PERMANENT ban).
+  ERROR   provenance-narrative  a birth-story ("(Born of …)", "; born of …", a "Born of …" sentence) in
+                           a normative body; provenance stays out of the body, in a docs home keyed by
+                           the rule's code (docs/spec-style.md R/HARD, docs/lenses.md). The ordinary verb
+                           ("a row born of a split") is left alone.
   ERROR   machine-jargon   a dev/corporate word that has no place in this user-facing spec (R7).
   WARN    caps-shout       an ALL-CAPS ordinary word; force comes from the statement, not caps (R12).
   WARN    second-person    "you"/"your" — the register speaks of named actors, not the reader (R3).
@@ -154,6 +158,29 @@ FUTURE_NARRATION = re.compile(
     r"(?<!\w)(?:will|shall)\s+(?:be|show|shows|display|appear|open|contain|"
     r"return|carry|report|hold|become|run|fire|land|ship)\b", re.IGNORECASE)
 
+# --- provenance-narrative (global, R/HARD) ---------------------------------------------------
+# A normative body states the mechanism in plain present tense; the provenance — the date and the
+# case that motivated the rule — lives in a docs home keyed by the rule's code (docs/lenses.md), never
+# as an inline birth-story. The tell has three shapes, told apart from the ordinary verb by SHAPE, not
+# by the word alone: a parenthetical aside "(Born of …)", a Formal-index trailing cell "…; born of …",
+# and a sentence that OPENS with "Born of …" or says "… was born of …". The two ordinary-verb uses —
+# "every row born of a split cites …", "a clause born of an approved look points at its norm" — are
+# lowercase, mid-clause, and carry no story; none of the arms below match them. The one-token dated
+# pointers the rule permits (INV-43's `norm: <path>`, INV-119's `commit <hash>`) carry no "born of".
+PROV_PAREN = re.compile(r"\([^)]*\bborn of\b", re.IGNORECASE)   # parenthetical aside "(Born of …)"
+PROV_CELL = re.compile(r";\s+born of\b", re.IGNORECASE)         # Formal-index trailing cell "…; born of …"
+# a clause OPENING with capital-B "Born of" (sentence/bullet start) or the "was born of" form; the
+# capital B (no re.IGNORECASE) is what tells the story-opener from the lowercase ordinary verb.
+PROV_SENTENCE = re.compile(r"(?<![A-Za-z])Born of\b")
+PROV_WASBORN = re.compile(r"\bwas born of\b", re.IGNORECASE)
+
+
+def _is_provenance_narrative(scrub):
+    """A birth-story in a normative body: a parenthetical/cell aside or a story-opening sentence.
+    Told from the ordinary verb by shape (parenthesis, leading `;`, or a capital-B/was-born opener)."""
+    return bool(PROV_PAREN.search(scrub) or PROV_CELL.search(scrub)
+                or PROV_SENTENCE.search(scrub) or PROV_WASBORN.search(scrub))
+
 
 def lint(text, gate=False):
     """Return (errors, warnings); each a list of (line_no, code, snippet).
@@ -187,6 +214,8 @@ def lint(text, gate=False):
             errors.append((i, "negation-opener", stripped[:110]))
         if SCISSORS.search(scrub):                                   # global
             errors.append((i, "scissors", stripped[:110]))
+        if _is_provenance_narrative(scrub):                          # global
+            errors.append((i, "provenance-narrative", stripped[:110]))
         for m in JARGON_RE.finditer(scrub):                          # global
             errors.append((i, "machine-jargon:%s" % m.group(1).lower(), stripped[:110]))
         for m in CAPS_RE.finditer(scrub):                            # global
@@ -245,7 +274,8 @@ def main(argv):
         print("OK (spec-style%s): no register tells found." % ("/gate" if gate else ""))
     if errors:
         print("SPEC-STYLE LINT — ERROR (docs/spec-style.md): a rule opens with what it is NOT,")
-        print("shouts, uses machine jargon, cuts with «X — not Y», reassures, or narrates the future.")
+        print("shouts, uses machine jargon, cuts with «X — not Y», carries a birth-story in the body,")
+        print("reassures, or narrates the future.")
         for line_no, code, snip in errors:
             print("  line %d  [%s]  %s" % (line_no, code, snip))
     if warnings:
