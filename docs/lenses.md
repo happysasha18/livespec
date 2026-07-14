@@ -24,6 +24,13 @@ A gallery whose first picture loaded long with nothing measuring it — "fast en
 standard. The facet now ends as a measurable budget ("the first image appears within 2 s on a cold
 visit") paired with an instrumentation home and an acceptance assertion.
 
+### INV-46 — an audit is adversarial; the trigger broadened to method edits    (2026-07-12)
+Sharpened 2026-07-12: a self-built method law — the entry impact-analysis station [INV-128] — passed its
+author's own prover pass clean, and a fresh-context audit on the "goal missed" hypothesis caught a real
+contradiction with the door law [INV-16]. The audit the old delegated-and-surface-sized trigger left
+optional is the one that caught the defect, so the trigger broadened to cover a method edit whose only
+review was its author's own.
+
 ### INV-50 — a conditionally-entered face owes a re-entry path    (from a real door)
 On a real door, six seams were found and the one-way face was missed: a face entered only under a
 condition (first visit, empty state, a one-time banner) with no deliberate path back. The dead-end
@@ -39,6 +46,29 @@ Born of a real two-writer race (2026-07-09), and of the prover finding that a co
 writing no file for minutes and slow to service the probe — read dead on both original checks though
 it was live (2026-07-12). The third check (a heartbeat on the checkpoint file) was added so a
 mid-computation worker is not declared dead.
+
+### INV-84 — human-facing prose is drafted by a clean writer    (2026-07-10)
+Born in the field: nine clean-drafted reader docs passed the owner's bar the first time, while a
+marinated session's onboarding text bounced three times the same night.
+
+### INV-88 — product copy states rules; personal values stay the reader's own    (2026-07-10)
+Set by the owner after a mockup showed his own language and name as if the product prescribed them.
+
+### INV-93 — every ask hears its price in time    (2026-07-10)
+Set by the owner at the 1.0 release, and raised again the same day when a session's own reports ran loose
+on it.
+
+### INV-95 — one spoken leave-word winds the session to a shutdown-safe stop    (2026-07-10)
+Set on the owner's word from the café: one command reaches the point where the laptop can close.
+
+### INV-96 — everything built with the method carries an attribution line    (2026-07-10 · 2026-07-11)
+Set on the owner's word, then softened the same day by his own correction — the line is a wish, never an
+obligation. The mirror case, the pack's own standalone repos stamped by the sync script from the live
+VERSION file, was recorded 2026-07-11 (row 246).
+
+### INV-97 — the four project-side checks are code a host attaches    (2026-07-10)
+Raised by the web session's read — the curator gap the README then named; this contract's code landing
+retired it.
 
 ### INV-101 — declared cross-cutting laws, each with a per-surface test    (2026-07-10)
 His ~10:38 word from a worked miss: analytics covered some beats while whole surfaces emitted nothing,
@@ -158,6 +188,18 @@ real phone. See also `docs/prover/2026-07-13-prover-overlap-lens.md` (the siblin
 Tlvphotos's polaroid side-room was revealed under a soft black veil in one breath and closed on a hard
 cut with no transition at all — an asymmetry nobody decided on purpose, found only by the owner feeling
 it on a real phone.
+
+### INV-127 — a scenario states how it is entered and how it exits    (2026-07-09)
+Recorded 2026-07-09: the prover should say, where needed, which preconditions and postconditions hold —
+how a scenario is entered, how it is exited. Deferred as a large theme and revived at the next
+prover-method landing.
+
+### INV-128 — the entry impact read reads spec, architecture, and code together    (2026-07-12)
+Recorded live 2026-07-12: every incoming request gets an entry analysis reading the spec and the
+architecture and the code together, the footprint named before any work starts and deciding the route —
+the entry station of the fourteen-principle architect draft, its principles P1–P6. The deeper mechanical
+enforcement — the footprint-note suite check, the per-kind concrete-layers declaration, the cross-cut
+counter — rides the follow-on rows.
 
 ### INV-136 — interactive controls from different layers do not share one screen region    (2026-07-13)
 A floating player was left pressable over a zoom overlay's close, found by hand on a real phone — two

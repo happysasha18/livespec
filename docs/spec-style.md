@@ -34,9 +34,11 @@ plus the capitalized keyword system.)
 - **R12 — Typographic shout is not force.** Remove ALL-CAPS/bold on ordinary verbs ("CHANGES"). Force comes from the declarative statement itself.
 - **R13 — Open with what a thing IS, never define it by exclusion.** A rule states what happens, then narrows. "X does not become Y" as an opener — saying what a thing is not, via a copula or a becoming verb, before saying what it is — is the tell that reads as dead machine prose. This is distinct from a PROHIBITION ("the walk does not ask how long", "a restructure never re-carves"): a prohibition on an action is correct register per R4 and is welcome. The ban is only on define-by-exclusion openers; the words "not" and "never" remain otherwise unrestricted.
 - **R14 — A process is a list instead of a paragraph.** When a rule describes a sequence of steps or a set of parallel parts (a wish arrives → a card → an answer → the pipeline files it → …), it is written as a bulleted or numbered list, one step per bullet, under a one-line lead. A multi-step process flattened into a running paragraph loses the thread — the failure this doc's own first drafts made.
+- **R15 — Provenance stays out of the normative body.** A normative body states the mechanism in plain present tense. The provenance — the date and the case that motivated the rule — lives in a docs home keyed by the rule's code (`docs/lenses.md`), the JOURNAL, or a dated prover record, never inline as a birth-story. The tell is a birth-story by SHAPE, told apart from the ordinary verb by shape rather than by the word alone: a parenthetical aside (`(Born of …)`, `(Set by the owner …)`, `(Set on the owner's word …)`, `(Born in the field: …)`, `(Sharpened …)`, `(Raised by …)`, `(recorded … )`, `(the worked miss: …)` and their dated/attributed kin), a Formal-index trailing cell (`…; born of …`), or a sentence that opens `Born of …` or says `… was born of …`. The ordinary restrictive verb carries no story and is left alone (`a row born of a split cites its wish`), as is a one-token dated pointer the rule permits (`norm: <path>`, `commit <hash>`). This is the register floor's provenance arm; `scripts/spec-style-lint.py` checks it as the `provenance-narrative` ERROR.
 
 **HARD (unchanged from the current doc):** every bracketed anchor token stays VERBATIM in place; never
-drop a rule; keep `##`/`###` headings and bold law-titles; provenance stays out of the body (in JOURNAL).
+drop a rule; keep `##`/`###` headings and bold law-titles; provenance stays out of the body (R15) —
+its home is `docs/lenses.md` keyed by the rule's code, the JOURNAL, or a dated prover record.
 
 ## The mechanical gate — a machine checks the register in place of patience
 
@@ -49,7 +51,8 @@ section by section.
 
 - **ERROR** (blocks): `negation-opener` (R13 define-by-exclusion), `machine-jargon` (R7 lexicon),
   `scissors` (the global ban on naming a thing by denying its neighbour — a dash or comma appositive,
-  or the parallel Russian negation-then-replacement forms).
+  or the parallel Russian negation-then-replacement forms), `provenance-narrative` (R15 — a birth-story
+  in a normative body, keyed instead to `docs/lenses.md`).
 - **warn** (advisory): `caps-shout` (R12), `second-person` (R3) — the whole un-converted spec still
   carries these; they double as a progress meter for how much re-styling remains.
 

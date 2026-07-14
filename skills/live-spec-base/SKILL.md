@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-six rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-eight rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.15
+  version: 1.0.16
 ---
 
 # live-spec-base — one rulebook, eight working skills
@@ -279,6 +279,19 @@ a working skill still stands: its pointer here reads as plain advice.
    call, a trade-off no artifact settles [INV-121], or a change to the definition of correct.
    It never parks derivable work on the human's queue to avoid deciding [INV-4]. The posture holds on
    every session, including one resumed from its files after a memory wipe [INV-48].
+
+28. **A periodic full audit catches the drift no lint names (SPEC INV-145).** Two layers guard the
+   living documents against rot. The continuous lints — the register lint, the provenance-narrative
+   arm, and their kin — run on every push and hold each KNOWN drift class the moment it reappears.
+   Beside them, a full audit runs on a landing-count cadence: every ten landings since the last full
+   audit [default; a host may set its own count on its word, SPEC INV-70], the pack runs a whole-read
+   of the living documents in the milestone gate's form (SPEC M-1) — the full spec and architecture
+   re-prove, the design review, and the doc-compaction sweep — even where no milestone falls due, so
+   an UNKNOWN drift class that accumulated between milestones is caught by a fresh whole-read rather
+   than surviving until a human reads it late. The count is read from the landing history, and a
+   milestone gate resets the counter since it already runs the whole-read. An audit is adversarial by
+   nature: a whole-read that sets out to break the work, refute its claims, and find its holes (SPEC
+   INV-46).
 
 
 ## When NOT to load this

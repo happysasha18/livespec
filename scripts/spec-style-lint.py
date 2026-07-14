@@ -16,10 +16,10 @@ Checks (each maps to a rule in docs/spec-style.md):
   ERROR   scissors         the contrast frame that names a thing by denying its neighbour, in a dash
                            or comma appositive or the parallel Russian negation-then-replacement forms
                            (a GLOBAL, PERMANENT ban).
-  ERROR   provenance-narrative  a birth-story ("(Born of …)", "; born of …", a "Born of …" sentence) in
-                           a normative body; provenance stays out of the body, in a docs home keyed by
-                           the rule's code (docs/spec-style.md R/HARD, docs/lenses.md). The ordinary verb
-                           ("a row born of a split") is left alone.
+  ERROR   provenance-narrative  a birth-story ("(Born of …)", "(Set by …)", "; born of …", a "Born of …"
+                           sentence) in a normative body; provenance stays out of the body, in a docs home
+                           keyed by the rule's code (docs/spec-style.md R15, docs/lenses.md). The ordinary
+                           verb ("a row born of a split") is left alone.
   ERROR   machine-jargon   a dev/corporate word that has no place in this user-facing spec (R7).
   WARN    caps-shout       an ALL-CAPS ordinary word; force comes from the statement, not caps (R12).
   WARN    second-person    "you"/"your" — the register speaks of named actors, not the reader (R3).
@@ -158,7 +158,7 @@ FUTURE_NARRATION = re.compile(
     r"(?<!\w)(?:will|shall)\s+(?:be|show|shows|display|appear|open|contain|"
     r"return|carry|report|hold|become|run|fire|land|ship)\b", re.IGNORECASE)
 
-# --- provenance-narrative (global, R/HARD) ---------------------------------------------------
+# --- provenance-narrative (global, R15) ------------------------------------------------------
 # A normative body states the mechanism in plain present tense; the provenance — the date and the
 # case that motivated the rule — lives in a docs home keyed by the rule's code (docs/lenses.md), never
 # as an inline birth-story. The tell has three shapes, told apart from the ordinary verb by SHAPE, not
@@ -169,6 +169,17 @@ FUTURE_NARRATION = re.compile(
 # pointers the rule permits (INV-43's `norm: <path>`, INV-119's `commit <hash>`) carry no "born of".
 PROV_PAREN = re.compile(r"\([^)]*\bborn of\b", re.IGNORECASE)   # parenthetical aside "(Born of …)"
 PROV_CELL = re.compile(r";\s+born of\b", re.IGNORECASE)         # Formal-index trailing cell "…; born of …"
+# a dated birth-story parenthetical opening with a provenance verb/phrase and carrying an ISO date:
+# "(Set by …)", "(Set on …)", "(Born in the field: …)", "(Sharpened … :)", "(Raised by …)",
+# "(recorded live … :)", "(recorded 2026-… :)", "(The trigger broadened … :)", "(the worked miss: …)".
+# It is told from an ordinary dated note (which opens with a bare date, "Audit", "rows", "The owner's
+# word", or a dateless "(recorded profile line …)") by its provenance OPENER, and the required ISO date
+# keeps a dateless parenthetical from tripping. The `recorded` arm uses a lookahead so the date it needs
+# is not consumed by the opener.
+PROV_STORY_OPEN = re.compile(
+    r"\(\s*(?:Set (?:by|on)|Born (?:of|in)|Sharpened|Raised by|Softened"
+    r"|[Rr]ecorded (?=live |\d{4})|The trigger broadened|the worked miss)"
+    r"[^)]*\d{4}-\d{2}-\d{2}")
 # a clause OPENING with capital-B "Born of" (sentence/bullet start) or the "was born of" form; the
 # capital B (no re.IGNORECASE) is what tells the story-opener from the lowercase ordinary verb.
 PROV_SENTENCE = re.compile(r"(?<![A-Za-z])Born of\b")
@@ -179,7 +190,8 @@ def _is_provenance_narrative(scrub):
     """A birth-story in a normative body: a parenthetical/cell aside or a story-opening sentence.
     Told from the ordinary verb by shape (parenthesis, leading `;`, or a capital-B/was-born opener)."""
     return bool(PROV_PAREN.search(scrub) or PROV_CELL.search(scrub)
-                or PROV_SENTENCE.search(scrub) or PROV_WASBORN.search(scrub))
+                or PROV_SENTENCE.search(scrub) or PROV_WASBORN.search(scrub)
+                or PROV_STORY_OPEN.search(scrub))
 
 
 def lint(text, gate=False):

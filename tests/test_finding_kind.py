@@ -23,6 +23,18 @@ def test_severity_axis_retired_from_prover():
         assert token not in pp, f"retired severity token {token!r} still in prover SKILL"
 
 
+def test_severity_axis_retired_from_spec_and_readme_case_insensitive():
+    """The retired three-level severity vocabulary is gone from the two most
+    visible normative surfaces — case-insensitively, so a capital 'Must-fix'
+    cannot survive again (D1/D2 defect class, INV-140 single-axis collapse)."""
+    import re
+    tokens = ("must-fix", "should-clarify", "should-fix", "nice-to-have", "worth-considering")
+    pat = re.compile("|".join(re.escape(t) for t in tokens), re.IGNORECASE)
+    for rel in ("PRODUCT_SPEC.md", "README.md"):
+        hits = [m.group(0) for m in pat.finditer(_flat(rel))]
+        assert hits == [], f"retired severity token(s) still in {rel}: {hits}"
+
+
 def test_push_gate_folds_on_kind():
     """M-6 folds on kind, not on a separate severity level."""
     spec = _flat("PRODUCT_SPEC.md")

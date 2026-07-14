@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.27
+  version: 1.0.28
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.15), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.16), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -342,8 +342,9 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    never commit; write the failing test name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint
    IS the red test.
 
-   **The adversarial audit — a second pair of FRESH eyes, REQUIRED where the stakes are high and only the
-   author has judged the work (SPEC INV-46).** Verify runs a fresh-context checker when the change is
+   **The audit — a second pair of FRESH eyes, REQUIRED where the stakes are high and only the
+   author has judged the work (SPEC INV-46).** An audit is adversarial by nature: a whole-read that sets
+   out to break the work, refute its claims, and find its holes. Verify runs a fresh-context checker when the change is
    HIGH-STAKES and its only review is the author's own. High-stakes means one of two things: the delta is
    surface-sized (a new surface or a multi-file behaviour change), or the change edits the method itself — a
    rule whose MEANING changed, a new or re-scoped invariant (a wording-only edit that changes no rule's
@@ -361,10 +362,7 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    Findings become rows or red, never a nod, folded before the landing commits. The checker is a worker
    under the full contract (checkpoint, ledger, clock), and its verdict rides the landing report. Anywhere
    else the checker is the senior's option. A skill or prose landing walks the ladder in its kind's form:
-   the checker re-reads the SHIPPED text against the spec sentences. (The trigger broadened 2026-07-12: a
-   self-built method law passed its author's own prover pass clean, and a fresh adversarial context caught a
-   real contradiction with the door law — the audit the old delegated-and-surface-sized trigger left
-   optional is the one that caught the defect.)
+   the checker re-reads the SHIPPED text against the spec sentences.
 
 9. **Commit & show.** Commit when green with no regression (unasked) — same or better is enough, never wait for perfect. Where the host has a remote, PUSH accepted work there by rule (SPEC INV-82): every gate the diff reaches ran and passed (the verdict read from the suite log's own line), plus the host's own push lines; the remote is discovered from the tree, and only a host with no remote gets one contextual question at the first push moment (create one — GitHub, GitLab, whatever the human names — or stay local, recorded in the host profile). Every push re-walks the README against the pushed truth — crisp and current, a stale claim fixed before the push (the shopfront law at every-push cadence). After the push the push step reads the remote gate's own verdict (the CI run the push triggered, one `gh run` read), and a red verdict is the pushing session's own immediate bug: fixed and re-pushed the same session before anything else, so the human never meets the red first in a GitHub email; a slow gate is watched to its verdict on the detached-work cadence (SPEC INV-106, INV-35). The human's personally named gates still wait for his word. Bump the version (PATCH by default).
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session. Diary the WHY

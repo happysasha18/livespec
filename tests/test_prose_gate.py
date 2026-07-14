@@ -278,7 +278,7 @@ class TestProvenanceOutOfBody(unittest.TestCase):
     """Provenance stays out of the normative body: no birth-story ("(Born of …)", a Formal-index
     "; born of …" cell, or a "Born of …" / "was born of …" sentence) lives in PRODUCT_SPEC.md or any
     skill body — its home is the code-keyed docs index (docs/lenses.md), the JOURNAL, or a prover
-    record (docs/spec-style.md R/HARD). The lint's provenance-narrative arms enforce it; this is the
+    record (docs/spec-style.md R15). The lint's provenance-narrative arms enforce it; this is the
     standing completeness gate for the sweep — red while a story sits in a body, green when the last
     one has moved to its docs home."""
 
@@ -310,7 +310,7 @@ class TestProvenanceOutOfBody(unittest.TestCase):
         self.assertEqual(
             offenders, [],
             "a birth-story sits in a normative body — move it to docs/lenses.md, the JOURNAL, or a "
-            "prover record (docs/spec-style.md R/HARD). %d found:\n%s"
+            "prover record (docs/spec-style.md R15). %d found:\n%s"
             % (len(offenders), "\n".join("  %s:%d  %s" % o for o in offenders)))
 
     def test_ordinary_verb_born_of_is_not_flagged(self):
@@ -327,6 +327,32 @@ class TestProvenanceOutOfBody(unittest.TestCase):
             errs, _ = lint.lint(pointer)
             self.assertNotIn("provenance-narrative", [c for _, c, _ in errs],
                              "one-token pointer wrongly flagged: %r" % pointer)
+        # an ordinary dated note that is NOT a birth-story stays clean: a bare-date opener, an
+        # "(Audit …)" / "(The owner's word …)" opener, and a dateless "(recorded profile line …)".
+        for clean in ("A calque degrades the product (2026-07-05 — machine-speak).",
+                      "Money yes, deletion yes, a push no (2026-07-05: the criterion).",
+                      "The attic had no answer (Audit 2026-07-05: the second collision).",
+                      "Convergence covers every process (The owner's word, 2026-07-10: always).",
+                      "A host may switch it on (recorded profile line, SPEC E-18, INV-14)."):
+            errs, _ = lint.lint(clean)
+            self.assertNotIn("provenance-narrative", [c for _, c, _ in errs],
+                             "ordinary dated note wrongly flagged as a birth-story: %r" % clean)
+
+    def test_dated_story_opener_parentheticals_are_caught(self):
+        """The extended arm catches the dated/attributed birth-story parentheticals the born-of arm
+        missed — keyed on a provenance opener plus an ISO date."""
+        lint = self._load_linter()
+        for story in ("The rule holds. (Set by the owner 2026-07-10, off a real miss.)",
+                      "The rule holds. (Set on the owner's word, 2026-07-10: one command.)",
+                      "The rule holds. (Born in the field: it bounced three times, 2026-07-10.)",
+                      "The rule holds. (Sharpened 2026-07-12: a fresh audit caught a contradiction.)",
+                      "The rule holds. (Raised by the web session's read, 2026-07-10 — a gap.)",
+                      "The rule holds. (recorded live 2026-07-12: an entry analysis reads three sources.)",
+                      "The rule holds. (recorded 2026-07-09: a deferred theme revived later.)",
+                      "The rule holds. (the worked miss: whole surfaces emitted nothing, 2026-07-10)."):
+            errs, _ = lint.lint(story)
+            self.assertIn("provenance-narrative", [c for _, c, _ in errs],
+                          "a dated story-opener parenthetical slipped past the lint: %r" % story)
 
     def test_each_story_shape_is_caught(self):
         lint = self._load_linter()

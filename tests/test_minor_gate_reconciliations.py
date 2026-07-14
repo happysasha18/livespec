@@ -13,10 +13,12 @@ def test_base_rule_26_homes_design_principles():
     # D3: base-rulebook carries a real text home for INV-136/139 ownership
     base = _read("skills/live-spec-base/SKILL.md")
     assert "26. **A project kind also declares design principles the verify pass runs" in base
-    assert "twenty-six rules in the body" in base
+    assert "twenty-eight rules in the body" in base
     assert "INV-136, INV-139" in base
+    # the periodic-full-audit rule is the final base rule (INV-145, Part C)
+    assert "28. **A periodic full audit" in base
     # README's mirrored rule count is fresh
-    assert "twenty-six shared rules" in _read("README.md")
+    assert "twenty-eight shared rules" in _read("README.md")
 
 
 def test_d1_reading_discipline_composes_with_brief_read():
@@ -49,5 +51,5 @@ def test_minor_versions_on_the_1_3_0_line():
     # design-review landing, 2026-07-14 — the prover went 1.1.0 -> 1.1.1)
     assert _read("VERSION").strip() == "1.3.0"
     assert '"version": "1.3.0"' in _read(".claude-plugin/plugin.json")
-    assert "version: 1.1.3" in _read("skills/product-prover/SKILL.md")
+    assert "version: 1.1.4" in _read("skills/product-prover/SKILL.md")
     assert "v1.3.0, 2026-07-14" in _read("PRODUCT_SPEC.md")

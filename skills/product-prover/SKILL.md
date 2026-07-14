@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS. It answers "does the spec hold together as written?"; judging whether the design itself is right — do same-kind things behave alike, what groupings did the text never declare — is the design-reviewer's pass [INV-141], which runs right after this one.
 metadata:
-  version: 1.1.3
+  version: 1.1.4
 ---
 
 # Product Prover
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.15), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.16), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -305,8 +305,7 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   view's flow walks (SPEC INV-74). A trivially-none edge stated as such — a top-level scenario entered from
   nowhere, a terminal one exiting to nowhere — is a decided answer; a silent edge is the gap.
   The duty binds forward (SPEC INV-127, INV-15): flag an existing scenario's unstated edge as a finding,
-  never blocking the lane on the backlog of edges older scenarios never wrote. (recorded 2026-07-09: the
-  prover should say which preconditions and postconditions hold at a scenario's entry and exit.) [INV-127]
+  never blocking the lane on the backlog of edges older scenarios never wrote. [INV-127]
 - **Three-source disagreement** — the entry impact read reads a change against the spec, the architecture,
   and the code together (SPEC INV-128); carry the lens that names where they DISAGREE. A surface the spec
   promises with no owning node, a behaviour in the code no spec clause backs, a node pinned to a line that

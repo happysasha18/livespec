@@ -75,7 +75,7 @@ Everything binds to one living spec: intake validates each wish against it, test
 
 1. **Intake** — classified before any code (this one adds an interaction, so: feature), lands as a row in [`ROADMAP.md`](ROADMAP.md).
 2. **Spec** — `spec-author` writes the delta into `PRODUCT_SPEC.md`: the scenario a user walks, fences naming what must keep working on the touched page, a sweep of the standard facets (empty state, errors, phone, accessibility), non-goals, a success measure.
-3. **Prove** — `product-prover` reviews the delta with formal-verification thinking. Must-fix findings fold into the spec; open decisions come back as one batched set, not a drip.
+3. **Prove** — `product-prover` reviews the delta with formal-verification thinking. Defect findings fold into the spec; open decisions come back as one batched set, not a drip.
 4. **Architecture** — `ARCHITECTURE.md` gains the filter's owning node, pinned to its place in the code. The prover checks that too.
 5. **Tests** — `test-author` derives matrix rows for the new facts, pins each to a level on the ladder from string checks up to pixel comparison, and writes tests against the real rendered page. Each new test **fails first**, proving it can catch the missing behaviour.
 6. **Code** — implement until green: zero failures, skipped tests matching the expected list exactly.
@@ -130,7 +130,7 @@ The method's job is to bring the right call to a human at the right moment. Not 
 
 | Skill | When to use it |
 |---|---|
-| `live-spec-base` | The rulebook above: twenty-six shared rules and the settings ladder. Loaded whenever another pack skill runs; when two skills seem to disagree, this one wins. |
+| `live-spec-base` | The rulebook above: twenty-eight shared rules and the settings ladder. Loaded whenever another pack skill runs; when two skills seem to disagree, this one wins. |
 | `build-pipeline` | Start here for any non-trivial change: *"build X properly"*, *"spec and ship Y"*. It sequences the whole arc from wish to committed change. |
 | `spec-author` | Writes and grows the living spec: a new feature, a new stateful surface. Scenarios lead; formal codes trail as anchors. |
 | `product-prover` | Reviews a spec or design document: *"poke holes in this"*. Reads documents; code review and tests stay elsewhere. Also published [standalone](https://github.com/happysasha18/product-prover). |
