@@ -70,14 +70,20 @@ class TestGateA_ProverRecord(unittest.TestCase):
         self.assertIn("OK (prover record)", result.stdout)
 
     def test_missing_record_fails(self):
+        """Runs against its OWN scratch repo (not the real repo's cwd/HEAD): a spec
+        change with no prover record at all must fail regardless of what the real
+        repo's HEAD looks like on the day the suite runs (row 302 — a sibling test
+        running in the real repo's cwd let the script's remote-deposit carve-out
+        fire when the real HEAD happened to be an inbox-only commit, flipping this
+        must-fail assertion)."""
         with tempfile.TemporaryDirectory() as tmp:
-            empty_prover_dir = os.path.join(tmp, "docs", "prover")
-            os.makedirs(empty_prover_dir)
-            result = run([
-                os.path.join(GUARDRAILS, "check-prover-record.sh"),
-                empty_prover_dir,
-                "2026-07-05",
-            ])
+            self._init_repo(tmp)
+            self._write(tmp, "PRODUCT_SPEC.md", "spec v1 — a change with no prover record.\n")
+            self._commit_all(tmp, "spec change, no prover record")
+            result = run(
+                [os.path.join(GUARDRAILS, "check-prover-record.sh")],
+                cwd=tmp,
+            )
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("FAIL (prover record)", result.stdout)
 
