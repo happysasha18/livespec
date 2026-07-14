@@ -272,7 +272,7 @@ class TestQueue(unittest.TestCase):
 
 class TestVersionsAndPins(unittest.TestCase):
     SKILLS = ("live-spec-base", "spec-author", "product-prover", "build-pipeline", "communicator",
-              "publish", "test-author", "feedback-intake")
+              "publish", "test-author", "feedback-intake", "design-reviewer")
 
     def test_version_homes(self):
         v = read("VERSION").strip()

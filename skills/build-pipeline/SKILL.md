@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.28
+  version: 1.0.29
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.16), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.17), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -108,6 +108,23 @@ standards look like in its medium.
     two ⇒ ask at intake, and every row born of a split cites the one spoken wish it came from. A request to
     merely SEE/TRY with no commitment goes to a labelled prototype home instead (base rule 16) — it stays a
     prototype, outside prod and unshown as product.
+- **The door set is CLOSED, and a request enters at the highest document its change reaches (SPEC INV-151).** A request enters at the highest document in the derivation chain — spec → architecture → matrix → code → docs — whose sentences must change to satisfy it; the settings ladder stands beside the chain for a pure value. Walk the chain from the top: after this is done, would any sentence in this document read differently? The first yes is the entry layer, and the request flows down through every step its door grants. The set of entry points is closed — every request kind has a named home and a mandatory back-check, and a request the set cannot place is one plain question, never an improvised route:
+
+  | Request kind | Enters at | Mandatory back-check |
+  |---|---|---|
+  | product behaviour | the spec step, flows down | none above it; the fit walk validates against the whole spec (FEATURE-FIT) |
+  | a technically-phrased request | the architecture step | the spec-motion tripwire fires **at intake** — a surface / state / unbacked-behaviour trip lifts it to the spec at the door (before the architecture work is built on an unlifted premise), outranking the request's own label (INV-16), and re-fires mid-work |
+  | a defect | the matrix step, red-on-bug test | a fixed fact also in spec prose updates the spec sentence the same change; a recurring bug (~30 days, same area) re-doors to feature (INV-104, INV-124) |
+  | docs-only | its own light path | the removal accounting (INV-109) + the register lint |
+  | a tiny reversible edit | the skip shortcut (code + test) | the spec-backed-literal tripwire (INV-104); anything visual enters at the matrix minimum |
+  | a settings / parameter value | the settings ladder (profiles) | check it is genuinely a value — a new RULE is a feature for the spec |
+  | an inbox wish (cross-project arrival) | the inbox sweep, then classified at the door like any request | the wish door's own verdict at intake; the outsider never writes the tree (base rule 16) |
+  | a method / skill change | the same criterion, work-kind `skill` scaling each step's form | the pack's own product IS the method, so there is no separate meta-layer set — the design-reviewer's own landing this session is the worked proof (INV-22) |
+  | a sketch (see / try) | a labelled `prototype/` home | unclear see-vs-have ⇒ one plain question; promotion enters at the spec step (base rule 16) |
+  | research / a question from the docs | no layer (no write) | — |
+  | a feedback hand-back | feedback-intake, to the home its law owns | not the agent's own output; opens no queue row on its own (SPEC T-20) |
+
+  **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" checkable instead of habitual: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced rather than improvised. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150) and the deferral test's (SPEC INV-152) — one routing principle stated three times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
   also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (SPEC INV-104). **A confirmed bug drives a class hunt before it closes (SPEC INV-124) —

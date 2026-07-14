@@ -12,9 +12,13 @@ recommendation — named to Alexander as a bar-change, kept isolated so it can b
 continuous-gesture opening; the inbox openable-faces wish is realized and harvested; four fresh-eyes findings
 folded before push; (3) a monitor idempotency fix (M-295) that a LIVE round-trip exposed — the monitor
 re-surfaced an item because GitHub bumps `updatedAt` past its own marker comments, now the activity generation
-reads from non-marker comments on both channels. The request-layer classifier the same audit covers is the NEXT
-lane (a design already settled by the Fable audit, carries the deferral-must-justify-itself clause). Read this,
-then memory can be wiped — the whole story lives in JOURNAL + the prover/design-review records.
+reads from non-marker comments on both channels. **The request-layer classifier (INV-151/152/153, M-296/297/298)
+is now BUILT LOCALLY** — suite 724→736 green, shipped-language clean, NOT yet pushed: the door set is written
+CLOSED at build-pipeline's door step with the entry-layer criterion + the one-plain-question fallback, the
+deferral-must-justify-itself clause is base rulebook rule 29, and the unification is stated once (INV-153).
+The orchestrator owns the pack version bump, the mandatory INV-46 fresh-eyes adversarial pass (this edits the
+method), the deep whole-spec pass, and the push. Read this, then memory can be wiped — the whole story lives in
+JOURNAL + the prover/design-review records.
 
 ## What landed this session
 0. **Property routing between the two reviews (INV-150, INV-125/INV-126, M-292/M-293/M-294).** Each declared
@@ -64,8 +68,8 @@ then memory can be wiped — the whole story lives in JOURNAL + the prover/desig
 - No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
   inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80) · the
   local push gate and CI run the same test runner (pytest), never a weaker local net (M-154).
-- Next free codes: INV-151, M-296 (M-295 landed this session for the monitor idempotency fix; read the live
-  Formal index before minting; codes consume in landing order).
+- Next free codes: INV-154, M-299 (INV-151/152/153 and M-296/297/298 consumed by the request-layer classifier
+  lane, built locally this session; read the live Formal index before minting; codes consume in landing order).
 
 ## Memory
 Once you have read this, memory can be wiped — JOURNAL + the prover records + ROADMAP carry the whole story.

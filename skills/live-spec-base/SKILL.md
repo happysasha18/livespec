@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-eight rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-nine rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.16
+  version: 1.0.17
 ---
 
 # live-spec-base — one rulebook, eight working skills
@@ -292,6 +292,22 @@ a working skill still stands: its pointer here reads as plain advice.
    milestone gate resets the counter since it already runs the whole-read. An audit is adversarial by
    nature: a whole-read that sets out to break the work, refute its claims, and find its holes (SPEC
    INV-46).
+
+29. **A deferral must justify itself, or the item is the seat's to do (SPEC INV-152).** A work item
+   carrying a needs-the-human's-word marker — a queue row held for his word, a NEXT_STEPS line, a
+   decision a setup script leaves open — is re-tested by derivability every time it is touched, not only
+   when it is first written. Where the answer pins to an existing artifact — a base rule, a spec
+   sentence, the architecture, an approved prototype, or an already-answered decision [INV-59] — the
+   item is the seat's: do it, cite the artifact, and drop the marker [INV-121, INV-143]. Where it needs
+   a fact no artifact holds — a taste, a policy, or an act irreversible outside git (rule 17) — it is
+   the human's, and the marker stands. Writing such a marker requires naming that human-only fact; a
+   marker that cannot name it defaults to the seat's, and a marker that cannot say why the item belongs
+   to the human is itself the finding, the same shape as a request that matches no kind in the closed
+   door set (rule 15, SPEC INV-151). This is the no-homeless-item control (rule 27's
+   decide-what-it-can-decide posture) applied to a work item, and it binds the orchestrator seat
+   whatever tier holds it. It is the request classifier's twin under one routing principle: every
+   incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no
+   home is itself the finding [INV-153].
 
 
 ## When NOT to load this

@@ -2,6 +2,53 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 23:06 IDT (opus worker seat, by the method) — the request-layer classifier at the pipeline's door (INV-151/152/153, M-296/297/298)
+
+**Why.** The companion half of the Fable audit (`scratchpad/fable-prover-vs-designreview-audit.md`,
+sections 6-10). The property→review routing landed earlier this session (INV-150); this is its sibling —
+request→entry-layer routing. Three declared facts:
+
+- **INV-151 — the door set is CLOSED, and a request enters at the highest document its change reaches.**
+  The derivation chain (spec → architecture → matrix → code → docs, the settings ladder beside it for a
+  pure value) is walked top-down; the first document whose sentences must change is the entry layer. The
+  entry points are enumerated and closed — product behaviour → spec, a technically-phrased request →
+  architecture with the spec-motion tripwire firing AT INTAKE (a surface/state/unbacked-behaviour trip
+  lifts it to the spec before the architecture work is built on an unlifted premise, re-firing mid-work), a
+  defect → matrix with a red-on-bug test, docs-only → its light path, a tiny reversible edit → the skip
+  shortcut owing INV-104, a settings value → the ladder, an outsider's request → one inbox wish, a
+  method/skill change → the same criterion with work-kind skill (no separate meta-layer set — the pack's
+  product IS the method, the design-reviewer's own birth the worked proof), a see/try → a labelled sketch,
+  research → no layer, a hand-back → feedback-intake. A request matching no kind is one plain question
+  (INV-4), never a guessed route. The change was ADDITIVE: build-pipeline already carried scattered entry
+  routing (a bug at the matrix, docs-only its own path); this names what existed, closes the set, and adds
+  the intake-moment back-check and the fallback question.
+- **INV-152 — a deferral must justify itself, or the item is the seat's to do (base rulebook rule 29).** A
+  held work item carrying a needs-the-human's-word marker is re-tested by derivability every time it is
+  touched; an answer pinning to an existing artifact makes it the seat's (do it, cite, drop the marker), an
+  answer needing a fact no artifact holds (a taste, a policy, an act irreversible outside git) makes it the
+  human's. Writing such a marker requires naming that human-only fact; a marker that cannot name it defaults
+  to the seat's, and one that cannot say why it is the human's is itself the finding — the same shape as a
+  request matching no kind.
+- **INV-153 — the unification, stated once.** The request classifier, the property net (INV-150), and the
+  deferral test are one principle: every incoming thing routes to the home whose declared sentence governs
+  it, and a thing that pins to no home is itself the finding. They stay three separate controls under one
+  principle, each verified by a check that already runs every landing — the classifier by the
+  applied-or-stood-down-by-name contract (INV-22), the property net by the declared-laws station (INV-101),
+  the deferral by the derive-before-defer posture (INV-143). No new machinery.
+
+**What changed.** PRODUCT_SPEC.md (three clauses + three index rows); build-pipeline SKILL.md (the closed-set
+table + fallback at the door step, own version 1.0.28→1.0.29); live-spec-base SKILL.md (rule 29, description
+count 28→29 rules, version 1.0.16→1.0.17); the base-version pin swept across all seven working skills
+(1.0.16→1.0.17, the same-session sweep `test_minor_gate_reconciliations` enforces); README.md (rule count
+28→29); ARCHITECTURE.md (INV-151/153 → build-pipeline node, INV-152 → base-rulebook node); TEST_MATRIX.md
+(M-296/297/298); tests/test_request_classifier.py (12 assertions, red-first proven — 11 red before the edit,
+the twelfth "at intake" already present). Records: `docs/prover/2026-07-14-request-classifier.md`,
+`docs/design-review/2026-07-14-request-classifier.md`. Installed skill copies synced.
+
+**Gate.** Suite 724→736 green (`python3 -m pytest -q tests`). `guardrails/check-shipped-language.sh` clean.
+The version stays held: the orchestrator owns the pack bump, the mandatory INV-46 independent adversarial
+pass (this edits the method), the deep whole-spec pass, and the push.
+
 ## 2026-07-14 22:47 IDT (opus orchestrator seat) — the Discussion write field beat is closed by a live re-verify
 
 **Why.** The M-295 fix was verified live end-to-end, not by tests alone. After the fix pushed (6c17bd8), a
