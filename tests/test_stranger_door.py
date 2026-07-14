@@ -6,6 +6,7 @@ single-instance by a lock, and honest on an unreachable repo.
 """
 import importlib.util
 import os
+import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -128,3 +129,85 @@ def test_monitor_honest_failure_on_unreachable():
     assert result["surfaced"] == []
     assert any(kind == "log" for kind, _ in logged)
     assert not any(kind == "deposit" for kind, _ in logged)
+
+
+def test_monitor_does_not_retrigger_on_own_marker():
+    # The monitor's own marker comment bumps the item's updatedAt. The recorded generation is that
+    # marker's createdAt (the post-marker generation), so on the next run the item's updatedAt equals
+    # the recorded generation and it reads as NO new activity — no re-surface loop. A daily cron would
+    # otherwise manufacture one duplicate inbox file and one comment per open item every run.
+    m = _load_monitor()
+    marker = m.SURFACED_MARKER
+    tm = "2026-07-14T10:00:00Z"
+    comments = [{"body": f"Surfaced for review.\n\n{marker} 2026-07-14T09:00:00Z -->", "createdAt": tm}]
+    # the recorded generation is the marker's own createdAt, not the pre-comment value in its body
+    assert m._surfaced_gen_from_comments(comments) == tm
+    # the item's updatedAt was bumped to the marker's time by the marker itself → not re-surfaced
+    same = [{"kind": "issue", "number": 1, "activity_gen": tm, "surfaced_gen": tm}]
+    assert m.items_to_surface(same, existing_inbox_sources=set()) == []
+    # a genuine actor comment AFTER the marker advances updatedAt past it → re-surfaced once
+    newer = [{"kind": "issue", "number": 1, "activity_gen": "2026-07-14T11:00:00Z", "surfaced_gen": tm}]
+    assert len(m.items_to_surface(newer, existing_inbox_sources=set())) == 1
+
+
+def test_fetch_discussions_degrades_when_disabled(monkeypatch):
+    # A repo with Discussions turned off offers no discussion channel; _fetch_discussions returns []
+    # rather than letting a GraphQL error fell the whole run (which would also drop the Issue arm).
+    m = _load_monitor()
+
+    def fake_gh_json(args):
+        if "nameWithOwner" in args:
+            return {"nameWithOwner": "owner/repo"}
+        if "hasDiscussionsEnabled" in args:
+            return {"hasDiscussionsEnabled": False}
+        raise AssertionError("no further gh call expected once discussions are off: %r" % args)
+
+    def fake_graphql(*a, **k):
+        raise AssertionError("GraphQL must not run when discussions are disabled")
+
+    monkeypatch.setattr(m, "_gh_json", fake_gh_json)
+    monkeypatch.setattr(m, "_gh_graphql", fake_graphql)
+    assert m._fetch_discussions() == []
+
+
+# ---- M-290: the package repo's scheduled monitor action (INV-148) ----
+
+WORKFLOW = REPO / ".github" / "workflows" / "stranger-monitor.yml"
+
+
+def _workflow_text():
+    assert WORKFLOW.exists(), "the scheduled monitor action must ship (INV-148)"
+    return WORKFLOW.read_text()
+
+
+def test_monitor_schedule_workflow_ships():
+    text = _workflow_text()
+    # it wakes on a daily cron AND on a manual dispatch (the verify hand-run)
+    assert "schedule:" in text
+    assert "cron:" in text
+    assert "workflow_dispatch:" in text
+
+
+def test_monitor_schedule_is_single_instance():
+    text = _workflow_text()
+    # a concurrency group serializes runs; an in-progress run is never cancelled,
+    # so a second scheduled run waits rather than racing the first's push (the CI
+    # form of the per-host lock, INV-147)
+    assert "concurrency:" in text
+    assert re.search(r"cancel-in-progress:\s*false", text), \
+        "the concurrency group must not cancel a mid-flight run"
+
+
+def test_monitor_schedule_grants_write_scopes():
+    text = _workflow_text()
+    # the token needs contents (push the inbox commit) + issues + discussions
+    # (record the surfaced-generation marker comment, INV-146)
+    for scope in ("contents", "issues", "discussions"):
+        assert re.search(rf"{scope}:\s*write", text), f"missing {scope}: write grant"
+
+
+def test_monitor_schedule_runs_and_pushes():
+    text = _workflow_text()
+    # it runs the monitor script and pushes whatever inbox commit it made
+    assert "stranger-wish-monitor.py" in text
+    assert "git push" in text

@@ -12,9 +12,12 @@ git-atomic harvest [T-10, INV-11]. The monitor holds NO verdict: whether an item
 feedback, or neither stays the inbox sweep's call [T-20].
 
 New stranger activity has an actor: the monitor records, at surfacing time, the Issue's update
-generation, and on each run re-surfaces an Issue whose current generation is newer than the one
-it last recorded — so a reopened, edited, or commented swept Issue is seen again rather than
-sitting durably-recorded but operationally invisible [INV-138].
+generation AS IT STANDS AFTER ITS OWN MARKER — the marker comment's createdAt — and on each run
+re-surfaces an Issue whose current generation is newer than the one it recorded. Recording the
+post-marker generation is what keeps the monitor from re-surfacing an Issue on its own marker
+every run: next run the Issue's updatedAt equals that createdAt, so it reads as no new activity,
+and only another actor's edit or comment advances it. So a reopened, edited, or commented swept
+Issue is seen again rather than sitting durably-recorded but operationally invisible [INV-138].
 
 The surfacing decision is a PURE function of (open items, the generation each was last surfaced
 at, existing inbox files), so a crash between depositing and recording still surfaces an item
@@ -62,7 +65,12 @@ def items_to_surface(open_items: list[dict], existing_inbox_sources: set[str]) -
     """
     out = []
     for it in open_items:
-        if it.get("surfaced_gen") == it.get("activity_gen"):
+        surfaced_gen = it.get("surfaced_gen")
+        # Skip an item whose latest activity is no newer than the generation we last recorded.
+        # `surfaced_gen` is the generation as it stood AFTER the monitor's own marker, so the
+        # monitor's own recording never reads back as fresh activity: only another actor's edit
+        # or comment advances the item's generation past it and re-surfaces it (INV-146, INV-138).
+        if surfaced_gen is not None and it.get("activity_gen", "") <= surfaced_gen:
             continue
         if surface_key(it) in existing_inbox_sources:
             continue
@@ -150,12 +158,21 @@ def _gh_graphql(query: str, **variables):
     return json.loads(out.stdout or "{}")
 
 
-def _gen_from_comments(comment_bodies: list[str]) -> str | None:
-    """The generation last recorded, read from the newest marker comment (or None)."""
+def _surfaced_gen_from_comments(comments: list[dict]) -> str | None:
+    """The generation last recorded — the createdAt of the newest live-spec marker comment (or None).
+
+    The marker's OWN createdAt is the item's generation as it stands after the monitor surfaced it,
+    because posting the marker is what last bumped the item's updatedAt. Reading that createdAt (rather
+    than a timestamp captured before the comment was posted) is what stops the monitor re-surfacing an
+    item on its own marker every run: next run the item's updatedAt equals this createdAt, so it reads
+    as no new activity. Only another actor commenting or editing pushes updatedAt past it (INV-146).
+    """
     gen = None
-    for body in comment_bodies:
-        if SURFACED_MARKER in body:
-            gen = body.split(SURFACED_MARKER, 1)[1].split("-->", 1)[0].strip()
+    for c in comments:
+        if SURFACED_MARKER in c.get("body", ""):
+            created = c.get("createdAt", "")
+            if gen is None or created > gen:
+                gen = created
     return gen
 
 
@@ -170,28 +187,35 @@ def _fetch_issues():
     issues = _gh_json(["issue", "list", "--state", "open", "--limit", "200",
                        "--json", "number,title,updatedAt,body"])
     for iss in issues:
-        comments = _gh_json(["issue", "view", str(iss["number"]), "--json", "comments"]).get("comments", [])
+        comments = _gh_json(["issue", "view", str(iss["number"]),
+                             "--json", "comments"]).get("comments", [])
         items.append({
             "kind": "issue",
             "number": iss["number"],
             "title": iss.get("title", ""),
             "body": iss.get("body", ""),
             "activity_gen": iss.get("updatedAt", ""),
-            "surfaced_gen": _gen_from_comments([c.get("body", "") for c in comments]),
+            "surfaced_gen": _surfaced_gen_from_comments(comments),
         })
     return items
 
 
 def _fetch_discussions():
+    # A repo with Discussions turned off offers no discussion channel; the monitor serves the
+    # channels the repo has, so it degrades to none here rather than felling the whole run (a
+    # GraphQL query against a repo without discussions would error and mask the Issue arm too).
+    # A genuinely unreachable repo still raises from this call and fails the run honestly [INV-67].
+    if not _gh_json(["repo", "view", "--json", "hasDiscussionsEnabled"]).get("hasDiscussionsEnabled"):
+        return []
     owner, repo = _owner_repo()
     q = ("query($owner:String!,$repo:String!){repository(owner:$owner,name:$repo){"
          "discussions(first:100,states:OPEN){nodes{number id title body updatedAt "
-         "comments(first:100){nodes{body}}}}}}")
+         "comments(first:100){nodes{body createdAt}}}}}}")
     data = _gh_graphql(q, owner=owner, repo=repo)
     nodes = (data.get("data", {}).get("repository", {}) or {}).get("discussions", {}).get("nodes", [])
     items = []
     for d in nodes:
-        bodies = [c.get("body", "") for c in d.get("comments", {}).get("nodes", [])]
+        comments = d.get("comments", {}).get("nodes", [])
         items.append({
             "kind": "discussion",
             "number": d["number"],
@@ -199,7 +223,7 @@ def _fetch_discussions():
             "title": d.get("title", ""),
             "body": d.get("body", ""),
             "activity_gen": d.get("updatedAt", ""),
-            "surfaced_gen": _gen_from_comments(bodies),
+            "surfaced_gen": _surfaced_gen_from_comments(comments),
         })
     return items
 

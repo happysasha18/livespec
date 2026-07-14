@@ -2,6 +2,39 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus orchestrator seat, full pipeline) — the monitor's schedule opens the door, and the audit caught a self-trigger loop (pack → 1.4.2, INV-148)
+
+**Why.** The stranger door shipped in 1.4.1 with its templates live and its monitor written, but nothing
+ran the monitor — and the spec requires a schedule where the door is open [INV-147]. The door was open and
+unwatched. This landing gives the package repo its concrete schedule so the door is actually alive.
+
+**What it does.** A scheduled GitHub Action (`.github/workflows/stranger-monitor.yml`) wakes the monitor on
+a daily cron (and on a manual dispatch for a verify hand-run), runs `scripts/stranger-wish-monitor.py`, and
+pushes any inbox file it committed. It is single-instance by the action's `concurrency` group (a second run
+waits, the CI form of the per-host lock), and commits/pushes under the Actions token as github-actions[bot]
+with contents+issues+discussions write. The push carries inbox commits only, riding the inbox-only push-gate
+carve-out [M-6, INV-112]. New invariant INV-148; the `inbox` node gained the workflow pin; matrix M-290.
+
+**Why the audit earned its keep (again).** This adds an autonomous writer to main, so it owed a fresh-context
+adversarial pass [INV-46]. The auditor found a must-fix the author's own tests could never catch: the monitor
+recorded, as the surfaced generation, the item's `updatedAt` captured BEFORE posting its own marker comment —
+but posting the marker BUMPS `updatedAt`, so every run saw its own marker as "new activity" and re-surfaced
+the item, a fresh inbox file and a fresh comment each time. Harmless on a hand-run; on the DAILY cron this
+landing introduces, it is daily duplicate spam on every open stranger item, forever. The bug lived in the
+monitor since 1.4.1; the schedule is what made it dangerous, so it was fixed in this lane before going live.
+The fold: record the marker comment's OWN `createdAt` as the generation (the post-marker value), so next run
+the item's `updatedAt` equals it and reads as no new activity — only another actor's edit or comment advances
+past it. The auditor also found that a repo with Discussions disabled would fell the whole run (and drop the
+Issue arm with it); folded by checking `hasDiscussionsEnabled` first and degrading that channel to empty,
+while a genuinely unreachable repo still fails honestly [INV-67]. Both folds carry a red-proven test; the spec
+INV-146 re-surface + channel clauses were the real under-description and were fixed first. Record:
+`docs/prover/2026-07-14-monitor-schedule.md`.
+
+**Verify.** Full suite 698 green. Branch protection on main read live (no required reviews/checks) so the
+token push lands. The end-to-end verify — a real dispatched run proving a clean no-op — runs after the push,
+since a workflow is only dispatchable once it is on the default branch (the same post-push verify the CI gate
+itself takes, INV-106).
+
 ## 2026-07-14 (opus orchestrator seat, full pipeline) — the stranger door: a public repo takes an outsider's wish (rows 261 + 315, pack → 1.4.1, INV-146/147)
 
 **Why.** Alexander flipped the long-deferred DECIDE (row 261): a public live-spec repo should accept a

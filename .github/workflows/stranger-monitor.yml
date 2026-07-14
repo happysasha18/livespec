@@ -1,0 +1,62 @@
+# stranger-monitor.yml — the package repo's scheduled stranger-door monitor (SPEC INV-148, INV-147).
+# The schedule INV-147 requires, realized for this repo: it wakes the monitor on a daily cron (and on a
+# manual dispatch for a verify hand-run), runs scripts/stranger-wish-monitor.py once, and pushes any inbox
+# file the monitor committed. Single instance by the concurrency group — a second scheduled run waits for
+# the in-flight one rather than racing its push (the CI form of the per-host lock the monitor keeps for a
+# host that runs the script directly, SPEC INV-147). It commits and pushes under the action's own token as
+# github-actions[bot]; the push carries inbox commits only, riding the inbox-only push-gate carve-out
+# (SPEC M-6, INV-112). A GITHUB_TOKEN push does not re-trigger the gates workflow, which is correct for an
+# inbox deposit awaiting the next session's sweep.
+name: stranger-monitor
+on:
+  schedule:
+    - cron: "17 6 * * *"   # daily at 06:17 UTC — an off-the-hour minute keeps clear of the top-of-hour crowd
+  workflow_dispatch:        # a manual hand-run, the verify path (SPEC INV-148 / M-290)
+
+# serialize runs: a second scheduled run waits for the in-flight one instead of cancelling it, so two runs
+# never overlap and race the push. cancel-in-progress stays false by intent (SPEC INV-148).
+concurrency:
+  group: stranger-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write        # push the inbox commit the monitor makes
+  issues: write          # record the surfaced-generation marker comment on an Issue (SPEC INV-146)
+  discussions: write     # record it on a Discussion (SPEC INV-146)
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # the push step compares HEAD against origin to find the monitor's commit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: identify the committer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: run the monitor
+        env:
+          GH_TOKEN: ${{ github.token }}   # gh reads the token for `issue`/`api graphql`/`repo view`
+        run: python3 scripts/stranger-wish-monitor.py
+      - name: push any bridged inbox commit
+        run: |
+          # The monitor commits touching inbox/ only; push whatever it landed. A no-op run (no open
+          # stranger item) leaves nothing to push and exits clean. A rebase absorbs any commit main took
+          # since checkout, so the inbox commit lands without overwriting other work.
+          if [ -z "$(git log "origin/${GITHUB_REF_NAME}..HEAD" --oneline)" ]; then
+            echo "no bridged commit this run — nothing to push"
+            exit 0
+          fi
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "pushed the bridged inbox commit"
+              exit 0
+            fi
+            echo "push attempt ${attempt} failed; retrying after rebase"
+          done
+          echo "could not push the bridged inbox commit after retries" >&2
+          exit 1
