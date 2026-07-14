@@ -2,7 +2,7 @@
 name: product-prover
 description: Structured senior-architect review of product documents — PRDs, feature specs, HLDs, LLDs, design proposals, architecture documents (ARCHITECTURE.md) — using formal-verification thinking (entities, states, transitions, invariants, safety, liveness, atomicity, composition). Use this skill whenever the user asks to review, critique, stress-test, lint, or find gaps in a spec or design document, asks "is this spec ready / what did I miss / poke holes in this", uploads a product document and asks for feedback, or mentions "Product Prover" — even if they don't use the word "review" explicitly. NOT for code or diffs (it reads documents), and never a substitute for tests — it finds holes in what a document CLAIMS. It answers "does the spec hold together as written?"; judging whether the design itself is right — do same-kind things behave alike, what groupings did the text never declare — is the design-reviewer's pass [INV-141], which runs right after this one.
 metadata:
-  version: 1.1.2
+  version: 1.1.3
 ---
 
 # Product Prover
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.14), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.15), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -315,7 +315,10 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   winner. This pulls the architecture step's spec-to-code reconciliation forward to intake, so drift is a
   finding at entry rather than a surprise at code. Kin of the unwritten-seam hunt (a drift with no routed
   home is itself the finding); it is also the read that produces the derive-before-fork verdict — the three
-  sources are what tell whether a proven artifact already settles a question (SPEC INV-121). [INV-128]
+  sources are what tell whether a proven artifact already settles a question (SPEC INV-121). When the
+  disagreement is a product-vs-spec divergence, the spec is the definition of correct: the divergence
+  defaults to a possible error in the product checked against the spec, and a spec change is a decision
+  the human ratifies, never a silent rewrite to match the product (SPEC INV-144). [INV-128]
 
 For any given operation, only one or two lenses will produce a real finding — the rest will be obviously fine. That's expected. The work is in the imagining. A finding is not owed for every axis. A lens that prompts no real concern produces no finding. Do not invent issues to satisfy a lens.
 

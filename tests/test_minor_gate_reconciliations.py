@@ -49,5 +49,5 @@ def test_minor_versions_on_the_1_3_0_line():
     # design-review landing, 2026-07-14 — the prover went 1.1.0 -> 1.1.1)
     assert _read("VERSION").strip() == "1.3.0"
     assert '"version": "1.3.0"' in _read(".claude-plugin/plugin.json")
-    assert "version: 1.1.2" in _read("skills/product-prover/SKILL.md")
+    assert "version: 1.1.3" in _read("skills/product-prover/SKILL.md")
     assert "v1.3.0, 2026-07-14" in _read("PRODUCT_SPEC.md")

@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-six rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.14
+  version: 1.0.15
 ---
 
 # live-spec-base — one rulebook, eight working skills
@@ -271,6 +271,14 @@ a working skill still stands: its pointer here reads as plain advice.
    declared principles and runs each in the medium's own form, a principle no suite can green being the
    human's own eye-walk. This rule is the base home the design-principles invariants own; their full
    statement and per-kind starter sets live in ARCHITECTURE.md.
+
+27. **The orchestrator decides what it can decide, and surfaces only what it cannot (SPEC INV-143).**
+   The orchestrator decides what it can decide and reports the choice — a mechanical step, a value a
+   proven artifact already determines [INV-121], a sensible default it can pick and name [INV-70]. It
+   surfaces a decision to the human only where the decision genuinely cannot be made without them: a taste
+   call, a trade-off no artifact settles [INV-121], or a change to the definition of correct.
+   It never parks derivable work on the human's queue to avoid deciding [INV-4]. The posture holds on
+   every session, including one resumed from its files after a memory wipe [INV-48].
 
 
 ## When NOT to load this
