@@ -2,6 +2,97 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus orchestrator seat + a Fable gate, full autonomy) — the full-pass cleanup movement, pack → 1.4.0 (rows 316-320, INV-143/144/145)
+
+**Why.** Alexander read the spec and skills with fresh eyes and did not like what he saw ("позор, до
+победного"). The bodies had grown rule and lens BIOGRAPHIES inline — "(Born of …)", "(Set by the owner
+…)", "(Sharpened …)" and their kin, about 88 of them — each a small date-and-case story that duplicated
+what the JOURNAL and the prover records already hold, and each a few more tokens the model loads on every
+single call. INV-140's KIND block had swollen to six sentences arguing with itself, carrying both a kind
+axis and a severity axis that could disagree on whether a finding blocks. And the whole thing would have
+failed the pack's own skill-creator bar for bloat and memoir. His directive was not a patch but a full
+fresh-eyes pass over the whole pack, fixed to victory, then a wish into every project's inbox — decide
+myself, report the choices, ask only where genuinely stuck.
+
+**The full-pass response.** Three read-only reviews ran first (a design pass, a skill-creator review of all
+nine skills, a full prover audit of the whole spec + architecture), each surfacing its own findings. Their
+results fed five serial application chunks — serial because the spec and skills overlap, so no parallel
+writers. Then a Fable pre-MINOR three-pass gate over the whole delta caught six more defects; those folded,
+and the pack bumped from 1.3.0 to 1.4.0.
+
+**Row 316 — provenance out of the body (chunks 1 + 5).** The rule already existed in docs/spec-style.md
+but was never linted, so 88 biographies had drifted into the bodies. Chunk 1 swept 75 to `docs/lenses.md`,
+keyed by code, and added the `provenance-narrative` lint (R15) with arms for every birth-story shape and a
+carve-out for the ordinary restrictive verb ("a row born of a split cites its wish") and one-token pointers.
+Chunk 5 finished the sweep with the 13 sibling shapes the first pass left standing — the Fable gate's D6,
+where the "(Born of …)" shape was gone but "(Set by the owner …)" and kin survived, leaving the written law
+in silent disagreement with the body, the one outcome the pack forbids. The token-identity check was the
+hard part and stayed at the Fable gate: no mechanism sentence was allowed to leave with its biography, and
+the audit verified it to the token (base rule 7's split, the entry-symmetry lens, INV-126's twin sentence).
+
+**Row 317 — INV-140's KIND to one rule (chunk 2).** The three-level severity axis retired; defect (a broken
+or missing invariant, a false claim, blocks) and recommendation (a quality gain, queues, with a now/later
+grade) became the sole verdict, everywhere it was pointed — the tag line, the KIND block, the prover README,
+docs/pipeline.md, OVERVIEW, build-pipeline, the evals bar, the F-wish flow row. The delta-scoped carve
+(INV-114, where a pre-existing defect outside the delta queues and never blocks) reads as the one exception,
+coherent with M-6. The Fable gate's D1 and D2 were the two stale sentences this sweep missed: the M-6 push
+clause still folded on "Must-fix findings" (a case-sensitive grep hid the capital M), and the public README
+still described the prover in severity terms — both folded to "Defect findings", pinned by a case-insensitive
+severity-token scan.
+
+**Row 318 — the design review into M-1 + compaction (chunk 3).** The full prover audit's D1: the design
+review (INV-141/142, landed the prior movement) was never enumerated in the M-1 milestone-gate step list, so
+a milestone walk skipped it silently — it stands down at M-6, and every gate stayed green, so nothing caught
+the omission. Now it is enumerated with [INV-141] and its dated record, the M-1 index row and ARCHITECTURE's
+decisions-where-they-live carrying it too. The compaction rode the same chunk, on Alexander's sharp
+distinction: keep the QUIET trailing anchor `[INV-x]`, cut the NARRATED "see-also" prose — a reference earns
+its place only where a reader right here cannot understand without it, and a reflexive cross-reference
+everywhere is bloat, the same class as the biographies. So the lens family's narrated relationship prose was
+cut to the bare anchors, base rule 7 split into sub-bullets, INV-109 deduped to one home, the decision
+archive given one name, interactive-overlap left with one full home, INV-133's admission bound reworded to
+tighten.
+
+**Row 319 — two new base rules (chunk 4).** **INV-143**, agency as a rule: the seat decides and acts on
+mechanical and derivable work and reports it, asking only where it genuinely cannot — the max-agency posture
+that had lived only diffusely in the profile, now a base rule that survives a memory wipe and rides into
+every project that updates the pack. The human's genuine gates (taste, samples, the founding questions) still
+block. **INV-144**, sharpened by Alexander mid-movement: the spec is the definition of correct. A code/spec
+divergence defaults to a possible CODE error checked against the spec — first understand and NAME the
+divergence, then decide who erred: code wrong → fix code; spec silent (a gap) + code correct → complete the
+spec and pin a test; spec conflicts with correct code → only on the human's understood word, because changing
+the spec redefines "correct" and that is a hard decision. Silently rewriting the spec to match the code — the
+tlvphotos failure he was watching — is forbidden. The two coexist: derivable work I decide myself (INV-143),
+a genuine spec-vs-code conflict the human must understand and ratify (INV-144).
+
+**Row 320 — INV-145, a periodic full audit (chunk 5).** The biographies rotted precisely because the milestone
+gate was far off and nothing forced a whole-read between milestones — a slow, unwatched drift. So the rhythm
+grew a second layer: the continuous lints (the register lint, the new provenance-narrative arm, and their kin)
+guard KNOWN drift classes on every push, and a full audit runs on a landing-count cadence — every ten landings
+since the last full audit, host-settable [INV-70] — in the milestone gate's whole-read form, to catch UNKNOWN
+drift that accumulates between milestones. The count reads from the landing history and a milestone gate resets
+the counter, since it already runs the whole-read. Beside it, Alexander's point that "adversarial audit" is a
+tautology: an audit is adversarial by nature — a whole-read that sets out to break the work, refute its claims,
+and find its holes — so it is defined once, in INV-46, and the qualifier is dropped everywhere else.
+
+**The Fable gate.** A fresh Fable context ran the product-prover FULL over the whole spec, the architecture
+lens over ARCHITECTURE.md, and a version/matrix/cross-cut sweep. Verdict: FOLD FIRST, then CLEAR. The content
+was sound — the sweep preserved mechanism to the token, the single-axis KIND held, the design review was
+reachable at M-1, the three new rules were clean with accurate anchors — but six small, local defects blocked
+the bump: the two retired-vocabulary sentences (D1 M-6 clause, D2 README), a "twenty-six rules" count made
+false by rules 27 and 28 (D3, → twenty-eight), the lint citing a rule its doc never gained (D4, → R15), the
+half-swept provenance class (D6), and the milestone's own records still owed (D5). All six folded; the
+recommendations folded or queued as row 315. Record: `docs/prover/2026-07-14-cleanup-movement.md`.
+
+**Landed.** SPEC INV-143/144/145 NEW + Formal-index rows · base rules 27/28 · INV-46 definition sharpened ·
+INV-140 collapsed · design review enumerated at M-1 · docs/lenses.md (+88 biographies) · docs/spec-style.md
+R15 + `scripts/spec-style-lint.py` · `docs/prover/2026-07-14-cleanup-movement.md` · `docs/design-review/`
+created with the first M-1 record (STOOD DOWN — a skill pack has no acted-on elements, INV-141) ·
+`test_minor_gate_reconciliations` re-pinned to the 1.4.0 line · base 1.0.16 · product-prover 1.1.4 ·
+build-pipeline 1.0.28 · VERSION/plugin/spec-header → 1.4.0. Suite 682 green + the one expected Gate A red
+(clears at the commit carrying the record). Tree left UNCOMMITTED for Alexander's review; the lead commits
+and pushes. Migration verdict: no host-side tree action. The host-side `~/.claude/CLAUDE.md` "seven working
+skills" line is flagged to him as the one out-of-tree edit (this window does not touch it).
+
 ## 2026-07-14 (opus, orchestrator seat, full autonomy under /loop) — the queue clears: four mid-session steers land (rows 311-314)
 
 **Why.** Four small asks arrived mid-session, each born of something that had just happened rather than invented at a desk. Alexander had watched an estimate on tlvphotos say ten hours and land in two — the estimate summed the work while heavy worker fan-out made the wall-clock far shorter, and nothing logged the gap so it never calibrated. He asked live-spec to explain, positively, why it carries no command surface for a new user to learn — the pack drives through plain conversation and the pipeline, and the absence deserved a sentence, not silence. Mid-session he adopted a unified emoji vocabulary for done/remaining status as a voiced fix ("сам решай"), leaving the pack rule to catch up with what chat was already doing. And the same tlvphotos session had just shown two of the senior's own concurrent workers changing each other's files — a real collision the standing disjoint-write-set fence (INV-11/ACT-3) does not reach, because it is deliberately silent between same-session siblings. Each ran the method's pipeline at the size it warranted; none touched the spec's invariant count except by extension.

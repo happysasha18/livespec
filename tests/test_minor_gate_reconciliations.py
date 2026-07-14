@@ -46,10 +46,11 @@ def test_d5_chat_law_hook_carries_reading_discipline():
     assert "dispatched to a reader worker" in hook
 
 
-def test_minor_versions_on_the_1_3_0_line():
-    # D4: the milestone version numbers are current (moved to 1.3.0 at the
-    # design-review landing, 2026-07-14 — the prover went 1.1.0 -> 1.1.1)
-    assert _read("VERSION").strip() == "1.3.0"
-    assert '"version": "1.3.0"' in _read(".claude-plugin/plugin.json")
+def test_minor_versions_on_the_1_4_0_line():
+    # the milestone version numbers are current (moved to 1.4.0 at the
+    # cleanup-movement landing, 2026-07-14 — the pack's second MINOR under
+    # the Fable gate; product-prover carries the finding-kind format at 1.1.4)
+    assert _read("VERSION").strip() == "1.4.0"
+    assert '"version": "1.4.0"' in _read(".claude-plugin/plugin.json")
     assert "version: 1.1.4" in _read("skills/product-prover/SKILL.md")
-    assert "v1.3.0, 2026-07-14" in _read("PRODUCT_SPEC.md")
+    assert "v1.4.0, 2026-07-14" in _read("PRODUCT_SPEC.md")
