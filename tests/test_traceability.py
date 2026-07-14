@@ -1,6 +1,6 @@
 """Traceability suite — the coverage validation of TEST_MATRIX.md, mechanized (SPEC E-14/E-15/INV-15).
 
-Zero dependencies; run from the repo root:  python3 -m unittest discover tests -v
+Zero dependencies; run from the repo root:  python3 -m pytest -q tests
 Every check here asserts the SHIPPED files on disk, never a source fragment or a memory of one.
 This is the first slice of the guardrails' conflicts check (ROADMAP rows 3 and 12's gap 3 territory);
 the pre-push hook generalizes it when row 3 lands.

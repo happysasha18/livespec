@@ -2,6 +2,23 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-14 (opus orchestrator seat, bug → matrix → test → code) — close a false-green gate hole: the local test gate now runs the same runner as CI
+
+**Why.** Landing the monitor schedule, CI (pytest) went red on a version-pin test while the local push gate
+had passed — a false green. Root cause: `guardrails/check-tests.sh` ran `python3 -m unittest discover`, which
+cannot collect the plain-function pytest-style tests (fixtures like `monkeypatch`/`tmp_path`) that a large
+part of the suite now uses, so it silently under-ran and greened while CI's pytest caught the failure. The
+push gate exists to catch red BEFORE CI; a gate that under-collects defeats its own purpose, and it violated
+the CI-mirror invariant that both nets run the SAME checks (M-5, M-154).
+
+**Fix (the class, not the instance).** `check-tests.sh` now runs `python3 -m pytest -q`, matching the CI
+mirror. The misleading canonical-runner claims that would lead any dev to false-green the same way were swept
+too — four test-file docstrings and the two guardrails/README runner lines, all now naming pytest. A guard
+test (`test_local_gate_uses_the_same_runner_as_ci`) pins both nets to pytest so the divergence cannot drift
+back, and M-154 grew the never-side (never the local gate on a weaker runner than CI). Suite 699 green under
+pytest. Left untouched: the scaffold template's unittest line (a fresh project with no pytest drift is
+consistent local-and-CI) and dated archive records.
+
 ## 2026-07-14 (opus orchestrator seat, full pipeline) — the monitor's schedule opens the door, and the audit caught a self-trigger loop (pack → 1.4.2, INV-148)
 
 **Why.** The stranger door shipped in 1.4.1 with its templates live and its monitor written, but nothing

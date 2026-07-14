@@ -17,11 +17,15 @@ cd "$REPO_ROOT"
 
 TESTS_DIR="${1:-tests}"
 
-if python3 -m unittest discover "$TESTS_DIR"; then
+# The runner MUST match the CI mirror's (.github/workflows/gates.yml runs `python3 -m pytest -q`);
+# the two nets share one runner or the local net is weaker than the second one (SPEC M-5, M-154).
+# unittest discover cannot collect the plain-function pytest-style tests (fixtures like monkeypatch/
+# tmp_path), so it silently under-runs and false-greens — the exact hole that let a red reach CI.
+if python3 -m pytest -q "$TESTS_DIR"; then
   echo "OK (tests): suite green ($TESTS_DIR) — also covers anchor ownership (gate c)."
   exit 0
 else
   echo "FAIL (tests): suite is not green ($TESTS_DIR)."
-  echo "  Fix: run 'python3 -m unittest discover tests -v' and repair the failing test(s) before pushing."
+  echo "  Fix: run 'python3 -m pytest -q tests' and repair the failing test(s) before pushing."
   exit 1
 fi

@@ -1,7 +1,7 @@
 """Guardrails suite — the pack's own git-hook gates, mechanized (ROADMAP row 3).
 
 Zero dependencies beyond the stdlib; run from the repo root:
-  python3 -m unittest discover tests -v
+  python3 -m pytest -q tests
 
 Asserts the SHIPPED guardrails/ scripts on disk, and exercises each gate's check
 logic both against the real repo state (must be green today) and against scratch
@@ -651,6 +651,21 @@ class TestCIMirror(unittest.TestCase):
             body = f.read()
         for needle in ("CI mirror", "second net", "never redefines"):
             self.assertIn(needle, body, "guardrails README missing: %s" % needle)
+
+    def test_local_gate_uses_the_same_runner_as_ci(self):
+        # M-5/M-154: the local net and the CI net must run the SAME test runner, or the local net
+        # under-runs relative to the second net. check-tests.sh once used `unittest discover`, which
+        # cannot collect the plain-function pytest-style tests (monkeypatch/tmp_path fixtures) and
+        # false-greened while CI's pytest caught the failure. Both must invoke pytest.
+        with open(os.path.join(GUARDRAILS, "check-tests.sh"), encoding="utf-8") as f:
+            gate = f.read()
+        with open(os.path.join(ROOT, ".github", "workflows", "gates.yml"), encoding="utf-8") as f:
+            ci = f.read()
+        self.assertIn("python3 -m pytest", gate,
+                      "check-tests.sh must run pytest, the same runner as the CI mirror")
+        self.assertNotIn("-m unittest", gate,
+                         "check-tests.sh must not invoke unittest (it under-collects the suite)")
+        self.assertIn("pytest", ci, "the CI mirror must run pytest")
 
     def test_machine_local_pins_skip_in_ci_only(self):
         """The CI net must not false-red on pins that live only on the author's

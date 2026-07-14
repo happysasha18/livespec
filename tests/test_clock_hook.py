@@ -7,7 +7,7 @@ earlier stamp (INV-24). This test proves the script on disk, its output
 carrying the live machine time, and the law it states in its own words.
 
 Zero dependencies beyond the stdlib; run from the repo root:
-  python3 -m unittest discover tests -v
+  python3 -m pytest -q tests
 """
 
 import datetime

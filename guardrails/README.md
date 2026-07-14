@@ -10,7 +10,8 @@ instead of things you have to remember.
 - **a. Fresh review.** A prover record dated today exists under `docs/prover/` and is
   committed. This is the push gate every push of live-spec must pass (SPEC anchor `M-6`):
   no push without a same-day whole-spec re-check on file.
-- **b. Tests green.** `python3 -m unittest discover tests` exits clean.
+- **b. Tests green.** `python3 -m pytest -q tests` exits clean — the SAME runner the CI mirror
+  runs, so the local net and the second net can never disagree on what "the suite" is.
 - **c. Every spec anchor has exactly one owner.** In this repo that's already asserted
   inside the test suite itself (`tests/test_traceability.py`), so gate (b) passing means
   gate (c) passed too — there's no separate check to run.
@@ -57,8 +58,9 @@ It does **not** create `.live-spec-fence`; the fence stays opt-in until you run
 The five-gate shape (fresh review · green tests · ownership · full coverage · prototype
 fence) is the part worth copying as-is. What changes per host:
 
-- **Test command.** Swap `python3 -m unittest discover tests` in `check-tests.sh` for
-  whatever the host runs (`pytest`, `npm test`, …).
+- **Test command.** Swap `python3 -m pytest -q tests` in `check-tests.sh` for whatever the host
+  runs (`npm test`, `go test`, …) — and set the CI mirror to the SAME command, so the local net
+  never under-runs what CI runs (a runner that collects fewer tests than CI false-greens locally).
 - **Review cadence.** Not every host proves the whole spec before every push — a host may
   only require a full prover pass before a major version, checking something lighter
   (or nothing) in between. That cadence is a host setting; state it in

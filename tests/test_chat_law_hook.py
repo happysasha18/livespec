@@ -8,7 +8,7 @@ homes; the hook only reminds. This test proves the script on disk, the line it
 speaks, and that the one installer covers both session hooks (clock + laws).
 
 Zero dependencies beyond the stdlib; run from the repo root:
-  python3 -m unittest discover tests -v
+  python3 -m pytest -q tests
 """
 
 import os
