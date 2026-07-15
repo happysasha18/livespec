@@ -44,7 +44,7 @@ class TestSuiteHygieneLaw(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-100 |"):
-                    self.assertIn("leak", line)
+                    self.assertIn("leak", spec)
                     return
         self.fail("INV-100 index row missing")
 

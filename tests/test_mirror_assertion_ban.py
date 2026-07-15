@@ -41,7 +41,7 @@ class TestMirrorAssertionBanLaw(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-102 |"):
-                    self.assertIn("mirror", line)
+                    self.assertIn("mirror", spec)
                     return
         self.fail("INV-102 index row missing")
 

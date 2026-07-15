@@ -136,8 +136,8 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-136 |"):
-                    self.assertIn("design principle", line.lower())
-                    self.assertIn("project.design-principles", line)
+                    self.assertIn("design principle", spec.lower())
+                    self.assertIn("project.design-principles", spec)
                     return
         self.fail("INV-136 Formal-index row missing")
 

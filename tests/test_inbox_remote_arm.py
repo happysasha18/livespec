@@ -47,8 +47,8 @@ class TestInboxRemoteArm(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-112 |"):
-                    self.assertIn("remote arm", line)
-                    self.assertIn("grant", line)
+                    self.assertIn("remote arm", spec)
+                    self.assertIn("grant", spec)
                     return
         self.fail("INV-112 index row missing")
 

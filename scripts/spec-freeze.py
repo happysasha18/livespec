@@ -64,8 +64,13 @@ def extract(text):
     lines = text.splitlines()
     anchors = _counts(ANCHOR_RE.findall(text))
     ranges = _counts(RANGE_RE.findall(text))
+    # structural marker lines live in scenario prose and headings; a Formal-index table row
+    # (starting "| CODE |") only DESCRIBES a rule and may mention [target]/[default] in passing,
+    # so it is not a structural marker and is excluded (it is compacted, and its numbers/anchors
+    # are still frozen by the other checks).
     markers = sorted({ln.strip() for ln in lines
-                      if MARKER_TOKEN_RE.search(ln) or (H3_RE.match(ln) and ("[" in ln))})
+                      if not ln.lstrip().startswith("|")
+                      and (MARKER_TOKEN_RE.search(ln) or (H3_RE.match(ln) and ("[" in ln)))})
     nums = _counts(NUM_UNIT_RE.findall(text))
     paths = _counts(BACKTICK_PATH_RE.findall(text))
     return {"anchors": anchors, "ranges": ranges, "markers": markers,

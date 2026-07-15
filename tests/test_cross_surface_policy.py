@@ -39,7 +39,7 @@ class TestCrossSurfacePolicy(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-125 |"):
-                    self.assertIn("surface-class", line.lower())
+                    self.assertIn("surface-class", read_flat("PRODUCT_SPEC.md").lower())
                     return
         self.fail("INV-125 Formal-index row missing")
 

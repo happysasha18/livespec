@@ -101,7 +101,9 @@ def test_formal_index_rows():
         row = next((l for l in lines if l.startswith("| %s |" % anchor)), None)
         assert row is not None, "no Formal-index row for %s" % anchor
         assert "design review" in row, "%s index row lost its subject" % anchor
-        assert "homes —" in row, "%s index row lost its homes line" % anchor
+        # the row is a compact map; the full statement and its homes list live in the prose clause
+        clause = next((l for l in lines if l.startswith("**") and l.rstrip().endswith("[%s]" % anchor)), None)
+        assert clause is not None, "%s lost its prose clause" % anchor
 
 
 # --- the architecture node and seams ---

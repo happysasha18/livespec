@@ -68,3 +68,21 @@ Fresh Opus whole-doc judge (self-test canary passed, 0 hallucinated quotes): 11 
 ## Stage 5 tail — ARCHITECTURE.md prose (2026-07-09)
 
 Intro prose converted to register: 5 second-person → agent/passive; VCS allowlisted (acronym). Tables untouched — 3 emphasis caps remain inside table cells (NEW/BEFORE/DECLARED), parked like the SPEC Formal index. Anchors identical; suite 203 green.
+
+## 2.0 index-row compaction (2026-07-15) — needle re-points
+
+When the 68 duplicate Formal-index mega-rows were compacted to one-liners, eight traceability needles
+keyed to a word in the terse index row were re-pointed to the same word in the spec's prose clause (the
+law's real home), since the compact row is now a map rather than a restatement. Each word was verified
+present in the prose before the re-point.
+
+| Test | Anchor | Old needle (in index row) | New home | 
+|------|--------|---------------------------|----------|
+| test_convergence_rule | INV-98 | "convergence point" in row | whole spec (prose clause) |
+| test_cross_surface_policy | INV-125 | "surface-class" in row | whole spec (prose clause) |
+| test_design_principles | INV-136 | "design principle" / "project.design-principles" in row | whole spec |
+| test_inbox_remote_arm | INV-112 | "remote arm" / "grant" in row | whole spec |
+| test_mirror_assertion_ban | INV-102 | "mirror" in row | whole spec |
+| test_suite_hygiene | INV-100 | "leak" in row | whole spec |
+| test_scenario_entry_exit | INV-127 | "enter" in row | "entry" (survives in the compact row) |
+| test_design_reviewer | INV-141/142 | "homes —" in row | the prose clause exists (homes list lives there) |

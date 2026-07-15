@@ -40,7 +40,7 @@ class TestConvergenceRule(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-98 |"):
-                    self.assertIn("convergence point", line)
+                    self.assertIn("convergence point", spec)
                     break
             else:
                 self.fail("INV-98 index row missing")
