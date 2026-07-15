@@ -101,6 +101,15 @@ def test_spec_states_the_cleanup_ownership_law():
     assert "chrome_crashpad_handler" in spec
 
 
+def test_shared_install_path_is_not_a_safe_kill_target():
+    # ROADMAP 335 (track-coach cross-session collision): an install path is safe only when
+    # unique to this run; where sessions share a path the recorded process group is the sole
+    # safe target, the one identity that always stays inside this run.
+    spec = read("PRODUCT_SPEC.md")
+    assert "unique to this run" in spec
+    assert "recorded PID or process group is the only target that always stays inside this run" in spec
+
+
 def test_worker_briefing_carries_the_constraint():
     # a briefed worker inherits the constraint, so it never reinvents a broad `pkill chrome`.
     bp = read("skills/build-pipeline/SKILL.md")
