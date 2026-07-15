@@ -126,7 +126,10 @@ CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TT
               "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO", "HEAD",
               "KPI", "UX", "FIXME", "VCS", "DOM", "PID", "OS", "CDN", "CDP",
               # doc / file names used as bare tokens
-              "ARCHITECTURE", "ROADMAP", "JOURNAL", "VERSION", "LIVE-STATE",
+              "ARCHITECTURE", "ROADMAP", "JOURNAL", "VERSION", "LIVE-STATE", "MIGRATION",
+              # the audit record's milestone-read disposition values (INV-156), a closed vocabulary
+              # pinned in the matrix (M-303) and the real docs/audit/ records — literal terms, not shout
+              "MET", "OWED", "FLAG",
               # defined problem-ledger status values (E-24) and the prototype label
               "WATCHED", "OWNED", "AGREED", "NON-PROBLEM", "SOLVED", "ARCHIVED", "PROTOTYPE", "DECIDE",
               # defined prover/verify mode names — literal terms, not shout
