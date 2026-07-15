@@ -4421,3 +4421,44 @@ design-principles table + Prover-record row · TEST_MATRIX M-278 · spec-author 
 Delegation (INV-103): the composition judgment, the founding-check scope, the positive-register principle
 statement, and the architecture prove were the senior's; the fresh-eyes adversarial audit went to a
 general-purpose worker (~20 min senior saved on the independent read).
+
+## 2026-07-15 — 1.5.0: the two reviews as one bounded loop + the design review shipped alongside the prover
+
+Alexander's wish: include the design review in the prover pack. Settled with him that the two review
+passes stay two (quality over merging), the prover runs first, and the relationship becomes a bounded
+loop that settles to a fixed point; the design review gets its own shopfront and ships bundled with the
+prover, which keeps its name and presents the design review as its younger sibling.
+
+**Story A — INV-154, the loop.** A round is one prover re-read plus one design-review re-read, and only
+a human-accepted declaration (a class sentence [INV-125] or a decided sentence [INV-59]) advances it. The
+loop rests in one of three named states — converges, waits on the human's answer, or stands down on a kind
+with no element a person acts on, recorded by name. It is bounded at three progressing rounds; on the cap
+it stops and surfaces the unsettled groupings with a best-effort cause, and it never holds a landing. The
+clause was proven three times and rewritten twice: an independent adversarial prove folded seven
+within-clause soundness findings (the converge-versus-wait conflation, the unfounded strict-shrink
+termination claim, the landing-disposition gap, the element-versus-grouping slip, plus the counter home,
+the round definition, and the closed cause set); then the MINOR-gate whole-spec prover and the full design
+review, from two different angles, each found the SAME deeper gap — the prover saw that a confident
+recommendation fits neither resting state, the design review saw that a stood-down pass would falsely read
+as converged on a UI-less kind, live-spec itself. Both folded into the three-state, declaration-triggered
+model. The design review earned its keep on its own author: the parity gap was invisible to every
+soundness lens.
+
+**Story B — the shopfront.** design-reviewer gained a README and a LICENSE mirroring product-prover's;
+product-prover's README gained a younger-sibling section and a cross-reference; a completeness guard
+(M-300) locks both. The pack already ships both skills by directory presence; the single-skill mirror
+bundle is queued rather than built, since a mirror is the owner's deliberate act.
+
+**Root fix over a patch (Alexander's word, "дерех а мелех").** The release first reddened a test that
+hard-pinned the previous version's literals — a per-release snapshot hand-edited every bump. Rather than
+roll the literals forward, the test was rewritten to derive agreement from the VERSION file, so it stays
+current on its own and still catches drift.
+
+Door: feature (two stories); kind: skill; footprint: cross-cutting, HELD. SPEC INV-154 NEW + index row ·
+ARCHITECTURE loop seam + node · TEST_MATRIX M-299/M-300 · build-pipeline step-2 (1.0.30) · design-reviewer
+skill + README + LICENSE (1.0.1) · product-prover README (younger sibling, stale stamp removed) · tests
+(guard + completeness + version-agreement root fix) · VERSION/plugin/spec-header 1.5.0. Suite 738 green;
+CI green. Commit `bee657c`. Queue: ROADMAP 321-325. Delegation (INV-103): the design and every fold
+judgment stayed senior; the clause prose, the downstream ripple, the packaging, the three MINOR-gate
+audits (whole-spec prover, full design review, skill-creator), the version sweep, and the recon reads all
+went to background workers, keeping the orchestrator context lean.

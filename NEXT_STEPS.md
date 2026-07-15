@@ -1,81 +1,42 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-14 23:24 — four lanes pushed + CI green, Discussion field beat CLOSED; a MINOR release awaits Alexander's word; pack v1.4.2)
-**PACK v1.4.2, PROVER v1.1.4.** Three lanes landed on origin this session, every push's CI green (`gh run`),
-suite 724 green: (1) the cross-host duplicate coordinator (INV-149, M-291); (2) property routing between the
-prover and the design review (INV-150 + INV-125/INV-126 sharpened, M-292/M-293/M-294) — each declared
-cross-cutting law names its enforcing net, one of three kinds (a mechanical gate naming a real guardrail/test;
-the prover's judgment station; or the design review's recommendation), verified at the INV-101 station, with a
-net-floor test that reds on a netless law; the class trigger catches a kind-general rule homed on one member;
-the paired-transition law grew its reversibility-of-means half (a blocking obligation, promoted from a soft
-recommendation — named to Alexander as a bar-change, kept isolated so it can be softened), binding any
-continuous-gesture opening; the inbox openable-faces wish is realized and harvested; four fresh-eyes findings
-folded before push; (3) a monitor idempotency fix (M-295) that a LIVE round-trip exposed — the monitor
-re-surfaced an item because GitHub bumps `updatedAt` past its own marker comments, now the activity generation
-reads from non-marker comments on both channels. **The request-layer classifier (INV-151/152/153, M-296/297/298)
-is PUSHED** (`bccfad3`, CI green) — suite 736 green: the door set is written CLOSED at build-pipeline's door
-step with the entry-layer criterion + the one-plain-question fallback, the deferral-must-justify-itself clause
-is base rulebook rule 29, and the unification is stated once (INV-153). Its mandatory fresh-eyes adversarial
-pass ran and its one real finding was folded before push (the intake back-check test was vacuous — now
-red-first on a phrase unique to the new wiring; design-reviewer added to the base-pin guard).
+## LIVE STATE (2026-07-15 09:07 — 1.5.0 SHIPPED, pushed, CI green; the two reviews are now one bounded loop, the design review ships alongside the prover; pack v1.5.0)
+**PACK v1.5.0** (commit `bee657c`, pushed, CI green, suite 738). Two stories landed this session as one
+MINOR release, from Alexander's wish "include the design review in the prover pack":
 
-**A MINOR release awaits Alexander's word.** The session added five invariants of new capability
-(INV-149 through INV-153), which is a MINOR bump by semver (1.4.2 → 1.5.0). The bump and its deep Fable
-whole-spec + architecture audit are held for Alexander: he reserved the version/pin alignment for his own word
-(row 231), and the deep Fable pass runs only on his word. Everything is landed, green, and CI-confirmed at
-1.4.2; the release is one word away. Read this, then memory can be wiped — the whole story lives in JOURNAL +
-the prover/design-review records.
+- **Story A — INV-154, the loop.** The prover and the design review form a bounded loop that settles to a
+  fixed point. A round is one prover re-read plus one design-review re-read; only a human-accepted
+  declaration (a class sentence or a decided sentence) advances it. The loop rests in one of three named
+  states — CONVERGES, WAITS (on the human's answer), or STANDS DOWN (a kind with no element a person acts
+  on, recorded by name). It is capped at three progressing rounds; on the cap it stops and surfaces the
+  unsettled groupings with a best-effort cause, and it never holds a landing. Proven three times, rewritten
+  twice: an independent adversarial prove folded seven within-clause findings, then the MINOR-gate
+  whole-spec prover and full design review each found the same deeper gap from a different side (a confident
+  recommendation fitting no resting state; a stood-down pass falsely reading as converged on a UI-less kind
+  like live-spec itself), both folded into the three-state model.
+- **Story B — the shopfront.** design-reviewer ships its own README + LICENSE; product-prover's README
+  presents it as the younger sibling with a cross-reference; a completeness guard locks both (M-300).
+- **Release + a root fix.** VERSION/plugin/spec-header → 1.5.0; design-reviewer 1.0.1, build-pipeline
+  1.0.30; the stale v1.3.0 stamp removed from product-prover's README. A version-home test that hard-pinned
+  the previous release's literals (a per-release hand-edit trap) was rewritten to derive agreement from the
+  VERSION file (Alexander's "дерех а мелех" — root fix over a patch), so it stays current on its own.
 
-## What landed this session
-0. **Property routing between the two reviews (INV-150, INV-125/INV-126, M-292/M-293/M-294).** Each declared
-   cross-cutting law names its net; the class trigger fires on a kind-general rule homed on one member; the
-   paired-transition law reads as two halves (continuity + reversibility of means). Records:
-   `docs/prover/2026-07-14-property-routing.md`, `docs/design-review/2026-07-14-property-routing.md`. Inbox
-   openable-faces wish harvested. One must-fix folded (the watch-level net's dated reason), one recommendation
-   queued (whether INV-150 states the presence-versus-rightness split explicitly or by reference). Four review
-   findings folded in a later worker pass: the means-half "over everything" narrowing removed; the net
-   vocabulary given three kinds (mechanical gate / prover station / design review) with the pack's three laws
-   named as mechanical gates; the orphan `test_cross_sibling_routing_split` cited in M-292; a net-floor test
-   (`test_pack_declared_laws_each_name_a_net`) added, red-first proven.
-1. **The monitor's schedule — the door is now live (INV-148).** A scheduled GitHub Action
-   (`.github/workflows/stranger-monitor.yml`) runs the monitor daily (and on manual dispatch), commits any
-   bridged inbox file, and pushes it as github-actions[bot]; single-instance by `concurrency`. This is the act
-   that truly opened the door [INV-147]. **Verified by deed:** a real dispatched run went green end-to-end
-   (every step, clean no-op). The independent audit [INV-46] caught a must-fix the author's tests could not —
-   the monitor re-triggered on its OWN marker comment (daily-cron spam); folded (record the marker's post-comment
-   createdAt) plus a Discussions-disabled resilience fold. Record: `docs/prover/2026-07-14-monitor-schedule.md`.
-2. **A false-green gate hole closed (M-154).** The local push gate ran `unittest discover`, which cannot collect
-   the pytest-style tests — it false-greened while CI's pytest caught a red. `check-tests.sh` now runs pytest
-   (the same runner as CI), swept the misleading runner docstrings, and pinned both nets to one runner with a
-   guard test.
-3. **M-212 blind spot closed.** Two malformed-backtick matrix cells desynced `gate_common.scrub`; reworded to
-   balance, plus a guard test that reds on any odd inline-backtick line in the spec or matrix.
+## In flight this session (under /loop, autonomous)
+- **ROADMAP 325 — flaky tests root-fixed, never tolerated or retried** — building NEXT as its own lane
+  into test-author + build-pipeline's green definition (Alexander 2026-07-15; the infrastructure/root fix
+  first, never a blind retry or patch).
 
-## Queue / field beats
-- **Discussion WRITE round-trip — CLOSED this session.** A live round-trip on the real repo exposed a real
-  idempotency bug (the monitor re-surfaced a discussion because GitHub bumps `updatedAt` past its own marker
-  comments), fixed and pushed (M-295, both channels; record
-  `docs/prover/2026-07-14-monitor-idempotency-updatedat-skew.md`). A FRESH live round-trip after the fix then
-  confirmed exactly-once end-to-end: run 1 deposited one inbox file plus its claim/confirm markers, run 2
-  deposited nothing and added no comment. Test discussions created and deleted, tree clean, origin untouched.
-- **Remote deposit field beat [INV-112]** — still owes its one real remote deposit run (needs a real remote
-  seat push from another machine or a cloud session, not simulable from this local seat).
+## Queue (ROADMAP)
+- **321** feedback-collector sub-skill — on strong user emotion, OFFER (consent first) to send a distilled
+  digest upstream; inbox destination, per-machine opt-out, distinct from feedback-intake. Open design Qs at
+  build (Alexander 2026-07-15, "как дойдём добавим").
+- **322** the forward-binding law is cited to two roots — unify to one.
+- **323** declare the review-record class once (prover / design-review / skill-creator / verify records),
+  default is to declare.
+- **324** build-pipeline SKILL.md is 593 lines, over the 500 ideal — offload set-piece tables to references/.
 
-## OWNER-HELD
-- **Memory can be wiped** — every push's CI is confirmed green; the whole story is in JOURNAL + prover records.
-
-## Standing habits (always-on)
-- When a method skill changes, run a fresh-eyes adversarial pass (INV-46); a MILESTONE earns the deep Fable
-  whole-spec + architecture pass; a full audit runs on a landing-count cadence (INV-145). `date` before any
-  stamp. Shipped docs stay impersonal (INV-118/120), provenance in docs/lenses.md + JOURNAL, never inline
-  (R15/INV-83). The seat decides and acts on derivable work and reports (INV-143); the spec is the definition
-  of correct (INV-144). Delegation by base rule 5 → INV-69; a worker whose write-set overlaps the senior's own
-  in-flight edits gets an isolated worktree or is serialized.
-- No self-certification (INV-94) · plain words, codes trail (INV-28) · say-what-it-is, no contrast frames ·
-  inbox swept first · one lane one commit · a delegated run's verdict is the suite log's tail (INV-80) · the
-  local push gate and CI run the same test runner (pytest), never a weaker local net (M-154).
-- Next free codes: INV-154, M-299 (INV-151/152/153 and M-296/297/298 consumed by the request-layer classifier
-  lane, built locally this session; read the live Formal index before minting; codes consume in landing order).
-
-## Memory
-Once you have read this, memory can be wiped — JOURNAL + the prover records + ROADMAP carry the whole story.
+## Standing habits / OWNER-HELD
+- **Memory can be wiped** — the whole story is in JOURNAL + the prover/design-review records + ROADMAP.
+- Version bumps are NOT owner-reserved (Alexander confirmed 2026-07-15): cut them on green, standing push
+  authorization holds. The deep independent MINOR-gate audit runs by default as quality, not on his word.
+- Next free codes: INV-155, M-301.
