@@ -494,4 +494,4 @@ could have made yourself (rule 7).
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix
 > and writes the tests · **communicator** makes the human exchange land · **feedback-intake** brings what
-> comes back to its home · **publish** sees the work out the door, owing its kind's checklist.
+> comes back to its home · **feedback-collector** offers a rare private note up to the authors · **publish** sees the work out the door, owing its kind's checklist.

@@ -138,6 +138,7 @@ The method's job is to bring the right call to a human at the right moment. Not 
 | `test-author` | Derives `TEST_MATRIX.md` from the proven spec and writes the tests. Call it directly for *"why did green tests miss this bug?"*. |
 | `communicator` | Shows work and asks for decisions you can actually make: milestone reports, decision pages, evidence walks. |
 | `feedback-intake` | Receives whatever you hand back — a remark, an answer, a screenshot, a dropped file — and routes each item to the file that owns it. |
+| `feedback-collector` | On a rare, genuinely strong reaction, offers — with your explicit yes — to draft a short private note to the pack's authors; off by default, never sends on its own. |
 | `publish` | The quality gate before work leaves the machine: a repo going public, a release, a directory submission, a README update. |
 
 Docs: [pipeline](docs/pipeline.md) · [architecture method](docs/architecture-method.md) · [test method](docs/test-method.md) · [settings & onboarding](docs/onboarding-and-settings.md) · [commit & push gates](docs/push-law.md) · [background workers](docs/worker-liveness.md) · [adoption](docs/adoption.md) · [pair adoption](docs/pair-adoption.md) · [what lives where](OVERVIEW.md)

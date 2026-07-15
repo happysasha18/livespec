@@ -1,4 +1,7 @@
 .live-spec/checkpoints/
+
+# outbox/ holds private upstream notes (feedback-collector) — never tracked, never pushed
+outbox/
 .live-spec-fence
 .claude/worktrees/
 

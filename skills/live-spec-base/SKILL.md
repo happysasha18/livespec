@@ -1,6 +1,6 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-nine rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-nine rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
   version: 1.0.18
 ---
@@ -8,7 +8,7 @@ metadata:
 # live-spec-base — one rulebook, eight working skills
 
 The pack's shared working rules live HERE, once. A working skill (spec-author, product-prover,
-design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) opens by naming this base and the version it was written against, references
+design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) opens by naming this base and the version it was written against, references
 these rules, and elaborates only its own domain — communicator teaches HOW to speak plainly; THAT we speak
 plainly is this file's sentence. A second full statement of a shared rule inside a working skill is drift —
 a defect to fold at the next milestone rather than a convenience (SPEC INV-13). Used standalone, outside the pack,
@@ -374,6 +374,7 @@ any pack file is read, and it is those bootstrap lines' one home — the profile
 | `project.kind` | none — asked at founding and at adoption's orient, always the human's answer, never profile-seeded or inferred (SPEC INV-36) | the host's own kind: book · backend service · static site · fullstack app · CLI · skill pack · a custom kind through the queue; seeds project-wide defaults, never overriding an explicit line; updated on the human's word the moment the project outgrows it, journaled | visible |
 | `project.design-principles` | none for a kind with no visual surface; a visual kind (e.g. frontend / fullstack app) declares its set at founding, seeded from that kind's starter table in ARCHITECTURE.md's per-kind design-principles section (SPEC INV-136) | the project's own checkable design rules, one line, extended past the starter set through the queue; a visual kind recorded with none is flagged the way a kind recorded with no layers or proofs is (SPEC INV-135) | internal |
 | `design-sync` | off — a host with visual components may switch it on (recorded profile line, SPEC E-18, INV-14) | on: a landing's DECLARED components sync to the team's design project, every sync behind the human's publish gate (rule 17) | internal |
+| `feedback-upstream` | off — the outbound feedback arm is silent; a host switches it on with a recorded profile line (SPEC INV-161, INV-14) | on: on a rare strong reaction the pack offers, with the human's explicit yes, to draft a private upstream note to the pack's authors into `outbox/`; never sends, delivery the human's own step | internal |
 | `budget.pressure` | full — full rigor everywhere; the economy ladder's rung (SPEC T-19, INV-40) | lean or tight, ONLY on the human's word (a session's word or a profile line; asked — or the default told — at a project's setup, founding or adoption, alongside `project.kind`; the agent proposes a rung when money/time pressure is named, never sets one); each rung's legal sheds and the never-bend list live in the SPEC's economy-ladder section — every taken shed is named in the landing report, and an explicit host line outlives any rung | visible |
 
 The Card column says what the settings card renders: a `visible` row appears on the card; an `internal` row is workshop machinery the card leaves out, reaching the reader only as a recorded host-profile line in the card's project-rules part. The card's own law lives in the SPEC (INV-87).
@@ -384,4 +385,4 @@ table grows through the queue like everything else.
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix and writes the tests · **communicator** makes the human
-> exchange land · **feedback-intake** brings what comes back to its home · **publish** sees the work out the door, owing its kind's checklist.
+> exchange land · **feedback-intake** brings what comes back to its home · **feedback-collector** offers a rare private note up to the authors · **publish** sees the work out the door, owing its kind's checklist.

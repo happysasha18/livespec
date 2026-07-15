@@ -68,6 +68,8 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Test-author license | `skills/test-author/LICENSE` | legal | `test_artifact_inventory` |
 | Feedback-intake README | `skills/feedback-intake/README.md` | shipped text | `test_artifact_inventory` |
 | Feedback-intake license | `skills/feedback-intake/LICENSE` | legal | `test_artifact_inventory` |
+| Feedback-collector README | `skills/feedback-collector/README.md` | shipped text | `test_artifact_inventory` |
+| Feedback-collector license | `skills/feedback-collector/LICENSE` | legal | `test_artifact_inventory` |
 | Build-pipeline README | `skills/build-pipeline/README.md` | shipped text | `test_artifact_inventory` |
 | Build-pipeline license | `skills/build-pipeline/LICENSE` | legal | `test_artifact_inventory` |
 | Communicator README | `skills/communicator/README.md` | shipped text | `test_artifact_inventory` |
@@ -104,6 +106,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | Publish license | `skills/publish/LICENSE` | legal | `test_artifact_inventory` |
 | Test-author skill | `skills/test-author/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Feedback-intake skill | `skills/feedback-intake/SKILL.md` | shipped text | `test_artifact_inventory` |
+| Feedback-collector skill | `skills/feedback-collector/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Design-reviewer skill | `skills/design-reviewer/SKILL.md` | shipped text | `test_artifact_inventory` |
 | Skill evals — method + honest boundary | `evals/README.md` | shipped text | `test_artifact_inventory`, `test_eval_readme_states_honest_boundary` |
 | Skill evals — one per working skill | `evals/` | shipped text dir | `test_skill_evals_present` (self-closing over skills/) |
@@ -494,6 +497,14 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-172 | The feedback-intake skill ships: SKILL.md loads (frontmatter name + version), states the three channels (spoken/typed · comment on something shown · dropped file via the inbox door) and the ledger's home and line shape (when · who/channel · concerns · plain words · route); never a skill file without the channels or the ledger shape | E-28 | string | `test_feedback_intake_ships` (red proven against HEAD — file absent there) | BUILT |
 | M-173 | The routing table names every route WITH its home (wish→queue row · fix→commit+journal · answer→archive+harvested row · field evidence→ledger line · workshop noise→problem ledger) and both fire sides (fires on receipt and at inbox sweep; never on the agent's own output, never opening a queue row on its own judgment); never a route without a named home | T-20 | string | `test_feedback_routes_have_homes` | BUILT |
 | M-174 | The never-lost law agrees across its three surfaces: SPEC's INV-68 index line, the skill's own text, and inbox/README.md all speak route-homes (same session · one echo per item · re-mention appends its date · only the assigned session writes the ledger, outsiders via inbox); never a surface still speaking the old wishes-only harvest | INV-68 | string | `test_feedback_never_lost_in_both_homes` | BUILT |
+
+### [node: feedback-collector]
+
+| ID | Fact (from spec) | Spec ref | Test level | Owning test | Status |
+|---|---|---|---|---|---|
+| M-308 | The feedback-collector ships and fires only rarely: SKILL.md loads (name + version 1.0.0), states a rare strong-moment offer that drafts an upstream note, and is OFF by default (the `feedback-upstream` flag), reading nothing until a host opts in; never a skill file missing the offer or the off-by-default flag, never firing on the agent's own output or below the unmistakable bar | E-30 | string | `test_feedback_collector_ships` + `test_off_by_default_and_positive_consent` (red proven against HEAD — the skill absent there) | BUILT |
+| M-309 | The upstream note is distilled, non-public, deposited, and never sent: on a positive yes the pack drafts a self-contained note that carries its own context and deposits it in the gitignored `outbox/`, opening no network connection and no public request; never a raw transcript or script inside the note, never a tracked or pushed note | T-21 | string | `test_never_sends_only_deposits` (asserts both the deposit-not-send and the gitignored outbox; red proven against HEAD) | BUILT |
+| M-310 | Consent is positive word and the arm is fenced: an explicit yes every time (the deliberate opposite of silence-is-consent [INV-31]), distinct from feedback-intake (the inverse arrow [T-20]) and from the measurement family (no scoring), the flag a marked row in the settings catalog; never a silent send, never sentiment scoring, never a behaviour with no spec anchor | INV-161 | string | `test_off_by_default_and_positive_consent` + `test_distinct_from_intake_and_measurement` + `test_flag_in_settings_catalog` + `test_spec_states_the_third_arrow` (red proven against HEAD) | BUILT |
 
 ### [node: onboarding-card]
 
