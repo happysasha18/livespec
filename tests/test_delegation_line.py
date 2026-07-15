@@ -11,7 +11,7 @@ import os
 import re
 import unittest
 
-from conftest import ROOT, read_flat
+from conftest import ROOT, read_flat, read_all, read_all_flat
 
 LANDED = re.compile(r"\*\*landed (20\d\d-\d\d-\d\d)")
 BINDS_FROM = "2026-07-12"
@@ -22,7 +22,7 @@ class TestDelegationLineLaw(unittest.TestCase):
 
     def test_law_in_both_homes(self):
         for home in self.HOMES:
-            body = read_flat(home)
+            body = read_all_flat(home)
             self.assertIn("the landed row's status cell", body, home)
             self.assertIn("a suite check reads it", body, home)
             self.assertIn("a landed row without the line goes red", body, home)

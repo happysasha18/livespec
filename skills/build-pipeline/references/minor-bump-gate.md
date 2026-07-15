@@ -1,0 +1,19 @@
+# Before a MINOR (0.x.0) bump
+
+The full gate procedure referenced from `SKILL.md`'s "Gates worth remembering" section.
+
+**Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
+audit + a surface-composition check. The full **design review** runs here too, beside the
+surface-composition check (SPEC INV-141): the whole element inventory, every proposed same-kind grouping,
+its likely divergences echoed as at most three asks — recommendations and questions only, never a block. The gate also runs the **cross-cut counter** (`guardrails/crosscut_counter.py`,
+SPEC INV-128 boundary-health, INV-37): it counts the closed queue's cross-cutting landings per node pair,
+and a pair reaching the threshold (3 by default) is flagged as a boundary-move candidate for the audit to
+weigh — the flag is a signal, never a push-blocking red, and a boundary still moves only through the
+architecture step and its re-prove. Fix holes by the book; record the rest. The gate also runs
+**code compaction as a station beside doc compaction (SPEC INV-123):** duplicate logic merges, dead weight
+leaves with its listing (INV-109), a ripened abstraction is extracted only through the three-question
+fitness gate (INV-122), and each pass locks its reached level with a test or lint where newly reached, else the existing suite that holds it green (rows 216-218). The
+station has a second trigger beyond this gate — the second occurrence of the same problem (base rule 19)
+opens the duplication's own compaction row that moment (rule 19's owner), not only at the milestone; the
+row lands through the ordinary pipeline (one row's delta, INV-39; a known duplication never blocks its
+lane, INV-56), rather than an instant in-place fix.

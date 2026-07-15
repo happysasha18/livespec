@@ -9,7 +9,7 @@ the shipped homes: the spec clauses, the build-pipeline door step, and the base 
 
 import unittest
 
-from conftest import read, read_flat
+from conftest import read, read_flat, read_all, read_all_flat
 
 
 class TestRequestClassifierEntryLayer(unittest.TestCase):
@@ -28,7 +28,7 @@ class TestRequestClassifierEntryLayer(unittest.TestCase):
         self.assertIn("one plain question", spec)
 
     def test_closed_set_at_the_build_pipeline_door(self):
-        bp = read_flat("skills/build-pipeline/SKILL.md")
+        bp = read_all_flat("skills/build-pipeline/SKILL.md")
         self.assertIn("The door set is CLOSED", bp)
         self.assertIn("highest document in the derivation chain", bp)
         self.assertIn("one plain question", bp)
@@ -37,7 +37,7 @@ class TestRequestClassifierEntryLayer(unittest.TestCase):
             self.assertIn(kind, bp, "closed-set entry missing at the door: %r" % kind)
 
     def test_intake_moment_back_check(self):
-        bp = read_flat("skills/build-pipeline/SKILL.md")
+        bp = read_all_flat("skills/build-pipeline/SKILL.md")
         # A phrase unique to the new door-step wiring, so this test is genuinely red
         # before the classifier lands (the bare "at intake" already existed elsewhere).
         self.assertIn("spec-motion tripwire fires", bp)

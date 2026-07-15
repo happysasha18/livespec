@@ -11,7 +11,7 @@ two-sibling-worker collision that self-corrected (tlvphotos 2026-07-13).
 
 import unittest
 
-from conftest import read_flat
+from conftest import read_flat, read_all, read_all_flat
 
 # The shared imperative, punctuation-identical across every home so one needle matches all.
 # N-ary (disjoint from EVERY already-running writer, since T-18 allows up to three lanes), R1 folded.
@@ -31,7 +31,7 @@ class TestBriefTimeDisjointness(unittest.TestCase):
         self.assertIn("owns their seams", spec)
 
     def test_build_pipeline_carries_the_operational_imperative(self):
-        sk = read_flat("skills/build-pipeline/SKILL.md")
+        sk = read_all_flat("skills/build-pipeline/SKILL.md")
         self.assertIn(IMPERATIVE, sk)
         self.assertIn("settled when the briefs are written", sk)
 

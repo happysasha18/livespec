@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.31
+  version: 1.0.32
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.17), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.18), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -110,19 +110,8 @@ standards look like in its medium.
     prototype, outside prod and unshown as product.
 - **The door set is CLOSED, and a request enters at the highest document its change reaches (SPEC INV-151).** A request enters at the highest document in the derivation chain — spec → architecture → matrix → code → docs — whose sentences must change to satisfy it; the settings ladder stands beside the chain for a pure value. Walk the chain from the top: after this is done, would any sentence in this document read differently? The first yes is the entry layer, and the request flows down through every step its door grants. The set of entry points is closed — every request kind has a named home and a mandatory back-check, and a request the set cannot place is one plain question, never an improvised route:
 
-  | Request kind | Enters at | Mandatory back-check |
-  |---|---|---|
-  | product behaviour | the spec step, flows down | none above it; the fit walk validates against the whole spec (FEATURE-FIT) |
-  | a technically-phrased request | the architecture step | the spec-motion tripwire fires **at intake** — a surface / state / unbacked-behaviour trip lifts it to the spec at the door (before the architecture work is built on an unlifted premise), outranking the request's own label (INV-16), and re-fires mid-work |
-  | a defect | the matrix step, red-on-bug test | a fixed fact also in spec prose updates the spec sentence the same change; a recurring bug (~30 days, same area) re-doors to feature (INV-104, INV-124) |
-  | docs-only | its own light path | the removal accounting (INV-109) + the register lint |
-  | a tiny reversible edit | the skip shortcut (code + test) | the spec-backed-literal tripwire (INV-104); anything visual enters at the matrix minimum |
-  | a settings / parameter value | the settings ladder (profiles) | check it is genuinely a value — a new RULE is a feature for the spec |
-  | an inbox wish (cross-project arrival) | the inbox sweep, then classified at the door like any request | the wish door's own verdict at intake; the outsider never writes the tree (base rule 16) |
-  | a method / skill change | the same criterion, work-kind `skill` scaling each step's form | the pack's own product IS the method, so there is no separate meta-layer set — the design-reviewer's own landing this session is the worked proof (INV-22) |
-  | a sketch (see / try) | a labelled `prototype/` home | unclear see-vs-have ⇒ one plain question; promotion enters at the spec step (base rule 16) |
-  | research / a question from the docs | no layer (no write) | — |
-  | a feedback hand-back | feedback-intake, to the home its law owns | not the agent's own output; opens no queue row on its own (SPEC T-20) |
+  See [references/request-kind-table.md](references/request-kind-table.md) for the full closed set of
+  request kinds, their entry step, and mandatory back-check (product behaviour · a technically-phrased request · a defect · docs-only · a tiny reversible edit · a settings/parameter value · an inbox wish · a method/skill change · a sketch · research/a question · a feedback hand-back).
 
   **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" checkable instead of habitual: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced rather than improvised. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150) and the deferral test's (SPEC INV-152) — one routing principle stated three times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
@@ -180,18 +169,8 @@ NAMED kind (the ask rides the row, SPEC INV-12). And no kind ever touches the sa
 and its tripwires, the delta's mandatory sentences (fences · facets · non-goals · success measure),
 ask-at-intake — the same law a scope cut obeys (SPEC T-15).
 
-| Step | product (a user faces it) | infra (tooling for the project) | skill (an agent works by it) | prose (a human reads it) |
-|---|---|---|---|---|
-| 1 spec | full delta: fences, axes, facet sweep over visible surfaces | the tool's contract: inputs → outputs, failure behaviour, where it runs; usually "no visible surface — facets N/A" | the behaviour it must produce: trigger, the correction it makes, when NOT to fire | the reader, the claims, the reading path; visual facets only if it renders |
-| 2 prove | as written | as written | as written | as written — the prover reads documents natively |
-| 3 architecture | nodes + `file:line` pins | one node owns the tool, pinned to its entry point | the skill IS a node; pin its SKILL.md | owned by a docs node; new node only if structure grows |
-| 4 prove architecture | when structure changed | same | same | usually stands down — assignment, no structure change |
-| 5 matrix | rendered-level rows (E-15) | function-level rows: run the tool, assert real output | string rows on the SHIPPED SKILL.md; behaviour eval when the eval machinery lands (row 94) | render-level: file shipped, sections present, links resolve |
-| 6 test | assert the real render | run on a fixture, assert output | string assertions against the installed artifact | assert the shipped file's content |
-| 7 code | as written | as written | as written | the writing IS the step |
-| 8 verify by deed | open the real artifact, eyes on it — then the VISITOR WALK (first visit · return · cross-entry · from-any-point navigation · exits) and the FEEL pass (motion quality, affordance craft) against the approved prototype's bar; the feel pass also reads the kind's declared design principles (the host profile's `project.design-principles`, the pack's per-kind starter set in ARCHITECTURE.md) and runs each in the medium's own form — the frontend kind's interactive-overlap rule (interactive controls that belong to different layers occupy separate screen space) is walked wherever a covering overlay opens over floating chrome, its pixel/DOM row living in this project's own suite; findings become rows or red (SPEC INV-30, INV-136, INV-139) | one real run, eyes on the output | re-read the INSTALLED copy; fire the trigger once where cheap; walk the installed skill-creator's review of the touched skill — format, frontmatter, description-triggering (does the skill load when it should), evals where applicable — findings folded or rejected by name in the landing record (SPEC INV-99) | render it by the show rule and READ it |
-| 9 commit & show | show the render | show the run's output | version bump + installed-copy sync, same session | open the rendered page for the human |
-| design-sync / snapshot | product with visuals: declared scope syncs (human-gated) | stands down | stands down | stands down |
+See [references/work-kind-table.md](references/work-kind-table.md) for the full table of how each step
+(1 spec · 2 prove · 3 architecture · 4 prove architecture · 5 matrix · 6 test · 7 code · 8 verify by deed · 9 commit & show · design-sync/snapshot) takes shape under product / infra / skill / prose, including the verify-by-deed VISITOR WALK and FEEL pass (SPEC INV-30, INV-136, INV-139) and the skill-review duty (SPEC INV-99).
 
 ## The steps
 
@@ -422,23 +401,10 @@ So the pipeline is not trusted, it is ENFORCED: a `guardrails` check the project
 hook** (+ the suite), so a change that fails ANY of these is RED and CANNOT be pushed. `test_traceability`
 (below) is the first of these — generalise it to the full set. **Each project INSTANTIATES the checks for its
 own surfaces; the pipeline REQUIRES the check exists and is green.** This is a first-class step, applied project-wide
-rather than as a per-project patch. The four mechanical guardrails:
-- **Completeness** — a SURFACE REGISTRY + a render-scan test that fails if any user-facing surface is empty OR
-  is rendered but not in the registry (so a new surface goes red until registered + asserted). No partial/
-  stripped artifact can ship or be shown. Self-closing: the DOM is the source of truth, checked directly instead of a hand-list.
-  The family also holds **cross-surface policy uniformity (SPEC INV-125):** a policy decided for an interaction
-  KIND that lives on sibling surfaces — a gesture policy (browser pinch-zoom refused), an affordance, an
-  input-to-action mapping — is asserted across EVERY registered sibling root, not only the surface where it
-  was born; the check goes red until every sibling carries it, so a walk-only fix cannot ship while the door
-  and the side-rooms keep the browser default. The spec-class rule is the upstream root (the clause names the
-  surface class and enumerates its members); this guardrail is the mechanical floor a rendered product wires,
-  catching the non-uniformity the day the single-surface fix lands rather than under a human's thumb.
-- **Tests-present** — a diff that touches a user-facing module MUST touch `tests/`. No change without a test.
-- **Behaviour-traces-to-spec (bounds)** — every user-facing behaviour traces to a SPEC clause; a behaviour with no
-  spec backing (a silent micro-decision — a default, an auto-mute, a sort order) is RED. This is what catches
-  freelancing mechanically: you cannot ship an unasked, unrecorded behaviour.
-- **Conflicts** — id duplicates, a spec invariant with no matrix row, a ⟨DECIDE⟩ marked RESOLVED but still
-  live, a surface named two ways. (This is today's `test_traceability`, widened.)
+rather than as a per-project patch. See
+[references/guardrails-catalog.md](references/guardrails-catalog.md) for the four mechanical guardrails
+(Completeness incl. cross-surface policy uniformity SPEC INV-125 · Tests-present · Behaviour-traces-to-spec ·
+Conflicts).
 **Honest boundary:** guardrails catch STRUCTURAL defects (empty surface, missing test, untraced behaviour,
 partial artifact, id/naming conflict). They do NOT catch a subtle SEMANTIC bug (is the number right?) — that
 still needs `product-prover` + a human's eyes. Enforce structure mechanically, and reason about meaning with
@@ -450,31 +416,14 @@ teeth agree.
 The shortcuts that kill the method never announce themselves; they arrive as one of these thoughts.
 Each is a tripwire: thinking it means STOP and take the pipeline door you were about to skip.
 
-| The thought | Why it is a trap |
-|---|---|
-| "it's a one-liner / just a prototype" | The Room was "just to see" — it shipped hover-only with no phone layout and no spec. Size never picks the door; the tripwires do (base rule 15). |
-| "I'll write the spec after it works" | Spec-after-code documents what you built, apart from what was asked; the prover can no longer catch the difference (spec-author anti-pattern). |
-| "the human is in a hurry" | Urgency moves PRIORITY, never the door — a critical feature heads the queue, it still enters at the spec step (SPEC T-12). |
-| "the suite is green, ship it" | Green proves the facts the matrix knows; an unspecced surface has no rows, so green says nothing about it (SPEC INV-15). |
-| "asking would bother them" | Batched questions exist exactly for this; a silent guess costs a re-build, the batch costs one read (SPEC INV-4, INV-5). |
-| "explaining it would take longer than just doing it myself" | That is delegation dying, and the senior drowning in junior work; write the self-contained brief (the delegation rule above). |
+See [references/excuses-table.md](references/excuses-table.md) for the full table of six excuse-thoughts
+and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
 
 ## Gates worth remembering
 - **Before a MINOR (0.x.0) bump:** the 3-pass preventive audit — product-prover on the whole spec + a matrix
-  audit + a surface-composition check. The full **design review** runs here too, beside the
-  surface-composition check (SPEC INV-141): the whole element inventory, every proposed same-kind grouping,
-  its likely divergences echoed as at most three asks — recommendations and questions only, never a block. The gate also runs the **cross-cut counter** (`guardrails/crosscut_counter.py`,
-  SPEC INV-128 boundary-health, INV-37): it counts the closed queue's cross-cutting landings per node pair,
-  and a pair reaching the threshold (3 by default) is flagged as a boundary-move candidate for the audit to
-  weigh — the flag is a signal, never a push-blocking red, and a boundary still moves only through the
-  architecture step and its re-prove. Fix holes by the book; record the rest. The gate also runs
-  **code compaction as a station beside doc compaction (SPEC INV-123):** duplicate logic merges, dead weight
-  leaves with its listing (INV-109), a ripened abstraction is extracted only through the three-question
-  fitness gate (INV-122), and each pass locks its reached level with a test or lint where newly reached, else the existing suite that holds it green (rows 216-218). The
-  station has a second trigger beyond this gate — the second occurrence of the same problem (base rule 19)
-  opens the duplication's own compaction row that moment (rule 19's owner), not only at the milestone; the
-  row lands through the ordinary pipeline (one row's delta, INV-39; a known duplication never blocks its
-  lane, INV-56), rather than an instant in-place fix.
+  audit + a surface-composition check, plus the full design review (SPEC INV-141) and the cross-cut counter
+  (SPEC INV-128, INV-37) and code compaction as a station beside doc compaction (SPEC INV-123). See
+  [references/minor-bump-gate.md](references/minor-bump-gate.md) for the full gate procedure.
 - **Process bookkeeping scales to the delta (SPEC INV-61):** the pre-push re-check keeps its rigor and
   scales its FORM — a small delta (skill/prose/infra kind, no new surface, no structure change) ships a
   three-line SHORT-FORM record (previous records clean · the delta in one line · the verdict). A
@@ -514,75 +463,24 @@ Each is a tripwire: thinking it means STOP and take the pipeline door you were a
   head right then, so a deferred wish never waits on a trigger nobody reads whichever cadence comes first.
 
   **The drafter-applier pipeline is the standard colliding-rows form (SPEC INV-49):** on colliding rows
-  the penless DRAFT stage overlaps the current landing: a drafter worker at the judgment tier prepares the
-  next row's exact edit strings with self-verified needles while the applier lands the current row under
-  the pen. Before handoff the drafter walks a standing self-verify list against the suite's cross-reference
-  laws — index density (every new INV anchor gets its Formal-index row), owning node (every new anchor's
-  node stands in ARCHITECTURE.md's owns-list), and matrix-row-under-owner (every new M-row sits under its
-  owning node) — so the draft catches these suite-enforced cross-references itself, sparing the applier a
-  red-first STOP the drafter's own read could have closed. The landing order stays declared and the numbers follow it. This form ran live 2026-07-12, the
-  night the law batch serialized on the spec/matrix/version chain and still moved at two rows an hour
-  [T-18, INV-39, INV-49].
-- **Junior delegation (decided from the request, BEFORE the first tool call):** the trigger is judgment
-  against mechanical — work whose steps can be written precisely (known edit strings, a known command,
-  fan-out fact-gathering, a report or list or dump to produce) routes to a worker, while anything carrying
-  judgment or design stays senior. Size is a weak hint only, never the decider. The trigger, the tier
-  ladder, and the raw-output law all live in the base skill's rule 5 and the routing rule — this passage is
-  their reference, not a second home (live-spec-base rule 5, SPEC INV-69).
-
-  **The routing rule (SPEC INV-69) picks the tier — propose the cheapest tier that can pass the brief, the
-  senior may overrule it aloud:** the proposal reads the STEP and kind of the work, beyond the row's size
-  alone — a judgment step (spec, prove, architecture, matrix-level calls, findings triage, any taste call)
-  proposes the senior and is never routed down, a mechanical step proposes a worker at the tier above. The
-  economy rung moves the threshold (at `lean` an airtight brief rides one tier cheaper, at `tight` the
-  cheapest sufficient tier is always the proposal). And the proposal is ADVISORY — the senior may override
-  per wish, the override logged as one line on the checkpoint and the landing report, proposed tier → chosen
-  tier → why.
-
-  **The brief is self-contained (the BMAD story-file lesson):** delegated work ships as one document
-  embedding the EXACT spec sentences it serves, the exact edit strings or commands, the checks to run, and
-  the checkpoint path — the worker never hunts context, never interprets the spec, never decides. If writing
-  the brief means deciding something first, that decision is the senior's and happens BEFORE delegation —
-  "explaining it would take longer than doing it" is how delegation silently dies.
-
-  **The brief's birth has three laws (SPEC INV-53/54/55):** a brief that edits existing files is born from
-  READING them in full — three recorded lines per file (current state · what changes · what must survive),
-  every step back-referencing its spec sentence, every technical claim citing a source (a file:line, a
-  command's output), never memory of a file. The brief carries the closed HALT list — ambiguous requirement
-  · two consecutive unexplained failures of one command · missing config/dependency · acceptance impossible
-  as briefed — stop WITH evidence, otherwise run to completion (the senior's escalation ladder is a separate
-  move, after a failed acceptance). And the brief is SIZED — its text within ~300 lines, at most ~8 files to
-  edit [default], the work splitting above either — passing PATHS, never inlined file bodies. See the private
-  playbook repo's PLAYBOOK.md.
-
-  **The worker contract (SPEC ACT-3):** the brief NAMES the files the worker may write — its session's
-  write-ownership narrowed to exactly those, reads free, writes fenced. Same-session sibling-worker files
-  are fence-benign (the concurrent-edit fence alarms on foreign sessions, staying quiet on your own briefed
-  hands — the senior who briefed both owns the seams between briefs). Owning those seams is a brief-time
-  act: before spawning another concurrent writer, the senior confirms its brief's write-set is disjoint
-  from every already-running writer's brief, or gives it an isolated worktree (SPEC INV-105) — because
-  the fence stays silent between same-session siblings, this disjointness is settled when the briefs are
-  written, ahead of the new worker's first write. The session's live setting lines ride
-  into the brief verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's
-  spoken word.
-
-  The brief ARMS the worker for the workshop — it carries the host's problem-ledger path
-  (`.live-spec/PROBLEMS.md`) with the WATCHED-line duty: workshop noise the worker hits (a flaky harness, a
-  missing dependency, a tool misbehaving) goes into its checkpoint as a ledger line — signature, date, one
-  line of context, logged every time — and the senior carries the lines into the ledger at verify (SPEC
-  INV-23). And it carries the CLOCK — the date and time read at briefing — so the worker stamps its
-  checkpoint and any dated output from the brief's clock, never an invented hour (SPEC INV-24; a worker WITH
-  a shell re-reads the machine clock itself — the brief's line is the floor for one without, and elapsed
-  time is never guessed). And a result failing its brief's acceptance escalates exactly ONE tier every time,
-  with a logged line covering the move — one rung up, in order, always logged.
-
-  **Every delegation reports its saving:** the
-  landing report carries one line — what went to the worker and roughly how much senior work it saved.
-  The line is what keeps the habit alive; a session that never writes it is a session that quietly
-  stopped delegating. The line lives in the landed row's status cell, and a suite check reads it: a
-  landed row without the line goes red (SPEC INV-103, forward from 2026-07-12).
-   The same accounting also names the reads dispatched beside the work delegated, so a session that filled its own context with a read it should have dispatched shows that in the report (SPEC INV-137). The duty binds the
-  orchestrator seat regardless of model, whatever tier leads the seat.
+  the penless DRAFT stage overlaps the current landing, a drafter worker preparing the next row's exact
+  edit strings while the applier lands the current row under the pen. See
+  [references/drafter-applier-example.md](references/drafter-applier-example.md) for the drafter's
+  self-verify list and the 2026-07-12 worked run [T-18, INV-39, INV-49].
+- **Junior delegation (decided from the request, BEFORE the first tool call, SPEC INV-69):** judgment work
+  (spec, prove, architecture, matrix-level calls, findings triage, any taste call) stays senior; mechanical
+  work (known edit strings, a known command, fan-out fact-gathering, a report or list or dump to produce)
+  routes to a worker at the cheapest tier that can pass the brief, proposed and logged, the senior free to
+  override aloud. The brief is self-contained (the BMAD story-file lesson) and SIZED, born from reading the
+  touched files in full with three recorded lines per file (SPEC INV-53/54/55), and closes on a HALT list
+  rather than guessing past ambiguity. The worker contract (SPEC ACT-3) narrows write-ownership to the
+  brief's named files; the senior owns write-set disjointness between concurrent same-session workers before
+  spawning them, or gives one an isolated worktree (SPEC INV-105). The brief carries the problem-ledger path
+  for workshop noise (SPEC INV-23) and the clock for every stamp (SPEC INV-24). Every delegation reports its
+  saving in the landed row's status cell, checked by suite (SPEC INV-103), and names the reads dispatched
+  beside the work delegated (SPEC INV-137). See
+  [references/delegation-protocol.md](references/delegation-protocol.md) for the full protocol: the routing
+  rule, the brief's three birth laws, the worker contract, and the delegation-reporting duty.
 - **Traceability is a test, enforced automatically.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
   RESOLVED that still carries the live marker — so drift is caught every commit, continuously rather than once per MINOR.

@@ -8,27 +8,27 @@ row's edit strings while the applier landed the current one. String needles on t
 import os
 import unittest
 
-from conftest import ROOT, read_flat
+from conftest import ROOT, read_flat, read_all, read_all_flat
 HOME = "skills/build-pipeline/SKILL.md"
 
 
 class TestDrafterApplierForm(unittest.TestCase):
     def test_form_named_in_the_pipeline(self):
-        body = read_flat(HOME)
+        body = read_all_flat(HOME)
         self.assertIn("the penless DRAFT stage overlaps the current landing", body)
         self.assertIn(
             "a drafter worker at the judgment tier prepares the next row's exact edit strings", body
         )
 
     def test_born_live_and_cited(self):
-        body = read_flat(HOME)
+        body = read_all_flat(HOME)
         self.assertIn("still moved at two rows an hour", body)
         self.assertIn("[T-18, INV-39, INV-49]", body)
 
     def test_standing_self_verify_list(self):
         """Row 263: the drafter brief carries a standing self-verify list for the
         suite's cross-reference laws, walked before handoff."""
-        body = read_flat(HOME)
+        body = read_all_flat(HOME)
         self.assertIn(
             "walks a standing self-verify list against the suite's cross-reference laws", body
         )

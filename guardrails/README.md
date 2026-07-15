@@ -40,6 +40,16 @@ which records the commit it started from. From then on, if the commit at the rep
 moves without that session's knowledge (another writer got there first), the next commit is
 blocked with a message explaining what to review and how to re-arm the fence.
 
+`pre-commit` also runs two content gates. It rejects a staged line stamped with a future time
+(`check-future-times.sh`, SPEC `INV-24`), and it runs the **deferral-marker gate**
+(`check-deferral-marker.py`, SPEC `INV-152`): a work item in `NEXT_STEPS.md` or a
+`docs/decisions/*.md` page that parks for the human's word — "his to correct", "reserved for
+his", "still his", "row N reserved" — must name its human-only fact (taste, policy,
+irreversible, or device-feel), or drop the marker and do the item. A marker that names no
+reason reds the commit with the file, line, and text. A negated mention ("NOT owner-reserved")
+and a quoted narration of an old marker are both left alone. This is the mechanical net for the
+same rule the chat-law hook delivers at the ask moment — the two arms of base rule 29.
+
 ## How to install
 
 From the repo root:

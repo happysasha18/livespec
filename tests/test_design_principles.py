@@ -19,7 +19,7 @@ import os
 import re
 import unittest
 
-from conftest import ROOT, read, read_flat
+from conftest import ROOT, read, read_flat, read_all, read_all_flat
 
 KIND = re.compile(r"(?m)^\s*[-*]?\s*`?project\.kind:\s*(.+)$")
 PRINCIPLES = re.compile(r"(?m)^\s*[-*]?\s*`?project\.design-principles:")
@@ -174,7 +174,7 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         self.assertIn("adopting project", arch.lower())
 
     def test_verify_feel_pass_reads_design_principles(self):
-        bp = read_flat("skills/build-pipeline/SKILL.md")
+        bp = read_all_flat("skills/build-pipeline/SKILL.md")
         self.assertIn("declared design principle", bp,
                       "build-pipeline's verify feel pass does not read the declared design principles")
         self.assertIn("INV-136", bp)

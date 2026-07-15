@@ -63,6 +63,19 @@ class TestChatLawHookScript(unittest.TestCase):
         ):
             self.assertIn(needle, out, "routing line missing: %r" % needle)
 
+    def test_output_carries_the_deferral_law(self):
+        result = subprocess.run([SCRIPT], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        out = result.stdout
+        for needle in (
+            "re-test it by derivability",     # the ask-moment re-test
+            "AskUserQuestion",                # the question is a deferral too
+            "itself the finding",             # an unnamed marker/question is the finding
+            "check-deferral-marker.py",       # the mechanical net named
+            "SPEC INV-152",                   # the law's spec home
+        ):
+            self.assertIn(needle, out, "deferral line missing: %r" % needle)
+
     def test_installer_covers_both_hooks(self):
         self.assertTrue(os.path.isfile(INSTALLER), "missing installer: %s" % INSTALLER)
         self.assertTrue(os.access(INSTALLER, os.X_OK), "%s is not executable" % INSTALLER)

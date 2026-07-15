@@ -2,7 +2,7 @@
 name: live-spec-base
 description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-nine rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.17
+  version: 1.0.18
 ---
 
 # live-spec-base — one rulebook, eight working skills
@@ -307,7 +307,13 @@ a working skill still stands: its pointer here reads as plain advice.
    decide-what-it-can-decide posture) applied to a work item, and it binds the orchestrator seat
    whatever tier holds it. It is the request classifier's twin under one routing principle: every
    incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no
-   home is itself the finding [INV-153].
+   home is itself the finding [INV-153]. One mechanical arm and one delivery arm hold this rule.
+   The mechanical arm, `guardrails/check-deferral-marker.py`, reds a commit when a parked item in the
+   resume file or a decision page names no reason category (taste, policy, irreversible, or
+   device-feel), the same shape as INV-155's retry-plugin grep. The delivery arm, the chat-law hook's
+   deferral line, re-fires the derivability test at the moment a marker is written or an
+   `AskUserQuestion` is opened, so the re-test lands where the leak happens rather than after it; it
+   reminds and cannot block, the way the chat laws are always delivered (SPEC INV-28).
 
 
 ## When NOT to load this

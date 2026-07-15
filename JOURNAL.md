@@ -2,6 +2,51 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-15 14:35 IDT (opus lead, live-spec window) — v1.6.1: the deferral rule gets its mechanical net + delivery arm, and build-pipeline is thinned (324)
+
+**Why.** On 2026-07-15 the same failure recurred three times in one morning — a work item that was never
+Alexander's got handed to him: tlvphotos asked "обнови лайвспек — что именно?" (the sync target is
+derivable), track-coach kept the significance-defaults marked "HIS to correct" after he had said they were
+a technical setting off his plate, and this window asked to bump a version citing "row 231 reserved" after
+his 2026-07-14 word had retired that gate. One mechanism underlies all three: a park/defer marker is OBEYED
+on sight instead of RE-TESTED for derivability. Rule 29 / INV-152 already forbid exactly this, but as prose
+it kept being forgotten — so, per Alexander's standing "дерех а мелех" (fix the infrastructure first), the
+rule earns a mechanical arm, the way the register law only held once it had a linter.
+
+**What landed.**
+- **The mechanical net — `guardrails/check-deferral-marker.py`.** It reads NEXT_STEPS.md and
+  docs/decisions/*.md as folded work items (a bullet plus its wrapped continuation lines) and reds a commit
+  when an item parks for the human's word ("his to correct", "reserved for his", "still his", "row N
+  reserved", Russian kin) yet names no reason category (taste · policy · irreversible · device-feel). Wired
+  into `guardrails/pre-commit`. Negation is a token window, quotes and fenced blocks are skipped, so
+  narration and a negated mention pass untouched.
+- **The delivery arm — a fifth `scripts/chat-law-hook.sh` line.** It re-fires the derivability re-test at
+  the moment a marker is written or an AskUserQuestion is opened, so the re-test lands where the leak
+  happens. It reminds and cannot block (chat cannot be machine-gated); rule 29 and the spec clause name the
+  two arms distinctly (one mechanical, one delivery) after the prover caught rule 29 calling both
+  "mechanical".
+- **Traceability.** INV-152's row M-297 was extended to name the net and its tests; a new M-302 gives the
+  hook line its own row modeled on the clock-hook's M-132; `test_deferral_marker.py` covers the folded-item
+  scan (wrapped signal, wrapped reason, token-window negation, fenced block, quote guard) plus
+  `test_real_repo_tree_is_clean`, a CI backstop that runs the gate against the repo's own files so the
+  "reds a commit" promise holds even where the local hook is skipped.
+- **324 — build-pipeline SKILL.md 601 → 499 lines.** A worker moved seven set-piece tables/examples into
+  `skills/build-pipeline/references/*.md`, leaving pointers; every anchor code (85 both sides) stays
+  discoverable. conftest gained `read_all`/`read_all_flat` (SKILL.md + references/*.md) and the
+  content-presence tests were repointed to it, so traceability follows relocated text while the size/
+  thinness tests still read SKILL.md alone.
+
+**Proof.** An independent fresh-context adversarial prover pass
+(`docs/prover/2026-07-15-deferral-guard.md`) returned HOLDS-WITH-FIXES with six defects — the biggest that
+the first-cut linter scanned physical lines and so failed open on the hard-wrapped bullet format that
+dominates these files. All six folded before commit; suite 750 → 755 green. Classified PATCH (1.6.1): it
+hardens an existing rule's enforcement and refactors a doc, adding no new rule or capability, so no
+MINOR-audit ceremony (the independent audit ran anyway, as quality).
+
+**Not pushed at write time.** The harness holds every outward push above the model until an explicit push
+signal; the durable fix is the `Bash(git push)` allow rule Alexander runs by his own hand (settings
+self-edit is the harness's hard boundary). Recorded in NEXT_STEPS.
+
 ## 2026-07-14 23:06 IDT (opus worker seat, by the method) — the request-layer classifier at the pipeline's door (INV-151/152/153, M-296/297/298)
 
 **Why.** The companion half of the Fable audit (`scratchpad/fable-prover-vs-designreview-audit.md`,

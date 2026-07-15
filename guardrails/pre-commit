@@ -19,6 +19,21 @@ if [ -x "$REPO_ROOT/guardrails/check-future-times.sh" ]; then
   "$REPO_ROOT/guardrails/check-future-times.sh" || exit 1
 fi
 
+# INV-152 net: a parked-for-the-human item in the resume file or a decision page must
+# name its human-only fact (taste / policy / irreversible / device-feel), else it is
+# the seat's to do. Scans NEXT_STEPS.md and any docs/decisions/*.md.
+if [ -f "$REPO_ROOT/guardrails/check-deferral-marker.py" ]; then
+  deferral_targets=""
+  [ -f "$REPO_ROOT/NEXT_STEPS.md" ] && deferral_targets="$REPO_ROOT/NEXT_STEPS.md"
+  for d in "$REPO_ROOT"/docs/decisions/*.md; do
+    [ -f "$d" ] && deferral_targets="$deferral_targets $d"
+  done
+  if [ -n "$deferral_targets" ]; then
+    # shellcheck disable=SC2086
+    python3 "$REPO_ROOT/guardrails/check-deferral-marker.py" $deferral_targets || exit 1
+  fi
+fi
+
 if [ ! -f "$FENCE_FILE" ]; then
   exit 0
 fi

@@ -13,7 +13,7 @@ tlvphotos's pinch-zoom policy shipped for the walk alone, 2026-07-12.)
 import os
 import unittest
 
-from conftest import ROOT, read_flat
+from conftest import ROOT, read_flat, read_all, read_all_flat
 
 
 class TestCrossSurfacePolicy(unittest.TestCase):
@@ -49,7 +49,7 @@ class TestCrossSurfacePolicy(unittest.TestCase):
         self.assertIn("The preventive twin of the class lens above", pv)
 
     def test_build_pipeline_completeness_holds_uniformity(self):
-        bp = read_flat("skills/build-pipeline/SKILL.md")
+        bp = read_all_flat("skills/build-pipeline/SKILL.md")
         self.assertIn("cross-surface policy uniformity (SPEC INV-125)", bp)
         self.assertIn("EVERY registered sibling root", bp)
 

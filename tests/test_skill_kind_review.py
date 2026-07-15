@@ -10,7 +10,7 @@ table (verify row, skill column).
 import os
 import unittest
 
-from conftest import ROOT, read_flat
+from conftest import ROOT, read_flat, read_all, read_all_flat
 
 
 class TestSkillKindReview(unittest.TestCase):
@@ -18,13 +18,13 @@ class TestSkillKindReview(unittest.TestCase):
 
     def test_walk_in_both_homes(self):
         for home in self.HOMES:
-            body = read_flat(home)
+            body = read_all_flat(home)
             self.assertIn("skill-creator", body, home)
             self.assertIn("does the skill load when it should", body, home)
 
     def test_findings_fold_by_name(self):
         for home in self.HOMES:
-            body = read_flat(home)
+            body = read_all_flat(home)
             self.assertIn("folded or rejected by name in the landing record", body, home)
 
     def test_classifier_is_the_trigger(self):
