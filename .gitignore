@@ -16,3 +16,6 @@ outbox/
 
 # spec-freeze working baselines (regenerable from the pre-rewrite commit)
 .spec-freeze/
+
+# 2.0 movement working inventory (survives /clear; regenerable)
+.2.0-work/
