@@ -31,8 +31,9 @@ HOLDS-WITH-FIXES) whose six defects were all folded before commit:
 - Version bumps are NOT owner-reserved (Alexander confirmed 2026-07-15): cut them on green; standing push
   authorization holds. The deep independent audit runs by default as quality, not on his word.
 - On a failure: the root/infrastructure fix first, never a blind retry or a pointwise patch [INV-155 kin].
-- **Push runs through the harness gate.** Every outward push is held by the harness above the model until an
-  explicit push signal; the fix that ends the friction is Alexander running the `!` one-liner that adds
-  `Bash(git push)` / `Bash(git push *)` / `Bash(gh repo create *)` to `~/.claude/settings.json` (the agent
-  cannot self-edit settings — the one hard harness boundary). Until then a push owes an explicit go.
+- **Pushing depends on the session's permission mode.** Under the global `bypassPermissions` a plain
+  `git push` to an existing repo runs free (v1.6.1 pushed with no block, 2026-07-15). Only the narrow set of
+  truly-dangerous outward acts stays hard-blocked above bypass — `gh repo create`, force-push of rewritten
+  history, self-editing settings.json (the agent's one hard boundary). A session launched in a stricter mode
+  than the global default may still hold an ordinary push for an explicit go.
 - Next free codes: INV-156, M-303.
