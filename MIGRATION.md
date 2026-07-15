@@ -98,3 +98,23 @@ This chapter absorbs the 2026-07-05 package rename (livespec → live-spec, one 
 4. Update the git remote URL at leisure (`git remote set-url … live-spec.git`). The GitHub redirect keeps old clone and remote URLs working meanwhile, so this step blocks nothing.
 5. Once-per-machine moves, each with its already-done check: `~/.claude/livespec/` → `~/.claude/live-spec/` (skip if the target already exists), and `~/.claude/skills/livespec-base` → `~/.claude/skills/live-spec-base` (skip if the target already exists). Sweep the machine-global loader file (`~/.claude/CLAUDE.md`, E-16) for old-name pointers the same once — already-done check: the file reads current.
 6. Matrix reshape. A host holding an old-shape flat matrix regroups its rows under the architecture nodes at its first architecture landing — rows are preserved and re-homed, never re-derived from scratch.
+
+### 2.0.0 — 2026-07-16
+
+**Host action: none.** The 2.0.0 major is a readability and compaction pass over the pack's own living
+documents (the spec, architecture, matrix, roadmap, and skill docs read plainly and stay compact), plus
+the machinery that keeps them that way. It changes no runtime behaviour, no skill interface, no file the
+host writes, and no adoption or catch-up step. A host adopts it the ordinary way — pull the pack, run
+`scripts/sync-skills.sh` — and owes nothing further.
+
+The major number marks two things a host inherits automatically by adopting, not a breaking change:
+
+1. **The compaction ratchet on the host's own push gate.** A host that runs the pack's guardrails now
+   carries the reached-clean floor: the register lint at zero, the redundancy gate at zero, the debt cap
+   that only ratchets down (`scripts/spec-debt-cap.json`), and the compaction freeze
+   (`guardrails/check-freeze.sh`, pre-push gate k, which skips itself where no local baseline exists). A
+   host's documents can get cleaner from here, never worse — the recurrence-stop for document bloat.
+2. **The method rule (base rule 30 / SPEC INV-164).** A quality a machine can verify is enforced by a
+   gate, held by no pass's attention; compaction runs at every push, above the milestone whole-read.
+
+No host file changes, so the catch-up walk records this chapter as done on read.

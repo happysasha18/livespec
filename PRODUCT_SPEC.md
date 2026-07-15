@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v1.10.1, 2026-07-15)
+# live-spec — Product Spec (v2.0.0, 2026-07-16)
 
 > **How to read this.** Each section describes one scenario: what the reader does and what the reader sees. The short codes in brackets are markers the machine uses — the prover, the tests, and searches — and the Formal index at the end lists where each one is defined. Edit history is in JOURNAL.md. This spec states what is true today.
 
