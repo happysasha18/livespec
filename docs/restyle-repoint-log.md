@@ -106,7 +106,23 @@ framework name) was allowlisted for the same reason.
 | test_traceability (budgets) | INV-41 | "the project's KIND proposes the dimensions" | "the project's kind proposes the dimensions" |
 | test_traceability (windows) | INV-52 | "accumulate on ONE page" | "accumulate on one page" |
 
-### 2.0 scissors rewrites — two needles keyed to a banned contrast frame
+### 2.0 redundancy dedup — needles re-pointed to the surviving home phrasing
+
+The redundancy pass reworded a duplicated restatement to a pointer, keeping the full law in its home.
+Two traceability needles keyed to the reworded restatement were re-pointed to the home's surviving
+phrasing (same law, verified present):
+
+- **INV-129 deferred-trigger re-scan (test_173).** The milestone-list restatement was reworded to a
+  pointer; the needles now key to the INV-129 home clause: "re-scan every deferred queue row's revisit
+  trigger" → "re-scans each deferred row's revisit trigger", and "a fired trigger returns the row to the
+  runnable queue" → "a fired trigger returns its row to the runnable head". Both present at the home.
+- **INV-110 catch-up discriminator (test_discriminator_in_both_homes).** The dedup reworded the wrong
+  clause, dropping the phrase the two-homes test pins ("no version delta is the host's own queue row
+  through its pipeline"). Restored that exact phrase in its clause and instead reduced the sibling
+  exclusion clause ("or on a restructure of the host's own product") to a bare pointer, so the pair
+  stays deduped and the spec/MIGRATION phrasing matches again.
+
+## 2.0 scissors rewrites — two needles keyed to a banned contrast frame
 
 Two test needles pinned the old contrast-frame ("X, not Y") wording the no-scissors law bans. The law
 each states is unchanged; the phrasing moved to its own positive sentence.

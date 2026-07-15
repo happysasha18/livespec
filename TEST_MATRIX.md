@@ -5,7 +5,7 @@ the VERSION file, and is not pinned here where it would read stale (row 265, whi
 "headers re-pin at each milestone" line this header used to carry). Last reconciled with the spec:
 2026-07-14. The first derivation and its prover records: `docs/prover/2026-07-05-lost-layers.md`,
 `docs/prover/2026-07-05-architecture.md`; the full milestone-by-milestone derivation history — which
-spec versions and landings kept it current — lives in JOURNAL.md and the git log, not frozen in this
+spec versions and landings kept it current — lives in JOURNAL.md and the git log rather than frozen in this
 header. Rows are organized
 **architecture node × spec fact**: every index anchor sits in ≥ 1 row under its owning node, every row
 pins a test level, and the derivation closes with the coverage validation at the bottom — walked, and
@@ -127,7 +127,7 @@ by `test_artifact_inventory` — the test parses THIS table, so adding an entry 
 | M-002 | Settings live in four nested scopes and resolve narrowest-out: session > host > personal > package default, broader values inherited until overridden on the human's word; an unrecognized profile line is ignored ALOUD, never silently dropped and never an error | E-13 | string | `test_settings_ladder_documented` (structural clause: ladder + resolution order stated in the base skill); behavioral resolution: milestone audit (M-1) + the E-6 host-facing gates (rows 55+) | BUILT |
 | M-003 | Every choice not in the wish is asked or recorded-and-surfaced; never decided-and-buried | INV-5 | string | snapshot declared-scope diff (row 55) — the mechanical fence | TODO |
 | M-004 | Proactivity mode and trust are written only on the human's word; the agent never raises its own level | INV-9 | string | milestone audit (M-1) | TODO |
-| M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes you did not make | INV-11 | string | `guardrails/pre-commit` (opt-in fence): `test_armed_stale_head_blocks_commit`, `test_unarmed_fence_passes_silently` | BUILT |
+| M-005 | Before every write and commit: re-check `git status` + HEAD; never write over changes the agent did not make | INV-11 | string | `guardrails/pre-commit` (opt-in fence): `test_armed_stale_head_blocks_commit`, `test_unarmed_fence_passes_silently` | BUILT |
 | M-006 | A shared rule has exactly one normative home (the base skill); never two full statements | INV-13 | string | milestone compaction pass (M-1) | TODO |
 | M-007 | An override exists only as a written profile line + a dated journal note in the home it governs; never an unwritten divergence | INV-14 | string | `test_host_profile_recorded_override` | BUILT |
 | M-008 | The human owns taste, design, irreversible calls, push gates, domain wording, their contract; never the agent | ACT-1 | string | process — every decision page + milestone gate-list (M-1) | TODO |

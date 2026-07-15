@@ -137,6 +137,8 @@ CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TT
               "CONVERGES", "WAITS", "STANDS", "DOWN",
               # the push-gate reach map's three named check-set categories (INV-45), a closed vocabulary
               "EXPLICIT", "CONSERVATIVE", "SELF-TESTED",
+              # semantic-version tier names (the version-history rows in ARCHITECTURE.md), conventional caps
+              "MAJOR", "MINOR", "PATCH", "GB",
               # prior-art framework proper names cited in the reading-order note (INV-75)
               "BMAD"}
 FILENAME_RE = re.compile(r"\b[\w./-]+\.(?:md|py|sh|json|txt|html|js|css|yml|yaml|toml)\b")
@@ -288,6 +290,11 @@ def apply_waivers(findings, filename, waivers, today=None):
 
 WAIVER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec-waivers.json")
 
+# The rules this gate emits — used to scope the stale-waiver check to the style gate's own
+# waivers, since the waiver file is shared with the redundancy gate (spec-redundancy).
+STYLE_RULES = {"negation-opener", "scissors", "provenance-narrative", "machine-jargon",
+               "caps-shout", "second-person", "reassurance", "future-narration"}
+
 
 def main(argv):
     args = [a for a in argv[1:] if not a.startswith("--")]
@@ -301,9 +308,13 @@ def main(argv):
 
     waived, stale = [], []
     if gate:
-        waivers = gate_common.load_waivers(WAIVER_PATH)
-        errors, waived, matched = apply_waivers(errors, src, waivers)
-        stale = gate_common.stale_waivers(waivers, matched)
+        all_waivers = gate_common.load_waivers(WAIVER_PATH)
+        errors, waived, matched = apply_waivers(errors, src, all_waivers)
+        # The waiver file is shared with other gates (spec-redundancy). Scope the stale check to
+        # THIS gate's own rules, so a live redundancy waiver is never reported stale by the style
+        # gate (it matches no style finding by design).
+        mine = [w for w in all_waivers if w.get("rule") in STYLE_RULES]
+        stale = gate_common.stale_waivers(mine, matched)
 
     if not errors and not warnings and not waived:
         print("OK (spec-style%s): no register tells found." % ("/gate" if gate else ""))

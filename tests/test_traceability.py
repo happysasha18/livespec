@@ -2243,9 +2243,9 @@ class TestSmallDesignHoles(unittest.TestCase):
 
     def test_173_deferred_trigger_evaluation_point(self):
         s = self.spec()
-        self.assertIn("re-scan every deferred queue row's revisit trigger", s,
+        self.assertIn("re-scans each deferred row's revisit trigger", s,
                       "milestone gate lost the deferred-trigger re-scan (F5)")
-        self.assertIn("a fired trigger returns the row to the runnable queue", s)
+        self.assertIn("a fired trigger returns its row to the runnable head", s)
 
     def test_174_bug_parked_resume_refences(self):
         s = self.spec()
