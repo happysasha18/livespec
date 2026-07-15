@@ -95,9 +95,9 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       the work (SPEC INV-93). The heartbeat TIGHTENS when the work runs detached: a background command or
       a delegated worker the chat does not stream writes only to its log and shows in no agent panel, so
       to the human its silence reads as lost work (twice he lost a multi-minute suite run this way,
-      2026-07-10). Any operation expected to run past ~2 minutes detached opens with a START line (what
+      2026-07-10). Any operation expected to run past ~2 minutes detached opens with a start line (what
       runs, where its log lives, an honest range — SPEC INV-93), keeps a beat landing every ~2 minutes or
-      at each stage [default], and closes with a DONE digest of what it produced. The mechanism stays
+      at each stage [default], and closes with a done digest of what it produced. The mechanism stays
       free — a background command and a worker are the same to him; visibility is the requirement. A
       waiting timer earns no beat: the cadence covers real work only.
     - **Offline window (SPEC INV-35; his word 2026-07-06, on saying when the human can step away — for

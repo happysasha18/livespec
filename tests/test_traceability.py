@@ -1753,7 +1753,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 152 (M-150, INV-52): during an away-stretch windows accumulate to one
         end-of-stretch opening."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-52", "accumulate on ONE page", "refreshed in place"):
+        for needle in ("INV-52", "accumulate on one page", "refreshed in place"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("windows accumulate", "refreshed in place",
@@ -2010,7 +2010,7 @@ class TestProblemLedger(unittest.TestCase):
         for needle in ("ask \"what does quality mean here, in numbers?\"", "INV-41",
                        "measurable quality budgets",
                        "instrumentation home",
-                       "the project's KIND proposes the dimensions",
+                       "the project's kind proposes the dimensions",
                        "a quality with no honest number is said by name",
                        "no budgets + no instrumentation home = derivation defect",
                        "set on the human's word at the surface's first budget landing"):

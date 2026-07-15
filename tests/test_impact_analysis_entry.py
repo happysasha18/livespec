@@ -29,7 +29,7 @@ class TestImpactAnalysisEntry(unittest.TestCase):
     def test_spec_names_three_footprints_and_the_route(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in ("presentation-only", "single-module", "cross-cutting",
-                       "the footprint, not the size, sizes the reach",
+                       "the footprint sizes the reach, and the change's raw size does not",
                        "a feature never skips the spec step whatever its footprint"):
             self.assertIn(needle, spec, needle)
 

@@ -30,13 +30,13 @@ class TestMadeWithAttributionLaw(unittest.TestCase):
     def test_publish_walk_offers_the_line(self):
         skill = read("skills/publish/SKILL.md")
         self.assertIn("built with the pack", skill)
-        self.assertIn("an OFFER, never a gate", skill)
+        self.assertIn("an offer, never a gate", skill)
 
     def test_declined_offer_never_reasked(self):
         # his same-day correction: a wish, never an obligation — and answered stays answered
         for home in self.HOMES:
             body = read(home)
-            self.assertIn("an OFFER, never a gate", body, home)
+            self.assertIn("an offer, never a gate", body, home)
             self.assertIn("never re-asked", body, home)
 
     def test_spec_anchor_and_index(self):

@@ -2,7 +2,7 @@
 
 A person-facing scenario is a flow with edges: it states how it is ENTERED (from where, what must already
 hold) and how it EXITS (to where, what it leaves true). The per-operation precondition/postcondition lenses
-lifted to the SCENARIO level, kin of the entry-symmetry lens (INV-50) and the runtime view's flow walks
+lifted to the scenario level, kin of the entry-symmetry lens (INV-50) and the runtime view's flow walks
 (INV-74). The prover carries the scenario-level lens; an unstated edge is a finding. Binds forward. Homes:
 the composition clause, the entry/exit duty in spec-author, product-prover's scenario-level lens. (Alexander
 2026-07-09, deferred large theme revived at the next prover-method landing.)
@@ -23,7 +23,7 @@ class TestScenarioEntryExit(unittest.TestCase):
     def test_spec_lifts_pre_post_to_scenario_level(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "the per-operation precondition and postcondition lenses to the SCENARIO level",
+            "the per-operation precondition and postcondition lenses to the scenario level",
             "a flow whose entry or exit is unstated is a finding",
             "binds forward",
         ):

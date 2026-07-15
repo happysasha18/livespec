@@ -2,8 +2,8 @@
 
 His 2026-07-10 ~17:10 word from the track-coach window: twice a multi-minute background run
 went silent and read as lost. A detached operation (a background command or a delegated worker
-the chat does not stream) expected past ~2 minutes opens with a START line, keeps a beat every
-~2 minutes or per stage, and closes with a DONE digest. String rows on the two homes: the spec
+the chat does not stream) expected past ~2 minutes opens with a start line, keeps a beat every
+~2 minutes or per stage, and closes with a done digest. String rows on the two homes: the spec
 clause and the communicator skill.
 """
 
@@ -20,9 +20,9 @@ class TestDetachedWorkVisibility(unittest.TestCase):
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("expected to run past ~2 minutes detached", body, home)
-            self.assertIn("START line", body, home)
+            self.assertIn("start line", body, home)
             self.assertIn("every ~2 minutes or at each stage", body, home)
-            self.assertIn("DONE digest", body, home)
+            self.assertIn("done digest", body, home)
 
     def test_the_trap_is_named(self):
         for home in self.HOMES:
@@ -39,8 +39,8 @@ class TestDetachedWorkVisibility(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-35 |"):
-                    self.assertIn("START line", line)
-                    self.assertIn("DONE digest", line)
+                    self.assertIn("start line", line)
+                    self.assertIn("done digest", line)
                     return
         self.fail("INV-35 index row missing")
 

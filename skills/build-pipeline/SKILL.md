@@ -57,7 +57,7 @@ standards look like in its medium.
     restructure** — spoken in the echo and written in the row's `map:` note. The map is the spec's scenario
     sections plus the architecture's nodes, never a third document. A restructure verdict queues its OWN row
     (refactor door if only structure moves, feature door if behaviour moves too); the re-carve happens only
-    through the architecture step and its re-prove (SPEC INV-37). A same-version docs-layout pass rides one sanctioned light vehicle: the pass builds on a clean pushed base, locks the owner's decisions in a checkpoint first, and proves content survived by a word-token multiset check AND a punctuation multiset check (SPEC INV-111).
+    through the architecture step and its re-prove (SPEC INV-37). A same-version docs-layout pass rides one sanctioned light vehicle: the pass builds on a clean pushed base, locks the owner's decisions in a checkpoint first, and proves content survived by a word-token multiset check and a punctuation multiset check (SPEC INV-111).
   - **The same line reads the FOOTPRINT — a three-source impact read that decides the route (SPEC INV-128).**
     Beside the door and the work-kind, read the change against three sources at once: the spec (what
     behaviour changes), the architecture (which module owns it), the code (what actually gets touched). Name

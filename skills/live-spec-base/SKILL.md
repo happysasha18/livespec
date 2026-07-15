@@ -248,7 +248,7 @@ a working skill still stands: its pointer here reads as plain advice.
    instead of assuming code. The one method fits every window this way — one abstract station, each
    kind's own concrete fill — rather than a code method worn awkwardly by a photo site.
 
-25. **The orchestrator reads to decide, not to discover (SPEC INV-137).** The lead's context holds only
+25. **The orchestrator reads to decide; discovery reads go to workers (SPEC INV-137).** The lead's context holds only
    what orchestration needs — the human's words, the decisions taken, the distilled results workers hand
    back, and the few anchors the lead must cite. Reading a file to UNDERSTAND or DESIGN, past a glance, is
    itself work, so it routes like any work (rule 5): the lead dispatches it to a reader — a search-and-locate

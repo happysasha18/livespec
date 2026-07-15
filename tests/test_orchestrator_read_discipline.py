@@ -1,4 +1,4 @@
-"""INV-137 / base rule 25 — the orchestrator reads to decide, not to discover.
+"""INV-137 / base rule 25 — the orchestrator reads to decide; discovery reads go to workers.
 Enshrines the read-discipline law across its homes so it cannot silently drift out.
 Landed 2026-07-13."""
 from pathlib import Path
@@ -12,16 +12,16 @@ def _read(rel):
 
 def test_base_rule_states_read_discipline():
     text = _read("skills/live-spec-base/SKILL.md")
-    assert "reads to decide, not to discover" in text
+    assert "reads to decide; discovery reads go to workers" in text
     # promoted to its own numbered rule, not a buried clause
-    assert "25. **The orchestrator reads to decide, not to discover" in text
+    assert "25. **The orchestrator reads to decide; discovery reads go to workers" in text
     assert "SPEC INV-137" in text
 
 
 def test_spec_invariant_137_present_and_indexed():
     spec = _read("PRODUCT_SPEC.md")
     # prose clause
-    assert "reads to decide, not to discover" in spec
+    assert "reads to decide; discovery reads go to workers" in spec
     assert "[INV-137]" in spec
     # Formal-index row (a table row starting with the code)
     assert "| INV-137 |" in spec

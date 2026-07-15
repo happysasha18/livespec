@@ -25,7 +25,7 @@ class TestDocsLayoutVehicle(unittest.TestCase):
                 home,
             )
             self.assertIn(
-                "a word-token multiset check AND a punctuation multiset check",
+                "a word-token multiset check and a punctuation multiset check",
                 body,
                 home,
             )

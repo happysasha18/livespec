@@ -86,3 +86,39 @@ present in the prose before the re-point.
 | test_suite_hygiene | INV-100 | "leak" in row | whole spec |
 | test_scenario_entry_exit | INV-127 | "enter" in row | "entry" (survives in the compact row) |
 | test_design_reviewer | INV-141/142 | "homes —" in row | the prose clause exists (homes list lives there) |
+
+## 2.0 prose de-emphasis (2026-07-15) — caps-shout → plain, needle re-cased
+
+The readability pass removed ALL-CAPS emphasis shouting (register R12: force comes from the statement,
+not caps). Seven test needles keyed to a shouted word were re-cased to the plain form; the law is
+unchanged — only the emphasis casing dropped. Two families of caps were instead recognised as defined
+closed vocabularies and allowlisted in spec-style-lint.py rather than lowercased (they are literal
+terms, not shout): the design-review loop's rest-states CONVERGES / WAITS / STANDS DOWN [INV-154], and
+the push-gate reach map's categories EXPLICIT / CONSERVATIVE / SELF-TESTED [INV-45]; BMAD (a prior-art
+framework name) was allowlisted for the same reason.
+
+| Test | Anchor | Old needle | New needle (same law, de-emphasised) |
+|------|--------|-----------|--------------------------------------|
+| test_detached_work_visibility | INV-35/INV-93 | "START line" / "DONE digest" | "start line" / "done digest" |
+| test_docs_layout_vehicle | INV-107 | "multiset check AND a punctuation" | "multiset check and a punctuation" |
+| test_made_with_attribution | INV-96 | "an OFFER, never a gate" (spec + publish SKILL) | "an offer, never a gate" |
+| test_scenario_entry_exit | INV-127 | "lenses to the SCENARIO level" | "lenses to the scenario level" |
+| test_traceability (budgets) | INV-41 | "the project's KIND proposes the dimensions" | "the project's kind proposes the dimensions" |
+| test_traceability (windows) | INV-52 | "accumulate on ONE page" | "accumulate on one page" |
+
+### 2.0 scissors rewrites — two needles keyed to a banned contrast frame
+
+Two test needles pinned the old contrast-frame ("X, not Y") wording the no-scissors law bans. The law
+each states is unchanged; the phrasing moved to its own positive sentence.
+
+- **INV-128 footprint (test_impact_analysis_entry).** "the footprint, not the size, sizes the reach"
+  → "the footprint sizes the reach, and the change's raw size does not" (same law: the footprint, not
+  the raw change size, sets each step's reach). Spec + needle updated together.
+- **INV-137 read discipline — canonical rule name renamed across its living homes.** The rule was
+  named by a scissors frame, "the orchestrator reads to decide, not to discover". Renamed to the
+  positive "the orchestrator reads to decide; discovery reads go to workers" in every LIVING home —
+  PRODUCT_SPEC prose clause, base rule 25 (live-spec-base SKILL), docs/lenses.md heading, and the three
+  test needles (test_orchestrator_read_discipline). The dated records keep the name as it was written
+  then and are not rewritten: JOURNAL.md, docs/prover/2026-07-13-gap0-read-discipline.md, and the
+  landed ROADMAP row 301 (archived, not reworded). No obligation changed — the lead still reads only
+  to decide/cite and dispatches discovery/understand reads; only the frame dropped.

@@ -132,14 +132,37 @@ CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TT
               # defined prover/verify mode names — literal terms, not shout
               "CROSS-LINK", "FEATURE-FIT", "RE-ENTRY",
               # defined bold law-part labels of the narration law (INV-35)
-              "IDENTITY", "DIGEST", "HEARTBEAT"}
+              "IDENTITY", "DIGEST", "HEARTBEAT",
+              # the design-review loop's three named rest-states (INV-154), a closed vocabulary
+              "CONVERGES", "WAITS", "STANDS", "DOWN",
+              # the push-gate reach map's three named check-set categories (INV-45), a closed vocabulary
+              "EXPLICIT", "CONSERVATIVE", "SELF-TESTED",
+              # prior-art framework proper names cited in the reading-order note (INV-75)
+              "BMAD"}
 FILENAME_RE = re.compile(r"\b[\w./-]+\.(?:md|py|sh|json|txt|html|js|css|yml|yaml|toml)\b")
 # capture an ALL-CAPS token, including a hyphenated compound (CROSS-LINK) as one token, so a
 # defined mode name is judged whole against the allowlist rather than split into "LINK".
 CAPS_RE = re.compile(r"(?<![\w`\[])([A-Z]{2,}(?:-[A-Z]{2,})*)(?![\w`\]-])")
 
 # --- second person ---------------------------------------------------------------------------
+# The register speaks of named actors, not the reader (R3). A quoted product-copy literal is the
+# exception: a double-quoted span is the PRODUCT's own voice (a line the product shows the human,
+# e.g. the read contract "needs your word: what, by when"), not the spec's register, so a second
+# person inside quotes is data the spec cites, not a leak. Only the second-person rule takes this
+# exemption; caps/scissors/jargon stay global.
 SECOND_PERSON = re.compile(r"(?<!\w)(you|your|you're|yours|yourself)(?!\w)", re.IGNORECASE)
+QUOTED_SPAN = re.compile(r"\"[^\"]*\"")
+
+
+def _second_person_outside_quotes(scrub):
+    """True when a second-person word appears outside every double-quoted span (a real register
+    leak); a match that lies wholly inside quotes is a cited product literal and does not count."""
+    spans = [m.span() for m in QUOTED_SPAN.finditer(scrub)]
+    for m in SECOND_PERSON.finditer(scrub):
+        s, e = m.span()
+        if not any(qs <= s and e <= qe for qs, qe in spans):
+            return True
+    return False
 
 # --- reassurance / invitation (gate mode only, R4/R7) ----------------------------------------
 # Reassuring or inviting the reader has no place in a normative sentence. Curated phrases, kept
@@ -234,7 +257,7 @@ def lint(text, gate=False):
             if m.group(1) not in CAPS_ALLOW:
                 (errors if gate else warnings).append(
                     (i, "caps-shout:%s" % m.group(1), stripped[:110]))
-        if SECOND_PERSON.search(scrub) and not exempt_here:          # normative-only
+        if _second_person_outside_quotes(scrub) and not exempt_here:  # normative-only
             norm_bucket.append((i, "second-person", stripped[:110]))
         if gate and not exempt_here:
             low = scrub.lower()
