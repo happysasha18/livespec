@@ -476,7 +476,12 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   rather than guessing past ambiguity. The worker contract (SPEC ACT-3) narrows write-ownership to the
   brief's named files; the senior owns write-set disjointness between concurrent same-session workers before
   spawning them, or gives one an isolated worktree (SPEC INV-105). The brief carries the problem-ledger path
-  for workshop noise (SPEC INV-23) and the clock for every stamp (SPEC INV-24). Every delegation reports its
+  for workshop noise (SPEC INV-23) and the clock for every stamp (SPEC INV-24). And the brief carries the
+  cleanup-safety constraint so a worker never reinvents a broad kill: a cleanup acts only on what the run
+  provably owns and never a shared resource in current use — a kill targets the test resource uniquely (a
+  recorded PID / process group or an install path like `~/.cache/puppeteer/...`), never a broad name pattern
+  (`pkill chrome`, `chrome_crashpad_handler`) that can match the human's own program (SPEC INV-162, base
+  rule 17; the footgun that once closed the user's real browser). Every delegation reports its
   saving in the landed row's status cell, checked by suite (SPEC INV-103), and names the reads dispatched
   beside the work delegated (SPEC INV-137). See
   [references/delegation-protocol.md](references/delegation-protocol.md) for the full protocol: the routing
