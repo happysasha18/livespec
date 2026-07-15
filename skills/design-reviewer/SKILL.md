@@ -2,7 +2,7 @@
 name: design-reviewer
 description: Senior design review of a proven product spec — reads the spec after the prover and judges whether the design itself is right: do same-kind things behave alike, and what groupings did the text never declare? Use this skill whenever the user asks to review the DESIGN of a spec for consistency or similarity, asks "do these behave the same / should these be one kind / what siblings did we miss", wants the same-kind groupings a spec never named checked for behaviour parity, or mentions "design review". It proposes the undeclared same-kind groups, checks behaviour parity within each, and brings the human the strongest likely divergence with two objects in hand. NOT for verifying the spec holds together as written — that is product-prover, which answers "does the spec hold as written?" while this answers "is the design itself right?" — nor for code or diffs; and it never blocks a landing, since every finding is a recommendation or a question.
 metadata:
-  version: 1.0.1
+  version: 1.0.2
 ---
 
 # Design Review
@@ -46,6 +46,16 @@ The two passes answer two different questions, and each is the right answer to i
 
 5. **Fire the tight ask.** A divergence becomes a finding only when the signal is strong. Every finding names two concrete objects, each with the spec sentence it comes from, the shared role sentence, the divergence, the question "how alike should these behave?", and a recommended default. Where the grouping or the difference is not plain, the pass stays silent.
 
+## The standing motion-parity lens (SPEC INV-165)
+
+The five steps above are bottom-up: they find a group only when two role sentences match. On a spec that ships a **gesture, a motion, or a layer that opens and closes over another** — a pinch-to-zoom, an inspect overlay, a lift, a flip — the medium already names three same-kind groups the bottom-up walk can miss. So run this lens **by construction** whenever such a spec is under review, on top of the five steps, naming three groups the text need not have declared:
+
+1. **Entry mirrors exit.** A layer that opens by a motion from its source closes by the reverse of that same motion — the way out is the way in reversed. An exit that plays a different animation, or the entry run backwards where backwards reads wrong (a shrink that does not fly the thing home, a close that needs a separate × button the open never implied), is the divergence.
+2. **Every object type behaves alike.** Each kind of thing the gesture acts on — a gallery frame, a print, a window, a room — opens and closes the same way and lands back on its own on-screen rectangle. A true per-element read of the source rectangle handles differing sizes by construction; a per-type special case is the smell, and a type that opens but will not close the same way is the divergence.
+3. **Every position behaves alike.** The same gesture on the same type in a different slot — the top, middle, or bottom picture on a wall — behaves the same. A difference between one slot and its neighbour is a divergence the lens predicts before a device ever shows it.
+
+Each finding rides the same echo channel and confidence read as the similarity divergence — a recommendation or a question, never a blocker — and once the human declares the parity a class sentence the prover's uniformity check holds it [INV-125]. This lens catches the class a bottom-up-only review let slip on a shipped pinch: an entry/exit asymmetry, a phone pinch-out that would not fly the picture home, and a door picture that behaved differently by slot (tlvphotos, 2026-07-15).
+
 ## The confidence read
 
 Every design-review finding carries a confidence read of one of two values.
@@ -67,7 +77,7 @@ The question shows both objects each with its spec sentence, asks how alike the 
 
 An **unanswered** question is held on the dated record and is **not raised again** on its own until the human answers it, so a re-derived ask that matches an open recorded one does not re-fire as noise each pass [INV-130].
 
-This channel carries exactly one producer for now — the same-kind divergence from the similarity lens above. A later producer would earn its own clause.
+This channel carries two producers — the same-kind divergence from the similarity lens, and the motion-parity divergence from the standing gesture/overlay lens above [INV-165]. A later producer would earn its own clause.
 
 ## How the answer closes the loop
 
