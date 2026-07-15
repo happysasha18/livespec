@@ -2,6 +2,43 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-15 ~17:40 IDT (opus lead, live-spec window) — v1.7.0: the pack owns the browser test harness (INV-157/158, ROADMAP 327)
+
+**Why.** Alexander noticed the machine plays sound during browser tests and asked to fix flaky
+headless-Chrome tests. Tracing it found three hand-written `headless.py` copies — exhibition-engine's
+shipped harness, its own tests, and tlvphotos's tests — drifted apart: none launched muted, and the
+Chrome-saturation hardening (process-group reap + a per-command deadline) lived only in the two test
+copies while the engine's shipped harness still leaked orphans. His call settled the shape: the pack
+ships ONE canonical harness that projects adopt by updating, not a hand-carried inbox wish per project
+(I mistakenly dropped wishes into exhibition-engine and tlvphotos first, then reverted them on his
+correction — a general method rule reaches every project through the pack, not by hand).
+
+**What landed.** INV-157 — a browser test harness launches muted (`--mute-audio`), reaps its whole
+process group on teardown AND sweeps its own crash leftovers on launch, bounds each command with a
+per-command deadline; a harness-caused environment fault is removable in owned code and root-fixed, not
+retried [INV-155/INV-100/INV-76]. INV-158 — the harness has one canonical home, a pack-shipped template
+consumers adopt [base rule 4]. The template `templates/headless_harness.py` (695 lines) is built from the
+hardened tlvphotos harness, stripped of project-specific methods, with the mute flag and a boot-aware
+self-cleaning sweep added; it lives on the test-author node.
+
+**The MINOR gate earned its keep (Alexander's "гоним всё").** Three adversarial passes caught five real
+defects a green suite passed over: the full prover found the teardown reap missed a killed run; the
+design review found the invariant named no net; the Fable code audit found the teardown group-kill was
+skipped whenever the leader exited first, the string net was satisfiable by the docstring alone, and the
+launch sweep could kill an unrelated group after a reboot. All folded — the reap is now unconditional,
+the sweep is boot-aware (a cross-boot leftover is removed without a kill, since a reboot already killed
+every process), and the tests assert on comment-stripped code so removing `--mute-audio` reds the net.
+Records: `docs/prover/2026-07-15-1.7.0-minor-gate.md`, `docs/design-review/2026-07-15-1.7.0.md`,
+`docs/audit/2026-07-15-1.7.0-fable.md`. Four recommendations queued (328 declare the test-infra family a
+class, 329 the removal-scanner one-home, 330 ship the consumer by-deed net helper, 331 sweep/signal
+edge hardening).
+
+**Also reconciled.** The ROADMAP had drifted — 323/324/325 landed but were still marked queued, and the
+queue reused "325" for the forward-binding item, which is really row 322. Fixed: statuses flipped with
+delegation lines, 322 marked partial, the queue renumbered. Suite 773 green. Delegation (INV-103): the
+harness inventory, the template build, all three gate passes, and the fold ran as workers; the spec
+authoring, every finding fold, and the design kept senior.
+
 ## 2026-07-15 14:35 IDT (opus lead, live-spec window) — v1.6.1: the deferral rule gets its mechanical net + delivery arm, and build-pipeline is thinned (324)
 
 **Why.** On 2026-07-15 the same failure recurred three times in one morning — a work item that was never

@@ -161,6 +161,18 @@ device class; the suite says plainly what it cannot see.
   workshop noise on the problem ledger [SPEC INV-23] instead. A flake understood but not removable in
   one landing is quarantined by name in the pinned skip-set, marked distinct from an environment skip,
   with a dated reason and an owning queue row.
+- **A browser test harness launches muted and reaps what it spawned (SPEC INV-157).** A harness driving
+  a real browser starts it muted (`--mute-audio`), reaps the whole process group of the browser it
+  launched so no orphan accumulates, and bounds each command with a real per-command deadline rather
+  than a blanket timeout that reads a slow machine as a failure. Clean teardown means EVERY exit, not
+  just the tidy one: teardown runs on `atexit` and on `SIGINT`/`SIGTERM`, so Ctrl-C and most kills
+  still reap the group; and because the uncatchable exits (`SIGKILL`, power loss, sleep mid-run) never
+  run teardown, a launch-time sweep is the backstop — each launch reaps a prior run's leaked profile
+  dir and process group when the run's recorded owner is dead, so a killed run's orphans are swept on
+  the next launch (and never a live concurrent run, whose owner is still alive). The harness has one canonical home —
+  the pack ships it once as a template (`templates/headless_harness.py`), a consumer adopts it by
+  updating the pack and layers its own methods on top, so the implementation never drifts into
+  divergent copies (SPEC INV-158).
 - **The suite's own plumbing must not lie (SPEC INV-80).** A skip path executes even when never
   taken: import the skip helper at module load, so a skip that cannot run is red on every machine
   instead of a silent pass on the one that needed it (a `skip()` NameError once hid exactly there).

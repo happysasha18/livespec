@@ -1,36 +1,33 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-15 14:35 — 1.6.1 READY (committed, not pushed — the harness push gate needs an explicit push signal or the git-push allow rule); the deferral rule gained its mechanical net + delivery arm, and build-pipeline's SKILL body was thinned under 500; suite 755; pack v1.6.1)
-**PACK v1.6.1** (1.6.0 at CI green; 1.6.1 hardens INV-152 and thins build-pipeline, suite 755). A PATCH:
-it strengthens the enforcement of an existing rule and refactors a doc, adding no new rule or capability.
-Two things landed, from Alexander's words on the recurring "handed me what was never mine" leak; the change
-was reviewed by an independent adversarial prover pass (record `docs/prover/2026-07-15-deferral-guard.md`,
-HOLDS-WITH-FIXES) whose six defects were all folded before commit:
-
-- **The deferral rule (INV-152 / base rule 29) got its two enforcement arms.** A mechanical net,
-  `guardrails/check-deferral-marker.py`, reds a commit when an item in NEXT_STEPS or a decision page parks
-  for the human's word and names no reason category (taste · policy · irreversible · device-feel); it reads
-  the file as folded work items, so a signal or its reason wrapped across lines is handled. A delivery arm,
-  a fifth chat-law hook line, re-fires the derivability re-test at the moment a marker is written or an
-  AskUserQuestion is opened. Matrix rows M-297 (extended) + M-302 (the hook), a CI backstop on the repo's
-  own files. (The prose rule alone kept leaking — three instances on 2026-07-15 across tlvphotos,
-  track-coach, and this window.)
-- **324 done — build-pipeline SKILL.md 601 → 499 lines.** Set-piece tables moved to
-  `skills/build-pipeline/references/*.md` with pointers; conftest's `read_all` lets content-presence tests
-  read the whole skill surface, so traceability follows relocated text (size tests still read SKILL.md alone).
+## LIVE STATE (2026-07-15 ~17:40 — 1.7.0 READY (committed; push on green); the pack owns the browser test harness; suite 773; pack v1.7.0)
+**PACK v1.7.0** — a MINOR: the pack now ships a canonical headless-browser test harness and states the
+rule for it (INV-157/158, ROADMAP 327). A browser test run launches muted (no sound on the machine) and
+cleans up after itself — an unconditional whole-group reap on teardown plus a boot-aware launch sweep of
+its own crash leftovers — and a consumer adopts the one shipped template `templates/headless_harness.py`
+by updating the pack rather than maintaining a private copy. The MINOR gate ran three adversarial passes
+(full prover HOLDS-WITH-FIXES, design review, Fable code audit) that caught five real defects a green
+suite missed — a teardown reap skipped on a killed run, a net satisfiable by a docstring, a launch sweep
+unsafe across a reboot — all folded; four recommendations queued (328–331). Records:
+`docs/prover/2026-07-15-1.7.0-minor-gate.md`, `docs/design-review/2026-07-15-1.7.0.md`,
+`docs/audit/2026-07-15-1.7.0-fable.md`. Also reconciled the ROADMAP status drift: 323/324/325 flipped to
+landed with delegation lines, 322 marked partial, the queue's misnumbered "325" corrected to 322.
 
 ## Queue (ROADMAP)
 - **321** feedback-collector sub-skill — on strong user emotion, OFFER (consent first) to send a distilled
   digest upstream; inbox destination, per-machine opt-out, distinct from feedback-intake. Open design Qs at
   build (Alexander 2026-07-15, "как дойдём добавим").
-- **325** Give the forward-binding law a dedicated invariant and repoint every cite to it — the real
-  unification 322 named. The property (a duty binds forward from the first landing after its clause exists,
-  never retroactively) is stated loosely across INV-15 / 41 / 74 / 75 / 127, T-16, A-3, INV-21, and line 626,
-  and no anchor's text actually STATES the law (INV-15's own text is the node+matrix rule). Mint the
-  invariant, repoint the cites, one root. Prover finding F1/F5, record
-  `docs/prover/2026-07-15-322-forward-binding-and-323-review-record-class.md`. 322's stopgap: INV-41's
-  forward-binding was deflated from a false "the one law [INV-15]" claim to a precedent cite.
-- _(323 done — the review-record class declared once, INV-156; prover HOLDS-WITH-FIXES, six findings folded.)_
+- **322** Give the forward-binding law a dedicated invariant and repoint every cite (the real unification;
+  this item was misnumbered 325 before). The property — a duty binds forward from the first landing after
+  its clause exists, never retroactively — is stated loosely across INV-15/41/74/75/127, T-16, A-3, INV-21,
+  and line 626, and no anchor's text STATES it. Mint the invariant, repoint the cites. Prover F1/F5, record
+  `docs/prover/2026-07-15-322-forward-binding-and-323-review-record-class.md`. Stopgap: INV-41 deflated to a
+  precedent cite.
+- **326** Bump the CI actions off the deprecated Node-20 runner (a cosmetic warning).
+- **328** Declare the test-infrastructure invariant family a same-kind class with net-parity (design-review rec).
+- **329** Reconcile INV-158's one-home with E-26's per-project removal scanner (design-review rec).
+- **330** Ship the consumer's by-deed orphan-check helper in the harness's canonical home (Fable F7).
+- **331** Harness sweep + signal edge hardening — cross-workspace sweep, respect a host's SIG_IGN (Fable F5/F8).
 
 ## Standing habits / OWNER-HELD
 - **Memory can be wiped** — the whole story is in JOURNAL + the prover/design-review records + ROADMAP.
@@ -42,4 +39,4 @@ HOLDS-WITH-FIXES) whose six defects were all folded before commit:
   truly-dangerous outward acts stays hard-blocked above bypass — `gh repo create`, force-push of rewritten
   history, self-editing settings.json (the agent's one hard boundary). A session launched in a stricter mode
   than the global default may still hold an ordinary push for an explicit go.
-- Next free codes: INV-157, M-304 (INV-156 + M-303 used by 323).
+- Next free codes: INV-159, M-306 (INV-157/158 + M-304/305 used by 327).
