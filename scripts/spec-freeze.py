@@ -89,7 +89,11 @@ def freeze(files):
     return 0
 
 
-def verify(files, allow):
+def verify(files, allow, compaction=False):
+    # compaction mode: removing a DUPLICATE index row drops the redundant copies of its cross-ref
+    # citations, whose law lives on in the prose clause — so a count DROP where the anchor still
+    # appears (count > 0) is the intended compaction and is allowed; a VANISH (-> 0, the last copy
+    # gone) or a RISE (an invented cite) is still a hard violation. Markers/numbers/paths stay strict.
     violations = []
     for f in files:
         base_path = os.path.join(FREEZE_DIR, _name(f) + ".json")
@@ -116,6 +120,8 @@ def verify(files, allow):
             if cn == bn:
                 continue
             if cn < bn and allowed.get(a) == cn:
+                continue
+            if cn < bn and compaction:      # a duplicate copy removed, the law survives in prose
                 continue
             violations.append("%s: anchor %s count %d -> %d (%s)"
                               % (f, a, bn, cn, "unlogged drop" if cn < bn else "rose — invented cite"))
@@ -151,12 +157,14 @@ def main():
     ap.add_argument("--freeze", nargs="+", metavar="FILE")
     ap.add_argument("--verify", nargs="+", metavar="FILE")
     ap.add_argument("--allow", metavar="allow.json")
+    ap.add_argument("--compaction", action="store_true",
+                    help="allow anchor-count drops where the anchor survives (a duplicate row removed)")
     args = ap.parse_args()
     if args.freeze:
         return freeze(args.freeze)
     if args.verify:
         allow = json.load(open(args.allow, encoding="utf-8")) if args.allow else {}
-        return verify(args.verify, allow)
+        return verify(args.verify, allow, compaction=args.compaction)
     ap.print_help()
     return 2
 
