@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.18), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v1.0.19), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -424,6 +424,14 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   audit + a surface-composition check, plus the full design review (SPEC INV-141) and the cross-cut counter
   (SPEC INV-128, INV-37) and code compaction as a station beside doc compaction (SPEC INV-123). See
   [references/minor-bump-gate.md](references/minor-bump-gate.md) for the full gate procedure.
+- **Compaction runs every pass, above the milestone gate (SPEC INV-164):** the doc- and code-compaction
+  stations run at every push, above the MINOR gate that once held them alone. Every push is held to the
+  reached-clean floor by the mechanical gates — the register lint at zero errors, the redundancy gate at
+  zero open pairs, and the debt cap that only ratchets down (`scripts/spec-debt-cap.json`) — asserted
+  against the live document by the suite, so no bloat accumulates between milestones. The deeper method
+  rule (base rule 30): any quality a machine can verify is shipped as a runnable gate a host attaches,
+  held by no pass's attention, since a quality left to attention is a defect of the method. This is the
+  fix for the spec bloating when compaction ran milestone-only (2026-07-15).
 - **Process bookkeeping scales to the delta (SPEC INV-61):** the pre-push re-check keeps its rigor and
   scales its FORM — a small delta (skill/prose/infra kind, no new surface, no structure change) ships a
   three-line SHORT-FORM record (previous records clean · the delta in one line · the verdict). A

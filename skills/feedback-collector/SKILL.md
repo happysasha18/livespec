@@ -11,7 +11,7 @@ metadata:
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
 > need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live
-> ONCE in the pack's base skill, `live-spec-base` (v1.0.18), together with the settings ladder — this skill
+> ONCE in the pack's base skill, `live-spec-base` (v1.0.19), together with the settings ladder — this skill
 > references them and elaborates only its own domain. Used standalone, this note is plain advice.
 
 The pack has three arrows. communicator carries work OUT to the human. feedback-intake carries what a

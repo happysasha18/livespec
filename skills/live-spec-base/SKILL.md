@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — twenty-nine rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 1.0.18
+  version: 1.0.19
 ---
 
 # live-spec-base — one rulebook, eight working skills
@@ -314,6 +314,16 @@ a working skill still stands: its pointer here reads as plain advice.
    deferral line, re-fires the derivability test at the moment a marker is written or an
    `AskUserQuestion` is opened, so the re-test lands where the leak happens rather than after it; it
    reminds and cannot block, the way the chat laws are always delivered (SPEC INV-28).
+
+30. **A quality a machine can verify is enforced by a gate, held by no attention (SPEC INV-164).** Any
+   property the project can check mechanically — the register clean, the redundancy gone, the anchors
+   intact, the suite green — is wired as a blocking gate that runs on every push, held by no pass's
+   attention. A quality left to attention is a defect of the method: attention is the first thing a long
+   session spends, and it fails without a sound. Compaction is the worked case — the doc and code
+   stations run at every push under the debt cap that only ratchets down (SPEC INV-98, INV-115, INV-123),
+   above the milestone whole-read that once held them alone, so no bloat accumulates between milestones.
+   This is why the pack ships its checks as runnable gates a host attaches (SPEC INV-97), where prose a
+   host is trusted to remember would let the quality slip the moment attention did.
 
 
 ## When NOT to load this

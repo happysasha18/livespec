@@ -13,13 +13,13 @@ def test_base_rule_26_homes_design_principles():
     # D3: base-rulebook carries a real text home for INV-136/139 ownership
     base = _read("skills/live-spec-base/SKILL.md")
     assert "26. **A project kind also declares design principles the verify pass runs" in base
-    assert "twenty-nine rules in the body" in base
+    assert "thirty rules in the body" in base
     assert "INV-136, INV-139" in base
     # the periodic-full-audit rule is base rule 28 (INV-145, Part C); rule 29 is the deferral test
     assert "28. **A periodic full audit" in base
     assert "29. **A deferral must justify itself" in base
     # README's mirrored rule count is fresh
-    assert "twenty-nine shared rules" in _read("README.md")
+    assert "thirty shared rules" in _read("README.md")
 
 
 def test_d1_reading_discipline_composes_with_brief_read():

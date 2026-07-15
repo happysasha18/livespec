@@ -69,7 +69,7 @@ class TestDeferralJustifiesItself(unittest.TestCase):
 
     def test_base_description_counts_the_rule(self):
         base = read_flat("skills/live-spec-base/SKILL.md")
-        self.assertIn("twenty-nine rules", base)
+        self.assertIn("thirty rules", base)
 
     def test_inv152_index_and_ownership(self):
         rows = read("PRODUCT_SPEC.md").splitlines()
