@@ -158,6 +158,57 @@ def test_template_teardown_on_signal_and_atexit():
         assert token in src, token
 
 
+def test_sweep_covers_every_temp_workspace():
+    # A launch sweep that scans only the CURRENT tempdir leaves a launchd run and a terminal run
+    # blind to each other's crash orphans — they hold different per-user temp roots on macOS, so
+    # neither ever reaps the other's leftovers [Fable F5]. The sweep gathers profile dirs from every
+    # workspace the harness could have used, not one. Asserted against real code.
+    src = _stripped_code()
+    assert "def _temp_roots" in src                       # the multi-root enumerator exists
+    sweep = _func_code("_sweep_stale_profiles")
+    assert "_temp_roots()" in sweep                       # the sweep iterates every root, not one
+    roots = _func_code("_temp_roots")
+    assert "/var/folders" in roots                        # macOS per-user temp roots
+    assert "gettempdir()" in roots                        # the current root is still covered
+
+
+def test_teardown_leaves_a_hosts_ignored_signal_intact():
+    # If the host deliberately set SIG_IGN on SIGINT/SIGTERM, the harness must NOT resurrect it into a
+    # process-killing handler — that overrides the host's stated intent [Fable F8]. The install skips
+    # a signal whose prior disposition is SIG_IGN. Asserted against real code.
+    install = _func_code("_install_teardown_hooks")
+    assert "SIG_IGN" in install
+    assert "prev is signal.SIG_IGN" in install
+
+
+def test_harness_ships_by_deed_orphan_check_helper():
+    # INV-157's net is a POST-RUN, by-deed orphan census a consumer asserts on — not a docstring the
+    # consumer is asked to trust. The pack ships it in the harness's own home so a consumer adopts the
+    # net WITH the harness rather than writing a private copy [Fable F7]. It reads real, live OS state.
+    src = _stripped_code()
+    assert "def orphan_guard" in src                      # the by-deed post-run net (context manager)
+    assert "def surviving_orphans" in src                 # the census a consumer can assert on
+    assert "def _own_live_owners" in src                  # the shared live-owner reader
+    guard = _func_code("orphan_guard")
+    assert "AssertionError" in guard                      # goes RED on a surviving orphan
+    owners = _func_code("_own_live_owners")
+    assert "_pid_alive" in owners                          # reads live process state — by deed
+
+
+def test_orphan_net_scopes_to_this_process_own_launches():
+    # F1: a machine-wide temp-dir census false-reds when a SIBLING process launches its own Chrome
+    # inside the guarded window. The net must scope to what THIS process launched — the _LAUNCHED_OWNERS
+    # set, recorded at each Browser launch — so a concurrent sibling in another process never blames
+    # this suite. Asserted against real code.
+    src = _stripped_code()
+    assert "_LAUNCHED_OWNERS" in src                       # the process's own launch registry exists
+    assert "_LAUNCHED_OWNERS.add" in _func_code("__init__", "Browser")   # each launch records its owner
+    guard = _func_code("orphan_guard")
+    assert "_LAUNCHED_OWNERS" in guard                     # the guard diffs its own set, not a census
+    owners = _func_code("_own_live_owners")
+    assert "_LAUNCHED_OWNERS" in owners
+
+
 def test_template_is_generic_core_no_project_methods():
     src = _template()
     for method in ("def block", "def net_capture", "def net_clear", "def net_log",

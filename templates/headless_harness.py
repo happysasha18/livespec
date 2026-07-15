@@ -155,9 +155,31 @@ def _pid_alive(pid):
     return True
 
 
+def _temp_roots():
+    """Every temp workspace this harness could have dropped a profile dir in — not only the CURRENT
+    session's ``tempfile.gettempdir()`` [INV-157, Fable F5]. On macOS each login/launchd context gets
+    its OWN per-user temp (``/var/folders/<xx>/<yyy>/T``), so a terminal run and a launchd run never
+    share a root; a sweep that scanned only the current root would leave the other context's crash
+    orphans alive forever. Collect: the current ``gettempdir()``, the classic ``/tmp`` and ``/var/tmp``,
+    and every per-user macOS temp under ``/var/folders/*/*/T``. Deduped by REAL path (so a symlinked
+    ``/tmp`` → ``/private/tmp`` is not scanned twice); a root that is missing or unreadable simply
+    yields nothing in the later glob, so it costs nothing to list."""
+    roots = {tempfile.gettempdir(), "/tmp", "/var/tmp"}
+    roots.update(glob.glob("/var/folders/*/*/T"))
+    seen, out = set(), []
+    for r in roots:
+        with contextlib.suppress(OSError):
+            rp = os.path.realpath(r)
+            if rp not in seen and os.path.isdir(rp):
+                seen.add(rp)
+                out.append(rp)
+    return out
+
+
 def _sweep_stale_profiles(exclude=None):
     """Launch-time backstop: reap ONLY this harness's own provable crash leftovers — profile dirs
-    under the system temp matching ``PROFILE_PREFIX``. Each run's dir is unique (``mkdtemp``) and
+    matching ``PROFILE_PREFIX`` under EVERY temp workspace the harness could have used (``_temp_roots``,
+    not just the current tempdir). Each run's dir is unique (``mkdtemp``) and
     records ``"<chrome pid>\\n<boot id>"`` in ``OWNER_PID_FILE`` at launch. Three cases:
 
       * SAME BOOT, owner dead  → a genuine crash leftover: kill any process group still bound to the
@@ -170,12 +192,15 @@ def _sweep_stale_profiles(exclude=None):
     An OWNERLESS dir (no ``OWNER_PID_FILE`` yet, or unparseable) is SKIPPED entirely — a dir caught
     between ``mkdtemp`` and a slow/failed pid write could still belong to a live sibling, so it is
     never rmtree'd and never killed. ``exclude`` (the current run's own dir) is never touched."""
-    exclude_abs = os.path.abspath(exclude) if exclude else None
+    exclude_abs = os.path.realpath(exclude) if exclude else None
     current_boot = _boot_id()
-    for path in glob.glob(os.path.join(tempfile.gettempdir(), PROFILE_PREFIX + "*")):
+    candidates = []
+    for root in _temp_roots():
+        candidates += glob.glob(os.path.join(root, PROFILE_PREFIX + "*"))
+    for path in candidates:
         if not os.path.isdir(path):
             continue
-        if exclude_abs is not None and os.path.abspath(path) == exclude_abs:
+        if exclude_abs is not None and os.path.realpath(path) == exclude_abs:
             continue
         owner, boot = None, None
         try:
@@ -206,6 +231,12 @@ def _sweep_stale_profiles(exclude=None):
 _LIVE_BROWSERS = set()
 _TEARDOWN_HOOKS_INSTALLED = False
 
+# Every Chrome owner pid THIS PROCESS launched, recorded at each Browser launch. The by-deed orphan
+# net scopes to this set rather than a machine-wide temp census, so a concurrent sibling suite running
+# in ANOTHER process — even one whose browser is born mid-window — is never mistaken for this suite's
+# own leaked orphan [INV-157, Fable/prover F1].
+_LAUNCHED_OWNERS = set()
+
 
 def _teardown_all_browsers():
     """Close every still-live Browser — the body atexit and the signal handlers run."""
@@ -226,6 +257,11 @@ def _install_teardown_hooks():
     atexit.register(_teardown_all_browsers)
     for _sig in (signal.SIGINT, signal.SIGTERM):
         prev = signal.getsignal(_sig)
+        if prev is signal.SIG_IGN:
+            # the host DELIBERATELY ignored this signal — respect that intent; do not resurrect it into
+            # a process-killing handler [INV-157, Fable F8]. atexit still carries teardown on a normal
+            # exit, and a host that ignores SIGTERM has already chosen to stay alive through it.
+            continue
 
         def _handler(signum, frame, _prev=prev):
             _teardown_all_browsers()
@@ -238,6 +274,58 @@ def _install_teardown_hooks():
 
         with contextlib.suppress(ValueError, OSError):
             signal.signal(_sig, _handler)
+
+
+# ---------------------------------------------------------------- by-deed orphan net [INV-157, F7]
+#
+# The teardown reap and the launch sweep are the harness's OWN guards; a consumer still owes a net that
+# PROVES, by deed, that a suite left no Chrome group behind — a post-run process census that reads live
+# OS state, not the harness code by eye. The pack ships that net HERE, in the harness's one home, so a
+# consumer adopts it with the template instead of writing a private copy [INV-158]. It is scoped to this
+# harness's own profile dirs (the OWNER_PID marker), so it never counts the user's own Chrome.
+
+def _own_live_owners():
+    """The Chrome owner pids THIS PROCESS launched (recorded in ``_LAUNCHED_OWNERS`` at each Browser
+    launch) that are STILL ALIVE right now. Reading live process state through ``_pid_alive`` keeps it a
+    by-deed census; scoping to this process's own launches — never a machine-wide temp-dir census —
+    means a concurrent sibling suite in ANOTHER process is never counted, even one whose browser is born
+    mid-window [F1]."""
+    return {pid for pid in set(_LAUNCHED_OWNERS) if _pid_alive(pid)}
+
+
+def surviving_orphans():
+    """A consumer's by-deed orphan census: the pids of THIS process's own harness Chromes still alive
+    now. Call it AFTER a suite's browser teardown — a clean run returns ``[]``, a teardown regression
+    returns the live owners this process launched, so a consumer writes ``assert not surviving_orphans()``
+    as a net that reads real OS state instead of trusting the teardown code by eye. It counts only
+    browsers this process launched, so a concurrent sibling suite in another process never false-reds
+    it."""
+    return sorted(_own_live_owners())
+
+
+@contextlib.contextmanager
+def orphan_guard():
+    """A by-deed post-run orphan net for a consumer's suite. Wrap the browser tests (or a session-scoped
+    fixture) in it::
+
+        with orphan_guard():
+            run_the_browser_tests()
+
+    On exit it RAISES ``AssertionError`` if any Chrome THIS PROCESS launched DURING the window is still
+    alive — a reaped-teardown regression goes red HERE, where a docstring cannot satisfy it. It scopes to
+    this process's own launches (the ``_LAUNCHED_OWNERS`` set), so a concurrent sibling suite in another
+    process — even one that starts its browser mid-window — never false-reds this guard [F1]; a browser
+    launched before the window is left to that outer scope."""
+    before = set(_LAUNCHED_OWNERS)
+    try:
+        yield
+    finally:
+        leaked = sorted(pid for pid in set(_LAUNCHED_OWNERS)
+                        if pid not in before and _pid_alive(pid))
+        if leaked:
+            raise AssertionError(
+                "browser-harness orphans survived the run — teardown did not reap [INV-157]: "
+                + ", ".join("pid %d" % p for p in leaked))
 
 
 # ---------------------------------------------------------------- local http server
@@ -450,6 +538,9 @@ class Browser:
         with contextlib.suppress(Exception):
             with open(os.path.join(self._profile, OWNER_PID_FILE), "w") as f:
                 f.write("%s\n%s\n" % (self.proc.pid, _boot_id() or ""))
+        # Record this launch in the process's own owner set so the by-deed orphan net can scope to what
+        # THIS process launched, never a machine-wide census that a sibling process would pollute [F1].
+        _LAUNCHED_OWNERS.add(self.proc.pid)
         self.port = self._read_devtools_port()
         self.ws = self._connect_page()
         self._cmd("Page.enable")
