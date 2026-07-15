@@ -70,6 +70,7 @@ import signal
 import socket
 import struct
 import subprocess
+import sys
 import tempfile
 import threading
 import time
@@ -118,6 +119,10 @@ OWNER_PID_FILE = "OWNER_PID"           # each run records "<chrome pid>\n<boot i
                                        # can tell a crash leftover (owner dead, SAME boot) from a live
                                        # concurrent run (owner alive) and from a prior-boot dir (a
                                        # reboot already killed everything — the pid is meaningless)
+OWNERLESS_STALE_AGE = 3600             # an ownerless profile dir older than this (seconds) is a killed
+                                       # run's leftover, not a live mid-launch sibling — safe to reap [333]
+PROFILE_GLUT_WARN = 50                 # this many of the harness's own dirs still under the temp roots is
+                                       # a leak surfacing loudly, so a full temp never reads as product reds
 
 
 def _boot_id():
@@ -210,8 +215,15 @@ def _sweep_stale_profiles(exclude=None):
         except (FileNotFoundError, ValueError, OSError):
             owner, boot = None, None
         if owner is None:
-            # ownerless: a dir mid-launch (pid write not landed yet) could be a LIVE sibling —
-            # never rmtree, never kill; leave it be.
+            # ownerless: no OWNER_PID written — yet, or ever. A dir caught mid-launch (its pid write
+            # not landed) could be a LIVE sibling, so a YOUNG ownerless dir is left alone. But the
+            # system temp is NOT self-purging (macOS /var/folders survives across runs and days), so an
+            # OLD ownerless dir is a killed run's leftover — or a process-less baked dir — that would
+            # accumulate forever; once it is well past any mid-launch window it is stale litter, removed
+            # (never signalled — there is no pid to signal) [INV-100, INV-157, ROADMAP 333].
+            with contextlib.suppress(OSError):
+                if time.time() - os.path.getmtime(path) > OWNERLESS_STALE_AGE:
+                    shutil.rmtree(path, ignore_errors=True)
             continue
         same_boot = current_boot is not None and boot is not None and boot == current_boot
         if not same_boot:
@@ -225,6 +237,14 @@ def _sweep_stale_profiles(exclude=None):
         with contextlib.suppress(Exception):
             os.killpg(owner, signal.SIGKILL)   # dead owner, same boot: reap its lingering group
         shutil.rmtree(path, ignore_errors=True)
+    # Surface a glut loudly: many of the harness's own dirs still under the temp roots means a run is
+    # leaking (or the temp is filling), so it never masquerades as product test reds [ROADMAP 333].
+    if len(candidates) > PROFILE_GLUT_WARN:
+        with contextlib.suppress(Exception):
+            sys.stderr.write(
+                "live-spec harness: WARNING — %d of the harness's own profile dirs under the temp roots "
+                "(prefix %r) at launch; a healthy run reaps its own, so a persistently high count means "
+                "the temp home is filling and a run is leaking.\n" % (len(candidates), PROFILE_PREFIX))
 
 
 # Registry of live Browsers so a single atexit / signal handler can tear every one of them down.
@@ -512,6 +532,16 @@ class Browser:
         self._id = 0
         self._profile = tempfile.mkdtemp(prefix=PROFILE_PREFIX)
         _LIVE_BROWSERS.add(self)
+        # Seed the owner marker with THIS harness process's own pid IMMEDIATELY — before Chrome even
+        # launches — so a live run is NEVER ownerless. If the Chrome-pid overwrite below fails (a full
+        # temp swallowing the write, the very ENOSPC condition the age sweep targets), the dir still
+        # names a live owner (this process), so a sibling's launch sweep sees a live owner and leaves it
+        # alone rather than reaping a live run's profile by age. The write after launch overwrites this
+        # with Chrome's own group pid. The dead-owner branch only ever killpg's a DEAD pid (a no-op on
+        # this provisional pid if the process is gone), so seeding it is safe [INV-157, ROADMAP 333 / prover F1].
+        with contextlib.suppress(Exception):
+            with open(os.path.join(self._profile, OWNER_PID_FILE), "w") as f:
+                f.write("%s\n%s\n" % (os.getpid(), _boot_id() or ""))
         # Chrome's own stderr goes to a file in the throwaway profile (not /dev/null): when the CDP
         # pipe dies, _chrome_stderr_tail() reads the crash reason out of it, so a renderer/browser
         # crash names itself instead of surfacing as a bare "websocket closed".

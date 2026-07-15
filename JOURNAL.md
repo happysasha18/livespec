@@ -2,6 +2,10 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-15 ~21:20 IDT (opus lead, live-spec window) — v1.10.1: the launch sweep clears stale temp litter by age (ROADMAP 333, PATCH)
+
+Born of a real incident: a long tlvphotos session leaked `$TMPDIR` to 78 GB of stale harness dirs — killed/timed-out runs orphaned their temp, and it read as product test reds (a serial gate fell 36/37 → 15/37 on identical code) until the temp was cleared. The false assumption was that the system temp self-purges; on macOS `/var/folders` keeps litter across runs and days. Fix, in Alexander's retroactive framing: the launch sweep — already reaping dead-owner process groups — now also reaps an OLD ownerless dir by age (a killed run's leftover that never recorded an owner; a young ownerless dir is left alone as a possible live sibling mid-launch), and surfaces a temp glut loudly so a filling temp never masquerades as product reds again. INV-100 and INV-157 sharpened to state the harness owns its litter across runs rather than trusting the OS to reclaim it. A PATCH (no new invariant), red-proven, suite 800 green; short-form record per INV-61. Consumers get the fix by adopting the pack update [INV-158]. Delegation: none — a focused harness sharpening, senior inline.
+
 ## 2026-07-15 ~20:55 IDT (opus lead, live-spec window) — v1.10.0: a cleanup touches only what it owns (ROADMAP 334, HIGH safety)
 
 **Why.** A real incident, relayed from tlvphotos mid-session: clearing stray test browsers between flaky runs, the agent and briefed workers used broad kill patterns — `pkill -9 -f "chrome_crashpad_handler"`, `pkill -9 chrome` — which match the USER'S own Google Chrome. Alexander's browser closed mid-session, destroying his own work state — an effect outside git and outside the workshop. He named it plainly ("мне такие шутки не нравятся") and then, crucially, lifted it: "это не только браузер а любой shared resource… кто сейчас им пользуется если это известно." The rule isn't chrome-specific; it is about any shared resource in current use.

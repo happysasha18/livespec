@@ -209,6 +209,35 @@ def test_orphan_net_scopes_to_this_process_own_launches():
     assert "_LAUNCHED_OWNERS" in owners
 
 
+def test_sweep_reaps_old_ownerless_litter_by_age():
+    # ROADMAP 333: the system temp is NOT self-purging, so an OLD ownerless profile dir (a killed run's
+    # leftover that never recorded an owner) must be reaped by age; a YOUNG one is left alone (a live
+    # sibling mid-launch). Asserted against real code.
+    src = _stripped_code()
+    assert "OWNERLESS_STALE_AGE" in src                    # the age threshold exists
+    sweep = _func_code("_sweep_stale_profiles")
+    assert "OWNERLESS_STALE_AGE" in sweep                  # the ownerless branch is age-bounded now
+    assert "getmtime" in sweep                             # it reads the dir's age
+    # the reap in the ownerless branch is rmtree-only (no pid to signal)
+    assert "rmtree" in sweep
+
+
+def test_harness_warns_on_a_temp_glut():
+    # ROADMAP 333: a glut of the harness's own dirs at launch is surfaced loudly, so a filling temp
+    # never masquerades as product test reds. Asserted against real code.
+    src = _stripped_code()
+    assert "PROFILE_GLUT_WARN" in src
+    sweep = _func_code("_sweep_stale_profiles")
+    assert "PROFILE_GLUT_WARN" in sweep
+    assert "stderr" in sweep                               # the warning goes to stderr, loudly
+
+
+def test_spec_states_the_temp_is_not_self_purging():
+    spec = _read("PRODUCT_SPEC.md")
+    assert "not self-purging" in spec
+    assert "owns its litter across runs" in spec
+
+
 def test_template_is_generic_core_no_project_methods():
     src = _template()
     for method in ("def block", "def net_capture", "def net_clear", "def net_log",
