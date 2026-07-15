@@ -124,7 +124,7 @@ JARGON_RE = re.compile(r"(?<!\w)(%s)(?!\w)" % "|".join(sorted(JARGON)), re.IGNOR
 CAPS_ALLOW = {"JSON", "CI", "HTML", "CSS", "RFC", "API", "URL", "UI", "MVP", "TTL", "MECE",
               "LLD", "HLD", "PRD", "README", "OK", "MD", "CLI", "ID", "IDE", "NLP", "SPEC",
               "LIVE", "STATE", "NEXT", "NOW", "MUST", "SHALL", "NOTE", "QA", "TODO", "HEAD",
-              "KPI", "UX", "FIXME", "VCS",
+              "KPI", "UX", "FIXME", "VCS", "DOM", "PID", "OS", "CDN", "CDP",
               # doc / file names used as bare tokens
               "ARCHITECTURE", "ROADMAP", "JOURNAL", "VERSION", "LIVE-STATE",
               # defined problem-ledger status values (E-24) and the prototype label

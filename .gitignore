@@ -13,3 +13,6 @@ outbox/
 # test fixtures are SOURCE too — the suite reads them, they must be tracked
 !tests/fixtures/*.html
 .claude/
+
+# spec-freeze working baselines (regenerable from the pre-rewrite commit)
+.spec-freeze/
