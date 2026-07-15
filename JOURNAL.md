@@ -4462,3 +4462,27 @@ CI green. Commit `bee657c`. Queue: ROADMAP 321-325. Delegation (INV-103): the de
 judgment stayed senior; the clause prose, the downstream ripple, the packaging, the three MINOR-gate
 audits (whole-spec prover, full design review, skill-creator), the version sweep, and the recon reads all
 went to background workers, keeping the orchestrator context lean.
+
+## 2026-07-15 — 1.6.0: a flaky owned test is a defect fixed at its root (INV-155)
+
+Alexander's word: a flaky test gets fixed, never shrugged off because it passed this time, and never a blind
+retry — the good infrastructure fix goes to the root first ("дерех а мелех"). INV-155: a test is green only
+when it passes deterministically. One question routes a flake — is the source of the nondeterminism
+removable in code the project owns? When it is (wall-clock time, ordering, shared or leaked state, an
+unseeded random, a missing wait on a tool the test drives) it is a defect fixed at that root, masked by
+nothing — no retry, no rerun-until-green, no raised timeout, no "it passed this time". Only when the external
+tool itself misbehaves at random is it workshop noise on the problem ledger [INV-23], a separate home.
+
+The independent adversarial prove earned its place: my first boundary was "own test versus external tool",
+which leaves a browser or CDP-timing flake sitting on the seam with two homes — and an own defect misrouted
+to the ledger can, on a second occurrence, be dated into an agreed non-problem [INV-9], the exact permanent
+toleration the law forbids. The boundary was re-drawn on the removability axis (two defects and five
+recommendations, all folded). The enforcement is two nets: a mechanical guardrail reds if a retry or
+rerun-until-green plugin ever enters the test configuration, and the rest is the verify walk's discipline.
+
+Door: feature; kind: skill; footprint: cross-cutting, HELD. SPEC INV-155 NEW + index row · INV-23 boundary
+sharpened · ARCHITECTURE test-author node owns INV-155 · build-pipeline step-8 green definition (1.0.31) ·
+test-author determinism rule (1.0.5) · TEST_MATRIX M-301 · tests/test_flaky_test_is_a_defect.py +
+tests/test_no_retry_plugin.py · VERSION/plugin/spec-header 1.6.0. Suite 742 green. Record
+`docs/prover/2026-07-15-inv155-flaky-test.md`. Delegation (INV-103): the design and every fold judgment
+stayed senior; the independent adversarial prove, the downstream build, and the guardrail went to workers.

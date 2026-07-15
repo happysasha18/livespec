@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.30
+  version: 1.0.31
 ---
 
 # build-pipeline — ship a change by the method
@@ -361,6 +361,15 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    (Chrome absent, a real-data fixture missing) is a FAILURE outright. **If red at a pause / session end:
    never commit; write the failing test name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint
    IS the red test.
+
+   **Green also means DETERMINISTIC (SPEC INV-155).** A test that passes only sometimes is a defect, not a
+   pass. A flake whose root is in owned code — the test or the product — is fixed at that root: name the
+   nondeterminism (wall-clock time, ordering, shared or leaked state, an unseeded random, a missing wait on a
+   tool the test drives) and remove it, so the test passes every run for the same reason. It is masked by
+   nothing: never a retry, never a rerun-until-green, never a raised timeout that hides the race, never "it
+   passed this time" taken as a pass. Only where the nondeterminism is not removable in owned code — the
+   external tool itself misbehaving at random — is it workshop noise on the problem ledger [SPEC INV-23], a
+   separate home. Green means deterministic.
 
    **The audit — a second pair of FRESH eyes, REQUIRED where the stakes are high and only the
    author has judged the work (SPEC INV-46).** An audit is adversarial by nature: a whole-read that sets

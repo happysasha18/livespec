@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 1.0.4
+  version: 1.0.5
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -151,6 +151,16 @@ device class; the suite says plainly what it cannot see.
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned
   set. An unexpected skip (a browser missing, a fixture absent) is a failure wearing a quieter color.
+- **A test passes for the same reason every run — green means deterministic (SPEC INV-155).** A test
+  that passes on some runs and fails on others is flaky, and one question routes it: is the source of
+  the nondeterminism removable in code the project owns, the test or the product? When it is — a
+  dependence on wall-clock time, on test ordering, on shared or leaked state, on an unseeded random
+  draw, on a timing assumption, or a missing wait on a tool the test drives — it is a defect fixed at
+  its root: name the source and remove it, never a retry, a rerun-until-green, or a raised timeout that
+  hides the race. When the tool itself misbehaves at random, with nothing to correct in the test, it is
+  workshop noise on the problem ledger [SPEC INV-23] instead. A flake understood but not removable in
+  one landing is quarantined by name in the pinned skip-set, marked distinct from an environment skip,
+  with a dated reason and an owning queue row.
 - **The suite's own plumbing must not lie (SPEC INV-80).** A skip path executes even when never
   taken: import the skip helper at module load, so a skip that cannot run is red on every machine
   instead of a silent pass on the one that needed it (a `skip()` NameError once hid exactly there).
