@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 1.0.8
+  version: 1.0.9
 ---
 
 # Spec Author
@@ -203,6 +203,17 @@ So, for every stateful surface, before you call its section done:
   version-N-1 state × version-N code explicitly: what does the current UI do when it reads a stored value
   that's older, partial, or belongs to a since-removed feature? State a migrate / ignore / clear rule — this
   is the seam behind "reopened it and it looked broken".
+
+## Declare the pole when a capability could live in the pack or in each host (SPEC INV-163)
+
+When you author a capability the pack could hold once or each host could hold its own, declare which pole it
+takes, so the pack↔host home is a decided sentence rather than a silence. One question decides it: can the
+pack ship a single identical body that every host runs? When it can, the body centralizes to one pack home,
+adopted by a package update. When the body is host-specific — it names a host's own surfaces, holds a host's
+own data, or reads a host's own artifacts — the pack ships the shape (a template and its guidance) and each
+host owns the instance it fills. Write the chosen pole into the clause and cite the split [INV-163]; the duty
+binds forward [INV-159], so a new host-specific capability names its pole from the first draft while the
+bodies that predate the clause stand as they are cited.
 
 ## The feature delta, assembled — one home for its mandatory parts
 
