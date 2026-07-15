@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 1.0.29
+  version: 1.0.30
 ---
 
 # build-pipeline — ship a change by the method
@@ -232,7 +232,10 @@ ask-at-intake — the same law a scope cut obeys (SPEC T-15).
    whether it runs at all: full on a FULL prover pass, scoped on a surface add, and standing down at
    FEATURE-FIT intake and the push gate (at those two it is not invoked). Every finding is a recommendation or a
    question and never a defect, so it never holds the lane; a confirmed grouping lands as a class clause
-   through spec-author before the tests are derived. Its strongest likely divergence rides the batched
+   through spec-author, and that class clause **re-enters the prove step** — the prover re-reads it and the
+   design review re-reads what it re-partitions, the loop bounded at three progressing rounds and surfaced
+   to the human at its cap without holding the lane [INV-154]; only once the loop rests are the tests
+   derived. Its strongest likely divergence rides the batched
    questions as one ask with two objects in hand (SPEC INV-142); its record is `docs/design-review/YYYY-MM-DD[-suffix].md`.
 
 3. **Architecture — write or update `ARCHITECTURE.md` from the proven spec** (template:

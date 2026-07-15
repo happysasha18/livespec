@@ -303,6 +303,17 @@ class TestVersionsAndPins(unittest.TestCase):
         self.assertRegex(body, r"session beats host beats personal beats\s+package default",
                           "base skill no longer states the settings-ladder resolution order (SPEC E-13)")
 
+    def test_public_skills_ship_readme_license_and_crossref(self):
+        # both public skills ship their own shopfront: a README and a LICENSE, like siblings
+        for skill in ("product-prover", "design-reviewer"):
+            for doc in ("README.md", "LICENSE"):
+                path = os.path.join(ROOT, "skills", skill, doc)
+                self.assertTrue(os.path.isfile(path),
+                                "public skill %s ships no %s" % (skill, doc))
+        # the prover's README must cross-reference its younger sibling by folder name
+        self.assertIn("design-reviewer", read("skills/product-prover/README.md"),
+                      "product-prover README no longer cross-references design-reviewer")
+
 
 class TestDoors(unittest.TestCase):
     def test_next_steps_live_state(self):

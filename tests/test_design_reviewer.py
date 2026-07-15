@@ -125,3 +125,29 @@ def test_matrix_rows_cite_the_node():
     assert len(rows) == 2, "TEST_MATRIX lost a design-review row (want M-283, M-284)"
     assert any("INV-141" in r for r in rows) and any("INV-142" in r for r in rows), \
         "design-review matrix rows lost their anchors"
+
+
+# --- the bounded prover/design-review loop (INV-154) ---
+
+def test_fixed_point_loop_bounded_and_nonblocking():
+    """INV-154 — the prover/design-review fixed-point loop is bounded and never holds a
+    landing. Enshrined across its homes: the spec clause, build-pipeline's step-2 re-entry,
+    the ARCHITECTURE loop seam, and matrix row M-299."""
+    spec = read("PRODUCT_SPEC.md")
+    assert "three progressing rounds" in spec, "SPEC lost the three-progressing-rounds cap"
+    assert "without holding the landing" in spec, "SPEC lost the never-holds-a-landing property"
+    assert "CONVERGES" in spec and "WAITS" in spec, "SPEC lost the two named resting states"
+    assert "STANDS DOWN" in spec, "SPEC lost the third (stand-down) resting state"
+    assert "does not bar convergence" in spec, \
+        "SPEC lost the standing-recommendation-does-not-bar-convergence property"
+    assert "A round is one prover re-read" in spec, "SPEC lost the round definition"
+
+    pipeline = read("skills/build-pipeline/SKILL.md")
+    assert "re-enters the prove step" in pipeline, \
+        "build-pipeline step-2 lost the confirmed-grouping re-entry into the prove step"
+
+    arch = read("ARCHITECTURE.md")
+    assert "re-prove (the loop)" in arch, "ARCHITECTURE lost the design-review re-prove loop seam"
+
+    mat = read("TEST_MATRIX.md")
+    assert "M-299" in mat and "INV-154" in mat, "TEST_MATRIX lost the M-299/INV-154 row"

@@ -47,12 +47,12 @@ def test_d5_chat_law_hook_carries_reading_discipline():
     assert "dispatched to a reader worker" in hook
 
 
-def test_minor_versions_on_the_1_4_0_line():
-    # the milestone version numbers are current (1.4.0 at the cleanup movement,
-    # 2026-07-14; PATCH 1.4.1 the stranger-door landing the same day — rows 261/315;
-    # PATCH 1.4.2 the monitor's scheduled action + the self-trigger fold — INV-148;
-    # product-prover carries the finding-kind format at 1.1.4)
-    assert _read("VERSION").strip() == "1.4.2"
-    assert '"version": "1.4.2"' in _read(".claude-plugin/plugin.json")
-    assert "version: 1.1.4" in _read("skills/product-prover/SKILL.md")
-    assert "v1.4.2, 2026-07-14" in _read("PRODUCT_SPEC.md")
+def test_version_homes_agree():
+    # The pack version has one source of truth, the VERSION file, and every other home
+    # must AGREE with it — so a bump that misses a home reds here. This is derived from
+    # VERSION rather than pinned to a literal, so it stays current across releases on its
+    # own; it replaced a per-release 1.x.y snapshot that had to be hand-edited every bump
+    # (the maintenance trap that reds a green release, fixed at root 2026-07-15).
+    version = _read("VERSION").strip()
+    assert f'"version": "{version}"' in _read(".claude-plugin/plugin.json")
+    assert f"v{version}, " in _read("PRODUCT_SPEC.md")
