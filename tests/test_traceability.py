@@ -174,8 +174,10 @@ def _check_owning_row_tests(testcase, row_id, owning, this_file):
     names = re.findall(r"test_\w+", stripped)
     testcase.assertTrue(names or paths, "%s: BUILT but owning test cell names none" % row_id)
     for name in names:
-        testcase.assertIn("def %s" % name, this_file,
-                           "%s: BUILT row cites missing test %s" % (row_id, name))
+        # exact def match — a cited name that is merely a PREFIX of a real def
+        # (test_matrix vs def test_matrix_blocks_match) is a false green
+        testcase.assertTrue(re.search(r"def %s\s*\(" % re.escape(name), this_file),
+                            "%s: BUILT row cites missing test %s (no exact def)" % (row_id, name))
 
 
 class TestMatrix(unittest.TestCase):

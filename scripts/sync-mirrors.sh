@@ -34,6 +34,23 @@
 
 set -euo pipefail
 
+# The release-history generator below does byte-oriented string work (cutting/stripping
+# around the multibyte em-dash "—" and the "·" separator). Under the C locale those bytes
+# get split mid-character, producing mojibake — and CI defaults to LC_ALL=C. Pin a UTF-8
+# locale here, before any of that computation runs, regardless of what the caller's own
+# environment set; prefer en_US.UTF-8, fall back to C.UTF-8, else leave the inherited
+# locale alone rather than erroring on a host with neither installed.
+# The locale list is captured into a variable first, not piped straight into grep: under
+# `set -o pipefail`, `grep -q`'s early exit on the first match sends SIGPIPE back to a
+# still-writing `locale -a`, which then reports a non-zero (141) exit that pipefail promotes
+# to the whole pipeline's status — silently defeating this very `if`, even though grep DID match.
+available_locales="$(locale -a 2>/dev/null || true)"
+if grep -qi '^en_US\.utf-\{0,1\}8$' <<< "$available_locales"; then
+  export LC_ALL=en_US.UTF-8
+elif grep -qi '^C\.utf-\{0,1\}8$' <<< "$available_locales"; then
+  export LC_ALL=C.UTF-8
+fi
+
 # Resolve the pack root (this script lives in <pack>/scripts/).
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -151,17 +168,46 @@ strip_trailing_parens() {
   printf '%s' "$s"
 }
 
+# True if $1 (X.Y.Z) is numerically greater than $2 (X.Y.Z), comparing major/minor/patch
+# as integers (never lexically — "10.0.0" must beat "9.0.0"). Used to reject a commit
+# subject that names a version ahead of what VERSION actually ships (a follow-up commit
+# naming a future bump, e.g. "2.2.0 gate folds, first batch: ..." while VERSION still
+# reads 2.1.1) — oldest-wins dedupe would otherwise let that phantom line survive a real
+# bump forever.
+version_gt() {
+  local -a av bv
+  IFS='.' read -r -a av <<< "$1"
+  IFS='.' read -r -a bv <<< "$2"
+  local i
+  for i in 0 1 2; do
+    local x="${av[$i]:-0}" y="${bv[$i]:-0}"
+    if [ "$x" -gt "$y" ]; then return 0; fi
+    if [ "$x" -lt "$y" ]; then return 1; fi
+  done
+  return 1
+}
+
 compute_release_history() {
   local -a hist_versions=()
   local -a hist_dates=()
   local -a hist_stories=()
-  local date subject version story found idx i
+  # Parallel flag per version: 1 once that version's stored entry came from a dash-form
+  # commit (see below), so a later loose match for the same version can never demote it.
+  local -a hist_is_dash=()
+  local date subject version sep story is_dash found idx i
 
   while IFS=$'\t' read -r date subject; do
     [ -n "$date" ] || continue
-    if [[ "$subject" =~ ^(live-spec\ |v)?([0-9]+\.[0-9]+\.[0-9]+)[[:space:]]*[:—-]?[[:space:]]*(.*)$ ]]; then
+    if [[ "$subject" =~ ^(live-spec\ |v)?([0-9]+\.[0-9]+\.[0-9]+)[[:space:]]*([:—-]?)[[:space:]]*(.*)$ ]]; then
       version="${BASH_REMATCH[2]}"
-      story="${BASH_REMATCH[3]}"
+      sep="${BASH_REMATCH[3]}"
+      story="${BASH_REMATCH[4]}"
+
+      # Never emit a version ahead of what VERSION actually ships — such a subject names
+      # follow-up work for a future bump, not a shipped release.
+      if [ "$PACK_VERSION" != "unknown" ] && version_gt "$version" "$PACK_VERSION"; then
+        continue
+      fi
 
       # Cut at the first paren-outside ": " or ". " (the headline/detail split), then peel
       # off any trailing parenthetical group(s), e.g. " (ROADMAP 333, PATCH)".
@@ -170,6 +216,14 @@ compute_release_history() {
       # Collapse whitespace and trim the ends (printf, not echo, so no trailing newline
       # sneaks into the whitespace class tr squeezes down to a stray trailing space).
       story="$(printf '%s' "$story" | tr -s '[:space:]' ' ' | sed -e 's/^ *//' -e 's/ *$//')"
+
+      # The bump-commit convention writes the separator directly after the version token
+      # as an em-dash ("v2.1.1 — …", "live-spec 1.10.1 — …"). A dash-form commit's story
+      # always wins over a "loose" match (version followed by other words, no punctuation
+      # directly after it, e.g. a pre-bump audit commit) or a colon-form aside — once a
+      # version has a dash-form entry stored, only another dash-form match may replace it.
+      is_dash=0
+      [ "$sep" = "—" ] && is_dash=1
 
       found=0
       idx=0
@@ -184,9 +238,13 @@ compute_release_history() {
         hist_versions+=("$version")
         hist_dates+=("$date")
         hist_stories+=("$story")
+        hist_is_dash+=("$is_dash")
+      elif [ "${hist_is_dash[$idx]}" -eq 1 ] && [ "$is_dash" -eq 0 ]; then
+        : # an existing dash-form entry outranks this loose/colon match — keep it
       else
         hist_dates[$idx]="$date"
         hist_stories[$idx]="$story"
+        hist_is_dash[$idx]="$is_dash"
       fi
     fi
   done < <(git -C "$PACK_ROOT" log --date=short --pretty=format:'%ad%x09%s')
@@ -198,6 +256,10 @@ compute_release_history() {
     echo
     echo "One line per release, generated from the pack's own history at every sync; the full story per release lives in the pack's [JOURNAL.md](https://github.com/${GITHUB_OWNER}/live-spec/blob/main/JOURNAL.md)."
     echo
+    # ${arr[@]+"${arr[@]}"}-style guard not needed for length/indexed access (safe under
+    # bash 3.2's set -u even when empty), but a repo with zero release-shaped commits must
+    # still print the header above with no lines below and exit 0 — the loop below simply
+    # never executes in that case.
     for ((i=0; i<${#hist_versions[@]}; i++)); do
       echo "- ${hist_versions[$i]} · ${hist_dates[$i]} — ${hist_stories[$i]}"
     done
@@ -219,6 +281,28 @@ if [ "${1:-}" = "--print-release-history" ]; then
   printf '%s\n' "$RELEASE_HISTORY"
   exit 0
 fi
+
+# The shipped-language machine's reach onto a mirror (SPEC INV-120): the assembled README
+# carries generated text harvested from commit subjects, so before anything is committed the
+# file is scanned for stray Cyrillic and a bare owner name; a hit aborts this mirror's sync
+# loudly instead of publishing it. The license line's "© Alexander Abramovich" stays legal.
+check_mirror_language() {
+  local file="$1"
+  [ -f "$file" ] || return 0
+  python3 - "$file" <<'PY'
+import re, sys
+bad = []
+for n, ln in enumerate(open(sys.argv[1], encoding="utf-8").read().splitlines(), 1):
+    if re.search("[\u0400-\u04FF]", ln):
+        bad.append("%d: %s" % (n, ln.strip()))
+    elif "Alexander" in ln and "©" not in ln:
+        bad.append("%d: %s" % (n, ln.strip()))
+if bad:
+    sys.stderr.write("sync-mirrors: FAIL (shipped-language) — stray Cyrillic or an owner name in %s:\n  %s\n"
+                     % (sys.argv[1], "\n  ".join(bad[:5])))
+    sys.exit(1)
+PY
+}
 
 # One status line per skill, collected here and printed again at the end as a summary.
 declare -a SUMMARY_LINES=()
@@ -321,6 +405,9 @@ for skill_path in "$SKILLS_DIR"/*/; do
   # The attribution line, stamped from the live pack version (SPEC INV-96).
   stamp_attribution "$mirror_dir/README.md"
   stamp_attribution "$mirror_dir/SKILL.md"
+
+  # The assembled README is scanned before anything is committed (SPEC INV-120).
+  check_mirror_language "$mirror_dir/README.md"
 
   # Anything to commit?
   ( cd "$mirror_dir" && git add -A )

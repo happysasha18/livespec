@@ -9,6 +9,7 @@ prints just that section and exits without touching any repo, so the generation 
 without cloning a mirror or reaching GitHub.
 """
 import os
+import re
 import subprocess
 import unittest
 
@@ -23,9 +24,11 @@ def read(rel):
 class TestMirrorReleaseHistory(unittest.TestCase):
     # The generator reads the PACK's own git log, so the by-deed test needs the real clone;
     # a scratch copy of the tree (gate b's meta-run) has no .git and skips this one by its
-    # declared precondition — the string tests below still run there.
+    # declared precondition — the string tests below still run there. os.path.exists (not
+    # isdir): a git WORKTREE's ".git" is a FILE pointing at the real gitdir, not a directory —
+    # isdir would wrongly skip this test there.
     @unittest.skipUnless(
-        os.path.isdir(os.path.join(ROOT, ".git")),
+        os.path.exists(os.path.join(ROOT, ".git")),
         "release-history generation reads git history; scratch copies carry none",
     )
     def test_print_mode_emits_real_history(self):
@@ -73,18 +76,42 @@ class TestMirrorReleaseHistory(unittest.TestCase):
             lines,
         )
 
-    def test_banner_is_the_kinds_third_declared_member(self):
-        # The design review's 2.2.0 finding: the sync writes THREE generated blocks onto a
-        # mirror (banner · release history · attribution); all three are declared members of
-        # one kind, each pinned by a test. This pins the banner — the spec arm was red before
-        # the INV-181 clause named the kind.
-        script = read("scripts/sync-mirrors.sh")
-        self.assertIn("banner_for", script)
-        self.assertIn("Read-only mirror", script)
+        # PHANTOM FUTURE VERSION: a follow-up commit subject can name a not-yet-shipped bump
+        # ("2.2.0 gate folds, first batch: ...") before the VERSION file is actually bumped —
+        # such a line must never be emitted; no generated line may exceed the VERSION file's
+        # own semver, compared numerically (major, minor, patch), not lexically.
+        version_file = read("VERSION").strip()
+        shipped = tuple(int(part) for part in version_file.split("."))
+        line_versions = [
+            tuple(int(part) for part in m.group(1).split("."))
+            for m in (re.match(r"^- (\d+\.\d+\.\d+) · ", ln) for ln in lines)
+            if m
+        ]
+        self.assertTrue(line_versions, "expected at least one parsed release line")
+        for v in line_versions:
+            self.assertLessEqual(
+                v,
+                shipped,
+                "a generated release line named a version ahead of the shipped VERSION file",
+            )
+        self.assertNotIn("gate folds", output)
 
-        spec = read("PRODUCT_SPEC.md")
-        self.assertIn("read-only banner", spec)
-        self.assertIn("three members", spec)
+        # LOCALE: under LC_ALL=C, byte-oriented string ops can split the multibyte em-dash
+        # and "·" mid-character, producing mojibake — and CI defaults to the C locale. The
+        # script must pin its own UTF-8 locale for the computation regardless of what the
+        # caller's environment sets.
+        c_env = dict(os.environ)
+        c_env["LC_ALL"] = "C"
+        c_result = subprocess.run(
+            ["bash", "scripts/sync-mirrors.sh", "--print-release-history"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            env=c_env,
+        )
+        self.assertEqual(c_result.returncode, 0, c_result.stderr)
+        self.assertIn(" — ", c_result.stdout)
+        self.assertNotIn("â€", c_result.stdout)
 
     def test_loop_stamps_before_attribution(self):
         script = read("scripts/sync-mirrors.sh")

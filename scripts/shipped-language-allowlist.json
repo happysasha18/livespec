@@ -15,6 +15,7 @@
   ],
   "cyrillic_waivers": [],
   "name_waivers": [
-    {"file": "*README.md", "snippet": "Alexander Abramovich", "note": "authorship byline — the copyright/attribution line the license names, not a requirement statement", "added": "2026-07-12"}
+    {"file": "*README.md", "snippet": "Alexander Abramovich", "note": "authorship byline — the copyright/attribution line the license names, not a requirement statement", "added": "2026-07-12"},
+    {"file": "scripts/sync-mirrors.sh", "snippet": "Alexander", "note": "detector vocabulary — the mirror-README language scan (check_mirror_language) names the token it refuses, the engine's own self-exclusion class", "added": "2026-07-16"}
   ]
 }
