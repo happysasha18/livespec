@@ -4,8 +4,9 @@
 Rows 359 + 360 landed (extractor root-fix; mirror release history INV-181/M-339). The MINOR gate
 ran whole — full prover, full design review, adversarial audit, three records with same-day
 disposition addenda — every defect folded (the audit's phantom-2.2.0 catch among them), row 361
-queued (suite-time budget net). VERSION stamped 2.2.0 across the 12 homes. Remaining walk: full
-suite green → pre-push gate → push → sync mirrors → live-mirror verify flips row 360 to MET.
+queued (suite-time budget net). VERSION stamped 2.2.0 across the 12 homes. SHIPPED: suite 940 green, all gates green
+(one honest catch: the frozen-baseline gate demanded a re-freeze for the reviewed changes),
+pushed 26fc256, mirror synced and walked live — row 360 MET.
 OWNER-HELD ask riding this session's report: declare the mirror's read-only banner a tested third
 member of the generated-blocks kind (recommended default: declare), per the design review's one
 question — the class sentence lands only on his word (INV-142).
