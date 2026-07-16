@@ -1,18 +1,14 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-17 ~00:43 — v2.4.0 landing: gate folded, push next)
-Rows 365-368 BUILT and accepted, MINOR gate run whole (full prover PASS, full design review
-converged, skill-creator review, fresh Fable adversarial audit) and every finding folded or accepted
-with its reason — records docs/{prover,design-review,audit}/2026-07-17-2.4.0*.md, each with a
-same-day addendum. Highlights: the two viewport facets merged into one band-general facet at the
-design review's word; the audit's quantifier lens caught its first live subject in our own
-settings-card guarantee. VERSION 2.4.0 stamped across 12 homes, installed copies synced. REMAINS:
-freeze re-bless (the delta's own intended edits red it today — the audit's finding 1 names this
-step), clean full-suite run, commits by lane, push, CI verdict, mirror walk. Story: the JOURNAL
-v2.4.0 chapter.
+## LIVE STATE (2026-07-17 ~00:50 — v2.4.0 SHIPPED)
+Pushed 909ea2f (three lane commits), all pre-push gates green, CI green, product-prover mirror
+synced in the gate and walked live (release-history line + attribution carry 2.4.0). Rows 365-368
+landed with the full MINOR gate (prover, design review, skill-creator review, fresh Fable
+adversarial audit — twelve findings folded or accepted, records with addenda). Story: the JOURNAL
+v2.4.0 chapter. Queue below is all that remains.
 
-## PRIOR STATE (2026-07-16 ~23:11 — v2.3.0 SHIPPED)
-Pushed d5bf2d7, gates green, CI green, product-prover mirror walked live. Story in JOURNAL.md.
+## PRIOR STATE (2026-07-16 — v2.3.0 SHIPPED, d5bf2d7)
+Story in JOURNAL.md.
 
 ## ON RESUME — the queue
 - **Adoption follow-through (his windows):** tlvphotos — ratchet wired and live (checked 15:07).
