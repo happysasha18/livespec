@@ -95,5 +95,63 @@ class TestPairedTransition(unittest.TestCase):
         self.fail("M-267 matrix row missing")
 
 
+class TestOrientationFacet(unittest.TestCase):
+    """Row 367 (M-349, grows INV-18's curated facet list): the standard-facet sweep gains the
+    orientation / short-viewport facet. A landscape phone is wide and short, a distinct band
+    width-thinking misses, so every layout-bearing feature ends the sweep with a decided or
+    [default] sentence for the short-viewport band. Incident key: the tlvphotos caption-over-picture
+    landscape overlap, the layout law said "on a phone", the styles mapped phone to width ≤ 640px,
+    and a rotated phone fell out of both sentences, 2026-07-16."""
+
+    def test_orientation_short_viewport_facet(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in ("the short-viewport band", "a landscape phone is wide and short"):
+            self.assertIn(needle, spec, needle)
+        sa = read_flat("skills/spec-author/SKILL.md")
+        for needle in ("orientation / short viewport", "a rotated phone", "width ≤ 640px"):
+            self.assertIn(needle, sa, needle)
+        with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| M-349 |"):
+                    self.assertIn("INV-18", line)
+                    break
+            else:
+                self.fail("M-349 matrix row missing")
+
+
+class TestViewportQuantifierLens(unittest.TestCase):
+    """Row 368 (M-350, grows INV-138): every layout guarantee states its viewport quantifier. A
+    layout guarantee names "on every viewport" or the band it is scoped to, and a guarantee scoped
+    to one band draws the standing question about the other bands. INV-138 already owns the
+    range-and-lifecycle completeness class (both ends of a ranged quantity), and the viewport is
+    such a quantity, so the quantifier lens grows INV-138's clause rather than a new law. Same
+    incident key as row 367."""
+
+    def test_viewport_quantifier_lens(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in ("every layout guarantee names its viewport quantifier",
+                       "on every viewport", "the other bands"):
+            self.assertIn(needle, spec, needle)
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-138 |"):
+                    self.assertIn("viewport quantifier", line)
+                    break
+            else:
+                self.fail("INV-138 Formal-index row missing")
+        pv = read_flat("skills/product-prover/SKILL.md")
+        for needle in ("viewport quantifier", "the other bands"):
+            self.assertIn(needle, pv, needle)
+        dr = read_flat("skills/design-reviewer/SKILL.md")
+        self.assertIn("viewport band", dr)
+        with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| M-350 |"):
+                    self.assertIn("INV-138", line)
+                    break
+            else:
+                self.fail("M-350 matrix row missing")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,17 @@
+# Reading guide (added 2026-07-17 ~00:45, the 2.4.0 audit's finding 10): this file splices TWO runs.
+# Run 1 (below, under the dated header): the first invocation used a wrong test-class path and
+#   collected nothing — kept for honesty, it proves nothing.
+# Run 2 (the lines after it): the same test under its real class
+#   (TestProblemLedger::test_budgets_owe_watchers) failing on the pre-build tree at
+#   tests/test_traceability.py:2078 — the missing needle is the watcher duty in PRODUCT_SPEC.md,
+#   absent from the INV-41 clause before the row-365 build. That failure is the red proof.
+
+## row 365 red-first, against HEAD (2.3.0 shipped), 2026-07-16 ~23:14
+(no match in any of [<Module test_traceability.py>])
+
+
+no tests ran in 0.06s
+tests/test_traceability.py:2078: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_traceability.py::TestProblemLedger::test_budgets_owe_watchers
+1 failed in 0.12s

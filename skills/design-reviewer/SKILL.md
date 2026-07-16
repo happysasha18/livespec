@@ -2,7 +2,7 @@
 name: design-reviewer
 description: Senior design review of a proven product spec — reads the spec after the prover and judges whether the design itself is right: do same-kind things behave alike, and what groupings did the text never declare? Use this skill whenever the user asks to review the DESIGN of a spec for consistency or similarity, asks "do these behave the same / should these be one kind / what siblings did we miss", wants the same-kind groupings a spec never named checked for behaviour parity, or mentions "design review". It proposes the undeclared same-kind groups, checks behaviour parity within each, and brings the human the strongest likely divergence with two objects in hand. NOT for verifying the spec holds together as written — that is product-prover, which answers "does the spec hold as written?" while this answers "is the design itself right?" — nor for code or diffs; and it never blocks a landing, since every finding is a recommendation or a question.
 metadata:
-  version: 2.3.0
+  version: 2.4.0
 ---
 
 # Design Review
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.3.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.4.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -57,6 +57,10 @@ The five steps above are bottom-up: they find a group only when two role sentenc
 
 Each finding rides the same echo channel and confidence read as the similarity divergence — a recommendation or a question, never a blocker — and once the human declares the parity a class sentence the prover's uniformity check holds it [INV-125]. This lens catches the class a bottom-up-only review let slip on a shipped pinch: an entry/exit asymmetry, a phone pinch-out that would not fly the picture home, and a door picture that behaved differently by slot (tlvphotos, 2026-07-15).
 
+## The standing viewport-band lens (SPEC INV-138)
+
+The three motion groups above are by construction for a gesture spec; a layout-bearing spec has its own same-kind group the bottom-up walk can miss. On a spec that ships a **layout-bearing surface** — a caption over a work, a control rail, a counter in a corner — the viewport bands (a portrait phone, a landscape phone that is wide and short, a tablet, a desktop) are a same-kind group, since one layout guarantee is meant to hold the same element across every band. So read each layout guarantee across the bands and treat a band-scoped guarantee, one true as written on its band while the other bands stay silent, as the similarity lens's own same-kind divergence: the element behaving unlike itself from band to band, echoed on that same channel, a recommendation or a question, never a blocker. Once the human declares a band-uniform guarantee a class sentence, the prover's viewport-quantifier ask holds it [INV-138, INV-150]. This is the layout companion of the motion-parity lens above (the incident: a caption printed over the picture on a landscape phone, caught the moment the design review was pointed at the surface, 2026-07-16).
+
 ## The confidence read
 
 Every design-review finding carries a confidence read of one of two values.
@@ -78,7 +82,7 @@ The question shows both objects each with its spec sentence, asks how alike the 
 
 An **unanswered** question is held on the dated record and is **not raised again** on its own until the human answers it, so a re-derived ask that matches an open recorded one does not re-fire as noise each pass [INV-130].
 
-This channel carries two producers — the same-kind divergence from the similarity lens, and the motion-parity divergence from the standing gesture/overlay lens above [INV-165]. A later producer would earn its own clause.
+This channel carries two producers — the same-kind divergence from the similarity lens, and the motion-parity divergence from the standing gesture/overlay lens above [INV-165]. A later producer would earn its own clause, this producer list curated by incident like the facet list, a member joining only with a named case it would have caught and re-justified at milestones (SPEC INV-18).
 
 ## How the answer closes the loop
 

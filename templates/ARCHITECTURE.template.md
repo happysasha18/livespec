@@ -122,11 +122,13 @@ human reads it (SPEC INV-41). The project's kind proposes the dimensions (produc
 times; backend: latency/throughput/errors; CLI/pipeline: run time, per-unit cost; skill pack: eval pass
 rate, suite time; prose: what honestly has a number). A quality with no honest number is said by name,
 never given a vanity metric. Numbers are the host's taste: propose with a recommendation, set on the
-human's word at the surface's first budget landing.
+human's word at the surface's first budget landing. Each budget also names its watcher: the mechanical
+check that reds past the stated number so it cannot silently rot. Where a budget is honestly read by
+eye, that cell says so as a decided road.
 
-| Budget | Number | Instrumentation home |
-|---|---|---|
-| [e.g. first image on a cold visit] | [≤ 2 s] | [the perf line in the deploy check's output] |
+| Budget | Number | Instrumentation home | Watcher |
+|---|---|---|---|
+| [e.g. first image on a cold visit] | [≤ 2 s] | [the perf line in the deploy check's output] | [the deploy check reds past 2 s] |
 
 ## Feature coverage
 

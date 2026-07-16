@@ -1,0 +1,48 @@
+Red-proof — ROADMAP rows 367 and 368 (2026-07-16, v2.4.0)
+=========================================================
+
+Each row's test was written first and run against the current tree (HEAD, spec v2.3.0),
+where the grown law was absent, so the test failed for the stated reason. After the prose
+landed in all its homes the same test ran green. Captured with:
+  python3 -m pytest -q --tb=no <nodeid>
+
+
+Row 367 — spec-author's standard-facet sweep grows the orientation / short-viewport facet (grows INV-18's curated facet list)
+---------------------------------------------------------------------------------------------------------------------------
+2026-07-16.  Test: tests/test_paired_transition.py::TestOrientationFacet::test_orientation_short_viewport_facet
+
+RED against HEAD (facet absent from the spec facet list and the spec-author canonical list):
+  E   AssertionError: 'the short-viewport band' not found in PRODUCT_SPEC.md
+  FAILED tests/test_paired_transition.py::TestOrientationFacet::test_orientation_short_viewport_facet
+  1 failed in 0.06s
+
+The test asserts the short-viewport facet stands in both homes — the spec facet list
+("the short-viewport band", "a landscape phone is wide and short") and the spec-author
+canonical facet list ("orientation / short viewport", "a rotated phone", "width ≤ 640px",
+the incident key) — plus the M-349 matrix row anchoring INV-18. All absent at HEAD.
+
+
+Row 368 — every layout guarantee states its viewport quantifier (grows INV-138, the range-and-lifecycle member of the composition-lens family)
+----------------------------------------------------------------------------------------------------------------------------------------------
+2026-07-16.  Test: tests/test_paired_transition.py::TestViewportQuantifierLens::test_viewport_quantifier_lens
+
+RED against HEAD (the viewport-quantifier lens absent from the INV-138 clause, the Formal
+index row, the prover lens, and the design review's group pass):
+  E   AssertionError: 'every layout guarantee names its viewport quantifier' not found in PRODUCT_SPEC.md
+  FAILED tests/test_paired_transition.py::TestViewportQuantifierLens::test_viewport_quantifier_lens
+  1 failed in 0.06s
+
+The test asserts the quantifier lens stands in the INV-138 spec clause ("every layout
+guarantee names its viewport quantifier", "on every viewport", "the other bands"), the
+Formal-index INV-138 row ("viewport quantifier"), the product-prover lens ("viewport
+quantifier", "the other bands"), and the design-reviewer group pass ("viewport band"),
+plus the M-350 matrix row anchoring INV-138. All absent at HEAD.
+
+Invariant decision: the quantifier lens grows INV-138 rather than being born as a new
+INV-182. INV-138 already owns the range-and-lifecycle completeness class — a behaviour
+gated on a ranged quantity states both ends of the range. The viewport is such a ranged,
+banded quantity, and a layout guarantee scoped to one band while the other bands stay
+silent is the same blank-answer class INV-138 already carries (INV-72). A new INV-182
+would need its own owning node in ARCHITECTURE.md's Nodes table
+(test_architecture_owns_every_anchor_once); the spec's structure already owns this class
+inside INV-138, so the law grows its clause and index row the way row 363 grew INV-126.

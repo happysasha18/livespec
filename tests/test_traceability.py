@@ -613,7 +613,7 @@ class TestFacetSweep(unittest.TestCase):
     spec-author, the tradeoff-report line in communicator, the step-1 sweep sentence in build-pipeline.
     String-level per matrix rows M-072..M-073."""
 
-    FACETS = ("phone or narrow window", "hover-only needs a touch answer",
+    FACETS = ("the viewport bands", "hover-only needs a touch answer",
               "empty, error, and", "accessibility", "performance envelope",
               "visual hierarchy", "two windows at once", "missing source")
 
@@ -2064,6 +2064,38 @@ class TestProblemLedger(unittest.TestCase):
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         for needle in ("SPEC INV-41", "budget sentence"):
             self.assertIn(needle, author, "spec-author missing: %s" % needle)
+
+    def test_budgets_owe_watchers(self):
+        """Row 365 (M-347, INV-41): every stated quality budget names the mechanical watcher
+        that reds past the stated number, or carries a decided sentence naming why it is read
+        by eye — the duty stands in the INV-41 clause and its index row, the prover's
+        architecture lens (grown in place; the lens stays six checks), the architecture
+        template's budget table (a Watcher column), the pipeline's budget instruction, and
+        the pack's own ARCHITECTURE.md budget table (every row's Watcher cell filled)."""
+        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        for needle in ("names its watcher", "reds past the stated", "read by eye",
+                       "names the watcher that reds past"):
+            self.assertIn(needle, spec, "SPEC missing: %s" % needle)
+        prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
+        self.assertIn("each names its watcher", prover,
+                      "prover lens missing the watcher ask in the budget item")
+        self.assertIn("six checks", prover,
+                      "the lens must stay six checks — the watcher ask grows the budget "
+                      "item in place, never a seventh check")
+        template = re.sub(r"\s+", " ", read(os.path.join("templates", "ARCHITECTURE.template.md")))
+        self.assertIn("| Budget | Number | Instrumentation home | Watcher |", template,
+                      "template budget table missing the Watcher column")
+        self.assertIn("names its watcher", template,
+                      "template prose missing the watcher instruction")
+        pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
+        self.assertIn("watcher", pipe,
+                      "build-pipeline's budget instruction missing the watcher duty — the "
+                      "author following the pipeline must state it, or the prover reds later")
+        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
+        self.assertIn("| Budget | Number | Instrumentation home | Watcher |", arch,
+                      "the pack's own budget table missing the Watcher column")
+        self.assertIn("reds past the budget on every full gate run", arch,
+                      "the suite wall-time row's Watcher cell must name its gate by deed")
 
     def test_task_list_plain_words(self):
         """Row 144 (M-137, INV-28): the session's task list speaks plain product English,

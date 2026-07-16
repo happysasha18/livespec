@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 2.3.0
+  version: 2.4.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.3.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.4.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -236,7 +236,9 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    skips to the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
    **The architecture owes NUMBERS, not only names (SPEC INV-41):** measurable quality budgets plus
    each budget's instrumentation home — where the real numbers are measured and where a human can
-   read them (an export, a debug view, a report).
+   read them (an export, a debug view, a report). The author also names each budget's watcher: the
+   mechanical check that reds past the stated number, or the decided sentence naming why that budget
+   is read by eye.
 
    WHAT is measurable comes from the project's KIND (SPEC INV-36): ask "what does quality MEAN here, in
    numbers?" before writing any. A user-facing product measures paint/interaction times ("first image
@@ -285,7 +287,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
 4. **Prove the architecture — invoke `product-prover` with the architecture lens** whenever the doc
    changed in step 3 — six checks, each at the project's kind scale: every spec fact has an owning node ·
    no node stands without spec backing · every seam names what crosses it and who owns the format · the
-   quality budgets are stated with their instrumentation homes (INV-41) · the runtime view walks every
+   quality budgets are stated with their instrumentation homes, each naming its watcher (INV-41) · the runtime view walks every
    promised flow (INV-74) · the placement view says where every node runs (INV-75). Findings land in the
    same `docs/prover/` record discipline as step 2. A full pass at an M-1 or M-6 gate that proves
    ARCHITECTURE.md beside the spec (INV-116) also **appends its dated row to the Prover record** table in
