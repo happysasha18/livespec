@@ -47,7 +47,9 @@ class TestConfigHealth(unittest.TestCase):
     def test_this_repo_installed_hooks_match_source(self):
         if os.environ.get("LIVE_SPEC_SCRATCH"):
             self.skipTest("scratch copy installs no hooks by design")
-        r = run_check(REPO)
+        # env AS-IS: on a CI checkout the script itself skips by name (no local hooks by design);
+        # on a working machine it verifies the real installed copies.
+        r = subprocess.run(["bash", CHECK], cwd=REPO, capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
     def test_missing_installed_hook_reds(self):
