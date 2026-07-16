@@ -295,6 +295,17 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   "only on first visit", "only on first run", "until dismissed" — each such clause owes its return
   sentence (the dead-end lens tests
   STATES for exits, this lens tests FACES for re-entry over the visit's lifetime).
+- **Entry state** — beside entry symmetry above, for every FACE, MODE, PANEL, or ROOM a visitor can
+  leave and re-enter, read the state that re-entry OPENS IN: where the surface lands focused or
+  positioned, and whether entering it resets its internal state or resumes the state a prior visit left
+  behind. A surface whose open ceremony, exit, variants, and guards are pinned while its entry position
+  and its reset-or-resume semantics stay blank is a finding, the blank-answer class of an unwritten seam
+  (SPEC INV-72) — the author writes the entry state as a spec sentence, and where only the human can
+  judge whether entry should reset or resume, it is surfaced to him (SPEC INV-30). Entry symmetry above
+  tests that a re-entry PATH exists; this tests the STATE that path opens in, the complement it does not
+  ask. It closes a class the two path lenses missed: a series side-room reopened on the last picture a
+  prior visit had scrolled its lane to, because no line stated the lane lands on the first member and
+  resets at entry (2026-07-16). [INV-167]
 - **Scenario entry and exit** — for every person-facing SCENARIO (a flow: "walking the gallery",
   "answering the quiz", "when a bug cuts the line"), check that the spec states how it is ENTERED — from
   which prior scenario or state, with what already true (the preconditions the walk assumes) — and how it
