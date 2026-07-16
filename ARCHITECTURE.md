@@ -211,13 +211,13 @@ What quality means for a skill pack, in numbers [INV-41]. Numbers proposed by th
 the human's word [INV-70]; each is asserted by a matrix row, and its instrumentation home is where the
 real number is read.
 
-| Budget | Number | Instrumentation home |
-|---|---|---|
-| full suite wall-time | ≤ 360 s on the dev machine [default] (measured 281–302 s serial at 941 tests with the suite-in-suite meta-test firing, 2026-07-16; the earlier 92–97 s annotation did not reflect a serial full run — corrected at the 2.3.0 gate; a diff outside the gate-machinery class skips the meta-test and runs well under) | the pytest tail line in the suite run's log, read by `guardrails/check-suite-budget.sh` on every full gate run and red past the budget naming both figures (M-346, row 361) |
-| skill evals | every per-skill scenario green at each milestone | dated run records in `docs/evals/` |
-| resume-file size | `NEXT_STEPS.md` ≤ 100 lines (INV-48, already asserted) | the suite's own check |
-| spec prose register | style lint: 0 errors on PRODUCT_SPEC.md | `scripts/spec-style-lint.py` JSON tail |
-| settings card render | ≤ 1 s on a pack-sized catalog [default] | the render script's own run, asserted by its matrix row |
+| Budget | Number | Instrumentation home | Watcher |
+|---|---|---|---|
+| full suite wall-time | ≤ 360 s on the dev machine [default] (measured 281–302 s serial at 941 tests with the suite-in-suite meta-test firing, 2026-07-16; the earlier 92–97 s annotation did not reflect a serial full run — corrected at the 2.3.0 gate; a diff outside the gate-machinery class skips the meta-test and runs well under) | the pytest tail line in the suite run's log, read by `guardrails/check-suite-budget.sh` on every full gate run and red past the budget naming both figures (M-346, row 361) | `guardrails/check-suite-budget.sh` reds past the budget on every full gate run, naming both figures (M-346) |
+| skill evals | every per-skill scenario green at each milestone | dated run records in `docs/evals/` | the eval suite reds any red scenario at each milestone run (INV-99) |
+| resume-file size | `NEXT_STEPS.md` ≤ 100 lines (INV-48, already asserted) | the suite's own check | the `NEXT_STEPS.md` line-count test in the suite reds past 100 lines (INV-48) |
+| spec prose register | style lint: 0 errors on PRODUCT_SPEC.md | `scripts/spec-style-lint.py` JSON tail | the style-lint gate reds on any error at the pre-show and push gates (INV-83) |
+| settings card render | ≤ 1 s on a pack-sized catalog [default] | the render script's own run, asserted by its matrix row | its matrix-row test (M-206) reds past the 1 s budget, read from the render script's own instrumentation |
 
 A skill's judgment quality beyond the evals has no honest number; it is said by name here and judged
 by the human's eye on real landings, never given a vanity metric.
