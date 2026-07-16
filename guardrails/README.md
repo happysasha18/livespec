@@ -65,6 +65,12 @@ It does **not** create `.live-spec-fence`; the fence stays opt-in until you run
 
 ## How a host project adapts the pattern
 
+**The ratchet gates (style lint · redundancy · freeze) install themselves in one pass:** run
+`bash <pack>/adopt/install-ratchet.sh` from the host root (SPEC INV-172). It vendors the scripts
+with a source-pin manifest, seeds the host's debt caps at the sizes measured that moment — green
+at once, shrinking-only from then on — and generates the guard test. The section below covers the
+structural gates, which are adapted by hand.
+
 The five-gate shape (fresh review · green tests · ownership · full coverage · prototype
 fence) is the part worth copying as-is. What changes per host:
 

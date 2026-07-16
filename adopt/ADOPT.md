@@ -222,6 +222,24 @@ Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), 
 
 ---
 
+**Then wire the ratchet gates, seeded at the host's current size (SPEC INV-172).** One pass, from the
+host root: `bash <pack>/adopt/install-ratchet.sh [--tier universal] [DOC...]`. It vendors the style
+lint, the redundancy precheck, the freeze tool, and their shared library into the host's tree (each
+copy pinned in `scripts/ratchet-manifest.json` — pack version + content hash, so the update check can
+tell current from stale), measures the host's gated docs as they stand today, writes the debt caps at
+those counts, and generates `tests/test_ratchet_lock.py`. The gate is green the moment it lands — no
+re-compaction is demanded — and from then on the debt may only hold or shrink; raising a cap demands
+editing the guard test, deliberate and visible. Wire the printed gate line into the host's pre-push.
+Prove it red-first the way the four project-side checks are proven: plant one register defect in a
+gated doc, watch the lock test red, remove it. The universal tier binds every host; the full
+pack-register tier is the host's own opt-in (SPEC INV-166).
+
+**And install the universal hooks (SPEC INV-173):** `bash <pack>/scripts/install-pack-hooks.sh` puts
+the pack's canonical scan hook onto the machine and wires it; personal patterns stay in the personal
+layer's own overlay file, which the installer never touches.
+
+---
+
 ## Phase 6 — Attach record & incremental from here (SPEC A-7)
 
 1. Record installed skill versions in `.live-spec/` (every pack SKILL.md carries a version line under
