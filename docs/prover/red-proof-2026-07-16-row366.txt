@@ -1,0 +1,21 @@
+## row 366 red-first: synthetic enumerating infra test, unpinned, against HEAD (2.4.0 shipped), 2026-07-16 ~23:30
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+________ TestScopedReachHygiene.test_enumerating_infra_tests_are_pinned ________
+
+self = <test_guardrails.TestScopedReachHygiene testMethod=test_enumerating_infra_tests_are_pinned>
+
+    def test_enumerating_infra_tests_are_pinned(self):
+        with open(self.SCRIPT, encoding="utf-8") as f:
+            script_text = f.read()
+>       self.assertTrue(
+            "ALWAYS_SCOPED" in script_text,
+            "check-push-reach.sh must carry the marked ALWAYS_SCOPED block — the one home "
+            "the script's own scoped verdict and this net both read [ROADMAP 366]",
+        )
+E       AssertionError: False is not true : check-push-reach.sh must carry the marked ALWAYS_SCOPED block — the one home the script's own scoped verdict and this net both read [ROADMAP 366]
+
+tests/test_guardrails.py:762: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_guardrails.py::TestScopedReachHygiene::test_enumerating_infra_tests_are_pinned
+1 failed, 1 passed, 65 deselected in 0.09s

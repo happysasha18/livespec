@@ -10,6 +10,7 @@ fixtures (must fail the way the gate promises to fail).
 
 import json
 import os
+import re
 import shutil
 import stat
 import subprocess
@@ -665,6 +666,165 @@ class TestGateReachMap(unittest.TestCase):
         # alongside a scopable INFRA file.
         r = self.reach("guardrails/check-muted-launch.sh\nPRODUCT_SPEC.md")
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+
+
+class TestScopedReachHygiene(unittest.TestCase):
+    """Row 366 (M-348, INV-45): the by-name discovery blind spot. check-push-reach.sh finds a
+    changed infra file's owning tests by grepping the file's basename as a literal token over
+    tests/test_*.py; a test that reaches an infra directory by directory walk or glob, never
+    naming a changed file's basename, is invisible to that search and would silently escape
+    every scoped run. This net statically scans the suite's own test files for such an
+    enumeration and requires every match to ride along — pinned into the script's marked
+    ALWAYS_SCOPED block, where tests/test_traceability.py now sits as the first permanent member,
+    an integrity rider that rides every scoped run for the suite's own integrity [ROADMAP 366]."""
+
+    SCRIPT = os.path.join(GUARDRAILS, "check-push-reach.sh")
+
+    # the enumeration surfaces this scan catches: an unqualified directory walk (root-eligible),
+    # the module-level glob call, a Path glob/rglob method call, and a directory listing call
+    _ENUM_CALLS = (
+        (re.compile(r"os\.walk\("), True),
+        (re.compile(r"glob\.glob\("), False),
+        (re.compile(r"\.rglob\("), False),
+        (re.compile(r"\.glob\("), False),
+        (re.compile(r"os\.listdir\("), False),
+        (re.compile(r"\.iterdir\("), False),
+        (re.compile(r"os\.scandir\("), False),
+    )
+
+    @staticmethod
+    def _call_args(text, open_paren_index):
+        """Return the balanced substring from an opening paren to its matching close."""
+        depth = 0
+        i = open_paren_index
+        n = len(text)
+        while i < n:
+            ch = text[i]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    return text[open_paren_index:i + 1]
+            i += 1
+        return text[open_paren_index:]
+
+    @classmethod
+    def _enumerating_infra_tests(cls, scan_dir, infra_dirs):
+        """Pure: the set of test_*.py basenames directly under scan_dir whose source contains
+        an enumeration call naming one of infra_dirs in its arguments, or an unqualified
+        whole-repository-root walk. scan_dir is a parameter precisely so the red-first proof
+        can point this at a scratch directory instead of the real tree."""
+        flagged = set()
+        scan_dir = str(scan_dir)
+        for name in sorted(os.listdir(scan_dir)):
+            if not (name.startswith("test_") and name.endswith(".py")):
+                continue
+            path = os.path.join(scan_dir, name)
+            try:
+                with open(path, encoding="utf-8") as f:
+                    text = f.read()
+            except OSError:
+                continue
+            for pattern, root_eligible in cls._ENUM_CALLS:
+                if name in flagged:
+                    break
+                for m in pattern.finditer(text):
+                    args = cls._call_args(text, m.end() - 1).strip()
+                    if root_eligible and re.fullmatch(r"\(\s*ROOT\s*\)", args):
+                        flagged.add(name)
+                        break
+                    if any(re.search(r"\b" + re.escape(d) + r"\b", args) for d in infra_dirs):
+                        flagged.add(name)
+                        break
+        return flagged
+
+    @staticmethod
+    def _infra_dirs_from_script(script_text):
+        """The infra directory prefixes the reach script itself declares (REFERRER_DIRS) —
+        read from the script, never a second hard-coded copy."""
+        m = re.search(r'REFERRER_DIRS="([^"]+)"', script_text)
+        assert m, "check-push-reach.sh must define REFERRER_DIRS"
+        return m.group(1).split()
+
+    @staticmethod
+    def _always_scoped(script_text):
+        """Parse the pinned test paths out of the script's ALWAYS_SCOPED marked block — the
+        one home both the script's own scoped verdict and this net read from."""
+        m = re.search(r"ALWAYS_SCOPED=\((.*?)\)", script_text, re.DOTALL)
+        if not m:
+            return set()
+        return set(re.findall(r'"([^"]+)"', m.group(1)))
+
+    def test_enumerating_infra_tests_are_pinned(self):
+        with open(self.SCRIPT, encoding="utf-8") as f:
+            script_text = f.read()
+        self.assertTrue(
+            "ALWAYS_SCOPED" in script_text,
+            "check-push-reach.sh must carry the marked ALWAYS_SCOPED block — the one home "
+            "the script's own scoped verdict and this net both read [ROADMAP 366]",
+        )
+        infra_dirs = self._infra_dirs_from_script(script_text)
+        always_scoped = {os.path.basename(t) for t in self._always_scoped(script_text)}
+        tests_dir = os.path.join(ROOT, "tests")
+        flagged = self._enumerating_infra_tests(tests_dir, infra_dirs)
+        # test_traceability.py is no longer special-cased here: it lives inside ALWAYS_SCOPED as
+        # the integrity rider, so always_scoped already covers it [ROADMAP 366 fold].
+        unpinned = flagged - always_scoped
+        self.assertEqual(
+            unpinned, set(),
+            "enumerating infra test(s) not pinned into ALWAYS_SCOPED: %s" % sorted(unpinned),
+        )
+
+    def test_synthetic_enumerating_infra_test_reds_unpinned(self):
+        """Red-first proof of the net's own logic: a synthetic test file, planted in a scratch
+        directory, that reaches an infra directory by name rather than by basename is flagged
+        by the scanner; left unpinned it reads as a violation; pinning its name closes it. No
+        real file is written into the repo tree — the scratch directory is cleaned by the
+        context manager."""
+        with open(self.SCRIPT, encoding="utf-8") as f:
+            script_text = f.read()
+        infra_dirs = self._infra_dirs_from_script(script_text)
+        real_always_scoped = {os.path.basename(t) for t in self._always_scoped(script_text)}
+
+        synth_name = "test_synth_enum.py"
+        # built by concatenation at runtime: the WRITTEN fixture carries a real enumeration
+        # call naming an infra directory as a plain token, but neither the call syntax nor the
+        # infra token ever sits as one contiguous literal in THIS file's own source — the same
+        # concatenation discipline test_scoped_reach_unnamed_file_falls_full uses above, kept
+        # here for the opposite reason (so the token DOES appear as a scannable literal in the
+        # fixture this test writes to disk, never in this file).
+        call_name = "glob" + "." + "glob"
+        dir_token = "guard" + "rails"
+        synth_body = (
+            "import glob\n"
+            "import os\n\n"
+            "def test_walks_infra_dir():\n"
+            "    " + call_name + "(os.path.join(" + repr(dir_token) + ", " + repr("*.sh") + "))\n"
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with open(os.path.join(tmpdir, synth_name), "w", encoding="utf-8") as f:
+                f.write(synth_body)
+
+            flagged = self._enumerating_infra_tests(tmpdir, infra_dirs)
+            self.assertEqual(
+                flagged, {synth_name},
+                "the scanner must flag a synthetic test enumerating an infra dir",
+            )
+
+            unpinned = flagged - real_always_scoped
+            self.assertEqual(
+                unpinned, {synth_name},
+                "an unpinned enumerating-infra test must read as a violation",
+            )
+
+            fabricated_always_scoped = {synth_name}
+            closed = flagged - fabricated_always_scoped
+            self.assertEqual(
+                closed, set(),
+                "pinning the synthetic file's name into ALWAYS_SCOPED must close the violation",
+            )
 
 
 class TestGateMachineryReach(unittest.TestCase):

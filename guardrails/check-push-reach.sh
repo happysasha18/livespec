@@ -23,7 +23,8 @@
 # tests are found mechanically by filename — grep for the changed file's basename over tests/test_*.py
 # — plus ONE referrer level: a file under one of the infra dirs that names the changed file's basename
 # adds the tests that name THAT referrer's own basename. tests/test_traceability.py (the traceability
-# net) always rides along. A changed infra file that no test names (directly or via a referrer) is not
+# net) always rides along — pinned as the first permanent member of ALWAYS_SCOPED below, an integrity
+# rider. A changed infra file that no test names (directly or via a referrer) is not
 # safely scopable, so the whole diff falls back to FULL — the conservative teeth this road keeps.
 #
 # Usage: check-push-reach.sh [base-ref]      (default base: origin/main)
@@ -95,6 +96,20 @@ fi
 # SCOPED middle road: every changed file is PROSE or INFRA, and at least one is INFRA.
 REFERRER_DIRS="guardrails scaffold/guardrails scripts templates hooks adopt"
 
+# --- ALWAYS_SCOPED (permanent scoped-run riders) BEGIN ---
+# Tests pinned to ride EVERY scoped run, whatever the diff touched. Two kinds live here:
+#   - an integrity rider: a test that must ride for the suite's own integrity whether or not it
+#     enumerates infra dirs. tests/test_traceability.py is the first permanent member — the
+#     traceability net rides every scoped verdict so a scoped run can never skip it.
+#   - an enumerating-infra test: one that reads an infra directory by walk/glob rather than naming
+#     basenames, invisible to the by-name discovery below, pinned here so it rides too.
+# One home: the suite-hygiene net (tests/test_guardrails.py::TestScopedReachHygiene) reads THIS block
+# [ROADMAP 366].
+ALWAYS_SCOPED=(
+  "tests/test_traceability.py"   # integrity rider — rides every scoped run for suite integrity
+)
+# --- ALWAYS_SCOPED (permanent scoped-run riders) END ---
+
 scoped=()
 scoped_has() {
   local needle="$1" x
@@ -151,7 +166,15 @@ if [ "$conservative_full" -ne 0 ]; then
   exit 1
 fi
 
-add_scoped "tests/test_traceability.py"
+for t in "${ALWAYS_SCOPED[@]:-}"; do
+  [ -z "$t" ] && continue
+  if [ ! -f "$t" ]; then
+    # a stale pin must red loudly under its own name here, never as a bare pytest collection error
+    echo "BLOCK (reach): ALWAYS_SCOPED pins a missing file: $t — fix the pin before pushing." >&2
+    exit 1
+  fi
+  add_scoped "$t"
+done
 
 sorted_scoped="$(printf '%s\n' "${scoped[@]}" | sort -u)"
 printf '%s\n' "$sorted_scoped" | while IFS= read -r t; do
