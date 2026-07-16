@@ -18,14 +18,12 @@ Story in JOURNAL.md.
 - After the push, hosts that adopted at 2.x see the update watcher name the stale vendored files
   (headless_harness.py among them — the frame-death fix reaches them through the update); each
   window re-installs on its own word.
-- **LAST, after the queue drains — tlvphotos rotation audit + his open question (his word 2026-07-16
-  ~23:28):** audit-only agent pass over tlvphotos (this window never writes that tree): text
-  overlapping a photo on mobile screen ROTATION. Then answer what he is still curious about: the
-  rotation case likely never stood in that spec — should the prover or the design reviewer have
-  caught the gap, is it a lens miss to fold into the pack, or is cross-matching at that breadth
-  honestly past the model's reach? Answer rides the audit's evidence. Standing context: the
-  method-side class fix (the band-general facet + the quantifier lens) SHIPPED in 2.4.0; the
-  instance-side fix shipped in the tlvphotos window 2026-07-16 evening.
+- **Relay to the tlvphotos window (audit finding, 2026-07-17 ~00:55):** the rotation-overlap fix is
+  authored whole in that tree (viewport-general caption law, engine seat code, instance CSS,
+  red-first browser tests, its own design review folded) yet NOTHING is committed or deployed —
+  the live site still runs the old phone-only caption and the matrix rows stand TODO. Remaining
+  there: bake + deploy + green run + commit. This window is audit-only; the finding is relayed in
+  chat, the work is that window's own.
 
 ## Standing word / OWNER-HELD
 - Do the whole movement solo, push on green; plain English in docs, plain Russian in chat. Gates
