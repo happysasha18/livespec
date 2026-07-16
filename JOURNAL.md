@@ -4616,3 +4616,52 @@ test-author determinism rule (1.0.5) · TEST_MATRIX M-301 · tests/test_flaky_te
 tests/test_no_retry_plugin.py · VERSION/plugin/spec-header 1.6.0. Suite 742 green. Record
 `docs/prover/2026-07-15-inv155-flaky-test.md`. Delegation (INV-103): the design and every fold judgment
 stayed senior; the independent adversarial prove, the downstream build, and the guardrail went to workers.
+
+## 2026-07-16 (morning) — the v2.1.0 movement (IN PROGRESS, not pushed): browser-mute gate, style-lint tiers, three prover lenses + the Fable audit
+
+A long solo session off Alexander's morning wishes plus a stream of live ideas. Landed as local commits
+toward v2.1.0 (batching the MINOR gate + version bump + one push to the end). Each its own commit, one row
+per landing.
+
+- **№5 browser-mute gate (INV-157 third net, row 337).** The recurring tlvphotos test-audio: the
+  muted-harness rule existed but shipped only as a template a consumer adopts, so a hand-rolled or forked
+  harness slipped it. Built `guardrails/check-muted-launch.sh` as a retroactive tree-scanner — it reds a
+  file whose code launches a real headless Chrome with the mute flag nowhere in it — wired as pre-push
+  gate l + CI. A fresh-eyes audit caught two machine-defeating evasions (a comment-only mute flag, a
+  docstring-only flag mention); folded (mute check on comment-stripped code, an invocation token required,
+  Chrome scope + honest boundary stated). This is the worked example of the retroactive-migration idea.
+- **Style-lint two tiers (INV-166, row 338).** Harvested track-coach's inbox wish: `--gate` conflated the
+  universal language laws with the pack's own register taste, so a host could not adopt the universal floor
+  as its push gate without rewriting an intentional voice. Split into `--tier universal` (universal-as-gate,
+  register advisory) and `--tier full` (alias `--gate`, unchanged). Universal tier = scissors,
+  negation-opener, machine-jargon, provenance-narrative.
+- **Prover lenses (rows 339, 340).** tlvphotos prover wish → INV-167 entry-state lens (a re-enterable
+  surface declares reset-vs-resume + entry focus/position; owned by spec-author, carried by the prover,
+  distinct from entry-symmetry INV-50 which tests only path existence). Then Alexander called the Fable
+  deep + adversarial audit of the prover ("пришло время"): its finding D1 named the class — the prover
+  checks the state graph's TOPOLOGY, not a transition's PAYLOAD, so the pack was minting one invariant per
+  shipped bug, the root being a platform default that silently becomes the behaviour and leaves the lenses
+  no written text to read. Folded the parent INV-168 (transition-payload lens) generalizing INV-165/167 as
+  instances. D2-D5 method defects + R1-R5 recommendations queued (docs/audit/2026-07-16-prover-fable.md).
+
+Cross-cutting, all from Alexander seeing that the pack STATES laws but does not ENFORCE their adoption into
+hosts:
+- Audited compaction-gate adoption in track-coach / tlvphotos / promoter: NONE adopted (skills synced to
+  2.0.0, the ratchet gates not wired, each project's own note marked wiring optional). Gates are MANDATORY
+  (his word, base rule 30); the enforcement-across-adoption hole is the real defect. The update-watcher
+  (№1), retroactive migration (№4), config-health gate, and the turnkey freeze-at-current-size adoption
+  package are the fixes (queued). Promoter can wire a default-mode gate now (its docs pass at 0); track-coach
+  and tlvphotos need the turnkey package (real backlog).
+- The «X, а не Y» scissors frame in chat enraged him — an empty intensifier reads as performing
+  instruction-compliance. Built a global scissors Stop-hook (`~/.claude/hooks/scissors-scan.py` +
+  settings.json) that flags the frame in an outgoing reply across all windows, plus a feedback memory. It
+  false-fires on a pattern-demo quoted inside «…» — hook tuning queued. Raised hook propagation: the pack
+  should ship canonical hooks to hosts via adoption (personal-profile hooks vs universal pack hooks).
+- Concurrency: several windows share ~/live-spec's one tree + one git index, so the inbox-notify mechanism
+  (built for a remote seat over git) collides locally — a neighbour sees a session's staged work. Committed
+  narrowly by explicit path throughout; a local inbox-notify variant is queued.
+
+State at stop: suite 850 green, tree clean, local commits ahead of origin, VERSION still 2.0.0. Batch close
+(MINOR gate + bump to 2.1.0 + one push + drop adoption-wishes) and the full queue live in NEXT_STEPS.md.
+Stopped on Alexander's word for a memory wipe + a fresh session. Memory is wipe-safe — the story is here,
+NEXT_STEPS.md, docs/prover/2026-07-16-*, and docs/audit/2026-07-16-prover-fable.md.

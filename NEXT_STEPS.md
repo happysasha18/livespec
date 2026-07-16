@@ -16,14 +16,25 @@ JOURNAL.md + the three prover records under docs/prover/2026-07-16-*.md + this f
 - **Row 339 / INV-167 — prover entry-state lens.** A re-enterable surface declares the state entry opens
   in (position/focus + reset-or-resume); owned by spec-author, carried by the prover beside entry-symmetry
   (INV-50). Harvested tlvphotos prover wish. M-321. Record docs/prover/2026-07-16-inv166-inv167.md.
+- **Row 340 / INV-168 — prover parent transition-payload lens.** From the Fable audit's D1: the prover
+  checked the state graph's topology but never a transition's payload (focus, scroll/playback, sound, a
+  timer, a fresh-or-stale value). INV-168 enumerates the parameters a person perceives across every stated
+  transition; INV-165/167 become its instances, ending the one-invariant-per-bug loop. M-322. Record
+  docs/prover/2026-07-16-inv168.md.
+- **Fable deep+adversarial audit of the prover DONE** — docs/audit/2026-07-16-prover-fable.md. D1 folded
+  (INV-168 above). REMAINING folds queued below (D2-D5, R1-R5).
 - **Global scissors Stop-hook** — `~/.claude/hooks/scissors-scan.py` + `~/.claude/settings.json` Stop hook.
   Flags the «X, а не Y» / «X — not Y» frame in an outgoing reply, all windows. Owner's 2026-07-16 word:
   an empty intensifier/contrast enrages him; reformulate, talk human. Memory: no-empty-intensifiers-talk-human.
 
 ## ON RESUME — the queue (the adoption spine first, then the rest)
-- **Task 14 — RUN NEXT: Fable deep + adversarial audit of product-prover** (owner's word "пришло время";
-  Fable authorized). Audit skills/product-prover/SKILL.md as it stands after INV-167 — method gaps, missed
-  cases, standing lenses that should exist. Then fold findings.
+- **RUN NEXT: fold the remaining Fable audit findings** (docs/audit/2026-07-16-prover-fable.md; D1 done):
+  D2 — FEATURE-FIT second-sibling blind window (intake question "second member of an existing kind?" →
+  scoped design review); D3 — CROSS-LINK never re-checks old quantified claims (mandatory quantifier/
+  enumeration re-verify); D4 — surface-authority lens self-disarms (fallback = a stated assumption, never
+  silence); D5 — FULL-mode Phase 3e has no coverage record (split mandatory sweeps vs discretionary probes
+  + a surface×sweep table). Then R1-R5 (motion-gap boundary, merge the 5 lifecycle lenses under INV-168,
+  FEATURE-FIT scope wording, clause currency, [default] accretion sweep).
 - **Task 13 — turnkey ratchet-adoption package** (the spine that makes host-update one pass): vendor the
   lint/freeze/debt-cap scripts + source-pin + guard test + install recipe; seed baselines at the host's
   CURRENT size (green at once, ratchets down; no full re-compaction). INCLUDES HOOK PROPAGATION — the pack
@@ -38,6 +49,9 @@ JOURNAL.md + the three prover records under docs/prover/2026-07-16-*.md + this f
   skill inherits the pack VERSION, sync stamps it). **№3 (task 4)** remote/teleport → textual, no browser.
   **№2 (task 7)** pin base's scope (pack-internal, owner chose). **Task 10** guardrails/README says 5 gates,
   ~11 exist (docs). **Task 8** compact global MEMORY.md >19KB (owner-side).
+- **feedback-collector anonymization** (owner idea): mask a host's real entities before an upstream note
+  leaves, consent-first, for enterprise. **Hook tuning:** the scissors Stop-hook false-fires on a
+  pattern-demo quoted inside «…» — teach it to skip a quoted demo; fold with hook propagation (task 13/11).
 
 ## BATCH CLOSE (when the spine is done)
 MINOR gate: full prover on the whole spec + design review + cross-cut counter + code compaction, one fresh
