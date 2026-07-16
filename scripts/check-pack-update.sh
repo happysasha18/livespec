@@ -12,6 +12,8 @@ INSTALLED_FILE="$ROOT/VERSION"
 STAMP_FILE="$HOME/.claude/live-spec/update-check-stamp"
 REMOTE_FILE=""
 FORCE=0
+MANIFEST=""
+PACK_ROOT=
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -19,6 +21,8 @@ while [ $# -gt 0 ]; do
     --installed-file) INSTALLED_FILE="$2"; shift 2 ;;
     --stamp-file)     STAMP_FILE="$2";     shift 2 ;;
     --force)          FORCE=1;             shift ;;
+    --manifest)       MANIFEST="$2";       shift 2 ;;
+    --pack-root)      PACK_ROOT="$2";      shift 2 ;;
     *) echo "check-pack-update: unknown flag $1" >&2; exit 2 ;;
   esac
 done
@@ -59,5 +63,39 @@ fi
 echo "PACK UPDATE AVAILABLE: $remote (this machine runs $installed)"
 echo "  what changed: https://github.com/happysasha18/live-spec/blob/main/JOURNAL.md"
 echo "  update road: install.sh (attic-backed) — or a plain 'git pull' where the repo itself runs the pack"
+
+# Vendored-copy staleness (SPEC INV-177): a host's ratchet manifest pins the pack version its
+# vendored gate scripts came from. When the pack moved past that pin, propose the re-install and
+# name the vendored files whose content differs from the local pack's current copies. Proposal
+# only, like everything here; the pack version speaks for the whole (E-25) — the per-file list is
+# read against the LOCAL pack checkout, never a remote diff.
+[ -z "$MANIFEST" ] && [ -f "scripts/ratchet-manifest.json" ] && MANIFEST="scripts/ratchet-manifest.json"
+[ -z "$PACK_ROOT" ] && PACK_ROOT="$ROOT"
+if [ -n "$MANIFEST" ] && [ -f "$MANIFEST" ]; then
+  python3 - "$MANIFEST" "$PACK_ROOT" "$remote" <<'PYEOF'
+import hashlib, json, os, sys
+manifest_path, pack_root, remote = sys.argv[1], sys.argv[2], sys.argv[3]
+try:
+    man = json.load(open(manifest_path))
+except (OSError, ValueError):
+    sys.exit(0)
+pinned = str(man.get("pack_version", ""))
+if pinned and pinned != remote:
+    stale = []
+    for rel, sha in (man.get("vendored") or {}).items():
+        src = os.path.join(pack_root, rel)
+        if os.path.isfile(src):
+            cur = hashlib.sha256(open(src, "rb").read()).hexdigest()
+            if cur != sha:
+                stale.append(rel)
+    print("  VENDORED GATES PINNED TO %s — the pack moved past the pin:" % pinned)
+    for rel in stale:
+        print("    stale vs current pack: %s" % rel)
+    if not stale:
+        print("    (no vendored file differs from the local pack copy — the pin alone is old)")
+    print("  re-install road: bash <pack>/adopt/install-ratchet.sh --force  (re-seeding caps is explicit, never silent)")
+PYEOF
+fi
+
 echo "  PROPOSAL ONLY — nothing installed; updating is the human's word."
 exit 0

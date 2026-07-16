@@ -120,6 +120,18 @@ def sha256_of(path):
 
 
 vendored_sha = {rel: sha256_of(os.path.join(host_root, rel)) for rel in VENDOR_FILES}
+
+# The scaffold kit's files, where the host carries them, join the manifest (the design-review
+# recommendation of 2026-07-16: one source-pin mechanism covers both installable kits, so the
+# update watcher reads one file). Informational pins; this installer never vendors them.
+SCAFFOLD_NAMES = ("check_completeness.py", "check_tests_present.py",
+                  "check_traces_to_spec.py", "check_conflicts.py", "gate_lib.py")
+for d in ("scaffold/guardrails", "guardrails"):
+    for name in SCAFFOLD_NAMES:
+        rel = os.path.join(d, name)
+        p = os.path.join(host_root, rel)
+        if os.path.isfile(p) and rel not in vendored_sha:
+            vendored_sha[rel] = sha256_of(p)
 pack_version = open(os.path.join(pack_root, "VERSION"), encoding="utf-8").read().strip()
 
 scripts_dir = os.path.join(host_root, "scripts")
