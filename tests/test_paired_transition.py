@@ -65,6 +65,27 @@ class TestPairedTransition(unittest.TestCase):
         sa = read_flat("skills/spec-author/SKILL.md")
         self.assertIn("reversibility of the means", sa)
 
+    def test_magnitude_sub_question(self):
+        """INV-126's magnitude sub-question, matrix row M-341: where the paired open and close ride
+        a continuous, reversible quantity, the spec states whether the inverse demands the same
+        magnitude as the forward move — symmetric, or a named deliberate asymmetry."""
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in ("same magnitude as the forward move", "a named deliberate asymmetry"):
+            self.assertIn(needle, spec, needle)
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-126 |"):
+                    self.assertIn("same magnitude", line)
+                    break
+            else:
+                self.fail("INV-126 Formal-index row missing")
+        pv = read_flat("skills/product-prover/SKILL.md")
+        self.assertIn("And the half's magnitude question", pv)
+        self.assertIn("same magnitude as the forward move", pv)
+        sa = read_flat("skills/spec-author/SKILL.md")
+        self.assertIn("asks magnitude beside existence", sa)
+        self.assertIn("0.82×", sa)
+
     def test_matrix_row_covers_the_paired_transition_law(self):
         with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
             for line in f:

@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 2.2.0
+  version: 2.3.0
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.2.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.3.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -295,6 +295,13 @@ declared design principles; the spec names the answer so the pass has something 
   ways to close, or a decided sentence states why it is absent; silence there is a finding, and the rightness
   of the reason stays the human's gate (SPEC INV-126; incident: tlvphotos's pinch-to-zoom layer opened by a
   finger-tracked scale-up and closed only by a control, no reverse pinch, felt on a phone, 2026-07-14).
+  The second half asks magnitude beside existence: where the pair rides a continuous, reversible
+  quantity — a pinch span, a drag distance, a wheel accumulation — the author writes whether the two
+  directions demand the same magnitude, symmetric or a named deliberate asymmetry, decided or
+  `[default]`-tagged like any facet (SPEC INV-126; incident: tlvphotos's inspect zoom opened on any
+  spread past rest yet closed only at a squeeze to ~0.82× of rest — the reverse existed at a deeper
+  cost to the hand, and every prover pass came clean because the lens asked only existence, felt on
+  a real phone, 2026-07-16).
 - **Edge completeness — both ends of a gate, and the three faces of a wait.** When the surface has a
   behaviour gated on a quantity that runs on a line (elapsed time since a last visit, a count, a distance, a
   size), write what it does at both ends of the range — below the low end and above the high end — not only
