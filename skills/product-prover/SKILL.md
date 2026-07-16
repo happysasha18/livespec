@@ -306,6 +306,18 @@ For every operation, transition, rule, or assumption, mentally stress-test it ag
   ask. It closes a class the two path lenses missed: a series side-room reopened on the last picture a
   prior visit had scrolled its lane to, because no line stated the lane lands on the first member and
   resets at entry (2026-07-16). [INV-167]
+- **Transition payload** — the parent lens the topology checks (entry symmetry, dead-end, scenario
+  entry/exit) all serve without naming: for every transition the spec states, enumerate the parameters a
+  person perceives across it — where focus and selection land, what scroll or playback position holds,
+  whether sound continues, whether a timer keeps running, whether a shown value is fresh or stale. A
+  parameter the spec leaves blank is answered by the platform default alone, and a default that silently
+  becomes the behaviour leaves the topology lenses no written text to read to catch it. The motion-parity
+  lens (INV-165) and the entry-state lens above (INV-167) are instances of it, each reading this lens on
+  one payload parameter — an exit's animation, a re-entry's internal state. Each unstated parameter is a
+  finding, the blank-answer class of an unwritten seam (SPEC INV-168, INV-30). A worked instance: a
+  side-room's transition names its open ceremony and exit but leaves scroll position silent — the
+  platform default (reset to top) becomes the behaviour unreviewed, until this lens names the missing
+  parameter and the entry-state instance above writes its sentence.
 - **Scenario entry and exit** — for every person-facing SCENARIO (a flow: "walking the gallery",
   "answering the quiz", "when a bug cuts the line"), check that the spec states how it is ENTERED — from
   which prior scenario or state, with what already true (the preconditions the walk assumes) — and how it
