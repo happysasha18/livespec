@@ -72,6 +72,12 @@ if ! "$GUARDRAILS/check-broad-kill.sh"; then
 fi
 
 echo ""
+echo "-- gate l: muted browser launch (every browser-driving script launches muted, SPEC INV-157) --"
+if ! "$GUARDRAILS/check-muted-launch.sh"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate k: compaction freeze (guarded docs' anchor map / markers / numbers unchanged, 2.0) --"
 if ! "$GUARDRAILS/check-freeze.sh"; then
   fail=1

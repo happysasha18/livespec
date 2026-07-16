@@ -44,6 +44,8 @@ jobs:
         run: guardrails/check-shipped-language.sh
       - name: gate j — no broad browser-kill (cleanup targets the test resource only, SPEC INV-162)
         run: guardrails/check-broad-kill.sh
+      - name: gate l — muted browser launch (every browser-driving script launches muted, SPEC INV-157)
+        run: guardrails/check-muted-launch.sh
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

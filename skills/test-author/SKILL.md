@@ -172,7 +172,12 @@ device class; the suite says plainly what it cannot see.
   the next launch (and never a live concurrent run, whose owner is still alive). The harness has one canonical home —
   the pack ships it once as a template (`templates/headless_harness.py`), a consumer adopts it by
   updating the pack and layers its own methods on top, so the implementation never drifts into
-  divergent copies (SPEC INV-158).
+  divergent copies (SPEC INV-158). A third net catches a fork the first two miss: a guardrail scans
+  every tracked script and reds a file whose code both launches a real headless Chrome and carries the
+  mute flag nowhere in it (`guardrails/check-muted-launch.sh`) — a whole-file check reading the
+  comment-stripped code, since the launch call and the flag rarely share a line — so a hand-rolled
+  harness's unmuted launch fails the run by machine, swept across the whole tree on every run (SPEC
+  INV-157).
 - **The suite's own plumbing must not lie (SPEC INV-80).** A skip path executes even when never
   taken: import the skip helper at module load, so a skip that cannot run is red on every machine
   instead of a silent pass on the one that needed it (a `skip()` NameError once hid exactly there).
