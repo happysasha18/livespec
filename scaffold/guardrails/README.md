@@ -14,6 +14,13 @@ sees it — `WAIVED (<check>): <reason>`, exit 0, visible, never silent.
 
 ## The attach walk (~15 minutes)
 
+**One command does steps 0 and 1 for you:** `bash <pack>/adopt/install-scaffold.sh` from your repo
+root vendors this directory into `your-repo/guardrails/`, seeds `guardrails.config.json` from the
+example where you carry none (a filled config is never clobbered), and writes or merges the source
+pins into `scripts/ratchet-manifest.json` so the daily update check tells a current copy from a stale
+one. The numbered steps below are the manual equivalent and the follow-through the installer prints; a
+host that ran the installer starts at step 2.
+
 0. **Copy the example config first — every check is red until you do, by design:**
 
    ```sh

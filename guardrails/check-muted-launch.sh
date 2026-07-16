@@ -21,11 +21,11 @@
 # that merely NAMES a flag in a docstring or comment with no real invocation, passes. Portable across
 # GNU and BSD grep (no \b). Prose surfaces (spec, ROADMAP, inbox, this checker, its own test)
 # legitimately NAME the flags and are excluded from the repo scan. Honest boundary: this is a
-# structural grep keyed on the Chrome launch flags plus an invocation token over an extension
-# allowlist — a tracked EXTENSIONLESS shebang script is outside the scan (stated boundary; the
-# shebang sweep is queued), and it is not a proof that every
-# possible indirect launch (a bare-shell `chromium --headless`, a wrapper, an env-var-built arg list,
-# a non-Chrome driver) is muted; those a fork still owns under INV-158.
+# structural grep keyed on the Chrome launch flags plus an invocation token — the default scan covers
+# every tracked file the extension patterns name plus a tracked EXTENSIONLESS file whose first line
+# is a shebang (F5 fold, 2026-07-16: closed the prior extension-allowlist scope hole) — and it is not
+# a proof that every possible indirect launch (a bare-shell `chromium --headless`, a wrapper, an
+# env-var-built arg list, a non-Chrome driver) is muted; those a fork still owns under INV-158.
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
@@ -47,10 +47,34 @@ scan_file() {
   # launch's multi-line arg list is caught.
   local f="$1"
   local stripped
-  # per-extension comment stripping (batch audit 2026-07-16, F2): a JS/TS file's `//` or `/* */`
-  # comment naming --mute-audio must not satisfy the mute check any more than a Python `#` one.
+  local kind="shell"
   case "$f" in
     *.js|*.mjs|*.cjs|*.ts|*.jsx|*.tsx)
+      kind="js"
+      ;;
+    *.py|*.sh)
+      kind="shell"
+      ;;
+    *)
+      # extensionless (F5, 2026-07-16 audit, row 356): the extension has already picked "shell" above
+      # for anything unrecognized; a tracked file with NO extension carries no such signal at all, so
+      # pick the checker by its shebang interpreter instead — the same evidence `list_shebang_scripts`
+      # below used to decide the file belongs in the scan in the first place.
+      case "${f##*/}" in
+        *.*) : ;;  # has an extension — "shell" default already stands
+        *)
+          case "$(head -n1 "$f" 2>/dev/null || true)" in
+            '#!'*node*) kind="js" ;;
+            '#!'*) kind="shell" ;;  # sh/bash/python/anything else named — shell's `#` stripping covers it
+          esac
+          ;;
+      esac
+      ;;
+  esac
+  # per-language comment stripping (batch audit 2026-07-16, F2): a JS/TS file's `//` or `/* */`
+  # comment naming --mute-audio must not satisfy the mute check any more than a Python/shell `#` one.
+  case "$kind" in
+    js)
       stripped="$(awk '{ l=$0; sub(/\/\/.*/,"",l); gsub(/\/\*[^*]*\*\//,"",l); print l }' "$f" 2>/dev/null || true)"
       ;;
     *)
@@ -63,6 +87,23 @@ scan_file() {
       echo "$f"
     fi
   fi
+}
+
+list_shebang_scripts() {
+  # F5 (2026-07-16 audit, row 356): a tracked file with NO extension (e.g. `bin/serve`) matches none
+  # of the extension patterns below and is invisible to the scan, extension being the only signal
+  # those patterns read. A real script still announces itself by its first line, so a tracked,
+  # extensionless file whose first line is a shebang belongs in the scan too — scan_file() above then
+  # picks its checker (shell vs js comment stripping) from that same shebang.
+  git ls-files 2>/dev/null | while IFS= read -r f; do
+    case "${f##*/}" in
+      *.*) continue ;;  # has an extension — already covered by the patterns below
+    esac
+    [ -f "$f" ] || continue
+    case "$(head -n1 "$f" 2>/dev/null || true)" in
+      '#!'*) echo "$f" ;;
+    esac
+  done
 }
 
 hits=""
@@ -87,7 +128,11 @@ else
     [ "$f" = "tests/test_muted_launch_guardrail.py" ] && continue
     hit="$(scan_file "$f")"
     [ -n "$hit" ] && hits="$hits$hit"$'\n'
-  done < <(git ls-files '*.sh' '*.py' '*.js' '*.ts' '*.jsx' '*.tsx' '*.mjs' '*.cjs' 'scripts/*' 2>/dev/null)
+  done < <(
+    { git ls-files '*.sh' '*.py' '*.js' '*.ts' '*.jsx' '*.tsx' '*.mjs' '*.cjs' 'scripts/*' 2>/dev/null
+      list_shebang_scripts
+    } | sort -u
+  )
 fi
 
 hits="$(printf '%s' "$hits" | grep -vE '^[[:space:]]*$' || true)"

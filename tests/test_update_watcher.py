@@ -40,7 +40,36 @@ class TestUpdateWatcherManifestArm(unittest.TestCase):
             self.assertIn("VENDORED GATES PINNED TO 0.0.1", r.stdout)
             self.assertIn("stale vs current pack: scripts/gate_common.py", r.stdout)
             self.assertIn("install-ratchet.sh --force", r.stdout)
+            self.assertNotIn("install-scaffold.sh --force", r.stdout,
+                              "a ratchet-only stale key must not propose the scaffold road")
             self.assertIn("PROPOSAL ONLY", r.stdout)
+
+    def test_stale_scaffold_key_proposes_the_scaffold_reinstall_road(self):
+        # Defect 3 (2026-07-16 fix): the road named must match the kit that is actually stale — a
+        # scaffold-only host was pointed at install-ratchet.sh, which never touches scaffold/guardrails/.
+        with tempfile.TemporaryDirectory() as tmp:
+            man = os.path.join(tmp, "ratchet-manifest.json")
+            json.dump({"pack_version": "0.0.1",
+                       "vendored": {"scaffold/guardrails/gate_lib.py": "0" * 64}},
+                      open(man, "w"))
+            r = run_check(tmp, manifest=man)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("stale vs current pack: scaffold/guardrails/gate_lib.py", r.stdout)
+            self.assertIn("install-scaffold.sh --force", r.stdout)
+            self.assertNotIn("install-ratchet.sh --force", r.stdout,
+                              "a scaffold-only stale key must not propose the ratchet road")
+
+    def test_mixed_stale_keys_propose_both_reinstall_roads(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            man = os.path.join(tmp, "ratchet-manifest.json")
+            json.dump({"pack_version": "0.0.1",
+                       "vendored": {"scripts/gate_common.py": "0" * 64,
+                                    "scaffold/guardrails/gate_lib.py": "0" * 64}},
+                      open(man, "w"))
+            r = run_check(tmp, manifest=man)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("install-ratchet.sh --force", r.stdout)
+            self.assertIn("install-scaffold.sh --force", r.stdout)
 
     def test_current_pin_stays_silent_on_vendored_files(self):
         with tempfile.TemporaryDirectory() as tmp:

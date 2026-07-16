@@ -64,18 +64,18 @@ class TestConvergenceLocks(unittest.TestCase):
                              "max_style_errors was raised above the reached ratchet value")
 
     def test_live_spec_sits_at_the_clean_floor(self):
-        """The 2.0 ratchet's live half (M-217): the real PRODUCT_SPEC.md sits AT the reached-clean
-        floor — the style gate reports zero errors and the redundancy gate reports zero open pairs —
-        so a future edit that reintroduces a shout, a scissors, a second person, or a duplicated
-        sentence reddens HERE instead of fading in silently. The cap file says the ceiling is zero
-        (test_debt_cap_only_downward); this says the document actually reaches it. A deliberate,
+        """The 2.0 ratchet's live half (M-217): the real PRODUCT_SPEC.md and ARCHITECTURE.md each sit AT
+        the reached-clean floor — the style gate reports zero errors and the redundancy gate reports zero
+        open pairs — so a future edit that reintroduces a shout, a scissors, a second person, or a
+        duplicated sentence reddens HERE instead of fading in silently. The cap file says the ceiling is
+        zero (test_debt_cap_only_downward); this says each document actually reaches it. A deliberate,
         reviewed regression would have to edit this test, in the same commit, named in the landing."""
         import subprocess
 
-        def gate_json(script, *extra):
+        def gate_json(script, doc, *extra):
             r = subprocess.run(
                 ["python3", os.path.join(ROOT, "scripts", script), *extra,
-                 os.path.join(ROOT, "PRODUCT_SPEC.md")],
+                 os.path.join(ROOT, doc)],
                 capture_output=True, text=True)
             for line in reversed(r.stdout.strip().splitlines()):
                 line = line.strip()
@@ -84,17 +84,18 @@ class TestConvergenceLocks(unittest.TestCase):
             raise AssertionError("no JSON summary from %s:\n%s" % (script, r.stdout))
 
         cap = json.load(open(DEBT_CAP))
-        style = gate_json("spec-style-lint.py", "--gate")
-        self.assertEqual(
-            style["errors"], 0,
-            "PRODUCT_SPEC.md re-grew a register defect: %d style errors (floor 0)" % style["errors"])
-        self.assertEqual(style["stale"], 0,
-                         "a stale waiver lingers in scripts/spec-waivers.json — remove it")
-        red = gate_json("spec-redundancy-precheck.py")
-        self.assertLessEqual(
-            red["open"], cap["max_redundancy_open"],
-            "PRODUCT_SPEC.md re-grew redundancy: %d open pairs (floor %d)"
-            % (red["open"], cap["max_redundancy_open"]))
+        for doc in ("PRODUCT_SPEC.md", "ARCHITECTURE.md"):
+            style = gate_json("spec-style-lint.py", doc, "--gate")
+            self.assertEqual(
+                style["errors"], 0,
+                "%s re-grew a register defect: %d style errors (floor 0)" % (doc, style["errors"]))
+            self.assertEqual(style["stale"], 0,
+                             "a stale waiver lingers in scripts/spec-waivers.json — remove it")
+            red = gate_json("spec-redundancy-precheck.py", doc)
+            self.assertLessEqual(
+                red["open"], cap["max_redundancy_open"],
+                "%s re-grew redundancy: %d open pairs (floor %d)"
+                % (doc, red["open"], cap["max_redundancy_open"]))
 
 
 if __name__ == "__main__":

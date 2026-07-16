@@ -2,6 +2,135 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-16 ~15:20 IDT (Fable lead + opus/sonnet workers; Alexander remote, English keyboard) — v2.1.1: the day-after sweep — the register floor widens, the leftovers land, the stranger gets answered, and the installer's first field bug is fixed (ROADMAP 354, 356, 357, 358)
+
+The session picked up the two queued rows an hour after the 2.1.0 push and closed them plus two new ones that arrived mid-work. Row 354: ARCHITECTURE.md's register debt judged and folded — the two flow-table hits were real contrast frames (the arrow-notation suspicion did not hold; the lint has no arrow arm), the origin-story line went home to this journal, the caps lowered; one lowered token, LICENSE, named the on-disk file and came back uppercase with a CAPS_ALLOW entry — the allowlist gap was the actual defect there. ARCHITECTURE.md now sits beside PRODUCT_SPEC.md under the convergence-lock floor, both arms. An adversarial old-vs-new meaning-diff (the 2.0.0 lesson, now habit) accepted the whole sweep and raised one cosmetic note: see/try is lowercase here while the skill files keep it uppercase; decided — the lint floor governs the gated docs, which now agree with each other, and the ungated skill files keep their own voice.
+
+Row 356, the five leftovers: pins strict-clean (one label corrected — the shipped-language checker calls itself "the machine"), the FEATURE-FIT record homed in the prover's directory, the muted-launch gate now reads extensionless shebang scripts too, the scaffold kit gained its own one-command installer writing the shared manifest by merge, and INV-180 declared the installed-copy drift-net class on the attach node.
+
+Row 357: Alexander answered the design review's held question at 14:40, from another machine, in chat — the recommended default stands. A captured stranger wish now takes its echo as a comment on the source Issue at harvest, and the Issue closes at the row's terminal exit. Spec sentences in INV-147 and INV-27, M-337, red-proven against the pre-delta spec.
+
+Row 358 arrived mid-session as the pack's first field bug: track-coach's adoption report showed install-ratchet.sh appending gate r after a host pre-push's terminating exit — dead code reported as wired, re-runs matching the dead label and never repairing. The fix wires at a safe anchor, keys idempotency off a stable marker, and repairs a stranded block on re-run; the same landing gave the installer a merging manifest write and the update watcher a per-kit re-install road. Nine fixtures red on the old code, twenty-four green after. The hook installers were swept and found innocent (a JSON array has no dead position).
+
+PATCH bump to 2.1.1: bug fixes plus changed vendored scripts — adopted hosts' update watcher names the stale files and the per-kit road. Housekeeping: this journal's two 2.1.0 chapters had been appended at the bottom of a newest-first file; moved to the top, order restored. Left queued: row 359 (the matrix-names-real-tests extractor truncates at a file-path parenthetical). Delegation (INV-103): reads dispatched (the gate-record distillation, the ARCHITECTURE lint inventory); eight worker lanes (three opus — two spec drafts and the meaning-diff, five sonnet — the register applier, the shebang sweep, the installer fixes, the pins-and-node pass, the matrix row); every judgment, decision recording, and acceptance kept senior.
+
+
+## 2026-07-16 (day) — v2.1.0 SHIPPED: the enforcement release, the whole queue closed in one run
+
+Alexander's word at 12:00: work the whole NEXT_STEPS to done, on Fable. Sixteen landings
+(rows 341-355), the 2.1.0 bump, one release push (`fed1339`), all in one session.
+
+**The Fable prover-audit folds (rows 341-344).** D1 had landed the day before (INV-168); this
+session folded the rest. INV-169: feature intake asks the second-sibling question by construction —
+the intake of a kind's SECOND member was exactly where the design review stood down, so a sibling
+could ship and diverge unseen until the next full pass; a yes now draws the scoped review. INV-170:
+CROSS-LINK re-verifies the document's quantified claims ("every"/"only"/member lists) against the
+grown set — the enumeration form the uniformity lens itself demands was the staleness vector.
+INV-171 + R2: the ~19-lens stress wall split into five mandatory sweeps, each owing a verdict line
+(hit / clean / N/A-with-reason) rendered as a surface × sweep table, the five lifecycle lenses
+gathered under the transition-payload parent with anchors kept; FULL — the heaviest mode — had
+owed no per-lens accountability while FEATURE-FIT owed a verdict per lens. Six point fixes
+(row 343): the surface-authority fallback is a stated assumption (the clear-evidence gate
+self-disarmed exactly on the author who forgot the registry), 3d probes overlapping-data agreement,
+the KIND block names the paired-transition blocking split, FEATURE-FIT scopes its consistency
+exclusion and cites pinned clauses on shipped systems, the FULL summary reports [default] accretion.
+
+**The adoption spine (row 345, INV-172/173).** The pack stated its gates mandatory but adoption
+never installed them (track-coach 126 / tlvphotos 79 register errors, no gate). One pass now wires
+them: `adopt/install-ratchet.sh` vendors the lint/redundancy/freeze trio with a source-pin manifest,
+seeds the caps at the size measured that moment — green at once, tightening-only — and generates the
+guard test. Hooks gained one canonical home `hooks/` with an installer; the universal/personal split
+puts the English contrast scan in the pack and the owner's Russian patterns in a personal overlay
+file the installer never touches; the scan hook skips quoted demos (the known false-fire). INV-169
+fired on its own first live intake: the kit is the second installable kit beside scaffold/guardrails,
+and the drawn scoped design review's one recommendation (one manifest over both kits) folded into
+INV-177.
+
+**The co-located seams (row 346, INV-174/175).** The inbox's local arm: a same-filesystem depositor
+writes its one file and stops — the commit road raced the shared index. Config-health: the installed
+pre-push was found missing gates k and l — the red-first proof came from the live tree itself; the
+check now reds a missing or drifted installed hook, runs inside the suite and as gate m, and the
+commit fence stops a staged file carrying unstaged edits.
+
+**The tail (rows 347-353).** INV-176 retroactive gates (a law's gate scans the whole tree — the mute
+gate generalized); INV-177 the update watcher reads the vendored pins; INV-178 version-is-one-fact
+(ten skills carried ten unrelated numbers; the stamp + guard test end it); the seat law sharpened
+(a remote seat shows textually by construction, re-detect after any move); base scope pinned
+pack-internal; the guardrails README enumerates all thirteen gates (it said "five"); INV-179
+collector anonymization (host entities masked in the draft the user reads at consent).
+
+**The 2.1.0 gate (row 355).** Three fresh independent passes: the full prover ran the FIRST INV-171
+verdict table (all five sweeps, 15 surfaces; 4 defects — every stale enumeration a MEMBER add, so
+INV-170 widened to fire on member adds); the full design review (4 groups, 1 question held for
+Alexander: should the stranger arm carry the capture echo back to its source Issue?); the batch
+adversarial audit reproduced two real defects by running the mechanisms (the watcher silent exactly
+in its born-from scenario — pack current, host pin old; the mute gate's `#`-only comment strip
+defeated by a JS `//` comment). Every defect folded same-day; leftovers queued by name (row 356).
+
+**Workshop notes.** One commit slipped through on a red suite mid-run (a pipe ate pytest's exit
+code); caught on the next read, fixed forward — the standing rule is read the log's verdict before
+committing, as its own step. CI failed once after the release push: the config-health temp-repo
+tests skipped on the runner because the helper cleared GITHUB_ACTIONS but not CI; fixed in the
+close-out commit. The session hooks moved `scripts/` → `hooks/`; installers, pins, tests, and the
+shipped-language allowlist repointed the same landing.
+
+State at close: VERSION 2.1.0 pushed, suite 907 green, three adoption "go" wishes dropped
+(track-coach / tlvphotos / promoter, file-only per INV-174). Queue: rows 354 (architecture register
+debt, pre-existing) and 356 (gate-pass leftovers); one owner question held on the design-review
+record. Delegation (INV-103): the three gate passes, the kit implementation, the adoption-layout
+distillation, and the memory-index compaction draft ran as workers; every design call, spec
+sentence, and fold kept senior.
+
+
+## 2026-07-16 (morning) — the v2.1.0 movement (IN PROGRESS, not pushed): browser-mute gate, style-lint tiers, three prover lenses + the Fable audit
+
+A long solo session off Alexander's morning wishes plus a stream of live ideas. Landed as local commits
+toward v2.1.0 (batching the MINOR gate + version bump + one push to the end). Each its own commit, one row
+per landing.
+
+- **№5 browser-mute gate (INV-157 third net, row 337).** The recurring tlvphotos test-audio: the
+  muted-harness rule existed but shipped only as a template a consumer adopts, so a hand-rolled or forked
+  harness slipped it. Built `guardrails/check-muted-launch.sh` as a retroactive tree-scanner — it reds a
+  file whose code launches a real headless Chrome with the mute flag nowhere in it — wired as pre-push
+  gate l + CI. A fresh-eyes audit caught two machine-defeating evasions (a comment-only mute flag, a
+  docstring-only flag mention); folded (mute check on comment-stripped code, an invocation token required,
+  Chrome scope + honest boundary stated). This is the worked example of the retroactive-migration idea.
+- **Style-lint two tiers (INV-166, row 338).** Harvested track-coach's inbox wish: `--gate` conflated the
+  universal language laws with the pack's own register taste, so a host could not adopt the universal floor
+  as its push gate without rewriting an intentional voice. Split into `--tier universal` (universal-as-gate,
+  register advisory) and `--tier full` (alias `--gate`, unchanged). Universal tier = scissors,
+  negation-opener, machine-jargon, provenance-narrative.
+- **Prover lenses (rows 339, 340).** tlvphotos prover wish → INV-167 entry-state lens (a re-enterable
+  surface declares reset-vs-resume + entry focus/position; owned by spec-author, carried by the prover,
+  distinct from entry-symmetry INV-50 which tests only path existence). Then Alexander called the Fable
+  deep + adversarial audit of the prover ("пришло время"): its finding D1 named the class — the prover
+  checks the state graph's TOPOLOGY, not a transition's PAYLOAD, so the pack was minting one invariant per
+  shipped bug, the root being a platform default that silently becomes the behaviour and leaves the lenses
+  no written text to read. Folded the parent INV-168 (transition-payload lens) generalizing INV-165/167 as
+  instances. D2-D5 method defects + R1-R5 recommendations queued (docs/audit/2026-07-16-prover-fable.md).
+
+Cross-cutting, all from Alexander seeing that the pack STATES laws but does not ENFORCE their adoption into
+hosts:
+- Audited compaction-gate adoption in track-coach / tlvphotos / promoter: NONE adopted (skills synced to
+  2.0.0, the ratchet gates not wired, each project's own note marked wiring optional). Gates are MANDATORY
+  (his word, base rule 30); the enforcement-across-adoption hole is the real defect. The update-watcher
+  (№1), retroactive migration (№4), config-health gate, and the turnkey freeze-at-current-size adoption
+  package are the fixes (queued). Promoter can wire a default-mode gate now (its docs pass at 0); track-coach
+  and tlvphotos need the turnkey package (real backlog).
+- The «X, а не Y» scissors frame in chat enraged him — an empty intensifier reads as performing
+  instruction-compliance. Built a global scissors Stop-hook (`~/.claude/hooks/scissors-scan.py` +
+  settings.json) that flags the frame in an outgoing reply across all windows, plus a feedback memory. It
+  false-fires on a pattern-demo quoted inside «…» — hook tuning queued. Raised hook propagation: the pack
+  should ship canonical hooks to hosts via adoption (personal-profile hooks vs universal pack hooks).
+- Concurrency: several windows share ~/live-spec's one tree + one git index, so the inbox-notify mechanism
+  (built for a remote seat over git) collides locally — a neighbour sees a session's staged work. Committed
+  narrowly by explicit path throughout; a local inbox-notify variant is queued.
+
+State at stop: suite 850 green, tree clean, local commits ahead of origin, VERSION still 2.0.0. Batch close
+(MINOR gate + bump to 2.1.0 + one push + drop adoption-wishes) and the full queue live in NEXT_STEPS.md.
+Stopped on Alexander's word for a memory wipe + a fresh session. Memory is wipe-safe — the story is here,
+NEXT_STEPS.md, docs/prover/2026-07-16-*, and docs/audit/2026-07-16-prover-fable.md.
+
 ## 2026-07-16 ~01:15 IDT (opus lead + Fable/sonnet workers, autonomous /loop) — v2.0.0: the readability + compaction release (ROADMAP 336)
 
 Why a major, for a release that changes no runtime behaviour: 2.0.0 is the moment the living documents stopped being something attention had to keep clean and became something a gate keeps clean. The trigger was real pain — Alexander lost two manual days last week to spec bloat, redundant prose and index rows piling up because compaction only ran at the milestone. So the movement had two halves: clean the docs once, then make the cleanup a machine so no project (ours or an adopter's) re-bloats.
@@ -4616,118 +4745,3 @@ test-author determinism rule (1.0.5) · TEST_MATRIX M-301 · tests/test_flaky_te
 tests/test_no_retry_plugin.py · VERSION/plugin/spec-header 1.6.0. Suite 742 green. Record
 `docs/prover/2026-07-15-inv155-flaky-test.md`. Delegation (INV-103): the design and every fold judgment
 stayed senior; the independent adversarial prove, the downstream build, and the guardrail went to workers.
-
-## 2026-07-16 (morning) — the v2.1.0 movement (IN PROGRESS, not pushed): browser-mute gate, style-lint tiers, three prover lenses + the Fable audit
-
-A long solo session off Alexander's morning wishes plus a stream of live ideas. Landed as local commits
-toward v2.1.0 (batching the MINOR gate + version bump + one push to the end). Each its own commit, one row
-per landing.
-
-- **№5 browser-mute gate (INV-157 third net, row 337).** The recurring tlvphotos test-audio: the
-  muted-harness rule existed but shipped only as a template a consumer adopts, so a hand-rolled or forked
-  harness slipped it. Built `guardrails/check-muted-launch.sh` as a retroactive tree-scanner — it reds a
-  file whose code launches a real headless Chrome with the mute flag nowhere in it — wired as pre-push
-  gate l + CI. A fresh-eyes audit caught two machine-defeating evasions (a comment-only mute flag, a
-  docstring-only flag mention); folded (mute check on comment-stripped code, an invocation token required,
-  Chrome scope + honest boundary stated). This is the worked example of the retroactive-migration idea.
-- **Style-lint two tiers (INV-166, row 338).** Harvested track-coach's inbox wish: `--gate` conflated the
-  universal language laws with the pack's own register taste, so a host could not adopt the universal floor
-  as its push gate without rewriting an intentional voice. Split into `--tier universal` (universal-as-gate,
-  register advisory) and `--tier full` (alias `--gate`, unchanged). Universal tier = scissors,
-  negation-opener, machine-jargon, provenance-narrative.
-- **Prover lenses (rows 339, 340).** tlvphotos prover wish → INV-167 entry-state lens (a re-enterable
-  surface declares reset-vs-resume + entry focus/position; owned by spec-author, carried by the prover,
-  distinct from entry-symmetry INV-50 which tests only path existence). Then Alexander called the Fable
-  deep + adversarial audit of the prover ("пришло время"): its finding D1 named the class — the prover
-  checks the state graph's TOPOLOGY, not a transition's PAYLOAD, so the pack was minting one invariant per
-  shipped bug, the root being a platform default that silently becomes the behaviour and leaves the lenses
-  no written text to read. Folded the parent INV-168 (transition-payload lens) generalizing INV-165/167 as
-  instances. D2-D5 method defects + R1-R5 recommendations queued (docs/audit/2026-07-16-prover-fable.md).
-
-Cross-cutting, all from Alexander seeing that the pack STATES laws but does not ENFORCE their adoption into
-hosts:
-- Audited compaction-gate adoption in track-coach / tlvphotos / promoter: NONE adopted (skills synced to
-  2.0.0, the ratchet gates not wired, each project's own note marked wiring optional). Gates are MANDATORY
-  (his word, base rule 30); the enforcement-across-adoption hole is the real defect. The update-watcher
-  (№1), retroactive migration (№4), config-health gate, and the turnkey freeze-at-current-size adoption
-  package are the fixes (queued). Promoter can wire a default-mode gate now (its docs pass at 0); track-coach
-  and tlvphotos need the turnkey package (real backlog).
-- The «X, а не Y» scissors frame in chat enraged him — an empty intensifier reads as performing
-  instruction-compliance. Built a global scissors Stop-hook (`~/.claude/hooks/scissors-scan.py` +
-  settings.json) that flags the frame in an outgoing reply across all windows, plus a feedback memory. It
-  false-fires on a pattern-demo quoted inside «…» — hook tuning queued. Raised hook propagation: the pack
-  should ship canonical hooks to hosts via adoption (personal-profile hooks vs universal pack hooks).
-- Concurrency: several windows share ~/live-spec's one tree + one git index, so the inbox-notify mechanism
-  (built for a remote seat over git) collides locally — a neighbour sees a session's staged work. Committed
-  narrowly by explicit path throughout; a local inbox-notify variant is queued.
-
-State at stop: suite 850 green, tree clean, local commits ahead of origin, VERSION still 2.0.0. Batch close
-(MINOR gate + bump to 2.1.0 + one push + drop adoption-wishes) and the full queue live in NEXT_STEPS.md.
-Stopped on Alexander's word for a memory wipe + a fresh session. Memory is wipe-safe — the story is here,
-NEXT_STEPS.md, docs/prover/2026-07-16-*, and docs/audit/2026-07-16-prover-fable.md.
-
-## 2026-07-16 (day) — v2.1.0 SHIPPED: the enforcement release, the whole queue closed in one run
-
-Alexander's word at 12:00: work the whole NEXT_STEPS to done, on Fable. Sixteen landings
-(rows 341-355), the 2.1.0 bump, one release push (`fed1339`), all in one session.
-
-**The Fable prover-audit folds (rows 341-344).** D1 had landed the day before (INV-168); this
-session folded the rest. INV-169: feature intake asks the second-sibling question by construction —
-the intake of a kind's SECOND member was exactly where the design review stood down, so a sibling
-could ship and diverge unseen until the next full pass; a yes now draws the scoped review. INV-170:
-CROSS-LINK re-verifies the document's quantified claims ("every"/"only"/member lists) against the
-grown set — the enumeration form the uniformity lens itself demands was the staleness vector.
-INV-171 + R2: the ~19-lens stress wall split into five mandatory sweeps, each owing a verdict line
-(hit / clean / N/A-with-reason) rendered as a surface × sweep table, the five lifecycle lenses
-gathered under the transition-payload parent with anchors kept; FULL — the heaviest mode — had
-owed no per-lens accountability while FEATURE-FIT owed a verdict per lens. Six point fixes
-(row 343): the surface-authority fallback is a stated assumption (the clear-evidence gate
-self-disarmed exactly on the author who forgot the registry), 3d probes overlapping-data agreement,
-the KIND block names the paired-transition blocking split, FEATURE-FIT scopes its consistency
-exclusion and cites pinned clauses on shipped systems, the FULL summary reports [default] accretion.
-
-**The adoption spine (row 345, INV-172/173).** The pack stated its gates mandatory but adoption
-never installed them (track-coach 126 / tlvphotos 79 register errors, no gate). One pass now wires
-them: `adopt/install-ratchet.sh` vendors the lint/redundancy/freeze trio with a source-pin manifest,
-seeds the caps at the size measured that moment — green at once, tightening-only — and generates the
-guard test. Hooks gained one canonical home `hooks/` with an installer; the universal/personal split
-puts the English contrast scan in the pack and the owner's Russian patterns in a personal overlay
-file the installer never touches; the scan hook skips quoted demos (the known false-fire). INV-169
-fired on its own first live intake: the kit is the second installable kit beside scaffold/guardrails,
-and the drawn scoped design review's one recommendation (one manifest over both kits) folded into
-INV-177.
-
-**The co-located seams (row 346, INV-174/175).** The inbox's local arm: a same-filesystem depositor
-writes its one file and stops — the commit road raced the shared index. Config-health: the installed
-pre-push was found missing gates k and l — the red-first proof came from the live tree itself; the
-check now reds a missing or drifted installed hook, runs inside the suite and as gate m, and the
-commit fence stops a staged file carrying unstaged edits.
-
-**The tail (rows 347-353).** INV-176 retroactive gates (a law's gate scans the whole tree — the mute
-gate generalized); INV-177 the update watcher reads the vendored pins; INV-178 version-is-one-fact
-(ten skills carried ten unrelated numbers; the stamp + guard test end it); the seat law sharpened
-(a remote seat shows textually by construction, re-detect after any move); base scope pinned
-pack-internal; the guardrails README enumerates all thirteen gates (it said "five"); INV-179
-collector anonymization (host entities masked in the draft the user reads at consent).
-
-**The 2.1.0 gate (row 355).** Three fresh independent passes: the full prover ran the FIRST INV-171
-verdict table (all five sweeps, 15 surfaces; 4 defects — every stale enumeration a MEMBER add, so
-INV-170 widened to fire on member adds); the full design review (4 groups, 1 question held for
-Alexander: should the stranger arm carry the capture echo back to its source Issue?); the batch
-adversarial audit reproduced two real defects by running the mechanisms (the watcher silent exactly
-in its born-from scenario — pack current, host pin old; the mute gate's `#`-only comment strip
-defeated by a JS `//` comment). Every defect folded same-day; leftovers queued by name (row 356).
-
-**Workshop notes.** One commit slipped through on a red suite mid-run (a pipe ate pytest's exit
-code); caught on the next read, fixed forward — the standing rule is read the log's verdict before
-committing, as its own step. CI failed once after the release push: the config-health temp-repo
-tests skipped on the runner because the helper cleared GITHUB_ACTIONS but not CI; fixed in the
-close-out commit. The session hooks moved `scripts/` → `hooks/`; installers, pins, tests, and the
-shipped-language allowlist repointed the same landing.
-
-State at close: VERSION 2.1.0 pushed, suite 907 green, three adoption "go" wishes dropped
-(track-coach / tlvphotos / promoter, file-only per INV-174). Queue: rows 354 (architecture register
-debt, pre-existing) and 356 (gate-pass leftovers); one owner question held on the design-review
-record. Delegation (INV-103): the three gate passes, the kit implementation, the adoption-layout
-distillation, and the memory-index compaction draft ran as workers; every design call, spec
-sentence, and fold kept senior.

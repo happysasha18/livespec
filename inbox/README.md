@@ -18,7 +18,10 @@ commit, no push — the assigned session's sweep commits the harvest itself, and
 disk from the moment it is written. **From a separate clone,** commit your one new file (a commit touching
 inbox/ only, message naming the source) — that commit is part of the exception. A live-spec session sweeps this folder as its first act, harvests each file into the home
 its route owns (a wish into a ROADMAP row, feedback by the routing law — SPEC T-20), and removes the file
-in the harvest commit (git history keeps it).
+in the harvest commit (git history keeps it). An item that arrived from a stranger's Issue is answered on
+that Issue too: the sweeping session posts the capture echo (heard · door · name · row) as a comment at
+harvest, and the session that lands the row closes the Issue at its terminal exit — each write under the
+session's own package-repo auth (SPEC INV-147).
 
 **From a remote seat, over git.** A remote seat reaches a repo only through git, so it also pushes.
 The deposit stays one new file here, committed touching inbox/ only with the source named, and then pushed

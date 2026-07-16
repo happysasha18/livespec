@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 2.1.0
+  version: 2.1.1
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.1.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.1.1), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 

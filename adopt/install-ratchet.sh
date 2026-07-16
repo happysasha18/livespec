@@ -119,19 +119,6 @@ def sha256_of(path):
     return h.hexdigest()
 
 
-vendored_sha = {rel: sha256_of(os.path.join(host_root, rel)) for rel in VENDOR_FILES}
-
-# The scaffold kit's files, where the host carries them, join the manifest (the design-review
-# recommendation of 2026-07-16: one source-pin mechanism covers both installable kits, so the
-# update watcher reads one file). Informational pins; this installer never vendors them.
-SCAFFOLD_NAMES = ("check_completeness.py", "check_tests_present.py",
-                  "check_traces_to_spec.py", "check_conflicts.py", "gate_lib.py")
-for d in ("scaffold/guardrails", "guardrails"):
-    for name in SCAFFOLD_NAMES:
-        rel = os.path.join(d, name)
-        p = os.path.join(host_root, rel)
-        if os.path.isfile(p) and rel not in vendored_sha:
-            vendored_sha[rel] = sha256_of(p)
 pack_version = open(os.path.join(pack_root, "VERSION"), encoding="utf-8").read().strip()
 
 scripts_dir = os.path.join(host_root, "scripts")
@@ -139,13 +126,54 @@ tests_dir = os.path.join(host_root, "tests")
 os.makedirs(scripts_dir, exist_ok=True)
 os.makedirs(tests_dir, exist_ok=True)
 
-manifest = {
-    "pack_version": pack_version,
-    "vendored": vendored_sha,
-    "seeded": {"style_errors": style_errors, "redundancy_open": redundancy_open},
-    "tier": tier,
-}
-with open(os.path.join(scripts_dir, "ratchet-manifest.json"), "w", encoding="utf-8") as f:
+# The manifest is MERGED, never rebuilt from scratch: a scaffold install (adopt/install-scaffold.sh)
+# may already have pinned its checks here, and a fresh ratchet run must not drop those keys (the
+# 2026-07-16 defect — a from-scratch rebuild silently dropped a prior scaffold install's keys). Read
+# whatever manifest exists, update only this installer's own entries, and leave every other prior
+# entry — scaffold's pack-relative keys included — exactly as found.
+manifest_path = os.path.join(scripts_dir, "ratchet-manifest.json")
+manifest = {"pack_version": pack_version, "vendored": {}}
+if os.path.isfile(manifest_path):
+    try:
+        manifest = json.load(open(manifest_path, encoding="utf-8"))
+    except (OSError, ValueError):
+        manifest = {"pack_version": pack_version, "vendored": {}}
+vendored = manifest.setdefault("vendored", {})
+
+# The scaffold kit's files, where the host carries them, join the manifest (the design-review
+# recommendation of 2026-07-16: one source-pin mechanism covers both installable kits, so the
+# update watcher reads one file). Informational pins; this installer never vendors them.
+SCAFFOLD_NAMES = ("check_completeness.py", "check_tests_present.py",
+                  "check_traces_to_spec.py", "check_conflicts.py", "gate_lib.py")
+
+# Dedupe first: a host-relative guardrails/<name> pin never resolves against the pack (only the
+# pack-relative scaffold/guardrails/<name> form does) — drop either dir form of a prior scaffold-check
+# key before re-pinning, mirroring install-scaffold.sh's own dedupe, so a host that hit the old
+# opportunistic host-relative pin gets it cleaned up here too.
+for key in list(vendored):
+    base = os.path.basename(key)
+    d = os.path.dirname(key)
+    if base in SCAFFOLD_NAMES and d in ("guardrails", "scaffold/guardrails"):
+        del vendored[key]
+
+# This installer's own vendored set is always current.
+for rel in VENDOR_FILES:
+    vendored[rel] = sha256_of(os.path.join(host_root, rel))
+
+# Re-derive scaffold pins from whatever the host actually carries, always under the pack-relative
+# key so the watcher resolves it against the pack checkout, never a host path.
+for name in SCAFFOLD_NAMES:
+    for d in ("scaffold/guardrails", "guardrails"):
+        p = os.path.join(host_root, d, name)
+        if os.path.isfile(p):
+            vendored["scaffold/guardrails/%s" % name] = sha256_of(p)
+            break
+
+manifest["pack_version"] = pack_version
+manifest["seeded"] = {"style_errors": style_errors, "redundancy_open": redundancy_open}
+manifest["tier"] = tier
+
+with open(manifest_path, "w", encoding="utf-8") as f:
     json.dump(manifest, f, indent=2)
     f.write("\n")
 print("wrote scripts/ratchet-manifest.json")
@@ -240,22 +268,143 @@ with open(os.path.join(tests_dir, "test_ratchet_lock.py"), "w", encoding="utf-8"
 print("wrote tests/test_ratchet_lock.py")
 PYEOF
 
-# --- step f: wire (or recommend) the pre-push gate ------------------------------------------------
+# --- step f: wire (repair, or recommend) the pre-push gate -----------------------------------------
+# Never blind-append: a host pre-push commonly ends in a terminating `exit` (a bare `exit N`, or a
+# final `if [ "$fail" ... ]; then ... exit 1; fi` fail-check) and appending past that point is dead
+# code — the installer reports "wired" while the gate never runs (2026-07-16 track-coach report,
+# inbox/2026-07-16-from-track-coach-install-ratchet-appends-past-exit.md). The insertion ladder:
+# before a trailing fail-check if one is found; else above a trailing bare exit; else append (the
+# plain-EOF case). When neither anchor is safe, print the manual recipe instead of guessing.
+# Idempotency keys off a stable marker comment, tolerant of the human label's wording drift; a
+# marker (or drifted label) found in a dead position — past a top-level exit — is REPAIRED: moved
+# to the safe anchor, not left dead.
 PRE_PUSH="$HOST_ROOT/guardrails/pre-push"
 if [ -f "$PRE_PUSH" ]; then
-  if grep -q "gate r — ratchet caps" "$PRE_PUSH"; then
-    echo "already wired: guardrails/pre-push gate r — ratchet caps"
-  else
-    {
-      echo ""
-      echo "echo \"\""
-      echo "echo \"-- gate r — ratchet caps --\""
-      echo "if ! python3 -m pytest -q tests/test_ratchet_lock.py; then"
-      echo "  fail=1"
-      echo "fi"
-    } >> "$PRE_PUSH"
-    echo "wired: guardrails/pre-push gate r — ratchet caps"
-  fi
+  GATE_R_STATUS="$(python3 - "$PRE_PUSH" << 'PYEOF'
+import re
+import sys
+
+path = sys.argv[1]
+MARKER = "# live-spec:gate-r"
+LABEL_RE = re.compile(r"gate\s*r\W{0,3}ratchet caps", re.IGNORECASE)
+FAIL_CHECK_RE = re.compile(r'^if\s*\[\s*"\$fail"\s*-ne\s*0\s*\]\s*;\s*then\b')
+TOPLEVEL_EXIT_RE = re.compile(r'^exit\s+\d+\s*;?\s*(#.*)?$')
+
+BLOCK_LINES = [
+    "",
+    MARKER,
+    'echo ""',
+    'echo "-- gate r — ratchet caps --"',
+    "if ! python3 -m pytest -q tests/test_ratchet_lock.py; then",
+    "  fail=1",
+    "fi",
+]
+
+
+def read_lines(p):
+    with open(p, encoding="utf-8") as f:
+        return f.read().splitlines()
+
+
+def write_lines(p, lines):
+    with open(p, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+
+def find_existing(lines):
+    """Index of any line naming the marker or the human label — tolerant of label wording drift."""
+    for i, line in enumerate(lines):
+        if line.strip() == MARKER or LABEL_RE.search(line):
+            return i
+    return None
+
+
+def block_bounds(lines, idx):
+    """Expand to the whole contiguous non-blank run containing idx — the installed block's shape,
+    old label-only style or new marker style alike, is one paragraph with blank lines around it."""
+    start = idx
+    while start > 0 and lines[start - 1].strip() != "":
+        start -= 1
+    end = idx + 1
+    while end < len(lines) and lines[end].strip() != "":
+        end += 1
+    return start, end
+
+
+def find_anchor(lines):
+    """Return (kind, index): index to insert BEFORE ('fail_check'/'trailing_exit'), 'append' means
+    at end (index == len(lines)), 'ambiguous' means no safe anchor was found (index is None)."""
+    fail_idx = None
+    for i, line in enumerate(lines):
+        if FAIL_CHECK_RE.match(line.strip()):
+            fail_idx = i  # keep the LAST match
+    if fail_idx is not None:
+        return ("fail_check", fail_idx)
+
+    last_i = len(lines) - 1
+    while last_i >= 0 and lines[last_i].strip() == "":
+        last_i -= 1
+    if last_i >= 0 and TOPLEVEL_EXIT_RE.match(lines[last_i]):
+        return ("trailing_exit", last_i)
+
+    for line in lines:
+        if TOPLEVEL_EXIT_RE.match(line):
+            return ("ambiguous", None)
+
+    return ("append", len(lines))
+
+
+def insert_at(lines, kind, idx):
+    if kind == "append":
+        return lines + BLOCK_LINES
+    return lines[:idx] + BLOCK_LINES + lines[idx:]
+
+
+try:
+    lines = read_lines(path)
+    existing = find_existing(lines)
+
+    if existing is not None:
+        start, end = block_bounds(lines, existing)
+        dead = any(TOPLEVEL_EXIT_RE.match(lines[i]) for i in range(start))
+        if not dead:
+            print("already-wired")
+            sys.exit(0)
+        stripped = lines[:start] + lines[end:]
+        kind, idx = find_anchor(stripped)
+        if kind == "ambiguous":
+            print("manual")
+            sys.exit(0)
+        write_lines(path, insert_at(stripped, kind, idx))
+        print("repaired")
+        sys.exit(0)
+
+    kind, idx = find_anchor(lines)
+    if kind == "ambiguous":
+        print("manual")
+        sys.exit(0)
+    write_lines(path, insert_at(lines, kind, idx))
+    print("wired")
+except Exception:
+    print("manual")
+PYEOF
+)"
+  case "$GATE_R_STATUS" in
+    wired)
+      echo "wired: guardrails/pre-push gate r — ratchet caps"
+      ;;
+    already-wired)
+      echo "already wired: guardrails/pre-push gate r — ratchet caps"
+      ;;
+    repaired)
+      echo "repaired: guardrails/pre-push gate r — ratchet caps (was past a terminating exit, dead; moved to a safe anchor)"
+      ;;
+    manual|*)
+      echo "guardrails/pre-push has no safe wiring point (an unclear tail) — add this recipe by hand:"
+      echo "  echo \"-- gate r — ratchet caps --\""
+      echo "  python3 -m pytest -q tests/test_ratchet_lock.py || fail=1"
+      ;;
+  esac
 else
   echo "no guardrails/pre-push found — add this recipe to your own push gate:"
   echo "  echo \"-- gate r — ratchet caps --\""

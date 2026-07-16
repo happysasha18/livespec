@@ -39,6 +39,25 @@ def main():
         if new != body:
             open(path, "w", encoding="utf-8").write(new)
             changed += 1
+    # The plugin manifest is another stamped copy of the one fact; before this line it was
+    # hand-edited at each bump and missed at 2.1.1 (the guard test caught it).
+    plugin_path = os.path.join(ROOT, ".claude-plugin", "plugin.json")
+    if os.path.isfile(plugin_path):
+        body = open(plugin_path, encoding="utf-8").read()
+        new, n = re.subn(r'("version":\s*")\d+\.\d+\.\d+(")', r"\g<1>" + version + r"\g<2>", body)
+        if n and new != body:
+            print("plugin.json: version stamped to %s" % version)
+            open(plugin_path, "w", encoding="utf-8").write(new)
+            changed += 1
+    # The spec's title line carries the same stamped copy (the guard test reads "vX.Y.Z, ").
+    spec_path = os.path.join(ROOT, "PRODUCT_SPEC.md")
+    if os.path.isfile(spec_path):
+        body = open(spec_path, encoding="utf-8").read()
+        new, n = re.subn(r"(\(v)\d+\.\d+\.\d+(, )", r"\g<1>" + version + r"\g<2>", body, count=1)
+        if n and new != body:
+            print("PRODUCT_SPEC.md: title version stamped to %s" % version)
+            open(spec_path, "w", encoding="utf-8").write(new)
+            changed += 1
     print("stamp-versions: %d file(s) stamped to %s" % (changed, version))
     return 0
 

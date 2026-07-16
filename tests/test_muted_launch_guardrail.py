@@ -164,3 +164,127 @@ def test_js_real_mute_still_passes():
         name="harness.js",
     )
     assert r.returncode == 0, "a really muted JS launch was falsely flagged"
+
+
+# --- F5 (2026-07-16 batch audit, row 356): the extensionless-shebang scope hole -------------------
+#
+# The default (no-arg) scan selects files with `git ls-files '*.sh' '*.py' ... 'scripts/*'` — an
+# extension allowlist. A tracked, extensionless, shebang-first-line script OUTSIDE scripts/ (a real
+# executable, e.g. `bin/serve`) matches none of those patterns and was never read by the scan, so it
+# could drive a real headless browser unmuted with the gate staying green. `_scan()` above can't
+# exercise this: it hands the guardrail a single-file target, which bypasses the git-ls-files
+# extension gate entirely regardless of extension. These tests build a real throwaway git tree (the
+# pattern in tests/test_guardrails.py) and run the guardrail with NO target, so it takes the same
+# default/no-arg path the push gate uses.
+
+def _init_repo(tmp):
+    subprocess.run(["git", "init", "-q"], cwd=tmp)
+    subprocess.run(["git", "config", "user.email", "a@example.com"], cwd=tmp)
+    subprocess.run(["git", "config", "user.name", "a"], cwd=tmp)
+
+
+def _write(tmp, relpath, content):
+    path = os.path.join(tmp, relpath)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
+    return path
+
+
+def _commit_all(tmp, msg):
+    subprocess.run(["git", "add", "-A"], cwd=tmp)
+    subprocess.run(["git", "commit", "-q", "-m", msg], cwd=tmp)
+
+
+def test_extensionless_shebang_script_outside_scripts_dir_is_scanned():
+    # The F5 red: a tracked, extensionless, shebang-first-line launcher outside scripts/, carrying an
+    # unmuted real headless-Chrome launch, must red the default scan the same as a `.py` file does.
+    with tempfile.TemporaryDirectory() as tmp:
+        _init_repo(tmp)
+        _write(
+            tmp,
+            "bin/serve",
+            "#!/usr/bin/env python3\n"
+            "import subprocess\n"
+            "subprocess.Popen(['chrome', '--headless', '--remote-debugging-port=9222'])\n",
+        )
+        os.chmod(os.path.join(tmp, "bin", "serve"), 0o755)
+        _commit_all(tmp, "add extensionless launcher")
+        r = subprocess.run(["bash", GUARD], cwd=tmp, capture_output=True, text=True)
+        assert r.returncode != 0, (
+            "an extensionless tracked shebang script outside scripts/ escaped the scan entirely — "
+            "the F5 extension-allowlist scope hole:\n" + r.stdout + r.stderr
+        )
+        assert "bin/serve" in (r.stdout + r.stderr)
+
+
+def test_extensionless_shebang_muted_launch_passes():
+    with tempfile.TemporaryDirectory() as tmp:
+        _init_repo(tmp)
+        _write(
+            tmp,
+            "bin/serve",
+            "#!/usr/bin/env python3\n"
+            "import subprocess\n"
+            "subprocess.Popen(['chrome', '--headless', '--remote-debugging-port=9222', '--mute-audio'])\n",
+        )
+        os.chmod(os.path.join(tmp, "bin", "serve"), 0o755)
+        _commit_all(tmp, "add extensionless muted launcher")
+        r = subprocess.run(["bash", GUARD], cwd=tmp, capture_output=True, text=True)
+        assert r.returncode == 0, r.stdout + r.stderr
+
+
+def test_extensionless_node_shebang_routes_to_js_comment_rules():
+    # The checker picks its checker by the shebang interpreter: a `#!/usr/bin/env node` extensionless
+    # file is JS, so a `// --mute-audio` LINE COMMENT must not satisfy the mute check (JS-comment
+    # stripping), the same regression test_js_comment_only_mute_still_reds pins for a real `.js` file.
+    # A default `#`-stripper misreads this file's `//` comment as live code and would wrongly pass it.
+    with tempfile.TemporaryDirectory() as tmp:
+        _init_repo(tmp)
+        _write(
+            tmp,
+            "bin/harness",
+            "#!/usr/bin/env node\n"
+            "// TODO: someday add --mute-audio here\n"
+            "const b = await puppeteer.launch({ args: ['--headless', '--remote-debugging-port=9222'] });\n",
+        )
+        os.chmod(os.path.join(tmp, "bin", "harness"), 0o755)
+        _commit_all(tmp, "add extensionless node launcher")
+        r = subprocess.run(["bash", GUARD], cwd=tmp, capture_output=True, text=True)
+        assert r.returncode != 0, (
+            "an extensionless node-shebang file with a comment-only --mute-audio was falsely passed — "
+            "the checker did not route it to JS comment-stripping:\n" + r.stdout + r.stderr
+        )
+
+
+def test_extensionless_shebang_inside_scripts_dir_still_covered():
+    # scripts/* already matched every file under scripts/ regardless of extension before this fold;
+    # the extensionless-shebang addition must not regress or double-report that existing coverage.
+    with tempfile.TemporaryDirectory() as tmp:
+        _init_repo(tmp)
+        _write(
+            tmp,
+            "scripts/serve",
+            "#!/usr/bin/env python3\n"
+            "import subprocess\n"
+            "subprocess.Popen(['chrome', '--headless', '--remote-debugging-port=9222'])\n",
+        )
+        os.chmod(os.path.join(tmp, "scripts", "serve"), 0o755)
+        _commit_all(tmp, "add extensionless scripts/ launcher")
+        r = subprocess.run(["bash", GUARD], cwd=tmp, capture_output=True, text=True)
+        assert r.returncode != 0, r.stdout + r.stderr
+        hit_lines = [l for l in (r.stdout + r.stderr).splitlines() if "scripts/serve" in l]
+        assert len(hit_lines) == 1, "scripts/serve reported more than once: " + repr(hit_lines)
+
+
+def test_extensionless_file_with_no_shebang_is_not_swept_in():
+    # a tracked extensionless file that ISN'T a script (no shebang first line) must stay out of scope,
+    # same as before this fold — only a real shebang marks it executable code to scan.
+    with tempfile.TemporaryDirectory() as tmp:
+        _init_repo(tmp)
+        _write(tmp, "NOTES", "--headless --remote-debugging-port=9222 subprocess.Popen(\n")
+        _commit_all(tmp, "add extensionless non-script")
+        r = subprocess.run(["bash", GUARD], cwd=tmp, capture_output=True, text=True)
+        assert r.returncode == 0, (
+            "a non-shebang extensionless file was swept into the scan: " + r.stdout + r.stderr
+        )

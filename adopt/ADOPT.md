@@ -222,6 +222,20 @@ Done when: `ARCHITECTURE.md` exists with every spec fact owned (prover-lensed), 
 
 ---
 
+**First attach the four project-side checks, in one command (SPEC INV-97).** From the host root:
+`bash <pack>/adopt/install-scaffold.sh`. The four checks are the pipeline's mechanical teeth as code a
+host runs rather than prose it re-implements — **completeness** (a registered surface is absent, empty,
+or rendered-but-unregistered), **tests-present** (a user-facing change with no test beside it),
+**behaviour-traces-to-spec** (a registry row citing no anchor or a dead one), and **conflicts**
+(duplicate anchors, an indexed invariant no matrix row cites, a resolved line still marked to decide).
+The installer vendors the four checks and their shared library into the host's `guardrails/`, seeds
+`guardrails.config.json` from the example where the host carries none (a filled config is never
+clobbered), and writes or merges the host's source pins into `scripts/ratchet-manifest.json` — pack
+version plus content hash per check — so the daily update check reads this kit too (SPEC INV-177). The
+remaining manual steps the installer prints: fill your real paths in the config, run each check once,
+prove one red-first (plant a fake registry row, watch `check_completeness.py` red, remove it), and add
+the four check lines to the host's pre-push hook. Config-only attach runs about fifteen minutes.
+
 **Then wire the ratchet gates, seeded at the host's current size (SPEC INV-172).** One pass, from the
 host root: `bash <pack>/adopt/install-ratchet.sh [--tier universal] [DOC...]`. It vendors the style
 lint, the redundancy precheck, the freeze tool, and their shared library into the host's tree (each
