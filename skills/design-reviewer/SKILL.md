@@ -24,7 +24,8 @@ The design review runs at the prove station, right after the prover's pass, over
 
 - **The prover's FULL review mode** (a MINOR gate, a structural rewrite, "review the spec") → the full design review: the whole element inventory, every proposed grouping. It also slots into the pre-MINOR audit beside the surface-composition check. The cadence keys to the prover's FULL *mode* by name, not to any pass that merely re-reads the whole spec — the M-6 push-gate re-check re-reads the whole document but is its own mode, and the design review stands down there (below).
 - **A surface add** → the scoped design review: the new surface's elements read against the existing inventory only. The catch that bore this pass arrived as a surface add, so waiting for the milestone forfeits it.
-- **Feature intake and the push gate** → the design review stands down. Intake validates fit; the M-6 push-gate re-check re-reads the whole spec as its own mode, which is not the prover's FULL mode, so it does not re-fire the design review; neither is the moment for concept critique.
+- **Feature intake** → the design review stands down, with one exception: when FEATURE-FIT's second-sibling question answers yes — the delta adds a second member of a kind an existing surface already has — intake draws the scoped design review over the delta's elements against the existing inventory (SPEC INV-169). The intake of a second member is the moment an undeclared grouping is born, and it was exactly the moment this pass used to stand down; the exception closes that window. A delta with no such sibling validates fit alone.
+- **The push gate** → the design review stands down. The M-6 push-gate re-check re-reads the whole spec as its own mode, which is not the prover's FULL mode, so it does not re-fire the design review; neither is it the moment for concept critique.
 
 ## When NOT to use
 
