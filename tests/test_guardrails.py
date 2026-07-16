@@ -29,6 +29,65 @@ def run(args, cwd=None, extra_env=None):
     )
 
 
+GATE_MACHINERY_PREFIXES = (
+    "guardrails/",
+    "scaffold/guardrails/",
+    "guardrails.config.json",
+    ".github/workflows/",
+    "tests/test_guardrails.py",
+)
+
+
+def gate_machinery_diff(files):
+    """SPEC INV-45 / M-345 (row 362 arm 2): classifies whether a diff touches gate machinery —
+    the class the suite-in-suite meta-test (TestGateB_Tests' scratch runs) exists to guard.
+    Returns (should_run: bool, reason: str). An empty file list is CONSERVATIVE (should_run=True)
+    — an unreadable diff must never silently skip the meta-test."""
+    if not files:
+        return True, "conservative: empty or unreadable diff — the meta-test runs by default"
+    for f in files:
+        for prefix in GATE_MACHINERY_PREFIXES:
+            if f == prefix or f.startswith(prefix):
+                return True, "gate-machinery diff: '%s' matches %s" % (f, prefix)
+    return False, (
+        "suite-in-suite meta-test: the diff touches no gate-machinery file (guardrails/, "
+        "scaffold/guardrails/, guardrails.config.json, workflows, or this file) — skipped by "
+        "reach, SPEC INV-45 / M-345"
+    )
+
+
+def _push_diff_files():
+    """The files this push's diff touches: the committed delta against origin/main UNION the
+    working tree's own uncommitted changes — so a meta-test decision made mid-session (before a
+    commit) still sees the real footprint. META_REACH_FILES (newline-separated) overrides both
+    for tests. Any git error returns [] — CONSERVATIVE, since gate_machinery_diff([]) always
+    runs."""
+    override = os.environ.get("META_REACH_FILES")
+    if override is not None:
+        return [f for f in override.split("\n") if f]
+    try:
+        diff = subprocess.run(
+            ["git", "diff", "--name-only", "origin/main...HEAD"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        status = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        if diff.returncode != 0 or status.returncode != 0:
+            return []
+        files = set(f for f in diff.stdout.splitlines() if f)
+        for line in status.stdout.splitlines():
+            path = line[3:]  # porcelain: 2-char status + space, then the path
+            if " -> " in path:  # a rename: "old -> new" — the new side is what's live now
+                path = path.split(" -> ", 1)[1]
+            if path:
+                files.add(path)
+        return sorted(files)
+    except OSError:
+        return []
+
+
 class TestGuardrailFilesShip(unittest.TestCase):
     HOOKS = ("pre-commit", "pre-push")
     SCRIPTS = (
@@ -218,8 +277,17 @@ class TestGateB_Tests(unittest.TestCase):
         if os.environ.get("LIVE_SPEC_SCRATCH"):
             self.skipTest("inner scratch run — recursion guard")
 
+    def _skip_unless_gate_machinery_diff(self):
+        """Row 362 arm 2 (M-345): these two scratch runs re-run the WHOLE suite in a scratch
+        copy — expensive — so they ride the reach map like the gate they guard: fire only when
+        the diff touches gate machinery, skip under a named reason otherwise."""
+        should_run, reason = gate_machinery_diff(_push_diff_files())
+        if not should_run:
+            self.skipTest(reason)
+
     def test_real_content_passes(self):
         self._skip_if_inner()
+        self._skip_unless_gate_machinery_diff()
         with tempfile.TemporaryDirectory() as tmp:
             scratch_tests = self._scratch_tests_dir(tmp)
             result = run([os.path.join(GUARDRAILS, "check-tests.sh"), scratch_tests],
@@ -229,6 +297,7 @@ class TestGateB_Tests(unittest.TestCase):
 
     def test_broken_suite_fails(self):
         self._skip_if_inner()
+        self._skip_unless_gate_machinery_diff()
         with tempfile.TemporaryDirectory() as tmp:
             scratch_tests = self._scratch_tests_dir(tmp)
             target = os.path.join(scratch_tests, "test_traceability.py")
@@ -558,15 +627,63 @@ class TestGateReachMap(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
     def test_tested_documents_stay_full_reach(self):
+        # guardrails/pre-push and tests/test_traceability.py moved off this list at row 362
+        # (M-344): both are now the INFRA class and ride the scoped middle road (exit 2), not
+        # FULL — see the test_scoped_reach_* methods below for their scoped-verdict coverage.
+        # The documents remaining here are genuinely outside PROSE union INFRA and must still
+        # force FULL.
         for f in ("PRODUCT_SPEC.md", "TEST_MATRIX.md", "ARCHITECTURE.md", "ROADMAP.md",
-                  "skills/publish/SKILL.md", "tests/test_traceability.py",
-                  "guardrails/pre-push", "JOURNAL.md", "NEXT_STEPS.md"):
+                  "skills/publish/SKILL.md", "JOURNAL.md", "NEXT_STEPS.md"):
             r = self.reach("README.md\n" + f)
             self.assertEqual(r.returncode, 1, "%s must force FULL, got: %s" % (f, r.stdout))
 
     def test_unknown_and_empty_fall_to_full(self):
         self.assertEqual(self.reach("something/new-place.txt").returncode, 1)
         self.assertEqual(self.reach("\n").returncode, 1)
+
+    def test_scoped_reach_guardrails_diff_exits_scoped(self):
+        # row 362 (M-344): a lone INFRA change scopes to the test files that name it (found by
+        # basename, one referrer level deep) plus the traceability net — never full.
+        r = self.reach("guardrails/check-muted-launch.sh")
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertIn("SCOPED tests/test_muted_launch_guardrail.py", r.stdout)
+        self.assertIn("SCOPED tests/test_traceability.py", r.stdout)
+
+    def test_scoped_reach_unnamed_file_falls_full(self):
+        # an INFRA file no test names (directly or via a referrer) is not safely scopable —
+        # conservative fall-through to FULL, naming the untested file. Built via concatenation
+        # so the fixture's own basename never sits as one literal token in this file — that
+        # would make THIS file its own "owning test" via the grep-by-basename search and
+        # defeat the fixture's whole point (an infra file NO test names).
+        fname = "guardrails/zz-nothing-names-me" + ".sh"
+        r = self.reach(fname)
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn(fname, r.stdout)
+
+    def test_scoped_reach_mixed_diff_falls_full(self):
+        # a diff outside PROSE union INFRA (PRODUCT_SPEC.md here) still forces FULL even
+        # alongside a scopable INFRA file.
+        r = self.reach("guardrails/check-muted-launch.sh\nPRODUCT_SPEC.md")
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+
+
+class TestGateMachineryReach(unittest.TestCase):
+    """Row 362 arm 2 (M-345): the gate-machinery classifier that decides whether the
+    suite-in-suite meta-test (TestGateB_Tests' scratch runs) fires on this diff."""
+
+    def test_meta_reach_fires_on_gate_machinery_diff(self):
+        should_run, _reason = gate_machinery_diff(["guardrails/check-tests.sh"])
+        self.assertTrue(should_run)
+
+    def test_meta_reach_skips_off_class_with_named_reason(self):
+        should_run, reason = gate_machinery_diff(["README.md", "docs/x.md"])
+        self.assertFalse(should_run)
+        self.assertIn("gate-machinery", reason)
+        self.assertIn("INV-45", reason)
+
+    def test_meta_reach_conservative_on_empty_diff(self):
+        should_run, _reason = gate_machinery_diff([])
+        self.assertTrue(should_run)
 
 
 class TestPytestFromRoot(unittest.TestCase):
@@ -857,3 +974,19 @@ class TestGateShippedLanguage(unittest.TestCase):
         result = run(["python3", self.ENGINE, "--root", ROOT])
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('"offences":0', result.stdout.replace(" ", ""))
+
+
+class TestScopedReachDeletedFile(unittest.TestCase):
+    """Audit fold (2.3.0 audit, finding 6): a deleted test file in the diff must never be handed to
+    pytest as its own owner — a nonexistent path reds collection, a false red. It falls through to
+    by-name discovery and, unowned, to FULL (conservative)."""
+
+    SCRIPT = os.path.join(GUARDRAILS, "check-push-reach.sh")
+
+    def test_scoped_reach_deleted_test_file_falls_full(self):
+        # the fixture name is assembled at runtime so no test file carries it literally — a
+        # by-content grep must find NO owner for a genuinely deleted, unreferenced test file
+        ghost = "tests/test_zz_" + "deleted_nonexistent.py"
+        r = run(["bash", self.SCRIPT], extra_env={"REACH_FILES": ghost})
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertNotIn("SCOPED " + ghost, r.stdout)

@@ -25,13 +25,27 @@ fi
 
 echo ""
 echo "-- gate b: test suite green (scoped by the diff's reach, SPEC INV-45) --"
-if "$GUARDRAILS/check-push-reach.sh"; then
-  echo "   prose-only diff: the suite stands down by name; every other gate still runs."
-else
-  if ! "$GUARDRAILS/check-tests.sh"; then
-    fail=1
-  fi
-fi
+set +e
+reach_out="$("$GUARDRAILS/check-push-reach.sh")"
+reach_code=$?
+set -e
+echo "$reach_out"
+case "$reach_code" in
+  0)
+    echo "   prose-only diff: the suite stands down by name; every other gate still runs."
+    ;;
+  2)
+    scoped_files="$(printf '%s\n' "$reach_out" | sed -n 's/^SCOPED //p')"
+    if ! SCOPED_TEST_FILES="$scoped_files" "$GUARDRAILS/check-tests.sh"; then
+      fail=1
+    fi
+    ;;
+  *)
+    if ! "$GUARDRAILS/check-tests.sh"; then
+      fail=1
+    fi
+    ;;
+esac
 
 echo ""
 echo "-- gate c: every spec anchor owned by exactly one architecture node --"
