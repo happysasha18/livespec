@@ -4665,3 +4665,69 @@ State at stop: suite 850 green, tree clean, local commits ahead of origin, VERSI
 (MINOR gate + bump to 2.1.0 + one push + drop adoption-wishes) and the full queue live in NEXT_STEPS.md.
 Stopped on Alexander's word for a memory wipe + a fresh session. Memory is wipe-safe — the story is here,
 NEXT_STEPS.md, docs/prover/2026-07-16-*, and docs/audit/2026-07-16-prover-fable.md.
+
+## 2026-07-16 (day) — v2.1.0 SHIPPED: the enforcement release, the whole queue closed in one run
+
+Alexander's word at 12:00: work the whole NEXT_STEPS to done, on Fable. Sixteen landings
+(rows 341-355), the 2.1.0 bump, one release push (`fed1339`), all in one session.
+
+**The Fable prover-audit folds (rows 341-344).** D1 had landed the day before (INV-168); this
+session folded the rest. INV-169: feature intake asks the second-sibling question by construction —
+the intake of a kind's SECOND member was exactly where the design review stood down, so a sibling
+could ship and diverge unseen until the next full pass; a yes now draws the scoped review. INV-170:
+CROSS-LINK re-verifies the document's quantified claims ("every"/"only"/member lists) against the
+grown set — the enumeration form the uniformity lens itself demands was the staleness vector.
+INV-171 + R2: the ~19-lens stress wall split into five mandatory sweeps, each owing a verdict line
+(hit / clean / N/A-with-reason) rendered as a surface × sweep table, the five lifecycle lenses
+gathered under the transition-payload parent with anchors kept; FULL — the heaviest mode — had
+owed no per-lens accountability while FEATURE-FIT owed a verdict per lens. Six point fixes
+(row 343): the surface-authority fallback is a stated assumption (the clear-evidence gate
+self-disarmed exactly on the author who forgot the registry), 3d probes overlapping-data agreement,
+the KIND block names the paired-transition blocking split, FEATURE-FIT scopes its consistency
+exclusion and cites pinned clauses on shipped systems, the FULL summary reports [default] accretion.
+
+**The adoption spine (row 345, INV-172/173).** The pack stated its gates mandatory but adoption
+never installed them (track-coach 126 / tlvphotos 79 register errors, no gate). One pass now wires
+them: `adopt/install-ratchet.sh` vendors the lint/redundancy/freeze trio with a source-pin manifest,
+seeds the caps at the size measured that moment — green at once, tightening-only — and generates the
+guard test. Hooks gained one canonical home `hooks/` with an installer; the universal/personal split
+puts the English contrast scan in the pack and the owner's Russian patterns in a personal overlay
+file the installer never touches; the scan hook skips quoted demos (the known false-fire). INV-169
+fired on its own first live intake: the kit is the second installable kit beside scaffold/guardrails,
+and the drawn scoped design review's one recommendation (one manifest over both kits) folded into
+INV-177.
+
+**The co-located seams (row 346, INV-174/175).** The inbox's local arm: a same-filesystem depositor
+writes its one file and stops — the commit road raced the shared index. Config-health: the installed
+pre-push was found missing gates k and l — the red-first proof came from the live tree itself; the
+check now reds a missing or drifted installed hook, runs inside the suite and as gate m, and the
+commit fence stops a staged file carrying unstaged edits.
+
+**The tail (rows 347-353).** INV-176 retroactive gates (a law's gate scans the whole tree — the mute
+gate generalized); INV-177 the update watcher reads the vendored pins; INV-178 version-is-one-fact
+(ten skills carried ten unrelated numbers; the stamp + guard test end it); the seat law sharpened
+(a remote seat shows textually by construction, re-detect after any move); base scope pinned
+pack-internal; the guardrails README enumerates all thirteen gates (it said "five"); INV-179
+collector anonymization (host entities masked in the draft the user reads at consent).
+
+**The 2.1.0 gate (row 355).** Three fresh independent passes: the full prover ran the FIRST INV-171
+verdict table (all five sweeps, 15 surfaces; 4 defects — every stale enumeration a MEMBER add, so
+INV-170 widened to fire on member adds); the full design review (4 groups, 1 question held for
+Alexander: should the stranger arm carry the capture echo back to its source Issue?); the batch
+adversarial audit reproduced two real defects by running the mechanisms (the watcher silent exactly
+in its born-from scenario — pack current, host pin old; the mute gate's `#`-only comment strip
+defeated by a JS `//` comment). Every defect folded same-day; leftovers queued by name (row 356).
+
+**Workshop notes.** One commit slipped through on a red suite mid-run (a pipe ate pytest's exit
+code); caught on the next read, fixed forward — the standing rule is read the log's verdict before
+committing, as its own step. CI failed once after the release push: the config-health temp-repo
+tests skipped on the runner because the helper cleared GITHUB_ACTIONS but not CI; fixed in the
+close-out commit. The session hooks moved `scripts/` → `hooks/`; installers, pins, tests, and the
+shipped-language allowlist repointed the same landing.
+
+State at close: VERSION 2.1.0 pushed, suite 907 green, three adoption "go" wishes dropped
+(track-coach / tlvphotos / promoter, file-only per INV-174). Queue: rows 354 (architecture register
+debt, pre-existing) and 356 (gate-pass leftovers); one owner question held on the design-review
+record. Delegation (INV-103): the three gate passes, the kit implementation, the adoption-layout
+distillation, and the memory-index compaction draft ran as workers; every design call, spec
+sentence, and fold kept senior.

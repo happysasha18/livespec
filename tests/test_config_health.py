@@ -21,6 +21,7 @@ CHECK = os.path.join(REPO, "guardrails", "check-config-health.sh")
 def run_check(cwd, env_extra=None):
     env = dict(os.environ)
     env.pop("GITHUB_ACTIONS", None)
+    env.pop("CI", None)  # the CI runner sets both; the temp-repo tests exercise the non-CI arm
     if env_extra:
         env.update(env_extra)
     return subprocess.run(["bash", CHECK], cwd=cwd, capture_output=True, text=True, env=env)
