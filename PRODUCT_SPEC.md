@@ -1385,7 +1385,7 @@ The check's only face is the proposal line, governed by the line law, facets N/A
 measure: the day a newer pack ships, the next session on another machine proposes it unasked
 [default]. [E-25]
 
-**The update check reads the host's vendored pins beside the pack version.** The ratchet manifest [INV-172] pins the pack version a host's vendored gate scripts came from, and it covers both installable kits — the scaffold checks join the manifest where the host carries them. When the daily check [E-25] sees the pack moved past the pin, it proposes the re-install and names the vendored files whose content differs from the local pack's current copies; a host with no manifest gets the plain version proposal unchanged. The per-file list is read against the local pack checkout, so the no-per-skill-remote-diff line holds — the pack version speaks for the whole. Proposal only, like the check it rides in; a re-seed of the caps is explicit, never silent [INV-172]. [INV-177]
+**The update check reads the host's vendored pins beside the pack version.** The ratchet manifest [INV-172] pins the pack version a host's vendored gate scripts came from, and it covers both installable kits — the scaffold checks join the manifest where the host carries them. When the daily check [E-25] sees the pack moved past the pin, it proposes the re-install and names the vendored files whose content differs from the local pack's current copies; a host with no manifest gets the plain version proposal unchanged. The per-file list is read against the local pack checkout, keeping the no-remote-per-file-diff line above intact. Proposal only, like the check it rides in; a re-seed of the caps is explicit, never silent [INV-172]. [INV-177]
 
 ## The rules and who applies them
 
