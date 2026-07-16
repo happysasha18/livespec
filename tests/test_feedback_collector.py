@@ -20,7 +20,8 @@ def test_feedback_collector_ships():
     # offer that drafts an upstream note. Never a skill file missing the offer or the off-by-default flag.
     s = _skill()
     assert "name: feedback-collector" in s
-    assert "version: 1.0.0" in s
+    version = open("VERSION", encoding="utf-8").read().strip()
+    assert "version: %s" % version in s  # stamped from the one VERSION fact (INV-178)
     assert "upstream note" in s.lower()
     assert "feedback-upstream" in s                      # the off-by-default flag is named
     # README + LICENSE ship too
