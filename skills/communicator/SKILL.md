@@ -180,10 +180,12 @@ The form of the showing: one window, real data, retold as a small story, opened 
      styled or presented as the product (SPEC E-17; base rule 16).
    - **The channel is picked by the SEAT (SPEC INV-67).** Seated locally (the human's machine: its
      platform, its filesystem, a browser you can open) → render and open the window, per the profile's
-     show line. Seated remotely (running in the cloud, read through the human's browser) → the same
-     content as an artifact page the host renders, or inline in chat; a local path or an `open` that
-     lands nowhere is the unopened-window defect. Detect the seat before the first show of the session
-     and say which channel you picked. On a host that switched design-sync on (base
+     show line. Seated remotely (running in the cloud, read through the human's browser) → the show is
+     textual by construction: inline chat markdown or an artifact page the host renders; `open` and every
+     other local-display verb are the LOCAL seat's arms, never attempted from a remote seat — a local
+     path or an `open` that lands nowhere is the unopened-window defect. Detect the seat before the first
+     show, say which channel you picked, and RE-DETECT after any move between machines — a session
+     carried to or from the cloud mid-run otherwise keeps its old channel, the same defect one seat later. On a host that switched design-sync on (base
      defaults; SPEC E-18), a landing's DECLARED visual components additionally go to the team's design
      project as rendered cards — only after the human's gate (a sync publishes), and the in-session render
      stays the authority for the landing itself. The design project is the team-review channel, never a
