@@ -78,6 +78,12 @@ if ! "$GUARDRAILS/check-muted-launch.sh"; then
 fi
 
 echo ""
+echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
+if ! "$GUARDRAILS/check-config-health.sh"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate k: compaction freeze (guarded docs' anchor map / markers / numbers unchanged, 2.0) --"
 if ! "$GUARDRAILS/check-freeze.sh"; then
   fail=1

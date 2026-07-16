@@ -34,6 +34,18 @@ if [ -f "$REPO_ROOT/guardrails/check-deferral-marker.py" ]; then
   fi
 fi
 
+# INV-175 second arm: on a shared index, a file both staged and carrying unstaged
+# modifications at commit time is the signature of a second writer (or a forgotten
+# re-add) touching a file mid-landing. Stop, look, re-add or investigate.
+overlap="$(comm -12 <(git -C "$REPO_ROOT" diff --name-only | sort -u) \
+                    <(git -C "$REPO_ROOT" diff --cached --name-only | sort -u))"
+if [ -n "$overlap" ]; then
+  echo "COMMIT BLOCKED — staged files carry unstaged modifications (a second writer, or a forgotten re-add):"
+  echo "$overlap" | sed 's/^/  /'
+  echo "  Review each file (git diff <file>), then either git add it or drop the stray edit."
+  exit 1
+fi
+
 if [ ! -f "$FENCE_FILE" ]; then
   exit 0
 fi

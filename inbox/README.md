@@ -12,8 +12,11 @@ Why a folder of files: creating a fresh file cannot collide with anyone; editing
 - why (what broke / what was missing, with the primary source if there is one)
 - who threw it (which host / which conversation)
 
-Commit your one new file (a commit touching inbox/ only, message naming the source) — that commit is part
-of the exception. A live-spec session sweeps this folder as its first act, harvests each file into the home
+**From the same filesystem (a co-located window), the deposit is the file alone (SPEC INV-174).** You
+share the assigned session's working tree and git index, so stop after writing the file: no staging, no
+commit, no push — the assigned session's sweep commits the harvest itself, and your item is durable on
+disk from the moment it is written. **From a separate clone,** commit your one new file (a commit touching
+inbox/ only, message naming the source) — that commit is part of the exception. A live-spec session sweeps this folder as its first act, harvests each file into the home
 its route owns (a wish into a ROADMAP row, feedback by the routing law — SPEC T-20), and removes the file
 in the harvest commit (git history keeps it).
 
