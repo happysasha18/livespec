@@ -1,17 +1,12 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-16 ~23:08 — v2.3.0 ready to push)
-Rows 361–364 built, accepted, MINOR gate run whole (prover + design review + fresh adversarial
-audit, all records with same-day addenda). The 21:47 session died on server 529s mid-audit-fold; the
-resumed session verified all four audit folds complete in the tree (findings 1/4/5/6 — socket.timeout
-kinship on Py<3.10, probe-failure browser reap, fallback-leg bound, deleted-test-file false red —
-each red-proven), wrote the audit record (docs/audit/2026-07-16-2.3.0.md), queued finding 2 as row
-366, amended the JOURNAL chapter. Full suite 961 green in 106.9 s, budget watcher green, freeze
-green. REMAINS: commits by lane (363 skills / 364 template / 361+362 guardrails / docs+version),
-push, CI verdict, mirror walk. Then row 365, row 366.
-
-## PRIOR STATE (2026-07-16 ~18:17 — v2.2.0 SHIPPED)
-Rows 359 + 360 landed, pushed 26fc256, mirror synced and walked live. Story in JOURNAL.md.
+## LIVE STATE (2026-07-16 ~23:11 — v2.3.0 SHIPPED)
+Pushed d5bf2d7 (four lane commits), all pre-push gates green, CI green, product-prover mirror synced
+in the gate and walked live (banner + release-history line + attribution all carry 2.3.0). The 21:47
+session died on server 529s mid-audit-fold; the resumed session verified all four audit folds
+complete (findings 1/4/5/6, each red-proven), wrote the audit record
+(docs/audit/2026-07-16-2.3.0.md), queued finding 2 as row 366, amended the JOURNAL chapter. Full
+suite 961 green in 106.9 s, budget watcher green, freeze green. NEXT: row 365, then row 366.
 
 ## ON RESUME — the queue
 - **Row 365 — every stated quality budget owes a watcher** (the 2.3.0 design review, finding 2):
