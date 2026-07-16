@@ -1,8 +1,10 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-16 ~15:20 — v2.1.1 landing in progress)
-VERSION 2.1.1 (PATCH: bug fixes + changed vendored scripts). Rows 354/356/357/358 all LANDED in the
-working tree; commits + prover re-check + push are the session's remaining steps. What landed:
+## LIVE STATE (2026-07-16 ~15:48 — v2.1.1 SHIPPED)
+VERSION 2.1.1 pushed to origin (`be70e35`; the deposit commit `b39abc9` ahead of it keeps the
+track-coach bug report in history). PATCH: bug fixes + changed vendored scripts. Full pre-push gate
+green; push-gate prover re-check holds after its one fold (F1: the stranger echo/close actors named);
+installed skill copies on this machine re-synced to 2.1.1, update watcher calm. What landed:
 row 354 — ARCHITECTURE register folded (3 errors → 0), LICENSE allowlisted, ARCHITECTURE.md joins the
 convergence-lock floor; old-vs-new meaning-diff accepted the sweep. Row 356 — the five 2.1.0
 leftovers: pins strict-clean (52), FEATURE-FIT record homed (INV-156), extensionless-shebang sweep
@@ -21,11 +23,8 @@ pre-close-out. Records: the three 2026-07-16 gate files + JOURNAL's v2.1.1 chapt
   promoter — manifest present, `guardrails/pre-push` absent: the wiring step is unfinished there
   (its own window's work). track-coach — adopted with a local hand-fix that matches the pack's
   row-358 fix; after the 2.1.1 push its update watcher will propose the re-install roads.
-- If this session died before push: run the pre-push gate, the prover re-check
-  (record `docs/prover/2026-07-16-2p1p1-prepush.md` — if absent, the pass never ran; run it),
-  re-bless the freeze baseline (`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md
-  ARCHITECTURE.md TEST_MATRIX.md --compaction`), then commit (inbox deposit first, then the
-  landing removing it) and push. Checkpoint: `.live-spec/checkpoints/2026-07-16-rows356-354.md`.
+- After the 2.1.1 push, hosts that adopted at 2.1.0 see the update watcher name the stale
+  vendored files and the per-kit re-install road; each window re-installs on its own word.
 
 ## Standing word / OWNER-HELD
 - Do the whole movement solo, push on green; plain English in docs, plain Russian in chat. Gates
