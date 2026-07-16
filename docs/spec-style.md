@@ -62,6 +62,25 @@ exemplars below carry the ceiling (the positive voice the linter cannot judge). 
 the whole quality system. The lexicon and the caps-allowlist are meant to grow: add a word when it is
 unambiguously wrong here.
 
+## Two tiers — universal law vs pack register
+
+The style gate's checks split into two tiers, by whom each binds (INV-166). The universal tier — the
+scissors ban [a permanent, global rule], the negation-opener rule, and the machine-jargon rule —
+states the plainness every live-spec document holds whatever its register, so it binds every host's
+gate. The pack-register tier — caps-shout, second-person, reassurance, and future-narration — is the
+pack's own reference-documentation taste: right for the pack's own docs, and available to a host on
+its own word. A host whose user-facing spec deliberately shouts a chosen word, or addresses its
+reader as "you", is exercising its own register — a choice the universal tier leaves untouched.
+
+`scripts/spec-style-lint.py` names the split with a flag. `--tier universal` runs the universal tier
+as the gate and leaves the pack-register tier advisory — printed as a warning, on all four rules,
+never blocking a host's push. `--tier full` runs the union as the gate: the pack's own docs, reached
+also by the alias `--gate`. The default, with no flag given, keeps the linter's original behavior:
+the universal tier is an error, caps-shout and second-person print as warnings, and
+reassurance/future-narration stay unchecked. A host adopts the universal floor as its own push gate
+through `--tier universal`, keeping its own intentional voice; the pack's own docs hold themselves to
+`--tier full` instead.
+
 ## Who writes the prose — a clean agent, pack NOT loaded
 
 Proven 2026-07-08: the ornament comes from the author being marinated in the pack's own register
