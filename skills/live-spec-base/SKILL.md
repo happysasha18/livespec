@@ -330,7 +330,10 @@ a working skill still stands: its pointer here reads as plain advice.
 
 Reserve it for the pack's own work — a session outside the pack uses a general style guide instead; and
 never as a place to WRITE host- or person-specific values (those live in profiles; this file holds only
-package defaults and the rules themselves).
+package defaults and the rules themselves). The scope is PACK-INTERNAL by the owner's decision (recorded
+2026-07-16): the base serves the pack's skills and the projects that adopted the pack, and it is not a
+general-purpose rulebook for unrelated sessions — a decided sentence, closing the recurring scope
+question for good.
 
 ## The settings ladder
 

@@ -5,7 +5,9 @@ instead of things you have to remember.
 
 ## What each gate catches
 
-**`pre-push`** — blocks a push unless five things are all true:
+**`pre-push`** — blocks a push unless every gate below holds (thirteen today — a, b, c, d, e, f,
+g, h, i, j, k, l, m; this list is the one enumeration, kept current by the quantifier re-verify,
+SPEC INV-170):
 
 - **a. Fresh review.** A prover record dated today exists under `docs/prover/` and is
   committed. This is the push gate every push of live-spec must pass (SPEC anchor `M-6`):
@@ -29,9 +31,25 @@ instead of things you have to remember.
   home something else passes that name as the script's second argument
   (`check-prototype-fence.sh <repo-root> <fence-dir-name>`).
 
-Each check lives in its own small script (`check-prover-record.sh`, `check-tests.sh`,
-`check-matrix-coverage.sh`, `check-prototype-fence.sh`) so it can be run and tested on
-its own, pointed at a scratch file instead of the real repo.
+- **f. Skill loadability.** Every `skills/**/SKILL.md` parses: frontmatter, name, description,
+  version (`check-skill-loadability.sh`).
+- **g. Pin drift.** ARCHITECTURE.md's `file:line` pins still resolve; the named thing is
+  normative, the line a cache (`check-pin-drift.sh`).
+- **h. Host checks.** The four scaffold checks (completeness · tests-present ·
+  traces-to-spec · conflicts) run against the base diff (`scaffold/guardrails/check_*.py`).
+- **i. Shipped language.** No Cyrillic or owner-name in the shipped set (SPEC `INV-120`,
+  `check-shipped-language.sh`).
+- **j. No broad kill.** No tracked script name-kills a browser broadly (SPEC `INV-162`,
+  `check-broad-kill.sh`).
+- **k. Freeze.** Guarded docs match their compaction baseline where one is armed
+  (`check-freeze.sh`).
+- **l. Muted launch.** Every browser-driving script launches muted (SPEC `INV-157`,
+  `check-muted-launch.sh`).
+- **m. Config health.** The installed hooks match their `guardrails/` sources byte-for-byte
+  (SPEC `INV-175`, `check-config-health.sh`).
+
+Each check lives in its own small script so it can be run and tested on its own, pointed at a
+scratch file instead of the real repo.
 
 **`pre-commit`** — the concurrent-edit fence. It protects against two sessions writing the
 same repo at once. It is **off by default**: if no `.live-spec-fence` file exists at the
@@ -71,8 +89,9 @@ with a source-pin manifest, seeds the host's debt caps at the sizes measured tha
 at once, shrinking-only from then on — and generates the guard test. The section below covers the
 structural gates, which are adapted by hand.
 
-The five-gate shape (fresh review · green tests · ownership · full coverage · prototype
-fence) is the part worth copying as-is. What changes per host:
+The gate shape (fresh review · green tests · ownership · full coverage · prototype fence ·
+loadability · pin drift · host checks · shipped language · no broad kill · freeze · muted launch ·
+config health) is the part worth copying as-is. What changes per host:
 
 - **Test command.** Swap `python3 -m pytest -q tests` in `check-tests.sh` for whatever the host
   runs (`npm test`, `go test`, …) — and set the CI mirror to the SAME command, so the local net
