@@ -94,6 +94,10 @@ so they travel with the repo — is meant to hold for any host.
 
 ## The gate contract (SPEC INV-47)
 
+A gate born from a stated law scans the WHOLE tracked tree, retroactive by construction (SPEC
+INV-176) — never only the diff. Pre-gate debt surfaces the day the gate lands; a backlog too
+large to fold at once is absorbed by seeding the cap at the current size (SPEC INV-172).
+
 Every gate script authored or next touched in this directory obeys three conventions (the
 neighbours' CLI lesson, adopted from OpenSpec's gate contract — provenance and the full
 borrowings inventory: docs/research/2026-07-10-originality-audit.md; the adopting row rests in

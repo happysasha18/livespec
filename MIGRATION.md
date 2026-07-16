@@ -35,10 +35,14 @@ The owner's word on the plan comes before any file moves. A walk that finds noth
 
 ## Phase 4 — verify and re-record
 
-1. Run the host's own gates, including the test suite where one exists. A red gate is the walk's own open defect: the walk stays open until the gates read green, and the checkpoint carries the red state across sessions.
-2. Re-record the installed-set record in the current format.
-3. Land one journal chapter in the host: what moved, why, the provenance, and any finding held for the owner.
-4. Run the before-and-after self-test below and clear it before the walk is called done.
+1. Run the pack's CURRENT gate set backward over the host's existing tree — every gate scans the
+   whole tree, retroactive by construction (SPEC INV-176), so a gate the pack gained since the host
+   adopted finds the older debt now; an oversized backlog is absorbed by re-seeding the ratchet caps
+   (SPEC INV-172).
+2. Run the host's own gates, including the test suite where one exists. A red gate is the walk's own open defect: the walk stays open until the gates read green, and the checkpoint carries the red state across sessions.
+3. Re-record the installed-set record in the current format.
+4. Land one journal chapter in the host: what moved, why, the provenance, and any finding held for the owner.
+5. Run the before-and-after self-test below and clear it before the walk is called done.
 
 The plan document and the superseded files rest in the attic and the adopt records. The walk changes documents and records only; it creates no visible product surface, so the plan opens by the ordinary show rule.
 

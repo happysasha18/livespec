@@ -232,7 +232,9 @@ re-compaction is demanded — and from then on the debt may only hold or shrink;
 editing the guard test, deliberate and visible. Wire the printed gate line into the host's pre-push.
 Prove it red-first the way the four project-side checks are proven: plant one register defect in a
 gated doc, watch the lock test red, remove it. The universal tier binds every host; the full
-pack-register tier is the host's own opt-in (SPEC INV-166).
+pack-register tier is the host's own opt-in (SPEC INV-166). The same pass runs the pack's current gate
+set backward over the host's existing tree — every gate scans the whole tree, retroactive by
+construction (SPEC INV-176), so debt older than the gate is found now rather than on the next touch.
 
 **And install the universal hooks (SPEC INV-173):** `bash <pack>/scripts/install-pack-hooks.sh` puts
 the pack's canonical scan hook onto the machine and wires it; personal patterns stay in the personal
