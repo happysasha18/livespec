@@ -21,6 +21,13 @@ def read(rel):
 
 
 class TestMirrorReleaseHistory(unittest.TestCase):
+    # The generator reads the PACK's own git log, so the by-deed test needs the real clone;
+    # a scratch copy of the tree (gate b's meta-run) has no .git and skips this one by its
+    # declared precondition — the string tests below still run there.
+    @unittest.skipUnless(
+        os.path.isdir(os.path.join(ROOT, ".git")),
+        "release-history generation reads git history; scratch copies carry none",
+    )
     def test_print_mode_emits_real_history(self):
         result = subprocess.run(
             ["bash", "scripts/sync-mirrors.sh", "--print-release-history"],
@@ -65,6 +72,19 @@ class TestMirrorReleaseHistory(unittest.TestCase):
             "- 0.5.0 · 2026-07-05 — preventive audit run + folded",
             lines,
         )
+
+    def test_banner_is_the_kinds_third_declared_member(self):
+        # The design review's 2.2.0 finding: the sync writes THREE generated blocks onto a
+        # mirror (banner · release history · attribution); all three are declared members of
+        # one kind, each pinned by a test. This pins the banner — the spec arm was red before
+        # the INV-181 clause named the kind.
+        script = read("scripts/sync-mirrors.sh")
+        self.assertIn("banner_for", script)
+        self.assertIn("Read-only mirror", script)
+
+        spec = read("PRODUCT_SPEC.md")
+        self.assertIn("read-only banner", spec)
+        self.assertIn("three members", spec)
 
     def test_loop_stamps_before_attribution(self):
         script = read("scripts/sync-mirrors.sh")
