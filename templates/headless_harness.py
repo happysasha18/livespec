@@ -6,8 +6,18 @@ driver for a real headless Chrome over the DevTools Protocol (CDP) — no seleni
 pip. It exists so a project's browser-level interaction facts can be asserted in a REAL browser, the
 way a visitor meets them, rather than string-matched in source.
 
-Three run-hygiene properties are baked in [SPEC INV-157]:
+Four run-hygiene properties are baked in [SPEC INV-157]:
 
+  * it PREFERS chrome-headless-shell over Chrome for Testing over a system Chrome (``_find_chrome``,
+    newest install first within each road) and PROBES A LOOPBACK PAGE at launch
+    (``_probe_for_a_frame``, ``frame_probe=True`` by default): a throwaway page served from the
+    loopback address (127.0.0.1), covering BOTH browser faults the 2026-07-16 incident carried — a
+    LOAD leg (Chrome for Testing 151: renders frames fine but stalls loading any 127.0.0.1 page,
+    ``Page.navigate`` never completing) and a FRAME leg (Chrome for Testing 150, machine-wide: opens
+    its debug port and answers CDP commands but never actually paints). Either fault bleeds false reds
+    through every paint-waiting (frame leg) or every page-loading (load leg) test in the run; the probe
+    fails LOUDLY at launch instead, naming the browser and the failing leg, and the shell build showed
+    neither fault [SPEC INV-157, ROADMAP row 364, matrix M-343];
   * it launches Chrome MUTED — the launch carries ``--mute-audio``, so a test run makes no sound on
     the machine it runs on, silencing the browser at its source and leaving system volume alone;
   * on teardown it REAPS THE WHOLE PROCESS GROUP of the Chrome it launched (helper, renderer, gpu
@@ -74,15 +84,27 @@ import sys
 import tempfile
 import threading
 import time
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.request import urlopen
 
 def _find_chrome():
-    """Prefer Chrome for Testing — an automation-only build that never touches the user's own Chrome
-    profile, does not coordinate with a running user browser, and is safe to hard-kill by its own
-    path. Fall back to the user's installed Chrome when Testing is absent."""
+    """Resolution order, newest install first within each road [SPEC INV-157, ROADMAP row 364]:
+
+      1. chrome-headless-shell — the dedicated headless build, preferred FIRST. Incident 2026-07-16:
+         Chrome for Testing 150 went frame-dead machine-wide (opened its debug port, accepted every CDP
+         command, but never produced a single compositor frame), bleeding false reds through every
+         paint-waiting test; chrome-headless-shell 151 showed no such fault. Install it with
+         ``npx @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer``.
+      2. Chrome for Testing — an automation-only build that never touches the user's own Chrome
+         profile, does not coordinate with a running user browser, and is safe to hard-kill by its
+         own path.
+      3. the user's installed Chrome, as the last resort.
+    """
     candidates = sorted(glob.glob(os.path.expanduser(
+        "~/.cache/puppeteer/chrome-headless-shell/*/chrome-headless-shell-mac*/chrome-headless-shell")),
+        reverse=True)
+    candidates += sorted(glob.glob(os.path.expanduser(
         "~/.cache/puppeteer/chrome/*/chrome-mac*/Google Chrome for Testing.app"
         "/Contents/MacOS/Google Chrome for Testing")), reverse=True)
     candidates += [
@@ -95,11 +117,25 @@ def _find_chrome():
     return candidates[-1]   # the standard path even if absent — ChromeMissing handles it
 
 
+def _is_headless_shell(path):
+    """True when the resolved binary is the dedicated chrome-headless-shell build — headless by
+    construction, so its launch must OMIT ``--headless=new`` (a Chrome-for-Testing/system-Chrome-only
+    flag the shell does not accept) [SPEC INV-157, ROADMAP row 364]."""
+    return "chrome-headless-shell" in path
+
+
 CHROME = _find_chrome()
 
 
 class ChromeMissing(Exception):
     """Chrome is not installed — the caller converts this into a pinned, expected skip."""
+
+
+class FrameProbeFailed(Exception):
+    """The launch frame probe (matrix M-343) never observed a compositor frame within its bound —
+    distinct from a TEST failure: the BROWSER itself is frame-dead, so every paint-waiting test in the
+    run would red falsely against it [SPEC INV-157, ROADMAP row 364]. The caller sees this loud,
+    named failure instead of a mystifying wall of unrelated test reds."""
 
 
 def chrome_available():
@@ -519,7 +555,7 @@ class Browser:
     """A driven headless Chrome page — the shared CORE. Context manager: launches on enter, kills on
     exit. A project layers its own driving methods on top by SUBCLASSING this, never by editing it."""
 
-    def __init__(self, width=1280, height=900):
+    def __init__(self, width=1280, height=900, frame_probe: bool = True):
         if not chrome_available():
             raise ChromeMissing(CHROME)
         # Backstop for a run KILLED before teardown: before opening our own profile, sweep this
@@ -553,13 +589,19 @@ class Browser:
         # --mute-audio: the run makes no sound on the machine — muted at the browser's source, system
         # volume untouched [INV-157]. start_new_session puts Chrome in its own process group so close()
         # reaps every helper child (the orphan Chromes that used to accumulate and compound saturation).
+        # --headless=new is a Chrome-for-Testing/system-Chrome flag only — chrome-headless-shell is
+        # headless by construction and does not accept it, so the shell road drops it [ROADMAP row 364].
+        args = [CHROME]
+        if not _is_headless_shell(CHROME):
+            args.append("--headless=new")
+        args += [
+            "--disable-gpu", "--no-first-run", "--no-default-browser-check", "--disable-extensions",
+            "--mute-audio", "--remote-debugging-port=0",
+            f"--user-data-dir={self._profile}",
+            f"--window-size={width},{height}", "about:blank",
+        ]
         self.proc = subprocess.Popen(
-            [CHROME, "--headless=new", "--disable-gpu", "--no-first-run",
-             "--no-default-browser-check", "--disable-extensions", "--mute-audio",
-             "--remote-debugging-port=0",
-             f"--user-data-dir={self._profile}",
-             f"--window-size={width},{height}", "about:blank"],
-            stdout=subprocess.DEVNULL, stderr=self._stderr_f, start_new_session=True,
+            args, stdout=subprocess.DEVNULL, stderr=self._stderr_f, start_new_session=True,
         )
         # Record Chrome's pid (its own process-group leader) AND the current boot id in the profile
         # dir, so a later run's launch sweep can tell this dir's owner is dead-but-same-boot (a crash
@@ -583,6 +625,17 @@ class Browser:
         except RuntimeError:
             self._cmd("Page.setDownloadBehavior",
                       behavior="allow", downloadPath=self._profile)
+        # Launch frame probe [SPEC INV-157, ROADMAP row 364, matrix M-343] — the LAST step before this
+        # Browser hands itself to the calling suite: catch a frame-dead browser HERE, loudly, instead
+        # of letting it bleed false reds through every paint-waiting test that follows.
+        if frame_probe:
+            try:
+                self._probe_for_a_frame()
+            except BaseException:
+                # a failed probe reaps the just-launched Chrome at once; the atexit hook stays the
+                # backstop for interpreter exit only [2.3.0 audit, finding 4]
+                self.close()
+                raise
 
     # -- lifecycle
     def _read_devtools_port(self, timeout=20):
@@ -660,13 +713,14 @@ class Browser:
         self.close()
 
     # -- CDP plumbing
-    CMD_TIMEOUT = 60      # generous per-command deadline: a slow answer is patient, a hang fails clearly
+    CMD_TIMEOUT = 60           # generous per-command deadline: a slow answer is patient, a hang fails clearly
+    FRAME_PROBE_TIMEOUT = 2.0  # bounded default for the launch frame probe [INV-157, ROADMAP row 364]
 
-    def _cmd(self, method, **params):
+    def _cmd(self, method, timeout=None, **params):
         self._id += 1
         mid = self._id
         self.ws.send(json.dumps({"id": mid, "method": method, "params": params}))
-        self.ws._deadline = time.monotonic() + self.CMD_TIMEOUT
+        self.ws._deadline = time.monotonic() + (self.CMD_TIMEOUT if timeout is None else timeout)
         try:
             while True:
                 msg = json.loads(self.ws.recv())
@@ -683,6 +737,88 @@ class Browser:
             raise ConnectionError(f"{method}: {e} · chrome stderr tail:\n{self._chrome_stderr_tail()}") from e
         finally:
             self.ws._deadline = None
+
+    def _probe_for_a_frame(self, timeout=FRAME_PROBE_TIMEOUT):
+        """Launch-time TWO-LEG probe, served from the loopback address [SPEC INV-157, ROADMAP row 364,
+        matrix M-343]. The 2026-07-16 incident carried two distinct browser faults, and a probe that
+        only used a ``data:`` page (which loads even when 127.0.0.1 itself is stalled) would catch one
+        and miss the other entirely:
+
+          * leg LOAD — Chrome for Testing 151: renders frames fine but STALLS loading any 127.0.0.1
+            page (``Page.navigate`` never completes, though ``data:`` URLs load fine on it);
+          * leg FRAME — Chrome for Testing 150, machine-wide: opens its debug port and answers CDP
+            commands but never actually paints (``requestAnimationFrame`` never fires).
+
+        A tiny one-shot HTTP server is bound to 127.0.0.1 (port 0) for the duration of the probe; each
+        leg is bounded by its OWN deadline (``timeout``), reusing the same per-command deadline
+        machinery every other CDP wait in this file uses (INV-155: a real bounded deadline, never a
+        blanket sleep). A failing leg raises ``FrameProbeFailed`` naming ITS OWN fault shape, the
+        resolved browser, and the fix — loud, at launch, instead of bleeding false reds through every
+        later page-loading or paint-waiting test. The server is always shut down and its thread joined
+        in a ``finally``, so the probe leaves nothing running whatever the outcome [INV-100]. If
+        binding the loopback listener itself fails (a sandboxed/offline host with no loopback
+        available), the probe falls back to the previous ``data:`` road for the FRAME leg only — the
+        LOAD leg needs a real loopback page, so it is skipped on that fallback."""
+        class _ProbeHandler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                body = b"<!doctype html><html></html>"
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def log_message(self, *a):  # silence
+                pass
+
+        def _await_frame():
+            try:
+                self._cmd(
+                    "Runtime.evaluate", timeout=timeout,
+                    expression="new Promise(resolve => requestAnimationFrame(resolve))",
+                    awaitPromise=True, returnByValue=True,
+                )
+            # socket.timeout: on Python < 3.10 the deadline machinery's expiry raises it with no
+            # TimeoutError kinship (they merged in 3.10) — catching both keeps the probe's loud
+            # named failure on every interpreter this template ships to [2.3.0 audit, finding 1].
+            except (TimeoutError, socket.timeout):
+                raise FrameProbeFailed(
+                    "FRAME PROBE FAILED: %s — the browser produced no compositor frame within %.1f s. "
+                    "paint-waiting tests would red falsely on this browser. "
+                    "Fix: install the dedicated headless build: "
+                    "npx @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer"
+                    % (CHROME, timeout)
+                ) from None
+
+        try:
+            server = HTTPServer(("127.0.0.1", 0), _ProbeHandler)
+        except OSError:
+            # fallback road: the loopback listener itself would not bind — skip the LOAD leg (it needs
+            # a real loopback page) and fall back to the previous data: page for the FRAME leg only.
+            self._cmd("Page.navigate", timeout=timeout, url="data:text/html,<!doctype html><html></html>")
+            _await_frame()
+            return
+        port = server.server_address[1]
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            # leg LOAD: Chrome for Testing 151 renders frames but stalls loading any 127.0.0.1 page.
+            try:
+                self._cmd("Page.navigate", timeout=timeout, url="http://127.0.0.1:%d/" % port)
+            except (TimeoutError, socket.timeout):
+                raise FrameProbeFailed(
+                    "FRAME PROBE FAILED: %s stalls loading loopback pages — Page.navigate to a "
+                    "127.0.0.1 page never completed within %.1f s (data: URLs load fine on this "
+                    "browser). paint-waiting tests would red falsely on this browser. "
+                    "Fix: install the dedicated headless build: "
+                    "npx @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer"
+                    % (CHROME, timeout)
+                ) from None
+            # leg FRAME: the browser opens its debug port and answers commands but never paints.
+            _await_frame()
+        finally:
+            server.shutdown()
+            thread.join()
 
     # -- page control
     def navigate(self, url):

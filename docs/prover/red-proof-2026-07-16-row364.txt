@@ -1,0 +1,89 @@
+.....................FFFF                                                [100%]
+=================================== FAILURES ===================================
+_____________________ test_template_prefers_headless_shell _____________________
+
+    def test_template_prefers_headless_shell():
+        # the resolution road NAMES chrome-headless-shell, and it stands BEFORE the Chrome-for-Testing
+        # road in the resolution order — a newer-shell install always wins over Chrome for Testing.
+        resolve = _func_code("_find_chrome")
+>       assert "chrome-headless-shell" in resolve
+E       assert 'chrome-headless-shell' in 'def _find_chrome():\n    \n    candidates = sorted(glob.glob(os.path.expanduser(\n        "~/.cache/puppeteer/chrome/...rome",\n    ]\n    for c in candidates:\n        if Path(c).exists():\n            return c\n    return candidates[-1]'
+
+tests/test_harness_template.py:280: AssertionError
+______________________ test_shell_pick_drops_headless_new ______________________
+
+    def test_shell_pick_drops_headless_new():
+        # the shell is headless by construction and does not accept --headless=new; the launch path must
+        # carry the mechanism that OMITS the flag on that road, not just the flag's bare presence — the
+        # flag itself still lives in the code for the Chrome-for-Testing/system-Chrome roads (the
+        # muted-launch guardrail scans the whole file, so --mute-audio must stay visible unconditionally).
+        init = _func_code("__init__", "Browser")
+>       assert "_is_headless_shell" in init
+E       assert '_is_headless_shell' in 'def __init__(self, width=1280, height=900):\n        if not chrome_available():\n            raise ChromeMissing(CHRO...            self._cmd("Page.setDownloadBehavior",\n                      behavior="allow", downloadPath=self._profile)'
+
+tests/test_harness_template.py:290: AssertionError
+__________________ test_template_probes_for_a_frame_at_launch __________________
+
+    def test_template_probes_for_a_frame_at_launch():
+        # the launch/start road carries a bounded frame probe wired behind a frame_probe parameter: a
+        # data: navigation, one requestAnimationFrame awaited under the template's real per-command
+        # deadline machinery (INV-155 — a bounded deadline, never a blanket sleep), invoked from
+        # Browser.__init__ so a frame-dead browser is caught before the harness hands itself to the suite.
+        src = _stripped_code()
+>       assert "def _probe_for_a_frame" in src
+E       assert 'def _probe_for_a_frame' in '\nimport atexit\nimport base64\nimport contextlib\nimport glob\nimport json\nimport os\nimport re\nimport shutil\nimp.../ steps}])\n        self._cmd("Input.dispatchTouchEvent", type="touchEnd", touchPoints=[])\n        self.sleep(settle)'
+
+tests/test_harness_template.py:302: AssertionError
+_______________________ test_probe_failure_names_itself ________________________
+
+    def test_probe_failure_names_itself():
+        # the probe's failure is its OWN named error (FrameProbeFailed), clearly distinct from a test
+        # failure, and its message names the resolved browser, the compositor-frame miss, the
+        # paint-waiting-test consequence, and the fix.
+        src = _stripped_code()
+>       assert "class FrameProbeFailed" in src
+E       assert 'class FrameProbeFailed' in '\nimport atexit\nimport base64\nimport contextlib\nimport glob\nimport json\nimport os\nimport re\nimport shutil\nimp.../ steps}])\n        self._cmd("Input.dispatchTouchEvent", type="touchEnd", touchPoints=[])\n        self.sleep(settle)'
+
+tests/test_harness_template.py:319: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_harness_template.py::test_template_prefers_headless_shell
+FAILED tests/test_harness_template.py::test_shell_pick_drops_headless_new - a...
+FAILED tests/test_harness_template.py::test_template_probes_for_a_frame_at_launch
+FAILED tests/test_harness_template.py::test_probe_failure_names_itself - asse...
+4 failed, 21 passed in 1.59s
+
+## loopback leg (design-review fold)
+
+Design review of the just-built launch frame probe found the same 2026-07-16 incident carried a
+SECOND browser fault the probe misses: Chrome for Testing 151 renders frames but stalls loading any
+127.0.0.1 page (Page.navigate never completes; data: URLs load fine). Red-proven against the PRE-FOLD
+tree — the probe exists (data:-only, frame leg only) but has no loopback LOAD leg:
+
+.........................F                                               [100%]
+=================================== FAILURES ===================================
+____________________ test_probe_covers_the_local_load_stall ____________________
+
+    def test_probe_covers_the_local_load_stall():
+        # matrix M-343 (design-review fold, 2026-07-16): the frame-dead fault above is NOT the only browser
+        # fault the same incident carried — Chrome for Testing 151 renders frames fine but STALLS loading
+        # any 127.0.0.1 page (Page.navigate never completes; data: URLs load fine), a second fault a
+        # data:-only probe would miss entirely. The probe now serves its throwaway page from the loopback
+        # address so a LOAD leg catches this fault too, distinct from the FRAME leg. Asserted against the
+        # probe's own real code (docstring/comments stripped), so a fix that only updates prose stays RED.
+        probe = _func_code("_probe_for_a_frame", "Browser")
+>       assert "127.0.0.1" in probe                          # the probe serves from the loopback address
+E       assert '127.0.0.1' in 'def _probe_for_a_frame(self, timeout=FRAME_PROBE_TIMEOUT):\n        \n        self._cmd("Page.navigate", url="data:te... chrome-headless-shell@stable --path ~/.cache/puppeteer"\n                % (CHROME, timeout)\n            ) from None'
+
+tests/test_harness_template.py:336: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_harness_template.py::test_probe_covers_the_local_load_stall
+1 failed, 25 passed in 1.59s
+
+## audit folds (findings 1/4/5/6), red against the pre-fold tree, 2026-07-16 ~21:43
+tests/test_guardrails.py:989: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_harness_template.py::test_probe_catches_socket_timeout - As...
+FAILED tests/test_harness_template.py::test_probe_failure_reaps_the_launched_browser
+FAILED tests/test_harness_template.py::test_probe_fallback_leg_is_bounded - a...
+FAILED tests/test_guardrails.py::TestScopedReachDeletedFile::test_scoped_reach_deleted_test_file_falls_full
+4 failed in 1.86s

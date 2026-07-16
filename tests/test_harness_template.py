@@ -263,3 +263,102 @@ def test_spec_states_harness_invariants():
     assert "[INV-157]" in spec
     assert "[INV-158]" in spec
     assert "launches muted" in spec
+
+
+# --- ROADMAP row 364 (SPEC INV-157, matrix M-342/M-343): incident 2026-07-16 — Chrome for Testing
+# 150 went frame-dead machine-wide (opened its debug port, answered CDP commands, but never produced
+# a single compositor frame), bleeding false reds through every paint-waiting test; chrome-headless-shell
+# 151 showed no such fault. The template now (1) prefers chrome-headless-shell in its binary resolution,
+# dropping --headless=new on that road (the shell is headless by construction and does not accept the
+# flag), and (2) probes for a compositor frame at launch, failing loudly and by name rather than letting
+# a frame-dead browser masquerade as a wall of unrelated test reds. All four asserted against real code.
+
+def test_template_prefers_headless_shell():
+    # the resolution road NAMES chrome-headless-shell, and it stands BEFORE the Chrome-for-Testing
+    # road in the resolution order — a newer-shell install always wins over Chrome for Testing.
+    resolve = _func_code("_find_chrome")
+    assert "chrome-headless-shell" in resolve
+    assert resolve.index("chrome-headless-shell") < resolve.index("Google Chrome for Testing")
+
+
+def test_shell_pick_drops_headless_new():
+    # the shell is headless by construction and does not accept --headless=new; the launch path must
+    # carry the mechanism that OMITS the flag on that road, not just the flag's bare presence — the
+    # flag itself still lives in the code for the Chrome-for-Testing/system-Chrome roads (the
+    # muted-launch guardrail scans the whole file, so --mute-audio must stay visible unconditionally).
+    init = _func_code("__init__", "Browser")
+    assert "_is_headless_shell" in init
+    assert "--headless=new" in init
+    assert "if not _is_headless_shell(CHROME):" in init
+    assert "--mute-audio" in init
+
+
+def test_template_probes_for_a_frame_at_launch():
+    # the launch/start road carries a bounded frame probe wired behind a frame_probe parameter: a
+    # data: navigation, one requestAnimationFrame awaited under the template's real per-command
+    # deadline machinery (INV-155 — a bounded deadline, never a blanket sleep), invoked from
+    # Browser.__init__ so a frame-dead browser is caught before the harness hands itself to the suite.
+    src = _stripped_code()
+    assert "def _probe_for_a_frame" in src
+    assert "frame_probe" in src
+    init = _func_code("__init__", "Browser")
+    assert "frame_probe" in init
+    assert "_probe_for_a_frame" in init
+    probe = _func_code("_probe_for_a_frame", "Browser")
+    assert "requestAnimationFrame" in probe
+    assert "data:" in probe
+    assert "timeout=timeout" in probe        # the bounded deadline machinery, not a blanket sleep
+    assert "time.sleep" not in probe
+
+
+def test_probe_failure_names_itself():
+    # the probe's failure is its OWN named error (FrameProbeFailed), clearly distinct from a test
+    # failure, and its message names the resolved browser, the compositor-frame miss, the
+    # paint-waiting-test consequence, and the fix.
+    src = _stripped_code()
+    assert "class FrameProbeFailed" in src
+    probe = _func_code("_probe_for_a_frame", "Browser")
+    assert "FrameProbeFailed" in probe
+    assert "FRAME PROBE FAILED:" in probe
+    assert "no compositor frame" in probe
+    assert "paint-waiting tests would red falsely on this browser" in probe
+    assert "chrome-headless-shell@stable" in probe
+
+
+def test_probe_covers_the_local_load_stall():
+    # matrix M-343 (design-review fold, 2026-07-16): the frame-dead fault above is NOT the only browser
+    # fault the same incident carried — Chrome for Testing 151 renders frames fine but STALLS loading
+    # any 127.0.0.1 page (Page.navigate never completes; data: URLs load fine), a second fault a
+    # data:-only probe would miss entirely. The probe now serves its throwaway page from the loopback
+    # address so a LOAD leg catches this fault too, distinct from the FRAME leg. Asserted against the
+    # probe's own real code (docstring/comments stripped), so a fix that only updates prose stays RED.
+    probe = _func_code("_probe_for_a_frame", "Browser")
+    assert "127.0.0.1" in probe                          # the probe serves from the loopback address
+    assert "HTTPServer(" in probe                         # an http server bound to the loopback, in the probe
+    assert "stalls loading loopback pages" in probe       # the load-stall leg names its own fault shape
+    assert "finally" in probe                              # server teardown is unconditional
+
+
+def test_probe_catches_socket_timeout():
+    # Audit fold (2.3.0 audit, finding 1): on Python < 3.10 the deadline machinery's expiry raises
+    # socket.timeout, which has no TimeoutError kinship there — a probe catching only TimeoutError
+    # lets a stalled browser escape as a raw socket error and the loud named failure never fires.
+    probe = _func_code("_probe_for_a_frame", "Browser")
+    assert probe.count("socket.timeout") >= 2, "both probe legs must catch socket.timeout"
+    assert "except (TimeoutError, socket.timeout)" in probe
+
+
+def test_probe_failure_reaps_the_launched_browser():
+    # Audit fold (2.3.0 audit, finding 4): a probe failure closes the just-launched Chrome at once;
+    # the atexit hook is the backstop for interpreter exit, never the first line of cleanup.
+    init = _func_code("__init__", "Browser")
+    assert "_probe_for_a_frame" in init
+    after_probe = init.split("_probe_for_a_frame", 1)[1]
+    assert "self.close()" in after_probe, "probe failure must close() the launched browser"
+
+
+def test_probe_fallback_leg_is_bounded():
+    # Audit fold (2.3.0 audit, finding 5): the no-loopback fallback road's data: navigate rides the
+    # probe's own ~2 s bound rather than the 60 s per-command default.
+    probe = _func_code("_probe_for_a_frame", "Browser")
+    assert 'timeout=timeout, url="data:' in probe
