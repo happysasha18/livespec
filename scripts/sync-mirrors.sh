@@ -28,6 +28,7 @@
 #
 # Usage:
 #   ./scripts/sync-mirrors.sh
+#   ./scripts/sync-mirrors.sh --print-release-history   # print the generated section, touch nothing
 #
 # Requires: git, rsync, and the GitHub CLI (`gh`), already authenticated.
 
@@ -71,6 +72,153 @@ stamp_attribution() {
     printf '\n---\n\n%s\n' "$ATTRIBUTION_LINE" >> "$file"
   fi
 }
+
+# A mirror also carries a generated "## Release history" section on its README.md — one line
+# per pack release, so a reader who only cloned the standalone skill still sees the pack's own
+# version story, without cloning the whole pack. Computed ONCE from the PACK's own git log
+# (never hand-written on a mirror, where it would go stale), before the mirror loop even starts.
+#
+# A release commit's subject reads (in this repo's real log): an optional "live-spec " or "v"
+# prefix, a semver X.Y.Z, then a separator (space, colon, em-dash, or hyphen), then the story —
+# e.g. "v2.1.1 — the day-after sweep: the register floor widens... (rows 354/356/357/358)" or
+# "live-spec 1.10.1 — the launch sweep clears stale temp litter by age, safely (ROADMAP 333, PATCH)".
+# `git log` lists newest-first, so per distinct version we keep OVERWRITING as we scan down —
+# the LAST write for a version is its OLDEST matching commit (the bump commit itself; a newer
+# follow-up commit for the same version, e.g. "2.0.0: prover record covers the pushed state",
+# is seen earlier in the scan and loses). The ORDER a version first appears in, though, is kept
+# (that's already newest-release-first — exactly the order we want to print in).
+
+# The headline/detail split has to be paren-aware: a subject like "...pack version (his word:
+# the line doubles as the adoption tracker): made with..." has its FIRST ": " sitting INSIDE
+# the parenthetical (a plain string cut would leave a dangling "(his word" fragment). Scan
+# character by character, tracking paren depth, and cut at the first ": " or ". " seen at
+# depth 0 — everything from there on is detail, dropped. If none is found outside parens, the
+# whole story is kept (and any trailing parenthetical is still stripped below).
+cut_at_outside_paren_break() {
+  local s="$1"
+  local depth=0 i len c c2
+  len=${#s}
+  for ((i = 0; i < len; i++)); do
+    c="${s:$i:1}"
+    if [ "$c" = "(" ]; then
+      depth=$((depth + 1))
+    elif [ "$c" = ")" ]; then
+      [ "$depth" -gt 0 ] && depth=$((depth - 1))
+    elif [ "$depth" -eq 0 ] && { [ "$c" = ":" ] || [ "$c" = "." ]; }; then
+      c2="${s:$((i + 1)):1}"
+      if [ "$c2" = " " ]; then
+        printf '%s' "${s:0:$i}"
+        return 0
+      fi
+    fi
+  done
+  printf '%s' "$s"
+}
+
+# Strip trailing parenthetical groups REPEATEDLY (not just one): a headline can carry more than
+# one, e.g. "...folded (3 passes + skill eval...)" is itself the whole remaining story after the
+# cut above, and other subjects stack a code-pointer group after a plain one. Each pass removes
+# the LAST balanced "(...)" group anchored at the very end of the string (walking backward,
+# tracking paren depth, to find its matching open paren — so a nested group inside is kept
+# intact and only the outermost trailing group peels off), then trims the trailing space left
+# behind. Stops as soon as the string no longer ends with ")", or a ")" is unbalanced (defensive:
+# never loops forever on a malformed subject).
+strip_trailing_parens() {
+  local s="$1"
+  local depth i c open_idx
+  while [[ "$s" == *")" ]]; do
+    depth=0
+    open_idx=-1
+    for ((i = ${#s} - 1; i >= 0; i--)); do
+      c="${s:$i:1}"
+      if [ "$c" = ")" ]; then
+        depth=$((depth + 1))
+      elif [ "$c" = "(" ]; then
+        depth=$((depth - 1))
+        if [ "$depth" -eq 0 ]; then
+          open_idx=$i
+          break
+        fi
+      fi
+    done
+    if [ "$open_idx" -ge 0 ]; then
+      s="${s:0:$open_idx}"
+      s="$(printf '%s' "$s" | sed -e 's/[[:space:]]*$//')"
+    else
+      break
+    fi
+  done
+  printf '%s' "$s"
+}
+
+compute_release_history() {
+  local -a hist_versions=()
+  local -a hist_dates=()
+  local -a hist_stories=()
+  local date subject version story found idx i
+
+  while IFS=$'\t' read -r date subject; do
+    [ -n "$date" ] || continue
+    if [[ "$subject" =~ ^(live-spec\ |v)?([0-9]+\.[0-9]+\.[0-9]+)[[:space:]]*[:—-]?[[:space:]]*(.*)$ ]]; then
+      version="${BASH_REMATCH[2]}"
+      story="${BASH_REMATCH[3]}"
+
+      # Cut at the first paren-outside ": " or ". " (the headline/detail split), then peel
+      # off any trailing parenthetical group(s), e.g. " (ROADMAP 333, PATCH)".
+      story="$(cut_at_outside_paren_break "$story")"
+      story="$(strip_trailing_parens "$story")"
+      # Collapse whitespace and trim the ends (printf, not echo, so no trailing newline
+      # sneaks into the whitespace class tr squeezes down to a stray trailing space).
+      story="$(printf '%s' "$story" | tr -s '[:space:]' ' ' | sed -e 's/^ *//' -e 's/ *$//')"
+
+      found=0
+      idx=0
+      for ((i=0; i<${#hist_versions[@]}; i++)); do
+        if [ "${hist_versions[$i]}" = "$version" ]; then
+          found=1
+          idx=$i
+          break
+        fi
+      done
+      if [ "$found" -eq 0 ]; then
+        hist_versions+=("$version")
+        hist_dates+=("$date")
+        hist_stories+=("$story")
+      else
+        hist_dates[$idx]="$date"
+        hist_stories[$idx]="$story"
+      fi
+    fi
+  done < <(git -C "$PACK_ROOT" log --date=short --pretty=format:'%ad%x09%s')
+
+  {
+    echo "---"
+    echo
+    echo "## Release history"
+    echo
+    echo "One line per release, generated from the pack's own history at every sync; the full story per release lives in the pack's [JOURNAL.md](https://github.com/${GITHUB_OWNER}/live-spec/blob/main/JOURNAL.md)."
+    echo
+    for ((i=0; i<${#hist_versions[@]}; i++)); do
+      echo "- ${hist_versions[$i]} · ${hist_dates[$i]} — ${hist_stories[$i]}"
+    done
+  }
+}
+
+# Computed once, up front, and reused for every mirror (and for --print-release-history).
+RELEASE_HISTORY="$(compute_release_history)"
+
+stamp_release_history() {
+  local file="$1"
+  [ -f "$file" ] || return 0
+  printf '\n%s\n' "$RELEASE_HISTORY" >> "$file"
+}
+
+# --print-release-history: print the generated section and exit, touching no repo at all —
+# lets the generation logic be tested without cloning a mirror or reaching GitHub.
+if [ "${1:-}" = "--print-release-history" ]; then
+  printf '%s\n' "$RELEASE_HISTORY"
+  exit 0
+fi
 
 # One status line per skill, collected here and printed again at the end as a summary.
 declare -a SUMMARY_LINES=()
@@ -165,6 +313,10 @@ for skill_path in "$SKILLS_DIR"/*/; do
       fi
     } > "$readme"
   fi
+
+  # The generated release-history section, README.md only (SKILL.md stays clean) — stamped
+  # before the attribution line so the attribution line stays the last thing in the file.
+  stamp_release_history "$mirror_dir/README.md"
 
   # The attribution line, stamped from the live pack version (SPEC INV-96).
   stamp_attribution "$mirror_dir/README.md"
