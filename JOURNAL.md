@@ -2,6 +2,10 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-16 ~20:06 IDT (Fable lead; Alexander remote) — the banner joins the declared kind, on his word
+
+Alexander answered the 2.2.0 design review's one question at ~20:04: declare. The mirror's generated blocks now stand as one declared kind with three members — the read-only banner, the release-history section, the attribution line — the class sentence in INV-181, M-340 and its test pinning the banner (spec arm red before the clause). The design-review record's held question flips to answered; the loop rests CONVERGED. Docs frozen anew; a small landing on the shipped 2.2.0.
+
 ## 2026-07-16 ~18:17 IDT (Fable lead + opus/sonnet/fable workers; Alexander remote, English keyboard) — v2.2.0: mirrors tell their story — release history on the standalone mirrors, two queue rows closed, the full MINOR gate run and folded (rows 359, 360, 361 queued)
 
 Alexander's word at 17:06 set the MINOR. Row 360 (born of the outside review's one surviving kernel): every standalone mirror README now carries a generated release-history section — one line per shipped version, harvested from the pack's own git log by scripts/sync-mirrors.sh, printable by --print-release-history, JOURNAL.md linked as the full home; INV-181 beside the attribution clause, M-339, red-proven tests. Row 359: the matrix-names-real-tests net learned the file-path form at the root (a path cite must exist on disk; bare names must match an exact def), the false green reproduced raw before the fix.

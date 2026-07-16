@@ -113,6 +113,19 @@ class TestMirrorReleaseHistory(unittest.TestCase):
         self.assertIn(" — ", c_result.stdout)
         self.assertNotIn("â€", c_result.stdout)
 
+    def test_banner_is_the_kinds_third_declared_member(self):
+        # The mirror's generated blocks are one declared kind (banner · release history ·
+        # attribution), each pinned by a test — landed on the owner's word, 2026-07-16 (the
+        # 2.2.0 design review's one question). The spec arm was red before the clause named
+        # the kind.
+        script = read("scripts/sync-mirrors.sh")
+        self.assertIn("banner_for", script)
+        self.assertIn("Read-only mirror", script)
+
+        spec = read("PRODUCT_SPEC.md")
+        self.assertIn("read-only banner", spec)
+        self.assertIn("three members", spec)
+
     def test_loop_stamps_before_attribution(self):
         script = read("scripts/sync-mirrors.sh")
 

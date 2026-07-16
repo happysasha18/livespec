@@ -7,9 +7,8 @@ disposition addenda — every defect folded (the audit's phantom-2.2.0 catch amo
 queued (suite-time budget net). VERSION stamped 2.2.0 across the 12 homes. SHIPPED: suite 940 green, all gates green
 (one honest catch: the frozen-baseline gate demanded a re-freeze for the reviewed changes),
 pushed 26fc256, mirror synced and walked live — row 360 MET.
-OWNER-HELD ask riding this session's report: declare the mirror's read-only banner a tested third
-member of the generated-blocks kind (recommended default: declare), per the design review's one
-question — the class sentence lands only on his word (INV-142).
+The banner ask is ANSWERED (his word 20:04, declare): the generated-blocks kind stands declared
+with its three members, M-340 + test pin it; the design-review loop rests CONVERGED.
 
 ## PRIOR STATE (2026-07-16 ~15:48 — v2.1.1 SHIPPED)
 VERSION 2.1.1 pushed (`be70e35`): rows 354/356/357/358 — the story and per-row detail live in
@@ -31,5 +30,5 @@ JOURNAL.md's v2.1.1 chapter and the ROADMAP rows.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE — no staging, no commit
   (INV-174); the commit-time fence also stops a staged file carrying unstaged edits (INV-175).
-- Next free codes: INV-182, M-341, next ROADMAP row 362. Memory can be wiped once pushed — story in
+- Next free codes: INV-182, M-341 (M-340 spent), next ROADMAP row 362. Memory can be wiped once pushed — story in
   JOURNAL.md (the 18:17 v2.2.0 chapter) + the three 2026-07-16 gate records with addenda.
