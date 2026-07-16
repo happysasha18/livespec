@@ -152,6 +152,32 @@ class TestArchitecture(unittest.TestCase):
                                     "pin %s:%s beyond end of file (%d lines)" % (path, line_no, n_lines))
 
 
+def _check_owning_row_tests(testcase, row_id, owning, this_file):
+    """A BUILT row's owning-test cell may cite two kinds of token:
+    - a file-path token like `tests/test_foo.py` (root fix for M-146: this
+      used to get scraped by a bare `test_\\w+` regex, truncated at the dot
+      to `test_foo`, and then pass because "def test_foo" happened to be a
+      substring of some unrelated real def elsewhere in the suite) — this
+      must resolve to a real file on disk, so a stale path goes red;
+    - a bare function-name token like `test_foo` — this keeps the original
+      rule, and must match a real `def test_foo` somewhere in the suite.
+    Path tokens are stripped out before the bare-name scrape so a path's
+    truncated stem is never independently required to be a def.
+    """
+    paths = re.findall(r"[\w./-]*test_\w+\.py", owning)
+    stripped = owning
+    for p in paths:
+        stripped = stripped.replace(p, " ")
+        full = os.path.join(ROOT, p)
+        testcase.assertTrue(os.path.isfile(full),
+                             "%s: BUILT row cites a file path that doesn't exist: %s" % (row_id, p))
+    names = re.findall(r"test_\w+", stripped)
+    testcase.assertTrue(names or paths, "%s: BUILT but owning test cell names none" % row_id)
+    for name in names:
+        testcase.assertIn("def %s" % name, this_file,
+                           "%s: BUILT row cites missing test %s" % (row_id, name))
+
+
 class TestMatrix(unittest.TestCase):
     def test_matrix_blocks_match_architecture_nodes(self):
         nodes = set(architecture_nodes())
@@ -195,7 +221,6 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(dupes, [], "duplicate matrix row ids")
 
     def test_matrix_built_rows_name_real_tests(self):
-        module = globals()
         tests_dir = os.path.join(ROOT, "tests")
         this_file = "\n".join(
             read(os.path.join("tests", f)) for f in sorted(os.listdir(tests_dir))
@@ -204,11 +229,26 @@ class TestMatrix(unittest.TestCase):
         for rows in matrix_blocks().values():
             for row in rows:
                 if row["status"].startswith("BUILT"):
-                    names = re.findall(r"test_\w+", row["owning"])
-                    self.assertTrue(names, "%s: BUILT but owning test cell names none" % row["id"])
-                    for name in names:
-                        self.assertIn("def %s" % name, this_file,
-                                      "%s: BUILT row cites missing test %s" % (row["id"], name))
+                    _check_owning_row_tests(self, row["id"], row["owning"], this_file)
+
+    def test_owning_row_check_catches_stale_file_path(self):
+        # M-146 regression guard: a bare `test_\w+` scrape used to truncate a
+        # file-path cite like `(tests/test_foo.py)` at the dot, then pass
+        # because "def test_foo" happens to be a substring of some unrelated
+        # real def. A file-path token must instead resolve to a real file on
+        # disk; a stale one must go red, not slip through as a truncated name.
+        with self.assertRaises(AssertionError):
+            _check_owning_row_tests(
+                self, "FAKE-1",
+                "`test_x` (tests/test_does_not_exist.py)",
+                "def test_x(): pass",
+            )
+        # sanity: the same helper stays green on a real, existing file cite
+        _check_owning_row_tests(
+            self, "FAKE-2",
+            "`test_x` (tests/test_traceability.py)",
+            "def test_x(): pass",
+        )
 
 
 class TestArtifacts(unittest.TestCase):
