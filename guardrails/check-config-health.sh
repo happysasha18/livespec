@@ -37,7 +37,22 @@ for name in pre-commit pre-push; do
   fi
 done
 
+# INV-173 x INV-175 (batch audit 2026-07-16, F3): the pack's canonical session hook is a gate
+# living twice too. When an installed copy exists, it must match the hooks/ source; when none is
+# installed on this machine, skip by name (installing is the setup walk's act, not this gate's).
+for hname in scissors-scan.py clock-hook.sh chat-law-hook.sh; do
+  src_hook="$REPO_ROOT/hooks/$hname"
+  inst_hook="$HOME/.claude/hooks/$hname"
+  [ -f "$src_hook" ] || continue
+  if [ ! -f "$inst_hook" ]; then
+    echo "config-health: skip ($hname not installed on this machine — the setup walk installs it)"
+  elif ! cmp -s "$src_hook" "$inst_hook"; then
+    echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed hook drifted from source: $hname\",\"fix\":\"run scripts/install-pack-hooks.sh or scripts/install-session-hooks.sh\"}"
+    fail=1
+  fi
+done
+
 if [ "$fail" -eq 0 ]; then
-  echo "config-health: OK (installed hooks match guardrails/ source)"
+  echo "config-health: OK (installed hooks match their sources)"
 fi
 exit "$fail"

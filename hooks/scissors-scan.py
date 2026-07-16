@@ -56,12 +56,15 @@ def _strip_quoted_demos(line):
     """Strip spans inside «guillemets», "double quotes", and `backticks` (non-greedy, per line)."""
     s = re.sub(r"«[^»]*»", " ", line)
     s = re.sub(r'"[^"]*"', " ", s)
+    s = re.sub(r"\u201c[^\u201d]*\u201d", " ", s)  # typographic double quotes
+    s = re.sub(r"\u2018[^\u2019]*\u2019", " ", s)  # typographic single quotes (ASCII ' kept: apostrophes)
     s = re.sub(r"`[^`]*`", " ", s)
     return s
 
 
 def last_assistant_text(transcript_path):
     text = ""
+    last_id = None
     try:
         with open(transcript_path, encoding="utf-8") as f:
             for line in f:
@@ -79,8 +82,16 @@ def last_assistant_text(transcript_path):
                 chunk = "".join(
                     p.get("text", "") for p in parts if isinstance(p, dict) and p.get("type") == "text"
                 )
-                if chunk.strip():
+                if not chunk.strip():
+                    continue
+                # one reply can arrive as several transcript events; join every chunk of the LAST
+                # message (matched by id) so scissors in an early chunk cannot escape (audit F4).
+                mid = msg.get("id")
+                if mid and mid == last_id:
+                    text += chunk
+                else:
                     text = chunk
+                    last_id = mid
     except OSError:
         return ""
     return text

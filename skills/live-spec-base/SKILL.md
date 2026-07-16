@@ -5,7 +5,7 @@ metadata:
   version: 2.0.0
 ---
 
-# live-spec-base — one rulebook, eight working skills
+# live-spec-base — one rulebook, nine working skills
 
 The pack's shared working rules live HERE, once. A working skill (spec-author, product-prover,
 design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) opens by naming this base and the version it was written against, references

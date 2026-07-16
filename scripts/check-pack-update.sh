@@ -54,33 +54,29 @@ fi
 
 mkdir -p "$(dirname "$STAMP_FILE")" && printf '%s' "$today" > "$STAMP_FILE"
 
-newest="$(printf '%s\n%s\n' "$installed" "$remote" | sort -V | tail -1)"
-if [ "$remote" = "$installed" ] || [ "$newest" = "$installed" ]; then
-  echo "pack update check: up to date ($installed)"
-  exit 0
-fi
-
-echo "PACK UPDATE AVAILABLE: $remote (this machine runs $installed)"
-echo "  what changed: https://github.com/happysasha18/live-spec/blob/main/JOURNAL.md"
-echo "  update road: install.sh (attic-backed) — or a plain 'git pull' where the repo itself runs the pack"
-
-# Vendored-copy staleness (SPEC INV-177): a host's ratchet manifest pins the pack version its
-# vendored gate scripts came from. When the pack moved past that pin, propose the re-install and
-# name the vendored files whose content differs from the local pack's current copies. Proposal
-# only, like everything here; the pack version speaks for the whole (E-25) — the per-file list is
-# read against the LOCAL pack checkout, never a remote diff.
-[ -z "$MANIFEST" ] && [ -f "scripts/ratchet-manifest.json" ] && MANIFEST="scripts/ratchet-manifest.json"
-[ -z "$PACK_ROOT" ] && PACK_ROOT="$ROOT"
-if [ -n "$MANIFEST" ] && [ -f "$MANIFEST" ]; then
-  python3 - "$MANIFEST" "$PACK_ROOT" "$remote" <<'PYEOF'
+check_manifest() {
+  # Vendored-copy staleness (SPEC INV-177): runs on EVERY check, not only when the pack itself moved —
+  # the standing state is a current pack and a lagging host, and a watcher silent exactly there would
+  # re-open the hole it was built to close (batch audit 2026-07-16, F1). The pin compares against the
+  # LOCAL pack VERSION: the newest truth this machine can act on.
+  local pack_now="$1"
+  [ -z "$MANIFEST" ] && [ -f "scripts/ratchet-manifest.json" ] && MANIFEST="scripts/ratchet-manifest.json"
+  [ -z "$PACK_ROOT" ] && PACK_ROOT="$ROOT"
+  if [ -n "$MANIFEST" ] && [ -f "$MANIFEST" ]; then
+    python3 - "$MANIFEST" "$PACK_ROOT" "$pack_now" <<'PYEOF'
 import hashlib, json, os, sys
-manifest_path, pack_root, remote = sys.argv[1], sys.argv[2], sys.argv[3]
+manifest_path, pack_root, pack_now = sys.argv[1], sys.argv[2], sys.argv[3]
 try:
     man = json.load(open(manifest_path))
 except (OSError, ValueError):
     sys.exit(0)
+def _v(t):
+    try:
+        return tuple(int(x) for x in t.split("."))
+    except ValueError:
+        return ()
 pinned = str(man.get("pack_version", ""))
-if pinned and pinned != remote:
+if pinned and _v(pinned) and _v(pack_now) and _v(pinned) < _v(pack_now):
     stale = []
     for rel, sha in (man.get("vendored") or {}).items():
         src = os.path.join(pack_root, rel)
@@ -88,14 +84,32 @@ if pinned and pinned != remote:
             cur = hashlib.sha256(open(src, "rb").read()).hexdigest()
             if cur != sha:
                 stale.append(rel)
-    print("  VENDORED GATES PINNED TO %s — the pack moved past the pin:" % pinned)
+    print("  VENDORED GATES PINNED TO %s — the pack moved past the pin (now %s):" % (pinned, pack_now))
     for rel in stale:
         print("    stale vs current pack: %s" % rel)
     if not stale:
         print("    (no vendored file differs from the local pack copy — the pin alone is old)")
     print("  re-install road: bash <pack>/adopt/install-ratchet.sh --force  (re-seeding caps is explicit, never silent)")
 PYEOF
+  fi
+}
+
+newest="$(printf '%s\n%s\n' "$installed" "$remote" | sort -V | tail -1)"
+if [ "$remote" = "$installed" ] || [ "$newest" = "$installed" ]; then
+  echo "pack update check: up to date ($installed)"
+  arm_out="$(check_manifest "$installed")"
+  if [ -n "$arm_out" ]; then
+    printf '%s\n' "$arm_out"
+    echo "  PROPOSAL ONLY — nothing installed; updating is the human's word."
+  fi
+  exit 0
 fi
+
+echo "PACK UPDATE AVAILABLE: $remote (this machine runs $installed)"
+echo "  what changed: https://github.com/happysasha18/live-spec/blob/main/JOURNAL.md"
+echo "  update road: install.sh (attic-backed) — or a plain 'git pull' where the repo itself runs the pack"
+
+check_manifest "$installed"
 
 echo "  PROPOSAL ONLY — nothing installed; updating is the human's word."
 exit 0

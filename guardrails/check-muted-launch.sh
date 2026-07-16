@@ -21,7 +21,9 @@
 # that merely NAMES a flag in a docstring or comment with no real invocation, passes. Portable across
 # GNU and BSD grep (no \b). Prose surfaces (spec, ROADMAP, inbox, this checker, its own test)
 # legitimately NAME the flags and are excluded from the repo scan. Honest boundary: this is a
-# structural grep keyed on the Chrome launch flags plus an invocation token, not a proof that every
+# structural grep keyed on the Chrome launch flags plus an invocation token over an extension
+# allowlist — a tracked EXTENSIONLESS shebang script is outside the scan (stated boundary; the
+# shebang sweep is queued), and it is not a proof that every
 # possible indirect launch (a bare-shell `chromium --headless`, a wrapper, an env-var-built arg list,
 # a non-Chrome driver) is muted; those a fork still owns under INV-158.
 set -euo pipefail
@@ -45,7 +47,16 @@ scan_file() {
   # launch's multi-line arg list is caught.
   local f="$1"
   local stripped
-  stripped="$(awk '{ l=$0; sub(/#.*/,"",l); print l }' "$f" 2>/dev/null || true)"
+  # per-extension comment stripping (batch audit 2026-07-16, F2): a JS/TS file's `//` or `/* */`
+  # comment naming --mute-audio must not satisfy the mute check any more than a Python `#` one.
+  case "$f" in
+    *.js|*.mjs|*.cjs|*.ts|*.jsx|*.tsx)
+      stripped="$(awk '{ l=$0; sub(/\/\/.*/,"",l); gsub(/\/\*[^*]*\*\//,"",l); print l }' "$f" 2>/dev/null || true)"
+      ;;
+    *)
+      stripped="$(awk '{ l=$0; sub(/#.*/,"",l); print l }' "$f" 2>/dev/null || true)"
+      ;;
+  esac
   if printf '%s\n' "$stripped" | grep -qE "$LAUNCH" 2>/dev/null \
      && printf '%s\n' "$stripped" | grep -qE "$INVOKE" 2>/dev/null; then
     if ! printf '%s\n' "$stripped" | grep -q 'mute-audio' 2>/dev/null; then

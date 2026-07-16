@@ -6,7 +6,7 @@
 # Run BY THE HUMAN — the agent's own hand is blocked from self-config by the
 # harness classifier, deliberately. Idempotent: re-running changes nothing.
 set -e
-DIR="$(cd "$(dirname "$0")" && pwd)"
+DIR="$(cd "$(dirname "$0")/.." && pwd)/hooks"
 mkdir -p "$HOME/.claude/hooks"
 cp "$DIR/clock-hook.sh" "$DIR/chat-law-hook.sh" "$HOME/.claude/hooks/"
 chmod +x "$HOME/.claude/hooks/clock-hook.sh" "$HOME/.claude/hooks/chat-law-hook.sh"

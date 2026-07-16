@@ -135,3 +135,32 @@ def test_jsx_puppeteer_launch_unmuted_reds():
 def test_spec_states_the_third_net():
     spec = read("PRODUCT_SPEC.md")
     assert "A third net catches the divergent harness" in spec
+
+
+def test_js_comment_only_mute_still_reds():
+    # batch audit 2026-07-16, F2: the comment strip was `#`-only, so a JS `// --mute-audio` comment
+    # above a real unmuted launch satisfied the mute check. Per-extension stripping closes it.
+    r = _scan(
+        "// TODO: someday add --mute-audio here\n"
+        "const b = await puppeteer.launch({ args: ['--headless', '--remote-debugging-port=9222'] });\n",
+        name="harness.js",
+    )
+    assert r.returncode != 0, "a JS comment-only --mute-audio satisfied the mute check"
+    assert "INV-157" in (r.stdout + r.stderr)
+
+
+def test_js_block_comment_mute_still_reds():
+    r = _scan(
+        "/* --mute-audio lives here in prose */\n"
+        "const b = await puppeteer.launch({ args: ['--headless', '--remote-debugging-port=9222'] });\n",
+        name="harness.ts",
+    )
+    assert r.returncode != 0, "a TS block-comment --mute-audio satisfied the mute check"
+
+
+def test_js_real_mute_still_passes():
+    r = _scan(
+        "const b = await puppeteer.launch({ args: ['--headless', '--mute-audio', '--remote-debugging-port=9222'] });\n",
+        name="harness.js",
+    )
+    assert r.returncode == 0, "a really muted JS launch was falsely flagged"

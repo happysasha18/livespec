@@ -3,7 +3,7 @@
     "scripts/spec-style-lint.py",
     "scripts/preshow-register-lint.py",
     "scripts/register-lint-floor.json",
-    "scripts/chat-law-hook.sh",
+    "hooks/chat-law-hook.sh",
     "skills/communicator/references/field-examples.md"
   ],
   "authorship_globs": [

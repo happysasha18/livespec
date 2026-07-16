@@ -17,7 +17,7 @@ import subprocess
 import unittest
 
 from conftest import ROOT
-SCRIPT = os.path.join(ROOT, "scripts", "clock-hook.sh")
+SCRIPT = os.path.join(ROOT, "hooks", "clock-hook.sh")
 
 
 def run(args, cwd=None):

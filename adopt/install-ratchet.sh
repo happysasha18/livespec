@@ -243,22 +243,22 @@ PYEOF
 # --- step f: wire (or recommend) the pre-push gate ------------------------------------------------
 PRE_PUSH="$HOST_ROOT/guardrails/pre-push"
 if [ -f "$PRE_PUSH" ]; then
-  if grep -q "gate m — ratchet caps" "$PRE_PUSH"; then
-    echo "already wired: guardrails/pre-push gate m — ratchet caps"
+  if grep -q "gate r — ratchet caps" "$PRE_PUSH"; then
+    echo "already wired: guardrails/pre-push gate r — ratchet caps"
   else
     {
       echo ""
       echo "echo \"\""
-      echo "echo \"-- gate m — ratchet caps --\""
+      echo "echo \"-- gate r — ratchet caps --\""
       echo "if ! python3 -m pytest -q tests/test_ratchet_lock.py; then"
       echo "  fail=1"
       echo "fi"
     } >> "$PRE_PUSH"
-    echo "wired: guardrails/pre-push gate m — ratchet caps"
+    echo "wired: guardrails/pre-push gate r — ratchet caps"
   fi
 else
   echo "no guardrails/pre-push found — add this recipe to your own push gate:"
-  echo "  echo \"-- gate m — ratchet caps --\""
+  echo "  echo \"-- gate r — ratchet caps --\""
   echo "  python3 -m pytest -q tests/test_ratchet_lock.py || fail=1"
 fi
 

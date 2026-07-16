@@ -60,6 +60,22 @@ class TestUpdateWatcherManifestArm(unittest.TestCase):
             self.assertNotIn("VENDORED GATES PINNED", r.stdout)
 
 
+class TestManifestArmRunsWhenPackIsCurrent(unittest.TestCase):
+    def test_old_pin_proposes_even_with_pack_up_to_date(self):
+        # the born-from scenario (batch audit 2026-07-16, F1): pack current, host pin old
+        with tempfile.TemporaryDirectory() as tmp:
+            man = os.path.join(tmp, "ratchet-manifest.json")
+            json.dump({"pack_version": "0.0.1",
+                       "vendored": {"scripts/gate_common.py": "0" * 64}},
+                      open(man, "w"))
+            installed = open(os.path.join(REPO, "VERSION")).read().strip()
+            r = run_check(tmp, manifest=man, remote_version=installed)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("up to date", r.stdout)
+            self.assertIn("VENDORED GATES PINNED TO 0.0.1", r.stdout)
+            self.assertIn("stale vs current pack: scripts/gate_common.py", r.stdout)
+
+
 class TestManifestCoversScaffoldKit(unittest.TestCase):
     def test_installer_pins_scaffold_files_when_present(self):
         with tempfile.TemporaryDirectory() as tmp:
