@@ -74,7 +74,14 @@ On the yes, write **one upstream note** and deposit it. The note is:
   never the user's private content past what the point needs;
 - **self-contained** — it carries its own context, so a reader upstream who does not know this user
   understands it on its own;
-- **a courteous private request** — shaped for the authors, never for a public audience.
+- **a courteous private request** — shaped for the authors, never for a public audience;
+- **anonymized** — the host's real entities are masked before the note leaves the draft (SPEC INV-179):
+  a person's name, the company or client, an internal product or repo name, a file path, a customer's
+  data — each becomes a neutral role word ("the owner", "a client project", "an internal repo"), and the
+  masking is part of the draft the user reads at consent, so what they approve is exactly what would
+  travel. The pack's own public names (skill names, invariant codes) stay. An enterprise host is the
+  reason this is a law rather than taste: a note that leaks an internal name is unsendable there, and a
+  note masked after the yes is a different note from the one approved.
 
 Example note (the shape to follow):
 
