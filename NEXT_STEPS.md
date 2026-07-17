@@ -1,18 +1,17 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-17 — row 417 LANDED locally (not pushed), suite 1155 green, all gates green, v2.6.3)
+## LIVE STATE (2026-07-18 — rows 390 + 392 grooming leg LANDED locally (not pushed), suite 1265 green, all gates green, v2.6.3)
 
-Rows 416 · 417 · 418 all landed — the pack audited itself by the class rule and repaired what it found.
-**Row 417 (this landing): a cleanup says what it ended** (INV-204, the notice, ships first on his ~16:58
-word), and the four name-list guards inverted from a list into a check that reads what a thing IS: broad-
-kill denies every ending that names a name (owned PID / process group / owned path passes); shipped-
-language reads a declared alphabet held as data so the code names no person; config-health diffs the whole
-hook directory against the installed set; the deferral gate reads a deferral's grammar so `⟨DECIDE⟩` is
-caught. Probe corpus a committed fixture. SPEC/pack 2.6.3. **NOT pushed — the push gate, a prover re-check,
-and a Fable adversarial review are the orchestrator's.** Two pre-existing 416/418 reds folded to land green
-(see JOURNAL). Memory can be wiped — this file plus JOURNAL.md carry the state. Earlier: `f40f2a1` pushed at v2.6.0 (the
-roster is gone, lanes get their branch road, the class rule took the base rulebook's head); 416/418 landed
-after it. Everything below the queue waits.
+**Rows 390 + 392 (this landing, they fold together): the pack's working docs are split and rotated, nothing lost**
+(INV-209, his grooming word 2026-07-17 ~18:25). Mechanism `scripts/rotate-doc.py`, gate t `check-doc-rotation.py` (both
+nets); first rotation moved the 17 oldest fully-closed unreferenced ROADMAP rows to `docs/queue-archive/rotated-ROADMAP-2026-07-18.md`
+(live ROADMAP 580.8→564.2 KB, each still findable via manifest + grepable archive; 113 more rotatable on the next cadence).
+Their OTHER legs stay OPEN as residual rows for the orchestrator: row 390's node-growth-law counter/lens/split-shape,
+row 392's four-doc byte bounds with watchers. **NOT pushed — the push gate and a prover re-check are the orchestrator's.**
+Memory can be wiped — this file plus JOURNAL.md carry the state. Earlier (all landed locally, not pushed, detail in
+JOURNAL): rows 416 · 417 · 418 — the pack audited itself by the class rule (INV-204 cleanup-notice, the four
+name-list guards inverted to read what a thing IS); and `f40f2a1` pushed at v2.6.0 (the roster is gone, lanes get
+their branch road, the class rule took the base rulebook's head). Everything below the queue waits.
 
 ## ON RESUME — in order
 

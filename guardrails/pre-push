@@ -122,6 +122,12 @@ if ! "$GUARDRAILS/check-skill-review.sh"; then
 fi
 
 echo ""
+echo "-- gate t: doc rotation (the pack's split-and-rotated docs lose nothing — every rotated row is findable in its archive and every archive is named in a manifest line, SPEC INV-209) --"
+if ! python3 "$GUARDRAILS/check-doc-rotation.py"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1

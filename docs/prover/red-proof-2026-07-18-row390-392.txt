@@ -1,0 +1,35 @@
+RED PROOF — ROADMAP rows 390 + 392, INV-209 doc rotation, 2026-07-18
+Run of tests/test_doc_rotation.py against the pre-delta tree (gate + mechanism absent,
+spec/index/architecture/matrix carry no INV-209, pre-push and CI unwired): 16 failed, 1 passed.
+After the gate, mechanism, and the four-document wiring landed: 17 passed.
+---- captured tail of the red run ----
+>       assert "INV-209" in arch
+E       AssertionError: assert 'INV-209' in '# live-spec — Architecture\n\nDerived from PRODUCT_SPEC.md; the package version has one home, the VERSION file, and i...\nre-prove [INV-37]. This law states the bar and the signal; the counter is the recorded footprints made\ncountable.\n'
+
+tests/test_doc_rotation.py:241: AssertionError
+________________________ test_matrix_row_covers_the_law ________________________
+
+    def test_matrix_row_covers_the_law():
+        matrix = read("TEST_MATRIX.md")
+>       assert "M-390" in matrix
+E       AssertionError: assert 'M-390' in '# live-spec — Test Matrix\n\nDerived from PRODUCT_SPEC.md **through the proven ARCHITECTURE.md**; the package version... the spec grows. Retire rows (mark RETIRED, do not delete) when a feature is removed — so the removal is auditable.*\n'
+
+tests/test_doc_rotation.py:247: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_passes_a_clean_rotation
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_passes_the_real_tree
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_reds_a_rotation_that_loses_a_row
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_reds_a_rotation_with_no_manifest
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_reds_a_row_that_is_both_live_and_rotated
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_gate_ships - Assert...
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_mechanism_ships - A...
+FAILED tests/test_doc_rotation.py::TestRotationGate::test_rotated_row_is_findable_by_number_in_the_archive
+FAILED tests/test_doc_rotation.py::TestMechanism::test_rotate_moves_closed_rows_and_leaves_a_manifest
+FAILED tests/test_doc_rotation.py::TestMechanism::test_rotate_output_survives_the_gate
+FAILED tests/test_doc_rotation.py::test_gate_wired_into_pre_push - AssertionE...
+FAILED tests/test_doc_rotation.py::test_gate_mirrored_in_ci - AssertionError:...
+FAILED tests/test_doc_rotation.py::test_spec_states_the_law - AssertionError:...
+FAILED tests/test_doc_rotation.py::test_formal_index_row - AssertionError: as...
+FAILED tests/test_doc_rotation.py::test_architecture_owns_the_invariant - Ass...
+FAILED tests/test_doc_rotation.py::test_matrix_row_covers_the_law - Assertion...
+16 failed, 1 passed in 0.37s

@@ -60,6 +60,8 @@ jobs:
         env:
           LIVE_SPEC_DIFF_BASE: ${{ github.event.before }}
         run: guardrails/check-skill-review.sh
+      - name: gate t — doc rotation (the pack's split-and-rotated docs lose nothing, SPEC INV-209)
+        run: python3 guardrails/check-doc-rotation.py
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the
