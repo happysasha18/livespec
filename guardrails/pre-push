@@ -116,6 +116,12 @@ if ! python3 "$GUARDRAILS/check-authority-anchor.py"; then
 fi
 
 echo ""
+echo "-- gate s: skill review (a substantive skill change carries its skill-creator review record, SPEC INV-208) --"
+if ! "$GUARDRAILS/check-skill-review.sh"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1

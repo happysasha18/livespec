@@ -48,8 +48,18 @@ jobs:
         run: guardrails/check-muted-launch.sh
       - name: gate o — cleanup notice (every cleanup path that ends a process says what it ended, SPEC INV-204)
         run: guardrails/check-cleanup-notice.sh
+      - name: gate p — touchpoint kind (a surface speaks only the kind its touchpoint affords, SPEC INV-205)
+        run: python3 guardrails/check-touchpoint-kind.py
+      - name: gate q — waiting list (the board loses nothing — no over-cap shown set, no demotion into the void, SPEC INV-206)
+        run: python3 guardrails/check-board.py
       - name: gate r — authority anchor (a decision recorded as the person's names its exchange, SPEC INV-207)
         run: python3 guardrails/check-authority-anchor.py
+      - name: gate s — skill review (a substantive skill change carries its skill-creator review record, SPEC INV-208)
+        # LIVE_SPEC_DIFF_BASE lets the gate read the push range (the same base as gate a); on a PR it
+        # is empty and the gate falls back to origin/main.
+        env:
+          LIVE_SPEC_DIFF_BASE: ${{ github.event.before }}
+        run: guardrails/check-skill-review.sh
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the
