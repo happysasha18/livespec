@@ -1,0 +1,43 @@
+Red-proof — ROADMAP 408 — the waiting list (SPEC INV-206), captured 2026-07-17.
+
+The gate guardrails/check-board.py reds three real violations (run against the pre-delta tree, before
+the spec/index/architecture/matrix carried INV-206 and before pre-push wired the gate):
+
+--- (b) a demotion with no matching line = a silent loss ---
+$ python3 guardrails/check-board.py --board guardrails/board-fixtures/board-demoted-absent.md
+FAIL (board): the waiting list would lose or misreport what waits for his eyes (SPEC INV-206):
+  w-002 is recorded as demoted from the shown set but is accounted for nowhere on the board (not alive
+  on the list, not on an attic manifest line) — a demoted item must move into the list whole and alive,
+  never vanish
+exit=1
+
+--- (c) an over-cap shown set ---
+$ python3 guardrails/check-board.py --board guardrails/board-fixtures/board-over-cap.md
+FAIL (board): the waiting list would lose or misreport what waits for his eyes (SPEC INV-206):
+  the shown set holds 13 items (cap 12) — the oldest shown demotes into the list instead of a
+  thirteenth being shown
+exit=1
+
+--- (a) a closing report that omits a still-open item ---
+$ python3 guardrails/check-board.py --board guardrails/board-fixtures/board-genuine.md \
+      --report guardrails/board-fixtures/closing-note-omits-open.md
+FAIL (board): the waiting list would lose or misreport what waits for his eyes (SPEC INV-206):
+  the closing report omits w-002, which is still open on the board — a report that accounts for what
+  waits names every alive item
+exit=1
+
+--- a genuine board and a note naming every open item pass quiet ---
+$ python3 guardrails/check-board.py --board guardrails/board-fixtures/board-genuine.md            -> exit=0
+$ python3 guardrails/check-board.py --board guardrails/board-fixtures/board-genuine.md \
+      --report guardrails/board-fixtures/closing-note-names-all.md                                -> exit=0
+$ python3 guardrails/check-board.py            (push mode, the real WAITING.md)                    -> exit=0
+
+--- the test file, run against the pre-delta tree ---
+$ python3 -m pytest tests/test_board.py -q
+5 failed, 10 passed
+  FAILED test_gate_wired_into_pre_push        (pre-push had not yet wired the gate)
+  FAILED test_spec_states_the_law             (PRODUCT_SPEC.md did not yet carry INV-206)
+  FAILED test_formal_index_row                (no | INV-206 | index row yet)
+  FAILED test_architecture_owns_the_invariant (ARCHITECTURE.md did not yet own INV-206)
+  FAILED test_matrix_row_covers_the_law       (TEST_MATRIX.md had no INV-206 row yet)
+The 10 passing were the gate-mechanics and board-structure tests. After the delta all 15 go green.

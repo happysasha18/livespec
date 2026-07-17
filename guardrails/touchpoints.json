@@ -56,7 +56,7 @@
       "name": "waiting-list",
       "kind": "asynchronous",
       "opened_by": "person",
-      "surface": null,
+      "surface": "WAITING.md",
       "row": "408",
       "note": "the small file at the host root holding what waits for his eyes; he opens it on request, so it affords a teaching line as well as a wait, and never an interruption."
     },

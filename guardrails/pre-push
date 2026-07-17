@@ -104,6 +104,12 @@ if ! python3 "$GUARDRAILS/check-touchpoint-kind.py"; then
 fi
 
 echo ""
+echo "-- gate q: waiting list (the board loses nothing — no over-cap shown set, no demotion into the void, SPEC INV-206) --"
+if ! python3 "$GUARDRAILS/check-board.py"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1
