@@ -7,23 +7,27 @@ and **the rule of thinking took the head of the base rulebook** — every incomi
 the answer owed is a rule about its CLASS, on three doors (his feedback, our own finding, another
 agent's message). His word, said by his count ~200 times before it was written down.
 
-**THE QUEUE'S HEAD IS THE PACK AUDITING ITSELF BY THAT RULE, and it found the pack guilty** (rows 416,
-417, 418 — all three are one class and fold into one at landing): a register law naming a class held by
-a list of 22 literals · a guard reading four browser words · **and INV-83, which COMMANDS the list in our
-own spec** ("the pattern set GROWS BY ONE per caught leak"). Everything below waits behind those.
+**THE QUEUE'S HEAD IS THE PACK AUDITING ITSELF BY THAT RULE, and it found the pack guilty** (416, 417,
+418 — one class, they fold into one at landing): a register law naming a class held by 22 literals · a
+guard reading four browser words · **INV-83, which COMMANDS the list in our own spec** ("the pattern set
+GROWS BY ONE per caught leak"). 415 stands with them. Everything below waits behind those.
 
 ## ON RESUME — in order
 
 
 1. **A CORRECTION THIS FILE CARRIED, and the day's most expensive lesson.** The two lines that stood here
    — parallel lanes rank above the communication layer, and they wait for a field run — were recorded as
-   HIS RANKING, IN HIS WORDS. He read them back at 15:37 and recognised nothing. Every transcript was
-   swept: **no message of his, on any day, says either thing.** A session's own judgment was written in
-   his voice and travelled from here into a Fable-authored plan and a chat claim before he caught it. His
-   word is the pack's highest authority and no gate questions it, so a fabricated one is unfalsifiable.
-   He named the feeder himself: he says "do as you see fit" when he cannot tell what the agent is
-   thinking, and that surrender was recorded as a considered decision. **The parking was void; the lanes
-   work opened the same hour.** The law and its machine: row 415.
+   HIS RANKING, IN HIS WORDS. He read them back at 15:37 and recognised nothing; every transcript was
+   swept and **no message of his, on any day, says either thing.** A session's judgment was written in his
+   voice and travelled from here into a Fable-authored plan and a chat claim. His word is the pack's
+   highest authority and no gate questions it, so a fabricated one is unfalsifiable. He named the feeder:
+   he says "do as you see fit" when he cannot tell what the agent is thinking, and that surrender was
+   recorded as a considered decision. **The parking was void; the lanes work opened the same hour.**
+   Row 415 is the law, REWRITTEN ~17:09 on his refusal of its first design — a verbatim quote settles
+   nothing (an invented ranking invents its sentence too), and "carry HIS words" is a law about one man
+   while the pack ships to strangers. He demonstrated the machine himself by READING what stood recorded
+   as his word, so the pack shows the person what it believes he decided and he strikes what he never
+   said.
 2. **Nothing waits on a roster.** His word, 2026-07-17 ~15:26: «не понял про агентов. какая разница? кто
    постоянный сам скажет. это же динамическая система.» The roster and its ratification are gone from
    the spec: a tree carrying a card at `.live-spec/agent.md` has declared itself, and discovery is a
@@ -71,12 +75,12 @@ own spec** ("the pattern set GROWS BY ONE per caught leak"). Everything below wa
 - **413 — the frame his 16:07 word put above 402/403/408/409**: every point of contact has a kind,
   synchronous or asynchronous, and the kind licenses what may be said there. Onboarding rides it.
 - **414** the lane count is the person's plan, moved from the law's text into his profile · **415** the
-  attribution law, its first act sweeping the tree's existing owner-attributions.
+  read-back (ON RESUME 1), its first act sweeping the tree's existing owner-attributions.
 - **395** expensive decisions (verify the Karpathy advocate/prosecutor reference first) · **390/392**
   growth, ruled by his 15:57 word: bound what is SHOWN, the archive keeps all and earns grooming ·
   **383/384/391** the machine-holds-the-rule family · **394** older hosts meet a grown founding question ·
-  **385/387/388/389** the layer's owed arms (387 is the field's instrument: five of six hosts have no
-  card) · **379, 380, 370, 393, 397, 406, 407** smaller, unblocked.
+  **385/387/388/389** the layer's owed arms (387 is the field's instrument: five of six hosts have no card)
+  · **379, 380, 370, 393, 397, 406, 407** smaller, unblocked.
 - **The far tier** (382 its law; 381 and 411 its members): out of the what's-left answer, offered on ask.
 - **Owed by THIS landing**: the matrix's `parallel-lanes` block (M-022 moves in), map entries owning
   INV-198/199/201, a re-prove (the architecture node is a structure change, no prover pass ran), and the
@@ -91,8 +95,4 @@ own spec** ("the pattern set GROWS BY ONE per caught leak"). Everything below wa
   FIPA's envelope survived, its semantics died. Exactly-once is impossible; at-least-once plus idempotent
   processing is the target (401). **The reframe: his skepticism of files is right about TRANSPORT, and
   files are legitimate as STORE**, a receiver that is not running being reachable by nothing else.
-- `docs/research/2026-07-17-agent-routing-prior-art.md` — Contract Net (1980): its directed contract IS
-  this pack's referral law renamed; carries the git premise he refused, so read it knowing that. Also
-  `docs/design/2026-07-17-node-growth-law.md` (390) · `docs/prover/2026-07-17-agent-communication.md` ·
-  scratchpad: `PLAN-parallelism-movement.md` + three design records (feedback loop, self-declaring
-  agents, branch road).
+- `docs/research/2026-07-17-agent-routing-prior-art.md` — Contract Net (1980): its directed contract IS this pack's referral law renamed; it carries the git premise he refused, so read it knowing that. The session's four design records and the plan sit in the scratchpad, each named by the row that owes it.

@@ -35,15 +35,16 @@ exists because a session killed his real browser, reads four browser words: `kil
 "the pattern set GROWS BY ONE per caught leak" — shipped to every adopting host. Rows 416, 417, 418 are
 one class and fold into one at landing, which is the head rule applied to the head rule's own repair.
 
-**His corrections are the method working.** Told the broad-kill guard would pass his Ableton, he refused
-it: «ну аблетон с тобой никак не связан. у меня еще много чего открыто тебе какая разница?» He is right,
-and the row is sharper for it — a program the pack never launches is one the pack writes no cleanup for,
+**His corrections are the method working.** Told the broad-kill guard would pass his Ableton, he refused the framing
+outright (17:56): Ableton has no connection to the pack at all, he has many things open, and why would
+the pack care. He is right, and the row is sharper for it — a program the pack never launches is one the pack writes no cleanup for,
 so the class is every process the pack runs a COPY of, where a cleanup by name cannot tell this run's
-copy from another's. Then he narrowed it again: he runs no python himself, the class bites on a shared
-machine, and the minimum owed everywhere is a notice — a cleanup says what it ended. That ships first.
+copy from another's. Then he narrowed it again (16:58): he runs no python himself, so the class bites
+on a machine shared with someone who does, and the minimum owed everywhere is a notice — a cleanup says
+what it ended. That ships first.
 
-**The roster died on his word** («кто постоянный сам скажет. это же динамическая система»), one morning
-after it shipped. A roster of personnel approved by the boss names no machine constraint that forces its
+**The roster died on his word** (15:26 — whoever is a standing agent will say so itself, the system
+being dynamic), one morning after it shipped. A roster of personnel approved by the boss names no machine constraint that forces its
 shape, so the borrowed-shape principle drafted at 15:10 caught a shipped design by 15:26 — the second
 time in one day. A tree carrying a card has declared itself; discovery is a bounded scan. The founding
 ratification survives as a separate act.
