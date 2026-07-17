@@ -25,6 +25,7 @@
   ],
   "name_waivers": [
     {"file": "*README.md", "snippet": "Alexander Abramovich", "note": "authorship byline — the copyright/attribution line the license names, not a requirement statement", "added": "2026-07-12"},
-    {"file": "scripts/sync-mirrors.sh", "snippet": "Alexander", "note": "detector vocabulary — the mirror-README language scan (check_mirror_language) names the token it refuses, the engine's own self-exclusion class", "added": "2026-07-16"}
+    {"file": "scripts/sync-mirrors.sh", "snippet": "Alexander", "note": "detector vocabulary — the mirror-README language scan (check_mirror_language) names the token it refuses, the engine's own self-exclusion class", "added": "2026-07-16"},
+    {"file": "guardrails/authority-anchor-fixtures/prose-widened-shapes.txt", "snippet": "Per Alexander", "note": "detector test corpus — the authority-anchor sweep's per-name fixture must carry a roster name to exercise the 'per <name>:' attribution shape (NIT 7, ROADMAP 415), the same self-exclusion class as the sync-mirrors and register-judge detector vocabulary", "added": "2026-07-17"}
   ]
 }
