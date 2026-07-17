@@ -52,11 +52,7 @@ GROWS BY ONE per caught leak"). 415 stands with them. Everything below waits beh
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued.** This session stamped its own docs two hours ahead by
   extrapolating between prompts; the commit fence caught it. Read the clock at each prompt (INV-24).
-- Next free codes: INV-202, E-35, T-24, M-<read the matrix's tail>, next ROADMAP row 416.
-- CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
-  re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
-- **The clock is read, never continued** (INV-24): two sessions in a row stamped their own docs ahead by
-  extrapolating between prompts. Run `date` at each prompt.
+- Next free codes: INV-202, E-35, T-24, M-<read the matrix's tail>, next ROADMAP row 421.
 
 ## The queue's near head — one terse line each; the rows hold the detail
 
@@ -81,6 +77,10 @@ GROWS BY ONE per caught leak"). 415 stands with them. Everything below waits beh
   **383/384/391** the machine-holds-the-rule family · **394** older hosts meet a grown founding question ·
   **385/387/388/389** the layer's owed arms (387 is the field's instrument: five of six hosts have no card)
   · **379, 380, 370, 393, 397, 406, 407** smaller, unblocked.
+- **New this session, his 2026-07-17 ~18:2x word**: **419** a changed skill reds the push until its
+  skill-creator review is on record (a habit turned into a gate) · **420** audit which other standing
+  habits should become gates · plus the **390/392 rotation extension** — the append-only working docs get
+  split and rotated into dated archives so the live file stays small.
 - **The far tier** (382 its law; 381 and 411 its members): out of the what's-left answer, offered on ask.
 - **Owed by THIS landing**: the matrix's `parallel-lanes` block (M-022 moves in), map entries owning
   INV-198/199/201, a re-prove (the architecture node is a structure change, no prover pass ran), and the
