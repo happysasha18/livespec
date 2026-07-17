@@ -150,7 +150,7 @@ not buried.
   (hooks/register_judge_core.py), reused here as a `--judge` SWEEP tool rather than a blocking push gate: a
   push-blocking model call reds on its own breakage and trains the guarded to route around it, which is
   why the pack keeps its judges advisory everywhere. This is the honest layering the first build inverted:
-  the read-back — fed by the base rulebook's rule 13 and the communicator, shown on the touchpoint
+  the read-back — fed by the base rulebook's rule 13 and build-pipeline, shown on the touchpoint
   cadence — is the load-bearing defence against a dated fabrication no gate can catch; the gate is the
   cheap first pass.
 
@@ -169,8 +169,8 @@ not buried.
 - **Skills now carry the rule (the deepest miss).** `grep -rn DECISIONS skills/` was empty and the base
   rulebook said nothing of INV-207 — yet working sessions load skills rather than PRODUCT_SPEC.md, so no session
   was instructed to anchor an attribution or feed the read-back. The rule now lives in
-  skills/live-spec-base/SKILL.md (rule 13's arm) and skills/communicator/SKILL.md, with a skill-creator
-  review record at docs/skill-review/2026-07-17-live-spec-base-communicator.md (gate s).
+  skills/live-spec-base/SKILL.md (rule 13's arm) and skills/build-pipeline/SKILL.md, with a skill-creator
+  review record at docs/skill-review/2026-07-17-live-spec-base-build-pipeline.md (gate s).
 
 ## Note for the orchestrator (out of this row's narrow scope)
 
