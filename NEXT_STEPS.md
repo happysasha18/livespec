@@ -34,6 +34,6 @@ Stories in JOURNAL.md.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE — no staging, no commit
   (INV-174); the commit-time fence also stops a staged file carrying unstaged edits (INV-175).
-- Next free codes: INV-182, M-352 (M-347..M-351 spent), next ROADMAP row 371. Memory can be wiped
+- Next free codes: INV-182, M-352 (M-347..M-351 spent), next ROADMAP row 381. Memory can be wiped
   once pushed — story in JOURNAL.md (the v2.5.0 chapter) + the 2026-07-17 prover/design-review/audit
   records with addenda.
