@@ -2,6 +2,18 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-17 ~18:55 IDT (Opus orchestrator, single senior seat) — row 391: the pack-side net-liveness meter
+
+Row 391 lands the pack-side arm of the personal layer's `~/.claude/hooks/hook-meter.py`. The law (INV-202, in the spec's machines section): every net — a hook or a guard that watches for something — records its own two numbers, how often it ran and how often it fired, and a silent net is read rather than trusted. A net that never fires is a fact about itself with two readings, the defect gone (retire it) or the trigger broken (its condition sits where the work never passes), and the two numbers tell them apart.
+
+Why it was needed: the same 2026-07-17 hour the owner asked for something that watches the nets and takes one away when it stops firing, born of the finding that the pack's Stop-event scissors scan had run a handful of times across a three-hour session and read one message per run, so every violation between tool calls passed untouched. Run-count near zero against a session full of work is what would have said "broken" out loud.
+
+The shape is `guardrails/net_meter.py`: a transparent wrapper (`--wrap`) that passes stdin through, re-emits the net's stdout, preserves its exit code, and logs one JSON line per invocation to `.live-spec/net-meter.jsonl` recording whether the run fired; plus a `--report` reader that aggregates runs and fires against the host's declared roster and gives three readings — a zero-run roster net reds by name and the reader exits non-zero, a net silent at or over a declared window is surfaced as a retirement candidate (printed, exit stays zero, the retirement being the human's call), everything firing reads live. The roster is what lets a never-run net be named at all, since it writes no line; the window is load-bearing, a net silent below it not yet a candidate.
+
+Two things caught in verify. First, `printf '2.6.1'` dropped VERSION's trailing newline, so the `VERSION:1` pin read zero lines and pin-drift reddened — restored the newline. Second, the initial spec prose used emphatic all-caps RAN/FIRED, which the register clean-floor forbids as shouting; lowercased them. And the first draft marked the host push-wiring `[target]`, but that tag must tie to an open row and row 391 lands closed — the honest read is that the shape and reader ship complete and usable on demand the way the personal instrument is, a host deciding for itself whether a zero-run net's red also stops its push, so the tag was dropped rather than pointed at a borrowed row.
+
+Red-first: `tests/test_net_meter.py` failed to load against the pre-delta tree (the shared shape absent — FileNotFoundError, captured in docs/prover/red-proof-2026-07-17-row391.txt), then green. Suite 1108 green. SPEC/pack 2.6.1.
+
 ## 2026-07-17 ~17:00 IDT (Opus lead + opus/sonnet workers, two Fable passes on his word; Alexander present, in a café) — the class rule takes the rulebook's head, and the pack audits itself by it
 
 The movement was meant to be parallelism and communication. It became something else within the hour,
