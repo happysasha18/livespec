@@ -58,3 +58,56 @@ divergence to carry to the human.
 0 must-fix open. One recommendation parked (finding 4, INV-94 phrasing) for the next full audit, not a
 blocker. The delta red-proved before green (register_judge_core.py absent → the judge test module fails
 to collect; the spec still carried the growth doctrine → the retraction test red), then green.
+
+## Corrections after adversarial review 2026-07-17
+
+An adversarial review the same session read the landing and found six defects, two of them defeating the
+row's own claim. Two claims in the record above were false and are corrected here: the landing said the
+PLACE fix worked, and it said the judge was wired live. Neither held. The judge delivered no verdict at
+all — `~/.claude/hooks/.judge/` held only `.err` files, zero verdicts — and the whole-turn read fetched
+the wrong slice. Each defect was fixed on top with a red proof first.
+
+1. **The chat judge delivered no verdict — a wait-on-non-child race destroyed every one.**
+   `register-judge-collect.sh` backgrounded the judge, then ran `wait $!` in a sibling subshell; the
+   judge was not that subshell's child, so wait returned at once, the still-empty `.part` was removed,
+   and the judge finished writing into an unlinked inode. Red proof: `tests/test_register_judge_collect.py`
+   drives the collect arm with a stubbed judge that sleeps then writes a verdict, and asserts the verdict
+   file appears — it timed out against the old script (verdict destroyed), passes now. The report arm's
+   read is covered too. Fix: one subshell owns both the write and the rename, wrapped in `nohup`. Source
+   fixed and re-installed to `~/.claude/hooks/` (self-install granted); config-health stays green
+   (source == installed).
+
+2. **The whole-turn gather read the wrong slice.** `turn_text` walked back to the last `type=="user"`
+   record as the turn boundary, but every tool result in a real transcript is a `type:"user"` record, so
+   it read only the text after the final tool call — the last-message defect the row claimed to fix. Red
+   proof: `test_turn_boundary_skips_tool_result_user_records` builds a transcript with an offending early
+   message, a tool_use, a tool_result user record, and a clean final message, and asserts the offending
+   text is gathered — it was excluded before, included now. Fix: skip user records whose content is a
+   tool_result when finding the boundary.
+
+3. **Quote validation was substring-only both directions.** A hallucinated offence quoting a trivial
+   substring like "the" survived, and a real offence past the quote cap was dropped once the model
+   truncated with an ellipsis. Red proof (both directions, canned responses):
+   `test_trivially_short_quote_is_rejected` and `test_long_offence_recovered_when_model_truncates_over_the_cap`.
+   Fix: a minimum meaningful-length floor drops trivially short quotes; the prompt asks for a bounded
+   verbatim span; `matched_span` recovers the longest verbatim leading prefix so a genuine long offence
+   is kept.
+
+4. **INV-94 still commanded per-catch list growth**, against INV-83's retraction — "each caught phrase
+   joins the register lint's pattern family" in both the prose home and the Formal index. Red proof:
+   `test_inv94_no_longer_commands_per_catch_list_growth`. Fix: both homes now say the judge holds the
+   class and a caught phrase informs the judge and the first pass, the list growing by nobody's duty;
+   INV-94's subject (no line certifies its own sincerity) stays intact, traceability stays owned.
+
+5. **A missing installed hook was a green skip**, so the judge could go dark with every gate green.
+   `check-config-health.sh` skipped a sourced hook that had no installed copy. Red proof:
+   `test_a_sourced_hook_missing_from_install_reds_as_drift`. Fix: a source hook with no installed copy is
+   drift and reds; an installed-only overlay with no source stays silent
+   (`test_an_installed_only_overlay_with_no_source_stays_silent`). Residual for row 420's gate audit: this
+   arm proves the installed file exists and matches, not that settings.json still lists the
+   Stop/UserPromptSubmit judge entries — that check is harder because settings.json is personal-layer.
+
+6. **The owner's personal register bank shipped verbatim in a public test.** `tests/test_register_judge.py`
+   reproduced the real personal scissors patterns. Fix: synthetic neutral stand-ins exercise the same
+   matching path (`test_personal_overlay_patterns_are_exercised`), with no real personal phrase in the
+   shipped test.

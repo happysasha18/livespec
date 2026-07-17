@@ -41,10 +41,14 @@ done
 # gates living twice too. Rather than a hardcoded basename list — which goes blind to every hook added
 # after it was written (it was blind to hook-meter.py and the register-judge arms installed 2026-07-17)
 # — DIFF the whole hook SOURCE directory (hooks/) against the installed set. Every file in hooks/ is
-# covered automatically: when an installed copy exists it must match its source byte-for-byte; when none
-# is installed on this machine, skip by name (installing is the setup walk's act, not this gate's). A
-# file living only in the installed set (a personal-layer overlay the pack never ships) has no source
-# here and is correctly left alone.
+# covered automatically: when an installed copy exists it must match its source byte-for-byte; when a
+# source hook has NO installed copy that is drift and it reds (source exists, install missing = the
+# config is unhealthy, and a missing installed judge goes dark while every other gate stays green —
+# corrected 2026-07-17, the earlier form skipped a missing install green). A file living only in the
+# installed set (a personal-layer overlay the pack never ships) has no source here and is correctly left
+# alone. RESIDUAL for row 420's gate audit: this arm proves the installed FILE exists and matches; it
+# does not yet prove settings.json still LISTS the Stop/UserPromptSubmit judge entries — that check is
+# harder because settings.json is personal-layer, and it is left for the row 420 gate audit.
 HOOK_SRC_DIR="$REPO_ROOT/hooks"
 if [ -d "$HOOK_SRC_DIR" ]; then
   for src_hook in "$HOOK_SRC_DIR"/*; do
@@ -52,7 +56,8 @@ if [ -d "$HOOK_SRC_DIR" ]; then
     hname="$(basename "$src_hook")"
     inst_hook="$HOME/.claude/hooks/$hname"
     if [ ! -f "$inst_hook" ]; then
-      echo "config-health: skip ($hname not installed on this machine — the setup walk installs it)"
+      echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed hook missing: ~/.claude/hooks/$hname (source exists, install missing)\",\"fix\":\"run scripts/install-pack-hooks.sh or scripts/install-session-hooks.sh\"}"
+      fail=1
     elif ! cmp -s "$src_hook" "$inst_hook"; then
       echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed hook drifted from source: $hname\",\"fix\":\"run scripts/install-pack-hooks.sh or scripts/install-session-hooks.sh\"}"
       fail=1

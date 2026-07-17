@@ -8,7 +8,7 @@
 # to fix a sentence he has already read, and a tax that size gets a guard torn out.
 #
 # So the cost is moved off the waiting path entirely. This script is the Stop arm: it hands the turn's
-# last message to the judge in the BACKGROUND and returns at once, blocking nothing. The verdict lands
+# text to the judge in the BACKGROUND and returns at once, blocking nothing. The verdict lands
 # in a file. The UserPromptSubmit arm (register-judge-report.sh) reads that file at the human's next
 # message and puts the finding in front of the model, which sends the correction then.
 #
@@ -26,16 +26,26 @@ mkdir -p "$VERDICT_DIR"
 # message is the one the human is reading and a queue of stale verdicts would report the wrong text.
 SESSION=$(printf '%s' "$PAYLOAD" | python3 -c 'import json,sys;print((json.load(sys.stdin) or {}).get("session_id","unknown"))' 2>/dev/null || echo unknown)
 
-printf '%s' "$PAYLOAD" | REGISTER_JUDGE_TIMEOUT=120 nohup python3 "${HOME}/.claude/hooks/register-judge.py" \
-    > "${VERDICT_DIR}/${SESSION}.json.part" 2> "${VERDICT_DIR}/${SESSION}.err" < /dev/stdin &
-# Rename on completion so the reader never reads a half-written verdict.
-{
-    wait $! 2>/dev/null
-    if [ -s "${VERDICT_DIR}/${SESSION}.json.part" ]; then
-        mv "${VERDICT_DIR}/${SESSION}.json.part" "${VERDICT_DIR}/${SESSION}.json"
-    else
-        rm -f "${VERDICT_DIR}/${SESSION}.json.part"
-    fi
-} > /dev/null 2>&1 &
+PART="${VERDICT_DIR}/${SESSION}.json.part"
+JSON="${VERDICT_DIR}/${SESSION}.json"
+ERR="${VERDICT_DIR}/${SESSION}.err"
+
+# One subshell owns BOTH the write and the rename, so the rename can never race ahead of a write it does
+# not own. The earlier form backgrounded the judge and then ran `wait $!` in a SIBLING subshell; the
+# judge was not that subshell's child, so wait returned instantly, the still-empty .part was removed, and
+# the judge finished writing into an unlinked inode — no verdict ever landed (~/.claude/hooks/.judge held
+# only .err files, corrected 2026-07-17). Here the judge runs to completion first (the pipe blocks the
+# subshell until it exits), THEN the same subshell renames a non-empty verdict into place or clears an
+# empty one. nohup wraps the whole subshell so both the judge and the rename survive the hook's return.
+RJ_PAYLOAD="$PAYLOAD" RJ_JUDGE="${HOME}/.claude/hooks/register-judge.py" \
+RJ_PART="$PART" RJ_JSON="$JSON" RJ_ERR="$ERR" \
+    nohup sh -c '
+        printf "%s" "$RJ_PAYLOAD" | REGISTER_JUDGE_TIMEOUT=120 python3 "$RJ_JUDGE" > "$RJ_PART" 2> "$RJ_ERR"
+        if [ -s "$RJ_PART" ]; then
+            mv "$RJ_PART" "$RJ_JSON"
+        else
+            rm -f "$RJ_PART"
+        fi
+    ' > /dev/null 2>&1 &
 
 exit 0

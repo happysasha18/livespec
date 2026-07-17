@@ -128,13 +128,24 @@ class TestSessionHookDirDiff(unittest.TestCase):
             self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
             self.assertIn("register-judge.py", r.stdout)
 
-    def test_an_uninstalled_source_hook_skips_by_name(self):
+    def test_a_sourced_hook_missing_from_install_reds_as_drift(self):
+        """A hook that has source but no installed copy is DRIFT, not a green skip: the config is
+        unhealthy because the judge can go dark while every gate stays green. (RED against the old skip.)"""
         with tempfile.TemporaryDirectory() as tmp:
             home = self._repo_with_hooks(
                 tmp, sources={"register-judge-report.sh": "echo hi\n"}, installed={})
             r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("register-judge-report.sh", r.stdout)
+
+    def test_an_installed_only_overlay_with_no_source_stays_silent(self):
+        """A personal-layer overlay the pack never ships (installed, no source here) is correctly left
+        alone — only a SOURCE hook missing from install is drift."""
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_hooks(
+                tmp, sources={}, installed={"personal-overlay.sh": "echo mine\n"})
+            r = run_check(tmp, env_extra={"HOME": home})
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-            self.assertIn("skip", r.stdout.lower())
 
     def test_every_matching_source_hook_passes(self):
         with tempfile.TemporaryDirectory() as tmp:

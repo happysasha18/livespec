@@ -38,6 +38,16 @@ def chat_law():
     return universal
 
 
+def _is_tool_result(rec):
+    """A type:"user" record that carries a tool_result (its content is a list of tool_result blocks) is the
+    harness reporting a tool's output, not a human turn. Only a user record carrying real human text is the
+    turn boundary."""
+    content = rec.get("message", {}).get("content", [])
+    if not isinstance(content, list):
+        return False
+    return any(isinstance(b, dict) and b.get("type") == "tool_result" for b in content)
+
+
 def turn_text(path):
     """EVERY assistant message the human was shown this turn, joined — not the last one only.
 
@@ -58,10 +68,15 @@ def turn_text(path):
                     continue
     except OSError:
         return ""
-    # Walk back to the last human message; everything assistant after it is this turn's output.
+    # Walk back to the last HUMAN message; everything assistant after it is this turn's output. In a real
+    # Claude Code transcript every tool result is itself a type:"user" record, so a plain "last user"
+    # boundary lands on a tool_result and reads only the text after the final tool call — the last-message
+    # defect this judge exists to close. The real boundary is a user record carrying human text, not a
+    # tool_result, so tool_result user records are skipped (corrected 2026-07-17).
     start = 0
     for i in range(len(records) - 1, -1, -1):
-        if records[i].get("type") == "user" and not records[i].get("isSidechain"):
+        rec = records[i]
+        if rec.get("type") == "user" and not rec.get("isSidechain") and not _is_tool_result(rec):
             start = i + 1
             break
     chunks = []

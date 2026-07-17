@@ -44,21 +44,18 @@ lint = _load(os.path.join(SCRIPTS, "preshow-register-lint.py"), "preshow_registe
 scissors = _load(os.path.join(HOOKS, "scissors-scan.py"), "scissors_scan")
 
 
-# The full literal list the row names: the universal scissors frame (shipped, in scissors-scan) plus the
-# 22-pattern personal overlay the row counted. Embedded here so the "passes the list" proof is exact and
-# self-contained, never dependent on a machine's ~/.claude overlay.
+# SYNTHETIC personal-overlay stand-ins (privacy fix 2026-07-17): the owner's real personal scissors
+# patterns are NOT reproduced in this shipped, soon-public test. These neutral placeholders exercise the
+# SAME matching path — a personal overlay of extra literal patterns layered onto the universal scissors
+# set — without shipping anyone's private register bank. They mirror the two shapes the real overlay
+# carries, a contrast-by-denial frame and a praising-the-reader frame, in made-up vocabulary. The proof
+# they carry is the MECHANISM (find_hits over a universal set plus a personal overlay), which needs no
+# real personal phrase.
 SCISSORS_PERSONAL = [
-    r",\s+а\s+не\s+\S", r",\s+но\s+не\s+\S", r"\s+—\s+не\s+\S",
-    r"сам(ое|ая|ый)\s+(главн|важн|интересн|сильн)",
-    r"(красив|лучш|хуж|интересн|проще|сложнее)\w*,?\s+чем\s+(я\s+)?(рассчитыва|ожида|дума|надея)",
-    r"\bв\s+корне\b", r"меняет\s+(всё|все|дело)", r"\bв\s+чистом\s+виде\b", r"\bпереворачивает\b",
-    r"бьёт\s+мимо", r"\bсильно\s+(лучше|хуже|важнее|проще)", r"хорошая\s+новость",
-    r"\b(катастрофа|провал|ужас)\b", r"\bполностью\s+(сломан|разрушен|провал)",
-    r"\b(точно|верно|метко|хорошо)\s+(подметил|поймал|заметил|сказал)",
-    r"\b(поймал|уловил)\s+(верно|точно|главное|суть)", r"^\s*(ты\s+)?прав[,.]",
-    r"\bсправедлив(о|ы)\b", r"\bхороший\s+вопрос",
-    r"\b(отличн|прекрасн|замечательн)\w*\s+(вопрос|мысль|замечание|наблюдение)",
-    r"\bты\s+(поймал|назвал)\s+(настоящ|главн|сам)", r"\bи\s+это\s+справедлив",
+    r",\s+alpha\s+not\s+\S",           # a synthetic contrast-by-denial frame
+    r"\bwidget\s+beats\s+gadget\b",    # a synthetic "X over Y" frame
+    r"\bsharp\s+observation\b",        # a synthetic praise-the-reader phrase
+    r"\bexactly\s+right,\s+you\b",     # another synthetic praise-the-reader phrase
 ]
 
 
@@ -78,9 +75,17 @@ FOUR_INTENSIFIERS = ["по-настоящему", "реально", "на сам
 
 @pytest.mark.parametrize("phrase", FOUR_INTENSIFIERS)
 def test_intensifier_passes_the_literal_list(phrase):
-    """Each probed intensifier walks the full 22+-pattern literal list untouched — the list's own gap."""
+    """Each probed intensifier walks the literal list (universal frame + a synthetic personal overlay)
+    untouched — the list's own gap that the class-reading judge exists to close."""
     sentence = "Это %s важный шаг для проекта, и мы его сделали." % phrase
     assert _literal_hits(sentence) == [], "the literal list should NOT catch %r" % phrase
+
+
+def test_personal_overlay_patterns_are_exercised():
+    """The synthetic overlay stand-ins DO fire on their own demo, proving the personal-overlay matching
+    path actually runs — the test covers the mechanism without any real personal phrase."""
+    assert _literal_hits("This is a sharp observation about the mix.") != []
+    assert _literal_hits("The widget beats gadget in this run.") != []
 
 
 @pytest.mark.parametrize("phrase", FOUR_INTENSIFIERS)
@@ -134,6 +139,40 @@ def test_turn_gathers_every_message_not_only_the_last(tmp_path):
     assert "Готово, тесты зелёные." in gathered
 
 
+def _realistic_transcript(tmp_path, records):
+    """Write raw record dicts as JSONL — for turns that carry tool_use / tool_result records, which the
+    simple (role, text) helper cannot express."""
+    p = tmp_path / "realistic.jsonl"
+    with open(p, "w", encoding="utf-8") as f:
+        for rec in records:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    return str(p)
+
+
+def test_turn_boundary_skips_tool_result_user_records(tmp_path):
+    """In a real Claude Code transcript EVERY tool result is a type:"user" record. Walking back to the
+    last type:"user" record lands ON a tool_result, so turn_text would read only the clean text AFTER the
+    last tool call and miss an offence earlier in the turn. The boundary is the real HUMAN user record,
+    which carries human text rather than a tool_result. (RED before the skip: the offence is excluded.)"""
+    offending = "Это по-настоящему меняет ход работы над задачей."
+    path = _realistic_transcript(tmp_path, [
+        {"type": "user", "message": {"role": "user", "content": "поехали"}},          # the real human turn
+        {"type": "assistant", "message": {"role": "assistant", "id": "a1",
+                                          "content": [{"type": "text", "text": offending}]}},
+        {"type": "assistant", "message": {"role": "assistant", "id": "a2",
+                                          "content": [{"type": "tool_use", "id": "t1",
+                                                       "name": "Bash", "input": {"command": "ls"}}]}},
+        {"type": "user", "message": {"role": "user",                                    # a TOOL RESULT, not a human turn
+                                     "content": [{"type": "tool_result", "tool_use_id": "t1",
+                                                  "content": "file.txt"}]}},
+        {"type": "assistant", "message": {"role": "assistant", "id": "a3",
+                                          "content": [{"type": "text", "text": "Готово, тесты зелёные."}]}},
+    ])
+    gathered = judge_hook.turn_text(path)
+    assert offending in gathered, "the human-turn boundary must skip the tool_result user record"
+    assert "Готово, тесты зелёные." in gathered
+
+
 def test_turn_scopes_to_the_current_turn(tmp_path):
     """Only assistant text AFTER the last human message is this turn's output."""
     path = _transcript(tmp_path, [
@@ -154,6 +193,30 @@ def test_hallucinated_quote_is_dropped():
     offences, error = core.parse_offences(
         '{"offences":[{"quote":"a line never written","law":1,"why":"x"}]}', "the real text")
     assert error is None and offences == []
+
+
+def test_trivially_short_quote_is_rejected():
+    """A hallucinated offence quoting a trivial substring like "the" is no evidence — substring-only
+    validation would keep it, so a minimum meaningful length floor drops it. (RED: currently kept.)"""
+    text = "the quick brown fox jumps over the lazy dog and keeps on running"
+    canned = json.dumps({"offences": [{"quote": "the", "law": 1, "why": "x"}]})
+    offences, error = core.parse_offences(canned, text)
+    assert error is None and offences == []
+
+
+def test_long_offence_recovered_when_model_truncates_over_the_cap(tmp_path):
+    """A real offending sentence longer than the quote cap forces the model to truncate and append an
+    ellipsis; the truncated+ellipsis string is not a verbatim substring, so substring-only validation
+    DROPS a real offence. The fix recovers the longest verbatim leading span. (RED: currently dropped.)"""
+    offending = "Это " + "очень " * 25 + "важный и по-настоящему длинный вывод о проекте."
+    text = "Начало разговора. " + offending + " Конец."
+    truncated = offending[:100].rstrip() + "…"      # what a capped model returns for a long sentence
+    canned = json.dumps({"offences": [{"quote": truncated, "law": 2, "why": "intensifier, no fact"}]})
+    offences, error = core.parse_offences(canned, text)
+    assert error is None
+    assert len(offences) == 1, "a genuine long offence must not be dropped over the quote cap"
+    assert offences[0]["quote"] in text, "the kept quote is a verbatim span of the text"
+    assert len(offences[0]["quote"]) >= 40
 
 
 def test_unreadable_shape_stands_down():
@@ -249,6 +312,16 @@ def test_growth_duty_retracted_in_the_lint_docstring():
     src = open(os.path.join(SCRIPTS, "preshow-register-lint.py"), encoding="utf-8").read()
     assert "GROWS BY ONE per caught leak" not in src
     assert "grows by NOBODY's duty" in src or "grows by nobody's duty" in src.lower()
+
+
+def test_inv94_no_longer_commands_per_catch_list_growth():
+    """INV-83's growth duty is retracted, so INV-94 must not still ORDER each caught phrase to join the
+    literal pattern family — an imperative per-catch growth command in both its homes (the prose and the
+    Formal index). The judge holds the class; a caught phrase informs it without a standing append duty."""
+    spec = open(os.path.join(REPO, "PRODUCT_SPEC.md"), encoding="utf-8").read()
+    assert "joins the register lint's pattern family" not in spec
+    # INV-94's actual subject stays intact.
+    assert "No line certifies its own sincerity" in spec
 
 
 def test_growth_duty_retracted_in_the_spec():

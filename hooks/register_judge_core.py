@@ -27,6 +27,13 @@ import subprocess
 DEFAULT_MODEL = os.environ.get("REGISTER_JUDGE_MODEL", "claude-haiku-4-5-20251001")
 DEFAULT_TIMEOUT_S = float(os.environ.get("REGISTER_JUDGE_TIMEOUT", "25"))
 
+# A quote shorter than this floor is a hallucination guard: a real offence is a sentence or a bounded
+# span of one, never a lone word like "the" that happens to sit in the text. The model is asked to quote
+# a bounded VERBATIM span (the offending sentence's first QUOTE_SPAN_CHARS) rather than truncate with an
+# ellipsis, so a genuine long offence is matched by its verbatim prefix instead of being dropped.
+MIN_QUOTE_CHARS = 12
+QUOTE_SPAN_CHARS = 80
+
 # The FRAME is the universal mechanism: how to judge and the exact answer shape. The LAW BODY is handed
 # in per surface. Keeping the frame here and the law outside is what lets one mechanism serve two laws.
 _PROLOGUE = """You are a register judge for {surface}. Judge the TEXT below against the laws stated here.
@@ -35,7 +42,9 @@ Each law names a CLASS, so judge by MEANING rather than by matching particular w
 {law_body}
 
 Return STRICT JSON, nothing else, no prose, no code fence:
-{{"offences": [{{"quote": "<the offending sentence, verbatim from the text, at most 100 chars>",
+{{"offences": [{{"quote": "<the offending sentence copied VERBATIM from the text; if it runs longer than
+80 characters, copy only its first 80 characters exactly as written — no ellipsis, no added quotation
+marks, no changed punctuation, so the quote is always an exact span of the text>",
 "law": <the law number>, "why": "<at most 12 words: what it carries no information toward>"}}]}}
 
 An empty list is the right answer for a clean text, and it is the answer most texts deserve. Judge only
@@ -107,6 +116,40 @@ def judge(text, law_body, surface="one person's working chat", model=None, timeo
     return parse_offences(proc.stdout, text)
 
 
+def _normalize_quote(q):
+    """Strip artifacts the model adds around a quote — surrounding quotation marks and a trailing ellipsis
+    it appends when it truncates a long sentence — so the verbatim span underneath can be matched."""
+    q = (q or "").strip()
+    q = q.strip("\"'“”‘’«»").strip()
+    for tail in ("…", "..."):
+        while q.endswith(tail):
+            q = q[: -len(tail)].strip()
+    return q
+
+
+def matched_span(quote, text, floor=MIN_QUOTE_CHARS):
+    """The verbatim span of `quote` present in `text`, or "" if none reaches the floor.
+
+    A whole-quote substring wins. Otherwise the longest LEADING prefix that is verbatim in the text is
+    matched, so a genuine long offence the model truncated (or ellipsized past the quote cap) is still
+    caught by its verbatim prefix rather than silently dropped. A span below the floor is treated as a
+    hallucination guard and rejected."""
+    q = _normalize_quote(quote)
+    if len(q) < floor:
+        return ""
+    if q in text:
+        return q
+    lo, hi, best = floor, len(q), ""
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if q[:mid] in text:
+            best = q[:mid]
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return best
+
+
 def parse_offences(raw, text):
     """Parse the model's answer into (offences, error). Kept apart from the model call so a test can drive
     it against canned responses without a live binary."""
@@ -120,8 +163,17 @@ def parse_offences(raw, text):
     offences = parsed.get("offences") if isinstance(parsed, dict) else None
     if not isinstance(offences, list):
         return [], "judge answered without an offences list"
-    # Only an offence quoting the text itself is real; a hallucinated quote is no evidence.
-    kept = [o for o in offences if isinstance(o, dict) and o.get("quote", "\0") in text]
+    # Only an offence quoting the text itself is real, and a trivially short quote is no evidence; a
+    # hallucinated or below-floor quote is dropped, a truncated long quote recovered to its verbatim span.
+    kept = []
+    for o in offences:
+        if not isinstance(o, dict):
+            continue
+        span = matched_span(o.get("quote", ""), text)
+        if span:
+            o = dict(o)
+            o["quote"] = span
+            kept.append(o)
     return kept, None
 
 
