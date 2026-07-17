@@ -99,13 +99,15 @@ def test_communicator_names_the_lint_as_a_blocking_preshow_step():
         "communicator names the lint but not as a BLOCKING step (a red blocks the showing)"
 
 
-def test_spec_carries_grows_by_one_duty():
-    """M-197 second leg (INV-83): the grows-by-one duty and the named residual live in the spec."""
+def test_spec_retracts_the_growth_duty_and_names_the_judge():
+    """M-197 second leg (INV-83), restated for rows 416+418: the grows-by-one duty is RETRACTED — the
+    literal set grows by nobody's duty — and the register judge holds the residual class the list cannot."""
     path = os.path.join(REPO, "PRODUCT_SPEC.md")
     import re as _re
     text = _re.sub(r"\s+", " ", open(path, encoding="utf-8").read())
-    assert "grows by one per caught leak" in text, "SPEC lost the grows-by-one duty (INV-83)"
+    assert "grows by one per caught leak" not in text, "the retracted growth doctrine must be gone (INV-83)"
+    assert "grows by nobody's duty" in text, "SPEC must state the list grows by nobody's duty (INV-83)"
+    assert "register judge" in text, "SPEC does not name the register judge as the residual's holder (INV-203)"
     assert "preshow-register-lint.py" in text, "SPEC does not name the register lint script (INV-83)"
-    assert "clean-reader check" in text, "SPEC does not name the residual's owner (INV-83)"
     assert "reach is the shown artifact" in text, "SPEC lost INV-83's reach sentence"
     assert "| INV-83 |" in text, "Formal index lost INV-83"

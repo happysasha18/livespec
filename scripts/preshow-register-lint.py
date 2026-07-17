@@ -18,14 +18,19 @@ Why this exists, and how it differs from its neighbour preshow-lint.py:
 What it can and cannot do (stated honestly, so no one over-trusts it):
   A PATTERN lint catches KNOWN coinages, KNOWN calques, and named term classes — the leaks already
   seen. It CANNOT judge a novel machine-flavoured abstraction it has never been shown ("everything
-  comes up naturally when it first matters" is only caught because tonight's exact leak was folded in
-  as a pattern). That residual — a fresh abstraction in the same machine register — belongs to the
-  CLEAN-READER CHECK (a fresh agent, pack NOT loaded, reads the surface as an outside reader; docs/
-  spec-style.md "clean agent" split). This lint is the floor; the clean-reader check is the ceiling.
+  comes up naturally when it first matters" is only caught because that exact leak was once folded in
+  as a pattern). That residual — a fresh abstraction in the same machine register — is held by the
+  REGISTER JUDGE (register_judge_core.py, SPEC INV-203): the same class-reading model the chat surface
+  uses, pointed at the document a human reads. It hands the file's text and the document register law to
+  the cheapest tier and takes back the sentences that leak the machine dialect, catching the class a
+  fixed pattern list never could. This lint is the free first pass; the judge is the ceiling.
 
-The growth duty (SPEC INV-83): the pattern set GROWS BY ONE per caught leak. Each new leak that gets
-past the lint becomes a pattern the SAME day, with a comment naming its source and date. That is how a
-pattern lint stays ahead of a living dialect.
+The list grows by NOBODY's duty (SPEC INV-83, retracted 2026-07-17). The old doctrine grew this list by
+one per caught leak, per leak, forever — the pack's own head rule says a list is the wrong answer to a
+class, and a growing list is still a list, always one escape behind the next word. The judge holds the
+class; the list stays only as the free first pass for what it already happens to cover, and it earns no
+new pattern by duty. A Russian fixture carrying this list's OWN listed coinages as calques passed it
+clean when probed 2026-07-17 — the worked proof that the list cannot hold its own class.
 
 Design rule that keeps the accepted reader docs green: a pattern is the SPECIFIC coined collocation,
 never its ordinary constituent words. "station", "door", "lean", "full" are legitimate industry words
@@ -36,6 +41,7 @@ but none of the coinages.
 Usage: preshow-register-lint.py FILE [FILE ...]      (or: cat text | preshow-register-lint.py -)
 Exit 0 = clean · exit 1 = at least one pattern hit (printed with file, line, pattern id, source).
 """
+import os
 import re
 import sys
 
@@ -128,6 +134,33 @@ def scan(text):
     return hits
 
 
+def _judge_enabled():
+    """The register judge is the OPT-IN ceiling (SPEC INV-203). It costs a live model call, so it stays
+    OFF unless a host asks for it, keeping the literal-list gate deterministic for the suite and the push
+    gate. A host turns it on by setting PRESHOW_REGISTER_JUDGE truthy; it stands down silently on any
+    breakage regardless."""
+    return os.environ.get("PRESHOW_REGISTER_JUDGE", "").strip().lower() in ("1", "true", "yes", "on")
+
+
+def judge_document(text):
+    """Run the register judge over a shown document (SPEC INV-203). Returns a list of offence dicts, or []
+    when disabled or stood down. The judge NEVER blocks on its own breakage — a missing binary, a timeout,
+    or an unreadable answer returns [] and leaves the literal-list verdict standing."""
+    if not _judge_enabled():
+        return []
+    try:
+        hooks_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "hooks")
+        sys.path.insert(0, hooks_dir)
+        import register_judge_core as core
+    except ImportError:
+        return []
+    offences, error = core.judge(text, core.DOCUMENT_REGISTER_LAW, surface="a document shown to a human")
+    if error:
+        sys.stderr.write("preshow register judge stood down: %s\n" % error)
+        return []
+    return offences
+
+
 def main(argv):
     if len(argv) < 2:
         sys.stderr.write("usage: preshow-register-lint.py FILE [FILE ...]|-\n")
@@ -136,14 +169,22 @@ def main(argv):
     for src in argv[1:]:
         text = sys.stdin.read() if src == "-" else open(src, encoding="utf-8").read()
         hits = scan(text)
-        if not hits:
-            continue
-        any_hit = True
-        print("PRE-SHOW REGISTER LINT (SPEC INV-83): the pack's machine dialect leaked into text a")
-        print("human is about to see. Say it in the reader's own plain words before showing. File: %s" % src)
-        for line_no, pid, snippet, source in hits:
-            print("  line %d  [%s]  %s" % (line_no, pid, snippet))
-            print("          ↳ source: %s" % source)
+        if hits:
+            any_hit = True
+            print("PRE-SHOW REGISTER LINT (SPEC INV-83): the pack's machine dialect leaked into text a")
+            print("human is about to see. Say it in the reader's own plain words before showing. File: %s" % src)
+            for line_no, pid, snippet, source in hits:
+                print("  line %d  [%s]  %s" % (line_no, pid, snippet))
+                print("          ↳ source: %s" % source)
+        # The judge is the ceiling: it catches the machine-register leak no fixed pattern lists (INV-203).
+        offences = judge_document(text)
+        if offences:
+            any_hit = True
+            print("PRE-SHOW REGISTER JUDGE (SPEC INV-203): a shown surface leaks the machine dialect the")
+            print("literal list does not carry. Say it in the reader's own plain words first. File: %s" % src)
+            for o in offences[:8]:
+                print("  · %s" % o.get("quote", "")[:110])
+                print("          ↳ %s" % o.get("why", ""))
     if any_hit:
         print('{"severity":"error","code":"register-leak","message":"a shown surface carries a coined '
               'metaphor, a calque, or a transliterated pack term","fix":"say it in the reader\'s own '
