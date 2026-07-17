@@ -12,6 +12,79 @@ Why a folder of files: creating a fresh file cannot collide with anyone; editing
 - why (what broke / what was missing, with the primary source if there is one)
 - who threw it (which host / which conversation)
 
+**Whose the item is lives in the filename.** The `<source>` segment above is that fact's one home. An
+agent's own message names its source `from-<agent>`, so a message from track-coach is
+`2026-07-17-from-track-coach-<slug>.md` — the form every agent deposit here has carried since 2026-07-10.
+The body's "who threw it" line above is a different fact and keeps its own home: the filename says whose
+the item is, and the body says which window and which conversation put it on disk. The two differ every
+time an agent relays something that is not its own.
+
+Two source words are reserved for items that arrive with their own authority, and each owes nothing
+further:
+
+- **`from-owner`** — a wish carrying the owner's authority, whoever types the file. An agent relaying his
+  word names the file `from-owner-<slug>` and names its own window in the body's "who threw it" line:
+  relaying changes a message's carrier and leaves its authority exactly where it started, so a relayed
+  wish is his and stands as an instruction (SPEC INV-193). An agent's OWN proposal never takes this word;
+  that is the laundering the same law refuses. The reserved word is the role, because a shipped file names
+  no person (SPEC INV-120).
+- **`stranger-<kind>-<number>-<slug>.md`** — a bridged Issue, whose door is the wish template (SPEC
+  INV-146). The monitor stamps no date on these, so this one form stands outside the dated shape above.
+
+A deposit whose source carries no `from-` prefix stands outside agent traffic, and it is read as an
+ordinary wish.
+
+**An agent's message names its birth, inside the file (SPEC INV-189).** A message is born of the sender's
+own work, and it says which of the two births it carries. A message that can name neither is never sent,
+and one that arrives is declined at the door, so no human reads it. Curiosity, tidiness, and the thought
+that a neighbour might want to know each describe a message the sender's own work does not need.
+
+A message **blocked by this zone** names the work standing still: a real row, a real failing step, a real
+thing the sender cannot finish while this zone stands as it does.
+
+```
+Blocked: <the work of mine that stands until this is answered>
+Need-by: <a date, or none>
+Id: <a stable identifier this message's reply can name>
+```
+
+A message **carrying a lived fault** names the fault and the evidence the sender lived: what it ran, what
+happened, and how the fault showed itself. Nothing of the sender's need stand still for this birth — the
+value is the outside view, which this zone's own instruments cannot take.
+
+```
+Lived: <the fault I hit in your zone, and the evidence I hold: what ran, what happened, how it showed>
+Need-by: <a date, or none>
+Id: <a stable identifier this message's reply can name>
+```
+
+The two births are named apart because they owe different things: the blocked message owes the work
+standing still, and the fault message owes the evidence. A rule demanding blocked work of both would
+refuse the fault message, which is the message a neighbour most wants.
+
+**A reply names the message it discharges (SPEC INV-192).** A reply travels the sender's own inbox and
+owes no blocked work of its own: the message it answers already named the blocked work that earned the
+exchange, so the reply names that message's identifier and states where the message ended.
+
+```
+Re: <the identifier of the message this answers>
+Terminal state: <delivered, or declined naming the zone that owns the question>
+```
+
+**What the gate reads.** `guardrails/check-earned-message.py` (gate m of the pre-push hook) reads every
+deposit in this folder, whatever its extension. It treats one whose filename names an unreserved
+`from-<agent>` source as agent traffic, and one carrying the agent card's `From: <name> (agent)` line the
+same way whatever its filename. It reds when such a deposit names neither birth: no `Blocked:` line, no
+`Lived:` line, and no `Re:` line naming a message it replies to. A field inside a fenced code block is an
+example, and the gate reads past it. `Need-by` and `Id` are read and reported, and the exit code stays
+with INV-189: an expired need-by escalates through the sender's own status report, which is the road
+INV-192 gives it.
+
+The gate reads a field that was forgotten. Three things stay past its reach, and each stays with this
+sweep and the prover (SPEC INV-150): whether the named work stands still, whether the named evidence was
+lived, and whether a deposit that declares no source at all is agent traffic — a sender who names the file
+without the `from-` prefix and writes no marker is not read by the gate at all.
+
 **From the same filesystem (a co-located window), the deposit is the file alone (SPEC INV-174).** You
 share the assigned session's working tree and git index, so stop after writing the file: no staging, no
 commit, no push — the assigned session's sweep commits the harvest itself, and your item is durable on

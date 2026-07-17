@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 2.5.0
+  version: 2.6.0
 ---
 
 # live-spec-base — one rulebook, nine working skills
@@ -324,6 +324,58 @@ a working skill still stands: its pointer here reads as plain advice.
    above the milestone whole-read that once held them alone, so no bloat accumulates between milestones.
    This is why the pack ships its checks as runnable gates a host attaches (SPEC INV-97), where prose a
    host is trusted to remember would let the quality slip the moment attention did.
+
+31. **Agents talk on exactly two channels, and a message earns its passage (SPEC INV-183, INV-189).**
+   Several agents on one person's projects generate noise the moment they can talk to each other, and
+   this rule is what keeps the channel quiet while the necessary thing still crosses. An agent is a
+   project window carrying its own tree, queue, gates, contracts, a standing mission, and a roster seat;
+   a skill is a capability any window loads, and it dies with the session [E-31, INV-182]. Before acting
+   on anything that might not be its own, an agent reads the roster in the personal profile and the
+   owning agent's card in that agent's own tree [E-32, INV-184]. Then **exactly two channels** carry
+   everything between two agents: the receiver's inbox for a one-shot request to change something, and a
+   published contract for a recurring read. A reply rides the inbox in the other direction, so the count
+   of two holds. Co-location changes the transport's speed and leaves the contract untouched, and a
+   remote agent reaches the other through git alone [INV-112].
+
+   Four laws hold the quiet, and each is a way of routing a thing to the home that governs it [INV-153].
+
+   - **A message names the sender's own blocked work, in the message.** The named work is a real row, a
+     real failing step, a real thing the sender cannot finish while the receiver's zone stands as it
+     does. A message that cannot name such work is never sent. Curiosity, tidiness, and the thought that
+     a neighbour might want to know each describe a message the sender's own work does not need. The
+     births are a closed set of two: blocked by the receiver's zone as it stands, or having lived a fault
+     in it and carrying the evidence. The zone's owner is presumed competent and informed, so nothing
+     that owner's own instruments already see earns a file [INV-189]. `guardrails/check-earned-message.py`
+     is the mechanical arm: it reds while an unearned file sits in an inbox, and the sweep clears the red
+     by declining at the door, so no human reads it.
+   - **A referral travels back to whoever asked.** A question from another agent's zone is answered by
+     naming that zone, and the zone's owner receives nothing from a referral. A human asker is answered
+     in chat and costs one sentence; an agent asker is answered along the reply road as its message's
+     terminal state. Forwarding a neighbour's question to the owner of its zone is the defect this law
+     names, and the forwarder's own work stands on none of the answer [INV-190]. A question that pins to
+     no artifact and on which no work of the sender's stands is dropped, and holding it was itself the
+     defect [INV-191].
+   - **Data never travels as a message, and a contract publishes nothing by default.** A consumer wanting
+     numbers reads the neighbour's published artifact [INV-188]. Every field in that artifact leaves the
+     producer's tree on the owner's explicit permission, recorded with its date and its author; how a
+     neighbour's product happens to be built grants no permission, and a field with no recorded
+     permission stays home. Credentials never cross under any permission [INV-185].
+   - **An agent recognises a neighbour's zone on its own.** Meeting a fault or a lack in something
+     another agent's zone owns — a rule of the method, a shape a neighbour ships, a field a contract
+     lacks — the agent reads the roster, finds the owner, and takes the channel that fits. The owner
+     naming the road afterwards carries no fact the agent lacked, so his line is an acknowledgement of a
+     thing already done. An agent that waits to be told has made the owner its router [INV-195].
+   - **One question crosses between two agents twice, and the third crossing goes to the owner.** Every
+     hop of a refer-and-re-send loop can pass its own law while the exchange manufactures traffic, so the
+     bound is two, counted by the exchange's identifier; the third crossing is named in the sender's own
+     status report as a zone question the two could not settle. The human-decision withdrawal loop
+     already takes this shape [INV-196, INV-130].
+   - **A capability another agent's zone owns is taken through one of the two channels.** Building
+     a local copy of a neighbour's capability is the violation the roster exists to prevent, since the
+     copy drifts from its original the day after it is made and the two owners then answer one question
+     two ways [INV-194]. An agent-initiated message stays a proposal until the owner ratifies it, an
+     owner-initiated message being the one kind that carries the owner's authority; relaying changes a
+     message's carrier and leaves its authority where it started [INV-193].
 
 
 ## When NOT to load this

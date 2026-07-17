@@ -104,6 +104,16 @@ if ! "$GUARDRAILS/check-freeze.sh"; then
 fi
 
 echo ""
+echo "-- gate m: the earned message (an agent's inbox deposit names the sender's blocked work, SPEC INV-189) --"
+if [ -f "$GUARDRAILS/check-earned-message.py" ] && [ -d "$REPO_ROOT/inbox" ]; then
+  if ! python3 "$GUARDRAILS/check-earned-message.py" "$REPO_ROOT/inbox"; then
+    fail=1
+  fi
+else
+  echo "   (no inbox in this tree — the gate stands down by name)"
+fi
+
+echo ""
 echo "-- gate h: the four host checks (this repo attached as its own first host, SPEC INV-97) --"
 for hostcheck in completeness tests_present traces_to_spec conflicts; do
   if ! python3 "$REPO_ROOT/scaffold/guardrails/check_${hostcheck}.py" --base origin/main; then

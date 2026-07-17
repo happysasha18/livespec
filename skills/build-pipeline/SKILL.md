@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 2.5.0
+  version: 2.6.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.5.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.6.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -113,7 +113,7 @@ standards look like in its medium.
   See [references/request-kind-table.md](references/request-kind-table.md) for the full closed set of
   request kinds, their entry step, and mandatory back-check (product behaviour · a technically-phrased request · a defect · docs-only · a tiny reversible edit · a settings/parameter value · an inbox wish · a method/skill change · a sketch · research/a question · a feedback hand-back).
 
-  **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" checkable instead of habitual: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced rather than improvised. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150) and the deferral test's (SPEC INV-152) — one routing principle stated three times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding.
+  **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" checkable instead of habitual: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced rather than improvised. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150), the deferral test's (SPEC INV-152), and the earned message's (SPEC INV-189, INV-191) — one routing principle stated four times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding. The fourth control carries it across a window's edge: a message to another agent routes to the sender's own blocked work, and a question no work stands on is dropped rather than sent.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
   also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (SPEC INV-104). **A confirmed bug drives a class hunt before it closes (SPEC INV-124) —

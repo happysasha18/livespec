@@ -1,5 +1,6 @@
 """MINOR-gate 1.2.0 reconciliations (row 306) — enshrine the five folds the Fable
 whole-spec audit forced, so none can silently drift back out. Landed 2026-07-13."""
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -9,17 +10,42 @@ def _read(rel):
     return (ROOT / rel).read_text(encoding="utf-8")
 
 
+_ONES = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+         "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+         "eighteen", "nineteen")
+_TENS = (None, None, "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
+
+
+def _spelled(n, noun="rules in the body"):
+    """The English phrase a doc would use for this count: 31 reads "thirty-one rules in the body"."""
+    if n < 20:
+        word = _ONES[n]
+    else:
+        tens, ones = divmod(n, 10)
+        word = _TENS[tens] if ones == 0 else "%s-%s" % (_TENS[tens], _ONES[ones])
+    return "%s %s" % (word, noun)
+
+
 def test_base_rule_26_homes_design_principles():
     # D3: base-rulebook carries a real text home for INV-136/139 ownership
     base = _read("skills/live-spec-base/SKILL.md")
     assert "26. **A project kind also declares design principles the verify pass runs" in base
-    assert "thirty rules in the body" in base
+    # The count is DERIVED from the file, never pinned as a magic string: a pinned literal makes
+    # the suite's green depend on the number being wrong, and correcting it to the truth reds
+    # (ROADMAP row 384, the vacuous-pass class; the same defect found in test_request_classifier
+    # the same day, and this was its second instance).
+    rules = len(re.findall(r"^\d+\. \*\*", base, re.M))
+    assert rules > 0, "the base rulebook's numbered rule heads are unreadable"
+    assert _spelled(rules) in base or "%d rules in the body" % rules in base, (
+        "the base description states a rule count other than the %d rules on disk" % rules)
     assert "INV-136, INV-139" in base
     # the periodic-full-audit rule is base rule 28 (INV-145, Part C); rule 29 is the deferral test
     assert "28. **A periodic full audit" in base
     assert "29. **A deferral must justify itself" in base
     # README's mirrored rule count is fresh
-    assert "thirty shared rules" in _read("README.md")
+    readme = _read("README.md")
+    assert _spelled(rules, "shared rules") in readme or "%d shared rules" % rules in readme, (
+        "README states a rule count other than the %d rules on disk" % rules)
 
 
 def test_d1_reading_discipline_composes_with_brief_read():
