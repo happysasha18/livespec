@@ -62,6 +62,28 @@ jobs:
         run: guardrails/check-skill-review.sh
       - name: gate t — doc rotation (the pack's split-and-rotated docs lose nothing, SPEC INV-209)
         run: python3 guardrails/check-doc-rotation.py
+      - name: gate h — the four host checks (this repo attached as its own first host, SPEC INV-97)
+        # The base ladder mirrors gate a: github.event.before on a push, else a fetched origin/main,
+        # else HEAD~1 — so the host checks compare against a ref that exists on any CI checkout.
+        run: |
+          base="${{ github.event.before }}"
+          if [ -z "$base" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            git fetch -q origin main 2>/dev/null || true
+            base="origin/main"
+          fi
+          if ! git cat-file -e "${base}^{commit}" 2>/dev/null; then base="HEAD~1"; fi
+          for c in completeness tests_present traces_to_spec conflicts; do
+            python3 scaffold/guardrails/check_${c}.py --base "$base"
+          done
+      - name: gate n — the earned message (an agent's inbox deposit names its birth, SPEC INV-189)
+        run: |
+          if [ -d inbox ]; then
+            python3 guardrails/check-earned-message.py inbox
+          else
+            echo "no inbox in this checkout — the gate stands down by name"
+          fi
+      - name: gate u — CI mirror parity (every local gate is mirrored in CI or a declared carve-out, SPEC INV-210)
+        run: guardrails/check-ci-mirror.sh
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

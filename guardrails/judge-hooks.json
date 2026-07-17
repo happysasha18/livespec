@@ -1,0 +1,11 @@
+{
+  "_comment": "Which hooks under hooks/ are wired live into ~/.claude/settings.json, and to which event surface. check-judge-listed.py (SPEC INV-211, gate v) reds when a wired judge is absent from its surface's hook array — the no-verdict failure of a judge whose file is present but whose settings.json entry is gone. A library hook is invoked by another hook, not listed in settings.json directly. Every file under hooks/ must appear in exactly one of the two lists, or the gate reds asking that it be classified — the self-widening honesty config-health (gate m) already uses.",
+  "wired": {
+    "clock-hook": "UserPromptSubmit",
+    "chat-law-hook": "UserPromptSubmit",
+    "register-judge-report": "UserPromptSubmit",
+    "scissors-scan": "Stop",
+    "register-judge-collect": "Stop"
+  },
+  "library": ["register-judge", "register_judge_core"]
+}

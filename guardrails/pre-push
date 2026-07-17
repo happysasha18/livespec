@@ -158,6 +158,18 @@ for hostcheck in completeness tests_present traces_to_spec conflicts; do
 done
 
 echo ""
+echo "-- gate u: CI mirror parity (every local gate is mirrored in CI or a declared carve-out, SPEC INV-210) --"
+if ! "$GUARDRAILS/check-ci-mirror.sh"; then
+  fail=1
+fi
+
+echo ""
+echo "-- gate v: judges listed (every wired chat judge is referenced in the installed settings.json, SPEC INV-211) --"
+if ! python3 "$GUARDRAILS/check-judge-listed.py"; then
+  fail=1
+fi
+
+echo ""
 if [ "$fail" -ne 0 ]; then
   echo "PUSH BLOCKED — one or more gates above failed. Fix them and try again."
   exit 1
