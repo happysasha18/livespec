@@ -35,8 +35,9 @@ the class, in any language: "really", "actually", "truly", "in fact", "genuinely
 everything", "at its core", any adjective grading how important a result is. A word that carries a
 FACT stays: "three lanes" is a fact, "really important" is not.
 
-LAW 2 — no naming a thing by denying its neighbour. The frame "X, not Y" / "X — not Y" / «X, а не Y»
-is banned when the denied half adds nothing the reader did not already have. A contrast between two
+LAW 2 — no naming a thing by denying its neighbour. The banned frame is "X, not Y" / "X — not Y", and
+in Russian «X, а не Y».  # user-language: judged in the reader's own tongue, so the sample is in it
+It is banned when the denied half adds nothing the reader did not already have. A contrast between two
 things that BOTH genuinely exist and are both live for the reader is legitimate and passes.
 
 LAW 3 — no grading the person. A sentence whose content is a verdict on the reader's remark rather
