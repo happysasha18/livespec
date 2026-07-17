@@ -288,3 +288,17 @@ def test_extensionless_file_with_no_shebang_is_not_swept_in():
         assert r.returncode == 0, (
             "a non-shebang extensionless file was swept into the scan: " + r.stdout + r.stderr
         )
+
+
+def test_big_muted_file_survives_the_pipe():
+    # CI-only red of 2026-07-17 (v2.5.0 push): under `set -o pipefail`, `printf "$stripped" |
+    # grep -q mute-audio` reds falsely on a LARGE muted file — grep matches early and exits,
+    # printf catches SIGPIPE once the remainder outgrows the pipe buffer, pipefail turns that
+    # 141 into "no match", and the muted file is flagged as unmuted. Deterministic here: the
+    # mute flag on line 1, ~1 MB of code lines behind it, the launch/invoke signals at the tail.
+    body_lines = ['CHROME_ARGS = ["--mute-audio"]  # muted at the source\n']
+    body_lines += ['x_%d = "padding line that is plain code, long enough to fill the pipe buffer quickly %d"\n' % (i, i) for i in range(12000)]
+    body_lines += ['import subprocess\n',
+                   'subprocess.Popen(CHROME_ARGS + ["--headless", "--remote-debugging-port=0"])\n']
+    r = _scan("".join(body_lines), name="big_muted_launcher.py")
+    assert r.returncode == 0, r.stdout + r.stderr

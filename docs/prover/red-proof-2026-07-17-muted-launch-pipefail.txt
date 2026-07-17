@@ -1,0 +1,4 @@
+## the pipefail/SIGPIPE false red, red against the pre-fix checker, 2026-07-17 ~11:33
+=========================== short test summary info ============================
+FAILED tests/test_muted_launch_guardrail.py::test_big_muted_file_survives_the_pipe
+1 failed in 0.32s

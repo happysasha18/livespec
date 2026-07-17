@@ -14,7 +14,9 @@ cat > "$HOME/.claude/hooks/block-triple-equals.sh" <<'EOF'
 # Scans only real shell words: text before any heredoc (<<) is checked; heredoc bodies are data.
 cmd=$(jq -r '.tool_input.command // ""')
 scan=$(printf '%s\n' "$cmd" | awk 'i=index($0,"<<"){print substr($0,1,i-1); exit} {print}')
-if printf '%s' "$scan" | grep -qE '(^|[[:space:]])={3,}([[:space:]]|;|$)'; then
+# here-string, never a pipe: the pipefail/SIGPIPE false verdict on a large $scan (the muted-launch
+# checker's 2026-07-17 CI red, same class)
+if grep -qE '(^|[[:space:]])={3,}([[:space:]]|;|$)' <<< "$scan"; then
   printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"bare === separator in the command - zsh eats it (=== not found); draw separators with --- instead"}}'
 fi
 exit 0

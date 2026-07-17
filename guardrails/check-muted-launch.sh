@@ -81,9 +81,14 @@ scan_file() {
       stripped="$(awk '{ l=$0; sub(/#.*/,"",l); print l }' "$f" 2>/dev/null || true)"
       ;;
   esac
-  if printf '%s\n' "$stripped" | grep -qE "$LAUNCH" 2>/dev/null \
-     && printf '%s\n' "$stripped" | grep -qE "$INVOKE" 2>/dev/null; then
-    if ! printf '%s\n' "$stripped" | grep -q 'mute-audio' 2>/dev/null; then
+  # here-strings, never a pipe: under `set -o pipefail` a `printf | grep -q` pipeline reds
+  # falsely on a LARGE file — grep exits at its first match, printf catches SIGPIPE once the
+  # remainder outgrows the pipe buffer, and pipefail reads that 141 as "no match" (the CI-only
+  # false red of 2026-07-17, deterministic past ~64 KB; the by-deed red rides
+  # tests/test_muted_launch_guardrail.py::test_big_muted_file_survives_the_pipe).
+  if grep -qE "$LAUNCH" 2>/dev/null <<< "$stripped" \
+     && grep -qE "$INVOKE" 2>/dev/null <<< "$stripped"; then
+    if ! grep -q 'mute-audio' 2>/dev/null <<< "$stripped"; then
       echo "$f"
     fi
   fi
