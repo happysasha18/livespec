@@ -337,7 +337,7 @@ a working skill still stands: its pointer here reads as plain advice.
    of two holds. Co-location changes the transport's speed and leaves the contract untouched, and a
    remote agent reaches the other through git alone [INV-112].
 
-   Four laws hold the quiet, and each is a way of routing a thing to the home that governs it [INV-153].
+   The laws below hold the quiet, and each is a way of routing a thing to the home that governs it [INV-153].
 
    - **A message names the sender's own blocked work, in the message.** The named work is a real row, a
      real failing step, a real thing the sender cannot finish while the receiver's zone stands as it
@@ -370,6 +370,14 @@ a working skill still stands: its pointer here reads as plain advice.
      bound is two, counted by the exchange's identifier; the third crossing is named in the sender's own
      status report as a zone question the two could not settle. The human-decision withdrawal loop
      already takes this shape [INV-196, INV-130].
+   - **A concern no agent's zone owns goes to the pack, and the work never stalls on ownership.** A
+     question no work stands on is dropped [INV-191]. A concern is a different thing: real work whose
+     owning zone does not exist yet. It goes to the pack's inbox, and the pack answers who owns it — an
+     existing agent, a new agent the owner ratifies, or a skill. Zones may overlap and no agent is
+     forced to carve a disjoint one. The work never waits on the answer: an agent meeting an unowned
+     concern does the reasonable thing now, in whatever tree can hold it, marks that work provisional,
+     and the re-home lands later as ordinary pipeline work. A re-home is cheap and retroactive; a stall
+     while ownership is settled is what this rule prevents [INV-197].
    - **A capability another agent's zone owns is taken through one of the two channels.** Building
      a local copy of a neighbour's capability is the violation the roster exists to prevent, since the
      copy drifts from its original the day after it is made and the two owners then answer one question

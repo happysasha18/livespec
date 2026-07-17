@@ -66,7 +66,7 @@ first thing.** Two known reds to expect and close:
   tc-cloud-validate is disposable.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
-- Next free codes: INV-197, E-34, T-23, M-371, next ROADMAP row 393.
+- Next free codes: INV-197, E-34, T-23, M-371, next ROADMAP row 397.
 
 ## The queue's near head (his ranking)
 - **386 — parallel lanes get branches and worktrees.** HIS WORD: this matters more than the communication

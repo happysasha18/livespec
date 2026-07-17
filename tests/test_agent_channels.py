@@ -189,8 +189,8 @@ class TestEarnedMessage(unittest.TestCase, _AnchorHomeMixin):
 
     def test_two_births_are_a_closed_set(self):
         spec = read_flat(SPEC)
-        self.assertIn("A message has exactly two births, and the set is closed", spec)
-        self.assertIn("A candidate message matching neither birth has no birth, and it stays "
+        self.assertIn("A message has exactly three births, and the set is closed", spec)
+        self.assertIn("A candidate message matching no birth has no birth, and it stays "
                       "unsent", spec)
 
     def test_owner_presumed_competent_and_informed(self):
@@ -756,7 +756,7 @@ class TestContractDefaultDeny(unittest.TestCase, _AnchorHomeMixin):
     def test_credentials_never_cross_a_channel(self):
         spec = read_flat(SPEC)
         self.assertIn("Credentials never cross a channel at all, under any permission", spec)
-        self.assertIn("the published artifact is the only data path that exists between two "
+        self.assertIn("the only road a producer's product data takes between two "
                       "agents", spec)
 
     def test_base_rulebook_carries_the_default_deny_law(self):
@@ -783,7 +783,7 @@ class TestProducerFormAndClock(unittest.TestCase, _AnchorHomeMixin):
         spec = read_flat(SPEC)
         self.assertIn("The producer declares the contract's cadence and regenerates on its own "
                       "clock", spec)
-        self.assertIn("the producer's own check reds when its scheduled regeneration did not run",
+        self.assertIn("reds at its session-start sweep when its scheduled regeneration did not run",
                       spec)
 
     def test_a_deploy_never_triggers_the_contract(self):
@@ -929,7 +929,7 @@ class TestMessageLifecycle(unittest.TestCase, _AnchorHomeMixin):
     def test_message_carries_a_stable_identifier(self):
         spec = read_flat(SPEC)
         self.assertIn("A message carries a stable identifier its reply can name", spec)
-        self.assertIn("The identifier is a projection of the sender's session identity", spec)
+        self.assertIn("The identifier is minted per message", spec)
         self.assertIn("[INV-192]", spec)
 
     def test_reply_travels_the_senders_own_inbox(self):
@@ -980,8 +980,11 @@ class TestAgentBirth(unittest.TestCase, _AnchorHomeMixin):
     def test_ratification_creates_the_agent_and_the_row_records_it(self):
         spec = read_flat(SPEC)
         self.assertIn("It stands as a proposal until the owner ratifies the birth", spec)
-        self.assertIn("The owner's ratification is the act that creates the agent, and the roster "
-                      "row is its record", spec)
+        self.assertIn("The owner's ratification is the act that seats the agent, and the roster "
+                      "row is that seat's record", spec)
+        # The properties constitute agent-hood; the ratification seats it (prover F2). An unseated
+        # agent is real and unlisted, which is every tree that predates the roster.
+        self.assertIn("a tree carrying all three is an agent whether or not a row names it yet", spec)
 
     def test_contract_outlives_the_migration(self):
         spec = read_flat(SPEC)

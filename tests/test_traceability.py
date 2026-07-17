@@ -1009,6 +1009,8 @@ class TestTargetOwnership(unittest.TestCase):
         "INV-17": 55, # build⊆spec honesty legs = the host-facing gate legs
         "INV-21": 96, # success-measure reading machinery = the feedback family
         "A-6": 55,    # adoption baseline rides the snapshot
+        "INV-184": 387,  # the card's gate + adoption's line (the law's net until then is the prover)
+        "INV-185": 385,  # the contract's three arms ship at a host's first real contract
     }
 
     def roadmap_rows(self):
