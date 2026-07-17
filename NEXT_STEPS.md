@@ -1,16 +1,16 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-17 ~16:15 — v2.6.0 shipped and pushed; a NEW movement is MID-LANDING, uncommitted)
+## LIVE STATE (2026-07-17 ~16:58 — v2.6.0 + one big landing PUSHED, all gates green, suite 1093)
 
-v2.6.0 (the agent-communication layer) is pushed and CI-green; its story is JOURNAL.md's v2.6.0 chapter,
-whose lesson governs everything below: **a written law with no machine is a wish, and a machine looking in
-the wrong place is the same as no machine** — five instances that day, and the field has since added more.
+Commit `f40f2a1` on main: agents declare themselves (the roster is gone), lanes get their branch road,
+and **the rule of thinking took the head of the base rulebook** — every incoming item is a symptom and
+the answer owed is a rule about its CLASS, on three doors (his feedback, our own finding, another
+agent's message). His word, said by his count ~200 times before it was written down.
 
-**UNCOMMITTED IN THE TREE RIGHT NOW** (spec, architecture, matrix, tests, queue, hooks): the roster
-replaced by self-declaring cards + a bounded scan; the branch-and-merge road for parallel lanes; the
-`parallel-lanes` architecture node (T-18, INV-2, INV-39, INV-49, INV-131 moved in); the answer-first law
-with its hook; rows 397–415. Suite last read 1086 passed / 4 red, the reds being the matrix still landing.
-**Gate and commit before anything else, or read `git status` and finish what a stopped session left.**
+**THE QUEUE'S HEAD IS THE PACK AUDITING ITSELF BY THAT RULE, and it found the pack guilty** (rows 416,
+417, 418 — all three are one class and fold into one at landing): a register law naming a class held by
+a list of 22 literals · a guard reading four browser words · **and INV-83, which COMMANDS the list in our
+own spec** ("the pattern set GROWS BY ONE per caught leak"). Everything below waits behind those.
 
 ## ON RESUME — in order
 
