@@ -81,6 +81,43 @@ Safe to re-run any time — it just overwrites with whatever is currently in `gu
 It does **not** create `.live-spec-fence`; the fence stays opt-in until you run
 `guardrails/fence-refresh.sh` yourself.
 
+## The runaway-child notice — a Stop-time report the owner wires by hand (SPEC INV-213)
+
+`guardrails/check-runaway-child.py` reports a runaway descendant a finished worker left behind: a
+process the run provably owns (in the run's own process group, or under its own temp tree) that is
+orphaned — its owning parent no longer alive — and burning a full core. It reads no program name for
+its verdict, only process group, parent liveness, and CPU share, so it can never target the human's
+own copy of a program (SPEC INV-162). It is notice-first: it reports through the shared cleanup notice
+and ends no process.
+
+This is **not** installed by `install.sh`, and it takes **no** pre-push gate letter — a push gate runs
+long after a runaway would have burned its cores, so the report belongs at the Stop surface. Wiring it
+is left to the owner and is done **only when a session is quiet**, because a process scanner wired into
+a live session's Stop hook could report against that session's own live background workers. To wire it,
+add a Stop entry to `~/.claude/settings.json` that runs the check when a session stops:
+
+```
+"hooks": {
+  "Stop": [
+    { "hooks": [ { "type": "command",
+        "command": "python3 /ABSOLUTE/PATH/live-spec/guardrails/check-runaway-child.py" } ] }
+  ]
+}
+```
+
+Run it against a simulated table first to see its shape without touching the real process list:
+
+```
+LIVE_SPEC_RUNAWAY_PROCS_JSON='[{"pid":1,"ppid":0,"pgid":1,"pcpu":0.0,"command":"init"},
+  {"pid":777,"ppid":1,"pgid":'"$(ps -o pgid= -p $$ | tr -d ' ')"',"pcpu":98.0,"command":"python"}]' \
+  LIVE_SPEC_OWNED_PGIDS="$(ps -o pgid= -p $$ | tr -d ' ')" \
+  python3 guardrails/check-runaway-child.py
+```
+
+`LIVE_SPEC_OWNED_PGIDS` (space/comma-separated) and `LIVE_SPEC_OWNED_TREE` override the owned process
+groups and owned temp tree; unset, the check owns its own process group and the repo's `.live-spec/`
+tree. The check always exits zero, so the notice never blocks a stop.
+
 ## How a host project adapts the pattern
 
 **The ratchet gates (style lint · redundancy · freeze) install themselves in one pass:** run

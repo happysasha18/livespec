@@ -4971,3 +4971,48 @@ test-author determinism rule (1.0.5) · TEST_MATRIX M-301 · tests/test_flaky_te
 tests/test_no_retry_plugin.py · VERSION/plugin/spec-header 1.6.0. Suite 742 green. Record
 `docs/prover/2026-07-15-inv155-flaky-test.md`. Delegation (INV-103): the design and every fold judgment
 stayed senior; the independent adversarial prove, the downstream build, and the guardrail went to workers.
+
+## 2026-07-18 — Row 420 candidate 4: a finished worker leaves no runaway child (INV-213)
+
+The last of the row-420 gate-audit's four members, and the one the audit said to build last and
+carefully because it lives in process space, where a coarse scope closed the owner's real browser
+once. The lesson it answers is the memory note of 2026-07-17: a difflib process burned one core for
+forty-six minutes after its worker reported done, and a frozen status line masked it until the next
+unexplained slowdown. The run owned that descendant, so the run owed a word about it. Alexander gave
+the minimum owed as a NOTICE (2026-07-17 ~16:58, the same word that ordered row 417's cleanup notice):
+at a stopping point, a runaway descendant the run provably owns is reported — what it is, how much of a
+core it holds, and why the run owns it.
+
+The whole design is the ownership discipline. `guardrails/check-runaway-child.py`'s core
+`find_runaways` reads only process group, parent liveness, and processor share; it reads no program
+name for its verdict, so it cannot tell one program's name from another and never tries — a process
+whose command matches a known burner while sitting in a foreign process group and under no owned tree
+is refused, because the run cannot prove it owns it. That is INV-162's exact discipline, and the
+mutation red-proof shows it is load-bearing: give `_owned_via` a name-based branch and the bare-name
+safety test reds with an explicit INV-162-breach message. A runaway is owned (process group or owned
+tree), orphaned (its owning parent no longer alive, so a live worker whose parent is alive is never
+one — the safety edge that keeps it from endangering legitimate live background work), and burning.
+
+Two decisions kept it safe. It is NOTICE-FIRST: it reports through the shared
+`guardrails/cleanup_notice.py` (a new `runaway_notice` beside the row-417 `cleanup_notice`) and ends no
+process, so the mechanism can never become the broad-sweep footgun it guards against; a reap gated on
+the same strict proof is named as a later, optional step and not built. And it is a Stop-time notice,
+not a push gate — a push gate runs long after the cores burn — so it takes no push-gate letter, is
+absent from pre-push and CI, and is not enumerated by the meta-gate (gates u and w stay green
+untouched). Its live wiring is a documented owner-run install step in `guardrails/README.md`, never an
+auto-wire into a running session's Stop hook, since wiring a process scanner into a live session
+mid-movement could report against that session's own live background workers. Keeping it in
+`guardrails/` rather than under `hooks/` also keeps config-health (gate m) and judge-listed (gate v)
+quiet, which require every `hooks/` file to be installed and wired.
+
+With this landed the row-420 audit-and-build is complete: the audit doc plus its four built members —
+row 419 (gate s, INV-208), candidate 1 (gate u, INV-210), candidate 2 (gate v, INV-211), candidate 3
+(gate w, INV-212), and candidate 4 (this Stop-time notice, INV-213).
+
+Door: feature; kind: infra; footprint: single-module (high-stakes, walked carefully). SPEC INV-213 NEW
++ Formal index row · ARCHITECTURE guardrails node owns INV-213, pin for check-runaway-child.py ·
+TEST_MATRIX M-394 · `guardrails/check-runaway-child.py` (report-only, ends nothing) + `runaway_notice`
+on `guardrails/cleanup_notice.py` · `tests/test_runaway_child.py` (20 tests, simulated process table,
+no runaway ever spawned) · `guardrails/README.md` the owner-run wiring step. Suite 1329 green. Records
+`docs/prover/2026-07-18-row420-runaway-child.md`, red-proof
+`docs/prover/red-proof-2026-07-18-row420-runaway-child.txt`. VERSION unchanged (2.6.3). Not pushed.

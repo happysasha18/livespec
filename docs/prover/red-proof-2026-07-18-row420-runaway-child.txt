@@ -1,0 +1,65 @@
+RED-PROOF — 2026-07-18 — ROADMAP 420 candidate 4 — a finished worker leaves no runaway child (INV-213)
+=====================================================================================================
+
+The mechanism ships REPORT-ONLY (it ends no process) and lives at the Stop surface, not the push gate.
+Two red proofs are captured: the pre-delta absence red, and a mutation red that shows the name-blind
+ownership discipline (INV-162) is load-bearing, not decorative.
+
+Every test drives a SIMULATED process table. No test spawns a runaway, ends a process, or reads the
+real machine's process list.
+
+-----------------------------------------------------------------------------------------------------
+(1) PRE-DELTA RED — mechanism (guardrails/check-runaway-child.py) and the shared runaway_notice helper
+    absent; PRODUCT_SPEC / Formal index / ARCHITECTURE / TEST_MATRIX carry no INV-213
+-----------------------------------------------------------------------------------------------------
+$ python3 -m pytest tests/test_runaway_child.py -q      # against the full pre-delta tree
+
+18 failed, 2 passed
+
+The 2 that pass throughout are the two ABSENCE assertions, which correctly hold before the mechanism
+exists — this is a Stop-time notice, not a push gate:
+  PASS test_not_wired_as_a_prepush_gate   (check-runaway-child absent from guardrails/pre-push)
+  PASS test_not_a_ci_step                 (runaway-child absent from .github/workflows/gates.yml)
+
+The 18 red (mechanism / notice / doc entries all absent) included the two discipline anchors:
+  FAILED test_owned_orphaned_burning_is_reported
+  FAILED test_bare_name_match_never_fires
+  FAILED test_live_owned_working_child_is_not_reported
+  ... (full list: check_ships, notice_helper_emits_a_runaway_line,
+      check_reports_through_the_cleanup_notice_module, below_threshold_is_not_reported,
+      ownership_by_owned_tree_path, a_process_outside_the_owned_tree_is_not_owned,
+      self_pids_are_excluded, orphaned_by_missing_parent_is_owned_and_reported,
+      run_emits_a_notice_for_a_runaway_and_returns_zero, the_check_source_ends_no_process,
+      cli_injected_table_reports_and_exits_zero, cli_clean_table_is_silent_and_exits_zero,
+      spec_states_the_law, architecture_owns_the_invariant, matrix_row_covers_the_law)
+
+After the delta:  20 passed.
+
+(A second intermediate capture, with the doc entries already landed and only the mechanism + helper
+hidden, read 15 failed / 5 passed — the three doc-traceability tests pass once the docs carry INV-213.
+The canonical pre-delta state above, before any doc edit, is the 18-red one.)
+
+-----------------------------------------------------------------------------------------------------
+(2) MUTATION RED — the name-blind ownership discipline (INV-162) is load-bearing
+-----------------------------------------------------------------------------------------------------
+Mutation: _owned_via() was given a name-based branch — `if "difflib" in proc["command"]: return
+"command matched a known burner"` — the exact class INV-162 forbids (owning by NAME, which cannot tell
+this run's copy of a program from the human's). The safety test then REDS:
+
+$ python3 -m pytest tests/test_runaway_child.py::test_bare_name_match_never_fires -q
+
+    foreign = _proc(9001, 1, 42, 99.9, "python difflib", "/Users/someone/other/difflib.py")
+    got = mod.find_runaways([LEAD, foreign], OWNED_PGIDS)
+>   assert got == [], "a bare-name match with no ownership proof fired — INV-162 breach: %r" % got
+E   AssertionError: a bare-name match with no ownership proof fired — INV-162 breach:
+E     [{'pid': 9001, 'ppid': 1, 'pgid': 42, 'pcpu': 99.9, 'command': 'python difflib',
+E       'owned_via': 'command matched a known burner', ...}]
+
+1 failed
+
+The foreign process is orphaned (ppid 1) and burning a full core (99.9%), but sits in a FOREIGN process
+group (pgid 42, not the run's 500) and under no owned tree. The unmutated check refuses it because the
+run cannot prove it owns it; only the name-based mutation makes it fire. Mutation reverted:
+
+$ python3 -m pytest tests/test_runaway_child.py::test_bare_name_match_never_fires -q
+    1 passed

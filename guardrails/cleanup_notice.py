@@ -27,6 +27,7 @@ The line's shape:
 import sys
 
 MARKER = "CLEANUP-NOTICE"
+RUNAWAY_MARKER = "RUNAWAY-NOTICE"
 
 
 def cleanup_notice(ended, what, owned_via, out=None):
@@ -38,6 +39,26 @@ def cleanup_notice(ended, what, owned_via, out=None):
     if out is None:
         out = sys.stderr
     line = "%s ended=%s what=%s owned-via=%s" % (MARKER, ended, what, owned_via)
+    try:
+        out.write(line + "\n")
+        out.flush()
+    except Exception:
+        pass
+    return line
+
+
+def runaway_notice(what, cpu, owned_via, out=None):
+    """Report a runaway descendant the run provably owns — a REPORT, not an ending (SPEC INV-213).
+
+    Where cleanup_notice announces a process the run just ended, this announces one still alive and
+    burning CPU that the run owns and has not touched. It carries the same owned-via proof discipline,
+    plus how much CPU it holds, so an unexpected burn is visible the moment it happens rather than at
+    the next unexplained slowdown. It names no `ended` identity because it ends nothing. Written to
+    stderr by default. Returns the emitted line.
+    """
+    if out is None:
+        out = sys.stderr
+    line = "%s what=%s cpu=%s owned-via=%s" % (RUNAWAY_MARKER, what, cpu, owned_via)
     try:
         out.write(line + "\n")
         out.flush()
