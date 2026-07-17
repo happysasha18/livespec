@@ -1,17 +1,14 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-17 ~11:11 — v2.5.0 landing: gate folded, push next)
-Row 369 built and accepted: the sub-domain duty lifted to the GENERAL range law on the owner's word
-(a guarantee scoped to a named part of its domain — a band, a user state, a network condition, a
-locale — answers for the remainder; viewport bands demoted to worked instance in all five homes).
-MINOR gate run whole (prover PROCEED, design review converged, skill review clean, fresh Fable
-audit — nine findings, all folded or named as the landing's own steps), records with addenda
-(docs/{prover,design-review,audit}/2026-07-17-2.5.0*.md). Rows 370 (enumerate-vs-ride-silently
-keying) queued. VERSION 2.5.0 stamped, installed copies synced. The owner's boundary recorded:
-the law demands completeness of ANSWERS per part, a decided difference satisfies it (FEEDBACK.md).
-REMAINS: freeze re-bless, clean suite, commits by lane, push, CI, mirror walk. NEW SEED in inbox/:
-multi-agent communication (the promoter↔site data-contract protocol) — sweep to rows after this
-push; implementation post-wipe from the seed file.
+## LIVE STATE (2026-07-17 ~11:41 — v2.5.0 SHIPPED, gate fix landed, CI green)
+Pushed 36e9f03: row 369 (the general named-part law) + the post-push gate fix — the muted-launch
+checker's pipefail/SIGPIPE false red on large files, root-fixed with here-strings, red-proven on a
+~1 MB fixture, the look-alike swept. CI green, mirror synced by the CI arm. Queue grew on the
+owner's word: rows 371-378 (the multi-agent communication stage — two-channel law, data contracts,
+experiment lifecycle, cadence watcher, agent registry, non-duplication, agent birth + the
+skill/agent boundary; both seed files archived to docs/queue-archive/, his three open questions —
+privacy scope, commerce boundary, cadence default — ride the seed; post-wipe, Opus seat) and 379
+(spec structure: enumerable facts as bullets, flows as diagrams). Row 370 queued earlier.
 
 ## PRIOR STATE (2026-07-17 ~00:50 — v2.4.0 SHIPPED, 909ea2f; 2026-07-16 — v2.3.0, d5bf2d7)
 Stories in JOURNAL.md.
