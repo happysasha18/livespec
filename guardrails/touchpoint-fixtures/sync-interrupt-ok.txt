@@ -1,0 +1,6 @@
+TOUCHPOINT-KIND: decision-page
+
+A decision page is a synchronous point: the person is present and the work waits on his word. An
+interruption is afforded here, because interrupting a person who is present is the whole point of it.
+
+[[interrupt]] Two lanes need your word before either can land — here are both, side by side.

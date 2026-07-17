@@ -1,0 +1,7 @@
+TOUCHPOINT-KIND: waiting-list
+
+The waiting list is asynchronous, and he opens it on request. Because he opens it himself, a teaching
+line that introduces a capability he has not met is afforded here — the product teaches itself through
+use, on the surface he chose to open.
+
+[[teach]] This list opens on request and clears an item on your acknowledgement alone.

@@ -1,0 +1,6 @@
+TOUCHPOINT-KIND: far-tier-surfacing
+
+This surface is asynchronous and agent-pushed — the person did not open it. A teaching line that
+introduces a capability he has not met does not belong here; it belongs on a point he opens himself.
+
+[[teach]] Here is a new capability you have never used — let me walk you through it now.

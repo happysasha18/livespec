@@ -98,6 +98,12 @@ if ! "$GUARDRAILS/check-cleanup-notice.sh"; then
 fi
 
 echo ""
+echo "-- gate p: touchpoint kind (a surface speaks only the kind its touchpoint affords, SPEC INV-205) --"
+if ! python3 "$GUARDRAILS/check-touchpoint-kind.py"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1

@@ -1,0 +1,6 @@
+TOUCHPOINT-KIND: far-tier-surfacing
+
+The far backlog surfaces itself here. This surface is asynchronous and the agent pushes it at him,
+so it may only wait for his own clock. The line below breaks that: it demands his attention now.
+
+[[interrupt]] Stop and answer this before the run can continue.

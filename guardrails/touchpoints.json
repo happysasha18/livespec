@@ -1,0 +1,72 @@
+{
+  "_comment": "The touchpoint manifest (SPEC INV-205, ROADMAP 413). Every point of contact with the person has a KIND, and the kind decides what may be said there. Each touchpoint declares its kind here, and guardrails/check-touchpoint-kind.py reds a surface that speaks in a kind its touchpoint lacks. 'kind': synchronous = the person is present and the work waits on him; asynchronous = he reads on his own clock while the work rolls. 'opened_by': person = he opens/initiates the contact himself; agent = the agent pushes it at him unbidden. The afforded traffic derives from the two: an interruption is afforded only on a synchronous point; a teaching line only where the person opens the point (any synchronous point, or an asynchronous point he opens on request); waiting traffic is afforded everywhere. 'surface' is the file(s) the touchpoint's output lives in, or null where the surface is not built yet [target]. 'row' cites the roadmap row the touchpoint grounds, where it is one of the frame's four instances.",
+  "touchpoints": [
+    {
+      "name": "ask-user-question",
+      "kind": "synchronous",
+      "opened_by": "person",
+      "surface": null,
+      "note": "a live question the work waits on; the person is present and answering."
+    },
+    {
+      "name": "decision-page",
+      "kind": "synchronous",
+      "opened_by": "person",
+      "surface": null,
+      "note": "the batched decision page he is looking at now; the work waits on his word."
+    },
+    {
+      "name": "status-report",
+      "kind": "asynchronous",
+      "opened_by": "agent",
+      "surface": null,
+      "note": "the status line the agent pushes at him; he reads it on his own clock, it interrupts nothing."
+    },
+    {
+      "name": "resume-file",
+      "kind": "asynchronous",
+      "opened_by": "person",
+      "surface": "templates/NEXT_STEPS.template.md",
+      "note": "the resume file he opens on a cold start; asynchronous, and he opens it himself."
+    },
+    {
+      "name": "inbox-note",
+      "kind": "asynchronous",
+      "opened_by": "agent",
+      "surface": null,
+      "note": "a note deposited in the inbox; read on his own clock, no interruption, no teaching push."
+    },
+    {
+      "name": "release-note",
+      "kind": "asynchronous",
+      "opened_by": "person",
+      "surface": null,
+      "row": "402",
+      "note": "the changelog's offer of next steps; a human-audience, no-answer-needed surface he reads when he opens the release notes himself, so an offer (a teaching-adjacent line) is afforded and an interruption is not."
+    },
+    {
+      "name": "far-tier-surfacing",
+      "kind": "asynchronous",
+      "opened_by": "agent",
+      "surface": null,
+      "row": "403",
+      "note": "the far backlog's rare self-surfacing; it rides the status report the agent pushes at him, so it may only wait — no interruption, no teaching push."
+    },
+    {
+      "name": "waiting-list",
+      "kind": "asynchronous",
+      "opened_by": "person",
+      "surface": null,
+      "row": "408",
+      "note": "the small file at the host root holding what waits for his eyes; he opens it on request, so it affords a teaching line as well as a wait, and never an interruption."
+    },
+    {
+      "name": "parked-feedback-question",
+      "kind": "asynchronous",
+      "opened_by": "person",
+      "surface": null,
+      "row": "409",
+      "note": "a question whose value is his input, born onto the waiting list carrying the default the work already took; it rides the waiting list he opens, so it waits for his free minute and never interrupts."
+    }
+  ]
+}
