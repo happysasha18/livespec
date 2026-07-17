@@ -29,4 +29,19 @@ jobs:
           printf '%s\n' "$stripped" | grep -cE -- '(--headless|--remote-debugging-port|puppeteer\.launch|chromium\.launch)' || true
           printf '%s\n' "$stripped" | grep -cE '(subprocess|Popen|spawn|execSync|child_process|os\.system|\.launch\(|exec\()' || true
       - name: checker verbatim with xtrace
-        run: bash -x guardrails/check-muted-launch.sh 2>&1 | tail -80
+        run: bash -x guardrails/check-muted-launch.sh 2>&1 | tail -5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: checker under a python subprocess (gate b's exact context, minus pytest)
+        run: |
+          pip install pytest -q
+          python3 -c "
+          import subprocess
+          r = subprocess.run(['bash','guardrails/check-muted-launch.sh'], capture_output=True, text=True)
+          print('rc:', r.returncode); print(r.stdout[-400:]); print(r.stderr[-400:])"
+      - name: the one failing test under pytest
+        run: python3 -m pytest -q tests/test_muted_launch_guardrail.py::test_guardrail_passes_the_clean_repo -x 2>&1 | tail -20
+      - name: full guardrail test file under pytest
+        if: always()
+        run: python3 -m pytest -q tests/test_muted_launch_guardrail.py 2>&1 | tail -6
