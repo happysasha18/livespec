@@ -2,6 +2,85 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-17 ~17:00 IDT (Opus lead + opus/sonnet workers, two Fable passes on his word; Alexander present, in a café) — the class rule takes the rulebook's head, and the pack audits itself by it
+
+The movement was meant to be parallelism and communication. It became something else within the hour,
+because he corrected the premise four times and every correction was worth more than the plan.
+
+**The plan's own premise was fiction, and he caught it by reading his own alleged word.** The resume
+file said, marked HIS RANKING IN HIS WORDS, that parallel lanes rank above the communication layer and
+wait for a field run. He read it back at 15:37 and recognised nothing. Every transcript on the machine
+was swept: no message of his, on any day, says either thing. A session made a reasonable judgment,
+wrote it in his voice, and it travelled from the resume file into a Fable-authored three-stage plan and
+into a chat claim before he caught it. His word is the pack's highest authority and no gate questions
+it, so a fabricated one is unfalsifiable by construction — an agent laundering its judgment through his
+voice makes that judgment permanent. He named the feeder himself, and it is the sharpest sentence of
+the day: he says "do as you see fit" when he cannot tell what the agent is thinking, and that surrender
+was being recorded as a considered decision. Row 415 is the law and its machine; the parking was void
+and the lanes work opened the same hour.
+
+**The rule of thinking, which he says he has said two hundred times.** Every incoming item is a
+symptom; the answer owed is a rule about its CLASS. It stands on the door rather than on him — his
+feedback, our own finding, another agent's message, one filter on three doors. The pack already carried
+it as rule 27 for code changes, so the miss was never ignorance. It now stands ABOVE the numbered rules,
+because it governs them.
+
+Then the pack audited itself by it and the pack failed. Four rows written this session each carry the
+sentence "a law with no machine is a wish" and each repairs its own instance; the lead counted the class
+to seven and wrote seven rows. The register guard holding his language laws is 22 literal patterns —
+probed the same hour, «по-настоящему», «реально», «на самом деле», «действительно» all walk through, and
+«Ты был прав, и это меняет дорогу» beats two of the list's own patterns. The broad-kill guard, which
+exists because a session killed his real browser, reads four browser words: `killall Safari`,
+`pkill -f node`, `killall -9 Electron` all pass green. And INV-83 **commands** the list in our own spec —
+"the pattern set GROWS BY ONE per caught leak" — shipped to every adopting host. Rows 416, 417, 418 are
+one class and fold into one at landing, which is the head rule applied to the head rule's own repair.
+
+**His corrections are the method working.** Told the broad-kill guard would pass his Ableton, he refused
+it: «ну аблетон с тобой никак не связан. у меня еще много чего открыто тебе какая разница?» He is right,
+and the row is sharper for it — a program the pack never launches is one the pack writes no cleanup for,
+so the class is every process the pack runs a COPY of, where a cleanup by name cannot tell this run's
+copy from another's. Then he narrowed it again: he runs no python himself, the class bites on a shared
+machine, and the minimum owed everywhere is a notice — a cleanup says what it ended. That ships first.
+
+**The roster died on his word** («кто постоянный сам скажет. это же динамическая система»), one morning
+after it shipped. A roster of personnel approved by the boss names no machine constraint that forces its
+shape, so the borrowed-shape principle drafted at 15:10 caught a shipped design by 15:26 — the second
+time in one day. A tree carrying a card has declared itself; discovery is a bounded scan. The founding
+ratification survives as a separate act.
+
+**The research he asked for and did not get, now done.** A2A (Linux Foundation, v1.0, 150+ organisations)
+mandates HTTP, puts a machine-readable card at a well-known path, and ships no central registry — our
+card re-invented, our roster the thing A2A refused. Nothing in A2A carries a zone owned, which appears to
+be ours. And the fact nobody had verified: on this machine, discovery works and delivery does not — zero
+listeners across four live sessions, the plumbing built and switched off. His skepticism of files is
+right about transport, and files are legitimate as store, because a receiver that is not running is
+reachable by nothing else.
+
+**The lanes got their road** (rows 386 + 412, the second born of his own field report: he asked a window
+for three items in parallel and got none, because the law GRANTS lanes and no act OPENS one). Lane = a
+branch in its own worktree cut from the claim commit on main; integration takes the pen, rebases, gates,
+fast-forwards, tears down. A `parallel-lanes` architecture node now owns a concurrency model that was
+split across two skill nodes. The deed rung of the test ladder is occupied for the first time: these are
+the pack's first laws whose truth lives in an external engine's runtime, so real git runs in a temp tree
+to prove them. That is also what broke the prettiest claim in the draft — git's refusal to let a second
+worktree move main is real for the roads a session walks by habit, and `git update-ref`,
+`--ignore-other-worktrees` and `receive.denyCurrentBranch` walk past it. The guarantee and its edges are
+both pinned now, which is the honest shape.
+
+**And he found the road nobody had looked for**, by remembering the help text: `claude -w <name>` cuts a
+worktree at launch and `--tmux` lays those sessions out as panes in one window. No permission, no
+vendored line, available today — his own words, agents working in parallel on branches in one window.
+
+Six prover findings, two folded here (the over-claimed git guarantee; an attribution he never made),
+four riding as rows. The clock gate blocked a commit for a stamp two minutes ahead — the machine
+catching the hand again, and it works. Suite 1093 green, three commits pushed, all gates green.
+
+Delegation: two reader workers built the dossiers, two research workers settled the transport question
+and the direct-channel fact, an Opus drafter rewrote the discovery law, another drafted the branch road,
+a sonnet worker swept the roster's downstream, a test-author derived M-372..M-382 with 25 deed-proofs, an
+architecture worker carved the node, a fresh prover judged the delta, and two auditors turned the class
+rule on the pack itself. Fable planned the movement and designed the feedback loop, both on his word.
+
 ## 2026-07-17 ~13:48 IDT (Opus lead + opus workers, one Fable consult on his word; Alexander present) — v2.6.0: agents learn to talk, and the day's real lesson is that a written law with no machine is a wish
 
 The stage was seeded this morning as eight rows about how two agents exchange data. Alexander turned it inside out within the hour, twice.
