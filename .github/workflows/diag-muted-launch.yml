@@ -1,0 +1,32 @@
+# diag-muted-launch.yml — ONE-OFF diagnostic (2026-07-17): gate l's checker reds on CI while the
+# same tree passes everywhere locally (macOS, mawk+GNU-grep emulation, gitless scratch, git archive).
+# This job runs the checker verbatim with xtrace on the runner and prints the tool versions and the
+# stripped-text evidence, so the divergence names itself. Delete this file once the root is found.
+name: diag-muted-launch
+on: workflow_dispatch
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: tool versions
+        run: |
+          awk -W version 2>&1 | head -1 || awk --version 2>&1 | head -1 || true
+          grep --version | head -1
+          bash --version | head -1
+          git --version
+          locale
+      - name: blob facts
+        run: |
+          grep -c 'mute-audio' templates/headless_harness.py
+          wc -l templates/headless_harness.py
+          git log -1 --format=%H -- templates/headless_harness.py
+      - name: stripped-text evidence
+        run: |
+          stripped="$(awk '{ l=$0; sub(/#.*/,"",l); print l }' templates/headless_harness.py)"
+          printf '%s\n' "$stripped" | grep -c 'mute-audio' || echo "MUTE-MISS in stripped"
+          printf '%s\n' "$stripped" | grep -cE -- '(--headless|--remote-debugging-port|puppeteer\.launch|chromium\.launch)' || true
+          printf '%s\n' "$stripped" | grep -cE '(subprocess|Popen|spawn|execSync|child_process|os\.system|\.launch\(|exec\()' || true
+      - name: checker verbatim with xtrace
+        run: bash -x guardrails/check-muted-launch.sh 2>&1 | tail -80
