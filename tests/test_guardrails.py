@@ -1135,6 +1135,45 @@ class TestGateShippedLanguage(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('"offences":0', result.stdout.replace(" ", ""))
 
+    # --- ROADMAP 417: the owner-name arm inverts to a DECLARED ALPHABET read from data, so the
+    # detector's own code names no person and covering a collaborator is one data line, not a code
+    # edit. Every string it reds today still reds; the alphabet form is not four hardcoded spellings. ---
+
+    def test_declared_alphabet_is_data_driven_not_hardcoded_in_code(self):
+        # RED-FIRST against the pre-delta hardcoded regex: an out-of-alphabet name DECLARED in the
+        # allowlist data (a collaborator, not the four hardcoded spellings) must red — which the old
+        # code, ignoring the data, never did.
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allowlist.json", json.dumps({
+                "declared_alphabet": {"out_of_alphabet_name_patterns": [r"\bBartholomew\b"]}}))
+            doc = self._write(tmp, "SKILL.md",
+                "A clean English line.\n"
+                "Bartholomew asked for the calmer layout.\n")
+            result = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("SKILL.md:2", result.stdout)
+            self.assertIn("[owner-name]", result.stdout)
+
+    def test_detector_source_names_no_person(self):
+        # the inversion's safety win: the shipped detector code carries no personal name — the alphabet
+        # of out-of-alphabet names lives in the (excluded, dated-debt) allowlist data instead.
+        with open(self.ENGINE, encoding="utf-8") as f:
+            src = f.read()
+        for spelling in ("Alexander", "Sasha", "Sashka", "Alexandr"):
+            self.assertNotIn(spelling, src,
+                             "detector source hardcodes a person's name: %r" % spelling)
+
+    def test_owner_name_still_reds_under_the_alphabet_form(self):
+        # the existing catch is not weakened: the owner's name, declared out-of-alphabet in the pack's
+        # own allowlist, still reds through the default allowlist path.
+        with tempfile.TemporaryDirectory() as tmp:
+            doc = self._write(tmp, "SKILL.md",
+                "A clean English line.\n"
+                "Alexander wants the card to open calm.\n")
+            result = run(["python3", self.ENGINE, "--root", tmp, doc])
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("[owner-name]", result.stdout)
+
 
 class TestScopedReachDeletedFile(unittest.TestCase):
     """Audit fold (2.3.0 audit, finding 6): a deleted test file in the diff must never be handed to

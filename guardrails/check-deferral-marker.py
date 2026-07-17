@@ -12,6 +12,12 @@ parks work for the human, and reds when such an item names no reason category. T
 pass, an item either names its reason (one of the four categories below, or a close
 natural kin) or drops the marker because the seat can derive the answer and just do it.
 
+A park is recognised by the GRAMMATICAL SHAPE of a deferral rather than a closed list of
+phrasings (ROADMAP 417): an open-decision marker (⟨DECIDE⟩, TBD, "to be decided") or a
+deferral predicate whose object is the human. So the ⟨DECIDE⟩ marker — the very token
+that polices open decisions — is itself caught when it names no human-only fact, instead
+of walking straight through the gate policing it.
+
   Reason categories that satisfy the rule: taste · policy · irreversible · device-feel.
 
 An item is a bullet plus its wrapped continuation lines, folded into one unit before
@@ -38,16 +44,32 @@ import os
 import re
 import sys
 
-# Phrasings that park a work item for the human's word. Kept narrow on purpose: a
-# blocking gate must not fire on narration that merely quotes "his word" while
-# describing a decision already made. The bare "his word" is left out for exactly
-# that reason — a genuine parking phrase says more (to correct, awaits, reserved for,
-# still his), and a version-bump park is caught by "row N reserved". The pack's
-# resume and decision files are written in English (docs language), which the gate
-# scans; a human-language marker in chat is caught by the hook's delivery arm instead.
+# The GRAMMATICAL SHAPE of a deferral, read rather than a closed literal list (ROADMAP 417). A parked
+# item takes one of two grammatical forms, and either is a deferral whatever its exact words:
+#
+#   (1) an OPEN-DECISION MARKER — a bracketed decide/decision token (⟨DECIDE⟩, <DECISION>, [DECIDE]) or
+#       a to-be-decided phrase (TBD, "to be decided", "decision pending", "open decision"). This is the
+#       form the old literal list was blind to, so ⟨DECIDE⟩ — the very marker that polices deferrals —
+#       used to walk straight through the gate policing it.
+#   (2) a DEFERRAL PREDICATE whose object is the human — a verb of holding/handing (hold, reserve,
+#       defer, await, wait, leave) pointed at him (for/to/on his ...), or the possessive "his to
+#       <verb>" / "still his". A version-bump park ("row N reserved") is one instance of (2).
+#
+# Kept narrow at the edges on purpose: a blocking gate must not fire on narration that merely quotes
+# "his word" while describing a decision already made, so bare "his word" is NOT a marker — a genuine
+# park says more. The pack's resume and decision files are written in English (docs language), which the
+# gate scans; a human-language marker in chat is caught by the hook's delivery arm instead.
 SIGNALS = [
+    # (1) open-decision markers — the grammatical shape of an undecided fork handed forward.
+    r"[⟨<\[]\s*dec(?:ide|ision)\s*[⟩>\]]",
+    r"\bto be decided\b",
+    r"\bdecision pending\b",
+    r"\bopen decision\b",
+    r"\bTBD\b",
+    # (2) a deferral predicate whose object is the human.
     r"his to (?:correct|call|pick|tune|decide|say|choose)",
-    r"(?:needs?|awaits?|left to|reserved for|held for|waiting on|waits on) his\b",
+    r"(?:needs?|awaits?|left to|reserved for|held for|held until|waiting on|waits on|deferred to|deferred until) his\b",
+    r"(?:reserved|held|deferred|left) for (?:the )?(?:human|owner)\b",
     r"owner-?reserved",
     r"owner-?held",
     r"still his\b",

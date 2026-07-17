@@ -92,6 +92,12 @@ if ! "$GUARDRAILS/check-muted-launch.sh"; then
 fi
 
 echo ""
+echo "-- gate o: cleanup notice (every cleanup path that ends a process says what it ended, SPEC INV-204) --"
+if ! "$GUARDRAILS/check-cleanup-notice.sh"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1

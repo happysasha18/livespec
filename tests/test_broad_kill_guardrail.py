@@ -114,3 +114,51 @@ def test_worker_briefing_carries_the_constraint():
     # a briefed worker inherits the constraint, so it never reinvents a broad `pkill chrome`.
     bp = read("skills/build-pipeline/SKILL.md")
     assert "INV-162" in bp
+
+
+# --- the inverted form (ROADMAP 417): the guard reds an ending that names a NAME, and accepts one
+# that proves what it owns (a PID / process group / owned path). The four browser words are the
+# error's explanation, not the check — so a program the pack never launches (Safari, Slack) reds the
+# same as chrome, because none of them proves ownership. The probe corpus is a committed fixture, so a
+# later widening cannot silently narrow what the guard catches. ---
+
+CORPUS = os.path.join(ROOT, "tests", "fixtures", "kill_probes.txt")
+
+
+def _load_corpus():
+    reds, passes = [], []
+    with open(CORPUS, encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            if not line.strip() or line.lstrip().startswith("#"):
+                continue
+            verdict, _, cmd = line.partition("|")
+            (reds if verdict.strip() == "RED" else passes).append(cmd.strip())
+    return reds, passes
+
+
+def test_corpus_fixture_ships_and_names_the_acceptance_probes():
+    assert os.path.isfile(CORPUS), "the probe corpus fixture is missing: %s" % CORPUS
+    reds, _ = _load_corpus()
+    # the six the row names by hand, each an ending by NAME with no ownership proof.
+    for probe in ("killall Safari", "pkill -f node", "killall -9 Electron",
+                  "pkill firefox", "pkill -f Slack", "pkill chrome"):
+        assert probe in reds, "acceptance probe missing from the RED corpus: %r" % probe
+
+
+def test_every_name_based_ending_reds():
+    # RED-FIRST against the pre-delta guard: a name-list guard passes `killall Safari` and
+    # `pkill -f node` (no browser word), so this fails until the guard reads ownership instead.
+    reds, _ = _load_corpus()
+    for probe in reds:
+        ext = ".py" if probe.startswith("os.") else ".sh"
+        assert _reds(probe, ext), "guard let a name-based ending through: %r" % probe
+
+
+def test_every_owned_ending_passes_quiet():
+    # a command that names its own PID, a process group it holds, or a path under its own tree
+    # proves what it owns and passes without a word.
+    _, passes = _load_corpus()
+    for probe in passes:
+        ext = ".py" if probe.startswith("os.") else ".sh"
+        assert not _reds(probe, ext), "guard false-flagged an owned ending: %r" % probe

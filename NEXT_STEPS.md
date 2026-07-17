@@ -1,16 +1,18 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-17 ~16:58 — v2.6.0 + one big landing PUSHED, all gates green, suite 1093)
+## LIVE STATE (2026-07-17 — row 417 LANDED locally (not pushed), suite 1155 green, all gates green, v2.6.3)
 
-Commit `f40f2a1` on main: agents declare themselves (the roster is gone), lanes get their branch road,
-and **the rule of thinking took the head of the base rulebook** — every incoming item is a symptom and
-the answer owed is a rule about its CLASS, on three doors (his feedback, our own finding, another
-agent's message). His word, said by his count ~200 times before it was written down.
-
-**THE QUEUE'S HEAD IS THE PACK AUDITING ITSELF BY THAT RULE, and it found the pack guilty** (416, 417,
-418 — one class, they fold into one at landing): a register law naming a class held by 22 literals · a
-guard reading four browser words · **INV-83, which COMMANDS the list in our own spec** ("the pattern set
-GROWS BY ONE per caught leak"). 415 stands with them. Everything below waits behind those.
+Rows 416 · 417 · 418 all landed — the pack audited itself by the class rule and repaired what it found.
+**Row 417 (this landing): a cleanup says what it ended** (INV-204, the notice, ships first on his ~16:58
+word), and the four name-list guards inverted from a list into a check that reads what a thing IS: broad-
+kill denies every ending that names a name (owned PID / process group / owned path passes); shipped-
+language reads a declared alphabet held as data so the code names no person; config-health diffs the whole
+hook directory against the installed set; the deferral gate reads a deferral's grammar so `⟨DECIDE⟩` is
+caught. Probe corpus a committed fixture. SPEC/pack 2.6.3. **NOT pushed — the push gate, a prover re-check,
+and a Fable adversarial review are the orchestrator's.** Two pre-existing 416/418 reds folded to land green
+(see JOURNAL). Memory can be wiped — this file plus JOURNAL.md carry the state. Earlier: `f40f2a1` pushed at v2.6.0 (the
+roster is gone, lanes get their branch road, the class rule took the base rulebook's head); 416/418 landed
+after it. Everything below the queue waits.
 
 ## ON RESUME — in order
 
@@ -52,7 +54,7 @@ GROWS BY ONE per caught leak"). 415 stands with them. Everything below waits beh
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued.** This session stamped its own docs two hours ahead by
   extrapolating between prompts; the commit fence caught it. Read the clock at each prompt (INV-24).
-- Next free codes: INV-202, E-35, T-24, M-<read the matrix's tail>, next ROADMAP row 421.
+- Next free codes: INV-205, E-35, T-24, M-386, next ROADMAP row 421.
 
 ## The queue's near head — one terse line each; the rows hold the detail
 

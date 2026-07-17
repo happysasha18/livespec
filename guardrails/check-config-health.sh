@@ -37,20 +37,28 @@ for name in pre-commit pre-push; do
   fi
 done
 
-# INV-173 x INV-175 (batch audit 2026-07-16, F3): the pack's canonical session hook is a gate
-# living twice too. When an installed copy exists, it must match the hooks/ source; when none is
-# installed on this machine, skip by name (installing is the setup walk's act, not this gate's).
-for hname in scissors-scan.py clock-hook.sh chat-law-hook.sh; do
-  src_hook="$REPO_ROOT/hooks/$hname"
-  inst_hook="$HOME/.claude/hooks/$hname"
-  [ -f "$src_hook" ] || continue
-  if [ ! -f "$inst_hook" ]; then
-    echo "config-health: skip ($hname not installed on this machine — the setup walk installs it)"
-  elif ! cmp -s "$src_hook" "$inst_hook"; then
-    echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed hook drifted from source: $hname\",\"fix\":\"run scripts/install-pack-hooks.sh or scripts/install-session-hooks.sh\"}"
-    fail=1
-  fi
-done
+# INV-173 x INV-175 (batch audit 2026-07-16, F3; inverted ROADMAP 417): the pack's session hooks are
+# gates living twice too. Rather than a hardcoded basename list — which goes blind to every hook added
+# after it was written (it was blind to hook-meter.py and the register-judge arms installed 2026-07-17)
+# — DIFF the whole hook SOURCE directory (hooks/) against the installed set. Every file in hooks/ is
+# covered automatically: when an installed copy exists it must match its source byte-for-byte; when none
+# is installed on this machine, skip by name (installing is the setup walk's act, not this gate's). A
+# file living only in the installed set (a personal-layer overlay the pack never ships) has no source
+# here and is correctly left alone.
+HOOK_SRC_DIR="$REPO_ROOT/hooks"
+if [ -d "$HOOK_SRC_DIR" ]; then
+  for src_hook in "$HOOK_SRC_DIR"/*; do
+    [ -f "$src_hook" ] || continue
+    hname="$(basename "$src_hook")"
+    inst_hook="$HOME/.claude/hooks/$hname"
+    if [ ! -f "$inst_hook" ]; then
+      echo "config-health: skip ($hname not installed on this machine — the setup walk installs it)"
+    elif ! cmp -s "$src_hook" "$inst_hook"; then
+      echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed hook drifted from source: $hname\",\"fix\":\"run scripts/install-pack-hooks.sh or scripts/install-session-hooks.sh\"}"
+      fail=1
+    fi
+  done
+fi
 
 if [ "$fail" -eq 0 ]; then
   echo "config-health: OK (installed hooks match their sources)"

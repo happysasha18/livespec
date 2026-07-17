@@ -120,6 +120,26 @@ class TestDeferralMarkerGate(unittest.TestCase):
             r = run(p)
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
+    def test_bare_decide_marker_is_caught(self):
+        # ROADMAP 417: the gate reads the GRAMMATICAL SHAPE of a deferral, so an open-decision marker
+        # like ⟨DECIDE⟩ — the very marker that walks through a literal signal list — is itself caught
+        # when it names no human-only fact. (RED-FIRST against the pre-delta literal SIGNALS list.)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = write(tmp, "NEXT_STEPS.md",
+                      "# q\n- ⟨DECIDE⟩ whether the caption sits above or below the frame.\n")
+            r = run(p)
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("NEXT_STEPS.md:2", r.stdout)
+
+    def test_decide_marker_with_a_named_reason_passes(self):
+        # a genuinely-justified deferral does not start reding: an open-decision marker that names its
+        # human-only fact (a taste call) is the human's to make, and the marker stands.
+        with tempfile.TemporaryDirectory() as tmp:
+            p = write(tmp, "NEXT_STEPS.md",
+                      "# q\n- ⟨DECIDE⟩ caption placement above or below — a taste call on the look.\n")
+            r = run(p)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
     def test_real_repo_tree_is_clean(self):
         # F4: the CI backstop — the gate runs against this repo's own resume and
         # decision files, so the "reds a commit" promise is wired even where the local

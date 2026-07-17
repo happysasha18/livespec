@@ -1,0 +1,34 @@
+# kill_probes.txt — the probe corpus for the cleanup-ending guard (SPEC INV-162, ROADMAP 417).
+#
+# Each line is `VERDICT | command`, VERDICT one of RED (the guard must red it) or PASS (the guard
+# must let it through quiet). The corpus is the fixture the guard's own test drives, so a later
+# widening of the guard cannot silently NARROW what it catches: a probe dropped from RED here is a
+# visible edit, not an invisible regression. The guard reads a command's OWNED-IDENTITY proof, not a
+# name list — so the corpus names programs the pack never launches (Safari, Slack) beside ones it does
+# (chrome, node), and the guard reds them all the same, because none proves what it owns.
+#
+# blank lines and #-comment lines are ignored.
+
+# --- RED: an ending that names a NAME, with no PID / process-group / owned-path proof ---
+RED | killall Safari
+RED | pkill -f node
+RED | killall -9 Electron
+RED | pkill firefox
+RED | pkill -f Slack
+RED | pkill chrome
+RED | pkill -9 chrome
+RED | pkill -9 -f "chrome_crashpad_handler"
+RED | killall Chrome
+RED | killall "Google Chrome"
+RED | kill -9 $(pgrep chrome)
+RED | pgrep chrome | xargs kill -9
+RED | kill $(pidof node)
+
+# --- PASS: an ending that proves what it owns (PID / process-group / owned path) ---
+PASS | os.killpg(self.proc.pid, signal.SIGKILL)
+PASS | kill "$pid"
+PASS | kill -9 "$OWNER_PID"
+PASS | kill 48213
+PASS | os.kill(pid, 0)
+PASS | pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"
+PASS | pgrep chrome  # just list them, no kill verb

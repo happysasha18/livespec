@@ -5,8 +5,9 @@ states the impersonal voice; this script is the machine that holds it.
 
 Two MECHANICAL offences, each reported as file:line so the fix is mechanical:
   (1) cyrillic    a Cyrillic character outside a deliberately-emitted user-language string
-  (2) owner-name  an owner/personal name (Alexander, Sasha + variants) in a shipped
-                  spec / README / skill / code comment or prose
+  (2) owner-name  a personal name in a shipped spec / README / skill / code comment or prose,
+                  matched against the DECLARED ALPHABET's out-of-alphabet name patterns held in
+                  the allowlist data (ROADMAP 417) — so this code names no person
 
 The wish names a THIRD offence — a coined non-English metaphor where a plain English term
 belongs. That is NOT mechanically reliable (a metaphor is a judgement, not a pattern), so
@@ -24,6 +25,10 @@ they exist to catch, so scanning them would report the detector's patterns as of
 
 ALLOWLIST (scripts/shipped-language-allowlist.json — same dated-debt shape as spec-waivers.json,
 the equivalence-gate rule: a NEW offence reds, a listed one is counted debt, never a silent pass):
+  declared_alphabet   : {out_of_alphabet_name_patterns:[...]} the shipped set's declared alphabet
+                        (ASCII English + program strings). A personal name is out-of-alphabet content;
+                        its patterns live here as DATA so this code names no person, and covering a
+                        collaborator is one line here. A package declaring none leaves the name arm inert.
   user_language_globs : files whose Cyrillic is deliberate program data. Cyrillic in them
                         is never an offence.
   authorship_globs    : files where an owner name is a legitimate authorship byline (LICENSE,
@@ -46,10 +51,13 @@ import subprocess
 import sys
 
 CYRILLIC = re.compile(r"[Ѐ-ӿԀ-ԯ]")
-OWNER = re.compile(
-    r"\b(?:Alexander|Sasha|Sashka|Alexandr)\b"
-    r"|Александр|Алекс(?:андр)?|Саш(?:а|е|у|и|ей|ку|ка)",
-    re.IGNORECASE)
+# The owner-name arm inverts to a DECLARED ALPHABET (ROADMAP 417). The shipped set's declared alphabet
+# is ASCII English plus deliberate program strings; content outside it reds — a stray script (the
+# Cyrillic arm) or a personal name. A name is one instance of out-of-alphabet content, so the specific
+# out-of-alphabet name patterns are DECLARED AS DATA in the allowlist rather than enumerated in this
+# code, and this detector's own source names no person: covering a collaborator is one data line, not a
+# code edit. The alphabet is a per-package declaration; a package that declares none leaves the name arm
+# inert, its script (Cyrillic) arm still standing.
 USER_REGION_MARK = re.compile(r"(?:#|<!--)\s*user-language")
 FENCE_USER_OPEN = re.compile(r"^\s*```+\s*user\b")
 FENCE_ANY = re.compile(r"^\s*```")
@@ -65,6 +73,16 @@ def load_allowlist(path):
         with open(path, encoding="utf-8") as f:
             return json.load(f)
     return {}
+
+
+def compile_owner(allow):
+    """Build the out-of-alphabet name matcher from the allowlist's DECLARED ALPHABET, or return None
+    when the package declares none. The patterns are the alphabet's data, kept out of this code so the
+    detector names no person (ROADMAP 417)."""
+    patterns = (allow.get("declared_alphabet") or {}).get("out_of_alphabet_name_patterns") or []
+    if not patterns:
+        return None
+    return re.compile("|".join(patterns), re.IGNORECASE)
 
 
 def is_excluded(rel):
@@ -104,6 +122,7 @@ def scan_file(path, rel, allow):
         return
     cyr_file_ok = globbed(rel, allow.get("user_language_globs"))
     name_file_ok = globbed(rel, allow.get("authorship_globs"))
+    owner_re = allow.get("_owner_re")
     in_user_fence = False
     for i, raw in enumerate(lines, 1):
         if FENCE_USER_OPEN.match(raw):
@@ -116,8 +135,8 @@ def scan_file(path, rel, allow):
         if not cyr_file_ok and not in_user_fence and not USER_REGION_MARK.search(raw):
             if CYRILLIC.search(raw) and not waived(rel, snip, allow.get("cyrillic_waivers")):
                 yield (i, "cyrillic", snip)
-        if not name_file_ok:
-            if OWNER.search(raw) and not waived(rel, snip, allow.get("name_waivers")):
+        if not name_file_ok and owner_re is not None:
+            if owner_re.search(raw) and not waived(rel, snip, allow.get("name_waivers")):
                 yield (i, "owner-name", snip)
 
 
@@ -130,6 +149,7 @@ def main(argv):
     default_allow = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  "shipped-language-allowlist.json")
     allow = load_allowlist(a.allowlist or default_allow)
+    allow["_owner_re"] = compile_owner(allow)
 
     if a.files:
         pairs = [(f, os.path.relpath(f, a.root)) for f in a.files]

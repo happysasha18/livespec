@@ -46,6 +46,8 @@ jobs:
         run: guardrails/check-broad-kill.sh
       - name: gate l — muted browser launch (every browser-driving script launches muted, SPEC INV-157)
         run: guardrails/check-muted-launch.sh
+      - name: gate o — cleanup notice (every cleanup path that ends a process says what it ended, SPEC INV-204)
+        run: guardrails/check-cleanup-notice.sh
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

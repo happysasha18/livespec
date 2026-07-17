@@ -88,6 +88,21 @@ from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHan
 from pathlib import Path
 from urllib.request import urlopen
 
+
+def _cleanup_notice(ended, what, owned_via):
+    """Say what this cleanup ended [SPEC INV-204]. The harness reaps a process group, so every reap
+    reports WHAT it ended and the PROOF the run owned it (the process group it launched, or the owner
+    pid it recorded), making an ending nobody expected visible the moment it happens rather than at the
+    next unexplained loss. Emitted to stderr, beside the run's own diagnostics.
+
+    This is the inline twin of the pack's shared shape ``guardrails/cleanup_notice.py`` — the ``CLEANUP-
+    NOTICE`` marker's one home — carried here because the template is vendored standalone and cannot
+    import the pack. Failure to emit never blocks a reap: the ending still runs."""
+    with contextlib.suppress(Exception):
+        sys.stderr.write("CLEANUP-NOTICE ended=%s what=%s owned-via=%s\n" % (ended, what, owned_via))
+        sys.stderr.flush()
+
+
 def _find_chrome():
     """Resolution order, newest install first within each road [SPEC INV-157, ROADMAP row 364]:
 
@@ -271,6 +286,9 @@ def _sweep_stale_profiles(exclude=None):
         if _pid_alive(owner):
             continue        # a live owner — a concurrent run; NEVER reaped
         with contextlib.suppress(Exception):
+            _cleanup_notice("pgid=%s" % owner,
+                            "a prior run's lingering Chrome process group (this harness launched it)",
+                            "recorded owner pid in %s, same boot, owner now dead" % path)
             os.killpg(owner, signal.SIGKILL)   # dead owner, same boot: reap its lingering group
         shutil.rmtree(path, ignore_errors=True)
     # Surface a glut loudly: many of the harness's own dirs still under the temp roots means a run is
@@ -700,6 +718,9 @@ class Browser:
         # find it either — a permanent orphan). start_new_session=True guarantees pid==pgid, so killpg
         # on the leader pid reaches any surviving child even when the leader itself is gone [INV-157].
         with contextlib.suppress(ProcessLookupError, OSError):
+            _cleanup_notice("pgid=%s" % self.proc.pid,
+                            "the Chrome process group this run launched (leader + renderer/gpu children)",
+                            "process group this run created (start_new_session, pid==pgid)")
             os.killpg(self.proc.pid, signal.SIGKILL)
         with contextlib.suppress(Exception):
             self._stderr_f.close()

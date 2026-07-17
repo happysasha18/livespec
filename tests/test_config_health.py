@@ -81,6 +81,72 @@ class TestConfigHealth(unittest.TestCase):
             self.assertIn("skip", r.stdout.lower())
 
 
+class TestSessionHookDirDiff(unittest.TestCase):
+    """INV-175 inverted (ROADMAP 417): the session-hook arm DIFFS the hook source directory (hooks/)
+    against the installed set, so every installed hook is covered automatically — never a hardcoded
+    basename list that goes blind to a hook added later. register-judge*.sh and any future hook are
+    covered the moment they land in hooks/, with no edit to this gate."""
+
+    def _repo_with_hooks(self, tmp, sources, installed):
+        # sources: {name: body} written under tmp/hooks/. installed: {name: body} written under a
+        # scratch HOME's .claude/hooks/. Returns the scratch HOME to hand the check as $HOME.
+        subprocess.run(["git", "init", "-q", tmp], check=True)
+        gdir = os.path.join(tmp, "guardrails")
+        os.makedirs(gdir)
+        for name in ("pre-commit", "pre-push"):
+            with open(os.path.join(gdir, name), "w") as f:
+                f.write("#!/bin/sh\nexit 0\n")
+        # install the two git hooks so the git-hook arm passes and only the session arm is under test.
+        ghooks = os.path.join(tmp, ".git", "hooks")
+        for name in ("pre-commit", "pre-push"):
+            p = os.path.join(ghooks, name)
+            with open(p, "w") as f:
+                f.write("#!/bin/sh\nexit 0\n")
+            os.chmod(p, 0o755)
+        hooks = os.path.join(tmp, "hooks")
+        os.makedirs(hooks)
+        for name, body in sources.items():
+            with open(os.path.join(hooks, name), "w") as f:
+                f.write(body)
+        home = os.path.join(tmp, "scratch-home")
+        chooks = os.path.join(home, ".claude", "hooks")
+        os.makedirs(chooks)
+        for name, body in installed.items():
+            with open(os.path.join(chooks, name), "w") as f:
+                f.write(body)
+        return home
+
+    def test_a_hook_beyond_the_old_three_names_reds_on_drift(self):
+        # register-judge.py is neither scissors-scan.py, clock-hook.sh, nor chat-law-hook.sh — the old
+        # loop was blind to it. Its drift must red now. (RED-FIRST against the pre-delta three-name loop.)
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_hooks(
+                tmp,
+                sources={"register-judge.py": "print('v2')\n"},
+                installed={"register-judge.py": "print('v1 stale')\n"})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("register-judge.py", r.stdout)
+
+    def test_an_uninstalled_source_hook_skips_by_name(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_hooks(
+                tmp, sources={"register-judge-report.sh": "echo hi\n"}, installed={})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("skip", r.stdout.lower())
+
+    def test_every_matching_source_hook_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            body = "print('same')\n"
+            home = self._repo_with_hooks(
+                tmp,
+                sources={"register-judge.py": body, "scissors-scan.py": body},
+                installed={"register-judge.py": body, "scissors-scan.py": body})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+
 class TestStagedVsWorktreeFenceArm(unittest.TestCase):
     def _repo_with_precommit(self, tmp):
         subprocess.run(["git", "init", "-q", tmp], check=True)

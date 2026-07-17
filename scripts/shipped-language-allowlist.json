@@ -1,4 +1,11 @@
 {
+  "declared_alphabet": {
+    "note": "The shipped set's declared alphabet is ASCII English plus deliberate program strings. Content outside it reds: a stray script (the Cyrillic arm) or a personal name. The out-of-alphabet personal names are declared here as DATA (ROADMAP 417), so the detector's own code names no person and covering a collaborator is one line here, not a code edit.",
+    "out_of_alphabet_name_patterns": [
+      "\\b(?:Alexander|Sasha|Sashka|Alexandr)\\b",
+      "Александр|Алекс(?:андр)?|Саш(?:а|е|у|и|ей|ку|ка)"
+    ]
+  },
   "user_language_globs": [
     "scripts/spec-style-lint.py",
     "scripts/preshow-register-lint.py",
@@ -13,7 +20,9 @@
     ".claude-plugin/marketplace.json",
     "**/marketplace.json"
   ],
-  "cyrillic_waivers": [],
+  "cyrillic_waivers": [
+    {"file": "hooks/register_judge_core.py", "snippet": "«X, а не Y»", "note": "deliberate program string — the universal chat law names the Russian banned frame it forbids, the detector-vocabulary self-exclusion class (kin of the sync-mirrors name_waiver)", "added": "2026-07-17"}
+  ],
   "name_waivers": [
     {"file": "*README.md", "snippet": "Alexander Abramovich", "note": "authorship byline — the copyright/attribution line the license names, not a requirement statement", "added": "2026-07-12"},
     {"file": "scripts/sync-mirrors.sh", "snippet": "Alexander", "note": "detector vocabulary — the mirror-README language scan (check_mirror_language) names the token it refuses, the engine's own self-exclusion class", "added": "2026-07-16"}
