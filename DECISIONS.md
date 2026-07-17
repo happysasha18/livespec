@@ -1,0 +1,42 @@
+# Decisions on record — what the pack believes you decided
+
+TOUCHPOINT-KIND: decision-readback
+DECISION-RECORD
+
+This is the read-back surface (SPEC INV-207, ROADMAP 415). Every line under **On record** is a
+decision the pack has written down AS YOURS, each naming the exchange it came from so you can go back
+and check it. Read it on your own clock, and strike anything you never said — move it under **Struck**
+with a one-line note. A struck line is retracted, never deleted; nothing here vanishes. The pack
+renders this file for you through `scripts/render-doc.py` when you ask. [[teach]]
+
+The rule the gate holds: a decision recorded as yours must name its exchange — at minimum a date. A
+line with no exchange is a challengeable judgment moved into the one slot nothing questions, which is
+the defect this surface exists to catch. [[wait]]
+
+## On record
+<!-- record:on -->
+- 2026-07-05 — CLAUDE.md became a thin loader, the working contract moving into the personal profile
+  and the method into the live-spec pack (flipped on your OK that day).
+- 2026-07-06 — the build-lane cap is three parallel lanes; a fourth opens only on your asked word
+  [T-18].
+- 2026-07-12 ~00:31 — live-spec runs on Opus as the orchestrator by default, the drafter-applier
+  pipeline making the orchestrator seat brief-and-accept work; Fable only on your word for the hard
+  passes.
+- 2026-07-17 ~15:26 — nothing waits on a roster of agents: a dynamic system's permanent members
+  declare themselves, so discovery is a bounded live scan for cards rather than a ratified list.
+- 2026-07-17 ~16:07 — every point of contact with the person has a kind, and the kind decides what
+  may be said there; you named this the movement's frame.
+- 2026-07-17 ~16:58 — a cleanup says what it ended ships first, ahead of the stricter owned-identity
+  check, since you run no python yourself and the collision bites only where someone else does.
+
+## Struck — recorded as yours, then you struck it
+<!-- record:struck -->
+- ~~Parallel lanes rank above the communication layer, and they wait for a field run.~~ STRUCK
+  2026-07-17: recorded in your voice by a session as your ranking, and read back at ~15:37 you
+  recognised nothing — no message of yours, on any day, said it. This is the incident that born
+  ROADMAP 415: a session's own judgment moved into the one slot nothing questions.
+
+## Notes
+<!-- record:note -->
+Nothing here is ever dropped. A struck line stays with its note so the record of what was corrected
+outlives the correction.

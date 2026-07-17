@@ -67,6 +67,14 @@
       "surface": null,
       "row": "409",
       "note": "a question whose value is his input, born onto the waiting list carrying the default the work already took; it rides the waiting list he opens, so it waits for his free minute and never interrupts."
+    },
+    {
+      "name": "decision-readback",
+      "kind": "asynchronous",
+      "opened_by": "person",
+      "surface": "DECISIONS.md",
+      "row": "415",
+      "note": "the decision-set record — what the pack believes the person decided, each entry naming its exchange (SPEC INV-207). He opens it on his own clock and strikes what he never said, so it affords a teaching line and a wait, never an interruption; rendered for him through scripts/render-doc.py."
     }
   ]
 }

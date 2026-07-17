@@ -110,6 +110,12 @@ if ! python3 "$GUARDRAILS/check-board.py"; then
 fi
 
 echo ""
+echo "-- gate r: authority anchor (a decision recorded as the person's names its exchange, SPEC INV-207) --"
+if ! python3 "$GUARDRAILS/check-authority-anchor.py"; then
+  fail=1
+fi
+
+echo ""
 echo "-- gate m: config health (installed hooks match guardrails/ source, SPEC INV-175) --"
 if ! "$GUARDRAILS/check-config-health.sh"; then
   fail=1

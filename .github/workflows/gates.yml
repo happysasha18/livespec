@@ -48,6 +48,8 @@ jobs:
         run: guardrails/check-muted-launch.sh
       - name: gate o — cleanup notice (every cleanup path that ends a process says what it ended, SPEC INV-204)
         run: guardrails/check-cleanup-notice.sh
+      - name: gate r — authority anchor (a decision recorded as the person's names its exchange, SPEC INV-207)
+        run: python3 guardrails/check-authority-anchor.py
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

@@ -1,0 +1,4 @@
+A free-prose fixture whose attributions carry their exchange — PASSES.
+
+The build-lane cap is three (his 2026-07-06 word). The owner named the touchpoint frame on 2026-07-17.
+He decided on 2026-07-12 that live-spec runs on Opus as the orchestrator by default.

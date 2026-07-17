@@ -1,0 +1,55 @@
+RED-FIRST PROOF — ROADMAP 415: a decision recorded as the person's names its exchange (SPEC INV-207)
+Captured 2026-07-17, against the pre-delta tree (HEAD 607d40a).
+
+Method: the new artifacts (guardrails/check-authority-anchor.py, authority-anchor.json, DECISIONS.md,
+templates/DECISIONS.template.md, guardrails/authority-anchor-fixtures/) set aside and the tracked doc
+edits (PRODUCT_SPEC, ARCHITECTURE, TEST_MATRIX, pre-push, gates.yml, touchpoints.json,
+check-shipped-language.py) reverted to HEAD; tests/test_authority_anchor.py then run against that tree.
+
+RESULT — all 20 tests RED against the pre-delta tree:
+
+  FAILED test_gate_ships                         — guardrails/check-authority-anchor.py absent
+  FAILED test_config_ships                       — guardrails/authority-anchor.json absent
+  FAILED test_readback_surface_ships             — DECISIONS.md absent
+  FAILED test_readback_declares_its_touchpoint   — manifest has no decision-readback point
+  FAILED test_readback_is_a_decision_record      — DECISIONS.md absent
+  FAILED test_template_ships                      — templates/DECISIONS.template.md absent
+  FAILED test_gate_reds_the_fabricated_ranking   — gate absent (the corpus's first fixture cannot red)
+  FAILED test_gate_passes_a_dated_record
+  FAILED test_gate_passes_a_struck_record
+  FAILED test_gate_reds_unanchored_prose
+  FAILED test_gate_passes_dated_prose
+  FAILED test_gate_passes_rule_language
+  FAILED test_gate_passes_the_readback_surface
+  FAILED test_gate_standing_scan_spares_the_archive
+  FAILED test_gate_names_no_person_in_code
+  FAILED test_gate_wired_into_pre_push           — pre-push carries no gate r
+  FAILED test_spec_states_the_law                — PRODUCT_SPEC.md carries no [INV-207]
+  FAILED test_formal_index_row                   — no | INV-207 | index row
+  FAILED test_architecture_owns_the_invariant    — ARCHITECTURE.md does not own INV-207
+  FAILED test_matrix_row_covers_the_law          — TEST_MATRIX.md carries no M-388
+  20 failed
+
+After the delta: 20 passed.
+
+THE THREE RED-PROOFS THE ROW NAMES (captured lines from the gate itself):
+
+1. A fixture entry claiming human authority and naming NO exchange REDS under the gate.
+   The corpus's FIRST FIXTURE — the fabricated lane-ranking:
+   $ check-authority-anchor.py guardrails/authority-anchor-fixtures/record-unanchored.md
+   FAIL (authority-anchor): a decision, word, or ruling stands recorded AS the person's but names no
+   exchange to check it against (SPEC INV-207, ROADMAP row 415).
+     record-unanchored.md:9  [on-record decision entry names no date]  - Parallel lanes rank above the
+     communication layer, and they wait for a field run. — his ranking.
+   exit=1
+
+2. A genuine dated/anchored attribution PASSES.
+   $ check-authority-anchor.py guardrails/authority-anchor-fixtures/record-anchored.md
+   OK (authority-anchor): every recorded decision names its exchange (a date a reader can check). exit=0
+   And the pack's own rule language passes (prose-rule-language.txt: "the human's word settles it") — an
+   abstract role, not a recorded decision. exit=0
+
+3. Once the person strikes it, the fabrication PASSES (retracted, not deleted).
+   $ check-authority-anchor.py guardrails/authority-anchor-fixtures/record-struck.md
+   OK (authority-anchor): every recorded decision names its exchange. exit=0
+   (the same lane-ranking, now under ~~strikethrough~~ + STRUCK, is skipped — the read-back's own action)

@@ -63,8 +63,9 @@ FENCE_USER_OPEN = re.compile(r"^\s*```+\s*user\b")
 FENCE_ANY = re.compile(r"^\s*```")
 
 EXCLUDE_DIRS = ("docs/", "attic/", "inbox/", ".live-spec/", "tests/", "evals/", "prototype/")
-EXCLUDE_FILES = ("JOURNAL.md", "ROADMAP.md", "NEXT_STEPS.md", "MIGRATION.md",
-                 "check-shipped-language.py", "shipped-language-allowlist.json")
+EXCLUDE_FILES = ("JOURNAL.md", "ROADMAP.md", "NEXT_STEPS.md", "MIGRATION.md", "DECISIONS.md",
+                 "check-shipped-language.py", "shipped-language-allowlist.json",
+                 "check-authority-anchor.py", "authority-anchor.json")
 TEXT_EXT = (".md", ".py", ".sh", ".json", ".txt", ".yml", ".yaml", ".html", ".js", ".css")
 
 

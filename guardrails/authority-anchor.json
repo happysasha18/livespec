@@ -1,0 +1,18 @@
+{
+  "note": "The authority-anchor gate's declared data (SPEC INV-207, ROADMAP 415). A sentence carrying a person's AUTHORITY — a decision, word, or ruling attributed to the human — must name the EXCHANGE it came from, at minimum a checkable date. The attribution patterns are held here as DATA (the shipped-language allowlist's shape), so the gate's own code names no person: a host covers its own people by adding to person_names, and the role forms (his/the owner's/he decided) are person-agnostic. The gate reds an authority-claim that carries no date anchor; a genuine dated attribution passes.",
+  "person_names": ["Alexander", "Alexandr", "Sasha", "Sashka"],
+  "authority_nouns": [
+    "word", "words", "call", "ranking", "decision", "decisions", "ruling",
+    "OK", "correction", "verdict", "say-so", "sign-off",
+    "blessing", "instruction", "instructions", "directive", "mandate"
+  ],
+  "authority_verbs": [
+    "decided", "ruled", "chose", "ordered", "blessed", "approved", "okayed",
+    "signed off", "insisted", "directed", "mandated", "named it", "named this",
+    "told me to", "told us to"
+  ],
+  "note_struck": "A retracted line is not a live claim. The decision-set record marks a struck entry with a STRUCK tag or ~~strikethrough~~; the gate skips a struck sentence, since the person has already reached in and struck it (that is the read-back's own action).",
+  "waivers": [
+    {"file": "skills/*/SKILL.md", "snippet": "his 2026-07-06 word", "note": "the build-lane cap of three, a genuine dated attribution already carrying its anchor — listed only if a splitter edge ever mis-scopes it", "added": "2026-07-17"}
+  ]
+}
