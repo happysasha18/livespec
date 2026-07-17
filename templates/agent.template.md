@@ -1,19 +1,19 @@
 # <agent name> — the agent card (SPEC E-32, INV-184)
 
 Copy this to `<your tree>/.live-spec/agent.md` and fill it. It is this tree's
-self-description, read by any agent before it acts on something that might be yours. The
-roster naming which agents exist, and where their trees are, lives in the human's personal
-profile [E-16]; this card is what a roster line points at. A tree carrying no card is
-flagged at founding and at adoption's orient, the same rank a project kind recorded with no
-layers carries [A-10, INV-36, INV-135].
+self-description, read by any agent before it acts on something that might be yours. Writing
+this file is the declaration: a tree carrying it is an agent, found by any agent's live scan
+of nearby trees — no separate list names which agents exist, and the profile only ever widens
+where the scan looks [E-16]. A tree carrying no card is flagged at founding and at adoption's
+orient, the same rank a project kind recorded with no layers carries [A-10, INV-36, INV-135].
 
-The card's permission is the birth ratification itself, so it holds identity and addresses.
-Product data placed here is a contract field and takes the contract's permission road
-whatever file it sits in [INV-185].
+Write-ownership grants this card, so it needs no permission act of its own; it holds identity
+and addresses. Product data placed here is a contract field and takes the contract's
+permission road whatever file it sits in [INV-185].
 
 ## Name
 
-<the one name this agent answers to — the same name its roster line uses>
+<the one name this agent answers to>
 
 ## Mission
 

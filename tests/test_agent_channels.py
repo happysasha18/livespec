@@ -1,5 +1,5 @@
-"""When agents work together — the agent/skill boundary, the two channels, the roster and the
-card, the published contract, the earned message, and the birth walk.
+"""When agents work together — the agent/skill boundary, the two channels, the card and the
+scan, the published contract, the earned message, and the birth walk.
 
 Matrix rows M-352..M-368, derived from the spec's `## When agents work together` section through
 ARCHITECTURE.md's node table: base-rulebook (E-31, INV-182, INV-183, INV-188, INV-189, INV-190,
@@ -103,7 +103,7 @@ class TestAgentSkillBoundary(unittest.TestCase, _AnchorHomeMixin):
         self.assertIn("An agent is a project window, and everything an agent works with is its own",
                       spec)
         self.assertIn("its own tree, its own queue, its own gates, its own contracts, "
-                      "a standing mission, and a seat in the roster", spec)
+                      "a standing mission, and a card of its own declaring each of them", spec)
         self.assertIn("Each of those outlives any one conversation", spec)
         self.assertIn("[E-31]", spec)
 
@@ -685,7 +685,7 @@ class TestProposalUntilRatified(unittest.TestCase, _AnchorHomeMixin):
 
 class TestNonDuplication(unittest.TestCase, _AnchorHomeMixin):
     """INV-194 (M-360) — a neighbour's capability is reached through one of the two channels; a
-    local copy is the violation the roster exists to prevent."""
+    local copy is the violation the cards exist to prevent."""
 
     def test_capability_taken_through_one_of_the_two_channels(self):
         spec = read_flat(SPEC)
@@ -695,9 +695,9 @@ class TestNonDuplication(unittest.TestCase, _AnchorHomeMixin):
                       spec)
         self.assertIn("[INV-194]", spec)
 
-    def test_local_copy_is_the_violation_the_roster_prevents(self):
+    def test_local_copy_is_the_violation_the_cards_prevent(self):
         spec = read_flat(SPEC)
-        self.assertIn("A local copy of a neighbour's capability is the violation the roster exists "
+        self.assertIn("A local copy of a neighbour's capability is the violation the cards exist "
                       "to prevent", spec)
         self.assertIn("the two owners then answer one question two ways", spec)
 
@@ -828,17 +828,19 @@ class TestConsumerRead(unittest.TestCase, _AnchorHomeMixin):
 # [node: host-contract]
 # --------------------------------------------------------------------------- #
 
-class TestRosterAndCard(unittest.TestCase, _AnchorHomeMixin):
-    """E-32 (M-365) — the roster in the personal profile, the card in each agent's own tree, and
-    the read that runs before the acting."""
+class TestCardAndScan(unittest.TestCase, _AnchorHomeMixin):
+    """E-32 (M-365) — the card in each agent's own tree, the live scan that finds it, and the
+    read that runs before the acting."""
 
-    def test_roster_and_card_law(self):
+    def test_card_and_scan_law(self):
         """F-roster's named test (ARCHITECTURE.md feature coverage)."""
         spec = read_flat(SPEC)
-        self.assertIn("Each agent publishes a card describing itself, in its own tree, at "
-                      "`.live-spec/agent.md`", spec)
-        self.assertIn("The roster lives in the human's personal profile, one line per agent — a "
-                      "name and a tree path", spec)
+        self.assertIn("A tree carrying a card is an agent, and writing the card is the "
+                      "declaration", spec)
+        self.assertIn("The card lives in the agent's own tree at `.live-spec/agent.md`", spec)
+        self.assertIn("Discovery is a scan for cards, and the scan states where it looks and "
+                      "what it costs", spec)
+        self.assertIn("The scan reads two globs under each of its roots", spec)
         self.assertIn("Who does what is a lookup", spec)
         self.assertIn("[E-32]", spec)
 
@@ -851,17 +853,18 @@ class TestRosterAndCard(unittest.TestCase, _AnchorHomeMixin):
 
     def test_the_read_runs_before_the_acting(self):
         spec = read_flat(SPEC)
-        self.assertIn("An agent reads the roster and the relevant card before it acts on anything "
-                      "that might not be its own", spec)
+        self.assertIn("An agent scans for cards and reads the owning card before it acts on "
+                      "anything that might not be its own", spec)
         self.assertIn("The read runs first, ahead of the acting", spec)
 
     def test_e32_index_and_ownership(self):
         self.assert_index_and_ownership("E-32")
 
 
-class TestRosterLaw(unittest.TestCase, _AnchorHomeMixin):
-    """INV-184 (M-366) — write-ownership is the roster/card split's reason; the roster row is the
-    ratifying session's to write; the pack's own card is read from disk."""
+class TestDeclarationLaw(unittest.TestCase, _AnchorHomeMixin):
+    """INV-184 (M-366) — a tree's presence grants nothing and writing a card grants everything;
+    no file outside any tree describes any agent; write-ownership grants the card with no
+    permission act of its own; the pack's own card is read from disk."""
 
     def test_pack_card_exists_and_names_its_five_fields(self):
         """The card arm, exercised against this pack's own real `.live-spec/agent.md` on disk."""
@@ -893,18 +896,19 @@ class TestRosterLaw(unittest.TestCase, _AnchorHomeMixin):
             self.assertTrue(paths, "a card naming a published contract owes its artifact's path "
                                    "(SPEC E-32)")
 
-    def test_roster_row_written_by_the_ratifying_session(self):
+    def test_no_file_outside_any_tree_describes_any_agent(self):
         spec = read_flat(SPEC)
-        self.assertIn("A roster row is written by the session holding the ratification "
-                      "conversation", spec)
-        self.assertIn("An agent writes its own roster row on no other occasion, and never "
-                      "unbidden", spec)
-        self.assertIn("each agent owns its own description the way it owns its own tree", spec)
+        self.assertIn("No file outside any tree describes any agent", spec)
+        self.assertIn("this design has no such file to protect", spec)
+        self.assertIn("Each agent owns its own description the way it owns its own tree", spec)
+        self.assertIn("discovery reads those trees without writing anything anywhere", spec)
         self.assertIn("[INV-184]", spec)
 
-    def test_card_permission_is_the_birth_ratification(self):
+    def test_write_ownership_grants_the_card(self):
         spec = read_flat(SPEC)
-        self.assertIn("The card's permission is the birth ratification itself", spec)
+        self.assertIn("Write-ownership grants the card", spec)
+        self.assertIn("So the card needs no permission act, and the default-deny law meets no "
+                      "exception here", spec)
         self.assertIn("Product data placed in a card is a contract field, and it takes the "
                       "contract's permission road whatever file it sits in", spec)
 
@@ -977,14 +981,16 @@ class TestAgentBirth(unittest.TestCase, _AnchorHomeMixin):
                       "the contracts it would publish", spec)
         self.assertIn("[T-22]", spec)
 
-    def test_ratification_creates_the_agent_and_the_row_records_it(self):
+    def test_ratification_authorizes_the_founding_and_the_agent_declares_it(self):
         spec = read_flat(SPEC)
         self.assertIn("It stands as a proposal until the owner ratifies the birth", spec)
-        self.assertIn("The owner's ratification is the act that seats the agent, and the roster "
-                      "row is that seat's record", spec)
-        # The properties constitute agent-hood; the ratification seats it (prover F2). An unseated
-        # agent is real and unlisted, which is every tree that predates the roster.
-        self.assertIn("a tree carrying all three is an agent whether or not a row names it yet", spec)
+        self.assertIn("The owner ratifies the founding, and the agent declares itself", spec)
+        self.assertIn("These are two acts on two objects", spec)
+        # The owner's word authorizes the founding (a new tree, queue, gates, a standing cost);
+        # the founded agent's own hand writes the card, and every scan finds it from that moment.
+        self.assertIn("no agent founds another on its own authority", spec)
+        self.assertIn("the founded agent's own next act: it writes its card, and every scan "
+                      "finds it from that moment", spec)
 
     def test_contract_outlives_the_migration(self):
         spec = read_flat(SPEC)
@@ -997,8 +1003,10 @@ class TestAgentBirth(unittest.TestCase, _AnchorHomeMixin):
     def test_grain_is_the_owners_call_recorded_with_its_date(self):
         spec = read_flat(SPEC)
         self.assertIn("The grain of a capability — a skill or an agent — is the owner's call, "
-                      "recorded in the roster with its date", spec)
+                      "recorded with its date", spec)
         self.assertIn("That weighing is taste, which is the human-only fact this deferral names",
+                      spec)
+        self.assertIn("The call is recorded with its date in the proposing agent's own journal",
                       spec)
 
     def test_t22_index_and_ownership(self):
@@ -1015,7 +1023,7 @@ class TestRecogniseAndRoute(unittest.TestCase, _AnchorHomeMixin):
 
     def test_agent_recognises_a_neighbours_zone_itself(self):
         clause = self.assert_declared("INV-195")
-        self.assertIn("reads the roster", clause)
+        self.assertIn("scans for cards", clause)
         self.assertIn("carries no fact the agent lacked", clause)
         self.assertIn("made the owner its router", clause)
 

@@ -14,6 +14,28 @@ plainly is this file's sentence. A second full statement of a shared rule inside
 a defect to fold at the next milestone rather than a convenience (SPEC INV-13). Used standalone, outside the pack,
 a working skill still stands: its pointer here reads as plain advice.
 
+## The rule of thinking, above all the rest
+
+**Every incoming item is a symptom, and the answer owed is a rule about its CLASS.** One phrase, one
+file, one number, one incident — whatever arrives, it arrived as an instance of something. Name the
+class, state the rule for it, find the other live instances, and the instance that was pointed at is
+repaired as a free consequence. A change that repairs only the instance has answered nothing, because
+the next instance is already on its way.
+
+The rule stands on the DOOR rather than on any one source, and there are three doors: a person's
+feedback, a finding the agent makes itself, and a message from another agent. The three are one filter.
+
+This is a rule of thinking rather than a procedure, so it governs every rule below it. Rule 27 (fix the
+class, sweep the look-alikes) is this rule's arm inside a code change, and it was written first because
+the class-shaped answer was noticed there first — the thinking is what generalizes it to everything.
+
+Its own worked failure, and the sharpest one available: the guard holding this pack's register laws was
+built as a list of literal patterns, one per phrase someone once caught. A law naming a class is held by
+a judge that reads meaning, and a list of literals holds nothing — so the guard built to enforce the
+rules stood as a monument to breaking this one, and each escape earned one more pattern while the next
+phrase walked through untouched (proven by probe, 2026-07-17; the repair is ROADMAP row 416). If the
+answer to a class is a list, the design is wrong.
+
 ## The shared rules
 
 1. **Ask, never guess.** A gap only the human can fill — a threshold, a policy, a taste call — is asked or
@@ -328,10 +350,10 @@ a working skill still stands: its pointer here reads as plain advice.
 31. **Agents talk on exactly two channels, and a message earns its passage (SPEC INV-183, INV-189).**
    Several agents on one person's projects generate noise the moment they can talk to each other, and
    this rule is what keeps the channel quiet while the necessary thing still crosses. An agent is a
-   project window carrying its own tree, queue, gates, contracts, a standing mission, and a roster seat;
-   a skill is a capability any window loads, and it dies with the session [E-31, INV-182]. Before acting
-   on anything that might not be its own, an agent reads the roster in the personal profile and the
-   owning agent's card in that agent's own tree [E-32, INV-184]. Then **exactly two channels** carry
+   project window carrying its own tree, queue, gates, contracts, a standing mission, and a card of its
+   own; a skill is a capability any window loads, and it dies with the session [E-31, INV-182]. Before
+   acting on anything that might not be its own, an agent scans for cards and reads the owning agent's
+   card in that agent's own tree [E-32, INV-184]. Then **exactly two channels** carry
    everything between two agents: the receiver's inbox for a one-shot request to change something, and a
    published contract for a recurring read. A reply rides the inbox in the other direction, so the count
    of two holds. Co-location changes the transport's speed and leaves the contract untouched, and a
@@ -362,7 +384,7 @@ a working skill still stands: its pointer here reads as plain advice.
      permission stays home. Credentials never cross under any permission [INV-185].
    - **An agent recognises a neighbour's zone on its own.** Meeting a fault or a lack in something
      another agent's zone owns — a rule of the method, a shape a neighbour ships, a field a contract
-     lacks — the agent reads the roster, finds the owner, and takes the channel that fits. The owner
+     lacks — the agent scans for cards, finds the owner, and takes the channel that fits. The owner
      naming the road afterwards carries no fact the agent lacked, so his line is an acknowledgement of a
      thing already done. An agent that waits to be told has made the owner its router [INV-195].
    - **One question crosses between two agents twice, and the third crossing goes to the owner.** Every
@@ -379,7 +401,7 @@ a working skill still stands: its pointer here reads as plain advice.
      and the re-home lands later as ordinary pipeline work. A re-home is cheap and retroactive; a stall
      while ownership is settled is what this rule prevents [INV-197].
    - **A capability another agent's zone owns is taken through one of the two channels.** Building
-     a local copy of a neighbour's capability is the violation the roster exists to prevent, since the
+     a local copy of a neighbour's capability is the violation the cards exist to prevent, since the
      copy drifts from its original the day after it is made and the two owners then answer one question
      two ways [INV-194]. An agent-initiated message stays a proposal until the owner ratifies it, an
      owner-initiated message being the one kind that carries the owner's authority; relaying changes a

@@ -1,11 +1,11 @@
 # live-spec — the agent card (SPEC E-32, INV-184)
 
 This tree's self-description, read by any agent before it acts on something that might be
-this agent's. The roster that names which agents exist, and where their trees are, lives in
-the human's personal profile [E-16]. This card is what the roster's line points at. Its
-permission is the birth ratification itself, so it holds identity and addresses; product
-data placed here would be a contract field and would take the contract's permission road
-[INV-185].
+this agent's. Writing this file is the declaration: any agent's live scan finds it at
+`.live-spec/agent.md` under nearby trees — no separate list names which agents exist [E-16].
+Write-ownership grants this card, so it holds identity and addresses with no permission act
+of its own; product data placed here would be a contract field and would take the contract's
+permission road [INV-185].
 
 ## Name
 

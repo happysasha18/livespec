@@ -19,10 +19,19 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   guardrail, a cross-cutting change moves a shared rule or law across skills (SPEC INV-135, recorded at
   the INV-135 landing 2026-07-12).
 
-- `project.proofs: the pytest suite (string and render assertions against the shipped files) · the
-  docs/prover records · the owner's read` — the concrete fill of the test ladder's rungs for a text
-  product: the pack's rendered level is a string assertion against the shipped file, so no fact needs a
-  browser-computed rung (SPEC INV-135, recorded 2026-07-12).
+- `project.proofs: the pytest suite (string and render assertions against the shipped files) · deed
+  proofs driving the real engine a law names · the docs/prover records · the owner's read` — the
+  concrete fill of the test ladder's rungs for a text product. The pack's rendered level is a string
+  assertion against the shipped file (SPEC INV-135, recorded 2026-07-12). **Grown 2026-07-17, the lanes
+  landing:** the engine rung is occupied. That day the pack stated its first laws whose truth lives in
+  an external engine's runtime behaviour rather than in its own text — what git refuses to a second
+  worktree, what a rebase does on a conflict, what a teardown does to a dirty tree — and no string
+  assertion against a shipped file can see any of it. Such a law is proven by DEED, driving a real
+  process in a temp tree under the suite's own prefix (INV-100) with the machine's own git config
+  switched off (INV-155), and the deed's red-proof is a mutation removing the subject it observes.
+  The rung's own boundary is a fact too: the deed proves what the engine does at the version and
+  defaults it ran under, and a law reading wider than its engine is the finding (the lanes landing pinned
+  both the guarantee and its boundary for exactly that reason).
 
 - `other-projects: AUDIT-ONLY — when Alexander speaks about another project in this window, it is a
   CASE STUDY for improving the pack, never a task in that project; this window NEVER intervenes

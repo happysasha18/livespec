@@ -137,7 +137,10 @@ def main():
         "plain positive sentence and send that correction now. If the contrast genuinely informs (a "
         "real alternative the reader would assume), say so in one line and continue."
     )
-    print(json.dumps({"decision": "block", "reason": reason}))
+    # suppressOutput keeps the machine's complaint off the human's screen: the hook talks to the
+    # model, and what the human is owed is the correction the model then sends. Added 2026-07-17
+    # on the owner's word, asking why the raw block text was being shown to him at all.
+    print(json.dumps({"decision": "block", "reason": reason, "suppressOutput": True}))
     sys.exit(0)
 
 
