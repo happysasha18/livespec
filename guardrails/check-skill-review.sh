@@ -2,7 +2,7 @@
 # check-skill-review.sh — gate (s) of the push gate: a push that substantively changes a skill
 # reds unless a skill-creator review record for that change is committed (SPEC INV-208, ROADMAP 419).
 #
-# THE LAW (Alexander 2026-07-17 ~18:26): he leans on the session to remember to run Anthropic's
+# THE LAW (the owner's word, 2026-07-17 ~18:26): the session is leaned on to remember to run Anthropic's
 # skill-creator review whenever a skill is modified, and the session forgets — a reminder does not
 # hold. So the habit becomes a machine: when a diff about to be pushed changes a skill's body, the
 # push reds until a matching review record exists. This is the same shape as check-prover-record.sh,

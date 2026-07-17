@@ -390,6 +390,14 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    resolution, a batch size, a timeout, a sampling rate — named with what it trades, tuned together later at
    most, never a stall on a knob you can reasonably pick (SPEC INV-70).
 
+   A landing report, a ROADMAP row, and a decision page are exactly the surfaces where a decision gets
+   recorded AS the person's, so base rule 13's writing rule on human authority binds them (SPEC INV-207).
+   A `[default]` the seat picked is the SEAT's own judgment and is written in the pack's own voice; it is
+   never dressed as the human's word. When a decision genuinely IS the person's, the entry names the
+   exchange it came from — a date a reader can check — and an anchored copy goes to `DECISIONS.md`, the
+   read-back set the human reads on his own clock and strikes what he never said. An autonomy grant
+   authorizes the seat to decide; it never authorizes recording that decision as the human's.
+
    Show the human the REAL render in a new window; push or deposit only after they've reviewed it. A push
    re-renders all deposited artifacts, and a push shipping a new version walks the publish skill's shopfront
    check — README claims + kind-owed visuals fresh, the outcome line riding the landing report (SPEC INV-44).

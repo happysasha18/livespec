@@ -134,6 +134,21 @@ answer to a class is a list, the design is wrong.
     line (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure",
     then check before asserting.
 
+    One attribution stands apart, because no reader can challenge it: a decision recorded AS the human's.
+    His word is the pack's highest authority, so every gate, prover, and agent takes it on trust and
+    questions it never — which is the very reason a sentence carrying it must name the EXCHANGE it came
+    from, a date at minimum that a reader can go to and check (SPEC INV-207). A sentence the seat reasoned
+    out for itself is written in the pack's own voice, claims no human authority, and stays challengeable
+    by every reader. An autonomy grant authorizes the seat to DECIDE, and the seat owns that judgment as
+    its own; it never records the judgment as the human's word. Recording a decision as the person's adds
+    an ANCHORED entry to `DECISIONS.md`, the canonical read-back set, which the pack shows him on the
+    asynchronous touchpoint cadence [INV-205, INV-206] so he reads what the pack believes he decided and
+    strikes what he never said. That read-back is the load-bearing defence, because a text gate alone
+    cannot catch a fabrication that carries a plausible date: an invented ranking invents its date just as
+    easily. The mechanical arm `guardrails/check-authority-anchor.py` hard-blocks an unanchored entry on a
+    decision record and reports the churny surfaces where an attribution first gets written; the read-back,
+    fed by this rule and shown on cadence, is what turns the person's own eye into the defence (SPEC INV-207).
+
 14. **A found defect is a sample of its CLASS — go find the class, sweep the look-alikes.** A bug, a stale
     name, a jargon string, a design inconsistency: before calling the fix done, name the pattern behind the
     instance abstractly (the KIND of mistake — a scope too narrow, a missing guard, an assumption that holds

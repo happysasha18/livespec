@@ -4,12 +4,20 @@
   "authority_nouns": [
     "word", "words", "call", "ranking", "decision", "decisions", "ruling",
     "OK", "correction", "verdict", "say-so", "sign-off",
-    "blessing", "instruction", "instructions", "directive", "mandate"
+    "blessing", "instruction", "instructions", "directive", "mandate",
+    "request", "requests", "preference", "preferences", "wish", "wishes"
   ],
   "authority_verbs": [
     "decided", "ruled", "chose", "ordered", "blessed", "approved", "okayed",
     "signed off", "insisted", "directed", "mandated", "named it", "named this",
-    "told me to", "told us to"
+    "told me to", "told us to", "said", "asked", "asked for", "asked me to",
+    "asked us to", "wanted", "wants", "requested", "preferred"
+  ],
+  "note_risky": "The RISKY-surface first pass (the resume file and roadmap) drops the trigger_nouns and recall_verbs below so its advisory report stays readable: on those churny surfaces 'his word' is overwhelmingly a scheduling trigger or a verbatim quote header ('queued on his word', 'his words:'), and the recall verbs narrate many past asks. The WIDE arg-mode sweep keeps the full lists for recall. Neither list is a person; both are role-language shapes held as data.",
+  "trigger_nouns": ["word", "words"],
+  "recall_verbs": [
+    "said", "asked", "asked for", "asked me to", "asked us to",
+    "wanted", "wants", "requested", "preferred"
   ],
   "note_struck": "A retracted line is not a live claim. The decision-set record marks a struck entry with a STRUCK tag or ~~strikethrough~~; the gate skips a struck sentence, since the person has already reached in and struck it (that is the read-back's own action).",
   "waivers": [
