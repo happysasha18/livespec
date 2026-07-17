@@ -23,12 +23,21 @@ RED | killall "Google Chrome"
 RED | kill -9 $(pgrep chrome)
 RED | pgrep chrome | xargs kill -9
 RED | kill $(pidof node)
+RED | ps aux | grep -i chrome | awk '{print $2}' | xargs kill -9
+RED | ps aux | grep 'Google Chrome' | awk '{print $2}' | xargs kill
+RED | /usr/bin/pkill chrome
 
-# --- PASS: an ending that proves what it owns (PID / process-group / owned path) ---
+# --- RED: a shared install path is NOT a safe target (SPEC INV-162, ROADMAP 335). A kill by
+# ~/.cache/puppeteer or user-data-dir reaches other sessions' live browsers, so only the recorded
+# process group stays inside this run. These once passed on a path exemption the spec forbids; the
+# adversarial review of 2026-07-17 flipped them. ---
+RED | pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"
+RED | pkill -f user-data-dir
+
+# --- PASS: an ending that proves what it owns (a recorded PID or a process group) ---
 PASS | os.killpg(self.proc.pid, signal.SIGKILL)
 PASS | kill "$pid"
 PASS | kill -9 "$OWNER_PID"
 PASS | kill 48213
 PASS | os.kill(pid, 0)
-PASS | pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"
 PASS | pgrep chrome  # just list them, no kill verb

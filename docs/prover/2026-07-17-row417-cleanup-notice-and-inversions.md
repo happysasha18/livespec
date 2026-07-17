@@ -76,3 +76,57 @@ folded here so the suite lands green rather than routed to a queue row that woul
 HOLDS. Zero must-fix. Every changed clause composes with its neighbours; the four inversions each keep
 their gate's prior catch (red-proven) while widening it to the class; INV-204 names its net and its
 emitting path. Open ⟨DECIDE⟩ touched by the change: none.
+
+## Corrections after adversarial review 2026-07-17
+
+The verdict's claim that "the four inversions each keep their gate's prior catch (red-proven) while
+widening it to the class" was too strong, and an adversarial review of the four guards falsified it. The
+broad-kill rewrite from the browser-word list to an owned-identity read did NOT keep every prior catch:
+the old name-list guard reddened any line carrying a browser word beside a kill, so it caught a
+`ps ... | grep chrome ... | xargs kill` pipeline and a `/usr/bin/pkill chrome` on the browser word
+alone, and the rewrite lost both because its resolver regex knew only `pgrep`/`pidof` and its NAMEKILL
+class excluded a leading `/`. The review found four confirmed defects; each is corrected below, red-proven
+against the committed tree first, then fixed and greened. The corpus fixture — whose whole purpose is
+that a later change cannot silently narrow what the guard catches — had itself failed that job, so every
+newly-caught form is now pinned in it.
+
+- **D1 — broad-kill resolver blind spots (`guardrails/check-broad-kill.sh`).** The rewrite passed three
+  browser-killing forms the old guard caught. RED-proven passing against the committed tree:
+  `ps aux | grep -i chrome | awk '{print $2}' | xargs kill -9`, `/usr/bin/pkill chrome`, and a two-line
+  `PIDS=$(pgrep -f "Google Chrome")` then `kill $PIDS`. Fix: added a `ps`-piped-to-`grep` resolver form
+  to the name-kill detection; dropped the leading-`/` exclusion from NAMEKILL so a full-path
+  `pkill`/`killall` reds; added cross-line taint tracking so a variable assigned from a resolver and
+  killed later reds; and extended the repo scan to the extensionless tracked executables (`guardrails/*`,
+  `hooks/*`) it had skipped, e.g. `guardrails/pre-push`. The three named forms plus `pkill -f node`,
+  `killall Safari` etc. are pinned RED in the corpus and now red. Safety direction: catches strictly
+  more.
+- **D2 — the shared-install-path exemption contradicted the spec (`guardrails/check-broad-kill.sh`,
+  `tests/fixtures/kill_probes.txt`).** The guard exempted any line containing `.cache/puppeteer` or
+  `user-data-dir`, and the corpus pinned `pkill -9 -f "$HOME/.cache/puppeteer/..."` as PASS, which
+  re-blessed a cross-run kill the INV-162 spec text at PRODUCT_SPEC.md forbids: a shared install path
+  reaches other sessions' live browsers, so only the recorded process group is safe. Verified the only
+  shipped killer is `templates/headless_harness.py`, which uses `os.killpg` on its own process group and
+  relies on no path exemption. RED-proven the two shared-path forms passed against the committed tree;
+  fix: removed the exemption entirely (there is no safe path-scoped `pkill` to preserve), flipped the
+  corpus probe from PASS to RED, added `pkill -f user-data-dir` as RED. Both now red.
+- **D3 — cleanup-notice blind to the Python endings (`guardrails/check-cleanup-notice.sh`).** A file
+  whose only ending was `proc.terminate()` or `proc.kill()` passed with no notice. RED-proven against the
+  committed tree; fix: added `proc.terminate()` / `proc.kill()` on a `subprocess`/`Popen` handle to the
+  ends-a-process detection. The real cleanup path (`templates/headless_harness.py`) still passes because
+  it emits the notice beside its reap.
+- **D4 — deferral marker cleared by a coincidental reason word (`guardrails/check-deferral-marker.py`).**
+  `⟨DECIDE⟩ which sound file the build should bundle` passed because `sound` sits in the reason list — the
+  noun, not the feel-call. RED-proven against the committed tree; fix: an open-decision marker
+  (`⟨DECIDE⟩`, `TBD`, "to be decided") now requires a CORE human-only fact (taste / policy / irreversible
+  / device-feel) to stand, and a soft craft noun (`sound`, `voice`, `tone`, `crop`) no longer clears it,
+  while a deferral predicate already pointed at the human still accepts any reason. `⟨DECIDE⟩ ... a taste
+  call` still passes; the config-choice case now reds. Residual: fully separating a craft noun's
+  feel-call sense from its config sense would need a judge, so an open marker parking a genuine audio
+  taste call named only by a soft word (`⟨DECIDE⟩ which reverb sounds right`) would over-red; the clear
+  leaking case the review named is closed and the soft/core split is the minimal fix that does not
+  over-red the legitimate cases the suite covers.
+
+All four fixes carry a RED-first test in `tests/`; the full suite is green after the corrections (count
+recorded in the landing report). The M-311 matrix row and the guards' header comments were realigned to
+the corrected law (a shared install path is not a safe target; the safe targets are a recorded PID or a
+process group the run holds).

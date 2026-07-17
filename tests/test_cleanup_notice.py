@@ -75,6 +75,30 @@ def test_gate_reds_an_ending_without_a_notice():
         assert "INV-204" in (r.stdout + r.stderr)
 
 
+def test_gate_reds_a_terminate_only_ending():
+    # RED-FIRST against the pre-review gate: a file whose only ending is `proc.terminate()` (or
+    # `proc.kill()`) ends a spawned child but the gate was blind to the standard Popen endings, so it
+    # passed with no notice. The adversarial review of 2026-07-17 added them.
+    with tempfile.TemporaryDirectory() as d:
+        bad = _write(d, "stop.py",
+                     "import subprocess\n"
+                     "def stop(proc):\n"
+                     "    proc.terminate()\n")
+        r = _gate(bad)
+        assert r.returncode != 0, "gate passed a proc.terminate() ending that emits no notice"
+        assert "INV-204" in (r.stdout + r.stderr)
+
+
+def test_gate_reds_a_proc_kill_ending():
+    with tempfile.TemporaryDirectory() as d:
+        bad = _write(d, "stop.py",
+                     "import subprocess\n"
+                     "def stop(proc):\n"
+                     "    proc.kill()\n")
+        r = _gate(bad)
+        assert r.returncode != 0, "gate passed a proc.kill() ending that emits no notice"
+
+
 def test_gate_passes_an_ending_that_emits_the_notice():
     with tempfile.TemporaryDirectory() as d:
         ok = _write(d, "reap.py",

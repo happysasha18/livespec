@@ -131,6 +131,18 @@ class TestDeferralMarkerGate(unittest.TestCase):
             self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
             self.assertIn("NEXT_STEPS.md:2", r.stdout)
 
+    def test_decide_marker_parking_a_config_choice_reds(self):
+        # ROADMAP 417, adversarial review 2026-07-17: `⟨DECIDE⟩ which sound file the build should bundle`
+        # used to PASS because "sound" sits in the reason list — a coincidence, the noun not the
+        # feel-call. An open-decision marker is an unresolved decision by definition and must name a CORE
+        # human-only fact; a soft craft noun that merely appears does not clear it. (RED-FIRST.)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = write(tmp, "NEXT_STEPS.md",
+                      "# q\n- ⟨DECIDE⟩ which sound file the build should bundle.\n")
+            r = run(p)
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("NEXT_STEPS.md:2", r.stdout)
+
     def test_decide_marker_with_a_named_reason_passes(self):
         # a genuinely-justified deferral does not start reding: an open-decision marker that names its
         # human-only fact (a taste call) is the human's to make, and the marker stands.

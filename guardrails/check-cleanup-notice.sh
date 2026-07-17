@@ -13,7 +13,8 @@
 # What it flags: a FILE (not a line — an emit and the ending it announces rarely share a line) whose
 # comment-stripped code ENDS A PROCESS but carries the cleanup-notice marker NOWHERE in that code. A
 # file ENDS a process when its code reaps a process group (`killpg`), name-kills (`pkill` / `killall`),
-# or sends a real terminating signal to another process (a shell `kill -<sig>` other than `-0`, or an
+# terminates a spawned child (`proc.terminate()` / `proc.kill()` on a `subprocess`/`Popen` handle), or
+# sends a real terminating signal to another process (a shell `kill -<sig>` other than `-0`, or an
 # `os.kill(..., signal.SIG...)` / `os.kill(..., <nonzero>)`). A liveness probe (`os.kill(pid, 0)`,
 # `kill -0`) and a signal-handler self-raise (`os.kill(os.getpid(), ...)`, whose signal is a variable,
 # not a literal) end no spawned resource and never trip the gate. A file that emits the notice —
@@ -34,10 +35,11 @@ ends_a_process() {
       SHKILL   = "(^|[^a-zA-Z._])kill[ \t]+-(SIG[A-Z]+|[A-Z]+|[1-9][0-9]*)"   # kill -9 / -TERM, not -0
       OSKILL_SIG = "os\\.kill\\([^)]*signal\\.SIG"
       OSKILL_NUM = "os\\.kill\\([^)]*,[ \t]*[1-9]"                            # os.kill(pid, 9), not , 0
+      PROC_END = "\\.(terminate|kill)\\([ \t]*\\)"      # proc.terminate()/proc.kill(): Popen endings
     }
     {
       l = $0; sub(/#.*/, "", l)
-      if (l ~ NAMEKILL || l ~ KILLPG || l ~ SHKILL || l ~ OSKILL_SIG || l ~ OSKILL_NUM) {
+      if (l ~ NAMEKILL || l ~ KILLPG || l ~ SHKILL || l ~ OSKILL_SIG || l ~ OSKILL_NUM || l ~ PROC_END) {
         print "ENDS"; exit
       }
     }' "$1" 2>/dev/null || true

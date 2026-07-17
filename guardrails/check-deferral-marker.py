@@ -59,14 +59,17 @@ import sys
 # "his word" while describing a decision already made, so bare "his word" is NOT a marker — a genuine
 # park says more. The pack's resume and decision files are written in English (docs language), which the
 # gate scans; a human-language marker in chat is caught by the hook's delivery arm instead.
-SIGNALS = [
-    # (1) open-decision markers — the grammatical shape of an undecided fork handed forward.
+# (1) OPEN-DECISION MARKERS — the grammatical shape of an undecided fork handed forward. An open marker
+# is an unresolved decision by definition, so it parks something whatever noun follows it.
+OPEN_DECISION = [
     r"[⟨<\[]\s*dec(?:ide|ision)\s*[⟩>\]]",
     r"\bto be decided\b",
     r"\bdecision pending\b",
     r"\bopen decision\b",
     r"\bTBD\b",
-    # (2) a deferral predicate whose object is the human.
+]
+# (2) a DEFERRAL PREDICATE whose object is the human.
+PREDICATE = [
     r"his to (?:correct|call|pick|tune|decide|say|choose)",
     r"(?:needs?|awaits?|left to|reserved for|held for|held until|waiting on|waits on|deferred to|deferred until) his\b",
     r"(?:reserved|held|deferred|left) for (?:the )?(?:human|owner)\b",
@@ -75,21 +78,33 @@ SIGNALS = [
     r"still his\b",
     r"row \d+ reserved",
 ]
+SIGNALS = OPEN_DECISION + PREDICATE
 
-# Naming the human-only fact — the reason categories and their close natural kin.
-REASONS = [
+# Naming the human-only fact — the CORE reason categories and their close judgement kin. These are words
+# that only a human's judgement can settle, so any of them clears a park.
+CORE_REASONS = [
     r"taste",
     r"policy",
     r"irreversible",
     r"device-?feel", r"device feel", r"real device",
     r"\bfeel\b", r"motion", r"visual",
     r"eye-?call", r"\bveto\b", r"his meter", r"visual meter",
+]
+# Craft nouns that name a human-only call in one context and a plain config/technical thing in another
+# (a `sound` file, a `voice` feature, a `tone` value, an image `crop`). They clear a deferral PREDICATE
+# already pointed at the human, but they do NOT by themselves clear an OPEN-DECISION marker: an open
+# `⟨DECIDE⟩ which sound file to bundle` is a config choice the marker parks on nobody, and the bare
+# noun's presence must not launder it through (the owner's 2026-07-17 adversarial-review finding).
+SOFT_REASONS = [
     r"\bvoice\b", r"\btone\b", r"\bsound\b", r"crop",
 ]
+REASONS = CORE_REASONS + SOFT_REASONS
 
 NEGATORS = re.compile(r"\b(?:not|never|no)\b", re.IGNORECASE)
 SIGNAL_RE = re.compile("|".join(SIGNALS), re.IGNORECASE)
+OPEN_DECISION_RE = re.compile("|".join(OPEN_DECISION), re.IGNORECASE)
 REASON_RE = re.compile("|".join(REASONS), re.IGNORECASE)
+CORE_REASON_RE = re.compile("|".join(CORE_REASONS), re.IGNORECASE)
 QUOTES = re.compile(r"'[^']*'|\"[^\"]*\"|«[^»]*»")
 HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 # A new work item opens with a list marker, optionally behind blockquote '>' prefixes,
@@ -149,16 +164,28 @@ def _fold_items(lines):
         yield start, " ".join(text.split())
 
 
-def _parks_without_reason(text):
-    """True when a folded item parks work for the human but names no reason."""
-    spans = _quoted_spans(text)
-    parked = any(
+def _fires(regex, text, spans):
+    """True when the pattern matches unquoted and unnegated somewhere in the folded item."""
+    return any(
         not _negated(text, m.start()) and not _in_span(m.start(), spans)
-        for m in SIGNAL_RE.finditer(text)
+        for m in regex.finditer(text)
     )
-    if not parked:
-        return False
-    return not REASON_RE.search(text)
+
+
+def _parks_without_reason(text):
+    """True when a folded item parks work for the human but names no reason it can accept.
+
+    An OPEN-DECISION marker (⟨DECIDE⟩, TBD, ...) is an unresolved decision by definition, so it must
+    name a CORE human-only fact to stand — a soft craft noun that merely happens to appear (a `sound`
+    file) does not clear it. A deferral PREDICATE already pointed at the human accepts any reason, core
+    or soft, since the human ownership is not in doubt, only its justification.
+    """
+    spans = _quoted_spans(text)
+    if _fires(OPEN_DECISION_RE, text, spans):
+        return not CORE_REASON_RE.search(text)
+    if _fires(SIGNAL_RE, text, spans):
+        return not REASON_RE.search(text)
+    return False
 
 
 def scan_file(path):

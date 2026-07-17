@@ -71,26 +71,47 @@ def test_guardrail_catches_every_evasion():
 
 
 def test_guardrail_allows_the_safe_forms():
-    # a bare pgrep that does NOT kill, a pid-scoped python kill, and an install-path kill are all fine.
+    # a bare pgrep that does NOT kill, and a pid-/process-group-scoped kill are fine.
     safe = [
         'pgrep chrome  # just list them, no kill',          # listing only, no kill verb near a name
         'os.killpg(self.proc.pid, signal.SIGKILL)',         # kills its own recorded process group
-        'pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"',  # path-scoped install target
+        'kill "$pid"',                                      # a recorded PID in a variable
+        'kill 48213',                                       # a literal recorded PID
     ]
     for line in safe:
         assert not _reds(line), "guardrail false-flagged a safe line: %r" % line
 
 
-def test_guardrail_allows_a_path_scoped_kill():
-    # the legal form: a kill scoped to the test browser's install path or its own user-data-dir is fine.
+def test_shared_install_path_kill_reds():
+    # SPEC INV-162 / ROADMAP 335: a shared install path is NOT a safe target — a `pkill -f
+    # ~/.cache/puppeteer` or a bare `pkill -f user-data-dir` reaches other sessions' live browsers, so
+    # the recorded process group is the sole safe target. The old path exemption re-blessed a
+    # cross-run kill; the adversarial review of 2026-07-17 removed it. (RED-FIRST against that exemption.)
     with tempfile.TemporaryDirectory() as d:
-        ok = os.path.join(d, "cleanup.sh")
-        with open(ok, "w") as f:
+        bad = os.path.join(d, "cleanup.sh")
+        with open(bad, "w") as f:
             f.write('#!/usr/bin/env bash\n'
-                    '# reap only Chrome-for-Testing under the puppeteer cache, by install path\n'
-                    'pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"\n')
-        r = _run(ok)
-        assert r.returncode == 0, r.stdout + r.stderr
+                    'pkill -9 -f "$HOME/.cache/puppeteer/chrome/.*chrome"\n'
+                    'pkill -f user-data-dir\n')
+        r = _run(bad)
+        assert r.returncode != 0, "guardrail exempted a shared-install-path kill: " + r.stdout + r.stderr
+        assert "INV-162" in (r.stdout + r.stderr)
+
+
+def test_full_path_and_pipe_and_two_line_resolvers_red():
+    # the name-resolver forms the pre-review guard was blind to, each a way to end a browser by name:
+    #  * a full-path pkill (`/usr/bin/pkill`) — the leading "/" hid it from NAMEKILL;
+    #  * a `ps ... | grep <name> ... | xargs kill` pipeline — the classic name-resolved kill;
+    #  * a two-line resolver — a variable assigned from `pgrep` and killed on a later line.
+    assert _reds('/usr/bin/pkill chrome'), "full-path pkill slipped"
+    assert _reds("ps aux | grep -i chrome | awk '{print $2}' | xargs kill -9"), "ps|grep|kill slipped"
+    with tempfile.TemporaryDirectory() as d:
+        bad = os.path.join(d, "cleanup.sh")
+        with open(bad, "w") as f:
+            f.write('#!/usr/bin/env bash\n'
+                    'PIDS=$(pgrep -f "Google Chrome")\n'
+                    'kill $PIDS\n')
+        assert _run(bad).returncode != 0, "two-line resolver (var from pgrep, killed later) slipped"
 
 
 def test_spec_states_the_cleanup_ownership_law():
