@@ -170,6 +170,12 @@ if ! python3 "$GUARDRAILS/check-judge-listed.py"; then
 fi
 
 echo ""
+echo "-- gate w: every gate can fail (every gate in this chain carries a known-red proof, SPEC INV-212) --"
+if ! python3 "$GUARDRAILS/check-every-gate-can-fail.py"; then
+  fail=1
+fi
+
+echo ""
 if [ "$fail" -ne 0 ]; then
   echo "PUSH BLOCKED — one or more gates above failed. Fix them and try again."
   exit 1

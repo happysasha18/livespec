@@ -84,6 +84,8 @@ jobs:
           fi
       - name: gate u — CI mirror parity (every local gate is mirrored in CI or a declared carve-out, SPEC INV-210)
         run: guardrails/check-ci-mirror.sh
+      - name: gate w — every gate can fail (every gate in this chain carries a known-red proof, SPEC INV-212)
+        run: python3 guardrails/check-every-gate-can-fail.py
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

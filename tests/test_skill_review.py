@@ -231,14 +231,11 @@ def test_gate_mirrored_in_ci():
         "the CI mirror does not run the skill-review gate"
 
 
-def test_ci_mirror_carries_every_local_gate():
-    """Gate-chain hygiene (folded into row 419): every local pre-push gate script is mirrored
-    in CI. The drift this catches: gates p (touchpoint-kind) and q (board) were missing from
-    gates.yml before this row synced them."""
-    ci = read(".github/workflows/gates.yml")
-    for script in ("check-touchpoint-kind.py", "check-board.py",
-                   "check-authority-anchor.py", "check-skill-review.sh"):
-        assert script in ci, "%s is in the local pre-push chain but not mirrored in CI" % script
+# The hardcoded gate-chain-mirror check that once lived here (test_ci_mirror_carries_every_local_gate,
+# a fixed list of four scripts asserted present in gates.yml) retired into the machine on 2026-07-18:
+# gate u (check-ci-mirror.sh, INV-210) machine-checks that every local pre-push gate is mirrored in CI
+# or a declared carve-out, subsuming the fixed list — gates p/q/r/s are none of the carve-outs (c/k/m/v),
+# so gate u already enforces their CI mirroring. See tests/test_ci_mirror.py.
 
 
 # --- traceability across the four documents ---
