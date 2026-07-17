@@ -153,5 +153,39 @@ class TestViewportQuantifierLens(unittest.TestCase):
                 self.fail("M-350 matrix row missing")
 
 
+class TestGeneralSubDomainDuty(unittest.TestCase):
+    """Row 369 (M-351, grows INV-138): the standing sub-domain question lifts to the general
+    range law. The "answers for the rest" duty shipped worded for layout guarantees over viewport
+    bands; a guarantee scoped to any other named sub-domain — a user state, a network condition, a
+    locale — is the same hole class. The law states the general duty (a guarantee scoped to a named
+    part of its domain draws the standing question about the remainder, each remaining part decided
+    or [default]-tagged), with the viewport bands kept as the worked instance, and the prover lens
+    and author facet cite it as instances. The general-duty needles lead in the spec clause, the
+    Formal-index row, and the prover lens; the viewport needles from row 368 stay intact."""
+
+    def test_general_sub_domain_duty(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        for needle in ("a named part of its domain", "the remainder"):
+            self.assertIn(needle, spec, needle)
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| INV-138 |"):
+                    for needle in ("a named part of its domain", "the remainder"):
+                        self.assertIn(needle, line, needle)
+                    break
+            else:
+                self.fail("INV-138 Formal-index row missing")
+        pv = read_flat("skills/product-prover/SKILL.md")
+        for needle in ("a named part of its domain", "the remainder"):
+            self.assertIn(needle, pv, needle)
+        with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("| M-351 |"):
+                    self.assertIn("INV-138", line)
+                    break
+            else:
+                self.fail("M-351 matrix row missing")
+
+
 if __name__ == "__main__":
     unittest.main()

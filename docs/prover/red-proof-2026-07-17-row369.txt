@@ -1,0 +1,38 @@
+Red-proof — ROADMAP row 369 (2026-07-17, v2.5.0)
+================================================
+
+The standing sub-domain question lifts to the general range law (grows INV-138).
+
+The "answers for the rest" duty shipped in 2.4.0 worded for layout guarantees over viewport
+bands (row 368). The owner's word (2026-07-17, reading the 2.4.0 report): a guarantee scoped
+to any other named sub-domain — a user state, a network condition, a locale — is the same
+hole class the tlvphotos incident taught, so the law must state the general duty and never
+read as a literal for one quantity. The lift states the general duty in the range law with
+the viewport bands kept as the worked instance, the prover lens and author facet citing it.
+
+The test was written first and run against the current tree (HEAD, spec v2.4.0), where the
+general duty was absent from every home, so it failed for the stated reason. After the prose
+landed the same test ran green. Captured with:
+  python3 -m pytest -q --tb=no tests/test_paired_transition.py::TestGeneralSubDomainDuty::test_general_sub_domain_duty
+
+
+Row 369 — the general sub-domain duty leads the range law (grows INV-138)
+-------------------------------------------------------------------------
+2026-07-17.  Test: tests/test_paired_transition.py::TestGeneralSubDomainDuty::test_general_sub_domain_duty
+
+RED against HEAD (the general duty absent from the INV-138 clause, the Formal index row, and
+the product-prover edge-completeness lens; only the viewport-band wording present):
+  E   AssertionError: 'a named part of its domain' not found in PRODUCT_SPEC.md
+  FAILED tests/test_paired_transition.py::TestGeneralSubDomainDuty::test_general_sub_domain_duty
+  1 failed in 0.05s
+
+The test asserts the general-duty needles ("a named part of its domain", "the remainder") in
+the spec INV-138 clause, its Formal-index row, and the product-prover edge-completeness lens,
+plus the M-351 matrix row anchoring INV-138. All absent at HEAD, where the duty read only in
+its viewport-band instance.
+
+Invariant decision (the owner's word): the general duty grows INV-138's existing clause rather
+than being born as a new law. INV-138 already owns the range-and-lifecycle completeness class,
+and the viewport-band case shipped inside it in 2.4.0; lifting the wording from that one quantity
+to the general sub-domain duty keeps the class in its owning node (spec-author, per
+ARCHITECTURE.md) with the viewport bands demoted to the worked instance.
