@@ -1,0 +1,209 @@
+"""INV-218 (M-399, ROADMAP 384) — a check that looked at nothing is not a pass.
+
+The vacuous-pass class: a check whose INPUT SET is empty reports clean while testing
+nothing, and an empty input set is nearly always the defect. The drafter's own self-catch
+minted this row — it scanned its freshly minted codes for collisions, the codes were absent
+from the prose entirely, and the scan compared zero against zero and reported clean.
+
+The law (sibling of the unexpected-skip law INV-155): a check DECLARES the input set it
+expects to be non-empty, and an empty set REDS BY NAME rather than passing silently. This
+movement builds the shared shape (`guardrails/nonempty_input.py`) and applies it to the first
+named instance — the traceability index prose check `guardrails/check-index-prose.py`, which
+today has no home for the "a Formal-index code whose home prose never carries the anchor"
+defect: `test_spec_index_unique_anchors` checks uniqueness alone.
+
+Every check here asserts the SHIPPED files on disk, never a source fragment or a memory of one.
+"""
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import unittest
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GUARDRAILS = os.path.join(REPO, "guardrails")
+CHECK = os.path.join(GUARDRAILS, "check-index-prose.py")
+SHAPE = os.path.join(GUARDRAILS, "nonempty_input.py")
+
+
+def read(rel):
+    with open(os.path.join(REPO, rel), encoding="utf-8") as f:
+        return f.read()
+
+
+def run_check(env_extra=None):
+    env = dict(os.environ)
+    if env_extra:
+        env.update(env_extra)
+    return subprocess.run([sys.executable, CHECK], cwd=REPO, capture_output=True, text=True, env=env)
+
+
+# A spec fixture whose Formal index carries anchors that ARE present in the prose body — a clean
+# tree the gate passes.
+CLEAN_SPEC = """# Fixture spec
+
+Some prose that names INV-900 and the transition T-900 in its body. [INV-900]
+Another paragraph carrying M-900 in a worked sentence. [M-900]
+
+## Formal index
+
+| anchor | fact | scenario |
+|---|---|---|
+| INV-900 | a law | A scenario |
+| T-900 | a transition | A scenario |
+| M-900 | a test | A scenario |
+"""
+
+# A spec fixture whose index carries INV-901, absent from every prose line before the index —
+# the "index code whose home prose never carries the anchor" defect the gate must red on.
+ABSENT_HOME_SPEC = """# Fixture spec
+
+Some prose that names INV-900 in its body. [INV-900]
+
+## Formal index
+
+| anchor | fact | scenario |
+|---|---|---|
+| INV-900 | a law | A scenario |
+| INV-901 | a law with no home | A scenario |
+"""
+
+# A spec fixture whose Formal-index section is present but carries NO anchor rows, so the
+# index-anchor input set parses EMPTY — the vacuous case the shared shape must red on BY NAME
+# rather than pass by looking at nothing.
+EMPTY_INDEX_SPEC = """# Fixture spec
+
+Prose with an index header but no rows under it. [INV-900]
+
+## Formal index
+
+| anchor | fact | scenario |
+|---|---|---|
+"""
+
+
+def write_spec(tmpdir, text):
+    path = os.path.join(tmpdir, "SPEC_FIXTURE.md")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+    return path
+
+
+class TestSharedShape(unittest.TestCase):
+    """The general guardrail shape: a check declares its expected-non-empty input set."""
+
+    def _import_shape(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("nonempty_input", SHAPE)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def test_shape_ships(self):
+        self.assertTrue(os.path.isfile(SHAPE), "the shared shape is absent: guardrails/nonempty_input.py")
+
+    def test_shape_reds_by_name_on_empty_input(self):
+        mod = self._import_shape()
+        with self.assertRaises(mod.VacuousInputError) as cm:
+            mod.require_nonempty("some-check", "the widget set", [])
+        msg = str(cm.exception)
+        self.assertIn("the widget set", msg, "the vacuous-input error must NAME the empty input set")
+        self.assertIn("some-check", msg, "the vacuous-input error must NAME the check")
+
+    def test_shape_passes_a_nonempty_input(self):
+        mod = self._import_shape()
+        out = mod.require_nonempty("some-check", "the widget set", ["a", "b"])
+        self.assertEqual(list(out), ["a", "b"])
+
+
+class TestIndexProseGate(unittest.TestCase):
+    """Gate x — `guardrails/check-index-prose.py`: every Formal-index anchor is carried in the
+    spec prose (its home), and the index-anchor input set is expected non-empty."""
+
+    def test_gate_ships(self):
+        self.assertTrue(os.path.isfile(CHECK), "the gate is absent: guardrails/check-index-prose.py")
+
+    def test_gate_reds_on_empty_input(self):
+        # The vacuous case: an index that parses to zero anchors reds BY NAME, in place of
+        # reporting clean while looking at nothing (the red proof of gate x).
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_spec(tmp, EMPTY_INDEX_SPEC)
+            r = run_check({"INDEX_PROSE_SPEC": path})
+            self.assertNotEqual(r.returncode, 0, "an empty index input set must RED:\n%s\n%s" % (r.stdout, r.stderr))
+            self.assertIn("empty", (r.stdout + r.stderr).lower(),
+                          "the red must NAME the empty input set, not fail generically")
+
+    def test_gate_reds_an_index_anchor_absent_from_prose(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_spec(tmp, ABSENT_HOME_SPEC)
+            r = run_check({"INDEX_PROSE_SPEC": path})
+            self.assertNotEqual(r.returncode, 0,
+                                "an index anchor absent from prose must RED:\n%s\n%s" % (r.stdout, r.stderr))
+            self.assertIn("INV-901", r.stdout + r.stderr,
+                          "the red must NAME the index anchor whose home prose is empty")
+
+    def test_gate_passes_a_clean_fixture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_spec(tmp, CLEAN_SPEC)
+            r = run_check({"INDEX_PROSE_SPEC": path})
+            self.assertEqual(r.returncode, 0, "a clean fixture must pass:\n%s\n%s" % (r.stdout, r.stderr))
+
+    def test_gate_passes_the_real_spec(self):
+        r = run_check()
+        self.assertEqual(r.returncode, 0, "the real PRODUCT_SPEC.md must pass:\n%s\n%s" % (r.stdout, r.stderr))
+
+    def test_gate_wired_into_pre_push(self):
+        self.assertIn("check-index-prose.py", read("guardrails/pre-push"))
+
+    def test_gate_mirrored_in_ci(self):
+        self.assertIn("check-index-prose.py", read(".github/workflows/gates.yml"))
+
+
+class TestIndexProseSubstance(unittest.TestCase):
+    """The substantive arm on the real tree: every Formal-index anchor is carried in the prose,
+    ranges honoured — the standing form of the index prose check."""
+
+    def test_every_index_anchor_carried_in_prose(self):
+        spec = read("PRODUCT_SPEC.md")
+        body, index = spec.split("## Formal index", 1)
+
+        def expand(a):
+            m = re.match(r"([A-Z]+)-(\d+)\.\.(?:[A-Z]+-)?(\d+)$", a)
+            if m:
+                p, lo, hi = m.group(1), int(m.group(2)), int(m.group(3))
+                return ["%s-%d" % (p, i) for i in range(lo, hi + 1)]
+            return [a]
+
+        raw = re.findall(r"^\| ([A-Z]+-[0-9]+(?:\.\.[A-Z]*-?[0-9]+)?) \|", index, re.M)
+        anchors = set()
+        for a in raw:
+            anchors.update(expand(a))
+        carried = set(re.findall(r"[A-Z]+-[0-9]+", body))
+        for rng in re.findall(r"[A-Z]+-[0-9]+\.\.[A-Z]*-?[0-9]+", body):
+            carried.update(expand(rng))
+        missing = sorted(a for a in anchors if a not in carried)
+        self.assertEqual(missing, [], "index anchors whose home prose never carries them: %s" % missing)
+
+
+class TestTraceability(unittest.TestCase):
+    def test_spec_states_the_law(self):
+        spec = " ".join(read("PRODUCT_SPEC.md").split())
+        self.assertIn("[INV-218]", spec)
+        self.assertIn("check-index-prose.py", spec)
+        self.assertIn("nonempty_input.py", spec)
+
+    def test_formal_index_row(self):
+        self.assertIn("| INV-218 |", read("PRODUCT_SPEC.md"))
+
+    def test_architecture_owns_the_invariant(self):
+        arch = read("ARCHITECTURE.md")
+        self.assertIn("INV-218", arch)
+        self.assertIn("check-index-prose.py", arch)
+
+    def test_matrix_row_covers_the_law(self):
+        self.assertIn("INV-218", read("TEST_MATRIX.md"))
+
+
+if __name__ == "__main__":
+    unittest.main()

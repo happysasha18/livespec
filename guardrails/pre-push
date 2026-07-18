@@ -176,6 +176,18 @@ if ! python3 "$GUARDRAILS/check-every-gate-can-fail.py"; then
 fi
 
 echo ""
+echo "-- gate x: index prose (every Formal-index code is carried in its home prose; a check with an empty input set reds by name, SPEC INV-218) --"
+if ! python3 "$GUARDRAILS/check-index-prose.py"; then
+  fail=1
+fi
+
+echo ""
+echo "-- gate y: agent card (a live-spec host tree carries its .live-spec/agent.md card, SPEC INV-219) --"
+if ! python3 "$GUARDRAILS/check-agent-card.py"; then
+  fail=1
+fi
+
+echo ""
 if [ "$fail" -ne 0 ]; then
   echo "PUSH BLOCKED — one or more gates above failed. Fix them and try again."
   exit 1

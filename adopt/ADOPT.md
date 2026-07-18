@@ -25,7 +25,12 @@ The one normative list of the documents a live-spec host carries; every other gu
 - `SURFACE_REGISTRY.md` — or an equivalent executable gate test (E-10); doc form is the fallback.
 - `attic/` with its manifest — superseded host files rest here, never deleted (INV-7).
 - `.live-spec/` — the host's records: `profile.md` (host overrides), the installed-set record (M-7),
-  `adopt/` (run artifacts and plans), `checkpoints/` (gitignored).
+  `adopt/` (run artifacts and plans), `checkpoints/` (gitignored), and `agent.md` — the host's agent
+  card, its self-description read by any neighbour agent's live scan: the host's name, mission, the
+  zones it owns, the contracts it publishes with their paths, and its inbox address (SPEC E-32, INV-184).
+  Writing the card is the declaration that this tree is an agent; a host adopting before this law writes
+  its card at its catch-up walk, and the gate `guardrails/check-agent-card.py` reds a host tree carrying
+  none (SPEC INV-219).
 
 **One canonical state directory (SPEC INV-105).** Here the canonical state directory is named `.live-spec`, once, and no second directory competes for that role. A near-miss directory found at attach or resume is a red finding: `.livespec`, `.live_spec`, a bare `livespec/`, any look-alike carrying a rival profile. The sweep records it in `.live-spec/adopt/inventory.md`, then it is retired to the attic under a manifest line naming the path, the reason, and the canonical directory that absorbs it (INV-7, A-4). Never a look-alike left standing beside `.live-spec`.
 

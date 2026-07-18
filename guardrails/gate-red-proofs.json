@@ -22,7 +22,9 @@
     "t": {"proof": "tests/test_doc_rotation.py::test_gate_reds_a_rotation_that_loses_a_row", "reds": "check-doc-rotation"},
     "u": {"proof": "tests/test_ci_mirror.py::test_missing_gate_step_reds", "reds": "check-ci-mirror.sh"},
     "v": {"proof": "tests/test_judge_listed.py::test_missing_stop_arm_reds", "reds": "check-judge-listed.py"},
-    "w": {"proof": "tests/test_every_gate_can_fail.py::test_missing_proof_reds", "reds": "check-every-gate-can-fail.py"}
+    "w": {"proof": "tests/test_every_gate_can_fail.py::test_missing_proof_reds", "reds": "check-every-gate-can-fail.py"},
+    "x": {"proof": "tests/test_vacuous_pass.py::test_gate_reds_on_empty_input", "reds": "check-index-prose"},
+    "y": {"proof": "tests/test_agent_card_gate.py::test_gate_reds_a_cardless_tree", "reds": "check-agent-card"}
   },
   "covered": {
     "c": "Gate c invokes no check of its own: pre-push echoes a note pointing at the pytest suite. The anchor-ownership assertion tests/test_traceability.py::test_architecture_owns_every_anchor_once rides the suite (gate b), whose red-proof tests/test_guardrails.py::test_broken_suite_fails shows the suite reds on a broken assertion. This mirrors the CI carve-out ci-mirror.json already declares for gate c (folded into the test suite)."

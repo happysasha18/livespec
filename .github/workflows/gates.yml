@@ -86,6 +86,10 @@ jobs:
         run: guardrails/check-ci-mirror.sh
       - name: gate w — every gate can fail (every gate in this chain carries a known-red proof, SPEC INV-212)
         run: python3 guardrails/check-every-gate-can-fail.py
+      - name: gate x — index prose (every Formal-index code is carried in its home prose; an empty input set reds by name, SPEC INV-218)
+        run: python3 guardrails/check-index-prose.py
+      - name: gate y — agent card (a live-spec host tree carries its .live-spec/agent.md card, SPEC INV-219)
+        run: python3 guardrails/check-agent-card.py
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the
