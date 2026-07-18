@@ -1,6 +1,6 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-one rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-two rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
   version: 2.6.3
 ---
@@ -422,6 +422,29 @@ answer to a class is a list, the design is wrong.
      two ways [INV-194]. An agent-initiated message stays a proposal until the owner ratifies it, an
      owner-initiated message being the one kind that carries the owner's authority; relaying changes a
      message's carrier and leaves its authority where it started [INV-193].
+
+32. **A release's number answers what taking it costs a host (SPEC INV-217).** Every release picks a
+   number, and the number reports what a host that vendored the previous version must do to take this one.
+   A **patch** fixes a machine to hold a law already stated: no new capability, no changed contract, and the
+   host takes it and does nothing. A **minor** grows what a host may adopt — a new capability, a new law, a
+   new gate — in a backward-compatible way, and the host takes it by re-running its catch-up walk [INV-91]
+   with nothing it already carries rewritten. A **major** is a release a host cannot take without changing
+   what it already carries: a reworded rule the host vendored, a renamed or removed surface a host depends
+   on, a changed adoption or catch-up step, a moved law that forces host action; a major ships its dated
+   MIGRATION.md chapter [INV-91]. So the trailing question the number answers is "what must the host do to
+   take this — nothing, re-run the walk, or a migration." The default is a patch, raised to a minor or major
+   only where the release earns the higher tier. This is a judgment the releasing session makes and states,
+   **held by no machine**: the minor-versus-major call reads meaning a gate cannot, so it **stays a stated
+   rule rather than a blocking check**, the same standing as a design-review finding that never blocks a
+   lane [INV-141]. The owner asked for this guidance on 2026-07-17 ~15:45, saying it would be useful, since
+   every release so far had picked its number by the session's feel with the rule written nowhere. Worked
+   examples from the pack's own history: the 1.0.0 migration chapter renamed the host's pack folder and swept
+   its references, a host cannot take it without acting, so it is a **major** by this rule; the row-247 inbox
+   remote arm added a capability a host adopts by re-running the walk with nothing rewritten, a **minor**; a
+   fix that makes a gate finally hold a law already written is a **patch**. The 2.0.0 release is the honest
+   boundary case — its own migration chapter records "Host action: none", so by this rule it reads as a minor,
+   and its major number marked significance by the session's feel; it stands as cited rather than restamped,
+   and the rule is written now so the next release reads its number off the host cost.
 
 
 ## When NOT to load this

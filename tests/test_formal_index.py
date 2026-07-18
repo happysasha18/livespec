@@ -30,12 +30,9 @@ INDEX_HEADING = "### Formal index"
 # The current index carries NO numbering gaps (computed 2026-07-10 across every prefix). This
 # is the pinned expected gap set: a NEW hole fails the numbering check, while any historical gap
 # that ever existed would be listed here with its reason so it does not hard-fail. Today: none.
-EXPECTED_GAPS = {"INV": [213, 214, 215]}  # e.g. {"INV": [63]} would pin a retired-code hole; empty = a fully dense index
-# INTEGRATION-RECONCILE (2026-07-18, lane 2 of a live three-lane run): this lane lands INV-216 while
-# INV-213/214/215 are reserved by sibling lanes not yet merged, so the isolated branch shows that gap.
-# The orchestrator RESETS this pin at integration once the sibling invariants land (to {} if the index
-# is dense again, or to whatever residual gap remains); the landing gate on the rebased tree reds if
-# this pin is left stale, forcing the reconciliation.
+EXPECTED_GAPS = {}  # e.g. {"INV": [63]} would pin a retired-code hole; empty = a fully dense index.
+# Reconciled at the integration of the 2026-07-18 three-lane run: lanes landed INV-215, INV-216, INV-217
+# onto a main already carrying INV-213/214, so INV-213..217 are contiguous and the index is dense again.
 
 
 # --------------------------------------------------------------------------- parsers (text-in)
