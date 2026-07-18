@@ -106,6 +106,51 @@ def test_flat_informative_sentence_passes_both():
     assert error is None and offences == []
 
 
+# ---- the bare-code-lead universal law (base rule 2, "never open a line with a code") ----------------
+
+def test_universal_law_carries_the_bare_code_class():
+    """The universal chat law names the bare-code-opening class, not only the scissors frame."""
+    law = core.UNIVERSAL_CHAT_LAW
+    assert "no bare internal code opening a sentence" in law
+    # it names what a code is and that a TRAILING anchor is the pass case
+    assert "an invariant code" in law and "TRAIL" in law
+
+
+def test_renumber_laws_makes_a_single_sequence():
+    """A universal block numbered 1..2 joined to a personal overlay numbered 2..3 renumbers to 1..4 —
+    no duplicate number for the judge to mis-cite."""
+    personal = "LAW 2 — synthetic personal one.\n\nLAW 3 — synthetic personal two."
+    combined = core.UNIVERSAL_CHAT_LAW + "\n\n" + personal
+    out = core.renumber_laws(combined)
+    heads = re.findall(r"LAW (\d+) —", out)
+    assert heads == ["1", "2", "3", "4"], heads
+    # the universal block alone (two laws) renumbers to exactly 1,2
+    assert re.findall(r"LAW (\d+) —", core.renumber_laws(core.UNIVERSAL_CHAT_LAW)) == ["1", "2"]
+
+
+def test_chat_law_body_is_sequentially_numbered():
+    """The assembled chat law (universal + whatever personal overlay is installed) carries no duplicate
+    law number."""
+    heads = re.findall(r"LAW (\d+) —", judge_hook.chat_law())
+    assert heads == [str(i) for i in range(1, len(heads) + 1)], heads
+
+
+def test_bare_code_lead_reds_under_the_judge():
+    """The judge, handed the model's verdict, reds a chat sentence opening with a bare internal code."""
+    sentence = "INV-237 is the new invariant and the release pass now runs from a clean context."
+    canned = json.dumps({"offences": [{"quote": sentence, "law": 2, "why": "code leads the sentence"}]})
+    offences, error = core.parse_offences(canned, sentence)
+    assert error is None
+    assert len(offences) == 1 and offences[0]["quote"] == sentence
+
+
+def test_trailing_anchor_sentence_passes_the_judge():
+    """A sentence that opens in plain words and only TRAILS its anchor draws an empty verdict."""
+    sentence = "The release pass now runs from a clean context (INV-237)."
+    offences, error = core.parse_offences('{"offences": []}', sentence)
+    assert error is None and offences == []
+
+
 # ---- PLACE (416): a turn holding many messages reds on the one that offends -------------------------
 
 def _transcript(tmp_path, messages):

@@ -22,6 +22,7 @@ Repo home: hooks/register_judge_core.py; installed copy: ~/.claude/hooks/ (besid
 """
 import json
 import os
+import re
 import subprocess
 
 DEFAULT_MODEL = os.environ.get("REGISTER_JUDGE_MODEL", "claude-haiku-4-5-20251001")
@@ -58,7 +59,15 @@ TEXT:
 UNIVERSAL_CHAT_LAW = """LAW 1 — no naming a thing by denying its neighbour. The banned frame is "X, not Y"
 / "X — not Y", and in Russian «X, а не Y». It is banned when the denied half adds nothing the reader did
 not already have. A contrast between two things that BOTH genuinely exist and are both live for the
-reader is legitimate and passes."""
+reader is legitimate and passes.
+
+LAW 2 — no bare internal code opening a sentence to the human. A sentence shown to the person must not
+LEAD with an internal handle as its first token — an invariant code (INV-237), a roadmap or matrix row
+(row 422, M-419), a milestone or entity code (M-6, E-13, T-22), or a bare section number. The handle may
+TRAIL the plain sentence in parentheses as a quiet anchor once the words have carried the meaning; only a
+code standing as the opening token offends. Leading with the code is the agent talking to itself in its
+own filing system rather than to the reader. A sentence that opens in plain words and closes with a
+parenthetical anchor passes."""
 
 # ---- The DOCUMENT register law (ships with preshow-register-lint.py; universal to every host) -------
 DOCUMENT_REGISTER_LAW = """LAW 1 — no machine dialect in a surface a human reads. A shown surface speaks
@@ -69,6 +78,22 @@ a transliterated internal term (an English coinage respelled in the reader's alp
 industry-standard word, or an ordinary word that merely happens to appear inside such a coinage, passes —
 only the coined collocation itself leaks. Judge by whether an outside reader, never taught this project's
 private vocabulary, would meet a word as machinery rather than as meaning."""
+
+
+def renumber_laws(text):
+    """Renumber every `LAW N —` marker sequentially from 1, in order of appearance.
+
+    The universal law and the personal overlay are each numbered from their own base, so concatenating
+    them collides (universal LAW 1..2, personal LAW 2..3 give two LAW 2s). The judge cites a law by its
+    number, so a duplicate number mis-attributes an offence. Renumbering the joined text keeps the numbers
+    a single sequence whatever each block started at, so a personal overlay may number from any base."""
+    counter = [0]
+
+    def repl(_m):
+        counter[0] += 1
+        return "LAW %d —" % counter[0]
+
+    return re.sub(r"LAW\s+\d+\s+[—-]", repl, text)
 
 
 def load_personal_law(path=None):

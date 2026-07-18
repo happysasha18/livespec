@@ -33,9 +33,8 @@ def chat_law():
     """The chat law body: the universal frame law plus the personal overlay laws, numbered in sequence."""
     universal = core.UNIVERSAL_CHAT_LAW
     personal = core.load_personal_law()
-    if personal:
-        return universal + "\n\n" + personal
-    return universal
+    combined = universal + "\n\n" + personal if personal else universal
+    return core.renumber_laws(combined)
 
 
 def _is_tool_result(rec):

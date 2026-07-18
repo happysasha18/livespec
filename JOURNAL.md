@@ -5235,3 +5235,14 @@ self-application record (now docs/prover/2026-07-18-release-2.8.0.md), carrier-1
 definition instead of pointing at it, and the "as wiring" mislabel of build-pipeline which OWNS INV-237.
 The ownership was checked against the INV-164 precedent and conforms. Not a duplicate of INV-46: it binds
 the freshness to the release pass and adds self-application, both new. Pushed and deployed.
+
+## 2026-07-18 — 2.8.1 PATCH: the register judge holds "never open a line with a code" (base rule 2)
+
+The chat register judge (INV-203) gained a second universal law: a sentence shown to the person must not
+LEAD with a bare internal code (INV-x, a row or matrix number, a milestone/entity code), the codes only
+trailing as quiet anchors — base rule 2's already-stated "never open a line with a code", the
+talking-to-myself failure. A PATCH by INV-217 since the law is already stated and the host does nothing;
+the change makes the machine hold it. The universal law body now numbers LAW 1 (scissors) + LAW 2
+(bare-code), and chat_law() renumbers the joined universal+personal laws into one sequence so the judge
+cites a law by a number no personal overlay's own base can collide with (the overlay numbers from LAW 2).
+Five test cases added; installed judge copies re-synced so config-health reads no drift. Pushed and deployed.
