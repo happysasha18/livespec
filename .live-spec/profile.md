@@ -13,6 +13,14 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   instance` — recorded 2026-07-06 at the INV-36 landing, the law's own founding-ask applied to its
   birthplace; updated on Alexander's word if the pack outgrows it (SPEC INV-36).
 
+- `founding.set-version: 4` — the version of the founding-question set this tree answered; the pack is
+  its own first host and is current on the set, carrying every question that applies to it:
+  personal-versus-reusable and the kind (INV-36), the layers and proofs (INV-135), and the agent card
+  at `.live-spec/agent.md` (E-32); the design-principles question (INV-136) enters the set but binds a
+  visual kind, which a skill pack is not, so it applies to no answer here. The set's machine home is
+  `scripts/founding-questions.json`, and the update check's founding arm names any question added past
+  this version (SPEC INV-227, recorded 2026-07-18 at the INV-227 landing).
+
 - `project.layers: the rulebook and spec · the working skills · the guardrails, templates, and suite` —
   the concrete fill of the three abstract footprint categories for a skill pack: a presentation-only
   change touches one shipped doc or skill surface, a single-module change stays inside one skill or one

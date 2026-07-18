@@ -108,7 +108,13 @@ the ARCHITECTURE per-kind design-principles table (the visitor walk, the feel pa
 site, motion/scroll feel, and the interactive-overlap rule) plus any the project adds — and a visual
 `project.kind` recorded with none is flagged the way a kind with no layers or proofs is; the verify
 feel pass runs these principles, the interactive-overlap rule's pixel/DOM row living in this project's
-own suite. The same breath asks — or tells the standing
+own suite. **The founding records which version of the question set it answered (SPEC INV-227):** the
+founding questions above are a set that grows as the pack learns what a founding host owes, its newest
+member the agent card at `.live-spec/agent.md` (SPEC E-32). The host profile gains a `founding.set-version`
+line carrying the current set version from `scripts/founding-questions.json`, so a later update check can
+name any question added to the set after this host founded. A host that founded before the set was
+versioned carries no such line, and the update check's founding arm reads that as owing every question.
+The same breath asks — or tells the standing
 default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
 choice at setup, before any crisis; the rung moves only on their word.
 

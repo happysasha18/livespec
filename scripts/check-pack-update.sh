@@ -14,6 +14,8 @@ REMOTE_FILE=""
 FORCE=0
 MANIFEST=""
 PACK_ROOT=
+FOUNDING_MANIFEST=""
+HOST_PROFILE=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -23,6 +25,8 @@ while [ $# -gt 0 ]; do
     --force)          FORCE=1;             shift ;;
     --manifest)       MANIFEST="$2";       shift 2 ;;
     --pack-root)      PACK_ROOT="$2";      shift 2 ;;
+    --founding-manifest) FOUNDING_MANIFEST="$2"; shift 2 ;;
+    --host-profile)   HOST_PROFILE="$2";   shift 2 ;;
     *) echo "check-pack-update: unknown flag $1" >&2; exit 2 ;;
   esac
 done
@@ -103,12 +107,56 @@ PYEOF
   fi
 }
 
+check_founding_questions() {
+  # The founding-question arm (SPEC INV-227): the founding-question set is versioned, a host records
+  # which set version it answered on a `founding.set-version` profile line, and this arm names each
+  # founding question the host has never answered — beside the vendored files the manifest arm names.
+  # Runs on EVERY check, like the manifest arm: the standing state is a grown set and a host founded
+  # before it. A never-answered question is SURFACED for the owner to answer at catch-up, never
+  # answered here (proposal only, the duty binds forward, INV-159).
+  [ -z "$FOUNDING_MANIFEST" ] && [ -f "$ROOT/scripts/founding-questions.json" ] && FOUNDING_MANIFEST="$ROOT/scripts/founding-questions.json"
+  [ -z "$HOST_PROFILE" ] && HOST_PROFILE="$ROOT/.live-spec/profile.md"
+  if [ -n "$FOUNDING_MANIFEST" ] && [ -f "$FOUNDING_MANIFEST" ]; then
+    python3 - "$FOUNDING_MANIFEST" "$HOST_PROFILE" <<'PYEOF'
+import json, os, re, sys
+man_path, profile_path = sys.argv[1], sys.argv[2]
+try:
+    man = json.load(open(man_path))
+except (OSError, ValueError):
+    sys.exit(0)
+current = man.get("set_version")
+if not isinstance(current, int):
+    sys.exit(0)
+answered = None
+if profile_path and os.path.isfile(profile_path):
+    txt = open(profile_path, encoding="utf-8", errors="replace").read()
+    m = re.search(r"founding\.set-version:\s*(\d+)", txt)
+    if m:
+        answered = int(m.group(1))
+# A host with no readable founding.set-version founded before the set was versioned, so every
+# question is potentially owed: base at -1 names them all (the versionless-record rule, INV-91 kin).
+base = answered if answered is not None else -1
+newer = [q for q in (man.get("questions") or []) if isinstance(q.get("since"), int) and q["since"] > base]
+if newer:
+    if answered is None:
+        print("  FOUNDING QUESTIONS — this host records no founding.set-version (founded before the set was versioned):")
+    else:
+        print("  FOUNDING QUESTIONS NEWER THAN THIS HOST'S SET (answered version %d, current %d):" % (answered, current))
+    for q in newer:
+        print("    never answered: %s  [%s, records %s]" % (q.get("question", ""), q.get("anchor", ""), q.get("key", "")))
+    print("  PROPOSAL ONLY — a never-answered founding question is surfaced for the owner at catch-up; nothing is answered here.")
+PYEOF
+  fi
+}
+
 newest="$(printf '%s\n%s\n' "$installed" "$remote" | sort -V | tail -1)"
 if [ "$remote" = "$installed" ] || [ "$newest" = "$installed" ]; then
   echo "pack update check: up to date ($installed)"
   arm_out="$(check_manifest "$installed")"
-  if [ -n "$arm_out" ]; then
-    printf '%s\n' "$arm_out"
+  founding_out="$(check_founding_questions)"
+  if [ -n "$arm_out" ] || [ -n "$founding_out" ]; then
+    [ -n "$arm_out" ] && printf '%s\n' "$arm_out"
+    [ -n "$founding_out" ] && printf '%s\n' "$founding_out"
     echo "  PROPOSAL ONLY — nothing installed; updating is the human's word."
   fi
   exit 0
@@ -119,6 +167,7 @@ echo "  what changed: https://github.com/happysasha18/live-spec/blob/main/JOURNA
 echo "  update road: install.sh (attic-backed) — or a plain 'git pull' where the repo itself runs the pack"
 
 check_manifest "$installed"
+check_founding_questions
 
 echo "  PROPOSAL ONLY — nothing installed; updating is the human's word."
 exit 0

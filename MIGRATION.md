@@ -20,6 +20,7 @@ The walk runs four phases in order (A-11). Its plan and its working artifacts li
 2. Read the package's current `VERSION` and journal, and the migration chapters below.
 3. Build the work list: the ordered chain of migration chapters from the host's recorded package version to the current one (see "Migration chapters"), plus any drift the tree shows against what those chapters expect. A record that carries no readable package version — commit pins, or no record at all — starts the chain at the earliest chapter; every step's already-done check makes over-application harmless (INV-89).
 4. Treat every precondition written in this guide as a claim to check against the tree. Where a written precondition and the tree disagree, the tree is the truth.
+5. Name the founding questions this host has never answered: read the host profile's `founding.set-version` against the current set in `scripts/founding-questions.json`, and list each question added after the host's recorded version — the agent card at `.live-spec/agent.md` (SPEC E-32) among them for a host that founded before it. A host with no `founding.set-version` line founded before the set was versioned and owes every question. Each gap rides the plan for the owner to answer, and the walk records the current set version once answered; a never-answered question is surfaced for the owner, answered on no one's behalf (SPEC INV-227, the duty binds forward INV-159).
 
 ## Phase 2 — plan, behind the owner's gate
 
