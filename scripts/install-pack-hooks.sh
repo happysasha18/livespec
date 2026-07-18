@@ -24,8 +24,9 @@ done
 DEST_DIR="$HOME/.claude/hooks"
 SETTINGS="$HOME/.claude/settings.json"
 
-# The universal files this script ships: the scissors scan and the register-judge mechanism + arms.
-JUDGE_FILES="scissors-scan.py register_judge_core.py register-judge.py register-judge-collect.sh register-judge-report.sh"
+# The universal files this script ships: the scissors scan, the answer-first arm, and the register-judge
+# mechanism + arms.
+JUDGE_FILES="scissors-scan.py answer-first-scan.py register_judge_core.py register-judge.py register-judge-collect.sh register-judge-report.sh"
 
 if [ "$DRY_RUN" = "1" ]; then
   for f in $JUDGE_FILES; do
@@ -35,7 +36,7 @@ if [ "$DRY_RUN" = "1" ]; then
       echo "DRY-RUN: would copy $DIR/hooks/$f -> $DEST_DIR/$f"
     fi
   done
-  echo "DRY-RUN: would wire Stop hooks 'scissors-scan.py' + 'register-judge-collect.sh' into $SETTINGS (if absent)."
+  echo "DRY-RUN: would wire Stop hooks 'scissors-scan.py' + 'answer-first-scan.py' + 'register-judge-collect.sh' into $SETTINGS (if absent)."
   echo "DRY-RUN: would wire UserPromptSubmit hook 'register-judge-report.sh' into $SETTINGS (if absent)."
   echo "DRY-RUN: scissors-personal.json and register-judge-personal.md are never touched by this script."
   exit 0
@@ -69,6 +70,7 @@ def wire(event, needle, cmd):
         print("installed: %s hook %s wired" % (event, needle))
 
 wire("Stop", "scissors-scan.py", "python3 ~/.claude/hooks/scissors-scan.py")
+wire("Stop", "answer-first-scan.py", "python3 ~/.claude/hooks/answer-first-scan.py")
 wire("Stop", "register-judge-collect.sh", "sh ~/.claude/hooks/register-judge-collect.sh")
 wire("UserPromptSubmit", "register-judge-report.sh", "sh ~/.claude/hooks/register-judge-report.sh")
 

@@ -1,0 +1,1 @@
+[10:05] Yes, that field is nullable in the current schema; nothing else references it.

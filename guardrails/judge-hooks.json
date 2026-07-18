@@ -5,6 +5,7 @@
     "chat-law-hook": "UserPromptSubmit",
     "register-judge-report": "UserPromptSubmit",
     "scissors-scan": "Stop",
+    "answer-first-scan": "Stop",
     "register-judge-collect": "Stop"
   },
   "library": ["register-judge", "register_judge_core"]

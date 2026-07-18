@@ -46,6 +46,15 @@ written, ahead of the new worker's first write. The session's live setting lines
 into the brief verbatim — a worker never resolves the settings ladder itself, it cannot hear the human's
 spoken word.
 
+**The brief carries the register laws, so the worker's own text obeys them (SPEC INV-221, INV-173).** The
+brief states the register laws the worker's report and any agent-to-agent message must hold — the
+no-scissors law (no naming a thing by denying its neighbour, SPEC INV-173) and the no-dramatization law
+(grading the size of a change, up or down, is the reader's act, SPEC INV-221). A worker writes text a
+human reads, and the chat and document judges [INV-203] never read its report, so the brief is where the
+laws reach it. The worked instance: workers reporting to this pack opened "Excellent work" and named a
+premise wrong "in an important way", both graded-size sentences the worker had no brief telling it to
+drop (the owner's count, 2026-07-17).
+
 The brief ARMS the worker for the workshop — it carries the host's problem-ledger path
 (`.live-spec/PROBLEMS.md`) with the WATCHED-line duty: workshop noise the worker hits (a flaky harness, a
 missing dependency, a tool misbehaving) goes into its checkpoint as a ledger line — signature, date, one
