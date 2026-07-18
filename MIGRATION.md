@@ -199,3 +199,22 @@ law), the wrong-referral naming (INV-225), the release-note offers section (INV-
 default (INV-229), the listener tripwire and remote-read grant (INV-231, INV-232), the net-liveness meter
 (INV-202), an expensive decision's adversarial read (INV-235), and the traffic-kind transport split
 (INV-236). None reword a rule a host holds; all are adopted by re-running the walk.
+
+### 2.8.0 — 2026-07-18
+
+**Host action: re-run the catch-up walk.** The 2.8.0 minor adds one law, backward-compatible: nothing a
+host holds is reworded in a breaking way, no surface is renamed or removed, no earlier adoption step
+changes. A host takes it the ordinary way — pull the pack, run `scripts/sync-skills.sh`, and re-run the
+catch-up walk (INV-91). The tier is MINOR by rule 32 / SPEC INV-217: the host re-runs its walk and
+rewrites nothing it holds.
+
+1. **The authoring seat does not adversarially certify its own work (INV-237; base rule 33).** A
+   release's adversarial pass — the full re-prove at the release gate — is now authored by a fresh seat,
+   never the seat that authored the change, and a newly added lens or rule is run against the very
+   document that introduces it before release (self-application), the release record naming the result.
+   This generalizes the fresh-context freshness the verify audit already demands (INV-46) to the release
+   pass itself, after the 2.7.0 release ran its adversarial pass in the context that authored its new
+   lenses and so missed a self-referential miscount a fresh review caught. A host adopts nothing
+   mechanical: the law is a review discipline carried in the pack's own text, with an optional release
+   gate that checks a dated clean-context review record exists and names a different seat. Nothing a host
+   vendored is reworded.

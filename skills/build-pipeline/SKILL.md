@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 2.7.1
+  version: 2.8.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.7.1), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v2.8.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -373,6 +373,14 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    under the full contract (checkpoint, ledger, clock), and its verdict rides the landing report. Anywhere
    else the checker is the senior's option. A skill or prose landing walks the ladder in its kind's form:
    the checker re-reads the SHIPPED text against the spec sentences.
+
+   **The authoring seat never certifies its own work adversarially (SPEC INV-237).** The freshness above is
+   the whole rule, not an option the release pass may waive: a release's adversarial pass — the full
+   re-prove at the release gate — is authored by a fresh seat, never the seat that authored the change, and
+   a newly added lens or rule is run against the very document that introduces it before release
+   (self-application), the release record naming the result. A release gate may require a dated
+   clean-context review record naming a seat other than the release's; the mechanical floor checks the
+   record exists, is release-dated, and names a different seat, the rest a discipline the seat holds.
 
 9. **Commit & show.** Commit when green with no regression (unasked) — same or better is enough, never wait for perfect. Where the host has a remote, PUSH accepted work there by rule (SPEC INV-82): every gate the diff reaches ran and passed (the verdict read from the suite log's own line), plus the host's own push lines; the remote is discovered from the tree, and only a host with no remote gets one contextual question at the first push moment (create one — GitHub, GitLab, whatever the human names — or stay local, recorded in the host profile). Every push re-walks the README against the pushed truth — crisp and current, a stale claim fixed before the push (the shopfront law at every-push cadence). After the push the push step reads the remote gate's own verdict (the CI run the push triggered, one `gh run` read), and a red verdict is the pushing session's own immediate bug: fixed and re-pushed the same session before anything else, so the human never meets the red first in a GitHub email; a slow gate is watched to its verdict on the detached-work cadence (SPEC INV-106, INV-35). The human's personally named gates still wait for his word. Bump the version, PATCH by default; the number reports what taking the release costs a host, and the tier is read off that cost — a patch fixes a machine to hold a law already stated (the host does nothing), a minor grows what a host may adopt by re-running its catch-up walk with nothing rewritten, a major forces a host action and ships its dated MIGRATION.md chapter (base rule 32 / SPEC INV-217). The minor-versus-major call is a stated judgment the releasing session makes and names, held by no gate.
    Docs travel with the change — README + CHANGELOG + the skill's own `SKILL.md`, same session. Diary the WHY

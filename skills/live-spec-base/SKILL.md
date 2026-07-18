@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-two rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-three rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 2.7.1
+  version: 2.8.0
 ---
 
 # live-spec-base — one rulebook, nine working skills
@@ -448,6 +448,21 @@ answer to a class is a list, the design is wrong.
    boundary case — its own migration chapter records "Host action: none", so by this rule it reads as a minor,
    and its major number marked significance by the session's feel; it stands as cited rather than restamped,
    and the rule is written now so the next release reads its number off the host cost.
+
+33. **The authoring seat does not adversarially certify its own work (SPEC INV-237).** The seat that
+   authored a change drafts and accepts it, and it never provides that change's own adversarial
+   certification — a head marinated in the authoring context is blind to the blind spot it just wrote. Two
+   carriers. A release's adversarial pass — the full re-prove at the release gate [INV-116] — is authored by
+   a fresh seat, a differently-contexted head briefed from the primary sources, the same freshness the
+   verify audit already demands of its checker (SPEC INV-46) now stated for the release pass
+   itself; the 2.7.0 release ran its adversarial pass in the context that authored the new lenses and so
+   never turned a brand-new lens onto the skill body that introduced it. And a newly added lens or rule is
+   run against the very document that introduces it before release — self-application — the release record
+   naming the result. A release gate may require a dated clean-context review record naming a seat other
+   than the release's; whether the review was truly clean-context is a process fact no gate fully sees, so
+   the gate checks the record exists, is dated to the release, and names a different seat — the mechanical
+   floor under a discipline the seat holds. The owner's word, 2026-07-18, after a fresh web review caught
+   self-referential defects the in-context 2.7.0 prover missed.
 
 
 ## When NOT to load this

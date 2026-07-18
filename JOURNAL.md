@@ -5218,3 +5218,20 @@ first member wired), an INV-152 taste mis-cite (INV-143 added beside it), "best 
 that name no tier (re-attributed to the quality habit), and the engine/instance split [INV-85] as a
 credible sixth member the sweep had missed (admitted). All four folded before the commit; the fold table
 rides the prover record `docs/prover/2026-07-18-row395-expensive-decision.md`. Not pushed.
+
+## 2026-07-18 — 2.8.0 MINOR: the clean-context review law (INV-237)
+
+Alexander's word after a fresh web review caught self-referential defects the in-context 2.7.0 release
+prover missed (a Phase-5 count naming four blocks over five, two bullets packing three rules each): the
+authoring seat is blind to its own new blind spot, so an adversarial review must run from a clean context.
+Landed as INV-237 + base rule 33, wired into build-pipeline's verify station and product-prover's release
+self-application, owned by the build-pipeline node, with M-419 and tests/test_clean_context_review.py.
+The law has two carriers: a release's adversarial pass is authored by a FRESH seat (generalizing INV-46's
+verify-audit freshness to the release re-prove [INV-116], the locus INV-46 never reached), and a newly
+added lens or rule is self-applied to its own introducing document before release. Dogfooded on itself:
+the release's adversarial pass ran from a clean context (a fresh reviewer), which found it sound and
+folded four items before the commit — the missing version bump and docs-travel, the missing
+self-application record (now docs/prover/2026-07-18-release-2.8.0.md), carrier-1 re-describing INV-46's
+definition instead of pointing at it, and the "as wiring" mislabel of build-pipeline which OWNS INV-237.
+The ownership was checked against the INV-164 precedent and conforms. Not a duplicate of INV-46: it binds
+the freshness to the release pass and adds self-application, both new. Pushed and deployed.
