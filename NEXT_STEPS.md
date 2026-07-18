@@ -3,10 +3,19 @@
 ## ON RESUME (2026-07-18 night — context was cleared; one loop drives this movement, in order)
 All designs are committed; read each, then execute through the method. Push on green (his grant). Leave
 every taste/policy fork as an explicit MORNING question — do not guess. Report at each station.
-1. **Close product-prover 2.7.1 patch** (content committed c59ed46 — dense-lens-bullet splits + de-jargoned
-   README, validated by three clean-context adversarial reviews). Bump to 2.7.1 via `scripts/stamp-versions.py`,
-   run skill-creator's review, run the gate chain, push. Pre-existing register-lint on SKILL.md:203/215
-   ("say so plainly") is OUTSIDE the delta — it must not block.
+1. **Close product-prover 2.7.1 patch** (content committed c59ed46 + phrase-restore commit — dense-lens-bullet
+   splits + de-jargoned README, validated by three clean-context adversarial reviews; the readability split
+   first RED six content-pinning tests, all reconciled — FULL SUITE GREEN 1576/0). PUSH IS BLOCKED tonight by
+   two gates, both to clear on resume: (a) **gate s** — product-prover needs a FRESH skill-creator review
+   record (the old record predates this change, INV-208); run skill-creator's review and record it. (b)
+   **gate g pin-drift** — two PRE-EXISTING drifts unrelated to tonight: `skills/build-pipeline/references/delegation-protocol.md:1`
+   (worker-brief register-laws clause, INV-221) and `templates/skill-review.template.md:1` (INV-208) — label
+   not found within ±25 lines; reconcile the pin or the label. Then bump to 2.7.1 via `scripts/stamp-versions.py`
+   and push. Pre-existing register-lint on SKILL.md:203/215 ("say so plainly") is OUTSIDE the delta — must not block.
+   Everything is committed LOCALLY (survives /clear on disk); origin is green at 2f48d11 (pre-patch).
+   NOTE (his 2026-07-18 word): the deep adoption/onboarding BUILD (steps 3) waits for a fresh context / newer
+   models — this session hit its context ceiling. Restore the status-report discipline (a TIME estimate per ask,
+   tracked обещал→вышло) in its ONE home (the status-report format), not scattered.
 2. **Land the clean-context review rule as a MINOR** — design `docs/design/2026-07-18-clean-context-review-rule.md`
    (new INV-237 + base rule + build-pipeline/product-prover reference). Review it FROM A CLEAN CONTEXT (dogfood).
 3. **Build the adoption + onboarding movement as a MINOR** — designs `docs/design/2026-07-18-adoption-and-resource-model.md`
