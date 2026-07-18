@@ -68,3 +68,9 @@ resolves; SKILL.md sits under the 500-line ideal; the `description` frontmatter 
 - **Version stamp.** This record ships in the same push range as the reviewed edit and the two folds
   above; the 2.7.1 stamp is applied by `scripts/stamp-versions.py` and is exempt from this gate by
   construction.
+
+## Push re-check (2.7.1)
+
+Re-confirmed at the pushed state: the two folds above are in `skills/product-prover/SKILL.md` and
+`README.md`, the description frontmatter is unchanged, and the version stamp is the only later touch to
+the skill. This record carries the pushed state so gate s reads it fresh against the stamp commit.

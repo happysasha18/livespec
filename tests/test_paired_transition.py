@@ -80,7 +80,7 @@ class TestPairedTransition(unittest.TestCase):
             else:
                 self.fail("INV-126 Formal-index row missing")
         pv = read_flat("skills/product-prover/SKILL.md")
-        self.assertIn("And the half's magnitude question", pv)
+        self.assertIn("the inverse's magnitude", pv)
         self.assertIn("same magnitude as the forward move", pv)
         sa = read_flat("skills/spec-author/SKILL.md")
         self.assertIn("asks magnitude beside existence", sa)

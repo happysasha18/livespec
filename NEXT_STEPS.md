@@ -92,10 +92,7 @@ push; these are the next movement's work.
   unverified approved-vendor question; waking an idle window needs the harness).
 
 ## Research and records in hand
-- `research-agent-transport.md` + `research-direct-channel.md` (scratchpad) — the direct-protocol
-  research, done. A2A (Linux Foundation, card at a well-known path, no central registry) re-invents our
-  card; ACP dead; exactly-once impossible, at-least-once + idempotent the target (401). The reframe
-  INV-236 carries: file-skepticism is right about TRANSPORT, files legitimate as STORE — a receiver that
-  is not running is reachable by nothing else.
-- `docs/research/2026-07-17-agent-routing-prior-art.md` — Contract Net (1980): its directed contract IS
-  this pack's referral law renamed; it carries the git premise he refused, so read it knowing that.
+- Direct-protocol research (scratchpad `research-agent-transport.md` + `research-direct-channel.md`):
+  A2A re-invents our card, ACP dead, at-least-once + idempotent the target (401); INV-236's reframe —
+  files legitimate as STORE, not TRANSPORT. Prior-art `docs/research/2026-07-17-agent-routing-prior-art.md`:
+  Contract Net (1980) is the referral law renamed, carrying the git premise he refused.

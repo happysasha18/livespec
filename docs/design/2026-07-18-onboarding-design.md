@@ -146,6 +146,40 @@ what I assumed" transparency, and each just-in-time reveal carries a one-line "h
 needs its own pass and a worked example of the first five minutes from the person's side; report it in the
 morning.
 
+## Second steer — the welcome explains the whole process and earns trust (2026-07-18 ~22:50)
+
+Alexander added a second steer to develop before the build (captured verbatim in intent, to work out in
+the morning): the onboarding should explain the whole process the way the pack actually runs it — a
+one-paragraph, README-style account of what will happen, not a settings form. The design work is how such
+a welcome establishes trust: how it chooses its language (it can say a thing one way or another), and how
+it presents choices as genuine alternatives ("you can do it this way, or you can do it that way") rather
+than as a single prescribed path. Open question he raised: whether this whole welcome-and-trust layer is
+its own sub-skill, distinct from the settings-and-defaults onboarding designed above.
+
+Threads to work out in the morning, each unresolved:
+- **The one-paragraph process account.** A short README-voice paragraph a newcomer reads once that conveys
+  the whole shape (a spec leads, the build and tests hold to it, gates guard the push) without a lecture.
+  It must fit beside the "ask little" principle above — the paragraph is the clarity the speed-vs-clarity
+  thread owes, delivered as one readable piece.
+- **Establishing trust.** What earns a newcomer's trust in the first screen: honesty about what the pack
+  assumed, showing rather than asserting, naming the person's gates (what stays theirs to decide), and a
+  visible way to change any default. Draw on the existing "here is what I assumed" transparency the card
+  already carries.
+- **Language, said one way or another.** The welcome's register is a deliberate choice, not a default —
+  which of two phrasings of the same fact reads as trustworthy and plain versus salesy or opaque. This is
+  the register laws (no-scissors, no-inflation, plain words) applied to the very first contact.
+- **Alternatives, offered as choices.** Where the walk presents a fork, it says "you can do it this way,
+  or that way" with the tradeoff, on the person's own clock — the offer stance the pack already takes for
+  publish attribution and release-note next steps, brought to onboarding.
+- **Sub-skill or not.** Whether this welcome-and-trust layer is a separate sub-skill (its own SKILL.md,
+  its own triggering) or a section of the onboarding designed above. Recommendation to develop: decide by
+  whether it has an independent trigger — if the welcome is only ever reached through adoption, it is a
+  section; if a person can ask "explain how live-spec works" on its own, it earns a sub-skill. Report the
+  call in the morning.
+
+The build of both steers waits on a fresh context / newer models (his word 2026-07-18) — this is design
+capture only, so the night's thinking survives to the morning report.
+
 ## Where this sits in the movement
 
 This onboarding design is the user-facing half of the adoption-and-resource movement
