@@ -1,19 +1,17 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — rows 386 + 412 + 414 lane-open act LANDED locally (not pushed), suite 1340 passed + 1 PRE-EXISTING red, gate k re-frozen, v2.6.3)
+## LIVE STATE (2026-07-18 — the live three-lane run INTEGRATED locally (not pushed): rows 379 + 406 + 407 landed in order, suite 1366 green, v2.6.3)
 
-**Rows 386 + 412 + 414 (this landing): opening a lane is now an act a session PERFORMS (INV-214).**
-`scripts/open-lane.sh` runs the act by deed (claim commit on main under the pen → `lane/<row>-<slug>` cut into its
-own worktree → worker brief; refuses over-cap / non-one-row-claim / off-main / nothing-staged). The serial-work
-"gate" 412 asked for is DECIDED as a DISCIPLINE — independence is a senior read no diff settles and lane branches
-are torn down at each landing, so no push-time signal survives (reasoning: docs/prover/2026-07-18-rows386-412-414-lane-open-act.md).
-Row 414: the cap re-homed to the ladder (`lanes.cap`, default three; owner's value in his profile; spec/skills
-de-hardcoded). **STILL OPEN in 386 + 412: the LIVE three-lane run in one window**, a field beat the orchestrator
-runs. **PRE-EXISTING suite red before push:** `guardrails/check-runaway-child.py:10` carries the owner's name
-(INV-120), reproduces at clean HEAD 0f9c881, predates this delta (row 420's) — fix = de-personalize the comment.
-**NOT pushed — the push gate and a prover re-check are the orchestrator's.** Prior (detail in JOURNAL): rows 390 +
-392 docs split-and-rotate (INV-209), node-growth/byte-bound legs OPEN; rows 416·417·418 class-rule audit; `f40f2a1`
-pushed at v2.6.0. Everything below waits.
+**The three-lane run (the live-run leg of 386 + 412): three independent rows built in parallel isolated
+worktrees, then integrated onto main IN ORDER — 379 (INV-215, enumerable facts earn bullet structure,
+M-396), 406 (INV-216, config-health reds a dead permission rule, M-397), 407 (INV-217, the release-tier
+rule: minor/major/patch by host cost, M-398). Shared-doc overlaps reconciled (PRODUCT_SPEC formal index +
+clauses, ARCHITECTURE owns-lists, ROADMAP rows, EXPECTED_GAPS→{}) so INV-213..217 stand contiguous.**
+**Finding:** the `isolation:"worktree"` road cuts a lane from the pushed origin/main, not local HEAD, so
+each lane's base was the stale fe6ef60 (main was three commits ahead: INV-213/214/120); integration
+rebased the deltas onto current main. **The live-three-lane-run leg of 386 + 412 is CLOSED by this run.**
+Prior (detail in JOURNAL): rows 386+412+414 lane-open act (INV-214); rows 390+392 docs rotation (INV-209).
+**NOT pushed — the push gate, a prover re-check, and the VERSION bump are the orchestrator's.**
 
 ## ON RESUME — in order
 
@@ -64,8 +62,8 @@ pushed at v2.6.0. Everything below waits.
   **git already enforces the pen's central clause** — one tree holds main, every other worktree refused
   by name — and the subagent road (`isolation: "worktree"`) carries no gate and works TODAY.
 - **412 — his field finding, and it re-aimed 386**: three items asked in parallel, none ran; the law
-  GRANTS lanes and no act OPENS one. Owed: the lane-open act, the gate reddening serial independent
-  work, a live three-lane run.
+  GRANTS lanes and no act OPENS one. Lane-open act landed (INV-214); the serial-work check is a discipline;
+  the live three-lane run is DONE (rows 379/406/407 integrated 2026-07-18). Row closed on those legs.
 - **396's premise is WEAKER — weigh before building.** The live channel has NO confirmed customer: under
   the pen, lanes negotiate nothing. Physics settled: discovery yes, delivery no (zero listeners across
   four live sessions); the plumbing is built and off; the one proven road is a file plus a watcher the
@@ -78,7 +76,7 @@ pushed at v2.6.0. Everything below waits.
   growth, ruled by his 15:57 word: bound what is SHOWN, the archive keeps all and earns grooming ·
   **383/384/391** the machine-holds-the-rule family · **394** older hosts meet a grown founding question ·
   **385/387/388/389** the layer's owed arms (387 is the field's instrument: five of six hosts have no card)
-  · **379, 380, 370, 393, 397, 406, 407** smaller, unblocked.
+  · **380, 370, 393, 397** smaller, unblocked (379/406/407 LANDED 2026-07-18, the three-lane run).
 - **New this session, his 2026-07-17 ~18:2x word**: **419** a changed skill reds the push until its
   skill-creator review is on record (a habit turned into a gate) · **420** audit which other standing
   habits should become gates · plus the **390/392 rotation extension** — the append-only working docs get
