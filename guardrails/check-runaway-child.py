@@ -7,7 +7,7 @@ for forty-six minutes after its worker reported done, and a frozen status line m
 next unexplained slowdown. The run owns that descendant — it sits in the run's own process group, or
 it runs from under the run's own temp tree — so the run answers for it. At a stopping point the run
 REPORTS a runaway descendant it provably owns: what it is, how much CPU it holds, and why the run
-owns it. That is the minimum owed (Alexander 2026-07-17 ~16:58, the same word that ordered row 417's
+owns it. That is the minimum owed (the owner 2026-07-17 ~16:58, the same word that ordered row 417's
 cleanup notice), so an unexpected burn is visible the moment it happens.
 
 WHERE IT LIVES. This is a Stop-time notice, not a push gate: a push gate runs long after the runaway
