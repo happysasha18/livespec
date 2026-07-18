@@ -1,6 +1,25 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — 2.7.0 pushed (commit c74b8f2 on origin/main), release tag v2.7.0 STILL OWED: 34 rows closed this movement, suite 1578 green)
+## ON RESUME (2026-07-18 night — context was cleared; one loop drives this movement, in order)
+All designs are committed; read each, then execute through the method. Push on green (his grant). Leave
+every taste/policy fork as an explicit MORNING question — do not guess. Report at each station.
+1. **Close product-prover 2.7.1 patch** (content committed c59ed46 — dense-lens-bullet splits + de-jargoned
+   README, validated by three clean-context adversarial reviews). Bump to 2.7.1 via `scripts/stamp-versions.py`,
+   run skill-creator's review, run the gate chain, push. Pre-existing register-lint on SKILL.md:203/215
+   ("say so plainly") is OUTSIDE the delta — it must not block.
+2. **Land the clean-context review rule as a MINOR** — design `docs/design/2026-07-18-clean-context-review-rule.md`
+   (new INV-237 + base rule + build-pipeline/product-prover reference). Review it FROM A CLEAN CONTEXT (dogfood).
+3. **Build the adoption + onboarding movement as a MINOR** — designs `docs/design/2026-07-18-adoption-and-resource-model.md`
+   + `2026-07-18-onboarding-design.md`. Principle: ask little, default well, reveal the rest; warm welcome +
+   user journey; the speed-vs-clarity thread owes a worked "first five minutes" example (report to Alexander
+   in the morning). Build through the full method. Guard with SEVERAL clean-context adversarial passes; NO
+   regressions to the existing walk. FORKS FOR ALEXANDER (surface, never guess): preset values; default preset
+   (careful vs balanced); ask-vs-infer the cost preset; 2 or 3 presets; the one pre-push home; plan-axis scope.
+4. **Also owed:** the bare-code register-judge extension (flag a row/INV number leading a chat sentence — the
+   "talking to myself" fix; chat can't be hard-gated, so it's the post-hoc judge). Raw reader results in the
+   scratchpad: `adversarial-findings.md`, `adoption-movement-findings.md` (may not survive a fresh session).
+
+## LIVE STATE (2026-07-18 — 2.7.0 released: commit c74b8f2 + tag v2.7.0 both pushed. A 2.7.1 patch + two MINORs are queued in ON RESUME above.)
 
 **2.7.0 is cut (MINOR, per INV-217): the movement since v2.6.0 closed 34 ROADMAP rows and added 39
 invariants (INV-198…INV-236, the Formal index contiguous through 236).** VERSION stamped to 2.7.0 across
@@ -8,8 +27,7 @@ plugin.json, the spec title, and every skill frontmatter (version-only diff); th
 chapter names what a host adopts at catch-up; the release prover record
 (`docs/prover/2026-07-18-release-2.7.0.md`) certifies the index contiguity, gate w (26 gates each with a
 red proof), gate u (CI mirror), the green suite, and the three high-stakes landings' adversarial
-corrections. **The release commit is pushed to origin/main (c74b8f2, 2026-07-18 10:33). The annotated
-release tag `v2.7.0` is not yet cut — that tag is the one owed release act still open.**
+corrections. **The release commit (c74b8f2) and the annotated tag `v2.7.0` are both pushed to origin. 2.7.0 is fully released.**
 
 What landed this movement (detail in JOURNAL): the register judge (INV-203, replacing INV-83's retracted
 growth duty); the new push gates o…z (cleanup-notice, touchpoint-kind, waiting-list, authority-anchor,
