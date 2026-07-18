@@ -1,0 +1,52 @@
+RED-FIRST PROOF — ROADMAP rows 390 + 392 residual legs (growth-law family)
+Date: 2026-07-18 · run against the pre-delta tree (mechanisms + docs absent)
+
+Command:
+  python3 -m pytest tests/test_node_growth.py tests/test_doc_bound.py -q
+
+Result: 29 failed, 3 passed in 0.42s
+
+The 3 passing are the "not-wired" negatives, correctly green while the mechanisms were absent:
+  - test_node_growth.py::test_rides_the_suite_not_the_push_chain (pre-push carries no node_growth_counter)
+  - (the doc-bound wiring negatives were among the failures since the gate is expected present)
+
+The 29 failures (mechanisms + spec/index/architecture/matrix + skill prose absent):
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_a_seeded_cap_admits_standing_debt_but_reds_growth
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_cap_config_ships
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_cap_ratchets_down_only
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_counter_passes_a_file_at_or_below_its_ratchet
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_counter_reds_a_file_over_its_ratchet
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_counter_ships
+  tests/test_node_growth.py::TestNodeGrowthMechanism::test_live_architecture_within_caps
+  tests/test_node_growth.py::TestNodeGrowthReviewDuties::test_design_reviewer_carries_the_split_proposal_shape
+  tests/test_node_growth.py::TestNodeGrowthReviewDuties::test_product_prover_carries_the_seventh_lens
+  tests/test_node_growth.py::TestNodeGrowthDocs::test_architecture_owns_the_invariant
+  tests/test_node_growth.py::TestNodeGrowthDocs::test_formal_index_row
+  tests/test_node_growth.py::TestNodeGrowthDocs::test_matrix_row_covers_the_law
+  tests/test_node_growth.py::TestNodeGrowthDocs::test_spec_states_the_law
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_bounds_config_declares_the_four_docs
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_each_bound_carries_a_recorded_reason
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_each_bound_is_above_the_current_file
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_gate_passes_a_doc_within_its_bound
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_gate_passes_a_freshly_rotated_doc
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_gate_passes_the_real_tree
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_gate_reds_a_doc_over_its_bound
+  tests/test_doc_bound.py::TestDocBoundMechanism::test_gate_ships
+  tests/test_doc_bound.py::TestDocBoundWiring::test_gate_mirrored_in_ci
+  tests/test_doc_bound.py::TestDocBoundWiring::test_gate_registered_in_red_proofs
+  tests/test_doc_bound.py::TestDocBoundWiring::test_gate_wired_into_pre_push
+  tests/test_doc_bound.py::TestDocBoundDocs::test_architecture_owns_the_invariant
+  tests/test_doc_bound.py::TestDocBoundDocs::test_formal_index_row
+  tests/test_doc_bound.py::TestDocBoundDocs::test_matrix_row_covers_the_law
+  tests/test_doc_bound.py::TestDocBoundDocs::test_spec_composes_with_rotation
+  tests/test_doc_bound.py::TestDocBoundDocs::test_spec_states_the_law
+
+After the build (mechanisms + docs + wiring landed):
+  python3 -m pytest tests/test_node_growth.py tests/test_doc_bound.py -q
+  Result: 32 passed
+
+Key red-proofs (the gate/counter actually reds):
+  - node_growth_counter.py: a fixture file carrying 3 nodes past a default ratchet of 2 exits non-zero;
+    a file at/below the ratchet exits 0; a file seeded at 3 passes at 3 and reds at 4.
+  - check-doc-bound.py (gate z): a doc over its bound with no rotation exits non-zero; a within-bound doc
+    and a doc rotated today (over its bound) exit 0; a stale (other-day) rotation over bound reds.

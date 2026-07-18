@@ -90,6 +90,8 @@ jobs:
         run: python3 guardrails/check-index-prose.py
       - name: gate y — agent card (a live-spec host tree carries its .live-spec/agent.md card, SPEC INV-219)
         run: python3 guardrails/check-agent-card.py
+      - name: gate z — doc bound (each growable working doc within its declared bound or freshly rotated, SPEC INV-234)
+        run: python3 guardrails/check-doc-bound.py
 
   # After the gates pass on a real push to main, sync the standalone mirror repos from the
   # pack — the durable, cross-machine arm of the same job the local pre-push hook does (the

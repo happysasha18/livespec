@@ -2073,19 +2073,21 @@ class TestProblemLedger(unittest.TestCase):
         """Row 365 (M-347, INV-41): every stated quality budget names the mechanical watcher
         that reds past the stated number, or carries a decided sentence naming why it is read
         by eye — the duty stands in the INV-41 clause and its index row, the prover's
-        architecture lens (grown in place; the lens stays six checks), the architecture
-        template's budget table (a Watcher column), the pipeline's budget instruction, and
-        the pack's own ARCHITECTURE.md budget table (every row's Watcher cell filled)."""
+        architecture lens (the watcher ask grows the budget item IN PLACE, never its own
+        check), the architecture template's budget table (a Watcher column), the pipeline's
+        budget instruction, and the pack's own ARCHITECTURE.md budget table (every row's
+        Watcher cell filled). The lens itself grew to seven checks on 2026-07-18 with the
+        node-growth re-ask (INV-233, ROADMAP 390) — a distinct law, not the watcher ask —
+        so the invariant checked here is only that the watcher ask stays folded into the
+        budget item, verified by 'each names its watcher' above."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("names its watcher", "reds past the stated", "read by eye",
                        "names the watcher that reds past"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
         self.assertIn("each names its watcher", prover,
-                      "prover lens missing the watcher ask in the budget item")
-        self.assertIn("six checks", prover,
-                      "the lens must stay six checks — the watcher ask grows the budget "
-                      "item in place, never a seventh check")
+                      "prover lens missing the watcher ask in the budget item — the watcher "
+                      "duty must stay folded into the budget check, never its own check")
         template = re.sub(r"\s+", " ", read(os.path.join("templates", "ARCHITECTURE.template.md")))
         self.assertIn("| Budget | Number | Instrumentation home | Watcher |", template,
                       "template budget table missing the Watcher column")
