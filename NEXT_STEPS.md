@@ -60,7 +60,9 @@ push; these are the next movement's work.
   promoter + N planned instances); the unaddressed part is the single-window orchestrator over many
   instances, to resolve with the far-tier orchestrator view (row 411). Human-only fact: this is a
   POLICY and architectural-taste call — the rule's content is Alexander's to set, the row only holds
-  the question.
+  the question. Findings + his stated model captured in `docs/design/2026-07-18-window-model-and-transport.md`
+  (window = fluid working set; files = base transport; channels = push into OPEN windows, gated on the
+  unverified approved-vendor question; waking an idle window needs the harness).
 
 ## Research and records in hand
 - `research-agent-transport.md` + `research-direct-channel.md` (scratchpad) — the direct-protocol
