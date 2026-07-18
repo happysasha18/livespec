@@ -65,6 +65,19 @@ if [ -d "$HOOK_SRC_DIR" ]; then
   done
 fi
 
+# INV-216: a permission rule that points at nothing is a dead rule. This arm reads every permission
+# rule that names a filesystem path in the personal ~/.claude/settings.json and the host's project
+# settings and reds a rule whose path is absent — the ~/tlvphoto→~/tlvphotos rename (2026-07-10) sat
+# a week failing silently into prompts. Personal-layer: it stands down by name where the settings
+# cannot be read and never falsely passes. Rides gate m's existing CI carve-out (a CI checkout skips
+# this whole script) and gate m's red proof; it adds no gate letter.
+PERMS="$(dirname "${BASH_SOURCE[0]}")/check-config-health-perms.py"
+if [ -f "$PERMS" ]; then
+  if ! python3 "$PERMS"; then
+    fail=1
+  fi
+fi
+
 if [ "$fail" -eq 0 ]; then
   echo "config-health: OK (installed hooks match their sources)"
 fi

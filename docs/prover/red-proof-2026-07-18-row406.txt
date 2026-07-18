@@ -1,0 +1,29 @@
+RED PROOF — ROADMAP row 406 / INV-216 / M-397 — dead permission-rule path arm of config-health
+Date: 2026-07-18 03:28 IDT
+Run BEFORE the arm was wired into guardrails/check-config-health.sh (helper absent):
+
+______ TestPermissionPathHealth.test_unresolved_shape_is_named_not_reded _______
+
+self = <test_config_health.TestPermissionPathHealth testMethod=test_unresolved_shape_is_named_not_reded>
+
+    def test_unresolved_shape_is_named_not_reded(self):
+        # A path behind an unresolvable variable is a shape the arm cannot resolve: it is NAMED in the
+        # output (never a silent skip, row 384's law) and never false-reds.
+        with tempfile.TemporaryDirectory() as tmp:
+            sp = self._write_settings(tmp, ["Bash(cat $CONFIG_HEALTH_NO_SUCH_VAR/x/y.txt)"])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+>           self.assertIn("unresolved", r.stdout.lower())
+E           AssertionError: 'unresolved' not found in 'config-health: ok (installed hooks match their sources)\n'
+
+tests/test_config_health.py:295: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_absent_settings_stands_down_by_name
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_architecture_owns_the_invariant
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_dead_permission_path_reds
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_matrix_row_covers_the_law
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_reports_the_count_of_rules_resolved
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_spec_states_the_law
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_unparseable_settings_reds
+FAILED tests/test_config_health.py::TestPermissionPathHealth::test_unresolved_shape_is_named_not_reded
+8 failed, 3 passed in 0.61s

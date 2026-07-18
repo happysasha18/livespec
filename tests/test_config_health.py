@@ -196,5 +196,125 @@ class TestStagedVsWorktreeFenceArm(unittest.TestCase):
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
 
+class TestPermissionPathHealth(unittest.TestCase):
+    """INV-216 — a permission rule whose target is a filesystem path that does not exist is a DEAD
+    RULE, and config-health reds it. The worked instance (found on the owner's report, 2026-07-17
+    ~15:29, that the harness "sometimes" refuses a push or a deploy): three deploy permissions named
+    ~/tlvphoto after the tree was renamed to ~/tlvphotos on 2026-07-10, so for a week the rules sat
+    looking correct while every deploy fell through to a prompt — a stale allow rule fails exactly
+    like a missing one. The arm reads every permission rule that names a filesystem path in the
+    personal ~/.claude/settings.json and the host's project settings, reds a rule whose path is
+    absent, and reports the count it resolved so an unparsable shape is named, never silently
+    skipped. It is personal-layer: it stands down by name where the settings cannot be read and never
+    falsely passes, the same shape as the hook-drift arms above.
+
+    Fixture isolation: CONFIG_HEALTH_PERMS_SETTINGS names the one settings file the arm scans, so a
+    test drives the arm without touching the real personal settings."""
+
+    def _write_settings(self, tmp, allow, name="settings.json"):
+        p = os.path.join(tmp, name)
+        with open(p, "w") as f:
+            json.dump({"permissions": {"allow": allow}}, f)
+        return p
+
+    def _run(self, tmp, settings_path):
+        # make_repo gives clean git hooks and no hooks/ dir, so only the permission-path arm is
+        # under test here.
+        make_repo(tmp)
+        return run_check(tmp, env_extra={"CONFIG_HEALTH_PERMS_SETTINGS": settings_path})
+
+    def test_dead_permission_path_reds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            missing_tree = os.path.join(tmp, "no-such-tree")  # never created
+            sp = self._write_settings(tmp, [
+                "Bash(cd %s && bash scripts/deploy.sh)" % missing_tree,
+            ])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("config-health", r.stdout)
+            self.assertIn("no-such-tree", r.stdout)
+
+    def test_existing_permission_path_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            live = os.path.join(tmp, "tlvphotos")
+            os.makedirs(os.path.join(live, "scripts"))
+            with open(os.path.join(live, "scripts", "deploy.sh"), "w") as f:
+                f.write("#!/bin/sh\n")
+            sp = self._write_settings(tmp, [
+                "Bash(cd %s && bash scripts/deploy.sh)" % live,
+                "Bash(bash %s/scripts/deploy.sh)" % live,
+                "Edit(%s/**)" % live,
+            ])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_space_containing_path_that_exists_does_not_false_red(self):
+        # A rule naming an existing path WITH A SPACE (the Google Chrome shape) must not split on the
+        # space into a missing prefix and false-red — quoted and unquoted both.
+        with tempfile.TemporaryDirectory() as tmp:
+            spaced = os.path.join(tmp, "Google Chrome.app", "Contents")
+            os.makedirs(spaced)
+            sp = self._write_settings(tmp, [
+                'Bash("%s" *)' % spaced,
+                "Bash(%s *)" % spaced,
+            ])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_absent_settings_stands_down_by_name(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sp = os.path.join(tmp, "does-not-exist-settings.json")
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("stands down", r.stdout.lower())
+
+    def test_unparseable_settings_reds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sp = os.path.join(tmp, "settings.json")
+            with open(sp, "w") as f:
+                f.write("{ this is not json ")
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+
+    def test_reports_the_count_of_rules_resolved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            live = os.path.join(tmp, "here")
+            os.makedirs(live)
+            sp = self._write_settings(tmp, ["Edit(%s/**)" % live, "Bash(git push:*)"])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("resolved", r.stdout.lower())
+
+    def test_unresolved_shape_is_named_not_reded(self):
+        # A path behind an unresolvable variable is a shape the arm cannot resolve: it is NAMED in the
+        # output (never a silent skip, row 384's law) and never false-reds.
+        with tempfile.TemporaryDirectory() as tmp:
+            sp = self._write_settings(tmp, ["Bash(cat $CONFIG_HEALTH_NO_SUCH_VAR/x/y.txt)"])
+            r = self._run(tmp, sp)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("unresolved", r.stdout.lower())
+
+    def test_real_personal_settings_stands_down_or_passes(self):
+        if os.environ.get("LIVE_SPEC_SCRATCH"):
+            self.skipTest("scratch copy carries no .git for check-config-health.sh to root itself")
+        # The arm run against the real personal + project settings (env AS-IS) either stands down by
+        # name where they cannot be read, or passes on the repaired real ones — never a false red.
+        r = subprocess.run(["bash", CHECK], cwd=REPO, capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    # Traceability: the law lives in every derivation document, not only in the check.
+    def test_spec_states_the_law(self):
+        with open(os.path.join(REPO, "PRODUCT_SPEC.md")) as f:
+            self.assertIn("INV-216", f.read())
+
+    def test_architecture_owns_the_invariant(self):
+        with open(os.path.join(REPO, "ARCHITECTURE.md")) as f:
+            self.assertIn("INV-216", f.read())
+
+    def test_matrix_row_covers_the_law(self):
+        with open(os.path.join(REPO, "TEST_MATRIX.md")) as f:
+            self.assertIn("M-397", f.read())
+
+
 if __name__ == "__main__":
     unittest.main()
