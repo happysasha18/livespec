@@ -84,6 +84,44 @@ def test_gate_reds_a_closing_report_that_omits_an_open_item():
     assert "w-002" in (r.stdout + r.stderr)
 
 
+# --- the parked-question arm: a parked question carries a default, or the work stalls (INV-229, ROADMAP 409) ---
+
+def test_gate_reds_a_parked_question_with_no_default():
+    # RED-FIRST: a board item marked as a parked question ([[park]]) that records no default is a
+    # stalled question wearing a parked question's clothes (INV-4 — the lane never parks on a proposal).
+    r = _gate("--board", _fix("board-parked-no-default.md"))
+    assert r.returncode != 0, "gate passed a parked question carrying no default"
+    assert "INV-229" in (r.stdout + r.stderr)
+    assert "w-101" in (r.stdout + r.stderr)
+
+
+def test_gate_passes_a_parked_question_naming_its_default():
+    r = _gate("--board", _fix("board-parked-with-default.md"))
+    assert r.returncode == 0, r.stdout + r.stderr
+
+
+def test_spec_states_the_parked_default_law():
+    spec = read("PRODUCT_SPEC.md")
+    assert "INV-229" in spec
+    assert "default" in spec.lower()
+
+
+def test_formal_index_row_for_parked_default():
+    spec = read("PRODUCT_SPEC.md")
+    assert "| INV-229 |" in spec
+
+
+def test_architecture_owns_the_parked_default_invariant():
+    arch = read("ARCHITECTURE.md")
+    assert "INV-229" in arch
+
+
+def test_matrix_row_covers_the_parked_default_law():
+    matrix = read("TEST_MATRIX.md")
+    assert "INV-229" in matrix
+    assert "M-410" in matrix
+
+
 # --- the quiet-pass cases ---
 
 def test_gate_passes_a_genuine_board():

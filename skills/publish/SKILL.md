@@ -84,7 +84,15 @@ The walk above is the trunk; the TARGET adds its own steps, never removes the ki
 (SPEC E-20):
 
 - **GitHub repo** — README current at the root · screenshots re-shot where the host's rule says so ·
-  release notes for a tagged release · repo description + topics set · third-party dependency licenses
+  release notes for a tagged release, whose shape carries an OPTIONAL offers section — appealing next
+  steps the reader may take, phrased as choices he is free to take on his own clock (the release note is
+  a surface he opens himself, so an offer rides it, SPEC INV-228, INV-205). The section is optional, so
+  a release with no worthwhile next step owes none; what the walk owes is a RECORDED offer-or-none
+  decision, so the choice is never silently skipped: the walk offers a next step in a
+  `<!-- release-note:offers -->` region or records `<!-- release-note:no-offer -->` for a release that
+  has none, and `guardrails/check-release-note.py` reds a note leaving the decision unrecorded (it rides
+  the suite, not the push chain — the note is a process artifact with no committed file to gate). ·
+  repo description + topics set · third-party dependency licenses
   compatible with the release · the name checked for collisions where it matters (GitHub/PyPI/npm) ·
   a fresh-clone check — install and run from scratch as an outside reader would, rather than assuming
   "works on my machine" · the push gate of the host ALWAYS holds (a publish never turns into a push authorization).

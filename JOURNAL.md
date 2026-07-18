@@ -5099,3 +5099,38 @@ runnable work and a runnable report with no stand-down; the window check reds a 
 boundary. Spec/index/architecture/matrix carried no INV-222/INV-223 before the delta. No version bump
 (pack stays 2.6.3). Rows 411 and 381 already carried the `far` token and now cite the formalized
 vocabulary; they stay far, unbuilt.
+
+## 2026-07-18 — Rows 402 + 409: two more touchpoint-frame instances (INV-228, INV-229)
+
+Two of the four instances the touchpoint frame (INV-205) named landed together, each reusing a machine
+that already shipped. Neither re-opened the frame — both consume a classification already declared in
+`guardrails/touchpoints.json`.
+
+Row 402 (INV-228): the publish skill's release-note shape gains an OPTIONAL offers section — appealing
+next steps the reader may take, phrased as choices, on a surface he opens himself. The offers section is
+optional, so a release with no worthwhile next step owes none; what the walk owes is a RECORDED
+offer-or-none decision. The checker `guardrails/check-release-note.py` reds a release-note record that
+neither offers a next step (a non-empty `<!-- release-note:offers -->` region) nor records
+`<!-- release-note:no-offer -->`, and passes one that offers or records "none". It rides the suite, not
+the push chain — the note is a process artifact the walk records at runtime, no committed file for a push
+gate to scan (the far-tier sibling, INV-83). The spec records the kind-split the owner's message-types
+aside asked for: a touchpoint's kind is keyed by audience (agent or human) and by whether an answer is
+needed, this offer being the human-audience, no-answer-needed kind — an axis orthogonal to INV-205's
+synchronous/asynchronous kind, additive, no re-scope.
+
+Row 409 (INV-229): an arm on the existing waiting-list board gate `guardrails/check-board.py` (gate q,
+no new gate letter). A board item marked a parked question (a `[[park]]` tag) carrying no `default:`
+note reds. The direction inverts the usual ask: an agent cannot read a free minute off a transcript, so
+the question is born onto the waiting list already carrying the default the work took, and the person's
+own free minute picks when he reads it (INV-4 — the lane never parks on a proposal). Distinct from the
+decision law (INV-152), which governs what an agent may not settle without him; this governs a question
+whose value is his input yet the work may roll on the recommendation. An unanswered parked question keeps
+standing (INV-206), its default holding, the record noting it stood unreviewed.
+
+Tests red-proven against the pre-delta tree (`docs/prover/red-proof-2026-07-18-rows402-409.txt`), then
+green: the release-note checker reds the neither fixture and passes the offers/no-offer fixtures; the
+board arm reds board-parked-no-default and passes board-parked-with-default. Spec/index/architecture/
+matrix carried no INV-228/INV-229 before the delta. Two snags fixed in the same movement: a redundancy
+pair (INV-229's first closing sentence was contained by INV-222's line 605 — reworded) and gate k's
+freeze baseline (my matrix rows cite INV-206/INV-83 — re-froze the local `.spec-freeze/`). No version
+bump (pack stays 2.6.3, per the movement's word). Not pushed.

@@ -28,6 +28,11 @@ the id that moved. This gate reds three violations:
       the correction forbids;
   (c) an OVER-CAP shown set — more than CAP items shown at once, when the design demotes the oldest
       instead.
+  (d) a PARKED QUESTION with no default (SPEC INV-229, ROADMAP 409) — a board item marked as a parked
+      question (a `[[park]]` tag) that records no default (a `default:` note). When the pack parks a
+      question for the person it carries the recommended default the work ALREADY took, so the work
+      proceeds on the recommendation without stalling (INV-4 — the lane never parks on a proposal). A
+      parked question with no default is a stalled question wearing a parked question's clothes.
 
 A genuine board passes quiet. Honest boundary: this reads the board's structure, not the meaning of a
 free line — a report that names an id while burying it stays the author's own to write straight. It is a
@@ -52,6 +57,8 @@ MARKER = re.compile(r"<!--\s*board:(shown|list|attic|demotions)\s*-->")
 ITEM = re.compile(r"^\s*[-*]\s*(w-\d+)\b", re.IGNORECASE)
 STATUS = re.compile(r"\bOPEN\b")
 ID = re.compile(r"w-\d+", re.IGNORECASE)
+PARK = re.compile(r"\[\[park\]\]")            # a board item marked as a parked question (INV-229)
+DEFAULT = re.compile(r"\bdefault:", re.IGNORECASE)  # the recommended default the parked question carries
 
 
 def regions(text):
@@ -108,6 +115,17 @@ def check_board(board_text, report_text=None):
             "the shown set holds %d items (cap %d) — the oldest shown demotes into the list instead "
             "of a thirteenth being shown" % (len(shown), CAP))
 
+    # (d) a parked question with no default (INV-229) — an item marked [[park]] carrying no `default:`.
+    for line in reg["shown"] + reg["list"]:
+        if PARK.search(line) and not DEFAULT.search(line):
+            m = ITEM.match(line)
+            wid = m.group(1).lower() if m else "a parked item"
+            violations.append(
+                "INV-229: %s is a parked question ([[park]]) carrying no default — a question parked "
+                "for the person carries the recommended default the work already took, so the work "
+                "proceeds without stalling (INV-4); a parked question with no default is a stalled "
+                "question wearing a parked question's clothes" % wid)
+
     # (b) a demotion with no matching line anywhere on the board = a silent loss.
     for wid in demoted:
         if wid not in accounted:
@@ -159,7 +177,8 @@ def main(argv):
             print("  " + v)
         print("  Fix: an item clears only on his acknowledgement; a demoted item moves into the list "
               "whole and alive; the shown set stays at or under %d; a closing report names every "
-              "still-open item. The board lives at WAITING.md." % CAP)
+              "still-open item; a parked question ([[park]]) carries the default the work already took "
+              "(a `default:` note). The board lives at WAITING.md." % CAP)
         return 1
 
     print("OK (board): the waiting list keeps every alive item, demotes nothing into the void, and "
