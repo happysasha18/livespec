@@ -1,19 +1,23 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — the far-tier pair landed locally (not pushed): rows 382 + 403, suite 1440 green, v2.6.3)
+## LIVE STATE (2026-07-18 — row 396 transport-split landed locally (not pushed): INV-236, suite 1578 green, v2.6.3)
 
-**The far-tier pair (382 then 403): the queue gains the `far` status (kept, no revisit trigger, no plan
-to run, distinct from `deferred` whose trigger the queue-take re-scans, INV-129). The what's-left report
-and feature map stand the far tier down by name (INV-222, M-403); the status report carries a rare
-self-surfacing line at a settings-ladder cadence (`far-tier.surface-cadence`, once / 14 days), a second
-offer inside the window red (INV-223, M-404). Report-shape checks ride the suite via
-`guardrails/check-far-tier.py` — no push gate, gate chain untouched. Rows 411 + 381 stay far.**
+**Row 396 — traffic-kind transport split (INV-236); INV-183's transport sentence corrected** (owner's 2026-07-17
+refusal of the git-universal premise): a no-answer message takes the git store road (works today [INV-112, row
+247]), a conversation takes the direct channel the harness has not shipped (waits on row 405's listener tripwire,
+INV-231); machine-fact read from INV-231, not derived; red-proven by `guardrails/route_agent_transport.py` (rides
+the suite, no gate). The conversation channel's real first use stays OPEN, field-gated on the listener [row 405, INV-94].
 
-**Earlier this session, also integrated-not-pushed (detail in JOURNAL):** the three-lane run — 379
-(INV-215, M-396), 406 (INV-216, M-397), 407 (INV-217, M-398), integrated onto main in order, the
-live-run leg of 386 + 412 CLOSED; and rows 390 + 392 docs rotation (INV-209), 386+412+414 lane-open act
-(INV-214). **All of this — the far-tier pair and the earlier landings — is NOT pushed: the push, a prover
-re-check, and any VERSION bump are the orchestrator's.**
+**The far-tier pair (382 then 403): the queue gains `far` (kept, no revisit trigger, distinct from `deferred`,
+INV-129); the what's-left report and feature map stand it down by name (INV-222, M-403); the status report carries
+a rare self-surfacing line at a settings cadence (`far-tier.surface-cadence`, once/14d), a second offer inside the
+window red (INV-223, M-404); report-shape checks ride the suite (`guardrails/check-far-tier.py`, no push gate).
+Rows 411 + 381 stay far.**
+
+**Earlier this session, also integrated-not-pushed (detail in JOURNAL):** the three-lane run — 379 (INV-215,
+M-396), 406 (INV-216, M-397), 407 (INV-217, M-398), integrated on main in order, the live-run leg of 386 + 412
+CLOSED; rows 390 + 392 docs rotation (INV-209), 386+412+414 lane-open act (INV-214). **None of this — nor row 396
+— is pushed: the push, a prover re-check, and any VERSION bump are the orchestrator's.**
 
 ## ON RESUME — in order
 
@@ -54,7 +58,7 @@ re-check, and any VERSION bump are the orchestrator's.**
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued.** This session stamped its own docs two hours ahead by
   extrapolating between prompts; the commit fence caught it. Read the clock at each prompt (INV-24).
-- Next free codes: INV-205, E-35, T-24, M-386, next ROADMAP row 421.
+- Next free codes: INV-237, E-35, T-24, M-418, next ROADMAP row 421.
 
 ## The queue's near head — one terse line each; the rows hold the detail
 
@@ -66,10 +70,8 @@ re-check, and any VERSION bump are the orchestrator's.**
 - **412 — his field finding, and it re-aimed 386**: three items asked in parallel, none ran; the law
   GRANTS lanes and no act OPENS one. Lane-open act landed (INV-214); the serial-work check is a discipline;
   the live three-lane run is DONE (rows 379/406/407 integrated 2026-07-18). Row closed on those legs.
-- **396's premise is WEAKER — weigh before building.** The live channel has NO confirmed customer: under
-  the pen, lanes negotiate nothing. Physics settled: discovery yes, delivery no (zero listeners across
-  four live sessions); the plumbing is built and off; the one proven road is a file plus a watcher the
-  RECEIVER arms first. 405 is the tripwire for the day the listener ships.
+- **396 — transport-split correction LANDED 2026-07-18 (see LIVE STATE):** the conversation channel's real first
+  use stays field-gated on the listener shipping (row 405); the proven no-answer road is a file plus a watcher the RECEIVER arms.
 - **413 — the frame his 16:07 word put above 402/403/408/409**: every point of contact has a kind,
   synchronous or asynchronous, and the kind licenses what may be said there. Onboarding rides it.
 - **414** the lane count is the person's plan, moved from the law's text into his profile · **415** the
@@ -90,11 +92,9 @@ re-check, and any VERSION bump are the orchestrator's.**
   directory AND the worktree-isolation default.
 
 ## Research and records in hand
-- `research-agent-transport.md` + `research-direct-channel.md` (scratchpad) — **the research he asked for
-  and did not get, now done.** A2A (Linux Foundation, v1.0, 150+ orgs) mandates HTTP, puts a machine-readable
-  card at a well-known path, ships NO central registry — our card re-invented, our roster the thing A2A
-  refused; A2A has skills and no zones-owned, which appears to be ours. ACP is dead (merged into A2A).
-  FIPA's envelope survived, its semantics died. Exactly-once is impossible; at-least-once plus idempotent
-  processing is the target (401). **The reframe: his skepticism of files is right about TRANSPORT, and
-  files are legitimate as STORE**, a receiver that is not running being reachable by nothing else.
+- `research-agent-transport.md` + `research-direct-channel.md` (scratchpad) — **the direct-protocol research,
+  done.** A2A (Linux Foundation, HTTP, card at a well-known path, no central registry) re-invents our card;
+  ACP dead (merged into A2A); FIPA's envelope survived, semantics died; exactly-once impossible, at-least-once
+  plus idempotent the target (401). **The reframe INV-236 now carries: his file-skepticism is right about
+  TRANSPORT, files legitimate as STORE** — a receiver that is not running is reachable by nothing else.
 - `docs/research/2026-07-17-agent-routing-prior-art.md` — Contract Net (1980): its directed contract IS this pack's referral law renamed; it carries the git premise he refused, so read it knowing that. The session's four design records and the plan sit in the scratchpad, each named by the row that owes it.

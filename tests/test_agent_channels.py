@@ -145,7 +145,11 @@ class TestTwoChannels(unittest.TestCase, _AnchorHomeMixin):
         self.assertIn("No third channel exists between two agents", spec)
         self.assertIn("A reply rides the inbox channel in the other direction, so the count of "
                       "two holds", spec)
-        self.assertIn("a remote agent reaches the other through git alone", spec)
+        # INV-183's transport sentence was corrected (the owner refused the git-universal premise,
+        # 2026-07-17): which transport carries a message is now decided by the traffic's kind, the
+        # detail owned by INV-236. The contract — who talks and when — stays untouched.
+        self.assertIn("Which transport carries a message is decided by the traffic's kind", spec)
+        self.assertIn("[INV-236]", spec)
 
     def test_base_rulebook_carries_the_two_channel_law(self):
         self.assertIn("exactly two channels", read_flat(BASE),
