@@ -86,6 +86,7 @@ One continuous pass, no pausing between phases.
   - whether both ends of every range are handled
   - whether every loading/loaded/failed outcome has a defined UI
   - whether similar screens follow the same policy
+  - whether a screen's whole lifecycle holds from entry back to return
   - whether any seam is left with an unwritten answer
 
   Imaginative probes follow, with no verdict owed: ties, concurrency, bounds, dependency failures, dangling references. Most produce nothing on most operations, and inventing a finding to satisfy one is a failure.
