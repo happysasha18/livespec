@@ -5156,3 +5156,51 @@ matrix carried no INV-228/INV-229 before the delta. Two snags fixed in the same 
 pair (INV-229's first closing sentence was contained by INV-222's line 605 — reworded) and gate k's
 freeze baseline (my matrix rows cite INV-206/INV-83 — re-froze the local `.spec-freeze/`). No version
 bump (pack stays 2.6.3, per the movement's word). Not pushed.
+
+## 2026-07-18 — Row 395: an expensive decision earns an adversarial read before it lands (INV-235)
+
+The defect the owner named (2026-07-17, continuing the multi-agent thread): agent birth [T-22] says he
+ratifies a new agent, and says nothing about what he ratifies ON — the proposal named the capability, the
+zone, and the contracts, and carried no adversarial read. And the wider class of EXPENSIVE decisions
+(reversal costs more than the decision) had no stated way to be decided at all. He asked whether the class
+has other members, and named a reference he was unsure of: a Karpathy "advocate and prosecutor" idea.
+
+Reference check first (the row's own caution). WebSearch + a fetch of github.com/karpathy/llm-council:
+Karpathy's real artifact is the LLM Council — first opinions from every model, then anonymized peer review
+and ranking, then a Chairman synthesizes the answer. It names no advocate/prosecutor/skeptic/judge role;
+the only named role is the Chairman. The "advocate and prosecutor before a decider" framing is community
+elaboration of role-assigned councils rather than his stated words. So it is NOT cited — the road is stated from
+the pack's own pieces, which is what the row directed on a reference we could not confirm.
+
+The machine, three parts. (a) The class is named by its defining property — a decision is expensive when
+unwinding it costs more than making it did — and its members are swept and enumerated on the INV-226
+keying (a closed, enumerable set names every member): a new agent's birth [T-22], a node carve or merge
+[INV-113, INV-122], a contract's shape once a consumer pinned it [INV-187], a project's kind [INV-36], the
+engine/instance split [INV-85], and a repository going public [INV-44]. (b) The road is assembled from
+pieces the pack already owns: the fresh-context best-tier audit set on breaking the case [INV-46, INV-145], and the design
+review's two-objects read where a kind is in question [INV-141, INV-142], closing by bringing the decision
+to the human with findings and a recommendation — the taste call on the specific decision stays his,
+inherent to a decision whose cost only he carries [INV-152]. (c) Agent birth carries it: T-22's proposal
+now carries the read, and the owner ratifies ON that read.
+
+Why no new gate. An expensive decision cannot be told from an ordinary one by a machine — nothing reads a
+decision's reversal cost — so this is a STATED DUTY at the enumerated decision points, held by the
+traceability test `tests/test_expensive_decision_read.py` riding the suite, the far-tier [INV-222] and
+node-growth [INV-233] checks the precedent for a check that mints no push-gate letter. The gate chain is
+untouched, and the two gate-machinery reach meta-tests correctly skip.
+
+One snag caught by the traceability suite: my first ARCHITECTURE owns-list entry for INV-235 bracketed the
+cross-node invariants it cited (INV-44, INV-142, INV-152, INV-187, INV-36, INV-145, INV-226), and the
+owns-every-anchor-once check reads the anchors column as the ownership declaration, so those became
+double-owned. Fix: the anchors column is citation-light — it describes the members and the road in plain
+words and keeps brackets only on build-pipeline's own anchors, the full citations living in the spec
+clause and the Formal-index row. This matches the existing INV-233 entry's convention.
+
+Red 9F (the one green being the no-gate honesty check, correctly true before and after) then green; full
+suite 1560 passed, 2 skipped (the pinned reach set). Pack stays 2.6.3, no bump. INV-46 fresh-context audit
+ran (this edits the method) and earned its keep: it caught my spec sentence overclaiming that all decision
+points name the read when only agent birth does (reworded to a class-level statement with agent birth the
+first member wired), an INV-152 taste mis-cite (INV-143 added beside it), "best tier" hung on invariants
+that name no tier (re-attributed to the quality habit), and the engine/instance split [INV-85] as a
+credible sixth member the sweep had missed (admitted). All four folded before the commit; the fold table
+rides the prover record `docs/prover/2026-07-18-row395-expensive-decision.md`. Not pushed.
