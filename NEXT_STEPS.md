@@ -1,6 +1,6 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — 2.7.0 released locally, not pushed: 34 rows closed this movement, suite 1578 green)
+## LIVE STATE (2026-07-18 — 2.7.0 pushed (commit c74b8f2 on origin/main), release tag v2.7.0 STILL OWED: 34 rows closed this movement, suite 1578 green)
 
 **2.7.0 is cut (MINOR, per INV-217): the movement since v2.6.0 closed 34 ROADMAP rows and added 39
 invariants (INV-198…INV-236, the Formal index contiguous through 236).** VERSION stamped to 2.7.0 across
@@ -8,7 +8,8 @@ plugin.json, the spec title, and every skill frontmatter (version-only diff); th
 chapter names what a host adopts at catch-up; the release prover record
 (`docs/prover/2026-07-18-release-2.7.0.md`) certifies the index contiguity, gate w (26 gates each with a
 red proof), gate u (CI mirror), the green suite, and the three high-stakes landings' adversarial
-corrections. **Not pushed — the push is the orchestrator's.**
+corrections. **The release commit is pushed to origin/main (c74b8f2, 2026-07-18 10:33). The annotated
+release tag `v2.7.0` is not yet cut — that tag is the one owed release act still open.**
 
 What landed this movement (detail in JOURNAL): the register judge (INV-203, replacing INV-83's retracted
 growth duty); the new push gates o…z (cleanup-notice, touchpoint-kind, waiting-list, authority-anchor,
@@ -45,7 +46,10 @@ push; these are the next movement's work.
   so a scan now under-reports — row 387's gate (gate y) is the instrument, the cards themselves the field
   work. Real trees, swept 2026-07-17: tlvphotos (instance) · exhibition-engine (engine) · promoter
   (engine) · promoter-alexander (instance) · `~/.claude/skills/track-coach` (the real one; `~/track-coach`
-  an inbox-only stub) · tc-cloud-validate (a frozen clone).
+  an inbox-only stub) · tc-cloud-validate (a frozen clone). **Card wishes dropped 2026-07-18** into tlvphotos (folded
+  into the 2.7.0-adopt wish), promoter, promoter-alexander, and track-coach's inboxes, each with
+  a filled draft card; exhibition-engine has no inbox dir yet, so its channel is unopened and it
+  is flagged, not written. Each owning window writes its own card (write-ownership grants it).
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued** — read it at each prompt (INV-24).
