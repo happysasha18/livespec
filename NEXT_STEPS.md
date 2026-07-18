@@ -1,50 +1,39 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-18 night — context was cleared; one loop drives this movement, in order)
-All designs are committed; read each, then execute through the method. Push on green (his grant). Leave
-every taste/policy fork as an explicit MORNING question — do not guess. Report at each station.
-1. **Close product-prover 2.7.1 patch** (content committed c59ed46 + phrase-restore commit — dense-lens-bullet
-   splits + de-jargoned README, validated by three clean-context adversarial reviews; the readability split
-   first RED six content-pinning tests, all reconciled — FULL SUITE GREEN 1576/0). PUSH IS BLOCKED tonight by
-   two gates, both to clear on resume: (a) **gate s** — product-prover needs a FRESH skill-creator review
-   record (the old record predates this change, INV-208); run skill-creator's review and record it. (b)
-   **gate g pin-drift** — two PRE-EXISTING drifts unrelated to tonight: `skills/build-pipeline/references/delegation-protocol.md:1`
-   (worker-brief register-laws clause, INV-221) and `templates/skill-review.template.md:1` (INV-208) — label
-   not found within ±25 lines; reconcile the pin or the label. Then bump to 2.7.1 via `scripts/stamp-versions.py`
-   and push. Pre-existing register-lint on SKILL.md:203/215 ("say so plainly") is OUTSIDE the delta — must not block.
-   Everything is committed LOCALLY (survives /clear on disk); origin is green at 2f48d11 (pre-patch).
-   NOTE (his 2026-07-18 word): the deep adoption/onboarding BUILD (steps 3) waits for a fresh context / newer
-   models — this session hit its context ceiling. Restore the status-report discipline (a TIME estimate per ask,
-   tracked обещал→вышло) in its ONE home (the status-report format), not scattered.
-2. **Land the clean-context review rule as a MINOR** — design `docs/design/2026-07-18-clean-context-review-rule.md`
-   (new INV-237 + base rule + build-pipeline/product-prover reference). Review it FROM A CLEAN CONTEXT (dogfood).
-3. **Build the adoption + onboarding movement as a MINOR** — designs `docs/design/2026-07-18-adoption-and-resource-model.md`
-   + `2026-07-18-onboarding-design.md`. Principle: ask little, default well, reveal the rest; warm welcome +
-   user journey; the speed-vs-clarity thread owes a worked "first five minutes" example (report to Alexander
-   in the morning). Build through the full method. Guard with SEVERAL clean-context adversarial passes; NO
-   regressions to the existing walk. FORKS FOR ALEXANDER (surface, never guess): preset values; default preset
-   (careful vs balanced); ask-vs-infer the cost preset; 2 or 3 presets; the one pre-push home; plan-axis scope.
-4. **Also owed:** the bare-code register-judge extension (flag a row/INV number leading a chat sentence — the
-   "talking to myself" fix; chat can't be hard-gated, so it's the post-hoc judge). Raw reader results in the
-   scratchpad: `adversarial-findings.md`, `adoption-movement-findings.md` (may not survive a fresh session).
+## ON RESUME (2026-07-19 — the 2026-07-18 night loop CLOSED its drainable work; one build stays queued)
+The night's loop landed three releases (2.7.1, 2.8.0, 2.8.1), all pushed and deployed. The only queued
+BUILD left needs a fresh context by Alexander's word; everything else open is field-gated or owner-held.
+Push on green (his grant). Leave every taste/policy fork as an explicit question — do not guess.
 
-## LIVE STATE (2026-07-18 — 2.7.0 released: commit c74b8f2 + tag v2.7.0 both pushed. A 2.7.1 patch + two MINORs are queued in ON RESUME above.)
+1. **Adoption + onboarding movement — BUILD, deferred to a fresh context (his 2026-07-18 word).** Designs
+   `docs/design/2026-07-18-adoption-and-resource-model.md` + `2026-07-18-onboarding-design.md`, both carrying
+   Alexander's two steers: (a) ask little, default well, reveal the rest — warm welcome + user journey, the
+   speed-vs-clarity thread owing a worked "first five minutes" example; (b) his 2026-07-18 ~22:50 steer — the
+   welcome explains the whole process in one README-voice paragraph and EARNS TRUST (its language chosen, its
+   choices offered as real alternatives "you can do it this way or that"), possibly its OWN sub-skill. Build
+   through the full method; guard with SEVERAL clean-context adversarial passes [INV-237]; NO regressions to
+   the existing walk. FORKS FOR ALEXANDER (surface, never guess): preset values; default preset (careful vs
+   balanced); ask-vs-infer the cost preset; 2 or 3 presets; the one pre-push home; plan-axis scope;
+   sub-skill-or-section for the welcome-and-trust layer. Report the onboarding call + the first-five-minutes
+   example to Alexander in the morning.
 
-**2.7.0 is cut (MINOR, per INV-217): the movement since v2.6.0 closed 34 ROADMAP rows and added 39
-invariants (INV-198…INV-236, the Formal index contiguous through 236).** VERSION stamped to 2.7.0 across
-plugin.json, the spec title, and every skill frontmatter (version-only diff); the dated 2.7.0 MIGRATION.md
-chapter names what a host adopts at catch-up; the release prover record
-(`docs/prover/2026-07-18-release-2.7.0.md`) certifies the index contiguity, gate w (26 gates each with a
-red proof), gate u (CI mirror), the green suite, and the three high-stakes landings' adversarial
-corrections. **The release commit (c74b8f2) and the annotated tag `v2.7.0` are both pushed to origin. 2.7.0 is fully released.**
+## LIVE STATE (2026-07-19 — three releases pushed + deployed this movement: 2.7.1, 2.8.0 (tag v2.8.0), 2.8.1. origin/main 613f3f8.)
 
-What landed this movement (detail in JOURNAL): the register judge (INV-203, replacing INV-83's retracted
-growth duty); the new push gates o…z (cleanup-notice, touchpoint-kind, waiting-list, authority-anchor,
-skill-review, doc-rotation, CI-mirror, judges-listed, every-gate-can-fail, index-prose, agent-card,
-doc-bound); doc rotation + size bounds (INV-209/233/234); the far tier (INV-222/223); the touchpoint frame
-+ waiting list + read-back (INV-205/206/207); the lane-open act (INV-214); worker-teardown reap + the
-runaway-child notice (INV-213/230); the reach classes as host config (INV-224); versioned founding
-questions (INV-227); the release-tier rule itself (INV-217).
+**Landed and released this movement (detail in JOURNAL):**
+- **2.7.1 (PATCH, 613f3f8's ancestor 03a4d26)** — product-prover readability: dense lens bullets split into
+  nested sub-bullets, de-jargoned README, ARCHITECTURE.md as a valid input. A clean-context skill-creator
+  review folded two findings; gate g pins reconciled; gate s satisfied.
+- **2.8.0 (MINOR, tag v2.8.0, 06662fb)** — INV-237: the authoring seat does not adversarially certify its own
+  work. A release's adversarial pass is authored by a fresh seat, and a new lens/rule is self-applied to its
+  own introducing document before release. Base rule 33, wired into build-pipeline's verify station and
+  product-prover; owned by the build-pipeline node; M-419. Dogfooded — the release's own adversarial pass ran
+  from a clean context and folded four items before the commit. ROADMAP 422.
+- **2.8.1 (PATCH, 613f3f8)** — the register judge now holds base rule 2 ("never open a line with a code") on
+  chat: a sentence must not LEAD with a bare internal code, the codes trailing as anchors. A second universal
+  law in the judge; chat_law() renumbers the joined universal + personal laws into one sequence. ROADMAP 423.
+
+The Formal index is contiguous through INV-237. Full suite green (1589/0). All installed skills + judge
+hooks deployed to 2.8.1.
 
 ## What REMAINS — the queue's open head
 
@@ -80,7 +69,7 @@ push; these are the next movement's work.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued** — read it at each prompt (INV-24).
-- Next free codes: INV-237, E-35, T-24, M-419, next ROADMAP row 422.
+- Next free codes: INV-238, E-35, T-24, M-420, next ROADMAP row 424.
 - **Row 421 (queued 2026-07-18, OPEN DESIGN QUESTION, Alexander's call):** how an open-source engine
   and its instances live as separate repos, and how ONE window rules several instance-agents against
   the one-window law. The two-repo split is verified and justified (exhibition-engine + tlvphotos,
