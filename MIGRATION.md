@@ -123,3 +123,79 @@ The major number marks two things a host inherits automatically by adopting, not
    gate, held by no pass's attention; compaction runs at every push, above the milestone whole-read.
 
 No host file changes, so the catch-up walk records this chapter as done on read.
+
+### 2.7.0 — 2026-07-18
+
+**Host action: re-run the catch-up walk.** The 2.7.0 minor grows what a host may adopt — new laws,
+new push gates, new capabilities — all backward-compatible: nothing a host already carries is reworded
+in a breaking way, no surface a host depends on is renamed or removed, and no earlier adoption step
+changes. A host takes the release the ordinary way: pull the pack, run `scripts/sync-skills.sh`, and
+run the catch-up walk above (INV-91), which re-vendors the pack files, runs the current gate set
+backward over the host's tree (INV-176), re-seeds the ratchet caps for any older debt the new gates
+surface (INV-172), and rides the new founding questions to the owner. The tier is MINOR by rule 32 /
+SPEC INV-217: the host re-runs its walk and rewrites nothing it holds. What the walk brings in, grouped:
+
+1. **Register enforcement by a model, not a literal list (INV-203; INV-83 retracted its growth duty).**
+   The pack's register nets — the pre-show register gate and the Stop-hook chat scan — gain a
+   class-reading judge above the literal-pattern list. The list stays the free, deterministic first
+   pass; the judge is opt-in (`PRESHOW_REGISTER_JUDGE`), off by default, and never makes a green run
+   non-deterministic. INV-83's old "the set grows by one per caught leak" duty is retracted — a host
+   that vendored it simply drops the duty; there is nothing to do.
+
+2. **New push gates in the chain (each retroactive over the host's tree, absorbed by re-seeding caps).**
+   Gate o cleanup-notice (INV-204), gate p touchpoint-kind (INV-205), gate q waiting-list (INV-206),
+   gate r authority-anchor (INV-207), gate s skill-review (INV-208), gate t doc-rotation (INV-209),
+   gate u CI-mirror parity (INV-210), gate v judges-listed (INV-211), gate w every-gate-can-fail
+   (INV-212), gate x index-prose (INV-218), gate y agent-card (INV-219), and gate z doc-bound
+   (INV-234). Every gate carries a known-red proof and a CI mirror (or a declared carve-out).
+
+3. **The pack's gate-chain integrity, made self-checking (INV-210, INV-211, INV-212).** Every local
+   push gate is mirrored in CI or a named carve-out (gate u); every wired chat judge is referenced in
+   the installed settings (gate v); every gate in the chain carries a proof that it can actually red
+   (gate w). A host inherits the same self-checks over its own chain.
+
+4. **Working-doc rotation and size bounds (INV-209, INV-233, INV-234).** The pack's append-only working
+   documents split and rotate into dated archives so the live file stays small; nothing is lost (every
+   rotated row is findable in its archive, every archive named in a manifest line — gate t), and each
+   growable doc stays within its declared bound or is freshly rotated (gate z). A node that grows past
+   its file cap is the node-growth law's concern (INV-233).
+
+5. **The far tier of the queue (INV-222, INV-223).** The queue gains `far` beside `deferred` — kept, no
+   revisit trigger — and the what's-left report and feature map stand it down by name, with a rare
+   self-surfacing line at a settings cadence.
+
+6. **The touchpoint frame, the waiting list, and the read-back (INV-205, INV-206, INV-207).** Every
+   point of contact with the person has a kind, synchronous or asynchronous, and the kind licenses what
+   may be said there (INV-205); everything waiting for the person's eyes has a home that outlives the
+   scroll (INV-206); and a decision recorded as the person's names its exchange, so the pack shows the
+   person what it believes they decided and they strike what they never said (INV-207).
+
+7. **The lane-open act (INV-214).** The parallel-lane law gains the act that OPENS a lane — a branch in
+   its own worktree cut from the claim commit, integration taking the pen — so a granted lane actually
+   runs. The lane cap is re-homed from the spec text to the person's profile.
+
+8. **Worker-teardown reap and the runaway-child notice (INV-213, INV-230).** A finished worker leaves no
+   runaway child: teardown reaps the owned process group, and the cleanup names what it ended.
+
+9. **The reach classes as host config (INV-224).** The reach map's directory classes move from the
+   `check-push-reach.sh` body into `guardrails.config.json` under `reach_classes`, the pack's values
+   shipped as the default. A host adopts via its own declared layers; the default reproduces every
+   existing reach verdict, and a missing or empty config can only over-run scope, never false-green it.
+
+10. **Versioned founding questions (INV-227) and the agent card (INV-219, gate y).** The founding-question
+    set carries a version; the catch-up walk reads the host's `founding.set-version` and rides each
+    question added since — the agent card at `.live-spec/agent.md` among them for a host that founded
+    before it. A host with no `founding.set-version` owes every question, each surfaced for the owner
+    and answered on no one's behalf. This is the walk's own designed mechanism; the host answers at its
+    gate, nothing is auto-decided.
+
+11. **The release-tier rule itself (INV-217, rule 32).** A release's number now reports what taking it
+    costs a host — nothing (patch), re-run the walk (minor), or a migration (major) — a stated judgment
+    the releasing session makes and names, held by no gate. This 2.7.0 chapter is that rule applied to
+    its own release.
+
+Smaller laws ride in the same walk: the answer-first arm and no-dramatization (INV-215 and the pack
+law), the wrong-referral naming (INV-225), the release-note offers section (INV-228), the parked-question
+default (INV-229), the listener tripwire and remote-read grant (INV-231, INV-232), the net-liveness meter
+(INV-202), an expensive decision's adversarial read (INV-235), and the traffic-kind transport split
+(INV-236). None reword a rule a host holds; all are adopted by re-running the walk.
