@@ -28,14 +28,21 @@ model; adopting the model as a pack rule stays his call (the open design questio
 - **Pushing into an OPEN window works today via Claude Code "channels."** An MCP server declaring the
   `claude/channel` capability pushes events into a session started with `--channels`; the session acts on
   its next turn. This is how sessions receive Telegram/Discord/webhook events while the human is away.
-- **OPEN QUESTION that gates a custom broker:** channel plugins appear to require approved-vendor /
-  allowlist status (Anthropic- or org-managed). Whether a self-hosted local plugin can declare
-  `claude/channel` is unverified. If it can, a local broker gives near-real-time messaging between OPEN
-  windows. If it cannot, files stay the transport until the harness ships the waking listener.
+- **Self-hosted channels — RESOLVED 2026-07-18 (research, sourced):** a self-made local MCP server CAN
+  act as a channel in development mode via `claude --dangerously-load-development-channels server:<name>`
+  (a full-screen warning shows at launch). Alexander is a Pro/Max individual with no org gate, so nothing
+  blocks the dev-mode path. The server declares `capabilities.experimental["claude/channel"]` and emits
+  `notifications/claude/channel` events; a session started with the flag surfaces them and acts on its
+  next turn, including when it was sitting idle at the prompt. A closed session still cannot be reached.
+  PERMANENT clean use without the dev flag needs the plugin on the Anthropic allowlist or an enterprise
+  `allowedChannelPlugins` setting — Alexander has neither, so permanent use stays blocked; the dev-mode
+  path carries a proof-of-concept. Sources: code.claude.com/docs/en/channels.md and channels-reference.md.
 
 ## Decision status
 
 - The window model above is Alexander's stated model; adopting it as a pack rule is his call (ROADMAP row 421).
-- Building a broker is premature today: files cover the current workflow, and a poll-only broker barely
-  improves on files. The cheap next step is answering the approved-vendor question above, then building a
-  broker only if that answer is green.
+- A proof-of-concept broker is now buildable (dev-mode channels, resolved above). It would prove live
+  push between two OPEN windows. It stays a lab setup (dev flag, warning dialog) until a permanent
+  allowlist path exists. Files remain the base transport for today's workflow, where the human drives each
+  window himself; the broker earns its keep when windows must coordinate without him. Whether to build the
+  POC now is Alexander's call.
