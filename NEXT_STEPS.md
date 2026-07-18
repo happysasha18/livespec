@@ -53,7 +53,14 @@ push; these are the next movement's work.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never `git add -A`;
   re-check HEAD before writing (fence). A co-located deposit is the FILE ALONE (INV-174, INV-175).
 - **The clock is read, never continued** — read it at each prompt (INV-24).
-- Next free codes: INV-237, E-35, T-24, M-419, next ROADMAP row 421.
+- Next free codes: INV-237, E-35, T-24, M-419, next ROADMAP row 422.
+- **Row 421 (queued 2026-07-18, OPEN DESIGN QUESTION, Alexander's call):** how an open-source engine
+  and its instances live as separate repos, and how ONE window rules several instance-agents against
+  the one-window law. The two-repo split is verified and justified (exhibition-engine + tlvphotos,
+  promoter + N planned instances); the unaddressed part is the single-window orchestrator over many
+  instances, to resolve with the far-tier orchestrator view (row 411). Human-only fact: this is a
+  POLICY and architectural-taste call — the rule's content is Alexander's to set, the row only holds
+  the question.
 
 ## Research and records in hand
 - `research-agent-transport.md` + `research-direct-channel.md` (scratchpad) — the direct-protocol
