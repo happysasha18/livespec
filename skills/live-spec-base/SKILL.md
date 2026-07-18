@@ -392,7 +392,10 @@ answer to a class is a list, the design is wrong.
      terminal state. Forwarding a neighbour's question to the owner of its zone is the defect this law
      names, and the forwarder's own work stands on none of the answer [INV-190]. A question that pins to
      no artifact and on which no work of the sender's stands is dropped, and holding it was itself the
-     defect [INV-191].
+     defect [INV-191]. A referral that points at a zone which does not own the question is named as a
+     wrong referral where the exchange loops back over the same pair, rather than absorbed by the
+     two-crossing cap; `guardrails/check-wrong-referral.py` reds such an exchange on a fixture and rides
+     the suite, not the push chain [INV-225, INV-196].
    - **Data never travels as a message, and a contract publishes nothing by default.** A consumer wanting
      numbers reads the neighbour's published artifact [INV-188]. Every field in that artifact leaves the
      producer's tree on the owner's explicit permission, recorded with its date and its author; how a

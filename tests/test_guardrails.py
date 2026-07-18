@@ -667,6 +667,68 @@ class TestGateReachMap(unittest.TestCase):
         r = self.reach("guardrails/check-muted-launch.sh\nPRODUCT_SPEC.md")
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
 
+    # --- row 380 (M-405, INV-224): the reach classes are host config, not script constants ---
+
+    def reach_with_config(self, files, config_path):
+        return run(["bash", self.SCRIPT],
+                   extra_env={"REACH_FILES": files, "REACH_CONFIG": config_path})
+
+    def _write_config(self, tmpdir, mutate):
+        """Write a fixture config: the committed config with reach_classes mutated in place.
+
+        Only reach_classes differs from the pack default, so any verdict change the test sees is
+        the reclassification alone, never a second drifted field."""
+        with open(os.path.join(ROOT, "guardrails.config.json"), encoding="utf-8") as f:
+            cfg = json.load(f)
+        mutate(cfg["reach_classes"])
+        path = os.path.join(tmpdir, "reach-fixture.config.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(cfg, f)
+        return path
+
+    def test_reach_reads_classes_from_config_flips_verdict(self):
+        # The row's own case: track-coach keeps its product ENGINE under scripts/, so it must
+        # class scripts/ OUT of infra — an engine change then reaches the full suite instead of
+        # scoping to a couple of tests and false-greening. Proven here with the guardrails/ dir,
+        # which reliably scopes by default: a fixture config that reclassifies it OUT of infra
+        # must flip the verdict from SCOPED (2) to FULL (1). A script that read a body constant
+        # would ignore the config and never flip — this is the red-first proof it reads config.
+        f = "guardrails/check-muted-launch.sh"
+        with tempfile.TemporaryDirectory() as tmpdir:
+            default_cfg = self._write_config(tmpdir, lambda rc: None)
+            self.assertEqual(self.reach_with_config(f, default_cfg).returncode, 2,
+                             "the default classes must still scope a lone guardrails/ change")
+            flipped = self._write_config(
+                tmpdir,
+                lambda rc: rc.__setitem__(
+                    "infra_dirs", [d for d in rc["infra_dirs"] if d != "guardrails"]),
+            )
+            r = self.reach_with_config(f, flipped)
+            self.assertEqual(r.returncode, 1,
+                             "reclassifying guardrails/ out of infra must flip the verdict to "
+                             "FULL — the script reads config, not a body constant: %s" % r.stdout)
+
+    def test_reach_default_config_reproduces_todays_verdicts(self):
+        # No-regression: the committed default config reproduces today's behaviour on the three
+        # verdict classes — prose stands the suite down (0), a lone infra file scopes (2), an
+        # unmapped file falls to full (1).
+        self.assertEqual(self.reach("README.md\ndocs/research/example.md").returncode, 0)
+        r = self.reach("guardrails/check-muted-launch.sh")
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertIn("SCOPED tests/test_traceability.py", r.stdout)
+        self.assertEqual(self.reach("something/new-place.txt").returncode, 1)
+        # the conservative floor: a config naming no classes leaves every file unclassified, so
+        # the whole diff falls to FULL — never a false-green scope on a missing/empty config.
+        with tempfile.TemporaryDirectory() as tmpdir:
+            empty = self._write_config(
+                tmpdir,
+                lambda rc: rc.clear() or rc.update(
+                    {"prose_files": [], "prose_dirs": [], "infra_dirs": [],
+                     "infra_files": [], "infra_globs": [], "referrer_dirs": []}),
+            )
+            self.assertEqual(self.reach_with_config("README.md", empty).returncode, 1,
+                             "an empty class config must fall to FULL, never scope")
+
 
 class TestScopedReachHygiene(unittest.TestCase):
     """Row 366 (M-348, INV-45): the by-name discovery blind spot. check-push-reach.sh finds a
@@ -740,12 +802,16 @@ class TestScopedReachHygiene(unittest.TestCase):
         return flagged
 
     @staticmethod
-    def _infra_dirs_from_script(script_text):
-        """The infra directory prefixes the reach script itself declares (REFERRER_DIRS) —
-        read from the script, never a second hard-coded copy."""
-        m = re.search(r'REFERRER_DIRS="([^"]+)"', script_text)
-        assert m, "check-push-reach.sh must define REFERRER_DIRS"
-        return m.group(1).split()
+    def _infra_dirs_from_config():
+        """The referrer directory prefixes the reach map declares — read from their one home,
+        guardrails.config.json's reach_classes.referrer_dirs (SPEC INV-224, ROADMAP 380). The
+        classes moved off the script body to config, so this net reads the same one home the
+        script reads, never a second copy."""
+        with open(os.path.join(ROOT, "guardrails.config.json"), encoding="utf-8") as f:
+            cfg = json.load(f)
+        dirs = cfg.get("reach_classes", {}).get("referrer_dirs", [])
+        assert dirs, "guardrails.config.json must declare reach_classes.referrer_dirs"
+        return dirs
 
     @staticmethod
     def _always_scoped(script_text):
@@ -764,7 +830,7 @@ class TestScopedReachHygiene(unittest.TestCase):
             "check-push-reach.sh must carry the marked ALWAYS_SCOPED block — the one home "
             "the script's own scoped verdict and this net both read [ROADMAP 366]",
         )
-        infra_dirs = self._infra_dirs_from_script(script_text)
+        infra_dirs = self._infra_dirs_from_config()
         always_scoped = {os.path.basename(t) for t in self._always_scoped(script_text)}
         tests_dir = os.path.join(ROOT, "tests")
         flagged = self._enumerating_infra_tests(tests_dir, infra_dirs)
@@ -784,7 +850,7 @@ class TestScopedReachHygiene(unittest.TestCase):
         context manager."""
         with open(self.SCRIPT, encoding="utf-8") as f:
             script_text = f.read()
-        infra_dirs = self._infra_dirs_from_script(script_text)
+        infra_dirs = self._infra_dirs_from_config()
         real_always_scoped = {os.path.basename(t) for t in self._always_scoped(script_text)}
 
         synth_name = "test_synth_enum.py"

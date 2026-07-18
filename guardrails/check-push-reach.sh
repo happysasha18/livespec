@@ -36,6 +36,39 @@ cd "$REPO_ROOT"
 
 BASE="${1:-origin/main}"
 
+# --- reach classes as host config (SPEC INV-224, ROADMAP row 380) ---------------------------
+# The infra directories, prose files, and referrer directories the classifier sorts a changed
+# file into are the HOST's to declare, not this script's to hold as constants: they are read
+# from guardrails.config.json under `reach_classes`, the pack's own values shipped there as the
+# default. A host whose layout differs — a product engine kept under scripts/, not helper tools
+# — declares its own classes there once (the same knowledge project.layers carries, SPEC
+# INV-135) and this vendored script needs no edit. REACH_CONFIG overrides the path (tests only).
+# The conservative floor holds by construction: a config that names no classes leaves every
+# changed file unclassified, so matches_prose/matches_infra both return false and the whole diff
+# falls to FULL — never a false-green scope on a missing or empty config.
+CONFIG="${REACH_CONFIG:-$REPO_ROOT/guardrails.config.json}"
+
+reach_class() {
+  # $1 = key under reach_classes; prints its values newline-separated, empty when the config or
+  # the key is absent or unreadable (which lands on the conservative floor above).
+  python3 - "$CONFIG" "$1" <<'PY' 2>/dev/null || true
+import json, sys
+try:
+    with open(sys.argv[1]) as f:
+        cfg = json.load(f)
+except Exception:
+    sys.exit(0)
+for v in cfg.get("reach_classes", {}).get(sys.argv[2], []):
+    print(v)
+PY
+}
+
+PROSE_FILES=(); while IFS= read -r x; do [ -n "$x" ] && PROSE_FILES+=("$x"); done < <(reach_class prose_files)
+PROSE_DIRS=();  while IFS= read -r x; do [ -n "$x" ] && PROSE_DIRS+=("$x");  done < <(reach_class prose_dirs)
+INFRA_DIRS=();  while IFS= read -r x; do [ -n "$x" ] && INFRA_DIRS+=("$x");  done < <(reach_class infra_dirs)
+INFRA_FILES=(); while IFS= read -r x; do [ -n "$x" ] && INFRA_FILES+=("$x"); done < <(reach_class infra_files)
+INFRA_GLOBS=(); while IFS= read -r x; do [ -n "$x" ] && INFRA_GLOBS+=("$x"); done < <(reach_class infra_globs)
+
 if [ -n "${REACH_FILES:-}" ]; then
   files="$REACH_FILES"
 else
@@ -47,20 +80,18 @@ else
 fi
 
 matches_prose() {
-  case "$1" in
-    README.md|OVERVIEW.md|MIGRATION.md|LICENSE) return 0 ;;
-    docs/research/*|docs/reports/*|docs/audit/*|docs/decisions/*) return 0 ;;
-    *) return 1 ;;
-  esac
+  local f="$1" p
+  for p in "${PROSE_FILES[@]:-}"; do [ -z "$p" ] && continue; [ "$f" = "$p" ] && return 0; done
+  for p in "${PROSE_DIRS[@]:-}"; do [ -z "$p" ] && continue; case "$f" in "$p"/*) return 0 ;; esac; done
+  return 1
 }
 
 matches_infra() {
-  case "$1" in
-    guardrails/*|scaffold/guardrails/*|templates/*|scripts/*|hooks/*|adopt/*) return 0 ;;
-    guardrails.config.json) return 0 ;;
-    tests/test_*.py) return 0 ;;
-    *) return 1 ;;
-  esac
+  local f="$1" p
+  for p in "${INFRA_FILES[@]:-}"; do [ -z "$p" ] && continue; [ "$f" = "$p" ] && return 0; done
+  for p in "${INFRA_DIRS[@]:-}"; do [ -z "$p" ] && continue; case "$f" in "$p"/*) return 0 ;; esac; done
+  for p in "${INFRA_GLOBS[@]:-}"; do [ -z "$p" ] && continue; case "$f" in $p) return 0 ;; esac; done
+  return 1
 }
 
 seen=0
@@ -94,7 +125,9 @@ if [ "${#infra_files[@]}" -eq 0 ]; then
 fi
 
 # SCOPED middle road: every changed file is PROSE or INFRA, and at least one is INFRA.
-REFERRER_DIRS="guardrails scaffold/guardrails scripts templates hooks adopt"
+# The referrer directories are host config too (SPEC INV-224); loaded above, joined to a
+# space-separated list here for the word-split grep below.
+REFERRER_DIRS="$(reach_class referrer_dirs | tr '\n' ' ')"
 
 # --- ALWAYS_SCOPED (permanent scoped-run riders) BEGIN ---
 # Tests pinned to ride EVERY scoped run, whatever the diff touched. Two kinds live here:
