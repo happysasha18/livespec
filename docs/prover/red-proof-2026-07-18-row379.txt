@@ -1,0 +1,23 @@
+Red-first proof — ROADMAP row 379 (INV-215 / M-396), lane 1, 2026-07-18.
+
+tests/test_enumeration_reads_as_list.py run against the pre-delta tree (the five doc edits stashed,
+the untracked test file kept in place):
+
+    git stash push -- PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md \
+        skills/spec-author/SKILL.md skills/product-prover/SKILL.md
+    python3 -m pytest tests/test_enumeration_reads_as_list.py -q
+    -> 7 failed in 0.15s
+    git stash pop
+
+All 7 red against the pre-delta tree:
+  - test_spec_author_states_the_enumeration_threshold — spec-author names no three-or-more threshold
+  - test_prover_cognitive_load_lens_reads_the_packed_enumeration — the cognitive-load lens is silent
+  - test_spec_states_the_law — PRODUCT_SPEC carries no INV-215 clause
+  - test_verdict_is_a_stated_rule_not_a_new_gate — the "no mechanical lint" verdict is unwritten
+  - test_formal_index_row — no INV-215 Formal-index row
+  - test_architecture_owns_the_invariant — the spec-author owns-list does not claim INV-215
+  - test_matrix_row_covers_the_law — no M-396 row
+
+After git stash pop (the delta restored):
+    python3 -m pytest tests/test_enumeration_reads_as_list.py -q
+    -> 7 passed in 0.07s

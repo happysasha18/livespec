@@ -80,6 +80,18 @@ stopped being read — which kills a spec).
   lay them out as bullet or numbered items so the eye scans them, and keep prose for the reasoning that
   connects them. This is layout inside the use-case-first shape. It is not a return to the rejected
   structure-first document, which organized the WHOLE spec as entity and state tables (2026-07-07).
+- **The enumeration threshold makes that checkable (SPEC INV-215).** A prose paragraph carrying an
+  enumeration of three or more distinct, parallel facts earns bullet or numbered structure — a filename
+  rule with its collision law and its header fields and its body parts, run together in one paragraph, is
+  a list the reader should scan, so lay the members out as items. Prose stays for the laws, their reasoning,
+  and their boundaries; the enumeration of parallel members becomes the list. This stays a stated writing
+  rule, read by eye and by the prover's cognitive-load lens, and it earns no mechanical lint: a regex
+  flagging every three-comma sentence would trip on ordinary rhetorical triads — a neutral, precise, plain
+  register, or a rule with its actor and its reason — and telling a genuine list-owed enumeration from a
+  rhetorical triad is a meaning call the register judge and the prover make, past a regex's reach. The rule
+  came from the owner, 2026-07-17, reading the promoter's inter-agent design doc: a paragraph packing a
+  filename rule, a collision law, three header fields, and four body parts reads as a bulleted list, the
+  human language already right and the fine-tuning reading efficiency.
 - **A "how to read" note at the very top.** Open the spec with a short front-matter: what the product is in
   two sentences, that each section is a scenario, that the codes are quiet machine anchors mapped by the
   Formal index at the end, and that **edit history lives in the JOURNAL, apart from the spec itself.**
