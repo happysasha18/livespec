@@ -1,20 +1,21 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — rows 390 + 392 grooming leg LANDED locally (not pushed), suite 1265 green, all gates green, v2.6.3)
+## LIVE STATE (2026-07-18 — rows 386 + 412 + 414 lane-open act LANDED locally (not pushed), suite 1340 passed + 1 PRE-EXISTING red, gate k re-frozen, v2.6.3)
 
-**Rows 390 + 392 (this landing, they fold together): the pack's working docs are split and rotated, nothing lost**
-(INV-209, his grooming word 2026-07-17 ~18:25). Mechanism `scripts/rotate-doc.py`, gate t `check-doc-rotation.py` (both
-nets); first rotation moved the 17 oldest fully-closed unreferenced ROADMAP rows to `docs/queue-archive/rotated-ROADMAP-2026-07-18.md`
-(live ROADMAP 580.8→564.2 KB, each still findable via manifest + grepable archive; 113 more rotatable on the next cadence).
-Their OTHER legs stay OPEN as residual rows for the orchestrator: row 390's node-growth-law counter/lens/split-shape,
-row 392's four-doc byte bounds with watchers. **NOT pushed — the push gate and a prover re-check are the orchestrator's.**
-Memory can be wiped — this file plus JOURNAL.md carry the state. Earlier (all landed locally, not pushed, detail in
-JOURNAL): rows 416 · 417 · 418 — the pack audited itself by the class rule (INV-204 cleanup-notice, the four
-name-list guards inverted to read what a thing IS); and `f40f2a1` pushed at v2.6.0 (the roster is gone, lanes get
-their branch road, the class rule took the base rulebook's head). Everything below the queue waits.
+**Rows 386 + 412 + 414 (this landing): opening a lane is now an act a session PERFORMS (INV-214).**
+`scripts/open-lane.sh` runs the act by deed (claim commit on main under the pen → `lane/<row>-<slug>` cut into its
+own worktree → worker brief; refuses over-cap / non-one-row-claim / off-main / nothing-staged). The serial-work
+"gate" 412 asked for is DECIDED as a DISCIPLINE — independence is a senior read no diff settles and lane branches
+are torn down at each landing, so no push-time signal survives (reasoning: docs/prover/2026-07-18-rows386-412-414-lane-open-act.md).
+Row 414: the cap re-homed to the ladder (`lanes.cap`, default three; owner's value in his profile; spec/skills
+de-hardcoded). **STILL OPEN in 386 + 412: the LIVE three-lane run in one window**, a field beat the orchestrator
+runs. **PRE-EXISTING suite red before push:** `guardrails/check-runaway-child.py:10` carries the owner's name
+(INV-120), reproduces at clean HEAD 0f9c881, predates this delta (row 420's) — fix = de-personalize the comment.
+**NOT pushed — the push gate and a prover re-check are the orchestrator's.** Prior (detail in JOURNAL): rows 390 +
+392 docs split-and-rotate (INV-209), node-growth/byte-bound legs OPEN; rows 416·417·418 class-rule audit; `f40f2a1`
+pushed at v2.6.0. Everything below waits.
 
 ## ON RESUME — in order
-
 
 1. **A CORRECTION THIS FILE CARRIED, and the day's most expensive lesson.** The two lines that stood here
    — parallel lanes rank above the communication layer, and they wait for a field run — were recorded as

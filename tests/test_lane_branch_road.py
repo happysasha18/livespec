@@ -316,5 +316,161 @@ class TestLaneBranchLaw(unittest.TestCase):
             self.assertEqual(len(rows), 1, "%s owes exactly one Formal index row" % anchor)
 
 
+SCRIPT = os.path.join(ROOT, "scripts", "open-lane.sh")
+
+
+class _LaneOpenActRepo(unittest.TestCase):
+    """A minimal repo the lane-open act runs against, hermetic like the probe above.
+
+    The act (SPEC INV-214) is a real git ceremony, so its guards are proven by deed on a
+    real repo rather than trusted from the script's own prose: the claim commit lands on
+    main, the lane branch is cut into its own worktree, the cap refuses a lane past it, and
+    the one-row claim commit refuses anything but the queue file.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="livespec-test-openlane-")
+        self.repo = os.path.join(self.tmp, "repo")
+        os.makedirs(self.repo)
+        self.run_ok("init", "-q", "-b", "main")
+        self._write("ROADMAP.md", "| 500 | a wish | surface | queued | acc |\n")
+        self.run_ok("add", "ROADMAP.md")
+        self.run_ok("commit", "-qm", "init")
+        self.wt = os.path.join(self.tmp, "wts")
+        self.profile = os.path.join(self.tmp, "profile.md")
+        self.write_cap(3)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _write(self, name, body):
+        with open(os.path.join(self.repo, name), "w", encoding="utf-8") as fh:
+            fh.write(body)
+
+    def write_cap(self, n):
+        with open(self.profile, "w", encoding="utf-8") as fh:
+            fh.write("- `lanes.cap: %d` blah\n" % n)
+
+    def run_ok(self, *args):
+        rc, out = _git(self.repo, *args)
+        self.assertEqual(rc, 0, "git %s -> %s" % (" ".join(args), out))
+        return out
+
+    def stage_flip(self, row):
+        with open(os.path.join(self.repo, "ROADMAP.md"), "a", encoding="utf-8") as fh:
+            fh.write("| %s | flip | surface | in-work | acc |\n" % row)
+        self.run_ok("add", "ROADMAP.md")
+
+    def act(self, row, slug, profile=None):
+        env = dict(os.environ)
+        env.update({
+            "GIT_CONFIG_GLOBAL": os.devnull,
+            "GIT_CONFIG_SYSTEM": os.devnull,
+            "GIT_AUTHOR_NAME": "livespec-test",
+            "GIT_AUTHOR_EMAIL": "livespec-test@example.invalid",
+            "GIT_COMMITTER_NAME": "livespec-test",
+            "GIT_COMMITTER_EMAIL": "livespec-test@example.invalid",
+            "GIT_TERMINAL_PROMPT": "0",
+            "LIVE_SPEC_PROFILE": profile if profile is not None else self.profile,
+            "LIVE_SPEC_WORKTREES": self.wt,
+        })
+        proc = subprocess.run(["bash", SCRIPT, str(row), slug], cwd=self.repo, env=env,
+                              stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60)
+        return proc.returncode, proc.stdout.decode("utf-8", "replace")
+
+
+class TestTheLaneOpenActByDeed(_LaneOpenActRepo):
+    """M-395 (INV-214), by deed."""
+
+    def test_the_act_commits_the_claim_to_main_and_cuts_the_lane_worktree(self):
+        self.stage_flip(500)
+        rc, out = self.act(500, "my-slug")
+        self.assertEqual(rc, 0, out)
+        # the claim commit is on main and names the row
+        self.assertEqual(self.run_ok("rev-parse", "--abbrev-ref", "HEAD").strip(), "main")
+        self.assertIn("row 500", self.run_ok("log", "-1", "--format=%s"))
+        # the lane branch exists and is cut from the claim commit (main's tip)
+        self.assertIn("lane/500-my-slug", self.run_ok("branch", "--list", "lane/*"))
+        self.assertEqual(self.run_ok("rev-parse", "lane/500-my-slug").strip(),
+                         self.run_ok("rev-parse", "main").strip())
+        # the lane has its own worktree
+        self.assertIn("lane/500-my-slug", self.run_ok("worktree", "list"))
+
+    def test_the_act_refuses_a_lane_past_the_profile_cap(self):
+        self.write_cap(1)
+        self.run_ok("branch", "lane/499-already")   # one lane already open, cap is one
+        self.stage_flip(500)
+        rc, out = self.act(500, "my-slug")
+        self.assertNotEqual(rc, 0)
+        self.assertIn("cap reached", out)
+        self.assertNotIn("lane/500-my-slug", self.run_ok("branch", "--list", "lane/*"))
+
+    def test_the_cap_defaults_to_three_with_no_profile_line(self):
+        self.run_ok("branch", "lane/1-a")
+        self.run_ok("branch", "lane/2-b")           # two open, a third fits the default of three
+        self.stage_flip(500)
+        rc, out = self.act(500, "my-slug", profile=os.path.join(self.tmp, "absent.md"))
+        self.assertEqual(rc, 0, out)
+        self.assertIn("of 3", out)
+
+    def test_the_act_refuses_a_claim_carrying_more_than_the_queue_file(self):
+        self.stage_flip(500)
+        self._write("other.txt", "x\n")
+        self.run_ok("add", "other.txt")
+        rc, out = self.act(500, "my-slug")
+        self.assertNotEqual(rc, 0)
+        self.assertIn("one row's delta", out)
+
+    def test_the_act_refuses_when_nothing_is_staged(self):
+        rc, out = self.act(500, "my-slug")
+        self.assertNotEqual(rc, 0)
+        self.assertIn("stage the row", out)
+
+    def test_the_act_refuses_off_main(self):
+        self.run_ok("checkout", "-q", "-b", "feature")
+        self.stage_flip(500)
+        rc, out = self.act(500, "my-slug")
+        self.assertNotEqual(rc, 0)
+        self.assertIn("on main", out)
+
+
+class TestTheLaneOpenActLaw(unittest.TestCase):
+    """M-395 (INV-214): the act and its discipline as shipped document law."""
+
+    def test_spec_states_the_lane_open_act(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("Opening a lane is an act the session performs", spec)
+        self.assertIn("scripts/open-lane.sh", spec)
+        self.assertIn("refuses to open a lane past it", spec)
+
+    def test_the_serial_check_is_a_discipline_the_spec_states_why(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("This recorded-reason duty is a discipline the session holds", spec)
+        self.assertIn("a judgment call is never a gate", spec)
+        self.assertIn("torn down at each landing", spec)
+
+    def test_inv214_carries_one_index_row(self):
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as fh:
+            index = [line for line in fh if line.startswith("| INV-214 |")]
+        self.assertEqual(len(index), 1, "INV-214 owes exactly one Formal index row")
+
+    def test_the_cap_reads_off_the_profile_not_a_hardcoded_three(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("the profile-declared lane cap", spec)
+        self.assertIn("`lanes.cap`", spec)
+
+    def test_base_rulebook_and_build_pipeline_state_the_act(self):
+        base = read_flat("skills/live-spec-base/SKILL.md")
+        self.assertIn("The lane-open act", base)
+        self.assertIn("`lanes.cap`", base)   # the cap row in the package defaults
+        pipe = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn("Opening a lane is an act you PERFORM", pipe)
+
+    def test_architecture_owns_inv214(self):
+        arch = read_flat("ARCHITECTURE.md")
+        self.assertIn("INV-214", arch)
+        self.assertIn("scripts/open-lane.sh", arch)
+
+
 if __name__ == "__main__":
     unittest.main()

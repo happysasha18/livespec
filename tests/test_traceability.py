@@ -2034,15 +2034,15 @@ class TestProblemLedger(unittest.TestCase):
         human's word, one pen writes — the law in SPEC, carried by build-pipeline + base; the
         waiting lane readable on the board (communicator)."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("Trains may roll", "T-18", "At most three build lanes roll at once",
-                       "a fourth lane opens only on the human's asked word",
+        for needle in ("Trains may roll", "T-18", "At most the profile-declared lane cap of build lanes roll at once",
+                       "one more lane opens only on the human's asked word",
                        "waiting for the pen says so and names the row it waits behind",
                        "pen-stage is never cut mid-edit",
                        "never against another lane's half-written draft"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("Trains, one pen", "SPEC T-18", "isolated tree",
-                       "a fourth opens only on the human's asked word"):
+                       "one more opens only on the human's asked word"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("SPEC T-18", "PEN"):
