@@ -68,3 +68,30 @@ done by pack 0.8.x / prover 0.1.8; asserted (not re-checked): the adoption recor
   "the other project's session found three gaps in the adoption procedure; before tonight it would have
   edited the package's files directly; instead it left one new file in the inbox and touched nothing
   else; I turned its findings into queue rows." Same fact — only the second one communicated.
+
+## The queue's far tier in the status report *(rule 9, rule 14; SPEC INV-222, INV-223)*
+
+The what's-left answer and the feature map read the RUNNABLE queue — the rows a session could take
+next — and stand the far tier down by name. A `far` row is kept because discarding it would lose the
+thought, carrying no revisit trigger and no plan to run, so nothing re-scans it (unlike a `deferred`
+row, whose trigger the queue-take re-scans every take [SPEC INV-129], returning it on its own). A far
+row returns only on the person's ask or the rare self-surfacing line. So the report leaves the far tier
+out of the runnable work it enumerates and prints, in its place, one stand-down line:
+
+> What's left to run: rows 405, 407 (…). There is also a far backlog (3 items), shown on request.
+
+A far row named among the runnable what's-left is the defect — the fixture check
+`guardrails/check-far-tier.py --report` reds it, and passes a report that stands the tier down and
+offers it on request [SPEC INV-222].
+
+**The rare self-surfacing line** *(SPEC INV-223).* Beyond answering on request, the status report shows
+the far backlog on its own once in a while, so a parked thought is met again unbidden. The cadence is a
+settings-ladder default — at most one such offer every fourteen days (`far-tier.surface-cadence`,
+E-13) — movable by the person's word, and the report records the last surfacing in a dated marker:
+
+> A far backlog is also kept — 3 thoughts parked with no plan to run. Want to see it? <!-- far-tier:offer 2026-07-18 -->
+
+A second offer inside the same window is the defect the fixture check
+`guardrails/check-far-tier.py --window` reds; a first offer once the window has passed passes. This
+rides the status report the agent pushes at him, an asynchronous touchpoint [SPEC INV-205], and
+interrupts nothing.

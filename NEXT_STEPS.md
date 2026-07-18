@@ -1,17 +1,19 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-18 — the live three-lane run INTEGRATED locally (not pushed): rows 379 + 406 + 407 landed in order, suite 1366 green, v2.6.3)
+## LIVE STATE (2026-07-18 — the far-tier pair landed locally (not pushed): rows 382 + 403, suite 1440 green, v2.6.3)
 
-**The three-lane run (the live-run leg of 386 + 412): three independent rows built in parallel isolated
-worktrees, then integrated onto main IN ORDER — 379 (INV-215, enumerable facts earn bullet structure,
-M-396), 406 (INV-216, config-health reds a dead permission rule, M-397), 407 (INV-217, the release-tier
-rule: minor/major/patch by host cost, M-398). Shared-doc overlaps reconciled (PRODUCT_SPEC formal index +
-clauses, ARCHITECTURE owns-lists, ROADMAP rows, EXPECTED_GAPS→{}) so INV-213..217 stand contiguous.**
-**Finding:** the `isolation:"worktree"` road cuts a lane from the pushed origin/main, not local HEAD, so
-each lane's base was the stale fe6ef60 (main was three commits ahead: INV-213/214/120); integration
-rebased the deltas onto current main. **The live-three-lane-run leg of 386 + 412 is CLOSED by this run.**
-Prior (detail in JOURNAL): rows 386+412+414 lane-open act (INV-214); rows 390+392 docs rotation (INV-209).
-**NOT pushed — the push gate, a prover re-check, and the VERSION bump are the orchestrator's.**
+**The far-tier pair (382 then 403): the queue gains the `far` status (kept, no revisit trigger, no plan
+to run, distinct from `deferred` whose trigger the queue-take re-scans, INV-129). The what's-left report
+and feature map stand the far tier down by name (INV-222, M-403); the status report carries a rare
+self-surfacing line at a settings-ladder cadence (`far-tier.surface-cadence`, once / 14 days), a second
+offer inside the window red (INV-223, M-404). Report-shape checks ride the suite via
+`guardrails/check-far-tier.py` — no push gate, gate chain untouched. Rows 411 + 381 stay far.**
+
+**Earlier this session, also integrated-not-pushed (detail in JOURNAL):** the three-lane run — 379
+(INV-215, M-396), 406 (INV-216, M-397), 407 (INV-217, M-398), integrated onto main in order, the
+live-run leg of 386 + 412 CLOSED; and rows 390 + 392 docs rotation (INV-209), 386+412+414 lane-open act
+(INV-214). **All of this — the far-tier pair and the earlier landings — is NOT pushed: the push, a prover
+re-check, and any VERSION bump are the orchestrator's.**
 
 ## ON RESUME — in order
 

@@ -5046,3 +5046,46 @@ on `guardrails/cleanup_notice.py` · `tests/test_runaway_child.py` (20 tests, si
 no runaway ever spawned) · `guardrails/README.md` the owner-run wiring step. Suite 1329 green. Records
 `docs/prover/2026-07-18-row420-runaway-child.md`, red-proof
 `docs/prover/red-proof-2026-07-18-row420-runaway-child.txt`. VERSION unchanged (2.6.3). Not pushed.
+
+## 2026-07-18 — Rows 382 + 403: the queue's far tier, and its rare self-surfacing (INV-222, INV-223)
+
+The far-tier pair, 403 depending on 382, both landed one movement. The owner's word of 2026-07-17
+sent a diagram road away into a far backlog and named the shape: a project should HAVE such a
+backlog, the "what's left" answer should stop naming it every time, and once in a while a line may
+offer it. 403 is his own analogue to the release note's offer of next steps — the backlog showing
+itself rarely, unasked.
+
+The load-bearing design question the prompt flagged as a stop condition: can the far-versus-deferred
+distinction be made mechanical? It can, and both ways. A deferred row carries a revisit trigger the
+queue-take re-scans every take (INV-129), so it returns on its own when the trigger fires. A far row
+carries no trigger and no plan, so nothing re-scans it and it returns only on the person's ask or the
+rare line. The two are told apart by the status token and by the trigger, and the checker
+`guardrails/check-far-tier.py --vocab` reads the boundary in both directions: a far row carrying a
+trigger reds (it is a deferred row wearing the wrong token), and a deferred row carrying no trigger
+reds (the re-scan is left with nothing to read).
+
+Why the machine is a suite check and not a push gate: the status report and the feature map are chat
+surfaces the agent speaks at runtime, and no committed report file exists for a push gate to scan
+(INV-83's sibling). So the checker rides the suite over fixtures, and the real queue's far rows (411,
+381) are asserted by the test directly. The gate chain — pre-push, gates.yml, gate-red-proofs.json —
+is untouched; no gate z was minted. This is the report-shape road the prompt named as the alternative
+to a new gate.
+
+INV-222 is owned by build-pipeline (the queue-status sibling of INV-129), its report shape carried by
+communicator as wiring — the same split INV-206 uses. INV-223 is owned by communicator (the report
+shape), its cadence default carried by the base-rulebook settings ladder
+(`far-tier.surface-cadence`, at most once every 14 days), the per-person cadence riding the profile
+(row 414). 403 consumes the touchpoint classification already declared for `far-tier-surfacing`
+(asynchronous, agent-pushed) in guardrails/touchpoints.json; the frame (INV-205) was not re-opened.
+
+One drag: communicator's SKILL.md body sits at exactly 499 lines, one under the ~500 ideal the size
+gate holds, so it had no room for the new report shape. The far-tier stand-down and the rare line went
+into references/field-examples.md — the worked-examples half of communicator's one surface — where the
+content-presence tests read them and the size gate does not count them.
+
+Tests red-proven against the pre-delta tree, then green: the report check reds a far row named among
+runnable work and a runnable report with no stand-down; the window check reds a second offer inside the
+14-day window and passes a first offer after it; the vocab check reds both sides of the far/deferred
+boundary. Spec/index/architecture/matrix carried no INV-222/INV-223 before the delta. No version bump
+(pack stays 2.6.3). Rows 411 and 381 already carried the `far` token and now cite the formalized
+vocabulary; they stay far, unbuilt.
