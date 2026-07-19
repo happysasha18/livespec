@@ -19,19 +19,19 @@ class TestReadmeStanceParagraph(unittest.TestCase):
     def test_stance_paragraph_present(self):
         body = read_flat("README.md")
         self.assertIn("A spec owns what a project can write down and test.", body)
-        self.assertIn("It routes instead.", body)
-        self.assertIn("photo-portfolio", body)
+        self.assertIn("Feel belongs to the owner's eye.", body)
+        self.assertIn("no rubric will ever catch honestly", body)
 
     def test_stance_paragraph_before_known_issues(self):
         with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as f:
             text = f.read()
         stance_idx = text.find("A spec owns what a project can write down and test.")
-        known_issues_idx = text.find("## Known issues")
+        known_issues_idx = text.find("Known issues")
         self.assertGreater(stance_idx, -1, "stance paragraph not found")
-        self.assertGreater(known_issues_idx, -1, "## Known issues heading not found")
+        self.assertGreater(known_issues_idx, -1, "Known-issues section not found")
         self.assertLess(
             stance_idx, known_issues_idx,
-            "stance paragraph must sit before the Known-issues heading",
+            "stance paragraph must sit before the Known-issues section",
         )
 
 
@@ -41,8 +41,7 @@ class TestReadmeNoCommandSurface(unittest.TestCase):
 
     def test_no_command_surface_stated(self):
         body = read_flat("README.md")
-        self.assertIn("There are no commands to memorize", body)
-        self.assertIn("no command list to hunt for", body)
+        self.assertIn("There is no CLI; you talk to it", body)
 
 
 if __name__ == "__main__":

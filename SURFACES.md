@@ -8,7 +8,7 @@ this registry must keep up.
 
 | Surface | Needle | Spec anchors |
 |---|---|---|
-| readme-opening | A software house under your fingertips | INV-44, INV-82 |
-| readme-pipeline | A wish, end to end | INV-44 |
-| readme-known-issues | Reviewed at every push | INV-44 |
+| readme-opening | There is no CLI; you talk to it | INV-44, INV-82 |
+| readme-pipeline | coded until green, and committed with its documents in one change | INV-44 |
+| readme-known-issues | Known issues | INV-44 |
 | overview-map | the ideas in five minutes | INV-48 |
