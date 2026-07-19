@@ -2,6 +2,30 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-19 — 2.8.2 PATCH: the register judge holds grading-worth-without-fact and unglossed-jargon (INV-203)
+
+The chat register judge (INV-203) gained two more universal classes, and the document register lint the
+same two. LAW 3 — grading the WORTH of a thing (a thought, a result, a rhyme, a design) with an evaluative
+word and no fact behind it — bans the verdict on worth and keeps the fact ("cuts the query from 900ms to
+40ms" passes; "much faster" with no number reds); it covers both poles, inflating up and dramatizing down
+being one bias, and it grades ANY object rather than a result alone. LAW 4 — a coined or jargon term shown
+to the reader with no plain gloss on first use. Both are stated as classes a model reads, not literal
+lists, so the judge catches the class where a pattern list trails one escape behind the next word. The
+document law folds the unglossed-term class into its LAW 1 and adds the grading class as its LAW 2.
+
+A PATCH by INV-217: the law is already the person's standing chat discipline (the no-false-hope-inflation
+and ground-every-term rules); the change makes the machine hold it, and the host takes the pack and does
+nothing. The worked instance that named the gap (2026-07-19): a session flagged one graded RESULT yet let
+a graded THOUGHT («сильная мысль») and a graded RHYME («красивая рифма») pass and let an unglossed coined
+term («развилки») reach the reader — the narrow reading "grades how important a result is" is one instance
+of the class the class-reading law now owns. The two new Russian detector strings are added to
+scripts/shipped-language-allowlist.json as cyrillic waivers of the same self-exclusion class as «X, а не Y»,
+so gate i does not red on the source naming the frames it forbids. chat_law()'s renumber joins universal(4)
++ personal(2) into one 1..6 sequence so the judge cites a number no overlay base collides with. Four test
+cases added (40 pass). The clean-context adversarial pass (INV-237) ran from a fresh session that did not
+write the change and found it sound (docs/prover/2026-07-19-2.8.2-push-recheck.md). Installed judge copies
+re-synced so config-health reads no drift.
+
 ## 2026-07-18 (Opus, single senior seat) — row 396: the traffic-kind transport split (INV-236), INV-183's transport sentence corrected
 
 The owner refused a premise on 2026-07-17: agents on one machine should talk through a direct channel, and git carries what needs no answer. INV-183's transport sentence had been written on the opposite reasoning — from the worst case (a remote seat reaches a repo through git alone, INV-112) to the universal rule that git is every message's transport and co-location only a fast path. This landing corrects that one sentence and states the split as a law of its own (INV-236).

@@ -117,15 +117,16 @@ def test_universal_law_carries_the_bare_code_class():
 
 
 def test_renumber_laws_makes_a_single_sequence():
-    """A universal block numbered 1..2 joined to a personal overlay numbered 2..3 renumbers to 1..4 —
-    no duplicate number for the judge to mis-cite."""
+    """A universal block joined to a personal overlay (each numbered from its own base) renumbers to one
+    unbroken 1..N sequence — no duplicate number for the judge to mis-cite. The universal law carries four
+    classes (scissors, bare-code, grading-worth, unglossed-term), so universal(4) + personal(2) = 1..6."""
     personal = "LAW 2 — synthetic personal one.\n\nLAW 3 — synthetic personal two."
     combined = core.UNIVERSAL_CHAT_LAW + "\n\n" + personal
     out = core.renumber_laws(combined)
     heads = re.findall(r"LAW (\d+) —", out)
-    assert heads == ["1", "2", "3", "4"], heads
-    # the universal block alone (two laws) renumbers to exactly 1,2
-    assert re.findall(r"LAW (\d+) —", core.renumber_laws(core.UNIVERSAL_CHAT_LAW)) == ["1", "2"]
+    assert heads == ["1", "2", "3", "4", "5", "6"], heads
+    # the universal block alone (four laws) renumbers to exactly 1..4
+    assert re.findall(r"LAW (\d+) —", core.renumber_laws(core.UNIVERSAL_CHAT_LAW)) == ["1", "2", "3", "4"]
 
 
 def test_chat_law_body_is_sequentially_numbered():
@@ -149,6 +150,50 @@ def test_trailing_anchor_sentence_passes_the_judge():
     sentence = "The release pass now runs from a clean context (INV-237)."
     offences, error = core.parse_offences('{"offences": []}', sentence)
     assert error is None and offences == []
+
+
+# ---- The broadened universal classes: grading worth, and an unglossed coined/jargon term ------------
+# The audit's worked instance (2026-07-19): the judge caught "с сильным результатом" this session but let
+# a graded THOUGHT («сильная мысль») and a graded RHYME («красивая рифма») through, and let an unglossed
+# jargon term («развилки») reach the reader. The narrow reading ("grades how important a RESULT is") is
+# one instance; the class is grading importance OR quality of ANYTHING with no fact, and any coined/jargon
+# term shown with no plain gloss. The universal law must name both classes, not the scissors/bare-code
+# pair alone.
+
+# Praise that grades worth with no fact behind it — a strong thought, a beautiful rhyme, far better.
+GRADING_FIXTURE = "Это сильная мысль, и рифма красивая — в разы лучше прежнего."
+# A coined/jargon term dropped into chat with no plain gloss — «развилки» where the reader never met it.
+UNGLOSSED_FIXTURE = "Здесь у нас развилки, дальше пойдём по первой."
+
+
+def test_universal_chat_law_carries_the_grading_worth_class():
+    """The universal chat law names grading importance/quality WITHOUT a concrete fact as a class, so a
+    graded thought or rhyme reds like a graded result — not the narrow 'a result' phrasing alone. (RED
+    before the fix: the universal law named only the scissors and bare-code classes.)"""
+    law = core.UNIVERSAL_CHAT_LAW.lower()
+    assert "grad" in law and ("importance" in law or "quality" in law or "worth" in law)
+    assert "fact" in law
+
+
+def test_universal_chat_law_carries_the_unglossed_term_class():
+    """The universal chat law names a coined/jargon term shown with no plain gloss as a class, so an
+    unglossed «развилки» in chat reds. (RED before the fix.)"""
+    law = core.UNIVERSAL_CHAT_LAW.lower()
+    assert "gloss" in law and ("jargon" in law or "coined" in law)
+
+
+def test_grading_worth_reds_under_the_judge():
+    """Handed the model's verdict, the judge reds a graded-worth chat sentence the narrow list missed."""
+    canned = json.dumps({"offences": [{"quote": GRADING_FIXTURE, "law": 3, "why": "grades worth, no fact"}]})
+    offences, error = core.parse_offences(canned, GRADING_FIXTURE)
+    assert error is None and len(offences) == 1 and offences[0]["quote"] == GRADING_FIXTURE
+
+
+def test_unglossed_term_reds_under_the_judge():
+    """Handed the model's verdict, the judge reds an unglossed coined/jargon term shown in chat."""
+    canned = json.dumps({"offences": [{"quote": UNGLOSSED_FIXTURE, "law": 4, "why": "coined term, no gloss"}]})
+    offences, error = core.parse_offences(canned, UNGLOSSED_FIXTURE)
+    assert error is None and len(offences) == 1 and offences[0]["quote"] == UNGLOSSED_FIXTURE
 
 
 # ---- PLACE (416): a turn holding many messages reds on the one that offends -------------------------

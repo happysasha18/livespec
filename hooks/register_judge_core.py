@@ -67,17 +67,41 @@ LEAD with an internal handle as its first token — an invariant code (INV-237),
 TRAIL the plain sentence in parentheses as a quiet anchor once the words have carried the meaning; only a
 code standing as the opening token offends. Leading with the code is the agent talking to itself in its
 own filing system rather than to the reader. A sentence that opens in plain words and closes with a
-parenthetical anchor passes."""
+parenthetical anchor passes.
+
+LAW 3 — no grading importance or quality without a concrete fact. Praising or grading the WORTH of a
+thing — a thought, a result, a phrase, a rhyme, a design, a change — with an evaluative word and no fact
+behind it is banned. Grading how important, how good, or how strong something is, up or down, is the
+reader's own act; the text states what the thing IS or DOES and lets the reader weigh it. Banned as a
+class in any language: «сильная мысль», «сильный результат», «красивая рифма», «в разы лучше», "a strong
+point", "a beautiful solution", "far better", used as a verdict on worth rather than a statement of fact.
+A word that carries a FACT stays: "cuts the query from 900ms to 40ms" is a fact and passes; "much faster"
+with no number is a grade and offends. The class covers both poles — inflating up and dramatizing down
+are one bias — and it grades ANY object, not a result alone.
+
+LAW 4 — no coined or jargon term shown to the reader without a plain gloss. A word the reader may not
+know — a name this project coined for its own machinery, or a piece of domain jargon — dropped into a
+sentence with no plain-language gloss on first use is banned (e.g. «развилки» shown in chat where the
+reader was never taught the term). Name the thing in the reader's own plain words, or gloss the term the
+first time it appears. A widely understood industry-standard word needs no gloss and passes."""
 
 # ---- The DOCUMENT register law (ships with preshow-register-lint.py; universal to every host) -------
 DOCUMENT_REGISTER_LAW = """LAW 1 — no machine dialect in a surface a human reads. A shown surface speaks
 the reader's own plain, industry-standard words. Banned as a class: a coined internal mechanism-name or
 metaphor shown raw (a name a project invented for its own machinery, shown to a reader who never learned
 it); an English internal term loan-translated word-for-word into the reader's own language (a calque);
-a transliterated internal term (an English coinage respelled in the reader's alphabet). A plain
-industry-standard word, or an ordinary word that merely happens to appear inside such a coinage, passes —
-only the coined collocation itself leaks. Judge by whether an outside reader, never taught this project's
-private vocabulary, would meet a word as machinery rather than as meaning."""
+a transliterated internal term (an English coinage respelled in the reader's alphabet); and any coined or
+jargon term shown with no plain gloss on first use — a word the reader may not know, machinery or domain
+jargon, given without naming it in the reader's own plain words. A plain industry-standard word, or an
+ordinary word that merely happens to appear inside such a coinage, passes — only the coined collocation
+itself, or an unglossed unfamiliar term, leaks. Judge by whether an outside reader, never taught this
+project's private vocabulary, would meet a word as machinery rather than as meaning.
+
+LAW 2 — no grading importance or quality without a concrete fact. Grading the WORTH of a thing — how
+important, how good, how strong, up or down — is the reader's act; the surface states what the thing IS
+or DOES and lets the reader weigh it. An evaluative verdict with no fact behind it offends ("a strong
+result", "far better", "a beautiful solution"); a fact or a number stays ("cuts the query from 900ms to
+40ms"). Both poles are one bias — inflating up and dramatizing down — and it grades any object."""
 
 
 def renumber_laws(text):
