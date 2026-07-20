@@ -35,7 +35,7 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   landing:** the engine rung is occupied. That day the pack stated its first laws whose truth lives in
   an external engine's runtime behaviour rather than in its own text — what git refuses to a second
   worktree, what a rebase does on a conflict, what a teardown does to a dirty tree — and no string
-  assertion against a shipped file can see any of it. Such a law is proven by DEED, driving a real
+  assertion against a shipped file can see any of it. Such a law is proven by deed, driving a real
   process in a temp tree under the suite's own prefix (INV-100) with the machine's own git config
   switched off (INV-155), and the deed's red-proof is a mutation removing the subject it observes.
   The rung's own boundary is a fact too: the deed proves what the engine does at the version and
@@ -49,8 +49,8 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   line at all and passes on this explicit "none"; the per-kind axis-set table in ARCHITECTURE.md is
   the scaffold each founding fills.
 
-- `other-projects: AUDIT-ONLY — when Alexander speaks about another project in this window, it is a
-  CASE STUDY for improving the pack, never a task in that project; this window NEVER intervenes
+- `other-projects: audit-only — when Alexander speaks about another project in this window, it is a
+  case study for improving the pack, never a task in that project; this window never intervenes
   actively there — no fixes, no managing, not even an inbox wish (narrower than the pack-wide inbox
   exception, base rule 7); reading for audit is legal, the response is always a pack improvement` —
   Alexander's explicit word 2026-07-06 ~21:50, after this window filed an inbox wish to the gallery
@@ -70,7 +70,7 @@ SPEC E-13). Every line here is a recorded override, never a silent divergence (S
   day; a seat that ever finds this line absent for a repo runs the grant ask (scripts/grant-ask.md) rather
   than failing silently.
 
-- AMENDMENT to `other-projects` (named, dated): for the tlvphoto pair migration Alexander set on
-  2026-07-10 ~02:09, this window TEACHES and SUPERVISES — prepares briefs he hands over, reviews
+- Amendment to `other-projects` (named, dated): for the tlvphoto pair migration Alexander set on
+  2026-07-10 ~02:09, this window teaches and supervises — prepares briefs he hands over, reviews
   artifacts, directs — and still never writes their trees; the audit-only line above keeps standing
   for everything else. Recorded 2026-07-10 ~09:19 from his word of that night.
