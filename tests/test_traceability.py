@@ -1763,15 +1763,25 @@ class TestProblemLedger(unittest.TestCase):
 
     def test_lanes_by_graph(self):
         """Row 149 (M-147, INV-49): lanes picked by a dependency graph, integration
-        order declared at claim, tiny rows serial."""
+        order declared at claim, tiny rows serial. The sharpened edge rule (INV-49):
+        an edge is a true dependency or a same-section collision, and mere co-location
+        in a shared living doc draws NO edge — the docs are a convergence point, never
+        a serializing surface. The over-broad 'doc region' wording that forbade all
+        parallelism must NOT return to the operative surfaces."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("INV-49", "dependency graph", "rows ride serial",
-                       "first-declared lands first"):
+                       "first-declared lands first",
+                       "convergence point", "never a serializing surface"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("Lanes are picked by a graph", "rows ride serial",
-                       "DECLARED at claim"):
+                       "DECLARED at claim", "never a serializing surface",
+                       "convergence point"):
             self.assertIn(needle, pipe, "build-pipeline missing: %s" % needle)
+        # the refuted 'doc region' wording must not survive on M-147, INV-49's own row
+        m147 = next((ln for ln in read("TEST_MATRIX.md").splitlines() if ln.startswith("| M-147 |")), "")
+        self.assertNotIn("doc region", m147, "M-147 still carries the refuted 'doc region' edge wording")
+        self.assertIn("convergence point", m147, "M-147 missing the sharpened convergence principle")
 
     def test_entry_symmetry(self):
         """Row 150 (M-148, INV-50): a conditionally-entered face owes a re-entry
