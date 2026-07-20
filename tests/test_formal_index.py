@@ -31,8 +31,8 @@ INDEX_HEADING = "### Formal index"
 # is the pinned expected gap set: a NEW hole fails the numbering check, while any historical gap
 # that ever existed would be listed here with its reason so it does not hard-fail. Today: none.
 EXPECTED_GAPS = {}  # e.g. {"INV": [63]} would pin a retired-code hole; empty = a fully dense index.
-# Reconciled at the integration of the 2026-07-18 three-lane run: lanes landed INV-215, INV-216, INV-217
-# onto a main already carrying INV-213/214, so INV-213..217 are contiguous and the index is dense again.
+# INV-245 (project-name gate) and INV-246 (lean-orchestrator arm) landed together in one integration,
+# so the index runs contiguous through INV-246 and no gap is pinned.
 
 
 # --------------------------------------------------------------------------- parsers (text-in)
