@@ -82,6 +82,10 @@ jobs:
           else
             echo "no inbox in this checkout — the gate stands down by name"
           fi
+      # The named-reference presence nets (SPEC INV-239) take NO push-gate letter: they RIDE THE SUITE
+      # (the pytest step, gate b), the same placement the far-tier report-shape check takes, so they
+      # need no separate CI step here and no ci-mirror carve-out — a suite-riding check carries no gate
+      # letter for the mirror to track.
       - name: gate u — CI mirror parity (every local gate is mirrored in CI or a declared carve-out, SPEC INV-210)
         run: guardrails/check-ci-mirror.sh
       - name: gate w — every gate can fail (every gate in this chain carries a known-red proof, SPEC INV-212)

@@ -149,6 +149,13 @@ else
   echo "   (no inbox in this tree — the gate stands down by name)"
 fi
 
+# The named-reference presence nets (SPEC INV-239) take NO push-gate letter and are NOT invoked here:
+# they RIDE THE SUITE (gate b), the same placement the far-tier report-shape check takes. Their suite
+# tests run each net against the real tree and assert the expected result, so a real violation reds
+# the suite and gate b already blocks this push. A suite-riding check carries no gate letter, so the
+# letter-counting meta-guards (INV-210, INV-212) need not see it and no gate-red-proofs / ci-mirror
+# entry is owed.
+
 echo ""
 echo "-- gate h: the four host checks (this repo attached as its own first host, SPEC INV-97) --"
 for hostcheck in completeness tests_present traces_to_spec conflicts; do

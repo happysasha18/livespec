@@ -1,0 +1,5 @@
+{
+  "_comment": "The arming switch for the Formal-index non-empty description-field gate (guardrails/check-description-field.py, SPEC INV-239/M-421). The gate reds a registered code whose description field is empty; it MUST NOT arm before the back-describe migration lands, because the existing code set carries no rich descriptions yet, so an armed gate would red the whole tree. It ships DORMANT: with armed=false the gate prints an OK-dormant line and exits 0. The migration that back-describes every registered code (the one-pass major-release chapter, INV-217) flips armed to true in the same landing, and only then, so the gate never reds a code the migration has not yet reached.",
+  "armed": false,
+  "reason": "arms in the back-describe migration landing, folded finding N5 / INV-217"
+}
