@@ -24,10 +24,16 @@ problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
      (19). A CROSS-LINK prover folded 5 defects; a fresh-seat adversarial audit added the block-emit test + a size
      signal. Records docs/prover/2026-07-20-conduct-judge.md; ROADMAP 431 (landed + follow-on), 432 (INV-238 residual).
    - **STORY 2 (landing-commit refreshed NEXT_STEPS gate, INV-242) and STORY 3 (config-health skill-copy arm, INV-243)
-     — NOT started, spec drafted.** Both deterministic gates, derivable, no his-word owed. Draft at
-     scratchpad/movement0-spec-delta.md sections A2/A3. Story 2's open detail (mine): the push-gate letters a–z are
-     exhausted, so it rides the suite or folds into an existing gate rather than taking a new letter. On Story 3's
-     landing the movement closes and bumps 3.1.0 (MINOR) with the full minor-gate.
+     — NOT started, spec drafted.** Both deterministic gates, derivable, no his-word owed. Draft (committed) at
+     `docs/design/2026-07-20-conduct-audit-stories-2-3-spec-delta.md` sections A2/A3, with the design doc
+     `docs/design/2026-07-19-reminder-dependent-capability-audit.md` (bucket 2) as source. Story 2 (INV-242): a gate
+     that reds a landing commit — one whose diff flips a ROADMAP row to a closed status — when it does not also touch
+     NEXT_STEPS.md; the push-gate letters a–z are exhausted, so it RIDES THE SUITE (like check-far-tier/description-field)
+     rather than taking a new letter. Story 3 (INV-243): extend `guardrails/check-config-health.sh` with a second arm
+     that diffs each installed skill copy at `~/.claude/skills/<skill>` against the pack's `skills/` source and reds a
+     drifted copy, beside the hook arm and the perms arm INV-216. On Story 3's landing the movement closes and bumps
+     3.1.0 (MINOR) with the full minor-gate. Follow-ons already queued: ROADMAP 431 (sharpen the conduct judge's idle/park
+     evidence), 432 (a text-semantic judge for INV-238's hedge paraphrase class).
 
 1. **Comms/naming build.** Named-reference pair + living description + earned auto-notification.
    - **MACHINERY — LANDED 2026-07-20 v2.9.0 (MINOR).** Re-authored off the old branch onto main and renumbered:
@@ -61,10 +67,13 @@ problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
 - **Framework coexistence at onboarding + README** — if a person already runs another framework, name the boundary.
 - **Evaluate the "superpower" skill as a competitor + README** — look at what it does, then position the README.
 
-## LIVE STATE (2026-07-20 — origin/main carries v3.0.0)
+## LIVE STATE (2026-07-20 — origin/main carries v3.0.0 + the conduct judge on top, all CI-green)
 Shipped this session: v2.8.3 (the hedge gate, INV-238) · v2.9.0 (the comms machinery — E-35/INV-239/INV-240/T-24 +
 two suite-riding presence gates) · v3.0.0 (the back-describe migration — the Formal index's Description column, the
-field gate armed, all 327 codes described). Movement 1 is fully closed. Working tree clean; memory wipeable.
+field gate armed, all 327 codes described) · the conduct judge INV-241 (movement 0 story 1, intermediate un-bumped
+commit on top of v3.0.0) · a lane-test leak root-fix (INV-100). Movement 1 fully closed; movement 0 story 1 closed,
+stories 2-3 the immediate next work. Suite 1670 green, working tree clean. Memory: back-describe + comms wipeable;
+movement 0 in progress (state above).
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory. Max agentic,
@@ -81,7 +90,7 @@ field gate armed, all 327 codes described). Movement 1 is fully closed. Working 
   listener (wait on the harness listener, INV-231) · far tier 381, 411.
 
 ## Next free codes
-INV-241, E-36, T-25, M-426, next ROADMAP row 431.
+INV-242 (story 2), INV-243 (story 3) are drafted; next truly free INV-244, E-36, T-25, M-427, next ROADMAP row 433.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
