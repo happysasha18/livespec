@@ -467,7 +467,8 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
 - **Trains, one pen (SPEC T-18, INV-39):** one session may roll up to the profile-declared lane cap of
   INDEPENDENT build lanes without asking (`lanes.cap`, package default three [E-13]; the owner's
   2026-07-06 value three in his profile; one more opens only on the human's asked word, never silently) —
-  pairwise independent: no shared surface, no shared spec section. Opening each lane is narrated, and
+  pairwise independent: no true dependency between them and no same-section collision — mere co-location
+  in a shared living doc is not an edge. Opening each lane is narrated, and
   every train rides the departures board, a waiting lane naming whom it waits behind. Only penless
   stages overlap: a later train's code and tests in its own isolated tree (its delta integrates only
   under the pen; the disjoint-file road stays within one lane), read-only analysis free.
@@ -479,10 +480,13 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   at the end of the current pen-stage and parks every rolling lane, each at its own checkpoint,
   resuming in landing order.
   **Lanes are picked by a graph, never by mood (SPEC INV-49):** at queue-take read the runnable head
-  and build the mini dependency graph — an edge wherever two rows share a surface, a spec section, a
-  skill file, or a doc region. Open lanes on a pairwise-independent set up to the cap. Rows that
-  collide only at integration pre-roll isolated build stages with the landing order DECLARED at claim
-  (first-declared lands first, the later re-fences). Tiny rows ride serial — parallel pays only when
+  and build the mini dependency graph — an edge only on a true dependency (one row needs another's
+  landed output) or a same-section / same-behaviour collision (the two rewrite one clause or one
+  behaviour's rule). Mere co-location in a shared living doc draws no edge: the shared living docs
+  (PRODUCT_SPEC, ARCHITECTURE, TEST_MATRIX) are a convergence point reconciled at integration, never a
+  serializing surface. Open lanes on a pairwise-independent set up to the cap. Rows that
+  collide only at integration — co-location included — pre-roll isolated build stages with the landing
+  order DECLARED at claim (first-declared lands first, the later re-fences). Tiny rows ride serial — parallel pays only when
   build stages dominate the pen work — and the chosen set, the order, and a said-aloud "serial by the
   graph" are board lines. The same queue-take also re-scans every deferred row's revisit trigger against
   the current moment (SPEC INV-129): a time-bound trigger can come true and lapse between two milestone
