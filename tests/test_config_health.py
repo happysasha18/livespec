@@ -158,6 +158,100 @@ class TestSessionHookDirDiff(unittest.TestCase):
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
 
+class TestSkillCopyArm(unittest.TestCase):
+    """INV-243 — a skill lives twice too: source in skills/ travels with the repo, the installed
+    copy under ~/.claude/skills/<name> is what pack skills actually load from. Same shape as the
+    session-hook directory-diff arm above, but for whole skill DIRECTORIES (diff -rq), since a
+    skill is a tree (SKILL.md + references/ + scripts/...), not a single file."""
+
+    def _repo_with_skills(self, tmp, pack_skills, installed_skills):
+        # pack_skills / installed_skills: {skill_name: {relative_path: content}}
+        subprocess.run(["git", "init", "-q", tmp], check=True)
+        gdir = os.path.join(tmp, "guardrails")
+        os.makedirs(gdir)
+        for name in ("pre-commit", "pre-push"):
+            with open(os.path.join(gdir, name), "w") as f:
+                f.write("#!/bin/sh\nexit 0\n")
+        # install the two git hooks so the git-hook arm passes and only the skill arm is under test.
+        ghooks = os.path.join(tmp, ".git", "hooks")
+        for name in ("pre-commit", "pre-push"):
+            p = os.path.join(ghooks, name)
+            with open(p, "w") as f:
+                f.write("#!/bin/sh\nexit 0\n")
+            os.chmod(p, 0o755)
+        skills_dir = os.path.join(tmp, "skills")
+        for sname, files in pack_skills.items():
+            sdir = os.path.join(skills_dir, sname)
+            for relpath, content in files.items():
+                fpath = os.path.join(sdir, relpath)
+                os.makedirs(os.path.dirname(fpath), exist_ok=True)
+                with open(fpath, "w") as f:
+                    f.write(content)
+        home = os.path.join(tmp, "scratch-home")
+        cskills = os.path.join(home, ".claude", "skills")
+        os.makedirs(cskills, exist_ok=True)
+        for sname, files in installed_skills.items():
+            sdir = os.path.join(cskills, sname)
+            for relpath, content in files.items():
+                fpath = os.path.join(sdir, relpath)
+                os.makedirs(os.path.dirname(fpath), exist_ok=True)
+                with open(fpath, "w") as f:
+                    f.write(content)
+        return home
+
+    def test_reds_missing_installed_skill(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_skills(
+                tmp, pack_skills={"foo": {"SKILL.md": "content\n"}}, installed_skills={})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("config-health", r.stdout)
+            self.assertIn("sync-skills.sh", r.stdout)
+
+    def test_reds_drifted_installed_skill(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_skills(
+                tmp,
+                pack_skills={"foo": {"SKILL.md": "v2\n"}},
+                installed_skills={"foo": {"SKILL.md": "v1 stale\n"}})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("foo", r.stdout)
+            self.assertIn("drifted", r.stdout.lower())
+
+    def test_passes_matching_skills(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            body = "same\n"
+            home = self._repo_with_skills(
+                tmp,
+                pack_skills={"foo": {"SKILL.md": body}},
+                installed_skills={"foo": {"SKILL.md": body}})
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_ignores_personal_overlay_skill(self):
+        # bar is installed with no pack source — a personal-layer skill the pack never ships. It
+        # must be left alone; only foo (which has a pack source) is checked.
+        with tempfile.TemporaryDirectory() as tmp:
+            body = "same\n"
+            home = self._repo_with_skills(
+                tmp,
+                pack_skills={"foo": {"SKILL.md": body}},
+                installed_skills={
+                    "foo": {"SKILL.md": body},
+                    "bar": {"SKILL.md": "personal skill, no pack source\n"},
+                })
+            r = run_check(tmp, env_extra={"HOME": home})
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_ci_skips_skill_arm(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = self._repo_with_skills(
+                tmp, pack_skills={"foo": {"SKILL.md": "content\n"}}, installed_skills={})
+            r = run_check(tmp, env_extra={"HOME": home, "GITHUB_ACTIONS": "true"})
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+
 class TestStagedVsWorktreeFenceArm(unittest.TestCase):
     def _repo_with_precommit(self, tmp):
         subprocess.run(["git", "init", "-q", tmp], check=True)

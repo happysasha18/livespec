@@ -65,6 +65,32 @@ if [ -d "$HOOK_SRC_DIR" ]; then
   done
 fi
 
+# INV-243: a skill is a gate living twice too — source in skills/ travels with the repo, the
+# installed copy under ~/.claude/skills/<name> is what a pack skill actually loads from. Same
+# shape as the session-hook directory-diff arm above, but the unit is a whole DIRECTORY TREE (a
+# skill carries SKILL.md plus references/, scripts/...), so the compare is a recursive tree diff
+# rather than a single-file cmp. A WHOLE skill installed under ~/.claude/skills with no pack source
+# (a personal-layer skill the pack never ships) is never iterated here and is correctly left alone —
+# the same TOP-LEVEL asymmetry the hook arm holds. A shipped skill's installed copy is held
+# byte-pristine, though: because the compare is a recursive tree diff, an extra file dropped INSIDE a
+# shipped skill's directory counts as drift and reds. That is stricter than the hook arm's flat-file
+# tolerance, and intended — a shipped skill should match its source tree exactly.
+SKILL_SRC_DIR="$REPO_ROOT/skills"
+if [ -d "$SKILL_SRC_DIR" ]; then
+  for src_skill in "$SKILL_SRC_DIR"/*/; do
+    [ -d "$src_skill" ] || continue
+    sname="$(basename "$src_skill")"
+    inst_skill="$HOME/.claude/skills/$sname"
+    if [ ! -d "$inst_skill" ]; then
+      echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed skill missing: ~/.claude/skills/$sname (source exists, install missing)\",\"fix\":\"run scripts/sync-skills.sh\"}"
+      fail=1
+    elif ! diff -rq "$src_skill" "$inst_skill" >/dev/null 2>&1; then
+      echo "{\"severity\":\"error\",\"code\":\"config-health\",\"message\":\"installed skill drifted from source: $sname\",\"fix\":\"run scripts/sync-skills.sh\"}"
+      fail=1
+    fi
+  done
+fi
+
 # INV-216: a permission rule that points at nothing is a dead rule. This arm reads every permission
 # rule that names a filesystem path in the personal ~/.claude/settings.json and the host's project
 # settings and reds a rule whose path is absent — the ~/tlvphoto→~/tlvphotos rename (2026-07-10) sat

@@ -22,7 +22,11 @@ for skill_dir in "$REPO_SKILLS"/*/; do
   name="$(basename "$skill_dir")"
   src_v="$(version_of "$skill_dir/SKILL.md")"
   dst_v="$(version_of "$DEST/$name/SKILL.md")"
-  if [ "$src_v" = "$dst_v" ] && ! [ "$skill_dir/SKILL.md" -nt "$DEST/$name/SKILL.md" ]; then
+  # Skip only when the installed tree is byte-identical to the source — the SAME whole-tree compare
+  # the config-health skill-copy arm reds on (INV-243). Gating the skip on the SKILL.md version or
+  # mtime alone let a drift confined to a non-SKILL.md file (a reference edited with no version bump)
+  # red the gate while re-running this fix skipped it as "unchanged" — a red with no working escape.
+  if [ -d "$DEST/$name" ] && diff -rq "$skill_dir" "$DEST/$name" >/dev/null 2>&1; then
     echo "  $name — unchanged ($src_v)"
     continue
   fi
