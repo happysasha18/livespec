@@ -30,9 +30,12 @@ INDEX_HEADING = "### Formal index"
 # The current index carries NO numbering gaps (computed 2026-07-10 across every prefix). This
 # is the pinned expected gap set: a NEW hole fails the numbering check, while any historical gap
 # that ever existed would be listed here with its reason so it does not hard-fail. Today: none.
-EXPECTED_GAPS = {}  # e.g. {"INV": [63]} would pin a retired-code hole; empty = a fully dense index.
+EXPECTED_GAPS = {"INV": [245]}  # e.g. {"INV": [63]} would pin a retired-code hole; empty = a fully dense index.
 # Reconciled at the integration of the 2026-07-18 three-lane run: lanes landed INV-215, INV-216, INV-217
 # onto a main already carrying INV-213/214, so INV-213..217 are contiguous and the index is dense again.
+# INV-245 is RESERVED for the parallel M1 lane (lane/m1-*), which is not in this worktree's base. This
+# lane (lane/m2-lean-guard) added INV-246. When both land, INV-245 fills and this pin is removed at
+# integration — the same reconcile the 2026-07-18 run did above.
 
 
 # --------------------------------------------------------------------------- parsers (text-in)
