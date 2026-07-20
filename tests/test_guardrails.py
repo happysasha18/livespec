@@ -1240,6 +1240,87 @@ class TestGateShippedLanguage(unittest.TestCase):
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("[owner-name]", result.stdout)
 
+    # --- INV-245: the project-name arm. A core spec names no foreign project and tells no dated
+    # incident. Rides gate i's mechanism; the forbidden project names live as allowlist DATA under
+    # `project_name_patterns`, so the detector's own source names no project. STRICT on PRODUCT_SPEC.md
+    # and ARCHITECTURE.md (a bare project name, or one beside an ISO date, reds); on TEST_MATRIX.md a
+    # dated-incident provenance turn reds while the fixture-ledger kind names and a test-function-name
+    # substring are permitted. ---
+
+    PROJECT_ALLOW = {"project_name_patterns": [r"\btrack-coach\b", r"\btlvphotos?\b", r"\bpromoter\b"]}
+
+    def test_project_arm_reds_a_bare_project_name_in_a_core_spec(self):
+        # RED-FIRST against the pre-arm engine: a bare foreign project name in PRODUCT_SPEC.md reds.
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "PRODUCT_SPEC.md",
+                "The card opens calm.\n"
+                "The lens grew from three items to six on track-coach evidence.\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("PRODUCT_SPEC.md:2", r.stdout)
+            self.assertIn("[project-name]", r.stdout)
+
+    def test_project_arm_greens_a_core_spec_stated_as_the_rule(self):
+        # the reworded shape passes: the rule stated in plain present tense, no project name, no date.
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "PRODUCT_SPEC.md",
+                "The card opens calm.\n"
+                "The lens grew from three items to six because a mandate with no checking seam gets skipped.\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_project_arm_reds_a_project_name_beside_a_date_in_architecture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "ARCHITECTURE.md",
+                "| node | a photo kind (tlvphotos) inspect-zoom miss 2026-07-16 | pin |\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("[project-name]", r.stdout)
+
+    def test_matrix_permits_the_fixture_ledger_and_a_test_name(self):
+        # TEST_MATRIX permits a bare kind-name in the fixture ledger (no adjacent date) and a
+        # project-name substring of a test-function name (word-bounded, so it never matches).
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "TEST_MATRIX.md",
+                "| M-1 | red-proven against three real hosts as fixtures — a code kind (track-coach), "
+                "a photo kind (tlvphotos), a prose kind | INV-1 | string | `test_promoter_harvest_trio` | BUILT |\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_matrix_reds_a_dated_incident(self):
+        # RED-FIRST: a dated-incident provenance turn (a project name beside an ISO date) reds in the
+        # matrix even though a bare fixture-ledger name does not.
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "TEST_MATRIX.md",
+                "| M-2 | the reversibility half, tlvphotos openable-face miss 2026-07-14 | INV-1 | "
+                "string | `test_x` | BUILT |\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+            self.assertIn("[project-name]", r.stdout)
+
+    def test_project_arm_inert_outside_the_core_specs(self):
+        # the arm is scoped to the three core specs: a skill card naming a project (an example) does not
+        # red under the project arm — that surface is the shipped-language name/Cyrillic arms' domain.
+        with tempfile.TemporaryDirectory() as tmp:
+            allow = self._write(tmp, "allow.json", json.dumps(self.PROJECT_ALLOW))
+            doc = self._write(tmp, "SKILL.md", "The track-coach widget is the code-kind example.\n")
+            r = run(["python3", self.ENGINE, "--root", tmp, "--allowlist", allow, doc])
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_detector_source_names_no_project(self):
+        # the arm's safety win, mirroring the owner-name arm: the shipped detector code carries no
+        # foreign project name — the forbidden names live in the (excluded, dated-debt) allowlist data.
+        with open(self.ENGINE, encoding="utf-8") as f:
+            src = f.read()
+        for name in ("track-coach", "tlvphotos", "tlvphoto", "promoter"):
+            self.assertNotIn(name, src,
+                             "detector source hardcodes a project name: %r" % name)
+
 
 class TestScopedReachDeletedFile(unittest.TestCase):
     """Audit fold (2.3.0 audit, finding 6): a deleted test file in the diff must never be handed to

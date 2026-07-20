@@ -6,6 +6,12 @@
       "Александр|Алекс(?:андр)?|Саш(?:а|е|у|и|ей|ку|ка)"
     ]
   },
+  "project_name_patterns": [
+    "\\btrack-coach\\b",
+    "\\btlvphotos?\\b",
+    "\\bpromoter\\b"
+  ],
+  "project_name_waivers": [],
   "user_language_globs": [
     "scripts/spec-style-lint.py",
     "scripts/preshow-register-lint.py",
