@@ -78,10 +78,13 @@ re-frozen, records committed, pushed (3d7f542). Working tree clean. Memory: the 
 Row 436's smallest-first slice landed in v3.2.0 (INV-244); 436's rest (value-space forcing, other kinds' sets)
 and 437 (recursive sweep) stay deferred. New wish swept to ROADMAP 438 — the delivery-separability prover lens
 (the dual of composition), Alexander's tlvphotos catch, scope on his word. The `from-owner-verify-code-state`
-deposit (row 430) stays in inbox, un-swept.
+deposit (row 430) stays in inbox, un-swept. The tlvphotos delivery-separability deposit (2026-07-21) was
+made earned in place (a `Lived:` field added, its birth genuine) after a sweep-versus-write race; it stays,
+routed to 438. **ROADMAP 439 queued (Alexander's word 2026-07-21):** an inbox deposit protocol for concurrent
+windows (atomic write + completeness signal + a sweep that never races a mid-write deposit) — a near-term movement.
 
 ## Next free codes
-Next free INV-245, E-36, T-25, M-430, next ROADMAP row 439.
+Next free INV-245, E-36, T-25, M-430, next ROADMAP row 440.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
