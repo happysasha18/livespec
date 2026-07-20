@@ -5,9 +5,34 @@ Push on green (his grant). A taste/policy fork stays an explicit question. Re-te
 derivability FIRST. **MOVEMENT 0 (the conduct audit) CLOSED at v3.1.0** — all three stories landed (INV-241
 the conduct judge, INV-242 the landing-refreshed-map gate, INV-243 the config-health skill-copy arm), each
 through a FULL prover pass + design review + fresh-seat adversarial audit whose folds are recorded below.
-NO unblocked build work remains in movements 0 or 1. The next real work is movement 3 (adoption + onboarding),
-which is DEFERRED on Alexander's forks — see "Migration readiness" below, the answer to his standing question.
+Movement 0/1 hold no unblocked build work. The next real work is the composition-axes-from-kind movement
+(rows 436-437), which Alexander PRIORITIZED 2026-07-20 ahead of onboarding — see "ACTIVE NEXT" below.
 BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file's words.
+
+## ACTIVE NEXT — the composition-axes-from-kind movement (Alexander's priority 2026-07-20, axes before onboarding)
+Rows 436-437. Memory: [[composition-axes-derive-from-project-kind]]. The design he named:
+`project.kind` (INV-36) carries a STANDARD composition-axis set the way it already proposes node structure;
+spec-author derives a surface's axes AND each axis's VALUE space from the kind; the value space is
+extrapolated with an explicit "member BETWEEN the two obvious poles" test (the device/input axis's hybrid =
+tablet / 2-in-1 / touchscreen laptop, which a binary touch-vs-pointer split drops); the look-alike sweep is
+recursive at every level. The mobile-grab bug on tlvphotos was the symptom of a reactive, incomplete set.
+
+STATE (2026-07-20 ~22:10): a smallest-first design sample was shown in chat — the visitor-facing-web axis set
+(input/device, browser engine, viewport, locale+direction, connection/data class, first-vs-returning,
+accessibility, measurement reach) and the device/input value space (coarse-touch phone / fine-pointer desktop
+/ hybrid tablet / keyboard-assistive). AWAITING his react on two taste calls before the full spec: (1) the web
+axis SET (add/cut), (2) the device/input value space (esp. the hybrid member). Build smallest-first (INV-62) —
+do NOT spec the full thing until he reacts.
+
+OPEN DESIGN QUESTION — answer in FRESH context after the reset (his explicit ask): should the axes be
+understood AUTOMATICALLY from context (inferred from `project.kind` / the running experience / the code)
+rather than a hand-maintained per-kind list? Assess realistically — what a machine can infer (browser engine,
+viewport, measurability) versus what stays authored domain taste (the SET for a kind, the between-poles
+member a list drops). He wants the cold-context verdict.
+
+MIGRATION PATH: tlvphotos migrates onto the axes release (next minor, ~v3.2) — the axes work is its concrete
+vehicle and reason, fixing its live mobile device-parity gap. Narrower and higher-value than the full
+onboarding movement (movement 3, still deferred on his ~8 forks below).
 
 ## Migration readiness — the answer to "when can other projects migrate?" (2026-07-20)
 Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet, and the block is Alexander's word,
