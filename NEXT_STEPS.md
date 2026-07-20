@@ -13,18 +13,17 @@ Name every request's persistence class before actioning it, and say it yourself.
 mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep to floor is only its other half.
 The three movements below are all STANDING, so each is built gate-first.
 
-## ACTIVE NEXT — history + project-refs cleanup, delivered as a PERMANENT gate (Alexander's word 2026-07-20/21)
-STANDING, universal. His ruling: history and references to other projects belong in side files (JOURNAL,
-research, fixtures), never in the specs themselves, and this holds PERMANENTLY for ANY project. Deliverable is
-ONE pack gate in guardrails/ that reds when a core spec carries a project name or a provenance turn, rides the
-suite + pre-push, born with a known-red proof (INV-212); every host inherits it by adoption, so "every project"
-is by construction. The one-time sweep (provenance → JOURNAL, fixture bindings preserved, specs to floor) only
-clears the current debt so the gate goes green. In the three core specs: PRODUCT_SPEC.md (18), TEST_MATRIX.md
-(17), ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter. **Scope inventory ready:
-docs/design/2026-07-21-history-cleanup-scope.md** — 45 provenance (reword to rule, history to JOURNAL), 5 fixture
-labels (safe to abstract; no test binds a name in spec text), 3 preserve verbatim (`test_promoter_harvest_trio`
-is a test-function name). Gate scopes strict to PRODUCT_SPEC + ARCHITECTURE, permits TEST_MATRIX fixture labels
-+ test names. Build gate-first: spec the gate rule → prove → build red-first → sweep to floor. Derivable — do.
+## LANDED (lane lane/m1-project-gate, 2026-07-21) — history + project-refs cleanup as a PERMANENT gate (ROADMAP 441, INV-245)
+STANDING, universal — DONE. The permanent mechanism is an ARM on the existing shipped-language gate (gate i,
+scripts/check-shipped-language.py, INV-120), not a new gate letter (a–z exhausted): PRODUCT_SPEC.md +
+ARCHITECTURE.md red on a bare project name or a name beside a calendar date; TEST_MATRIX.md reds a dated
+incident while permitting the fixture ledger (:172) and test-function names (:399-401). Forbidden names are
+allowlist DATA (`project_name_patterns`), so the detector names no project; the arm rides gate i's known-red
+proof (no new gate letter, the arm's own red-first proof rides gate b). INV-245 authored across all four docs
+(clause + Formal index + ARCHITECTURE owns-list + M-430); 7 red-first tests in tests/test_guardrails.py. The
+one-time sweep reworded 45 provenance lines + 5 fixture labels to floor, history preserved in JOURNAL.md; the
+whole shipped set reports zero shipped-language offences, register + R15 at floor. Fresh-seat prover +
+design-review dispatched. Pending: merge the lane to main and push on green.
 
 ## Then — the lean-orchestrator guard (Alexander's word 2026-07-20). Memory [[lean-orchestrator-needs-a-guard-not-more-prose]].
 Context keeps leaking because lean-orchestrator is the one load-bearing rule with no mechanical net. Do NOT add
@@ -93,7 +92,7 @@ routed to 438. **ROADMAP 439 queued (Alexander's word 2026-07-21):** an inbox de
 windows (atomic write + completeness signal + a sweep that never races a mid-write deposit) — a near-term movement.
 
 ## Next free codes
-Next free INV-245, E-36, T-25, M-430, next ROADMAP row 441.
+Next free INV-246, E-36, T-25, M-431, next ROADMAP row 442.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
