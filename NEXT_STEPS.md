@@ -3,8 +3,8 @@
 ## ON RESUME (2026-07-20 — this session drove the queue on Alexander's word: whole NEXT_STEPS to victory except the far ideas, max agentic, conserve context, push/deploy as needed)
 Push on green (his grant). A taste/policy fork stays an explicit question. Re-test every "needs his word" by
 derivability FIRST. THE OPEN HIS-GATE IS CLOSED: Alexander accepted the back-describe FORM 2026-07-20, and the full
-migration LANDED as MAJOR v3.0.0 (movement 1 below). NEXT UNBLOCKED WORK: movement 0 (the conduct judge), derivable,
-no his-word owed.
+migration LANDED as MAJOR v3.0.0 (movement 1 below). NEXT UNBLOCKED WORK: movement 0 stories 2-3
+(two deterministic gates, INV-242/INV-243), derivable, no his-word owed; story 1 (the conduct judge) landed.
 BEFORE resuming any deferred/queued item below, re-derive its state from the CODE, not this file's words (the item's
 problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
 
@@ -16,13 +16,18 @@ problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
      inline + Russian in the personal overlay, skipping quoted/fenced spans, clear of a legitimate INV-152 question.
      A fresh-seat adversarial audit folded three fixes before landing. It is the bucket-2 filter; the whole class
      is the main build's job.
-   - **MAIN build — NOT started.** Design doc docs/design/2026-07-19-reminder-dependent-capability-audit.md. A
-     conduct judge that reads the turn's ACTION TRACE (tool-call sequence) against the orchestration laws
-     (worker-routing, lean-orchestrator, parallel lanes, pull-unblocked-work, deep-audit, +more), plus two
-     deterministic gates (a landing commit refreshed NEXT_STEPS; self-install drift). FEASIBILITY CONFIRMED: a Stop
-     hook receives the turn's tool_calls / can read the transcript's tool_use events. Its three forks were re-tested
-     as DERIVABLE (judge every turn → quality-over-budget; coupling → the judge here, strictness in the registry;
-     which members first → the two-plus-reminder ones, base rule 23), so no his-word is owed — build it next.
+   - **MAIN build — STORY 1 (the conduct judge, INV-241) LANDED 2026-07-20 (intermediate, un-bumped; 3.1.0 on the
+     movement's close), suite 1670 green.** A Stop-hook meaning-judge reads the turn's action trace (the tool_use
+     events) against the four twice-reminded orchestration laws (worker-routing INV-69, lean-orchestrator INV-137,
+     pull-unblocked-work INV-143, classify-the-subtask), reusing register_judge_core, async, off by default. Code:
+     hooks/conduct-judge.py + conduct-law.md + collect/report arms, judge-hooks.json library, tests/test_conduct_judge.py
+     (19). A CROSS-LINK prover folded 5 defects; a fresh-seat adversarial audit added the block-emit test + a size
+     signal. Records docs/prover/2026-07-20-conduct-judge.md; ROADMAP 431 (landed + follow-on), 432 (INV-238 residual).
+   - **STORY 2 (landing-commit refreshed NEXT_STEPS gate, INV-242) and STORY 3 (config-health skill-copy arm, INV-243)
+     — NOT started, spec drafted.** Both deterministic gates, derivable, no his-word owed. Draft at
+     scratchpad/movement0-spec-delta.md sections A2/A3. Story 2's open detail (mine): the push-gate letters a–z are
+     exhausted, so it rides the suite or folds into an existing gate rather than taking a new letter. On Story 3's
+     landing the movement closes and bumps 3.1.0 (MINOR) with the full minor-gate.
 
 1. **Comms/naming build.** Named-reference pair + living description + earned auto-notification.
    - **MACHINERY — LANDED 2026-07-20 v2.9.0 (MINOR).** Re-authored off the old branch onto main and renumbered:
