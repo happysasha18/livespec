@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 3.2.0
+  version: 3.3.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.2.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.3.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -467,8 +467,8 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
 - **Trains, one pen (SPEC T-18, INV-39):** one session may roll up to the profile-declared lane cap of
   INDEPENDENT build lanes without asking (`lanes.cap`, package default three [E-13]; the owner's
   2026-07-06 value three in his profile; one more opens only on the human's asked word, never silently) —
-  pairwise independent: no true dependency between them and no same-section collision — mere co-location
-  in a shared living doc is not an edge. Opening each lane is narrated, and
+  pairwise independent: no true dependency between them and no same-section / same-behaviour collision —
+  mere co-location in a shared living doc is not an edge. Opening each lane is narrated, and
   every train rides the departures board, a waiting lane naming whom it waits behind. Only penless
   stages overlap: a later train's code and tests in its own isolated tree (its delta integrates only
   under the pen; the disjoint-file road stays within one lane), read-only analysis free.

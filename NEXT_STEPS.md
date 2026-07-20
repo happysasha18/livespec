@@ -1,61 +1,54 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-20 — driving the queue on Alexander's word: whole NEXT_STEPS to victory except the far ideas, max agentic, conserve context, push/deploy as needed)
-Push on green (his grant). A taste/policy fork stays an explicit question. Re-test every "needs his word" by
-derivability FIRST. **AXES-FROM-KIND movement CLOSED at v3.2.0** (INV-244, pushed) — the full pipeline ran
-(spec → prove → design-review → architecture → matrix → red-first tests → wire → compact → verify), records
-committed. The next in-loop work is the two movements Alexander named this session: the history/project-refs
-cleanup out of the specs (ACTIVE NEXT below), then the lean-orchestrator guard. BEFORE resuming any
-deferred/queued item, re-derive its state from the CODE, not this file's words.
+## ON RESUME (2026-07-21 — four movements closed at v3.3.0, pushing on green)
+This session closed FOUR movements at **v3.3.0**: INV-49 sharpened (a dependency edge is drawn only on a true
+dependency or a same-section collision, not on shared-doc co-location), INV-245 (the project-name / dated-incident
+gate), INV-246 (the lean-orchestrator arm), and the prose-quality sweep to the linter floor. They were built and
+integrated as PARALLEL lanes under one pen and reconciled at integration — the live proof of INV-49 itself.
+Push on green (his grant); a taste/policy fork stays an explicit question; re-test every "needs his word" by
+derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file.
 
 ## FIRST at intake — classify one-time vs standing (Alexander's word 2026-07-21, ROADMAP 440, memory [[classify-request-onetime-vs-standing-up-front]])
 Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT
 mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep to floor is only its other half.
-The three movements below are all STANDING, so each is built gate-first.
 
-## LANDED (lane lane/m1-project-gate, 2026-07-21) — history + project-refs cleanup as a PERMANENT gate (ROADMAP 441, INV-245)
-STANDING, universal — DONE. The permanent mechanism is an ARM on the existing shipped-language gate (gate i,
-scripts/check-shipped-language.py, INV-120), not a new gate letter (a–z exhausted): PRODUCT_SPEC.md +
-ARCHITECTURE.md red on a bare project name or a name beside a calendar date; TEST_MATRIX.md reds a dated
-incident while permitting the fixture ledger (:172) and test-function names (:399-401). Forbidden names are
-allowlist DATA (`project_name_patterns`), so the detector names no project; the arm rides gate i's known-red
-proof (no new gate letter, the arm's own red-first proof rides gate b). INV-245 authored across all four docs
-(clause + Formal index + ARCHITECTURE owns-list + M-430); 7 red-first tests in tests/test_guardrails.py. The
-one-time sweep reworded 45 provenance lines + 5 fixture labels to floor, history preserved in JOURNAL.md; the
-whole shipped set reports zero shipped-language offences, register + R15 at floor. Fresh-seat prover +
-design-review dispatched. Pending: merge the lane to main and push on green.
+## LANDED this session (v3.3.0)
+- **M0 — INV-49 sharpened (ROADMAP 442).** The edge rule draws an edge only on a true dependency or a same-section /
+  same-behaviour collision; co-location in the shared living docs draws none (the docs reconcile at integration).
+  Over-broad "doc region" wording replaced across spec + both skill copies + INV-214's reason list; enforcement is a
+  new product-prover lens (false-serialization / over-broad independence edge). M-147 + test_lanes_by_graph strengthened.
+- **M1 — INV-245 project-name gate (ROADMAP 441).** An ARM on the shipped-language gate (gate i, INV-120): a core spec
+  reds on a bare foreign project name or a name beside a calendar date; forbidden names live as allowlist DATA. 7 red-first
+  tests; the one-time sweep reworded 45 provenance lines + 5 fixture labels to floor, history preserved in JOURNAL.
+- **M2 — INV-246 lean-orchestrator arm (ROADMAP 443).** A Stop-hook soft signal summing raw file content read inline per
+  session and counting worker dispatches; warns only at/over threshold with zero dispatches. Whole-transcript scan,
+  threshold default 50 KiB tunable, off by default / opt-in / library-classified. hooks/lean-orchestrator-scan.py + 19 tests.
+- **M3 — prose-quality sweep (ROADMAP 444).** No invariant, no behaviour change; linters to floor on every swept file —
+  PRODUCT_SPEC register lines, spec-author SKILL (102→0), adopt/ADOPT.md (34→0), .live-spec/profile.md caps lowered.
+  Three recorded-word lines stay verbatim as a deliberate exemption (meaning-bearing).
 
-## Then — the lean-orchestrator guard (Alexander's word 2026-07-20). Memory [[lean-orchestrator-needs-a-guard-not-more-prose]].
-Context keeps leaking because lean-orchestrator is the one load-bearing rule with no mechanical net. Do NOT add
-more prose (it is already in the profile). Build a soft signal, like the chat approach: a Stop-hook that counts
-raw file content held inline per session without spawning a worker and warns past a threshold. Enters through
-spec-author + product-prover (a new INV) like any behaviour.
+## Follow-ons (later, non-blocking)
+- INV-245: note that the project-name arm's non-coverage of skills/README is deliberate (prover rec).
+- INV-246: keep the six-verb Bash-dump escape a documented boundary (prover rec).
 
-## Queue — prose-quality debt sweep (derivable, one CLASS)
-Pre-existing register-lint debt in PRODUCT_SPEC.md (12 lines: "full rigor", "wish door", self-sincerity) +
-whole-file style-lint debt in skills/spec-author, adopt/ADOPT.md, .live-spec/profile.md (caps-shout, second
-person, scissors on untouched lines). One class: a prose-quality sweep across pack docs, gated by the register
-+ style linters returning to floor. Mine by derivation (INV-83); land as its own small movement.
-
-## Migration readiness (2026-07-20) — when can other projects migrate?
-Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not
-build work. The pack version is in motion (v2.8.3 → 3.2.0 this session). tlvphotos migrates onto the axes
-release (v3.2.0, now shipped) — its concrete vehicle, fixing the live mobile device-parity gap; that migration
-is its own next step on his word. The polished on-ramp (movement 3, onboarding) is DEFERRED on ~8 taste forks.
-Two open questions bite these projects: framework coexistence and the "superpower" competitor positioning.
+## Migration readiness (2026-07-21) — when can other projects migrate?
+Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not build
+work. The pack version is in motion (v2.8.3 → 3.3.0 this session). tlvphotos migrates onto the axes release (v3.2.0),
+its concrete vehicle for the live mobile device-parity gap; that migration is its own next step on his word. The polished
+on-ramp (movement 3, onboarding) is DEFERRED on ~8 taste forks. Two open questions bite these projects: framework
+coexistence and the "superpower" competitor positioning.
 
 ## Open movements
-2. **Axes-from-kind — CLOSED v3.2.0 (2026-07-20).** INV-244: a surface's composition axes derive from
-   project.kind; visual kinds owe input-capability (first member of an open set), owed-vs-covered gap is a
-   finding, values are combinable capabilities, per-kind axis set a mandatory flag-if-absent `project.axes`
-   declaration. Records: docs/prover/2026-07-20-axes-from-kind.md, docs/skill-review/2026-07-20-spec-author-axes.md.
-   Follow-ons (deferred, [target]): the forcing step for the in-between value of every axis; the recursive
-   similarity sweep over the axis registry (ROADMAP 437); the other kinds' elementary axis sets, each its own increment.
+2. **Axes-from-kind — CLOSED v3.2.0.** INV-244: a surface's composition axes derive from project.kind; visual kinds owe
+   input-capability (first member of an open set), owed-vs-covered gap is a finding, per-kind axis set a mandatory
+   flag-if-absent `project.axes` declaration. Records under docs/prover/ and docs/skill-review/. Follow-ons (deferred):
+   the forcing step for each axis's in-between value; the recursive similarity sweep over the axis registry (ROADMAP 437);
+   the other kinds' elementary axis sets.
 0. **Conduct audit — CLOSED v3.1.0.** INV-241/242/243. Follow-ons: rows 431, 432, 435 (far).
 1. **Comms/naming — CLOSED v3.0.0.**
-3. **Adoption + onboarding — DEFERRED (his 2026-07-18 word).** Designs docs/design/2026-07-18-*.md. FORKS:
-   preset values; default preset; ask-vs-infer; 2/3 presets; pre-push home; plan-axis scope; welcome shape;
-   registry placement. Owns the parameters registry (ROADMAP 427).
+3. **Adoption + onboarding — DEFERRED (his 2026-07-18 word).** Designs docs/design/2026-07-18-*.md. FORKS: preset values;
+   default preset; ask-vs-infer; 2/3 presets; pre-push home; plan-axis scope; welcome shape; registry placement. Owns the
+   parameters registry (ROADMAP 427).
 
 ## Captured future ideas (owner-held for scope)
 - **Living everything principle.** Any shared artifact can be living. Living description (INV-240) + registry (427) are its first two.
@@ -63,36 +56,36 @@ Two open questions bite these projects: framework coexistence and the "superpowe
 - **Framework coexistence at onboarding + README** — name the boundary if a person already runs another framework.
 - **Evaluate the "superpower" skill as a competitor + README.**
 
-## LIVE STATE (2026-07-20 — v3.2.0 pushed; suite 1693 green, redundancy floor 0)
-Shipped this session: v2.8.3 (hedge gate) · v2.9.0 (comms machinery) · v3.0.0 (back-describe) · v3.1.0
-(conduct audit) · **v3.2.0 (axes-from-kind, INV-244)** — VERSION + 10 skills + plugin.json stamped, spec base
-re-frozen, records committed, pushed (3d7f542). Working tree clean. Memory: the axes movement is wipeable.
+## LIVE STATE (2026-07-21 — v3.3.0 integrated on main, four movements, suite green)
+Shipped this session: INV-49 sharpened (ROADMAP 442) · INV-245 project-name gate (441) · INV-246 lean-orchestrator arm
+(443) · prose-quality sweep (444) — built as parallel lanes under one pen, reconciled at integration. VERSION + 10 skills
++ plugin.json stamped to 3.3.0; spec base to be re-frozen in the landing commit
+(`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`). Pushing on green.
+Memory: this whole session is wipeable.
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory. Max agentic,
   conserve orchestrator context (delegate reads/drafts; hold briefs + decisions).
 - **lean-orchestrator:** the seat authors nothing long and reads nothing past a glance inline; drafting and non-glance
-  reads go to workers. Tunable per-person, default strict. (Its own guard is a queued movement above.)
+  reads go to workers. Tunable per-person, default strict. Now backed by the INV-246 soft signal.
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never git add -A; re-check HEAD
   before writing (the fence — `guardrails/fence-refresh.sh` to re-arm after accounting for a move). `.spec-freeze/`
-  re-frozen in the landing commit (`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`).
+  re-frozen in the landing commit.
 - **Row 421 (open, Alexander's call):** one window ruling several instance-agents against the one-window law.
 
 ## Queue's open head (field-gated + far tier)
 - 385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation channel +
-  listener (wait on the harness listener, INV-231) · far tier 381, 411, 435.
+  listener (wait on the harness listener, INV-231) · 438 delivery-separability prover lens · 439 inbox deposit protocol
+  · far tier 381, 411, 435, 436/437.
 
 ## Inbox (2026-07-21)
-Row 436's smallest-first slice landed in v3.2.0 (INV-244); 436's rest (value-space forcing, other kinds' sets)
-and 437 (recursive sweep) stay deferred. New wish swept to ROADMAP 438 — the delivery-separability prover lens
-(the dual of composition), Alexander's tlvphotos catch, scope on his word. The `from-owner-verify-code-state`
-deposit (row 430) stays in inbox, un-swept. The tlvphotos delivery-separability deposit (2026-07-21) was
-made earned in place (a `Lived:` field added, its birth genuine) after a sweep-versus-write race; it stays,
-routed to 438. **ROADMAP 439 queued (Alexander's word 2026-07-21):** an inbox deposit protocol for concurrent
-windows (atomic write + completeness signal + a sweep that never races a mid-write deposit) — a near-term movement.
+New wish swept to ROADMAP 438 — the delivery-separability prover lens (the dual of composition), Alexander's tlvphotos
+catch, scope on his word. The `from-owner-verify-code-state` deposit (row 430) stays in inbox, un-swept. ROADMAP 439
+queued (Alexander's word 2026-07-21): an inbox deposit protocol for concurrent windows (atomic write + completeness
+signal + a sweep that never races a mid-write deposit) — a near-term movement.
 
 ## Next free codes
-Next free INV-246, E-36, T-25, M-431, next ROADMAP row 442.
+Next free INV-247, E-36, T-25, M-432, next ROADMAP row 445.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
