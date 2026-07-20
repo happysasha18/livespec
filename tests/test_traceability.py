@@ -486,8 +486,8 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_skills_carry_regression_fences(self):
         sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
-        self.assertIn("The regression fences — run FIRST", sa, "spec-author lost the fences section")
-        self.assertIn("you cannot fence a hope", sa)
+        self.assertIn("The regression fences — run first", sa, "spec-author lost the fences section")
+        self.assertIn("a hope cannot be fenced", sa)
         bp = re.sub(r"\s+", " ", read_all("skills/build-pipeline/SKILL.md"))
         self.assertIn("regression fences", bp, "build-pipeline step 1 lost the fences sentence")
         self.assertIn("never a new row (SPEC T-14, INV-19)", bp)
