@@ -61,8 +61,14 @@ green, working tree clean after commit. Memory: the whole conduct-audit movement
 - 385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation channel +
   listener (wait on the harness listener, INV-231) · far tier 381, 411, 435.
 
+## Inbox swept this session (2026-07-20)
+Two earned wishes from the tlvphotos session (Alexander's word) routed to queued rows: 436 (input modality
+becomes a canonical composition axis) and 437 (the look-alike sweep runs at the axis-registry level). Both
+enter through spec-author + product-prover and need his word on scope. The `from-owner-verify-code-state`
+deposit (row 430) stays in inbox as a prior session's un-swept item.
+
 ## Next free codes
-Next free INV-244, E-36, T-25, M-429, next ROADMAP row 436.
+Next free INV-244, E-36, T-25, M-429, next ROADMAP row 438.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
