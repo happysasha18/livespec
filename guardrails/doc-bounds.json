@@ -2,8 +2,8 @@
   "_comment": "The growable-doc bounds (SPEC INV-234, ROADMAP row 392). Each of the four large working documents declares a byte ceiling with a recorded reason; the watcher guardrails/check-doc-bound.py (gate z) reds a doc past its ceiling with no rotation dated today and no raised bound. It composes with the doc-rotation gate (gate t, INV-209): crossing the bound earns a rotation, and rotation is the remedy the red points to. Each ceiling is seeded ABOVE the current file size with roughly a hundred kilobytes of rotation headroom (measured 2026-07-18: PRODUCT_SPEC ~599 KB, ROADMAP ~603 KB, TEST_MATRIX ~345 KB, JOURNAL ~543 KB), so this gate never reds the already-large tree; the ceiling rises only with a recorded reason edited into this file, and rotation resets the live file well back under it. Bytes are the honest signal for the owner's cost — a guard's scan and a grep run slow with file size, named in kilobytes at ~18:25 on 2026-07-17.",
   "docs": {
     "PRODUCT_SPEC.md": {
-      "max_bytes": 700000,
-      "reason": "seed 2026-07-18 above ~599 KB current with rotation headroom; rotate the closed portion before this ceiling is neared."
+      "max_bytes": 840000,
+      "reason": "raised 2026-07-20 for the back-describe migration (v3.0.0, INV-239/INV-217): the Formal index gained a permanent Description column giving every registered code its plain-description line (~91 KB: 642 KB to 736 KB), taking the live file to ~736 KB; the ceiling sits above that with rotation headroom, and the closed portion still rotates before it is neared."
     },
     "ROADMAP.md": {
       "max_bytes": 700000,

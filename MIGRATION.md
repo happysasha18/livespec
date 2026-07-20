@@ -218,3 +218,37 @@ rewrites nothing it holds.
    mechanical: the law is a review discipline carried in the pack's own text, with an optional release
    gate that checks a dated clean-context review record exists and names a different seat. Nothing a host
    vendored is reworded.
+
+### 3.0.0 — 2026-07-20
+
+**Host action: run a migration.** The 3.0.0 major back-describes the Formal index. The index table gains
+a permanent `Description` column, and every registered code — INV, E, T, A, M, ACT, B, C, D, S — carries
+a plain one-sentence human-clear description of what it does and the problem it solves. This is the
+one-pass migration INV-239 and INV-217 named: the description field's one home, filled once for the whole
+existing code set, arming the field gate that until now shipped dormant. The tier is MAJOR by rule 32 /
+SPEC INV-217 because a host does real authoring work its own session must run, not a walk it can re-run
+blind: a host back-describes its OWN registered codes.
+
+1. **The Formal index gains a `Description` column (E-35, INV-239).** The header moves from
+   `| Anchor | One line | Description | Section |`; the terse `One line` stays the machine handle's home,
+   and the new `Description` column is the plain human-clear line a person and a second agent read. Every
+   code's description says what the item does and the problem it solves; where the rule governs a class,
+   it names the class and gives a representative handful of members inline rather than the exhaustive list
+   (the owner's accepted form, 2026-07-20). The English description is canonical and translated in real
+   time for another language (INV-83).
+
+2. **The field gate arms (M-421, INV-239).** `guardrails/description-field.json` flips to `armed: true`
+   in this same landing, so `guardrails/check-description-field.py` now reds any registered code whose
+   description field is empty. It judges presence alone; whether a description reads well or matches its
+   code is the human sampling net (INV-41), never the machine's. The gate rides the suite and takes no
+   push-gate letter.
+
+3. **The spec's byte ceiling rises (INV-234).** The permanent Description column adds roughly 91 KB (from ~642 KB to ~736 KB), so
+   `guardrails/doc-bounds.json` raises PRODUCT_SPEC.md's ceiling to 840000 with a recorded reason, above
+   the new live size with rotation headroom.
+
+**How a host takes it.** Pull the pack, run `scripts/sync-skills.sh`, and re-run the catch-up walk
+(INV-91). For this chapter the walk back-describes the host's own registered codes to the same quality
+bar, adds the `Description` column to the host's Formal index, and arms the host's own description-field
+gate — the host's session authoring its own descriptions, none written on its behalf, behind the owner's
+gate.

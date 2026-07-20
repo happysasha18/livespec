@@ -2,8 +2,9 @@
 
 ## ON RESUME (2026-07-20 — this session drove the queue on Alexander's word: whole NEXT_STEPS to victory except the far ideas, max agentic, conserve context, push/deploy as needed)
 Push on green (his grant). A taste/policy fork stays an explicit question. Re-test every "needs his word" by
-derivability FIRST. THE ONE OPEN HIS-GATE: Alexander accepts the back-describe description FORM (movement 1 below)
-before the full migration runs.
+derivability FIRST. THE OPEN HIS-GATE IS CLOSED: Alexander accepted the back-describe FORM 2026-07-20, and the full
+migration LANDED as MAJOR v3.0.0 (movement 1 below). NEXT UNBLOCKED WORK: movement 0 (the conduct judge), derivable,
+no his-word owed.
 BEFORE resuming any deferred/queued item below, re-derive its state from the CODE, not this file's words (the item's
 problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
 
@@ -34,14 +35,14 @@ problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
      `guardrails/description-field.json` armed:false), `guardrails/check-deposit-description.py` (deposit-time lint
      over from-<agent> inbox files), tests test_description_field / test_deposit_description / test_named_reference,
      matrix M-421..M-425. Both nets are PRESENCE-only; description correctness is the human bar.
-   - **BACK-DESCRIBE — THE OPEN HIS-GATE, remains.** INV-239's "every code carries a description" is a stated law
-     the field gate enforces only once ARMED, which happens in the migration landing that back-describes the whole
-     code set (N5 atomicity). A 15-code FORM sample is ready at `docs/migration-sample/2026-07-20-backdescribe-sample.md`
-     for Alexander's accept. ONE form question for him: class-laws pull "show the whole class" against "name the term
-     plainly", resolved by "name the class, then its members in a parenthetical" — the pattern the whole class-law
-     family inherits. On his accept: the full ~330-code back-describe (add a `Description` column to the Formal index),
-     flip description-field.json to armed:true, land as MAJOR v3.0.0 with a MIGRATION.md chapter. Housekeeping: rows
-     422/423's invalid class was fixed on main this session (so branch row 425 is moot); row 426 (T-24 ref) rides.
+   - **BACK-DESCRIBE — LANDED 2026-07-20 as MAJOR v3.0.0, pushed.** Alexander accepted the FORM (class named,
+     then a representative handful of members, not the exhaustive list; DECISIONS 2026-07-20). All 327 registered
+     codes back-described into a new `Description` column in the Formal index, authored by twelve fresh workers
+     (15 gold sample lines reused) and register-linted. The field gate armed (description-field.json armed:true);
+     its two dormancy tests were rewritten to the armed state. Byte ceiling raised to 840000 for the +91 KB column
+     (INV-234). A fresh-seat adversarial audit (INV-237) found structure/register/gate-honesty clean, accuracy
+     55/57, and blocked on one figure (the growth recorded as ~36 KB, actually ~91 KB) plus two nits (INV-189
+     third member, INV-92 multiset) — all folded. Suite 1651 green. MIGRATION.md carries the v3.0.0 chapter.
 
 3. **Adoption + onboarding — deferred (his 2026-07-18 word).** Designs docs/design/2026-07-18-*.md. FORKS for
    Alexander: preset values; default preset; ask-vs-infer cost; 2 or 3 presets; pre-push home; plan-axis scope;
@@ -55,10 +56,10 @@ problem statement can be stale) — inbox wish 2026-07-20, now ROADMAP row 430.
 - **Framework coexistence at onboarding + README** — if a person already runs another framework, name the boundary.
 - **Evaluate the "superpower" skill as a competitor + README** — look at what it does, then position the README.
 
-## LIVE STATE (2026-07-20 — origin/main carries v2.9.0)
+## LIVE STATE (2026-07-20 — origin/main carries v3.0.0)
 Shipped this session: v2.8.3 (the hedge gate, INV-238) · v2.9.0 (the comms machinery — E-35/INV-239/INV-240/T-24 +
-two suite-riding presence gates, the back-describe still the open his-gate). The back-describe form sample sits at
-docs/migration-sample/2026-07-20-backdescribe-sample.md awaiting Alexander's accept. Working tree clean; memory wipeable.
+two suite-riding presence gates) · v3.0.0 (the back-describe migration — the Formal index's Description column, the
+field gate armed, all 327 codes described). Movement 1 is fully closed. Working tree clean; memory wipeable.
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory. Max agentic,

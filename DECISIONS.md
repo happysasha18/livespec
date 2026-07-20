@@ -28,6 +28,10 @@ the defect this surface exists to catch. [[wait]]
   may be said there; you named this the movement's frame.
 - 2026-07-17 ~16:58 — a cleanup says what it ended ships first, ahead of the stricter owned-identity
   check, since you run no python yourself and the collision bites only where someone else does.
+- 2026-07-20 ~14:34 — every code's plain description follows one form: name the thing in a positive
+  sentence, and where the rule governs a class, name the class and give a representative handful of its
+  members rather than the exhaustive list; you accepted the form off the 15-code sample and asked to
+  keep the class-member lists representative rather than complete [E-35, INV-239].
 
 ## Struck — recorded as yours, then you struck it
 <!-- record:struck -->

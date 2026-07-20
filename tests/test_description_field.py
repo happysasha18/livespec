@@ -172,23 +172,26 @@ class TestDescriptionFieldGate(unittest.TestCase):
             self.assertEqual(r.returncode, 0,
                              "the gate reached past presence into a semantic match:\n%s" % r.stdout)
 
-    def test_real_config_ships_dormant(self):
-        # The real shipped config must ship dormant, so the real tree and the push chain stay green
-        # until the his-gated migration flips it (INV-217, folded finding N5).
+    def test_real_config_ships_armed(self):
+        # The back-describe migration (v3.0.0, 2026-07-20) armed the gate in the same landing that gave
+        # every registered code its description field, so the real config now ships ARMED and the gate
+        # enforces a non-empty description for every code in the Formal index (INV-217/INV-239).
         cfg = json.loads(read("guardrails/description-field.json"))
-        self.assertFalse(cfg["armed"],
-                         "the real description-field.json ships ARMED — it must stay dormant until the "
-                         "back-describe migration lands")
+        self.assertTrue(cfg["armed"],
+                        "the real description-field.json ships DORMANT — the back-describe migration "
+                        "landed, so the gate must be armed to enforce the description field")
         self.assertTrue(cfg.get("reason", "").strip(), "the config states no reason for its arming state")
 
-    def test_dormant_on_the_real_tree(self):
-        # No env override: the gate reads the real config (dormant) and the real spec, and exits 0.
-        # This is the gate's ENFORCEMENT ride: the suite runs it against the real tree, so a real
-        # violation would red the suite (gate b) and block the push — the gate takes no push letter.
+    def test_armed_gate_passes_on_the_real_tree(self):
+        # No env override: the gate reads the real config (armed) and the real spec and exits 0 because
+        # every registered code carries a non-empty description after the back-describe migration. This
+        # is the gate's ENFORCEMENT ride: the suite runs it against the real tree, so a real violation —
+        # a code whose description field goes empty — reds the suite (gate b) and blocks the push, the
+        # gate taking no push letter.
         r = run_gate()
         self.assertEqual(r.returncode, 0,
-                         "the gate does not stand down on the real dormant tree:\n%s\n%s"
-                         % (r.stdout, r.stderr))
+                         "the armed gate reds on the real tree — a registered code's description field "
+                         "is empty:\n%s\n%s" % (r.stdout, r.stderr))
 
     def test_gate_not_wired_into_pre_push(self):
         # It rides the suite (gate b) and takes NO push-gate letter, so it is never invoked from the
