@@ -1,0 +1,1 @@
+I can also rebase the branch onto main to clear the conflict markers. Let me know if you would like me to do that.

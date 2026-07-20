@@ -1,12 +1,14 @@
 #!/bin/sh
 # Installs the canonical pack hooks (SPEC INV-173) on this machine, universal tier only. Idempotent:
-# re-running changes nothing once installed. Two mechanisms ship here:
+# re-running changes nothing once installed. These mechanisms ship here:
 #   - the scissors-scan Stop hook (the literal contrast-frame scan);
+#   - the answer-first arm (a lead-less wall notice, SPEC INV-220);
+#   - the hedge-scan Stop hook (the literal offering-hedge scan, SPEC INV-238);
 #   - the register judge (register_judge_core.py + register-judge.py + the async collect/report arms),
 #     the class-reading model judge that holds what a literal list cannot (SPEC INV-203). Its universal
 #     law ships in the mechanism; its personal laws ride ~/.claude/hooks/register-judge-personal.md.
-# The personal overlays (scissors-personal.json, register-judge-personal.md) are owned entirely by the
-# personal layer — this script never creates or edits them.
+# The personal overlays (scissors-personal.json, hedge-personal.json, register-judge-personal.md) are
+# owned entirely by the personal layer — this script never creates or edits them.
 #
 # Usage: install-pack-hooks.sh [--dry-run]
 #   --dry-run   print what would be done, touch nothing. Honors $HOME as-is (no hardcoded path),
@@ -24,9 +26,9 @@ done
 DEST_DIR="$HOME/.claude/hooks"
 SETTINGS="$HOME/.claude/settings.json"
 
-# The universal files this script ships: the scissors scan, the answer-first arm, and the register-judge
-# mechanism + arms.
-JUDGE_FILES="scissors-scan.py answer-first-scan.py register_judge_core.py register-judge.py register-judge-collect.sh register-judge-report.sh"
+# The universal files this script ships: the scissors scan, the answer-first arm, the hedge scan, and
+# the register-judge mechanism + arms.
+JUDGE_FILES="scissors-scan.py answer-first-scan.py hedge-scan.py register_judge_core.py register-judge.py register-judge-collect.sh register-judge-report.sh"
 
 if [ "$DRY_RUN" = "1" ]; then
   for f in $JUDGE_FILES; do
@@ -36,9 +38,9 @@ if [ "$DRY_RUN" = "1" ]; then
       echo "DRY-RUN: would copy $DIR/hooks/$f -> $DEST_DIR/$f"
     fi
   done
-  echo "DRY-RUN: would wire Stop hooks 'scissors-scan.py' + 'answer-first-scan.py' + 'register-judge-collect.sh' into $SETTINGS (if absent)."
+  echo "DRY-RUN: would wire Stop hooks 'scissors-scan.py' + 'answer-first-scan.py' + 'hedge-scan.py' + 'register-judge-collect.sh' into $SETTINGS (if absent)."
   echo "DRY-RUN: would wire UserPromptSubmit hook 'register-judge-report.sh' into $SETTINGS (if absent)."
-  echo "DRY-RUN: scissors-personal.json and register-judge-personal.md are never touched by this script."
+  echo "DRY-RUN: scissors-personal.json, hedge-personal.json, and register-judge-personal.md are never touched by this script."
   exit 0
 fi
 
@@ -71,6 +73,7 @@ def wire(event, needle, cmd):
 
 wire("Stop", "scissors-scan.py", "python3 ~/.claude/hooks/scissors-scan.py")
 wire("Stop", "answer-first-scan.py", "python3 ~/.claude/hooks/answer-first-scan.py")
+wire("Stop", "hedge-scan.py", "python3 ~/.claude/hooks/hedge-scan.py")
 wire("Stop", "register-judge-collect.sh", "sh ~/.claude/hooks/register-judge-collect.sh")
 wire("UserPromptSubmit", "register-judge-report.sh", "sh ~/.claude/hooks/register-judge-report.sh")
 
@@ -78,4 +81,4 @@ os.makedirs(os.path.dirname(p), exist_ok=True)
 json.dump(s, open(p, "w"), indent=2, ensure_ascii=False)
 PYEOF
 
-echo "note: ~/.claude/hooks/scissors-personal.json and register-judge-personal.md are owned by the personal layer — never created or modified here."
+echo "note: ~/.claude/hooks/scissors-personal.json, hedge-personal.json, and register-judge-personal.md are owned by the personal layer — never created or modified here."

@@ -1,0 +1,1 @@
+The rename is a one-line sed across three files, fully reversible with git. Say the word and I'll run it now.

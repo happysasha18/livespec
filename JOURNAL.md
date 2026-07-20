@@ -2,6 +2,18 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-20 — v2.8.3, the hedge gate (INV-238), item 0's autonomous-automation slice
+
+Alexander's 2026-07-20 word opened a run of the whole NEXT_STEPS to completion (far-future ideas held out). The prioritized first slice was item 0's autonomous-automation piece: the seat had a standing habit of saying an act "needs your word" when the act was derivable all along, and he wanted a machine for it. The reminder-dependent capability audit (2026-07-19) had already placed this member in bucket 2 — a literal-phrase gate, no model owed.
+
+Built through the pipeline: spec+architecture+matrix authored by a worker seat mirroring the two existing Stop-hook scans (scissors INV-173, answer-first INV-220), proven by a separate seat (docs/prover/2026-07-20.md, zero blocking findings), then the code — `hooks/hedge-scan.py`, a literal-pattern Stop scan that reds the common offering-hedge frames, with English frames inline in the pack and Russian frames in the personal overlay `~/.claude/hooks/hedge-personal.json` (the pack ships nobody's personal-language rules, the same split scissors carries). Wired into judge-hooks.json + install-pack-hooks.sh + settings.json.
+
+The invariant was first assigned INV-240 (the NEXT_STEPS free-codes pointer), but INV-238/239 are reserved for the parked comms build; landing the slice first left a numbering gap the contiguity gate caught, so the gate renumbered to INV-238, the true next-free on main (comms takes 239/240 when it lands). The authoring pass also introduced two doc-integrity reds the clean baseline did not carry — INV-152/INV-180 cited as owned facts inside the guardrails node (they belong to other nodes), and rows 422/423 carrying an invalid Class "method" that a last-line parser had been hiding until row 429 followed them — both fixed here (422→surface, 423→small, which also resolves the comms branch's queued housekeeping row 425).
+
+A fresh-seat adversarial audit ran before landing and earned its keep: it found the pattern set could not honestly back a whole-class claim (16/16 realistic paraphrases slipped), a false red where `if you want, i can\b` matched the apostrophe in "I can't force it" (a limitation read as an offer), tautological fixtures (one verbatim copy per pattern), and prose less honest than its sibling about firing one turn late. The fixes: a `(?!['’]t)` lookahead so a limitation stays green, reversed-order and paraphrase frames added, RU overlay paraphrases added, real-paraphrase and false-red regression tests and fixtures, and INV-238's claim made honest — a first cheap filter on common high-confidence frames, with the class in any phrasing held by the bucket-1 conduct judge [INV-203], reaching the seat one message later like the answer-first arm [INV-220].
+
+Released PATCH (2.8.3), the sibling of the 2.8.1/2.8.2 register-judge patches: a machine now holds the already-stated no-only-say-hedge behaviour, and a host re-syncing its hooks does nothing to its own documents.
+
 ## 2026-07-19 — 2.8.2 PATCH: the register judge holds grading-worth-without-fact and unglossed-jargon (INV-203)
 
 The chat register judge (INV-203) gained two more universal classes, and the document register lint the

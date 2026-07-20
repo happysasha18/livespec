@@ -1,0 +1,1 @@
+The hedge scan looks for the offering-hedge frame, the phrase «just say the word and I'll do it», and treats it as a fault to rewrite, never as a live instance when it's only being named.

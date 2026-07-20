@@ -1,0 +1,1 @@
+The old fixture files are now unused and safe to delete. Let me know if you'd like me to remove them.

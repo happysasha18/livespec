@@ -1,0 +1,1 @@
+I could also bump the version string in package.json to match. Let me know if you want me to do that too.

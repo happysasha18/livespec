@@ -1,0 +1,1 @@
+If you would like, I can revert the last commit — it's a single clean revert with no follow-on edits.

@@ -22,6 +22,12 @@ derivability FIRST — the false-need-your-word habit is itself a queued audit (
      session, "такое очень часто бывало"). This is the no-only-say-hedge + deferral chat-hedge member — bucket 2,
      a literal-phrase gate. Prioritize this slice: a scan that reds a chat "need your word / just say the word"
      hedge, plus a derivability re-test before any park. It fixes the false-need-your-word situation he flagged.
+     **LANDED 2026-07-20 v2.8.3 (INV-238, the hedge gate — `hooks/hedge-scan.py`).** A Stop-hook literal scan
+     modeled on the scissors gate reds the common offering-hedge frames (English inline, Russian in the personal
+     overlay), skipping quoted and fenced spans, standing clear of a legitimate INV-152 question. A fresh-seat
+     adversarial audit ran before landing and folded three fixes (a `can't` false red, reversed-order and
+     paraphrase frames, an honest first-filter claim). The gate is the bucket-2 filter; the full class in any
+     phrasing is the bucket-1 conduct judge's job (item 0 main, next).
 
 1. **Comms/naming build — PARKED on branch `wip/comms-naming-424` (commit 55597bc); resume by checking it out.**
    Named-reference pair + earned-auto-notification + living description (E-35, INV-238, INV-239, T-24; ROADMAP 424).
@@ -78,7 +84,7 @@ audit design doc (9a6a1c8). Comms build parked on branch wip/comms-naming-424 (5
   396/405 conversation channel + listener firing (wait on the harness listener, INV-231) · far tier 381, 411.
 
 ## Next free codes
-INV-240, E-36, T-25, M-420, next ROADMAP row 429.
+INV-239, E-36, T-25, M-421, next ROADMAP row 430.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our

@@ -1,0 +1,7 @@
+Here is the pattern the gate is built to catch, shown as a worked example rather than an actual offer:
+
+```
+If you want, I can ship this now — just say the word.
+```
+
+None of that block is a live offer; it is only the demonstration text the fixture needs.
