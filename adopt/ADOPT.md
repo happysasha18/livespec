@@ -108,7 +108,12 @@ the ARCHITECTURE per-kind design-principles table (the visitor walk, the feel pa
 site, motion/scroll feel, and the interactive-overlap rule) plus any the project adds — and a visual
 `project.kind` recorded with none is flagged the way a kind with no layers or proofs is; the verify
 feel pass runs these principles, the interactive-overlap rule's pixel/DOM row living in this project's
-own suite. **The founding records which version of the question set it answered (SPEC INV-227):** the
+own suite. **With the kind, the founding also declares its composition axes (SPEC INV-244):** beyond
+the kind-independent C-1 floor, the founding records the further axis set this project's kind owes
+every surface — a visual kind's input-capability, say — as a `project.axes` line in the host profile,
+filled from the per-kind axis table in ARCHITECTURE.md; a kind may declare **none beyond the floor** as
+an explicit stated decision, and a `project.kind` recorded with no axis-set line at all is flagged the
+way a kind with no layers or proofs is. **The founding records which version of the question set it answered (SPEC INV-227):** the
 founding questions above are a set that grows as the pack learns what a founding host owes, its newest
 member the agent card at `.live-spec/agent.md` (SPEC E-32). The host profile gains a `founding.set-version`
 line carrying the current set version from `scripts/founding-questions.json`, so a later update check can

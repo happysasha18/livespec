@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does LEAD, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to START a spec, ADD a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author WRITES the spec, product-prover REVIEWS it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. NOT for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 3.1.0
+  version: 3.2.0
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.1.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.2.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -279,6 +279,15 @@ sentence — the frontend kind's interactive-overlap rule (interactive controls 
 layers occupy separate screen space) is answered wherever a covering overlay opens over floating chrome,
 so the delta states which controls retract while the overlay stands. The verify feel pass runs the
 declared design principles; the spec names the answer so the pass has something to check.
+
+**Read the surface's composition axes from the kind too (SPEC INV-244).** Beside its layers, proofs,
+and design principles, a project kind owes every surface a further axis set beyond the kind-independent
+C-1 floor — the composition axes a surface answers because its kind renders under them, homed in the
+per-kind axis table in ARCHITECTURE.md and declared on the host profile's `project.axes` line, an
+explicit "none beyond the C-1 floor" a legitimate answer for a kind with no visitor-facing surface.
+Composing a surface reads these declared axes from the kind before folding the facet sweep below, the
+same way it reads the declared layers, so the delta answers each axis this kind owes rather than
+assuming another kind's set.
 
 - **the viewport bands** — width and height both run in bands (narrow, wide, short, tall, and the
   bands a future device adds), so every layout-bearing feature ends the sweep with a decided or

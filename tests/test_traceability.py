@@ -1013,6 +1013,7 @@ class TestTargetOwnership(unittest.TestCase):
         "INV-198": 386,  # config-health asserts the primary tree holds main (git's refusal rests on it)
         "INV-199": 386,  # the merge-base check ahead of the gate + the stale-lane check
         "INV-201": 386,  # the adoption gate reading the host's vendored worktree line
+        "INV-244": 437,  # the axes value-space in-between forcing step + the recursive axis-registry similarity sweep
     }
 
     def roadmap_rows(self):
