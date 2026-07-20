@@ -20,10 +20,11 @@ ONE pack gate in guardrails/ that reds when a core spec carries a project name o
 suite + pre-push, born with a known-red proof (INV-212); every host inherits it by adoption, so "every project"
 is by construction. The one-time sweep (provenance → JOURNAL, fixture bindings preserved, specs to floor) only
 clears the current debt so the gate goes green. In the three core specs: PRODUCT_SPEC.md (18), TEST_MATRIX.md
-(17), ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter — a read-only scoping worker was
-classifying each as provenance-to-JOURNAL vs fixture-binding-to-preserve (its inventory feeds both the sweep and
-the gate's detection patterns; re-run the catalog if this session reset). Build gate-first: spec the gate rule →
-prove → build red-first → sweep to floor. Derivable (his stated rule) — do, do not park.
+(17), ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter. **Scope inventory ready:
+docs/design/2026-07-21-history-cleanup-scope.md** — 45 provenance (reword to rule, history to JOURNAL), 5 fixture
+labels (safe to abstract; no test binds a name in spec text), 3 preserve verbatim (`test_promoter_harvest_trio`
+is a test-function name). Gate scopes strict to PRODUCT_SPEC + ARCHITECTURE, permits TEST_MATRIX fixture labels
++ test names. Build gate-first: spec the gate rule → prove → build red-first → sweep to floor. Derivable — do.
 
 ## Then — the lean-orchestrator guard (Alexander's word 2026-07-20). Memory [[lean-orchestrator-needs-a-guard-not-more-prose]].
 Context keeps leaking because lean-orchestrator is the one load-bearing rule with no mechanical net. Do NOT add
