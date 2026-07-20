@@ -8,14 +8,22 @@ committed. The next in-loop work is the two movements Alexander named this sessi
 cleanup out of the specs (ACTIVE NEXT below), then the lean-orchestrator guard. BEFORE resuming any
 deferred/queued item, re-derive its state from the CODE, not this file's words.
 
-## ACTIVE NEXT — history + project-refs cleanup out of the specs, with a gate (Alexander's word 2026-07-20)
-His ruling: history and references to other projects belong in side files (JOURNAL, research, fixtures), never
-in the specs themselves. Found in the three core specs: PRODUCT_SPEC.md (18), TEST_MATRIX.md (17),
-ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter — two kinds: provenance/history ("came from
-the tlvphotos bug") that belongs in JOURNAL, and kind-fixture example names. Clean ALL of it (rule already
-holds: history → JOURNAL, spec states the RULE not the project). Build a GUARD: a guardrails/ check reds when a
-core spec carries a project name or a provenance turn. Runs in the loop; part of migration for all projects.
-This is derivable work (his stated rule) — do it, do not park.
+## FIRST at intake — classify one-time vs standing (Alexander's word 2026-07-21, ROADMAP 440, memory [[classify-request-onetime-vs-standing-up-front]])
+Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT
+mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep to floor is only its other half.
+The three movements below are all STANDING, so each is built gate-first.
+
+## ACTIVE NEXT — history + project-refs cleanup, delivered as a PERMANENT gate (Alexander's word 2026-07-20/21)
+STANDING, universal. His ruling: history and references to other projects belong in side files (JOURNAL,
+research, fixtures), never in the specs themselves, and this holds PERMANENTLY for ANY project. Deliverable is
+ONE pack gate in guardrails/ that reds when a core spec carries a project name or a provenance turn, rides the
+suite + pre-push, born with a known-red proof (INV-212); every host inherits it by adoption, so "every project"
+is by construction. The one-time sweep (provenance → JOURNAL, fixture bindings preserved, specs to floor) only
+clears the current debt so the gate goes green. In the three core specs: PRODUCT_SPEC.md (18), TEST_MATRIX.md
+(17), ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter — a read-only scoping worker was
+classifying each as provenance-to-JOURNAL vs fixture-binding-to-preserve (its inventory feeds both the sweep and
+the gate's detection patterns; re-run the catalog if this session reset). Build gate-first: spec the gate rule →
+prove → build red-first → sweep to floor. Derivable (his stated rule) — do, do not park.
 
 ## Then — the lean-orchestrator guard (Alexander's word 2026-07-20). Memory [[lean-orchestrator-needs-a-guard-not-more-prose]].
 Context keeps leaking because lean-orchestrator is the one load-bearing rule with no mechanical net. Do NOT add
@@ -84,7 +92,7 @@ routed to 438. **ROADMAP 439 queued (Alexander's word 2026-07-21):** an inbox de
 windows (atomic write + completeness signal + a sweep that never races a mid-write deposit) — a near-term movement.
 
 ## Next free codes
-Next free INV-245, E-36, T-25, M-430, next ROADMAP row 440.
+Next free INV-245, E-36, T-25, M-430, next ROADMAP row 441.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
