@@ -33,6 +33,25 @@ import unittest
 from conftest import ROOT, read_flat
 
 
+def _robust_rmtree(path):
+    """Remove a temp probe tree that holds a real git worktree, so a lane probe never leaks a
+    `livespec-test-*` directory (SPEC INV-100). A plain rmtree can leave a read-only git object or a
+    worktree admin file behind on some runners; this chmods each stubborn entry writable and retries,
+    then makes a final ignore-errors sweep, so the tree is gone whatever the run's timing."""
+    import stat
+
+    def _onerror(func, p, exc):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    shutil.rmtree(path, onerror=_onerror)
+    if os.path.isdir(path):
+        shutil.rmtree(path, ignore_errors=True)
+
+
 def _git(cwd, *args):
     """Run git hermetically: the machine's own global/system config never speaks here."""
     env = dict(os.environ)
@@ -60,6 +79,7 @@ class _ProbeRepo(unittest.TestCase):
 
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="livespec-test-lane-")
+        self.addCleanup(_robust_rmtree, self.tmp)
         self.main_tree = os.path.join(self.tmp, "primary")
         self.lane_tree = os.path.join(self.tmp, "lane")
         os.makedirs(self.main_tree)
@@ -330,6 +350,7 @@ class _LaneOpenActRepo(unittest.TestCase):
 
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="livespec-test-openlane-")
+        self.addCleanup(_robust_rmtree, self.tmp)
         self.repo = os.path.join(self.tmp, "repo")
         os.makedirs(self.repo)
         self.run_ok("init", "-q", "-b", "main")
