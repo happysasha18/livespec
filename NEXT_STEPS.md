@@ -74,11 +74,14 @@ re-frozen, records committed, pushed (3d7f542). Working tree clean. Memory: the 
 - 385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation channel +
   listener (wait on the harness listener, INV-231) · far tier 381, 411, 435.
 
-## Inbox (2026-07-20)
-Rows 436/437 (axes) landed in v3.2.0. The `from-owner-verify-code-state` deposit (row 430) stays in inbox, un-swept.
+## Inbox (2026-07-21)
+Row 436's smallest-first slice landed in v3.2.0 (INV-244); 436's rest (value-space forcing, other kinds' sets)
+and 437 (recursive sweep) stay deferred. New wish swept to ROADMAP 438 — the delivery-separability prover lens
+(the dual of composition), Alexander's tlvphotos catch, scope on his word. The `from-owner-verify-code-state`
+deposit (row 430) stays in inbox, un-swept.
 
 ## Next free codes
-Next free INV-245, E-36, T-25, M-430, next ROADMAP row 438.
+Next free INV-245, E-36, T-25, M-430, next ROADMAP row 439.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
