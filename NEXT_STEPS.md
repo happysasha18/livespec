@@ -1,99 +1,84 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-20 — this session drove the queue on Alexander's word: whole NEXT_STEPS to victory except the far ideas, max agentic, conserve context, push/deploy as needed)
+## ON RESUME (2026-07-20 — driving the queue on Alexander's word: whole NEXT_STEPS to victory except the far ideas, max agentic, conserve context, push/deploy as needed)
 Push on green (his grant). A taste/policy fork stays an explicit question. Re-test every "needs his word" by
-derivability FIRST. **MOVEMENT 0 (the conduct audit) CLOSED at v3.1.0** — all three stories landed (INV-241
-the conduct judge, INV-242 the landing-refreshed-map gate, INV-243 the config-health skill-copy arm), each
-through a FULL prover pass + design review + fresh-seat adversarial audit whose folds are recorded below.
-Movement 0/1 hold no unblocked build work. The next real work is the composition-axes-from-kind movement
-(rows 436-437), which Alexander PRIORITIZED 2026-07-20 ahead of onboarding — see "ACTIVE NEXT" below.
-BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file's words.
+derivability FIRST. **AXES-FROM-KIND movement CLOSED at v3.2.0** (INV-244, pushed) — the full pipeline ran
+(spec → prove → design-review → architecture → matrix → red-first tests → wire → compact → verify), records
+committed. The next in-loop work is the two movements Alexander named this session: the history/project-refs
+cleanup out of the specs (ACTIVE NEXT below), then the lean-orchestrator guard. BEFORE resuming any
+deferred/queued item, re-derive its state from the CODE, not this file's words.
 
-## ACTIVE NEXT — the composition-axes-from-kind movement (Alexander's priority 2026-07-20, axes before onboarding)
-Rows 436-437. Memory: [[composition-axes-derive-from-project-kind]]. The design he named:
-`project.kind` (INV-36) carries a STANDARD composition-axis set the way it already proposes node structure;
-spec-author derives a surface's axes AND each axis's VALUE space from the kind; the value space is
-extrapolated with an explicit "member BETWEEN the two obvious poles" test (the device/input axis's hybrid =
-tablet / 2-in-1 / touchscreen laptop, which a binary touch-vs-pointer split drops); the look-alike sweep is
-recursive at every level. The mobile-grab bug on tlvphotos was the symptom of a reactive, incomplete set.
+## ACTIVE NEXT — history + project-refs cleanup out of the specs, with a gate (Alexander's word 2026-07-20)
+His ruling: history and references to other projects belong in side files (JOURNAL, research, fixtures), never
+in the specs themselves. Found in the three core specs: PRODUCT_SPEC.md (18), TEST_MATRIX.md (17),
+ARCHITECTURE.md (4) mentions of track-coach / tlvphotos / promoter — two kinds: provenance/history ("came from
+the tlvphotos bug") that belongs in JOURNAL, and kind-fixture example names. Clean ALL of it (rule already
+holds: history → JOURNAL, spec states the RULE not the project). Build a GUARD: a guardrails/ check reds when a
+core spec carries a project name or a provenance turn. Runs in the loop; part of migration for all projects.
+This is derivable work (his stated rule) — do it, do not park.
 
-STATE (2026-07-20 ~22:10): a smallest-first design sample was shown in chat — the visitor-facing-web axis set
-(input/device, browser engine, viewport, locale+direction, connection/data class, first-vs-returning,
-accessibility, measurement reach) and the device/input value space (coarse-touch phone / fine-pointer desktop
-/ hybrid tablet / keyboard-assistive). AWAITING his react on two taste calls before the full spec: (1) the web
-axis SET (add/cut), (2) the device/input value space (esp. the hybrid member). Build smallest-first (INV-62) —
-do NOT spec the full thing until he reacts.
+## Then — the lean-orchestrator guard (Alexander's word 2026-07-20). Memory [[lean-orchestrator-needs-a-guard-not-more-prose]].
+Context keeps leaking because lean-orchestrator is the one load-bearing rule with no mechanical net. Do NOT add
+more prose (it is already in the profile). Build a soft signal, like the chat approach: a Stop-hook that counts
+raw file content held inline per session without spawning a worker and warns past a threshold. Enters through
+spec-author + product-prover (a new INV) like any behaviour.
 
-OPEN DESIGN QUESTION — answer in FRESH context after the reset (his explicit ask): should the axes be
-understood AUTOMATICALLY from context (inferred from `project.kind` / the running experience / the code)
-rather than a hand-maintained per-kind list? Assess realistically — what a machine can infer (browser engine,
-viewport, measurability) versus what stays authored domain taste (the SET for a kind, the between-poles
-member a list drops). He wants the cold-context verdict.
+## Queue — prose-quality debt sweep (derivable, one CLASS)
+Pre-existing register-lint debt in PRODUCT_SPEC.md (12 lines: "full rigor", "wish door", self-sincerity) +
+whole-file style-lint debt in skills/spec-author, adopt/ADOPT.md, .live-spec/profile.md (caps-shout, second
+person, scissors on untouched lines). One class: a prose-quality sweep across pack docs, gated by the register
++ style linters returning to floor. Mine by derivation (INV-83); land as its own small movement.
 
-MIGRATION PATH: tlvphotos migrates onto the axes release (next minor, ~v3.2) — the axes work is its concrete
-vehicle and reason, fixing its live mobile device-parity gap. Narrower and higher-value than the full
-onboarding movement (movement 3, still deferred on his ~8 forks below).
-
-## Migration readiness — the answer to "when can other projects migrate?" (2026-07-20)
-Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet, and the block is Alexander's word,
-not remaining build work. Three reasons: (1) the pack version is in motion — this session shipped v2.8.3 →
-v2.9.0 → v3.0.0 → v3.1.0; a project adopting today owes a catch-up walk tomorrow. (2) The polished on-ramp
-(movement 3, onboarding) is DEFERRED on ~8 taste forks only Alexander can settle (preset values, default
-preset, ask-vs-infer, 2-or-3 presets, pre-push home, plan-axis scope, welcome shape, registry placement).
-The first-adoption machinery exists (`adopt/ADOPT.md` + installers + the catch-up walk in MIGRATION.md), but
-the deliberate onboarding is unbuilt. (3) Two open questions bite these exact projects: framework coexistence
-(a project already running another framework) and the "superpower" competitor positioning. Honest sequence:
-3.1.0 shipped (mine, done) → build onboarding (needs his forks) → then projects migrate onto a stable line.
+## Migration readiness (2026-07-20) — when can other projects migrate?
+Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not
+build work. The pack version is in motion (v2.8.3 → 3.2.0 this session). tlvphotos migrates onto the axes
+release (v3.2.0, now shipped) — its concrete vehicle, fixing the live mobile device-parity gap; that migration
+is its own next step on his word. The polished on-ramp (movement 3, onboarding) is DEFERRED on ~8 taste forks.
+Two open questions bite these projects: framework coexistence and the "superpower" competitor positioning.
 
 ## Open movements
-0. **Conduct audit + its build — CLOSED v3.1.0 (2026-07-20).** All three stories landed (rows 431/433/434):
-   the conduct judge (INV-241), the landing-refreshed-map gate (INV-242), the config-health skill-copy arm
-   (INV-243). Follow-ons queued: row 431 (sharpen the conduct judge's idle/park evidence), row 432 (a
-   text-semantic judge for the hedge paraphrase class), row 435 (the skill arm's executable-bit-drift nit, far).
-
-1. **Comms/naming build — CLOSED v3.0.0.** Machinery (v2.9.0) + back-describe migration (v3.0.0), pushed.
-
-3. **Adoption + onboarding — DEFERRED (his 2026-07-18 word); the migration on-ramp.** Designs
-   docs/design/2026-07-18-*.md. FORKS for Alexander: preset values; default preset; ask-vs-infer cost; 2 or 3
-   presets; pre-push home; plan-axis scope; welcome sub-skill-or-section; registry in onboarding or its own
-   movement. Owns the parameters registry (ROADMAP 427). This is what a fresh project uses to come aboard.
+2. **Axes-from-kind — CLOSED v3.2.0 (2026-07-20).** INV-244: a surface's composition axes derive from
+   project.kind; visual kinds owe input-capability (first member of an open set), owed-vs-covered gap is a
+   finding, values are combinable capabilities, per-kind axis set a mandatory flag-if-absent `project.axes`
+   declaration. Records: docs/prover/2026-07-20-axes-from-kind.md, docs/skill-review/2026-07-20-spec-author-axes.md.
+   Follow-ons (deferred, [target]): the forcing step for the in-between value of every axis; the recursive
+   similarity sweep over the axis registry (ROADMAP 437); the other kinds' elementary axis sets, each its own increment.
+0. **Conduct audit — CLOSED v3.1.0.** INV-241/242/243. Follow-ons: rows 431, 432, 435 (far).
+1. **Comms/naming — CLOSED v3.0.0.**
+3. **Adoption + onboarding — DEFERRED (his 2026-07-18 word).** Designs docs/design/2026-07-18-*.md. FORKS:
+   preset values; default preset; ask-vs-infer; 2/3 presets; pre-push home; plan-axis scope; welcome shape;
+   registry placement. Owns the parameters registry (ROADMAP 427).
 
 ## Captured future ideas (owner-held for scope)
-- **Living everything principle.** Any shared artifact can be living (home + staleness signal + owner + in-place
-  refresh). Living description (INV-240) and the parameters registry (427) are its first two instances.
+- **Living everything principle.** Any shared artifact can be living. Living description (INV-240) + registry (427) are its first two.
 - **After-the-fact user-tell family (ROADMAP 428).** An 11-member class; one clause; on his word.
-- **Framework coexistence at onboarding + README** — if a person already runs another framework, name the boundary.
-- **Evaluate the "superpower" skill as a competitor + README** — look at what it does, then position the README.
+- **Framework coexistence at onboarding + README** — name the boundary if a person already runs another framework.
+- **Evaluate the "superpower" skill as a competitor + README.**
 
-## LIVE STATE (2026-07-20 — v3.1.0 ready to push; all CI-green locally, suite 1682)
-Shipped this session before 3.1.0: v2.8.3 (the hedge gate) · v2.9.0 (the comms machinery) · v3.0.0 (the
-back-describe migration). **v3.1.0 (this landing):** the conduct-audit movement closed — INV-242
-(`guardrails/check-landing-next-steps.py`, rides the suite, live-tree + fixture tested) and INV-243
-(the config-health skill-copy arm) landed, VERSION + 10 skills + plugin.json stamped to 3.1.0. Suite 1682
-green, working tree clean after commit. Memory: the whole conduct-audit movement is wipeable.
+## LIVE STATE (2026-07-20 — v3.2.0 pushed; suite 1693 green, redundancy floor 0)
+Shipped this session: v2.8.3 (hedge gate) · v2.9.0 (comms machinery) · v3.0.0 (back-describe) · v3.1.0
+(conduct audit) · **v3.2.0 (axes-from-kind, INV-244)** — VERSION + 10 skills + plugin.json stamped, spec base
+re-frozen, records committed, pushed (3d7f542). Working tree clean. Memory: the axes movement is wipeable.
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory. Max agentic,
   conserve orchestrator context (delegate reads/drafts; hold briefs + decisions).
 - **lean-orchestrator:** the seat authors nothing long and reads nothing past a glance inline; drafting and non-glance
-  reads go to workers. Tunable per-person, default strict.
+  reads go to workers. Tunable per-person, default strict. (Its own guard is a queued movement above.)
 - CONCURRENCY: multiple windows share ~/live-spec. Commit narrowly by explicit path, never git add -A; re-check HEAD
-  before writing (the fence). `.spec-freeze/` is a local session baseline — re-freeze in the landing commit after a
-  reviewed doc change (`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`).
+  before writing (the fence — `guardrails/fence-refresh.sh` to re-arm after accounting for a move). `.spec-freeze/`
+  re-frozen in the landing commit (`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`).
 - **Row 421 (open, Alexander's call):** one window ruling several instance-agents against the one-window law.
 
-## Queue's open head (field-gated + far tier — next movement's work)
+## Queue's open head (field-gated + far tier)
 - 385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation channel +
   listener (wait on the harness listener, INV-231) · far tier 381, 411, 435.
 
-## Inbox swept this session (2026-07-20)
-Two earned wishes from the tlvphotos session (Alexander's word) routed to queued rows: 436 (input modality
-becomes a canonical composition axis) and 437 (the look-alike sweep runs at the axis-registry level). Both
-enter through spec-author + product-prover and need his word on scope. The `from-owner-verify-code-state`
-deposit (row 430) stays in inbox as a prior session's un-swept item.
+## Inbox (2026-07-20)
+Rows 436/437 (axes) landed in v3.2.0. The `from-owner-verify-code-state` deposit (row 430) stays in inbox, un-swept.
 
 ## Next free codes
-Next free INV-244, E-36, T-25, M-429, next ROADMAP row 438.
+Next free INV-245, E-36, T-25, M-430, next ROADMAP row 438.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
