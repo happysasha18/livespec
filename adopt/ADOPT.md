@@ -1,10 +1,10 @@
-# ADOPT — Mid-flight adoption procedure
+# Adopt — Mid-flight adoption procedure
 
 How to attach live-spec to an existing codebase — at the start or in the middle. This is the executable
 projection of PRODUCT_SPEC.md "Entry mode 2: adopting a live project" (A-0…A-9). Follow the phases in order; each
 has a clear done-state. Adoption never assumes a blank slate, and it **never deletes a host file** (INV-7).
 
-**Routing:** this guide is the FIRST adoption. A host that already adopted and needs to come up to a
+**Routing:** this guide is the first adoption. A host that already adopted and needs to come up to a
 newer pack goes to the catch-up walk instead — [MIGRATION.md](../MIGRATION.md) at the package root.
 
 First proven on a real project (tlvphoto, 2026-07-04); the practical notes below are from that run.
@@ -35,25 +35,25 @@ The one normative list of the documents a live-spec host carries; every other gu
 **One canonical state directory (SPEC INV-105).** Here the canonical state directory is named `.live-spec`, once, and no second directory competes for that role. A near-miss directory found at attach or resume is a red finding: `.livespec`, `.live_spec`, a bare `livespec/`, any look-alike carrying a rival profile. The sweep records it in `.live-spec/adopt/inventory.md`, then it is retired to the attic under a manifest line naming the path, the reason, and the canonical directory that absorbs it (INV-7, A-4). Never a look-alike left standing beside `.live-spec`.
 
 **The package repo is read-only from a host session (SPEC INV-10).** An adopt run that discovers a live-spec
-defect (a stale phase here, a template gap) does NOT edit the live-spec repo — it drops ONE new file into
-live-spec's `inbox/` (see `inbox/README.md`) and records the finding in the HOST's own journal. Learned the
+defect (a stale phase here, a template gap) does not edit the live-spec repo — it drops one new file into
+live-spec's `inbox/` (see `inbox/README.md`) and records the finding in the host's own journal. Learned the
 hard way: the pilot run edited live-spec directly while another session was mid-flight in the same repo.
 
 ---
 
-## Phase 0 — Version-control gate FIRST (SPEC A-5, done early for reversibility)
+## Phase 0 — Version-control gate first (SPEC A-5, done early for reversibility)
 
-The spec requires version control before the first *landing* (INV-8). In practice, do it **before you touch
-anything** — then the whole adopt run is reversible.
+The spec requires version control before the first *landing* (INV-8). In practice, this happens **before
+anything else is touched** — then the whole adopt run is reversible.
 
 1. If the host has no git: `git init`.
 2. Write a `.gitignore` that keeps source + structured data and excludes the virtualenv, caches, and heavy
    generated/media artifacts. (On the pilot this was ~7.6 GB of media out of a 7.7 GB tree — commit the
    ~source and exclude the exports.)
-3. Make ONE **baseline commit** of the pristine original — this is the restore point and the diff baseline
+3. Make one **baseline commit** of the pristine original — this is the restore point and the diff baseline
    (SPEC A-6 / E-7).
 4. **Settle the remote — a named deliverable (SPEC A-5).** By the first landing a
-   remote (GitHub) either EXISTS or the human has EXPLICITLY DECLINED one; record the outcome in the run's
+   remote (GitHub) either exists or the human has explicitly declined one; record the outcome in the run's
    journal entry. Creating/pushing the remote is the human's gate — offer and follow through, don't do it
    silently and don't let "recommended" quietly become "never happened" (the pilot ended local-only that way).
    Where a remote seat will reach this repo — a cloud session, a scheduled routine, another machine — the
@@ -72,8 +72,8 @@ remote outcome (exists / declined) is recorded.
 ## Phase 0.5 — Optional cruft sweep (human-gated; SPEC A-9)
 
 Writing the `.gitignore` usually surfaces pre-existing regenerable junk (caches, build leftovers, stale
-exports). Offer ONE sweep: list what qualifies as "N files, M MB" per group, get the human's explicit OK,
-delete ONLY the approved regenerable junk. Never silent, never authored content — anything a human wrote
+exports). Offer one sweep: list what qualifies per group with its file count and total size, get the human's
+explicit OK, delete only the approved regenerable junk. Never silent, never authored content — anything a human wrote
 goes through the attic (INV-7) instead of this sweep. Skipping the offer is fine; deleting without the OK is not.
 
 Done when: the sweep was offered and either declined or executed exactly as approved.
@@ -93,7 +93,7 @@ session on package defaults, said aloud. A worker session never runs this step (
 or reads from the human's profile — the answers that shape everything downstream, personal-vs-reusable
 first, and **what kind of project this is** — book · backend service · static site · fullstack app ·
 CLI · skill pack · a custom kind — recorded as the host profile's `project.kind` line; that one is
-always ASKED, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
+always asked, never profile-read: no personal line can say what a host is (SPEC INV-36); an answer
 inferred from examples is a defect. **With the kind, the founding declares this project's concrete
 layers and its concrete proof kinds (SPEC INV-135):** the same host profile gains a `project.layers`
 line (this kind's concrete footprint categories — a codebase's frontend/backend/store, a photo site's
@@ -120,11 +120,11 @@ line carrying the current set version from `scripts/founding-questions.json`, so
 name any question added to the set after this host founded. A host that founded before the set was
 versioned carries no such line, and the update check's founding arm reads that as owing every question.
 The same breath asks — or tells the standing
-default of — the ECONOMY rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
+default of — the economy rung (`budget.pressure`: full · lean · tight, SPEC T-19): the human hears the
 choice at setup, before any crisis; the rung moves only on their word.
 
 **Skill search rides the setup (SPEC INV-65):** with the founding questions answered, scan the
-installed skills and the catalogs you can reach for ones matching the project's kind and its crafts;
+installed skills and the catalogs the run can reach for ones matching the project's kind and its crafts;
 propose the fit list with a recommendation — the human's word picks. Later, any struggle (a ledger
 entry seen twice, a taste artifact rejected twice) buys one search before the next attempt.
 
@@ -133,13 +133,13 @@ and the working pace have been settled, the session renders the settings card wi
 `scripts/onboarding-card.py` and opens it for the human. It is one page showing what is set up and
 what is theirs to change, and it asks nothing.
 
-Read every existing document BEFORE writing or moving anything: README, any roadmap, any spec, any test
+Read every existing document before writing or moving anything: README, any roadmap, any spec, any test
 suite, journals, TODO/notes files, changelogs, in-repo wikis. **A well-run host may already keep most of
-these in live-spec shape** — then adoption is light and you rewrite nothing.
+these in live-spec shape** — then adoption is light and adoption rewrites nothing.
 
-Produce a **document digest** (`.live-spec/adopt/orient_digest.md` — ALL adopt working artifacts live in
+Produce a **document digest** (`.live-spec/adopt/orient_digest.md` — all adopt working artifacts live in
 `.live-spec/adopt/`, tracked in git as the run's audit trail, never in the host's own folders; SPEC A-8):
-per doc — kind (spec/roadmap/journal/notes/report/…) · one-paragraph what-it-says · CURRENT or STALE (and
+per doc — kind (spec/roadmap/journal/notes/report/…) · one-paragraph what-it-says · current or stale (and
 why) · what it overlaps/duplicates.
 
 > Delegate this read to a worker — it is fan-out fact-gathering. Judgment stays with the senior, who reads the digest.
@@ -158,7 +158,7 @@ satisfies E-10 outright); the `SURFACE_REGISTRY.md` document is the fallback for
    JSON).
 2. List every **surface** (a page, panel, form, chart) and pin it to its owning `file:line` — this seeds the
    **surface registry** (`SURFACE_REGISTRY.md`, SPEC E-10), which is self-closing: a surface that renders but
-   isn't registered is RED.
+   isn't registered is red.
 3. List every significant **data entity** (from filenames, JSON keys, class names, tables, config).
 
 Record in `.live-spec/adopt/inventory.md` (one line per item; A-8 home), then lift the surfaces into
@@ -181,7 +181,7 @@ Turn what exists into the canonical set — **keeping original claims, marking t
 
 **Provenance (SPEC C-1).** Mark each document `native-live-spec` (authored in the method) or
 `re-engineered-from-existing`. A re-engineered claim is **unverified until reconciled** — pinned to
-`file:line` or removed at the FIRST landing that touches its surface, and all remaining ones at the first
+`file:line` or removed at the first landing that touches its surface, and all remaining ones at the first
 milestone. A host authored entirely in the method (like the pilot) has no reconcile backlog beyond its own
 `⟨DECIDE⟩` / `[planned]` markings.
 
@@ -205,7 +205,7 @@ date). Flat layout; on a basename collision the source dir prefixes the name; st
 **The selection is a human gate.** These are the human's authored files in a live project — propose the attic
 set with reasons and get an OK before moving. Moving is done with `git mv` (history preserved).
 
-**Sweep the coupling.** After moving, fix any **live current-state pointer** in the KEPT docs that named a
+**Sweep the coupling.** After moving, fix any **live current-state pointer** in the kept docs that named a
 moved file as canonical (e.g. a JOURNAL header "canonical state lives in X") — repoint it, or it becomes a
 dead backpointer. Leave pure historical citations in dated entries (they resolve via the manifest).
 
@@ -221,14 +221,14 @@ trusted.
 
 **First the architecture.** Seed `ARCHITECTURE.md` from Phase 2's inventory: the surfaces' `file:line`
 pins become named nodes (one responsibility, one name each — template: `ARCHITECTURE.template.md`), every
-spec fact is assigned an owning node, seams are named. The pins ARE the reconciliation of re-engineered
+spec fact is assigned an owning node, seams are named. The pins are the reconciliation of re-engineered
 claims (A-3) — they come from commands run in Phase 2, independent of the old docs' prose. Run a
 product-prover pass with the architecture lens before deriving anything from it.
 
-**Then DERIVE `TEST_MATRIX.md` through it**: rows organized node × fact, at least one row per invariant /
+**Then derive `TEST_MATRIX.md` through it**: rows organized node × fact, at least one row per invariant /
 transition / cross-section / surface, each pinned to a test **level** (string / DOM / browser / pixel —
-extend with `data` for a data pipeline). Every row states BOTH sides — what the fact DOES and what it must
-NEVER do (the negative is the regression fence). Visibility/layout facts get level ≥ browser. The
+extend with `data` for a data pipeline). Every row states both sides — what the fact does and what it must
+never do (the negative is the regression fence). Visibility/layout facts get level ≥ browser. The
 derivation closes with the template's coverage-validation checklist, actually walked. If the host has no
 suite yet, all rows are `TODO` — the data/invariant rows become the acceptance criteria for the next
 build sprint.
@@ -248,7 +248,7 @@ The installer vendors the four checks and their shared library into the host's `
 `guardrails.config.json` from the example where the host carries none (a filled config is never
 clobbered), and writes or merges the host's source pins into `scripts/ratchet-manifest.json` — pack
 version plus content hash per check — so the daily update check reads this kit too (SPEC INV-177). The
-remaining manual steps the installer prints: fill your real paths in the config, run each check once,
+remaining manual steps the installer prints: fill the real paths in the config, run each check once,
 prove one red-first (plant a fake registry row, watch `check_completeness.py` red, remove it), and add
 the four check lines to the host's pre-push hook. Config-only attach runs about fifteen minutes.
 
@@ -276,7 +276,7 @@ layer's own overlay file, which the installer never touches.
 
 1. Record installed skill versions in `.live-spec/` (every pack SKILL.md carries a version line under
    `metadata:` in its frontmatter and the package a root `VERSION` file — SPEC M-7) and seed
-   `.live-spec/profile.md` — the HOST's overrides
+   `.live-spec/profile.md` — the host's overrides
    only; settings about the human (language, proactivity) belong in their personal profile
    (`~/.claude/live-spec/profile.md`), which this host file overrides per the settings ladder (SPEC E-13).
    Mode/trust set only on the human's word (INV-9).
@@ -286,7 +286,7 @@ layer's own overlay file, which the installer never touches.
    `spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show`.
 
 **First recommended action after adoption:** run `product-prover` on the whole spec to catch what the
-reverse-spec pass missed — UNLESS the spec was prover-proven recently, with no drift since, AND by the
+reverse-spec pass missed — unless the spec was prover-proven recently, with no drift since, and by the
 same prover version as the one installed now (the record names the version that ran). A prover that grew
 a lens since that record re-arms the full pass: a spec proven under the old lens set has not met the new
 lens — that is exactly how a whole class of composition holes once kept a stale green (2026-07-09).
