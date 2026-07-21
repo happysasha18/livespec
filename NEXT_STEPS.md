@@ -1,20 +1,15 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-21 08:30 — v3.3.0 pushed; a tails-close movement BUILT, awaiting final push)
-v3.3.0 (four movements) is committed, frozen, PUSHED (HEAD 31a2bb3, tree clean). Then, closing tails, this
-session BUILT one small movement: **INV-247 + base rule 34** — before resuming a deferred/queued item, re-derive
-its state from the CODE (ROADMAP 430, Alexander's word). Also two prover follow-on notes landed inside INV-245
-and INV-246, and the tlvphotos inbox wish's section 3 (dual-as-discovery-heuristic) was folded into ROADMAP 438.
-STATE of the INV-247 delta: edited PRODUCT_SPEC.md (clause + Formal-index row), skills/live-spec-base/SKILL.md
-(rule 34 + count 33→34), ARCHITECTURE.md (build-pipeline owns INV-247), TEST_MATRIX.md (M-432), NEW
-tests/test_resume_rederive.py (4 tests GREEN, red-proven vs HEAD). Fresh-context prover ran, two must-fix folded
-(WHEN divergence + the no-push-gate answer). Traceability GREEN, register-lint clean on the core docs.
-**REMAINING to finish the landing (do at work):** confirm full suite GREEN from scratchpad/suite.log; decide
-version (MINOR 3.4.0 — a host-inherited base rule) and stamp VERSION + 10 skills + plugin.json; re-freeze base
-(`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`); flip
-ROADMAP 430 status to landed + INV-247 refs; commit narrowly by path; push on green.
+## ON RESUME (2026-07-21 — v3.4.0 LANDED and PUSHED; tails closed)
+v3.3.0 (four movements) and then v3.4.0 are both PUSHED (HEAD 0846edb, tree clean, origin synced). Closing tails,
+this session BUILT one small movement at **v3.4.0**: **INV-247 + base rule 34** — before resuming a deferred/queued
+item, re-derive its state from the CODE (ROADMAP 430, Alexander's word). Delta: PRODUCT_SPEC clause + Formal-index
+row, base rule 34 (count 33→34), ARCHITECTURE build-pipeline ownership, M-432, tests/test_resume_rederive.py
+(4 tests, red-proven), a fresh-context prover record and a live-spec-base skill-review record. Two prover follow-on
+notes landed inside INV-245 and INV-246; the tlvphotos inbox wish's section 3 (dual-as-discovery-heuristic) folded
+into ROADMAP 438. ROADMAP 430 flipped to landed. Suite 1723 green; all push gates green.
 Push on green (his grant); a taste/policy fork stays an explicit question; re-test every "needs his word" by
-derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file.
+derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file (INV-247).
 
 ## FIRST at intake — classify one-time vs standing (Alexander's word 2026-07-21, ROADMAP 440, memory [[classify-request-onetime-vs-standing-up-front]])
 Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT
