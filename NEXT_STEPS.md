@@ -1,10 +1,18 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-21 — four movements closed at v3.3.0, pushing on green)
-This session closed FOUR movements at **v3.3.0**: INV-49 sharpened (a dependency edge is drawn only on a true
-dependency or a same-section collision, not on shared-doc co-location), INV-245 (the project-name / dated-incident
-gate), INV-246 (the lean-orchestrator arm), and the prose-quality sweep to the linter floor. They were built and
-integrated as PARALLEL lanes under one pen and reconciled at integration — the live proof of INV-49 itself.
+## ON RESUME (2026-07-21 08:30 — v3.3.0 pushed; a tails-close movement BUILT, awaiting final push)
+v3.3.0 (four movements) is committed, frozen, PUSHED (HEAD 31a2bb3, tree clean). Then, closing tails, this
+session BUILT one small movement: **INV-247 + base rule 34** — before resuming a deferred/queued item, re-derive
+its state from the CODE (ROADMAP 430, Alexander's word). Also two prover follow-on notes landed inside INV-245
+and INV-246, and the tlvphotos inbox wish's section 3 (dual-as-discovery-heuristic) was folded into ROADMAP 438.
+STATE of the INV-247 delta: edited PRODUCT_SPEC.md (clause + Formal-index row), skills/live-spec-base/SKILL.md
+(rule 34 + count 33→34), ARCHITECTURE.md (build-pipeline owns INV-247), TEST_MATRIX.md (M-432), NEW
+tests/test_resume_rederive.py (4 tests GREEN, red-proven vs HEAD). Fresh-context prover ran, two must-fix folded
+(WHEN divergence + the no-push-gate answer). Traceability GREEN, register-lint clean on the core docs.
+**REMAINING to finish the landing (do at work):** confirm full suite GREEN from scratchpad/suite.log; decide
+version (MINOR 3.4.0 — a host-inherited base rule) and stamp VERSION + 10 skills + plugin.json; re-freeze base
+(`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`); flip
+ROADMAP 430 status to landed + INV-247 refs; commit narrowly by path; push on green.
 Push on green (his grant); a taste/policy fork stays an explicit question; re-test every "needs his word" by
 derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file.
 
@@ -28,8 +36,8 @@ mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep t
   Three recorded-word lines stay verbatim as a deliberate exemption (meaning-bearing).
 
 ## Follow-ons (later, non-blocking)
-- INV-245: note that the project-name arm's non-coverage of skills/README is deliberate (prover rec).
-- INV-246: keep the six-verb Bash-dump escape a documented boundary (prover rec).
+- INV-245: non-coverage of skills/README as a deliberate boundary — DONE (note added inside the clause 2026-07-21).
+- INV-246: six-verb Bash-dump escape a documented boundary — DONE (note added inside the clause 2026-07-21).
 
 ## Migration readiness (2026-07-21) — when can other projects migrate?
 Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not build
@@ -78,11 +86,11 @@ Memory: this whole session is wipeable.
   listener (wait on the harness listener, INV-231) · 438 delivery-separability prover lens · 439 inbox deposit protocol
   · far tier 381, 411, 435, 436/437.
 
-## Inbox (2026-07-21)
-New wish swept to ROADMAP 438 — the delivery-separability prover lens (the dual of composition), Alexander's tlvphotos
-catch, scope on his word. The `from-owner-verify-code-state` deposit (row 430) stays in inbox, un-swept. ROADMAP 439
-queued (Alexander's word 2026-07-21): an inbox deposit protocol for concurrent windows (atomic write + completeness
-signal + a sweep that never races a mid-write deposit) — a near-term movement.
+## Inbox (2026-07-21) — both deposits routed, left earned in place (row-430 precedent, no delete under a live writer)
+- tlvphotos delivery-separability wish → ROADMAP 438; Alexander 2026-07-21: 438 and this whole file are one and the
+  same, so section 3 (dual-as-discovery-heuristic) was FOLDED into row 438 (no separate row). Scope/greenlight on his word.
+- `from-owner-verify-code-state` (row 430) → BUILT this session as INV-247 (awaiting the landing push). Left in inbox.
+ROADMAP 439 (inbox deposit protocol for concurrent windows) still queued, open design fork his (completeness signal).
 
 ## Next free codes
 Next free INV-247, E-36, T-25, M-432, next ROADMAP row 445.

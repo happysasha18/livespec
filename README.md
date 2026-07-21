@@ -35,7 +35,7 @@ Or clone and run `./install.sh`. Then attach it to a project: [`templates/`](tem
 
 ## Three thousand lines of rules, and that is the point
 
-They are not a configuration burden waiting for you. They are the part a software house would charge you for — thirty-three shared rules, stated once: how a spec gets written so it stays readable, when a question is worth your attention and when it isn't, what a green suite does and doesn't prove. You do not read them. They run.
+They are not a configuration burden waiting for you. They are the part a software house would charge you for — thirty-four shared rules, stated once: how a spec gets written so it stays readable, when a question is worth your attention and when it isn't, what a green suite does and doesn't prove. You do not read them. They run.
 
 The relationship is the one you have with a builder rather than with a framework: **you don't need to know how; you still decide what.** A good contractor doesn't ask the client to choose the rebar, and doesn't pick the kitchen either.
 

@@ -2,7 +2,7 @@
 name: feedback-collector
 description: The pack's outbound feedback arm. On a genuinely strong, RARE reaction from the user — a real delight, a real hurt, a comparably notable moment — OFFER, asking positive consent every time, to draft a short private "upstream note" to the pack's authors about what happened. Use when the conversation shows an unmistakable strong reaction and the host has turned `feedback-upstream: on`; it drafts a distilled, non-public note into `outbox/` and never sends it, delivery being the human's own step. NOT feedback-intake — that RECEIVES what a person hands in, this NOTICES a strong moment and offers to carry a note up. NOT a measurement machine — it reads one moment, never scores or aggregates. Off by default, silent unless a host opts in.
 metadata:
-  version: 3.3.0
+  version: 3.4.0
 ---
 
 # feedback-collector — an occasional note home to the authors
@@ -11,7 +11,7 @@ metadata:
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
 > need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live
-> ONCE in the pack's base skill, `live-spec-base` (v3.3.0), together with the settings ladder — this skill
+> ONCE in the pack's base skill, `live-spec-base` (v3.4.0), together with the settings ladder — this skill
 > references them and elaborates only its own domain. Used standalone, this note is plain advice.
 
 The pack has three arrows. communicator carries work OUT to the human. feedback-intake carries what a

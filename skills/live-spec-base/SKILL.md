@@ -1,8 +1,8 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-three rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-four rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 3.3.0
+  version: 3.4.0
 ---
 
 # live-spec-base — one rulebook, nine working skills
@@ -463,6 +463,18 @@ answer to a class is a list, the design is wrong.
    the gate checks the record exists, is dated to the release, and names a different seat — the mechanical
    floor under a discipline the seat holds. The owner's word, 2026-07-18, after a fresh web review caught
    self-referential defects the in-context 2.7.0 prover missed.
+
+34. **A deferred item's own state is re-derived from the code before its work resumes (SPEC INV-247).** A
+   resume file and a queue row record a past moment, and the technical problem statement a deferred or
+   queued item carries — how the code it touches works — can go stale as that code moves on. So the first
+   act of resuming such an item is a freshness check of its own subject against the shipped source: read
+   the code the item touches, confirm the problem the row describes still holds, and re-derive the item's
+   real current state before designing anything on it. It is the resume-side twin of rule 13's primary
+   source, that a document's prose is a lead a fresh read confirms, and of the architecture step's pin read
+   from a command just run; where rule 8 re-reads versions at a safe breakpoint and the queue-take re-scan
+   re-reads a deferred row's revisit trigger [SPEC INV-129], this rule re-reads the item's own internals, so
+   a session never designs a fix from a stale model of code that has since moved and an item already handled
+   is caught before the work restarts. The owner asked the pack to hold it, 2026-07-20.
 
 
 ## When NOT to load this
