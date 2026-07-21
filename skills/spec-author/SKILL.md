@@ -2,7 +2,7 @@
 name: spec-author
 description: Author and maintain a living product spec as a project grows — a use-case-first, prover-ready PRODUCT_SPEC.md where scenarios of what the person does lead, short codes trail as quiet anchors, and a Formal index closes the doc; underneath, it still states entities, states, transitions, actors, invariants, and the cross-section composition between them. Use this skill whenever the user wants to start a spec, add a feature/surface to an existing spec, "spec this out", "write the spec for X", keep a spec in sync with new behavior, or asks how to structure a spec. It is the authoring half of a pair: spec-author writes the spec, product-prover reviews it. Reach for it before writing tests or code for anything non-trivial, and whenever a new stateful surface is introduced. Not for reviewing or poking holes in a spec (that is product-prover's half), for retro-documenting already-built code, or for an unfenced prototype sketch (which carries no spec).
 metadata:
-  version: 3.4.0
+  version: 3.5.0
 ---
 
 # Spec Author
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live once in the pack's base skill, `live-spec-base` (v3.4.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live once in the pack's base skill, `live-spec-base` (v3.5.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -287,7 +287,12 @@ per-kind axis table in ARCHITECTURE.md and declared on the host profile's `proje
 explicit "none beyond the C-1 floor" a legitimate answer for a kind with no visitor-facing surface.
 Composing a surface reads these declared axes from the kind before folding the facet sweep below, the
 same way it reads the declared layers, so the delta answers each axis this kind owes rather than
-assuming another kind's set.
+assuming another kind's set. And where an owed axis adds runtime code to cover it (SPEC INV-248), the
+delta states how that axis is delivered — the surface shipping whole for a named architectural reason
+(one bundle, one page never torn down, a no-server delivery, a payload too small for a split to pay),
+or owing a delivery road a later row lands (a platform split, a lazy load) — so the artifact's
+separability is a decided sentence beside the axis's behaviour, read by the prover's
+delivery-separability lens.
 
 - **the viewport bands** — width and height both run in bands (narrow, wide, short, tall, and the
   bands a future device adds), so every layout-bearing feature ends the sweep with a decided or
