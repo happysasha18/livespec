@@ -72,7 +72,9 @@ Terminal state: <delivered, or declined naming the zone that owns the question>
 ```
 
 **What the gate reads.** `guardrails/check-earned-message.py` (gate m of the pre-push hook) reads every
-deposit in this folder, whatever its extension. It treats one whose filename names an unreserved
+deposit in this folder, whatever its extension, with one exception: a name ending `.draft` is a deposit
+still being written (SPEC INV-249), so the gate passes over it exactly as the receiving sweep does, and a
+mid-write deposit reds no push. It treats one whose filename names an unreserved
 `from-<agent>` source as agent traffic, and one carrying the agent card's `From: <name> (agent)` line the
 same way whatever its filename. It reds when such a deposit names neither birth: no `Blocked:` line, no
 `Lived:` line, and no `Re:` line naming a message it replies to. A field inside a fenced code block is an
@@ -84,6 +86,25 @@ The gate reads a field that was forgotten. Three things stay past its reach, and
 sweep and the prover (SPEC INV-150): whether the named work stands still, whether the named evidence was
 lived, and whether a deposit that declares no source at all is agent traffic — a sender who names the file
 without the `from-` prefix and writes no marker is not read by the gate at all.
+
+**A deposit is written whole before it is named (SPEC INV-249).** Writing a file's content takes many small
+writes, so a sweep reading this folder while a neighbour is mid-write can harvest or delete a half-written file — a
+live sweep once truncated a deposit mid-write. So a deposit is first written under a `.draft` name
+(`YYYY-MM-DD-<source>-<slug>.md.draft`) and renamed to its final `from-...md` name only once its content is
+complete; a rename within one filesystem is atomic, so the final name appears whole or never appears at all.
+The receiving sweep acts only on a complete deposit and passes over any name still carrying the `.draft`
+suffix, and it never deletes or edits a file that may be mid-write. A deposit already routed is left earned
+in place rather than removed under a live writer, the same care the resume re-read gives a queued item it
+finds already handled (SPEC INV-247).
+
+Two edges the `.draft` name carries. **The name-taken check reads the `.draft` names too.** While a deposit
+is in flight only its `.draft` name exists, so a second writer asking "is `<name>.md` taken?" would see
+nothing and clobber the first writer's draft; so the collision check (base rule 18, the `-2`/`-3` rule
+above) scans the `.draft` names as well, and two co-located windows writing at once each carry the short
+session token in the source mark so their names cannot collide. **A stale `.draft` is reaped.** A `.draft`
+a writer left behind after it stopped, still present with an unchanged modification time across a full
+sweep, is stale, and the sweep removes it the way it removes a harvested file, so an abandoned draft never
+lingers forever.
 
 **From the same filesystem (a co-located window), the deposit is the file alone (SPEC INV-174).** You
 share the assigned session's working tree and git index, so stop after writing the file: no staging, no

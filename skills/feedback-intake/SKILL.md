@@ -2,7 +2,7 @@
 name: feedback-intake
 description: Receive anything a person hands back to the project — a remark, an answer, a screenshot, a reaction, a dropped file — and route it to the home its law owns; nothing handed in is ever lost. Use whenever feedback arrives in any form (a comment on shown work, an answered decision page, a file appearing in inbox/, a user's report relayed by the human), when sweeping the inbox, when opening or appending the feedback ledger (FEEDBACK.md), or when deciding where a handed-in item belongs. It is the intake half of the exchange — communicator carries work out to the human, this skill carries what comes back. NOT for the agent's own outputs or questions; it never opens a queue row on its own judgment (the wish door owns that verdict); and it is no analytics machine — reading, scoring, and aggregating the collected signals stay with the measurement family.
 metadata:
-  version: 3.5.0
+  version: 3.6.0
 ---
 
 # feedback-intake — nothing handed in is ever lost
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.5.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.6.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -77,7 +77,10 @@ the inbox door (SPEC INV-10), and appends take the pen like any shared-doc edit 
 - A re-mention of an already-recorded item **appends its date** to the existing line and changes
   nothing else — the problem ledger's own discipline, applied here.
 - The ledger line is written the same session the item arrives; at an inbox sweep, ONE commit both
-  lands the route (the row, the ledger line) and removes the swept file (SPEC T-10).
+  lands the route (the row, the ledger line) and removes the swept file (SPEC T-10). The sweep reads only
+  a complete deposit and passes over a `.draft`-suffixed file a neighbour may still be writing, so it never
+  harvests or removes a mid-write deposit; a `.draft` stale across a full sweep — unchanged mtime, its writer
+  gone — is reaped the way a harvested file is, so an abandoned draft never lingers (SPEC INV-249).
 - Dates come from the clock, read at the moment of writing, never invented (SPEC INV-24).
 
 ## What this skill deliberately leaves alone

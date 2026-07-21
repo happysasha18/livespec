@@ -1,17 +1,16 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-21 — v3.5.0 LANDED; INV-248 delivery-separability lens)
-This session BUILT one movement at **v3.5.0**: **INV-248** — a product-prover lens for delivery separability along a
-declared composition axis (ROADMAP 438, the tlvphotos-window catch), the dual of INV-244. When a spec declares a
-cross-cutting composition axis that adds runtime code, the design states either a named-reason monolith or an owed
-delivery road; an unexamined monolith-by-default is the finding. Folded in: a dual-discovery habit for product-prover
-(ask whether an applied lens's dual bites — a habit, never a law). Delta: PRODUCT_SPEC clause + Formal-index row,
-product-prover lens bullet + dual habit, spec-author authoring duty, ARCHITECTURE ownership (spec-author owns,
-product-prover carries), M-433 under the spec-author node, tests/test_delivery_separability.py (7 tests, red-proven
-against HEAD 4dd3857). Fresh-context adversarial audit + self-application recorded under docs/prover/; skill review
-under docs/skill-review/. ROADMAP 438 flipped to landed. Suite 1730 green, 2 skips (the pinned set).
-**Codes correction:** the prior "Next free INV-247, M-432" line was STALE — v3.4.0 had consumed both; this movement
-used INV-248 / M-433. Next free is now INV-249 / M-434 (see below).
+## ON RESUME (2026-07-21 — v3.5.0 + v3.6.0 LANDED; two prover/inbox movements)
+This session BUILT two movements. **v3.5.0 — INV-248** (ROADMAP 438, PUSHED, CI green): a product-prover lens for
+delivery separability along a declared composition axis, the dual of INV-244 — a cross-cutting axis that adds runtime
+code states either a named-reason monolith or an owed delivery road, an unexamined monolith-by-default the finding;
+plus a dual-discovery habit for product-prover. **v3.6.0 — INV-249** (ROADMAP 439, this movement): the inbox deposit
+protocol for concurrent windows — a deposit is written under a `.draft` name and made final by an atomic rename, and
+the receiving sweep reads only a complete deposit and never a mid-write file. Alexander's word: one flag (`.draft`),
+no double indication — the suffix is the only atomic mechanism. Delta: PRODUCT_SPEC clause + Formal-index row,
+inbox/README.md protocol, feedback-intake sweep fence, ARCHITECTURE inbox-node ownership, M-434,
+tests/test_inbox_deposit_protocol.py (6 tests, red-proven against HEAD 118ad87). Both fresh-context audits (INV-46/237)
+recorded under docs/prover/. Suite 1736 green, 2 skips (the pinned set). Next free INV-250 / M-435.
 Push on green (his grant); a taste/policy fork stays an explicit question; re-test every "needs his word" by
 derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file (INV-247).
 
@@ -22,7 +21,8 @@ mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep t
 ## LANDED earlier this day (v3.3.0 four movements + v3.4.0), all PUSHED — detail in JOURNAL
 v3.3.0: INV-49 sharpened (442, co-location is not a serialization trigger) · INV-245 project-name gate (441) ·
 INV-246 lean-orchestrator arm (443) · prose-quality sweep (444). v3.4.0: INV-247 + base rule 34 (430, re-derive a
-deferred item's state from CODE before resuming). v3.5.0: INV-248 delivery-separability lens (438, this movement).
+deferred item's state from CODE before resuming). v3.5.0: INV-248 delivery-separability lens (438). v3.6.0: INV-249
+inbox deposit protocol (439, this movement).
 
 ## Follow-ons (later, non-blocking)
 - INV-245: non-coverage of skills/README as a deliberate boundary — DONE (note added inside the clause 2026-07-21).
@@ -72,19 +72,17 @@ Memory: this whole session is wipeable.
 
 ## Queue's open head (field-gated + far tier)
 - 385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation channel +
-  listener (wait on the harness listener, INV-231) · **439 inbox deposit protocol (buildable now; ONE open fork for
-  Alexander — the completeness-signal mechanism; his lean is a `.draft` filename suffix)** · far tier 381, 411, 435,
-  436/437. (438 delivery-separability lens LANDED v3.5.0.)
+  listener (wait on the harness listener, INV-231) · far tier 381, 411, 435, 436/437. (438 delivery-separability lens
+  LANDED v3.5.0; 439 inbox deposit protocol LANDED v3.6.0.) Runnable head is field-gated (contract/listener) + far tier.
 
 ## Inbox (2026-07-21) — both deposits routed, left earned in place (row-430 precedent, no delete under a live writer)
 - tlvphotos delivery-separability wish → ROADMAP 438; Alexander 2026-07-21: 438 and this whole file are one and the
   same, so section 3 (dual-as-discovery-heuristic) was FOLDED into row 438 (no separate row). Scope/greenlight on his word.
-- `from-owner-verify-code-state` (row 430) → BUILT this session as INV-247 (awaiting the landing push). Left in inbox.
-ROADMAP 439 (inbox deposit protocol for concurrent windows) still queued, open design fork his (completeness signal).
+- `from-owner-verify-code-state` (row 430) → LANDED as INV-247 (v3.4.0, pushed). Left earned in place (INV-249 precedent).
+ROADMAP 439 (inbox deposit protocol) → LANDED as INV-249 (v3.6.0); the `.draft` protocol now governs future deposits.
 
 ## Next free codes
-Next free INV-249, E-36, T-25, M-434, next ROADMAP row 445. (INV-247/M-432 were v3.4.0's; INV-248/M-433 were this
-movement's — the earlier "247/432 free" line was stale.)
+Next free INV-250, E-36, T-25, M-435, next ROADMAP row 445. (INV-248/M-433 were v3.5.0's; INV-249/M-434 were v3.6.0's.)
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our

@@ -291,10 +291,13 @@ def scan_file(path, today=None):
 
 
 def _targets(paths):
-    """Every deposit in the given folders and files.
+    """Every complete deposit in the given folders and files.
 
-    Each file is read, whatever its extension: the README prescribes `.md`, and a gate that
-    stands down on any other suffix is cleared by renaming the file.
+    Each file is read whatever its extension, with one exception: a name ending `.draft` is a deposit
+    still being written under the atomic-write protocol (SPEC INV-249), so the gate passes over it
+    exactly as the receiving sweep does — the two agree, and a mid-write deposit reds nothing. This
+    grants no evasion: a file left `.draft` forever is never harvested or delivered either, so it
+    stays outside the traffic the gate judges.
     """
     files = []
     for p in paths:
@@ -303,9 +306,10 @@ def _targets(paths):
                 os.path.join(p, n) for n in os.listdir(p)
                 if os.path.isfile(os.path.join(p, n))
                 and not n.startswith(".")
+                and not n.endswith(".draft")
                 and os.path.splitext(n)[0].lower() != "readme"
             )
-        elif os.path.isfile(p):
+        elif os.path.isfile(p) and not p.endswith(".draft"):
             files.append(p)
     return files
 
