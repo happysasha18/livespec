@@ -10,13 +10,21 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 - **prototype** — an exploration of an idea kept as a sketch, living fenced off in its own clearly named home such as a `prototype/` folder or branch, so nothing in the shipped product reaches into it.
 - **prod surface** — any part of the shipped product a user meets.
+- **write-ownership law** — the rule that an assigned session writes only the tree it owns, while every other window's tree stays read-only save one inbox deposit.
 - **norm** — an approved prototype frozen as the binding record of a surface's look and feel, kept as a dated copy under `docs/norms/`.
 - **norm pointer** — the `norm: <path>` reference a spec clause carries at its line end, pointing at the frozen norm artifact its behaviour is checked against.
 - **architecture node** — one named unit in the architecture document carrying one responsibility and one name, owning the spec facts it implements and pinned to its place in the code.
 - **level ladder** — the ordered set of test levels a matrix row pins to, running string, then document-text, then browser-computed, then pixel.
 - **real-device walk row** — a matrix row for a behaviour living past a desktop headless browser, one the suite can never turn green, owed to the human's own hands before ship.
 - **coverage validation** — the checklist that closes the matrix derivation, walked to confirm every spec anchor, artifact, and node carries the rows it owes.
+- **problem ledger** — the per-host file `.live-spec/PROBLEMS.md` that records a recurring operational problem as a signature with its dated occurrences and a status.
+- **catch-up walk** — the adoption procedure that brings an already-adopted project's documents and records up to the pack's current state.
+- **concurrent-edit fence** — the check, run before every shared write or commit, that compares the repository's `HEAD` and tree state against what the session last read at its start, blocking a commit when either has moved, and clearing again once the session re-reads and accounts for the change.
+- **local-only diaries** — the journal, the resume file, the queue, and the migration chapter, the host-local files that hold candid attribution and process history no publish ships.
 - **breakpoint** — a point where a movement ends and session memory can be wiped with no loss, its live state replaced, a dated journal entry added, and the work committed.
+- **detached-work cadence** — the rule that a background or delegated run expected to pass about two minutes opens with a start line, lands a beat about every two minutes or at each stage, and closes with a done digest.
+- **round cap** — the bound of three progressing rounds on the prover-and-design-review loop, past which the loop stops iterating and surfaces its unsettled groupings on the record; a host may set its own cap.
+- **landing** — the act of one piece of work reaching the repository's shared truth as one commit under the pen. The delivery is the shipped work; its landing is the commit that puts it into the shared truth.
 - **checkpoint** — one grouped unit of planned work in the resume state, carrying a status the landing that ships its items flips to closed.
 - **skill-creator** — the skill-making skill that reviews each skill file's craft, apart from the evals that test each skill's behaviour.
 - **thin loader** — the personal layer's global instruction file, holding only what must be true before any pack file loads.
@@ -27,6 +35,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 - **publish gate** — the human's own gate over anything irreversible or outward, which the publish checklist runs ahead of.
 - **publish checklist** — the per-kind walk the publish skill owns, run before any deposit leaves the machine.
 - **remote gate** — the check set a host may mirror in its continuous-integration runner, whose verdict the pushing session reads after a push.
+- **local reach map** — the file that maps a diff's file classes to the checks each class must run, read by the local pre-push hook as a scoped subset of the full check set.
 - **work-kind** — the kind a wish is tagged with at intake, one of product, infra, skill, or prose, which scales how much machinery each step spends.
 
 ---
@@ -149,7 +158,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the build reads the artifact**
 
-1. *when* a surface whose clauses carry a norm pointer is built, the system *shall* open the artifact before the code step and *shall* record a one-line plan-versus-prototype diff in the landing report, a missing line being a defect caught at the code step. [INV-43]
+1. *when* a surface whose clauses carry a norm pointer is built, the system *shall* open the artifact before the code step and *shall* record a one-line plan-versus-prototype diff in the delivery report, a missing line being a defect caught at the code step. [INV-43]
 2. The system *shall* have the verify step's feel pass read the same norm pointer. [INV-43, INV-30]
 
 **Case: the prover's norm lens**
@@ -546,7 +555,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: the matrix is derived by node and fact**
 
 1. The system *shall* organize the matrix by architecture node paired with spec fact, giving every fact at least one row and pinning each row to a test level. [E-5, E-14]
-2. The system *shall* close the derivation with the coverage validation, confirming every spec anchor owns at least one row, every artifact-inventory entry owns at least one rendered-level row, every visibility or layout or colour or interaction fact sits at browser-computed level or above, and every node carries its negative-side rows. [E-15, INV-6]
+2. The system *shall* close the derivation with the coverage validation, confirming every spec anchor owns at least one row, every artifact-inventory entry owns at least one row at a rendered tier of the level ladder (browser-computed or pixel), every visibility or layout or colour or interaction fact sits at browser-computed level or above, and every node carries its negative-side rows. [E-15, INV-6]
 3. The system *shall* retire a stale row that cites an anchor or node no longer present rather than let it vanish, and *shall* read a fact with no row, or a row at too weak a level, as a derivation defect the prover catches before any user hits it. [E-15]
 
 **Case: no wish jumps the bridge**
@@ -661,18 +670,18 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the audits and the eval runs**
 
-3. The system *shall* re-walk the coverage validation against the current spec and architecture, run the surface-composition check, and re-run the skill evals. [M-1, E-15, E-19]
+3. The system *shall* re-walk the coverage validation against the current spec and architecture, run the surface-composition check (the audit that opens each covering overlay and confirms interactive controls from different layers keep separate pressable space on one screen), and re-run the skill evals. [M-1, E-15, E-19]
 4. The system *shall* walk the pack's skills through the skill-creator to review each skill file's craft, folding or rejecting each finding with a written reason in a dated record, a newly joining skill walking this at birth before it reaches the gate. [M-1]
 
 **Case: the compaction stations**
 
 5. The system *shall* audit every living document — spec, matrix, queue, skills, ledger, and the test suite — for redundant information and compact it, a fact living once in one home with a pointer from everywhere else, removing only the redundancy and keeping anything whose removal would change the meaning, and accounting for each removal that takes substance. [M-1, INV-115, E-24, INV-109]
 6. The system *shall* widen the station to code — merging duplicate logic, removing dead weight with its listing, and extracting a ripened abstraction only through the three-question fitness gate — the second occurrence of one problem opening its own compaction row that lands through the ordinary pipeline at one row's delta per commit without blocking its lane. [M-1, INV-123, INV-122, INV-39, INV-56]
-7. The system *shall* restructure a document only for a faster reading shape and only through the content-preserving layout vehicle with its multiset proof, and *shall* archive a closed queue row rather than delete it. [M-1, INV-111, INV-1]
+7. The system *shall* restructure a document only for a faster reading shape and only through the content-preserving layout vehicle — the restructure road that moves text without changing it — with its multiset proof, the check that the before and after texts hold the same words and punctuation marks in the same counts, and *shall* archive a closed queue row rather than delete it. [M-1, INV-111, INV-1]
 
 **Case: the closing sweep**
 
-8. The system *shall* re-list every open human gate and every unharvested inbox file one line each, sweep the deferred rows' revisit triggers once more and send any fired row back to runnable, and re-check the formal index against the prose as a derived map. [M-1, INV-1]
+8. The system *shall* re-list every open human gate and every unharvested inbox file one line each, sweep the deferred rows' revisit triggers once more and send any fired row back to runnable, and re-check the formal index (the spec's closing reference table pairing each code with its rule's one-sentence statement) against the prose as a derived map. [M-1, INV-1]
 9. The system *shall* re-pin the derived docs' headers to the spec version and prove them, and *shall* re-read the thin loader line by line, keeping only a line that must hold before any pack file loads and migrating any other to its real home. [M-1, E-16]
 
 ---
@@ -725,7 +734,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the two tiers**
 
-1. The system *shall* bind the universal tier — the contrast-frame ban (it bars naming a thing by denying its neighbour, the "X, not Y" frame), the negation-opener rule, the machine-jargon rule, and the provenance-narrative rule — to every host's gate whatever its register, running the provenance-narrative rule as a hard error in every tier. [INV-166]
+1. The system *shall* bind the universal tier — the contrast-frame ban (it bars naming a thing by denying its neighbour, the "X, not Y" frame), the negation-opener rule (it bars opening a rule by saying what it is not before saying what it is), the machine-jargon rule (it bars insider pack jargon and coined terms from spec prose), and the provenance-narrative rule (it bars a birth-story — the date and case that motivated a rule — inside the normative body) — to every host's gate whatever its register, running the provenance-narrative rule as a hard error in every tier. [INV-166]
 2. The system *shall* keep the pack-register tier — the caps-shout, second-person, reassurance, and future-narration rules — as the pack's own taste, right for the pack's docs and available to a host on its word. [INV-166]
 
 **Case: the tiers named in one flag**
@@ -868,7 +877,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: the two preceding steps**
 
 1. *when* a push runs on the flagship repository, the system *shall* run the concurrent-edit fence and a fresh prover pass over the spec and the architecture, landing the record in `docs/prover/` before the push, a record predating the last architecture change being as stale as one predating the last spec change. [M-6, INV-11, INV-116]
-2. The system *shall* fold defect findings before pushing, a fold produced by the gate's own pass shipping with the same record and a fold reaching wider re-triggering the gate, the rest becoming queue rows. [M-6]
+2. The system *shall* fold defect findings before pushing, a fold produced by the gate's own pass shipping with the same record and a fold that edits beyond the sections its own finding named re-triggering the gate, the rest becoming queue rows. [M-6]
 
 **Case: the inbox-only carve-out**
 
@@ -913,12 +922,13 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: a comparison earns its place**
 
 3. The system *shall* let a comparison or a diagram join only when it carries the argument, never as decoration. [T-16]
+   [GAP: the judge of carries-the-argument versus decoration is unstated in the source.]
 
 ---
 
 ## Requirement 47: The publish skill owns the checklist, run before the gate
 
-**Context:** The publish skill owns the per-kind checklist, and this spec sets the contract it follows. Nothing is deposited outward without passing the checklist first, and its result rides the landing report. The checklist never bypasses the gates already standing — the human's publish gate and the host's push gates — and it runs before the gate, so by the time the human approves it is already worth approving.
+**Context:** The publish skill owns the per-kind checklist, and this spec sets the contract it follows. Nothing is deposited outward without passing the checklist first, and its result rides the delivery report. The checklist never bypasses the gates already standing — the human's publish gate and the host's push gates — and it runs before the gate, so by the time the human approves it is already worth approving.
 
 **User Story:** As a person depositing outward, I want the publish checklist run before the human's gate, so that nothing leaves unchecked and the gate approves work already worth approving.
 
@@ -926,7 +936,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the checklist is the one home**
 
-1. The system *shall* have the publish skill own the per-kind checklist and *shall* deposit nothing outward without passing it first, the walk's result riding the landing report like any other step. [E-12, INV-22]
+1. The system *shall* have the publish skill own the per-kind checklist and *shall* deposit nothing outward without passing it first, the walk's result riding the delivery report like any other step. [E-12, INV-22]
 
 **Case: the standing gates hold**
 
@@ -965,7 +975,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: one home, its outcome recorded**
 
-3. The system *shall* read this shopfront check as the publish checklist at push scale, the commit-and-show step pointing at it and the walk's outcome riding the landing report. [INV-44, INV-22, E-20]
+3. The system *shall* read this shopfront check as the publish checklist at push scale, the commit-and-show step pointing at it and the walk's outcome riding the delivery report. [INV-44, INV-22, E-20]
 4. *when* a push's changes touch none of the shopfront's claims, the system *shall* say so in one line and *shall* fix a stale claim before the push, freshness being about the claims rather than styling. [INV-44]
 
 ---

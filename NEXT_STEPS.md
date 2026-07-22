@@ -19,16 +19,31 @@ catch-up, five spec holes). Inbox swept (3 deposits routed).
 STAGE 1 DONE (2026-07-22 evening, PUSHED, suite 1798 green): spec-delta v2 proven (INV-250..271, prover verdict
 lands-with-fixes, all applied; record docs/prover/2026-07-22-row445-spec-format-delta.md); seven format gates +
 scripts/build-index.py landed UNARMED, 59 tests red-proven both ways; format definition promoted to docs/spec-format.md.
-STAGE 2 RUNNING — converted so far (each: mapping zero-drop + reader panel to low/zero blocking, final clean read at
-assembly): adopting-a-project (pilot/, 96 codes), agents-together (76 codes, ratio 0.59), bounds (113 codes, ratio
-0.68). Remaining six: the build loop (207 KB — split by subsections), what-the-human-sends-back, when-something-breaks,
-rules-and-who-applies, header/what-is, Reference (becomes the generated index). Then: re-pin content tests from
-mappings, assemble + pooled glossary, retire the manual index (text to JOURNAL/attic);
-(3) freeze re-baseline + fresh prover audit + MIGRATION chapter + VERSION 4.0.0 (major bump — his word) + push. Then
-TEST_MATRIX and ROADMAP get their own movements; then the host migration chapter (tlvphotos 434 KB, track-coach 247 KB
-specs) driven by script in each project's own window.
+STAGE 2 CONVERSION DONE, PANEL NEARLY DONE (2026-07-22 late evening, committed): ALL NINE units converted
+(pilot + agents-together + bounds earlier; today build-loop a/b/c, what-the-human-sends-back, when-something-breaks,
+rules-and-who-applies, what-live-spec-is), each with mapping zero-drop proven, GAPS.md, NUMBERS.md, five lints green.
+Panel verdicts (two consecutive zero-blocking reads = accepted): ACCEPTED — what-live-spec-is (r6-7),
+when-something-breaks (r8-9), what-the-human-sends-back (r10-11), rules (r10-11), build-loop-c (r10-11),
+build-loop-a (r16-17). build-loop-b: last fix landed (the `[target]` later-surface gloss), round-17 read was in
+flight at session end — NEXT SESSION: read its verdict in the conversion notes, then run clean reads to two
+consecutive zero (the reader prompt template is in this file's sibling runs; each read ≈ one opus worker on the one
+file). Everything the panels could not settle is in prototype/2026-07-22-spec-format/conversion/ASSEMBLY-NOTES.md
+(17 numbered items: renames, one-name merges, source defects → queue rows at landing, per-unit acceptance notes).
+Prose-to-prose ratios measured per unit (0.59–1.46; growth in low-history units, shrink in provenance-heavy ones —
+whole-file shrink comes from retiring the manual index). THEN: re-pin ~99 content tests from mappings, assemble +
+pooled glossary + renumber requirements, retire the manual index via scripts/build-index.py (text to JOURNAL/attic),
+arm the seven format gates; (3) freeze re-baseline + fresh prover audit + MIGRATION chapter + VERSION 4.0.0 (major
+bump — his word) + push. Order he set 2026-07-22: finish ALL live-spec docs first (spec, then TEST_MATRIX, ROADMAP
+movements, architecture format = row 456) as the method's own proof; only then tlvphotos migrates (his word starts
+it, from its own window); other projects stand until then.
 Push on green (his grant); re-test every "needs his word" by derivability FIRST; re-derive deferred state from CODE
-(INV-247). Next free INV-250 / M-435 / row 453.
+(INV-247). Next free INV-272 / M-435 / row 460.
+ALSO TODAY (all committed/pushed): cost audit (row 457: $14.3K API-equiv/week measured, two-thirds cache re-reads at
+252k avg context; levers: milestone wipes, batching, sonnet routing, log-to-file) + budget law in the personal profile;
+cost deposit → tlvphotos inbox; plain-language method deposit → promoter inbox; rows 455 (transcript audit), 456
+(architecture format), 458 (cold-reader audit as pack skill), 459 (bug rows carry axis/class/spec verdicts) queued;
+scissors scanner widened to comma-less «а не»/«но не» (all windows inherit); lean-orchestrator warning hook armed
+machine-wide; playbook holds the audit script (tools/usage-audit.py) + hook overlays.
 
 ## FIRST at intake — classify one-time vs standing (Alexander's word 2026-07-21, ROADMAP 440, memory [[classify-request-onetime-vs-standing-up-front]])
 Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT

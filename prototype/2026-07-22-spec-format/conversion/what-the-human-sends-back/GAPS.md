@@ -17,3 +17,8 @@ These are places where the source section states a behaviour but leaves a judge,
 ## Note on scope
 
 These are the two genuinely new holes this scenario section opens. Several other numbers and choices in the section are host-settable or human-owned *by design* and are not holes, because the source states both the rule and where the value lives: the feedback-collector's off-by-default flag (`feedback-upstream: off`, switched on only by a recorded profile line), the positive-consent gate (an explicit yes, asked every time), and the outbox's gitignored per-host home. Each names both a default and the human's power over it, a complete answer rather than a hole.
+
+### G3 — the repeat-mention identity rule is unstated
+**Where:** Requirement 1, criterion 5. Source: the feedback ledger's repeat-mention clause, `[INV-68]`.
+**Hole:** A repeat mention appends its date to the existing line, and the source names no matching rule or judge for deciding that a new mention is the same item.
+**What it blocks:** Two sessions can split or merge the same feedback differently; the criterion-6 promise that an item is never handed in twice cannot be tested at the boundary.

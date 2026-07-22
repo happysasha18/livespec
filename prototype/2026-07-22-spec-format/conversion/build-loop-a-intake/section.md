@@ -4,15 +4,19 @@ This section states the first half of the build loop: how a wish is captured and
 
 Bracket codes like `[INV-27]` and `[E-2]` point to the rule's home in the project spec; a reader can ignore them, a maintainer follows them. The letter before the number names the kind: `INV-` an invariant (a numbered rule that must always hold), `E-` an entity (a numbered part of the product), `T-` a transition (a numbered change of state), `M-` a rhythm rule (a numbered recurring routine), and `F-` a feature. A range such as `[T-1..T-7]` cites its whole run of codes. The keywords *when*, *while*, *if*, *then*, and *shall* are set in italics and carry their standard requirements meaning: *shall* states a duty, *when* and *while* open a situation, *if* and *then* open a condition and its result.
 
-Terms already defined in the carried glossaries — request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, session, journal, attic, queue, movement, delivery, delivery report, resume file, migration chapter, capture echo, and seat — carry their meanings unchanged. The rhythm nouns milestone and breakpoint are owned by the rhythm stretch of this build loop and defined there. The block below adds only the new nouns this section needs.
+Terms already defined in the carried glossaries — request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, session, journal, attic, queue, movement, delivery, delivery report, resume file, profile, personal profile, migration chapter, capture echo, and seat — carry their meanings unchanged. The rhythm nouns milestone and breakpoint are owned by the rhythm stretch of this build loop and defined there, and the noun lane — one parallel work track building one queue row in its own isolated tree — is owned by the parallel-lanes stretch and defined there. The nouns routing rule and tier are owned by the rules-and-who-applies section and defined there. The block below adds only the new nouns this section needs.
 
 ## Glossary additions
 
+- **loop** — an autonomous recurring run the session performs with no person present, working in iterations and sleeping between them.
+- **walk** — the pipeline's own handling of one wish, its path from capture to landing; a rule that binds the walk binds the process itself rather than any one actor.
+- **beat** — one narration line marking one unit of the work's progress; a stretch with no beat is beatless, and the heartbeat line covers it.
+- **checkpoint** — the saved point a piece of work reaches and can resume from, written under `.live-spec/`.
 - **spec-delta** — the drafted change one wish makes to the spec, validated against the whole spec before any test or code is written.
 - **wish** — one request a person voices in plain words, of any size and at any moment, captured as a queue row and carried to a recorded terminal state.
-- **intake** — the pipeline's first station, where an arriving wish is classified and shaped before it is queued.
+- **intake** — the pipeline's first station, where a wish already captured as a queue row is classified: the classifier reads its size, priority, door, and work-kind and states them back in one line.
 - **door** — the axis naming where a wish enters the pipeline, its values the bug door, the feature door, and the refactor door, kept separate from the wish's size.
-- **size** — the wish's extent, named by one word from a four-word vocabulary: bug, small, surface, or large.
+- **size** — the wish's extent, named by one word from a four-word vocabulary: bug, small, surface, or large. A surface-sized wish is a new surface or a multi-file behaviour change. A bug-sized wish is the bug door itself, one call stated once for both axes. The size word is what the row's class column carries, the priority mark standing on the row beside it. The word surface elsewhere stays the common noun for a screen a person sees, and the word bug elsewhere stays the common noun for a defect.
 - **priority** — the wish's urgency, normal unless its row carries one of two marks, critical or quick win.
 - **work-kind** — the kind of work a wish is, named at intake by one word from a curated vocabulary: product, infra, skill, or prose.
 - **decision page** — one surface that carries several open questions to the person together, opening in its own window while the rest of the work continues.
@@ -22,6 +26,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 - **user story** — one distinct thing a person does and sees; a wish carries one, and a wish carrying more is split at intake into a row apiece.
 - **leg** — one of the separately-accepted parts a multi-part row still carries, each with its own Done-when acceptance.
 - **regression fence** — one sentence in a spec-delta naming a neighbouring promise that must stay true, citing the clause it guards.
+- **non-goal** — one sentence in a spec-delta naming what the change deliberately leaves out, so an absence reads as a decision rather than an oversight.
 - **facet** — one aspect of a feature's design, ending as a written spec sentence that is decided or tagged as a default.
 - **success measure** — one written way to notice a feature worked for its person, with a number where one exists.
 - **status report** — the short current-state account kept in the chat, naming the work in hand and what the queue holds next.
@@ -43,7 +48,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: a wish becomes a row at once**
 
-1. *when* a person voices a wish, the system *shall* record it as one row in the queue that same moment, holding the person's words, its class of size and priority, its status, and its acceptance criterion. [E-2, E-3]
+1. *when* a person voices a wish, the system *shall* record it as one row in the queue that same moment, holding the person's words, its size in the class column with the priority mark beside it, its status, and its acceptance criterion. [E-2, E-3]
 2. *when* a wish is recorded, the system *shall* keep its row existing even *if* the session ends immediately after, since the row is written before anything else proceeds. [E-3]
 
 **Case: a row is never deleted**
@@ -57,7 +62,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Context:** A row's exit decides where it lives next. A row closed with a terminal exit — landed, declined, or superseded — moves at a milestone to a dated queue archive and stays there unedited. A deferred row stays in the active queue carrying its revisit trigger. A far row stays too, but carries no revisit trigger and no plan to run.
 
-**User Story:** As a person whose queue holds live work beside parked thoughts, I want each row to rest in the home its exit names, so that a closed wish is archived, a deferred one returns on its trigger, and a far one is kept without cluttering the runnable list.
+**User Story:** As a person whose queue holds live work beside parked thoughts, I want each row to rest in the home its exit names, so that a closed wish is archived, a deferred one returns on its trigger, and a far one is kept out of that same what's-left answer.
 
 ### Acceptance Criteria
 
@@ -73,7 +78,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: a far row is kept and stood down**
 
 4. The system *shall* keep a far row in the active queue with no revisit trigger and no plan to run, so a thought worth keeping is not discarded. [INV-222]
-5. *when* the runnable report is produced, the system *shall* stand the far tier down by name and *shall* show it only on the person's request. [INV-222, INV-223]
+5. *when* the runnable report — the what's-left answer naming the rows a session could take next, spoken at queue-take or on the person's ask — is produced, the system *shall* stand the far tier down by name and *shall* show it only on the person's request. [INV-222, INV-223]
 
 ---
 
@@ -87,9 +92,9 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: the wish travels a fixed path**
 
-1. *when* a wish leaves its row for work, the system *shall* read its size, priority, door, and work-kind and state them back to the person in one intake line. [T-1..T-7]
+1. *when* a wish is recorded as a row, the system *shall* read its size, priority, door, and work-kind and state them back to the person in one intake line. [T-1..T-7]
 2. The system *shall* draft a spec-delta and *shall* validate it against the whole spec, sending only genuinely human questions to the person in a batch while everything else proceeds on the recommended option marked in the row. [T-1..T-7]
-3. The system *shall* queue the wish and then take it in-work. [T-1..T-7]
+3. The system *shall* move the wish's status to queued and then to in-work. [T-1..T-7]
 4. The system *shall* land the wish *when* the suite is green, the guardrails pass, the commit goes in, and the row closes with its acceptance met. [T-1..T-7]
 5. *when* the wish lands, the system *shall* report to the person in one plain-language line naming the position on the feature map, what landed, and what remains. [T-1..T-7]
 
@@ -113,6 +118,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 4. The system *shall* treat the person's word as what settles a decision and *shall* read a click as recording only a first pick, so a pick taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. [INV-9]
 5. The system *shall* settle nothing that needs the person's considered word on a pick made without understanding. [INV-9]
+   [GAP: the at-pick signal for a without-understanding pick is unstated in the source; the stated mechanisms are the plain-speech withdrawal and the card-defect rule (a card unanswerable without its mechanism is a defect).]
 
 **Case: a withdrawn decision converges**
 
@@ -151,6 +157,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: the three axes and their vocabularies**
 
 1. The system *shall* classify each wish by one size word from the four-word measure — bug, small, surface, or large — and *shall* carry the same four words in the queue row's class column with no second size scale. [INV-12, T-16]
+   [GAP: the boundary separating a small wish from a large one is unstated in the source; only the surface and bug sizes carry stated readings.]
 2. The system *shall* keep the door a separate axis from size, naming where the wish enters the pipeline. [T-16]
 3. The system *shall* name one work-kind per wish from the curated vocabulary — product, infra, skill, or prose — taking the host's recorded default where the person names none. [T-16]
 
@@ -162,7 +169,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: an unclear attribute is asked, never guessed**
 
 5. *when* the classifier cannot call a size, a priority, or a work-kind, the system *shall* ask the person at intake and *shall* not guess. [INV-12, T-16]
-6. *while* an unclear attribute stays open, the system *shall* carry the wish at normal priority with the host's default work-kind or none, scale nothing down for a work-kind not yet named, and keep the open question in the row *while* the lane keeps moving. [INV-22, INV-12, INV-4]
+6. *while* an unclear attribute stays open, the system *shall* carry the wish at normal priority with the host's default work-kind or none, scale nothing down for a work-kind not yet named — a named work-kind scales how much machinery each pipeline step spends — and keep the open question in the row *while* the lane keeps moving. [INV-22, INV-12, INV-4, T-16]
 
 ---
 
@@ -259,13 +266,13 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: compaction preserves an open leg**
 
-3. The system *shall* keep the resume file's live-state supersession from compressing an unfinished leg out of existence, restating a leg still open at compaction in full. [INV-26, M-2]
+3. The system *shall* keep the resume file's live-state supersession (the newest live-state block replacing the older one whole) from compressing an unfinished leg out of existence, restating in full a leg still open at compaction (the announced pass where a session prunes its own working context, carrying live lines forward). [INV-26, M-2]
 
 ---
 
 ## Requirement 12: The system echoes every wish back and reports each feature's stage
 
-**Context:** The system speaks every captured wish back to the person in one immediate sentence. The echo states four things: what was heard, which door the wish entered, the name the work goes by, and its row number. Every status report then names each in-flight feature and the pipeline stage it sits at.
+**Context:** The system speaks every captured wish back to the person in one immediate sentence. The echo opens with what was heard, which door the wish entered, the name the work goes by, and its row number; further law in this section adds the wish's feature-map position, and a long-running direct command adds an honest time range. Every status report then names each in-flight feature and the pipeline stage it sits at.
 
 **User Story:** As a person who threw a wish and leads several windows, I want an immediate one-sentence echo and a status report that names each feature's stage, so that I always see a request was captured and exactly where it stands.
 
@@ -331,7 +338,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: the laws have a mechanical voice**
 
-7. The system *shall* inject through the prompt hook `hooks/chat-law-hook.sh` a reminder of the chat laws into every prompt — plain words with codes trailing, the narration beats, the say-what-it-is line, the banned contrast frame, and the routing line by which the orchestrator seat routes work to the cheapest tier the routing rule names while workers locate their own anchors — the skills and the profile staying the laws' homes. [INV-28, INV-69, INV-137]
+7. The system *shall* inject through the prompt hook `hooks/chat-law-hook.sh` a reminder of the chat laws into every prompt — plain words with codes trailing, the narration beats, the say-what-it-is line (naming a thing by its own positive sentence), the banned contrast frame (naming a thing by denying its neighbour, the "X, not Y" shape), and the routing line by which the orchestrator seat routes work to the cheapest tier the routing rule names while a worker finds for itself the files and lines its task needs, so the orchestrator's context stays lean — the skills and the profile staying the laws' homes. [INV-28, INV-69, INV-137]
 8. Before a human-facing artifact is shown, the system *shall* have `scripts/preshow-lint.py` flag any line opening with an internal handle so the agent rewrites it to lead with the outcome, a warning to clear that reads only the shown surface. [INV-28]
 
 ---
@@ -452,6 +459,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 2. *when* work is expected to run an hour or more, the system *shall* explain it up front in plain steps — what has to happen and why it takes that long — and *shall* say on the heartbeat how much time remains as the stretch runs. [INV-93, INV-35]
 3. *when* a wish lands, the system *shall* state the estimate beside the actual in the delivery report, saying an overrun or an under plainly. [INV-93]
 4. *when* a direct command holds the session for more than a beat, the system *shall* have it hear its range even though it registers no row. [INV-93]
+   [GAP: the beat's duration for a direct command's range announcement is unstated in the source.]
 
 ---
 
@@ -484,7 +492,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: the wind-down to a safe point**
 
-1. *when* the person says they are leaving, the system *shall* stop taking new work and *shall* halt background workers or run them to their landing, recording by the handoff discipline any worker that cannot halt in time. [INV-95, INV-76]
+1. *when* the person says they are leaving, the system *shall* stop taking new work and *shall* halt background workers or run them to their landing, recording any worker that cannot halt in time by the handoff discipline — a note carrying the worker's id, the exact files its brief lets it write, and the liveness checks a resuming session runs before touching them. [INV-95, INV-76]
 2. The system *shall* bring every open lane to its checkpoint, committing green work under its standing gates and committing no red work, with the failing test name and hypothesis topping the resume file. [INV-95]
 3. The system *shall* have the resume file say what resumes where. [INV-95]
 

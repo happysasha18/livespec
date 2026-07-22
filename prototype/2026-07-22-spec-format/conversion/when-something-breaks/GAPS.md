@@ -12,3 +12,8 @@ This is the place where the source section states a behaviour but leaves a judge
 ## Note on scope
 
 This is the one genuinely new hole this scenario section opens. Several other numbers and choices in the section are counted, human-owned, or defined *by design* and are not holes, because the source states both the rule and where the value or verdict lives: the two-strikes ladder (a first sighting recorded, the second occurrence buying an owner, a third unowned recurrence escalated), the parked-feature bound (at most one per lane), the no-problem verdict (the human's alone, on the human's dated word), and the archival trigger (the milestone compaction). Each names a concrete threshold or a named owner, a complete answer rather than a hole.
+
+### G2 — the second-occurrence branch has no stated measure
+**Where:** Requirement 4, criterion 3. Source: the problem-ledger walk, `PRODUCT_SPEC.md` ~line 1111, `[INV-23]`.
+**Hole:** At a signature's second occurrence the system opens a queue row for a problem that needs solving or writes a no-problem recommendation for noise; the source names the seat's own read as the chooser and the human as the settler, and gives no measure separating the two branches.
+**What it blocks:** Two sessions can branch the same signature differently; a test author cannot pin the boundary case.

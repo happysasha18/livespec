@@ -15,6 +15,8 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 - **feedback-collector** — the skill that notices a strong reaction and offers to carry a short note up to the pack's authors.
 - **upstream note** — a short, distilled, non-public account of what happened, shaped as a private request to the pack's authors and deposited for the person to deliver.
 - **outbox** — the gitignored per-host directory `outbox/` that holds an upstream note until the person delivers it; it never rides a push.
+- **scenario** — one section of the spec telling what a person does and what the person sees for one feature; the spec's body is a list of scenarios, and a shipped feature's scenario is the section that states its working behaviour.
+- **target tag** — the `[target]` marker a spec line carries on a line of its own to mark a feature that is planned rather than built.
 - **decision archive** — the directory `docs/decisions/` that holds a decision page once its answer comes back.
 - **harvested row** — the queue row that an answer lands in when the session harvests it there.
 - **problem ledger** — the per-host file `.live-spec/PROBLEMS.md` that records a recurring operational problem as a signature with its dated occurrences and a status.
@@ -43,6 +45,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 3. The system *shall* record each feedback-ledger line with when the item arrived, who handed it in and through which channel, what it concerns on the feature map, the item in plain words, and where it went. [INV-68]
 4. *when* an item arrives, the system *shall* echo it back in one sentence, one echo per item, a wish-shaped item taking the wish echo and any other item taking a note stating what was heard and where it went. [INV-27]
 5. *if* a person mentions an already-recorded item again, *then* the system *shall* append the new date to the existing line and change nothing else. [INV-68]
+   [GAP: the matching rule that decides a new mention is the same item as an existing ledger line is unstated in the source.]
 
 **Case: the promise is checkable**
 
@@ -75,7 +78,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 ## Requirement 3: Every item takes exactly one of five routes  [feature: F-feedback]
 
-**Context:** Every item takes exactly one route, and each route already has its law and its home. The seam between the product and the workshop decides the last two: the product's behaviour goes to the feedback ledger, the workshop's own behaviour goes to the problem ledger, one home each. The seam turns on what ships: a fault in what the product ships is the product's own, and a fault in the tooling that builds, tests, or runs it without shipping is the workshop's own.
+**Context:** Every item takes exactly one route, and each route already has its law and its home. The seam between the product and the workshop decides the last two: the product's behaviour goes to the feedback ledger, the workshop's own behaviour goes to the problem ledger, one home each. The seam turns on what ships: a fault in what the product ships is the product's own, and a fault in the tooling that builds, tests, or runs it without shipping is the workshop's own. A second seam separates the first two behavioural routes from the third: shown work is the artifact in front of the person for review before it lands — a diff, a decision page, a review page — while a shipped feature already carries a scenario in the spec and sits in use. A comment on shown work takes route 2; a reaction to a shipped feature takes route 4.
 
 **User Story:** As a person handing in items of every kind, I want each item sorted to exactly one route with its own home, so that a wish, an answer, a fix, a field reaction, and a workshop hiccup each land where their law already governs them.
 
@@ -117,7 +120,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 ## Requirement 5: A strong reaction earns an offer to note the authors  [feature: F-feedback]
 
-**Context:** The pack carries a third arrow beside carrying work out and taking feedback in: an occasional note up to the pack's own authors, so they learn what delighted or hurt real use. The skill feedback-collector owns it. It reads the agent's own observation, exactly the moment feedback-intake leaves alone, and the two do disjoint work rather than compete.
+**Context:** The pack carries a third arm beside carrying work out and taking feedback in: an occasional note up to the pack's own authors, so they learn what delighted or hurt real use. The skill feedback-collector owns the arm. It reads the agent's own observation, exactly the moment feedback-intake leaves alone, and the two arms do disjoint work rather than compete.
 
 **User Story:** As a person whose strong reactions could teach the pack's authors, I want a rare one-line offer to send them a note, so that a real delight or hurt reaches the people who wrote the pack while a mild moment passes in silence.
 
@@ -125,7 +128,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: the rare offer**
 
-1. *when* the conversation shows a genuinely strong reaction — a real delight, a real hurt, a comparably notable moment — the system *shall* offer in one line to send the pack's authors a short note about what happened, and *shall* stay silent on a mild or routine reaction. [E-30]
+1. *when* the conversation shows a genuinely strong reaction — a real delight, a real hurt, a comparably notable moment — the system *shall*, on a host that has switched the upstream-note arm on, offer in one line to send the pack's authors a short note about what happened, and *shall* stay silent on a mild or routine reaction. [E-30]
    [GAP: the source defers the reading of a strong reaction to a conservative floor and a later design pass, so the measure that separates a strong reaction from a routine one is unstated.]
 
 **Case: the two arms do disjoint work**
@@ -150,13 +153,13 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: what the note holds and where it goes**
 
-3. *when* the person gives a positive word, the system *shall* write a short distilled account that carries its own context to a reader who does not know this user, holding no raw material, transcript, or private content past what the point needs. [T-21, INV-161]
+3. *when* the person gives a positive word, the system *shall* write a short distilled account that carries its own context to a reader who does not know this user, holding no raw material, transcript, or private content beyond its self-containment test: the note's author strips everything a reader who does not know this user can do without while still understanding the point. [T-21, INV-161]
 4. *when* the note is written, the system *shall* deposit it into the host's gitignored outbox directory named by date, *shall* open no network connection and no public request, and *shall* leave the delivery upstream as the person's own step. [T-21, INV-161]
-5. The system *shall* anonymize the draft the person reads at consent, turning the host's real entities into neutral role words while the pack's own public names stay, so the approved note is the note that travels. [INV-179]
+5. The system *shall* anonymize the draft written after the person's positive word, turning the host's real entities into neutral role words while the pack's own public names stay, and *shall* let the note travel only once the person has read and approved that anonymized draft. [INV-179]
 
 **Case: the note's own name and its record**
 
-6. The system *shall* carry this arm's own name, the upstream note, distinct from the station-completion digest and the resume-file digest. [T-21, INV-35, INV-48]
+6. The system *shall* carry this arm's own name, the upstream note, distinct from the station-completion digest (the two or three plain sentences a finished pipeline station's beat carries) and the resume-file digest (the capped restatement of each open leg written into the resume file). [T-21, INV-35, INV-48]
 7. The system *shall* record one dated ledger line that an offer was made and answered — when, an upstream-note offer, the person's answer, and the outbox filename when the answer is yes. [INV-161, INV-68]
 
 ---
@@ -175,7 +178,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: append-only, never trimmed**
 
-2. The system *shall* keep the feedback ledger append-only and archive it like the queue, never trimmed, extending the no-wish-ever-lost law rather than amending it. [INV-1]
+2. The system *shall* keep the feedback ledger a file where nothing is ever deleted or trimmed — a repeat mention adds its date to its existing line — and *shall* archive it like the queue, extending the no-wish-ever-lost law rather than amending it. [INV-1]
 3. The system *shall* read a feedback ledger holding only its header as a healthy empty state. [INV-68]
 
 **Case: what this section does not add**
@@ -197,7 +200,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 1. *when* a person asks what the product does today, the system *shall* answer with the whole product map current as of the request, read from the spec's scenario sections, the header's current-versus-target paragraph, and the queue's open rows. [INV-38]
 2. The system *shall* keep no third document for the map — no feature-list file and no cached copy — the spec's scenarios and the architecture's nodes constituting it. [INV-38, E-14]
-3. The system *shall* separate shipped features from promised features at the granularity the promised-parts tag binds to, marking a scenario that holds both as shipped with named promised parts. [INV-38, S-0]
+3. The system *shall* separate shipped features from promised features at the granularity the target tag binds to — the scenario and its named promised parts, marking a scenario that holds both as shipped with named promised parts. [INV-38, S-0]
 
 **Case: each line and how it is delivered**
 
@@ -211,4 +214,4 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 **Case: the fences and the coverage measure**
 
 7. The system *shall* hold the departures board's report scope, intake's placement rule, and the no-third-document law unchanged. [INV-27, INV-37, E-14]
-8. The system *shall* yield a map whose feature set covers the spec's scenario sections one to one plus every open new-verdict queue row, its shipped-versus-promised marks agreeing with the header and the promised tags. [INV-38, INV-37]
+8. The system *shall* yield a map whose feature set covers the spec's scenario sections one to one plus every open queue row that wish intake marked a new feature while its scenario stays unwritten, its shipped-versus-promised marks agreeing with the header and the target tags. [INV-38, INV-37]

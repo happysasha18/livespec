@@ -4,13 +4,14 @@ This section states the second half of throwing a wish inside the build loop: ho
 
 Bracket codes like `[INV-133]` and `[T-12]` point to the rule's home in the project spec. The letter before the number names the kind: `INV-` an invariant, `E-` an entity, `T-` a transition, `M-` a rhythm rule, `A-` an adoption step, `ACT-` an actor, and `C-` a composition-axis rule. A reader can ignore the anchors; a maintainer follows them. The keywords *when*, *while*, *if*, *then*, and *shall* are set in lowercase italics and carry their standard requirements meaning: *shall* states a duty, *when* and *while* open a situation, *if* and *then* open a condition and its result.
 
-Terms already defined in the intake glossary and the earlier sections carry their meanings unchanged and are not redefined here: request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, session, journal, attic, backlog item, queue, movement, delivery, delivery report, footprint, project layers, settings ladder, personal profile, profile, resume file, migration chapter, ratchet manifest, pen, far tier, capture echo, net, seat, earned message. The block below adds only the new nouns this section needs.
+Terms already defined in the intake glossary and the earlier sections carry their meanings unchanged and are not redefined here: request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, harness, session, journal, attic, backlog item, queue, movement, delivery, delivery report, footprint, project layers, settings ladder, personal profile, profile, resume file, migration chapter, ratchet manifest, pen, far tier, capture echo, net, seat, earned message, test matrix. The block below adds only the new nouns this section needs. The nouns prototype, the labelled sketch it names, and its one-way fence are owned by the prototype stretch of this build loop and defined there; the regression fence defined below and the concurrent-edit fence — the check that blocks a shared write when the repository has moved under the session since its last read, defined in the rules section of this document — are two further mechanisms carrying the same word fence. The batched report — the periodic decision page that carries the person's open questions and the pending recommendations together, at most a few per pass — and the surface list — the host-authored file naming every user-facing surface the product carries — are defined in their own sections and carried here. The noun wish — one request a person voices, of any size, captured as a queue row and carried to a recorded terminal state — is owned by the intake stretch of this build loop and defined there.
 
 ## Glossary additions
 
-- **door** — the intake classification that places a wish at one entry point of the pipeline, one of feature, bug, refactor, docs-only, or skip, decided before any code is written.
+- **door** — the intake classification that places a queued wish at one entry point of the pipeline, one of feature, bug, refactor, docs-only, or skip, decided before any code is written. A request that never becomes a queued wish — an ask merely to see or try a thing — takes a separate entry lane, the labelled-sketch door, held outside this five-way set.
 - **tripwire** — one fixed mechanical rule in the door step that lifts a wish to a door whatever its casual label.
 - **work-kind** — the intake axis naming what a wish produces, one of product, infra, skill, or prose, which scales how much machinery each pipeline step spends.
+- **map note** — the row field, written `map:`, that records the intake verdict of how a wish maps onto the product: changes feature X, new feature, or restructure.
 - **spec-delta** — the set of spec sentences one feature's specification adds or changes.
 - **standard facet** — one dimension every visible feature has whether or not anyone names it, such as a viewport band, touch, or an empty state, swept when a feature is specified.
 - **regression fence** — one sentence stating that a neighbouring promise stays true through a change, citing the existing clause it guards.
@@ -22,7 +23,10 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 - **recommendation** — a prover finding where nothing stated is broken and nothing required is missing; it queues for a taste call and does not block.
 - **confidence read** — a design review finding's label of one of two values, confident or likely, saying whether the deciding fact lives in the spec text or in the person's intent.
 - **declared-laws home** — the one place the spec lists its cross-cutting laws, each carrying its per-surface clause or dated exemption and the net that enforces it.
+- **watch-level** — a law's status when the design review is its named net: the law is watched and recommended rather than blocked, until the author's own declaration moves it to a blocking net.
 - **milestone gate** — the whole-spec pass that re-proves the spec and the architecture, runs the design review, and completes the full gate list.
+- **catch-up walk** — the adoption procedure that brings an already-adopted project's documents and records up to the pack's current state.
+- **cross-link mode** — the prover's whole-document pass that follows every cross-reference and re-verifies each quantified claim over the linked set.
 - **lane** — one build train a session rolls through the pipeline.
 - **lane branch** — a lane's isolated copy, a git worktree holding a branch named for its queue row.
 - **pen-stage** — one span in which a lane holds the pen for one indivisible piece of shared-truth work, from taking the pen to its landing, never cut mid-edit.
@@ -101,7 +105,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the ordered procedure**
 
-3. *when* the door step runs, the system *shall* call a wish a feature *if* any tripwire holds — a new user-visible surface appears, new persistent state appears, a new interaction lands on an existing surface, the touched surface is marked a later surface in the spec, or the change adds behaviour no spec clause backs. [T-12, INV-16]
+3. *when* the door step runs, the system *shall* call a wish a feature *if* any tripwire holds — a new user-visible surface appears, new persistent state appears, a new interaction lands on an existing surface, the touched surface is marked a later surface in the spec — it carries the `[target]` planned-feature mark on its own line, its building row still open, or the change adds behaviour no spec clause backs. [T-12, INV-16]
 4. *if* no tripwire fired but shipped behaviour is wrong against what the spec or product already promises, *then* the system *shall* call the wish a bug. [T-12]
 5. *if* behaviour stays identical while structure moves, *then* the system *shall* call the wish a refactor, and *if* only prose outside the normative spec changes, *then* the system *shall* call it docs-only, routing a reworded spec rule as feature or bug instead. [T-12]
 6. *if* a single file changes with no new state, element, or visible behaviour and an existing test level already covers the touched fact, *then* the system *shall* call the wish a skip. [T-12]
@@ -169,7 +173,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the footprint re-classifies mid-work**
 
-7. *when* an edit reaches past its named layer, the system *shall* stop the work, read the footprint again, and record in the landing report the footprint held or re-classified to a named footprint at a named step. [INV-128]
+7. *when* an edit reaches past its named layer, the system *shall* stop the work, read the footprint again, and record in the delivery report the footprint held or re-classified to a named footprint at a named step. [INV-128]
 8. The system *shall* read repeated cross-cuts on the same module pair as the signal to move a boundary, moving it only through the architecture step and its re-prove on the recorded-footprint evidence. [INV-128, INV-37]
 
 ---
@@ -195,7 +199,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 ## Requirement 9: A request enters at the highest document it reaches, and the door set is closed
 
-**Context:** A request enters the pipeline at the highest document in the derivation chain — spec, then architecture, then matrix, then code, then docs — whose sentences must change for the request to be satisfied. The set of entry points is closed on purpose, so a request that matches no kind becomes one plain question rather than a guessed route.
+**Context:** A request enters the pipeline at the highest document in the derivation chain — spec, then architecture, then test matrix, then code, then docs — whose sentences must change for the request to be satisfied. The set of entry points is closed on purpose, so a request that matches no kind becomes one plain question rather than a guessed route.
 
 **User Story:** As a person handing over a request of any shape, I want it entered at the highest document its change reaches with the door set closed, so that no gap opens between the layers and an unmatched request becomes a plain question.
 
@@ -208,7 +212,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the closed set of entry points**
 
-3. The system *shall* route each request-kind to its own entry — a product-behaviour request to the spec, a defect to the matrix with a red-on-bug test, a docs-only change to its light path, a tiny reversible edit to the skip shortcut still owing the spec-backed-literal tripwire, a settings value to the settings ladder, an outside request through the inbox as one wish, an ask to see or try a thing through the labelled-sketch door, and a thing handed back through feedback-intake. [INV-151, INV-104, INV-17, T-20]
+3. The system *shall* route each request-kind to its own entry — a product-behaviour request to the spec, a defect to the test matrix with a red-on-bug test, a docs-only change to its light path, a tiny reversible edit to the skip shortcut still owing the spec-backed-literal tripwire, a settings value to the settings ladder, an outside request through the inbox as one wish, an ask to see or try a thing through the labelled-sketch door, and a thing handed back through feedback-intake. [INV-151, INV-104, INV-17, T-20]
 4. *if* a request matches no kind in the closed set, *then* the system *shall* make it one plain question to the human rather than a guessed route, and *shall* treat a held backlog item that cannot say why it belongs to the human as the same shape of finding. [INV-151, INV-4, INV-152]
 
 ---
@@ -228,7 +232,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: completing a silent spec, changing a confirmed-wrong spec**
 
-3. *when* the spec is silent where the product is correct, the system *shall* complete the spec to state the guarantee, pin it with a test, and report the completion as a default on the ordinary spec-delta road, unless what counts as correct is itself open. [INV-144, INV-18, INV-31]
+3. *when* the spec is silent where the product is correct, the system *shall* complete the spec to state the guarantee, pin it with a test, and report the completion as a default on the ordinary spec-delta road, and *when* what counts as correct is itself genuinely open, the question goes to the person, whose word alone settles it. [INV-144, INV-18, INV-31]
 4. *when* the spec conflicts with a correct product, the system *shall* change the spec only *when* the spec is confirmed the error and the human has understood the divergence and confirmed the change, and *shall* never silently rewrite the spec to match the product. [INV-144, INV-9, INV-4]
 
 ---
@@ -291,7 +295,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 ## Requirement 14: The kind scales the steps and never silently skips one
 
-**Context:** The door picks which steps run; the kind picks the form each running step takes, never whether the pipeline runs at all. At landing, every pipeline step has either applied in the form the kind's table states or stood down by name in the landing report, so a skipped step is a written fact.
+**Context:** The door picks which steps run; the kind picks the form each running step takes, never whether the pipeline runs at all. At landing, every pipeline step has either applied in the form the kind's table states or stood down by name in the delivery report, so a skipped step is a written fact.
 
 **User Story:** As a person shipping a change of any kind, I want the kind to scale each step's form while every step applies or stands down by name, so that a small change spends proportionate effort and no mandatory check is silently dropped.
 
@@ -300,12 +304,12 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the kind adjusts form, never presence**
 
 1. The system *shall* let the door pick which steps run and the kind pick the form each running step takes, never letting the kind decide whether the pipeline runs. [INV-22, T-12]
-2. *when* a wish lands, the system *shall* have every pipeline step either applied in the form the kind's table states or stood down by name in the landing report. [INV-22, E-12]
+2. *when* a wish lands, the system *shall* have every pipeline step either applied in the form the kind's table states or stood down by name in the delivery report. [INV-22, E-12]
 3. *while* the kind question stays open on a row, the system *shall* apply every step in full, since standing a step down requires a named kind to account for it. [INV-22, INV-12]
 
 **Case: the checks no kind may change**
 
-4. The system *shall* let no kind change the door law and its tripwires, the delta's mandatory sentences the scope-cut law names, or ask-at-intake. [INV-22, T-12, INV-16]
+4. The system *shall* let no kind change the door law and its tripwires, the delta's mandatory sentences the scope-cut law names (the law, stated in the intake stretch of this build loop, that a scope cut spares the regression fences, a kept surface's facets, the non-goals, and the success measure), or ask-at-intake. [INV-22, T-12, INV-16]
 
 ---
 
@@ -313,14 +317,14 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Context:** A single generalist working the whole pipeline produces generalist artifacts. Each step therefore names the profession the agent works it as, and each artifact is judged by that craft's standards. The craft, like the step's form, follows the kind.
 
-**User Story:** As a person relying on each artifact, I want each step worked with its own craft's standards, so that a spec reads like a product manager's and a matrix like a quality-assurance engineer's rather than one generalist's notes.
+**User Story:** As a person relying on each artifact, I want each step worked with its own craft's standards, so that a spec reads like a product manager's and a test matrix like a quality-assurance engineer's rather than one generalist's notes.
 
 ### Acceptance Criteria
 
 **Case: each step names its craft**
 
-1. The system *shall* work the spec as a strong product manager, the architecture as a software architect, the matrix and tests as a quality-assurance automation engineer, the code as a senior developer, the two prove steps as the prover's formal-reviewer role, commit-and-show as a careful release engineer, and the verify walk as the visitor's own outside eyes. [INV-33, E-12]
-2. The system *shall* judge each artifact by its craft's standards and speak the landing report's step accounting in them. [INV-33]
+1. The system *shall* work the spec as a strong product manager, the architecture as a software architect, the test matrix and tests as a quality-assurance automation engineer, the code as a senior developer, the two prove steps as the prover's formal-reviewer role, commit-and-show as a careful release engineer, and the verify walk as the visitor's own outside eyes. [INV-33, E-12]
+2. The system *shall* judge each artifact by its craft's standards and speak the delivery report's step accounting in them. [INV-33]
 
 **Case: the craft follows the kind**
 
@@ -345,7 +349,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 3. The system *shall* scope the sweep to the feature's visible surfaces, satisfying a feature with none by one explicit sentence that no visible surface exists and the facets do not apply, never a silent skip. [T-13]
 4. *when* a wish is re-doored to feature mid-work, the system *shall* walk the sweep before work resumes, and *shall* not sweep a fenced prototype, firing the sweep only when promotion makes it a feature. [T-13, INV-16, E-17]
-5. The system *shall* keep the facet list in the spec-author skill as one closed enumerable set that grows a member only with a named real incident it would have caught, re-justified at milestones, naming every member on the family's enumerate-versus-ride keying. [T-13, INV-226]
+5. The system *shall* keep the facet list in the spec-author skill as one closed enumerable set that grows a member only with a named real incident it would have caught, re-justified at milestones, naming every facet on its own line rather than letting any facet ride unnamed inside another's. [T-13, INV-226]
 
 ---
 
@@ -445,7 +449,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: holes closed, defaulted, or asked**
 
-3. *when* a hole is trivially closable, the system *shall* close it and write the closing down, writing the rest decided or `[default]`-tagged and sending only genuine taste calls out in a batch. [INV-29, INV-4, INV-18]
+3. *when* a hole is trivially closable — its answer pins to an existing artifact: a base rule, a spec sentence, the architecture, or an already-answered decision — the system *shall* close it and write the closing down, writing the rest decided or `[default]`-tagged and sending only genuine taste calls out in a batch. [INV-29, INV-4, INV-18]
 4. The system *shall* give the prover the feature-fit mode that walks the journey seams against the whole spec, and *shall* owe a landed feature its walk at the first landing that touches it rather than retroactively. [INV-29, INV-159]
 
 ---
@@ -630,14 +634,14 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the mandatory sweeps owe verdicts**
 
 1. The system *shall* have each mandatory sweep — the declared-laws walk, edge-condition completeness, cross-surface uniformity, the lifecycle sweep under the transition-payload parent, and the unwritten-seams derivation — owe one verdict line in the persisted record: hit, clean, or not-applicable with its reason. [INV-171, INV-101, INV-138, INV-125, INV-168, INV-50, INV-167, INV-126, INV-127, INV-72]
-2. The system *shall* render the verdicts as a surface-by-sweep table, the replacement for the coverage tables on a kind where those go not-applicable, and leave the imaginative probes discretionary owing no verdict. [INV-171, INV-135, INV-156]
+2. The system *shall* render the verdicts as a surface-by-sweep table, the replacement for the coverage tables on a kind where those go not-applicable, and leave the imaginative probes — the checks the prover invents for the particular document beyond the mandatory sweeps — discretionary owing no verdict. [INV-171, INV-135, INV-156]
 3. *when* a verdict line is missing, the system *shall* read it as a skipped sweep and never as a clean one. [INV-171]
 
 ---
 
 ## Requirement 32: Every review pass writes its record of one class
 
-**Context:** A review pass — the prover's spec re-check, the design review, the periodic adversarial audit, and the verify-by-deed audit — records its outcome so a later session reads every pass the same way. Three of them write a dated file of one shared shape under the pass's own home, and the verify-by-deed audit is the one deliberate difference.
+**Context:** A review pass — the prover's spec re-check, the design review, the periodic adversarial audit (the fresh-checker read run over a high-stakes delivery, set on refuting its claims and finding its holes; its cadence and rules live in the rules section of this document), and the verify-by-deed audit — records its outcome so a later session reads every pass the same way. Three of them write a dated file of one shared shape under the pass's own home, and the verify-by-deed audit is the one deliberate difference.
 
 **User Story:** As a later session reading past passes, I want each review pass to write its record of one class with a per-finding disposition column, so that the prover, the design review, and the audit read the same way and the verify audit's difference is named.
 
@@ -670,7 +674,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the batched channel and the held question**
 
-3. The system *shall* ride these questions on the batched-question path, at most three per pass strongest first, holding a signal below that bar silent. [INV-142, E-22, INV-4]
+3. The system *shall* ride these questions on the batched report, at most three per pass strongest first, holding a signal below that bar silent. [INV-142, E-22, INV-4]
 4. The system *shall* not apply the recommended default to the spec the pack's usual proceed-on-recommended way, landing the class sentence only on the human's word while the lane never blocks. [INV-142, INV-4, INV-141]
 5. *while* a question stands unanswered, the system *shall* hold it on the dated record and not raise it again on its own until the human answers, each pass first reading the open questions and dropping a freshly-derived divergence already carried there. [INV-142, INV-130]
 
@@ -702,7 +706,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 ## Requirement 35: A taste choice made without asking is told, never confirmed
 
-**Context:** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. The agent writes each into the spec with its `[default]` tag, names it in the landing report, and re-asks nothing later.
+**Context:** While building a feature, the walk makes small taste calls itself so the lane keeps moving — an animation's speed, a button's shape, a caption's wording. The agent writes each into the spec with its `[default]` tag, names it in the delivery report, and re-asks nothing later.
 
 **User Story:** As a person whose feature carries small taste calls, I want each one told in plain words with an example and marked tweakable rather than confirmed, so that the lane keeps moving and every such choice stays findable.
 
@@ -710,14 +714,14 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: told with an example, marked tweakable**
 
-1. *when* the walk makes a taste call without asking, the system *shall* write it into the spec with its `[default]` tag and name it in the landing report in plain words with an example, marked tweakable. [INV-31, INV-18]
+1. *when* the walk makes a taste call without asking, the system *shall* write it into the spec with its `[default]` tag and name it in the delivery report in plain words with an example, marked tweakable. [INV-31, INV-18]
 2. The system *shall* request no confirmation and re-ask nothing later, since silence is consent, and *shall* keep every such choice findable by its `[default]` tag so the person can ask when they want it changed. [INV-31]
 
 ---
 
 ## Requirement 36: A tunable parameter is set to a default and told, never asked
 
-**Context:** Some choices are a knob with a range rather than a taste call — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each knob itself and keeps the lane moving, writing it with its `[default]` tag and naming what it trades in the landing report.
+**Context:** Some choices are a knob with a range rather than a taste call — an image's resolution, a batch size, a timeout, a sampling rate. The walk sets each knob itself and keeps the lane moving, writing it with its `[default]` tag and naming what it trades in the delivery report.
 
 **User Story:** As a person whose feature carries tunable knobs, I want each set to a default and reported with what it trades rather than asked, so that the agent never stalls on a knob it can set and I tune it afterward only if I want a different point.
 
@@ -725,7 +729,8 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: set, tagged, and told**
 
-1. *when* the walk meets a tunable knob, the system *shall* set it to a default value, choosing the cheaper or faster point wherever quality allows, write it with its `[default]` tag, and name in the landing report what it trades. [INV-70, INV-31, INV-18]
+1. *when* the walk meets a tunable knob, the system *shall* set it to a default value, choosing the cheaper or faster point wherever quality allows, write it with its `[default]` tag, and name in the delivery report what it trades. [INV-70, INV-31, INV-18]
+   [GAP: the quality bar that permits the cheaper point is unstated in the source.]
 2. The system *shall* owe no re-ask, letting the human tune the knob afterward and updating it together at most, the same idea the economy ladder applies to cost. [INV-70, T-19]
 
 **Case: the agent moves every task it can**
@@ -746,6 +751,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the cheapest judgeable sample first**
 
 1. *when* a deliverable is taste-heavy, the system *shall* stop the build at the cheapest judgeable sample — one paragraph, one card, two sections — and take the human's word on that sample before the full build spends. [INV-62]
+   [GAP: the boundary classifying a deliverable as taste-heavy is unstated in the source; the source names examples (voice, copy, visual style, spec prose) and no closed test.]
 2. The system *shall* build smallest first as the agent's own discipline even unasked, distinct from the human's declared show-me-first entry condition. [INV-62, INV-43]
 
 ---
@@ -776,7 +782,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the fence and what it guards**
 
 1. *when* a feature-doored wish touches a surface that already lives, the system *shall* open its spec-delta with regression fences before the facet sweep authors anything new, each fence one sentence for a neighbouring promise that must stay true and citing the existing spec clause it guards. [T-14]
-2. The system *shall* earn no new matrix row for a fence, discharging it through the cited clause's own never-side and proving the fence held by the landing's full-suite run. [T-14, INV-19, INV-6]
+2. The system *shall* earn no new test-matrix row for a fence, discharging it through the cited clause's own never-side and proving the fence held by the landing's full-suite run. [T-14, INV-19, INV-6]
 
 **Case: an unwritten promise, and where fencing belongs**
 
@@ -787,7 +793,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 ## Requirement 40: A feature says its non-goals and its success measure
 
-**Context:** Every feature's spec-delta closes with two short sentences, both always written: the non-goals, what is deliberately left out, and the success measure, how the feature's working would be noticed for its person. A non-goal that narrows what the wish asked for is a scope decision, and a success measure derives no matrix row.
+**Context:** Every feature's spec-delta closes with two short sentences, both always written: the non-goals, what is deliberately left out, and the success measure, how the feature's working would be noticed for its person. A non-goal that narrows what the wish asked for is a scope decision, and a success measure derives no test-matrix row.
 
 **User Story:** As a person closing a feature's spec, I want its non-goals and its success measure both written rather than left silent, so that what the feature excludes is on the record and how we would notice it worked is a written promise.
 
@@ -800,14 +806,14 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the success measure carries no row**
 
-3. The system *shall* write the success measure decided or `[default]`-tagged with a number where one exists, derive no matrix row from it, and keep it a written promise the human checks by eye until the reading machinery ships. [INV-21, INV-18]
+3. The system *shall* write the success measure decided or `[default]`-tagged with a number where one exists, derive no test-matrix row from it, and keep it a written promise the human checks by eye until the reading machinery ships. [INV-21, INV-18]
 4. The system *shall* bind both sentences forward from features specified after this rule, owe an adopted feature its pair at the first landing that touches it, and write neither on a prototype. [INV-20, INV-21, A-3, E-17, INV-159]
 
 ---
 
 ## Requirement 41: Intake is parallel, integration is serial — one landing under one pen
 
-**Context:** While the session walks, intake is parallel and integration is serial: one landing at a time, per repo, under one pen. The pen is the right to write the shared truth — the spec, the architecture doc, the matrix, the queue, the integration of a delta, the closing of a row. One lane holds it at a time, and claiming a lane is an atomic committed act.
+**Context:** While the session walks, intake is parallel and integration is serial: one landing at a time, per repo, under one pen. The pen is the right to write the shared truth — the spec, the architecture doc, the test matrix, the queue, the integration of a delta, the closing of a row. One lane holds it at a time, and claiming a lane is an atomic committed act.
 
 **User Story:** As a person whose repo two sessions might share, I want one landing at a time under one pen with claims resolved by a total order, so that two lanes never scramble the shared tree and exactly one claimant backs off.
 
@@ -815,8 +821,8 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: the pen and the atomic claim**
 
-1. The system *shall* hold the right to write the shared truth — the spec, the architecture doc, the matrix, the queue, the integration of a delta, and the closing of a row — under one pen one lane holds at a time. [INV-2]
-2. *when* a lane is claimed, the system *shall* commit the row-to-in-work flip first, then re-check under the fence right before its first shared-truth write, and *shall* have the later claimant back off and re-queue *when* the re-check finds a foreign session's committed in-work row. [INV-2, INV-11]
+1. The system *shall* hold the right to write the shared truth — the spec, the architecture doc, the test matrix, the queue, the integration of a delta, and the closing of a row — under one pen one lane holds at a time. [INV-2]
+2. *when* a lane is claimed, the system *shall* commit the row-to-in-work flip first, then re-check under the concurrent-edit fence right before its first shared-truth write, and *shall* have the later claimant back off and re-queue *when* the re-check finds a foreign session's committed in-work row. [INV-2, INV-11]
 
 **Case: the total order picks the winner**
 
@@ -825,7 +831,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 **Case: workers overlap, foreign hands never share the pen**
 
-5. The system *shall* let bounded delegated workers overlap on disjoint brief-named files or an isolated tree with the edit fence armed, and *shall* have a new wish wait its turn unless a bug preempts. [INV-2, ACT-3, T-10]
+5. The system *shall* let bounded delegated workers overlap on disjoint brief-named files or an isolated tree with the concurrent-edit fence armed, and *shall* have a new wish wait its turn unless a bug preempts. [INV-2, ACT-3, T-10]
 
 ---
 
@@ -878,7 +884,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the cap and the independence condition**
 
 1. The system *shall* hold up to the profile-declared lane cap of build lanes in-work at once, a settings-ladder value with a package default of three, opening a lane only *when* the independence graph shows the lanes pairwise independent, narrating that read aloud as the lane opens. [T-18, E-13, INV-49]
-2. *when* work waits past the cap, the system *shall* open one more lane only on the human's asked word and *shall* never count read-only background analysis against the cap. [T-18]
+2. *when* work waits past the cap, the system *shall* raise the cap only on the human's asked word, a session-scope settings-ladder value that outranks the profile's declared cap, and *shall* then open one more lane under the raised value, and *shall* never count read-only background analysis against the cap. [T-18, E-13]
 
 **Case: what overlaps and what takes the pen**
 
@@ -923,7 +929,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the edge and the non-edge**
 
 1. *when* the session takes the queue, the system *shall* build a dependency graph over the runnable head, drawing an edge only on a true dependency — one movement needs another's landed output — or a same-section collision where two movements rewrite the same clause or behaviour rule. [INV-49]
-2. The system *shall* draw no edge on co-location in a shared living document, treating the spec, the architecture, and the matrix as a convergence point reconciled at integration. [INV-49, INV-198]
+2. The system *shall* draw no edge on co-location in a shared living document, treating the spec, the architecture, and the test matrix as a convergence point reconciled at integration. [INV-49, INV-198]
 
 **Case: the lane set and when not to parallelize**
 
@@ -1022,7 +1028,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the semantic conflict and its residual**
 
 2. The system *shall* meet a semantic conflict with the two nets that exist — the pen keeping every document delta together so two lanes' documents never diverge, and the full suite on the rebased tree reading two lanes' diverging code. [INV-200, INV-198]
-3. *when* a semantic conflict survives a green suite on the rebased tree, the system *shall* name it a matrix gap and route it to the matrix's own home rather than invent a net here. [INV-200, INV-73, E-15]
+3. *when* a semantic conflict survives a green suite on the rebased tree, the system *shall* name it a test-matrix gap and route it to the test matrix's own home rather than invent a net here. [INV-200, INV-73, E-15]
 
 ---
 
@@ -1102,7 +1108,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the performed lane-open act**
 
 1. *when* the independence graph shows two or more independent runnable rows and lanes stand free under the cap, the system *shall* read that graph verdict as the seat's own independence judgment and *shall* perform the lane-open act — commit the row-to-in-work flip on main under the pen, cut the branch into its own worktree, and delegate the lane to a worker whose brief names the branch. [INV-214, INV-49, INV-198, T-23, E-34, T-18]
-2. The system *shall* offer the act as `scripts/open-lane.sh`, which reads the profile-declared cap and refuses to open a lane past it, runs the fence before it commits, and carries the claim commit alone so the landing keeps its one-row delta. [INV-214, E-13, INV-11, INV-39]
+2. The system *shall* offer the act as `scripts/open-lane.sh`, which reads the settings-ladder-resolved cap — raised for the session only by the human's asked word — and refuses to open a lane past that value, runs the fence before it commits, and carries the claim commit alone so the landing keeps its one-row delta. [INV-214, E-13, INV-11, INV-39]
 
 **Case: single-file is a recorded, ungated choice**
 
@@ -1167,7 +1173,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 
 ## Requirement 59: A deferred row can carry a mechanical revisit trigger
 
-**Context:** A deferred row's revisit trigger is usually prose a reader judges at the queue-take. Where the awaited event is mechanically observable, the trigger is a check the queue-take runs. The worked instance is the day the harness ships a listener, when addressed push over the live channel becomes available, and the row deferred on that day carries a mechanical trigger the queue-take reads.
+**Context:** A deferred row's revisit trigger is usually prose a reader judges at the queue-take. Where the awaited event is mechanically observable, the trigger is a check the queue-take runs. The worked instance is the day the harness gains a listener, a component that lets one session push a message directly to another running session in place of the inbox's file drop. The row deferred on that day carries a mechanical trigger the queue-take reads.
 
 **User Story:** As a person deferring work on a mechanically observable event, I want its revisit trigger to become a one-shot check the queue-take runs, so that the row returns the moment the event fires and stays silent until a real record carries the field.
 
@@ -1176,7 +1182,7 @@ Terms already defined in the intake glossary and the earlier sections carry thei
 **Case: the mechanical trigger and its check**
 
 1. *when* a deferred row's awaited event is mechanically observable, the system *shall* make its revisit trigger a check the queue-take runs rather than prose a reader judges. [INV-231, T-8, INV-129]
-2. The system *shall* fire the listener-tripwire check only on a session record carrying a non-empty socket field and stay silent on an empty or absent one, so a listenerless harness leaves it quiet. [INV-231, INV-183]
+2. The system *shall* fire the listener-tripwire check only on a session record carrying a non-empty socket field — the record's field naming the address a listener would serve — and stay silent on an empty or absent one, so a listenerless harness leaves it quiet. [INV-231, INV-183]
 
 **Case: it rides the queue-take scan**
 

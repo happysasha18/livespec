@@ -12,7 +12,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 - **signature** — one entry in the problem ledger: a short greppable plain phrase that names a recurring operational problem, carrying its dated occurrences and one status.
 - **workshop noise** — a problem that comes from the workshop rather than the product: a test harness or tool that flakes, a missing dependency, a shell command that fails outside the product, a tool that times out.
 - **class hunt** — the search a confirmed bug drives before it closes: name the defect abstractly, find every sibling of that kind, and fix them in one change.
-- **priority bubble** — the one way priority reorders the lane: a marked wish jumps ahead of the fresh queued wishes, visibly, straight to the queue head.
+- **priority bubble** — the one way priority reorders the lane: a marked wish jumps ahead of the fresh queued wishes, visibly, straight to the queue head. The intake classification writes the mark — critical or quick win — on the wish's row; an unmarked row carries normal priority.
 - **delta** — the drafted change a wish or feature makes to the spec, proven against the whole spec before it lands.
 - **crafts** — the professions a project's own work already draws on, such as a product manager, an architect, a test engineer, or a senior developer, matched against the project's kind when the fit list is proposed.
 
@@ -35,7 +35,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: resume order and the parking bound**
 
-4. *when* no bug waits, the system *shall* resume parked features ahead of the whole queue, and *shall* let a priority bubble jump only fresh queued wishes, never a resume, a quick win included. [T-11]
+4. *when* no bug waits, the system *shall* resume parked features ahead of the whole queue. A wish marked critical or quick win may bubble. It jumps only fresh queued wishes. It never jumps a resume. [T-11]
 5. The system *shall* park at most one feature per lane, and *when* more than one lane was rolling *shall* park them all, each at its own checkpoint, resuming in their landing order. [T-18]
 
 **Case: a resumed feature re-proves on the new tree**
@@ -105,12 +105,13 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: the second occurrence buys an owner**
 
-3. *when* a listed signature fires a second time, the system *shall* give it an owner that moment — a queue row, or the human's dated word closing it as no problem — and *shall* leave that no-problem verdict to the human alone. [INV-23, INV-9]
-4. *when* the owner is a recommendation, the system *shall* write it right away and let the ask ride the batched report, the lane never stalling on it. [INV-4, E-22]
+3. *when* a listed signature fires a second time, the system *shall* pick the branch its own read of the signature supports: a problem that needs solving gets a queue row the system opens itself, closing the duty at once; a signature that reads as noise gets a written no-problem recommendation, and that no-problem verdict stays the human's alone. [INV-23, INV-9]
+   [GAP: the measure separating a problem that needs solving from noise at the second occurrence is unstated in the source; the seat's own read picks the branch and the human's dated word settles a no-problem close.]
+4. *when* the branch is the no-problem recommendation, the system *shall* write it right away and let the ask ride the batched report; the recommendation is a pending owner only, so the signature stands without an owner of record until the human's dated word lands, and the lane never stalls on it. [INV-4, E-22]
 
 **Case: a third unowned recurrence is a method defect**
 
-5. *when* a signature recurs a third time with no owner, the system *shall* file it as a defect of the method that reaches past a single day, leaving the host as one inbox file to the pack's own queue and citing the signature and its dates. [INV-23, E-11, INV-10]
+5. *when* a signature recurs a third time with no queue row open on it and no human word closing it, the state a pending no-problem recommendation still riding the batched report leaves it in, the system *shall* file it as a defect of the method that reaches past a single day, leaving the host as one inbox file to the pack's own queue and citing the signature and its dates. [INV-23, E-11, INV-10]
 
 ---
 
@@ -204,7 +205,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 **Case: the two moments that trigger a search**
 
 1. *when* a project is set up — at founding, or adoption's orient, beside the founding questions — the system *shall* scan the installed skills and the catalogs it can reach, propose a fit list matched to the project's kind and crafts with a recommendation, and leave the pick to the human's word. [INV-65, B-2, B-3]
-2. *when* a struggle keeps returning — a ledger entry reaching its second occurrence, a taste artifact rejected twice, or any failure family that recurs — the system *shall* wait for one search before the next attempt, and *shall* adopt or reject a found skill by name, recording the verdict where the struggle lives. [INV-65, INV-23, INV-62]
+2. *when* a struggle keeps returning — a ledger entry reaching its second occurrence, a taste artifact rejected twice (voice, copy, visual style, or spec prose the human has sent back twice), or any failure family that recurs — the system *shall* wait for one search before the next attempt, and *shall* adopt or reject a found skill by name, recording the verdict where the struggle lives. [INV-65, INV-23, INV-62]
 
 **Case: how a borrowed skill travels**
 

@@ -14,6 +14,21 @@ These are places where the source states a behaviour but leaves a judge, a measu
 **Hole:** The scope negotiation opens "when a wish is larger than its worth". The comparison has two slots and the source fills neither: a wish's worth carries no measure, and the comparison names no judge. The sibling axis is concrete — the walk is explicit that time is never the input and scope is the only lever — but the trigger that starts the negotiation rests on an unquantified "worth".
 **What it blocks:** The walk cannot mechanically decide when a wish crosses from proportionate to oversized, so the negotiation either never opens or opens on an unstated judgment. A test author cannot pin the point at which the cut-or-stage proposal must fire.
 
+### G3 — the beat's duration for a direct command's range announcement is unstated
+**Where:** Requirement 20, criterion 4. Source: the every-ask-hears-its-price rule, `PRODUCT_SPEC.md` line 210 (grep `A direct command that registers no row`), `[INV-93]`.
+**Hole:** A direct command that registers no row still hears its time-range announcement "whenever it holds the session for more than a beat." The source names no duration for a beat in this context. Elsewhere a beat is a narration unit — a sentence marking a passed stage — and neighbouring durations are stated in minutes (a beatless heartbeat at about 10 minutes, a detached-run cadence at about 2 minutes), but neither figure attaches to this clause, and the source states no number of its own here.
+**What it blocks:** A test author cannot pin the moment a direct command must hear its range; an implementer has no threshold to code against.
+
 ## Note on scope
 
-These two are the genuinely new holes this unit opens. Several other numbers and judgments in the unit are complete answers rather than holes, because the source states both a default and, where relevant, the human's power to change it: the withdrawal-convergence bound (two withdrawals, then a surfaced `[default]`), the heartbeat's beatless bound (~10 minutes) and the detached-run cadence (~2 minutes), the long-work explanation threshold (an hour or more), and the four-word size vocabulary and the nine fixed pipeline steps, which are enumerated in full. Each of those names its measure, so none is recorded as a gap.
+These three are the genuinely new holes this unit opens. Several other numbers and judgments in the unit are complete answers rather than holes, because the source states both a default and, where relevant, the human's power to change it: the withdrawal-convergence bound (two withdrawals, then a surfaced `[default]`), the heartbeat's beatless bound (~10 minutes) and the detached-run cadence (~2 minutes), the long-work explanation threshold (an hour or more), and the four-word size vocabulary and the nine fixed pipeline steps, which are enumerated in full. Each of those names its measure, so none is recorded as a gap.
+
+### G4 — the without-understanding pick has no at-pick signal
+**Where:** Requirement 4, criterion 5. Source: the decision-card law, `PRODUCT_SPEC.md` ~line 86, `[INV-9]`.
+**Hole:** A pick made without understanding settles nothing that needs the person's considered word, and the source names no signal by which the system reads the absence of understanding at pick time; its stated mechanisms are retroactive (the plain-speech withdrawal) and preventive (a card unanswerable without its mechanism is a defect).
+**What it blocks:** The duty has no operable trigger at the moment of the pick; a test author cannot pin the boundary.
+
+### G5 — the small-versus-large size boundary is unstated
+**Where:** Requirement 6, criterion 1 and the size glossary entry. Source: the size vocabulary, `PRODUCT_SPEC.md` ~line 94.
+**Hole:** The four-word size vocabulary (bug, small, surface, large) carries stated readings for bug and surface only; nothing separates small from large.
+**What it blocks:** Two sessions can size the same wish differently; the scope-negotiation trigger for a large wish rests on an uncalibrated word.

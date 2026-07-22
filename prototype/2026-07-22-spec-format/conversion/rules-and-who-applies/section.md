@@ -4,7 +4,7 @@ This section states the shared rulebook every skill works by, who holds authorit
 
 Bracket codes like `[INV-69]` and `[E-13]` point to the rule's home in the project spec; a reader can ignore them, a maintainer follows them. The letter before the number names the kind: `INV-` an invariant (a numbered rule that must always hold), `E-` an entity (a numbered part of the product), `T-` a transition (a numbered change of state), `M-` a rhythm rule (a numbered recurring routine), `A-` an adoption step, `D-` a recorded decision, and `ACT-` an actor. The keywords *when*, *while*, *if*, *then*, and *shall* are set in italics and carry their standard requirements meaning: *shall* states a duty, *when* and *while* open a situation, *if* and *then* open a condition and its result.
 
-Terms already defined in the intake glossary, the founding section, and the machinery section — request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, session, journal, attic, backlog item, queue, movement, delivery, delivery report, footprint, door, tripwire, narration, milestone, project layers, settings ladder, personal profile, profile, resume file, project kind, freshness check, net, push gate, prover record, seat, pen, adversarial read, expensive decision, design review, and their kin — carry their meanings unchanged. The block below adds only the new nouns this section needs.
+Terms already defined in the intake glossary, the founding section, and the machinery section — request, inbox, pipeline, spec, architecture, invariant, guardrail, suite, host, pack, session, journal, attic, backlog item, queue, movement, delivery, delivery report, footprint, door, tripwire, narration, milestone, project layers, settings ladder, personal profile, profile, resume file, project kind, freshness check, net, push gate, prover, prover record, seat, pen, adversarial read, expensive decision, design review, and their kin — carry their meanings unchanged. The block below adds only the new nouns this section needs.
 
 ## Glossary additions
 
@@ -21,12 +21,22 @@ Terms already defined in the intake glossary, the founding section, and the mach
 - **method version** — the pack-and-skill version set a piece of work was carried out under, read from the host's installed set.
 - **delegation accounting** — the line a delivered queue row carries naming how its work was delegated, or why the senior agent kept it.
 - **never-bend list** — the set of protections that holds at every rung of the economy ladder and does not bend.
+- **problem ledger** — the per-host file `.live-spec/PROBLEMS.md` that records a recurring operational problem as a signature with its dated occurrences and a status.
+- **concurrent-edit fence** — the check, run before every shared write or commit, that compares the repository's `HEAD` and tree state against what the session last read at its start, blocking a commit when either has moved, and clearing again once the session re-reads and accounts for the change.
+- **compaction pass** — the milestone routine that prunes a working skill's restatement of a base-skill rule once it lags behind the base, one skill at a time.
+- **announced self-compaction** — the session's own act, said aloud at a safe breakpoint, of pruning its working context while carrying its live lines forward into the summary.
+- **placeholder-stub list** — the checklist of stub shapes a claimed fact's substantiveness is checked against: `TODO`, `FIXME`, placeholder, lorem, a hardcoded sample, and an empty body.
+- **Communicator** — the pack's working skill that owns the human-facing exchange; it resolves the settings ladder to the working contract before each report, showing, or question.
+- **trust** — the per-person setting family recording what the agent may do on its own word (commit, push, install its own hooks), each level moving only on the human's word.
+- **lens** — a named check the prover or the design review walks a document with, each testing one concern (the architecture lens, the cognitive-load lens).
+- **release** — a version bump of the pack: the root version file changes and every skill's stamped frontmatter copy is refreshed to match.
+- **release gate** — the point a release passes through: the full prover re-prove over the spec and the architecture, which can require a dated clean-context review record naming a seat other than the release's.
 
 ---
 
 ## Requirement 1: The shared rules live once in the base skill
 
-**Context:** Open any skill in the pack and the same working rules meet the reader. The five rules every skill works by are these: ask and never guess, plain words with the code trailing quietly, one surface with one name, one canonical home per fact, and a junior resuming from a checkpoint. These rules live once in the base skill, the pack's shared rulebook, and each working skill references them rather than restating them.
+**Context:** Open any skill in the pack and the same working rules meet the reader. The five rules every skill works by are these: ask and never guess, plain words with the code trailing quietly, one surface with one name, one canonical home per fact, and a worker resuming from a checkpoint. These rules live once in the base skill, the pack's shared rulebook, and each working skill references them rather than restating them.
 
 **User Story:** As a reader opening any skill in the pack, I want the shared rules stated once in the base skill and only referenced elsewhere, so that every skill reads one authoritative copy and no near-copy drifts.
 
@@ -234,7 +244,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 6. A worker *shall* touch its checkpoint file on a fixed interval near 60 seconds as a heartbeat, so a compute-bound run that writes no product file for minutes is never read as dead. [INV-76]
 7. *when* a result fails its brief's acceptance, the worker *shall* escalate one tier with a logged line and *shall* never retry silently on the same tier or skip a rung. [ACT-3]
-8. *when* a worker tears down, the system *shall* reap only the process group it spawned, reading a stall from the checkpoint's modification time and confirming ownership before any reap, never a kill by name. [INV-162, INV-230, INV-76]
+8. *when* a worker tears down, the system *shall* reap only the process group it spawned, reading a stall as the checkpoint's modification time going untouched past about 2 minutes and confirming ownership before any reap, never a kill by name. [INV-162, INV-230, INV-76]
 
 ---
 
@@ -291,11 +301,13 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 1. The senior agent *shall* dispatch any read done to understand or design past a bounded glance to a reader worker and *shall* keep only the distillation. [INV-137, INV-69]
 2. The system *shall* bound a glance to one small file or a handful of targeted lines whose result is itself the deliverable, past which the read routes like any unit of work. [INV-137, INV-69]
+   [GAP: the glance's size bound carries no number in the source; its only stated test is that the read's result is itself the deliverable.]
 
 **Case: verify reads stay, discovery reads show**
 
 3. The system *shall* keep a read done to verify a claim or settle a decision with the senior agent, checking the real artifact and re-reading a primary source being its own hands. [INV-137]
 4. The system *shall* dispatch the brief-owed read of the files a change will touch to the reader worker whose distillation returns the per-file lines, or make it a bounded decide-read for a small edit. [INV-53, INV-137]
+   [GAP: the source names no size or line count for a small edit here, so where a bounded decide-read ends and a dispatched read begins is undefined.]
 5. The system *shall* name the reads dispatched in the delivery report's delegation accounting, so a session that slid into reading to discover shows it. [INV-103, INV-137]
 
 ---
@@ -336,7 +348,8 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Case: two arms enforce the deferral**
 
-4. The system *shall* red a commit *when* a mechanical net finds a parked item in the resume file or a decision page naming no reason category — taste, policy, irreversible, or device-feel. [INV-152, INV-155]
+4. The system *shall* red a commit *when* a mechanical net finds a parked item in the resume file or a decision page naming no reason category — taste, policy, irreversible, or device-feel (a feel judged only by the human's own hand on the human's own device). [INV-152, INV-155]
+   [GAP: the source names three human-only facts in prose (taste, policy, irreversible) and four reason categories in the mechanical net, device-feel standing only in the net's list.]
 5. *when* a marker is written or a question is opened to the human, a delivery arm *shall* re-fire the derivability test at that moment, reading the grammatical shape of a deferral rather than a closed list of phrasings. [INV-152, INV-28, INV-4]
 
 ---
@@ -356,7 +369,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Case: it fires mandatory on a high-stakes author-only delivery**
 
-3. The system *shall* fire the audit mandatory *when* a delivery is high-stakes — a surface-sized delta or a change to the method itself — and its only review is the author's own. [INV-46]
+3. The system *shall* fire the audit mandatory *when* a delivery is high-stakes — a surface-sized delta (surface being intake's size class meaning one whole user-facing surface changes) or a change to the method itself — and its only review is the author's own. [INV-46]
 4. The system *shall* count a review independent only *when* a differently-contexted head is briefed from the primary sources on the goal-missed hypothesis, a same-context prover pass never counting and delegation alone never making it independent. [INV-46]
 5. One fresh checker *shall* cover every law in a delivery batch, the checker being a worker under its own contract whose verdict rides the delivery report. [INV-61, ACT-3]
 
@@ -372,7 +385,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Case: the class is closed and enumerated**
 
-1. The system *shall* treat the expensive-decision set as closed and enumerable — an agent's birth, a node carved or merged, a contract's shape once a consumer pinned it, a project's kind, an engine-and-instance split, and a repository going public — naming every member on the enumerate-versus-ride keying. [INV-235, T-22, INV-113, INV-122, INV-187, INV-36, INV-85, INV-44, INV-226]
+1. The system *shall* treat the expensive-decision set as closed and enumerable — an agent's birth, a node carved or merged, a contract's shape once a consumer pinned it, a project's kind, an engine-and-instance split, and a repository going public — naming every member as either enumerated on its own row or riding inside another row's work. [INV-235, T-22, INV-113, INV-122, INV-187, INV-36, INV-85, INV-44, INV-226]
 2. The system *shall* state the duty for the whole class and have each member carry it at its own decision point, a traceability test holding that this clause names the read and that agent birth carries it. [INV-235]
 
 **Case: the read is adversarial and closes with the human**
@@ -417,6 +430,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 1. The system *shall* write a brief that edits existing files only after reading in full every file the work will modify, recording three lines per file — current state, what changes, and what must survive. [INV-53]
 2. The system *shall* have every step back-reference its spec sentence and every technical claim cite its source as a file-and-line reference or a command's output. [INV-53]
 3. The system *shall* dispatch this read to the reader worker whose distillation returns the three per-file lines, or make it a bounded decide-read for a small edit. [INV-53, INV-137]
+   [GAP: the source names no size or line count for a small edit at this second occurrence either, so a test author cannot pin the boundary case.]
 
 ---
 
@@ -468,6 +482,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 3. *when* the rung is full, the system *shall* run the full suite at every delivery gate, run the prover at its recorded cadence, and route tiers by the routing rule. [T-19, INV-69]
 4. *when* the rung is lean, the system *shall* scope mid-work test runs to the touched architecture node's rows while running the full suite at every delivery gate and before every push, and *shall* write a deferred full pass as a dated debt line in its queue row. [T-19, INV-69]
 5. *when* the rung is tight, the system *shall* batch consecutive small deliveries into one full-suite run at the batch's end, keep each commit at one row's delta, and bisect a batch-end red by delivery order before reverting to the last green base. [T-19, INV-39]
+   [GAP: the source names no size or count bound for a small delivery under the tight rung, so which deliveries qualify to share one batch-end run is unstated.]
 6. *when* a push runs under any rung, the system *shall* still require the batch's reach-scoped gate green at the tree's head and the host's recorded prover cadence. [INV-45, M-6]
 
 ---
