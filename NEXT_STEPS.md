@@ -24,10 +24,7 @@ STAGE 2 CONVERSION DONE, PANEL NEARLY DONE (2026-07-22 late evening, committed):
 rules-and-who-applies, what-live-spec-is), each with mapping zero-drop proven, GAPS.md, NUMBERS.md, five lints green.
 Panel verdicts (two consecutive zero-blocking reads = accepted): ACCEPTED — what-live-spec-is (r6-7),
 when-something-breaks (r8-9), what-the-human-sends-back (r10-11), rules (r10-11), build-loop-c (r10-11),
-build-loop-a (r16-17). build-loop-b: last fix landed (the `[target]` later-surface gloss), round-17 read was in
-flight at session end — NEXT SESSION: read its verdict in the conversion notes, then run clean reads to two
-consecutive zero (the reader prompt template is in this file's sibling runs; each read ≈ one opus worker on the one
-file). Everything the panels could not settle is in prototype/2026-07-22-spec-format/conversion/ASSEMBLY-NOTES.md
+build-loop-a (r16-17), build-loop-b (r17-18). ALL NINE UNITS ACCEPTED — the panel is closed. Everything the panels could not settle is in prototype/2026-07-22-spec-format/conversion/ASSEMBLY-NOTES.md
 (17 numbered items: renames, one-name merges, source defects → queue rows at landing, per-unit acceptance notes).
 Prose-to-prose ratios measured per unit (0.59–1.46; growth in low-history units, shrink in provenance-heavy ones —
 whole-file shrink comes from retiring the manual index). THEN: re-pin ~99 content tests from mappings, assemble +
