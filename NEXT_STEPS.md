@@ -51,26 +51,18 @@ mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep t
 
 ## LANDED 2026-07-21 (v3.3.0–v3.6.0, all PUSHED — detail in JOURNAL)
 INV-49 sharpened (442) · INV-245 (441) · INV-246 (443) · prose sweep (444) · INV-247 (430) · INV-248 (438) ·
-INV-249 inbox deposit protocol (439). Follow-on boundary notes for INV-245/246: DONE inside the clauses.
+INV-249 inbox deposit protocol (439).
 
-## Migration readiness (2026-07-21) — when can other projects migrate?
-Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not build
-work. The pack version is in motion (v2.8.3 → 3.3.0 this session). tlvphotos migrates onto the axes release (v3.2.0),
-its concrete vehicle for the live mobile device-parity gap; that migration is its own next step on his word. The polished
-on-ramp (movement 3, onboarding) is DEFERRED on ~8 taste forks. Two open questions bite these projects: framework
-coexistence and the "superpower" competitor positioning.
+## Migration readiness — his 2026-07-22 order supersedes the 2026-07-21 note
+Finish ALL live-spec docs first (see ON RESUME); then tlvphotos on his word; others stand. Onboarding (movement 3)
+stays deferred on ~8 taste forks; framework coexistence + "superpower" positioning stay open questions.
 
 ## Open movements
-2. **Axes-from-kind — CLOSED v3.2.0.** INV-244: a surface's composition axes derive from project.kind; visual kinds owe
-   input-capability (first member of an open set), owed-vs-covered gap is a finding, per-kind axis set a mandatory
-   flag-if-absent `project.axes` declaration. Records under docs/prover/ and docs/skill-review/. Follow-ons (deferred):
-   the forcing step for each axis's in-between value; the recursive similarity sweep over the axis registry (ROADMAP 437);
-   the other kinds' elementary axis sets.
-0. **Conduct audit — CLOSED v3.1.0.** INV-241/242/243. Follow-ons: rows 431, 432, 435 (far).
-1. **Comms/naming — CLOSED v3.0.0.**
-3. **Adoption + onboarding — DEFERRED (his 2026-07-18 word).** Designs docs/design/2026-07-18-*.md. FORKS: preset values;
-   default preset; ask-vs-infer; 2/3 presets; pre-push home; plan-axis scope; welcome shape; registry placement. Owns the
-   parameters registry (ROADMAP 427).
+CLOSED: conduct audit v3.1.0 (follow-ons rows 431/432/435) · comms/naming v3.0.0 · axes-from-kind v3.2.0 (INV-244;
+follow-ons: per-axis forcing step, recursive similarity sweep ROADMAP 437 — his 2026-07-22 word pulls 437+459 into the
+near plan after row 445, other kinds' axis sets).
+DEFERRED: adoption + onboarding (his 2026-07-18 word; designs docs/design/2026-07-18-*.md; ~8 taste forks; owns the
+parameters registry, ROADMAP 427).
 
 ## Captured future ideas (owner-held for scope)
 - **Living everything principle.** Any shared artifact can be living. Living description (INV-240) + registry (427) are its first two.
@@ -78,12 +70,9 @@ coexistence and the "superpower" competitor positioning.
 - **Framework coexistence at onboarding + README** — name the boundary if a person already runs another framework.
 - **Evaluate the "superpower" skill as a competitor + README.**
 
-## LIVE STATE (2026-07-21 — v3.3.0 integrated on main, four movements, suite green)
-Shipped this session: INV-49 sharpened (ROADMAP 442) · INV-245 project-name gate (441) · INV-246 lean-orchestrator arm
-(443) · prose-quality sweep (444) — built as parallel lanes under one pen, reconciled at integration. VERSION + 10 skills
-+ plugin.json stamped to 3.3.0; spec base to be re-frozen in the landing commit
-(`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md TEST_MATRIX.md --compaction`). Pushing on green.
-Memory: this whole session is wipeable.
+## LIVE STATE (2026-07-22 late — row 445 stage 2 committed e9d4eae; this session is wipeable)
+Spec base re-freeze rides the 4.0.0 landing commit (`python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md
+ARCHITECTURE.md TEST_MATRIX.md --compaction`).
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory. Max agentic,
@@ -100,14 +89,10 @@ Memory: this whole session is wipeable.
   listener (wait on the harness listener, INV-231) · far tier 381, 411, 435, 436/437. (438 delivery-separability lens
   LANDED v3.5.0; 439 inbox deposit protocol LANDED v3.6.0.) Runnable head is field-gated (contract/listener) + far tier.
 
-## Inbox (2026-07-21) — both deposits routed, left earned in place (row-430 precedent, no delete under a live writer)
-- tlvphotos delivery-separability wish → ROADMAP 438; Alexander 2026-07-21: 438 and this whole file are one and the
-  same, so section 3 (dual-as-discovery-heuristic) was FOLDED into row 438 (no separate row). Scope/greenlight on his word.
-- `from-owner-verify-code-state` (row 430) → LANDED as INV-247 (v3.4.0, pushed). Left earned in place (INV-249 precedent).
-ROADMAP 439 (inbox deposit protocol) → LANDED as INV-249 (v3.6.0); the `.draft` protocol now governs future deposits.
+## Inbox — all 2026-07-21 deposits routed and landed (438→INV-248, 430→INV-247, 439→INV-249), left earned in place.
 
 ## Next free codes
-Next free INV-250, E-36, T-25, M-435, next ROADMAP row 445. (INV-248/M-433 were v3.5.0's; INV-249/M-434 were v3.6.0's.)
+Next free INV-272, E-36, T-25, M-435, next ROADMAP row 460.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A re-invents our
