@@ -3,7 +3,7 @@
 `guardrails/check-requirement-shape.py` reds a document whose requirements, cases, or criteria break
 the format's shape, and passes a well-shaped one. The gate is UNARMED — it arms only in the spec-format
 conversion delivery (INV-270), so this suite drives it over FIXTURES and the prototype's clean corpus
-(`prototype/2026-07-22-spec-format/pilot/section.md`), never the live PRODUCT_SPEC.md, and asserts the
+(`tests/fixtures/specformat/good_corpus_section.md`), never the live PRODUCT_SPEC.md, and asserts the
 gate takes no pre-push or CI letter.
 
 Red-first proof: each red case has its own synthetic fixture under tests/fixtures/specformat/, proven
@@ -17,7 +17,7 @@ from conftest import ROOT
 
 GATE = os.path.join(ROOT, "guardrails", "check-requirement-shape.py")
 FX = os.path.join(ROOT, "tests", "fixtures", "specformat")
-CORPUS = os.path.join(ROOT, "prototype", "2026-07-22-spec-format", "pilot", "section.md")
+CORPUS = os.path.join(ROOT, "tests", "fixtures", "specformat", "good_corpus_section.md")
 
 
 def run(*args):
@@ -36,7 +36,7 @@ class TestRequirementShapeGate(unittest.TestCase):
         # INV-269: the green line names the file opened and the rows matched of rows scanned.
         r = run(CORPUS)
         self.assertIn("reach:", r.stdout)
-        self.assertIn("section.md", r.stdout)
+        self.assertIn("good_corpus_section.md", r.stdout)
         self.assertIn("rows scanned", r.stdout)
 
     def test_reds_a_requirement_missing_its_context(self):

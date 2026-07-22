@@ -7,7 +7,7 @@ chain and no CI step invokes it, and its suite test drives it over FIXTURES and 
 never the live spec. It reads no default file: the document to check is named on the command line, so
 an un-converted tree is never scanned.
 
-THE LAW it enforces, from `prototype/2026-07-22-spec-format/genre3/FORMAT.md`:
+THE LAW it enforces, from `docs/spec-format.md`:
 
   INV-250 — the document opens with a preamble, then a glossary, then a body of requirements; each
   requirement carries a Context block, a User Story line, and acceptance criteria grouped into named

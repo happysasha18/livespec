@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """specformat.py — the shared parser for the requirements format (SPEC INV-250..271).
 
-One home for reading the format `prototype/2026-07-22-spec-format/genre3/FORMAT.md` defines, so the
+One home for reading the format `docs/spec-format.md` defines, so the
 seven format gates (check-requirement-shape, check-vocabulary, check-one-name, check-weak-words,
 check-no-history, check-index-generated + build-index, check-delta-record, check-size-ratchet) parse
 the document the same way. A gate that re-implements the parse drifts from its siblings; this module
