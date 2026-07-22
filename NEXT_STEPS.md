@@ -1,18 +1,30 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-21 — v3.5.0 + v3.6.0 LANDED; two prover/inbox movements)
-This session BUILT two movements. **v3.5.0 — INV-248** (ROADMAP 438, PUSHED, CI green): a product-prover lens for
-delivery separability along a declared composition axis, the dual of INV-244 — a cross-cutting axis that adds runtime
-code states either a named-reason monolith or an owed delivery road, an unexamined monolith-by-default the finding;
-plus a dual-discovery habit for product-prover. **v3.6.0 — INV-249** (ROADMAP 439, this movement): the inbox deposit
-protocol for concurrent windows — a deposit is written under a `.draft` name and made final by an atomic rename, and
-the receiving sweep reads only a complete deposit and never a mid-write file. Alexander's word: one flag (`.draft`),
-no double indication — the suffix is the only atomic mechanism. Delta: PRODUCT_SPEC clause + Formal-index row,
-inbox/README.md protocol, feedback-intake sweep fence, ARCHITECTURE inbox-node ownership, M-434,
-tests/test_inbox_deposit_protocol.py (6 tests, red-proven against HEAD 118ad87). Both fresh-context audits (INV-46/237)
-recorded under docs/prover/. Suite 1736 green, 2 skips (the pinned set). Next free INV-250 / M-435.
-Push on green (his grant); a taste/policy fork stays an explicit question; re-test every "needs his word" by
-derivability FIRST. BEFORE resuming any deferred/queued item, re-derive its state from the CODE, not this file (INV-247).
+## ON RESUME (2026-07-22 — ROW 445 IN-WORK: spec format migration; Alexander approved the genre)
+**Row 445 (big, in-work):** the spec moves to a requirements genre — glossary + requirements (Context, User Story,
+acceptance criteria grouped in NAMED CASES, lowercase italic keywords, codes as trailing anchors, [GAP] lines for
+source holes) — plus a delta classifier (new/sharpen/retire/scenario, enforced by parser diff), a bytes-per-rule
+ratchet that only tightens, and a cold-reader panel gate (fresh readers until two consecutive zero-blocking reads).
+Alexander's words 2026-07-22: genre approved («гораздо лучше»); named cases and lowercase italics his edits; LAW 4
+(every relational word fills its slots — weak-word list + reader questions) his formulation; spec register = the
+chat-answer register (write each section as if answering a stranger's question).
+DONE today: baseline tag `spec-format-before-2026-07-22` + verbatim copies in docs/attic/2026-07-22-pre-format/;
+format definition prototype/2026-07-22-spec-format/genre3/FORMAT.md (six laws, two-layer gate); approved sample
+(sample.md, 8 cold-read rounds recorded); PILOT of one full section (pilot/, ratio measured: prose-to-prose 1.003,
+whole-file honest projection ~540 KB = −31% ONLY IF the manual Formal index is retired for a generated code→location
+lookup — the 130–180 KB morning estimate is REVISED by measurement, do not re-promise it); census: 32 shape-readers
+(17 tests + 15 gates) must be rebuilt with the format, ~99 content-reader tests pin verbatim sentences and get
+re-pinned mechanically from each section's mapping.md (code → new text). Rows 446-452 queued (gate reach, axes
+catch-up, five spec holes). Inbox swept (3 deposits routed).
+NEXT (stages, each lands separately): (1) format gates as code, red-first — criteria/index parser, closed-vocabulary
+check, one-name check, weak-word check, delta classifier diff, bytes-per-rule ratchet, panel harness; spec-delta for
+these clauses written IN the new format; (2) section-by-section conversion (9 sections, worker + panel each, mapping
+per section), re-pin content tests, generate the lookup index, retire the manual index (text preserved in JOURNAL/attic);
+(3) freeze re-baseline + fresh prover audit + MIGRATION chapter + VERSION 4.0.0 (major bump — his word) + push. Then
+TEST_MATRIX and ROADMAP get their own movements; then the host migration chapter (tlvphotos 434 KB, track-coach 247 KB
+specs) driven by script in each project's own window.
+Push on green (his grant); re-test every "needs his word" by derivability FIRST; re-derive deferred state from CODE
+(INV-247). Next free INV-250 / M-435 / row 453.
 
 ## FIRST at intake — classify one-time vs standing (Alexander's word 2026-07-21, ROADMAP 440, memory [[classify-request-onetime-vs-standing-up-front]])
 Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT
