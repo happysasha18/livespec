@@ -1,0 +1,15 @@
+{
+  "_comment": "The weak-word list for the spec-format gate (SPEC INV-256), seeded from the ISO 29148 and INCOSE vague-term lists plus the project's own additions (FORMAT.md, comprehension-gate). A weak word opens a slot — a reference point, a measure, or a reason — that its criterion must fill where the word stands; a hit with no reference cue nearby and no [GAP] line reds. Each new term a cold reader catches (Area 5) joins this list.",
+  "weak_words": [
+    "appropriate", "sufficient", "adequate", "fast", "easily", "efficient", "flexible",
+    "as required", "if necessary", "proportional", "reasonable", "robust", "seamless",
+    "timely", "user-friendly", "minimal", "maximal", "several", "some", "large", "larger",
+    "quickly", "slowly", "roughly", "approximately", "optimal", "scalable", "intuitive"
+  ],
+  "_reference_cues_comment": "A weak word is excused when its criterion carries one of these reference cues (a filled slot) or a [GAP] line. The set is deliberately generous — the machine excuses a plausibly-filled slot and leaves the close read to the panel.",
+  "reference_cues": [
+    "than", "at least", "at most", "within", "per ", "ratio", "measured", "measure",
+    "bytes", "pixels", "seconds", "minutes", "count of", "number of", "up to", "no more than",
+    "relative to", "compared", "%"
+  ]
+}

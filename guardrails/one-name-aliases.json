@@ -1,0 +1,9 @@
+{
+  "_comment": "One-name-per-thing groups for the spec-format gate (SPEC INV-255). Each artifact has ONE canonical name; the aliases are the other names a draft might slip into for the same thing. Any alias appearing in the document reds, pointing at the canonical name. An alias must never be a phrase the clean corpus uses for a DIFFERENT thing (e.g. 'work list' is the migration work list, not the queue, so it is not an alias here). The list grows as the cold-reader panel catches two-name drift.",
+  "artifacts": [
+    {"canonical": "backlog item", "aliases": ["ticket", "work item", "task card", "todo item"]},
+    {"canonical": "queue", "aliases": ["task list", "to-do list", "punch list"]},
+    {"canonical": "guardrail", "aliases": ["gatekeeper script", "checker script"]},
+    {"canonical": "delivery report", "aliases": ["wrap-up note", "closeout memo"]}
+  ]
+}

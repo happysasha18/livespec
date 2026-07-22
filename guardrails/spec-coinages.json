@@ -1,0 +1,11 @@
+{
+  "_comment": "Banned coinages for the spec-format vocabulary gate (SPEC INV-254). Each key is a coined or metaphorical word the method has retired; its value is the plain standard term to use instead. The list grows as the cold-reader panel (Area 5) and the no-coined-names rule catch more. It must never contain a word the clean corpus legitimately uses.",
+  "coinages": {
+    "needle": "check-phrase",
+    "thingamajig": "component",
+    "widgetize": "render",
+    "synergize": "combine",
+    "leverage": "use",
+    "utilize": "use"
+  }
+}
