@@ -1,6 +1,9 @@
 # Field report: the axes release adopted in tlvphotos — one accuracy correction and two findings
 
 From: tlvphotos, 2026-07-21 (during the catch-up walk from pack 2.7.0 to 3.6.0, on Alexander's word)
+Lived: (field restored by the receiver at routing, 2026-07-22, from the report's own words) the pack's
+  input-capability taxonomy left the keyboard no pole to live under, and a host running ahead of the
+  pack's increment schedule had no field to record it — hit during the 2.7.0-to-3.6.0 catch-up walk.
 Id: tlvphotos-2026-07-21-axes-adoption-field-report
 Need-by: none. Nothing here blocks anything on the pack side.
 

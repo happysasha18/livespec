@@ -3,6 +3,13 @@
 **From:** the tlvphotos window, 2026-07-21 afternoon, after a reachability-parity movement.
 **Kind:** defect in the method's compaction story, with the evidence from one host.
 
+Lived: (field restored by the receiver at routing, 2026-07-22, from the report's own words) the
+  document-bound gate is seeded so far above the document's real size that it cannot fire for months, and
+  no gate measures growth at all; this host's spec grew 378,808 -> 433,855 bytes within one day under a
+  620,000-byte ceiling.
+Need-by: none
+Id: tlvphotos-2026-07-21-size-gate-cannot-catch-creep
+
 ## The finding in one line
 
 The document-bound gate (INV-234, gate z) is seeded so far above a document's real size that it cannot

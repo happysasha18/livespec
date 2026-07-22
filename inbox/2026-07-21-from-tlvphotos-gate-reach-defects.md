@@ -1,6 +1,9 @@
 # Ten defects in the pack's own gates, found by wiring them onto a host for the first time
 
 From: tlvphotos, 2026-07-21 (during the catch-up walk from pack 2.7.0 to 3.6.0)
+Lived: (field restored by the receiver at routing, 2026-07-22, from the report's own words) ten defects
+  hit while wiring the pack's gates onto this host, seven sharing one shape — a gate reports green after
+  reading a subset of its subject; evidence per defect in the body.
 Id: tlvphotos-2026-07-21-gate-reach-defects
 Need-by: none, though the first four are the kind that get worse the longer they sit, because every host
 that adopts meanwhile records a green that did not mean anything.
