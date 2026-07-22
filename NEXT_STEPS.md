@@ -30,15 +30,9 @@ Push on green (his grant); re-test every "needs his word" by derivability FIRST;
 Name every request's persistence class before actioning it, and say it yourself. A standing ask owes a PERMANENT
 mechanism (a pack gate/rule/judge inherited by every host); the one-time sweep to floor is only its other half.
 
-## LANDED earlier this day (v3.3.0 four movements + v3.4.0), all PUSHED — detail in JOURNAL
-v3.3.0: INV-49 sharpened (442, co-location is not a serialization trigger) · INV-245 project-name gate (441) ·
-INV-246 lean-orchestrator arm (443) · prose-quality sweep (444). v3.4.0: INV-247 + base rule 34 (430, re-derive a
-deferred item's state from CODE before resuming). v3.5.0: INV-248 delivery-separability lens (438). v3.6.0: INV-249
-inbox deposit protocol (439, this movement).
-
-## Follow-ons (later, non-blocking)
-- INV-245: non-coverage of skills/README as a deliberate boundary — DONE (note added inside the clause 2026-07-21).
-- INV-246: six-verb Bash-dump escape a documented boundary — DONE (note added inside the clause 2026-07-21).
+## LANDED 2026-07-21 (v3.3.0–v3.6.0, all PUSHED — detail in JOURNAL)
+INV-49 sharpened (442) · INV-245 (441) · INV-246 (443) · prose sweep (444) · INV-247 (430) · INV-248 (438) ·
+INV-249 inbox deposit protocol (439). Follow-on boundary notes for INV-245/246: DONE inside the clauses.
 
 ## Migration readiness (2026-07-21) — when can other projects migrate?
 Other projects (track-coach, tlvphotos, promoter) should NOT migrate yet; the block is Alexander's word, not build
