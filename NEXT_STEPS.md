@@ -16,10 +16,14 @@ lookup — the 130–180 KB morning estimate is REVISED by measurement, do not r
 (17 tests + 15 gates) must be rebuilt with the format, ~99 content-reader tests pin verbatim sentences and get
 re-pinned mechanically from each section's mapping.md (code → new text). Rows 446-452 queued (gate reach, axes
 catch-up, five spec holes). Inbox swept (3 deposits routed).
-NEXT (stages, each lands separately): (1) format gates as code, red-first — criteria/index parser, closed-vocabulary
-check, one-name check, weak-word check, delta classifier diff, bytes-per-rule ratchet, panel harness; spec-delta for
-these clauses written IN the new format; (2) section-by-section conversion (9 sections, worker + panel each, mapping
-per section), re-pin content tests, generate the lookup index, retire the manual index (text preserved in JOURNAL/attic);
+STAGE 1 DONE (2026-07-22 evening, PUSHED, suite 1798 green): spec-delta v2 proven (INV-250..271, prover verdict
+lands-with-fixes, all applied; record docs/prover/2026-07-22-row445-spec-format-delta.md); seven format gates +
+scripts/build-index.py landed UNARMED, 59 tests red-proven both ways; format definition promoted to docs/spec-format.md.
+STAGE 2 RUNNING — converted so far (each: mapping zero-drop + reader panel to low/zero blocking, final clean read at
+assembly): adopting-a-project (pilot/, 96 codes), agents-together (76 codes, ratio 0.59), bounds (113 codes, ratio
+0.68). Remaining six: the build loop (207 KB — split by subsections), what-the-human-sends-back, when-something-breaks,
+rules-and-who-applies, header/what-is, Reference (becomes the generated index). Then: re-pin content tests from
+mappings, assemble + pooled glossary, retire the manual index (text to JOURNAL/attic);
 (3) freeze re-baseline + fresh prover audit + MIGRATION chapter + VERSION 4.0.0 (major bump — his word) + push. Then
 TEST_MATRIX and ROADMAP get their own movements; then the host migration chapter (tlvphotos 434 KB, track-coach 247 KB
 specs) driven by script in each project's own window.
