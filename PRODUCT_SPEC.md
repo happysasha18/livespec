@@ -6495,7 +6495,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: when the gates arm**
 
-7. *when* the migration converts the matrix to this format, the system *shall* convert the whole document in one delivery, and the gates this member names *shall* arm in that same delivery. [INV-272]
+7. The matrix's conversion *shall* follow the family's one-delivery arming rule: the entire document moves at once, and this member's gates arm inside that same delivery. [INV-272] [INV-270]
 
 ---
 
@@ -6514,12 +6514,11 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: body and Reference must agree**
 
-3. *if* a spec anchor sits on a body row and is absent from the committed Reference, *then* the matrix-reference gate *shall* red. [INV-273]
-4. *if* a spec anchor sits in the committed Reference and is carried by no body row, *then* the matrix-reference gate *shall* red. [INV-273]
+3. *if* the body and the committed Reference disagree in either direction — a body anchor absent from the table, or a table anchor carried by no body row — *then* the matrix-reference gate *shall* red. [INV-273]
 
 **Case: reach and arming**
 
-5. The matrix-reference gate *shall* stay unarmed until the conversion delivery, *shall* arm in it, and *shall* state its reach on the green line. [INV-273] [INV-269]
+4. The matrix-reference gate *shall* stay unarmed until the conversion delivery, *shall* arm in it, and *shall* state its reach on the green line. [INV-273] [INV-269]
 
 ---
 
@@ -6872,11 +6871,11 @@ The code-to-location table below is generated output, built from the body criter
 | INV-266 | R281.1, R281.2 |
 | INV-267 | R281.3, R281.4, R281.5, R281.6 |
 | INV-268 | R281.7 |
-| INV-269 | R282.1, R282.2, R284.5, R285.3 |
-| INV-270 | R277.19, R277.20 |
+| INV-269 | R282.1, R282.2, R284.4, R285.3 |
+| INV-270 | R277.19, R277.20, R283.7 |
 | INV-271 | R191.4, R191.7, R278.5, R278.6, R278.7 |
 | INV-272 | R283.1, R283.2, R283.3, R283.4, R283.5, R283.6, R283.7 |
-| INV-273 | R284.1, R284.2, R284.3, R284.4, R284.5 |
+| INV-273 | R284.1, R284.2, R284.3, R284.4 |
 | INV-274 | R285.1, R285.2, R285.3, R285.4 |
 | M-1 | R49.2, R80.7, R80.8, R92.2, R130.1, R130.2, R130.3, R130.4, R130.5, R130.6, R130.7, R130.8, R130.9, R164.4, R166.3, R166.8, R198.6, R249.2 |
 | M-2 | R14.3, R125.1, R125.2, R125.3, R177.12, R204.3 |
