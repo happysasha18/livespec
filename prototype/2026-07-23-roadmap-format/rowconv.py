@@ -191,13 +191,26 @@ TRIGGER_PATTERNS = [
                                                 # one when merely describing the mechanism (row 405)
     re.compile(r"Remainder:\s*"),
     re.compile(r"REMAINS\s*(?:\([^)]*\))?:\s*"),
-    re.compile(r"open legs?\s*[:]\s*", re.I),
+    re.compile(r"open legs?\s*(?:\([^)]*\))?\s*[:]\s*", re.I),   # optional (INV-nn) before the colon
     re.compile(r"OPEN\s*—\s*"),
     re.compile(r"waiting on\s+", re.I),
+    re.compile(r"waits(?:\s*\[[^\]]*\])?:\s*", re.I),            # "Field beat that waits [INV-94]: …"
     re.compile(r"field-gated\s+on\s+", re.I),
+    re.compile(r"still deferred[^:]{0,60}:\s*", re.I),           # "still deferred and owned …: …"
     re.compile(r"deferred\s*—\s*", re.I),
 ]
+# the trailing form: "<the open leg's event> — OPEN[,;…]" — tried only after every leading pattern
+# fails; the LAST such clause is taken (a row lists its legs done-first, open-last).
+TRAILING_OPEN_RE = re.compile(r"—\s*OPEN(?![A-Za-z0-9])")
 FALLBACK_TRIGGER = "re-read the wish's record in the status notes"
+
+
+def _clip(clause):
+    clause = clause.strip().rstrip(",.").strip()
+    words = clause.split()
+    if len(words) > 20:
+        clause = " ".join(words[:20])
+    return clause
 
 
 def extract_trigger(status):
@@ -212,13 +225,18 @@ def extract_trigger(status):
             j = rest.find(d)
             if j != -1:
                 cut = min(cut, j)
-        clause = rest[:cut].strip().rstrip(",.")
-        words = clause.split()
-        if not words:
-            continue
-        if len(words) > 20:
-            clause = " ".join(words[:20])
-        return clause, "inline"
+        clause = _clip(rest[:cut])
+        if clause:
+            return clause, "inline"
+    last = None
+    for m in TRAILING_OPEN_RE.finditer(status):
+        last = m
+    if last is not None:
+        head = status[:last.start()]
+        start = max(head.rfind(";"), head.rfind("**"), head.rfind("\n"))
+        clause = _clip(head[start + 1:].lstrip("*"))
+        if clause:
+            return clause, "inline"
     return FALLBACK_TRIGGER, "fallback"
 
 
@@ -252,15 +270,126 @@ def parse_body_rows(text):
     return rows
 
 
+# --- round 7: the three-cell sweep --------------------------------------------------------------
+# Some rows recorded their landings in the WISH or ACCEPTANCE cells while the status cell stayed
+# queued (rows 130/133/190/279's class), so the classifier reads all three text cells per LIVE row:
+# a whole-landing record (dated landed tokens / MET on the Done-when clauses) with NO open marker
+# archives the row; landed-leg markers PLUS an open marker re-status the row *deferred* with the
+# extracted trigger; no landed markers leaves the row as mapped; an unsettleable disagreement joins
+# the AMBIGUOUS list and stays live.
+SWEEP_LANDED_RE = re.compile(r"(?<![A-Za-z0-9])landed(?![A-Za-z0-9])[^|]{0,40}?(20\d\d-\d\d-\d\d)",
+                             re.I | re.S)
+SWEEP_MET_RE = re.compile(r"(?<![A-Za-z0-9])MET(?![A-Za-z0-9])")
+SWEEP_OPEN_RES = [
+    re.compile(r"(?<![A-Za-z0-9])OPEN(?![A-Za-z0-9])"),           # the uppercase state marker
+    re.compile(r"open leg", re.I),
+    re.compile(r"(?<![A-Za-z0-9])remains(?![A-Za-z0-9])", re.I),
+    re.compile(r"(?<![A-Za-z0-9])waits(?![A-Za-z0-9])", re.I),
+    re.compile(r"(?<![A-Za-z0-9])rides(?![A-Za-z0-9])", re.I),
+    re.compile(r"field leg", re.I),
+    re.compile(r"\[target\]"),
+    re.compile(r"leg:\s*open", re.I),
+    re.compile(r"(?<![A-Za-z0-9])PENDING(?![A-Za-z0-9])"),
+    re.compile(r"(?<![A-Za-z0-9])still deferred(?![A-Za-z0-9])", re.I),  # row 436's own open marker
+]
+
+# per-row sweep overrides (recorded, deterministic — the generic markers over-match on one row):
+# Row 420 -> ARCHIVE 2026-07-18: its acceptance closes "With candidate 4 landed the row-420
+# audit-and-build is COMPLETE" — all four candidates carry dated LANDED records; the lone open-marker
+# hit is prose ("rides no CI step"), not an open leg.
+SWEEP_OVERRIDES = {420: ("archive", "2026-07-18")}
+
+
+def acceptance_cell(cells):
+    return cells[5] if len(cells) >= 6 else (cells[4] if len(cells) >= 5 else "")
+
+
+def sweep_evidence(cells):
+    """Return (landed_dates, met_count, open_marker_names) read across wish+status+acceptance."""
+    acc = acceptance_cell(cells)
+    combined = " | ".join((cells[1], cells[3], acc))
+    landed_dates = SWEEP_LANDED_RE.findall(combined)
+    met = len(SWEEP_MET_RE.findall(acc))
+    opens = [p.pattern for p in SWEEP_OPEN_RES if p.search(combined)]
+    return landed_dates, met, opens
+
+
+def sweep_verdict(rid, cells, mapped_word, trigger_how):
+    """The round-7 verdict for a live row: ('archive', date) | ('deferred', trigger, how) |
+    ('keep',) | ('ambiguous', note). mapped_word/trigger_how are the round-6 mapping's outputs."""
+    if rid in SWEEP_OVERRIDES:
+        return SWEEP_OVERRIDES[rid]
+    landed, met, opens = sweep_evidence(cells)
+    if not landed and not met:
+        return ("keep",)
+    if mapped_word == "in-work":
+        # an active claim beside a landed record is the stale-claim sweep's case (round-3 triage
+        # kept 386/412/480 in-work); the sweep does not re-judge a claim, it lists the tension.
+        return ("ambiguous", "in-work claim beside landed evidence — held for the stale-claim sweep")
+    if mapped_word == "deferred" and trigger_how in ("inline", "override"):
+        return ("keep",)   # already deferred with a named trigger
+    if not opens:
+        dates = sorted(landed)
+        if not dates:
+            dates = sorted(DATE_RE.findall(cells[3] + " " + acceptance_cell(cells)))
+        return ("archive", dates[-1] if dates else None)
+    trigger, how = extract_trigger(cells[3] + " ; " + acceptance_cell(cells))
+    return ("deferred", trigger, how)
+
+
+def final_row(rid, cells):
+    """The whole classification for one source body row. Returns one of:
+       ('archive-r6',)                       — rounds 1-6: terminally closed, moves per archive rules;
+       ('archive-sweep', date)               — round-7 rule 1: whole landing recorded off-status;
+       ('live', status_cell, acceptance, meta) — meta: {'word','how','sweep','ambiguous'}."""
+    status = cells[3]
+    live, ambiguous = is_live(status, rid)
+    if not live:
+        return ("archive-r6",)
+    scell = new_status_cell(status, cells[1], rid)
+    word = scell.split("*")[1]
+    how = None
+    if rid in STATUS_CELL_OVERRIDE:
+        how = "override"
+    elif word == "deferred":
+        how = extract_trigger(status)[1]
+    verdict = sweep_verdict(rid, cells, word, how)
+    sweep = verdict[0] if verdict[0] != "keep" else None
+    if verdict[0] == "archive":
+        return ("archive-sweep", verdict[1])
+    if verdict[0] == "deferred":
+        date, _src = pick_date(status, cells[1])
+        scell = "*deferred* %s — revisit trigger: %s" % (date or "0000-00-00", verdict[1])
+        word, how = "deferred", verdict[2]
+    acc, removed = rewrite_acceptance(word, acceptance_cell(cells))
+    meta = {"word": word, "how": how, "sweep": sweep,
+            "ambiguous": ambiguous or verdict[0] == "ambiguous",
+            "inwork_rewrites": removed}
+    return ("live", scell, acc, meta)
+
+
+def rewrite_acceptance(word, acc):
+    """Round-7 named delta: in a *deferred* row's acceptance cell the literal phrase 'stays in-work'
+    (any casing) reads 'stays open'. Returns (new_acc, removed_tokens) where removed_tokens are the
+    exact 'in-work' spellings replaced (each adds one 'open')."""
+    if word != "deferred":
+        return acc, []
+    removed = []
+
+    def _sub(m):
+        removed.append(m.group(2))
+        return m.group(1) + "open"
+
+    new = re.sub(r"(stays\s+)(in-work)", _sub, acc, flags=re.I)
+    return new, removed
+
+
 def normalize_live_row(rid, cells):
     """Build the normalized five-cell live row string (no trailing newline). cells is the stripped
     field list (5 or 6 wide). The sixth drift cell (a lone dash at index 4) is dropped. Round 6: the
     wish cell rides verbatim — the pre-conversion status text moves to the status-notes file, not
     into the row (a bold LANDED inside an in-body quote out-shouts the italic status)."""
-    wish = cells[1]
-    old_class = cells[2]
-    status = cells[3]
-    accept = cells[5] if len(cells) >= 6 else (cells[4] if len(cells) >= 5 else "")
-    c = new_class(old_class, rid)
-    s = new_status_cell(status, wish, rid)
-    return "| %d | %s | %s | %s | %s |" % (rid, wish, c, s, accept)
+    verdict = final_row(rid, cells)
+    assert verdict[0] == "live", "normalize_live_row called on an archived row %d" % rid
+    _, scell, acc, _meta = verdict
+    return "| %d | %s | %s | %s | %s |" % (rid, cells[1], new_class(cells[2], rid), scell, acc)

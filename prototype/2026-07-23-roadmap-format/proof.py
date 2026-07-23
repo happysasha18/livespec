@@ -74,7 +74,14 @@ def main():
     new_notes_text = open(NEW_NOTES, encoding="utf-8").read()
 
     old_rows = rowconv.parse_body_rows(old_text)
-    live = [(rid, cells) for rid, cells, raw in old_rows if rowconv.is_live(cells[3], rid)[0]]
+    live = []              # (rid, cells, scell, meta) — the shared final_row classification
+    n_sweep_archived = 0
+    for rid, cells, raw in old_rows:
+        v = rowconv.final_row(rid, cells)
+        if v[0] == "live":
+            live.append((rid, cells, v[1], v[3]))
+        elif v[0] == "archive-sweep":
+            n_sweep_archived += 1
 
     # --- the compared regions: OLD data rows vs NEW body rows + archive rows + notes ENTRIES ------
     # (round 6: each live row's pre-conversion status text lives verbatim in the notes file, so it
@@ -91,18 +98,23 @@ def main():
     exp_add_p, exp_rem_p = collections.Counter(), collections.Counter()
 
     n_live6 = 0
+    n_inwork_rewrites = 0
     class_pairs = []
-    for rid, cells in live:
-        status = cells[3]
-        wish = cells[1]
-        # new status cell additions (tokenized from the exact generated string). DUPLICATION CHOICE:
-        # a deferred row's extracted trigger is COPIED into the status cell while the old text stays
-        # verbatim in the notes file, so the duplicated trigger tokens are accounted here inside the
-        # status-cell addition — copy-not-move keeps the notes verbatim under the nothing-lost rule.
-        scell = rowconv.new_status_cell(status, wish, rid)
+    for rid, cells, scell, meta in live:
+        # new status cell additions (tokenized from the exact generated string, sweep verdicts
+        # included). DUPLICATION CHOICE: a deferred row's extracted trigger is COPIED into the status
+        # cell while the old text stays verbatim in the notes file / acceptance cell, so the
+        # duplicated tokens are accounted here inside the status-cell addition — copy-not-move keeps
+        # the notes verbatim under the nothing-lost rule.
         w, p = counts(scell)
         exp_add_w += w
         exp_add_p += p
+        # round-7 rule 5: a deferred row's acceptance phrase "stays in-work" reads "stays open".
+        for tok in meta["inwork_rewrites"]:
+            exp_rem_w[tok] += 1
+            exp_add_w["open"] += 1
+            exp_rem_p["-"] += tok.count("-")   # the hyphen inside `in-work` leaves with the word
+            n_inwork_rewrites += 1
         # the notes entry's own section header: `## row <id>` (the entry BODY cancels with the old
         # status cell, both verbatim).
         exp_add_w["row"] += 1
@@ -125,7 +137,7 @@ def main():
     # each a named per-row delta — the corrected landed marker wraps the old cell text, which rides
     # verbatim, so the expected addition is exactly the template with the old text removed.
     rewrite_rows = sorted(set(rowconv.ARCHIVE_STATUS_REWRITE) &
-                          {rid for rid, _, _ in old_rows} - {rid for rid, _ in live})
+                          {rid for rid, _, _ in old_rows} - {rid for rid, _, _, _ in live})
     for rid in rewrite_rows:
         w, p = counts(rowconv.ARCHIVE_STATUS_REWRITE[rid] % "")
         exp_add_w += w
@@ -172,7 +184,7 @@ def main():
     new_pre = preamble_wordcount(new_body_text)
     arch_head_w = len(WORD_RE.findall(new_arch_text.split(HEADER_FIRST, 1)[0]))
 
-    status_hist = collections.Counter(rowconv.status_word(c[3]) for _, c in live)
+    status_hist = collections.Counter(m["word"] for _, _, _, m in live)
 
     L = []
     L.append("# Content-preservation proof — ROADMAP.md format conversion (row 480)\n")
@@ -216,6 +228,12 @@ def main():
              "stays verbatim, so the duplicated tokens are counted inside the per-row status-cell "
              "addition above; moving the clause out of the note would have broken the notes file's "
              "verbatim guarantee.")
+    L.append("- **Round-7 sweep archives** — %d rows whose landing was recorded off the status cell "
+             "(wish/acceptance evidence, no open marker) moved to the archive verbatim; they cancel "
+             "like every verbatim move." % n_sweep_archived)
+    L.append("- **Acceptance-cell state words (round-7 rule 5)** — `stays in-work` reads `stays "
+             "open` in a deferred row's acceptance cell: %d instance(s) (removed the matched "
+             "`in-work` spelling, added `open`; `stays` untouched)." % n_inwork_rewrites)
     L.append("- **Sixth drift cell dropped** — %d live rows carried a lone-dash sixth cell; removed "
              "`—` × %d and `|` × %d." % (n_live6, n_live6, n_live6))
     L.append("- **Class re-vocabularying** — %d rows: %s."

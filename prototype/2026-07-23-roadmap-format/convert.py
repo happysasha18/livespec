@@ -105,9 +105,12 @@ def build():
 
     live, archive = [], []
     for rid, cells, raw in rows:
-        if rowconv.is_live(cells[3], rid)[0]:
+        verdict = rowconv.final_row(rid, cells)
+        if verdict[0] == "live":
             live.append((rid, cells))
         else:
+            # rounds 1-6 closures and round-7 sweep archives alike: the row line moves verbatim
+            # (row 445's corrected cell the sole ARCHIVE_STATUS_REWRITE exception).
             archive.append((rid, rowconv.archive_row_line(rid, cells, raw)))
 
     live.sort(key=lambda t: t[0])
