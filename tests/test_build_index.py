@@ -42,6 +42,24 @@ class TestBuildIndex(unittest.TestCase):
         self.assertEqual(run(MINI).stdout, committed,
                          "the committed index fixture drifted from a fresh build")
 
+    def test_refuses_to_overwrite_its_own_input(self):
+        # A builder whose -o lands on its input would replace the document with its own index
+        # (the 2026-07-23 row-477 clobber). It refuses and leaves the document untouched.
+        import shutil
+        with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as tf:
+            doc = tf.name
+        try:
+            shutil.copyfile(MINI, doc)
+            with open(doc, encoding="utf-8") as f:
+                before = f.read()
+            r = run(doc, "-o", doc)
+            self.assertNotEqual(r.returncode, 0, "the builder accepted -o onto its own input")
+            self.assertIn("input", r.stdout.lower())
+            with open(doc, encoding="utf-8") as f:
+                self.assertEqual(f.read(), before, "the builder rewrote its input document")
+        finally:
+            os.unlink(doc)
+
     def test_reds_an_empty_body_by_name(self):
         # INV-218: a document that parses to zero coded criteria reds rather than building over nothing.
         with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as tf:

@@ -52,6 +52,10 @@ def main(argv):
         print("%s: %s" % (CHECK, e))
         return 1
     if len(argv) == 4:
+        if os.path.realpath(argv[3]) == os.path.realpath(path):
+            print("%s: -o %s is the input document itself — the builder never overwrites its input; "
+                  "write the table elsewhere and splice it under ## Reference." % (CHECK, argv[3]))
+            return 1
         with open(argv[3], "w", encoding="utf-8") as f:
             f.write(table)
         print("%s: wrote the generated index to %s" % (CHECK, argv[3]))
