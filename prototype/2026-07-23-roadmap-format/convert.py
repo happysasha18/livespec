@@ -32,7 +32,10 @@ sys.path.insert(0, HERE)
 import rowconv  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
-SRC = os.path.join(ROOT, "ROADMAP.md")
+# The conversion SOURCE is pinned to the last pre-conversion commit: the orchestrator applied the
+# converted body at 6edcf32, so the working ROADMAP.md is the NEW format and the OLD document lives
+# only in git. Pinning keeps the re-run deterministic against the applied tree.
+OLD_COMMIT = "859dcfc"
 OUT = os.path.join(HERE, "out")
 MONTH = "2026-07"
 ARCHIVE_REL = "docs/queue-archive/rotated-ROADMAP-%s.md" % MONTH
@@ -76,8 +79,15 @@ ARCHIVE_HEADER_TMPL = (
 )
 
 
+def old_source():
+    """The pre-conversion ROADMAP.md, read from the pinned commit (see OLD_COMMIT above)."""
+    import subprocess
+    return subprocess.run(["git", "show", "%s:ROADMAP.md" % OLD_COMMIT], cwd=ROOT,
+                          capture_output=True, text=True, check=True).stdout
+
+
 def build():
-    text = open(SRC, encoding="utf-8").read()
+    text = old_source()
     rows = rowconv.parse_body_rows(text)
 
     live, archive = [], []

@@ -44,7 +44,10 @@ DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 # Row 445 -> ARCHIVE: it is the spec-format conversion itself, shipped as v4.0.0 on 2026-07-23
 # (NEXT_STEPS.md's closed-movements line records it); its status cell was simply never updated at
 # landing. It moves to the July file with a corrected cell (ARCHIVE_STATUS_REWRITE below).
-FORCE_ARCHIVE = {99, 445}
+# Row 128 -> ARCHIVE (final round, cold read): its cell reads "landed 2026-07-06 — whole: the open
+# leg ... CLOSED 2026-07-06 ~13:57" — the leg closed minutes later in the same cell; terminally
+# landed; the open-leg tail scan over-matched. Moved verbatim.
+FORCE_ARCHIVE = {99, 128, 445}
 
 # An archived row whose status cell is rewritten at the move (the only non-verbatim archive move,
 # each a named per-row delta in the proof): the corrected landed marker leads, and the old cell text
@@ -71,6 +74,13 @@ def archive_row_line(rid, cells, raw):
 # check reads it. The old status text still rides as the status note per the normal rule.
 STATUS_CELL_OVERRIDE = {
     69: "*deferred* 2026-07-05 — revisit trigger: the next edit to the product-prover skill",
+    # final round (cold read): closed-family leaders that fell to *queued* — each is a landed build
+    # with one leg still riding, so *deferred* on the named leg, the old cell as the status note.
+    55: "*deferred* 2026-07-07 — revisit trigger: the machine leg rides row 3's landing",
+    129: "*deferred* 2026-07-06 — revisit trigger: the first real adopted host carries a "
+         "project.kind line by deed",
+    131: "*deferred* 2026-07-06 — revisit trigger: the next working session narrates unprompted, "
+         "with no third ask",
 }
 
 
@@ -139,6 +149,10 @@ def status_word(status):
             return "in-work"
     if tail_open(status):
         return "deferred"                  # a leg named open is the revisit trigger
+    if any(_has(lead, s) for s in CLOSED_SIGNALS):
+        return "deferred"                  # a live-kept closed-family leader is a parked leg, never
+                                           # a fresh queue entry (final-round rule; zero extra rows
+                                           # beyond the override table on the pinned source, probed)
     return "queued"
 
 

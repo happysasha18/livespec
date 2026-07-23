@@ -1,8 +1,10 @@
 # Live-row mapping — ROADMAP conversion (for orchestrator review)
 
-One line per LIVE row: id · old status leader (first ~10 words) · chosen status word + date · flag.
-Override table applied (rowconv.py FORCE_ARCHIVE / STATUS_CELL_OVERRIDE / ARCHIVE_STATUS_REWRITE, orchestrator triage 2026-07-23):
-row 99 archived verbatim (stale in-work leader over a landed close); row 445 archived with its status cell corrected to `**landed 2026-07-23 (v4.0.0)**` (the spec-format conversion itself, shipped v4.0.0, cell never updated at landing — NEXT_STEPS.md's closed-movements line), old cell riding as the status note; row 69 dated 2026-07-05 from git (810af02) with a named trigger.
+Source pinned to git 859dcfc (the last pre-conversion commit; the working ROADMAP.md is the applied new body since 6edcf32).
+Override table (rowconv.py, orchestrator triage 2026-07-23, three rounds):
+- FORCE_ARCHIVE 99 (stale in-work leader over a landed close, verbatim), 128 (leg closed in the same cell minutes later, verbatim), 445 (spec-format conversion shipped v4.0.0, cell corrected at the move with the delegation accounting line).
+- STATUS_CELL_OVERRIDE 69 (git date 810af02 + named trigger), 55 / 129 / 131 (closed-family leaders with one riding leg → *deferred* with the named leg).
+- General rule added: a live-kept row whose leader is closed-family maps to *deferred*, never *queued* (probed: zero rows beyond the override table on the pinned source).
 
 | id | old status leader | new status | flag |
 |---|---|---|---|
@@ -10,8 +12,8 @@ row 99 archived verbatim (stale in-work leader over a landed close); row 445 arc
 | 48 | deferred | *deferred* 2026-07-05 | no-date in status (used wish date) |
 | 49 | deferred | *deferred* 2026-07-05 | no-date in status (used wish date) |
 | 54 | build legs LANDED 2026-07-07 ~08:33, session 23; field leg OPEN | *deferred* 2026-07-07 | clean |
-| 55 | design LANDED 2026-07-07 ~10:51, session 23; machine leg stays [target] | *queued* 2026-07-07 | clean |
-| 69 | deferred | *deferred* 2026-07-05 | OVERRIDE (orchestrator: git date + named trigger) |
+| 55 | design LANDED 2026-07-07 ~10:51, session 23; machine leg stays [target] | *deferred* 2026-07-07 | OVERRIDE |
+| 69 | deferred | *deferred* 2026-07-05 | OVERRIDE |
 | 93 | pack-side half LANDED 2026-07-05 ~22:20, session 8; row WAITING | *deferred* 2026-07-05 | clean |
 | 95 | queued 2026-07-05 evening (mis-dated 07-06 at intake | *queued* 2026-07-05 | clean |
 | 96 | queued 2026-07-05 evening (mis-dated 07-06 at intake | *queued* 2026-07-05 | clean |
@@ -20,10 +22,9 @@ row 99 archived verbatim (stale in-work leader over a landed close); row 445 arc
 | 117 | landed 2026-07-06 ~10:55, session 12 — repo side whole; ONE | *deferred* 2026-07-06 | clean |
 | 118 | landed 2026-07-06 ~10:55, session 12 — repo side whole; ONE | *deferred* 2026-07-06 | clean |
 | 119 | landed 2026-07-06 ~10:55, session 12 — repo side whole; ONE | *deferred* 2026-07-06 | clean |
-| 128 | landed 2026-07-06 ~13:52, session 14 — whole: the open leg | *queued* 2026-07-06 | clean |
-| 129 | landed 2026-07-06 ~15:58, session 16 — repo side whole; ONE | *queued* 2026-07-06 | clean |
+| 129 | landed 2026-07-06 ~15:58, session 16 — repo side whole; ONE | *deferred* 2026-07-06 | OVERRIDE |
 | 130 | queued 2026-07-06 ~13:32, session 13 (door: feature | *queued* 2026-07-06 | clean |
-| 131 | landed 2026-07-06 ~14:18, session 15 — OPEN LEG (INV-26): the | *queued* 2026-07-06 | clean |
+| 131 | landed 2026-07-06 ~14:18, session 15 — OPEN LEG (INV-26): the | *deferred* 2026-07-06 | OVERRIDE |
 | 133 | queued 2026-07-06 ~15:58, session 16 (door: feature | *queued* 2026-07-06 | clean |
 | 134 | build leg MET 2026-07-06 ~20:42, session 19; field legs OPEN | *deferred* 2026-07-06 | clean |
 | 140 | build legs MET 2026-07-06 ~21:26, session 20; field leg OPEN; | *deferred* 2026-07-06 | clean |
@@ -125,18 +126,18 @@ row 99 archived verbatim (stale in-work leader over a landed close); row 445 arc
 | 480 | in-work 2026-07-23 | *in-work* 2026-07-23 | clean |
 | 481 | queued 2026-07-23 | *queued* 2026-07-23 | clean |
 
-## Archived rows (227) — moved to rotated-ROADMAP-2026-07.md
+## Archived rows (228) — moved to rotated-ROADMAP-2026-07.md
 
-ids: 47, 59, 64, 99, 107, 109, 110, 115, 135, 136, 137, 138, 139, 145, 149, 150, 151, 152, 154, 155, 156, 157, 158, 159, 160, 161, 162, 188, 195, 209, 210, 211, 212, 213, 214, 216, 218, 219, 222, 223, 224, 225, 226, 227, 228, 232, 233, 237, 239, 240, 242, 244, 245, 246, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 303, 304, 305, 306, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 382, 383, 384, 387, 388, 390, 391, 392, 393, 394, 395, 397, 402, 403, 406, 407, 408, 409, 413, 414, 415, 416, 417, 418, 419, 422, 423, 429, 430, 431, 433, 434, 438, 439, 441, 442, 443, 444, 445, 461, 462, 463, 464, 468, 470, 476, 477, 478
+ids: 47, 59, 64, 99, 107, 109, 110, 115, 128, 135, 136, 137, 138, 139, 145, 149, 150, 151, 152, 154, 155, 156, 157, 158, 159, 160, 161, 162, 188, 195, 209, 210, 211, 212, 213, 214, 216, 218, 219, 222, 223, 224, 225, 226, 227, 228, 232, 233, 237, 239, 240, 242, 244, 245, 246, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 303, 304, 305, 306, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 382, 383, 384, 387, 388, 390, 391, 392, 393, 394, 395, 397, 402, 403, 406, 407, 408, 409, 413, 414, 415, 416, 417, 418, 419, 422, 423, 429, 430, 431, 433, 434, 438, 439, 441, 442, 443, 444, 445, 461, 462, 463, 464, 468, 470, 476, 477, 478
 
-All verbatim except row 445 (status cell corrected at the move per the override table; every other cell, the sixth drift cell included, unchanged). Rows 99 and 445 archived by override.
+All verbatim except row 445 (status cell corrected at the move, delegation line carried). Rows 99, 128, 445 archived by override.
 
-## Rows that fell to the safe default (kept live though the leader reads closed)
+## Safe-default rows kept live
 
-235, 241, 424 — each carries a structured open-leg marker (row 424 REMAINS the his-gate; rows 235/241 a pending `; open leg:`); mapped *deferred* with the open leg as the trigger.
+235, 241, 424 — structured open-leg tail (424 REMAINS the his-gate; 235/241 a pending `; open leg:`); mapped *deferred*.
 
 ## No-date rows
 
-- resolved by override: row 69 (*deferred* 2026-07-05, date from git commit 810af02).
+- resolved by override: row 69 (*deferred* 2026-07-05, git 810af02).
 - date taken from the wish cell (status had none): [48, 49, 171, 302, 307, 308, 309, 332, 381]
 
