@@ -556,7 +556,7 @@ class TestQueue(unittest.TestCase):
                           "every body row holds five cells and the closed status/class vocabularies"))
 
     def test_roadmap_in_work_cap(self):
-        in_work = [r[0] for r in self._rows() if r[3].lower().startswith("in-work")]
+        in_work = [r[0] for r in self._rows() if r[3].lower().lstrip("*").startswith("in-work")]
         self.assertLessEqual(len(in_work), 3,
                              "more than three rows in-work — the lane cap (SPEC T-18): rows %s" % in_work)
 
