@@ -26,7 +26,7 @@ A roadmap document opens with a short preamble, the same shape the family gives 
 
 ## The live-body law
 
-The body holds live rows only. When a wish lands, its row moves to the dated archive under `docs/queue-archive/` in the same commit that lands it, carried verbatim with its delivery report, and the rotated-manifest block records the move. The word *landed* therefore names a transition a row makes, and a body row never carries it as a status. The archive keeps every moved row, grepable by number, under the project's nothing-lost rule, so the history of the work stands in the archive and the journal. This is how the family's no-history law reaches a queue document: the body stays the live queue, and the record of finished work moves out to the archive.
+The body holds live rows only. When a wish lands, its row moves to the dated archive under `docs/queue-archive/` in the same commit that lands it, carried verbatim with its delivery report, and the rotated-manifest block records the move. A row whose wish ends without landing — declined or superseded — moves the same way in the commit that closes it. An archive file gathers one calendar month's moved rows and is named by year and month, so the manifest grows one line per archive file rather than one line per landing. The word *landed* therefore names a transition a row makes, and a body row never carries it as a status. The archive keeps every moved row, grepable by number, under the project's nothing-lost rule, so the history of the work stands in the archive and the journal. This is how the family's no-history law reaches a queue document: the body stays the live queue, and the record of finished work moves out to the archive.
 
 ## The status vocabulary
 
