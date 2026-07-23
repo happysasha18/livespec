@@ -20,7 +20,8 @@ class TestReadmeStanceParagraph(unittest.TestCase):
         body = read_flat("README.md")
         self.assertIn("A spec owns what a project can write down and test.", body)
         self.assertIn("Feel belongs to the owner's eye.", body)
-        self.assertIn("no rubric will ever catch honestly", body)
+        # "will ever catch" tightened to "will catch" in the current copy.
+        self.assertIn("no rubric will catch honestly", body)
 
     def test_stance_paragraph_before_known_issues(self):
         with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as f:
@@ -41,7 +42,8 @@ class TestReadmeNoCommandSurface(unittest.TestCase):
 
     def test_no_command_surface_stated(self):
         body = read_flat("README.md")
-        self.assertIn("There is no CLI; you talk to it", body)
+        # the semicolon join became two sentences: "There is no CLI. You talk to it."
+        self.assertIn("There is no CLI. You talk to it", body)
 
 
 if __name__ == "__main__":

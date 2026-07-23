@@ -341,7 +341,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 | # | Source claim | Criterion |
 |---|---|---|
 | 120 | A review surface marks each claim by source — artifact, the person's recorded word, or the agent's inference — inferences flagged most prominently. | R28.1 |
-| 121 | It is commentable rather than a read-only wall, with line-by-line room and answer capture. | R28.2 |
+| 121 | It is commentable and open, with line-by-line room and answer capture. | R28.2 |
 | 122 | The decision page's saved-answers rule extends to review surfaces as one round-trip back to the project. | R28.3 |
 
 ### The word read as meant, cuts hold (source 259–265; INV-42, INV-4, INV-31)
@@ -388,3 +388,12 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 ### Coverage result
 
 138 behavioural claims mapped, covering all 33 requirements and all 136 criteria. No behavioural `shall`-claim of the source is left uncovered. The two source holes are recorded as `[GAP]` lines at R6.4 and R7.2 and detailed in `GAPS.md`. Two source non-goal / policy framings are carried as negative-side or context statements rather than converted to standalone `shall` criteria: the large-wish rule's "scope, never time" is stated positively as R7.1's refusal criteria, and the leave-word rule's "the command makes closing safe rather than closing anything itself" is carried in R22's Context as a scope statement. No source claim moved.
+
+### Prover MUST-FIX wave (row 445 audit, F6) — declared sharpen
+
+- **`F-wish` moves from a criterion bracket to its owning heading**: R1.4 carried `F-wish` in its trailing anchor list, against the convention that a feature code rides a scenario heading as a `[feature: F-...]` tag. The code moves to R1's heading (`## Requirement 1: A wish is captured as a queue row that is never lost  [feature: F-wish]`); R1.4 keeps `[INV-1]`. Behaviour unchanged.
+
+### Final restoration wave (re-pin sweep) — declared additions
+
+- **R19.9 (narration digest + time accounting).** Restores the source's dropped digest clause — a station a delegated worker closed becomes the senior's beat — and the time-accounting line, token and test counts stay bookkeeping. Owed by `test_traceability::TestProblemLedger::test_narration_three_teeth`. [INV-35, INV-28]
+- **R19.10 (the offline window's honest edges).** Restores the four dropped offline-window rules: never a guess dressed as a promise; a window off its spoken range saying so; the needed-again beat a chat line awaiting his return, never a summons; no offline sentence fires when the very next beat needs the human. Owed by `test_offline_window`. The source's "blocked on his word alone" is carried as "blocked on the human's word alone" — `check-no-history` bans the recorded-word marker "his word" (INV-253). [INV-35, INV-4]

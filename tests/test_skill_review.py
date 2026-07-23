@@ -243,8 +243,12 @@ def test_gate_mirrored_in_ci():
 def test_spec_states_the_law():
     spec = read("PRODUCT_SPEC.md")
     assert "[INV-208]" in spec
-    assert "check-skill-review.sh" in spec
-    assert "docs/skill-review" in spec
+    # The requirements-format spec states the law behaviourally; the concrete gate script and record
+    # directory consolidated into ARCHITECTURE.md's guardrails node (one-home-per-fact).
+    assert "require a committed review naming the skill" in " ".join(spec.split())
+    arch = read("ARCHITECTURE.md")
+    assert "check-skill-review.sh" in arch
+    assert "docs/skill-review" in arch
 
 
 def test_formal_index_row():

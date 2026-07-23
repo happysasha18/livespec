@@ -13,7 +13,7 @@ from conftest import read
 
 def test_spec_states_the_entry_state_lens():
     spec = read("PRODUCT_SPEC.md")
-    assert "prover's standing entry-state lens" in spec
+    assert "prover's entry-state lens" in spec
     assert "resets its internal state or resumes" in spec
 
 
@@ -21,7 +21,7 @@ def test_spec_distinguishes_it_from_entry_symmetry():
     # the lens is the complement of INV-50: path-existence vs the state that path opens in. Stating the
     # distinction is what keeps it from reading as a duplicate of the entry-symmetry lens.
     spec = read("PRODUCT_SPEC.md")
-    assert "entry-symmetry lens tests that a deliberate re-entry path exists" in spec
+    assert "entry-symmetry lens tests that a re-entry path exists" in spec
 
 
 def test_prover_skill_carries_the_lens():

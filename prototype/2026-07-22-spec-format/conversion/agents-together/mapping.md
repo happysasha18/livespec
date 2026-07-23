@@ -240,3 +240,16 @@ Every behavioural claim the source states (its rationale, its dated provenance, 
 | A card the owner never authorized shows in the same scan that finds every other. | R9.7 |
 | A migrated contract keeps the consumer's pin until it chooses to move; the new owner publishes at its card's address. | R9.8 |
 | A capability on the skill/agent line is settled by the owner's word, recorded with its date. | R9.9 |
+
+### Prover MUST-FIX wave (row 445 audit, F4 + F6) — declared sharpens
+
+- **F4, the description field's home after INV-271**: R3's Context, its glossary entry `description field`, R3.4, and R3.7 (assembled R191) still claimed each code's description lives in a dedicated field the Formal index carries. The migration retired the Formal index; the row-445 delta's decision (INV-271) makes the criteria and the glossary the authored home and the generated table locations-only, retiring `check-description-field.py` with that stated successor. All four spots are rewritten to the new home: R3.4 states the authored-home rule (gaining INV-271 beside INV-239), R3.7 states the gate's retirement with its successor (the requirement-shape gate holding the criterion form thereafter), and the Context and glossary entry follow. INV-239's duty (the pair travels, one home, quality bar) is unchanged.
+- **F6, feature tags on headings**: R5 gains `[feature: F-roster]`, R6 `[feature: F-contract]`, R7 `[feature: F-agent-ask]`, R9 `[feature: F-agent-birth]` — the four agent-family features ARCHITECTURE.md's coverage table maps, previously with no tagged heading for the two-way trace to resolve.
+
+### Restored owner decision — zones may overlap (re-pin sweep finding, folded in this wave)
+
+The re-pin sweep's mapping-first audit of `tests/test_agent_channels.py` found one genuine content loss in the conversion (not rationale): the recorded owner decision that two agents' zones may overlap — no forced disjointness, each card recording what its own agent claims, two cards claiming one area both legal — and its consequence that no uniqueness check over zone claims is built (the wrong referral alone earning a name). Source: the pre-format spec's INV-197 and INV-225 paragraphs (attic lines 1571, 1575) and their index rows. Restored as a new named case appended at the end of R8 — criteria R8.19 and R8.20 — appended rather than inserted so no existing criterion number the re-pin sweep pinned moves. The decision's provenance (whose word, which audit finding it refuted) stays in the journal per the no-history law.
+
+### Final restoration wave (re-pin sweep) — declared addition
+
+- **R6.15 `[target]` (INV-185).** The contract's default-deny gate, promised until a host's first real contract — retired Formal-index `[target]` mark restored as an own-line marker under a criterion citing INV-185. Owed by `TestTargetOwnership`.

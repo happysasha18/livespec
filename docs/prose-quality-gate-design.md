@@ -65,7 +65,7 @@ hygiene (no expired-in-use, TestWaivers + TestDebtRatchet green); (8) whole-doc-
 fact-preservation artifact recorded. Prints GREEN + debt summary or RED + failing condition. Commit only GREEN.
 
 ## Build order
-1. Waiver + ratchet (prereq for landing the 317 accumulated findings as dated debt instead of a silent park).
+1. Waiver + ratchet (prereq for landing the 317 accumulated findings as openly dated debt, none silently parked).
 2. Promote warnings + new mechanical rules + exemptions + check-phrase fix (highest ROI).
 3. Mechanical redundancy pre-check.
 4. LLM-judge protocol (most complex, least reliable → last, behind its mitigation stack).

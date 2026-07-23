@@ -26,7 +26,7 @@ def test_base_rule_says_it_is_a_judgment_not_a_gate():
     base = read_flat("skills/live-spec-base/SKILL.md")
     # honest: the minor-versus-major call is stated guidance, held by no machine
     assert "held by no machine" in base
-    assert "stays a stated rule rather than a blocking check" in base
+    assert "stays a stated rule the session holds" in base
 
 
 def test_spec_states_the_law():
@@ -34,7 +34,7 @@ def test_spec_states_the_law():
     assert "[INV-217]" in spec
     assert "what taking it costs a host" in spec
     # the clause names its homes
-    assert "base rulebook rule 32" in spec
+    assert "in the base rulebook" in spec
 
 
 def test_formal_index_row():

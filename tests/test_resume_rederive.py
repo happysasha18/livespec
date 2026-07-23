@@ -15,25 +15,34 @@ from conftest import read
 
 class ResumeRederive(unittest.TestCase):
     def test_inv247_spec_clause_stands(self):
+        # the requirements-format heading carries no trailing period
         spec = read("PRODUCT_SPEC.md")
+        title = "A deferred item's own state is re-derived from the code before its work resumes"
         self.assertIn(
-            "A deferred item's own state is re-derived from the code before its work resumes.",
+            title,
             spec,
             "the INV-247 clause title is missing from the product spec",
         )
-        # the clause carries its trailing anchor and names the act it owes
-        clause = spec.split(
-            "A deferred item's own state is re-derived from the code before its work resumes.", 1
-        )[1][:2600]
-        self.assertIn("[INV-247]", clause, "the INV-247 clause carries no trailing anchor")
+        # the clause carries its trailing anchor (now bundled with a sibling code) and names the
+        # act it owes
+        clause = spec.split(title, 1)[1][:2600]
+        self.assertRegex(
+            clause, r"\[[^\]\n]*\bINV-247\b[^\]\n]*\]",
+            "the INV-247 clause carries no trailing anchor",
+        )
         self.assertIn("reads the code the item touches", clause)
         self.assertIn("re-derives the item's real current state", clause)
 
     def test_inv247_formal_index_row(self):
+        # the old Formal index (with its scenario-name "owner" column, e.g. "Throwing a wish") is
+        # gone; the Reference table now carries locations only (SPEC INV-271). Check the index row
+        # exists, and that INV-247's own defining requirement is on record as its home.
         spec = read("PRODUCT_SPEC.md")
-        self.assertTrue(
-            re.search(r"^\| INV-247 \|.*Throwing a wish \|$", spec, re.M),
-            "no INV-247 row under 'Throwing a wish' in the Formal index",
+        self.assertIn("| INV-247 |", spec, "no INV-247 row in the Reference table")
+        self.assertIn(
+            "## Requirement 93: A deferred item's own state is re-derived from the code "
+            "before its work resumes",
+            spec,
         )
 
     def test_inv247_base_rule_states_the_reread(self):
@@ -49,16 +58,25 @@ class ResumeRederive(unittest.TestCase):
 
     def test_inv247_distinct_from_queue_take_rescan(self):
         """The law must stand beside INV-129, not collapse into it: one reads the returning
-        trigger, the other the item's own internals."""
+        trigger, the other the item's own internals. The register rewrite's contrast-frame ban
+        (INV-166 — never name a thing by denying its neighbour) retired the old prose contrast
+        sentence; distinctness is now structural — two separate, adjacently-numbered requirements
+        (92 for the trigger re-scan, 93 for the item's own re-derivation) that cite each other
+        where they compose, rather than collapsing into one."""
         spec = read("PRODUCT_SPEC.md")
-        clause = spec.split(
-            "A deferred item's own state is re-derived from the code before its work resumes.", 1
-        )[1][:2600]
-        # it cites INV-129 as the sibling and draws the read-the-trigger / read-the-internals line
-        self.assertIn("[INV-129]", clause, "the clause does not situate itself beside the trigger re-scan")
-        self.assertIn("re-reads the taken item's own internals", clause)
+        title = "A deferred item's own state is re-derived from the code before its work resumes"
+        self.assertIn(
+            "## Requirement 92: Deferred rows are revisited at every queue-take", spec,
+            "INV-129's own defining requirement is missing, so the sibling law has no distinct home",
+        )
+        clause = spec.split(title, 1)[1][:2600]
+        # it cites INV-129 as the sibling on the very criterion that composes the two reads
+        self.assertRegex(
+            clause, r"\[[^\]\n]*\bINV-129\b[^\]\n]*\]",
+            "the clause does not situate itself beside the trigger re-scan",
+        )
         # and it answers the mechanical-net question rather than leaving it silent
-        self.assertIn("No sound push gate holds it", clause)
+        self.assertIn("no committed artifact for a gate to scan", clause)
 
 
 if __name__ == "__main__":

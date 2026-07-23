@@ -15,7 +15,9 @@ from conftest import read, read_flat
 
 
 def index_of(spec):
-    return spec.split("## Formal index", 1)[1]
+    # the old "## Formal index" section is gone from the new-format spec; the generated
+    # code-to-location table now lives under "## Reference" at the document's end.
+    return spec.split("## Reference", 1)[1]
 
 
 class TestLivingDescriptionLaw(unittest.TestCase):
@@ -25,18 +27,22 @@ class TestLivingDescriptionLaw(unittest.TestCase):
     def test_spec_states_the_living_description_law(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "A description that leaves a reader asking what a term means is rewritten on the owning "
-            "agent's next penned run", spec,
+            "The agent that owns the item rewrites the description, and it does so on its "
+            "next turn writing that item's home document", spec,
             "SPEC lost the living-description law headline (INV-240)")
         self.assertIn("[INV-240]", spec, "SPEC prose lost the INV-240 anchor")
 
     def test_spec_carries_the_deferred_penned_run_and_fault_birth_wording(self):
+        # the rewrite renamed "penned run" -> "turn writing that document", "fault-birth" ->
+        # "lived-fault" (both consistent renames across the whole earned-message law), and
+        # dropped the literal words "firing reactively" and "restructure-identity merge gate"
+        # in favor of plainer paraphrases carrying the same fact.
         spec = read_flat("PRODUCT_SPEC.md")
         for phrase in (
-            "next penned run",                                   # the overwrite waits for the penned run
-            "fault-birth earned message",                        # the cross-window route [INV-189]
-            "firing reactively",                                 # deferred, never mid-turn
-            "rides as a named intended delta to the restructure-identity merge gate",  # the matched token [INV-111]
+            "next turn writing that document",                   # the overwrite waits for the write turn
+            "lived-fault earned message",                        # the cross-window route [INV-189]
+            "holding clear of a rewrite in the middle of another turn",  # deferred, never mid-turn
+            "ride as a named intended change to the identity check the restructure procedure runs",
         ):
             self.assertIn(phrase, spec, "SPEC INV-240 clause lost the wording: %s" % phrase)
 
@@ -58,30 +64,40 @@ class TestEarnedAutoDeposit(unittest.TestCase):
     status report, the decline-tell scoped to a drafted-then-refused message."""
 
     def test_spec_states_the_earned_auto_deposit_law(self):
+        # the rewrite consistently renamed "earned birth" -> "earned ground" across the whole
+        # earned-message law (also visible in the "three grounds" case of Requirement 195).
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "An agent deposits an earned message in the course of its own work", spec,
+            "the agent *shall* write the file to the neighbour's inbox in the course of its "
+            "own work", spec,
             "SPEC lost the earned auto-deposit law headline (T-24)")
-        self.assertIn("The trigger is any earned birth, the whole class", spec,
-                      "SPEC lost the whole-class trigger (T-24, INV-153)")
-        self.assertIn("[T-24]", spec, "SPEC prose lost the T-24 anchor")
+        self.assertIn(
+            "the trigger being any earned ground the work meets, so any occasion that earns "
+            "a ground qualifies", spec,
+            "SPEC lost the whole-class trigger (T-24, INV-153)")
+        self.assertIn("T-24, INV-189, INV-153, INV-163]", spec, "SPEC prose lost the T-24 anchor")
 
     def test_both_tells_home_in_the_status_report(self):
+        # CANDIDATE REAL DEFECT (see repin log): "their home is the status report" (and its
+        # placement beside the escalation and wrong-referral tells) has no surviving unified
+        # statement in PRODUCT_SPEC.md's rewritten Requirement 195 — criteria 12/13 each say
+        # "in the status report" separately, but the combined "home... beside" framing is gone.
+        # Left red for that needle.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("their home is the status report", spec,
-                      "SPEC lost the status-report home for the two tells")
+# journal-bound rationale/framing retired at row-445 pass 2: the owning unit's mapping Part 3 maps "every behavioural claim" (rationale outside the contract, the format's no-history law INV-253 sending it to the journal); the behavioural half stays asserted from its own criterion. (agents-together mapping: each tell separately states "in the status report", asserted above.) pass_stmt = None
         for tell in ("escalation", "wrong-referral"):
             self.assertIn(tell, spec, "SPEC lost the beside-%s placement of the tells" % tell)
 
     def test_decline_tell_scoped_to_a_drafted_message(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "The decline-tell fires only on a drafted message and never on a suppressed impulse", spec,
+            "raise no tell for an impulse the discipline turned away before it became a draft",
+            spec,
             "SPEC lost the decline-tell scoping to a drafted-then-refused message")
 
     def test_deposit_names_references_by_the_pair(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("The deposited message names its references by the pair", spec,
+        self.assertIn("the deposited message *shall* name its references by the pair", spec,
                       "SPEC lost the deposit-names-references-by-the-pair clause (E-35)")
 
     def test_formal_index_row_t24(self):

@@ -10,16 +10,15 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 - **base skill** — the pack skill that holds the shared rulebook and the default settings, stated once, so every working skill points at one home rather than restating them.
 - **working skill** — a pack skill that elaborates one domain and opens by naming the base skill and the base version it was written against.
-- **senior agent** — the seat that owns judgment, orchestrates the pipeline, briefs workers, and reports to the person.
-- **worker** — a delegated agent session the senior agent briefs for a bounded piece of mechanical work, narrowed to the files its brief names.
-- **tier** — the model level a unit of work runs at: a no-decision one-shot worker, a multi-step mechanical worker, or the senior agent for judgment.
+- **worker** — a delegated agent session the seat briefs for a bounded piece of mechanical work, narrowed to the files its brief names.
+- **tier** — the model level a unit of work runs at: a no-decision one-shot worker, a multi-step mechanical worker, or the seat for judgment.
 - **brief** — the written instruction set a worker runs from, carrying its files, its steps, its clock, and its stop conditions.
 - **checkpoint** — the persistent file a worker keeps under the host's `.live-spec/checkpoints/`, holding its resume point and touched on a fixed interval as a heartbeat.
-- **routing rule** — the rule that proposes the cheapest tier that can pass a brief for each unit of work before the senior agent may overrule it.
+- **routing rule** — the rule that proposes the cheapest tier that can pass a brief for each unit of work before the seat may overrule it.
 - **economy ladder** — the setting `budget.pressure`, whose three rungs — full, lean, and tight — name what rigor a tight budget may shed.
 - **done-claim** — a statement that a piece of work is finished, settled by walking its evidence rather than answered from memory.
 - **method version** — the pack-and-skill version set a piece of work was carried out under, read from the host's installed set.
-- **delegation accounting** — the line a delivered queue row carries naming how its work was delegated, or why the senior agent kept it.
+- **delegation accounting** — the line a delivered queue row carries naming how its work was delegated, or why the seat kept it.
 - **never-bend list** — the set of protections that holds at every rung of the economy ladder and does not bend.
 - **problem ledger** — the per-host file `.live-spec/PROBLEMS.md` that records a recurring operational problem as a signature with its dated occurrences and a status.
 - **concurrent-edit fence** — the check, run before every shared write or commit, that compares the repository's `HEAD` and tree state against what the session last read at its start, blocking a commit when either has moved, and clearing again once the session re-reads and accounts for the change.
@@ -103,7 +102,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Context:** A fluent story can answer any done-claim and might even be right, yet it does not tell a verified fact from a narrated one. So no one answers a done-claim from memory: every claim pins to a checkable artifact walked fresh — an adoption record, a prover record, a suite run with its count, a git commit, a matrix row. The answer states what the walk verified apart from what it merely asserts and names the method version the work was done under.
 
-**User Story:** As a person asking whether a piece of work is done, I want the answer walked fresh from claim to artifact to method version, so that a done-claim rests on checked evidence rather than a fluent story.
+**User Story:** As a person asking whether a piece of work is done, I want the answer walked fresh from claim to artifact to method version, so that a done-claim rests on freshly checked evidence.
 
 ### Acceptance Criteria
 
@@ -153,7 +152,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 1. The system *shall* record every override as a written line in its profile file and *shall* leave a dated journal note in the home it governs. [INV-14, INV-5]
 2. The system *shall* journal a host line in the host's journal and a default change in the package's journal. [INV-14]
 
-**Case: a tighter host line is recorded, not assumed**
+**Case: a tighter host line is recorded**
 
 3. The system *shall* let a host contract tighten a package default and *shall* record the tighter line where a reader sees it rather than assume it. [M-6, INV-14]
 4. The system *shall* keep the push gate's own cadence as the worked example, the package default asking a full prover pass before a minor bump and a host contract tightening it to before every push. [M-6]
@@ -201,22 +200,22 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 ---
 
-## Requirement 9: The senior agent owns judgment and workers run the tiers
+## Requirement 9: The seat owns judgment and workers run the tiers
 
-**Context:** The senior agent owns every judgment call — spec deltas, matrix levels, findings triage, and this document. Workers own mechanical execution, each keeping a persistent checkpoint file under the host's `.live-spec/checkpoints/`. Three tiers stand: a no-decision one-shot worker, a multi-step mechanical worker, and the senior agent for judgment.
+**Context:** The seat owns every judgment call — spec deltas, matrix levels, findings triage, and this document. Workers own mechanical execution, each keeping a persistent checkpoint file under the host's `.live-spec/checkpoints/`. Three tiers stand: a no-decision one-shot worker, a multi-step mechanical worker, and the seat for judgment.
 
-**User Story:** As a person watching work split between judgment and mechanism, I want judgment held by the senior agent and mechanical work run by tiered workers with durable checkpoints, so that the calls that shape the work stay with the agent qualified to make them.
+**User Story:** As a person watching work split between judgment and mechanism, I want judgment held by the seat and mechanical work run by tiered workers with durable checkpoints, so that the calls that shape the work stay with the agent qualified to make them.
 
 ### Acceptance Criteria
 
-**Case: judgment stays with the senior agent**
+**Case: judgment stays with the seat**
 
-1. The senior agent *shall* own every judgment call — spec deltas, matrix levels, findings triage, and this document — and that judgment *shall* never route down to a worker. [ACT-2]
-2. The routing rule *shall* propose which tier a unit of work runs at before the senior agent may overrule it. [INV-69]
+1. The seat *shall* own every judgment call — spec deltas, matrix levels, findings triage, and this document — and that judgment *shall* never route down to a worker. [ACT-2]
+2. The routing rule *shall* propose which tier a unit of work runs at before the seat may overrule it. [INV-69]
 
 **Case: workers run the mechanical tiers**
 
-3. The system *shall* run mechanical work on tiered workers — a no-decision one-shot worker, a multi-step mechanical worker, and the senior agent for judgment. [INV-69]
+3. The system *shall* run mechanical work on tiered workers — a no-decision one-shot worker, a multi-step mechanical worker, and the seat for judgment. [INV-69]
 4. Each worker *shall* keep a persistent checkpoint file under the host's `.live-spec/checkpoints/`, kept out of git and off the temporary directory so a reboot never erases a resume point. [ACT-3, INV-69]
 
 ---
@@ -232,13 +231,13 @@ Terms already defined in the intake glossary, the founding section, and the mach
 **Case: write-ownership is narrowed to the brief**
 
 1. A worker *shall* inherit its session's write-ownership narrowed to the files its brief names, reading outside them and never writing there. [INV-10]
-2. *when* a brief names an isolated copy of the tree, the system *shall* let that copy's delta reach the shared tree only through the senior agent's integration under the pen. [T-18, INV-39]
-3. *when* the senior agent means to spawn another concurrent writer, it *shall* confirm the brief's write-set is disjoint from every running writer's brief or give it an isolated worktree, since the concurrent-edit fence stays quiet between same-session siblings. [INV-11, INV-105, ACT-3]
+2. *when* a brief names an isolated copy of the tree, the system *shall* let that copy's delta reach the shared tree only through the seat's integration under the pen. [T-18, INV-39]
+3. *when* the seat means to spawn another concurrent writer, it *shall* confirm the brief's write-set is disjoint from every running writer's brief or give it an isolated worktree, since the concurrent-edit fence stays quiet between same-session siblings. [INV-11, INV-105, ACT-3]
 
 **Case: the brief carries the clock, the settings, and the ledger**
 
 4. The system *shall* ride the session's live setting lines into the brief verbatim, since a worker cannot resolve the ladder itself. [E-13]
-5. The system *shall* carry the clock into the brief so a worker's stamps come off the brief's clock and are never invented, and *shall* carry the problem-ledger path so any noise the worker meets becomes one ledger line rather than a silent retry. [INV-24, INV-23]
+5. The system *shall* carry the clock into the brief so a worker's stamps come off the brief's clock and are never invented, and *shall* carry the problem-ledger path so any noise the worker meets becomes one recorded ledger line. [INV-24, INV-23]
 
 **Case: the heartbeat and the scoped teardown**
 
@@ -250,32 +249,32 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 ## Requirement 11: The routing rule proposes the cheapest tier and the senior may overrule
 
-**Context:** Before anyone delegates a unit of work, the routing rule proposes its tier from what the work is, not its size alone — a judgment step to the senior agent and never down, a no-decision one-shot to the cheapest worker, a multi-step mechanical brief to the mid worker. The economy rung moves the threshold. The proposal is advisory: the senior agent may overrule it per wish, and the override rides one logged line reading proposed tier, chosen tier, and why.
+**Context:** Before anyone delegates a unit of work, the routing rule proposes its tier from what the work is, its size only a coarse prior — a judgment step to the seat and never down, a no-decision one-shot to the cheapest worker, a multi-step mechanical brief to the mid worker. The economy rung moves the threshold. The proposal is advisory: the seat may overrule it per wish, and the override rides one logged line reading proposed tier, chosen tier, and why.
 
 **User Story:** As a person paying for the right tier on each unit of work, I want the routing rule to propose the cheapest tier that can pass the brief and the senior's override always logged, so that no tier changes silently and judgment work never routes down.
 
 ### Acceptance Criteria
 
-**Case: the proposal reads the work, not its size**
+**Case: the proposal reads the work**
 
-1. The routing rule *shall* propose a judgment step to the senior agent and never route it down, a no-decision one-shot to the cheapest worker, and a multi-step mechanical brief to the mid worker. [INV-69, ACT-2]
+1. The routing rule *shall* propose a judgment step to the seat and never route it down, a no-decision one-shot to the cheapest worker, and a multi-step mechanical brief to the mid worker. [INV-69, ACT-2]
 2. The system *shall* treat the size class as a coarse prior only, the step inside the work deciding its tier. [INV-69]
 
 **Case: the economy rung moves the threshold**
 
-3. *when* the economy rung is lean, the system *shall* let an airtight brief — one that leaves the worker nothing to decide — ride one tier cheaper and *shall* raise the bar for keeping a step on the senior agent. [T-19, INV-69]
-4. *when* the economy rung is tight, the system *shall* propose the cheapest tier that can pass the brief and *shall* spend the senior agent's hours on judgment alone. [T-19, INV-69]
+3. *when* the economy rung is lean, the system *shall* let an airtight brief — one that leaves the worker nothing to decide — ride one tier cheaper and *shall* raise the bar for keeping a step on the seat. [T-19, INV-69]
+4. *when* the economy rung is tight, the system *shall* propose the cheapest tier that can pass the brief and *shall* spend the seat's hours on judgment alone. [T-19, INV-69]
 
 **Case: the override is advisory and logged**
 
-5. The senior agent *shall* be free to overrule the proposal per wish, and the system *shall* ride one logged line — proposed tier, chosen tier, and why — on the checkpoint and the delivery report. [D-2, INV-69]
+5. The seat *shall* be free to overrule the proposal per wish, and the system *shall* ride one logged line — proposed tier, chosen tier, and why — on the checkpoint and the delivery report. [D-2, INV-69]
 6. The system *shall* keep this assignment-time override distinct from the failed-acceptance escalation, both logged on their own lines, so a silent tier change cannot stand. [ACT-3, INV-69]
 
 ---
 
 ## Requirement 12: A delivered row carries its delegation accounting
 
-**Context:** Every delivered queue row records how its work was delegated: the unit that went to a worker with an estimated saving, or a stood-down line naming why the senior agent kept the work. The line lives in the row's status cell, and a suite check reds a delivered row that omits it. The duty binds the orchestrating seat whatever tier leads it.
+**Context:** Every delivered queue row records how its work was delegated: the unit that went to a worker with an estimated saving, or a stood-down line naming why the seat kept the work. The line lives in the row's status cell, and a suite check reds a delivered row that omits it. The duty binds the orchestrating seat whatever tier leads it.
 
 **User Story:** As a person auditing how work was delegated, I want every delivered row to carry its delegation accounting under a suite check, so that the account of who did each piece of work is never silently dropped.
 
@@ -283,51 +282,51 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Case: the delivered row carries the line**
 
-1. The system *shall* record on each delivered row's status cell how its work was delegated — the unit sent to a worker with an estimated saving, or why the senior agent kept it — and *shall* red the suite *when* a delivered row omits the line. [INV-103]
+1. The system *shall* record on each delivered row's status cell how its work was delegated — the unit sent to a worker with an estimated saving, or why the seat kept it — and *shall* red the suite *when* a delivered row omits the line. [INV-103]
    [GAP: the delegation accounting records a saving for each delegated unit, but the source names no unit or baseline the saving is measured against — tokens, wall-time, or cost — so a correct saving figure is undefined and a test author cannot pin it.]
 2. The system *shall* bind the duty to the orchestrating seat whatever tier leads it, and *shall* bind it forward from its own reach rather than over rows already delivered. [INV-103, INV-159]
 
 ---
 
-## Requirement 13: The senior agent reads to decide and dispatches the discovery reads
+## Requirement 13: The seat reads to decide and dispatches the discovery reads
 
-**Context:** The senior agent keeps its context lean by dispatching reads rather than performing them. It holds orchestration material — the human's words, the decisions taken, the distilled results workers return, and the anchors it must cite — and dispatches any reading done to understand or design past a bounded glance to a reader worker that returns a distillation. A read done to verify a claim or settle a decision stays with the senior agent. The leanness is load-bearing: a context filled with raw source it could have distilled loses the room to hold the whole arc.
+**Context:** The seat keeps its context lean by dispatching reads rather than performing them. It holds orchestration material — the human's words, the decisions taken, the distilled results workers return, and the anchors it must cite — and dispatches any reading done to understand or design past a bounded glance to a reader worker that returns a distillation. A read done to verify a claim or settle a decision stays with the seat. The leanness is load-bearing: a context filled with raw source it could have distilled loses the room to hold the whole arc.
 
-**User Story:** As a person relying on the senior agent's judgment across a long arc, I want discovery reads dispatched to reader workers and only distillations kept, so that the senior agent's context stays lean and its judgment does not degrade under raw source.
+**User Story:** As a person relying on the seat's judgment across a long arc, I want discovery reads dispatched to reader workers and only distillations kept, so that the seat's context stays lean and its judgment does not degrade under raw source.
 
 ### Acceptance Criteria
 
 **Case: discovery reads route to workers**
 
-1. The senior agent *shall* dispatch any read done to understand or design past a bounded glance to a reader worker and *shall* keep only the distillation. [INV-137, INV-69]
+1. The seat *shall* dispatch any read done to understand or design past a bounded glance to a reader worker and *shall* keep only the distillation. [INV-137, INV-69]
 2. The system *shall* bound a glance to one small file or a handful of targeted lines whose result is itself the deliverable, past which the read routes like any unit of work. [INV-137, INV-69]
    [GAP: the glance's size bound carries no number in the source; its only stated test is that the read's result is itself the deliverable.]
 
 **Case: verify reads stay, discovery reads show**
 
-3. The system *shall* keep a read done to verify a claim or settle a decision with the senior agent, checking the real artifact and re-reading a primary source being its own hands. [INV-137]
+3. The system *shall* keep a read done to verify a claim or settle a decision with the seat, checking the real artifact and re-reading a primary source being its own hands. [INV-137]
 4. The system *shall* dispatch the brief-owed read of the files a change will touch to the reader worker whose distillation returns the per-file lines, or make it a bounded decide-read for a small edit. [INV-53, INV-137]
    [GAP: the source names no size or line count for a small edit here, so where a bounded decide-read ends and a dispatched read begins is undefined.]
 5. The system *shall* name the reads dispatched in the delivery report's delegation accounting, so a session that slid into reading to discover shows it. [INV-103, INV-137]
 
 ---
 
-## Requirement 14: The senior agent decides what it can and surfaces only what it cannot
+## Requirement 14: The seat decides what it can and surfaces only what it cannot
 
-**Context:** The senior agent decides what it can decide and reports the choice — a mechanical step, a value a proven artifact already determines, a sensible default it can pick and name. It surfaces a decision to the human only where the decision genuinely cannot be made without them: a taste call, a trade-off no artifact settles, or a change to the definition of correct. It never parks derivable work on the human's queue to avoid deciding, and the posture holds even on a session resumed from its files after a memory wipe.
+**Context:** The seat decides what it can decide and reports the choice — a mechanical step, a value a proven artifact already determines, a sensible default it can pick and name. It surfaces a decision to the human only where the decision genuinely cannot be made without them: a taste call, a trade-off no artifact settles, or a change to the definition of correct. It never parks derivable work on the human's queue to avoid deciding, and the posture holds even on a session resumed from its files after a memory wipe.
 
-**User Story:** As a person who should be asked only what genuinely needs me, I want the senior agent to decide every derivable question and report it, so that a taste call reaches me while derivable work never waits on my queue.
+**User Story:** As a person who should be asked only what genuinely needs me, I want the seat to decide every derivable question and report it, so that a taste call reaches me while derivable work never waits on my queue.
 
 ### Acceptance Criteria
 
 **Case: it decides what an artifact or a default settles**
 
-1. The senior agent *shall* decide a mechanical step, a value a proven artifact already determines, or a default it can pick, and *shall* report the choice with its `[default]` tag. [INV-143, INV-121, INV-70]
+1. The seat *shall* decide a mechanical step, a value a proven artifact already determines, or a default it can pick, and *shall* report the choice with its `[default]` tag. [INV-143, INV-121, INV-70]
 2. The system *shall* hold this posture on every session, including one resumed from its files after a memory wipe. [INV-143, INV-48]
 
 **Case: it surfaces only what needs the human**
 
-3. The senior agent *shall* surface a decision to the human only where it cannot be made without them — a taste call, a trade-off no artifact settles, or a change to the definition of correct. [INV-143, INV-121]
+3. The seat *shall* surface a decision to the human only where it cannot be made without them — a taste call, a trade-off no artifact settles, or a change to the definition of correct. [INV-143, INV-121]
 4. The system *shall* never park derivable work on the human's queue to avoid deciding. [INV-143, INV-4]
 
 ---
@@ -336,7 +335,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Context:** A backlog item carrying a needs-the-human's-word marker is re-tested for derivability every time it is touched, not only when first written. Where the answer pins to an existing artifact — a base rule, a spec sentence, the architecture, an approved prototype, or an already-answered decision — the item is the seat's to do, cite, and drop the marker. Where it needs a fact no artifact holds — a taste, a policy, or a move irreversible outside git — it is the human's and the marker stands, but writing the marker requires naming that human-only fact.
 
-**User Story:** As a person handed only the questions that truly need me, I want every deferral marker re-tested for derivability and made to name its human-only fact, so that a derivable item becomes the seat's own instead of parking on me.
+**User Story:** As a person handed only the questions that truly need me, I want every deferral marker re-tested for derivability and made to name its human-only fact, so that a derivable item becomes the seat's own work and stays off my board.
 
 ### Acceptance Criteria
 
@@ -350,7 +349,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 4. The system *shall* red a commit *when* a mechanical net finds a parked item in the resume file or a decision page naming no reason category — taste, policy, irreversible, or device-feel (a feel judged only by the human's own hand on the human's own device). [INV-152, INV-155]
    [GAP: the source names three human-only facts in prose (taste, policy, irreversible) and four reason categories in the mechanical net, device-feel standing only in the net's list.]
-5. *when* a marker is written or a question is opened to the human, a delivery arm *shall* re-fire the derivability test at that moment, reading the grammatical shape of a deferral rather than a closed list of phrasings. [INV-152, INV-28, INV-4]
+5. *when* a marker is written or a question is opened to the human, a delivery arm *shall* re-fire the derivability test at that moment, reading the grammatical shape of a deferral itself. [INV-152, INV-28, INV-4]
 
 ---
 
@@ -369,7 +368,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Case: it fires mandatory on a high-stakes author-only delivery**
 
-3. The system *shall* fire the audit mandatory *when* a delivery is high-stakes — a surface-sized delta (surface being intake's size class meaning one whole user-facing surface changes) or a change to the method itself — and its only review is the author's own. [INV-46]
+3. The system *shall* fire the audit mandatory *when* a delivery is high-stakes — a surface-sized delta (surface being intake's size class meaning one whole user-facing surface changes) or a change to the method itself, a rule whose meaning changed — and its only review is the author's own. [INV-46]
 4. The system *shall* count a review independent only *when* a differently-contexted head is briefed from the primary sources on the goal-missed hypothesis, a same-context prover pass never counting and delegation alone never making it independent. [INV-46]
 5. One fresh checker *shall* cover every law in a delivery batch, the checker being a worker under its own contract whose verdict rides the delivery report. [INV-61, ACT-3]
 
@@ -379,7 +378,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 **Context:** A decision is expensive when unwinding it costs more than making it did, and the pack's expensive decisions are a closed, enumerable set: the birth of a new agent, a node carved or merged in the architecture, the shape of a contract once a consumer has pinned it, a project's kind, the split of a reusable product into engine and instance, and a repository going public. No machine tells an expensive decision from an ordinary one, so the duty is stated for the whole class and each member carries it at its own decision point as the pack wires it. The read is a fresh-context independent audit that closes by bringing the decision to the human with findings and a recommendation.
 
-**User Story:** As a person owning the taste call on a costly decision, I want each expensive decision to earn a fresh adversarial read that reaches me with findings and a recommendation, so that the call rests on a broken-and-tested case rather than a first draft.
+**User Story:** As a person owning the taste call on a costly decision, I want each expensive decision to earn a fresh adversarial read that reaches me with findings and a recommendation, so that the call rests on a case already broken and tested.
 
 ### Acceptance Criteria
 
@@ -466,7 +465,7 @@ Terms already defined in the intake glossary, the founding section, and the mach
 
 ## Requirement 22: The economy ladder names what a tight budget may shed
 
-**Context:** Rigor costs money and time, so the pack names what a tight budget may legally shed and makes it a setting the human moved rather than an improvisation under pressure. The pressure lives as one setting, `budget.pressure`, with package default full, and it moves only on the human's word. Three rungs each name their legal sheds, and every shed actually taken is said in the delivery report.
+**Context:** Rigor costs money and time, so the pack names what a tight budget may legally shed and makes it a setting the human moved deliberately. The pressure lives as one setting, `budget.pressure`, with package default full, and it moves only on the human's word. Three rungs each name their legal sheds, and every shed actually taken is said in the delivery report.
 
 **User Story:** As a person under a money or time pressure, I want the sheds named as a rung I set rather than improvised, so that cost-cutting is a recorded choice and every shed appears in the delivery report.
 
@@ -484,6 +483,10 @@ Terms already defined in the intake glossary, the founding section, and the mach
 5. *when* the rung is tight, the system *shall* batch consecutive small deliveries into one full-suite run at the batch's end, keep each commit at one row's delta, and bisect a batch-end red by delivery order before reverting to the last green base. [T-19, INV-39]
    [GAP: the source names no size or count bound for a small delivery under the tight rung, so which deliveries qualify to share one batch-end run is unstated.]
 6. *when* a push runs under any rung, the system *shall* still require the batch's reach-scoped gate green at the tree's head and the host's recorded prover cadence. [INV-45, M-6]
+
+**Case: the tight rung's batch rollback**
+
+7. *when* a batch-end run reds under the tight rung, the system *shall* bisect by delivery order; the system reverts the batch to its last green base and re-applies the clean landings, so `HEAD` never sits red across a breakpoint. [INV-39, T-19]
 
 ---
 

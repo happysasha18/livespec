@@ -4,7 +4,7 @@ This file proves the rewrite dropped nothing. Part 1 maps every code the source 
 
 ## Part 1 — every cited code → its new home
 
-`Rn` names Requirement n in `section.md`. A code in several requirements is anchored in each. `D-1` lives inside a `[GAP]` line, its home marked "(GAP)". Zero codes are dropped: all 96 cited codes appear in `section.md` (verified mechanically — cited-set minus present-set is empty).
+`Rn` names Requirement n in `section.md`. A code in several requirements is anchored in each. `D-1`, `D-6`, and `D-7` are open-decision pointers that live inside `[GAP]` lines, their homes marked "(GAP)". Zero codes are dropped: all 97 cited codes appear in `section.md` (verified mechanically — cited-set minus present-set is empty). `D-6` is a row-445 repair addition — it is not a code the pilot's source range cited; it carries the pair-queues open decision (from the source's `### Open decisions` block) as a gap pointer under R20.1, its full content homed in `DECISIONS.md`.
 
 | Code | New home | Index row consumed? |
 |---|---|:--:|
@@ -107,13 +107,14 @@ This file proves the rewrite dropped nothing. Part 1 maps every code the source 
 | ACT-1 | R21 | yes |
 | ACT-3 | R4 | yes |
 | D-1 | R12 (GAP) | yes |
-| D-7 | R20 | yes |
+| D-6 | R20.1 (GAP) | yes (row-445 repair; open-decision pointer, homed in `DECISIONS.md`) |
+| D-7 | R20, R20.2 (GAP) | yes |
 
 ## Part 2 — consumed Formal-index rows
 
 The section cites 100 code tokens resolving to 96 distinct codes. Of those, **95 carry a Formal-index row** and all 95 are consumed — each row's meaning now lives at the home named in Part 1. The 5 `F-*` feature codes are declared inline in the source (`[feature: F-bootstrap]`) and have no index row; they are preserved as feature anchors on the matching requirement title. No index row consumed by the section is left without a home.
 
-Some cited codes are pure cross-references in the source (the section leans on a rule owned by another section rather than restating it): `INV-5`, `INV-31`, `E-7`, `E-23`, `INV-72`, `INV-77`, `INV-125`, `INV-126`, `INV-159`, `INV-163`, `D-1`, `D-7`. Each is preserved as a trailing anchor at the requirement that leans on it; its full behaviour stays defined in its own section, not re-converted here.
+Some cited codes are pure cross-references in the source (the section leans on a rule owned by another section rather than restating it): `INV-5`, `INV-31`, `E-7`, `E-23`, `INV-72`, `INV-77`, `INV-125`, `INV-126`, `INV-159`, `INV-163`, `D-1`, `D-6`, `D-7`. Each is preserved as a trailing anchor at the requirement that leans on it; its full behaviour stays defined in its own section, not re-converted here. The three `D-` codes are open decisions; their full content — question, recommendation, and reason — is homed in `DECISIONS.md`, and each is pointed to from the requirement it touches by a gap line carrying its code: `D-1` under R12.5 (attic layout), `D-6` under R20.1 (pair queues, stitched-versus-two), and `D-7` under R20.2 (pair specs, engine-facts-versus-contract-only).
 
 **Cross-section glossary note.** A handful of domain nouns the section uses are owned by other sections of the full document and are defined in their home glossary, not repeated here (per the reuse-by-reference rule): *feel pass*, *register lint*, *placement*, *surface registry*, *milestone*, *hooks*, *clean-writer road*, *snapshot machinery*, *dev-machine skill sync*, *economy setting*, *checkpoint discipline*. In a whole-document conversion these live once in the shared glossary; this pilot adds only the nouns this section introduces.
 
@@ -397,3 +398,13 @@ Every behavioural claim of the source section, in source order, mapped to the cr
 ### Coverage result
 
 170 behavioural claims mapped. Three source non-goal/regression blocks (pair fences, pair non-goals, update-check non-goals) are recorded as source policy statements carried in context and anchors rather than converted to `shall` criteria — they state what the system does **not** do, which the format keeps as prose. No behavioural `shall`-claim of the source is left uncovered.
+
+**Row-445 repair — the open decisions get their home.** The source-coverage audit found the source's `### Open decisions` block had no owner in the conversion. Its three still-open decisions now live in `DECISIONS.md` with their full content, and each is pointed to from the requirement it touches by a gap line carrying its code:
+
+- **D-1** (attic layout). The existing gap line under R12.5 now also names `DECISIONS.md` as the decision's home. The behavioural claim (claim 81) is unchanged.
+- **D-6** (pair queues, one stitched reading view versus strictly two). Previously dropped everywhere, it is added as a gap line under R20.1 — the criterion that already states each repo keeps its own queue — carrying today's practice (two plain queues) and pointing to `DECISIONS.md`. It converts to no `shall` criterion, since the recommendation is an open decision rather than today's enforced duty.
+- **D-7** (pair specs, engine-facts versus contract-only). Claim 145's `shall` at R20.2 stays as today's enforced practice (the instance cites the engine only by content-contract handles); a gap line added beneath it records that the underlying policy is an open decision recorded in `DECISIONS.md`, restoring the open/recommended status the source carried and the round-3 conversion had folded into a settled `shall`.
+
+### Prover MUST-FIX wave (row 445 audit, F6) — declared sharpen
+
+- **Five feature codes move from User Story brackets to their owning headings**: `F-bootstrap` (R2), `F-adoption` (R10), `F-catchup` (R13), `F-onboarding` (R19), `F-pair` (R20) rode the User Story lines' trailing brackets, against the convention that a feature code rides a scenario heading as a `[feature: F-...]` tag — and the ARCHITECTURE.md two-way feature trace (R224.2) had no tagged heading to resolve them to. Each moves to its requirement's heading; the User Story lines keep their remaining codes (B-1, A-11, INV-87, INV-86). Behaviour unchanged.

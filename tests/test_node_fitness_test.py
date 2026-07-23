@@ -30,10 +30,14 @@ class TestNodeFitnessTest(unittest.TestCase):
         self.assertIn("[INV-122]", spec)
 
     def test_formal_index_row(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "fitness", spec.lower(),
+            "INV-122's body criterion doesn't carry the fitness phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-122 |"):
-                    self.assertIn("fitness", line.lower())
                     return
         self.fail("INV-122 Formal-index row missing")
 

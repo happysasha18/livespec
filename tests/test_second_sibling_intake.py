@@ -20,7 +20,12 @@ def test_spec_states_the_second_sibling_law():
 
 def test_spec_scopes_the_stand_down():
     spec = read("PRODUCT_SPEC.md")
-    assert "stands down at the push gate" in spec
+    # the old single paragraph fused two facts ("it stands down at the push gate" [INV-141] and
+    # "at feature intake it stands down only when..." [INV-169]) into one sentence run; the
+    # requirements-format rewrite splits them into R61 (general: never blocks a landing) and R63
+    # (intake-specific: the second-sibling question). This needle re-pins to R61's own phrasing
+    # of the same "stands down at the push gate" fact.
+    assert "Its findings are recommendations or questions and never block a landing" in spec
 
 
 def test_prover_skill_asks_the_question_at_intake():

@@ -53,7 +53,10 @@ def test_law_stands_in_spec():
 
 def test_formal_index_row():
     spec = _read("PRODUCT_SPEC.md")
-    assert "| INV-221 | grading the size of a change is the reader's act" in spec
+    assert "| INV-221 |" in spec
+    # index now carries locations only (SPEC INV-271) — the prose moves onto the body
+    # requirement heading that carries INV-221 (test_law_stands_in_spec already checks it, this
+    # confirms the row itself exists).
 
 
 def test_architecture_owns_the_invariant():

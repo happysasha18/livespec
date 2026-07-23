@@ -16,10 +16,18 @@ class TestMadeWithAttributionLaw(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/publish/SKILL.md")
 
     def test_standard_line_stated_in_both_homes(self):
+        # RE-PINNED (see repin log): the literal repo URL "github.com/happysasha18/live-spec"
+        # is a one-home literal — it survives in skills/publish/SKILL.md (and ARCHITECTURE.md)
+        # unchanged, but PRODUCT_SPEC.md's rewritten Requirement 147 paraphrases it as "linking
+        # to the pack repo" (unlinked prose, same behavioural meaning: the line links to the
+        # pack repo). The spec-side check moves to that behavioural statement; the literal
+        # check stays pinned on its one surviving home.
         for home in self.HOMES:
             body = read(home)
             self.assertIn("made with live-spec", body, home)
-            self.assertIn("github.com/happysasha18/live-spec", body, home)
+        self.assertIn("linking to the pack repo", read("PRODUCT_SPEC.md"), "PRODUCT_SPEC.md")
+        self.assertIn("github.com/happysasha18/live-spec", read("skills/publish/SKILL.md"),
+                      "skills/publish/SKILL.md")
 
     def test_line_carries_the_pack_version(self):
         # his 2026-07-10 word: the line names the version — adoption becomes trackable
@@ -33,11 +41,16 @@ class TestMadeWithAttributionLaw(unittest.TestCase):
         self.assertIn("an offer, never a gate", skill)
 
     def test_declined_offer_never_reasked(self):
-        # his same-day correction: a wish, never an obligation — and answered stays answered
-        for home in self.HOMES:
-            body = read(home)
-            self.assertIn("an offer, never a gate", body, home)
-            self.assertIn("never re-asked", body, home)
+        # his same-day correction: a wish, never an obligation — and answered stays answered.
+        # PRODUCT_SPEC.md's rewritten Requirement 147 paraphrases "never re-asked" as "staying
+        # closed" (same meaning: a declined offer is settled, not revisited); the publish skill
+        # keeps the original wording unchanged.
+        spec = read("PRODUCT_SPEC.md")
+        self.assertIn("an offer, never a gate", spec, "PRODUCT_SPEC.md")
+        self.assertIn("a declined offer staying closed", spec, "PRODUCT_SPEC.md")
+        skill = read("skills/publish/SKILL.md")
+        self.assertIn("an offer, never a gate", skill, "skills/publish/SKILL.md")
+        self.assertIn("never re-asked", skill, "skills/publish/SKILL.md")
 
     def test_spec_anchor_and_index(self):
         spec = read("PRODUCT_SPEC.md")

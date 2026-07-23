@@ -15,7 +15,6 @@ This file proves the rewrite of the last four subsections of `## The build loop`
 | E-5 | R27 | yes |
 | E-6 | R5 | yes |
 | E-10 | R5 | yes |
-| E-12 | R47 | yes |
 | E-14 | R21, R27 | yes |
 | E-15 | R27, R33 | yes |
 | E-16 | R33 | yes |
@@ -127,9 +126,9 @@ The section cites 110 distinct codes, and **all 110 carry a Formal-index row** �
 
 **Codes whose Formal-index home is one of these four subsections** (`A prototype stays a sketch`, `From the spec to the tests`, `Rhythm`, `Publishing`) are the ones this rewrite fully converts: E-17, INV-17, INV-43 (prototype); E-5, E-14, E-15, E-27, E-29, INV-6, INV-41, INV-74, INV-75, INV-77, INV-78, INV-79, INV-80, INV-100, INV-102, INV-113, INV-122, INV-155, INV-157, INV-158, INV-160, INV-162, INV-218 (spec-to-tests); M-2, M-3, M-5, M-6, M-7, INV-24, INV-48, INV-61, INV-76, INV-84, INV-106, INV-107, INV-115, INV-116, INV-123, INV-145, INV-164, INV-166, INV-215, INV-221 (rhythm); E-20, INV-44, INV-96, INV-118, INV-120, INV-181, INV-245 (publishing).
 
-**Pure cross-references** — a rule owned by another section that this stretch leans on rather than restates — are preserved as trailing anchors at the requirement that leans on them; the full behaviour stays defined in the home section, not re-converted here: A-7, ACT-1, ACT-2, ACT-3, E-6, E-10, E-12, E-16, E-18, E-19, E-24, T-12, T-16, S-0, INV-1, INV-2, INV-9, INV-10, INV-11, INV-16, INV-18, INV-22, INV-23, INV-26, INV-30, INV-35, INV-36, INV-37, INV-39, INV-45, INV-46, INV-56, INV-59, INV-70, INV-82, INV-83, INV-91, INV-98, INV-109, INV-110, INV-111, INV-112, INV-114, INV-125, INV-141, INV-150, INV-154, INV-156, INV-159, INV-163, INV-173, INV-183, INV-203, INV-204, INV-220, INV-226.
+**Pure cross-references** — a rule owned by another section that this stretch leans on rather than restates — are preserved as trailing anchors at the requirement that leans on them; the full behaviour stays defined in the home section, not re-converted here: A-7, ACT-1, ACT-2, ACT-3, E-6, E-10, E-16, E-18, E-19, E-24, T-12, T-16, S-0, INV-1, INV-2, INV-9, INV-10, INV-11, INV-16, INV-18, INV-22, INV-23, INV-26, INV-30, INV-35, INV-36, INV-37, INV-39, INV-45, INV-46, INV-56, INV-59, INV-70, INV-82, INV-83, INV-91, INV-98, INV-109, INV-110, INV-111, INV-112, INV-114, INV-125, INV-141, INV-150, INV-154, INV-156, INV-159, INV-163, INV-173, INV-183, INV-203, INV-204, INV-220, INV-226.
 
-**One anchor anomaly, carried as cited.** At source line 885 the prose reads "The publish skill owns the per-kind checklist [E-12]", yet the Formal index homes the publishing-checklist fact at E-20 ("Publishing owes the artifact's kind its checklist; one home: the publish skill"), while E-12 is the base-skill entity ("shared rules + defaults, stated once"). The rewrite carries the source's own citation: R47.1 trails [E-12] as the source does, and R47.2/R47.3 and R49 carry E-20 for the publishing-contract facts. Both codes therefore appear. This looks like a source mis-anchor (E-12 for E-20), but correcting an anchor would be invention, so the cited code is preserved verbatim and the observation is recorded here rather than silently changed.
+**One anchor anomaly, corrected at assembly (ASSEMBLY-NOTES item 1).** At source line 885 the prose reads "The publish skill owns the per-kind checklist [E-12]", yet the Formal index homes the publishing-checklist fact at E-20 ("Publishing owes the artifact's kind its checklist; one home: the publish skill"), while E-12 is the base-skill entity ("shared rules + defaults, stated once"). The per-unit conversion carried the source's own citation verbatim, since correcting an anchor mid-unit would be invention. The assembly step owns the cross-unit view and settled it: R47.1 now trails [E-20] as a declared sharpen, homing the publishing-checklist fact where the Formal index homes it. E-12 is therefore no longer cited in this unit; R47.2/R47.3 and R49 already carried E-20 for the publishing-contract facts.
 
 **Cross-section glossary note.** Several domain nouns this stretch uses are owned by other sections and defined in their home glossary, not repeated here: *milestone*, *movement*, *feel pass*, *prover record*, *test matrix*, *feature-coverage trace*, *register judge*, *surface registry*, *content contract*, *design principle*, *project kind*, *proof kinds*, *grant*, *push gate*, *problem ledger*, *the three fitness questions*, *the scissors ban*, *the negation-opener rule*, *the muted-launch net*, *the catch-up walk*, *the setup walk*. In a whole-document conversion these live once in the pooled glossary; this section's `## Glossary additions` block adds only the twenty nouns this stretch introduces (prototype, prod surface, norm, norm pointer, architecture node, level ladder, real-device walk row, coverage validation, breakpoint, checkpoint, skill-creator, thin loader, shopfront, attribution line, standalone mirror, design project, publish gate, publish checklist, remote gate, work-kind).
 
@@ -194,7 +193,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 | 46 | A flake not removable in owned code is problem-ledger workshop noise, a home apart from the owned defect. | R15.3 |
 | 47 | A mechanical gate greps the test config for a retry/rerun plugin and reds; the rest is the verify walk's discipline, kin of the fresh-eyes audit. | R15.4 |
 | 48 | A flake understood but not removable in one landing is quarantined by name in the pinned skip-set with a dated reason and owning row; an open quarantine holds no landing and is milestone-audit debt. | R15.5 |
-| 49 | A check over an empty input set is not a pass; it declares its expected-non-empty input and reds by name when empty. | R16.1 |
+| 49 | A check earns its pass only over a non-empty input set; it declares its expected-non-empty input and reds by name when empty. | R16.1 |
 | 50 | A call site that may legitimately read an empty set names its reason; the default is that empty is a finding. | R16.2 |
 | 51 | The browser harness launches muted (the browser's mute flag) and reaps its whole process group on teardown. | R17.1 |
 | 52 | On launch it sweeps a stale process group and temp litter a prior run left, by its own profile marker; a young ownerless dir is left alone. | R17.2 (+ GAP: young/old age boundary) |
@@ -312,7 +311,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 | 159 | Claims batch per lane, one commit; the journal chapter and resume rewrite come once per landing batch. | R45.3 |
 | 160 | The irreducible core stays fixed regardless of scale (law text, red-first test, delta cross-link prove, gates). | R45.4 |
 
-### Publishing (T-16, E-12, E-20, INV-22, ACT-1, M-6, E-18, INV-44, INV-96, INV-181, INV-118, INV-120, INV-245)
+### Publishing (T-16, E-20, INV-22, ACT-1, M-6, E-18, INV-44, INV-96, INV-181, INV-118, INV-120, INV-245)
 
 | # | Source claim | Criterion |
 |---|---|---|
@@ -347,3 +346,15 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 ### Coverage result
 
 187 behavioural claims mapped, covering all 54 requirements. Source policy and non-goal blocks are carried as context prose rather than converted to `shall` criteria, since the format keeps a deliberate non-behaviour as prose: the F-prototype landing's "facets are N/A" and its non-goals (no pointer-grep guardrail, the norm artifact's format free) sit in the R6/R7 contexts; the F-prototype success measure ("the next prototype-born surface lands with its pointer and diff line") and the publishing success measures are stated in context, their codes ([INV-43], [INV-44]) carried on criteria; the publishing non-goals (no README-vs-diff checker, no auto-regenerated images) sit in the R49 context. History carried by the source prose — dates, named-incident narratives, and person attributions ("the owner named it", "his word", worked-incident dates) — is dropped by law 6; it lives in the journal already. Two source holes are recorded as `[GAP]` lines at R12.1 and R17.2 and detailed in `GAPS.md`. No behavioural `shall`-claim of the source is left uncovered.
+
+### Prover MUST-FIX wave (row 445 audit, F3 + F6) — declared sharpens
+
+- **F3, one name for the acting seat**: the two "senior agent" occurrences (R3's Context and R3.1, assembled R100) are swept to "the seat"; same actor, no other sense. Codes untouched.
+- **F6, `[target]` markers on a line of their own**: R5.2 and R5.4 (assembled R102.2/R102.4) carried a bare lowercase `target` token inside the trailing anchor brackets — outside the declared code alphabet, silently dropped by the index generator. Per the header convention (a `[target]` marker on a line of its own), each token is moved out of the bracket onto its own `[target]` line under its criterion. Criterion text and codes otherwise unchanged.
+- **F6, feature codes on headings**: R1's heading gains `[feature: F-prototype]` and R46's gains `[feature: F-publish]`, per the convention that a scenario heading carries the feature tag; both features were rows in ARCHITECTURE.md's coverage table with no tagged heading (the two-way trace R224.2 demands). No bracket-carried F-code existed in this unit.
+
+### Final restoration wave (re-pin sweep) — declared additions
+
+- **R19 Context + R19.3 (suite-honesty class).** Restores the nine member codes (INV-77, INV-78, INV-79, INV-80, INV-100, INV-102, INV-155, INV-157, INV-158) enumerated in the Context, and the inline forward-binding statement "The class binds forward [INV-159]"; R19.3 now co-cites INV-159 in its bracket, closing the proven inconsistency versus the sibling class INV-180. Owed by `test_forward_binding_and_infra_class`.
+- **R33.9 (M-1 loader line count).** Restores "the audit report states the line count" to the milestone gate's thin-loader item. Owed by `TestLoaderStaysThin::test_m1_names_loader_thin_item`.
+- **R42.2 (push, one question per gap).** Restores the two-gaps nuance "one question per gap" to the remote-push criterion. Owed by `TestPushToRemote`.

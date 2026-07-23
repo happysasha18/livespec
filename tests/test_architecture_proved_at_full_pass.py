@@ -10,28 +10,34 @@ file proves the spec says so.
 import os
 import unittest
 
-from conftest import ROOT, read_flat
+import re
+
+from conftest import ROOT, read, read_flat
 
 
 class TestArchitectureProvedAtFullPass(unittest.TestCase):
     def test_full_architecture_reprove_phrase(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("full architecture re-prove", spec)
+        self.assertIn("full spec and architecture re-prove", spec)
 
     def test_both_documents_named_phrase(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("PRODUCT_SPEC.md and ARCHITECTURE.md", spec)
+        self.assertIn(
+            "a fresh prover pass over the spec and the architecture", spec
+        )
 
     def test_spec_anchor(self):
-        spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-116]", spec)
+        spec = read("PRODUCT_SPEC.md")
+        self.assertRegex(spec, r"\[[^\]\n]*\bINV-116\b[^\]\n]*\]")
 
     def test_spec_anchor_and_index(self):
-        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
-            for line in f:
-                if line.startswith("| INV-116 |") and "INV-116" in line and "architecture" in line.lower():
-                    return
-        self.fail("INV-116 index row missing or does not carry both INV-116 and architecture")
+        spec = read("PRODUCT_SPEC.md")
+        self.assertIn("| INV-116 |", spec, "INV-116 has no Reference index row")
+        self.assertIn(
+            "re-prove the architecture beside it",
+            spec,
+            "INV-116's body criterion doesn't carry the architecture phrase",
+        )
 
 
 if __name__ == "__main__":

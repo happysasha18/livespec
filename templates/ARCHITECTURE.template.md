@@ -47,14 +47,14 @@ because their specs differ — the table saves a blank-page start, and the cover
 actually proves the map complete.
 
 **Two shapes the plain rows miss (learned by deriving a real project's map, 2026-07-09):**
-- **A derive-pipeline tier.** A data-heavy or ML project's "build" is not templating — it is a multi-stage
-  DERIVE: several nodes chained by intermediate data contracts (`raw → catalog.json → vector.json →
+- **A derive-pipeline tier.** A data-heavy or ML project's "build" is a multi-stage DERIVE, more than simple
+  templating: several nodes chained by intermediate data contracts (`raw → catalog.json → vector.json →
   render-data.json`), each contract with its own format owner, often with a human-overlay seam where a
   person's correction must win over the machine's guess. When the build is more than one hop from data to
   output, give each stage its own node and name the contract between them; do not collapse six derive steps
   into one "build" node.
-- **Kinds blend — static-first + a narrow edge backend.** A static site and a fullstack app are not
-  exclusive. A project can be static-first (the front is a deterministic bake on a CDN, crawlable without JS)
+- **Kinds blend — static-first + a narrow edge backend.** A static site and a fullstack app can coexist.
+  A project can be static-first (the front is a deterministic bake on a CDN, crawlable without JS)
   yet still carry ONE narrow server surface — an edge worker holding secrets, cache/state, and any verdict
   that must not be decided on the client. Name that worker its own backend node and its private-data seam
   (what the bake injects that never ships as a static asset); the kind is then "fullstack, static-first",

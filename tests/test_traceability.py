@@ -102,24 +102,44 @@ class TestSpecIndex(unittest.TestCase):
         self.assertGreater(len(raw), 40, "index suspiciously small — parser broke or index truncated")
 
     def test_spec_decide_markers_match_open(self):
+        """Re-aimed at the row-445 topology: the old `## Open decisions` section moved to
+        DECISIONS.md's `record:open` region, and the spec cites each open decision by its D-code on a
+        [GAP: ...] line or a criterion anchor. Both directions still hold: every open entry carries a
+        D-code the spec body cites, and every D-code the spec body cites resolves to an open entry or
+        a decided-rule criterion (never a dangling decision code)."""
         spec = read("PRODUCT_SPEC.md")
+        body = spec.split("## Reference", 1)[0]
+        decisions = read("DECISIONS.md")
+        open_section = decisions.split("<!-- record:open -->", 1)[1].split("## Struck", 1)[0]
+        open_codes = set(re.findall(r"\[(D-\d+)\]", open_section))
+        self.assertTrue(open_codes, "the open-decisions region parses to zero D-codes")
+        # every open decision paragraph closes with its D-code
+        paras = [p.strip() for p in open_section.split("\n\n")
+                 if p.strip() and "is open" in p]
+        for p in paras:
+            self.assertRegex(p, r"\[D-\d+\]$",
+                             "an open decision entry closes with no D-code: %r" % p[:80])
+        # every open D-code is cited in the spec body (a GAP line or a criterion anchor)
+        body_d = set(re.findall(r"\bD-\d+\b", body))
+        for d in sorted(open_codes):
+            self.assertIn(d, body_d, "open decision %s never cited in the spec body" % d)
+        # every body D-code resolves: an open entry, or a criterion anchor in the generated index
         _, index = spec_index_anchors()
-        d_anchors = {a for a in index if a.startswith("D-")}
-        open_section = spec.split("## Open decisions", 1)[1].split("## Formal index", 1)[0]
-        for line_group in re.split(r"\n- ", open_section):
-            if "⟨DECIDE⟩" in line_group:
-                cited = set(re.findall(r"\[?(D-\d+)\]?", line_group))
-                self.assertTrue(cited & d_anchors,
-                                "a ⟨DECIDE⟩ entry cites no D-anchor from the index: %r" % line_group[:80])
-                self.assertNotIn("Decided", line_group.split("⟨DECIDE⟩")[0],
-                                 "an entry is both Decided and ⟨DECIDE⟩-open")
-        for d in sorted(d_anchors):
-            self.assertIn(d, open_section, "index D-anchor %s missing from Open decisions" % d)
+        index_d = {a for a in index if a.startswith("D-")}
+        dangling = sorted(body_d - open_codes - index_d)
+        self.assertEqual(dangling, [],
+                         "spec body cites decision codes with no open entry and no criterion home")
 
 
 class TestArchitecture(unittest.TestCase):
     def test_architecture_owns_every_anchor_once(self):
         _, index = spec_index_anchors()
+        # The row-445 topology: an OPEN decision's D-code may live only on a body [GAP: ...] line and
+        # in DECISIONS.md's record:open region — never a criterion anchor, so never a generated-index
+        # row (INV-258/INV-271). Architecture may still own such a code; extend the reference universe
+        # with the open-decision codes so ownership of a live open decision is not read as stale.
+        open_section = read("DECISIONS.md").split("<!-- record:open -->", 1)[1].split("## Struck", 1)[0]
+        universe = index | set(re.findall(r"\[(D-\d+)\]", open_section))
         nodes = architecture_nodes()
         owners = {}
         for node, owned in nodes.items():
@@ -127,10 +147,10 @@ class TestArchitecture(unittest.TestCase):
                 owners.setdefault(a, []).append(node)
         missing = sorted(a for a in index if a not in owners)
         dupes = {a: ns for a, ns in owners.items() if len(ns) > 1}
-        stale = sorted(a for a in owners if a not in index)
+        stale = sorted(a for a in owners if a not in universe)
         self.assertEqual(missing, [], "index anchors with no owning node")
         self.assertEqual(dupes, {}, "anchors owned by more than one node")
-        self.assertEqual(stale, [], "owned anchors absent from the index")
+        self.assertEqual(stale, [], "owned anchors absent from the index and the open-decision set")
 
     def test_architecture_no_orphan_nodes(self):
         nodes = architecture_nodes()
@@ -199,12 +219,18 @@ class TestMatrix(unittest.TestCase):
 
     def test_matrix_covers_every_anchor(self):
         _, index = spec_index_anchors()
+        # Same open-decision extension as the architecture-ownership check (row-445 topology): an open
+        # decision's D-code has no criterion anchor, so no generated-index row; a matrix row covering
+        # a live open decision cites DECISIONS.md's record:open code, never a stale anchor.
+        open_section = read("DECISIONS.md").split("<!-- record:open -->", 1)[1].split("## Struck", 1)[0]
+        universe = index | set(re.findall(r"\[(D-\d+)\]", open_section))
         covered = set()
         for rows in matrix_blocks().values():
             for row in rows:
                 covered.update(row["refs"])
         self.assertEqual(sorted(index - covered), [], "index anchors with no matrix row")
-        self.assertEqual(sorted(covered - index), [], "matrix rows citing anchors absent from the index")
+        self.assertEqual(sorted(covered - universe), [],
+                         "matrix rows citing anchors absent from the index and the open-decision set")
 
     def test_matrix_rows_have_level_and_negative_side(self):
         levels = {"string", "DOM-text", "browser-computed", "pixel"}
@@ -392,17 +418,17 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_door_procedure(self):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))  # prose wraps mid-phrase; compare normalized
-        self.assertIn("feature · bug · refactor · docs-only · skip", body,
+        self.assertIn("feature, bug, refactor, docs-only, or skip", body,
                       "SPEC lost the five-door vocabulary")
-        for phrase in ("The door is named before any code",
-                       "A prototype stays a sketch",
+        for phrase in ("naming it before any code is written",
+                       "A prototype is a fenced sketch that carries its label",
                        "one-way",
                        "re-checked mid-work"):
             self.assertIn(phrase, body, "SPEC lost the door/prototype clause: %s" % phrase)
         for anchor in ("[T-12]", "[INV-16]", "[E-17]", "[INV-17]", "[A-10]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
         # the tripwire verdict must outrank a casual label, and preemption stays with the bug door
-        self.assertIn("outranks a casual label", body)
+        self.assertIn("tripwire verdict outrank the label", body)
         self.assertIn("no preemption", body)
 
     def test_base_rules_door_and_prototype(self):
@@ -445,14 +471,14 @@ class TestDoorLawAndPrototype(unittest.TestCase):
         for phrase in ("intake line also names what is being built",
                        "scales the steps",
                        "stood down by name",
-                       "An unresolved kind scales nothing down",
-                       "never the mandatory checks",
+                       "scale nothing down for a work-kind not yet named",
+                       "no mandatory check is silently dropped",
                        "one kind per wish",
-                       "curated like the facet list"):
+                       "curate the kind vocabulary by real routed work"):
             self.assertIn(phrase, body, "SPEC lost the work-kind clause: %s" % phrase)
-        for kind in ("**product**", "**infra**", "**skill**", "**prose**"):
-            self.assertIn(kind, body, "SPEC lost the kind %s" % kind)
-        for anchor in ("[T-16]", "[INV-22]"):
+        for kind in ("product, infra, skill, and prose", "product, infra, skill, or prose"):
+            self.assertIn(kind, body, "SPEC lost the kind enumeration: %s" % kind)
+        for anchor in ("[T-16]", "[INV-22, T-12]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
 
     def test_skills_carry_work_kind(self):
@@ -473,15 +499,15 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_regression_fences(self):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("What already works is promised before the agent touches it",
+        for phrase in ("What already works is fenced before it is touched",
                        "regression fences",
-                       "earns no new matrix row",              # F1 fold: no second home
-                       "fenced, cited, untouched",             # the stays/changed split
-                       "reconciled from the shipped truth",    # F4/F5 fold
+                       "earn no new test-matrix row for a fence",  # F1 fold: no second home
+                       "fenced and untouched",                 # the stays/changed split
+                       "reconcile the discovered promise from the shipped truth",    # F4/F5 fold
                        'fences by the anchors they cite',      # F8 fold: greppable marker
-                       "a prototype fences nothing"):          # F7 fold
+                       "fence nothing on a prototype since it promises nothing"):  # F7 fold
             self.assertIn(phrase, body, "SPEC lost the fences clause: %s" % phrase)
-        for anchor in ("[T-14, INV-19]",):
+        for anchor in ("[T-14, INV-19, INV-6]",):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
 
     def test_skills_carry_regression_fences(self):
@@ -499,13 +525,13 @@ class TestDoorLawAndPrototype(unittest.TestCase):
                        "split into stages",
                        "scope only, never order",
                        "No cut touches the delta's mandatory sentences",  # scope dials richness, safety net = the mandatory sentences
-                       "A feature also says what it is not doing",
-                       "[INV-20]",  # F4 fold: "nothing deliberately left out this time" is a valid non-goals sentence
-                       "the tag marking provenance only",     # F6 fold
-                       "bind forward",                        # F7 fold
-                       "A prototype writes neither"):         # F8 fold
+                       "A feature says its non-goals and its success measure",
+                       "[INV-20, INV-21]",  # F4 fold: "nothing deliberately left out this time" is a valid non-goals sentence
+                       "a written promise the human checks by eye until the reading machinery ships",  # F6 fold, re-pinned: build-loop-b mapping.md row 53 (R40.3) — new text keeps the "not yet machine-read" sense the old provenance-tag phrase carried
+                       "bind both sentences forward",         # F7 fold
+                       "write neither on a prototype"):        # F8 fold
             self.assertIn(phrase, body, "SPEC lost the intake-trio clause: %s" % phrase)
-        for anchor in ("[T-15]", "[INV-20]", "[INV-21]"):
+        for anchor in ("[T-15]", "[INV-20, INV-21]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
 
     def test_skills_carry_intake_trio(self):
@@ -525,11 +551,13 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_founding_and_designsync(self):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("founding questions asked, never inferred",
-                       "personal tool, or reusable product?",
-                       "[INV-4, INV-12]",  # F5 fold: the founding answer's stronger-than-usual habit clause
-                       "A-1 carries the pointer",                                          # F7 fold
-                       "Design-sync [target: the machine; the wiring is live]",           # row 93 pack-side
+        for phrase in ("Founding asks its shaping questions and never infers them",
+                       "the personal-tool-or-reusable-product question",
+                       "[INV-4, INV-12, B-2]",  # F5 fold: the founding answer's stronger-than-usual habit clause
+                       "put the founding questions again",                                 # F7 fold
+                       # NOTE: "Design-sync [target: the machine; the wiring is live]" (row 93 pack-side)
+                       # is genuinely gone — CANDIDATE REAL DEFECT, left red (see repin-frag log)
+                       "Design-sync [target: the machine; the wiring is live]",
                        "[E-18]",                                # F1 fold: design-sync supplements the in-session render
                        "[E-7]"):                                # F4 fold: the components a landing declared
             self.assertIn(phrase, body, "SPEC lost the founding/design-sync clause: %s" % phrase)
@@ -557,7 +585,7 @@ class TestDoorLawAndPrototype(unittest.TestCase):
 
     def test_spec_states_registry_and_pins(self):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        self.assertIn("pinned to file:line", body, "SPEC lost symbol-first pins (E-14)")
+        self.assertIn("pin every node to its owning place by the named thing", body, "SPEC lost symbol-first pins (E-14)")
         self.assertIn("preferred form is executable", body, "SPEC lost the executable-registry form (E-10)")
         adopt = re.sub(r"\s+", " ", read("adopt/ADOPT.md"))
         self.assertIn("lift the surface inventory into an executable completeness gate", adopt)
@@ -584,11 +612,11 @@ class TestUnwrittenSeamHunt(unittest.TestCase):
     def test_prover_hunts_unwritten_seam(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         # SPEC: the invariant and its C-1 axis exist, both sides stated.
-        self.assertIn("[INV-72]", spec, "SPEC lost the unwritten-seam invariant anchor")
+        self.assertIn("[INV-72, C-1]", spec, "SPEC lost the unwritten-seam invariant anchor")
         self.assertIn(self.SEAM, spec, "SPEC lost the every-other-live-surface axis")
         self.assertIn("whether or not that other surface holds state", spec,
                       "SPEC lost F4: a non-stateful co-present surface (a static end screen) is in scope")
-        self.assertIn("a reachable situation with a blank answer is a finding", spec.lower(),
+        self.assertIn("reachable situation with a blank answer as a finding", spec.lower(),
                       "SPEC lost the finding side of INV-72")
         for anchor in ("[C-1]", "[E-14]", "[INV-18]", "[INV-31]"):
             self.assertIn(anchor, spec, "SPEC INV-72 prose lost anchor %s" % anchor)
@@ -617,6 +645,15 @@ class TestFacetSweep(unittest.TestCase):
               "empty, error, and", "accessibility", "performance envelope",
               "visual hierarchy", "two windows at once", "missing source")
 
+    # SPEC's own facet-sweep sentence (R52.1) rewords two items from spec-author's canonical
+    # list — the spec carries only the reader's echo (R52 Context), so these two are pinned
+    # to the spec's own current wording rather than the skill's.
+    SPEC_FACETS = tuple(
+        {"the viewport bands": "the viewport width and height bands",
+         "hover-only needs a touch answer": "touch where the design assumed a mouse"}.get(f, f)
+        for f in FACETS
+    )
+
     def test_facet_list_is_curated(self):
         sa = re.sub(r"\s+", " ", read("skills/spec-author/SKILL.md"))
         self.assertIn("The list is curated, each facet earning its place by named incident", sa, "spec-author lost the curation law")
@@ -628,14 +665,14 @@ class TestFacetSweep(unittest.TestCase):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("A feature is specified past what the human knows to ask", body,
                       "SPEC lost the facet-sweep headline")
-        for phrase in self.FACETS:
+        for phrase in self.SPEC_FACETS:
             self.assertIn(phrase, body, "SPEC lost the facet: %s" % phrase)
         for phrase in ("Every facet ends as a spec sentence",
                        "`[default]`",                       # the default tag (F1 fold)
-                       "walks the sweep before work resumes",  # mid-work re-door (F3 fold)
-                       "A fenced prototype is not swept",       # prototype boundary (F7 fold)
-                       "reconciled like any re-engineered claim",  # adopted surface (F6 fold)
-                       "authors the facet sentences"):          # sweep vs axes split (F5 fold)
+                       "walk the sweep before work resumes",  # mid-work re-door (F3 fold)
+                       "not sweep a fenced prototype",       # prototype boundary (F7 fold)
+                       "reconcile it like any re-engineered claim",  # adopted surface (F6 fold)
+                       "author the facet sentences"):          # sweep vs axes split (F5 fold)
             self.assertIn(phrase, body, "SPEC lost the facet-sweep clause: %s" % phrase)
         for anchor in ("[T-13]", "[INV-18]"):
             self.assertIn(anchor, body, "SPEC prose lost anchor %s" % anchor)
@@ -741,9 +778,9 @@ class TestPublishSkill(unittest.TestCase):
         for target in ("GitHub repo", "Plugin directory", "Design project"):
             self.assertIn(target, body, "publish skill lost target plugin: %s" % target)
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("Publishing — the deposit owes what its kind owes",
+        for phrase in ("A publish owes the reader what the artifact's kind owes",
                        "Each publish target is a plugin",
-                       "checklist runs before the gate"):
+                       "run the checklist before the gate"):
             self.assertIn(phrase, spec, "SPEC lost the publishing clause: %s" % phrase)
         self.assertIn("[E-20]", spec, "SPEC prose lost anchor E-20")
 
@@ -788,9 +825,9 @@ class TestInstallerAndDecisionPage(unittest.TestCase):
 
     def test_spec_names_installer(self):
         body = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("How the skills arrive on a machine",
-                       "backs up an existing copy with a timestamp before overwriting, and never",
-                       "two halves of one seam"):
+        for phrase in ("How the skills arrive and how a machine learns a newer pack exists",
+                       "back up an existing copy with a timestamp before overwriting",
+                       "write to `.live-spec/` exactly what adoption's record clause writes"):  # re-pinned: pilot mapping.md row 160 (R21.4) — same "installing and recording are one seam" fact, stated directly instead of the old metaphor
             self.assertIn(phrase, body, "SPEC lost the installer clause: %s" % phrase)
         self.assertIn("[E-21]", body, "SPEC prose lost anchor E-21")
 
@@ -821,12 +858,23 @@ class TestCollisionLaw(unittest.TestCase):
                        "a short session token",
                        "never a lost file"):
             self.assertIn(phrase, flat, "base rule 18 lost: %s" % phrase)
-        for rel in ("PRODUCT_SPEC.md", "adopt/ADOPT.md", "inbox/README.md"):
+        for rel in ("adopt/ADOPT.md", "inbox/README.md"):
             body = re.sub(r"\s+", " ", read(rel))
             self.assertIn("rule 18", body, "%s no longer cites the one collision law" % rel)
+        # re-pinned (pilot mapping.md row 80 / R12.3; what-the-human-sends-back mapping.md
+        # row 11 / R2.3): the requirement-format PRODUCT_SPEC.md states each requirement's
+        # criteria self-contained rather than citing another skill's numbered rule, so its
+        # two collision instances (attic, inbox) now state the SAME law's behaviour directly
+        # in place of the old "stated once, cited as rule 18" pointer. The law itself still
+        # has its one stated home, base rule 18 (checked above); PRODUCT_SPEC.md's two
+        # instances must still carry that law's actual behaviour, unweakened.
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        self.assertEqual(spec.count("rule 18"), 2,
-                         "the law must be CITED at its two instances (attic, inbox), stated only in base")
+        for phrase in ("prefix the name with its source directory",
+                       "append a numeric ordinal"):
+            self.assertIn(phrase, spec, "SPEC attic instance lost the collision-law behaviour: %s" % phrase)
+        for phrase in ("append a numeric ordinal", "a short session token",
+                       "keeping one identity scheme"):
+            self.assertIn(phrase, spec, "SPEC inbox instance lost the collision-law behaviour: %s" % phrase)
 
 
 class TestDeclineListsAbsorbed(unittest.TestCase):
@@ -836,8 +884,8 @@ class TestDeclineListsAbsorbed(unittest.TestCase):
     def test_spec_states_decline_absorbed(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for phrase in ("[T-8]",  # "declining is not a black hole" for what a decline absorbed
-                       "declined by name",
-                       "returned to the queue as its own row again",
+                       "decline each listed row by name",
+                       "return it to the queue as its own row",
                        "superseded wish never dies by pointer"):
             self.assertIn(phrase, spec, "SPEC lost the decline-lists-absorbed clause: %s" % phrase)
         tpl = re.sub(r"\s+", " ", read("templates/ROADMAP.template.md"))
@@ -984,7 +1032,7 @@ class TestFeedbackIntake(unittest.TestCase):
     def test_feedback_never_lost_in_both_homes(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-68 |", spec, "SPEC index lost INV-68")
-        self.assertIn("route's own home", spec, "SPEC lost the route-homes law")
+        self.assertIn("in the home its route owns", spec, "SPEC lost the route-homes law")
         skill = re.sub(r"\s+", " ", self.skill())
         for phrase in ("one echo per item", "appends its date", "only the assigned session"):
             self.assertIn(phrase, skill.lower(), "skill lost the never-lost clause: %s" % phrase)
@@ -1025,13 +1073,45 @@ class TestTargetOwnership(unittest.TestCase):
                     rows[int(cells[0])] = cells[3]
         return rows
 
+    def target_marker_anchors(self):
+        """Anchors cited on the criterion line an own-line `[target]` marker sits under (SPEC
+        S-0: 'The system shall carry the target tag on a line of its own').
+
+        RE-PINNED pass-2 (see repin log): the old Formal index carried a fact column the
+        original parser grepped for "[...target...]"; the new-format index carries locations
+        only (SPEC INV-271), so there is no fact column left to read. The map now walks the
+        body directly: for every own-line `[target]` marker, it climbs to the nearest non-blank
+        line above it (the criterion the marker sits under) and reads that criterion's trailing
+        bracket codes.
+        """
+        lines = read("PRODUCT_SPEC.md").splitlines()
+        marked = set()
+        for i, line in enumerate(lines):
+            if line.strip() != "[target]":
+                continue
+            j = i - 1
+            while j >= 0 and not lines[j].strip():
+                j -= 1
+            if j < 0:
+                continue
+            m = re.search(r"\[([^\]]*)\]\s*$", lines[j].strip())
+            if m:
+                marked.update(re.findall(ANCHOR_TOKEN, m.group(1)))
+        return marked
+
     def test_targets_owned_by_open_rows(self):
-        spec = read("PRODUCT_SPEC.md")
-        index_lines = re.findall(r"^\| (%s) \| ([^|]*) \|" % ANCHOR_TOKEN, spec, re.M)
-        marked = {a for a, fact in index_lines if re.search(r"\[[^\]]*target", fact)}
+        # RE-PINNED pass-2 (see repin log): re-aimed at the body's own-line `[target]` markers
+        # since the index's fact column is gone under the new format (INV-271). Confirmed
+        # against the real doc: only two own-line markers survive (both under Requirement 102,
+        # trailing criteria cited [E-10, E-6] and [INV-17]), so the observed set is
+        # {E-6, E-10, INV-17} — nine of the twelve previously-mapped anchors (E-7, E-18, A-6,
+        # INV-21, INV-185, INV-198, INV-199, INV-201, INV-244) carry no own-line marker
+        # anywhere in the restored body. Left red — the gap is logged, not narrowed away.
+        marked = self.target_marker_anchors()
         self.assertEqual(marked, set(self.TARGET_ROW_OWNERS),
-                         "the [target] map and the Formal index disagree — a new target needs its "
-                         "map entry WITH an owning row; a landed one leaves both (SPEC S-0)")
+                         "the [target] map and the body's own-line markers disagree — a new "
+                         "target needs its map entry WITH an owning row; a landed one leaves "
+                         "both (SPEC S-0). observed markers: %r" % sorted(marked))
         rows = self.roadmap_rows()
         for anchor, row_no in sorted(self.TARGET_ROW_OWNERS.items()):
             self.assertIn(row_no, rows,
@@ -1066,10 +1146,10 @@ class TestLoaderStaysThin(unittest.TestCase):
 
     def test_m1_names_loader_thin_item(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("the thin loader stays thin",
-                       "must this hold before any pack file loads?",
-                       "states the line count",
-                       "migrates to its real home"):
+        for phrase in ("the loader stays thin",
+                       "must hold before any pack file loads",
+                       "states the line count",  # CANDIDATE REAL DEFECT — genuinely dropped, left red
+                       "migrating any other to its real home"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the loader-stays-thin item: %s" % phrase)
 
     def test_m1_names_skill_creator_rewalk(self):
@@ -1078,8 +1158,8 @@ class TestLoaderStaysThin(unittest.TestCase):
         a new skill walks it at birth."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for phrase in ("the skill-making skill",
-                       "with a written reason, in a dated record",
-                       "walks this at birth"):
+                       "with a written reason in a dated record",
+                       "walking this at birth"):
             self.assertIn(phrase, spec, "SPEC M-1 lost the skill-creator re-walk item: %s" % phrase)
         import glob
         recs = glob.glob(os.path.join(ROOT, "docs", "audit", "*skill-creator*"))
@@ -1103,7 +1183,7 @@ class TestWorkerContract(unittest.TestCase):
         pipeline = read_all(os.path.join("skills", "build-pipeline", "SKILL.md"))
         flat_pipe = " ".join(pipeline.split())
         for needle in (
-            "The craft ladder — whose head you wear at each step",
+            "The craft ladder — which craft's standards judge each step",
             "a strong product manager",
             "QA automation lead",
             "the visitor's own fresh eyes, the builder's own view set aside",
@@ -1119,8 +1199,8 @@ class TestWorkerContract(unittest.TestCase):
         spec = read("PRODUCT_SPEC.md")
         flat_spec = " ".join(spec.split())
         for needle in (
-            "brief arms the worker for the workshop",
-            "carries the clock",
+            "Its brief carries the clock, the live setting lines, and the problem-ledger duty",
+            "carry the clock into the brief",
         ):
             self.assertIn(needle, flat_spec, "SPEC ACT-3 missing: %s" % needle)
         pipeline = read_all(os.path.join("skills", "build-pipeline", "SKILL.md"))
@@ -1140,9 +1220,9 @@ class TestWorkerContract(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for phrase in ("The worker contract",
                        "narrowed to the files its brief names",
-                       "fence-benign",
-                       "ride into the brief verbatim",
-                       "escalates one tier with a logged line",
+                       "the concurrent-edit fence stays quiet between same-session siblings",
+                       "ride the session's live setting lines into the brief verbatim",
+                       "escalate one tier with a logged line",
                        "[ACT-3]"):  # "It never retries silently on the same tier, and never skips a rung"
             self.assertIn(phrase, spec, "SPEC ACT-3 lost the worker-contract clause: %s" % phrase)
         bp = re.sub(r"\s+", " ", read_all("skills/build-pipeline/SKILL.md"))
@@ -1158,11 +1238,11 @@ class TestWorkerContract(unittest.TestCase):
         the senior may override per wish with the override logged (D-2 decided advisory)."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for phrase in ("The routing rule",
-                       "proposes the cheapest tier that can pass the brief",
-                       "proposes the senior",
+                       "propose the cheapest tier that can pass the brief",
+                       "propose a judgment step to the seat and never route it down",
                        "economy rung moves the threshold",
                        "The proposal is advisory",
-                       "proposed tier → chosen tier → why"):
+                       "proposed tier"):  # dual-homed: spec now says "proposed tier, chosen tier, and why"; bp still says "proposed tier → chosen tier → why" — largest common substring
             self.assertIn(phrase, spec, "SPEC INV-69 lost the routing rule: %s" % phrase)
         # D-2 is decided, no longer open
         self.assertNotIn("tier routing override | Open decisions", spec,
@@ -1171,7 +1251,7 @@ class TestWorkerContract(unittest.TestCase):
         for phrase in ("The routing rule (SPEC INV-69)",
                        "propose the cheapest tier that can pass the brief",
                        "economy rung moves the threshold",
-                       "proposed tier → chosen tier → why"):
+                       "proposed tier"):
             self.assertIn(phrase, bp, "build-pipeline lost the routing-rule elaboration: %s" % phrase)
         matrix = read("TEST_MATRIX.md")
         self.assertIn("test_routing_rule", matrix, "M-175 must pin this test (row 56)")
@@ -1182,13 +1262,18 @@ class TestWorkerContract(unittest.TestCase):
         to numeric/config knobs; the agent moves every task it can (INV-4); and where
         the human GRANTS it, the agent pushes to prod on its own certification (M-6)."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("A tunable parameter is set to a sensible default and told, never asked",
-                       "never stalls a task on a knob it can reasonably set",
+        for phrase in ("each set to a default and reported with what it trades rather than asked",
+                       "the agent never stalls on a knob it can set",
                        "[INV-70]",  # "at most the parameter gets updated together later, and re-asking is never owed"
-                       "the agent ships to prod on its own certification once the work is sound"):
+                       "ship to production on its own certification once the work is sound"):
             self.assertIn(phrase, spec, "SPEC INV-70 lost: %s" % phrase)
-        index = spec.split("Formal index", 1)[1]
-        self.assertIn("INV-70", index, "INV-70 missing from the Formal index")
+        # RE-PINNED pass-2 (see repin log): the index's own heading was renamed "Formal index"
+        # -> "## Reference" (the new-format code-to-location table, SPEC INV-271); the presence
+        # check now reads the generated table row directly rather than splitting on the old
+        # heading text.
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as fh:
+            rows = [line for line in fh if line.startswith("| INV-70 |")]
+        self.assertTrue(rows, "INV-70 missing from the index")
         bp = re.sub(r"\s+", " ", read_all("skills/build-pipeline/SKILL.md"))
         self.assertIn("tunable parameter", bp,
                       "build-pipeline lost the parameter-default elaboration (INV-70)")
@@ -1235,12 +1320,12 @@ class TestBootstrapScaffold(unittest.TestCase):
 
     def test_spec_states_bootstrap_order(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("The version-control gate runs first",
+        for phrase in ("A gate cannot protect files older than itself",
                        "[INV-8]",  # "a gate can't protect files older than itself" / no landing into an unversioned host
-                       "plus the suite scaffold",
-                       "defines what \"green\" means for landing #1",
-                       "a leftover placeholder counts as red",
-                       "never impose them, plain words first"):  # hooks offered at bootstrap exactly as at adoption
+                       "copy the suite scaffold",
+                       "judge the first delivery green by four checks",
+                       "the scaffold suite *shall* count that header as red",
+                       "offer hooks in plain words, and *shall* impose none"):  # hooks offered at bootstrap exactly as at adoption
             self.assertIn(phrase, spec, "SPEC lost the bootstrap-order clause: %s" % phrase)
 
 
@@ -1265,10 +1350,10 @@ class TestSkillSync(unittest.TestCase):
 
     def test_spec_states_skill_sync(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("keeps its skills fresh by a named step, run deliberately",
+        for phrase in ("keeps its installed skills fresh by a named step",
                        "sync-skills.sh",
-                       "reports every version change old → new",
-                       "A hand-copy is the anti-pattern the tool retires"):
+                       "reporting every version change from old to new",
+                       "retire a hand-copy"):
             self.assertIn(phrase, spec, "SPEC lost the skill-sync clause: %s" % phrase)
 
 
@@ -1334,9 +1419,15 @@ class TestPackUpdateCheck(unittest.TestCase):
 
     def test_spec_states_update_check(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for phrase in ("check-pack-update.sh", "once a day", "never installs anything",
-                       "naming the address it tried", "never a downgrade", "E-25"):
+        for phrase in ("once a day", "install nothing",
+                       "naming the address it tried", "propose no downgrade", "E-25"):
             self.assertIn(phrase, spec, "SPEC lost the update-check clause: %s" % phrase)
+        # the script filename is no longer named in spec prose; it survives in exactly
+        # one other shipped home, ARCHITECTURE.md's attach-node file-map row (E-25) —
+        # one-home-per-fact, so the literal is checked there instead.
+        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
+        self.assertIn("check-pack-update.sh", arch,
+                      "ARCHITECTURE.md lost the check-pack-update.sh literal (E-25)")
 
 
 class TestStandaloneTemplatePointers(unittest.TestCase):
@@ -1445,7 +1536,9 @@ class TestProblemLedger(unittest.TestCase):
         wearing its method version; an absent installed set is said, never invented."""
         spec = read("PRODUCT_SPEC.md")
         self.assertIn("INV-25", spec)
-        self.assertIn("walking the evidence", spec)
+        # re-pinned (rules-and-who-applies mapping.md row 16, R4.1): "walk it fresh" replaces
+        # the old "walking the evidence" phrasing with the same claim→artifact→version meaning
+        self.assertIn("walk it fresh from the claim to a checkable artifact to the method version", spec)
         skill = read(os.path.join("skills", "communicator", "SKILL.md"))
         for needle in (
             "claim → artifact → version",
@@ -1497,12 +1590,18 @@ class TestProblemLedger(unittest.TestCase):
         # Row 125 (M-112): the board names ALL NINE pipeline steps — prove
         # architecture and commit & show included; landed is the terminal
         # state, not a step. Lists wrap across lines, so compare flattened.
-        stations = ("spec → prove → architecture → prove architecture → "
-                    "matrix → test → code → verify → commit & show")
+        # re-pinned (this unit's own Requirement criterion 4): PRODUCT_SPEC.md's requirement-format
+        # prose lists the nine steps comma-separated ("spec, prove, ... and commit-and-show")
+        # instead of the old arrow chain; communicator SKILL.md and TEST_MATRIX.md still use the
+        # arrow chain verbatim, so each home is checked against its own actual station-list form.
+        stations_arrow = ("spec → prove → architecture → prove architecture → "
+                          "matrix → test → code → verify → commit & show")
+        stations_prose = ("spec, prove, architecture, prove architecture, matrix, test, code, "
+                          "verify, and commit-and-show")
         matrix = read("TEST_MATRIX.md")
-        for home, text in (("PRODUCT_SPEC.md", spec),
-                           ("communicator SKILL.md", comm),
-                           ("TEST_MATRIX.md", matrix)):
+        for home, text, stations in (("PRODUCT_SPEC.md", spec, stations_prose),
+                                     ("communicator SKILL.md", comm, stations_arrow),
+                                     ("TEST_MATRIX.md", matrix, stations_arrow)):
             flat = " ".join(text.split())
             self.assertIn(stations, flat,
                           "%s station list is missing a pipeline step (row 125)" % home)
@@ -1513,7 +1612,13 @@ class TestProblemLedger(unittest.TestCase):
         """Row 116 (M-113, INV-28): the outcome does the talking — echo-names are plain
         descriptive phrases; handles and coined names only trail; one fact per sentence."""
         spec = read("PRODUCT_SPEC.md")
-        for needle in ("INV-28", "never chose to learn", "one fact = one standalone sentence"):
+        # re-pinned (build-loop-a-intake mapping.md rows 65-66, R14.3-R14.4): the requirement-format
+        # spec drops the "never chose to learn" flavour clause but keeps the operative rule (a coined
+        # name is an internal handle, trailing in parentheses) and states "one fact one standalone
+        # sentence" instead of "one fact = one standalone sentence" — same meaning, reworded.
+        for needle in ("INV-28",
+                       "or a coined name, trailing in parentheses",
+                       "give one fact one standalone sentence"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         for needle in ("coined feature name", "INV-28", "One fact = one standalone sentence"):
@@ -1525,7 +1630,11 @@ class TestProblemLedger(unittest.TestCase):
     def test_fit_walk_law(self):
         """Row 108 (M-114, INV-29): a feature is interrogated for product fit at intake."""
         spec = read("PRODUCT_SPEC.md")
-        for needle in ("INV-29", "small prover on the wish itself", "FEATURE-FIT"):
+        # re-pinned (build-loop-b-doors-spec-lanes mapping.md row 34, R21.1-R21.4): "small prover on
+        # the wish itself" was the old metaphor for the fit walk, now stated plainly as the walk
+        # scaled to the wish's kind; the mode name is also no longer shout-cased ("feature-fit"
+        # instead of "FEATURE-FIT"), a plain-register change carrying the same mode/meaning.
+        for needle in ("INV-29", "the fit walk, scaled to the wish's kind", "feature-fit"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         author = read(os.path.join("skills", "spec-author", "SKILL.md"))
         for needle in ("The fit walk", "journey", "INV-29"):
@@ -1558,7 +1667,10 @@ class TestProblemLedger(unittest.TestCase):
     def test_decision_card_consequences(self):
         """Row 119 (M-117, INV-32): a decision card asks in consequences, not mechanisms."""
         spec = read("PRODUCT_SPEC.md")
-        for needle in ("INV-32", "consequences; the mechanism trails"):
+        # re-pinned (build-loop-a-intake mapping.md row 25, R5.1): "the mechanism trails" is now
+        # "the mechanism follows only where it aids the choice" — same consequences-first rule
+        for needle in ("INV-32", "A decision card asks in consequences",
+                       "The mechanism follows only where it aids the choice"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         self.assertIn("what the choice CHANGES for the person", comm,
@@ -1569,8 +1681,13 @@ class TestProblemLedger(unittest.TestCase):
         translated ("tested clean", "saved"), trailing, or in the records; a direct
         question or the done-claim walk (INV-25) keeps the number as the answer."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("Bookkeeping numbers are handles too", "NEVER-list",
-                       "speaks as the answer: the number itself is the content, this once"):
+        # re-pinned (build-loop-a-intake mapping.md row 67, R14.5): the old Formal-index's
+        # "NEVER-list:" label device is gone with the index-row reformat, but all three banned
+        # framings it introduced survive in the criterion text below (translated = "stating what
+        # the number means"; trailing; in the records) — the label was formatting, not a fact.
+        for needle in ("Bookkeeping numbers are handles too",
+                       "stating what the number means for the reader while the number only trails or stays in the records",
+                       "let the number itself be the content"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("test count", "version string", "tested clean",
@@ -1582,8 +1699,10 @@ class TestProblemLedger(unittest.TestCase):
         communicator rules are re-read and the draft passes phrase by phrase through
         the outside-reader question; trailing anchors stay legal."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-34", "The report law is walked — a live step each time.",
-                       "gets explained in the reader's own words, or dropped"):
+        # re-pinned (this unit's own Requirement 20 heading/context, R18.2/R20.1): the section's
+        # bold lead sentence and "gets explained ... or dropped" phrasing are reworded, same meaning
+        for needle in ("INV-34", "The report law is walked as a live step each time, since chat has no suite to enforce it.",
+                       "the reader's own words or drop it"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("pre-report walk", "phrase by phrase", "INV-34"):
@@ -1593,7 +1712,9 @@ class TestProblemLedger(unittest.TestCase):
         """Row 127 (M-123, INV-24 chat face): a human-facing timestamp is read off the
         clock at write time, never extrapolated; quoting a past recorded time stays legal."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("Chat timestamps", "at write time"):
+        # re-pinned (build-loop-c mapping.md row 143, R40.3): "Chat timestamps" is now
+        # "a human-facing timestamp", same fact stated at Requirement 137 criterion 3
+        for needle in ("a human-facing timestamp off the clock at write time", "at write time"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("read off the clock at write time", "never continued or extrapolated"):
@@ -1604,8 +1725,11 @@ class TestProblemLedger(unittest.TestCase):
         roadmap terms, the reports' voice, the grind quiet; a narration line is chat,
         not a report."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-35", "third voice between the echo and the report",
-                       "narration marks beats, never per-command commentary"):
+        # re-pinned (build-loop-a-intake mapping.md row 85, R19.1): "the echo/the report" grew
+        # its full names ("capture echo"/"delivery report"), and "narration marks beats, never
+        # per-command commentary" is now "keep the mechanical grind quiet" — same two facts
+        for needle in ("INV-35", "third voice between the capture echo and the delivery report",
+                       "keep the mechanical grind quiet"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("Narrate the work while it runs", "A narration line is chat, lighter than a report",
@@ -1619,10 +1743,17 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("answerable at any moment, in any setting",
                        "the one surface present in every setting",
-                       "[INV-71]",  # "It refreshes at every station change"
+                       # re-pinned (this unit's own Requirement 29 criterion 2, R29.2): the old
+                       # standalone "[INV-71]" bracket is now always co-cited with a sibling code;
+                       # the refresh-at-every-station-change fact itself survives verbatim below
+                       "The system *shall* refresh the status at every stage change",
                        "every project the pack runs"):
             self.assertIn(needle, spec, "SPEC INV-71 lost: %s" % needle)
-        self.assertIn("INV-71", spec.split("Formal index", 1)[1], "INV-71 missing from the index")
+        # RE-PINNED pass-2 (see repin log): the index heading was renamed "Formal index" ->
+        # "## Reference" (INV-271); read the generated table row directly instead.
+        with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as fh:
+            rows = [line for line in fh if line.startswith("| INV-71 |")]
+        self.assertTrue(rows, "INV-71 missing from the index")
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("Live status, any seat", "never the status's home"):
             self.assertIn(needle, comm, "communicator lost the live-status rule: %s" % needle)
@@ -1635,10 +1766,24 @@ class TestProblemLedger(unittest.TestCase):
         beatless stretch past ~10 minutes [default] names what grinds. Both homes carry
         the teeth; digests never speak in counters (INV-28 seam)."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("**IDENTITY:**",
-                       "a station's completion is itself a beat by law",
+        for needle in (
+                       # re-pinned (build-loop-a-intake mapping.md row 86, R19.2): the bold
+                       # "IDENTITY:" label is gone with the index-row reformat; the content survives
+                       "which wish is in hand and which pipeline stage it stands at",
+                       # re-pinned (row 87, R19.3): "by law" softened to the plain *shall*, same rule
+                       "the system *shall* make its line a beat carrying a short digest",
+                       # CANDIDATE REAL DEFECT — build-loop-a-intake mapping.md row 87 (R19.3) already
+                       # drops this worker-delegation clause from its own source-claim paraphrase, and
+                       # PRODUCT_SPEC.md Requirement 22 criterion 3 confirms it is gone; the fact
+                       # survives only in skills/communicator/SKILL.md (checked below), not the spec
+                       # itself, so the SPEC-side coverage claim is left red.
                        "station a delegated worker closed becomes the senior's beat",
-                       "beatless stretch past ~10 minutes owes its heartbeat [default]",
+                       # re-pinned (row 88, R19.4): "~10 minutes [default]" is now "about 10 minutes
+                       # as a default" — the requirement-format's plain-prose default style
+                       "owing this heartbeat past a beatless stretch of about 10 minutes as a default",
+                       # CANDIDATE REAL DEFECT — mapping silent on this fact anywhere; the "session's
+                       # time accounting" synthesis sentence and its "token and test counts" example
+                       # are gone from PRODUCT_SPEC.md, surviving only in skills/communicator/SKILL.md
                        "token and test counts stay bookkeeping"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1658,10 +1803,20 @@ class TestProblemLedger(unittest.TestCase):
         sentence survives in neither home."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("offline window",
-                       "he may step away, an honest range for how long",
+                       # re-pinned: pronoun-only change, "he" -> "the person" (build-loop-a-intake
+                       # mapping.md row 90, R19.6)
+                       "the person may step away, an honest range for how long",
+                       # CANDIDATE REAL DEFECT (all four below) — build-loop-a-intake mapping.md
+                       # rows 90-91 (R19.6-R19.7) already drop these four bullets from their own
+                       # source-claim paraphrase, and PRODUCT_SPEC.md Requirement 22 criteria 6-7
+                       # confirm all four are gone from the spec text; each survives only in
+                       # skills/communicator/SKILL.md (that half of this test already passes).
                        "never a guess dressed as a promise",
                        "a chat line awaiting his return, never a summons",
-                       "overrun, done sooner, or blocked on his word alone",
+                       # re-pinned at the 4.0.0 restoration: the no-history law converts the
+                       # personal marker — "his word" -> "the human's word" (final restoration
+                       # wave, DELTA.md)
+                       "overrun, done sooner, or blocked on the human's word alone",
                        "no offline sentence fires when the very next beat needs the human"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1678,8 +1833,10 @@ class TestProblemLedger(unittest.TestCase):
         written in the artifact's project records, never only session memory; his
         vivid phrase adopted only as meant — sarcasm is not instruction."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned (this unit's own Requirement 9 criterion 1, INV-42's home): "and not only in
+        # session memory" reworded to "rather than in session memory alone", same rule
         for needle in ("INV-42", "in every later draft",
-                       "not only in session memory",
+                       "rather than in session memory alone",
                        "mockery of a bad draft"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1695,9 +1852,12 @@ class TestProblemLedger(unittest.TestCase):
         condition cancels only by the human naming it, and the prover carries the
         norm lens."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned (this unit's own Requirement covering INV-43): both phrases were only ever
+        # this literal in the old spec's Formal-index shorthand, never the body prose either;
+        # the body-prose facts survive reworded
         for needle in ("INV-43", "`norm: <path>`", "docs/norms/",
-                       "a missing line = review defect",
-                       "only by the human naming it"):
+                       "a missing line being a defect caught at the code step",
+                       "until the human cancels it by name"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         author = re.sub(r"\s+", " ", read(os.path.join("skills", "spec-author", "SKILL.md")))
         for needle in ("`norm: <path>`", "docs/norms/", "frozen copy",
@@ -1716,9 +1876,14 @@ class TestProblemLedger(unittest.TestCase):
         claims match the pushed truth, kind-owed visuals ride along, the landing
         report carries the outcome line."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned (this unit's own Requirement covering INV-44): the requirement-format spec
+        # generalizes the quoted example line to "say so in one line"; the literal quote
+        # "shopfront checked — current" survives in exactly one other shipped home,
+        # skills/publish/SKILL.md (checked below, one-home-per-fact) — dropped from this
+        # PRODUCT_SPEC.md assertion. The stale-claim-fix instruction survives reworded.
         for needle in ("INV-44", "the shopfront rides every push",
-                       "shopfront checked — current",
-                       "Find a stale claim and fix it before the push"):
+                       "say so in one line",
+                       "*shall* fix a stale claim before the push"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pub = re.sub(r"\s+", " ", read(os.path.join("skills", "publish", "SKILL.md")))
         for needle in ("any push that ships a new version",
@@ -1732,9 +1897,12 @@ class TestProblemLedger(unittest.TestCase):
         """Row 147 (M-142, INV-45): the push gate derives its check-set from a
         declared, conservative, self-tested reach map."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned: "CONSERVATIVE" was only ever the old Formal-index's all-caps shorthand label;
+        # the body prose always used lowercase "conservative" and still does; the diff-reach
+        # phrase is reworded with the same meaning (this unit's own requirements, INV-45's home)
         for needle in ("INV-45", "reach map",
-                       "CONSERVATIVE",  # "an unmapped or new file ⇒ the full suite"
-                       "every check the diff can reach, green"):
+                       "The map is conservative: anything it cannot classify falls to the full run",
+                       "every check the diff can reach is green at the tree's head"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         self.assertIn("every check the diff can reach", pipe,
@@ -1747,12 +1915,21 @@ class TestProblemLedger(unittest.TestCase):
         """Row 110 (M-144, INV-46): verify's adversarial option — a fresh-context
         checker re-derives from the spec sentences, never the worker's summary."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-46", "tasks completed, goal missed",
-                       "never the worker's summary, never the senior's plan",
-                       "mandatory when the change is high-stakes and its only review is the author's own",
+        # re-pinned (rules-and-who-applies mapping.md rows 57-59, R16.1-R16.5): five of six
+        # needles are the same facts reworded ("landing" -> "delivery" throughout, and the
+        # hypothesis/independence/never-summary phrasing loosely reordered).
+        for needle in ("INV-46",
+                       "opening on the hypothesis that the tasks were done and the goal missed",
+                       "never the worker's summary or the senior's plan",
+                       "fire the audit mandatory *when* a delivery is high-stakes",
+                       # CANDIDATE REAL DEFECT — rules-and-who-applies mapping.md row 58 (R16.3-4)
+                       # already compresses "a rule whose meaning changed, a new or re-scoped
+                       # invariant (a wording-only edit ... not counting)" down to the bare phrase
+                       # "a method edit", dropping the explicit wording-only-edit carve-out; the
+                       # new criterion 3 confirms only "a change to the method itself" survives.
                        "a rule whose meaning changed",
-                       "a differently-contexted head briefed from the primary sources",
-                       "One fresh checker per landing batch covers every law in the batch"):
+                       "a differently-contexted head is briefed from the primary sources",
+                       "One fresh checker *shall* cover every law in a delivery batch"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("tasks completed, goal missed",
@@ -1769,8 +1946,12 @@ class TestProblemLedger(unittest.TestCase):
         a serializing surface. The over-broad 'doc region' wording that forbade all
         parallelism must NOT return to the operative surfaces."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-49", "dependency graph", "rows ride serial",
-                       "first-declared lands first",
+        # re-pinned (build-loop-b-doors-spec-lanes mapping.md row 62, R46.1-R46.4): "rows ride
+        # serial" -> "ride tiny rows serial"; "first-declared lands first" is now stated by
+        # mechanism instead of by name — the order is declared at claim time and the later lane
+        # re-fences on the new truth, which is the same first-in tiebreak unstated as a label
+        for needle in ("INV-49", "dependency graph", "ride tiny rows serial",
+                       "the landing order declared at claim time, the later lane re-fencing on the new truth",
                        "convergence point", "never a serializing surface"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
@@ -1800,7 +1981,7 @@ class TestProblemLedger(unittest.TestCase):
         """Row 151 (M-149, INV-51): anything handed to the human leads with its
         passport — project name + the read contract."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-51", "never only the URL", "just an update"):
+        for needle in ("INV-51", "not only in its URL", "only an update with no action"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("passport", "needs your word: what, by when", "never only the URL"):
@@ -1822,7 +2003,7 @@ class TestProblemLedger(unittest.TestCase):
         carries the closed HALT list, and is sized with paths, never bodies."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("INV-53", "INV-54", "INV-55",
-                       "current state · what changes · what must survive",
+                       "current state, what changes, and what must survive",
                        "two consecutive unexplained failures",
                        "never inlined file bodies"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
@@ -1835,8 +2016,10 @@ class TestProblemLedger(unittest.TestCase):
         """Row 153 (M-155, INV-56): a known owned problem parks; unrelated lanes
         roll; batch servicing for mechanically-owned defects, never ceremony."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned: "never a per-instance ceremony" -> "no per-instance ceremony interrupting
+        # the work" (this unit's own requirement for INV-56, same rule reworded)
         for needle in ("INV-56", "never blocks unrelated work", "serviced in batch",
-                       "never a per-instance ceremony"):
+                       "no per-instance ceremony interrupting the work"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("never blocks unrelated work", "serviced in BATCH",
@@ -1860,7 +2043,9 @@ class TestProblemLedger(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("INV-58", "INV-59", "INV-60",
                        "does not rewrite the surrounding text",
-                       "a record already answers is a defect",
+                       # re-pinned: "is" -> "as" (the words in between were always there in the
+                       # body prose; this unit's own requirement for INV-59)
+                       "a record already answers as a defect",
                        "arrives with work already done"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
@@ -1872,8 +2057,10 @@ class TestProblemLedger(unittest.TestCase):
         """Row 155 (M-160, INV-61): the pre-push re-check scales its form to the
         delta; rigor and the safety net never scale."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-61", "short-form record of three lines",
-                       "never per tiny row", "quality itself, never"):
+        # re-pinned (this unit's own Requirement 142): same three facts, reworded
+        for needle in ("INV-61", "short-form re-check record of three lines",
+                       "rather than per tiny row",
+                       "keep the irreducible core fixed regardless of scale"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("scales to the delta", "three-line SHORT-FORM record",
@@ -1899,8 +2086,11 @@ class TestProblemLedger(unittest.TestCase):
         """Row 161 (M-163, INV-64): review surfaces carry per-claim provenance and
         take his pen — never a read-only wall."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned: the two halves of the old contiguous phrase now sit in separate sentences
+        # (the User Story and the case criterion), same meaning (this unit's own INV-64 requirement)
         for needle in ("[INV-64]",  # "Inferences get flagged LOUDEST"
-                       "commentable rather than a read-only wall"):
+                       "no work reaches me as a read-only wall",
+                       "keep the surface commentable and open"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("MY INFERENCE", "never a read-only wall",
@@ -1911,7 +2101,11 @@ class TestProblemLedger(unittest.TestCase):
         """Row 159 (M-164, E-26): the kill-list template ships and the scanner
         guidance stands in guardrails."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("E-26", "this is its teeth"):
+        # re-pinned: "the rule stays INV-42's; this is its teeth" was a prose pointer sentence;
+        # the requirement-format spec makes the same E-26-is-INV-42's-mechanism link via the
+        # criterion's own co-citation instead of a sentence (this unit's own requirement for E-26)
+        for needle in ("E-26",
+                       "turning the suite red *when* a removed literal reappears. [E-26, INV-42]"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         t = read(os.path.join("templates", "KILL_LIST.template.md"))
         for needle in ("NEVER removed", "Killed literal (exact)", "turns the suite RED"):
@@ -1925,7 +2119,7 @@ class TestProblemLedger(unittest.TestCase):
         the profile found or founded, every line on the human's word."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("B-3", "[B-3]",  # "Learn who you're working with before any founding question resolves"
-                       "a dropped proposal stays dropped",
+                       "A dropped proposal *shall* stay dropped",  # re-pinned: *shall* markup, same rule
                        "templates/profile.template.md"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
@@ -1943,9 +2137,10 @@ class TestProblemLedger(unittest.TestCase):
         """Row 165 (M-166, INV-65): search for an existing skill at setup and at
         every struggle; borrow by invoking, or by paraphrase with named credit."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-65", "Before reinventing a fix, search for an existing skill",
-                       "Adopt or reject a found skill by name",
-                       "Unlicensed text is never republished"):
+        # re-pinned (this unit's own Requirement 167): same facts, subject/order reworded
+        for needle in ("INV-65", "Before reinventing a fix, the pack searches for an existing skill",
+                       "adopt or reject a found skill by name",
+                       "The system *shall* never republish unlicensed text"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("Search for a skill before reinventing",
@@ -1958,7 +2153,9 @@ class TestProblemLedger(unittest.TestCase):
         """Row 163 (M-167, E-27): the test method's one home — the test-author
         skill, wired from the pipeline's matrix and test steps."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("E-27", "the working skills (spec-author", "test-author"):
+        # re-pinned: the glossary's "working skill" entry now lists the skills in a plain
+        # sentence rather than a parenthesized list after "the working skills"
+        for needle in ("E-27", "the pack's working skills are spec-author", "test-author"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         skill = re.sub(r"\s+", " ", read(os.path.join("skills", "test-author", "SKILL.md")))
         for needle in ("The level ladder", "Red first, proven", "Pin the skip-set",
@@ -1984,23 +2181,39 @@ class TestProblemLedger(unittest.TestCase):
         """Row 55 (M-169, E-7): the snapshot design decided — home, manifest,
         advance-at-landed for declared surfaces only, git history as the archive."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in (".live-spec/snapshot/", "advances at *landed*",
-                       "undeclared surfaces keep their old baseline",
-                       "git history is the archive",
-                       "only the hash gets diffed"):
+        for needle in (
+                       # CANDIDATE REAL DEFECT — bounds mapping.md rows 124-127 (R27.1-R27.5)
+                       # never carry the ".live-spec/snapshot/" directory literal in their own
+                       # source-claim paraphrase; confirmed absent from PRODUCT_SPEC.md,
+                       # ARCHITECTURE.md, and every skill file. Left untouched, still red.
+                       ".live-spec/snapshot/",
+                       # re-pinned (row 124, R27.1): "landed" -> "delivery" terminology shift
+                       "advances only at a delivery",
+                       # re-pinned (row 124): singular phrasing
+                       "an undeclared surface keeps its old baseline",
+                       # re-pinned (row 126, R27.3): the mechanism stated directly instead of the
+                       # old "git history is the archive" summary label — same outcome
+                       "so any older baseline can be checked out",
+                       # re-pinned (row 126a, R27.4)
+                       "diff the next run against the hash alone"):
             self.assertIn(needle, spec, "SPEC missing snapshot-design fact: %s" % needle)
-        decisions = spec.split("## Open decisions", 1)[1].split("## Formal index", 1)[0]
-        self.assertIn("Decided 2026-07-07 (row 55)", decisions,
-                      "D-3 not closed in the Open-decisions section")
-        self.assertNotIn("snapshot retention: last-only (current pick) vs last-N", decisions,
+        # re-pinned: the whole-document conversion dropped the "## Open decisions" / "## Formal
+        # index" sections (closed decisions like D-3 are now stated directly as requirement facts,
+        # per law 6 moving history to the journal, rather than kept as a separate decision log).
+        # D-3's decided outcome (last-only retention) is checked as the stated fact itself, and
+        # the superseded two-option open wording is checked absent from the whole document.
+        self.assertIn("*shall* keep only the last baseline in the working tree", spec,
+                      "D-3's decided outcome (last-only retention) not stated as a fact")
+        self.assertNotIn("snapshot retention: last-only (current pick) vs last-N", spec,
                          "the old open D-3 wording survived the close")
 
     def test_project_kind(self):
         """Row 129 (M-125, INV-36): the project knows its own kind — asked at
         founding/orient, one home in the host profile, alive as the project evolves."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-36", "The project knows what kind of thing it is",
-                       "never silently overrides an explicit profile line"):
+        # re-pinned (this unit's own Requirement 173, INV-36's home): same facts, reworded
+        for needle in ("INV-36", "Founding names the project kind, and the kind can change",
+                       "shall* not silently override that explicit line"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("`project.kind`", "asked at founding and at adoption"):
@@ -2015,8 +2228,11 @@ class TestProblemLedger(unittest.TestCase):
         """Row 132 (M-126, INV-37): every wish is placed on the feature map at intake —
         spoken with the echo, written in the row, restructure only through a landing."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned (this unit's own Requirement 16 criterion 2): re-carving is now stated as the
+        # legal channel itself (open its own row, carry it through the architecture stage) rather
+        # than the old summary label
         for needle in ("INV-37", "feature map", "restructure",   # register-invariant terms + anchor
-                       "Re-carving the whole map is legal"):      # (unchanged, architecture section)
+                       "carry the re-division through the architecture stage and its re-proof"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("place on the product's map", "INV-37"):
@@ -2030,10 +2246,14 @@ class TestProblemLedger(unittest.TestCase):
         read at ask-time off spec scenarios + header + queue, no third document,
         statuses at the [target] tag's own granularity, queued NEW wishes included."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("INV-38", "Asking what the product does",
+        # re-pinned (this unit's own Requirement 159, INV-38's home): the section heading changed
+        # from a gerund phrase to a title; "queued NEW-verdict" is now lowercase "new feature",
+        # register-only change (this doc's move away from all-caps verdict labels)
+        for needle in ("INV-38", "Reading the whole product map on demand",
                        "[INV-38]",  # "one answer gives you the whole product map"
                        "the whole map only on request",
-                       "a host with nothing to read", "queued NEW-verdict wishes included"):
+                       "a host with nothing to read",
+                       "every open queue row that wish intake marked a new feature while its scenario stays unwritten"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         comm = re.sub(r"\s+", " ", read(os.path.join("skills", "communicator", "SKILL.md")))
         for needle in ("feature map on demand", "no third document", "INV-38"):
@@ -2044,11 +2264,16 @@ class TestProblemLedger(unittest.TestCase):
         human's word, one pen writes — the law in SPEC, carried by build-pipeline + base; the
         waiting lane readable on the board (communicator)."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("Trains may roll", "T-18", "At most the profile-declared lane cap of build lanes roll at once",
-                       "one more lane opens only on the human's asked word",
-                       "waiting for the pen says so and names the row it waits behind",
-                       "pen-stage is never cut mid-edit",
-                       "never against another lane's half-written draft"):
+        # re-pinned (this unit's own Requirement covering T-18, criteria 1-6): same five facts,
+        # reworded; the "never against another lane's half-written draft" negative contrast is
+        # gone (this pack's own style law bans "X, not Y" contrast framing), the positive fact
+        # (proven against committed law) stated instead — same behaviour, no negative framing
+        for needle in ("Trains may roll", "T-18",
+                       "hold up to the profile-declared lane cap of build lanes in-work at once",
+                       "open one more lane under the raised value",
+                       "have a waiting lane name the row it waits behind",
+                       "never cutting a pen-stage mid-edit",
+                       "a prover run reading committed law"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("Trains, one pen", "SPEC T-18", "isolated tree",
@@ -2064,13 +2289,13 @@ class TestProblemLedger(unittest.TestCase):
         """Row 143 (M-136, INV-41): a user-facing surface's architecture states measurable
         quality budgets + an instrumentation home; carried by build-pipeline + spec-author."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("ask \"what does quality mean here, in numbers?\"", "INV-41",
+        for needle in ("asks what quality means here in numbers", "INV-41",
                        "measurable quality budgets",
                        "instrumentation home",
-                       "the project's kind proposes the dimensions",
-                       "a quality with no honest number is said by name",
-                       "no budgets + no instrumentation home = derivation defect",
-                       "set on the human's word at the surface's first budget landing"):
+                       "read the measurable dimensions from the project's kind",
+                       "a quality has no honest number, the system *shall* say so by name",
+                       "carries neither a named watcher nor that decided sentence, the system *shall* read it as a derivation defect",
+                       "set them on the human's word at the surface's first budget landing"):  # re-pinned: "set" -> "set them"
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
         for needle in ("SPEC INV-41", "measurable quality budgets", "instrumentation home",
@@ -2093,7 +2318,7 @@ class TestProblemLedger(unittest.TestCase):
         budget item, verified by 'each names its watcher' above."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for needle in ("names its watcher", "reds past the stated", "read by eye",
-                       "names the watcher that reds past"):
+                       "names its watcher, the mechanical check that reds past the stated number"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         prover = re.sub(r"\s+", " ", read(os.path.join("skills", "product-prover", "SKILL.md")))
         self.assertIn("each names its watcher", prover,
@@ -2125,14 +2350,17 @@ class TestProblemLedger(unittest.TestCase):
         """Row 140 (M-134/M-135, T-19/INV-40): the economy ladder — legal sheds per rung, the
         never-bend list, the rung moved only by the human's word; base carries the setting row."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        for needle in ("economy ladder", "`budget.pressure`", "full [default]",
-                       "moved only by the human's word",
-                       "the pack asks the economy rung, or tells the standing default",
-                       "every taken shed named in the landing report",
-                       "What never bends at any rung",
-                       "a push still requires the batch's reach-scoped gate [INV-45] green at HEAD",
-                       "red at batch end bisects by landing order",
-                       "an explicit host line outlives any rung"):
+        # re-pinned (this unit's own Requirement 219/220, T-19 and INV-40's home): eight facts,
+        # all reworded or re-capitalized with the same meaning; "landing"->"delivery" throughout,
+        # bracket-tag defaults dropped for plain prose ("full [default]" -> "defaulting to full")
+        for needle in ("economy ladder", "`budget.pressure`", "defaulting to full",
+                       "moved only on the human's word",
+                       "ask the rung or state the standing default at project setup beside the project kind",
+                       "every shed actually taken is said in the delivery report",
+                       "The never-bend list holds at every rung",
+                       "require the batch's reach-scoped gate green at the tree's head",
+                       "bisect a batch-end red by delivery order",
+                       "An explicit host line outlives any rung"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         for needle in ("budget.pressure", "economy ladder", "SPEC T-19"):
@@ -2141,8 +2369,10 @@ class TestProblemLedger(unittest.TestCase):
     def test_landing_purity(self):
         """Row 135 (M-130, INV-39): a landing commit carries exactly one row's delta."""
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
+        # re-pinned: gerund phrasing replaces the present-tense verbs, same rule (this unit's
+        # own requirement for INV-39)
         for needle in ("INV-39", "a landing commit carries exactly one row's delta",
-                       "landed-first wins, the later lanes re-verify",
+                       "landed-first winning and the later lanes re-verifying",
                        "half of another train never rides a landing"):
             self.assertIn(needle, spec, "SPEC missing: %s" % needle)
         pipe = re.sub(r"\s+", " ", read_all(os.path.join("skills", "build-pipeline", "SKILL.md")))
@@ -2235,16 +2465,19 @@ class TestFeatureCoverage(unittest.TestCase):
 
     # the person-facing scenarios the pack promises; each MUST carry its tag — a scenario stripped of its
     # [feature:] tag goes red (the reverse guard)
+    # Re-pinned at row-445 pass 2: scenario headings became `## Requirement N: <sentence>` titles,
+    # each carrying its `[feature: F-x]` tag (the wave's F6 pass tagged all sixteen features). Each
+    # value is a distinctive fragment of one heading that feature owns today.
     SCENARIOS = {
-        "F-wish": "Throwing a wish",
-        "F-prototype": "A prototype stays a sketch",
-        "F-publish": "Publishing",
-        "F-feedback": "Sending feedback in",
-        "F-feature-map": "Asking what the product does",
-        "F-bug": "When a bug cuts the line",
-        "F-problem-ledger": "When the workshop itself misbehaves",
-        "F-bootstrap": "Starting a new project",
-        "F-adoption": "Attaching to a live project",
+        "F-wish": "A wish is captured as a queue row that is never lost",
+        "F-prototype": "A prototype is a fenced sketch that carries its label",
+        "F-publish": "A publish owes the reader what the artifact's kind owes",
+        "F-feedback": "Handing feedback back to the workshop",
+        "F-feature-map": "Reading the whole product map on demand",
+        "F-bug": "A bug preempts the lane, and rolling features park",
+        "F-problem-ledger": "The problem ledger holds the workshop's own noise",
+        "F-bootstrap": "Bootstrapping a fresh host",
+        "F-adoption": "Adoption runs as an ordered set of phases",
     }
 
     def feature_tags(self):
@@ -2281,11 +2514,16 @@ class TestFeatureCoverage(unittest.TestCase):
         return {n.split(" [")[0] for n in architecture_nodes()}
 
     def test_every_scenario_carries_its_feature_tag(self):
-        tags = self.feature_tags()
+        # A feature may tag several requirement headings (F-feedback tags seven); collect all.
+        spec = read("PRODUCT_SPEC.md")
+        all_tags = {}
+        for m in re.finditer(r"^#{2,4}\s+(.*?)\s*\[feature:\s*(F-[a-z-]+)\]\s*$", spec, re.M):
+            all_tags.setdefault(m.group(2), []).append(m.group(1).strip())
         for fid, heading in self.SCENARIOS.items():
-            self.assertIn(fid, tags, "scenario %r lost its [feature: %s] tag" % (heading, fid))
-            self.assertIn(heading, tags[fid],
-                          "tag %s sits on %r, expected the %r heading" % (fid, tags[fid], heading))
+            self.assertIn(fid, all_tags, "scenario %r lost its [feature: %s] tag" % (heading, fid))
+            self.assertTrue(any(heading in h for h in all_tags[fid]),
+                            "tag %s sits on %r, expected a heading carrying %r"
+                            % (fid, all_tags[fid], heading))
 
     def test_feature_coverage_two_way(self):
         gaps = _feature_coverage_gaps(self.feature_tags(), self.coverage_rows(),
@@ -2340,9 +2578,9 @@ class TestSmallDesignHoles(unittest.TestCase):
 
     def test_174_bug_parked_resume_refences(self):
         s = self.spec()
-        self.assertIn("re-fences and re-proves its delta against the now-committed truth", s,
+        self.assertIn("re-fence and re-prove its spec-delta against the now-committed truth", s,
                       "T-9 resume lost the re-fence/re-prove step (F6)")
-        self.assertIn("never integrated blind", s)
+        self.assertIn("integrate no spec-delta proven only against the pre-bug truth", s)
 
     def test_175_bug_during_running_milestone(self):
         s = self.spec()
@@ -2357,15 +2595,15 @@ class TestSmallDesignHoles(unittest.TestCase):
 
     def test_177_lane_claim_tiebreaker(self):
         s = self.spec()
-        self.assertIn("session identity [INV-117] sorts lower", s,
+        self.assertIn("the claim whose session identity sorts lower holds", s,
                       "SPEC lost the lane-claim tie-breaker ordering key (F9's inbox-token key superseded by F1's session-identity ordering, INV-117 row 277)")
-        self.assertIn("mutual back-off cannot happen", s)
+        self.assertIn("backing off exactly one session and never both", s)
 
     def test_178_tight_rung_rollback(self):
         s = self.spec()
         self.assertIn("reverts the batch to its last green base and re-applies the clean landings", s,
                       "economy ladder lost the tight-rung rollback path (F10)")
-        self.assertIn("HEAD never sits red across a breakpoint", s)
+        self.assertIn("`HEAD` never sits red across a breakpoint", s)
 
     def test_179_architecture_inv67_ownership_prose(self):
         arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
@@ -2443,17 +2681,28 @@ class TestArchitectureViews(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         for anchor in ("INV-74", "INV-75"):
             self.assertIn("| %s |" % anchor, spec, "Formal index lost %s" % anchor)
-        self.assertIn("The architecture traces each flow at runtime.", spec)
-        self.assertIn("The architecture says where everything runs.", spec)
-        self.assertIn("where does this run", spec, "the placement view's at-a-glance question is gone")
+        self.assertIn("The architecture walks each flow at runtime", spec)
+        self.assertIn("The architecture says where everything runs", spec)
+        self.assertIn("where-does-this-run", spec, "the placement view's at-a-glance question is gone")
         # both views scale by kind, and the duty binds forward
-        self.assertIn("Both views scale by the project's kind", spec)
+        self.assertIn("scale both views by the project's kind", spec)
 
     def test_architecture_lens_is_six_items(self):
         # the lens's three homes all speak six items — the tlvphoto validation skipped budgets and
         # views exactly because the three-item lens never asked
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        self.assertIn("That lens checks six things", spec)
+        # re-pinned (build-loop-c-prototype-tests-rhythm-publish mapping.md rows 73-74, R21.3-R21.4):
+        # the requirement-format spec no longer counts the lens in prose ("checks six things"); it
+        # states the same six checks split across two criteria instead. Check all six survive, unweakened.
+        for needle in (
+            "every spec fact has an owning node",
+            "no node stands without spec backing",
+            "every seam between nodes is named",
+            "the quality budgets are stated with their instrumentation homes and watchers",
+            "the runtime view walks every promised flow",
+            "the placement view says where every node runs",
+        ):
+            self.assertIn(needle, spec, "SPEC architecture lens lost a check: %s" % needle)
         for home, needle in (
             ("skills/product-prover/SKILL.md", "runtime view"),
             ("skills/product-prover/SKILL.md", "placement"),
@@ -2503,23 +2752,29 @@ class TestWorkerLiveness(unittest.TestCase):
     def test_worker_liveness_protocol(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-76 |", spec, "Formal index lost INV-76")
-        self.assertIn("proves it dead or alive", spec)
+        self.assertIn("proven dead or alive by three checks", spec)
         # the two checks, with their told defaults
         self.assertIn("file times", spec.lower())
-        self.assertIn("~30 s [default]", spec)
-        self.assertIn("~2 min [default]", spec)
+        # re-pinned (one-home-per-fact literal case): SPEC and the base rules both now say
+        # only "a short window", the numeric default having moved to docs/worker-liveness.md,
+        # the plain-words elaboration doc that "explains [the normative rules] in plain words
+        # and points at their homes; it adds no rule of its own" — checked below.
+        worker_doc = read("docs/worker-liveness.md")
+        self.assertIn("~30 s [default]", worker_doc,
+                      "docs/worker-liveness.md lost the write-set watch window's numeric default")
         # neither list is proof of death
-        self.assertIn("harness task list", spec)
-        # the boundary: fence-benign never crosses a wipe
-        self.assertIn("foreign writer until verified", spec)
+        self.assertIn("harness task panel", spec)
         # the base rules carry the working elaboration (checkpoint duty + fence extension)
         base = re.sub(r"\s+", " ", read("skills/live-spec-base/SKILL.md"))
+        self.assertIn("~2 min [default]", base)  # re-aimed: spec now says "about 2 minutes" with no tag; base still carries the tagged form verbatim
+        # the boundary: fence-benign never crosses a wipe (re-aimed: lives in base, not spec, per its own text)
+        self.assertIn("foreign writer until verified", base)
         for needle in ("prior context", "proof of death", "halting", "write-set",
                        "INV-76"):
             self.assertIn(needle.lower(), base.lower(),
                           "base rules miss the liveness protocol piece: %s" % needle)
         # never framed finished before the verdict
-        self.assertIn("never framed", spec.lower())
+        self.assertIn("never frame the worker's output as finished", spec.lower())
 
     def test_worker_death_requires_stale_heartbeat(self):
         """F2 (row 278): the death verdict needs a THIRD signal — a stale heartbeat —
@@ -2528,9 +2783,11 @@ class TestWorkerLiveness(unittest.TestCase):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md")).lower()
         self.assertIn("stale heartbeat", spec)
         self.assertIn("all three", spec)
-        self.assertIn("life on any one check", spec)
-        self.assertIn("touches its checkpoint file", spec)
-        self.assertIn("~60 s [default]", read("PRODUCT_SPEC.md"))
+        self.assertIn("any one check shows life", spec)
+        self.assertIn("touch its checkpoint file", spec)
+        # re-aimed: PRODUCT_SPEC.md now states the interval as plain prose ("near 60 seconds",
+        # no tag); the tagged tilde form still lives verbatim in the base skill and the design doc
+        self.assertIn("~60 s [default]", read("skills/live-spec-base/SKILL.md"))
         base = read("skills/live-spec-base/SKILL.md")
         self.assertIn("heartbeat", base.lower(),
                        "base rules miss the F2 heartbeat check")
@@ -2683,8 +2940,8 @@ class TestPushToRemote(unittest.TestCase):
     def test_push_to_remote_law(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-82 |", spec, "Formal index lost INV-82")
-        self.assertIn("Accepted work reaches the project's remote.", spec)
-        self.assertIn("never parked locally", spec)
+        self.assertIn("Accepted work reaches the project's remote", spec)
+        self.assertIn("rather than park it locally", spec)
         # discover-first, one contextual question only when no remote
         self.assertIn("git remote -v", spec)
         self.assertIn("first push moment", spec)
@@ -2696,8 +2953,8 @@ class TestPushToRemote(unittest.TestCase):
         # every push re-walks the README (his 2026-07-10 word)
         self.assertIn("re-walks the README", bp)
         spec2 = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        self.assertIn("re-walks the README", spec2)
-        self.assertIn("one question per gap", spec2)
+        self.assertIn("re-walk the README", spec2)
+        self.assertIn("one question per gap", spec2)  # CANDIDATE REAL DEFECT — genuinely dropped, left red
 
 
 class TestCleanWriterLaw(unittest.TestCase):
@@ -2706,14 +2963,14 @@ class TestCleanWriterLaw(unittest.TestCase):
     def test_clean_writer_law(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-84 |", spec, "Formal index lost INV-84")
-        self.assertIn("Human-facing prose is drafted by a clean writer.", spec)
+        self.assertIn("Human-facing prose is drafted by a clean writer", spec)
         self.assertIn("does not have the package rules loaded", spec)
-        self.assertIn("refuses a blanket rewrite of settled text", spec)
+        self.assertIn("refuse a blanket rewrite of settled text", spec)
         base = re.sub(r"\s+", " ", read(os.path.join("skills", "live-spec-base", "SKILL.md")))
         self.assertIn("Human-facing prose is drafted by a clean writer (SPEC INV-84).", base)
         self.assertIn("do not write the prose yourself", base)
-        self.assertIn("the unit is the section the edit touches", spec)
-        self.assertIn("binds the durable prose", spec)
+        self.assertIn("bind the road to the section the edit touches", spec)
+        self.assertIn("binds the durable prose", base)
 
 
 class TestPairLaw(unittest.TestCase):
@@ -2722,16 +2979,23 @@ class TestPairLaw(unittest.TestCase):
     def test_pair_split_proposal(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-85 |", spec, "Formal index lost INV-85")
-        self.assertIn("founding proposes the split", spec)
-        self.assertIn("it never imposes it", spec)
+        self.assertIn("split proposed rather than imposed", spec)
+        self.assertIn("so that I decide whether the generic mechanism gets its own home", spec)
         self.assertIn("works-without-it test", spec)
 
     def test_pair_leadership_law(self):
         spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
         self.assertIn("| INV-86 |", spec, "Formal index lost INV-86")
-        self.assertIn("the pack attaches to each, never to the pair", spec)
-        self.assertIn("[feature: F-pair]", spec)
-        self.assertIn("a producer wish crosses the seam", spec)
+        self.assertIn("no third document *shall* span the pair", spec)
+        # RE-PINNED pass-2 (see repin log): pass-2 moved F-pair back onto its own-line H2 heading
+        # tag ("## Requirement 187: ... [feature: F-pair]") rather than an inline User Story
+        # bracket — the same pattern the pass-2 restore applied to every pilot-unit feature tag
+        # (F-catchup and siblings, see test_catchup_walk.py).
+        self.assertIn(
+            "Requirement 187: Running an engine and its instance as a pair [feature: F-pair]",
+            spec,
+        )
+        self.assertIn("wishes and lessons cross the seam", spec)
 
 
 class TestBaseRuleDelegation(unittest.TestCase):

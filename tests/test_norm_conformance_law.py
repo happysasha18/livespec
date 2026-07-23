@@ -27,7 +27,7 @@ class TestNormConformanceLaw(unittest.TestCase):
 
     def test_never_side_names_the_bounce(self):
         body = read("skills/test-author/SKILL.md")
-        self.assertIn("never a render inventing its own structure shipped green", body)
+        self.assertIn("a render that invents its own structure never ships green", body)
 
     def test_both_halves_cited_together(self):
         body = read("skills/test-author/SKILL.md")

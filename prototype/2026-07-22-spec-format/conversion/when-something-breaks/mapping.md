@@ -43,7 +43,7 @@ The section cites 24 distinct codes, and **all 24 carry a Formal-index row** —
 
 **Pure cross-references** — a rule owned by another section that this section leans on rather than restates — are preserved as trailing anchors at the requirement that leans on them; the full behaviour stays defined in the home section: T-11, T-18, INV-39, INV-15, INV-4, INV-26, INV-155, E-8, INV-9, E-22, E-11, INV-10, ACT-3, INV-11, M-1, B-2, B-3, INV-62.
 
-**Cross-section glossary note.** A handful of domain nouns this section uses are owned by other sections and are defined in their home glossary, not repeated here: *bug*, *feature*, *wish*, *lane*, *checkpoint*, *station*, *node*, *feature door*, *bug lane*, *kill-list*, *the fence*, *the prover*, *worker*, *the batched report*, *compaction*, *milestone audit*, *delta*, *feature map*. In a whole-document conversion these live once in the shared glossary; this unit's `## Glossary additions` block adds only the nouns it introduces (problem ledger, signature, workshop noise, class hunt).
+**Cross-section glossary note.** A handful of domain nouns this section uses are owned by other sections and are defined in their home glossary, not repeated here: *bug*, *feature*, *wish*, *lane*, *checkpoint*, *station*, *node*, *feature door*, *bug lane*, *kill-list*, *the fence*, *the prover*, *worker*, *the batched report*, *compaction*, *milestone audit*, *spec-delta*, *feature map*. In a whole-document conversion these live once in the shared glossary; this unit's `## Glossary additions` block adds only the nouns it introduces (problem ledger, signature, workshop noise, class hunt).
 
 ## Part 3 — atomic-claim coverage
 
@@ -61,7 +61,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 | 6 | Waiting bugs order critical-first; equal priority by arrival. | R1.3 (+ GAP: bug-priority judge) |
 | 7 | Once no bug waits, parked features resume ahead of the whole queue; a bubble jumps only fresh queued wishes, never a resume, a quick win included. | R1.4 |
 | 8 | At most one feature parked per lane; more than one rolling lane parks them all, each at its own checkpoint, resuming in landing order. | R1.5 |
-| 9 | On resume, before integrating, the feature re-fences and re-proves its delta against the now-committed truth, since the fix may have moved the law; a delta proven only against the pre-bug truth is re-verified on the new tree, never integrated blind. | R1.6, R1.7 |
+| 9 | On resume, before integrating, the feature re-fences and re-proves its spec-delta against the now-committed truth, since the fix may have moved the law; a spec-delta proven only against the pre-bug truth is re-verified on the new tree, never integrated blind. | R1.6, R1.7 |
 | 10 | Postcondition: the fix landed; every parked feature back in work or landed in original order, each re-fenced and re-proven; no red work committed. | R1.7 |
 
 ### The class hunt (INV-124, INV-56, INV-15, INV-4, INV-26)
@@ -124,7 +124,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 | 39 | The ledger carries no visible surface, so its facets do not apply. | R7.5 |
 | 40 | Non-goal: no mechanical guard yet; the candidate (a pre-push check that no entry crosses a milestone unowned) earns its row after real usage. | R7.6 |
 | 41–42 | Non-goal: no automated signature matching; this landing opens the pack's own ledger while a foreign host opens its own from its own window. | R7.7 |
-| 43 | Success measure: the next operational hiccup lands as a ledger line rather than a silent retry, checked at the milestone audit. | R7.8 |
+| 43 | Success measure: the next operational hiccup lands as a recorded ledger line, checked at the milestone audit. | R7.8 |
 
 ### Reuse before reinventing (INV-65, B-2, B-3, INV-23, INV-62)
 
@@ -138,3 +138,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 ### Coverage result
 
 Forty-seven source claims mapped, covering all 8 requirements. One source hole is recorded as a `[GAP]` line at R1.3 (the judge or measure for a bug's critical priority) and detailed in `GAPS.md`. The section's non-goal and scope statements — what this landing deliberately does not add (a mechanical guard, automated signature matching, foreign-host ledgers) — are carried as policy criteria at R7.6 and R7.7, and the ledger's no-visible-surface facet at R7.5. No behavioural `shall`-claim of the source is left uncovered.
+
+### Prover MUST-FIX wave (row 445 audit, F1) — declared sharpen
+
+- **R1.3 (assembled R160.3)**: the `[GAP]` line beneath it claimed a bug's critical priority is undecidable, while the intake section's classification criterion (assembled R9.4, [INV-12]) states the three critical conditions in full. The audit named it the one false GAP of 42 (finding F1). The GAP line is deleted and the criterion sharpened to carry the pointer: waiting bugs order critical-first, a bug being critical *when* the shipped product is broken for its user — the same three conditions the priority mark carries [INV-12]. The criterion's anchor set gains INV-12 beside T-9. The coverage-result line counting "one source hole ... at R1.3" is superseded by this note: that GAP is retired as false, and the unit now carries zero GAP lines of its own.

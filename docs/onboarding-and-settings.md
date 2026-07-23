@@ -92,7 +92,7 @@ the harness deliberately blocks the agent from editing its own configuration. Re
 changes nothing.
 
 - `scripts/clock-hook.sh` injects the machine's wall clock into every prompt's context, so the
-  reply's leading time stamp reads off the clock instead of being continued by hand. [INV-24]
+  reply's leading time stamp reads off the clock, no longer continued by hand. [INV-24]
 - `scripts/chat-law-hook.sh` reminds every window of the chat laws: plain product words do the
   talking, internal codes only trail in parentheses, and long silence owes a narration line. The
   skills stay the laws' normative homes; the hook only reminds. [INV-28, INV-35]

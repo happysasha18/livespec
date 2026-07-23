@@ -18,7 +18,8 @@ class TestRedoorIndependenceRebuild(unittest.TestCase):
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "A mid-work re-door rebuilds the parallel-lanes independence graph",
+            "A mid-work re-door that creates a surface or state re-runs the independence "
+            "edges between the parallel lanes",
             spec,
         )
         self.assertIn("[INV-131]", spec)
@@ -26,8 +27,8 @@ class TestRedoorIndependenceRebuild(unittest.TestCase):
     def test_spec_states_the_rebuild_and_the_board_line(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "re-runs the independence edges [INV-49] against every rolling lane",
-            "a new edge pulls the re-doored lane back to serial",
+            "re-run the independence edges against every rolling lane",
+            "the system *shall* pull the re-doored lane back to serial",
             "the departures board never asserts a stale independence",
         ):
             self.assertIn(needle, spec, needle)
@@ -36,9 +37,12 @@ class TestRedoorIndependenceRebuild(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-131 |"):
-                    self.assertIn("independence", line.lower())
-                    return
-        self.fail("INV-131 Formal-index row missing")
+                    break
+            else:
+                self.fail("INV-131 Formal-index row missing")
+        # the index row is location-only (SPEC INV-271); "independence" prose lives on the body
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("the re-door rebuilds the independence graph".lower(), spec.lower())
 
     def test_build_pipeline_carries_the_rebuild(self):
         bp = read_flat("skills/build-pipeline/SKILL.md")

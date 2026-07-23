@@ -200,7 +200,8 @@ def test_spec_states_the_law():
 
 def test_formal_index_row():
     spec = _read(os.path.join(ROOT, "PRODUCT_SPEC.md"))
-    assert "| INV-220 | the answer-first arm:" in spec
+    assert "| INV-220 |" in spec
+    assert "The answer-first arm reds a lead-less wall" in spec
 
 
 def test_architecture_owns_the_invariant():

@@ -90,8 +90,8 @@ jobs:
         run: guardrails/check-ci-mirror.sh
       - name: gate w — every gate can fail (every gate in this chain carries a known-red proof, SPEC INV-212)
         run: python3 guardrails/check-every-gate-can-fail.py
-      - name: gate x — index prose (every Formal-index code is carried in its home prose; an empty input set reds by name, SPEC INV-218)
-        run: python3 guardrails/check-index-prose.py
+      - name: gate x — generated index (committed index equals a fresh build off the body; body and index agree; an empty body reds by name, SPEC INV-258/INV-259/INV-218)
+        run: python3 guardrails/check-index-generated.py PRODUCT_SPEC.md PRODUCT_SPEC.index.md
       - name: gate y — agent card (a live-spec host tree carries its .live-spec/agent.md card, SPEC INV-219)
         run: python3 guardrails/check-agent-card.py
       - name: gate z — doc bound (each growable working doc within its declared bound or freshly rotated, SPEC INV-234)

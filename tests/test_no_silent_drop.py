@@ -26,12 +26,12 @@ class TestNoSilentDropLaw(unittest.TestCase):
     def test_removal_rule_in_both_full_homes(self):
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn("lists every removal in its landing report", body, home)
+            self.assertIn("every removal in the delivery report", body, home)
             self.assertIn("one line of judgment each", body, home)
             self.assertIn(
-                "A removal the rewriter cannot justify becomes a question", body, home
+                "removal the rewriter cannot justify", body, home
             )
-            self.assertIn("Never a silent cut of substance", body, home)
+            self.assertIn("cut substance silently", body, home)
 
     def test_build_pipeline_points_at_the_one_home(self):
         bp = read_flat("skills/build-pipeline/SKILL.md")
@@ -47,10 +47,12 @@ class TestNoSilentDropLaw(unittest.TestCase):
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-109]", spec)
+        # The generated index carries locations only (SPEC INV-271); the code's prose home is its
+        # body criterion, asserted above. Here the index must map the code to at least one location.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-109 |"):
-                    self.assertIn("removal", line)
+                    self.assertRegex(line, r"R\d+\.\d+")
                     return
         self.fail("INV-109 index row missing")
 

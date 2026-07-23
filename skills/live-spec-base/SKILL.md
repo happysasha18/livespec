@@ -1,17 +1,17 @@
 ---
 name: live-spec-base
-description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-four rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
+description: The live-spec pack's shared rulebook and default settings, stated ONCE — the rules every pack skill works by (ask-never-guess, plain words with trailing anchors, one name per surface, one home per fact, checkpoint discipline, the concurrent-edit fence, freshness checks, and more — thirty-four rules in the body) plus the settings ladder of four nested scopes (package defaults → personal profile → host profile → the session's live word). Load it whenever a pack skill (spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, text-audit, publish) is in use, when resolving how the pack should behave for a given human or host (language, proactivity, prover cadence), or when two skills seem to state one rule differently — this file is the normative home; the working skills only reference and elaborate. NOT for sessions outside the pack's work, and never a place to write host- or person-specific values (those live in profiles).
 metadata:
-  version: 3.6.0
+  version: 4.0.0
 ---
 
-# live-spec-base — one rulebook, nine working skills
+# live-spec-base — one rulebook, ten working skills
 
 The pack's shared working rules live HERE, once. A working skill (spec-author, product-prover,
-design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, publish) opens by naming this base and the version it was written against, references
+design-reviewer, build-pipeline, test-author, communicator, feedback-intake, feedback-collector, text-audit, publish) opens by naming this base and the version it was written against, references
 these rules, and elaborates only its own domain — communicator teaches HOW to speak plainly; THAT we speak
 plainly is this file's sentence. A second full statement of a shared rule inside a working skill is drift —
-a defect to fold at the next milestone rather than a convenience (SPEC INV-13). Used standalone, outside the pack,
+a defect to fold at the next milestone (SPEC INV-13). The pack does not keep such a duplicate for convenience. Used standalone, outside the pack,
 a working skill still stands: its pointer here reads as plain advice.
 
 ## The rule of thinking, above all the rest
@@ -22,18 +22,18 @@ class, state the rule for it, find the other live instances, and the instance th
 repaired as a free consequence. A change that repairs only the instance has answered nothing, because
 the next instance is already on its way.
 
-The rule stands on the DOOR rather than on any one source, and there are three doors: a person's
+The rule holds at every DOOR an item comes through, and there are three doors: a person's
 feedback, a finding the agent makes itself, and a message from another agent. The three are one filter.
 
-This is a rule of thinking rather than a procedure, so it governs every rule below it. Rule 27 (fix the
+This is a rule of thinking, and it governs every rule below it. Rule 27 (fix the
 class, sweep the look-alikes) is this rule's arm inside a code change, and it was written first because
 the class-shaped answer was noticed there first — the thinking is what generalizes it to everything.
 
-Its own worked failure, and the sharpest one available: the guard holding this pack's register laws was
+Its own worked failure: the guard holding this pack's register laws was
 built as a list of literal patterns, one per phrase someone once caught. A law naming a class is held by
 a judge that reads meaning, and a list of literals holds nothing — so the guard built to enforce the
-rules stood as a monument to breaking this one, and each escape earned one more pattern while the next
-phrase walked through untouched (proven by probe, 2026-07-17; the repair is ROADMAP row 416). If the
+rules was itself the clearest breach of this one, and each caught escape only added one more pattern while the next
+new phrasing passed through untouched (proven by probe, 2026-07-17; the repair is ROADMAP row 416). If the
 answer to a class is a list, the design is wrong.
 
 ## The shared rules
@@ -72,14 +72,14 @@ answer to a class is a list, the design is wrong.
    haiku, multi-step mechanical work to sonnet, anything carrying judgment or design to the senior, and a
    judgment step is never routed down. Size is a weak hint only, never the decider. The worker pastes RAW
    output (command + exit code + failing lines) as it works; raw output is evidence, the worker's prose is
-   only a lead, and a worker's green is a lead the lead ACCEPTS by re-checking it, taken on trust never. A
+   only a lead, and a worker's green is a lead the lead ACCEPTS by re-checking it; the lead never takes it on trust. A
    large or high-stakes landing earns an independent fresh-context checker beyond that re-check (SPEC
    INV-46). Every override of a proposed tier and every failed-acceptance escalation is logged, proposed
    tier → chosen tier → why (SPEC INV-69).
 
 6. **Every long or delegated piece of work keeps a persistent checkpoint.** A file on disk (host home:
    `.live-spec/checkpoints/`, gitignored and kept inside the repo tree) holding done / in-progress / next,
-   updated AS the work runs — so a cut-off RESUMES from disk instead of restarting. A landing that ships a checkpoint's items flips that checkpoint to its closed state in the same landing, so a returning session never reopens finished work. A checkpoint whose items all live in git history is stale by definition and reads as a resume defect (SPEC INV-107). Red at a pause is never
+   updated AS the work runs — so a cut-off RESUMES from disk, carrying its progress across the break. A landing that ships a checkpoint's items flips that checkpoint to its closed state in the same landing, so a returning session never reopens finished work. A checkpoint whose items all live in git history is stale by definition and reads as a resume defect (SPEC INV-107). Red at a pause is never
    committed; the failing test name + hypothesis becomes the top NEXT_STEPS item — the checkpoint IS the
    red test. A checkpoint or handoff note that records a LIVE background worker also records the worker's
    id (pointing at the worker's own checkpoint file), its briefed write-set, and the three liveness checks a
@@ -95,14 +95,14 @@ answer to a class is a list, the design is wrong.
 7. **The concurrent-edit fence, before every write and every commit.** Re-check `git status` + HEAD against
    what you last read; if HEAD moved or the tree holds changes you did not make — STOP, re-read, then
    proceed surgically or back off. A repo you were not assigned to is read-only (one exception: a new wish
-   file in its inbox). Applies to ANY skill that writes shared files, not just adoption (SPEC INV-10, INV-11).
+   file in its inbox). Applies to ANY skill that writes shared files, adoption among them (SPEC INV-10, INV-11).
    The parallel-lanes rules underneath the fence, one each:
-   - **Lanes under one pen, up to the profile cap.** Within ONE session up to the profile-declared lane cap of build lanes may roll without asking (SPEC T-18; `lanes.cap`, package default three [E-13]; one more only on the human's asked word): every write to a document the lanes share serializes under the single PEN, one lane at a time — the shared living doc is a convergence point the pen reconciles at integration, never an edge that serializes the lanes themselves, so co-location alone never pulls two rows into one lane (SPEC INV-49).
-   - **The lane-open act.** Opening a lane is a step the session performs, `scripts/open-lane.sh` or the same walk by hand: the row→in-work flip committed to main under the pen, the branch `lane/<row>-<slug>` cut from that claim commit into its own worktree, the lane handed to a worker whose brief names the branch; the act reads the profile cap [E-13] and refuses a lane past it. When the graph shows two or more independent runnable rows and lanes stand free, the session performs the act rather than defaulting to single-file; going single-file then is a recorded "serial by the graph" board reason, a discipline the session holds since judging independence is a senior read no gate can settle (SPEC INV-214, INV-49).
+   - **Lanes under one pen, up to the profile cap.** Within ONE session up to the profile-declared lane cap of build lanes may roll without asking (SPEC T-18; `lanes.cap`, package default three [E-13]; one more only on the human's asked word): every write to a document the lanes share serializes under the single PEN, one lane at a time. The shared living doc is a convergence point the pen reconciles at integration, so sharing it never forces the lanes to run one after another; co-location alone never pulls two rows into one lane (SPEC INV-49).
+   - **The lane-open act.** Opening a lane is a step the session performs, `scripts/open-lane.sh` or the same walk by hand: the row→in-work flip committed to main under the pen, the branch `lane/<row>-<slug>` cut from that claim commit into its own worktree, the lane handed to a worker whose brief names the branch; the act reads the profile cap [E-13] and refuses a lane past it. When the graph shows two or more independent runnable rows and lanes stand free, the session performs the act. Going single-file then is a recorded "serial by the graph" board reason, a discipline the session holds since judging independence is a senior read no gate can settle (SPEC INV-214, INV-49).
    - **Worktree isolation on overlap.** A later train's code and tests live in its own isolated copy of the tree until the senior integrates them, so worktree isolation is the default when two lanes' write-sets overlap, and a shared file one lane holds open is never written by another (SPEC INV-105).
    - **Brief-time disjointness** — before spawning another concurrent writer, the senior confirms its brief's write-set is disjoint from every already-running writer's brief, or gives it an isolated worktree at brief-time, since the fence stays silent between same-session siblings and cannot catch the senior's own workers colliding (SPEC ACT-3, INV-11).
    - **One row per landing commit.** A landing commit carries exactly one row's delta, its gate run on a tree clean of any other lane's unfinished work (SPEC INV-39).
-   - **A prior-context worker.** A background worker from a PRIOR context is a concurrent writer too: it survives a memory wipe, and the OS process list and the harness task list are never proof of death. Such a worker is a foreign writer until verified by the resume protocol's three checks — the write-set's file times watched over a short window, the worker's heartbeat on its own checkpoint file (a fixed-interval touch, stale past ~2 min [default]), and one message to its recorded id — and no second worker goes onto a shared tree until the first has confirmed halted by its own reply or been declared dead by all three checks; the same-session fence-benign courtesy never crosses a wipe (SPEC INV-76).
+   - **A prior-context worker.** A background worker from a PRIOR context is a concurrent writer too: it survives a memory wipe, and the OS process list and the harness task panel are never proof of death. Such a worker is a foreign writer until verified by the resume protocol's three checks — the write-set's file times watched over a short window, the worker's heartbeat on its own checkpoint file (a fixed-interval touch, stale past ~2 min [default]), and one message to its recorded id — and no second worker goes onto a shared tree until the first has confirmed halted by its own reply or been declared dead by all three checks; the same-session fence-benign courtesy never crosses a wipe (SPEC INV-76).
    - **A stable session identity breaks the pen tie.** Every session mints a stable identity at its start — the harness session id where the context carries one, else the start time joined with the worktree path and a nonce — and records it in its `.live-spec/` checkpoint, unchanged for the session's life; the parallel-lanes pen tie-break orders on this identity for a genuine concurrent claim with no git ancestry, so exactly one session backs off (SPEC INV-117).
 
 8. **Freshness: versions are re-checked at every safe breakpoint.** Re-stat the installed skills, the pack,
@@ -113,7 +113,7 @@ answer to a class is a list, the design is wrong.
    JOURNAL.md the same session; SPEC / NEXT_STEPS / ROADMAP prose states only current truth. A shipped
    change updates its README / CHANGELOG / SKILL.md before the session ends. **Entries and harvested
    records carry date AND time of day** — "yesterday evening you wrote X, so I did Y" is answerable later
-   only if the record holds the moment, not just the day; a decision file keeps its answered-at stamp, a
+   only when the record keeps the time of day alongside the date; a decision file keeps its answered-at stamp, a
    journal entry opens with when it happened (2026-07-05).
 
 10. **Nothing is silently deleted.** A superseded host file moves to the attic with a manifest line; a
@@ -130,7 +130,7 @@ answer to a class is a list, the design is wrong.
 
 13. **A claim needs its primary source.** Anything asserted as fact — what the code does, what happened,
     who decided — rests on evidence you can point to: an owning `file:line`, a commit, a command just run
-    and its output. Your memory, a worker's summary, a document's prose are LEADS rather than evidence —
+    and its output. Your memory, a worker's summary, a document's prose are LEADS, each confirmed against that evidence before you rely on it —
     before attributing a decision to the human or calling a behaviour "by design", read the actual source
     line (rule 5's raw-output clause is this rule's delegation face). No source at hand ⇒ say "not sure",
     then check before asserting.
@@ -160,7 +160,7 @@ answer to a class is a list, the design is wrong.
     before it closes: check the architecture (a structural cause updates ARCHITECTURE.md, since a cluster in
     one district reads as an architecture smell), check the spec (a spec silent on the broken behaviour is
     the real defect, fixed first so the prover can flag it, then the code lands under it), and escalate to
-    the human when the class boundary needs his read rather than a guess — the full four-move law lives in
+    the human when the class boundary needs his read; the agent never guesses the boundary — the full four-move law lives in
     build-pipeline's bug entry and the spec's bug scenario (SPEC INV-124). A rule superseded at a broad scope is the same class: its restatements at narrower scopes — a host's CLAUDE.md, a project's playbook copy, an installed skill — go stale the instant the broad rule changes, so the same change that supersedes the rule sweeps those copies, never leaving a narrower scope quoting the old rule. Each working skill applies this in its own domain: the
     pipeline sweeps code and surfaces on every bugfix, the prover sweeps the document with its class lens before writing a
     point finding.
@@ -210,7 +210,7 @@ answer to a class is a list, the design is wrong.
    Listed → the SECOND occurrence gets an owner THAT MOMENT: a queue row (OWNED) or the human's dated
    AGREED NON-PROBLEM — his word alone, never the agent's; the agent recommends, writes the recommended
    owner now, and the ask rides the batched report. A THIRD recurrence arriving unowned is a defect of
-   the METHOD rather than of the day — it goes to the pack's own queue (from a host window: one inbox file).
+   the METHOD itself, no longer just that day's noise — it goes to the pack's own queue (from a host window: one inbox file).
    A recurrence on an owned entry appends its date and changes nothing else; the landing that closes an
    OWNED entry's row flips it to SOLVED. (SPEC E-24, INV-23.) **And a known, owned problem never blocks unrelated work (SPEC INV-56):** it is PARKED — the
    ledger line, the owning row, or an expected-red note holds it — and every
@@ -243,7 +243,7 @@ answer to a class is a list, the design is wrong.
    the work can be held against — a frozen norm, an exemplar bank, a failing test, a written
    acceptance. A paraphrase cannot serve as the goal. Measure every iteration against the goal
    itself; a proxy never replaces the goal, and measuring against a proxy is where a look-alike
-   is born. The distance only shrinks, and a reached level locks by a mechanism — a norm template,
+   appears. The distance to the goal only shrinks, and a reached level locks by a mechanism — a norm template,
    a conformance test, a lint floor that only grows, a cap that only ratchets down; attention
    alone holds nothing across sessions. A deliberately divergent stretch — exploration, a labelled
    prototype (rule 16) — is legal only when named and bounded by its convergence point. The
@@ -280,26 +280,25 @@ answer to a class is a list, the design is wrong.
    (SPEC INV-36) in the host profile, declares its concrete layers and its concrete proof kinds there —
    one `project.layers` line and one `project.proofs` line. A profile that records a kind with neither is
    incomplete, flagged at adoption the way an unbacked surface is; the per-kind fill is then the
-   project's own ratchet — the footprint check and the test-level check read the project's declared
-   categories rather than a hardcoded code list. ARCHITECTURE.md carries the per-kind
+   project's own ratchet — the footprint check and the test-level check read the categories the
+   project declared for itself. ARCHITECTURE.md carries the per-kind
    footprint-and-proof table, and spec-author and test-author read the declared layers and proofs
-   instead of assuming code. The one method fits every window this way — one abstract station, each
-   kind's own concrete fill — rather than a code method worn awkwardly by a photo site.
+   the project recorded, never assuming a code layer. The one method fits every window this way: one abstract station, each
+   kind filling it with its own concrete layers and proofs. A method written only for code would fit a photo site badly.
 
 25. **The orchestrator reads to decide; discovery reads go to workers (SPEC INV-137).** The lead's context holds only
    what orchestration needs — the human's words, the decisions taken, the distilled results workers hand
    back, and the few anchors the lead must cite. Reading a file to UNDERSTAND or DESIGN, past a glance, is
    itself work, so it routes like any work (rule 5): the lead dispatches it to a reader — a search-and-locate
-   pass or a read-and-distill brief — and reads the distillation the worker returns, not the raw file bodies.
+   pass or a read-and-distill brief — and reads the distillation the worker returns; the raw file bodies stay with the worker.
    A glance is bounded: one small file, or a handful of targeted lines whose result IS the deliverable (a
    version string, one clause to quote). Past the glance, dispatch. The duty binds the reads done to DISCOVER or UNDERSTAND, where a distillation is the right return. A read to VERIFY a claim or settle a decision stays with the lead: checking the real artifact and re-reading a primary source are the lead's own hands (rules 11, 13), and a dispatched verification returns the raw evidence the lead re-checks (rule 5). The leanness is load-bearing — a lead
    that fills its own context with source it could have had distilled loses the room to hold the whole arc,
    and its judgment degrades as the context bloats. Workers locate their own anchors from the brief, so the
    lead never reads a file merely to hand a worker its anchors (rule 5, SPEC INV-69). The brief's own read of
-   the files it will change (SPEC INV-53) composes with this rule rather than fighting it: that read is
+   the files it will change (SPEC INV-53) composes with this rule: that read is
    dispatched to the reader whose distillation returns the per-file lines the brief records, or, for a small
-   edit, is a decide-read the lead makes directly and keeps bounded. And the discipline is made visible rather
-   than trusted to memory: the landing report's delegation accounting names the reads dispatched beside the
+   edit, is a decide-read the lead makes directly and keeps bounded. And the discipline is written into a record, held by no one's memory: the delivery report's delegation accounting names the reads dispatched beside the
    work delegated (SPEC INV-103, INV-137), so a session that slid into reading-to-discover shows it.
 
 26. **A project kind also declares design principles the verify pass runs (SPEC INV-136, INV-139).** Beside
@@ -325,16 +324,16 @@ answer to a class is a list, the design is wrong.
    audit [default; a host may set its own count on its word, SPEC INV-70], the pack runs a whole-read
    of the living documents in the milestone gate's form (SPEC M-1) — the full spec and architecture
    re-prove, the design review, and the doc-compaction sweep — even where no milestone falls due, so
-   an UNKNOWN drift class that accumulated between milestones is caught by a fresh whole-read rather
-   than surviving until a human reads it late. The count is read from the landing history, and a
+   an UNKNOWN drift class that accumulated between milestones is caught by a fresh whole-read
+   before a human meets it late. The count is read from the landing history, and a
    milestone gate resets the counter since it already runs the whole-read. An audit is adversarial by
    nature: a whole-read that sets out to break the work, refute its claims, and find its holes (SPEC
    INV-46).
 
 29. **A deferral must justify itself, or the item is the seat's to do (SPEC INV-152).** A work item
    carrying a needs-the-human's-word marker — a queue row held for his word, a NEXT_STEPS line, a
-   decision a setup script leaves open — is re-tested by derivability every time it is touched, not only
-   when it is first written. Where the answer pins to an existing artifact — a base rule, a spec
+   decision a setup script leaves open — is re-tested by derivability every time it is touched, at its
+   first writing and at every touch after. Where the answer pins to an existing artifact — a base rule, a spec
    sentence, the architecture, an approved prototype, or an already-answered decision [INV-59] — the
    item is the seat's: do it, cite the artifact, and drop the marker [INV-121, INV-143]. Where it needs
    a fact no artifact holds — a taste, a policy, or an act irreversible outside git (rule 17) — it is
@@ -350,7 +349,7 @@ answer to a class is a list, the design is wrong.
    resume file or a decision page names no reason category (taste, policy, irreversible, or
    device-feel), the same shape as INV-155's retry-plugin grep. The delivery arm, the chat-law hook's
    deferral line, re-fires the derivability test at the moment a marker is written or an
-   `AskUserQuestion` is opened, so the re-test lands where the leak happens rather than after it; it
+   `AskUserQuestion` is opened, so the re-test fires right at the point the leak would happen; it
    reminds and cannot block, the way the chat laws are always delivered (SPEC INV-28).
 
 30. **A quality a machine can verify is enforced by a gate, held by no attention (SPEC INV-164).** Any
@@ -380,9 +379,9 @@ answer to a class is a list, the design is wrong.
    - **A message names the sender's own blocked work, in the message.** The named work is a real row, a
      real failing step, a real thing the sender cannot finish while the receiver's zone stands as it
      does. A message that cannot name such work is never sent. Curiosity, tidiness, and the thought that
-     a neighbour might want to know each describe a message the sender's own work does not need. The
-     births are a closed set of two: blocked by the receiver's zone as it stands, or having lived a fault
-     in it and carrying the evidence. The zone's owner is presumed competent and informed, so nothing
+     a neighbour might want to know each describe a message the sender's own work does not need. Exactly
+     two situations justify a message: the sender is blocked by the receiver's zone as it stands, or the sender has hit a fault
+     in that zone and carries the evidence. The zone's owner is presumed competent and informed, so nothing
      that owner's own instruments already see earns a file [INV-189]. `guardrails/check-earned-message.py`
      is the mechanical arm: it reds while an unearned file sits in an inbox, and the sweep clears the red
      by declining at the door, so no human reads it.
@@ -393,9 +392,9 @@ answer to a class is a list, the design is wrong.
      names, and the forwarder's own work stands on none of the answer [INV-190]. A question that pins to
      no artifact and on which no work of the sender's stands is dropped, and holding it was itself the
      defect [INV-191]. A referral that points at a zone which does not own the question is named as a
-     wrong referral where the exchange loops back over the same pair, rather than absorbed by the
-     two-crossing cap; `guardrails/check-wrong-referral.py` reds such an exchange on a fixture and rides
-     the suite, not the push chain [INV-225, INV-196].
+     wrong referral where the exchange loops back over the same pair; the two-crossing cap does not absorb
+     it. `guardrails/check-wrong-referral.py` reds such an exchange on a fixture and rides
+     the suite, staying off the push chain [INV-225, INV-196].
    - **Data never travels as a message, and a contract publishes nothing by default.** A consumer wanting
      numbers reads the neighbour's published artifact [INV-188]. Every field in that artifact leaves the
      producer's tree on the owner's explicit permission, recorded with its date and its author; how a
@@ -438,7 +437,7 @@ answer to a class is a list, the design is wrong.
    take this — nothing, re-run the walk, or a migration." The default is a patch, raised to a minor or major
    only where the release earns the higher tier. This is a judgment the releasing session makes and states,
    **held by no machine**: the minor-versus-major call reads meaning a gate cannot, so it **stays a stated
-   rule rather than a blocking check**, the same standing as a design-review finding that never blocks a
+   rule the session holds**, the same standing as a design-review finding that never blocks a
    lane [INV-141]. The owner asked for this guidance on 2026-07-17 ~15:45, saying it would be useful, since
    every release so far had picked its number by the session's feel with the rule written nowhere. Worked
    examples from the pack's own history: the 1.0.0 migration chapter renamed the host's pack folder and swept
@@ -446,7 +445,7 @@ answer to a class is a list, the design is wrong.
    remote arm added a capability a host adopts by re-running the walk with nothing rewritten, a **minor**; a
    fix that makes a gate finally hold a law already written is a **patch**. The 2.0.0 release is the honest
    boundary case — its own migration chapter records "Host action: none", so by this rule it reads as a minor,
-   and its major number marked significance by the session's feel; it stands as cited rather than restamped,
+   and its major number marked significance by the session's feel; the release keeps its published number as this cited boundary case,
    and the rule is written now so the next release reads its number off the host cost.
 
 33. **The authoring seat does not adversarially certify its own work (SPEC INV-237).** The seat that
@@ -540,7 +539,7 @@ any pack file is read, and it is those bootstrap lines' one home — the profile
 | `design-sync` | off — a host with visual components may switch it on (recorded profile line, SPEC E-18, INV-14) | on: a landing's DECLARED components sync to the team's design project, every sync behind the human's publish gate (rule 17) | internal |
 | `feedback-upstream` | off — the outbound feedback arm is silent; a host switches it on with a recorded profile line (SPEC INV-161, INV-14) | on: on a rare strong reaction the pack offers, with the human's explicit yes, to draft a private upstream note to the pack's authors into `outbox/`; never sends, delivery the human's own step | internal |
 | `lanes.cap` | 3 — up to three build lanes roll at once without asking (SPEC T-18, INV-214) | a leaner plan lowers it, a richer one raises it, recorded with the plan it fits; the owner's 2026-07-06 value of three lives in his profile | internal |
-| `budget.pressure` | full — full rigor everywhere; the economy ladder's rung (SPEC T-19, INV-40) | lean or tight, ONLY on the human's word (a session's word or a profile line; asked — or the default told — at a project's setup, founding or adoption, alongside `project.kind`; the agent proposes a rung when money/time pressure is named, never sets one); each rung's legal sheds and the never-bend list live in the SPEC's economy-ladder section — every taken shed is named in the landing report, and an explicit host line outlives any rung | visible |
+| `budget.pressure` | full — every check runs at full strength; the economy ladder's rung (SPEC T-19, INV-40) | lean or tight, ONLY on the human's word (a session's word or a profile line; asked — or the default told — at a project's setup, founding or adoption, alongside `project.kind`; the agent proposes a rung when money/time pressure is named, never sets one); each rung's legal sheds and the never-bend list live in the SPEC's economy-ladder section — every taken shed is named in the delivery report, and an explicit host line outlives any rung | visible |
 | `far-tier.surface-cadence` | at most once every 14 days — how often the far backlog may surface itself unasked in the status report (SPEC INV-223, ROADMAP 403); the report records the last surfacing in a dated marker, and a second offer inside the window is the defect the report-shape check reds | the person's own cadence, moved by his word like any default (his cadence rides his profile, ROADMAP 414) | internal |
 
 The Card column says what the settings card renders: a `visible` row appears on the card; an `internal` row is workshop machinery the card leaves out, reaching the reader only as a recorded host-profile line in the card's project-rules part. The card's own law lives in the SPEC (INV-87).
@@ -551,4 +550,4 @@ table grows through the queue like everything else.
 
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix and writes the tests · **communicator** makes the human
-> exchange land · **feedback-intake** brings what comes back to its home · **feedback-collector** offers a rare private note up to the authors · **publish** sees the work out the door, owing its kind's checklist.
+> exchange land · **feedback-intake** brings what comes back to its home · **feedback-collector** offers a rare private note up to the authors · **text-audit** reads a text as a stranger and fixes where they stop · **publish** sees the work out the door, owing its kind's checklist.

@@ -8,6 +8,7 @@ INV-106 anchor and index.
 """
 
 import os
+import re
 import unittest
 
 from conftest import ROOT, read_flat
@@ -28,11 +29,14 @@ class TestCIVerdictLaw(unittest.TestCase):
 
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-106]", spec)
+        self.assertRegex(spec, r"\[[^\]\n]*\bINV-106\b[^\]\n]*\]")
+        self.assertIn(
+            "read the gate's verdict", spec,
+            "INV-106's body criterion doesn't carry the verdict phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-106 |"):
-                    self.assertIn("verdict", line)
                     return
         self.fail("INV-106 index row missing")
 

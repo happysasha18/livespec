@@ -21,17 +21,27 @@ class TestConvergenceRule(unittest.TestCase):
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("the work can be held against", body, home)
-            self.assertIn("A paraphrase cannot serve as the goal.", body, home)
+        self.assertIn(
+            "A paraphrase cannot serve as the goal.",
+            read_flat("skills/live-spec-base/SKILL.md"),
+        )
+        self.assertIn(
+            "A paraphrase cannot serve as that goal.", read_flat("PRODUCT_SPEC.md")
+        )
 
     def test_distance_to_the_goal_itself(self):
-        for home in self.HOMES:
-            body = read_flat(home)
-            self.assertIn("a proxy never replaces the goal", body, home)
+        self.assertIn(
+            "a proxy never replaces the goal", read_flat("skills/live-spec-base/SKILL.md")
+        )
+        self.assertIn(
+            "a stand-in is where a look-alike is born", read_flat("PRODUCT_SPEC.md")
+        )
 
     def test_levels_lock_and_divergence_bounded(self):
+        self.assertIn("locks by a mechanism", read_flat("skills/live-spec-base/SKILL.md"))
+        self.assertIn("lock it by a mechanism", read_flat("PRODUCT_SPEC.md"))
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn("locks by a mechanism", body, home)
             self.assertIn("named and bounded by its convergence point", body, home)
 
     def test_spec_anchor_index_and_playbook_cite(self):

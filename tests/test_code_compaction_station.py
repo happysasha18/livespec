@@ -17,13 +17,13 @@ from conftest import ROOT, read_flat
 class TestCodeCompactionStation(unittest.TestCase):
     def test_spec_clause_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("Compaction is a scheduled station for code as well as docs", spec)
-        self.assertIn("[INV-123]", spec)
+        self.assertIn("widen the station to code", spec)
+        self.assertIn("INV-123", spec)
 
     def test_spec_names_second_trigger_and_gate(self):
         spec = read_flat("PRODUCT_SPEC.md")
         # the second trigger (base rule 19's second occurrence) and the extraction gate (INV-122)
-        self.assertIn("the second occurrence of the same problem", spec)
+        self.assertIn("the second occurrence of one problem", spec)
         self.assertIn("[INV-122]", read_flat("PRODUCT_SPEC.md"))
 
     def test_build_pipeline_minor_gate_carries_code_compaction(self):
@@ -31,10 +31,13 @@ class TestCodeCompactionStation(unittest.TestCase):
         self.assertIn("code compaction", bp)
 
     def test_formal_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only,
+        # no prose. Assert the row's presence here; the "code" prose is asserted
+        # against the flattened spec body in test_spec_clause_and_index above.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-123 |"):
-                    self.assertIn("code", line.lower())
+                    self.assertIn("R130.6", line)
                     return
         self.fail("INV-123 Formal-index row missing")
 

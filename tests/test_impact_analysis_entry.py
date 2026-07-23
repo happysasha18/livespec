@@ -29,23 +29,40 @@ class TestImpactAnalysisEntry(unittest.TestCase):
     def test_spec_names_three_footprints_and_the_route(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in ("presentation-only", "single-module", "cross-cutting",
-                       "the footprint sizes the reach, and the change's raw size does not",
-                       "a feature never skips the spec step whatever its footprint"):
+                       "the footprint decide how far each step reaches",
+                       "never let the footprint promote a feature past the spec step"):
             self.assertIn(needle, spec, needle)
 
     def test_spec_cites_derive_before_fork(self):
+        # the coined label "derive-before-fork" is gone from the register rewrite (no coined names,
+        # plain mechanisms); the same rule stands as R43.6's plain-language statement.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("the verdict the derive-before-fork rule [INV-121] rests on", spec)
+        self.assertIn(
+            "the three-source read tell whether a proven artifact already settles a question",
+            spec,
+        )
+        self.assertIn("[INV-128, INV-121]", spec)
 
     def test_spec_carries_boundary_health(self):
+        # the spec's own restatement of the boundary-health definition was compacted out (the fact
+        # now lives once, in ARCHITECTURE.md's "Boundary health" law — see
+        # test_architecture_states_boundary_health); the spec still states the same law as its
+        # diagnostic signal (a repeatedly cross-cut boundary is a misplaced one).
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("an edit inside the module leaves its neighbours untouched", spec)
+        self.assertIn(
+            "read repeated cross-cuts on the same module pair as the signal to move a boundary",
+            spec,
+        )
 
     def test_formal_index_row(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "footprint", spec.lower(),
+            "INV-128's body criterion doesn't carry the footprint phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-128 |"):
-                    self.assertIn("footprint", line.lower())
                     return
         self.fail("INV-128 Formal-index row missing")
 

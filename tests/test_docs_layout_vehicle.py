@@ -17,13 +17,16 @@ class TestDocsLayoutVehicle(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/build-pipeline/SKILL.md")
 
     def test_vehicle_in_both_homes(self):
+        self.assertIn(
+            "A same-version docs-layout pass rides one sanctioned light vehicle",
+            read_flat("skills/build-pipeline/SKILL.md"),
+        )
+        self.assertIn(
+            "A same-version docs-layout pass rides one named vehicle",
+            read_flat("PRODUCT_SPEC.md"),
+        )
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn(
-                "A same-version docs-layout pass rides one sanctioned light vehicle",
-                body,
-                home,
-            )
             self.assertIn(
                 "a word-token multiset check and a punctuation multiset check",
                 body,
@@ -32,18 +35,19 @@ class TestDocsLayoutVehicle(unittest.TestCase):
 
     def test_vehicle_owes_the_full_shape(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("The owner's decisions are locked in a checkpoint before any file moves", spec)
-        self.assertIn("builds on a clean pushed base", spec)
+        self.assertIn("lock the owner's decisions in a checkpoint before any file moves", spec)
+        self.assertIn("build on a clean pushed base", spec)
         self.assertIn("full suite green on the restructured tree", spec)
-        self.assertIn("lands one journal chapter", spec)
+        self.assertIn("land one journal chapter", spec)
 
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-111]", spec)
+        # the index row is location-only (SPEC INV-271); the "vehicle" prose lives on the body
+        self.assertIn("A same-version docs-layout pass rides one named vehicle", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-111 |"):
-                    self.assertIn("vehicle", line)
                     return
         self.fail("INV-111 index row missing")
 

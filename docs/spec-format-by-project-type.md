@@ -16,8 +16,8 @@ per-feature file sprawl.
   implementer(s) and the test for each unit; a test's matrix row already names its unit.
 - The suite checks BOTH directions: every unit ID has an implementer + a test; every
   implementer traces to at least one unit. Missing either side goes red. This is the same
-  shape as the existing `[target]`↔queue-row and `M-x`↔test checks — an extension, not new
-  machinery.
+  shape as the existing `[target]`↔queue-row and `M-x`↔test checks — an extension that reuses the
+  existing machinery.
 
 ### The unit is per project type
 | project type | primary unit | coverage check validates |

@@ -14,7 +14,11 @@ the gold exemplars in docs/spec-style.md are for. Floor + exemplars = the whole 
 Checks (each maps to a rule in docs/spec-style.md):
   ERROR   negation-opener  a block leads with what it is NOT before what it IS (R4/plainness).
   ERROR   scissors         the contrast frame that names a thing by denying its neighbour, in a dash
-                           or comma appositive or the parallel Russian negation-then-replacement forms
+                           or comma appositive, the parallel Russian negation-then-replacement forms,
+                           or the English prose conjunctions "X rather than Y" / "X instead of Y" used
+                           DEFINITIONALLY (a copula/naming lead, a determiner-both-sides rename, or a
+                           parallel by/as/for) — an imperative directive ("use A instead of B") passes;
+                           see the _rather_instead_scissors docstring for the residual uncaught class
                            (a GLOBAL, PERMANENT ban).
   ERROR   provenance-narrative  a birth-story ("(Born of …)", "(Set by …)", "; born of …", a "Born of …"
                            sentence) in a normative body; provenance stays out of the body, in a docs home
@@ -122,6 +126,107 @@ SCISSORS = re.compile(
     r"|(?<!\w)не\s+[^,]{1,60}?,\s*а\s"               # «не … , а …» (contrast)
     r"(?!не\b|если\b|когда\b|бы\b|то\b|также\b|тоже\b|потом\b|уже\b)",  # skip conditional/additive «а если/бы/…»
     re.IGNORECASE)
+
+# --- scissors, prose conjunctions: "X rather than Y" / "X instead of Y" -----------------------
+# The SAME contrast-by-denial as the dash/comma frame above, in its two English prose conjunctions.
+# The census (docs/audit/2026-07-22-register-census.md, finding 1) found these two forms carry the
+# MAJORITY of the corpus's real contrast-by-denial volume (943 of Tier D's 2,227 raw hits, 83 of
+# Tier A's 134) yet escaped the dash/comma regex entirely — a file could carry dozens and pass clean.
+#
+# Precision over recall (a lint that cries wolf gets ignored, so a residual is left uncaught rather
+# than risk a false alarm): a purely INSTRUCTIONAL substitution is lawful and must pass — "use A
+# instead of B", "write to A rather than B", "route it to X rather than Y" are directives, not
+# definitions. An occurrence is flagged only when BOTH hold:
+#   1. a POSITIVE definitional signal ties to it (one of):
+#        DEF_LEAD          a copula / linking-or-naming verb leads its clause ("it is a map rather
+#                          than a restatement", "it functions as a tool rather than a guardrail");
+#        APPOSITIVE_RENAME a determiner sits on BOTH sides — a noun-phrase renamed by denying its
+#                          neighbour ("a tool rather than a guardrail", "a ... line instead of a ...
+#                          string", "a tool rather than an orchestrator");
+#        PARALLEL_PREP     a non-directional function word (by/as/for) repeats across the frame
+#                          ("carried by statement rather than by keywords"). Directional to/into/
+#                          onto/from are excluded — "write to A rather than to B" is a write-target
+#                          directive, left lawful.
+#   2. the clause carrying it is NOT imperative-led — a clause opening with a directive verb (use,
+#      write, save, send, route, put, keep, prefer, choose, ...) is a command and passes, even when a
+#      signal above would otherwise match ("write to the engine rather than the site").
+# RESIDUAL, deliberately UNCAUGHT to hold precision near zero false positives (the recall price):
+#   - a bare verb / participle-vs-gerund contrast with no copula, no determiner rename, no parallel
+#     word ("the suite enforces the tag rather than trusting it", "travels with the text instead of
+#     being filled");
+#   - a genuine contrast that happens to OPEN with a directive verb ("recommend rather than ask") —
+#     indistinguishable by regex from a lawful command, so it passes.
+RATHER_INSTEAD = re.compile(r"(?<!\w)(?:rather than|instead of)(?!\w)", re.IGNORECASE)
+# copula + linking/naming verbs that mark a definitional clause (contractions included). The
+# naming verbs that double as common NOUNS in this register (a "read", "counts", "names", "acts",
+# "reads", by "name") are admitted ONLY when anchored by a following "as" ("reads as a decision
+# rather than …", "functions as a tool rather than …") — the "as" is what tells the verb sense from
+# the noun ("dispatching reads rather than …", "say so by name instead of …" carry the noun and
+# must NOT trip). Verbs with no common noun form (becomes/defines/describes/…) need no anchor.
+DEF_LEAD = re.compile(
+    r"(?<!\w)(?:"
+    r"is|are|was|were|be|been|being|isn't|aren't|wasn't|weren't"
+    r"|it's|that's|what's|there's|here's"
+    r"|becomes?|defines?|defined|describes?|constitutes?|represents?|remains?"
+    r"|(?:functions?|serves?|acts?|reads?|counts?|stands?|treats?)\s+as"
+    r")(?!\w)",
+    re.IGNORECASE)
+# a determiner on BOTH sides of the frame: a noun phrase renamed by denying its neighbour. The
+# [^,]{0,60} body forbids crossing a comma, keeping the two determiners in one appositive.
+APPOSITIVE_RENAME = re.compile(
+    r"(?<!\w)(?:a|an|the|its|his|her|their|our|my|your)\s+\S[^,]{0,60}?"
+    r"(?:rather than|instead of)\s+(?:a|an|the|its|his|her|their|our|my|your)(?!\w)",
+    re.IGNORECASE)
+# the same non-directional function word repeated across the frame (by/as/for). Directional
+# prepositions (to/into/onto/from) are excluded: they carry the lawful write-target directive.
+PARALLEL_PREP = re.compile(
+    r"(?<!\w)(by|as|for)\s+\S[^,]{0,60}?(?:rather than|instead of)\s+\1(?!\w)",
+    re.IGNORECASE)
+# a clause opening with one of these directive verbs is an imperative command -> the frame is a
+# lawful substitution instruction and passes, even if a positive signal above matches.
+IMPERATIVE_VERBS = frozenset({
+    "use", "write", "save", "store", "send", "route", "put", "place", "call", "point", "read",
+    "add", "set", "apply", "run", "keep", "prefer", "choose", "pick", "go", "refer", "defer",
+    "name", "treat", "show", "give", "make", "do", "see", "append", "log", "record", "return",
+    "pass", "leave", "hold", "carry", "report", "open", "close", "mark", "flag", "check", "scan",
+    "push", "commit", "render", "derive", "state", "cite", "pin", "list", "drop", "load"})
+# the frame's own clause ends at a sentence stop, an em-dash aside, or a coordinating break
+# (", and" / ", so" / " and " / …) — so a copula governing a DIFFERENT predicate ("the finding is
+# a question, and it recommends rather than blocks") does not read as this frame's definitional
+# lead. Only a copula in the same local clause as the frame counts.
+_CLAUSE_SPLIT = re.compile(
+    r"[.!?;:]\s+|\s+[—–]\s+|\s+--\s+|,\s+(?:and|so|or|but|which|then|each)\s+|\s+(?:and|or|but)\s+")
+_FIRST_WORD = re.compile(r"\s*([A-Za-z']+)")
+# how close (chars) a copula/naming lead must sit before the frame to count as its definitional
+# lead — a copula farther back is in a distant sub-clause and does not tie to this frame. Sized to
+# clear the longest genuine lead in the corpus ("it is deterministic bash/YAML checking rather
+# than …", ~34 chars) while dropping the em-dash-separated distant copula.
+DEF_LEAD_WINDOW = 45
+
+
+def _rather_instead_scissors(scrub):
+    """True when a 'rather than' / 'instead of' occurrence on the line is a DEFINITIONAL contrast
+    (a positive signal ties to it and its clause is not imperative-led). High precision: an
+    occurrence with no positive signal, or one inside an imperative clause, passes."""
+    for m in RATHER_INSTEAD.finditer(scrub):
+        pre = scrub[:m.start()]
+        clause = _CLAUSE_SPLIT.split(pre)[-1]          # the frame's own clause (after any . ! ? ; :)
+        first = _FIRST_WORD.match(clause)
+        if first and first.group(1).lower() in IMPERATIVE_VERBS:
+            continue                                    # a lawful directive — pass this occurrence
+        # DEF_LEAD must GOVERN the frame: close to it (a copula in a distant sub-clause — "he is
+        # leaving … makes closing safe rather than closing" — is unrelated), and with no comma
+        # between the copula and the frame (a genuine "X is Y rather than Z" runs comma-free from
+        # copula to contrast; a cleft "that is what he meant, rather than discovering" puts a comma
+        # between, and its copula governs the cleft, not the frame). So look only after the last
+        # comma of the clause, within the proximity window. The determiner-rename and parallel
+        # signals are already tight (a bounded body, determiners/word repeated across the frame).
+        lead = clause.rsplit(",", 1)[-1][-DEF_LEAD_WINDOW:]
+        window = clause + scrub[m.start():m.end() + 60]  # clause + the frame + its object
+        if DEF_LEAD.search(lead) or APPOSITIVE_RENAME.search(window) or PARALLEL_PREP.search(window):
+            return True
+    return False
+
 
 # --- machine jargon (curated, extensible — add a word only when it is unambiguously wrong here) --
 JARGON = {"serialized", "questionnaire", "instantiate", "instantiated", "functionality",
@@ -292,7 +397,7 @@ def lint(text, gate=False, tier=None):
         is_block_lead = prev_blank or bool(LEAD_MARKERS.match(line))
         if is_block_lead and _is_negation_opener(_strip_lead(line)) and not exempt_here:
             errors.append((i, "negation-opener", stripped[:110]))
-        if SCISSORS.search(scrub):                                   # global
+        if SCISSORS.search(scrub) or _rather_instead_scissors(scrub):  # global
             errors.append((i, "scissors", stripped[:110]))
         if _is_provenance_narrative(scrub):                          # global
             errors.append((i, "provenance-narrative", stripped[:110]))

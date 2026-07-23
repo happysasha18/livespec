@@ -19,10 +19,11 @@ class TestDeferredRevisitCadence(unittest.TestCase):
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "Deferred rows are revisited at every queue-take, not only at milestones",
+            "Deferred rows are revisited at every queue-take",
             spec,
         )
-        self.assertIn("[INV-129]", spec)
+        self.assertIn("the milestone re-scan is not the trigger's only reader", spec)
+        self.assertIn("[INV-129,", spec)
 
     def test_spec_states_both_cadences(self):
         spec = read_flat("PRODUCT_SPEC.md")
@@ -37,9 +38,12 @@ class TestDeferredRevisitCadence(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-129 |"):
-                    self.assertIn("queue-take", line.lower())
-                    return
-        self.fail("INV-129 Formal-index row missing")
+                    break
+            else:
+                self.fail("INV-129 Formal-index row missing")
+        # the index row is now location-only (SPEC INV-271); the prose lives on the body
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("Deferred rows are revisited at every queue-take", spec)
 
     def test_build_pipeline_carries_the_queue_take_rescan(self):
         bp = read_flat("skills/build-pipeline/SKILL.md")

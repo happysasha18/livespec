@@ -6,6 +6,8 @@ sends — delivery is the human's own step. Off by default. Distinct from feedba
 arrow) and from the measurement family (no scoring).
 
 String-level assertions on the shipped files. Landed 2026-07-15."""
+import re
+
 from conftest import ROOT, read
 
 SKILL = "skills/feedback-collector/SKILL.md"
@@ -64,12 +66,13 @@ def test_distinct_from_intake_and_measurement():
 
 
 def test_spec_states_the_third_arrow():
-    # The spec carries the third arrow with its three anchors, and names the upstream note distinct from
-    # the two existing "digest" meanings. Never an unanchored behaviour.
+    # The spec carries the third arm (register rewrite renamed "arrow" to "arm") with its three
+    # anchors, and names the upstream note distinct from the two existing "digest" meanings.
+    # Never an unanchored behaviour.
     spec = read("PRODUCT_SPEC.md")
-    for anchor in ("[E-30]", "[T-21]", "[INV-161]"):
-        assert anchor in spec, anchor
-    assert "third arrow" in spec.lower()
+    for anchor in ("E-30", "T-21", "INV-161"):
+        assert re.search(r"\[[^\]\n]*\b%s\b[^\]\n]*\]" % re.escape(anchor), spec), anchor
+    assert "third arm" in spec.lower()
     assert "upstream note" in spec.lower()
 
 

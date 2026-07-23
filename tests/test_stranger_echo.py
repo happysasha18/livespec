@@ -15,7 +15,11 @@ def test_stranger_yes_wish_echoes_and_closes_source():
     # INV-147's body clause: the captured wish's echo lands as a comment on the source Issue
     # at harvest, and the Issue closes once its row reaches a terminal exit.
     assert "comment on the source Issue" in spec
-    assert "at harvest" in spec
-    assert "closed once its row reaches a terminal exit" in spec
+    # R195.5: "at harvest" as a standalone adverbial is gone; the timing now lives in the same
+    # criterion sentence that ties the harvest act to the comment-posting act directly.
+    assert "harvest it into a queue row and post the capture echo" in spec
+    # R195.6: "closed once its row reaches a terminal exit" becomes the shall-subjunctive
+    # "when the row reaches a terminal exit, the system shall close the source Issue".
+    assert "the row reaches a terminal exit, the system *shall* close the source Issue" in spec
     # INV-27's body clause carries the bridged-stranger pointer to that same echo.
     assert "bridged in from a stranger's Issue" in spec

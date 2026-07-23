@@ -12,7 +12,7 @@ def _flat(rel):
 
 def test_spec_clause_stands():
     spec = _flat("PRODUCT_SPEC.md")
-    assert "A gated behaviour names every side of its gate" in spec
+    assert "A gated behaviour names both ends of its range" in spec
     assert "[INV-138]" in spec
 
 
@@ -25,9 +25,11 @@ def test_spec_names_both_faces():
 
 
 def test_formal_index_row():
+    # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+    # The "gate" subject is asserted against the spec body in test_spec_clause_stands.
     for line in _flat("PRODUCT_SPEC.md").splitlines():
         if line.startswith("| INV-138 |"):
-            assert "gate" in line
+            assert "R52.1" in line
             return
     raise AssertionError("no Formal-index row for INV-138")
 

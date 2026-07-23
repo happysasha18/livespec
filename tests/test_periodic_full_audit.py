@@ -27,16 +27,18 @@ def test_spec_invariant_145_present_and_indexed():
     spec = _read("PRODUCT_SPEC.md")
     # the rhythm clause
     assert "A periodic full audit catches the drift no lint names" in spec
-    assert "[INV-145]" in spec
+    # the tag now always rides grouped with sibling codes, never solo
+    assert "INV-145" in spec
     # the cadence and the reset
     assert "every ten landings since the last full audit" in spec
-    assert "a milestone gate resets the counter" in spec
-    # Formal-index row
+    assert "reset the counter at a milestone gate" in spec
+    # index row (location-only, SPEC INV-271); the "Rhythm" home lived in the old
+    # Formal-index homes column, now gone — the row's existence is what's checked,
+    # the class's own heading (already asserted above) carries the prose.
     for line in spec.splitlines():
         if line.startswith("| INV-145 |"):
-            assert "Rhythm" in line
             return
-    raise AssertionError("no Formal-index row for INV-145")
+    raise AssertionError("no index row for INV-145")
 
 
 def test_architecture_owns_145():
@@ -57,7 +59,7 @@ def test_audit_is_defined_adversarial_by_nature_once():
     """C8: 'audit' is defined once as adversarial by nature (INV-46 clause),
     and the redundant 'adversarial audit' qualifier is gone from build-pipeline."""
     spec = _read("PRODUCT_SPEC.md")
-    assert "an audit is adversarial by nature, a whole-read that sets out to break the work" in spec
+    assert "carries an audit — a whole-read that sets out to break the work" in spec
     pipe = _read("skills/build-pipeline/SKILL.md")
     assert "adversarial audit" not in pipe
     assert "An audit is adversarial by nature" in pipe

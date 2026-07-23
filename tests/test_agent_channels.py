@@ -40,16 +40,24 @@ def _index_row(anchor):
 
 
 def _declaration(anchor):
-    """The one prose paragraph in the spec that DECLARES this anchor.
+    """The prose paragraph(s) in the spec that DECLARE this anchor.
 
-    The home is the paragraph whose trailing anchor is the code; an index row is a lookup into
-    that home, so table lines are passed over. Scoping a needle to the declaration keeps a check
-    from passing off the index row or a neighbouring clause that merely cites the code
-    (ROADMAP row 384, the vacuous-pass class).
+    The home is every criterion whose trailing code bracket names the anchor; an index row is a
+    lookup into that home, so table lines are passed over. In the requirements format a
+    criterion's trailing bracket commonly co-cites several codes together, so membership in that
+    bracket — not sole occupancy of it — is what makes a line the anchor's declaration. Scoping a
+    needle to the declaration keeps a check from passing off the index row or a neighbouring
+    clause that merely cites the code (ROADMAP row 384, the vacuous-pass class).
     """
-    tail = "[%s]" % anchor
-    found = [l for l in read(SPEC).splitlines()
-             if l.rstrip().endswith(tail) and not l.lstrip().startswith("|")]
+    tail_re = re.compile(r"\[([^\[\]]*)\]\s*$")
+    found = []
+    for l in read(SPEC).splitlines():
+        s = l.rstrip()
+        if s.lstrip().startswith("|"):
+            continue
+        m = tail_re.search(s)
+        if m and anchor in [c.strip() for c in m.group(1).split(",")]:
+            found.append(l)
     return " ".join(" ".join(found).split()) if found else ""
 
 
@@ -100,18 +108,17 @@ class TestAgentSkillBoundary(unittest.TestCase, _AnchorHomeMixin):
 
     def test_agent_is_a_project_window(self):
         spec = read_flat(SPEC)
-        self.assertIn("An agent is a project window, and everything an agent works with is its own",
-                      spec)
-        self.assertIn("its own tree, its own queue, its own gates, its own contracts, "
-                      "a standing mission, and a card of its own declaring each of them", spec)
-        self.assertIn("Each of those outlives any one conversation", spec)
+        self.assertIn("An agent is a project window with a tree, a queue, gates, contracts, "
+                      "a standing mission, and a card", spec)
+        self.assertIn("a tree, a queue, gates, contracts, a standing mission, and a card", spec)
+        self.assertIn("each of those outliving any one conversation", spec)
         self.assertIn("[E-31]", spec)
 
     def test_skill_dies_with_the_session(self):
         spec = read_flat(SPEC)
-        self.assertIn("A skill is a capability any window loads, and it dies with the session", spec)
-        self.assertIn("A skill holds no tree, no mission, and no queue of its own", spec)
-        self.assertIn("leaves nothing standing when the conversation ends", spec)
+        self.assertIn("a skill is a capability a window loads for one conversation", spec)
+        self.assertIn("holds no tree, no standing mission, and no queue", spec)
+        self.assertIn("leaves nothing standing once the conversation closes", spec)
 
     def test_e31_index_and_ownership(self):
         self.assert_index_and_ownership("E-31")
@@ -119,13 +126,17 @@ class TestAgentSkillBoundary(unittest.TestCase, _AnchorHomeMixin):
     def test_grain_boundary_names_its_three_marks(self):
         """The grain test is durable state + a standing mission + a zone of its own — never size."""
         spec = read_flat(SPEC)
-        self.assertIn("durable state, a standing mission, and a zone of its own make a capability "
-                      "an agent, and a capability living wholly inside a session is a skill", spec)
+        self.assertIn(
+            "count a capability as an agent *when* it holds durable state, a standing mission, "
+            "and a zone of its own, and *shall* count a capability that lives wholly inside one "
+            "session as a skill", spec)
         self.assertIn("[INV-182]", spec)
 
     def test_grain_on_the_line_is_the_owners_word(self):
         spec = read_flat(SPEC)
-        self.assertIn("Where a real case sits on the line, the owner's word places it", spec)
+        self.assertIn(
+            "a real capability sits on the line between the two, the owner's word *shall* "
+            "place it", spec)
 
     def test_inv182_index_and_ownership(self):
         self.assert_index_and_ownership("INV-182")
@@ -137,18 +148,21 @@ class TestTwoChannels(unittest.TestCase, _AnchorHomeMixin):
 
     def test_exactly_two_channels_in_the_spec(self):
         spec = read_flat(SPEC)
-        self.assertIn("Exactly two channels carry everything that passes between two agents", spec)
-        self.assertIn("[INV-183]", spec)
+        self.assertIn("exactly two channels to carry everything between two agents", spec)
+        self.assertIn("INV-183, E-11]", spec)  # code always co-brackets in the new format
 
     def test_no_third_channel_exists(self):
         spec = read_flat(SPEC)
-        self.assertIn("No third channel exists between two agents", spec)
-        self.assertIn("A reply rides the inbox channel in the other direction, so the count of "
-                      "two holds", spec)
+        self.assertIn(
+            "no third improvised road grows to carry the traffic the two were meant to hold",
+            spec)
+        self.assertIn(
+            "a reply *shall* ride the inbox in the other direction, so the count of channels "
+            "between two agents stays at two", spec)
         # INV-183's transport sentence was corrected (the owner refused the git-universal premise,
         # 2026-07-17): which transport carries a message is now decided by the traffic's kind, the
         # detail owned by INV-236. The contract — who talks and when — stays untouched.
-        self.assertIn("Which transport carries a message is decided by the traffic's kind", spec)
+        self.assertIn("the traffic's kind picks the transport", spec)
         self.assertIn("[INV-236]", spec)
 
     def test_base_rulebook_carries_the_two_channel_law(self):
@@ -165,14 +179,16 @@ class TestDataNeverTravelsAsAMessage(unittest.TestCase, _AnchorHomeMixin):
 
     def test_data_never_travels_as_a_message(self):
         spec = read_flat(SPEC)
-        self.assertIn("Data never travels as a message", spec)
-        self.assertIn("A consumer wanting data reads the contract", spec)
+        self.assertIn(
+            "a consumer wanting a producer's data *shall* read the contract rather than send "
+            "a message asking for it", spec)
         self.assertIn("[INV-188]", spec)
 
     def test_missing_field_routes_to_the_earned_message(self):
         spec = read_flat(SPEC)
-        self.assertIn("A consumer wanting a field the contract lacks holds a request about the "
-                      "contract's shape", spec)
+        self.assertIn(
+            "a consumer wants a field the contract lacks, the system *shall* treat it as a "
+            "request about the contract's shape", spec)
 
     def test_inv188_index_and_ownership(self):
         self.assert_index_and_ownership("INV-188")
@@ -185,22 +201,39 @@ class TestEarnedMessage(unittest.TestCase, _AnchorHomeMixin):
     def test_earned_message_names_its_block(self):
         """F-agent-ask's named test (ARCHITECTURE.md feature coverage)."""
         spec = read_flat(SPEC)
-        self.assertIn("A message names its birth, in the message", spec)
-        self.assertIn("names the blocked work", spec)
-        self.assertIn("names the fault and the evidence the sender lived", spec)
-        self.assertIn("A message that can name neither is never sent", spec)
+        self.assertIn("a message *shall* name the sender's own work that earned it", spec)
+        self.assertIn("name the blocked work", spec)
+        self.assertIn("name the fault and the evidence the sender lived", spec)
+        self.assertIn("a message that can name no such work *shall* stay unsent", spec)
         self.assertIn("[INV-189]", spec)
 
     def test_two_births_are_a_closed_set(self):
+        # the rewrite consistently renamed "birth" -> "ground" across the whole earned-message
+        # law, and the set is (and was, in the old spec too) three, not two: blocked work, a
+        # lived fault, or an unowned concern.
         spec = read_flat(SPEC)
-        self.assertIn("A message has exactly three births, and the set is closed", spec)
-        self.assertIn("A candidate message matching no birth has no birth, and it stays "
-                      "unsent", spec)
+        self.assertIn("recognize exactly three grounds for a message", spec)
+        self.assertIn("three grounds, and the set is closed", spec)
+        self.assertIn("a candidate message matching no ground *shall* stay unsent", spec)
 
     def test_owner_presumed_competent_and_informed(self):
+        # mapping.md Part 4 (F-agent-ask table) maps the source claim "The owner's zone is
+        # presumed informed; a fault its instruments cannot see, carried with evidence, earns
+        # the file." to R7.8, whose surviving text is the Case heading below plus the criterion
+        # itself — the word "competent" is not part of the mapped claim (mapping already states
+        # the claim as "presumed informed" alone), so it re-pins.
         spec = read_flat(SPEC)
-        self.assertIn("The zone's owner is presumed competent and informed", spec)
-        self.assertIn("That presumption is what keeps the second birth narrow", spec)
+        self.assertIn("Case: the owner's zone is presumed informed", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "That presumption is what keeps the second
+        # birth narrow" has no mapping row in mapping.md Part 4 — it is rationale explaining WHY
+        # only two exceptions to the report-nothing-the-owner-already-sees rule exist, and
+        # mapping.md's own stated scope (line 119) excludes rationale from what it carries
+        # forward. Confirmed absent from PRODUCT_SPEC.md and from the prototype draft
+        # section.md alike.
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
 
     def test_base_rulebook_carries_the_earned_message_law(self):
         self.assertIn("names the sender's own blocked work", read_flat(BASE),
@@ -621,19 +654,45 @@ class TestReferralDirection(unittest.TestCase, _AnchorHomeMixin):
     nothing from it."""
 
     def test_referral_travels_back_to_the_asker(self):
+        # CANDIDATE REAL DEFECT (see repin log): "The direction is the whole law" has no mapping
+        # row in mapping.md Part 4. The only "direction" row there (R2.3, "A reply rides the
+        # inbox in the other direction; the count stays two") is a DIFFERENT source claim from
+        # the shared-intro two-channels paragraph (old spec line ~1518, the general reply
+        # mechanism), not from this referral-specific paragraph (old spec line 1560, under
+        # INV-190) — re-checked against OLD_SPEC.md and rejected as a false match, not re-pinned
+        # to it. This sentence is rationale (the referral law's whole content IS its direction,
+        # nothing else needs stating) with no distinct row anywhere in mapping.md.
         spec = read_flat(SPEC)
-        self.assertIn("A question from another agent's zone is referred, and a referral travels "
-                      "back to whoever asked", spec)
-        self.assertIn("The direction is the whole law", spec)
+        self.assertIn(
+            "a question belongs to another agent's zone, the system *shall* refer it back to "
+            "whoever asked", spec)
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
         self.assertIn("[INV-190]", spec)
 
     def test_zone_owner_receives_nothing_from_a_referral(self):
+        # CANDIDATE REAL DEFECT (see repin log): mapping.md Part 4's only row for this scenario
+        # ("A question from another zone is referred back to whoever asked; the zone owner
+        # receives nothing." -> R8.1) covers the referral direction and the owner-receives-
+        # nothing rule alone (already asserted below and passing); it carries no row for either
+        # "Forwarding a neighbour's question to the owner of its zone is the defect this law
+        # names" (the anti-pattern spelled out) or "it carries the question to the human as its
+        # own question on no occasion" (the never-relay-as-own-question safeguard). Both are
+        # rationale/framing with no mapping row anywhere in Part 3 or Part 4, and neither string
+        # is present in PRODUCT_SPEC.md or the prototype draft section.md.
         spec = read_flat(SPEC)
-        self.assertIn("The zone's owner receives nothing from a referral", spec)
-        self.assertIn("Forwarding a neighbour's question to the owner of its zone is the defect "
-                      "this law names", spec)
-        self.assertIn("it carries the question to the human as its own question on no occasion",
-                      spec)
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # the safeguard's behavioural neighbours survive: the referral-direction criteria above and
+        # the relay-authority criterion "relaying a message *shall* change only its carrier").
+        self.assertIn("relaying a message *shall* change only its carrier", spec)
 
     def test_base_rulebook_carries_the_referral_direction(self):
         self.assertIn("travels back to whoever asked", read_flat(BASE),
@@ -649,15 +708,17 @@ class TestHomelessQuestionDropped(unittest.TestCase, _AnchorHomeMixin):
 
     def test_homeless_question_is_dropped(self):
         spec = read_flat(SPEC)
-        self.assertIn("A question that pins to no artifact, and on which no work of the sender's "
-                      "stands, is dropped, and holding it was itself the defect", spec)
-        self.assertIn("[INV-191]", spec)
+        self.assertIn(
+            "a question pins to no artifact and no work of the sender's stands on it, the "
+            "system *shall* drop it, the holding of it being the finding", spec)
+        self.assertIn("INV-191, INV-153]", spec)  # code always co-brackets in the new format
 
     def test_the_holding_is_itself_the_finding(self):
         spec = read_flat(SPEC)
-        self.assertIn("the finding is the question itself: the agent drops it, and the holding is "
-                      "what the finding names", spec)
-        self.assertIn("[INV-153]", spec)
+        self.assertIn(
+            "a question pins to no artifact and no work of the sender's stands on it, the "
+            "system *shall* drop it, the holding of it being the finding", spec)
+        self.assertIn("INV-191, INV-153]", spec)
 
     def test_inv191_index_and_ownership(self):
         self.assert_index_and_ownership("INV-191")
@@ -669,15 +730,17 @@ class TestProposalUntilRatified(unittest.TestCase, _AnchorHomeMixin):
 
     def test_agent_message_is_a_proposal_until_ratified(self):
         spec = read_flat(SPEC)
-        self.assertIn("An agent's message is a proposal until the owner ratifies it", spec)
-        self.assertIn("An owner-initiated message is the one kind that carries the owner's "
-                      "authority", spec)
-        self.assertIn("[INV-193]", spec)
+        self.assertIn(
+            "an agent-initiated message *shall* stand as a proposal in the receiver's queue "
+            "until the owner ratifies it", spec)
+        self.assertIn("an owner-initiated message carries the owner's authority", spec)
+        self.assertIn("INV-193, INV-94]", spec)  # code always co-brackets in the new format
 
     def test_relaying_leaves_authority_where_it_started(self):
         spec = read_flat(SPEC)
-        self.assertIn("relaying changes a message's carrier and leaves its authority exactly where "
-                      "it started", spec)
+        self.assertIn(
+            "relaying a message *shall* change only its carrier and leave its authority where "
+            "it started", spec)
 
     def test_base_rulebook_carries_the_ratification_law(self):
         self.assertIn("stays a proposal until the owner ratifies", read_flat(BASE),
@@ -693,17 +756,27 @@ class TestNonDuplication(unittest.TestCase, _AnchorHomeMixin):
 
     def test_capability_taken_through_one_of_the_two_channels(self):
         spec = read_flat(SPEC)
-        self.assertIn("A capability another agent's zone owns is taken through one of the two "
-                      "channels", spec)
-        self.assertIn("An agent needing such a capability sends a message or reads a contract",
-                      spec)
-        self.assertIn("[INV-194]", spec)
+        self.assertIn(
+            "an agent needing a capability another agent's zone owns *shall* send a message "
+            "or read a contract rather than keep a local copy of it", spec)
+        self.assertIn("INV-194, INV-183]", spec)  # code always co-brackets in the new format
 
     def test_local_copy_is_the_violation_the_cards_prevent(self):
+        # mapping.md Part 4 (F-agent-ask table) maps this whole source paragraph — "A capability
+        # another zone owns is used through a channel, never copied locally." — to R7.14, whose
+        # surviving text is the bare prohibition rule; that IS the "violation the cards exist to
+        # prevent" restated affirmatively, so the claim re-pins to it.
         spec = read_flat(SPEC)
-        self.assertIn("A local copy of a neighbour's capability is the violation the cards exist "
-                      "to prevent", spec)
-        self.assertIn("the two owners then answer one question two ways", spec)
+        self.assertIn(
+            "an agent needing a capability another agent's zone owns *shall* send a message "
+            "or read a contract rather than keep a local copy of it", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "the two owners then answer one question two
+        # ways" (the drift rationale explaining WHY a local copy is the violation) has no
+        # mapping row anywhere in mapping.md Part 4 — R7.14's row states only the bare rule.
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
 
     def test_base_rulebook_carries_the_non_duplication_law(self):
         self.assertIn("a local copy of a neighbour's capability", read_flat(BASE),
@@ -723,17 +796,30 @@ class TestContractIsASpecSurface(unittest.TestCase, _AnchorHomeMixin):
 
     def test_contract_is_a_spec_surface(self):
         spec = read_flat(SPEC)
-        self.assertIn("A contract is a spec surface in the producer's own spec", spec)
-        self.assertIn("It is written, proven, and tested where the producer's other surfaces are",
+        self.assertIn("a published contract *shall* be a surface in the producer's own spec",
                       spec)
-        self.assertIn("[E-33]", spec)
+        self.assertIn("written, proven, and tested where the producer's other surfaces are", spec)
+        self.assertIn("E-33, INV-73]", spec)  # code always co-brackets in the new format
 
     def test_artifact_carries_its_version_and_stamp(self):
+        # mapping.md Part 4 (F-contract table) maps "The artifact lives at the card's path and
+        # states its contract version and generation moment; a reader tells shape/age from it."
+        # to R6.3, whose surviving criterion states the "reader tells shape/age from it" half
+        # verbatim (minus the old spec's "no second document to consult" emphasis clause, which
+        # has no separate mapping row — see below).
         spec = read_flat(SPEC)
-        self.assertIn("The published artifact is machine-readable, and it carries its own contract "
-                      "version and its generation stamp", spec)
-        self.assertIn("A reader tells the artifact's shape and its age from the artifact itself, "
-                      "with no second document to consult", spec)
+        self.assertIn(
+            "paired with a machine-readable artifact carrying its own version and generation "
+            "stamp", spec)
+        self.assertIn(
+            "so a reader tells its shape and its age from the artifact itself", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "with no second document to consult" has no
+        # mapping row in mapping.md Part 4 — the row's own wording ("a reader tells shape/age
+        # from it") never carried this emphasis clause forward; confirmed absent from
+        # PRODUCT_SPEC.md and the prototype draft section.md alike.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
 
     def test_e33_index_and_ownership(self):
         self.assert_index_and_ownership("E-33")
@@ -746,22 +832,25 @@ class TestContractDefaultDeny(unittest.TestCase, _AnchorHomeMixin):
     def test_contract_default_deny(self):
         """F-contract's named test (ARCHITECTURE.md feature coverage)."""
         spec = read_flat(SPEC)
-        self.assertIn("A contract publishes nothing by default", spec)
-        self.assertIn("Every field leaves the producer's tree on the owner's explicit permission",
-                      spec)
-        self.assertIn("A permission is an act with an author and a date", spec)
-        self.assertIn("[INV-185]", spec)
+        self.assertIn("nothing publishes by default", spec)
+        self.assertIn(
+            "a contract *shall* publish no field until the owner records an explicit "
+            "permission for it in the producer's tree", spec)
+        self.assertIn("records an explicit permission for it in the producer's tree with its "
+                      "date and author", spec)
+        self.assertIn("INV-185, INV-24]", spec)  # code always co-brackets in the new format
 
     def test_construction_grants_no_permission(self):
         spec = read_flat(SPEC)
-        self.assertIn("the way a system is built grants no permission, and a field with no "
-                      "recorded permission stays home", spec)
+        self.assertIn(
+            "a field with no recorded permission *shall* stay in the producer's tree, the way "
+            "a neighbour's product is built granting no permission", spec)
 
     def test_credentials_never_cross_a_channel(self):
         spec = read_flat(SPEC)
-        self.assertIn("Credentials never cross a channel at all, under any permission", spec)
-        self.assertIn("the only road a producer's product data takes between two "
-                      "agents", spec)
+        self.assertIn("credentials *shall* cross no channel under any permission", spec)
+        self.assertIn("the published artifact being the one road a producer's product data "
+                      "takes between two agents", spec)
 
     def test_base_rulebook_carries_the_default_deny_law(self):
         self.assertIn("publishes nothing by default", read_flat(BASE),
@@ -780,20 +869,33 @@ class TestProducerFormAndClock(unittest.TestCase, _AnchorHomeMixin):
         for naming in ("what the field means", "the window it is measured over",
                        "how it is aggregated", "the source it derives from"):
             self.assertIn(naming, spec, "a contract field's naming is unstated: %r" % naming)
-        self.assertIn("A field missing any of the four is an incomplete surface", spec)
+        self.assertIn(
+            "the reviewer *shall* read a field missing any of the four as an incomplete "
+            "surface", spec)
         self.assertIn("[INV-186]", spec)
 
     def test_producer_declares_its_cadence_and_its_watcher(self):
         spec = read_flat(SPEC)
-        self.assertIn("The producer declares the contract's cadence and regenerates on its own "
-                      "clock", spec)
-        self.assertIn("reds at its session-start sweep when its scheduled regeneration did not run",
-                      spec)
+        self.assertIn(
+            "the producer *shall* declare one cadence — how often it regenerates the "
+            "artifact", spec)
+        self.assertIn(
+            "the producer's own session-start check *shall* fail *when* its scheduled "
+            "regeneration did not run", spec)
 
     def test_a_deploy_never_triggers_the_contract(self):
+        # mapping.md Part 4 (F-contract table) maps "The producer declares one cadence and holds
+        # to it; a deploy refreshes the artifact as a bonus and never triggers it." to R6.7,
+        # whose surviving text is asserted below and passes.
         spec = read_flat(SPEC)
-        self.assertIn("a deploy never triggers the contract", spec)
-        self.assertIn("a contract triggered by it goes stale the day the building stops", spec)
+        self.assertIn("never triggering it", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "a contract triggered by it goes stale the day
+        # the building stops" — the explanatory WHY behind the deploy-never-triggers rule — has
+        # no mapping row anywhere in mapping.md Part 4; R6.7's row states only the bare rule.
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
 
     def test_inv186_index_and_ownership(self):
         self.assert_index_and_ownership("INV-186")
@@ -805,24 +907,28 @@ class TestConsumerRead(unittest.TestCase, _AnchorHomeMixin):
 
     def test_consumer_declares_its_staleness_bound(self):
         spec = read_flat(SPEC)
-        self.assertIn("The consumer declares its staleness bound, pins a version, and reads "
-                      "read-only", spec)
-        self.assertIn("the consumer's freshness check reds past that bound, before any analysis "
-                      "runs", spec)
+        self.assertIn(
+            "the consumer *shall* declare one staleness bound — how old the artifact may be "
+            "for its analysis", spec)
+        self.assertIn(
+            "its freshness check *shall* fail past that bound before any analysis runs", spec)
         self.assertIn("[INV-187]", spec)
 
     def test_consumer_pins_a_version_and_reads_read_only(self):
         spec = read_flat(SPEC)
-        self.assertIn("It pins the contract version it was written against", spec)
-        self.assertIn("It reads the artifact read-only", spec)
-        self.assertIn("It carries a compatibility test that reds when its pinned version and the "
-                      "artifact's version diverge", spec)
-        self.assertIn("stale data is named aloud and the analysis stops there", spec)
+        self.assertIn("the consumer *shall* pin the contract version it was written against",
+                      spec)
+        self.assertIn("the consumer *shall* read the artifact read-only", spec)
+        self.assertIn(
+            "carry a compatibility test that fails *when* its pinned version and the "
+            "artifact's version diverge", spec)
+        self.assertIn("it *shall* name the stale data aloud and stop", spec)
 
     def test_cadence_and_bound_are_two_independent_numbers(self):
         spec = read_flat(SPEC)
-        self.assertIn("The cadence and the staleness bound are two numbers, set independently, and "
-                      "neither side reads the other's", spec)
+        self.assertIn(
+            "the cadence and the staleness bound *shall* be two numbers set independently, "
+            "and neither side *shall* read the other's", spec)
 
     def test_inv187_index_and_ownership(self):
         self.assert_index_and_ownership("INV-187")
@@ -838,28 +944,50 @@ class TestCardAndScan(unittest.TestCase, _AnchorHomeMixin):
 
     def test_card_and_scan_law(self):
         """F-roster's named test (ARCHITECTURE.md feature coverage)."""
+        # CANDIDATE REAL DEFECT (see repin log): "Discovery is a scan for cards, and the scan
+        # states where it looks and what it costs" has no mapping row in mapping.md Part 4 — its
+        # own rows for the scan ("Discovery reads two globs per root and treats every card as an
+        # agent." -> R5.4, matched below) cover the mechanics, not this title-style summary
+        # sentence, which is gone from PRODUCT_SPEC.md's rewritten Requirement 193 (replaced by a
+        # plainer Context paragraph).
         spec = read_flat(SPEC)
-        self.assertIn("A tree carrying a card is an agent, and writing the card is the "
-                      "declaration", spec)
-        self.assertIn("The card lives in the agent's own tree at `.live-spec/agent.md`", spec)
-        self.assertIn("Discovery is a scan for cards, and the scan states where it looks and "
-                      "what it costs", spec)
-        self.assertIn("The scan reads two globs under each of its roots", spec)
-        self.assertIn("Who does what is a lookup", spec)
+        self.assertIn(
+            "the system *shall* treat a tree that carries a card as an agent, and writing the "
+            "card *shall* be the one act that seats it", spec)
+        self.assertIn(
+            "the agent card *shall* live in the agent's own tree at `.live-spec/agent.md`",
+            spec)
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        self.assertIn(
+            "the system *shall* discover agents by reading two globs under each root", spec)
+        self.assertIn("who owns what is always a lookup", spec)
         self.assertIn("[E-32]", spec)
 
     def test_card_names_its_five_fields(self):
+        # the new format lists the card's fields comma-separated rather than semicolon-separated
         spec = read_flat(SPEC)
-        for field in ("the agent's name;", "its standing mission;", "the zones it owns;",
-                      "the contracts it publishes, each with the path its artifact lives at;",
-                      "its inbox address."):
+        for field in ("the agent's name", "its standing mission", "the zones it owns",
+                      "each contract it publishes with the path its artifact lives at",
+                      "its inbox address"):
             self.assertIn(field, spec, "the card's field is unstated: %r" % field)
 
     def test_the_read_runs_before_the_acting(self):
+        # mapping.md Part 4 (F-roster table) maps "The owning card is read before acting; the
+        # reviewer's review is the net for that discipline." to R5.9, matched below.
+        # CANDIDATE REAL DEFECT (see repin log): "The read runs first, ahead of the acting" (the
+        # rationale for why the order matters — every law below keys on the answer) has no
+        # mapping row of its own in mapping.md Part 4.
         spec = read_flat(SPEC)
-        self.assertIn("An agent scans for cards and reads the owning card before it acts on "
-                      "anything that might not be its own", spec)
-        self.assertIn("The read runs first, ahead of the acting", spec)
+        self.assertIn(
+            "the system *shall* read the owning card before acting on anything that might not "
+            "be its own", spec)
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
 
     def test_e32_index_and_ownership(self):
         self.assert_index_and_ownership("E-32")
@@ -901,26 +1029,58 @@ class TestDeclarationLaw(unittest.TestCase, _AnchorHomeMixin):
                                    "(SPEC E-32)")
 
     def test_no_file_outside_any_tree_describes_any_agent(self):
+        # mapping.md Part 4 (F-roster table) maps "No file outside any tree describes an agent."
+        # to R5.8, matched by the two assertions below that pass.
+        # CANDIDATE REAL DEFECT (see repin log): "this design has no such file to protect" (the
+        # write-ownership rationale) and "discovery reads those trees without writing anything
+        # anywhere" (the read-only-during-discovery guarantee) have no mapping row of their own
+        # in mapping.md Part 4 and are confirmed absent from PRODUCT_SPEC.md and the prototype
+        # draft section.md.
         spec = read_flat(SPEC)
-        self.assertIn("No file outside any tree describes any agent", spec)
-        self.assertIn("this design has no such file to protect", spec)
-        self.assertIn("Each agent owns its own description the way it owns its own tree", spec)
-        self.assertIn("discovery reads those trees without writing anything anywhere", spec)
+        self.assertIn(
+            "the system *shall* let no file outside any tree describe any agent", spec)
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        self.assertIn(
+            "each agent owning its own description the way it owns its own tree", spec)
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
         self.assertIn("[INV-184]", spec)
 
     def test_write_ownership_grants_the_card(self):
+        # mapping.md Part 4 (F-roster table) maps "Write-ownership grants the card, so it needs
+        # no permission act." to R5.10 and "The card holds identity/addresses; product data in a
+        # card is a contract field on the contract's permission road." to R5.11, both matched by
+        # the passing assertions below.
+        # CANDIDATE REAL DEFECT (see repin log): "the default-deny law meets no exception here"
+        # and "whatever file it sits in" have no mapping row of their own in mapping.md Part 4 —
+        # the underlying rules hold (R5.10, R5.11), but this specific explanatory framing of
+        # each is gone from PRODUCT_SPEC.md and the prototype draft section.md alike.
         spec = read_flat(SPEC)
-        self.assertIn("Write-ownership grants the card", spec)
-        self.assertIn("So the card needs no permission act, and the default-deny law meets no "
-                      "exception here", spec)
-        self.assertIn("Product data placed in a card is a contract field, and it takes the "
-                      "contract's permission road whatever file it sits in", spec)
+        self.assertIn(
+            "the system *shall* grant the card by write-ownership, so writing it needs no "
+            "permission act", spec)
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        self.assertIn(
+            "product data placed in a card *shall* be a contract field taking the contract's "
+            "permission road", spec)
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
 
     def test_cardless_tree_is_flagged_beside_its_siblings(self):
         spec = read_flat(SPEC)
-        self.assertIn("A tree with no card is flagged where its siblings are flagged", spec)
-        self.assertIn("a host tree carrying no `.live-spec/agent.md` is named there as an "
-                      "incomplete record", spec)
+        self.assertIn(
+            "the rank a project kind recorded with no declared layers carries", spec)
+        self.assertIn(
+            "an inventoried live-spec host tree carries no `.live-spec/agent.md`, the system "
+            "*shall* flag it as an incomplete record", spec)
 
     def test_inv184_index_and_ownership(self):
         self.assert_index_and_ownership("INV-184")
@@ -936,33 +1096,34 @@ class TestMessageLifecycle(unittest.TestCase, _AnchorHomeMixin):
 
     def test_message_carries_a_stable_identifier(self):
         spec = read_flat(SPEC)
-        self.assertIn("A message carries a stable identifier its reply can name", spec)
-        self.assertIn("The identifier is minted per message", spec)
-        self.assertIn("[INV-192]", spec)
+        self.assertIn("the system *shall* mint a stable identifier per message from the "
+                      "sender's session identity", spec)
+        self.assertIn("an exchange *shall* be keyed to its first message's identifier, which "
+                      "every reply names", spec)
+        self.assertIn("INV-192, INV-117]", spec)  # code always co-brackets in the new format
 
     def test_reply_travels_the_senders_own_inbox(self):
         spec = read_flat(SPEC)
-        self.assertIn("A reply travels the sender's own inbox, and it inherits its passage from "
-                      "the message it answers", spec)
-        self.assertIn("it keeps the channel count at two", spec)
+        self.assertIn("a reply *shall* travel back to the sender as one new file in the "
+                      "sender's inbox", spec)
+        self.assertIn("the count of channels between two agents stays at two", spec)
 
     def test_reply_owes_no_blocked_work_of_its_own(self):
         spec = read_flat(SPEC)
-        self.assertIn("A reply owes no blocked work of its own", spec)
-        self.assertIn("the message it discharges already named the blocked work that earned the "
-                      "exchange", spec)
+        self.assertIn("owing no blocked work of its own", spec)
+        self.assertIn("the message it discharges already named the work", spec)
 
     def test_every_message_reaches_a_terminal_state(self):
         spec = read_flat(SPEC)
-        self.assertIn("Every message states its need-by and reaches a terminal state", spec)
-        self.assertIn("A message ends delivered, declined, or escalated past its stated need-by",
-                      spec)
-        self.assertIn("An escalated message surfaces in the sender's own status report as blocked "
-                      "work aged past its stated need-by", spec)
+        self.assertIn("every message *shall* state its need-by and *shall* reach one terminal "
+                      "state", spec)
+        self.assertIn("delivered, declined, or escalated past its stated need-by", spec)
+        self.assertIn("the system *shall* surface it in the sender's status report as blocked "
+                      "work aged past its need-by", spec)
 
     def test_no_agent_wakes_a_dormant_window(self):
         spec = read_flat(SPEC)
-        self.assertIn("An agent wakes a dormant window on no occasion", spec)
+        self.assertIn("*shall* wake a dormant window on no occasion", spec)
 
     def test_inv192_index_and_ownership(self):
         self.assert_index_and_ownership("INV-192")
@@ -979,39 +1140,68 @@ class TestAgentBirth(unittest.TestCase, _AnchorHomeMixin):
     def test_agent_birth_walk(self):
         """F-agent-birth's named test (ARCHITECTURE.md feature coverage)."""
         spec = read_flat(SPEC)
-        self.assertIn("A capability no agent's zone owns, or one that has outgrown its host, lets "
-                      "any agent propose a new agent", spec)
-        self.assertIn("The proposal names the capability, the zone the new agent would own, and "
-                      "the contracts it would publish", spec)
+        self.assertIn("a capability pins to no agent's zone, or a capability has outgrown its "
+                      "host, the system *shall* let any agent propose a new agent", spec)
+        self.assertIn("naming the capability, the zone the new agent would own, and the "
+                      "contracts it would publish", spec)
         self.assertIn("[T-22]", spec)
 
     def test_ratification_authorizes_the_founding_and_the_agent_declares_it(self):
         spec = read_flat(SPEC)
-        self.assertIn("It stands as a proposal until the owner ratifies the birth", spec)
-        self.assertIn("The owner ratifies the founding, and the agent declares itself", spec)
-        self.assertIn("These are two acts on two objects", spec)
-        # The owner's word authorizes the founding (a new tree, queue, gates, a standing cost);
-        # the founded agent's own hand writes the card, and every scan finds it from that moment.
-        self.assertIn("no agent founds another on its own authority", spec)
-        self.assertIn("the founded agent's own next act: it writes its card, and every scan "
-                      "finds it from that moment", spec)
+        self.assertIn("the proposal *shall* carry the adversarial read an expensive decision "
+                      "earns and *shall* stand as a proposal until the owner ratifies the "
+                      "creation", spec)
+        self.assertIn("**Case: the owner ratifies, the agent declares itself**", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "These are two acts on two objects" (the meta
+        # framing that ratification and self-declaration are two distinct acts, not one) has no
+        # mapping row anywhere in mapping.md Part 4 — the row set for this requirement (R9.2-
+        # R9.5) states each act's mechanics but never this structural framing sentence.
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        # mapping.md Part 1 cites INV-10 into R9.3 ("The owner's word authorizes the creation (a
+        # new tree/queue/gates/standing cost)."), whose surviving text is the affirmative form of
+        # "no agent founds another on its own authority" — if only the owner's word authorizes
+        # creation, no agent can found one on its own authority; re-pinned to that criterion.
+        self.assertIn("the owner's word *shall* authorize the creation, since a new agent is a "
+                      "new tree, a new queue, a new set of gates, and a standing cost the owner "
+                      "carries", spec)
+        self.assertIn("the founded agent *shall* declare itself by writing its own card, and "
+                      "every scan *shall* find it from that moment", spec)
 
     def test_contract_outlives_the_migration(self):
+        # mapping.md Part 4 (F-agent-birth table) maps "A migrated contract keeps the consumer's
+        # pin until it chooses to move; the new owner publishes at the address its own card
+        # names." to R9.8, matched below.
         spec = read_flat(SPEC)
-        self.assertIn("The contract outlives the migration", spec)
-        self.assertIn("the consumer keeps reading its pinned version until it chooses to move",
-                      spec)
-        self.assertIn("A migration that breaks a consumer's pin has broken the contract rather "
-                      "than moved it", spec)
+        self.assertIn("**Case: the contract survives the migration**", spec)
+        self.assertIn("the system *shall* let the consumer keep reading its pinned version "
+                      "until it chooses to move", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "A migration that breaks a consumer's pin has
+        # broken the contract rather than moved it" has no mapping row anywhere in mapping.md
+        # Part 4 — it is the source's own rhetorical restatement of R9.8, not a distinct claim.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
 
     def test_grain_is_the_owners_call_recorded_with_its_date(self):
+        # mapping.md Part 4 (F-agent-birth table) maps "A capability on the skill/agent line is
+        # settled by the owner's word, recorded with its date." to R9.9, matched below.
         spec = read_flat(SPEC)
-        self.assertIn("The grain of a capability — a skill or an agent — is the owner's call, "
-                      "recorded with its date", spec)
-        self.assertIn("That weighing is taste, which is the human-only fact this deferral names",
-                      spec)
-        self.assertIn("The call is recorded with its date in the proposing agent's own journal",
-                      spec)
+        self.assertIn("**Case: the kind is the owner's call**", spec)
+        self.assertIn("the owner's word *shall* settle which it is, the call recorded with "
+                      "its date", spec)
+        # CANDIDATE REAL DEFECT (see repin log): "That weighing is taste, which is the
+        # human-only fact this deferral names" has no mapping row anywhere in mapping.md Part 4
+        # — R9.9's row states only the settled-by-owner's-word rule, not this "taste" rationale
+        # (the "human-only fact" phrase exists elsewhere in the spec for a wholly different
+        # requirement's deferral markers, not for this skill/agent grain call).
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        self.assertIn("recorded with its date in the proposing agent's journal", spec)
 
     def test_t22_index_and_ownership(self):
         self.assert_index_and_ownership("T-22")
@@ -1026,15 +1216,34 @@ class TestRecogniseAndRoute(unittest.TestCase, _AnchorHomeMixin):
     is an acknowledgement of a thing already done."""
 
     def test_agent_recognises_a_neighbours_zone_itself(self):
+        # mapping.md Part 4 (F-agent-ask table) maps "The agent recognizes the neighbour's zone
+        # on its own and takes the fitting channel." to R7.9 (= Requirement 195 criterion 9),
+        # matched below via the structurally-fixed `assert_declared` (see the shared-helper note
+        # at the top of this file).
         clause = self.assert_declared("INV-195")
-        self.assertIn("scans for cards", clause)
-        self.assertIn("carries no fact the agent lacked", clause)
-        self.assertIn("made the owner its router", clause)
+        self.assertIn("the system *shall* scan for cards, find the owning agent, and take the "
+                      "channel that fits, on its own recognition", clause)
+        # CANDIDATE REAL DEFECT (see repin log): "carries no fact the agent lacked" has no
+        # mapping row anywhere in mapping.md Part 4 — R7.9's row states only the bare
+        # recognition mechanism, not this owner-afterwards-adds-nothing rationale.
+        # retired at row-445 pass 2: journal-bound rationale (mapping.md Part-4 exclusion —
+        # "its rationale, its dated provenance, and its history are excluded — those belong to the
+        # journal"; DELTA.md wave: one restoration judged genuine content "(not rationale)", the
+        # audited rest rationale). Behavioural half asserted above/below from its own criterion.
+        # CANDIDATE REAL DEFECT (see repin log): "made the owner its router" has no mapping row
+        # anywhere in mapping.md Part 4, for the same reason.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
 
     def test_the_base_rulebook_carries_the_recognition_duty(self):
         base = read_flat(BASE)
-        self.assertIn("recognises a neighbour's zone on its own", base)
-        self.assertIn("has made the owner its router", base)
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
+        # retired at row-445 pass 2: journal-bound rationale/emphasis (mapping.md Part-4 exclusion;
+        # DELTA.md wave verdict: one restoration judged genuine content "(not rationale)", the audited
+        # rest rationale). The behavioural half stays asserted above from its own criterion.
 
     def test_inv195_index_and_ownership(self):
         self.assert_index_and_ownership("INV-195")
@@ -1047,9 +1256,9 @@ class TestExchangeBound(unittest.TestCase, _AnchorHomeMixin):
 
     def test_one_question_crosses_twice_then_goes_to_the_owner(self):
         clause = self.assert_declared("INV-196")
-        self.assertIn("The bound is two", clause)
-        self.assertIn("third crossing goes to the owner", clause)
-        self.assertIn("reopen it by rewording", clause)
+        self.assertIn("let one question cross between the same two agents at most twice", clause)
+        self.assertIn("send the third crossing to the owner", clause)
+        self.assertIn("reopen the count by rewording the question", clause)
 
     def test_the_bound_cites_the_kin_it_copies(self):
         """The human-decision withdrawal loop already carries this shape [INV-130]; the bound is
@@ -1073,19 +1282,28 @@ class TestWrongReferralNamed(unittest.TestCase, _AnchorHomeMixin):
 
     def test_wrong_referral_law_stands(self):
         clause = self.assert_declared("INV-225")
-        self.assertIn("A wrong referral earns a name of its own", clause)
-        self.assertIn("the named zone refers the question back rather than answering", clause)
-        self.assertIn("surfaces a wrong referral by name", clause)
+        self.assertIn("the system *shall* name the wrong referral in the sender's status "
+                      "report", clause)
+        self.assertIn("a referral that pointed at a zone which, by its own referring-back, "
+                      "does not own the target", clause)
+        self.assertIn("name the wrong referral in the sender's status report", clause)
 
     def test_wrong_referral_is_named_the_finding(self):
         clause = self.assert_declared("INV-225")
         # the mechanical distinction the checker reads, and the honest split it does NOT cross
-        self.assertIn("a referral answered by a counter-referral between the same two agents",
+        self.assertIn("a referral met by a counter-referral between the same two agents",
                       clause)
-        self.assertIn("stays the receiving sweep's and the prover's judgment", clause)
-        # the overlap half refused by the owner's word, no uniqueness check built
-        self.assertIn("no uniqueness check is built", clause)
-        self.assertIn("rides the suite and not the push chain", clause)
+        self.assertIn("stays the receiving sweep's and the reviewer's judgment", clause)
+        # PASS-2 RE-TRIAGE: restored by the prover MUST-FIX wave — mapping.md's "Restored owner
+        # decision — zones may overlap" note records the zones-may-overlap decision and its
+        # uniqueness-check consequence appended as new criteria (Requirement 196, criterion 20,
+        # co-cited [INV-225]) rather than dropped. Re-pinned from the old spec's "no uniqueness
+        # check is built" phrase to the restored criterion's own wording. Same underlying
+        # restoration as TestDefaultOwner.test_zones_may_overlap below.
+        self.assertIn("the system *shall* build no uniqueness check over zone claims, the wrong "
+                      "referral alone earning a name", clause)
+        self.assertIn("ride the suite", clause)
+        self.assertIn("staying clear of the push chain", clause)
 
     def test_base_rulebook_carries_the_wrong_referral_law(self):
         self.assertIn("named as a wrong referral", read_flat(BASE),
@@ -1140,20 +1358,42 @@ class TestDefaultOwner(unittest.TestCase, _AnchorHomeMixin):
     ownership (the owner's word through the promoter's inbox deposit, 2026-07-17)."""
 
     def test_an_unowned_concern_goes_to_the_pack(self):
+        # mapping.md Part 4 (F-agent-ask table) maps "An unowned concern goes to the pack, which
+        # answers who owns it (agent / new agent / skill)." to R8.5, matched below.
         clause = self.assert_declared("INV-197")
-        self.assertIn("the pack stands as the default owner", clause)
+        self.assertIn("carried to the pack as its default owner", clause)
         self.assertIn("owning zone does not exist yet", clause)
-        self.assertIn("INV-191", clause)
+        # CANDIDATE REAL DEFECT (see repin log): the cross-reference to INV-191 (the
+        # homeless-question-dropped law) has no mapping row anywhere in mapping.md Part 1, Part
+        # 3, or Part 4 that co-cites it with INV-197/R8.5/R8.6 — mapping's own Part 1 table
+        # cites INV-191 only into R56.2, R195.13, R196.4, never beside R8.5/R8.6. The two laws
+        # are no longer tied together in one criterion's bracket in PRODUCT_SPEC.md.
+        # retired at row-445 pass 2: the INV-191 co-citation was a prose-adjacency artifact of the
+        # old format — INV-191 owns its own criteria (R56.2, R195.13, R196.4), asserted green by
+        # TestHomelessQuestionDropped; no mapping row co-cites it with INV-197 (worker analysis above).
 
     def test_work_never_stalls_on_ownership(self):
         clause = self.assert_declared("INV-197")
-        self.assertIn("does the reasonable thing now", clause)
-        self.assertIn("marks that work provisional", clause)
-        self.assertIn("a stall while ownership is settled", clause)
+        self.assertIn("the agent *shall* do the work it can do now in whatever tree can hold "
+                      "it", clause)
+        self.assertIn("mark that work provisional", clause)
+        self.assertIn("*while* ownership is being settled, the agent *shall* do the work it "
+                      "can do now", clause)
 
     def test_zones_may_overlap(self):
         """His word, recorded against the queued uniqueness row it refuted the same day."""
-        self.assertIn("Zones may overlap", self.assert_declared("INV-197"))
+        # PASS-2 RE-TRIAGE: restored by the prover MUST-FIX wave — mapping.md's "Restored owner
+        # decision — zones may overlap" note (folded in after the re-pin sweep found this one
+        # genuine content loss) appends the recorded owner decision as a new named case and
+        # criterion under Requirement 196 (co-cited [INV-197, INV-225]), rather than leaving it
+        # dropped. Re-pinned from the old spec's bare "Zones may overlap" phrase to the restored
+        # Case heading plus the criterion's own wording, both now present.
+        spec = read_flat(SPEC)
+        self.assertIn("Case: zones may overlap", spec)
+        self.assertIn(
+            "the system *shall* let two agents' zones overlap, each card recording what its own "
+            "agent claims and two cards claiming one area both standing, and *shall* force no "
+            "agent to carve a disjoint zone", self.assert_declared("INV-197"))
 
     def test_inv197_index_and_ownership(self):
         self.assert_index_and_ownership("INV-197")

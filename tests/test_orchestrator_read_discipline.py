@@ -20,9 +20,9 @@ def test_base_rule_states_read_discipline():
 
 def test_spec_invariant_137_present_and_indexed():
     spec = _read("PRODUCT_SPEC.md")
-    # prose clause
-    assert "reads to decide; discovery reads go to workers" in spec
-    assert "[INV-137]" in spec
+    # prose clause (Requirement 210's own heading carries the same meaning)
+    assert "reads to decide and dispatches the discovery reads" in spec
+    assert "INV-137" in spec
     # Formal-index row (a table row starting with the code)
     assert "| INV-137 |" in spec
 

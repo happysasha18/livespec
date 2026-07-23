@@ -10,7 +10,7 @@ It's the spine that runs the whole arc. You ask for a feature; build-pipeline wa
 
 > spec → prove → architecture → prove architecture → matrix → test → code → verify → commit & show. A bug shortcuts to bug → matrix → test → code.
 
-Never code first and back-fill a spec to match. The point of the order is that each step catches what the next one would otherwise build on top of: the prover only finds a cross-section hole when the whole spec is in front of it; the tests come from the matrix, not the code; "done" means you ran it and watched it work.
+Never code first and back-fill a spec to match. The point of the order is that each step catches what the next one would otherwise build on top of: the prover only finds a cross-section hole when the whole spec is in front of it; the tests are derived from the matrix, which sits upstream of the code; "done" means you ran it and watched it work.
 
 Tiny reversible edits skip the ceremony — but they still ship a test.
 
@@ -25,7 +25,7 @@ Tiny reversible edits skip the ceremony — but they still ship a test.
 ## The steps
 
 1. **Spec** — invoke `spec-author`: entities, states, transitions, actors, invariants, and the cross-section composition between surfaces. Real gaps are marked `⟨DECIDE⟩` and asked, never guessed.
-2. **Prove** — invoke `product-prover` on the *whole* spec, not the delta. Fold every defect by the book. A surface absent or unlinked at prove-time is invisible to the prover. Two modes: a full pass or a focused cross-link pass for a single new surface. Findings persist to a dated file so the next review starts from the last one's open rows.
+2. **Prove** — invoke `product-prover` on the *whole* spec each pass, including the parts the delta left untouched. Fold every defect by the book. A surface absent or unlinked at prove-time is invisible to the prover. Two modes: a full pass or a focused cross-link pass for a single new surface. Findings persist to a dated file so the next review starts from the last one's open rows.
 3. **Architecture** — write or update `ARCHITECTURE.md` from the proven spec: named nodes, one responsibility each, every spec fact owned by exactly one node, named seams; in a live codebase every node pins to its owning `file:line` — this is where the spec is reconciled with shipped reality (cite `file:line` from a command you ran, fix the spec to the truth).
 4. **Prove the architecture** — `product-prover` with the architecture lens, whenever the doc changed: every fact owned, no node without spec backing, every seam named.
 5. **Test spec** — DERIVE the matrix from the proven spec through the proven architecture: rows organized node × fact, one row per invariant / state / transition, each pinned to a test level; derivation closes with a coverage-validation checklist actually walked.
@@ -40,8 +40,8 @@ Tiny reversible edits skip the ceremony — but they still ship a test.
 
 - **Before a minor (0.x.0) bump:** the 3-pass preventive audit — prove the whole spec + audit the matrix + check surface composition.
 - **Order is law:** `spec → prove → architecture → prove architecture → matrix → test → code`; `bug → matrix → test → code`.
-- **Delegation:** if you can write it as precise steps, it's a worker's job — decided *before* the first tool call; long work writes its progress to a persistent checkpoint so a cut-off resumes instead of restarting.
-- **Traceability gate:** `test_traceability.py` runs every commit — spec-to-test drift is caught on the commit that causes it, not at the next minor bump.
+- **Delegation:** if you can write it as precise steps, it's a worker's job — decided *before* the first tool call; long work writes its progress to a persistent checkpoint, so a cut-off resumes from where it stopped.
+- **Traceability gate:** `test_traceability.py` runs every commit — spec-to-test drift is caught on the commit that causes it, continuously, so it never waits for the next minor bump.
 
 ---
 

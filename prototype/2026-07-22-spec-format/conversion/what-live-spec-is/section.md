@@ -4,7 +4,7 @@ This document is the living statement of what live-spec is right now. Each secti
 
 live-spec takes any request a person submits, of any size and at any moment, breaks it into story-sized pieces — one user story to a piece — and processes them one at a time. Each piece runs the same pipeline, each stage checked by its own gate before the next, reaches a delivery, and ships tested, so the person is free to keep thinking about other things. A machine enforces the process at every step, every claim earns a test, and nothing ships until that test passes.
 
-Bracket codes like `[E-1]` and `[E-12]` point to the rule's home in the project spec; a reader can ignore them, a maintainer follows them. The letter before the number names the kind: `E-` an entity (a numbered part of the product), `A-` an adoption step, and `S-` a header rule. A `[target]` marker on a line of its own marks a feature that is planned rather than built. The keywords *when*, *if*, *then*, and *shall* are set in italics and carry their standard requirements meaning: *shall* states a duty, *when* opens a situation, *if* and *then* open a condition and its result.
+Bracket codes like `[E-1]` and `[E-12]` point to the rule's home in the project spec; a reader can ignore them, a maintainer follows them. The letter before the number names the kind: `E-` an entity (a numbered part of the product), `A-` an adoption step, and `S-` a header rule. A `[target]` marker on a line of its own marks a feature that is promised but not yet built. The keywords *when*, *if*, *then*, and *shall* are set in italics and carry their standard requirements meaning: *shall* states a duty, *when* opens a situation, *if* and *then* open a condition and its result.
 
 Terms already defined in the intake glossary and the founding section — request, pipeline, spec, test matrix, suite, queue, delivery, journal, inbox, host, pack, session, profile, adoption, guardrail, surface registry, feedback ledger, snapshot, design-sync, skill eval — carry their meanings unchanged. The block below adds only the new nouns this section needs.
 
@@ -12,15 +12,15 @@ Terms already defined in the intake glossary and the founding section — reques
 
 - **user story** — one requirement told as a short sentence naming who wants what and for which benefit; the unit a request is split into.
 - **base skill** — the pack skill that holds the shared rulebook and the default settings, stated once for every working skill to point at.
-- **working skill** — one of the pack's domain skills, each carrying one role of the pipeline: spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, publish, feedback-intake, and feedback-collector.
-- **target tag** — the marker `[target]` a spec line carries on a line of its own to mark a feature that is planned rather than built.
+- **working skill** — one of the pack's domain skills, each carrying one role of the pipeline: spec-author, product-prover, design-reviewer, build-pipeline, test-author, communicator, publish, text-audit (the audit-and-fix loop for human-facing texts, which runs mechanical lints and then fresh zero-context cold reads and fixes each finding at its source until two reads come back clean in a row), feedback-intake, and feedback-collector.
+- **target tag** — the marker `[target]` a spec line carries on a line of its own to mark a feature that is promised but not yet built.
 - **checkpoints** — the saved points a piece of work reaches and can resume from, written under `.live-spec/`.
 
 ---
 
 ## Requirement 1: The spec keeps what is built apart from what is planned
 
-**Context:** The spec states what is built and working today apart from what is only planned, and it keeps a reader from mistaking one for the other. A planned feature carries the target tag on a line of its own, and the tag never spreads to the section around it. The suite ties each target tag to the queue row that builds it — a row still open, awaiting its landing — so the marker is enforced rather than trusted.
+**Context:** The spec states what is built and working today apart from what is only planned, and it keeps a reader from mistaking one for the other. A planned feature carries the target tag on a line of its own, and the tag never spreads to the section around it. The suite ties each target tag to the queue row that builds it — a row still open, awaiting its landing — so the marker is enforced by the suite.
 
 **User Story:** As a reader of the spec, I want a planned feature marked by a target tag the suite enforces, so that I never mistake a promised surface for a working one.
 
@@ -35,6 +35,7 @@ Terms already defined in the intake glossary and the founding section — reques
 
 3. The system *shall* tie each target tag to the queue row that builds it, that row still open and awaiting its landing, and *shall* red the suite *if* that row ships with the tag still on, *if* the tag vanishes, or *if* the tag was never named. [S-0]
 4. The system *shall* mark as planned the host-facing guardrail checks and the surface registry, the snapshot machinery that records a project's state at adoption as its baseline, and the design-sync machine. [E-6, E-10, E-7, A-6, E-18]
+   [target]
 
 ---
 
@@ -42,7 +43,7 @@ Terms already defined in the intake glossary and the founding section — reques
 
 **Context:** Behind the pipeline is a full set of roles. An analyst writes the spec, an architect stress-tests the design and finds the edge cases and dead ends before any code is written, a design reviewer judges the design and checks that same-kind things behave alike, a tester works out the tests and writes them, and a project manager runs the process and reports back to the person. The design reviewer proposes the groupings of same-kind things the spec never declared and checks behaviour parity inside each group. These roles are the working skills, and one base skill holds the shared rulebook and the default settings the other skills work by.
 
-**User Story:** As a person relying on the pipeline, I want each request run by a full set of roles carried by named working skills over one base rulebook, so that every request meets an analyst, an architect, a reviewer, a tester, and a manager rather than a single undifferentiated pass.
+**User Story:** As a person relying on the pipeline, I want each request run by a full set of roles carried by named working skills over one base rulebook, so that every request meets an analyst, an architect, a reviewer, a tester, and a manager, five distinct roles in one pass.
 
 ### Acceptance Criteria
 

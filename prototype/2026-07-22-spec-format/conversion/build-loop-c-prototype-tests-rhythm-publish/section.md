@@ -40,7 +40,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ---
 
-## Requirement 1: A prototype is a fenced sketch that carries its label
+## Requirement 1: A prototype is a fenced sketch that carries its label  [feature: F-prototype]
 
 **Context:** Exploring an idea before committing to it is allowed, and a prototype is that exploration kept as a sketch. It lives fenced off in its own clearly named home, and the fence runs one way — influence crosses out of the prototype and never into the shipped product. Every artifact the prototype produces announces itself.
 
@@ -81,7 +81,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 3: Opening a prototype home is a repo write
 
-**Context:** A prototype home is a folder or branch, and creating it writes to the repository like any other write. So the write-ownership law governs it, the assigned senior agent makes the judgment call, and a session working from outside files an inbox wish rather than opening the home itself.
+**Context:** A prototype home is a folder or branch, and creating it writes to the repository like any other write. So the write-ownership law governs it, the assigned seat makes the judgment call, and a session working from outside files an inbox wish rather than opening the home itself.
 
 **User Story:** As a maintainer of the repository, I want opening a prototype home held to the write-ownership law, so that a worker never opens a prototype home on its own brief and an outside session routes through the inbox.
 
@@ -89,7 +89,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the write is owned**
 
-1. *when* a prototype home is opened, the system *shall* govern that write by the write-ownership law and *shall* leave the judgment call to the assigned senior agent. [INV-10, ACT-2]
+1. *when* a prototype home is opened, the system *shall* govern that write by the write-ownership law and *shall* leave the judgment call to the assigned seat. [INV-10, ACT-2]
 2. *when* a session works from outside the assigned pack session, the system *shall* have it file an inbox wish rather than open a prototype home on its own brief. [INV-10]
 
 ---
@@ -102,7 +102,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ### Acceptance Criteria
 
-**Case: the earned feature is specced, not merged**
+**Case: the earned feature is specced fresh**
 
 1. *when* a sketch earns its place, the system *shall* enter its feature at the spec step like any wish and *shall* not merge the sketch's code. [T-12, INV-16]
 2. The system *shall* treat the prototype as evidence for that spec, its code holding no rights. [T-12]
@@ -113,19 +113,21 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** A guardrails check enforces the one-way fence, and it has three legs. One leg runs live today; two are promised targets. When all three land, the header's honesty rule holds in both directions — the spec never claims what is not built, and the build never contains what the spec does not name.
 
-**User Story:** As a person trusting the fence, I want a mechanical check with three named legs and one honest note of which run today, so that a prod file reaching into a prototype turns red while the promised legs are marked rather than pretended.
+**User Story:** As a person trusting the fence, I want a mechanical check with three named legs and one honest note of which run today, so that a prod file reaching into a prototype turns red while the promised legs are marked as still owed.
 
 ### Acceptance Criteria
 
 **Case: the three legs**
 
 1. *when* a prod file references anything inside a prototype home, the system *shall* turn the fence leg red. [E-6]
-2. The system *shall* enforce the completeness scan over the surface registry and the behaviour-traces-to-spec check as the two remaining legs. [E-10, E-6, target]
+2. The system *shall* enforce the completeness scan over the surface registry and the behaviour-traces-to-spec check as the two remaining legs. [E-10, E-6]
+   [target]
 
 **Case: the honesty in both directions**
 
 3. *when* all three legs land, the system *shall* hold that the spec never claims what is not built and the build never contains what the spec does not name. [S-0, INV-17]
-4. *while* only the fence leg is enforced, the system *shall* keep the other two legs promised, marked, and owned by their rows. [INV-17, target]
+4. *while* only the fence leg is enforced, the system *shall* keep the other two legs promised, marked, and owned by their rows. [INV-17]
+   [target]
 
 ---
 
@@ -133,7 +135,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** Prose alone cannot record how a design looks and feels, so a rebuild made from prose with no artifact to check against can pass every test and still ship a look-alike. Once the human approves a sketch as the look, that prototype becomes the norm for look and feel. The clause it governs cites the frozen artifact, and approval freezes a dated copy into the project's records.
 
-**User Story:** As a person who approved a look, I want the approving clause to cite a frozen copy of the artifact, so that a later rebuild is checked against the real look rather than a prose paraphrase.
+**User Story:** As a person who approved a look, I want the approving clause to cite a frozen copy of the artifact, so that a later rebuild is checked against the frozen artifact itself.
 
 ### Acceptance Criteria
 
@@ -199,7 +201,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ### Acceptance Criteria
 
-**Case: erase what you create**
+**Case: a test erases what it creates**
 
 1. The system *shall* have every test remove what it creates and *shall* have a suite run leave the machine as it found it, a surviving artifact being a defect of the test. [INV-100]
 2. The system *shall* birth a test's files in the system temp home or the gitignored state directory and erase them at the run's end, and *shall* point a headless browser's download directory at the temp home. [INV-100]
@@ -226,7 +228,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the boundary keeps property tests in**
 
-3. The system *shall* allow a round-trip or property test over the outputs, since it asserts an invariant rather than a recomputed value. [INV-102]
+3. The system *shall* allow a round-trip or property test over the outputs, since it asserts an invariant over the outputs. [INV-102]
 
 ---
 
@@ -263,7 +265,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 13: An extracted engine tests on its own generic fixtures
 
-**Context:** When a generic engine is carved out of a working project, the donor's data keeps the donor's shape, and a suite running only on it proves the donor rather than the engine. So the engine's suite runs on engine-shaped fixtures, and every donor-specific constant the extraction finds becomes a named content-contract entry with a test that the engine works without it.
+**Context:** When a generic engine is carved out of a working project, the donor's data keeps the donor's shape, and a suite running only on it proves the donor and leaves the engine untested. So the engine's suite runs on engine-shaped fixtures, and every donor-specific constant the extraction finds becomes a named content-contract entry with a test that the engine works without it.
 
 **User Story:** As a person carving an engine from an instance, I want its suite run on engine-shaped fixtures and each donor constant named in the content contract, so that the engine is proven independent of its first user.
 
@@ -278,7 +280,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 14: The suite's own plumbing must not lie
 
-**Context:** Three legs of one class each cover a way the harness could lie about its own verdict. A skip path must execute even when never taken, a shim owes a re-export completeness test, and a background or delegated run's verdict is read from the suite log's own tail line rather than a wrapper's exit code.
+**Context:** Three legs of one class each cover a way the harness could lie about its own verdict. A skip path must execute even when never taken, a shim owes a re-export completeness test, and a background or delegated run's verdict is read from the suite log's own tail line, which a wrapper's exit code cannot fake.
 
 **User Story:** As a person reading a suite's verdict, I want the plumbing that reports results held honest, so that a skip that cannot run reds, a missing re-export is caught, and a background run's verdict is read from its own log.
 
@@ -288,7 +290,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 1. The system *shall* import the skip helper at module load, so a skip path that cannot run reds instead of passing silently on the machine that needed it. [INV-80]
 2. The system *shall* require an engine-or-instance shim to carry a re-export completeness test, a missing re-export otherwise keeping a whole suite silently red. [INV-80]
-3. *when* a run is a background or delegated one, the system *shall* read its verdict from the suite log's own tail line rather than a wrapper's exit code, a foreground gate reading its own child's exit staying legal. [INV-80]
+3. *when* a run is a background or delegated one, the system *shall* read its verdict from the suite log's own tail line, trusting no wrapper's exit code, a foreground gate reading its own child's exit staying legal. [INV-80]
 
 ---
 
@@ -313,7 +315,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ---
 
-## Requirement 16: A check that looked at nothing is not a pass
+## Requirement 16: A check earns its pass only over a non-empty set
 
 **Context:** A check whose input set is empty reports clean while testing nothing — a uniqueness scan over zero items finds zero collisions, and the green says only that nothing was looked at. An empty input set is nearly always the defect: the parse broke or the source moved. So a check declares the input set it expects to be non-empty, and an empty set reds by name in place of passing silently.
 
@@ -380,7 +382,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 19: The suite-honesty invariants are one class, each naming its net
 
-**Context:** The test-infrastructure family shares one role: each member closes a way the suite could pass green while the fact it claims is false, or leaves the machine worse than it found it. The class carries one parity — each member names its net past merely naming the fix. For most members the net is a mechanical check; one member's net is the real-device walk row the suite can never green.
+**Context:** The test-infrastructure family — INV-77, INV-78, INV-79, INV-80, INV-100, INV-102, INV-155, INV-157, INV-158 — shares one role: each member closes a way the suite could pass green while the fact it claims is false, or leaves the machine worse than it found it. The class carries one parity — each member names its net past merely naming the fix. For most members the net is a mechanical check; one member's net is the real-device walk row the suite can never green. The class binds forward [INV-159], a new suite-honesty invariant stating its net against this parity while members declared before the class stand unreshaped.
 
 **User Story:** As a person relying on the suite-honesty class, I want every member to name the net that reds a run on its violation, so that a member naming no net is caught as a class defect.
 
@@ -393,7 +395,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the class binds forward**
 
-3. *when* a new suite-honesty invariant is stated, the system *shall* have it state its net against this parity and *shall* leave members declared before the class unreshaped. [INV-160, INV-157, INV-158]
+3. *when* a new suite-honesty invariant is stated, the system *shall* have it state its net against this parity and *shall* leave members declared before the class unreshaped. [INV-160, INV-157, INV-158, INV-159]
 
 ---
 
@@ -426,14 +428,14 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** The spec says what the product is, and tests prove facts about the shipped artifact; two documents sit between them, and if they stay implicit they get skipped. The architecture document describes how the product is built as a list of named nodes — pipeline stages, modules, surface owners. Each node carries one responsibility and one name, every spec fact belongs to exactly one node, and every pin comes from a command that was run. It is written from the proven spec and proved with the architecture lens before anything derives from it.
 
-**User Story:** As a person bridging the spec to the tests, I want the architecture written as named nodes each owning its facts and pinned from a real command, so that the layer between spec and tests is explicit rather than skipped.
+**User Story:** As a person bridging the spec to the tests, I want the architecture written as named nodes each owning its facts and pinned from a real command, so that the layer between spec and tests is written out in full.
 
 ### Acceptance Criteria
 
 **Case: named nodes, one fact one owner**
 
 1. The system *shall* have each architecture node carry one responsibility and one name, and *shall* have every spec fact belong to exactly one node. [E-14]
-2. The system *shall* pin every node to its owning place by the named thing — a function, a marker comment, a selector, a heading — resolving the name and re-grepping it in a drift check rather than trusting the cached line number, and *shall* draw every pin from a command that was run rather than the doc's own prose. [E-14]
+2. The system *shall* pin every node to its owning place by the named thing — a function, a marker comment, a selector, a heading — resolving the name and re-grepping it fresh in a drift check, catching a moved line, and *shall* draw every pin from a command that was actually run. [E-14]
 
 **Case: the architecture lens proves it**
 
@@ -485,7 +487,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** The document states measurable quality budgets for what it builds, each with its instrumentation home — where the number is measured and where a human reads it — and each budget names its watcher, the mechanical check that reds past the stated number. What is measurable depends on the project's kind, so the author asks what quality means here in numbers before writing any. The numbers are the host's taste, proposed by the architecture and set on the human's word.
 
-**User Story:** As a person guarding quality, I want each budget stated with its instrumentation home and a watcher, so that a budget cannot silently rot and a quality with no honest number is said by name rather than faked.
+**User Story:** As a person guarding quality, I want each budget stated with its instrumentation home and a watcher, so that a budget cannot silently rot and a quality with no honest number is said by name and its gap owned.
 
 ### Acceptance Criteria
 
@@ -528,7 +530,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** Every node states its place — build-time on the author's machine, a static file on a content-delivery host, the client browser, an edge worker, an external service. Where a load-bearing technology choice exists, the place names it, and the same table says where secrets live and which tier holds each verdict that must not be decided on the client. The document reads tiers-first, opening with the shape at a glance.
 
-**User Story:** As a person asking where a node runs, I want every node's place first-class and the document opening tiers-first, so that a reader answers where-does-this-run at a glance and a secret's tier is architecture rather than a footnote.
+**User Story:** As a person asking where a node runs, I want every node's place first-class and the document opening tiers-first, so that a reader answers where-does-this-run at a glance and a secret's tier sits in the architecture itself.
 
 ### Acceptance Criteria
 
@@ -566,7 +568,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 28: Every movement ends at a safe breakpoint
 
-**Context:** Every movement ends the same way: the resume file's live state is replaced rather than stacked, a dated journal entry is added, and the work is committed. Session memory can then be wiped with no loss, and the journal entry is the durable net where the resume file is gitignored. At a breakpoint the agent compacts its own context and says so, and on the way back it re-checks skill freshness.
+**Context:** Every movement ends the same way: the resume file's live state is overwritten in place, a dated journal entry is added, and the work is committed. Session memory can then be wiped with no loss, and the journal entry is the durable net where the resume file is gitignored. At a breakpoint the agent compacts its own context and says so, and on the way back it re-checks skill freshness.
 
 **User Story:** As a person handing off a session, I want every movement to end with the resume state replaced, a journal entry added, and a commit, so that memory can be wiped with zero loss.
 
@@ -602,7 +604,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** The resume file is read in one minute at a cold start, so growth is a design failure. The whole file holds at most 100 lines, and a suite check owns the number, going red on a bloated file proven with a synthetic one. The cap and the restate-every-open-leg law are reconciled by form: an open leg is restated as one terse line, and its detail flows to its home.
 
-**User Story:** As a returning session, I want the resume file capped and each open leg stated in one terse line, so that a cold start reads a short current picture rather than a bloated log.
+**User Story:** As a returning session, I want the resume file capped and each open leg stated in one terse line, so that a cold start reads a short, capped current picture.
 
 ### Acceptance Criteria
 
@@ -682,7 +684,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: the closing sweep**
 
 8. The system *shall* re-list every open human gate and every unharvested inbox file one line each, sweep the deferred rows' revisit triggers once more and send any fired row back to runnable, and re-check the formal index (the spec's closing reference table pairing each code with its rule's one-sentence statement) against the prose as a derived map. [M-1, INV-1]
-9. The system *shall* re-pin the derived docs' headers to the spec version and prove them, and *shall* re-read the thin loader line by line, keeping only a line that must hold before any pack file loads and migrating any other to its real home. [M-1, E-16]
+9. The system *shall* re-pin the derived docs' headers to the spec version and prove them, and *shall* re-read the thin loader line by line, keeping only a line that must hold before any pack file loads and migrating any other to its real home (the audit report states the line count). [M-1, E-16]
 
 ---
 
@@ -734,7 +736,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the two tiers**
 
-1. The system *shall* bind the universal tier — the contrast-frame ban (it bars naming a thing by denying its neighbour, the "X, not Y" frame), the negation-opener rule (it bars opening a rule by saying what it is not before saying what it is), the machine-jargon rule (it bars insider pack jargon and coined terms from spec prose), and the provenance-narrative rule (it bars a birth-story — the date and case that motivated a rule — inside the normative body) — to every host's gate whatever its register, running the provenance-narrative rule as a hard error in every tier. [INV-166]
+1. The system *shall* bind the universal tier — the contrast-frame ban (it bars naming a thing by denying its neighbour, the `"X, not Y"` frame), the negation-opener rule (it bars opening a rule by saying what it is not before saying what it is), the machine-jargon rule (it bars insider pack jargon and coined terms from spec prose), and the provenance-narrative rule (it bars a birth-story — the date and case that motivated a rule — inside the normative body) — to every host's gate whatever its register, running the provenance-narrative rule as a hard error in every tier. [INV-166]
 2. The system *shall* keep the pack-register tier — the caps-shout, second-person, reassurance, and future-narration rules — as the pack's own taste, right for the pack's docs and available to a host on its word. [INV-166]
 
 **Case: the tiers named in one flag**
@@ -762,7 +764,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Context:** A text states what changed and what follows from it; the size of a change is given as content or a number, and grading that size — its importance or drama, up or down — belongs to the reader. Over-dramatization to the plus and to the minus are one bias, so the law covers both poles at once. It binds every text — chat, docs, worker reports, and agent-to-agent messages.
 
-**User Story:** As a person reading the pack's texts, I want the size of a change left for me to judge on every surface, so that a change is described plainly rather than oversold either way.
+**User Story:** As a person reading the pack's texts, I want the size of a change left for me to judge on every surface, so that a change is described plainly and at its true size.
 
 ### Acceptance Criteria
 
@@ -792,7 +794,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: version has named homes**
 
 2. The system *shall* keep each version fact in one named home — the repository's `VERSION` file, each skill's `SKILL.md` frontmatter line, and a host's installed-set record written at attach and every update. [M-7]
-3. The system *shall* have the freshness check compare version against version as exact strings rather than bare file times. [M-7, A-7]
+3. The system *shall* have the freshness check compare version against version as exact strings, reading the stamped version itself. [M-7, A-7]
 
 ---
 
@@ -818,7 +820,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 41: The push checks may be mirrored in a remote gate
 
-**Context:** The guardrails' native home is the local pre-push hook. A host may also mirror the same checks in its continuous-integration runner as a second net. There is one source of truth: the runner runs the same scripts and never redefines them, and the second net runs the full set rather than the local reach map's scoped subset.
+**Context:** The guardrails' native home is the local pre-push hook. A host may also mirror the same checks in its continuous-integration runner as a second net. There is one source of truth: the runner runs the same scripts and never redefines them, and the second net runs the full set, wider than the local reach map's scoped subset.
 
 **User Story:** As a host wanting a second net, I want the remote gate to run the same scripts as the local hook, so that the gates are re-run on another machine with one source of truth.
 
@@ -833,7 +835,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 42: Accepted work reaches the project's remote
 
-**Context:** Where the host has a remote, work is pushed by rule rather than parked locally waiting for perfect. Same or better means the work matches or improves on the tree before the change; the gates its diff reached hold that reading, each one green and none showing a regression against that prior tree. The remote is discovered from the tree first. The rule runs inside the human's standing push grant, stands down while another session is live in the repo, and re-walks the shopfront on every push.
+**Context:** Where the host has a remote, work is pushed by rule, released as soon as it is same or better. Same or better means the work matches or improves on the tree before the change; the gates its diff reached hold that reading, each one green and none showing a regression against that prior tree. The remote is discovered from the tree first. The rule runs inside the human's standing push grant, stands down while another session is live in the repo, and re-walks the shopfront on every push.
 
 **User Story:** As a person shipping accepted work, I want green work pushed by rule under the standing grant, so that sound work reaches the remote rather than sitting local and a named milestone still waits for the human's word.
 
@@ -842,7 +844,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: push by rule under the grant**
 
 1. *when* work matches or improves on the tree before the change, and every gate its diff reached passes green with no regression against that prior tree, the system *shall* push it to the host's remote by rule under the human's standing push grant rather than park it locally. [INV-82, INV-70, INV-9]
-2. The system *shall* discover the remote from the tree first rather than ask what `git remote -v` answers, and *shall* ask one contextual question at the first push moment only where the host has no remote or the profile records no push grant. [INV-82]
+2. The system *shall* discover the remote from the tree first rather than ask what `git remote -v` answers, and *shall* ask one contextual question at the first push moment only where the host has no remote or the profile records no push grant, one question per gap. [INV-82]
 
 **Case: coordination and the shopfront**
 
@@ -906,7 +908,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ---
 
-## Requirement 46: A publish owes the reader what the artifact's kind owes
+## Requirement 46: A publish owes the reader what the artifact's kind owes  [feature: F-publish]
 
 **Context:** Sooner or later a piece of work leaves the machine — a repo goes public, a skill enters a plugin directory, a release is cut, rendered cards go to a design project. The work-kind axis used at wish intake applies again at the door of publishing, and each kind owes its reader a different minimum.
 
@@ -976,7 +978,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 **Case: one home, its outcome recorded**
 
 3. The system *shall* read this shopfront check as the publish checklist at push scale, the commit-and-show step pointing at it and the walk's outcome riding the delivery report. [INV-44, INV-22, E-20]
-4. *when* a push's changes touch none of the shopfront's claims, the system *shall* say so in one line and *shall* fix a stale claim before the push, freshness being about the claims rather than styling. [INV-44]
+4. *when* a push's changes touch none of the shopfront's claims, the system *shall* say so in one line and *shall* fix a stale claim before the push, freshness resting on the claims themselves, styling aside. [INV-44]
 
 ---
 
@@ -990,7 +992,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 **Case: the line and its version**
 
-1. *when* a built-with artifact is published, the system *shall* carry one attribution line on its landing surface — the README footer, and for a skill also its `SKILL.md` — naming the pack version read from the host's attach record at write time rather than an invented number. [INV-96]
+1. *when* a built-with artifact is published, the system *shall* carry one attribution line on its landing surface — the README footer, and for a skill also its `SKILL.md` — naming the pack version read from the host's attach record at write time. [INV-96]
 
 **Case: an offer, never a gate**
 
@@ -1039,7 +1041,7 @@ Terms already defined in the intake glossary, the founding section, the agents-t
 
 ## Requirement 53: A machine holds the shipped tree's language line
 
-**Context:** A shipped artifact carries no Cyrillic outside a user-language string the program deliberately emits, and no personal name in a requirement's statement. The publish gate holds this with a machine that reports each offence as file and line. The name arm reads a declared alphabet rather than a fixed spelling list, and the specific out-of-alphabet name patterns live as data in an allowlist, so the detector's own source names no person.
+**Context:** A shipped artifact carries no Cyrillic outside a user-language string the program deliberately emits, and no personal name in a requirement's statement. The publish gate holds this with a machine that reports each offence as file and line. The name arm reads a declared alphabet, and the specific out-of-alphabet name patterns live as data in an allowlist, so the detector's own source names no person.
 
 **User Story:** As a person shipping an artifact, I want a machine flagging stray script and personal names as file and line, so that the fix is mechanical while candid notes stay in the diaries.
 

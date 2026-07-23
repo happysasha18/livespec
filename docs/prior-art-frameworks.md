@@ -36,7 +36,7 @@ expandable module ecosystem.
   to our spec-delta → roadmap → code order
 
 **Lacks from our list:**
-- No continuous wish intake — you start a project session instead of drawing from a persistent feed
+- No continuous wish intake — each run starts from a fresh project session, with no persistent feed to draw from
 - No automated per-wish spec-delta validation or batching of questions
 - No persistent cross-session roadmap/queue (session-scoped)
 - No model tiering — uses whatever model you hand it
@@ -45,7 +45,7 @@ expandable module ecosystem.
 - No doc compaction/pruning at milestones
 
 **Verdict:** Closest thing to a structured agentic SDLC today, but session-scoped and human-orchestrated.
-The "agile simulation" is a metaphor rather than a mechanical pipeline.
+The "agile simulation" is a metaphor; no mechanical pipeline runs underneath it.
 
 ---
 
@@ -67,7 +67,7 @@ on file-save events. Supports both spec-driven and vibe-coding modes. Routes bet
 - No per-wish batched question/clarification flow
 - No persistent cross-session roadmap queue
 - No artifact snapshot diff against previous run's rendered output
-- No process-self-validation (spec is not formally proved)
+- No process-self-validation (the spec carries no formal proof)
 - No doc compaction/pruning milestone mechanism
 
 **Verdict:** The closest to our guardrail concept (spec required before code), and the only framework with
@@ -97,8 +97,8 @@ CLAUDE.md encodes vocabulary and definition-of-done for each session. Works acro
 - No doc compaction at milestones
 - No async background execution
 
-**Verdict:** Good UX layer for "spec before you code," but a workflow guide rather than an orchestration
-system. Everything is human-invoked.
+**Verdict:** Good UX layer for "spec before you code," but a workflow guide with no orchestration engine
+underneath. Everything is human-invoked.
 
 ---
 
@@ -145,11 +145,11 @@ The core pitch: institutionalize team conventions so AI agents follow them consi
 - No persistent roadmap/queue
 - No model tiering
 - No artifact snapshot diff
-- No process-self-validation (the "standards" are conventions rather than formal invariants)
+- No process-self-validation (the "standards" stay conventions; no formal invariant checks them)
 - No doc compaction at milestones
 - No test-per-change enforcement
 
-**Verdict:** A codebase-context injection tool rather than an SDLC orchestrator. Useful as a component
+**Verdict:** A codebase-context injection tool, well short of an SDLC orchestrator. Useful as a component
 (could supply the "declared scope" context to our guardrail), but far from our design.
 
 ---
@@ -192,7 +192,7 @@ everything via MCP so any editor can embed it. BMAD + Taskmaster is a common pai
 - Dependency ordering in the task queue
 
 **Lacks from our list:**
-- No continuous wish intake — PRD is a one-shot input instead of a streaming feed
+- No continuous wish intake — the PRD is a one-shot input; no feed streams wishes in
 - No per-wish spec-delta validation or batching of questions
 - No artifact snapshot diff vs previous run
 - No process-self-validation
@@ -201,7 +201,7 @@ everything via MCP so any editor can embed it. BMAD + Taskmaster is a common pai
 
 **Verdict:** Best pure task-queue manager in the field. If our design needs a persistent queue
 component, Taskmaster or its conventions (PRD → task graph) are the closest prior art.
-Still batch-oriented rather than continuous-intake.
+Still batch-oriented, with no continuous intake.
 
 ---
 

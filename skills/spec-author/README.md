@@ -2,7 +2,7 @@
 
 **Author and grow a living product spec as your project develops — structured, honest, and ready for review. A [Claude Code](https://claude.com/claude-code) skill.**
 
-Point it at a feature you're about to build, and it writes (or grows) a prose-first `PRODUCT_SPEC.md` that states what the product *is* and how its parts compose: entities, states, transitions, actors, invariants, and — the part most specs miss — the **cross-section composition** between surfaces and the views/modes they live under.
+Point it at a feature you're about to build, and it writes (or grows) a requirements-genre `PRODUCT_SPEC.md` that states what the product *is* and how its parts compose: entities, states, transitions, actors, invariants, and — the part most specs miss — the **cross-section composition** between surfaces and the views/modes they live under.
 
 It's the authoring half of a pair. **spec-author writes the spec; its sibling [product-prover](https://github.com/happysasha18/product-prover) reviews it.** Same formal-verification primitives on both sides, so the handoff is clean: author → prove → derive tests → code.
 
@@ -32,8 +32,8 @@ When a surface persists state beyond the session (localStorage, files, preferenc
 
 ## What it does
 
-- **Human-first, in product language** — the spec reads in plain product words a person *wants* to keep open, not machine fragments with markup (and not a textbook either — whatever register fits): a plain-language headline per rule, the exact thresholds in the detail beneath, and the prover's codes (`INV-18`, `⟨DECIDE⟩`) kept as quiet handles at the line-ends. One document serves both the human and the prover — no forked "readable" copy that drifts. Edit history lives in the JOURNAL; the spec states today's truth.
-- **The spine** — keeps every spec on one structure: Purpose → Entities → States & transitions → Actors → Invariants (safety + liveness) → Cross-section composition → Glossary.
+- **Human-first, in product language** — the spec reads in plain product words a person *wants* to keep open, in whatever register fits, whether or not it reads like a textbook. Machine fragments with markup have no place in it. It opens with a closed-vocabulary glossary, then a body of requirements — each a Context block, a one-sentence User Story, and acceptance criteria grouped into named cases — with the prover's codes (`INV-18`, `⟨DECIDE⟩`) trailing as quiet handles at the line-ends. One document serves both the human and the prover — no forked "readable" copy that drifts. Edit history lives in the JOURNAL; the spec states today's truth.
+- **The spine** — a completeness checklist every spec must satisfy: Purpose, Entities, States & transitions, Actors, Invariants (safety + liveness), Cross-section composition, and a closed-vocabulary Glossary.
 - **Composition pass** — the step above: every stateful surface, multiplied across every view/mode/tier it lives under, with the composition invariant stated.
 - **Completeness pass** — a short checklist run before a section is "done": every noun named once, every state has an exit, every transition has an actor, every claim is honest (or ⟨DECIDE⟩), and no second document claims to be the spec.
 - **Honest gaps** — domain calls only a human can make are marked ⟨DECIDE⟩ with the question, never guessed.

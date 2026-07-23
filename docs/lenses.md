@@ -7,7 +7,7 @@ README or an article) without weighing down the normative body. This is the lens
 `docs/norms/`, which homes the provenance of an approved visual artifact the same way.
 
 Where a fuller account already lives in a dated prover record under `docs/prover/`, the entry carries
-the short story and points at the record rather than duplicating it. The running chronological
+the short story and points at the record, without duplicating it. The running chronological
 narrative stays in `JOURNAL.md`; this file is the code-keyed lookup.
 
 Format: `### CODE — short name    (date)` then the story.
@@ -112,7 +112,7 @@ spec-kit down to a single pointer line; the section was restored the same sessio
 A rewrite that drops a section, an argument, a rationale, or a worked example now lists every removal.
 Matrix row M-247 cites this note.
 
-### INV-110 — the catch-up routing keys on a version delta, not a wording    (2026-07-10)
+### INV-110 — the catch-up routing keys on the version delta, never on the wording    (2026-07-10)
 The track-coach audit: the catch-up walk fires only when the host's recorded package version is behind
 the current VERSION; a docs restructure carrying no version delta is the host's own queue row,
 whatever wording the ask used. Matrix row M-248 cites this note.
@@ -130,8 +130,8 @@ only through git, depositing one new file in `inbox/` under a per-repo grant. Ma
 this note.
 
 ### INV-113 — a deliberate redesign re-shapes the document, not only its pins    (2026-07-11)
-The tlvphotos second-finger redesign: a UI-layer rethink was ordered and the pack forced only a pins
-update, not a re-shaping — so the old document shape lied while fresh pins sat on it. Matrix row M-252
+The tlvphotos second-finger redesign: a UI-layer rethink was ordered, and the pack forced only a pins
+update where a re-shaping was due — so the old document shape lied while fresh pins sat on it. Matrix row M-252
 cites this note.
 
 ### INV-114 — a restructure or migration merge gate judges the delta    (2026-07-12)
@@ -142,8 +142,8 @@ to queue rows. Matrix row M-253 cites this note.
 
 ### INV-115 — the full pass compacts every living document, meaning preserved    (2026-07-12)
 The owner's compaction definition: compact means no redundant information — a fact lives once, in one
-home, with a pointer from everywhere else — never the cutting of anything whose removal would change
-meaning or a reader's understanding.
+home, with a pointer from everywhere else. It never cuts anything whose removal would change meaning or
+a reader's understanding.
 
 ### INV-116 — the full pass proves the architecture beside the spec    (2026-07-12)
 The owner's word and this session's for-fun prover run against the spec: every milestone and push gate

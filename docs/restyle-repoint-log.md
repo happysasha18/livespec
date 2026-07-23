@@ -15,9 +15,9 @@ phrase for the same law), never weaken. One line per re-point.
 A fresh reviewer read the full pre-restyle baseline (`ca78876`) → HEAD diff of SPEC.md. It reported 7 items;
 5 were real and fixed in commit a9690c4: reinstated the "three standing questions, two answered elsewhere"
 framing in the feature-map ask; dropped an added "otherwise the ask proceeds" clause; restored "what the
-feature gives its person" (a rewrite had narrowed it to "value"); restored the "knob rather than a taste
-call" contrast without a negation opener; fixed a dangling em-dash that made "never a silent retry" read as a
-list item. Two minor notes (aloud→directly; wording) left as-is. Full-SPEC anchor multiset verified IDENTICAL
+feature gives its person" (a rewrite had narrowed it to "value"); restored the
+`knob rather than a taste call` contrast without a negation opener; fixed a dangling em-dash that made
+"never a silent retry" read as a list item. Two minor notes (aloud→directly; wording) left as-is. Full-SPEC anchor multiset verified IDENTICAL
 to the baseline. A confirming iteration 2 and full 0-errors convergence wait on the parked errors (preamble +
 Formal index), which need Alexander's word.
 
@@ -25,7 +25,7 @@ Formal index), which need Alexander's word.
 
 Section "When money or time run short" converted through --gate (second person → named actor, caps
 lowercased, 19 gate-errors → 0). Linter refined: CAPS_RE now captures hyphenated all-caps compounds whole
-and CROSS-LINK/FEATURE-FIT/RE-ENTRY join the caps allowlist (defined mode names, not shout). Three needles
+and CROSS-LINK/FEATURE-FIT/RE-ENTRY join the caps allowlist (defined mode names, allowlisted as literal terms). Three needles
 re-pointed by narrowing to the register-clean phrase in the new prose (test_traceability.py::test_economy_ladder):
 `the economy rung is asked, or the standing default told` → `the pack asks the economy rung, or tells the standing default`;
 `What NEVER bends, at any rung` → `What never bends at any rung`;
@@ -37,7 +37,7 @@ Section "Naming and reporting the work" driven to 0 gate-errors surgically (part
 
 ## Stage 5 chunk 7 — Package repo + HEAD normalization (2026-07-09)
 
-Section "The package repo" driven to 0 gate-errors (emphasis caps lowercased, one second-person removed). Linter: `HEAD` added to the caps allowlist (git ref, a technical term, not shout). Consequent fix: the economy-ladder needle re-pointed BACK from `green at head` to `green at HEAD` (SPEC + test), so the git term reads HEAD consistently.
+Section "The package repo" driven to 0 gate-errors (emphasis caps lowercased, one second-person removed). Linter: `HEAD` added to the caps allowlist (git ref, allowlisted as a technical term). Consequent fix: the economy-ladder needle re-pointed BACK from `green at head` to `green at HEAD` (SPEC + test), so the git term reads HEAD consistently.
 
 ## Stage 5 chunk 8 — Breakpoints/resume/milestones (2026-07-09)
 
@@ -73,8 +73,8 @@ Intro prose converted to register: 5 second-person → agent/passive; VCS allowl
 
 When the 68 duplicate Formal-index mega-rows were compacted to one-liners, eight traceability needles
 keyed to a word in the terse index row were re-pointed to the same word in the spec's prose clause (the
-law's real home), since the compact row is now a map rather than a restatement. Each word was verified
-present in the prose before the re-point.
+law's real home), since the compact row now maps to the law's home, where the full statement lives. Each
+word was verified present in the prose before the re-point.
 
 | Test | Anchor | Old needle (in index row) | New home | 
 |------|--------|---------------------------|----------|
@@ -92,8 +92,8 @@ present in the prose before the re-point.
 The readability pass removed ALL-CAPS emphasis shouting (register R12: force comes from the statement,
 not caps). Seven test needles keyed to a shouted word were re-cased to the plain form; the law is
 unchanged — only the emphasis casing dropped. Two families of caps were instead recognised as defined
-closed vocabularies and allowlisted in spec-style-lint.py rather than lowercased (they are literal
-terms, not shout): the design-review loop's rest-states CONVERGES / WAITS / STANDS DOWN [INV-154], and
+closed vocabularies and allowlisted in spec-style-lint.py, kept in caps as literal terms: the
+design-review loop's rest-states CONVERGES / WAITS / STANDS DOWN [INV-154], and
 the push-gate reach map's categories EXPLICIT / CONSERVATIVE / SELF-TESTED [INV-45]; BMAD (a prior-art
 framework name) was allowlisted for the same reason.
 
@@ -124,17 +124,17 @@ phrasing (same law, verified present):
 
 ## 2.0 scissors rewrites — two needles keyed to a banned contrast frame
 
-Two test needles pinned the old contrast-frame ("X, not Y") wording the no-scissors law bans. The law
+Two test needles pinned the old contrast-frame (`X, not Y`) wording the no-scissors law bans. The law
 each states is unchanged; the phrasing moved to its own positive sentence.
 
-- **INV-128 footprint (test_impact_analysis_entry).** "the footprint, not the size, sizes the reach"
-  → "the footprint sizes the reach, and the change's raw size does not" (same law: the footprint, not
-  the raw change size, sets each step's reach). Spec + needle updated together.
+- **INV-128 footprint (test_impact_analysis_entry).** `the footprint, not the size, sizes the reach`
+  → `the footprint sizes the reach, and the change's raw size does not` (same law: the footprint sets
+  each step's reach; the raw change size does not). Spec + needle updated together.
 - **INV-137 read discipline — canonical rule name renamed across its living homes.** The rule was
-  named by a scissors frame, "the orchestrator reads to decide, not to discover". Renamed to the
-  positive "the orchestrator reads to decide; discovery reads go to workers" in every LIVING home —
+  named by a scissors frame, `the orchestrator reads to decide, not to discover`. Renamed to the
+  positive `the orchestrator reads to decide; discovery reads go to workers` in every LIVING home —
   PRODUCT_SPEC prose clause, base rule 25 (live-spec-base SKILL), docs/lenses.md heading, and the three
   test needles (test_orchestrator_read_discipline). The dated records keep the name as it was written
   then and are not rewritten: JOURNAL.md, docs/prover/2026-07-13-gap0-read-discipline.md, and the
-  landed ROADMAP row 301 (archived, not reworded). No obligation changed — the lead still reads only
+  landed ROADMAP row 301 (archived, left as written). No obligation changed — the lead still reads only
   to decide/cite and dispatches discovery/understand reads; only the frame dropped.

@@ -25,8 +25,8 @@ def test_spec_invariant_143_present_and_indexed():
     spec = _read("PRODUCT_SPEC.md")
     assert "decides what it can decide" in spec
     assert "surfaces only what it cannot" in spec
-    assert "never parks derivable work on the human's queue" in spec
-    assert "[INV-143]" in spec
+    assert "never park derivable work on the human's queue" in spec
+    assert "INV-143, INV-4]" in spec
     # Formal-index row (a table row starting with the code)
     assert "| INV-143 |" in spec
 

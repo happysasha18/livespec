@@ -107,7 +107,8 @@ class TestCiMirror(unittest.TestCase):
     def test_spec_states_the_law(self):
         spec = read("PRODUCT_SPEC.md")
         self.assertIn("[INV-210]", spec)
-        self.assertIn("check-ci-mirror.sh", spec)
+        # The requirements-format spec states the law, not the implementing script filename.
+        self.assertIn("a gate letter locally that the remote mirror does not run", spec)
         self.assertIn("ci-mirror.json", spec)
 
     def test_formal_index_row(self):

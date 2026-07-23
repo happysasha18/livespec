@@ -26,7 +26,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 - **user story** — one distinct thing a person does and sees; a wish carries one, and a wish carrying more is split at intake into a row apiece.
 - **leg** — one of the separately-accepted parts a multi-part row still carries, each with its own Done-when acceptance.
 - **regression fence** — one sentence in a spec-delta naming a neighbouring promise that must stay true, citing the clause it guards.
-- **non-goal** — one sentence in a spec-delta naming what the change deliberately leaves out, so an absence reads as a decision rather than an oversight.
+- **non-goal** — one sentence in a spec-delta naming what the change deliberately leaves out, so a deliberate absence reads as a decision.
 - **facet** — one aspect of a feature's design, ending as a written spec sentence that is decided or tagged as a default.
 - **success measure** — one written way to notice a feature worked for its person, with a number where one exists.
 - **status report** — the short current-state account kept in the chat, naming the work in hand and what the queue holds next.
@@ -38,7 +38,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 ---
 
-## Requirement 1: A wish is captured as a queue row that is never lost
+## Requirement 1: A wish is captured as a queue row that is never lost  [feature: F-wish]
 
 **Context:** A wish is one request a person voices in plain words, of any size, at any moment. The moment a person voices one it becomes a row in the queue (ROADMAP.md), the persistent ordered home of every wish. The row holds the person's words, the wish's class, its status, and its acceptance criterion.
 
@@ -54,7 +54,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: a row is never deleted**
 
 3. The system *shall* never delete a row, and *shall* close a row only with a named exit. [INV-1]
-4. The system *shall* carry every wish to a recorded terminal state, so a request captured in passing is never dropped. [INV-1, F-wish]
+4. The system *shall* carry every wish to a recorded terminal state, so a request captured in passing is never dropped. [INV-1]
 
 ---
 
@@ -123,7 +123,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: a withdrawn decision converges**
 
 6. *when* the same decision is withdrawn a second time, the system *shall* take the recommended option, surface it as a `[default]` in the delivery report, and never re-ask it, silence staying consent from there. [INV-130, INV-31]
-7. The system *shall* close an answered question for good and *shall* route a later change of mind as a new wish rather than a reopening of the closed decision. [INV-59, INV-130]
+7. The system *shall* close an answered question for good and *shall* route a later change of mind as a new wish, the closed decision staying closed. [INV-59, INV-130]
 
 **Case: the page mechanics have one home**
 
@@ -150,7 +150,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Context:** A wish is classified by size, priority, and work-kind, three separate axes. Size uses one four-word vocabulary everywhere. The door — where the wish enters the pipeline — is a separate axis, and size is a separate question. Priority is normal unless a row carries a mark.
 
-**User Story:** As a person whose wish enters a disciplined pipeline, I want its size, priority, and work-kind pinned at intake by the person when unclear, so that each attribute is set by a considered call rather than a silent guess.
+**User Story:** As a person whose wish enters a disciplined pipeline, I want its size, priority, and work-kind pinned at intake by the person when unclear, so that each attribute is set by a considered, explicit call.
 
 ### Acceptance Criteria
 
@@ -177,7 +177,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Context:** The walk never asks how long a wish will take and never accepts an estimate in hours or days as an input. When a wish is worth less than the work it demands, the walk answers in scope terms and proposes cutting the scope or splitting into stages. Every cut is reported.
 
-**User Story:** As a person whose wish may cost more than it returns, I want the walk to renegotiate its scope rather than its schedule, so that an oversized wish is trimmed or staged and every trim reaches me in the report.
+**User Story:** As a person whose wish may cost more than it returns, I want the walk to renegotiate its scope while holding its schedule, so that an oversized wish is trimmed or staged and every trim reaches me in the report.
 
 ### Acceptance Criteria
 
@@ -202,7 +202,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 ### Acceptance Criteria
 
-**Case: a settled fork is derived, not asked**
+**Case: a settled fork is derived**
 
 1. Before surfacing a design choice, the system *shall* check whether a proven artifact already determines the answer, and *when* one does *shall* derive the requirement and state it back with the section cited as its ground, offering no fork. [INV-121, INV-4]
 2. The system *shall* raise a fork to the person only for what the artifacts leave genuinely open — a taste call, or a trade-off with no artifact-grounded winner. [INV-121]
@@ -218,7 +218,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 ### Acceptance Criteria
 
-**Case: a cut moves scope, not order**
+**Case: a cut moves scope alone**
 
 1. The system *shall* treat a cut surface returned later as a new wish. [T-11]
 2. The system *shall* let a scope cut change scope only, reading it as no quick-win mark, since only priority moves the lane order. [T-11]
@@ -324,7 +324,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: names are plain**
 
 1. The system *shall* give a feature a short descriptive echo-name in the product's own words that a reader who missed its birth can parse cold, and *shall* not use a private metaphor. [INV-28]
-2. The system *shall* read a name that needs its story told first as a handle rather than a name. [INV-28]
+2. The system *shall* read a name that needs its story told first as a bare handle. [INV-28]
 
 **Case: the line leads with the outcome**
 
@@ -338,7 +338,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: the laws have a mechanical voice**
 
-7. The system *shall* inject through the prompt hook `hooks/chat-law-hook.sh` a reminder of the chat laws into every prompt — plain words with codes trailing, the narration beats, the say-what-it-is line (naming a thing by its own positive sentence), the banned contrast frame (naming a thing by denying its neighbour, the "X, not Y" shape), and the routing line by which the orchestrator seat routes work to the cheapest tier the routing rule names while a worker finds for itself the files and lines its task needs, so the orchestrator's context stays lean — the skills and the profile staying the laws' homes. [INV-28, INV-69, INV-137]
+7. The system *shall* inject through the prompt hook `hooks/chat-law-hook.sh` a reminder of the chat laws into every prompt — plain words with codes trailing, the narration beats, the say-what-it-is line (naming a thing by its own positive sentence), the banned contrast frame (naming a thing by denying its neighbour, the `"X, not Y"` shape), and the routing line by which the orchestrator seat routes work to the cheapest tier the routing rule names while a worker finds for itself the files and lines its task needs, so the orchestrator's context stays lean — the skills and the profile staying the laws' homes. [INV-28, INV-69, INV-137]
 8. Before a human-facing artifact is shown, the system *shall* have `scripts/preshow-lint.py` flag any line opening with an internal handle so the agent rewrites it to lead with the outcome, a warning to clear that reads only the shown surface. [INV-28]
 
 ---
@@ -354,7 +354,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: the lint blocks the showing**
 
 1. Before a human-facing surface is shown, the system *shall* have `scripts/preshow-register-lint.py` read its text and block the showing on a red result until the flagged text is rewritten into the reader's plain words. [INV-83]
-2. The system *shall* treat this as a block rather than an advisory warning, and *shall* scope its reach to the shown artifact — a rendered page, a mockup, a decision page, or a report page. [INV-83, INV-34]
+2. The system *shall* treat this as a hard block, and *shall* scope its reach to the shown artifact — a rendered page, a mockup, a decision page, or a report page. [INV-83, INV-34]
 
 **Case: the class the list cannot hold**
 
@@ -442,6 +442,14 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 **Case: narration is chat-register**
 
 8. The system *shall* keep a narration line an informal chat message that walks no pre-report walk, asks nothing, and replaces no report, while every human-facing-line law still binds. [INV-35, INV-27, INV-28]
+
+**Case: the delegated beat and the time accounting**
+
+9. *when* a delegated worker closes a station, the system *shall* fold it into the trail, a station a delegated worker closed becomes the senior's beat the moment it lands, the trail the session's time accounting where token and test counts stay bookkeeping. [INV-35, INV-28]
+
+**Case: the offline window's honest edges**
+
+10. *when* the offline window runs, the system *shall* keep its edges honest, never a guess dressed as a promise, a window off its spoken range saying so, overrun, done sooner, or blocked on the human's word alone, the needed-again beat a chat line awaiting his return, never a summons, and no offline sentence fires when the very next beat needs the human. [INV-35, INV-4]
 
 ---
 
@@ -563,7 +571,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 1. The system *shall* keep a short status current in the chat — a Now line naming the work in hand and its pipeline stage, and a Next line naming what the queue holds next. [INV-71, INV-67]
 2. The system *shall* refresh the status at every stage change and *shall* carry a heartbeat on a long stretch. [INV-71, INV-35]
 
-**Case: the harness panel is a courtesy, not the home**
+**Case: the harness panel is a courtesy view**
 
 3. The system *shall* keep the harness task panel, where a setting shows it, in plain product words as a courtesy, and *shall* not make it the home of the status. [INV-71, INV-28]
 4. The system *shall* offer a rendered status page as an optional richer view of the same Now and Next on a local session, and *shall* apply this to every project the pack runs. [INV-71, INV-67]
@@ -600,7 +608,7 @@ Terms already defined in the carried glossaries — request, inbox, pipeline, sp
 
 **Case: the surface is commentable**
 
-2. The system *shall* keep the surface commentable rather than a read-only wall, giving line-by-line room for the person's word and capturing the answers. [INV-64]
+2. The system *shall* keep the surface commentable and open, giving line-by-line room for the person's word and capturing the answers. [INV-64]
 3. The system *shall* extend the decision page's saved-answers rule to a review surface as one round-trip back to the project. [INV-64, INV-32]
 
 ---

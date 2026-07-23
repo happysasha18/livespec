@@ -231,7 +231,7 @@ def test_gate_wired_into_pre_push():
 def test_spec_states_the_law():
     spec = read("PRODUCT_SPEC.md")
     assert "[INV-207]" in spec
-    assert "check-authority-anchor.py" in spec
+    assert "authority-anchor gate" in spec
     assert "DECISIONS.md" in spec
 
 

@@ -172,26 +172,28 @@ class TestDescriptionFieldGate(unittest.TestCase):
             self.assertEqual(r.returncode, 0,
                              "the gate reached past presence into a semantic match:\n%s" % r.stdout)
 
-    def test_real_config_ships_armed(self):
-        # The back-describe migration (v3.0.0, 2026-07-20) armed the gate in the same landing that gave
-        # every registered code its description field, so the real config now ships ARMED and the gate
-        # enforces a non-empty description for every code in the Formal index (INV-217/INV-239).
+    def test_real_config_ships_retired(self):
+        # RETIRED at the row-445 requirements-format conversion with its stated successor (the stage-1
+        # design record, docs/prover/2026-07-22-row445-spec-format-delta.md): the criteria and the
+        # glossary are the authored home of every code's plain statement, and the generated index
+        # carries locations only (INV-271) — no description column remains for this gate to read. The
+        # config ships disarmed and names that retirement; the fixture tests above keep the mechanism's
+        # red-proof alive. Successor pair: check-description-field -> check-index-generated (gate x) +
+        # tests/test_index_generated.py::TestArmedOnTheRealSpec.
         cfg = json.loads(read("guardrails/description-field.json"))
-        self.assertTrue(cfg["armed"],
-                        "the real description-field.json ships DORMANT — the back-describe migration "
-                        "landed, so the gate must be armed to enforce the description field")
-        self.assertTrue(cfg.get("reason", "").strip(), "the config states no reason for its arming state")
+        self.assertFalse(cfg["armed"],
+                         "the description-field gate re-armed — it retired at the requirements-format "
+                         "conversion; its successor is the generated-index gate (INV-271)")
+        self.assertIn("RETIRED", cfg.get("reason", ""),
+                      "the disarmed config must name its retirement and successor")
 
-    def test_armed_gate_passes_on_the_real_tree(self):
-        # No env override: the gate reads the real config (armed) and the real spec and exits 0 because
-        # every registered code carries a non-empty description after the back-describe migration. This
-        # is the gate's ENFORCEMENT ride: the suite runs it against the real tree, so a real violation —
-        # a code whose description field goes empty — reds the suite (gate b) and blocks the push, the
-        # gate taking no push letter.
+    def test_retired_gate_stands_down_by_name_on_the_real_tree(self):
+        # No env override: the retired gate reads the real config (disarmed) and stands down by name,
+        # exit 0 — it never reds the conversion-format tree whose index carries no description column.
         r = run_gate()
         self.assertEqual(r.returncode, 0,
-                         "the armed gate reds on the real tree — a registered code's description field "
-                         "is empty:\n%s\n%s" % (r.stdout, r.stderr))
+                         "the retired gate did not stand down cleanly:\n%s\n%s" % (r.stdout, r.stderr))
+        self.assertIn("dormant", r.stdout.lower())
 
     def test_gate_not_wired_into_pre_push(self):
         # It rides the suite (gate b) and takes NO push-gate letter, so it is never invoked from the
@@ -207,18 +209,25 @@ class TestDescriptionFieldTraceability(unittest.TestCase):
     architecture (the traceability quartet), and the field's own existence in the shipped index."""
 
     def test_spec_states_the_law(self):
+        # Pass 2 of the row-445 conversion landed the format-laws requirements (INV-250..271) and
+        # rewrote the description-field claims: the pair law stands, the description field is
+        # redefined as the authored home (criterion + glossary), and the gate's retirement with its
+        # stated successor is now the spec's own criterion.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("dedicated description field the Formal index gains", spec,
-                      "SPEC lost the description-field law (INV-239/E-35)")
-        self.assertIn("reds a code whose description field is empty", spec,
-                      "SPEC lost the presence-net statement of the gate")
-        self.assertIn("this gate arms in the same landing that back-describes", spec.lower().replace("this", "this"),
-                      "SPEC lost the dormant-until-migration arming clause")
+        self.assertIn("plain one-sentence description pinned to the item at its owning surface", spec,
+                      "SPEC lost the code-plus-description pair law (INV-239/E-35)")
+        self.assertIn("the dedicated description-field gate *shall* retire with the criteria and "
+                      "the glossary as its stated successor", spec,
+                      "SPEC lost the gate's retire-with-successor criterion (INV-239/INV-271)")
+        self.assertIn("the authored home of a code's plain statement", spec,
+                      "SPEC lost the description field's authored-home definition")
 
     def test_formal_index_row(self):
+        # The generated index (## Reference) carries locations only (INV-271); the row's presence
+        # proves INV-239 is carried by a body criterion.
         spec = read("PRODUCT_SPEC.md")
-        index = spec.split("## Formal index", 1)[1]
-        self.assertRegex(index, r"\|\s*INV-239\s*\|", "the Formal index carries no INV-239 row")
+        index = spec.split("## Reference", 1)[1]
+        self.assertRegex(index, r"\|\s*INV-239\s*\|", "the generated index carries no INV-239 row")
 
     def test_architecture_owns_the_invariant(self):
         arch = read_flat("ARCHITECTURE.md")
@@ -231,38 +240,29 @@ class TestDescriptionFieldTraceability(unittest.TestCase):
         self.assertRegex(matrix, r"\|\s*M-421\s*\|", "TEST_MATRIX lost the M-421 row")
         self.assertIn("check-description-field.py", matrix, "M-421 row does not name the gate script")
 
-    def test_index_shape_carries_a_description_field(self):
-        # M-423: every registered code has one home for its human-clear line in the Formal index — a
-        # bare code never stands alone before a reader. Today that home is the index's per-code "One
-        # line" column, and it carries a non-empty cell for every registered code. The back-describe
-        # migration ADDS a NEW, separate `Description` column (the fuller E-35 one-sentence bar) while
-        # the terse "One line" stays the machine handle's home; the gate arms on that new column then.
-        # This test asserts the home that exists now — the "One line" column — is present and full.
+    def test_index_carries_locations_only_with_criteria_as_the_authored_home(self):
+        # M-423 re-aimed at the successor shape (INV-271, the row-445 conversion): a bare code never
+        # stands alone before a reader because every code's plain statement lives on its BODY criterion
+        # (the authored home) while the generated index carries LOCATIONS ONLY. Two arms: the table's
+        # second column is location tokens (Rn.k), never prose; and every table code resolves to a body
+        # criterion (the symmetry test_formal_index re-proves suite-wide; asserted here for INV-239's
+        # own row as this law's worked instance).
         spec = read("PRODUCT_SPEC.md")
-        index = spec.split("## Formal index", 1)[1]
-        header = next((ln for ln in index.splitlines() if ln.strip().startswith("| Anchor")), None)
-        self.assertIsNotNone(header, "the Formal index has no header row")
-        cols = [c.strip().lower() for c in header.strip().strip("|").split("|")]
-        self.assertIn("one line", cols,
-                      "the Formal index lost its per-code description home (the 'One line' column)")
-        desc_col = cols.index("one line")
-        rows = re.findall(r"^\|.*\|$", index, re.M)
-        bare = []
-        for row in rows:
-            cells = [c.strip() for c in row.strip().strip("|").split("|")]
-            if len(cells) <= desc_col:
-                continue
-            anchor = cells[0]
-            if not re.fullmatch(r"[A-Z]+-[0-9]+(?:\.\.[A-Z]*-?[0-9]+)?", anchor):
-                continue
-            if not cells[desc_col]:
-                bare.append(anchor)
-        self.assertEqual(bare, [], "registered codes standing in the index with no one-line home: %s" % bare)
+        index = spec.split("## Reference", 1)[1]
+        row = next((ln for ln in index.splitlines() if ln.startswith("| INV-239 |")), None)
+        self.assertIsNotNone(row, "the generated index carries no INV-239 row")
+        locations = row.strip().strip("|").split("|")[1].strip()
+        self.assertRegex(locations, r"^R\d+\.\d+(, R\d+\.\d+)*$",
+                         "the INV-239 index row carries prose — the generated index is locations only "
+                         "(INV-271): %r" % locations)
+        # the authored home: the criterion the first location points at states the law in plain words
+        self.assertIn("plain one-sentence description", read_flat("PRODUCT_SPEC.md"),
+                      "the body criterion no longer states INV-239's plain description law")
 
     def test_e35_formal_index_row(self):
         spec = read("PRODUCT_SPEC.md")
-        index = spec.split("## Formal index", 1)[1]
-        self.assertRegex(index, r"\|\s*E-35\s*\|", "the Formal index carries no E-35 row")
+        index = spec.split("## Reference", 1)[1]
+        self.assertRegex(index, r"\|\s*E-35\s*\|", "the generated index carries no E-35 row")
 
     def test_architecture_owns_e35_under_base_rulebook(self):
         arch = read_flat("ARCHITECTURE.md")

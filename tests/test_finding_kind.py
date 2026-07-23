@@ -38,7 +38,7 @@ def test_severity_axis_retired_from_spec_and_readme_case_insensitive():
 def test_push_gate_folds_on_kind():
     """M-6 folds on kind, not on a separate severity level."""
     spec = _flat("PRODUCT_SPEC.md")
-    assert "folds every defect and queues every recommendation" in spec
+    assert "fold every defect and queue every recommendation" in spec
     pp = _flat("skills/product-prover/SKILL.md")
     assert "folds at the push gate" in pp
 
@@ -57,9 +57,11 @@ def test_spec_clause_stands():
 
 
 def test_formal_index_row():
-    for line in _flat("PRODUCT_SPEC.md").splitlines():
+    text = _flat("PRODUCT_SPEC.md")
+    for line in text.splitlines():
         if line.startswith("| INV-140 |"):
-            assert "defect" in line
+            # the index row is location-only (SPEC INV-271); the "defect" prose lives on the body
+            assert "label a finding a defect" in text
             return
     raise AssertionError("no Formal-index row for INV-140")
 

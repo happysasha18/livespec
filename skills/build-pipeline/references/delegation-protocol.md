@@ -8,7 +8,7 @@ against mechanical — work whose steps can be written precisely (known edit str
 fan-out fact-gathering, a report or list or dump to produce) routes to a worker, while anything carrying
 judgment or design stays senior. Size is a weak hint only, never the decider. The trigger, the tier
 ladder, and the raw-output law all live in the base skill's rule 5 and the routing rule — this passage is
-their reference, not a second home (live-spec-base rule 5, SPEC INV-69).
+their reference; it is not a second home (live-spec-base rule 5, SPEC INV-69).
 
 **The routing rule (SPEC INV-69) picks the tier — propose the cheapest tier that can pass the brief, the
 senior may overrule it aloud:** the proposal reads the STEP and kind of the work, beyond the row's size
@@ -16,7 +16,7 @@ alone — a judgment step (spec, prove, architecture, matrix-level calls, findin
 proposes the senior and is never routed down, a mechanical step proposes a worker at the tier above. The
 economy rung moves the threshold (at `lean` an airtight brief rides one tier cheaper, at `tight` the
 cheapest sufficient tier is always the proposal). And the proposal is ADVISORY — the senior may override
-per wish, the override logged as one line on the checkpoint and the landing report, proposed tier → chosen
+per wish, the override logged as one line on the checkpoint and the delivery report, proposed tier → chosen
 tier → why.
 
 **The brief is self-contained (the BMAD story-file lesson):** delegated work ships as one document
@@ -66,7 +66,7 @@ time is never guessed). And a result failing its brief's acceptance escalates ex
 with a logged line covering the move — one rung up, in order, always logged.
 
 **Every delegation reports its saving:** the
-landing report carries one line — what went to the worker and roughly how much senior work it saved.
+delivery report carries one line — what went to the worker and roughly how much senior work it saved.
 The line is what keeps the habit alive; a session that never writes it is a session that quietly
 stopped delegating. The line lives in the landed row's status cell, and a suite check reads it: a
 landed row without the line goes red (SPEC INV-103, forward from 2026-07-12).

@@ -19,7 +19,11 @@ def test_spec_states_the_quantifier_reverify():
 
 def test_spec_names_the_staleness_vector():
     spec = read("PRODUCT_SPEC.md")
-    assert "a clause that names its members must grow with them" in spec
+    # R66 Context: the old summarizing sentence ("a clause that names its members must grow with
+    # them") is gone from the compact rewrite; the same staleness vector — an enumeration clause
+    # left behind by a set that just grew — is stated in the Context's own description of the fault.
+    assert "member enumeration excludes the newcomer" in spec
+    assert "ranges over a set that just grew" in spec
 
 
 def test_prover_skill_crosslink_carries_the_step():

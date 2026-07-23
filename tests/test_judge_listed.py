@@ -133,10 +133,13 @@ class TestJudgeListed(unittest.TestCase):
     # --- traceability across the four documents ---
 
     def test_spec_states_the_law(self):
+        # The spec's rewrite dropped implementation filenames from its prose (they now
+        # live only in ARCHITECTURE.md, checked below); the spec names the gate and
+        # its declaration by their behavioural names instead.
         spec = read("PRODUCT_SPEC.md")
         self.assertIn("[INV-211]", spec)
-        self.assertIn("check-judge-listed.py", spec)
-        self.assertIn("judge-hooks.json", spec)
+        self.assertIn("the wiring check", spec)
+        self.assertIn("the wired-hook declaration", spec)
 
     def test_formal_index_row(self):
         self.assertIn("| INV-211 |", read("PRODUCT_SPEC.md"))

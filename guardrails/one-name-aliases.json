@@ -4,6 +4,7 @@
     {"canonical": "backlog item", "aliases": ["ticket", "work item", "task card", "todo item"]},
     {"canonical": "queue", "aliases": ["task list", "to-do list", "punch list"]},
     {"canonical": "guardrail", "aliases": ["gatekeeper script", "checker script"]},
-    {"canonical": "delivery report", "aliases": ["wrap-up note", "closeout memo"]}
+    {"canonical": "delivery report", "aliases": ["wrap-up note", "closeout memo", "landing report"]},
+    {"canonical": "harness task panel", "aliases": ["harness task list"]}
   ]
 }

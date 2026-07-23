@@ -23,7 +23,7 @@
     "u": {"proof": "tests/test_ci_mirror.py::test_missing_gate_step_reds", "reds": "check-ci-mirror.sh"},
     "v": {"proof": "tests/test_judge_listed.py::test_missing_stop_arm_reds", "reds": "check-judge-listed.py"},
     "w": {"proof": "tests/test_every_gate_can_fail.py::test_missing_proof_reds", "reds": "check-every-gate-can-fail.py"},
-    "x": {"proof": "tests/test_vacuous_pass.py::test_gate_reds_on_empty_input", "reds": "check-index-prose"},
+    "x": {"proof": "tests/test_index_generated.py::test_reds_a_hand_edited_index", "reds": "check-index-generated"},
     "y": {"proof": "tests/test_agent_card_gate.py::test_gate_reds_a_cardless_tree", "reds": "check-agent-card"},
     "z": {"proof": "tests/test_doc_bound.py::test_gate_reds_a_doc_over_its_bound", "reds": "check-doc-bound"}
   },

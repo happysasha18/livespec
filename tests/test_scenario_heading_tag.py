@@ -1,14 +1,23 @@
-"""Every person-facing scenario heading carries its tag — an untagged H3 is mechanically red. INV-132
-(row 283, prover F4).
+"""Every person-facing scenario heading carries its feature tag — INV-132 (row 283, prover F4),
+re-aimed at the requirements format (row 445, pass 2).
 
-INV-73's reverse direction ("every scenario carries its tag") was not mechanically enforceable as written:
-the checker could not tell an untagged NEW scenario from a legitimately-untagged machinery, rules, or
-reference section, so an untagged scenario could ship green and uncovered. The fix is a heading convention:
-every H3 heading in PRODUCT_SPEC.md carries EITHER a `[feature: F-x]` tag (it is a person-facing scenario,
-mapped by the feature-coverage trace) OR the explicit `[not a scenario]` marker (it states machinery, a
-rule, or reference — legitimately untagged). An H3 that carries neither is unambiguously red, so a new
-scenario whose tag was forgotten cannot ship uncovered. Homes: the heading-convention clause + Formal
-index, and spec-author. This is the traceability guardrail's teeth for the reverse direction; matrix M-273.
+The convention moved with the format: a scenario is a `## Requirement N: ...` heading (H2) carrying a
+trailing `[feature: F-x]` tag; an untagged requirement is machinery or reference, and the old
+`[not a scenario]` marker retired with the prose shape (the pass-2 intro states the convention: "a
+requirement whose heading carries a `[feature: F-...]` tag is a person-facing scenario"). The
+forgotten-tag net is two-layered now:
+  - every F-code lives ONLY on a `## Requirement` heading (the wave's F6 rule: no F-code rides a
+    criterion or User Story bracket) — checked mechanically here, since a tag that slid into a body
+    bracket is exactly a forgotten heading tag;
+  - a promised feature with no tagged heading reds in the feature-coverage two-way trace
+    (test_traceability::TestFeatureCoverage, reading ARCHITECTURE.md's coverage table) — the
+    successor of the old H3 tag-or-marker sweep, named as this file's replacement pair.
+
+KNOWN RED, kept deliberately: the spec's own INV-132 criteria (R224.3/R224.4) still say "third-level
+heading ... or a not-a-scenario marker" — the pre-format convention — contradicting the intro and the
+document's practice (tags on H2, no markers, every H3 a uniform `### Acceptance Criteria`). That
+wording is a conversion leftover; test_spec_criteria_match_the_practiced_convention below stays red
+until the spec author reconciles R224, and REPIN-LOG.md carries the defect's story.
 """
 
 import os
@@ -17,84 +26,80 @@ import unittest
 
 from conftest import ROOT, read, read_flat
 
-SCENARIO_MARKER = "[not a scenario]"
 
-
-def h3_tag_gaps(spec_text):
-    """H3 headings that are neither `[feature: F-x]`-tagged nor `[not a scenario]`-marked. An ambiguous
-    (untagged, unmarked) H3 is a scenario whose tag may have been forgotten (SPEC INV-132)."""
+def heading_tag_gaps(spec_text):
+    """Two mechanical checks on the practiced convention (SPEC INV-132, the pass-2 shape):
+      - a `## Requirement` heading whose bracket tail LOOKS like a feature tag but is malformed
+        (e.g. `[feature: x]`, `[feature F-x]`) — a tag that will silently drop out of the trace;
+      - an F-code appearing in a bracket anywhere OUTSIDE a `## Requirement` heading line — a
+        scenario tag that slid into a criterion or User Story bracket, the forgotten-heading-tag
+        shape the wave's F6 rule bans.
+    Returns the offending lines."""
     gaps = []
-    for m in re.finditer(r"^### (.*)$", spec_text, re.M):
-        heading = m.group(1).strip()
-        # A valid tag ends the heading with `[feature: F-x]`: a feature id is `F-` plus
-        # alphanumerics/hyphens (so a numeric id like `F-12` counts), and a heading may
-        # carry several comma-separated ids (`[feature: F-a, F-b]`) — all validly tagged.
-        if re.search(r"\[feature:\s*F-[a-z0-9-]+(?:\s*,\s*F-[a-z0-9-]+)*\s*\]\s*$", heading):
-            continue
-        if heading.endswith(SCENARIO_MARKER):
-            continue
-        gaps.append(heading)
+    for line in spec_text.splitlines():
+        if line.startswith("## Requirement"):
+            if "[feature" in line and not re.search(
+                    r"\[feature:\s*F-[a-z0-9-]+(?:\s*,\s*F-[a-z0-9-]+)*\s*\]\s*$", line.strip()):
+                gaps.append("malformed tag: %s" % line.strip())
+        else:
+            for m in re.finditer(r"\bF-[a-z0-9][a-z0-9-]*\b", line):
+                if re.search(r"\[[^\]]*\b%s\b[^\]]*\]" % re.escape(m.group(0)), line):
+                    gaps.append("F-code outside a requirement heading: %s" % line.strip()[:100])
+                    break
     return gaps
 
 
 class TestScenarioHeadingTag(unittest.TestCase):
-    def test_every_h3_is_tagged_or_marked(self):
-        gaps = h3_tag_gaps(read("PRODUCT_SPEC.md"))
-        self.assertEqual(
-            gaps, [],
-            "H3 headings neither `[feature: F-x]`-tagged nor `[not a scenario]`-marked "
-            "(an untagged scenario, or a machinery section missing its marker): %s" % gaps,
-        )
+    def test_every_feature_tag_sits_well_formed_on_a_heading(self):
+        gaps = heading_tag_gaps(read("PRODUCT_SPEC.md"))
+        self.assertEqual(gaps, [],
+                         "feature tags off their headings or malformed (SPEC INV-132): %s" % gaps)
 
-    def test_untagged_h3_goes_red(self):
-        """The never side, permanent: an untagged, unmarked H3 (a forgotten scenario tag) is caught, and a
-        properly marked or tagged one is spared."""
+    def test_the_checker_catches_the_seeded_defects(self):
+        """The never side, permanent: a malformed heading tag and a body-bracket F-code are caught,
+        and a properly tagged heading is spared."""
         spec = read("PRODUCT_SPEC.md")
-        seeded = spec + "\n### A brand new scenario nobody tagged\n\nBody.\n"
-        self.assertIn("A brand new scenario nobody tagged", h3_tag_gaps(seeded),
-                      "the checker missed an untagged, unmarked H3 — no teeth")
-        marked = spec + "\n### Some machinery section  %s\n\nBody.\n" % SCENARIO_MARKER
-        self.assertNotIn("Some machinery section", " ".join(h3_tag_gaps(marked)),
-                         "the checker flagged a legitimately marked machinery section")
-        tagged = spec + "\n### A real scenario  [feature: F-demo]\n\nBody.\n"
-        self.assertNotIn("A real scenario", " ".join(h3_tag_gaps(tagged)),
-                         "the checker flagged a properly feature-tagged scenario")
-
-    def test_numeric_and_multi_feature_headings_are_accepted(self):
-        """A feature id may be numeric (`F-12`) and a heading may carry several features
-        (`[feature: F-a, F-b]`) — both are validly tagged, never reddened, while a truly
-        untagged/unmarked heading stays red (SPEC INV-132's mechanism, hardened)."""
-        spec = read("PRODUCT_SPEC.md")
-        numeric = spec + "\n### A numeric-id scenario  [feature: F-12]\n\nBody.\n"
-        self.assertNotIn("A numeric-id scenario", " ".join(h3_tag_gaps(numeric)),
-                         "the checker flagged a validly numeric-id-tagged scenario (F-12)")
-        multi = spec + "\n### A multi-feature scenario  [feature: F-a, F-b]\n\nBody.\n"
-        self.assertNotIn("A multi-feature scenario", " ".join(h3_tag_gaps(multi)),
-                         "the checker flagged a validly multi-feature-tagged scenario (F-a, F-b)")
-        # the never side holds: an untagged, unmarked heading is still red
-        untagged = spec + "\n### Still nobody tagged this one\n\nBody.\n"
-        self.assertIn("Still nobody tagged this one", h3_tag_gaps(untagged),
-                      "widening the recognizer must not swallow a genuinely untagged heading")
+        malformed = spec + "\n## Requirement 999: A broken tag  [feature: demo]\n"
+        self.assertTrue(any("malformed" in g for g in heading_tag_gaps(malformed)),
+                        "the checker missed a malformed heading tag — no teeth")
+        slid = spec + "\n1. The system *shall* do a thing. [F-demo, INV-1]\n"
+        self.assertTrue(any("outside a requirement heading" in g for g in heading_tag_gaps(slid)),
+                        "the checker missed an F-code riding a body bracket — no teeth")
+        tagged = spec + "\n## Requirement 999: A real scenario  [feature: F-demo]\n"
+        self.assertEqual([g for g in heading_tag_gaps(tagged) if "999" in g], [],
+                         "the checker flagged a properly feature-tagged heading")
 
     def test_spec_states_heading_convention(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("every H3 heading in this spec carries either its `[feature: F-x]` tag", spec)
-        self.assertIn("the explicit `[not a scenario]` marker", spec)
-        self.assertIn("An H3 that carries neither is unambiguously red", spec)
+        self.assertIn("a requirement whose heading carries a `[feature: F-...]` tag is a "
+                      "person-facing scenario", spec,
+                      "the intro lost the practiced heading convention")
         self.assertIn("[INV-132]", spec)
 
+    def test_spec_criteria_match_the_practiced_convention(self):
+        """KNOWN RED (row-445 conversion leftover, see REPIN-LOG DEFECT 1): R224's INV-132 criteria
+        still describe the retired H3 tag-or-marker convention. Goes green when the spec author
+        moves them to the practiced one — the requirement heading carries the tag."""
+        inv132_lines = [l for l in read("PRODUCT_SPEC.md").splitlines()
+                        if "[INV-132" in l and l.lstrip()[:1].isdigit()]
+        self.assertTrue(inv132_lines, "INV-132 carries no body criterion")
+        self.assertTrue(any("requirement heading" in l for l in inv132_lines),
+                        "INV-132's criteria still state the retired third-level-heading convention "
+                        "rather than the practiced requirement-heading tag (R224.3/R224.4)")
+
     def test_formal_index_row(self):
+        # locations only (SPEC INV-271): the row proves INV-132 is carried by a body criterion.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-132 |"):
-                    self.assertIn("not a scenario", line.lower())
+                    self.assertRegex(line, r"R\d+\.\d+")
                     return
-        self.fail("INV-132 Formal-index row missing")
+        self.fail("INV-132 index row missing")
 
     def test_spec_author_carries_heading_convention(self):
         sa = read_flat("skills/spec-author/SKILL.md")
         self.assertIn("[not a scenario]", sa)
-        self.assertIn("untagged, unmarked H3 is unambiguously red", sa)
+        self.assertIn("untagged, unmarked requirement heading is unambiguously red", sa)
 
 
 if __name__ == "__main__":

@@ -50,3 +50,20 @@ Every behavioural claim of the source range, in source order, mapped to the crit
 ### Coverage result
 
 11 behavioural claims mapped, covering all 3 requirements. The covering loop (claim 5) is the document's introductory framing; its normative home and its state codes live in the build-loop section, a different unit, so the source states it here without a code and it is carried as Context rather than converted to a coded criterion in this opening. History carried by the source — the version-and-date header pair — is handled by assembly and kept out of the body by the no-history law. No behavioural `shall`-claim of the source range is left uncovered, and this opening opens no source hole (see `GAPS.md`).
+
+## Declared sharpens
+
+**Register cleanup (ROADMAP row 445).** Four definitional contrast-frames of the shape "X rather than Y" were rewritten to a positive statement of what the thing is; meaning, force, and every trailing code anchor were kept. None of the four maps to a Part-3 claim row that quotes it, so no claim row changed here. The four:
+
+| Location | Old | New |
+|---|---|---|
+| Legend paragraph (unit head; assembly authors this as its preamble) | a `[target]` marker "marks a feature that is planned rather than built" | "marks a feature that is promised but not yet built" |
+| Glossary `target tag` (unit head; assembly authors this via its `target tag` override) | "to mark a feature that is planned rather than built" | "to mark a feature that is promised but not yet built" |
+| R1 Context | "so the marker is enforced rather than trusted" | "so the marker is enforced by the suite" |
+| R2 User Story | "an analyst, an architect, a reviewer, a tester, and a manager rather than a single undifferentiated pass" | "…and a manager, five distinct roles in one pass" |
+
+**text-audit added to the working-skill roster (ROADMAP row 458).** The `working skill` glossary entry (its unit-head form, and its `working skill` override the assembly authors) now names the pack's tenth working skill, **text-audit**, stated as what it is: the audit-and-fix loop for human-facing texts, which runs mechanical lints and then fresh zero-context cold reads and fixes each finding at its source until two reads come back clean in a row. It is named the way the other nine skills are — inside the definition's prose, not as its own glossary headword — so it needs no separate entry and stays green against the closed-vocabulary and one-name gates. No requirement enumerates the skills by name (R2's roles case names the five *roles*, not the skills), so no criterion changed.
+
+### Final restoration wave (re-pin sweep) — declared addition
+
+- **R1.4 `[target]` marker restored.** The re-pin sweep's mapping audit found the surface/machine target facts (E-6, E-7, E-10, A-6, E-18) lost their machine-checkable `[target]` marks when the manual Formal-index fact column retired. R1.4 — the criterion that names them planned — now carries a `[target]` marker on its own line, so S-0's honesty tie (every target maps to an open row) holds again. No code added; the five anchors already rode this criterion. Owed by `test_traceability::TestTargetOwnership`.

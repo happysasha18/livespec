@@ -49,21 +49,25 @@ def test_base_rule_26_homes_design_principles():
 
 
 def test_d1_reading_discipline_composes_with_brief_read():
-    # D1: rule 25 / INV-137 compose with INV-53 rather than contradicting it
+    # D1: rule 25 / INV-137 compose with INV-53 rather than contradicting it. The requirements-
+    # format rewrite dropped the explicit "composes with" prose sentence; the composition is now
+    # expressed by co-citing both anchors on the one criterion that states the brief-owed read.
     base = _read("skills/live-spec-base/SKILL.md")
     assert "lead never reads a file merely to hand a worker its anchors" in base
     spec = _read("PRODUCT_SPEC.md")
-    assert "This read composes with the lead's reading discipline [INV-137]" in spec
-    assert "dispatched to the reader whose distillation returns the brief's per-file lines" in spec
+    assert "[INV-53, INV-137]" in spec
+    assert "the reader worker whose distillation returns the per-file lines" in spec
 
 
 def test_d2_finding_kind_names_delta_scoped_exception():
-    # D2: INV-140's "every defect blocks" carves out the delta-scoped gate (INV-114)
+    # D2: INV-140's "every defect blocks" carves out the delta-scoped gate (INV-114). The spec's
+    # requirements-format rewrite restated this as a *when*/*shall* criterion; the prover skill
+    # keeps its original phrasing untouched.
     spec = _read("PRODUCT_SPEC.md")
     prover = _read("skills/product-prover/SKILL.md")
-    needle = "at a delta-scoped gate [INV-114] a pre-existing defect outside the delta queues"
-    assert needle in spec
-    assert needle in prover
+    assert "a delta-scoped gate meets a pre-existing defect outside the delta" in spec
+    assert "queue it by that law rather than block the merge it did not create" in spec
+    assert "at a delta-scoped gate [INV-114] a pre-existing defect outside the delta queues" in prover
 
 
 def test_d5_chat_law_hook_carries_reading_discipline():

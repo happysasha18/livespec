@@ -13,10 +13,10 @@ and the *(rule N)* tag on each says which.
 - **The offline window** — *✅ "tests are running; I can manage about ten minutes without you, and
   when you're back I'll show what we closed" ✅ return-beat: "you're needed again: to look at the
   landing and give your word on the deploy"*
-- **The leave-word** — *✅ "понял, довожу до безопасной точки — минуты три: останавливаю воркера,
+- **The leave-word** — *✅ "понял, довожу до безопасной точки — минуты три: останавливаю фоновые задачи,
   коммичу зелёное" … "можно выключать; продолжим со строки 216, всё в файле возобновления"*
 - **Live status** — *✅ "now: fixing the feature map (stage — code); next: tests and push"*
-- **A beat, not silence** — *❌ [forty minutes of silent tool calls, then a wall of report]
+- **A beat breaks a silent stretch** — *❌ [forty minutes of silent tool calls, then a wall of report]
   ✅ "the spec is written, calling the prover to check the seams (station: spec done, prove next)"
   ✅ station-end: "tests finished: it is now covered that every station leaves a digest, and that
   silence past ten minutes is a debt (tests: the three teeth pinned)"*

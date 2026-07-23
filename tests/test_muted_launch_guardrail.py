@@ -134,7 +134,7 @@ def test_jsx_puppeteer_launch_unmuted_reds():
 
 def test_spec_states_the_third_net():
     spec = read("PRODUCT_SPEC.md")
-    assert "A third net catches the divergent harness" in spec
+    assert "the third mute-launch net still catching a forked unmuted launch" in spec
 
 
 def test_js_comment_only_mute_still_reds():

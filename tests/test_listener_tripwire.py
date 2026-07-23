@@ -97,7 +97,8 @@ def test_not_a_ci_step():
 
 def test_spec_states_the_law():
     spec = read("PRODUCT_SPEC.md")
-    assert "[INV-231]" in spec
+    # the tag always rides grouped with sibling codes now, never solo
+    assert "INV-231" in spec
     assert "| INV-231 |" in spec
 
 

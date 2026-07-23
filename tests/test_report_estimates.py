@@ -16,16 +16,29 @@ class TestTimeEstimatesLaw(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/communicator/SKILL.md")
 
     def test_estimate_at_the_echo(self):
+        # PRODUCT_SPEC.md's rewrite dropped the emphatic "never a guess dressed as a
+        # promise" line, stating the same property plainly ("stating an unknown as
+        # unknown"); the communicator skill keeps the original phrase verbatim.
+        unknown_needles = {
+            "PRODUCT_SPEC.md": "stating an unknown as unknown",
+            "skills/communicator/SKILL.md": "never a guess dressed as a promise",
+        }
         for home in self.HOMES:
             body = read(home)
             self.assertIn("honest time range", body, home)
-            self.assertIn("never a guess dressed as a promise", body, home)
+            self.assertIn(unknown_needles[home], body, home)
 
     def test_long_work_explained_and_tracked(self):
+        # PRODUCT_SPEC.md's rewrite states the heartbeat property as "how much time
+        # remains" rather than "roughly how much remains"; the skill keeps the original.
+        remains_needles = {
+            "PRODUCT_SPEC.md": "how much time remains",
+            "skills/communicator/SKILL.md": "roughly how much remains",
+        }
         for home in self.HOMES:
             body = read(home)
             self.assertIn("explained up front in plain steps", body, home)
-            self.assertIn("roughly how much remains", body, home)
+            self.assertIn(remains_needles[home], body, home)
 
     def test_landing_settles_estimate_against_actual(self):
         for home in self.HOMES:

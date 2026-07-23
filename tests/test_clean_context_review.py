@@ -31,7 +31,7 @@ def flat(rel):
     return " ".join(read(rel).split())
 
 
-CLAUSE_OPENER = "The authoring seat does not adversarially certify its own work"
+CLAUSE_OPENER = "The authoring seat does not certify its own work"
 
 
 class TestCleanContextReview(unittest.TestCase):
@@ -40,26 +40,27 @@ class TestCleanContextReview(unittest.TestCase):
         self.assertIn(CLAUSE_OPENER, spec)
         self.assertIn("INV-237", spec)
         # the authoring seat drafts and accepts but never self-certifies adversarially
-        self.assertIn("drafts and accepts it; it never provides the change's own adversarial certification",
+        self.assertIn("drafts and accepts it but never provides its own adversarial certification",
                       spec)
 
     def test_names_both_carriers(self):
         spec = flat("PRODUCT_SPEC.md")
         # carrier one: the release adversarial pass authored by a fresh seat
         self.assertIn("release's adversarial pass", spec)
-        self.assertIn("authored by a fresh seat", spec)
+        self.assertIn("authored by a fresh, differently-contexted seat", spec)
         # carrier two: a new lens/rule self-applied to its own introducing document
-        self.assertIn("run against the very document that introduces it before release", spec)
-        self.assertIn("self-application", spec)
+        self.assertIn("applied to the very document that introduces it before release", spec)
+        self.assertIn("self-applied", spec)
 
     def test_formal_index_row(self):
-        # a Formal-index row carries INV-237 with its Who-decides-what section tag
+        # the index row is location-only (SPEC INV-271); the prose lives on the body criterion
         for line in read("PRODUCT_SPEC.md").splitlines():
             if line.startswith("| INV-237 |"):
-                self.assertIn("authoring seat does not adversarially certify", line)
-                self.assertIn("Who decides what", line)
-                return
-        self.fail("INV-237 Formal-index row missing")
+                break
+        else:
+            self.fail("INV-237 index row missing")
+        spec = flat("PRODUCT_SPEC.md")
+        self.assertIn("The authoring seat does not certify its own work", spec)
 
     def test_base_rule_33_states_it(self):
         base = read("skills/live-spec-base/SKILL.md")

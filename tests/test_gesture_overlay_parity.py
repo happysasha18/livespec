@@ -20,24 +20,28 @@ def _read(rel):
 class TestGestureOverlayParityLens(unittest.TestCase):
     def test_spec_clause_names_the_three_groups(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("standing motion-parity lens", spec)
+        self.assertIn("a standing lens the design review runs by construction", spec)
         # entry mirrors exit
-        self.assertIn("entry mirrors exit", spec)
-        self.assertIn("the way out is the way in reversed", spec)
+        self.assertIn("entry-mirrors-exit as the first group", spec)
+        self.assertIn("a layer closes by the reverse of the motion that opened it", spec)
         # every object type behaves alike, each to its own rectangle
-        self.assertIn("every object type the gesture acts on behaves alike", spec)
-        self.assertIn("lands back on its own on-screen rectangle", spec)
+        self.assertIn("every object type the gesture acts on as the second group", spec)
+        self.assertIn("landing back on its own on-screen rectangle", spec)
         # every position behaves alike
-        self.assertIn("every position behaves alike", spec)
+        self.assertIn("every position as the third group", spec)
 
     def test_spec_anchor_and_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only,
+        # no prose. "motion-parity lens" is asserted against the spec body instead
+        # (Requirement 62's heading and test_spec_clause_names_the_three_groups above).
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-165]", spec)
+        self.assertIn("INV-165", spec)
+        self.assertIn("motion-parity lens", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
-                if line.startswith("| INV-165 |") and "motion-parity lens" in line:
+                if line.startswith("| INV-165 |") and "R62.1" in line:
                     return
-        self.fail("INV-165 Formal-index row missing or not carrying the motion-parity lens")
+        self.fail("INV-165 Formal-index row missing")
 
     def test_design_reviewer_skill_carries_the_lens(self):
         skill = _read("skills/design-reviewer/SKILL.md")

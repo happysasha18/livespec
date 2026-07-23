@@ -33,13 +33,36 @@ def line_with(text, phrase):
     return None
 
 
+def requirement_block(spec, heading_phrase):
+    """The text from a requirement's heading line to the next '---' divider — the class sentence
+    used to sit in one paragraph, but the new requirement-format spec spreads the same class
+    sentence across a Context line and its numbered criteria within one requirement block."""
+    lines = spec.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if line.startswith("## Requirement") and heading_phrase in line:
+            start = i
+            break
+    if start is None:
+        return None
+    end = len(lines)
+    for i in range(start + 1, len(lines)):
+        if lines[i].strip() == "---":
+            end = i
+            break
+    return "\n".join(lines[start:end])
+
+
 class TestClassSentenceStands(unittest.TestCase):
     def test_class_sentence_stands(self):
         spec = read("PRODUCT_SPEC.md")
-        line = line_with(spec, "A general law over concrete instances declares whether it enumerates")
-        self.assertIsNotNone(line, "the INV-226 class sentence is absent from the spec")
-        self.assertIn("[INV-226]", line, "the class sentence carries no [INV-226] tag")
-        low = line.lower()
+        block = requirement_block(
+            spec,
+            "A general law over concrete instances declares whether it enumerates them or lets them ride",
+        )
+        self.assertIsNotNone(block, "the INV-226 class-sentence requirement is absent from the spec")
+        self.assertIn("[INV-226]", block, "the requirement carries no [INV-226] tag")
+        low = block.lower()
         # the keying: open-ended member set rides, closed enumerable set enumerates
         self.assertIn("closed", low)
         self.assertIn("enumerable", low)
@@ -48,9 +71,11 @@ class TestClassSentenceStands(unittest.TestCase):
 
     def test_formal_index_row(self):
         spec = read("PRODUCT_SPEC.md")
+        # the index row is location-only (SPEC INV-271); the class sentence lives on the heading
+        self.assertIn("| INV-226 |", spec, "no index row for INV-226")
         self.assertIn(
-            "| INV-226 | a general law over concrete instances declares whether it enumerates",
-            spec, "no Formal-index row for INV-226")
+            "A general law over concrete instances declares whether it enumerates them or lets them ride",
+            spec, "no class-sentence heading for INV-226")
 
     def test_architecture_owns_the_invariant(self):
         arch = read("ARCHITECTURE.md")
@@ -75,8 +100,9 @@ class TestThreeLawsCiteTheClass(unittest.TestCase):
     # side is asserted textually, not only the citation's presence)
     LAWS = [
         ("range law INV-138", "range-and-lifecycle member of the composition-lens family", "open-ended"),
-        ("budget law INV-41", "project kinds the budget law names are a closed, enumerable set", "closed"),
-        ("facet law INV-18", "facets are a closed, enumerable set that grows by incident", "closed"),
+        ("budget law INV-41", "the kinds being a closed set each named in the clause", "closed"),
+        ("facet law INV-18",
+         "one closed enumerable set that grows a member only with a named real incident", "closed"),
     ]
 
     def test_three_laws_cite_the_class(self):
@@ -84,7 +110,8 @@ class TestThreeLawsCiteTheClass(unittest.TestCase):
         for name, phrase, side in self.LAWS:
             line = line_with(spec, phrase)
             self.assertIsNotNone(line, "%s: citation sentence absent (%r)" % (name, phrase))
-            self.assertIn("[INV-226]", line, "%s: clause does not cite [INV-226]" % name)
+            # the tag now rides grouped with siblings rather than solo — cite is by substring
+            self.assertIn("INV-226", line, "%s: clause does not cite INV-226" % name)
             self.assertIn(side, line,
                           "%s: citation does not state its member-set side (%r)" % (name, side))
 

@@ -49,9 +49,11 @@ def test_wish_issue_template_requests_source():
 
 def test_stranger_arm_spec_anchor_and_index():
     spec = (REPO / "PRODUCT_SPEC.md").read_text()
-    # each invariant carries a body clause (the bracketed anchor) AND a Formal-index row
-    for code in ("INV-146", "INV-147"):
-        assert f"[{code}]" in spec, f"{code} needs a body clause anchor"
+    # each invariant carries a body clause (the bracketed anchor, alone or grouped with a sibling
+    # code) AND a Formal-index row
+    body_anchors = {"INV-146": "[INV-146]", "INV-147": "INV-147, INV-67]"}
+    for code, anchor in body_anchors.items():
+        assert anchor in spec, f"{code} needs a body clause anchor"
         assert f"| {code} |" in spec, f"{code} needs a Formal-index row"
 
 

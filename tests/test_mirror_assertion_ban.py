@@ -17,9 +17,15 @@ class TestMirrorAssertionBanLaw(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/test-author/SKILL.md")
 
     def test_independence_stated_in_both_homes(self):
+        self.assertIn(
+            "derives independently of the code under test",
+            read_flat("skills/test-author/SKILL.md"),
+        )
+        self.assertIn(
+            "is independent of the code under test", read_flat("PRODUCT_SPEC.md")
+        )
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn("derives independently of the code under test", body, home)
             self.assertIn("a mirror that can never catch the formula being wrong", body, home)
 
     def test_legal_sources_in_both_homes(self):
@@ -33,7 +39,7 @@ class TestMirrorAssertionBanLaw(unittest.TestCase):
 
     def test_boundary_stated_in_spec(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("A round-trip or property test over the outputs is legal", spec)
+        self.assertIn("allow a round-trip or property test over the outputs", spec)
 
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")

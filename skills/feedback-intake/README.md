@@ -30,7 +30,7 @@ Every item takes exactly one route, and every route has a home.
 
 | What arrived | Route | Home |
 |---|---|---|
-| a request for new behaviour | it is a wish; walk it through wish intake | its queue row |
+| a request for new behaviour | it is a wish; walk it through the door | its queue row |
 | a small comment on shown work | fix it the same session; a larger comment becomes a wish | the fixing commit and its journal line |
 | an answer to an open question | it closes the question, recorded the same session | the decision archive and the answered row |
 | a reaction to a shipped feature | field evidence; the note cites the feature it concerns | a dated line in FEEDBACK.md |
@@ -79,13 +79,13 @@ The skill fires on its own the moment a session receives a handed-in item, and a
 
 Use it whenever feedback arrives in any form: a comment on shown work, an answered decision page, a file that appears in the inbox, or a user report that the person relays. Use it when you open or add to the feedback ledger, and when you need to decide where a handed-in item belongs.
 
-Do not use it on the agent's own output or on a question the agent asked. Do not use it on something the person merely mentions without handing it in; when it is unclear whether a remark was handed in, one plain question settles it. It never opens a queue row on its own judgment. When an item asks for new behaviour, this skill recognizes it as a wish and walks it to wish intake, where that verdict is made. It also does no reading, scoring, or counting of the collected feedback. That analysis stays with the pack's measurement skills.
+Do not use it on the agent's own output or on a question the agent asked. Do not use it on something the person merely mentions without handing it in; when it is unclear whether a remark was handed in, one plain question settles it. It never opens a queue row on its own judgment. When an item asks for new behaviour, this skill recognizes it as a wish and walks it to the door, where that verdict is made. It also does no reading, scoring, or counting of the collected feedback. That analysis stays with the pack's measurement skills.
 
 ---
 
 ## One scenario
 
-A person is shown a new export button and writes back: "love it, but the file lands in Downloads and I expected it next to the project." The skill catches the remark the same session. The first half is a plain reaction to a shipped feature, so it becomes a dated line of field evidence in FEEDBACK.md, citing the export feature. The second half asks for new behaviour, so the skill recognizes a wish and walks it to wish intake, which opens a queue row. The person hears one sentence back: the reaction is logged, and the location request is queued. Both halves have a home, and neither is lost.
+A person is shown a new export button and writes back: "love it, but the file lands in Downloads and I expected it next to the project." The skill catches the remark the same session. The first half is a plain reaction to a shipped feature, so it becomes a dated line of field evidence in FEEDBACK.md, citing the export feature. The second half asks for new behaviour, so the skill recognizes a wish and walks it to the door, which opens a queue row. The person hears one sentence back: the reaction is logged, and the location request is queued. Both halves have a home, and neither is lost.
 
 ---
 

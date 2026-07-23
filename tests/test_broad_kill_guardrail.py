@@ -10,6 +10,7 @@ a broad name without a path scope. These tests assert the guardrail exists, pass
 planted forbidden pattern (red-first), and lets a path-scoped kill through; and that the spec and the
 worker-briefing guidance state the rule. Landed 2026-07-15."""
 import os
+import re
 import subprocess
 import tempfile
 from conftest import ROOT, read
@@ -116,19 +117,26 @@ def test_full_path_and_pipe_and_two_line_resolvers_red():
 
 def test_spec_states_the_cleanup_ownership_law():
     spec = read("PRODUCT_SPEC.md")
-    assert "[INV-162]" in spec
-    assert "never a shared resource" in spec or "only on what THIS run provably created and owns" in spec
-    # the forbidden broad patterns are named
-    assert "chrome_crashpad_handler" in spec
+    assert re.search(r"\[[^\]\n]*\bINV-162\b[^\]\n]*\]", spec)
+    assert (
+        "this run provably owns" in spec
+        or "this run provably created and owns" in spec
+    )
+    # the forbidden broad patterns are named as a class held over every process the pack runs
+    # a copy of (the concrete chrome_crashpad_handler example was generalized to this class)
+    assert "the browser" in spec and "hold this class over every process the pack runs" in spec
 
 
 def test_shared_install_path_is_not_a_safe_kill_target():
     # ROADMAP 335 (track-coach cross-session collision): an install path is safe only when
-    # unique to this run; where sessions share a path the recorded process group is the sole
-    # safe target, the one identity that always stays inside this run.
+    # under the run's own tree; where sessions share a machine the recorded process group is the
+    # sole safe target, the one identity that always stays inside this run.
     spec = read("PRODUCT_SPEC.md")
-    assert "unique to this run" in spec
-    assert "recorded PID or process group is the only target that always stays inside this run" in spec
+    assert "an install path under the run's own tree" in spec
+    assert (
+        "the recorded process group as the sole safe target on a machine shared with other sessions"
+        in spec
+    )
 
 
 def test_worker_briefing_carries_the_constraint():

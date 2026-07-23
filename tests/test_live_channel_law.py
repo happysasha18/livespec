@@ -25,17 +25,25 @@ class TestLiveChannelLaw(unittest.TestCase):
             self.assertIn("once-read", body, home)
 
     def test_worked_proof_in_both_homes(self):
-        for home in self.HOMES:
-            body = read_flat(home)
-            self.assertIn("the same cure that killed invented clock stamps", body, home)
+        # PRODUCT_SPEC.md's rewrite declares its own scope in its preamble ("Edit history
+        # lives in JOURNAL.md; this spec states what is true today") and no longer carries
+        # historical worked-proof narrative anywhere in its body; only the general rule
+        # remains there (asserted in test_law_in_both_homes above). The worked-proof
+        # anecdote itself now lives only in the skill's own home.
+        body = read_flat("skills/live-spec-base/SKILL.md")
+        self.assertIn("the same cure that killed invented clock stamps", body)
 
     def test_spec_anchor_and_index(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # "live channel" prose is asserted against the flattened spec body instead
+        # (already covered by "earns a live channel" in test_law_in_both_homes).
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-108]", spec)
+        self.assertIn("live channel", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-108 |"):
-                    self.assertIn("live channel", line)
+                    self.assertIn("R222.1", line)
                     return
         self.fail("INV-108 index row missing")
 

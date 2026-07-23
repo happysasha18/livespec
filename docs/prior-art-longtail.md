@@ -54,8 +54,8 @@ OpenSpec); community writing (Medium, dev.to, HN); arxiv for formal verification
   https://github.com/ai-sdlc-framework/ai-sdlc
   Definition-of-Ready gate that refuses to dispatch undecided tasks. Decision Catalog routes open
   questions to decision-makers. Has a DoR concept (Definition of Ready) that is a strong analogue
-  of spec-delta check, but the DoR checks internal task completeness rather than consistency with a
-  living product SPEC.
+  of spec-delta check, but the DoR checks internal task completeness only; it never checks consistency
+  with a living product SPEC.
 
 ### Verdict (a): PARTIAL / NOT FOUND as a packaged skill
 
@@ -82,7 +82,7 @@ queues with format gates: YES, mature. Spec-awareness in that gate: NOT FOUND.
   blocks merge, warning lets acknowledged violations pass). 46 releases (latest v0.20.0, April 2026),
   216 commits, supports all major agent harnesses via MCP.
   _Directly addresses (b): declared scope + diff-against-declaration + merge gate. The "freelancing
-  catcher" framing is explicitly its purpose. HOWEVER: it is a pre-MERGE gate rather than a pre-push hook.
+  catcher" framing is explicitly its purpose. HOWEVER: it is a pre-MERGE gate, one stage later than the pre-push hook our design calls for.
   The scope declaration is a task brief; it is not derived from a SPEC.md. No "DECLARED SCOPE semantics"
   tied to a formal spec document — scope is declared per-task, ad hoc, before each run._
 
@@ -98,7 +98,7 @@ queues with format gates: YES, mature. Spec-awareness in that gate: NOT FOUND.
   https://dev.to/mikelane/teaching-claude-to-stop-reaching-for-git-diff-git-prism-v070-4nel
   Structured change manifests (file snapshots, function context, commit history) returned as
   token-efficient JSON. Bundled PreToolUse redirect hook that blocks dangerous git commands.
-  _Related to (b): provides richer diff artifacts but functions as a diff-viewing tool rather than a scope guardrail._
+  _Related to (b): provides richer diff artifacts and functions as a diff-viewing tool; it guards no scope._
 
 - **spec-aware-review** (Joshua McDonald workflow)
   Custom skill described at joshmcdonald.medium.com. Reads the active spec and current diff
@@ -111,8 +111,8 @@ queues with format gates: YES, mature. Spec-awareness in that gate: NOT FOUND.
 ### Verdict (b): PARTIAL — agent-guardrails is the closest published artifact
 
 agent-guardrails implements the diff-against-declared-scope mechanism and is explicitly a
-freelancing-catcher. The gap vs. the full concept: (1) scope is per-task ad hoc rather than derived
-from a SPEC.md; (2) it is pre-merge not pre-push; (3) "DECLARED SCOPE" in the sense of a
+freelancing-catcher. The gap vs. the full concept: (1) scope is declared per-task, ad hoc, and never
+derived from a SPEC.md; (2) it fires at pre-merge, where the design wants a pre-push hook; (3) "DECLARED SCOPE" in the sense of a
 single authoritative document that the agent's changes must respect — that framing does not exist
 anywhere found. Note: snapshot/visual-regression testing (Jest, Percy, Chromatic) is mature and
 well-known prior art for rendered artifacts; the search confirmed none of that applies here.
@@ -129,8 +129,8 @@ well-known prior art for rendered artifacts; the search confirmed none of that a
   Academic framework using Lean 4 to formally verify agent workflow trajectories and behavioral
   constraints. Proves properties about agent action sequences (trajectory verification, invariants
   that hold throughout execution paths). This IS about the agent's process, not just domain code.
-  _Touches (c) most directly of anything found. BUT: it is an academic paper + prototype rather than a
-  packaged skill or published repo you can attach to a project. Not a "reviewer skill" you invoke._
+  _Touches (c) most directly of anything found. BUT: it is an academic paper + prototype; no packaged
+  skill or published repo exists to attach to a project, and nothing here is a "reviewer skill" you invoke._
 
 - **payment-invariants** (xtilyn)
   https://github.com/xtilyn/payment-invariants
@@ -153,7 +153,7 @@ well-known prior art for rendered artifacts; the search confirmed none of that a
   Declares Resources: Pipeline, Decision, AgentRole, QualityGate in JSON Schema. Quality gates
   run advisory → soft-mandatory → hard-mandatory. This is the most structurally sophisticated
   process enforcement found. Still not formal verification; it's declarative governance enforced
-  by the harness rather than by proof.
+  by the harness, with no formal proof.
 
 - **AIP: Graph Representation for Agent Skills** (search result, June 2026)
   Proposal to replace free-form skill prose with directed execution graphs: discrete steps as nodes
@@ -167,8 +167,8 @@ liveness) over a PROCESS SPEC (not domain code) does not exist as a published, i
 Lean4Agent is the closest in ambition (formal + process-level) but is academic prototype. The
 payment-invariants pattern (domain-invariant reviewer skill) shows the pattern is viable but has not
 been lifted to the process-spec level by anyone. Phase-gate enforcement (agentic-os, ai-sdlc) exists
-and is real, but it is deterministic bash/YAML checking rather than a reviewer skill reading a process spec
-and reasoning about invariant coverage. The specific combination — SPEC.md describing the dev process
+and is real, but it is deterministic bash/YAML checking; no reviewer skill reads a process spec
+and reasons about invariant coverage. The specific combination — SPEC.md describing the dev process
 + a reviewer agent that proves it for gaps — is original in the published ecosystem.
 
 ---
@@ -194,7 +194,7 @@ and reasoning about invariant coverage. The specific combination — SPEC.md des
   validates against code, identifies gaps. Explicitly supports "mid-flight adoption by
   reverse-speccing."
   _Touches (d): reverse-spec from existing code is its core purpose. 23 stars, 4 commits —
-  nascent. Output is business-logic docs rather than a SPEC.md with entities/states/transitions/invariants
+  nascent. Output is business-logic docs; it produces no SPEC.md with entities/states/transitions/invariants
   in the formalized sense._
 
 - **speckit — /speckit.specify for reverse-engineering**
@@ -237,7 +237,7 @@ discussions — the tooling assumes you are starting fresh or at least starting 
 
 - **ai-sdlc-framework** — most complete governance framework found; DoR gates, DSSE attestation,
   independent cross-harness review, JSON Schema declared resources. A standalone governance
-  framework rather than a SKILL; it does not attach mid-flight. https://github.com/ai-sdlc-framework/ai-sdlc
+  framework that ships on its own — no SKILL, and it does not attach mid-flight. https://github.com/ai-sdlc-framework/ai-sdlc
 
 - **agentic-os** (KbWen) — phase-gate enforcement via validate.sh; closest to process-invariant
   checking as a deterministic tool. https://github.com/KbWen/agentic-os
@@ -256,7 +256,7 @@ discussions — the tooling assumes you are starting fresh or at least starting 
 | Category | Verdict | Strongest counter-example |
 |---|---|---|
 | (a) wish-intake → spec-delta check → persistent roadmap | NOT FOUND as packaged skill. Structured intake gates exist (INVEST, DoR), but none check against a living SPEC | github-backlog-management-skill (INVEST gate) + ai-sdlc DoR |
-| (b) artifact snapshot-diff as agent freelancing-catcher with declared scope | PARTIAL. The mechanism exists (agent-guardrails); gaps: scope is per-task ad hoc rather than SPEC-derived; pre-merge not pre-push | logi-cmd/agent-guardrails |
+| (b) artifact snapshot-diff as agent freelancing-catcher with declared scope | PARTIAL. The mechanism exists (agent-guardrails); gaps: scope is per-task ad hoc, never SPEC-derived; it fires pre-merge, where pre-push is wanted | logi-cmd/agent-guardrails |
 | (c) process spec formally proven by reviewer skill (invariants over the dev process) | NOT FOUND as packaged skill. Domain-invariant reviewer skills exist; process-level formal proof exists only as academic prototype | xtilyn/payment-invariants (pattern) + Lean4Agent (formal, academic) |
 | (d) full packaged mid-flight method pack (adopt/reverse-spec) | PARTIAL. Scattered brownfield pieces exist; no single installable pack that produces a proven living SPEC from an existing project | meirm/reverse-engineering-skill + OpenSpec /opsx:onboard |
 
@@ -264,10 +264,10 @@ discussions — the tooling assumes you are starting fresh or at least starting 
 
 ## What this means for originality
 
-The specific combination that is NOT found anywhere:
+No published work shows this specific combination:
 - A SKILL that takes casual requests and validates them against a living SPEC before queueing (the spec is the authority, not just a format gate)
 - A pre-push guardrail where "declared scope" is derived from the active SPEC (not a per-task brief), and any undeclared file change = hard fail
-- A reviewer SKILL that treats the DEV PROCESS ITSELF as the spec (entities, states, transitions, invariants of the workflow) and proves it for gaps — the process itself, rather than domain code
+- A reviewer SKILL that treats the DEV PROCESS ITSELF as the spec (entities, states, transitions, invariants of the workflow) and proves it for gaps — its subject is the workflow, and the domain code stays out of scope
 - A single installable method pack: drop into brownfield, reverse-spec the existing project into a proven SPEC.md, attach the pipeline going forward
 
 Each concept has partial prior art (structured intake, diff-based scope gates, domain invariant reviewers, brownfield discovery). The integration of all four, with the spec as the single source of authority binding them together, is not published.

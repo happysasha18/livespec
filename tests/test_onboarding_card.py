@@ -285,9 +285,12 @@ class TestOnboardingCard(unittest.TestCase):
         comm = read(os.path.join("skills", "communicator", "SKILL.md"))
         self.assertIn("what can I customize", comm,
                       "communicator lost the standing-question line")
-        spec = re.sub(r"\s+", " ", read("PRODUCT_SPEC.md"))
-        self.assertIn("norm: docs/norms/onboarding-card-2026-07-10.html", spec,
-                      "the spec lost the norm pointer")
+        # The dated frozen-norm pointer is a dated provenance reference; the requirements-format spec
+        # body bans dates (SPEC INV-253/no-history), so the norm pointer's home is ARCHITECTURE.md's
+        # onboarding-card node, where the wiring and ownership live.
+        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
+        self.assertIn("docs/norms/onboarding-card-2026-07-10.html", arch,
+                      "the architecture lost the frozen-norm pointer")
         self.assertTrue(os.path.exists(NORM), "the frozen norm file is gone")
 
 

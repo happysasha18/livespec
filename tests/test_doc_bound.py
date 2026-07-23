@@ -167,11 +167,11 @@ class TestDocBoundDocs(unittest.TestCase):
     def test_spec_composes_with_rotation(self):
         """The clause names the composition with INV-209 (the rotation is the remedy)."""
         spec = read("PRODUCT_SPEC.md")
-        # find the INV-234 clause region and check it references INV-209
-        idx = spec.find("[INV-234]")
-        self.assertNotEqual(idx, -1, "the INV-234 clause must close with its anchor")
-        region = spec[max(0, idx - 2500):idx + 100]
-        self.assertIn("INV-209", region, "the INV-234 clause must name its composition with INV-209")
+        # R245.3 (the requirements-format criterion for "rotation is the remedy") tags both
+        # invariants together directly, rather than INV-209 trailing somewhere before INV-234's
+        # own standalone tag as in the old prose-paragraph shape.
+        self.assertIn("[INV-234, INV-209]", spec,
+                      "the INV-234 clause must name its composition with INV-209")
 
     def test_formal_index_row(self):
         self.assertRegex(read("PRODUCT_SPEC.md"), r"\| INV-234 \|", "INV-234 must have a Formal-index row")

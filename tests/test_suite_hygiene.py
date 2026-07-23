@@ -16,11 +16,14 @@ class TestSuiteHygieneLaw(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/test-author/SKILL.md")
 
     def test_cleanup_half_in_both_homes(self):
+        # PRODUCT_SPEC.md opens this as its own sentence ("A leak is a defect of the test."),
+        # capitalized; skills/test-author/SKILL.md keeps it mid-sentence, lowercase. Same words,
+        # so the needle drops the leading article to match both cases.
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("removes what it creates", body, home)
             self.assertIn("leaves the machine as it found it", body, home)
-            self.assertIn("a leak is a defect of the test", body, home)
+            self.assertIn("leak is a defect of the test", body, home)
 
     def test_placement_half_in_both_homes(self):
         for home in self.HOMES:

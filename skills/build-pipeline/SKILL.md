@@ -3,13 +3,13 @@ name: build-pipeline
 description: >
   Run a non-trivial change by the book — the spec → prove → architecture → prove architecture → matrix →
   test → code → verify → commit & show pipeline, orchestrating the pack's working skills (spec-author,
-  product-prover, test-author). Use this whenever starting a new
+  product-prover, design-reviewer, test-author). Use this whenever starting a new
   feature, a new stateful surface, or a behaviour change that deserves more than a one-line edit:
   "build X properly", "do this by the method", "spec and ship Y", "new surface for Z". It is also the
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 3.6.0
+  version: 4.0.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.6.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v4.0.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -30,7 +30,7 @@ default, and a one-batch fix owes the mechanical red proof). A skip still owes t
 Otherwise don't skip a step — the bugs that pass every test hide in the steps you skipped. (The private playbook repo's PLAYBOOK.md holds
 the principle behind each step. This skill is its executable projection; keep the two in sync.)
 
-**The craft ladder — whose head you wear at each step (SPEC INV-33).** Each artifact is judged by its
+**The craft ladder — which craft's standards judge each step (SPEC INV-33).** Each artifact is judged by its
 own craft's standards: **spec** — a strong product manager (the user's journey, the
 product's words) · **prove / prove architecture** — the prover's formal-methods reviewer ·
 **architecture** — a software architect (nodes, seams, one responsibility each) · **matrix** — a QA
@@ -38,10 +38,10 @@ automation lead deriving coverage · **test** — the same QA engineer writing i
 developer · **verify** — the visitor's own fresh eyes, the builder's own view set aside · **commit & show** — a careful
 release hand whose reader is the human.
 
-The landing report's step accounting speaks in these standards. The hat each artifact was made under is
+The delivery report's step accounting speaks in these standards. The craft each artifact was made under is
 namable on ask.
 
-The craft wears the work-KIND's face (SPEC INV-22, INV-33): on a prose product the code step is worked as
+The craft takes the work-KIND's form (SPEC INV-22, INV-33): on a prose product the code step is worked as
 a strong writer, on infra as a toolsmith. The ladder names the archetypes, and the kind says what their
 standards look like in its medium.
 
@@ -73,13 +73,13 @@ standards look like in its medium.
     single-module feature keeps its spec step with the rest scoped down. A presentation-only change takes the
     lightest road its door already grants — the skip boundary or the docs-only door where the door routes it
     there, and the matrix-step minimum focused on the visible layer where it is a visible feature. The
-    footprint, not the size, sizes the reach — a heavy process on a light change is as much a defect as the
+    footprint sizes the reach, and the size does not — a heavy process on a light change is as much a defect as the
     reverse. When the three sources DISAGREE (a spec-promised surface with no owning node, code behaviour no
     clause backs, a node pinned to a moved line), name the disagreement and route it to its owner (a bug row, a
     spec fix, a restructure row — SPEC INV-37), never silently trusting one source; the three-source read is
     the verdict derive-before-fork (SPEC INV-121) rests on. The footprint **re-classifies mid-work** the moment
     an edit reaches past its named layer (presentation → single-module, single-module → cross-cutting), the
-    landing report recording footprint held or re-classified to X at step N — the sibling of the door's
+    delivery report recording footprint held or re-classified to X at step N — the sibling of the door's
     mid-work re-fire below. (The mechanical `footprint:`-note suite check [INV-134], the per-kind
     concrete-layers-and-proofs declaration [INV-135], and the cross-cut counter [INV-128 boundary-health,
     `guardrails/crosscut_counter.py`] have landed; the declared-module-interface and interface-level test
@@ -95,12 +95,12 @@ standards look like in its medium.
     can collide with a sibling that was independent a moment ago; a new edge pulls the re-doored lane back
     to serial (waiting behind the lane it now shares a surface with) with a board line, so the departures
     board never asserts a stale independence after the ground moved. The integration re-fence [INV-39]
-    still catches the collision at landing; this closes the board's observability gap, not a new net.
+    still catches the collision at landing; this closes the board's observability gap and adds no new net.
   - **A declared mockup-first entry condition is honoured from the row, cancelled only by name (SPEC
     INV-43).** A story whose intake said "show me first, then build" carries the condition WRITTEN in
     its queue row ("entry: mockup-first"); a later general "go build" moves priority, never the
     condition — only by the human naming it does the condition fall. A condition living only in chat
-    memory is the defect this line kills (the tlvphoto door was built past its voiced mockup-first word).
+    memory is the defect this line prevents (the tlvphoto door was built past its voiced mockup-first word).
   - **One wish = one user story (SPEC T-17):** a wish carrying several distinct things a person will DO and
     SEE splits at intake — each story its own row through the full pipeline (stages slice ONE story's depth,
     T-15's knife; separate stories never fuse into one row). Sub-behaviours (a hover face, a phone face, a
@@ -113,11 +113,10 @@ standards look like in its medium.
   See [references/request-kind-table.md](references/request-kind-table.md) for the full closed set of
   request kinds, their entry step, and mandatory back-check (product behaviour · a technically-phrased request · a defect · docs-only · a tiny reversible edit · a settings/parameter value · an inbox wish · a method/skill change · a sketch · research/a question · a feedback hand-back).
 
-  **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" checkable instead of habitual: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced rather than improvised. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150), the deferral test's (SPEC INV-152), and the earned message's (SPEC INV-189, INV-191) — one routing principle stated four times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding. The fourth control carries it across a window's edge: a message to another agent routes to the sender's own blocked work, and a question no work stands on is dropped rather than sent.
+  **A request that matches no kind in this closed set becomes one plain question to the human (base rule 1), never a guessed route.** The closed set is what makes "no gap between the layers" a checkable property held by rule, where before it leaned on habit: the landing contract already lists every door-granted step applied or stood down by name (SPEC INV-22), so a request the set cannot place is surfaced to the human as a question. This is the request-side twin of the property net's homeless-item finding (SPEC INV-150), the deferral test's (SPEC INV-152), and the earned message's (SPEC INV-189, INV-191) — one routing principle stated four times (SPEC INV-153): every incoming thing routes to the home whose declared sentence governs it, and a thing that pins to no home is itself the finding. The fourth control carries it across a window's edge: a message to another agent routes to the sender's own blocked work, and a question no work stands on is dropped and never sent.
 - **New feature / new stateful surface / behaviour change:** the full pipeline from step 1.
 - **Bug:** enter at the matrix step with a red-on-bug test (`bug → matrix → test → code`); if the fixed fact
-  also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (SPEC INV-104). **A confirmed bug drives a class hunt before it closes (SPEC INV-124) —
-  four moves, not one:** (1) name the defect abstractly (the KIND of mistake — a scope too narrow, a
+  also lives in SPEC prose, update the spec sentence in the same change. **The door step adds one tripwire at the bug door:** does this edit touch a spec-backed literal or clause (a version string, a pinned count, a named vocabulary, a promised wording)? A yes binds the docs-travel-with-the-change rule and the red-first small-fix path into one duty — the docs and the test land in the same session as the fix; the tripwire reads the edit's content, so a one-word change to a spec-cited literal owes the same duty as a full feature (SPEC INV-104). **A confirmed bug drives a class hunt before it closes (SPEC INV-124). The hunt is four moves:** (1) name the defect abstractly (the KIND of mistake — a scope too narrow, a
   missing guard, an assumption that holds in one place and fails in the neighbour), then actively SEARCH
   every surface where that kind could live and fix all siblings in the same change — the search goes
   finding the siblings not yet seen, the matrix row and the red-on-bug test covering the CLASS beyond the
@@ -127,8 +126,7 @@ standards look like in its medium.
   under-describing the broken behaviour is the real defect, fixed FIRST so the prover can flag it, then
   the code fix lands under it (the spec-under-describes-composition lesson, generalized); (4) escalate to
   the human when the class boundary needs his read — which behaviours are one class, what the intended
-  design was, whether a whole area wants a rethink — the method stops and asks rather than guessing the
-  boundary. The four moves are the bug door's close condition; a point fix that leaves the siblings
+  design was, whether a whole area wants a rethink — the method stops and asks for the boundary, and does not guess it. The four moves are the bug door's close condition; a point fix that leaves the siblings
   standing is a status, never a landing (SPEC INV-26). **A RECURRING bug re-doors to feature:**
   a second bug in the same area within ~30 days is not another patch — the area is missing an INVARIANT,
   so it escalates to the full pipeline from step 1 (spec the invariant, re-prove, then fix under it).
@@ -142,11 +140,11 @@ standards look like in its medium.
   if the refactor moves node boundaries but leaves the document's shape standing, ARCHITECTURE.md's pins
   update in the same change — the pins-only path is scoped to a boundary shift that leaves the document's
   shape standing. A deliberate redesign (layers restacked, a surface's ownership moved, nodes merged or
-  split) is not a pins-only change: the architecture document is re-shaped to the new form and re-proven
-  with the architecture lens in the same movement (SPEC INV-113).
+  split) re-shapes the architecture document to the new form and re-proves it with the architecture lens
+  in the same movement (SPEC INV-113); updating the pins alone does not cover a redesign.
 - **Docs-only change:** re-read the changed section rendered + one grep that no stale claim contradicts the
   code; no spec/matrix step.
-- **A rewrite or restyle accounts for every removal of substance (SPEC INV-109):** the rule's one home is communicator rule 6, which owns the landing report the accounting rides. The docs-only door above and the restyle loop both invoke it — every removed section, argument, rationale, or worked example listed there with its one line of judgment, a removal the rewriter cannot justify raised as a question before the report closes, line-level wording left free.
+- **A rewrite or restyle accounts for every removal of substance (SPEC INV-109):** the rule's one home is communicator rule 6, which owns the delivery report the accounting rides. The docs-only door above and the restyle loop both invoke it — every removed section, argument, rationale, or worked example listed there with its one line of judgment, a removal the rewriter cannot justify raised as a question before the report closes, line-level wording left free.
 - **A restructure or migration merged back to main is gated on the delta (SPEC INV-114):** A restructure or migration merge gate judges the delta. It has three parts: load-bearing token identity old-versus-new modulo the per-chunk named deltas plus the punctuation-multiset check (SPEC INV-111); the full suite green on the merged tree (SPEC INV-39); and a full prover pass on both sides whose blocking set is delta-scoped — an unmatched token, a red suite, a new-side finding absent on the old side, or an unnamed meaning change. Pre-existing findings equal on both sides route to queue rows in the same landing and never block. And a session that sharpens a human's spoken bar beyond his words says the sharpened form back and marks it as its own interpretation. The token-identity part scopes to a content-preserving restructure. A deliberate redesign changes content by intent, so it routes by the architecture-redesign law (SPEC INV-113), and its merge stands on the green suite and the delta-scoped prover pass, with no token-identity demand over text the redesign meant to change.
 - **Skip entirely** only under the single boundary above (pure research, fact-gathering, a one-file
   no-new-behaviour edit already covered by a test level).
@@ -163,7 +161,7 @@ prototype home, base rule 16 — and comes BACK through this pipeline only at pr
 The door picks WHICH steps run. The kind picks the FORM each running step takes. The work-kind table
 below is the per-kind meanings' ONE normative home (the spec binds the contract around it). The
 contract, before the table: at landing, every door-granted step has either **APPLIED in its kind's form
-or STOOD DOWN by name** in the landing report ("design-sync — text product, stands down") — a silently
+or STOOD DOWN by name** in the delivery report ("design-sync — text product, stands down") — a silently
 skipped step is a defect. **An unresolved kind scales nothing down** — standing a step down requires a
 NAMED kind (the ask rides the row, SPEC INV-12). And no kind ever touches the safety net: the door law
 and its tripwires, the delta's mandatory sentences (fences · facets · non-goals · success measure),
@@ -176,7 +174,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
 
 1. **Spec — invoke `spec-author`.** Write or grow the project `PRODUCT_SPEC.md`: entities, states, transitions,
    actors, invariants, and the cross-section composition between surfaces. One surface = one name. Compose
-   every stateful surface across **every** view/mode axis it lives under, not just its own. Real gaps are
+   every stateful surface across **every** view/mode axis it lives under, including axes beyond its own. Real gaps are
    marked `⟨DECIDE⟩` and asked, never guessed. Use human-first language, with codes at line ends.
 
    A feature-doored wish also walks the **fit walk** — the kind-scaled product-fit interrogation (journey ·
@@ -206,7 +204,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    visible — don't gate on resolving all of them.
 
    **Then, when the cadence calls for it, invoke `design-reviewer` over the same proven spec** (SPEC INV-141):
-   a second pass right after the prover, judging the design rather than verifying it — it proposes the
+   a second pass right after the prover that judges the design, where the prover before it verified the spec holds — it proposes the
    same-kind groupings the text never declared and checks behaviour parity within each. The cadence decides
    whether it runs at all: full on a FULL prover pass, scoped on a surface add, and standing down at
    FEATURE-FIT intake and the push gate (at those two it is not invoked). Every finding is a recommendation or a
@@ -234,7 +232,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
 
    A large or surface-class change updates the doc. A bug or small change just cites its existing node and
    skips to the matrix. (Running the pin-greps is junior work; judging what a mismatch MEANS is the senior's.)
-   **The architecture owes NUMBERS, not only names (SPEC INV-41):** measurable quality budgets plus
+   **The architecture owes NUMBERS as well as names (SPEC INV-41):** measurable quality budgets plus
    each budget's instrumentation home — where the real numbers are measured and where a human can
    read them (an export, a debug view, a report). The author also names each budget's watcher: the
    mechanical check that reds past the stated number, or the decided sentence naming why that budget
@@ -291,10 +289,10 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    promised flow (INV-74) · the placement view says where every node runs (INV-75). Findings land in the
    same `docs/prover/` record discipline as step 2. A full pass at an M-1 or M-6 gate that proves
    ARCHITECTURE.md beside the spec (INV-116) also **appends its dated row to the Prover record** table in
-   ARCHITECTURE.md, so that table tracks the architecture's freshness rule instead of drifting behind it.
+   ARCHITECTURE.md, so that table tracks the architecture's freshness rule and stays current with it.
 
 5. **Test spec — invoke `test-author` to DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture (the method's one home, SPEC E-27).** The
-   matrix is derived, never just filled: rows organized **architecture node × spec fact** (one block per
+   matrix is derived, and hand-filling its rows does not count: rows organized **architecture node × spec fact** (one block per
    node), every fact gets ≥ 1 row, **every row states BOTH sides — what the fact DOES and what it must
    NEVER do** (the never side IS the regression fence, SPEC INV-6; a row without it is a derivation
    defect), and **every row pins a test LEVEL** (string / DOM-text / browser-computed / pixel). Any fact
@@ -313,7 +311,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    (red-on-bug), then implement. Never edit a test just to make a change pass.
 
 7. **Code — implement until green.** Delegate well-scoped, mechanical implementation to a junior worker
-   with a precise brief + a persistent checkpoint file (so a cut-off resumes rather than restarts). Keep the hard
+   with a precise brief + a persistent checkpoint file (so a cut-off resumes from its checkpoint). Keep the hard
    parts (ambiguous specs, design, tricky debugging) on the senior model. Verify the junior's result by deed.
 
    **A norm-pointered surface builds with the artifact open (SPEC INV-43):** when the surface's spec clauses
@@ -324,8 +322,8 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
 
    **Taste-heavy deliverables build smallest-first (SPEC INV-62):** when taste rules the deliverable — voice,
    copy, visual style, spec prose — STOP at the cheapest judgeable sample (one paragraph, one card, two
-   sections) and take the human's word on it before the full build spends anything. Five full packs once died
-   on a failure a one-paragraph sample would have caught.
+   sections) and take the human's word on it before the full build spends anything. Five full packs once failed
+   on a problem a one-paragraph sample would have caught.
 
    **And a rejected artifact reopens its SOURCE (SPEC INV-63):** the fix starts at the spec clause / card /
    brief that produced it — correct the source, then rebuild from it. Line-patching the rejected output
@@ -343,8 +341,7 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    never commit; write the failing test name + hypothesis as the top `NEXT_STEPS.md` item** — the checkpoint
    IS the red test.
 
-   **Green also means DETERMINISTIC (SPEC INV-155).** A test that passes only sometimes is a defect, not a
-   pass. A flake whose root is in owned code — the test or the product — is fixed at that root: name the
+   **Green also means DETERMINISTIC (SPEC INV-155).** A test that passes only sometimes is a defect; intermittent green does not count as a pass. A flake whose root is in owned code — the test or the product — is fixed at that root: name the
    nondeterminism (wall-clock time, ordering, shared or leaked state, an unseeded random, a missing wait on a
    tool the test drives) and remove it, so the test passes every run for the same reason. It is masked by
    nothing: never a retry, never a rerun-until-green, never a raised timeout that hides the race, never "it
@@ -370,12 +367,12 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    empty function body.
 
    Findings become rows or red, never a nod, folded before the landing commits. The checker is a worker
-   under the full contract (checkpoint, ledger, clock), and its verdict rides the landing report. Anywhere
+   under the full contract (checkpoint, ledger, clock), and its verdict rides the delivery report. Anywhere
    else the checker is the senior's option. A skill or prose landing walks the ladder in its kind's form:
    the checker re-reads the SHIPPED text against the spec sentences.
 
    **The authoring seat never certifies its own work adversarially (SPEC INV-237).** The freshness above is
-   the whole rule, not an option the release pass may waive: a release's adversarial pass — the full
+   the whole rule, and the release pass may not waive it: a release's adversarial pass — the full
    re-prove at the release gate — is authored by a fresh seat, never the seat that authored the change, and
    a newly added lens or rule is run against the very document that introduces it before release
    (self-application), the release record naming the result. A release gate may require a dated
@@ -392,13 +389,13 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    number in prose — "current version: vX.Y" always goes stale. Point at the version's one home (the VERSION
    file, the frontmatter) or omit it.
 
-   The landing report TELLS the taste choices made without asking — the open `[default]`s — each in plain
+   The delivery report TELLS the taste choices made without asking — the open `[default]`s — each in plain
    words with an example and a tweakable mark. No confirmation is requested; silence is consent, never
    re-asked (SPEC INV-31). The same TELL covers a tunable parameter you set to a sensible default — a
    resolution, a batch size, a timeout, a sampling rate — named with what it trades, tuned together later at
    most, never a stall on a knob you can reasonably pick (SPEC INV-70).
 
-   A landing report, a ROADMAP row, and a decision page are exactly the surfaces where a decision gets
+   A delivery report, a ROADMAP row, and a decision page are exactly the surfaces where a decision gets
    recorded AS the person's, so base rule 13's writing rule on human authority binds them (SPEC INV-207).
    A `[default]` the seat picked is the SEAT's own judgment and is written in the pack's own voice; it is
    never dressed as the human's word. When a decision genuinely IS the person's, the entry names the
@@ -408,18 +405,18 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
 
    Show the human the REAL render in a new window; push or deposit only after they've reviewed it. A push
    re-renders all deposited artifacts, and a push shipping a new version walks the publish skill's shopfront
-   check — README claims + kind-owed visuals fresh, the outcome line riding the landing report (SPEC INV-44).
+   check — README claims + kind-owed visuals fresh, the outcome line riding the delivery report (SPEC INV-44).
    Where the host's design-sync is ON (base defaults; SPEC E-18), the landing's DECLARED components also sync
-   to the team's design project — after the human's gate, never instead of the in-session show.
+   to the team's design project — after the human's gate; it never replaces the in-session show.
 
-## Guardrails — the pipeline's TEETH (mechanical, every project inherits them)
+## Guardrails — the pipeline's mechanical enforcement (every project inherits them)
 The eight steps are guidance, and an agent DRIFTS from guidance — that is the failure that stops a project
 converging (a whole panel ships empty; a behaviour nobody asked for gets buried; a change lands with no test).
 So the pipeline is not trusted, it is ENFORCED: a `guardrails` check the project wires to a **git pre-push
 hook** (+ the suite), so a change that fails ANY of these is RED and CANNOT be pushed. `test_traceability`
 (below) is the first of these — generalise it to the full set. **Each project INSTANTIATES the checks for its
-own surfaces; the pipeline REQUIRES the check exists and is green.** This is a first-class step, applied project-wide
-rather than as a per-project patch. See
+own surfaces; the pipeline REQUIRES the check exists and is green.** This is a first-class step, applied across the whole project as a standing part of the method;
+a per-project patch does not satisfy it. See
 [references/guardrails-catalog.md](references/guardrails-catalog.md) for the four mechanical guardrails
 (Completeness incl. cross-surface policy uniformity SPEC INV-125 · Tests-present · Behaviour-traces-to-spec ·
 Conflicts).
@@ -427,11 +424,11 @@ Conflicts).
 partial artifact, id/naming conflict). They do NOT catch a subtle SEMANTIC bug (is the number right?) — that
 still needs `product-prover` + a human's eyes. Enforce structure mechanically, and reason about meaning with
 the prover. Verify-by-deed (step 8) and commit/push (step 9) both run the guardrails first, so guidance and
-teeth agree.
+enforcement agree.
 
 ## The excuses table — read it the moment one of these crosses your mind
 
-The shortcuts that kill the method never announce themselves; they arrive as one of these thoughts.
+The shortcuts that break the method never announce themselves; they arrive as one of these thoughts.
 Each is a tripwire: thinking it means STOP and take the pipeline door you were about to skip.
 
 See [references/excuses-table.md](references/excuses-table.md) for the full table of six excuse-thoughts
@@ -461,7 +458,7 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   to tests: the two layers between them (architecture, test-spec derivation) are where whole classes of
   holes get caught (SPEC E-14/E-15/INV-15).
 - **A row closes only whole (SPEC INV-26):** where a row carries several legs, its Done-when enumerates
-  each, and the landing report may close the row only with EVERY leg met —
+  each, and the delivery report may close the row only with EVERY leg met —
   half-done is a status, never a landing. An open leg keeps the row in-work, and the resume file's LIVE-STATE restates it at every
   supersession, never compresses it away (still open at compaction ⇒ restated in full).
 - **Trains, one pen (SPEC T-18, INV-39):** one session may roll up to the profile-declared lane cap of
@@ -516,8 +513,8 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   work (known edit strings, a known command, fan-out fact-gathering, a report or list or dump to produce)
   routes to a worker at the cheapest tier that can pass the brief, proposed and logged, the senior free to
   override aloud. The brief is self-contained (the BMAD story-file lesson) and SIZED, born from reading the
-  touched files in full with three recorded lines per file (SPEC INV-53/54/55), and closes on a HALT list
-  rather than guessing past ambiguity. The worker contract (SPEC ACT-3) narrows write-ownership to the
+  touched files in full with three recorded lines per file (SPEC INV-53/54/55), and closes on a HALT list,
+  so the worker halts at ambiguity and never guesses past it. The worker contract (SPEC ACT-3) narrows write-ownership to the
   brief's named files; the senior owns write-set disjointness between concurrent same-session workers before
   spawning them, or gives one an isolated worktree (SPEC INV-105). The brief carries the problem-ledger path
   for workshop noise (SPEC INV-23) and the clock for every stamp (SPEC INV-24). And the brief carries the
@@ -525,14 +522,14 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   provably owns and never a shared resource in current use — a kill targets the test resource uniquely (a
   recorded PID / process group or an install path like `~/.cache/puppeteer/...`), never a broad name pattern
   (`pkill chrome`, `chrome_crashpad_handler`) that can match the human's own program (SPEC INV-162, base
-  rule 17; the footgun that once closed the user's real browser). Every delegation reports its
+  rule 17; the mistake that once closed the user's real browser). Every delegation reports its
   saving in the landed row's status cell, checked by suite (SPEC INV-103), and names the reads dispatched
   beside the work delegated (SPEC INV-137). See
   [references/delegation-protocol.md](references/delegation-protocol.md) for the full protocol: the routing
   rule, the brief's three birth laws, the worker contract, and the delegation-reporting duty.
 - **Traceability is a test, enforced automatically.** A standing `test_traceability.py` fails the suite on a matrix row
   citing a missing test, a duplicate invariant id, a spec invariant with no matrix row, or a ⟨DECIDE⟩ marked
-  RESOLVED that still carries the live marker — so drift is caught every commit, continuously rather than once per MINOR.
+  RESOLVED that still carries the live marker — so drift is caught every commit, continuously, and never waits for the next MINOR.
 
 ## How it relates to the other skills
 - `spec-author` — writes/grows the spec (step 1). Public.

@@ -19,23 +19,32 @@ class TestPenTiebreakIdentity(unittest.TestCase):
         self.assertIn("minted at its start", spec)
 
     def test_tiebreak_orders_on_session_identity(self):
+        # the inline "[INV-117]" right after the phrase moved to the criterion's trailing codes
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("session identity [INV-117] sorts lower", spec)
+        self.assertIn("session identity sorts lower", spec)
 
     def test_inbox_token_is_projection_phrase(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("a short projection of the session's stable identity", spec)
+        self.assertIn(
+            "make the inbox source-mark's short session token a projection of that same one identity",
+            spec,
+        )
 
     def test_spec_anchor(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-117]", spec)
 
     def test_spec_anchor_and_index(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "session", spec.lower(),
+            "INV-117's body criterion doesn't carry the session phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
-                if line.startswith("| INV-117 |") and "INV-117" in line and "session" in line.lower():
+                if line.startswith("| INV-117 |"):
                     return
-        self.fail("INV-117 index row missing or does not carry both INV-117 and session")
+        self.fail("INV-117 index row missing")
 
 
 if __name__ == "__main__":

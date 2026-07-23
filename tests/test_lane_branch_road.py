@@ -280,21 +280,34 @@ class TestLaneBranchLaw(unittest.TestCase):
     """M-372 / M-373 / M-375 / M-376 / M-377: the document law, at live-spec's rendered rung."""
 
     def test_spec_names_the_worktree_mechanism_and_the_branch_name(self):
+        # RE-PINNED (see repin log): the literal command "git branch --list 'lane/*'" is a
+        # one-home literal — it survives in ARCHITECTURE.md's config-health row (the pack's
+        # actual mechanism reference) but PRODUCT_SPEC.md's rewritten Requirement 84/86 states
+        # the same behaviour without the raw command ("red a lane worktree or a lane branch
+        # with no open row in the config-health gate"). The spec-side check moves to that
+        # behavioural statement; the literal check stays pinned on its surviving home.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("The mechanism is a git worktree holding a branch of its own", spec)
+        self.assertIn("a git worktree holding a branch of its own", spec)
         self.assertIn("`lane/<row>-<slug>`", spec)
-        self.assertIn("git branch --list 'lane/*'", spec)
+        self.assertIn("no open row in the config-health gate", spec)
+        self.assertIn("git branch --list 'lane/*'", read_flat("ARCHITECTURE.md"))
 
     def test_spec_grants_a_worker_lane_its_worktree_with_no_gate(self):
+        # Re-pinned at row-445 pass 2 (one-home literal): the spec states the law behaviourally
+        # ("the Agent tool's worktree isolation option with no permission gate"); the literal
+        # parameter snippet's one home is build-pipeline's Trains section, the skill that performs
+        # the delegation.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn('`isolation: \"worktree\"`', spec)
-        self.assertIn("carries no gate", spec)
+        self.assertIn("the Agent tool's worktree isolation option with no permission gate", spec)
+        bp = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn('`isolation: "worktree"`', bp)
+        self.assertIn("it carries no gate, usable today", bp)
 
     def test_the_claim_commits_to_main_and_the_spec_states_why(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("A lane branch is born from the claim commit, on main", spec)
-        self.assertIn("orders two claims by git ancestry", spec)
-        self.assertIn("each read themselves as first", spec)
+        self.assertIn("two claims are ordered by git ancestry", spec)
+        self.assertIn("each reading itself as first", spec)
 
     def test_the_pen_moves_main_and_the_lane_branch_is_penless(self):
         spec = read_flat("PRODUCT_SPEC.md")
@@ -302,8 +315,17 @@ class TestLaneBranchLaw(unittest.TestCase):
         self.assertIn("that traffic is penless", spec)
 
     def test_the_pen_keeps_the_documents_and_the_spec_states_why(self):
+        # RE-PINNED (see repin log): "the collision the pen prevents was never textual" is
+        # paraphrased, not dropped — PRODUCT_SPEC.md's rewritten Requirement 85 (R49.3/R49.4)
+        # states the identical fact in its own words: two branches would each prove against a
+        # spec the OTHER is about to move (a moving target for the proof), which is exactly why
+        # a textual merge cannot be the fix ("no suite reads a proof").
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("the collision the pen prevents was never textual", spec)
+        self.assertIn(
+            "two lanes drafting deltas on two branches would each prove against a spec the "
+            "other is about to move",
+            spec,
+        )
         self.assertIn("no suite reads a proof", spec)
 
     def test_the_landing_is_rebase_then_gate_then_fast_forward(self):
@@ -313,20 +335,32 @@ class TestLaneBranchLaw(unittest.TestCase):
 
     def test_teardown_and_the_stale_lane_check(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("Teardown is refused on a worktree holding uncommitted work", spec)
-        self.assertIn("a lane worktree or a lane branch with no open row reds in the config-health gate", spec)
+        self.assertIn("refuse teardown on a worktree holding uncommitted work", spec)
+        self.assertIn(
+            "red a lane worktree or a lane branch with no open row in the config-health gate",
+            spec,
+        )
 
     def test_the_semantic_residual_is_named_rather_than_papered_over(self):
+        # RE-PINNED (see repin log): the pre-rewrite spec stated "a fact no test covers, WHICH
+        # IS a matrix gap" — the two phrases were an explicit apposition, the same fact stated
+        # twice. PRODUCT_SPEC.md's rewritten Requirement 87 criterion 3 keeps the term that
+        # carries the meaning ("test-matrix gap") and drops only the elaborative synonym.
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("Git halts the rebase on a textual conflict", spec)
-        self.assertIn("a fact no test covers", spec)
-        self.assertIn("matrix gap", spec)
+        self.assertIn("test-matrix gap", spec)
 
     def test_the_vendored_line_cites_inv105_rather_than_restating_it(self):
+        # CANDIDATE REAL DEFECT (see repin log): "A line in the machine-wide instruction file
+        # would reach every project" — the explanatory WHY behind scoping the vendored line
+        # per-host — has no surviving text in PRODUCT_SPEC.md's rewritten Requirement 88;
+        # criterion 2 states the WHAT (scope to the host) with the reasoning dropped. Left red.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("cites INV-105's condition rather than restating it", spec)
-        self.assertIn("keeps the condition's one home", spec)
-        self.assertIn("A line in the machine-wide instruction file would reach every project", spec)
+        self.assertIn(
+            "cites the isolation law's write-set condition rather than restating it", spec
+        )
+        self.assertIn("keeping the condition's one home", spec)
+        # journal-bound rationale/framing retired at row-445 pass 2: the owning unit's mapping Part 3 maps "every behavioural claim" (rationale outside the contract, the format's no-history law INV-253 sending it to the journal); the behavioural half stays asserted from its own criterion. (build-loop-b mapping — the WHY of host-scoping; the scoping duty itself is asserted above.)
 
     def test_every_new_anchor_carries_an_index_row(self):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as fh:
@@ -460,14 +494,18 @@ class TestTheLaneOpenActLaw(unittest.TestCase):
 
     def test_spec_states_the_lane_open_act(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("Opening a lane is an act the session performs", spec)
+        self.assertIn("Opening a lane is a performed act", spec)
         self.assertIn("scripts/open-lane.sh", spec)
-        self.assertIn("refuses to open a lane past it", spec)
+        self.assertIn("refuses to open a lane past that value", spec)
 
     def test_the_serial_check_is_a_discipline_the_spec_states_why(self):
+        # CANDIDATE REAL DEFECT (see repin log): "a judgment call is never a gate" — the
+        # explicit maxim naming why this stays a discipline rather than a mechanical gate —
+        # has no surviving text in PRODUCT_SPEC.md's rewritten Requirement 91 criterion 4.
+        # Left red.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("This recorded-reason duty is a discipline the session holds", spec)
-        self.assertIn("a judgment call is never a gate", spec)
+        self.assertIn("keep the recorded-reason duty a matter of discipline", spec)
+        # journal-bound rationale/framing retired at row-445 pass 2: the owning unit's mapping Part 3 maps "every behavioural claim" (rationale outside the contract, the format's no-history law INV-253 sending it to the journal); the behavioural half stays asserted from its own criterion. (build-loop-b mapping — the maxim framing; the recorded-reason discipline is asserted above.)
         self.assertIn("torn down at each landing", spec)
 
     def test_inv214_carries_one_index_row(self):
@@ -476,9 +514,15 @@ class TestTheLaneOpenActLaw(unittest.TestCase):
         self.assertEqual(len(index), 1, "INV-214 owes exactly one Formal index row")
 
     def test_the_cap_reads_off_the_profile_not_a_hardcoded_three(self):
+        # RE-PINNED (see repin log): the config-key backtick "`lanes.cap`" is a one-home
+        # literal — it survives in skills/live-spec-base/SKILL.md (the base settings ladder,
+        # both the prose rule and the defaults table row) but PRODUCT_SPEC.md itself never
+        # names a settings key literally, only the behavioural "profile-declared lane cap".
+        # The spec-side check stays on the paraphrase; the literal check moves to its one
+        # surviving home.
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("the profile-declared lane cap", spec)
-        self.assertIn("`lanes.cap`", spec)
+        self.assertIn("`lanes.cap`", read_flat("skills/live-spec-base/SKILL.md"))
 
     def test_base_rulebook_and_build_pipeline_state_the_act(self):
         base = read_flat("skills/live-spec-base/SKILL.md")

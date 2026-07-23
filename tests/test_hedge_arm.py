@@ -223,13 +223,18 @@ def test_classified_in_judge_hooks():
 
 def test_spec_states_the_law():
     spec = _read(os.path.join(ROOT, "PRODUCT_SPEC.md"))
-    assert "A reply carrying an offering-hedge blocks the stop with a rewrite instruction." in spec
-    assert "[INV-238]" in spec
+    # R232.1: subjunctive shall-form ("shall block") replaces the old descriptive sentence, and
+    # the anchor now shares one combined bracket with INV-173 rather than standing alone.
+    assert "shall* block the stop with a rewrite instruction" in spec
+    assert "INV-238" in spec
 
 
 def test_formal_index_row():
     spec = _read(os.path.join(ROOT, "PRODUCT_SPEC.md"))
-    assert "| INV-238 | the hedge gate:" in spec
+    assert "| INV-238 |" in spec
+    # index now carries locations only (SPEC INV-271) — the "hedge gate" prose check moves onto
+    # the body requirement heading that carries INV-238.
+    assert "Two Stop-hook soft signals: the hedge gate and the lean-orchestrator arm" in spec
 
 
 def test_architecture_owns_the_invariant():

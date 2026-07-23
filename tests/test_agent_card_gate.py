@@ -103,7 +103,7 @@ class TestInv184TargetComesOff(unittest.TestCase):
 class TestTraceability(unittest.TestCase):
     def test_spec_states_the_law(self):
         spec = " ".join(read("PRODUCT_SPEC.md").split())
-        self.assertIn("[INV-219]", spec)
+        self.assertIn("[INV-219, INV-97]", spec)
         self.assertIn("check-agent-card.py", spec)
 
     def test_formal_index_row(self):

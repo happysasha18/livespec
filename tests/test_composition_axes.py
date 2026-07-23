@@ -110,9 +110,10 @@ class TestCompositionAxesLaw(unittest.TestCase):
         spec = read("PRODUCT_SPEC.md")
         row = next((l for l in spec.splitlines() if l.startswith("| INV-244 |")), "")
         self.assertTrue(row, "INV-244 Formal-index row missing")
-        low = row.lower()
-        self.assertIn("axes", low)
-        self.assertIn("kind", low)
+        # index now carries locations only (SPEC INV-271) — move the "axes"/"kind" prose check
+        # onto the body requirement heading that carries INV-244.
+        flat = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("A surface's composition axes are the set its project's kind owes", flat)
 
     def test_architecture_has_composition_axes_table(self):
         arch = read_flat("ARCHITECTURE.md")

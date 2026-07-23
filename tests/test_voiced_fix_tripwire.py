@@ -23,9 +23,17 @@ class TestVoicedFixTripwire(unittest.TestCase):
             self.assertIn("does this edit touch a spec-backed literal or clause", body, home)
 
     def test_binds_docs_and_test_same_session(self):
-        for home in self.HOMES:
-            body = read_flat(home)
-            self.assertIn("the docs and the test land in the same session", body, home)
+        # PRODUCT_SPEC.md's rewritten Requirement 42 states the fact in its own words
+        # ("the documentation update and the red-first test"); the build-pipeline skill keeps
+        # the original phrasing unchanged.
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "land the documentation update and the red-first test in the same session",
+            spec, "PRODUCT_SPEC.md",
+        )
+        skill = read_flat("skills/build-pipeline/SKILL.md")
+        self.assertIn("the docs and the test land in the same session", skill,
+                      "skills/build-pipeline/SKILL.md")
 
     def test_reads_content_not_diff_size(self):
         for home in self.HOMES:
@@ -33,12 +41,14 @@ class TestVoicedFixTripwire(unittest.TestCase):
             self.assertIn("tripwire reads the edit's content", body, home)
 
     def test_spec_anchor_and_index(self):
+        # the new-format index carries locations only (SPEC INV-271); the "literal" prose
+        # check moves to the body criterion that carries the code.
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-104]", spec)
+        self.assertIn("touches a spec-backed literal or clause", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-104 |"):
-                    self.assertIn("literal", line)
                     return
         self.fail("INV-104 index row missing")
 

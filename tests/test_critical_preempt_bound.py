@@ -20,10 +20,11 @@ class TestCriticalPreemptBound(unittest.TestCase):
     def test_spec_states_the_bound_unambiguously(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "a critical non-bug heads the queue but never preempts a rolling lane",
+            "the pen-holder's next pen-stage boundary without interrupting the rolling lane, "
+            "since preemption belongs to the bug door alone",
             spec,
         )
-        self.assertIn("[INV-133]", spec)
+        self.assertIn("INV-133", spec)
 
     def test_spec_states_the_intake_echo(self):
         spec = read_flat("PRODUCT_SPEC.md")
@@ -34,10 +35,12 @@ class TestCriticalPreemptBound(unittest.TestCase):
             self.assertIn(needle, spec, needle)
 
     def test_formal_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # The "critical" prose is asserted against the flattened spec body above.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-133 |"):
-                    self.assertIn("critical", line.lower())
+                    self.assertIn("R38.1", line)
                     return
         self.fail("INV-133 Formal-index row missing")
 

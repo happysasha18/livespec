@@ -22,14 +22,18 @@ class TestDeriveBeforeFork(unittest.TestCase):
 
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("A proven artifact settles a fork before the human hears it", spec)
+        self.assertIn("A proven artifact settles a fork before the person hears it", spec)
         self.assertIn("[INV-121]", spec)
 
     def test_formal_index_row(self):
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn(
+            "fork", spec.lower(),
+            "INV-121's body criterion doesn't carry the fork phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-121 |"):
-                    self.assertIn("fork", line.lower())
                     return
         self.fail("INV-121 Formal-index row missing")
 

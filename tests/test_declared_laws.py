@@ -19,7 +19,7 @@ class TestDeclaredLaws(unittest.TestCase):
     def test_the_home_and_the_packs_own_list(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("declared-laws home", spec)
-        self.assertIn("the declared laws are three", spec)
+        self.assertIn("declare this pack's three laws", spec)
         self.assertIn("dated exemption", spec)
 
     def test_the_prover_station(self):
@@ -36,10 +36,13 @@ class TestDeclaredLaws(unittest.TestCase):
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-101]", spec)
+        self.assertIn(
+            "dated exemption", spec,
+            "INV-101's body criterion doesn't carry the dated-exemption phrase",
+        )
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-101 |"):
-                    self.assertIn("dated exemption", line)
                     return
         self.fail("INV-101 index row missing")
 
@@ -59,7 +62,7 @@ class TestLawNamesItsNet(unittest.TestCase):
 
     def test_net_routing_law_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("Every declared cross-cutting law names the net that enforces it", spec)
+        self.assertIn("Every declared law names its enforcing net", spec)
         self.assertIn("[INV-150]", spec)
         self.assertIn("Declaration is the lever", spec)
         # a watch-level net (the design review) carries a dated reason, the shape of a dated exemption
@@ -81,16 +84,17 @@ class TestLawNamesItsNet(unittest.TestCase):
             spec_lines = list(f)
         self.assertTrue(any(l.startswith("| INV-150 |") for l in spec_lines),
                         "INV-150 index row missing")
-        for line in spec_lines:
-            if line.startswith("| INV-150 |"):
-                self.assertIn("enforcing net", line)
+        self.assertIn(
+            "enforcing net", read_flat("PRODUCT_SPEC.md"),
+            "INV-150's body criterion doesn't carry the enforcing-net phrase",
+        )
         arch = read_flat("ARCHITECTURE.md")
         self.assertIn("INV-150", arch)
 
 
 # --- the net-floor: a declared law with no net reds without the agent (INV-150) ---
 
-NET_TOKEN = re.compile(r"`[^`]+\.(?:sh|py)`|prover|design review")
+NET_TOKEN = re.compile(r"`[^`]+\.(?:sh|py)`|prover|design review|mechanical gate")
 
 
 def laws_without_net(laws):
@@ -102,20 +106,31 @@ def laws_without_net(laws):
 
 def parse_declared_laws_and_nets(spec_flat):
     """Parse the declared-laws home. Returns (declared_law_count, laws), where the count is
-    the laws enumerated (each carries its invariant anchors) and laws is [(segment, net_or_None)]
-    from the per-law net-assignment sentence. A net is a named guardrail/test path, or the
-    prover, or the design review."""
-    m = re.search(r"the declared laws are \w+ —(.+?)— with .*? dated exemptions", spec_flat)
-    region = m.group(1) if m else ""
-    declared_law_count = len(re.findall(r"\[INV-[^\]]*\]", region))
-    n = re.search(r"each name a mechanical gate[^:]*:(.+?)\. The prover", spec_flat)
-    net_region = n.group(1) if n else ""
-    laws = []
-    for seg in net_region.split(", "):
-        if not seg.strip():
-            continue
-        tok = NET_TOKEN.search(seg)
-        laws.append((seg.strip(), tok.group(0) if tok else None))
+    the laws enumerated in the pack's own declared-laws sentence and laws is
+    [(segment, net_or_None)].
+
+    The requirements-format spec states this pack's three laws and their net in ONE sentence
+    now — "declare this pack's three laws — <law>, <law>, and <law> — each naming its
+    mechanical gate" — rather than the old separate per-law colon list naming a distinct
+    backtick script per law. The net (mechanical gate / prover / design review) is the same
+    one Requirement 55 names as the three enforcement kinds, so it is read once here and
+    applied to every enumerated law, matching what the sentence itself states."""
+    m = re.search(
+        r"declare this pack's \w+ laws —(.+?)— each naming (?:its|a) ([a-z][a-z ]*?)[.,]",
+        spec_flat,
+    )
+    if not m:
+        return 0, []
+    region, net_phrase = m.group(1), m.group(2).strip()
+    tok = NET_TOKEN.search(net_phrase)
+    net = tok.group(0) if tok else None
+    items = [
+        re.sub(r"^and\s+", "", seg.strip())
+        for seg in region.split(",")
+        if seg.strip()
+    ]
+    declared_law_count = len(items)
+    laws = [(item, net) for item in items]
     return declared_law_count, laws
 
 

@@ -31,41 +31,70 @@ class TestRestructureMergeGateLaw(unittest.TestCase):
         for home in self.HOMES:
             body = read_flat(home)
             self.assertIn("merge gate judges the delta", body, home)
-            self.assertIn("blocking set is delta-scoped", body, home)
-            self.assertIn(
-                "scopes to a content-preserving restructure", body, home
-            )
+            # PRODUCT_SPEC.md's R184.1 rewords "delta-scoped" to "scoped to the delta"; the two
+            # skill homes keep the original compact phrasing, so each is checked its own way.
+            if home == "PRODUCT_SPEC.md":
+                self.assertIn("blocking set is scoped to the delta", body, home)
+                # the old "token-identity part scopes to a content-preserving restructure"
+                # sentence is gone; the same scoping relationship (token-identity applies to a
+                # restructure, not a deliberate redesign) now lives as R184.4's exception clause.
+                self.assertIn(
+                    "with no token-identity demand over text the redesign meant to change",
+                    body, home,
+                )
+            else:
+                self.assertIn("blocking set is delta-scoped", body, home)
+                self.assertIn("scopes to a content-preserving restructure", body, home)
 
     def test_preexisting_findings_route_not_block_in_all_homes(self):
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn(
-                "route to queue rows in the same landing and never block", body, home
-            )
+            if home == "PRODUCT_SPEC.md":
+                # R184.3: "queue rows"/"same landing"/"never block" become singular/"delivery"/
+                # "not block on it" under the shall-subjunctive requirements-format rewrite.
+                self.assertIn(
+                    "route it to a queue row in the same delivery", body, home
+                )
+                self.assertIn("shall* not block on it", body, home)
+            else:
+                self.assertIn(
+                    "route to queue rows in the same landing and never block", body, home
+                )
 
     def test_say_the_bar_back_duty_in_all_homes(self):
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn(
-                "says the sharpened form back and marks it as its own interpretation",
-                body,
-                home,
-            )
+            if home == "PRODUCT_SPEC.md":
+                # R184.5: "say"/"mark" (shall-subjunctive) replace "says"/"marks".
+                self.assertIn(
+                    "shall* say the sharpened form back and mark it as its own interpretation",
+                    body,
+                    home,
+                )
+            else:
+                self.assertIn(
+                    "says the sharpened form back and marks it as its own interpretation",
+                    body,
+                    home,
+                )
 
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-114]", spec)
+        row = None
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-114 |"):
-                    self.assertIn("delta", line)
-                    self.assertTrue(
-                        line.rstrip().endswith("| Catch-up |"),
-                        "INV-114 index Section cell must read Catch-up, "
-                        "the section the clause lives in (prover F1, 2026-07-12)",
-                    )
-                    return
-        self.fail("INV-114 index row missing")
+                    row = line
+                    break
+        self.assertIsNotNone(row, "INV-114 index row missing")
+        # index now carries locations only (SPEC INV-271) — no prose and no Section cell to
+        # check; the "delta" prose check moves onto the body requirement heading that carries
+        # INV-114 (already asserted in test_merge_gate_judges_the_delta_in_all_homes above).
+        self.assertIn(
+            "A restructure or migration merge gate judges the delta",
+            read_flat("PRODUCT_SPEC.md"),
+        )
 
 
 if __name__ == "__main__":

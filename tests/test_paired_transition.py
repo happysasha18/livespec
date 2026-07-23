@@ -19,10 +19,13 @@ from conftest import ROOT, read_flat
 class TestPairedTransition(unittest.TestCase):
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
+        # R261 heading: the requirements-format rewrite drops the trailing ", or a stated reason
+        # they do not" clause from the heading itself, folding it into the criterion instead.
         self.assertIn(
-            "Both directions of a paired state change get the same craft, or a stated reason they do not",
+            "Both directions of a paired state change get the same craft",
             spec,
         )
+        self.assertIn("unless a written reason parts them", spec)
         self.assertIn("[INV-126]", spec)
 
     def test_spec_names_default_and_the_human_gate(self):
@@ -30,17 +33,28 @@ class TestPairedTransition(unittest.TestCase):
         for needle in (
             "The default is symmetry",
             "Motion feel is the human's own gate",
-            "the temporal twin of cross-surface uniformity",
         ):
             self.assertIn(needle, spec, needle)
+        # the "temporal twin of cross-surface uniformity" framing itself is gone from the spec
+        # body (still stands in skills/product-prover/SKILL.md, checked by
+        # test_prover_carries_the_paired_transition_check below); the structural equivalence it
+        # named survives in the spec as both R260 (cross-surface, INV-125) and R261 (paired,
+        # INV-126) routing their findings through the same blank-answer/unwritten-situation class.
+        self.assertIn("finding of the same blank-answer class as an unwritten situation", spec)
 
     def test_formal_index_row(self):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-126 |"):
-                    self.assertIn("paired state change", line.lower())
-                    return
-        self.fail("INV-126 Formal-index row missing")
+                    row = line
+                    break
+            else:
+                self.fail("INV-126 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — move the "paired state change"
+        # prose check onto the body requirement heading that carries INV-126.
+        self.assertTrue(row)
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("Both directions of a paired state change get the same craft", spec)
 
     def test_spec_author_carries_the_facet(self):
         sa = read_flat("skills/spec-author/SKILL.md")
@@ -58,7 +72,11 @@ class TestPairedTransition(unittest.TestCase):
         sentence's rightness stays the human's gate. (Born of the tlvphotos openable-face miss:
         a pinch opened a layer with no reverse pinch to close it, 2026-07-14.)"""
         spec = read_flat("PRODUCT_SPEC.md")
-        for needle in ("two halves", "reversibility of the means", "reversible gesture"):
+        # the old "two halves" sentence is gone; the requirements-format rewrite states the same
+        # split structurally as two named Cases under R261 instead of naming them in prose.
+        for needle in ("Case: the continuity of the transition", "Case: the reversibility of the means"):
+            self.assertIn(needle, spec, needle)
+        for needle in ("reversibility of the means", "reversible gesture"):
             self.assertIn(needle, spec, needle)
         pv = read_flat("skills/product-prover/SKILL.md")
         self.assertIn("reversibility of the means", pv)
@@ -75,10 +93,13 @@ class TestPairedTransition(unittest.TestCase):
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-126 |"):
-                    self.assertIn("same magnitude", line)
+                    row = line
                     break
             else:
                 self.fail("INV-126 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — the "same magnitude" prose check
+        # already stands against the body above; here just confirm the row exists.
+        self.assertTrue(row)
         pv = read_flat("skills/product-prover/SKILL.md")
         self.assertIn("the inverse's magnitude", pv)
         self.assertIn("same magnitude as the forward move", pv)
@@ -105,10 +126,12 @@ class TestOrientationFacet(unittest.TestCase):
 
     def test_orientation_short_viewport_facet(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        for needle in ("the short-viewport band", "a landscape phone is wide and short"):
-            self.assertIn(needle, spec, needle)
+        self.assertIn("the short-viewport band", spec)
+        # the "a landscape phone is wide and short" illustration is thinned out of the compact
+        # spec body but survives verbatim in spec-author's elaboration of the same facet.
         sa = read_flat("skills/spec-author/SKILL.md")
-        for needle in ("orientation / short viewport", "a rotated phone", "width ≤ 640px"):
+        for needle in ("orientation / short viewport", "a rotated phone", "width ≤ 640px",
+                       "phone is wide and short"):
             self.assertIn(needle, sa, needle)
         with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
             for line in f:
@@ -129,16 +152,20 @@ class TestViewportQuantifierLens(unittest.TestCase):
 
     def test_viewport_quantifier_lens(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        for needle in ("every layout guarantee names its viewport quantifier",
+        # R263.7: requirements-format shifts "names" (descriptive) to "name" (subjunctive shall).
+        for needle in ("every layout guarantee name its viewport quantifier",
                        "on every viewport", "the other bands"):
             self.assertIn(needle, spec, needle)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-138 |"):
-                    self.assertIn("viewport quantifier", line)
+                    row = line
                     break
             else:
                 self.fail("INV-138 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — the row's presence is the anchor
+        # proof; the "viewport quantifier" prose check already stands against the body above.
+        self.assertTrue(row)
         pv = read_flat("skills/product-prover/SKILL.md")
         for needle in ("viewport quantifier", "the other bands"):
             self.assertIn(needle, pv, needle)
@@ -165,16 +192,19 @@ class TestGeneralSubDomainDuty(unittest.TestCase):
 
     def test_general_sub_domain_duty(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        for needle in ("a named part of its domain", "the remainder"):
+        # R263 context / R263.5: "one named part" replaces the old "a named part" phrasing.
+        for needle in ("one named part of its domain", "the remainder"):
             self.assertIn(needle, spec, needle)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-138 |"):
-                    for needle in ("a named part of its domain", "the remainder"):
-                        self.assertIn(needle, line, needle)
+                    row = line
                     break
             else:
                 self.fail("INV-138 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — the row's presence is the anchor
+        # proof; the phrase checks above and below already stand against the body and the skill.
+        self.assertTrue(row)
         pv = read_flat("skills/product-prover/SKILL.md")
         for needle in ("a named part of its domain", "the remainder"):
             self.assertIn(needle, pv, needle)

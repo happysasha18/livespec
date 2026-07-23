@@ -132,7 +132,7 @@ def test_spec_corrects_inv183_transport_sentence():
     assert "co-location changes transport speed" not in spec
     assert "a remote agent reaches the other through git alone" not in spec
     # the corrected sentence states the traffic-kind cut and hands the detail to INV-236.
-    assert "decided by the traffic's kind" in spec
+    assert "the traffic's kind picks the transport" in spec
 
 
 def test_formal_index_row():

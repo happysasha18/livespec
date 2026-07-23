@@ -1100,14 +1100,16 @@ class TestSpecStyleLint(unittest.TestCase):
         self.assertIn("caps-shout", r.stdout)
 
     def test_converted_intake_section_is_clean(self):
-        # the calibration section, converted this session, is the standing gold: it must stay clean
-        # of register ERRORS, so a regression in the linter OR in the section trips here.
+        # the calibration section is the standing gold: it must stay clean of register ERRORS, so a
+        # regression in the linter OR in the section trips here. Re-aimed at the requirements format
+        # (row 445): the old `#### Intake:` scenario became the intake work-kind requirement, and the
+        # gold section is that requirement's own block.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             spec = f.read()
         lines = spec.splitlines()
-        start = next(i for i, l in enumerate(lines) if l.startswith("#### Intake:"))
-        end = next(i for i in range(start + 1, len(lines))
-                   if lines[i].startswith(("#### ", "### ", "## ")))
+        start = next(i for i, l in enumerate(lines)
+                     if l.startswith("## Requirement") and "intake line names the work-kind" in l)
+        end = next(i for i in range(start + 1, len(lines)) if lines[i].startswith("## "))
         section = "\n".join(lines[start:end])
         r = self._lint(section)
         self.assertEqual(r.returncode, 0,

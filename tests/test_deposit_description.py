@@ -114,13 +114,22 @@ class TestDepositDescriptionGate(unittest.TestCase):
         from conftest import read_flat
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("deposit-time lint", spec, "SPEC lost the deposit-time lint statement")
-        self.assertIn("check-earned-message.py", spec,
-                      "SPEC lost the homed-beside-the-earned-message-gate anchor")
+        # R191.8: the literal script path "guardrails/check-earned-message.py" is gone from the
+        # compact rewrite; the same "homed beside the earned-message gate" relationship is now
+        # carried by the shared [INV-189] citation on the criterion that states the lint.
+        self.assertIn(
+            "the deposit-time lint over each `from-<agent>` inbox file being the mechanism the "
+            "law declares. [INV-239, INV-189, INV-150]",
+            spec,
+            "SPEC lost the homed-beside-the-earned-message-gate anchor (INV-189 co-citation)",
+        )
 
     def test_formal_index_row(self):
         from conftest import read
-        index = read("PRODUCT_SPEC.md").split("## Formal index", 1)[1]
-        self.assertRegex(index, r"\|\s*INV-239\s*\|", "the Formal index carries no INV-239 row")
+        # the old "## Formal index" section is gone; the generated code-to-location table now
+        # lives under "## Reference" at the very end (SPEC INV-271).
+        index = read("PRODUCT_SPEC.md").split("## Reference", 1)[1]
+        self.assertRegex(index, r"\|\s*INV-239\s*\|", "the Reference table carries no INV-239 row")
 
     def test_architecture_owns_the_invariant(self):
         from conftest import read_flat

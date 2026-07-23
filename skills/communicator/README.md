@@ -2,7 +2,7 @@
 
 A small skill for one thing: **showing work to a human and asking for decisions they can actually make.**
 
-Not about code. It's about the exchange. The same failure keeps happening in agent work — describing in words
+It works on the exchange with a human. Code is a separate concern. The same failure keeps happening in agent work — describing in words
 what should be shown with the eyes, and asking a person to decide in units they don't think in (pixels, dB,
 model weights, internal ids). `communicator` is the antidote, distilled into seven cheap-to-follow rules.
 

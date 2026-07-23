@@ -4,10 +4,9 @@ This is the place where the source section states a behaviour but leaves a judge
 
 ## New holes
 
-### G1 — a bug's critical priority names no judge or measure
-**Where:** Requirement 1, criterion 3. Source: when a bug cuts the line, `PRODUCT_SPEC.md` lines 1077–1078, `[T-9]`.
-**Hole:** An arriving bug, "critical included," joins the waiting line, and "waiting bugs order critical-first; bugs of equal priority go by arrival." So a bug carries a priority with critical as a level, and the ordering of the waiting line turns on it. The source names no judge and no measure for that priority — who marks a bug critical, and by what test a bug is critical rather than ordinary, is unstated. The source T-9 index row repeats the preemption behaviour without defining the level either.
-**What it blocks:** The waiting line cannot be ordered without knowing how a bug's priority is set, so the order either leans on an undeclared rule or asks the human each time. A test author cannot pin the case that separates a critical bug from an ordinary one, and cannot check that critical-first ordering fires correctly.
+### G1 — RETIRED as false (row-445 audit, F1): a bug's critical priority is decided by the intake classification
+**Where it stood:** Requirement 1, criterion 3. Source: when a bug cuts the line, `PRODUCT_SPEC.md` lines 1077–1078, `[T-9]`.
+**Why retired:** The hole read the bug section alone. The intake classification (assembled R9.4, [INV-12]) states the measure in full — a wish is critical *when* the shipped product is broken for its user: an unusable surface, lost data, or a violated safety gate — and the audit's F1 named this the one false GAP of 42. The GAP line is deleted and R1.3 sharpened to cite INV-12's three conditions directly, so the waiting line's order reads its measure from the classification's one home.
 
 ## Note on scope
 

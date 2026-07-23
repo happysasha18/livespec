@@ -23,20 +23,24 @@ class TestInboxDepositProtocol(unittest.TestCase):
     def test_inv249_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "A deposit into another window's inbox is written whole under a draft name and made final "
-            "by an atomic rename",
+            "write a deposit into another window's inbox under a `.draft` name and make it "
+            "final by an atomic rename",
             spec,
         )
-        self.assertIn("[INV-249]", spec)
+        self.assertIn("INV-249", spec)
 
     def test_inv249_formal_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # The ".draft"/"atomic rename"/live-writer ("mid-write") prose is asserted
+        # against the flattened spec body instead.
         spec = read("PRODUCT_SPEC.md")
         row = next((l for l in spec.splitlines() if l.startswith("| INV-249 |")), "")
         self.assertTrue(row, "INV-249 Formal-index row missing")
-        low = row.lower()
-        self.assertIn(".draft", low)
-        self.assertIn("atomic rename", low)
-        self.assertIn("mid-write", low)
+        self.assertIn("R195.15", row)
+        flat = read_flat("PRODUCT_SPEC.md").lower()
+        self.assertIn(".draft", flat)
+        self.assertIn("atomic rename", flat)
+        self.assertIn("under a live writer", flat)
 
     def test_inv249_readme_carries_the_protocol(self):
         """inbox/README.md — the node's own home — states the atomic-write protocol: a deposit is

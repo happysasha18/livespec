@@ -19,11 +19,13 @@ PROBLEMS = os.path.join(ROOT, ".live-spec", "PROBLEMS.md")
 class TestBehaviouralBreakOneHome(unittest.TestCase):
     def test_seam_law_names_the_ledger_as_the_one_home(self):
         spec = read_flat(SPEC)
-        self.assertIn("the single home the once-read-rules sweep", spec)
+        self.assertIn("**Case: the break-record lives in one home**", spec)
 
     def test_inv108_clause_states_one_home(self):
         spec = read_flat(SPEC)
-        self.assertIn("A rule's mid-turn breaks are recorded in one home", spec)
+        self.assertIn(
+            "record a rule's mid-turn breaks in one home, the problem ledger", spec
+        )
 
     def test_ledger_carries_the_routing_break(self):
         with open(PROBLEMS, encoding="utf-8") as f:

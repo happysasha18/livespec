@@ -14,7 +14,7 @@ This section continues the document whose format the intake page defines and the
 - **staleness bound** — the one number a consumer owns, stating how old a published artifact may be and still carry that consumer's analysis.
 - **grant** — a recorded permission one session holds for one repo: a push grant to deposit and push into it, a read grant to clone and pull a private producer's repo.
 - **named reference** — an internal item's stable code paired with a plain one-sentence description of what the item does and the problem it solves.
-- **description field** — the one home, a field the Formal index carries, where each code's plain one-sentence description lives.
+- **description field** — the authored home of a code's plain statement: the criterion the code trails carries the code's rule, and an entity code's definition lives in the glossary; the generated code-to-location table carries locations only.
 - **earned message** — one file a sender agent deposits in a receiver agent's inbox, naming the sender's own work that earned it.
 - **ground** — the reason a message earns sending, drawn from a closed set of three.
 - **referral** — the answer that a question belongs to another agent's zone, returned to whoever asked it.
@@ -85,7 +85,7 @@ This section continues the document whose format the intake page defines and the
 
 ## Requirement 3: Every reference to an internal item carries its code and a plain description
 
-**Context:** The method names its internal items with short codes, and a code alone tells a person nothing. So every reference to a named item carries a pair — the item's stable code beside a plain one-sentence description of what it does and the problem it solves. The pair travels in a cross-agent message and in a report a human reads alike, and each description lives in one home the Formal index carries.
+**Context:** The method names its internal items with short codes, and a code alone tells a person nothing. So every reference to a named item carries a pair — the item's stable code beside a plain one-sentence description of what it does and the problem it solves. The pair travels in a cross-agent message and in a report a human reads alike, and each description lives where its code is written — the criterion the code trails, and the glossary for an entity code's definition.
 
 **User Story:** As a reader of a report or a cross-agent message, I want every internal code carried beside a plain one-sentence description, so that a bare code never stands alone before me and a second agent reasons in the same terms.
 
@@ -99,13 +99,13 @@ This section continues the document whose format the intake page defines and the
 
 **Case: one home for the description**
 
-4. the system *shall* keep each code's description in one dedicated description field the Formal index carries, written once there and read by every reference. [INV-239]
+4. the system *shall* keep each code's plain statement in its authored home — the criterion the code trails carries the code's rule, and an entity code's definition lives in the glossary — written once and read by every reference, the generated code-to-location table carrying locations only. [INV-239, INV-271]
 5. the system *shall* back-describe the whole existing code set in one pass at a major release carrying one MIGRATION.md chapter. [INV-239, INV-217]
 6. *when* the project runs in another language, the system *shall* translate the English description in real time and translate it consistently, so one item reads under one translation across a session. [INV-239, INV-83]
 
 **Case: the description's presence is checked, its quality sampled**
 
-7. a mechanical gate *shall* check that every registered code carries a non-empty description and *shall* fail on a code whose description field is empty, judging presence alone. [INV-239]
+7. *when* the migration to the requirements format lands, the dedicated description-field gate *shall* retire with the criteria and the glossary as its stated successor, the requirement-shape gate thereafter holding that every code trails a criterion carrying its rule. [INV-239, INV-271]
 8. for a code deposited on the agent channel with no description beside it, the reviewer's review *shall* stand as the net — the reviewer role's review is the enforcement until the named gate ships — the deposit-time lint over each `from-<agent>` inbox file being the mechanism the law declares. [INV-239, INV-189, INV-150]
 9. a human *shall* sample descriptions against the quality bar at the migration's authoring and again on the periodic audit's own count — every ten deliveries by default, the host setting its own count in its profile — and *shall* accept each that reads as clear, and a description that reads below the bar *shall* become a queue row. [INV-239, INV-41, INV-145]
 
@@ -119,7 +119,7 @@ This section continues the document whose format the intake page defines and the
 
 **Context:** A description can be clear to its author and still leave a reader asking what one of its terms means. That re-asked question is the signal the description did not land. The agent that owns the item rewrites the description, and it does so on its next turn writing that item's home document rather than in the middle of another turn.
 
-**User Story:** As a reader who re-asks what a term means, I want the description rewritten by the agent that owns the item, so that each description earns its clarity from real use rather than a one-time guess.
+**User Story:** As a reader who re-asks what a term means, I want the description rewritten by the agent that owns the item, so that each description earns its clarity from real use each time it is re-asked.
 
 ### Acceptance Criteria
 
@@ -144,11 +144,11 @@ This section continues the document whose format the intake page defines and the
 
 ---
 
-## Requirement 5: An agent is found by the card it writes and a live scan
+## Requirement 5: An agent is found by the card it writes and a live scan  [feature: F-roster]
 
 **Context:** An agent reaches this point the moment it meets something that might belong to another agent — a capability it lacks, data another project holds, a question about a neighbour's zone. It answers by scanning for cards, since a card is what makes a tree an agent. It comes away holding the owning agent's name, mission, zones, contracts, and inbox address, or it learns no agent owns the thing, which opens the birth scenario.
 
-**User Story:** As an agent meeting something outside its own zone, I want to find the owning agent from a card it wrote and a live scan, so that who owns what is a lookup rather than a guess.
+**User Story:** As an agent meeting something outside its own zone, I want to find the owning agent from a card it wrote and a live scan, so that who owns what is always a lookup.
 
 ### Acceptance Criteria
 
@@ -182,7 +182,7 @@ This section continues the document whose format the intake page defines and the
 
 ---
 
-## Requirement 6: A published contract is read on the reader's own clock
+## Requirement 6: A published contract is read on the reader's own clock  [feature: F-contract]
 
 **Context:** A consumer agent arrives here from the scan holding a producer's card and the path its artifact lives at. A published contract is a surface in the producer's own spec, paired with a machine-readable artifact carrying its own version and generation stamp. The consumer reads it read-only on its own clock, and data past its staleness bound stops the analysis.
 
@@ -222,9 +222,14 @@ This section continues the document whose format the intake page defines and the
 13. a consumer wanting a producer's data *shall* read the contract rather than send a message asking for it. [INV-188]
 14. *when* a consumer wants a field the contract lacks, the system *shall* treat it as a request about the contract's shape, which the earned message governs. [INV-188, INV-189]
 
+**Case: the default-deny gate is promised**
+
+15. the gate that reds a default-deny violation on the producer's suite *shall* stay promised until a host's first real contract. [INV-185]
+    [target]
+
 ---
 
-## Requirement 7: An agent earns a message before it deposits one
+## Requirement 7: An agent earns a message before it deposits one  [feature: F-agent-ask]
 
 **Context:** A sender agent reaches this point holding the receiver's card and inbox address and a piece of its own work the receiver's zone blocks. A message is one new file in the receiver's inbox, and every message names the work of the sender's own that earned it. The agent recognizes the neighbour's zone on its own and deposits the message in the course of its work, telling its user each time.
 
@@ -255,7 +260,7 @@ This section continues the document whose format the intake page defines and the
 **Case: the agent recognizes the zone and deposits on its own**
 
 9. *when* an agent's own work meets a fault or a lack in something another agent's zone owns, the system *shall* scan for cards, find the owning agent, and take the channel that fits, on its own recognition. [INV-195, E-32, INV-183]
-10. *when* the agent's work earns a message under a ground, the agent *shall* write the file to the neighbour's inbox in the course of its own work, the trigger being any earned ground rather than a fixed list of occasions, the pack stating the form of a message and the host's work stating its content. [T-24, INV-189, INV-153, INV-163]
+10. *when* the agent's work earns a message under a ground, the agent *shall* write the file to the neighbour's inbox in the course of its own work, the trigger being any earned ground the work meets, so any occasion that earns a ground qualifies, the pack stating the form of a message and the host's work stating its content. [T-24, INV-189, INV-153, INV-163]
 11. the deposited message *shall* name its references by the pair, so the neighbour reads a self-explaining file. [T-24, E-35]
 
 **Case: the user is told**
@@ -263,7 +268,7 @@ This section continues the document whose format the intake page defines and the
 12. *when* the agent deposits a message, the system *shall* tell its own user in the status report, naming the message's subject by its pair and the neighbour it reached, in a plain notice. [T-24, INV-27, INV-28, INV-31]
 13. *when* the earned-message law declines a message the agent had drafted, the system *shall* tell the user in the status report with the reason it was withheld, and *shall* raise no tell for an impulse the discipline turned away before it became a draft. [T-24, INV-190, INV-191]
 
-**Case: a capability is used, not copied**
+**Case: a capability is reached across its zone**
 
 14. an agent needing a capability another agent's zone owns *shall* send a message or read a contract rather than keep a local copy of it. [INV-194, INV-183]
 
@@ -306,7 +311,7 @@ This section continues the document whose format the intake page defines and the
 
 9. *when* an exchange reaches the crossing bound through a referral met by a counter-referral between the same two agents, the system *shall* name the wrong referral in the sender's status report — a referral that pointed at a zone which, by its own referring-back, does not own the target. [INV-225, INV-196, INV-27]
 10. *when* a referral is answered by an acceptance, or an onward referral to a third zone answers it, the system *shall* reach no bound and name nothing. [INV-225]
-11. the checker `guardrails/check-wrong-referral.py` *shall* read the shape of the exchange and ride the suite rather than the push chain — the sequence of checks a push runs — *while* whether the target falls inside a zone's claim stays the receiving sweep's and the reviewer's judgment. [INV-225, INV-150, INV-222]
+11. the checker `guardrails/check-wrong-referral.py` *shall* read the shape of the exchange and ride the suite, staying clear of the push chain — the sequence of checks a push runs — *while* whether the target falls inside a zone's claim stays the receiving sweep's and the reviewer's judgment. [INV-225, INV-150, INV-222]
 
 **Case: the message identifier**
 
@@ -325,9 +330,14 @@ This section continues the document whose format the intake page defines and the
 17. an agent-initiated message *shall* stand as a proposal in the receiver's queue until the owner ratifies it, *while* an owner-initiated message carries the owner's authority. [INV-193, INV-94]
 18. relaying a message *shall* change only its carrier and leave its authority where it started. [INV-193, INV-94]
 
+**Case: zones may overlap**
+
+19. the system *shall* let two agents' zones overlap, each card recording what its own agent claims and two cards claiming one area both standing, and *shall* force no agent to carve a disjoint zone. [INV-197, INV-225]
+20. the system *shall* build no uniqueness check over zone claims, the wrong referral alone earning a name. [INV-225]
+
 ---
 
-## Requirement 9: A new agent is created only on the owner's word
+## Requirement 9: A new agent is created only on the owner's word  [feature: F-agent-birth]
 
 **Context:** An agent reaches this point when a capability pins to no agent's zone, or when a capability has outgrown the agent hosting it. Any agent may propose a new agent, and the owner alone brings a new tree into being. The founded agent then declares itself by writing its own card, so every scan finds it from that moment.
 

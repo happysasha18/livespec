@@ -89,17 +89,42 @@ class DocHomeCase(unittest.TestCase):
     that has been reworded or removed reds by name (ROADMAP row 384)."""
 
     def declaration(self, path, code):
-        """The one prose paragraph in `path` that DECLARES `code` — the paragraph whose trailing
-        anchor is the code. An index row (`| CODE | ...`) is a lookup into that home, so table
-        lines are passed over. The paragraph is returned with whitespace collapsed."""
-        anchor = "[%s]" % code
-        found = [l for l in read(path).splitlines()
-                 if l.rstrip().endswith(anchor) and not l.lstrip().startswith("|")]
-        self.assertEqual(len(found), 1,
-                         "%s holds %d prose paragraphs declaring %s; the home is the one "
-                         "paragraph whose trailing anchor is the code"
-                         % (path, len(found), code))
-        return " ".join(found[0].split())
+        """The prose that DECLARES `code` — the whole body of the one requirement section whose
+        own acceptance criteria name `code` as the FIRST code in their trailing bracket.
+
+        The new requirements-format spec states one law across a whole requirement (a Context
+        paragraph plus several numbered criteria) rather than in one paragraph, and a criterion's
+        trailing bracket lists the code it defines first, then any supporting cites — a
+        consistent convention confirmed across R45/R56/R212. A neighbouring requirement that only
+        CITES this code (never as the first code in its own bracket) is passed over, keeping the
+        same anti-vacuous-pass guarantee the old one-paragraph lookup gave: reading only the
+        section that actually declares this code, not any place it is merely mentioned.
+        """
+        import re as _re
+        lines = read(path).splitlines()
+        owning_starts = set()
+        for i, line in enumerate(lines):
+            s = line.strip()
+            m = _re.match(r"^\d+\.\s.*\[([^\]]+)\]\s*$", s)
+            if not m:
+                continue
+            codes = [c.strip() for c in m.group(1).split(",")]
+            if codes and codes[0] == code:
+                for j in range(i, -1, -1):
+                    if lines[j].startswith("## Requirement "):
+                        owning_starts.add(j)
+                        break
+        self.assertEqual(len(owning_starts), 1,
+                         "%s: %d requirement sections declare %s as their own code (first in a "
+                         "criterion's bracket); the home is the one section that declares it"
+                         % (path, len(owning_starts), code))
+        start = owning_starts.pop()
+        end = len(lines)
+        for j in range(start + 1, len(lines)):
+            if lines[j].strip() == "---" or lines[j].startswith("## Requirement "):
+                end = j
+                break
+        return " ".join(" ".join(lines[start:end]).split())
 
     def index_row(self, path, code):
         """The one Formal-index row for `code`, with whitespace collapsed."""
@@ -150,7 +175,7 @@ class TestRequestClassifierEntryLayer(DocHomeCase):
         so a whole-file read would stay green with the home clause deleted."""
         clause = self.declaration("PRODUCT_SPEC.md", "INV-151")
         self.assertIn("highest document in the derivation chain", clause)
-        self.assertIn("the set is closed", clause)
+        self.assertIn("closed on purpose", clause)
 
     def test_one_plain_question_fallback(self):
         """Read inside INV-151's own declaration paragraph. "one plain question" is stated in
@@ -217,8 +242,9 @@ class TestDeferralJustifiesItself(DocHomeCase):
         rule again in its own words, so a whole-file read passes off the neighbour."""
         clause = self.declaration("PRODUCT_SPEC.md", "INV-152")
         self.assertIn("A deferral must justify itself", clause)
-        self.assertIn("re-tested by derivability every time it is touched", clause)
-        self.assertIn("defaults to the seat", clause)
+        self.assertIn("re-tested for derivability every time it is touched", clause)
+        self.assertIn("default a marker that cannot name its human-only fact to the seat's own",
+                      clause)
 
     def test_lives_in_the_base_rulebook(self):
         base = read_flat("skills/live-spec-base/SKILL.md")
@@ -312,7 +338,7 @@ class TestUnificationStatedOnce(DocHomeCase):
                              % (_spell(n), _spell(self.CONTROLS), self.CONTROLS))
 
     def test_the_count_agrees_across_its_homes(self):
-        """The count of controls lives in three homes, and all three say the same number.
+        """The count of controls lives in two prose homes, and both say the same number.
 
         Each home is found by the code INV-153, which the prose cannot reword away; the earlier
         shape of this guard keyed on the phrase "routing principle stated", so rewording that
@@ -322,10 +348,13 @@ class TestUnificationStatedOnce(DocHomeCase):
         differs from the control set reds by name. The number is read as any count word standing
         before "times", so restating "stated four times" as "told four times" leaves the guard
         running.
+
+        The Formal-index row is checked for presence only: the new-format index carries
+        locations only (SPEC INV-271), so it no longer duplicates the prose count.
         """
+        self.index_row("PRODUCT_SPEC.md", "INV-153")
         homes = {
             "the spec's unification clause": self.declaration("PRODUCT_SPEC.md", "INV-153"),
-            "the spec's Formal-index row": self.index_row("PRODUCT_SPEC.md", "INV-153"),
             "build-pipeline's request-kind prose": self.code_prose(
                 "skills/build-pipeline/SKILL.md", "INV-153"),
         }

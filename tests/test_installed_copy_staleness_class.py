@@ -11,17 +11,23 @@ mirroring the sibling class-declaration shape (INV-156, INV-160).
 
 String-level assertions on the shipped PRODUCT_SPEC.md.
 """
-from conftest import read
+from conftest import read, read_flat
 
-
-CLASS_LEAD = ("The pack's authored artifacts and their installed copies are one class, and each "
-              "names the net that tells its running copy stale.")
-PARITY_SENTENCE = ("The class carries one parity, the property every member already holds: each "
-                    "member names the mechanical net that tells its running copy stale.")
+# Requirement 275: The pack's authored artifacts and their installed copies are one class [INV-180].
+# The requirements-format rewrite spreads the class's parity and its per-member nets across the
+# Context paragraph and six numbered acceptance criteria rather than one prose paragraph, so the
+# needles below re-pin to the same content across that wider span.
+CLASS_LEAD = "The pack's authored artifacts and their installed copies are one class"
+PARITY_SENTENCE = ("The class carries one parity: each member names the mechanical net that "
+                    "tells its running copy stale.")
 
 
 def _spec():
     return read("PRODUCT_SPEC.md")
+
+
+def _spec_flat():
+    return read_flat("PRODUCT_SPEC.md")
 
 
 def _index_row(anchor):
@@ -33,14 +39,17 @@ def _index_row(anchor):
 
 
 def _class_body():
-    spec = _spec()
-    return spec.split(CLASS_LEAD, 1)[1].split("[INV-180]", 1)[0]
+    flat = _spec_flat()
+    start = flat.index("## Requirement 275:")
+    end = flat.index("## Requirement 276:", start)
+    return flat[start:end]
 
 
 def test_installed_copy_class_declared():
-    spec = _spec()
+    spec = _spec_flat()
     assert CLASS_LEAD in spec, "the installed-copy class clause is missing from the spec body"
     assert "[INV-180]" in spec, "INV-180 has no body owner"
+    # index now carries locations only (SPEC INV-271) — the row's presence is the anchor proof.
     row = _index_row("INV-180")
     assert row is not None, "INV-180 has no Formal-index row"
 
@@ -48,10 +57,10 @@ def test_installed_copy_class_declared():
 def test_installed_copy_class_enumerates_every_member():
     body = _class_body()
     for phrase, anchors in (
-        ("The vendored kit scripts", ("[INV-172, INV-177]",)),
-        ("The installed hooks and gates", ("[INV-173, INV-175]",)),
-        ("The stamped version copies", ("[INV-178]",)),
-        ("The installed skills", ("[A-7, M-7]", "[E-23]", "[E-25]")),
+        ("the vendored kit scripts", ("INV-172", "INV-177")),
+        ("the installed hooks and gates", ("INV-173", "INV-175")),
+        ("the stamped version copies", ("INV-178",)),
+        ("the installed skills", ("A-7", "M-7", "E-23", "E-25")),
     ):
         assert phrase in body, "class clause omits member: %s" % phrase
         for anchor in anchors:
@@ -66,5 +75,6 @@ def test_installed_copy_class_states_parity_and_binds_forward():
     # rather than a machine, distinguishing it from its three machine-held siblings
     assert "weakest member" in body
     assert "held by discipline" in body
-    # and the class binds forward off the one stated law
-    assert "binds forward [INV-159]" in body
+    # and the class binds forward, its own named Case, off the one stated law [INV-159]
+    assert "the class binds forward" in body
+    assert "INV-159" in body

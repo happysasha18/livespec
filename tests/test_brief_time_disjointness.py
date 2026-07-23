@@ -24,11 +24,18 @@ IMPERATIVE = (
 class TestBriefTimeDisjointness(unittest.TestCase):
     def test_spec_worker_contract_carries_the_imperative(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn(IMPERATIVE, spec)
-        # settled at brief-time, not discovered at the write.
-        self.assertIn("settled when the briefs are written", spec)
-        # homed on the fence-benign / worker-contract clause, no new invariant.
-        self.assertIn("owns their seams", spec)
+        # R207.3 [INV-11, INV-105, ACT-3]: same imperative, new requirements-format phrasing
+        # (drops "already-" and folds fence-benign framing into the "since" clause).
+        self.assertIn(
+            "the seat means to spawn another concurrent writer, it *shall* confirm "
+            "the brief's write-set is disjoint from every running writer's brief",
+            spec,
+        )
+        # settled at brief-time, not discovered at the write: the check is framed as a
+        # prospective act ("means to spawn ... shall confirm"), before the spawn itself.
+        self.assertIn("means to spawn another concurrent writer, it *shall* confirm", spec)
+        # homed on the worker-contract clause: the seat is the named actor who confirms.
+        self.assertIn("the seat means to spawn", spec)
 
     def test_build_pipeline_carries_the_operational_imperative(self):
         sk = read_all_flat("skills/build-pipeline/SKILL.md")

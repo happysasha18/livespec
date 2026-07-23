@@ -40,18 +40,27 @@ def test_pack_to_host_split_stated_once():
     # the discriminator, in its own words
     assert "can the pack ship a single identical body that every host runs" in spec
     # both poles named
-    assert "centralizes to a single pack home" in spec          # centralize pole
-    assert "each host owns the instance it fills" in spec        # ship-the-shape pole
-    # and it carries a Formal-index row
+    assert "centralize the body to a single pack home" in spec  # centralize pole
+    assert "have each host own the instance it fills" in spec    # ship-the-shape pole
+    # and it carries a Formal-index row; the new-format index carries locations only (SPEC
+    # INV-271), so the "pack-to-host" prose check moves to the requirement title instead.
     row = _index_row("INV-163")
     assert row is not None, "INV-163 has no Formal-index row"
-    assert "pack-to-host" in row
+    assert "pack-to-host" in spec.split("## Requirement 267", 1)[1].split("\n---\n", 1)[0] \
+        or "Where a capability's body lives is placed on the pack-to-host axis" in spec
 
 
 def test_split_binds_forward_off_the_stated_law():
-    # a new host-specific capability names its pole from its first landing (INV-159)
-    body = _spec().split("A capability the pack can ship identically", 1)[1].split("[INV-163]", 1)[0]
-    assert "binds forward [INV-159]" in body
+    # a new host-specific capability names its pole from its first landing (INV-159). The old
+    # split-at-first-"[INV-163]" extraction truncated after criterion 1 in the new format,
+    # where "[INV-163]" now appears once per criterion; widen it to the whole Requirement 267
+    # section. The new format also never places the words "binds forward" immediately before a
+    # bracket (codes trail whole criterion sentences instead), so the check moves to the
+    # co-citation that proves the same fact: the pole-declaration criterion co-cites INV-159.
+    body = _spec().split("## Requirement 267: A capability the pack can ship identically", 1)[1] \
+        .split("\n---\n", 1)[0]
+    assert "state which pole it takes from its first landing" in body
+    assert "[INV-163, INV-159]" in body
 
 
 # ---- every site cites INV-163 in place of re-deriving the split ----
@@ -59,14 +68,20 @@ def test_split_binds_forward_off_the_stated_law():
 def test_every_ship_shape_site_cites_the_root():
     spec = _spec()
     for anchor in SHIP_SHAPE_SITES:
-        # the clause body for the anchor cites INV-163 as the ship-the-shape pole
-        assert "the ship-the-shape pole of the pack-to-host split [INV-163]" in spec, \
-            "no ship-the-shape citation of INV-163 for the %s family" % anchor
-    # the removal scanner cites it too
-    e26 = [ln for ln in spec.splitlines() if "[E-26]" in ln and "removal list has a mechanical form" in ln]
-    assert e26 and "[INV-163]" in e26[0], "E-26 does not cite INV-163"
+        # the clause body for the anchor cites INV-163 as the ship-the-shape pole; the new
+        # format ends the sentence with a period before the bracket and often co-brackets
+        # INV-163 with the site's own code, rather than placing "[INV-163]" bare right after
+        # the phrase.
+        assert "the ship-the-shape pole of the pack-to-host split" in spec, \
+            "no ship-the-shape citation for the %s family" % anchor
+        assert "INV-125, INV-163" in spec
+    # the removal scanner cites it too — in the new format the E-26 criteria state the duty in
+    # their own words rather than repeating the requirement title on the same line
+    e26_lines = [ln for ln in spec.splitlines() if "E-26" in ln and "INV-163" in ln]
+    assert e26_lines, "E-26 does not cite INV-163"
     # the centralize pole cites it
-    assert "the centralize pole of the pack-to-host split [INV-163]" in spec
+    assert "the centralize pole of the pack-to-host split" in spec
+    assert "INV-158, INV-157, INV-163" in spec
 
 
 def test_no_site_re_derives_the_split_in_its_own_words():

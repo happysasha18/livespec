@@ -16,9 +16,18 @@ class TestCatchupWalk(unittest.TestCase):
     """M-217 — the walk has one named home with routing, four phases, and the owner's gate."""
 
     def test_catchup_walk(self):
+        # RE-PINNED pass-2 (see repin log): the pass-2 restore moved every pilot-unit feature
+        # tag (F-bootstrap, F-adoption, F-catchup, F-onboarding, F-pair) onto its own-line
+        # "[feature: F-...]" heading tag instead of citing it inline in the User Story — the
+        # convention is applied consistently across all five, not just this one. F-catchup now
+        # sits on Requirement 180's H2 heading; A-11 stays inline in the User Story/criteria.
         spec = read("PRODUCT_SPEC.md")
         # the spec side: the scenario and its anchors exist
-        self.assertIn("[feature: F-catchup]", spec)
+        self.assertIn(
+            "## Requirement 180: The catch-up sequence brings an adopted host onto the current pack"
+            "  [feature: F-catchup]",
+            spec,
+        )
         for anchor in ("[A-11]", "[INV-89]", "[INV-90]", "[INV-91]"):
             self.assertIn(anchor, spec, f"spec anchor {anchor} missing")
 
@@ -140,10 +149,17 @@ class TestCatchupVersionChain(unittest.TestCase):
 
     def test_versionless_record_starts_at_earliest_chapter(self):
         """The dry-read hole (2026-07-10): an old-format record has no readable version —
-        the chain's start must be stated, in the spec and in the guide."""
+        the chain's start must be stated, in the spec and in the guide.
+
+        RE-PINNED (see repin log): MIGRATION.md's sentence subject is "a record" ("... starts
+        the chain..."), while PRODUCT_SPEC.md's rewritten Requirement 180 criterion 3 casts
+        every clause as "the system *shall*..." ("...shall start the chain..." — grammatical
+        conjugation only, same fact). The shared substring below matches the same meaning at
+        both homes without depending on either home's subject/verb form.
+        """
         for rel in ("MIGRATION.md", "PRODUCT_SPEC.md"):
             self.assertIn(
-                "starts the chain at the earliest chapter", read(rel),
+                "the chain at the earliest chapter", read(rel),
                 f"no-readable-version fallback missing in {rel}",
             )
 

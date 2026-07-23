@@ -21,20 +21,38 @@ class TestDelegationLineLaw(unittest.TestCase):
     HOMES = ("PRODUCT_SPEC.md", "skills/build-pipeline/SKILL.md")
 
     def test_law_in_both_homes(self):
+        # PRODUCT_SPEC.md's rewrite renamed "landed" to "delivered" and folded the two
+        # suite-check needles into one sentence; the skill's references/delegation-protocol.md
+        # (included via read_all_flat) still carries the original wording verbatim.
+        needles = {
+            "PRODUCT_SPEC.md": (
+                "delivered row's status cell",
+                "a suite check reds a delivered row",
+                "a delivered row omits the line",
+                "bind the duty to the orchestrating seat whatever tier leads it",
+            ),
+            "skills/build-pipeline/SKILL.md": (
+                "the landed row's status cell",
+                "a suite check reads it",
+                "a landed row without the line goes red",
+                "binds the orchestrator seat regardless of",
+            ),
+        }
         for home in self.HOMES:
             body = read_all_flat(home)
-            self.assertIn("the landed row's status cell", body, home)
-            self.assertIn("a suite check reads it", body, home)
-            self.assertIn("a landed row without the line goes red", body, home)
-            self.assertIn("binds the orchestrator seat regardless of", body, home)
+            for needle in needles[home]:
+                self.assertIn(needle, body, home)
 
     def test_spec_anchor_and_index(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # "delegation" prose is asserted against the flattened spec body instead.
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-103]", spec)
+        self.assertIn("delegation accounting", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-103 |"):
-                    self.assertIn("delegation", line)
+                    self.assertIn("R209.1", line)
                     return
         self.fail("INV-103 index row missing")
 

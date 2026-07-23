@@ -149,24 +149,30 @@ class TestIndexProseGate(unittest.TestCase):
             r = run_check({"INDEX_PROSE_SPEC": path})
             self.assertEqual(r.returncode, 0, "a clean fixture must pass:\n%s\n%s" % (r.stdout, r.stderr))
 
-    def test_gate_passes_the_real_spec(self):
-        r = run_check()
-        self.assertEqual(r.returncode, 0, "the real PRODUCT_SPEC.md must pass:\n%s\n%s" % (r.stdout, r.stderr))
+    # Gate x on the real tree retired at the row-445 conversion: the requirements format removed the
+    # `## Formal index`/prose-carries-code shape check-index-prose parsed (SPEC INV-271). Gate x now
+    # runs check-index-generated, whose real-spec pass is proven by
+    # tests/test_index_generated.py::TestArmedOnTheRealSpec::test_armed_passes_on_the_real_spec, and
+    # whose empty-body red (the INV-218 vacuous-input guard) rides the same nonempty_input.py shape
+    # tested by TestSharedShape above. The fixture red-proofs below still exercise check-index-prose
+    # (the script still ships) for the shape's historical red direction.
 
-    def test_gate_wired_into_pre_push(self):
-        self.assertIn("check-index-prose.py", read("guardrails/pre-push"))
-
-    def test_gate_mirrored_in_ci(self):
-        self.assertIn("check-index-prose.py", read(".github/workflows/gates.yml"))
+    def test_gate_x_now_runs_the_generated_index(self):
+        self.assertIn("check-index-generated.py", read("guardrails/pre-push"))
+        self.assertIn("check-index-generated.py", read(".github/workflows/gates.yml"))
 
 
 class TestIndexProseSubstance(unittest.TestCase):
-    """The substantive arm on the real tree: every Formal-index anchor is carried in the prose,
-    ranges honoured — the standing form of the index prose check."""
+    """The substantive arm on the real tree, re-aimed at the requirements format (SPEC INV-271): the
+    generated index carries locations only, and every code it lists is carried by a body criterion —
+    the successor of "every index code has a home", now keyed to criteria rather than prose. The
+    committed index lives at PRODUCT_SPEC.index.md and is embedded in the spec's `## Reference`."""
 
-    def test_every_index_anchor_carried_in_prose(self):
+    def test_every_index_code_has_a_body_home(self):
         spec = read("PRODUCT_SPEC.md")
-        body, index = spec.split("## Formal index", 1)
+        index = read("PRODUCT_SPEC.index.md")
+        # The body: everything before the closing `## Reference` (the generated table).
+        body = spec.split("## Reference", 1)[0]
 
         def expand(a):
             m = re.match(r"([A-Z]+)-(\d+)\.\.(?:[A-Z]+-)?(\d+)$", a)
@@ -176,22 +182,23 @@ class TestIndexProseSubstance(unittest.TestCase):
             return [a]
 
         raw = re.findall(r"^\| ([A-Z]+-[0-9]+(?:\.\.[A-Z]*-?[0-9]+)?) \|", index, re.M)
-        anchors = set()
+        codes = set()
         for a in raw:
-            anchors.update(expand(a))
+            codes.update(expand(a))
         carried = set(re.findall(r"[A-Z]+-[0-9]+", body))
         for rng in re.findall(r"[A-Z]+-[0-9]+\.\.[A-Z]*-?[0-9]+", body):
             carried.update(expand(rng))
-        missing = sorted(a for a in anchors if a not in carried)
-        self.assertEqual(missing, [], "index anchors whose home prose never carries them: %s" % missing)
+        missing = sorted(a for a in codes if a not in carried)
+        self.assertEqual(missing, [], "index codes carried by no body criterion: %s" % missing)
 
 
 class TestTraceability(unittest.TestCase):
     def test_spec_states_the_law(self):
         spec = " ".join(read("PRODUCT_SPEC.md").split())
         self.assertIn("[INV-218]", spec)
-        self.assertIn("check-index-prose.py", spec)
-        self.assertIn("nonempty_input.py", spec)
+        # The requirements-format spec states the law, not the implementing script filenames.
+        self.assertIn("declare the input set it expects to be non-empty", spec)
+        self.assertIn("the default being that empty is a finding", spec)
 
     def test_formal_index_row(self):
         self.assertIn("| INV-218 |", read("PRODUCT_SPEC.md"))
@@ -199,7 +206,8 @@ class TestTraceability(unittest.TestCase):
     def test_architecture_owns_the_invariant(self):
         arch = read("ARCHITECTURE.md")
         self.assertIn("INV-218", arch)
-        self.assertIn("check-index-prose.py", arch)
+        # INV-218's shared shape is nonempty_input.py; check-index-generated (gate x) uses it.
+        self.assertIn("nonempty_input.py", arch)
 
     def test_matrix_row_covers_the_law(self):
         self.assertIn("INV-218", read("TEST_MATRIX.md"))

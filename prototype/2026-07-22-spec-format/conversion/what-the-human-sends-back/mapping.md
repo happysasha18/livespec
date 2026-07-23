@@ -150,3 +150,7 @@ Every behavioural claim of the source, in source order, mapped to the criterion 
 ### Coverage result
 
 Sixty-one source claims mapped, covering all 8 requirements. Two source holes are recorded as `[GAP]` lines at R3.2 (the fix-sized / story-sized boundary) and R5.1 (the reading of a strong reaction) and detailed in `GAPS.md`. Three non-goal / policy blocks state what the system deliberately does not do; they are carried as policy criteria (R7.4, R7.5) or as facet prose in a requirement's Context rather than converted to a positive `shall` where the source itself only denies a mechanism. No behavioural `shall`-claim of the source is left uncovered.
+
+### Prover MUST-FIX wave (row 445 audit, F5) — declared sharpen
+
+- **Glossary entry `scenario`**: the entry claimed "the spec's body is a list of scenarios", while the assembled body is a flat list of requirements of which only the `[feature: F-...]`-tagged headings are scenarios. Audit finding F5. Rewritten: a scenario is a requirement whose heading carries a `[feature: F-...]` tag; the spec's body is a list of requirements. The assembled intro was corrected in the same stroke (assembly-authored text, recorded in the assembly DELTA). No criterion changed.

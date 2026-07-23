@@ -10,7 +10,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 - **problem ledger** — the host's list of the workshop's own operational noise, one git-tracked file `.live-spec/PROBLEMS.md`, born on its first entry.
 - **signature** — one entry in the problem ledger: a short greppable plain phrase that names a recurring operational problem, carrying its dated occurrences and one status.
-- **workshop noise** — a problem that comes from the workshop rather than the product: a test harness or tool that flakes, a missing dependency, a shell command that fails outside the product, a tool that times out.
+- **workshop noise** — a problem the workshop raises while the product stays sound: a test harness or tool that flakes, a missing dependency, a shell command that fails outside the product, a tool that times out.
 - **class hunt** — the search a confirmed bug drives before it closes: name the defect abstractly, find every sibling of that kind, and fix them in one change.
 - **priority bubble** — the one way priority reorders the lane: a marked wish jumps ahead of the fresh queued wishes, visibly, straight to the queue head. The intake classification writes the mark — critical or quick win — on the wish's row; an unmarked row carries normal priority.
 - **delta** — the drafted change a wish or feature makes to the spec, proven against the whole spec before it lands.
@@ -30,8 +30,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 1. *when* a bug report arrives mid-feature, the system *shall* move the feature to parked with a checkpoint written first — the failing test names when any are red, the current hypothesis, and the touched files — and *shall* commit no work while a test is red. [T-9]
 2. *when* the bug holds the lane, the system *shall* run it to completion, and *shall* have an arriving bug join the waiting line and interrupt nothing. [T-9]
-3. The system *shall* order waiting bugs critical-first and bugs of equal priority by arrival. [T-9]
-   [GAP: the source orders waiting bugs critical-first but names no judge or measure for a bug's priority, so which bug counts as critical is undecidable at the line.]
+3. The system *shall* order waiting bugs critical-first — a bug is critical *when* the shipped product is broken for its user, the same three conditions the priority mark carries [INV-12] — and bugs of equal priority by arrival. [T-9, INV-12]
 
 **Case: resume order and the parking bound**
 
@@ -49,7 +48,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Context:** A confirmed bug is one sample of its class. Before the fix is called done, the method drives four moves rather than one, so a point fix that leaves the rest of the class standing is a status, never a landing.
 
-**User Story:** As the product owner, I want a confirmed bug treated as one instance of a class and its siblings hunted before the fix closes, so that the same kind of defect is cleared everywhere it lives rather than patched where it happened to show.
+**User Story:** As the product owner, I want a confirmed bug treated as one instance of a class and its siblings hunted before the fix closes, so that the same kind of defect is cleared everywhere it lives, hunted past the one place it happened to show.
 
 ### Acceptance Criteria
 
@@ -65,7 +64,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 **Case: escalate a boundary call, and the close condition**
 
 4. *when* the class boundary needs the human's read — which behaviours are one class, the intended design, whether a whole area wants a rethink — the system *shall* stop and ask rather than guess the boundary. [INV-124, INV-4]
-5. The system *shall* treat the four moves as the bug's close condition, and *shall* read a point fix that leaves the siblings standing as a status rather than a landing. [INV-124, INV-26]
+5. The system *shall* treat the four moves as the bug's close condition, and *shall* read a point fix that leaves the siblings standing as a status short of a landing. [INV-124, INV-26]
 6. The system *shall* have the prover carry a class lens on a found defect — whether the same kind lives elsewhere, whether the architecture accounts for it, and whether the spec describes it. [INV-124]
 
 ---
@@ -190,7 +189,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: the success measure**
 
-8. The system *shall* land the next operational hiccup in a session as a ledger line rather than a silent retry, checked at the milestone audit. [INV-23, M-1]
+8. The system *shall* land the next operational hiccup in a session as a recorded ledger line, checked at the milestone audit. [INV-23, M-1]
 
 ---
 
@@ -198,7 +197,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Context:** Before reinventing a fix, the pack searches for an existing skill. Two moments trigger the search: a project's setup, and a struggle that keeps returning. A found skill is adopted or rejected by name, and borrowing keeps to one practice.
 
-**User Story:** As a person about to reinvent a fix, I want the pack to search for an existing skill at setup and at every struggle, so that a returning failure class is met by something that already owns it rather than built again from scratch.
+**User Story:** As a person about to reinvent a fix, I want the pack to search for an existing skill at setup and at every struggle, so that a returning failure class is met by something that already owns it, sparing a fresh build from scratch.
 
 ### Acceptance Criteria
 

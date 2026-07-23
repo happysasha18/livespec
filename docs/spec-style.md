@@ -5,12 +5,12 @@ Decided 2026-07-08 with Alexander, grounded in RFC 2119/8174, the RFC 7322 style
 POSIX — plus a register brief from Fable.
 
 **A spec is REFERENCE documentation**: austere, systematic, terse, factual, present tense, described
-without opinion. It is material to consult, in whatever order a question requires, rather than a
-tutorial, an explainer, or a story read cover to cover.
+without opinion. It is material to consult, in whatever order a question requires. A
+tutorial, an explainer, or a story reads cover to cover; a spec reads by lookup.
 
 ## TARGET REGISTER — Flavor A (declarative / Go-spec)
 
-Force is carried by plain declarative statement rather than by RFC keywords. State each rule as a fact of a
+Force is carried by plain declarative statement, and this flavor uses no RFC keywords. State each rule as a fact of a
 conforming system ("A decision card opens with an Effect Statement."). Use "does not" / "never" for
 prohibitions. No MUST/SHALL machinery, no §-numbering, no NOTE-boilerplate required. Terse, dry,
 definitional — like the Go language specification. Readable. (A stricter full-RFC-2119 flavor was
@@ -24,7 +24,7 @@ plus the capitalized keyword system.)
 - **R4 — Declarative PRESENT tense.** Facts as facts, rules as rules. BANNED: future narration ("the card will show"), invitation ("let's"), reassurance ("don't worry", "you can ignore").
 - **R5 — Defined terms, used VERBATIM, forever.** No elegant variation; a different word asserts a different thing. Repetition is correct.
 - **R6 — NORMATIVE and INFORMATIVE are separated.** Rationale, motivation, examples live in a marked companion, never folded into a requirement sentence.
-- **R7 — The normative body has no metaphor, no warmth, no narration, no persona.** BANNED there: "simply/just/of course", sign-posting ("as we saw above"), apologies, jokes. Cross-reference by section rather than by story.
+- **R7 — The normative body has no metaphor, no warmth, no narration, no persona.** BANNED there: "simply/just/of course", sign-posting ("as we saw above"), apologies, jokes. Cross-reference by section.
 - **R7b — Warmth is quarantined but never discarded.** Human touches (a user quote, motivating voice) are legal ONLY as a separate, clearly-marked informative element beside the rule (`NOTE (informative):` or a `> quote`), never inside a normative sentence. The dry statement comes first; the note is an optional companion.
 - **R7c — A quote earns its place or it is cut.** Keep a quote only when it adds something the formal rule does not capture, or is needed to understand the rule; drop decorative/redundant quotes. Any quote that stays is translated into idiomatic English, never verbatim source-language. The whole informative/voice lane is gated by the project's KIND and the aspect: a book, or a project with a distinctive interface, can warrant it; a backend service almost never does. Default is no quote.
 - **R8 — Testability is the acceptance test of a sentence.** Untestable qualifiers ("if it helps", "where sensible", "generally") are deleted, given a stated criterion, or moved to a note.
@@ -32,9 +32,9 @@ plus the capitalized keyword system.)
 - **R10 — Exact quantities and references.** BANNED: "a few", "small", "recently".
 - **R11 — Pronoun hygiene**: "it"/"this"/"they" only with an unambiguous same-sentence antecedent; else repeat the noun.
 - **R12 — Typographic shout is not force.** Remove ALL-CAPS/bold on ordinary verbs ("CHANGES"). Force comes from the declarative statement itself.
-- **R13 — Open with what a thing IS, never define it by exclusion.** A rule states what happens, then narrows. "X does not become Y" as an opener — saying what a thing is not, via a copula or a becoming verb, before saying what it is — is the tell that reads as dead machine prose. This is distinct from a PROHIBITION ("the walk does not ask how long", "a restructure never re-carves"): a prohibition on an action is correct register per R4 and is welcome. The ban is only on define-by-exclusion openers; the words "not" and "never" remain otherwise unrestricted.
-- **R14 — A process is a list instead of a paragraph.** When a rule describes a sequence of steps or a set of parallel parts (a wish arrives → a card → an answer → the pipeline files it → …), it is written as a bulleted or numbered list, one step per bullet, under a one-line lead. A multi-step process flattened into a running paragraph loses the thread — the failure this doc's own first drafts made.
-- **R15 — Provenance stays out of the normative body.** A normative body states the mechanism in plain present tense. The provenance — the date and the case that motivated the rule — lives in a docs home keyed by the rule's code (`docs/lenses.md`), the JOURNAL, or a dated prover record, never inline as a birth-story. The tell is a birth-story by SHAPE, told apart from the ordinary verb by shape rather than by the word alone: a parenthetical aside (`(Born of …)`, `(Set by the owner …)`, `(Set on the owner's word …)`, `(Born in the field: …)`, `(Sharpened …)`, `(Raised by …)`, `(recorded … )`, `(the worked miss: …)` and their dated/attributed kin), a Formal-index trailing cell (`…; born of …`), or a sentence that opens `Born of …` or says `… was born of …`. The ordinary restrictive verb carries no story and is left alone (`a row born of a split cites its wish`), as is a one-token dated pointer the rule permits (`norm: <path>`, `commit <hash>`). This is the register floor's provenance arm; `scripts/spec-style-lint.py` checks it as the `provenance-narrative` ERROR.
+- **R13 — Open with what a thing IS, never define it by exclusion.** A rule states what happens, then narrows. An opener that says what a thing is NOT — via a copula or a becoming verb, before saying what it is — reads as dead machine prose; `X does not become Y` is that tell. This is distinct from a PROHIBITION ("the walk does not ask how long", "a restructure never re-carves"): a prohibition on an action is correct register per R4 and is welcome. The ban is only on define-by-exclusion openers; the words "not" and "never" remain otherwise unrestricted.
+- **R14 — A process is written as a list.** When a rule describes a sequence of steps or a set of parallel parts (a wish arrives → a card → an answer → the pipeline files it → …), it is written as a bulleted or numbered list, one step per bullet, under a one-line lead. A multi-step process flattened into a running paragraph loses the thread — the failure this doc's own first drafts made.
+- **R15 — Provenance stays out of the normative body.** A normative body states the mechanism in plain present tense. The provenance — the date and the case that motivated the rule — lives in a docs home keyed by the rule's code (`docs/lenses.md`), the JOURNAL, or a dated prover record, never inline as a birth-story. The tell is a birth-story by SHAPE, told apart from the ordinary verb by its shape; the word alone does not mark it. The shapes are a parenthetical aside (`(Born of …)`, `(Set by the owner …)`, `(Set on the owner's word …)`, `(Born in the field: …)`, `(Sharpened …)`, `(Raised by …)`, `(recorded … )`, `(the worked miss: …)` and their dated/attributed kin), a Formal-index trailing cell (`…; born of …`), or a sentence that opens `Born of …` or says `… was born of …`. The ordinary restrictive verb carries no story and is left alone (`a row born of a split cites its wish`), as is a one-token dated pointer the rule permits (`norm: <path>`, `commit <hash>`). This is the register floor's provenance arm; `scripts/spec-style-lint.py` checks it as the `provenance-narrative` ERROR.
 
 **HARD (unchanged from the current doc):** every bracketed anchor token stays VERBATIM in place; never
 drop a rule; keep `##`/`###` headings and bold law-titles; provenance stays out of the body (R15) —
@@ -141,11 +141,11 @@ The decision-page rule is a process: a wish arrives → a card → an answer →
 earlier draft ran it as one dense paragraph and lost the thread; this is the same rule, same anchors,
 as a list under a one-line lead. It is register-clean (zero linter tells):
 
-**Several open questions arrive on one decision page.** Several questions waiting on a decision arrive together on one page instead of one at a time in chat.
+**Several open questions arrive on one decision page.** Several questions waiting on a decision collect onto one page and arrive together. Chat would surface them one at a time.
 - The page opens in its own window; the rest of the work carries on while it waits [INV-4].
 - Each question is a card — the recommended answer marked, with room to write a different one.
 - Once the page comes back answered, the pipeline files it in the project's `docs/decisions/` and folds every answer into its queue row the same session. An answer left unread is a decision lost.
-- The person's word settles it. A click alone is not enough: an option picked and then taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. A pick made without understanding settles nothing that needs the person's considered word [INV-9].
+- The person's word settles it. A click alone does not settle it: an option picked and then taken back in plain speech is withdrawn, logged as answered-then-withdrawn, and asked again later in plainer terms. A pick made without understanding settles nothing that needs the person's considered word [INV-9].
 - How the page works — the filename, the ordering, the round-trip — is written down once, in the communicator skill's rule 10 [INV-13].
 
 [E-22]

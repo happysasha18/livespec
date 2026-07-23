@@ -33,6 +33,27 @@ the defect this surface exists to catch. [[wait]]
   members rather than the exhaustive list; you accepted the form off the 15-code sample and asked to
   keep the class-member lists representative rather than complete [E-35, INV-239].
 
+## Open — carried, awaiting your word
+<!-- record:open -->
+These are open questions the pack carries with a recommendation, moved here from the old spec body when
+the format sent decision history out of the spec. They are not decisions attributed to you, so they
+name no exchange and carry no date. Each waits for your word, and the pack runs on the stated
+recommendation until then. The spec points to each by its code, as a gap line under the requirement the
+question touches.
+
+The adoption attic's layout is open: a flat folder with a manifest and a source-directory prefix on a
+name collision, against dated subfolders. The pack runs on the flat-with-manifest form and revisits at
+the next real adoption run. [D-1]
+
+The pair's queues are open: one reading view stitched across the pair's two queues, or strictly two.
+The queues stay per-repo either way. The recommendation is two plain queues with no stitched view, held
+until real friction — flipping between two windows to follow one wish's two halves — earns one. [D-6]
+
+The pair instance's spec citation is open: whether the instance's spec may cite engine facts, or only
+the content contract. The recommendation is that the instance cites the engine's contract entries by
+their handle and nothing deeper, because a contract entry is the engine's versioned public promise
+while an internal fact rots at the engine's next refactor. [D-7]
+
 ## Struck — recorded as yours, then you struck it
 <!-- record:struck -->
 - ~~Parallel lanes rank above the communication layer, and they wait for a field run.~~ STRUCK

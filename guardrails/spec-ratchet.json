@@ -1,6 +1,6 @@
 {
   "_comment": "The size ratchet for PRODUCT_SPEC.md (SPEC INV-264). The bound is bytes-per-criterion: the byte count of the spec's criterion lines alone (glossary and preamble excluded) divided by the count of criteria in its body. A delivery may lower it or leave it; no delivery may raise it (raising is a change to Requirement 4, INV-265). The ratchet governs PRODUCT_SPEC.md only; the other documents keep their flat byte bound (check-doc-bound.py).",
   "governs": "PRODUCT_SPEC.md",
-  "bytes_per_criterion": null,
-  "reason": "not yet seeded — the initial bound is the value measured at the migration-end freeze, recorded by the freeze actor (INV-264 criterion 3). Until that freeze the spec is not yet in the requirements format, so the ratchet has nothing to measure; the gate passes with this stated reason rather than red-ing on an absent bound."
+  "bytes_per_criterion": 206.9,
+  "reason": "seeded at the row-445 spec-format migration-end freeze and lowered by the freeze actor at the pass-2 re-baseline (206.9 bytes-per-criterion measured over 1360 criteria of the promoted requirements-format PRODUCT_SPEC.md; the pass-1 seed was 209.0 over 1301). A later delivery may lower this bound or leave it; no delivery may raise it outside a change to Requirement 4 (INV-264, INV-265)."
 }

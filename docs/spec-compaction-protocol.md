@@ -12,11 +12,11 @@ compaction machine every project runs; its mechanical parts wire into the push g
   a unique-set check yet loses the sentence's governing law — a meaning change. Freeze per-anchor
   occurrence counts AND per-section anchor sets. A per-anchor count decrease is legal only on a rewrite-log
   line naming the deleted duplicate restatement it came from.
-- **0.2 Anchor regex covers the variants.** `[INV-28 kin]` (kinship, not a governing citation) and range
+- **0.2 Anchor regex covers the variants.** `[INV-28 kin]` (kinship, distinct from a governing citation) and range
   tokens `T-1..T-7` (the traceability suite's `expand()` depends on that exact syntax) are frozen as exact
   strings; normalizing `kin` to a bare citation converts an analogy into law, splitting a range breaks
   index extraction.
-- **0.3 Structural marker lines are law, not prose.** `[target]` (its placement is itself a law, tied to an
+- **0.3 Structural marker lines are law, preserved verbatim.** `[target]` (its placement is itself a law, tied to an
   open row by S-0), `[default]` (the human's revisit handle, INV-31), and H3 heading tags
   (`[feature: F-x]` / `[not a scenario]`, INV-132) are frozen verbatim. Heading lines are never rewritten.
 - **0.4 Freeze the literal classes** and diff after each section: numbers with units (lane cap, question
@@ -28,7 +28,7 @@ compaction machine every project runs; its mechanical parts wire into the push g
   the condition — test green, law gone from its home. Record each check-phrase's home clause; verify it
   survives in the SAME clause after rewrite, or the re-point log says why it moved.
 
-## Phase 1 — Duplicate-site census (the redundancy is not symmetric)
+## Phase 1 — Duplicate-site census (the redundancy is asymmetric)
 
 Duplicated copies of one law DIFFER. INV-130's decision-page copy and its index copy each carry a condition
 the other lacks. **The law is the union of the copies.** Before removing a restatement, union-diff its sites;
@@ -52,7 +52,7 @@ Meaning unit = one anchor clause (the paragraph ending in its trailing anchor). 
 section. Order: (1) low-anchor-density narrative first (calibrates the checker cheaply); (2) medium-density
 rule sections; (3) the mega-clauses individually, one commit each, full ceremony; (4) the Formal index last
 (Phase 2); (5) the header block, S-0, heading lines, marker lines: never rewritten. Full suite + anchor map
-+ literal-class diff after each section commit. Suite green is necessary, not sufficient — most sentences
++ literal-class diff after each section commit. Suite green is necessary but never sufficient — most sentences
 carry no phrase test.
 
 ## Phase 4 — The per-clause meaning-diff (extraction → entailment → reverse-entailment)
@@ -82,9 +82,9 @@ rhetorical contrast frame; the modal words never/no/only/exactly-one are load-be
 ## Stop conditions — keep the original, park the section
 
 1. Anchor unique-set delta, or an occurrence-count drop with no log line.
-2. A checker verdict of weakened/dropped/strengthened "resolved" by argument rather than by restoring the
+2. A checker verdict of weakened/dropped/strengthened "resolved" by argument alone, without restoring the
    condition or the owner's word.
-3. A checker canary missed (halt everything — the checker is broken, not the section).
+3. A checker canary missed (halt everything — the checker is broken; the section is fine).
 4. A red test "fixed" by editing the test phrase with no logged re-point naming the same law; and >~5
    re-points in one section means the phrasing itself is load-bearing — keep the original.
 5. A clause whose obligations the checker cannot enumerate with confidence (the mega-clauses): fallback is

@@ -58,18 +58,20 @@ class TestFootprintNoteLaw(unittest.TestCase):
     def test_law_in_the_spec(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "A landed feature-or-refactor row carries its footprint note, and a suite check holds it",
-            "a landed feature-or-refactor row without a footprint note goes red",
+            "A landed feature-or-refactor row carries its footprint note, held by a suite check",
+            "reddens a landed feature-or-refactor row that carries no footprint note",
             "the mechanical floor under the footprint read",
-            "[INV-134]",
+            "INV-134",
         ):
             self.assertIn(needle, spec, "SPEC INV-134 lost the enforcement clause: %s" % needle)
 
     def test_spec_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # "footprint" prose is asserted against the spec body in test_law_in_the_spec.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-134 |"):
-                    self.assertIn("footprint", line.lower())
+                    self.assertIn("R44.1", line)
                     return
         self.fail("INV-134 Formal-index row missing")
 

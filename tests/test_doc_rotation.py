@@ -226,10 +226,14 @@ def test_gate_mirrored_in_ci():
 # --- traceability across the four documents ---
 
 def test_spec_states_the_law():
+    # PRODUCT_SPEC.md states this law in plain behaviour, not by script filename — the literal
+    # rotate-doc.py / check-doc-rotation.py names moved to ARCHITECTURE.md's ownership row (see
+    # test_architecture_owns_the_invariant), the rewrite's document-boundary convention (spec =
+    # behaviour, architecture = implementation file). Re-pinned to the plain-language equivalents.
     spec = read("PRODUCT_SPEC.md")
     assert "[INV-209]" in spec
-    assert "check-doc-rotation.py" in spec
-    assert "rotate-doc.py" in spec
+    assert "move the closed rows into a dated archive" in spec
+    assert "nothing-lost violation" in spec
 
 
 def test_formal_index_row():

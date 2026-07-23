@@ -2,7 +2,7 @@
 name: communicator
 description: How to show work to a human and ask for decisions they can actually make. Use when a person must DECIDE something (especially anything visual or textual), when a landing or milestone is REPORTED (movement-end report, decision page, opening an artifact for review), when answering "did we actually do X?" (that answer walks the evidence), when the human asks what the product does ("show me all the features" — the feature map on demand), or when naming a problem that needs their word. NOT a reason to LOAD it: a passing mid-work narration line (a standing habit, learned once), an internal working note, or a plain factual answer — those just get said. It is the presentation half of the pack — spec-author writes the spec, product-prover reviews it, build-pipeline ships it, communicator makes the human-facing exchange land.
 metadata:
-  version: 3.6.0
+  version: 4.0.0
 ---
 
 # communicator — show the work, ask decisions the human can actually make
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.6.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v4.0.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -45,8 +45,8 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
 - **Show proactively, for approval — don't wait to be asked.** *(rule 3)* The moment there is a real was → became, put
    it in front of them. Don't sit on a finished change waiting for "show me"; surface it and ask.
 
-- **The capture echo — a wish hears itself land.** *(rule 12)*
-    - The moment a wish is intaken, the human hears the intake line back as ONE plain sentence — what was
+- **The capture echo — the human hears the caught request read back.** *(rule 12)*
+    - The moment a wish is taken in, the human hears the intake line back as ONE plain sentence — what was
       heard, the door called (the door step's own verdict, carried over unchanged), the work-kind
       (product · infra · skill · prose, SPEC INV-22), the footprint the three-source read named
       (presentation-only · single-module · cross-cutting, SPEC INV-128), the name the work will answer
@@ -58,7 +58,7 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       critical heads the queue but does not preempt the rolling lane (SPEC INV-133) — it lands as soon as
       the current lane reaches its checkpoint, ahead of everything else waiting, and only the bug door
       preempts. So the human hears that a live break he wants stopped now is a bug, and can re-door it that
-      moment rather than learning at the next report that the work he thought was stopped kept running.
+      moment. Otherwise he first learns at the next report that the work he thought was stopped kept running.
     - No echo ⇒ the human cannot know the request survived. A wish that arrives silently — an inbox file,
       a harvest — gets its echo in the NEXT report, never as a mid-work interruption. A batch echoes one
       line per wish.
@@ -74,11 +74,11 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       so a sum of every step overstates the finish, and heavy fan-out collapses the real clock to the critical path. (SPEC INV-93; row 311.)
 
 - **Narrate the work while it runs — mark the beats.** *(rule 13)* Between the capture echo (rule 12)
-    and the landing report the human is never left reading silence: when a beat lands — a pipeline
+    and the delivery report the human is never left reading silence: when a beat lands — a pipeline
     station passed, a load-bearing find, a change of direction — say it as it happens, one or two plain
     sentences in the roadmap's terms (which wish is in hand, what it gives, what just moved), the same
     voice as the reports. Three teeth, so the trail accounts for where the session's time went (his
-    third ask in the family, 2026-07-06 evening — the landing reports were good, the mid-work trail thin):
+    third ask in the family, 2026-07-06 evening — the delivery reports were good, the mid-work trail thin):
     - **Identity** — every beat names which wish is in hand and which station it stands at (outside the
       pipeline — research, a harvest, a docs sweep — the work's own name serves), and whether it mends
       something broken or builds something new; a reader dropping in mid-session can tell what is being
@@ -127,7 +127,7 @@ The timing question: at which moments the agent shows work, echoes a wish, or na
       seat shows [INV-67]. Do NOT rely on the harness's own task list or spinner for this: a
       browser-seated session never shows them, and even locally they stop updating through a long
       run of tool calls. So refresh a short NOW/NEXT line at every station change, and let the heartbeat
-      carry it through a long stretch. The harness task list, where the seat shows it, is kept in plain
+      carry it through a long stretch. The harness task panel, where the seat shows it, is kept in plain
       product words as a courtesy (rule 6), never the status's home; on a local seat a rendered
       status page is an optional richer view of the same NOW/NEXT. This binds for every project
       live-spec runs, regardless of host.
@@ -194,8 +194,8 @@ The form of the showing: one window, real data, retold as a small story, opened 
 - **Retell, don't reference.** *(rule 8)*
    - When reporting an event or a result, tell it as a small story — who did what, what would have
      happened before, what happened instead, why it matters — in words that stand on their own. A pointer
-     into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is a record, not a
-     message: if the sentence only lands for someone who already holds the context, it hasn't been said
+     into internal bookkeeping ("harvested into rows 19–21", "the inbox worked") is only a record; the
+     message still needs speaking: if the sentence only lands for someone who already holds the context, it hasn't been said
      yet. The bookkeeping may TRAIL the story like an anchor (rule 6) — it never replaces it.
    - A LANDING report also names, in plain words, every pipeline step the wish's work-kind stood down
      ("design-sync — text product, stood down") — a skipped step is a written fact the human can read,
@@ -314,17 +314,17 @@ How a decision is put to the human so they can answer it.
       answer into its queue row the same session — an answer left un-harvested is a decision lost. (Born
       2026-07-05 from tuning images the same way.)
     - The standard-facet sweep (SPEC T-13/INV-18) does NOT ask through this batch: a facet taken
-      on its recommended default is TOLD on the landing report's defaults list — the tradeoff
+      on its recommended default is TOLD on the delivery report's defaults list — the tradeoff
       said in the product's words ("on a phone this gallery stacks into one column — tweakable"), the
       default already live so the lane never waited, no confirmation requested, silence is consent (SPEC
       INV-31). The cards carry only the genuinely open picks. A veto becomes a new wish, never a blocked
       lane.
     - A withdrawn pick converges like an answered one: an answer closes forever (SPEC INV-59), and
       a withdrawal re-asks in plainer terms — but after the second withdrawal of the same decision
-      (SPEC INV-130) the recommendation is taken and surfaced as a `[default]` on the landing report,
+      (SPEC INV-130) the recommendation is taken and surfaced as a `[default]` on the delivery report,
       silence consent from there, never re-asked. Count the withdrawals from the decision archive's
-      answered-then-withdrawn log; a later genuine change of mind arrives as a new wish, not a
-      reopening.
+      answered-then-withdrawn log; a later genuine change of mind arrives as a new wish. It never
+      reopens the closed decision.
 
 - **A taste ask carries the agent's own researched proposal (SPEC INV-60).** *(rule 21)*
     - A genuine taste question never arrives empty-handed: the agent has mined the material first —
@@ -428,7 +428,7 @@ meets them even without loading the file:
 
 - **State rules positively** *(rule 12)* — say what happens and when; reserve negatives for genuine
   prohibitions, stated as a plain imperative.
-- **Never the contrast frame** *(rule 15, the hardest, and it holds in live chat too)* — never name a
+- **Never the contrast frame** *(rule 15, the hardest, and it holds in live chat too)*. Never name a
   thing by denying its neighbour (an em-dash or comma leading into the denied alternative, and the
   parallel Russian shapes). Say what the thing IS in its own sentence; the linter's scissors check holds
   the floor (`scripts/spec-style-lint.py`), and the scan runs on every message to the human and on documents.
@@ -443,7 +443,7 @@ another sentence. Before any movement-end or milestone report goes to the human:
 
 1. **Re-read the rules above, and the full writing register** — open this file and read the live text each
    time, and open [`references/writing-register.md`](references/writing-register.md) (the register's home
-   since row 266) so the sixteen rules and the ten-point checklist are in front of you, not from memory.
+   since row 266) so the sixteen rules and the ten-point checklist sit in front of you, read live from the page each time.
 2. **Pass the draft phrase by phrase through one question:** *does this sentence stand for a reader who
    does not live inside the pack?* A pack surface the draft names is explained in the reader's own words
    or dropped; quiet trailing anchors stay legal — the walk governs what does the TALKING, never the
@@ -453,7 +453,7 @@ another sentence. Before any movement-end or milestone report goes to the human:
    the report goes out. It guards what a phrase-by-phrase read misses under load — its origin is a chat
    report that led with "rows 166 and 148", which the reader could not parse (2026-07-08). It only warns;
    you rewrite the line to lead with the outcome; it never rewrites for you (SPEC INV-28).
-4. **Run the register lint — a BLOCK, not a warning (SPEC INV-83).** Feed every human-facing
+4. **Run the register lint — a hard BLOCK (SPEC INV-83).** Feed every human-facing
    surface — a rendered page, an onboarding mockup, a decision page, a report artifact — to
    `python3 scripts/preshow-register-lint.py FILE`. It flags the pack's machine dialect: a coined
    metaphor shown raw ("the wish door", "work lean"), an English pack term loan-translated into
@@ -463,13 +463,13 @@ another sentence. Before any movement-end or milestone report goes to the human:
    what the next reader calls nonsense before walking away (2026-07-10). Each new leak that gets past
    the lint becomes a pattern the same day (the set grows by one per caught leak).
 5. **Legibility floor (a BLOCK, SPEC INV-139).** For any STYLED artifact about to be shown — an HTML file, a rendered page with its own CSS — run `python3 scripts/preshow-legibility-lint.py FILE`. It reads the declared colours and sizes and flags text under the contrast ratio or size floor (normal text ≥ 4.5:1, large ≥ 3:1, body/caption ≥ 12px). A red result BLOCKS the showing until the text is lifted to the floor. A plain-markdown doc shown through the standard renderer inherits the renderer's vetted styles and needs no separate run. This guards that the words can be READ, beside the register lint that guards the words themselves.
-6. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in its landing report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never a silent cut of substance. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting.
+6. **Account for every removal of substance (SPEC INV-109).** When the movement being reported rewrote or restyled existing text, the removal accounting runs before the report closes. A rewrite or restyle that removes substance — a section, an argument, a rationale, a worked example — lists every removal in the delivery report, one line of judgment each: the fact was kept and where, the owner killed it by name, or the rewriter proposes dropping and asks. A removal the rewriter cannot justify becomes a question before the report closes. Never cut substance silently. The rule scopes to substance and leaves line-level wording free, so a tightened sentence or a reordered clause needs no accounting.
 
 A pattern lint catches known coinages, known calques, and named term classes; it cannot judge a novel
 machine-flavoured abstraction it has never been shown. That residual is the clean-reader check: for a
 milestone showing, a fresh agent with the pack NOT loaded reads the surface as an outside reader
-(docs/spec-style.md, the clean-agent split). The register lint is the floor; the clean-reader check is
-the ceiling.
+(docs/spec-style.md, the clean-agent split). The text-audit skill is the home of that clean-reader loop
+and the reader-prompt it hands the fresh agent, so the walk points at it here rather than restating the method. The register lint is the floor; the clean-reader check is the ceiling.
 
 The walk adds no questions to the report — defaults are still TOLD, silence stays consent (SPEC
 INV-31). Acceptance belongs to the reader: a movement-end report that draws a "wait, what is
@@ -478,7 +478,7 @@ this?" is the walk not walked.
 **The same scan guards every QUESTION, wherever it rides (SPEC INV-81).** A question to the human —
 in a report's batched tail, on a decision page, or as a lone ask in chat — walks steps 2 and 3
 above before it is asked, and one gate more, asked FIRST: *can I decide or verify this myself?* A
-question that fails that gate is work, done instead of asked (base rule 1's second half); a
+question that fails that gate is really work; the agent does it and asks nothing (base rule 1's second half); a
 question that survives it arrives with its recommendation attached (rule 12's mined proposal). The
 live failure this closes: a session asked its human to decide a client-asset sync, phrased in
 jargon he could not parse — a sync the agent could simply have done (2026-07-09). Both laws
@@ -496,4 +496,4 @@ could have made yourself (rule 7).
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix
 > and writes the tests · **communicator** makes the human exchange land · **feedback-intake** brings what
-> comes back to its home · **feedback-collector** offers a rare private note up to the authors · **publish** sees the work out the door, owing its kind's checklist.
+> comes back to its home · **feedback-collector** offers a rare private note up to the authors · **text-audit** reads a text as a stranger and fixes where they stop · **publish** sees the work out the door, owing its kind's checklist.

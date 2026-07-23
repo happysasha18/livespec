@@ -11,7 +11,7 @@ every request kind has a named entry document and a mandatory back-check.
 | docs-only | its own light path | the removal accounting (INV-109) + the register lint |
 | a tiny reversible edit | the skip shortcut (code + test) | the spec-backed-literal tripwire (INV-104); anything visual enters at the matrix minimum |
 | a settings / parameter value | the settings ladder (profiles) | check it is genuinely a value — a new RULE is a feature for the spec |
-| an inbox wish (cross-project arrival) | the inbox sweep, then classified at the door like any request | the wish door's own verdict at intake; the outsider never writes the tree (base rule 16) |
+| an inbox wish (cross-project arrival) | the inbox sweep, then classified at the door like any request | the door's own verdict on the wish at intake; the outsider never writes the tree (base rule 16) |
 | a method / skill change | the same criterion, work-kind `skill` scaling each step's form | the pack's own product IS the method, so there is no separate meta-layer set — the design-reviewer's own landing this session is the worked proof (INV-22) |
 | a sketch (see / try) | a labelled `prototype/` home | unclear see-vs-have ⇒ one plain question; promotion enters at the spec step (base rule 16) |
 | research / a question from the docs | no layer (no write) | — |

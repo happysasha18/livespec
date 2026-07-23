@@ -21,7 +21,7 @@ This section continues the document whose format the intake page defines. The ke
 - **engine** — in an engine-and-instance pair, the generic reusable mechanism. It ships as its own host, public by default, tested on its own generic fixtures.
 - **instance** — in an engine-and-instance pair, the concrete product a real person uses today. It holds the content and plugs into the engine.
 - **content contract** — the engine's public list naming every place a concrete instance plugs in. Each entry has a handle and a test proving the engine works without that instance's value.
-- **attic** — the host's append-only archive folder (`attic/`). A superseded file moves here with one manifest line and is kept rather than deleted.
+- **attic** — the host's append-only archive folder (`attic/`). A superseded file moves here with one manifest line and is kept for good.
 - **migration chapter** — one dated, versioned entry in the migration guide (MIGRATION.md) stating the host-side steps a pack release requires.
 - **installer** — the pack's one install script (`install.sh`). It copies the pack's skills onto a machine and backs up any existing copy first.
 - **freshness check** — the check that compares each installed skill's version against the pack's and re-reads any skill whose version moved.
@@ -56,11 +56,11 @@ This section continues the document whose format the intake page defines. The ke
 
 ---
 
-## Requirement 2: Bootstrapping a fresh host
+## Requirement 2: Bootstrapping a fresh host  [feature: F-bootstrap]
 
 **Context:** A fresh host starts from the templates the pack ships. The system copies the document set and the suite scaffold, then the first request enters the queue and runs through the ordinary pipeline. The scaffold's green is the starting floor the first delivery builds on.
 
-**User Story:** As a person starting a fresh host, I want the templates and a runnable scaffold in place, so that the first request runs through the ordinary pipeline against a known starting floor. [F-bootstrap, B-1]
+**User Story:** As a person starting a fresh host, I want the templates and a runnable scaffold in place, so that the first request runs through the ordinary pipeline against a known starting floor. [B-1]
 
 ### Acceptance Criteria
 
@@ -83,7 +83,7 @@ This section continues the document whose format the intake page defines. The ke
 
 **Context:** Before the first request is worked, founding answers the questions that shape everything downstream, in the new spec's opening. The first of them is whether the product is a personal tool or a reusable product. Every later sentence leans on this answer, so an inferred answer is the most expensive silent choice.
 
-**User Story:** As a person founding a host, I want the founding questions asked outright at setup, so that the answers every later decision leans on come from my word rather than a guess. [B-2]
+**User Story:** As a person founding a host, I want the founding questions asked outright at setup, so that the answers every later decision leans on come from my own stated word. [B-2]
 
 ### Acceptance Criteria
 
@@ -165,7 +165,7 @@ This section continues the document whose format the intake page defines. The ke
 
 **Context:** Beside personal-versus-reusable, founding asks what the project is — a book, a backend service, a static site, a fullstack app, a CLI, or a skill pack. The answer is recorded in one line in the host profile and seeds the host's defaults. The line stays alive: when work notices the project has outgrown its kind, the line updates on the human's word.
 
-**User Story:** As a person founding or adopting a host, I want its project kind asked outright and recorded in one home, so that the host's defaults are seeded from a stated kind rather than a guessed one. [INV-36]
+**User Story:** As a person founding or adopting a host, I want its project kind asked outright and recorded in one home, so that the host's defaults are seeded from a kind stated at founding. [INV-36]
 
 ### Acceptance Criteria
 
@@ -194,7 +194,7 @@ This section continues the document whose format the intake page defines. The ke
 
 **Context:** The impact read, the footprint categories, and the test ladder are stated once by the pack in kind-abstract terms, and each project kind fills them with its own concrete parts. So the founding line that records the kind carries two more: the concrete layers this project splits into, and the concrete checks it proves with. The per-kind fill is the project's own ratchet from there.
 
-**User Story:** As a person founding a host of a given kind, I want its concrete layers and proof kinds declared beside its kind, so that the footprint read and the test levels run against this project's real parts rather than a hardcoded list. [INV-135]
+**User Story:** As a person founding a host of a given kind, I want its concrete layers and proof kinds declared beside its kind, so that the footprint read and the test levels run against this project's own declared parts. [INV-135]
 
 ### Acceptance Criteria
 
@@ -210,7 +210,7 @@ This section continues the document whose format the intake page defines. The ke
 
 **Case: the checks read the declared categories**
 
-4. The footprint check and the test-level rule *shall* read the project's declared categories rather than a hardcoded code list. [INV-134, INV-135]
+4. The footprint check and the test-level rule *shall* read the project's own declared categories. [INV-134, INV-135]
 5. The architecture document *shall* carry the per-kind footprint-and-proof table beside the node-structure-by-kind scaffold, and the spec and test roles *shall* read the declared layers and proofs rather than assuming code. [INV-135]
 6. *when* live-spec itself carries no product surface, the system *shall* ship the abstract law and leave the concrete assertion to the products it serves. [INV-163]
 
@@ -267,11 +267,11 @@ This section continues the document whose format the intake page defines. The ke
 
 ---
 
-## Requirement 10: Adoption runs as an ordered set of phases
+## Requirement 10: Adoption runs as an ordered set of phases  [feature: F-adoption]
 
 **Context:** Adoption attaches the pack to a project already under way. It runs as a sequence where each phase finishes before the next starts, and it assumes no blank slate. The version-control gate runs first so the whole run stays reversible.
 
-**User Story:** As a person attaching the pack to a running project, I want adoption to read everything first and re-engineer it into the pack's shapes without trusting or losing anything, so that the existing work is preserved and checked before it is trusted. [F-adoption]
+**User Story:** As a person attaching the pack to a running project, I want adoption to read everything first and re-engineer it into the pack's shapes without trusting or losing anything, so that the existing work is preserved and checked before it is trusted.
 
 ### Acceptance Criteria
 
@@ -336,15 +336,15 @@ This section continues the document whose format the intake page defines. The ke
 
 4. *when* adoption offers a cruft sweep, the system *shall* list the file counts and sizes of regenerable junk — caches, build leftovers, already-gitignored files — and *shall* delete only on the human's explicit approval. [A-9]
 5. The system *shall* route authored content through the attic and *shall* never let it qualify for the cruft sweep. [A-9]
-   [GAP: the layout of the adoption attic — a flat folder with a manifest against dated subfolders — is an open decision. D-1]
+   [GAP: the layout of the adoption attic — a flat folder with a manifest against dated subfolders — is an open decision, recorded open in DECISIONS.md with its recommendation and reason. D-1]
 
 ---
 
-## Requirement 13: The catch-up sequence brings an adopted host onto the current pack
+## Requirement 13: The catch-up sequence brings an adopted host onto the current pack  [feature: F-catchup]
 
 **Context:** An already-adopted host falls behind the pack as the pack moves. The catch-up sequence brings the host's documents and records onto the current pack. The owner asks in any wording; the version delta decides that catch-up fires, whatever words the ask used. The sequence runs four phases in fixed order.
 
-**User Story:** As the owner of an already-adopted host that has fallen behind, I want catch-up to bring it onto the current pack in fixed phases behind my gate, so that the host is brought current with nothing lost. [F-catchup, A-11]
+**User Story:** As the owner of an already-adopted host that has fallen behind, I want catch-up to bring it onto the current pack in fixed phases behind my gate, so that the host is brought current with nothing lost. [A-11]
 
 ### Acceptance Criteria
 
@@ -492,11 +492,11 @@ This section continues the document whose format the intake page defines. The ke
 
 ---
 
-## Requirement 19: The settings card shows at setup and answers the standing question
+## Requirement 19: The settings card shows at setup and answers the standing question  [feature: F-onboarding]
 
 **Context:** At the end of founding, and again at the end of adoption's orient, the system renders the settings card. The human reaches it twice — here at setup without asking, and any later time by asking. The card shows what the pack has set up and what is the human's to change, and asks nothing.
 
-**User Story:** As a person new to the pack, I want the settings card shown at setup and re-rendered whenever I ask what I can customize, so that I see every setting and change any of them by speaking its change-line. [F-onboarding, INV-87]
+**User Story:** As a person new to the pack, I want the settings card shown at setup and re-rendered whenever I ask what I can customize, so that I see every setting and change any of them by speaking its change-line. [INV-87]
 
 ### Acceptance Criteria
 
@@ -536,18 +536,20 @@ This section continues the document whose format the intake page defines. The ke
 
 ---
 
-## Requirement 20: Running an engine and its instance as a pair
+## Requirement 20: Running an engine and its instance as a pair  [feature: F-pair]
 
 **Context:** When founding takes the engine-and-instance split, the two repos run as a pair. Each repo is a full host with its own spec, queue, journal, and settings folder. No third document spans the pair. A lesson crosses between the two only through the inbox.
 
-**User Story:** As the owner of an engine-and-instance pair, I want each repo to run as its own full host with the inbox as the only cross-seam channel, so that one window serves one repo and neither half writes the other's tree. [F-pair, INV-86]
+**User Story:** As the owner of an engine-and-instance pair, I want each repo to run as its own full host with the inbox as the only cross-seam channel, so that one window serves one repo and neither half writes the other's tree. [INV-86]
 
 ### Acceptance Criteria
 
 **Case: each repo is a full host**
 
 1. Each repo of the pair *shall* carry its own spec, queue, journal, and `.live-spec/` folder, and no third document *shall* span the pair. [INV-86, E-1, E-14]
+   [GAP: whether one reading view is stitched across the pair's two queues, or strictly two are kept, is an open decision; today's practice is two plain queues, recorded open in DECISIONS.md. D-6]
 2. The engine's spec *shall* state what the mechanism does for any instance and *shall* cite no instance's content; the instance's spec *shall* state what the product is for its real user and *shall* cite the engine only by its content-contract handles. [INV-79, INV-86, D-7]
+   [GAP: whether the instance's spec may cite engine facts, or only the content-contract handles, is an open decision; today's practice is handles-only, recorded open in DECISIONS.md. D-7]
 
 **Case: wishes and lessons cross the seam**
 

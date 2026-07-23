@@ -73,5 +73,14 @@ class TestRequirementShapeGate(unittest.TestCase):
             self.assertNotIn("check-requirement-shape", f.read())
 
 
+class TestArmedOnTheRealSpec(unittest.TestCase):
+    def test_armed_passes_on_the_real_spec(self):
+        # Armed at the row-445 conversion delivery (INV-270): the gate now runs on the live
+        # PRODUCT_SPEC.md via the suite (gate b), the same suite-riding placement the INV-239
+        # nets take (guardrails/pre-push lines 152-157). It must pass on the root document.
+        r = run(os.path.join(ROOT, "PRODUCT_SPEC.md"))
+        self.assertEqual(r.returncode, 0, "the armed gate red the live spec:\n%s" % r.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()

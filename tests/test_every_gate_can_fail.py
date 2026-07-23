@@ -188,8 +188,9 @@ class TestEveryGateCanFail(unittest.TestCase):
     def test_spec_states_the_law(self):
         spec = read("PRODUCT_SPEC.md")
         self.assertIn("[INV-212]", spec)
-        self.assertIn("check-every-gate-can-fail.py", spec)
-        self.assertIn("gate-red-proofs.json", spec)
+        # The requirements-format spec states the law, not the implementing script/data filenames.
+        self.assertIn("each pushed gate letter to be classified with a red-first proof", spec)
+        self.assertIn("a gate can by construction never be made to fail", spec)
 
     def test_formal_index_row(self):
         self.assertIn("| INV-212 |", read("PRODUCT_SPEC.md"))

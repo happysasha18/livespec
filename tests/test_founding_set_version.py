@@ -110,15 +110,25 @@ class TestPackHostIsCurrent(unittest.TestCase):
 
 class TestSpecStatesTheLaw(unittest.TestCase):
     def test_spec_states_the_law(self):
+        # PRODUCT_SPEC.md states this law in plain behaviour; the literal set-is-versioned framing
+        # and the founding-questions.json manifest filename moved to ARCHITECTURE.md's INV-227
+        # ownership row (see test_architecture_owns_the_invariant) — the rewrite's document-
+        # boundary convention (spec = behaviour, architecture = implementation file).
         spec = open(os.path.join(REPO, "PRODUCT_SPEC.md"), encoding="utf-8").read()
-        self.assertIn("The founding-question set is versioned", spec)
+        self.assertIn(
+            "read the host's recorded `founding.set-version` against the current set", spec
+        )
         self.assertIn("[INV-227]", spec)
         self.assertIn("founding.set-version", spec)
-        self.assertIn("founding-questions.json", spec)
+        self.assertIn("name each founding question the host has never answered", spec)
 
     def test_formal_index_row(self):
         spec = open(os.path.join(REPO, "PRODUCT_SPEC.md"), encoding="utf-8").read()
-        self.assertIn("| INV-227 | the founding-question set is versioned", spec)
+        self.assertIn("| INV-227 |", spec, "INV-227 has no Reference index row")
+        self.assertIn(
+            "founding.set-version", spec,
+            "INV-227's body criterion doesn't carry the founding-set-version phrase",
+        )
 
     def test_architecture_owns_the_invariant(self):
         arch = open(os.path.join(REPO, "ARCHITECTURE.md"), encoding="utf-8").read()
@@ -136,7 +146,7 @@ class TestSpecStatesTheLaw(unittest.TestCase):
         # orient phase (MIGRATION.md, the operating guide for A-11). Assert both guides actually carry
         # the step, not just the spec prose (the audit's finding: a claimed home must be wired).
         spec = open(os.path.join(REPO, "PRODUCT_SPEC.md"), encoding="utf-8").read()
-        self.assertIn("names each question added since", spec,
+        self.assertIn("name each question added since", spec,
                       "the spec's catch-up orient phase does not name the never-answered questions")
 
         adopt = open(os.path.join(REPO, "adopt", "ADOPT.md"), encoding="utf-8").read()

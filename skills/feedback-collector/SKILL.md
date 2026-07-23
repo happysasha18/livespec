@@ -2,7 +2,7 @@
 name: feedback-collector
 description: The pack's outbound feedback arm. On a genuinely strong, RARE reaction from the user — a real delight, a real hurt, a comparably notable moment — OFFER, asking positive consent every time, to draft a short private "upstream note" to the pack's authors about what happened. Use when the conversation shows an unmistakable strong reaction and the host has turned `feedback-upstream: on`; it drafts a distilled, non-public note into `outbox/` and never sends it, delivery being the human's own step. NOT feedback-intake — that RECEIVES what a person hands in, this NOTICES a strong moment and offers to carry a note up. NOT a measurement machine — it reads one moment, never scores or aggregates. Off by default, silent unless a host opts in.
 metadata:
-  version: 3.6.0
+  version: 4.0.0
 ---
 
 # feedback-collector — an occasional note home to the authors
@@ -11,13 +11,13 @@ metadata:
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
 > need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live
-> ONCE in the pack's base skill, `live-spec-base` (v3.6.0), together with the settings ladder — this skill
+> ONCE in the pack's base skill, `live-spec-base` (v4.0.0), together with the settings ladder — this skill
 > references them and elaborates only its own domain. Used standalone, this note is plain advice.
 
-The pack has three arrows. communicator carries work OUT to the human. feedback-intake carries what a
-person hands BACK. This skill carries an occasional note UP — to the people who wrote the pack — so they
-learn what delighted or hurt real use. It is the outbound feedback arm, and it moves rarely and only with
-the human's explicit word. Spec home: `PRODUCT_SPEC.md` E-30 / T-21 / INV-161.
+The pack moves feedback in three directions. communicator carries work OUT to the human. feedback-intake
+carries what a person hands BACK. This skill carries an occasional note UP — to the people who wrote the
+pack — so they learn what delighted or hurt real use. It is the outbound feedback arm, and it moves rarely
+and only with the human's explicit word. Spec home: `PRODUCT_SPEC.md` E-30 / T-21 / INV-161.
 
 ## Before anything: the flag
 
@@ -35,9 +35,9 @@ the flag first, every time (settings ladder, `live-spec-base` E-13).
 ## When it fires
 
 With the flag on, the arm fires on **one genuinely strong, unmistakable reaction** — a real delight, a
-real hurt, a comparably notable moment. It fires at the tempo of the lead's own occasional surfacing: rare
-by design, on a clear signal, and silent on a mild or routine reaction. The reading of "strong" is a
-conservative floor here — take only the unmistakable, and when in doubt, stay silent. (The finer reading
+real hurt, a comparably notable moment. It fires rarely by design: on a clear signal, and silent on a mild
+or routine reaction. The reading of "strong" is a conservative floor here — take only the unmistakable, and
+when in doubt, stay silent. (The finer reading
 of the signal is its own later design pass; this v1 leans hard toward silence.)
 
 ## When NOT to fire
@@ -47,11 +47,11 @@ It stays silent — no offer, no note — on:
 - any reaction below the unmistakable bar (mild, routine, ambiguous — the default, and the common case);
 - the agent's own output or a question the agent asked;
 - a host that has not turned the flag on;
-- a moment the human hands in as ordinary feedback (that is feedback-intake's, not this arm's).
+- a moment the human hands in as ordinary feedback (feedback-intake owns that route).
 
-The one moment the human HANDS the reaction in (a comment on shown work), feedback-intake logs its
-field-evidence ledger line and this arm, if the moment reads as strong, offers the upstream note — the two
-do disjoint work, they do not compete (`PRODUCT_SPEC.md` E-30, T-20 route 4).
+When the human HANDS the reaction in — a comment on shown work — the two skills do separate parts of the
+work. feedback-intake logs its field-evidence ledger line. This arm, if the moment reads as strong, offers
+the upstream note (`PRODUCT_SPEC.md` E-30, T-20 route 4).
 
 ## The offer — positive consent, every time
 
@@ -62,26 +62,27 @@ yes. Example (English; mirror the chat's language):
 > here — what worked or what hurt? Nothing leaves without your explicit yes; it drafts privately to your
 > `outbox/`, nothing public.
 
-Consent here is **positive word, asked every time** — the deliberate opposite of the pack's
-silence-is-consent default (`INV-31`), because this is an outbound move about a real person. A silence, a
-shrug, or an unclear answer leaves the note **unwritten**. Only an explicit yes writes it.
+Consent here is a **positive word, asked every time**: the note is written only on an explicit yes. The
+pack's usual silence-is-consent default (`INV-31`) does not apply here, because this is an outbound move
+about a real person. A silence, a shrug, or an unclear answer leaves the note **unwritten**. Only an
+explicit yes writes it.
 
 ## The upstream note — distilled, non-public, deposited
 
 On the yes, write **one upstream note** and deposit it. The note is:
 
-- **distilled** — the point of what happened, not the raw material; never the transcript, never a script,
+- **distilled** — the point of what happened, and only the point; never the transcript, never a script,
   never the user's private content past what the point needs;
 - **self-contained** — it carries its own context, so a reader upstream who does not know this user
   understands it on its own;
-- **a courteous private request** — shaped for the authors, never for a public audience;
-- **anonymized** — the host's real entities are masked before the note leaves the draft (SPEC INV-179):
-  a person's name, the company or client, an internal product or repo name, a file path, a customer's
-  data — each becomes a neutral role word ("the owner", "a client project", "an internal repo"), and the
+- **a courteous private request** — shaped for the authors who will read it, and meant to stay private;
+- **anonymized** — the host's real entities are masked before the note leaves the draft (SPEC INV-179).
+  A person's name, the company or client, an internal product or repo name, a file path, a customer's
+  data: each becomes a neutral role word ("the owner", "a client project", "an internal repo"). The
   masking is part of the draft the user reads at consent, so what they approve is exactly what would
-  travel. The pack's own public names (skill names, invariant codes) stay. An enterprise host is the
-  reason this is a law rather than taste: a note that leaks an internal name is unsendable there, and a
-  note masked after the yes is a different note from the one approved.
+  travel. The pack's own public names (skill names, invariant codes) stay. An enterprise host makes this
+  a hard law: a note that leaks an internal name cannot be sent there, and a note masked after the yes is
+  a different note from the one approved.
 
 Example note (the shape to follow):
 
@@ -109,7 +110,7 @@ Deposit the note into the host's `outbox/` directory:
 
 - **gitignored** — `outbox/` never rides a push; a private note must not travel with the repo;
 - named by date (`outbox/upstream-note-YYYY-MM-DD.md`, a same-day suffix when a second lands);
-- **cleared once the human has delivered it** — the human's own step, not the pack's.
+- **cleared once the human has delivered it** — a step the human owns.
 
 The pack's side ends here. It opens **no** network connection and **no** public request on its own —
 sending outward is the human's gate (`live-spec-base` rule 17). Delivery upstream is a separate step the
@@ -128,7 +129,7 @@ feedback-intake's five routes (`INV-68`):
 ## What it is not
 
 - **Not feedback-intake.** That skill RECEIVES what a person hands in and routes it home; this NOTICES a
-  strong moment the agent observed and OFFERS to carry a note up. Opposite arrows. It occupies exactly the
+  strong moment the agent observed and OFFERS to carry a note up. Opposite directions. It occupies exactly the
   "never on the agent's own output" seam feedback-intake leaves open (`T-20`).
 - **Not a measurement machine.** It reads one moment and offers; it does not score, grade, or aggregate
   sentiment across a conversation or across notes. Reading machinery — plugins, aggregation — stays with

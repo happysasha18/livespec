@@ -89,7 +89,7 @@ def test_has_read_grant_predicate():
 
 def test_spec_states_the_law():
     spec = read("PRODUCT_SPEC.md")
-    assert "[INV-232]" in spec
+    assert "INV-232, INV-187]" in spec
     assert "| INV-232 |" in spec
 
 

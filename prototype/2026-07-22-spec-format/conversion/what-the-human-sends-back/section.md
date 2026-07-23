@@ -15,8 +15,8 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 - **feedback-collector** — the skill that notices a strong reaction and offers to carry a short note up to the pack's authors.
 - **upstream note** — a short, distilled, non-public account of what happened, shaped as a private request to the pack's authors and deposited for the person to deliver.
 - **outbox** — the gitignored per-host directory `outbox/` that holds an upstream note until the person delivers it; it never rides a push.
-- **scenario** — one section of the spec telling what a person does and what the person sees for one feature; the spec's body is a list of scenarios, and a shipped feature's scenario is the section that states its working behaviour.
-- **target tag** — the `[target]` marker a spec line carries on a line of its own to mark a feature that is planned rather than built.
+- **scenario** — a requirement whose heading carries a `[feature: F-...]` tag, telling what a person does and what the person sees for one feature; the spec's body is a list of requirements, and a shipped feature's scenario is the requirement that states its working behaviour.
+- **target tag** — the `[target]` marker a spec line carries on a line of its own to mark a feature that is promised but not yet built.
 - **decision archive** — the directory `docs/decisions/` that holds a decision page once its answer comes back.
 - **harvested row** — the queue row that an answer lands in when the session harvests it there.
 - **problem ledger** — the per-host file `.live-spec/PROBLEMS.md` that records a recurring operational problem as a signature with its dated occurrences and a status.
@@ -100,7 +100,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 ## Requirement 4: feedback-intake receives and never opens a row  [feature: F-feedback]
 
-**Context:** The skill feedback-intake owns this behaviour. It fires the moment a session receives an item, and again at every inbox sweep for a file that carries feedback rather than a wish. It stays quiet when there is nothing to receive, and it holds no verdict of its own on what becomes a queue row.
+**Context:** The skill feedback-intake owns this behaviour. It fires the moment a session receives an item, and again at every inbox sweep for any file that carries feedback. It stays quiet when there is nothing to receive, and it holds no verdict of its own on what becomes a queue row.
 
 **User Story:** As a person relying on the pack to catch what I hand in without inventing work, I want feedback-intake to fire on a real handed-in item and stay silent otherwise, so that every item is caught while my passing mentions and the agent's own output never spawn a row.
 
@@ -108,7 +108,7 @@ Terms already defined in the intake glossary and the founding, agents-together, 
 
 **Case: when it fires**
 
-1. *when* any session receives a handed-in item, the system *shall* run feedback-intake, and *shall* run it again at every inbox sweep for a file that carries feedback rather than a wish. [T-20, T-10]
+1. *when* any session receives a handed-in item, the system *shall* run feedback-intake, and *shall* run it again at every inbox sweep for any file that carries feedback. [T-20, T-10]
 
 **Case: when it stays quiet**
 

@@ -17,31 +17,48 @@ from conftest import ROOT, read_flat
 class TestWithdrawalConvergence(unittest.TestCase):
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
+        # the old summary sentence is gone; R7's own Case heading + R7.6's shall-subjunctive
+        # criterion carry the identical rule (second withdrawal -> recommended option surfaced
+        # as a default, never re-asked).
+        self.assertIn("Case: a withdrawn decision converges", spec)
         self.assertIn(
-            "A withdrawn decision converges: after two withdrawals the recommended option is taken as a surfaced",
+            "the same decision is withdrawn a second time, the system *shall* take the "
+            "recommended option, surface it as a `[default]`",
             spec,
         )
-        self.assertIn("[INV-130]", spec)
+        self.assertIn("INV-130", spec)
 
     def test_spec_states_the_bound_and_its_kin(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "after two withdrawals",
-            "taken as a surfaced `[default]`",
-            "silence stays consent",
-            "the same convergence an answered question already has",
+            "withdrawn a second time",
+            "surface it as a `[default]`",
+            "silence staying consent",
         ):
             self.assertIn(needle, spec, needle)
+        # the old "the same convergence an answered question already has" summary sentence is
+        # gone; the same relationship now stands structurally as R7.7, the very next criterion
+        # under the same "a withdrawn decision converges" Case, sharing INV-130's tag with the
+        # answered-question closing rule INV-59.
+        self.assertIn(
+            "The system *shall* close an answered question for good and *shall* route a later "
+            "change of mind as a new wish, the closed decision staying closed",
+            spec,
+        )
         # the bound is stated beside both kin invariants
-        self.assertIn("[INV-59]", spec)
+        self.assertIn("INV-59", spec)
 
     def test_formal_index_row(self):
+        row = None
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-130 |"):
-                    self.assertIn("withdraw", line.lower())
-                    return
-        self.fail("INV-130 Formal-index row missing")
+                    row = line
+                    break
+        self.assertIsNotNone(row, "INV-130 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — the "withdraw" prose check moves
+        # onto the body Case heading that carries INV-130 (already asserted above).
+        self.assertIn("Case: a withdrawn decision converges", read_flat("PRODUCT_SPEC.md"))
 
     def test_communicator_rule_carries_the_bound(self):
         cm = read_flat("skills/communicator/SKILL.md")

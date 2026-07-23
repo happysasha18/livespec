@@ -39,7 +39,7 @@ Before a wipe, prefer halting the workers or letting them finish, so the next se
 
 A worker's report is a lead. Evidence is raw output: the command, its exit code, and the failing lines, pasted into the checkpoint as the work runs (live-spec-base rule 5). The senior spot-checks by re-running.
 
-For a delegated or background test run, the verdict lives in the suite log itself. The gate reads the suite log's own tail line, the "N/N green" verdict. A wrapper's exit code reports only that the wrapper finished, and for a background or delegated run it never stands as the verdict (INV-80). A foreground gate reading its own child's exit stays legal. This law was landed the same evening one commit slipped through on a red suite because a command chain read a wrapper instead of the log (JOURNAL.md, session 30).
+For a delegated or background test run, the verdict lives in the suite log itself. The gate reads the suite log's own tail line, the "N/N green" verdict. A wrapper's exit code reports only that the wrapper finished, and for a background or delegated run it never stands as the verdict (INV-80). A foreground gate reading its own child's exit stays legal. This law was landed the same evening one commit slipped through on a red suite because a command chain read a wrapper's exit code and never read the log (JOURNAL.md, session 30).
 
 When the code step was delegated and the delta is surface-sized, verify also runs a fresh-context checker. It is briefed with the spec sentences the landing claims and the artifact paths, opens on the hypothesis "tasks completed, goal missed", and walks each claimed fact up the ladder exists → substantive → wired → flows (INV-46).
 

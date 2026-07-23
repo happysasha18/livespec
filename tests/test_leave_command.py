@@ -23,9 +23,16 @@ class TestLeaveCommandLaw(unittest.TestCase):
             self.assertIn("shutdown-safe", body, home)
 
     def test_workers_halted_before_the_machine_sleeps(self):
-        for home in self.HOMES:
+        # the spec's register rewrite reworded this clause to active voice ("halt ... or run
+        # them"), while the communicator skill still carries the original passive phrasing
+        # ("halted or run to their landing") — same meaning, per-home needle now.
+        needles = {
+            "PRODUCT_SPEC.md": "halt background workers or run them to their landing",
+            "skills/communicator/SKILL.md": "halted or run to their landing",
+        }
+        for home, needle in needles.items():
             body = read(home)
-            self.assertIn("halted or run to their landing", body, home)
+            self.assertIn(needle, body, home)
         # the base checkpoint rule carries the same duty at the lane level
         base = read("skills/live-spec-base/SKILL.md")
         self.assertIn("leave-word", base)
@@ -37,10 +44,16 @@ class TestLeaveCommandLaw(unittest.TestCase):
             self.assertIn("what resumes where", body, home)
 
     def test_never_said_early(self):
-        # the never side: the closing line only after every point holds
-        for home in self.HOMES:
+        # the never side: the closing line only after every point holds. PRODUCT_SPEC.md's
+        # requirements format italicizes the *when* keyword; skills/communicator/SKILL.md
+        # keeps the plain word — same meaning, per-home needle now.
+        needles = {
+            "PRODUCT_SPEC.md": "only *when* every point above holds",
+            "skills/communicator/SKILL.md": "only when every point above holds",
+        }
+        for home, needle in needles.items():
             body = read(home)
-            self.assertIn("only when every point above holds", body, home)
+            self.assertIn(needle, body, home)
 
     def test_spec_anchor_and_index(self):
         spec = read("PRODUCT_SPEC.md")

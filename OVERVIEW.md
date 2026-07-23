@@ -83,6 +83,7 @@ it permanent is a promotion into a profile, on the human's word.
 - **communicator** — shows work plainly and asks only the decisions the human can actually make.
 - **feedback-intake** — receives everything a person hands back and routes each item to its home.
 - **feedback-collector** — on a rare strong reaction, offers (with your yes) a private note up to the pack's authors; off by default, never sends on its own.
+- **text-audit** — reads any human-facing text as a stranger and fixes where a reader stops, until two clean cold reads.
 - **publish** — the quality gate when work leaves the machine, owing what the artifact's kind owes.
 
 ## What the spec learned recently

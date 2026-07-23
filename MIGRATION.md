@@ -8,7 +8,7 @@ The walk is the executable projection of PRODUCT_SPEC.md, "Bringing an adopted h
 
 The ask arrives in any wording. It might read "re-layout the documentation" or "catch up to the current pack"; it names no procedure, so the package names one, and that procedure is this walk.
 
-Route the ask before doing anything else. A host that never adopted the pack goes to adoption (`adopt/ADOPT.md`) — the first-adoption phases, not this walk. A host that already adopted goes to this catch-up walk. A single-document edit is not this walk; it belongs to the ordinary docs-only edit. A restructure of the host's own product is not this walk either; it is the host's own queue row through the build pipeline. This walk fires only to move an adopted host's own live-spec documents and records onto a newer package version. The catch-up walk fires only when the host's recorded package version is behind the current package VERSION. A docs restructure that carries no version delta is the host's own queue row through its pipeline, whatever wording the ask used. The trigger wordings are examples under this test. A wording never decides the routing; the version delta decides. (INV-110)
+Route the ask before doing anything else. A host that never adopted the pack goes to adoption (`adopt/ADOPT.md`) for the first-adoption phases. A host that already adopted goes to this catch-up walk. A single-document edit belongs to the ordinary docs-only edit. A restructure of the host's own product is the host's own queue row through the build pipeline. This walk fires only to move an adopted host's own live-spec documents and records onto a newer package version. The catch-up walk fires only when the host's recorded package version is behind the current package VERSION. A docs restructure that carries no version delta is the host's own queue row through its pipeline, whatever wording the ask used. The trigger wordings are examples under this test. A wording never decides the routing; the version delta decides. (INV-110)
 
 ## The walk
 
@@ -65,7 +65,7 @@ Every catch-up step reads its precondition from the tree before it acts. A step 
 - A profile file with differing content reconciles by the settings ladder: a line whose home sits at a machine-shared scope moves up, and a host-scoped line stays. A move up writes a machine-shared file, so it re-reads that file immediately before appending (the promotion law).
 - Any other differing file, and any remaining conflict, rides the plan to the owner's gate.
 
-Across all of this, never nest the old directory inside the new one, and never overwrite the new form with the old. The case this law was born from: `.livespec/` and `.live-spec/` both exist in a host that started the rename and stopped — the walk merges them rather than clobbering either.
+Across all of this, never nest the old directory inside the new one, and never overwrite the new form with the old. The case this law was born from: `.livespec/` and `.live-spec/` both exist in a host that started the rename and stopped — the walk merges them and overwrites neither.
 
 An installed-set record kept in an outdated format, such as commit pins, retires to the attic. The new record is read from the version lines of the skills actually installed on the machine and from the package `VERSION`. The skills on disk are the authoritative set; a stale record is corrected from them.
 
@@ -87,7 +87,7 @@ A Phase-4 gate that reads red only because the other half's own catch-up has not
 
 ## Machine-level steps
 
-Some steps touch the machine's shared homes — the installed-skills folder and the personal profile — and run once per machine, not once per host. Each such step states its already-done check: the directory that already exists, or the record that already reads current. A step whose check passes is reported done and skipped, exactly as under the half-done-state law.
+Some steps touch the machine's shared homes — the installed-skills folder and the personal profile. They run once per machine, and every host on it shares the result. Each such step states its already-done check: the directory that already exists, or the record that already reads current. A step whose check passes is reported done and skipped, exactly as under the half-done-state law.
 
 ## Migration chapters
 
@@ -97,7 +97,7 @@ A package release that changes something hosts must act on lands one dated, vers
 
 This chapter absorbs the 2026-07-05 package rename (livespec → live-spec, one name everywhere) and the same wave's matrix reshape, restated so each step is safe on a half-done tree.
 
-1. Rename the host's pack folder `.livespec/` → `.live-spec/`. If only the old name exists, rename it preserving history. If both exist, merge file by file under the half-done-state law — never nest the old directory inside the new one, never overwrite the new form with the old. If only the new name exists, the step is done and skipped.
+1. Rename the host's pack folder `.livespec/` → `.live-spec/`. If only the old name exists, rename it preserving history. If both exist, merge file by file under the half-done-state law. Never nest the old directory inside the new one, never overwrite the new form with the old. If only the new name exists, the step is done and skipped.
 2. Sweep the host's own docs for `livespec` references (spec, roadmap, and journal pointers to the pack; skill names in running text) → `live-spec`. The host's journal history entries stay as written.
 3. Re-record the installed set. The base skill is now named `live-spec-base`. A commit-pin record retires to the attic; the new record is read from the version lines of the skills actually installed and the package `VERSION`.
 4. Update the git remote URL at leisure (`git remote set-url … live-spec.git`). The GitHub redirect keeps old clone and remote URLs working meanwhile, so this step blocks nothing.
@@ -112,7 +112,7 @@ the machinery that keeps them that way. It changes no runtime behaviour, no skil
 host writes, and no adoption or catch-up step. A host adopts it the ordinary way — pull the pack, run
 `scripts/sync-skills.sh` — and owes nothing further.
 
-The major number marks two things a host inherits automatically by adopting, not a breaking change:
+The major number marks two things a host inherits automatically by adopting, and it breaks nothing:
 
 1. **The compaction ratchet on the host's own push gate.** A host that runs the pack's guardrails now
    carries the reached-clean floor: the register lint at zero, the redundancy gate at zero, the debt cap
@@ -135,7 +135,7 @@ backward over the host's tree (INV-176), re-seeds the ratchet caps for any older
 surface (INV-172), and rides the new founding questions to the owner. The tier is MINOR by rule 32 /
 SPEC INV-217: the host re-runs its walk and rewrites nothing it holds. What the walk brings in, grouped:
 
-1. **Register enforcement by a model, not a literal list (INV-203; INV-83 retracted its growth duty).**
+1. **Register enforcement gains a model above the literal list (INV-203; INV-83 retracted its growth duty).**
    The pack's register nets — the pre-show register gate and the Stop-hook chat scan — gain a
    class-reading judge above the literal-pattern list. The list stays the free, deterministic first
    pass; the judge is opt-in (`PRESHOW_REGISTER_JUDGE`), off by default, and never makes a green run
@@ -226,15 +226,15 @@ a permanent `Description` column, and every registered code — INV, E, T, A, M,
 a plain one-sentence human-clear description of what it does and the problem it solves. This is the
 one-pass migration INV-239 and INV-217 named: the description field's one home, filled once for the whole
 existing code set, arming the field gate that until now shipped dormant. The tier is MAJOR by rule 32 /
-SPEC INV-217 because a host does real authoring work its own session must run, not a walk it can re-run
-blind: a host back-describes its OWN registered codes.
+SPEC INV-217 because a host does real authoring work its own session must run: a host back-describes its
+OWN registered codes, work no walk can re-run blind.
 
 1. **The Formal index gains a `Description` column (E-35, INV-239).** The header moves from
    `| Anchor | One line | Description | Section |`; the terse `One line` stays the machine handle's home,
    and the new `Description` column is the plain human-clear line a person and a second agent read. Every
    code's description says what the item does and the problem it solves; where the rule governs a class,
-   it names the class and gives a representative handful of members inline rather than the exhaustive list
-   (the owner's accepted form, 2026-07-20). The English description is canonical and translated in real
+   it names the class and gives a representative handful of members inline, standing in for the exhaustive
+   list (the owner's accepted form, 2026-07-20). The English description is canonical and translated in real
    time for another language (INV-83).
 
 2. **The field gate arms (M-421, INV-239).** `guardrails/description-field.json` flips to `armed: true`
@@ -252,3 +252,68 @@ blind: a host back-describes its OWN registered codes.
 bar, adds the `Description` column to the host's Formal index, and arms the host's own description-field
 gate — the host's session authoring its own descriptions, none written on its behalf, behind the owner's
 gate.
+
+### 4.0.0 — 2026-07-22
+
+**Host action: run a migration.** The 4.0.0 major changes the product spec's own format. The spec moves
+from the scenario-first prose form to a requirements genre: a short preamble, a glossary, and a body of
+numbered requirements. Each requirement carries a Context block of two to four sentences, a one-sentence
+User Story, and acceptance criteria grouped into named cases. The keywords *when*, *while*, *if*, *then*,
+and *shall* read in lowercase italics; the code anchors trail at each line's end and point to the rule's
+home; a `[GAP: ...]` line records a hole the source spec never filled, so a real gap is stated and never
+invented. The format's full definition lives in `docs/spec-format.md`. The tier is MAJOR by rule 32 /
+SPEC INV-217 because the spec document's shape changed and a host does real authoring work its own
+session must run: a host rewrites its own spec into the new genre, work no walk can re-run blind.
+
+What the release carries, grouped:
+
+1. **The spec is a requirements document (`docs/spec-format.md`).** The whole spec reads as a preamble, a
+   glossary of every domain noun, and a list of requirements. A stranger can read any one section on a
+   first pass. The glossary holds one entry per term, and one artifact carries one name everywhere.
+
+2. **The manual Formal index retires; a generated table replaces it.** `scripts/build-index.py` reads the
+   body and writes a code-to-location table, embedded in the document's Reference section. No one edits it
+   by hand. `guardrails/check-index-generated.py` keeps it honest: it reds if the committed table drifts
+   from a fresh build, or if a code and its table row disagree.
+
+3. **Spec changes carry a delta record, and a size ratchet holds the document.** Every touched code names
+   one of four kinds — new, sharpen, retire, or scenario-only — and `guardrails/check-delta-record.py`
+   reds where the record and the actual diff disagree (SPEC INV-260). A bytes-per-criterion ratchet holds
+   the size: `guardrails/check-size-ratchet.py` seeds at the value the conversion lands on (209.0 bytes
+   per criterion for the pack's own spec) and only ever tightens from there.
+
+4. **A comprehension gate guards every converted or new section.** The mechanical lints run first — the
+   vocabulary check, the one-name check, the style lint, and the weak-word check. Then a panel of fresh
+   cold readers reads the section with no project context, until two consecutive reads return zero
+   blocking findings. Each new blocking word a reader finds joins the weak-word list.
+
+5. **The register bar now covers the whole prose corpus that ships** — the skills, the public docs, and
+   the working docs — and the style lint reaches further. `scripts/spec-style-lint.py` gained an arm that
+   flags the definitional `rather than` and `instead of` frames it read past before, the same
+   name-a-thing-by-denying-its-neighbour ban the dash-and-comma arm already held. The 2026-07-22 register
+   census (`docs/audit/2026-07-22-register-census.md`) is the per-file starting point the bar tightens
+   against.
+
+6. **A new working skill, text-audit, packages the audit loop.** It runs the mechanical lints, then the
+   fresh zero-context cold reads, with each fix made at the source, until two consecutive clean reads.
+   The pack now carries ten working skills.
+
+7. **Two terms settle under the one-name law.** The spec's vocabulary now reads *delivery report* (once
+   the landing report) and *harness task panel* (once the harness task list), and the pack skills carry
+   the new names throughout after the same 4.0.0 sweep. A host renames these two terms in its own
+   documents as part of its conversion.
+
+**How a host takes it.** A host keeps its current spec until it converts. The old format keeps working
+and no gate forces the move. The old-format templates stay in `templates/` until each host converts, so a
+host that pulls 4.0.0 and waits breaks nothing. When a host does convert, the pack's conversion recipe
+walks the spec unit by unit: convert each unit into the requirements genre, prove zero code drop through
+the unit's mapping, run the mechanical lints, put each converted section before the cold-reader panel, and
+assemble the units into one document. The 2026-07-22 conversion of the pack's own spec runs the recipe
+end to end and records every edit past a plain concatenation (`prototype/2026-07-22-spec-format/`).
+tlvphotos converts first, on the owner's word; other hosts follow on the same word.
+
+The host's own format gates — requirement-shape, vocabulary, one-name, weak-words, no-history, the
+generated index, the size ratchet, and the delta classifier — arm when the host's converted spec lands
+(SPEC INV-270); until then they stand dormant and red nothing. The installed-set record reads the pack
+version from the version lines the installed skills carry, so a host records 4.0.0 once its conversion
+lands behind the owner's gate.

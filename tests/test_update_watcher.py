@@ -123,7 +123,7 @@ class TestManifestCoversScaffoldKit(unittest.TestCase):
 class TestSpecStatesTheLaw(unittest.TestCase):
     def test_spec_block_and_index_row(self):
         spec = open(os.path.join(REPO, "PRODUCT_SPEC.md"), encoding="utf-8").read()
-        self.assertIn("reads the host's vendored pins", spec)
+        self.assertIn("the check reads vendored pins", spec)
         self.assertIn("| INV-177 |", spec)
 
 

@@ -235,7 +235,7 @@ def test_harness_warns_on_a_temp_glut():
 def test_spec_states_the_temp_is_not_self_purging():
     spec = _read("PRODUCT_SPEC.md")
     assert "not self-purging" in spec
-    assert "owns its litter across runs" in spec
+    assert "sweeps any stale process group and temp litter a prior run left" in spec
 
 
 def test_template_is_generic_core_no_project_methods():
@@ -261,7 +261,7 @@ def test_test_author_states_the_harness_rule():
 def test_spec_states_harness_invariants():
     spec = _read("PRODUCT_SPEC.md")
     assert "[INV-157]" in spec
-    assert "[INV-158]" in spec
+    assert "INV-158, INV-110]" in spec  # INV-158 always co-brackets with a sibling code
     assert "launches muted" in spec
 
 

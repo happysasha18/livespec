@@ -260,3 +260,12 @@ Every behavioural claim of the source, in source order by its bold-lead rule, ma
 ### The mechanical zero-drop check
 
 `cited-set` (132 codes from lines 277–620) minus `present-set` (codes anchored on criteria in `section.md`) is **empty**. Verdict: zero drop.
+
+### Prover MUST-FIX wave (row 445 audit, F2) — declared sharpen
+
+- **Glossary entry `cross-link mode`**: the pooled entry defined the mode as "the prover's whole-document pass", the opposite of R30's own Context (assembled R66: "A seam-scoped pass misses these, so the cross-link mode carries one mandatory whole-document step"). Audit finding F2. The entry is rewritten to the requirement's own meaning: the prover's focused pass at a surface add, scoped to the new surface's seams, carrying one mandatory whole-document step — the enumeration-and-quantifier re-verify. No criterion changed.
+
+### Final restoration wave (re-pin sweep) — declared additions
+
+- **R44.8 (held-for-milestone state).** Restores T-18's distinct held-for-milestone lane state, named apart from bug-parked because nothing failed. Owed by `test_traceability::TestSmallDesignHoles::test_176`. [T-18, M-1]
+- **R40.5 `[target]` (INV-21), R49.5 `[target]` (INV-198), R50.5 `[target]` (INV-199), R52.6 `[target]` (INV-201).** The success-measure reading machinery, the config-health primary-tree check, the merge-base/stale-lane checks, and the adoption-gate build leg — each a promised leg whose retired Formal-index `[target]` mark is restored as an own-line marker under a criterion citing its anchor. No new code (all four anchors pre-existed elsewhere in the unit). Owed by `TestTargetOwnership`.

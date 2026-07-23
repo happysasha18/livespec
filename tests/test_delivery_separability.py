@@ -26,20 +26,22 @@ class TestDeliverySeparabilityLaw(unittest.TestCase):
     def test_inv248_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "A declared composition axis that adds runtime code names whether its delivered artifact "
-            "divides along that axis or ships whole",
+            "Requirement 266: A declared axis that adds runtime code names whether its "
+            "artifact divides or ships whole",
             spec,
         )
         self.assertIn("[INV-248]", spec)
 
     def test_inv248_formal_index_row(self):
+        # the new-format index carries locations only (SPEC INV-271); the prose checks move
+        # to the body criteria that carry the code.
         spec = read("PRODUCT_SPEC.md")
         row = next((l for l in spec.splitlines() if l.startswith("| INV-248 |")), "")
         self.assertTrue(row, "INV-248 Formal-index row missing")
-        low = row.lower()
-        self.assertIn("delivered artifact", low)
-        self.assertIn("axis", low)
-        self.assertIn("finding", low)
+        flat = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("delivered artifact", flat)
+        self.assertIn("axis", flat)
+        self.assertIn("read the finding as the third case", flat)
 
     def test_inv248_prover_carries_the_lens(self):
         pp = read_flat("skills/product-prover/SKILL.md")
@@ -82,7 +84,7 @@ class TestDeliverySeparabilityLaw(unittest.TestCase):
         """The delivery-separability law is the DUAL of the composition-axes law, never folded into it:
         composition reads whether behaviour splits, this reads whether the delivered artifact splits."""
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("its dual reads whether the artifact the visitor receives divides", spec,
+        self.assertIn("Its dual reads whether the artifact the visitor receives divides", spec,
                       "the clause does not state itself as the dual of the composition law")
         self.assertIn("[INV-244]", spec)
 

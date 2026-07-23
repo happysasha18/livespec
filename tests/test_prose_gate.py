@@ -6,6 +6,7 @@ PRODUCT_SPEC.md passes the whole gate) land after the whole-document rewrite, si
 carries the register warnings the rewrite removes.
 """
 import datetime
+import importlib.util
 import json
 import os
 import re
@@ -17,6 +18,20 @@ from conftest import ROOT
 SCRIPTS = os.path.join(ROOT, "scripts")
 sys.path.insert(0, SCRIPTS)
 import gate_common  # noqa: E402
+
+
+def _load_lint_module():
+    """Load spec-style-lint.py as a module (its filename is hyphenated, so a plain import will not
+    reach it) — the born-red proof needs its internals: the legacy SCISSORS regex, the new
+    _rather_instead_scissors arm, and the shared scrub."""
+    path = os.path.join(SCRIPTS, "spec-style-lint.py")
+    spec = importlib.util.spec_from_file_location("spec_style_lint", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+LINT_MOD = _load_lint_module()
 
 
 def run(script, *args, stdin=None):
@@ -90,6 +105,86 @@ class TestScissorsCoverage(unittest.TestCase):
                   "не сработало, а также сломалось соседнее",
                   "правило написано, а когда проверим — увидим"):
             self.assertFalse(self._flags_scissors(t), "conditional «а» wrongly flagged: %r" % t)
+
+
+class TestRatherInsteadDefinitional(unittest.TestCase):
+    """The scissors frame in its two English prose conjunctions — "X rather than Y" / "X instead of
+    Y" used DEFINITIONALLY (census 2026-07-22, finding 1). The dash/comma regex never saw these, so
+    a file could carry dozens and pass clean. High-precision extension: a definitional contrast is
+    caught; a lawful instructional substitution passes.
+
+    Specimens are verbatim from the corpus (docs/, skills/) so the reds prove real volume, not a
+    contrived shape."""
+
+    # (line, source) — each a genuine contrast-by-denial the old rule missed
+    REAL_DEFINITIONAL = (
+        "since the compact row is now a map rather than a restatement.",              # restyle-repoint-log.md:76 — copula
+        "but it is deterministic bash/YAML checking rather than a reviewer skill",     # prior-art-longtail.md:170 — copula
+        'the "standards" are conventions rather than formal invariants',               # prior-art-frameworks.md:148 — copula
+        "A codebase-context injection tool rather than an SDLC orchestrator.",         # prior-art-frameworks.md:152 — a/an rename
+        'carries a dated "Last reconciled" provenance line instead of a version string, so',  # spec-author/SKILL.md:567 — instead-of rename
+        "Force is carried by plain declarative statement rather than by RFC keywords.",  # spec-style.md:13 — parallel by
+    )
+
+    # lawful — a directive substitution, not a definition; must PASS (precision over recall)
+    LAWFUL_INSTRUCTIONAL = (
+        "Use TEST_MATRIX.md instead of a scratch list.",       # imperative "use"
+        "Write to the engine rather than the site.",           # imperative "write" (the task's named form)
+        "Route the reply to the owner instead of the queue.",  # imperative "route"
+        "Save it to the cache rather than the home directory.",  # imperative "save"
+        "Store the fact in VERSION instead of the spec body.",  # imperative "store"
+    )
+
+    # the residual class the docstring names — deliberately uncaught to hold precision; must PASS
+    RESIDUAL_UNCAUGHT = (
+        "the suite enforces the tag rather than trusting it",              # verb-vs-gerund, no copula/rename
+        "so the open question travels with the text instead of being filled silently",  # verb-vs-gerund
+        "Recommend rather than ask.",                                     # genuine contrast, but opens imperative
+    )
+
+    def _flags_scissors(self, text):
+        r = run("spec-style-lint.py", "-", stdin=text + "\n")
+        return "scissors" in r.stdout
+
+    def test_definitional_rather_instead_is_caught(self):
+        for t in self.REAL_DEFINITIONAL:
+            self.assertTrue(self._flags_scissors(t), "definitional frame missed: %r" % t)
+
+    def test_born_red_legacy_regex_missed_these(self):
+        """Red-first, proven against the PRE-change logic: before this extension the scissors
+        decision was exactly `SCISSORS.search(scrub(text))`. That legacy regex is still in the
+        module — assert it matches NONE of the definitional specimens (they escaped, the census's
+        finding 1), while the new `_rather_instead_scissors` arm catches every one. The delta the
+        two assertions bracket IS the extension: a ratchet seeded on the old lint would have passed
+        a file still carrying these frames."""
+        scrub = LINT_MOD.gate_common.scrub
+        for t in self.REAL_DEFINITIONAL:
+            s = scrub(t)
+            self.assertIsNone(LINT_MOD.SCISSORS.search(s),
+                              "legacy scissors regex unexpectedly caught %r — no longer a born-red proof" % t)
+            self.assertTrue(LINT_MOD._rather_instead_scissors(s),
+                            "the new arm must catch what the legacy regex missed: %r" % t)
+
+    def test_lawful_instructional_substitution_passes(self):
+        for t in self.LAWFUL_INSTRUCTIONAL:
+            self.assertFalse(self._flags_scissors(t), "false positive on lawful directive: %r" % t)
+
+    def test_residual_class_passes_by_design(self):
+        for t in self.RESIDUAL_UNCAUGHT:
+            self.assertFalse(self._flags_scissors(t), "residual class must pass (precision): %r" % t)
+
+    def test_quoted_specimen_passes(self):
+        # a frame demonstrated inside backticks is talked ABOUT, not used — scrub strips it, so it
+        # must not trip the rule (the same courtesy the dash/comma frame gets).
+        self.assertFalse(
+            self._flags_scissors("The banned frame `a map rather than a restatement` is shown here."),
+            "a backtick-quoted specimen must pass")
+
+    def test_old_dash_and_comma_frames_still_fire(self):
+        # no-regression: the extension is an OR alongside the legacy regex, which must keep working.
+        for t in ("It is a record, not a message.",
+                  "the card shows the outcome — not the mechanism."):
+            self.assertTrue(self._flags_scissors(t), "legacy scissors frame regressed: %r" % t)
 
 
 class TestWaiverMechanism(unittest.TestCase):

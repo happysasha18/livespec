@@ -100,15 +100,18 @@ class TestFoundingLaw(unittest.TestCase):
 
     def test_spec_clause_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("A project's founding declares its concrete layers and its concrete proof kinds", spec)
+        # R174 heading: requirements-format rewrite retitles the same clause.
+        self.assertIn("Founding declares the project's concrete layers and proof kinds", spec)
         self.assertIn("[INV-135]", spec)
+        row = None
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-135 |"):
-                    self.assertIn("layer", line.lower())
-                    self.assertIn("proof", line.lower())
-                    return
-        self.fail("INV-135 Formal-index row missing")
+                    row = line
+                    break
+        self.assertIsNotNone(row, "INV-135 Formal-index row missing")
+        # index now carries locations only (SPEC INV-271) — the "layer"/"proof" prose check
+        # moves onto the body heading asserted above, which carries both words.
 
     def test_architecture_has_per_kind_footprint_and_proof_table(self):
         arch = read_flat("ARCHITECTURE.md")

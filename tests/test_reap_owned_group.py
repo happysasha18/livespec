@@ -154,8 +154,9 @@ def test_reap_module_passes_the_broad_kill_gate():
 # --- spec / architecture / matrix carry the law ---
 
 def test_spec_states_the_law():
+    import re
     spec = read("PRODUCT_SPEC.md")
-    assert "[INV-230]" in spec
+    assert re.search(r"\[[^\]\n]*\bINV-230\b[^\]\n]*\]", spec)
     assert "| INV-230 |" in spec
 
 

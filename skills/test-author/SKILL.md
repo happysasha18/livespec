@@ -2,7 +2,7 @@
 name: test-author
 description: Derive TEST_MATRIX.md from a proven spec through a proven architecture, then write the tests — the level ladder (string / DOM-text / browser-computed / pixel), real-artifact assertions, red-first proof, the pinned skip-set, and traceability as a standing test. Normally invoked by build-pipeline at its matrix and test steps (5–6). Use it directly when the user asks to "derive the test matrix", "pin test levels", "why did green tests miss this bug", or "rebuild the suite by the method". NOT for a project with no proven spec or matrix — "write tests for X" alone routes to build-pipeline first (the spec and architecture steps come before tests); and never a substitute for product-prover — this skill covers facts with tests, the prover finds holes in what documents claim.
 metadata:
-  version: 3.6.0
+  version: 4.0.0
 ---
 
 # test-author — from a proven spec to tests that would have caught the bug
@@ -10,7 +10,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v3.6.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v4.0.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -24,8 +24,8 @@ credited); the pack's own matrix template is the shipped shape.
 ## What this skill owns
 
 Two artifacts, in order. **TEST_MATRIX.md** — the spec projected into a checkable grid: derived from
-the proven spec THROUGH the proven architecture, one block per architecture node, and the spec stays
-the source of truth (the matrix is a projection, never a second authority). Then **the tests** — one
+the proven spec THROUGH the proven architecture, one block per architecture node, and the spec keeps
+sole authority over what is true. Then **the tests** — one
 owning test per matrix row, asserting the real shipped artifact. build-pipeline keeps the order and
 the gates; product-prover keeps semantic review; the guardrails keep mechanical enforcement. This
 skill owns the JUDGMENT in between: which facts, at which level, asserted how.
@@ -51,9 +51,9 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    `norm: <path>` pointer (SPEC INV-43), the matrix owes a conformance row asserting the render's
    STRUCTURE against the frozen norm — every norm section and row name present in the render, no
    invented sections or value formats — at DOM-text level or above; the look itself stays the human's
-   eye at the feel gate, never a pixel row's claim. The never side: never a render inventing its own
-   structure shipped green. Its sibling half lives in build-pipeline's code step — the norm-open rule
-   with the plan-vs-prototype diff line in the landing report — and a review cites the two halves
+   eye at the feel gate, and no pixel row claims it. The never side: a render that invents its own
+   structure never ships green. Its sibling half lives in build-pipeline's code step — the norm-open rule
+   with the plan-vs-prototype diff line in the delivery report — and a review cites the two halves
    together.
 8. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
    node's never-side rows present · every module block owns an interface-level row (P9) · every row's
@@ -87,16 +87,17 @@ derivation defect this reading closes.
 
 **The level follows the footprint's layer (SPEC INV-128).** In one line: the test level follows the layer
 the change touches. A presentation change is asserted at browser-computed or above, because the user sees
-it. A single-module change is asserted at its module's interface — the row asserts the module's contract,
-not its internals or a neighbour's render. A cross-cutting law is asserted by a string or traceability test
-that holds across every surface it governs. Tying the level to the footprint layer makes the right level a
-derivation rule rather than a judgment call each time; a presentation fact tested as a string is the exact
-defect the ladder was born to kill (the visibility rule above — any visibility/layout/colour fact takes
+it. A single-module change is asserted at its module's interface: the row asserts the module's contract.
+It leaves the module's internals and any neighbour's render out of scope. A cross-cutting law is asserted
+by a string or traceability test that holds across every surface it governs. Tying the level to the
+footprint layer makes the right level a derivation rule, so the level stops being a fresh judgment call
+each time; a presentation fact tested as a string is the exact defect the ladder exists to catch (the
+visibility rule above — any visibility/layout/colour fact takes
 browser-computed — is the first instance of this mapping).
 
 **A module's tests run against its interface; a cross-cutting law gets a test per surface (SPEC INV-101).**
 Each module declares its interface, and each module block in the matrix owns at least one interface-level
-row: each module's tests assert its declared interface rather than its internals or a neighbour's render.
+row: each module's tests assert its declared interface, and they leave its internals and a neighbour's render alone.
 A test bound to a module's internals breaks on every refactor and proves nothing about the contract; a test
 bound to a neighbour's render couples two modules the boundary meant to separate. This gives the
 three-question fitness test's "testable alone" [INV-122] a concrete home — one interface-level row per
@@ -133,15 +134,15 @@ device class; the suite says plainly what it cannot see.
   workspace, and a headless browser's download directory is pointed at the temp home explicitly
   (the 42-files-in-Downloads incident, 2026-07-10). Give temp artifacts the suite's own prefix and
   keep one session-scoped before/after diff of the temp home in the suite, so a leak turns the run
-  red instead of waiting for a human eye.
+  red at once, before a human eye would catch it.
 - **A test's expected value derives independently of the code under test (SPEC INV-102).** A test
   compares the code's output against an expected value, and that value comes from a source other than
   the code under test. Never recompute the code's own formula and assert the result as the expected
   value; such an assertion is a mirror that can never catch the formula being wrong, since the code is
   only ever asserted equal to itself. Three sources are legal: a hand-computed constant, an independent
   derivation, or a recorded real output reviewed by a human. A round-trip or property test over the
-  outputs stays legal, because it asserts an invariant rather than a recomputed value; the ban strikes
-  only an assertion whose expected value is produced by the same formula the code runs.
+  outputs stays legal, because it asserts an invariant. The ban strikes only an assertion whose
+  expected value is produced by the same formula the code runs.
 - **A geometry fact is asserted relative, wide, and long (SPEC INV-78).** A centering or
   positioning fact asserts relative geometry — the element's center within ε of the viewport's
   center — at two or more viewport sizes, and after N consecutive steps of the interaction, so
@@ -150,7 +151,7 @@ device class; the suite says plainly what it cannot see.
 - **Never edit a test to make a change pass.** A red test means the change or the matrix cell is
   wrong; the cell is corrected first, and the test follows the corrected cell.
 - **Pin the skip-set.** Green means zero failures AND the skip list is exactly the expected, pinned
-  set. An unexpected skip (a browser missing, a fixture absent) is a failure wearing a quieter color.
+  set. An unexpected skip (a browser missing, a fixture absent) is a failure in a quieter color.
 - **A test passes for the same reason every run — green means deterministic (SPEC INV-155).** A test
   that passes on some runs and fails on others is flaky, and one question routes it: is the source of
   the nondeterminism removable in code the project owns, the test or the product? When it is — a
@@ -163,9 +164,9 @@ device class; the suite says plainly what it cannot see.
   with a dated reason and an owning queue row.
 - **A browser test harness launches muted and reaps what it spawned (SPEC INV-157).** A harness driving
   a real browser starts it muted (`--mute-audio`), reaps the whole process group of the browser it
-  launched so no orphan accumulates, and bounds each command with a real per-command deadline rather
-  than a blanket timeout that reads a slow machine as a failure. Clean teardown means EVERY exit, not
-  just the tidy one: teardown runs on `atexit` and on `SIGINT`/`SIGTERM`, so Ctrl-C and most kills
+  launched so no orphan accumulates, and bounds each command with a real per-command deadline. A
+  blanket timeout would misread a slow machine as a failure. Clean teardown covers EVERY exit, the
+  abrupt ones as much as the tidy one: teardown runs on `atexit` and on `SIGINT`/`SIGTERM`, so Ctrl-C and most kills
   still reap the group; and because the uncatchable exits (`SIGKILL`, power loss, sleep mid-run) never
   run teardown, a launch-time sweep is the backstop — each launch reaps a prior run's leaked profile
   dir and process group when the run's recorded owner is dead, so a killed run's orphans are swept on
@@ -178,14 +179,14 @@ device class; the suite says plainly what it cannot see.
   comment-stripped code, since the launch call and the flag rarely share a line — so a hand-rolled
   harness's unmuted launch fails the run by machine, swept across the whole tree on every run (SPEC
   INV-157).
-- **The suite's own plumbing must not lie (SPEC INV-80).** A skip path executes even when never
-  taken: import the skip helper at module load, so a skip that cannot run is red on every machine
-  instead of a silent pass on the one that needed it (a `skip()` NameError once hid exactly there).
+- **The suite's own plumbing must not lie (SPEC INV-80).** The skip machinery must load even on a run
+  that never takes the skip: import the skip helper at module load, so a skip that cannot run goes red on every machine.
+  Without that early import, a broken skip would pass silently on the one machine that needed it (a `skip()` NameError once hid exactly there).
   An engine/instance shim owes a re-export completeness test — every name the instance re-exports
   from the engine, asserted present (a missing re-export once kept a whole suite silently red). And
   a wrapper's exit code is never the verdict for a background or delegated run: the gate reads the
-  suite log's own tail line ("N/N green"), because a wrapper's exit 0 is the wrapper's, never the
-  tests'.
+  suite log's own tail line ("N/N green"), because a wrapper's exit 0 reports the wrapper finishing
+  and says nothing about the tests.
 - **Traceability is a standing, enforced test**: a test in the suite fails on a matrix row citing a
   missing test, a duplicate id, a spec fact with no row, or a resolved-but-live decision marker — so
   drift is caught at every commit.
@@ -207,7 +208,7 @@ this skill DERIVES what they later enforce).
 > The pack, whole: **live-spec-base** holds the shared rules and defaults · **spec-author** writes the spec ·
 > **product-prover** reviews it · **design-reviewer** judges the design behind it · **build-pipeline** ships the change · **test-author** derives the matrix
 > and writes the tests · **communicator** makes the human exchange land · **feedback-intake** brings what
-> comes back to its home · **feedback-collector** offers a rare private note up to the authors · **publish** sees the work out the door, owing its kind's checklist.
+> comes back to its home · **feedback-collector** offers a rare private note up to the authors · **text-audit** reads a text as a stranger and fixes where they stop · **publish** sees the work out the door, owing its kind's checklist.
 
 Credits: the level ladder, the state-space walk, and the bug protocol were proven on track-coach
 (github.com/happysasha18/track-coach, MIT) during its 2026-07 test overhaul; the enforcement pattern

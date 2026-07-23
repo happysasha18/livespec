@@ -109,5 +109,5 @@ def test_spec_retracts_the_growth_duty_and_names_the_judge():
     assert "grows by nobody's duty" in text, "SPEC must state the list grows by nobody's duty (INV-83)"
     assert "register judge" in text, "SPEC does not name the register judge as the residual's holder (INV-203)"
     assert "preshow-register-lint.py" in text, "SPEC does not name the register lint script (INV-83)"
-    assert "reach is the shown artifact" in text, "SPEC lost INV-83's reach sentence"
+    assert "scope its reach to the shown artifact" in text, "SPEC lost INV-83's reach sentence"
     assert "| INV-83 |" in text, "Formal index lost INV-83"

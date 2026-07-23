@@ -289,11 +289,20 @@ def _read(rel):
 def test_spec_states_the_law():
     spec = _read("PRODUCT_SPEC.md")
     assert "[INV-246]" in spec
-    assert "lean-orchestrator-scan.py" in spec
+    # the "Ships as `hooks/lean-orchestrator-scan.py`" sentence is gone from the compact rewrite;
+    # the filename anchor now lives only in ARCHITECTURE.md (already checked by
+    # test_architecture_owns_the_invariant below), so the spec check moves to the criterion text
+    # that names the same duty.
+    assert "cumulative inline raw file content across the session reaches the threshold" in spec
+    assert "the worker-dispatch count is zero" in spec
 
 
 def test_formal_index_row():
-    assert "| INV-246 | the lean-orchestrator arm:" in _read("PRODUCT_SPEC.md")
+    spec = _read("PRODUCT_SPEC.md")
+    assert "| INV-246 |" in spec
+    # index now carries locations only (SPEC INV-271) — the "the lean-orchestrator arm:" prose
+    # moves onto the body requirement heading that carries INV-246.
+    assert "Two Stop-hook soft signals: the hedge gate and the lean-orchestrator arm" in spec
 
 
 def test_architecture_owns_the_invariant():

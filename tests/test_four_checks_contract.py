@@ -19,9 +19,13 @@ from conftest import ROOT, read
 class TestFourChecksContract(unittest.TestCase):
     def test_contract_in_the_spec(self):
         spec = read("PRODUCT_SPEC.md")
-        self.assertIn("code a host attaches, never prose it re-implements", spec)
+        self.assertIn(
+            "the four project-side checks configured rather than re-implemented", spec
+        )
         self.assertIn("parametrized by one host config file", spec)
-        self.assertIn("a missing config is red with an attach-me line, never a silent pass", spec)
+        self.assertIn(
+            "shall* red with an attach-me line rather than pass silently", spec
+        )
 
     def test_waivers_are_declared(self):
         spec = read("PRODUCT_SPEC.md")

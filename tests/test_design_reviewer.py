@@ -88,22 +88,26 @@ def test_cross_sibling_routing_split():
 
 def test_spec_clauses_stand():
     spec = read("PRODUCT_SPEC.md")
-    assert "A design review reads a proven spec and judges the design behind it." in spec, \
+    assert "A design review reads a proven spec and judges the design behind it" in spec, \
         "SPEC lost the INV-141 clause headline"
     assert "Every design review finding carries a confidence read" in spec, \
         "SPEC lost the INV-142 clause headline"
-    assert "[INV-141]" in spec and "[INV-142]" in spec, "SPEC lost the clause anchors"
+    assert "INV-141" in spec and "INV-142" in spec, "SPEC lost the clause anchors"
 
 
 def test_formal_index_rows():
+    # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only, no
+    # prose. Assert each row's presence and its first location; assert the "design
+    # review" subject against the flattened spec body instead (both requirement
+    # headlines name it — R61's and R69's — already checked in test_spec_clauses_stand).
     lines = read("PRODUCT_SPEC.md").splitlines()
+    spec_flat = read_flat("PRODUCT_SPEC.md")
+    first_loc = {"INV-141": "R55.4", "INV-142": "R68.2"}
     for anchor in ("INV-141", "INV-142"):
         row = next((l for l in lines if l.startswith("| %s |" % anchor)), None)
         assert row is not None, "no Formal-index row for %s" % anchor
-        assert "design review" in row, "%s index row lost its subject" % anchor
-        # the row is a compact map; the full statement and its homes list live in the prose clause
-        clause = next((l for l in lines if l.startswith("**") and l.rstrip().endswith("[%s]" % anchor)), None)
-        assert clause is not None, "%s lost its prose clause" % anchor
+        assert first_loc[anchor] in row, "%s index row lost its expected location" % anchor
+    assert "design review" in spec_flat, "spec body lost the design-review subject"
 
 
 # --- the architecture node and seams ---
@@ -138,10 +142,13 @@ def test_fixed_point_loop_bounded_and_nonblocking():
     spec = read("PRODUCT_SPEC.md")
     assert "three progressing rounds" in spec, "SPEC lost the three-progressing-rounds cap"
     assert "without holding the landing" in spec, "SPEC lost the never-holds-a-landing property"
-    assert "CONVERGES" in spec and "WAITS" in spec, "SPEC lost the two named resting states"
-    assert "STANDS DOWN" in spec, "SPEC lost the third (stand-down) resting state"
-    assert "does not bar convergence" in spec, \
-        "SPEC lost the standing-recommendation-does-not-bar-convergence property"
+    assert "it converges when the design review left no open question and no new grouping" in spec \
+        and "it waits when a question stands unanswered" in spec, \
+        "SPEC lost the two named resting states"
+    assert "it stands down when no element a person acts on exists" in spec, \
+        "SPEC lost the third (stand-down) resting state"
+    assert "since neither re-reads the spec on its own" in spec, \
+        "SPEC lost the standing-recommendation-does-not-advance-the-loop property"
     assert "A round is one prover re-read" in spec, "SPEC lost the round definition"
 
     pipeline = read("skills/build-pipeline/SKILL.md")

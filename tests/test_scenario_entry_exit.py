@@ -23,18 +23,20 @@ class TestScenarioEntryExit(unittest.TestCase):
     def test_spec_lifts_pre_post_to_scenario_level(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "the per-operation precondition and postcondition lenses to the scenario level",
-            "a flow whose entry or exit is unstated is a finding",
+            "the scenario-level lift of the per-operation precondition and postcondition lenses",
+            "the prover reads a flow whose entry or exit is unstated, the system *shall* report it as a finding",
             "binds forward",
         ):
             self.assertIn(needle, spec, needle)
 
     def test_formal_index_row(self):
+        # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
+        # "entry"/"exit" prose is asserted against the spec body in test_spec_clause_stands
+        # (the requirement heading itself: "how it is entered and how it exits").
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-127 |"):
-                    self.assertIn("entry", line.lower())
-                    self.assertIn("exit", line.lower())
+                    self.assertIn("R65.1", line)
                     return
         self.fail("INV-127 Formal-index row missing")
 

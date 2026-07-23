@@ -16,10 +16,10 @@ def test_spec_states_the_definition_of_correct():
     # the triage default: a divergence is presumed a product error, checked against the spec
     assert "defaults to a possible error in the product" in spec
     # the silent-spec path is completed and pinned
-    assert "completed to state the guarantee" in spec
+    assert "complete the spec to state the guarantee" in spec
     # the forbidden move
     assert "never silently rewritten to match the product" in spec
-    assert "[INV-144]" in spec
+    assert "INV-144" in spec
     # Formal-index row
     assert "| INV-144 |" in spec
 

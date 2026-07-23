@@ -4,7 +4,7 @@
 
 Sometimes a moment lands hard — a real delight, a real frustration. This skill notices such a moment and offers to draft a short **upstream note** to the people who wrote the pack, so they learn what worked or what hurt in real use. It asks first, every time; it drafts privately; and it never sends — delivery stays your own step.
 
-It is the third arrow of the pack's exchange. The [communicator](https://github.com/happysasha18/live-spec/tree/main/skills/communicator) skill carries work out to you. The [feedback-intake](https://github.com/happysasha18/live-spec/tree/main/skills/feedback-intake) skill carries what you hand back. This skill carries an occasional note up to the authors.
+It is the third of the pack's feedback directions. The [communicator](https://github.com/happysasha18/live-spec/tree/main/skills/communicator) skill carries work out to you. The [feedback-intake](https://github.com/happysasha18/live-spec/tree/main/skills/feedback-intake) skill carries what you hand back. This skill carries an occasional note up to the authors.
 
 This skill ships inside the live-spec pack. Install the pack to get it. Used on its own, this README reads as plain advice about sending feedback upstream.
 

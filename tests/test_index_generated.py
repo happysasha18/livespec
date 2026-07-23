@@ -73,11 +73,22 @@ class TestIndexGeneratedGate(unittest.TestCase):
             self.assertNotEqual(r.returncode, 0, "passed an empty body:\n%s" % r.stdout)
             self.assertIn("EMPTY", r.stdout.upper())
 
-    def test_gate_not_wired_into_pre_push_or_ci(self):
+    def test_gate_wired_as_gate_x(self):
+        # Armed at the row-445 conversion delivery (INV-270): check-index-generated took over gate x
+        # from the retired check-index-prose, wired into the local push gate and the CI mirror.
         with open(os.path.join(ROOT, "guardrails", "pre-push"), encoding="utf-8") as f:
-            self.assertNotIn("check-index-generated", f.read())
+            self.assertIn("check-index-generated.py", f.read())
         with open(os.path.join(ROOT, ".github", "workflows", "gates.yml"), encoding="utf-8") as f:
-            self.assertNotIn("check-index-generated", f.read())
+            self.assertIn("check-index-generated.py", f.read())
+
+
+class TestArmedOnTheRealSpec(unittest.TestCase):
+    def test_armed_passes_on_the_real_spec(self):
+        # Armed at the row-445 conversion delivery (INV-270): the gate runs on the live
+        # PRODUCT_SPEC.md and its committed index PRODUCT_SPEC.index.md via the suite (gate b).
+        r = run(os.path.join(ROOT, "PRODUCT_SPEC.md"),
+                os.path.join(ROOT, "PRODUCT_SPEC.index.md"))
+        self.assertEqual(r.returncode, 0, "the armed index gate red the live spec:\n%s" % r.stdout)
 
 
 if __name__ == "__main__":

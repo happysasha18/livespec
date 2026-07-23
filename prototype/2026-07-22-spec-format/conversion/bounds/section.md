@@ -11,7 +11,7 @@ Terms already defined in the intake glossary and the founding section's addition
 - **net** — one hook or guard that watches for a stated condition and fires when it holds. A guardrail is one kind of net.
 - **push gate** — the ordered chain of nets that runs before a push to the pack's repository and blocks the push on any red. Each net in the chain carries a letter.
 - **prover record** — one dated file under `docs/prover/` recording one review pass: what was reviewed, the findings, and the verdict. The push gate reads that a committed record dated the push's own day exists and is at least as new as the documents it covers.
-- **net-liveness meter** — the shared instrument that records how often a net ran and how often it fired, and reads the two numbers back so a silent net is judged rather than trusted.
+- **net-liveness meter** — the shared instrument that records how often a net ran and how often it fired, and reads the two numbers back so a silent net is caught by the numbers.
 - **test matrix** — the document (`TEST_MATRIX.md`) whose rows pair one architecture node with one spec fact, each row pinning the test level that covers the fact.
 - **feature-coverage trace** — a second traceability layer above the test matrix, keyed to the project's primary unit, that maps each unit to the node implementing it and a test exercising it.
 - **register judge** — the model call that reads a stretch of outgoing text against the plain-language register law and returns the sentences that carry no information or leak register.
@@ -37,7 +37,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 ## Requirement 1: Every process converges on a goal named as an artifact
 
-**Context:** Every piece of work the pack runs walks toward a goal. So the work names that goal up front as a concrete artifact it can be measured against — a frozen norm, an exemplar bank, a failing test, a written acceptance — never a paraphrase. Each pass measures its distance to the goal itself rather than a stand-in, and a level once reached is locked by a mechanism so the work cannot slide back. The machines this whole section lists are that principle's hands.
+**Context:** Every piece of work the pack runs walks toward a goal. So the work names that goal up front as a concrete artifact it can be measured against — a frozen norm, an exemplar bank, a failing test, a written acceptance. A paraphrase cannot serve as that goal. Each pass measures its distance to the goal itself, and a level once reached is locked by a mechanism so the work cannot slide back. The machines this whole section lists are that principle's hands.
 
 **User Story:** As a person relying on the pack, I want every process to name its goal as a checkable artifact and lock each level it reaches, so that work converges toward the goal rather than drifting near a look-alike.
 
@@ -46,7 +46,7 @@ Terms already defined in the intake glossary and the founding section's addition
 **Case: the goal is a named artifact**
 
 1. *when* a process begins, the system *shall* name its goal as a concrete artifact the work can be held against, and *shall* refuse a paraphrase as that goal. [INV-98]
-2. *while* a process runs, the system *shall* measure each pass against the goal artifact itself rather than a stand-in, since a stand-in is where a look-alike is born. [INV-98]
+2. *while* a process runs, the system *shall* measure each pass against the goal artifact itself, since a stand-in is where a look-alike is born. [INV-98]
 
 **Case: a reached level locks**
 
@@ -59,7 +59,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** A standing behavioural rule keeps its normative home in a once-read file — the loader, a profile, a skill's text. Prose in a once-read file loses to mid-turn momentum, and attention alone holds nothing across sessions. So a rule that breaks mid-turn a second time despite that home earns a live channel at that same moment, and the pick is recorded where the rule lives.
 
-**User Story:** As a person whose standing rule the pack keeps breaking, I want the second mid-turn break to earn a live channel, so that a recurring failure gets a mechanism at once rather than a third suffering.
+**User Story:** As a person whose standing rule the pack keeps breaking, I want the second mid-turn break to earn a live channel, so that a recurring failure gets a mechanism at once, before a third suffering.
 
 ### Acceptance Criteria
 
@@ -109,14 +109,14 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Case: every heading declares its status**
 
-3. The system *shall* have every third-level heading carry either its feature tag, marking a person-facing scenario the table maps, or a not-a-scenario marker, marking a machinery or reference section. [INV-132]
-4. *if* a third-level heading carries neither marker, *then* the system *shall* read it as red, so a forgotten tag can no longer ship a scenario uncovered. [INV-132]
+3. The system *shall* have a person-facing scenario carry its feature tag on the requirement heading, and *shall* leave a machinery or reference requirement's heading untagged. [INV-132]
+4. *when* a promised scenario's requirement heading carries no feature tag, the system *shall* red it in the feature-coverage trace, a promised leg not yet built taking a `[target]` marker on its own line. [INV-132]
 
 ---
 
 ## Requirement 5: The guardrails wired to the push gate
 
-**Context:** The guardrails are mechanical checks wired to the pre-push hook, running live for the pack's own repository. Each push must show a set of proofs before it reaches the remote. On a host these checks are offered rather than imposed, since the human may not know what a git hook is.
+**Context:** The guardrails are mechanical checks wired to the pre-push hook, running live for the pack's own repository. Each push must show a set of proofs before it reaches the remote. On a host these checks are offered for the human to accept, since the human may not know what a git hook is.
 
 **User Story:** As a maintainer pushing the pack, I want each push to show its proofs mechanically before it reaches the remote, so that a structural defect turns the push red rather than landing on the remote.
 
@@ -179,13 +179,13 @@ Terms already defined in the intake glossary and the founding section's addition
 
 ## Requirement 8: The four project-side checks are attachable code
 
-**Context:** The pack ships a generic runnable form of the four checks the pipeline names — completeness, tests-present, behaviour-traces-to-spec, and conflicts — parametrized by one host config file rather than by editing check code. A host attaches them by config, and each check proves itself red-first on one planted defect before it counts as attached.
+**Context:** The pack ships a generic runnable form of the four checks the pipeline names — completeness, tests-present, behaviour-traces-to-spec, and conflicts — parametrized by one host config file, attached without editing check code. A host attaches them by config, and each check proves itself red-first on one planted defect before it counts as attached.
 
 **User Story:** As a person attaching the pack to a host, I want the four project-side checks configured rather than re-implemented, so that a host wires them by naming its own shape and each check proves it can fire.
 
 ### Acceptance Criteria
 
-**Case: config, not re-implementation**
+**Case: the checks attach by config**
 
 1. The system *shall* ship the four checks — completeness, tests-present, behaviour-traces-to-spec, and conflicts — under `scaffold/guardrails/` parametrized by one host config declaring the document paths, the tests directory, the source globs, the registry path, and the render command. [INV-97]
    [GAP: the source names the conflicts check as one of the four but never states what conflict it detects; the other three carry their subject in their own names.]
@@ -207,7 +207,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** A net that never fires is a fact about itself with two readings: the defect is gone and the net is dead weight, or the net is broken and its trigger sits where the work never passes. Two numbers tell those apart — how often the net ran and how often it fired — and no net keeps them on its own. The meter records both against the host's declared roster of nets and reads them back.
 
-**User Story:** As a person maintaining a set of nets, I want each net's runs and fires recorded and read against a declared roster, so that a broken trigger is named while a merely quiet net is surfaced for a human retirement call rather than trusted or auto-retired.
+**User Story:** As a person maintaining a set of nets, I want each net's runs and fires recorded and read against a declared roster, so that a broken trigger is named while a merely quiet net is surfaced for a human retirement call, the trust-or-retire decision left to the human.
 
 ### Acceptance Criteria
 
@@ -228,7 +228,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** A register law that names a class cannot rest on a list of literal words, since each escape earns one more pattern while the next word walks through and a human ends up working as the regular expression. So a model that reads meaning holds the class. It takes the outgoing text and the law and returns the sentences that carry no information or leak register, with the literal pattern list demoted to a first cheap filter.
 
-**User Story:** As a person reading the pack's own words, I want a model to hold the register class rather than a word list, so that a register offence is caught in meaning while a broken judge falls back to the cheap list rather than blocking.
+**User Story:** As a person reading the pack's own words, I want a model to hold the whole register class, so that a register offence is caught in meaning while a broken judge falls back to the cheap list and keeps working.
 
 ### Acceptance Criteria
 
@@ -263,14 +263,14 @@ Terms already defined in the intake glossary and the founding section's addition
 **Case: the proxy reds a lead-less wall**
 
 1. *when* a reply runs past the length floor and its opening block fails all three lead signals — a short opening sentence, a short opening paragraph, or scannable opening structure — the system *shall* flag it and ask for a lead-first correction. [INV-220]
-2. The system *shall* read the length floor and the lead thresholds from the host's own tunable defaults rather than a fixed law. [INV-70]
+2. The system *shall* read the length floor and the lead thresholds from the host's own tunable defaults, values the host may retune. [INV-70]
 
 **Case: honest about its reach**
 
 3. The system *shall* judge only whether an opening lead is present, and *shall* leave whether that lead answers the right question to the person. [INV-220]
 4. The system *shall* judge only the final reply the person reads, and *shall* leave the short inter-tool narration lines alone. [INV-220]
 
-**Case: a Stop-hook notice, not a push gate**
+**Case: a Stop-hook notice**
 
 5. *when* the arm fires, the system *shall* flag the previous reply and deliver the correction one message later, since a chat reply is already emitted and cannot be blocked. [INV-220]
 6. The system *shall* ship the arm as a universal pack hook covered by the config-health parity net — the check that reds an installed hook copy that is missing or differs from its source in the pack — and *shall* have its runs and fires read by the net-liveness meter rather than trusted. [INV-175, INV-180, INV-202]
@@ -288,7 +288,7 @@ Terms already defined in the intake glossary and the founding section's addition
 **Case: the hedge gate**
 
 1. *when* the seat's last reply carries an offering-hedge frame from the pattern list, after a quoted, backticked, or fenced span is stripped, the system *shall* block the stop with a rewrite instruction reaching the seat one message later, modelled on the scissors scan — the literal gate that blocks a sentence naming a thing by denying its neighbour — and installed by the setup walk. [INV-238, INV-173]
-2. The system *shall* leave clear of a genuine taste, policy, or irreversible question that names its human-only fact, since that question is an honest admission rather than an offer. [INV-238, INV-152]
+2. The system *shall* leave clear of a genuine taste, policy, or irreversible question that names its human-only fact, since that question is an honest admission the human owns. [INV-238, INV-152]
 3. The system *shall* catch only the frames it lists, so a paraphrase it does not carry stays with the conduct judge that reads the class in meaning. [INV-238, INV-241]
 
 **Case: the lean-orchestrator arm**
@@ -333,9 +333,9 @@ Terms already defined in the intake glossary and the founding section's addition
 
 ## Requirement 14: A cleanup says what it ended
 
-**Context:** Every process the pack ends is reported with what it was and why the run owned it — the process identifier, the process group, or the owned path that proves ownership — so an ending nobody expected is visible the moment it happens rather than at the next unexplained loss of the person's work. This is the minimum owed on a machine shared with someone who runs the same programs the pack does.
+**Context:** Every process the pack ends is reported with what it was and why the run owned it — the process identifier, the process group, or the owned path that proves ownership — so an ending nobody expected is visible the moment it happens, ahead of any unexplained loss of the person's work. This is the minimum owed on a machine shared with someone who runs the same programs the pack does.
 
-**User Story:** As a person sharing a machine with the pack, I want every process the pack ends to announce what it was and how the run owned it, so that an unexpected ending is seen at once rather than discovered as lost work.
+**User Story:** As a person sharing a machine with the pack, I want every process the pack ends to announce what it was and how the run owned it, so that an unexpected ending is seen at once, before it surfaces as lost work.
 
 ### Acceptance Criteria
 
@@ -401,7 +401,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** Chat is a display and it scrolls, so a question parked for the person and an answer the person never saw both evaporate. One small file at the host root, the waiting board, holds them, and chat renders it on occasion. An item clears on the person's acknowledgement alone and is never auto-expired, since expiring an item the person never read is a silent loss.
 
-**User Story:** As a person who reads on my own clock, I want everything waiting for me kept in one board that never auto-expires, so that a parked question or an unseen answer is there when I open it rather than lost to the scroll.
+**User Story:** As a person who reads on my own clock, I want everything waiting for me kept in one board that never auto-expires, so that a parked question or an unseen answer is there when I open it, held safe from the scroll.
 
 ### Acceptance Criteria
 
@@ -545,7 +545,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** The three-question fitness test governs a node's birth, but a node born right and then grown carries a standing yes nobody re-reads. So each node re-answers the three questions at every architecture re-prove, and two nodes whose pins share one file answer the parallel-work question no by construction — which makes co-residence in one file the mechanical face of a failed growth answer. Raw size is rejected as the vanity metric: a large file owning one responsibility is healthy.
 
-**User Story:** As a person watching an engine file swell, I want node co-residence counted and re-asked at re-prove, so that a file that has grown to hold several nodes is caught and a split is proposed rather than a standing yes passing forever.
+**User Story:** As a person watching an engine file swell, I want node co-residence counted and re-asked at re-prove, so that a file that has grown to hold several nodes is caught and a split is proposed before a standing yes passes forever.
 
 ### Acceptance Criteria
 
@@ -630,14 +630,15 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Case: the snapshot is tracked and recoverable**
 
-3. The system *shall* keep the snapshot folder git-tracked with one manifest line per surface, so any older baseline can be checked out, and *shall* keep only the last baseline in the working tree. [E-7]
-4. *when* adoption begins, the system *shall* save the first baseline from the artifacts as found, and *shall* narrow the pack's shared settings for one project only where the host profile records it. [A-6, E-8]
+3. The system *shall* keep the snapshot folder `.live-spec/snapshot/` git-tracked with one manifest line per surface, so any older baseline can be checked out, and *shall* keep only the last baseline in the working tree. [E-7]
+4. *if* a surface's rendered bytes are too heavy to hold in git, *then* the system *shall* keep only its manifest line and content hash under git, hold the bytes outside git, and diff the next run against the hash alone. [E-7]
+5. *when* adoption begins, the system *shall* save the first baseline from the artifacts as found, and *shall* narrow the pack's shared settings for one project only where the host profile records it. [A-6, E-8]
 
 ---
 
 ## Requirement 28: Design-sync mirrors declared components for team review
 
-**Context:** Design-sync is an optional machine for hosts with visual components. It mirrors the components a delivery declared to the team's design project, where the human reviews rendered cards, supplementing the in-session render — which stays the authority for the delivery gate. Every sync is gated by the human, since a sync publishes outside the machine, and the pack itself never syncs.
+**Context:** Design-sync [target: the machine; the wiring is live] is an optional machine for hosts with visual components. It mirrors the components a delivery declared — the same declared scope the snapshot diffs by [E-7] — to the team's design project, where the human reviews rendered cards, supplementing the in-session render — which stays the authority for the delivery gate. Every sync is gated by the human, since a sync publishes outside the machine, and the pack itself never syncs.
 
 **User Story:** As a person reviewing a visual host's components, I want the declared components mirrored to the team design project under a human gate, so that the team reviews rendered cards while the in-session render stays the authority for the gate.
 
@@ -658,7 +659,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** The skill evals test the pack's own skills at the level that matters for a skill: behaviour. Each working skill owns at least one recorded eval — a scenario where a bare session errs and the skill's text fixes it, proven red at authoring. Evals re-run at milestones and at any delivery that changes a skill's behaviour.
 
-**User Story:** As a person trusting the pack's skills, I want each working skill to own a behaviour eval proven red without it, so that a skill's own instructions are shown to change what a session does rather than assumed to.
+**User Story:** As a person trusting the pack's skills, I want each working skill to own a behaviour eval proven red without it, so that a skill's own instructions are proven to change what a session does.
 
 ### Acceptance Criteria
 
@@ -696,7 +697,7 @@ Terms already defined in the intake glossary and the founding section's addition
 
 **Context:** The pack runs on its own method, and its repository is a shared surface whose push gates run mechanically on installed hooks. Only a session assigned to the pack itself writes this repository; every other session is read-only here, with one exception — creating a new file in the inbox. A developer's machine keeps its installed skills fresh by a named step, since a hand-copy syncs silently and tells the next breakpoint nothing.
 
-**User Story:** As a maintainer of the shared pack repository, I want only the assigned session to write it and the installed skills synced by a named step, so that no outside session scrambles the tree and every skill version change is reported rather than silent.
+**User Story:** As a maintainer of the shared pack repository, I want only the assigned session to write it and the installed skills synced by a named step, so that no outside session scrambles the tree and every skill version change is reported aloud.
 
 ### Acceptance Criteria
 
@@ -725,7 +726,7 @@ Terms already defined in the intake glossary and the founding section's addition
 **Case: one new file per item**
 
 1. *when* an outside item arrives, the system *shall* place it as one new file named `YYYY-MM-DD-<source>-<slug>.md`, and *shall* never edit an existing file, since a fresh file cannot collide. [E-11]
-2. *if* the name is taken, *then* the system *shall* append a numeric ordinal, and *when* two sessions race one slug *shall* add a short session token to the source mark rather than a second identity scheme. [E-11, INV-117]
+2. *if* the name is taken, *then* the system *shall* append a numeric ordinal, and *when* two sessions race one slug *shall* add a short session token to the existing source mark, keeping one identity scheme. [E-11, INV-117]
 
 **Case: the deposit names its source**
 
@@ -756,6 +757,10 @@ Terms already defined in the intake glossary and the founding section's addition
 **Case: the remote read arm**
 
 6. *when* a remote consumer reads a private producer repository, the system *shall* require a read grant recorded beside the push grant, and *shall* fail honestly naming the read grant it lacks rather than guess. [INV-232, INV-187]
+
+**Case: the stand-down holds no bar over the deposit**
+
+7. The system *shall* hold that the live-session stand-down holds no bar over the deposit, the one additive inbox file racing nothing. [INV-112, INV-82]
 
 ---
 
@@ -836,6 +841,10 @@ Terms already defined in the intake glossary and the founding section's addition
 
 5. The system *shall* keep one canonical state directory named `.live-spec`, and *shall* retire a near-miss look-alike to the attic under a manifest line naming the path, the reason, and the canonical directory. [INV-105, INV-7]
 6. *when* two lanes' write-sets overlap, the system *shall* default the later lane to worktree isolation, its copy reaching the shared tree only through integration under the pen. [INV-105, INV-39, T-18]
+
+**Case: the one-file diff carve-out**
+
+7. *when* a push's diff is exactly one new inbox file, the system *shall* have it owe the fence and no re-check record, more riding the full gate. [INV-11, INV-112]
 
 ---
 

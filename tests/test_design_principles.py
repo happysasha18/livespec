@@ -130,8 +130,11 @@ class TestFoundingDesignPrinciples(unittest.TestCase):
 class TestDesignPrinciplesLaw(unittest.TestCase):
     def test_spec_clause_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("A project kind also carries its own design principles", spec)
-        self.assertIn("interactive controls that belong to different layers occupy separate screen space", spec.lower())
+        self.assertIn("a project kind names a set of design principles", spec)
+        self.assertIn(
+            "hold separate clickable regions, so every press lands on one control alone",
+            spec.lower(),
+        )
         self.assertIn("[INV-136]", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
@@ -153,10 +156,10 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
         (one-home-per-fact; the pack's own R6 compaction, 2026-07-14)."""
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "interactive controls that belong to different layers occupy separate screen space",
+            "hold separate clickable regions, so every press lands on one control alone",
             spec.lower(), "the spec no longer states the interactive-overlap rule in full")
         # the non-interactive allowance is stated as its own sentence, in the spec home
-        self.assertIn("may overlap anything freely", spec)
+        self.assertIn("may overlap anything", spec)
         # ARCHITECTURE reduced to a pointer at the spec home, not a second full statement
         arch = read_flat("ARCHITECTURE.md")
         self.assertIn("stated in full in", arch,
@@ -202,9 +205,15 @@ class TestDesignPrinciplesLaw(unittest.TestCase):
     def test_spec_and_index_home_the_prover_lens(self):
         spec = read_flat("PRODUCT_SPEC.md")
         # the clause states the prover carries the spec-time lens for the overlap blind spot
-        self.assertIn("The prover carries the spec-time lens for this blind spot", spec)
-        # the Formal-index row's homes list names the prover lens as a home
-        self.assertIn("product-prover's interactive-overlap lens", spec)
+        # (re-aimed onto the surviving Case heading that states the same duty)
+        self.assertIn("the prover catches the blind spot on the spec", spec.lower())
+        # The spec states the interactive-overlap rule (Requirement 175); the lens that catches the
+        # blind spot at spec time is carried by the product-prover skill, its owning home. The
+        # locations-only index (SPEC INV-271) no longer lists prose homes, so the lens attribution
+        # is asserted at its skill home.
+        prover = read_flat("skills/product-prover/SKILL.md").lower()
+        self.assertIn("interactive-overlap", prover)
+        self.assertIn("this lens catches the blind spot", prover)
 
 
 if __name__ == "__main__":

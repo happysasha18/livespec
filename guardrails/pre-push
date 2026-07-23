@@ -183,8 +183,8 @@ if ! python3 "$GUARDRAILS/check-every-gate-can-fail.py"; then
 fi
 
 echo ""
-echo "-- gate x: index prose (every Formal-index code is carried in its home prose; a check with an empty input set reds by name, SPEC INV-218) --"
-if ! python3 "$GUARDRAILS/check-index-prose.py"; then
+echo "-- gate x: generated index (the committed index equals a fresh build off the body; body and index agree; an empty body reds by name, SPEC INV-258/INV-259/INV-218) --"
+if ! python3 "$GUARDRAILS/check-index-generated.py" "$REPO_ROOT/PRODUCT_SPEC.md" "$REPO_ROOT/PRODUCT_SPEC.index.md"; then
   fail=1
 fi
 

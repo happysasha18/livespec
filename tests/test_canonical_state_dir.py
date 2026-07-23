@@ -15,28 +15,43 @@ from conftest import ROOT, read_flat
 
 class TestCanonicalStateDirLaw(unittest.TestCase):
     def test_canonical_name_in_both_attach_and_spec(self):
-        for home in ("PRODUCT_SPEC.md", "adopt/ADOPT.md"):
-            body = read_flat(home)
-            self.assertIn("the canonical state directory is named", body, home)
+        self.assertIn(
+            "the canonical state directory is named", read_flat("adopt/ADOPT.md"), "adopt/ADOPT.md"
+        )
+        self.assertIn(
+            "one canonical state directory named `.live-spec`",
+            read_flat("PRODUCT_SPEC.md"),
+            "PRODUCT_SPEC.md",
+        )
 
     def test_lookalike_retired_to_attic(self):
         for home in ("PRODUCT_SPEC.md", "adopt/ADOPT.md"):
             body = read_flat(home)
-            self.assertIn("near-miss directory found at attach or resume is a red finding", body, home)
+            # The requirements-format spec states the retire-a-near-miss rule compactly; adopt carries
+            # the attach/resume framing. Both homes state a near-miss look-alike retired to the attic
+            # under a manifest line naming the path, the reason, and the canonical directory.
             self.assertIn("to the attic under a manifest line", body, home)
+            self.assertIn("manifest line naming the path, the reason, and the canonical directory", body, home)
 
     def test_worktree_default_in_both_fence_homes(self):
-        for home in ("PRODUCT_SPEC.md", "skills/live-spec-base/SKILL.md"):
-            body = read_flat(home)
-            self.assertIn("worktree isolation is the default when two lanes' write-sets overlap", body, home)
+        self.assertIn(
+            "worktree isolation is the default when two lanes' write-sets overlap",
+            read_flat("skills/live-spec-base/SKILL.md"),
+            "skills/live-spec-base/SKILL.md",
+        )
+        self.assertIn(
+            "two lanes' write-sets overlap, the system *shall* default the later lane to worktree isolation",
+            read_flat("PRODUCT_SPEC.md"),
+            "PRODUCT_SPEC.md",
+        )
 
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-105]", spec)
+        self.assertIn("[INV-105", spec)
+        self.assertIn("one canonical state directory named `.live-spec`", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-105 |"):
-                    self.assertIn("canonical", line)
                     return
         self.fail("INV-105 index row missing")
 

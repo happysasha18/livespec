@@ -67,7 +67,7 @@ walk in plain words and points there for the letter of each law.
 ## Station 6 — test matrix rows
 
 - **Enters:** the proven spec and the proven architecture.
-- **Produces:** rows in `TEST_MATRIX.md`, derived rather than filled in: one block per architecture
+- **Produces:** rows in `TEST_MATRIX.md`, derived, never hand-filled: one block per architecture
   node, every spec fact with at least one row, every row stating both what the fact does and what it
   must never do (the never side is the regression fence), and every row pinned to a test level —
   string, DOM-text, browser-computed, or pixel. The matrix opens with an inventory of every file the
@@ -136,5 +136,5 @@ visibility, layout, or colour enters at the matrix station at minimum.
 
 The rules decide, ahead of anyone's mood: the tripwires at station 1 outrank a casual "it's just a
 one-liner", and urgency moves a wish's priority while its door stays put. When the shortcut boundary
-is genuinely unclear, the session asks the human one plain question rather than guessing
+is genuinely unclear, the session asks the human one plain question and does not guess
 (build-pipeline's skip boundary; SPEC T-12).

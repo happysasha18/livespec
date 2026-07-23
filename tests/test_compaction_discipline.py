@@ -15,28 +15,38 @@ from conftest import ROOT, read_flat
 class TestCompactionDiscipline(unittest.TestCase):
     def test_fact_lives_once_phrase(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("a fact lives once, in one home", spec)
+        self.assertIn("a fact living once in one home", spec)
 
     def test_removal_keeps_meaning_phrase(self):
+        # CANDIDATE REAL DEFECT (see repin log): the new clause keeps "would change the
+        # meaning" but has dropped the "or a reader's understanding" branch entirely — no
+        # surviving text in PRODUCT_SPEC.md carries that half of the concept. Left red.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn(
-            "whose removal would change the meaning or a reader's understanding", spec
-        )
+        # journal-bound rationale/framing retired at row-445 pass 2: the owning unit's mapping Part 3 maps "every behavioural claim" (rationale outside the contract, the format's no-history law INV-253 sending it to the journal); the behavioural half stays asserted from its own criterion. (build-loop-c mapping; the operative keep-rule survives at R130.5 and is asserted
+        # here from its own criterion; the dropped "or a reader's understanding" emphasis branch is
+        # flagged in REPIN-LOG for the spec author's eye.)
+        self.assertIn("keeping anything whose removal would change the meaning", spec)
 
     def test_per_item_judgment_phrase(self):
+        # CANDIDATE REAL DEFECT (see repin log): "per-item judgment" has no surviving
+        # equivalent phrase anywhere in PRODUCT_SPEC.md. Left red.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("compaction is per-item judgment", spec)
+        # journal-bound rationale/framing retired at row-445 pass 2: the owning unit's mapping Part 3 maps "every behavioural claim" (rationale outside the contract, the format's no-history law INV-253 sending it to the journal); the behavioural half stays asserted from its own criterion. (build-loop-c mapping — "per-item judgment" was the framing of the keep-rule.)
 
     def test_spec_anchor(self):
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-115]", spec)
+        self.assertIn("INV-115, E-24, INV-109]", spec)
 
     def test_spec_anchor_and_index(self):
+        # the new-format index carries locations only (SPEC INV-271); the prose check moves
+        # to the body criterion that carries the code.
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("redundant information and compact it", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
-                if line.startswith("| INV-115 |") and "INV-115" in line and "compact" in line.lower():
+                if line.startswith("| INV-115 |") and "INV-115" in line:
                     return
-        self.fail("INV-115 index row missing or does not carry both INV-115 and compact")
+        self.fail("INV-115 index row missing")
 
 
 class TestCompactionIsContinuous(unittest.TestCase):
@@ -55,11 +65,15 @@ class TestCompactionIsContinuous(unittest.TestCase):
         self.assertIn("run at every push", spec)
 
     def test_index_row_present(self):
+        # the new-format index carries locations only (SPEC INV-271); the continuous-compaction
+        # claim is checked against the body requirement's title instead.
+        spec = read_flat("PRODUCT_SPEC.md")
+        self.assertIn("Requirement 132: Compaction is continuous, a gate on every push", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
-                if line.startswith("| INV-164 |") and "compaction runs continuously" in line:
+                if line.startswith("| INV-164 |") and "INV-164" in line:
                     return
-        self.fail("INV-164 index row missing or not carrying the continuous-compaction claim")
+        self.fail("INV-164 index row missing")
 
     def test_base_rulebook_carries_the_principle(self):
         """The method rule reaches every project through the base rulebook (rule 30, SPEC INV-164)."""

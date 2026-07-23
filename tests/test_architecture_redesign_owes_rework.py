@@ -25,13 +25,19 @@ class TestRedesignOwesReworkLaw(unittest.TestCase):
     )
 
     def test_redesign_owes_rework_in_both_homes(self):
+        phrase_by_home = {
+            "PRODUCT_SPEC.md": (
+                "re-shape the architecture document to the new form and "
+                "re-prove it with the architecture lens in the same movement"
+            ),
+            "skills/build-pipeline/SKILL.md": (
+                "re-shaped to the new form and re-proven with the architecture "
+                "lens in the same movement"
+            ),
+        }
         for home in self.HOMES:
             body = read_flat(home)
-            self.assertIn(
-                "re-shaped to the new form and re-proven with the architecture lens in the same movement",
-                body,
-                home,
-            )
+            self.assertIn(phrase_by_home[home], body, home)
 
     def test_pins_only_scoped_to_boundary_shift_in_both_homes(self):
         for home in self.HOMES:
@@ -43,10 +49,10 @@ class TestRedesignOwesReworkLaw(unittest.TestCase):
     def test_spec_anchor_and_index(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn("[INV-113]", spec)
+        self.assertIn("A deliberate redesign re-shapes the architecture document", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-113 |"):
-                    self.assertIn("redesign", line)
                     return
         self.fail("INV-113 index row missing")
 

@@ -20,7 +20,8 @@ class TestCrossSurfacePolicy(unittest.TestCase):
     def test_spec_clause_stands(self):
         spec = read_flat("PRODUCT_SPEC.md")
         self.assertIn(
-            "A cross-surface policy is stated at the surface-class level and held uniform across its siblings",
+            "the spec states it once at the surface-class level, naming the class and "
+            "enumerating the surfaces it governs",
             spec,
         )
         self.assertIn("[INV-125]", spec)
@@ -28,9 +29,9 @@ class TestCrossSurfacePolicy(unittest.TestCase):
     def test_spec_names_the_class_rule_and_the_two_holds(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "the clause names the class and enumerates the surfaces it governs",
+            "naming the class and enumerating the surfaces it governs",
             "is a spec defect",
-            "enumerates the surfaces of that kind from the surface registry",
+            "enumerate the surfaces of that kind from the surface registry",
             "the preventive twin of the class hunt",
         ):
             self.assertIn(needle, spec, needle)
@@ -59,7 +60,7 @@ class TestCrossSurfacePolicy(unittest.TestCase):
         (Born of the tlvphotos openable-face miss: one member stated 'the way out mirrors the way
         in' and a pinch-to-zoom sibling closed only by a control, 2026-07-14.)"""
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("kind-general rule", spec)
+        self.assertIn("a sentence states a principle for a whole kind", spec)
         self.assertIn("lift", spec)
         pv = read_flat("skills/product-prover/SKILL.md")
         self.assertIn("kind-general rule", pv)

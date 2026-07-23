@@ -30,25 +30,27 @@ class TestClassHunt(unittest.TestCase):
     def test_spec_names_the_four_moves(self):
         spec = read_flat("PRODUCT_SPEC.md")
         for needle in (
-            "actively search every surface",
+            "search every surface",
             "a structural cause",
-            "the spec is fixed first so the prover can flag it",
-            "escalate to the human when the class boundary needs his read",
+            "fix the spec first so the prover can flag it",
+            "the class boundary needs the human's read",
         ):
             self.assertIn(needle, spec, needle)
 
     def test_formal_index_row(self):
+        # The generated index carries locations only (SPEC INV-271); "class hunt" prose lives in the
+        # body criterion (asserted above). Here the index must map INV-124 to at least one location.
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
                 if line.startswith("| INV-124 |"):
-                    self.assertIn("class hunt", line.lower())
+                    self.assertRegex(line, r"R\d+\.\d+")
                     return
-        self.fail("INV-124 Formal-index row missing")
+        self.fail("INV-124 index row missing")
 
     def test_build_pipeline_bug_entry_drives_the_hunt(self):
         bp = read_flat("skills/build-pipeline/SKILL.md")
         self.assertIn("A confirmed bug drives a class hunt before it closes (SPEC INV-124)", bp)
-        self.assertIn("four moves, not one", bp)
+        self.assertIn("The hunt is four moves:", bp)
 
     def test_prover_carries_the_class_lens(self):
         pv = read_flat("skills/product-prover/SKILL.md")
