@@ -1,6 +1,6 @@
 # Rotated ROADMAP rows — 2026-07
 
-> ARCHIVED 2026-07-23 by prototype/2026-07-23-roadmap-format/convert.py from ROADMAP.md at the format conversion — nothing lost (base rule 10, SPEC INV-276). One calendar month's closed rows gather here; the live queue keeps one manifest line pointing here, and these rows stay grepable by number.
+> ARCHIVED 2026-07-23 by prototype/2026-07-23-roadmap-format/convert.py from ROADMAP.md at the format conversion — nothing lost (base rule 10, SPEC INV-276). One calendar month's closed rows gather here; the live queue keeps one manifest line pointing here, and these rows stay grepable by number. A row's Status cell is its pre-conversion text kept verbatim, and its leading word can be a stale narration (a queued or in-work opener on a row that later landed); the row's terminal exit is certified by its presence in this file, the landed, declined, or superseded word standing somewhere in the cell.
 
 | # | Wish (plain words) | Class | Status | Decision / acceptance |
 |---|---|---|---|---|

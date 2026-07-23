@@ -11,9 +11,10 @@ gate — live once in `docs/spec-format.md` and hold here unchanged. Its own rul
 status and class vocabularies, the live-body law, the row lint — are defined in `docs/roadmap-format.md`.
 The class cell names the wish's size, one vocabulary shared with the spec: *bug*, *small*, *surface*,
 or *large*, with a priority mark when it is other than normal. The status cell carries one of *queued*,
-*in-work*, *deferred*, or *far*, each with its date, a *deferred* row naming its revisit trigger. The
-status cell is the sole authority on a row's current state; the wish and acceptance cells carry the
-ask and its criteria. The pre-conversion status texts of the rows that stayed live are kept verbatim
+*in-work*, *deferred*, or *far*, each with its date, a *deferred* row naming its revisit trigger. The status cell is the sole authority on a row's current state; the wish and acceptance cells carry
+the ask and its criteria. Pre-conversion prose in those cells keeps its old words verbatim —
+capitals and old state words included — and lowers as rows are edited; a bold landed or open there
+is history, and the status cell alone says where the row stands. The pre-conversion status texts of the rows that stayed live are kept verbatim
 in docs/queue-archive/status-notes-ROADMAP-2026-07-23.md. A
 bracket code such as `[INV-277]` points to its home in `PRODUCT_SPEC.md`; a reader may ignore it.
 

@@ -2,6 +2,36 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-23 — v4.2.0 MINOR: the queue becomes the format family's third member (row 480)
+
+The roadmap was the reading bottleneck: 686 KB against a 700 KB ceiling, 72% of its 345 rows closed,
+each closed row carrying its full delivery report in the body — every session that read the queue paid
+for the archive. The queue member's definition (`docs/roadmap-format.md`) answers with the live-body
+law: the body holds live rows only, and a row reaching a terminal exit moves verbatim, its delivery
+report riding with it, to the month's archive file in the very commit that closes it. Statuses and
+classes became closed lowercase vocabularies held by a row lint in the traceability suite; the row
+returned to the five cells its header declares; the byte ceiling dropped 700 to 260 KB, ratchet down.
+
+The conversion ran as a deterministic script under a word-and-punctuation count proof (each word and
+punctuation mark of the old file accounted for in the new body plus the archive, every difference
+attributed to a named delta class), seven rounds deep — and the rounds were the story. The cold
+readers exposed three layers of one disease the old free-form status cell had bred: landings recorded
+in the status cell under a stale leader (rows 99, 445); the preserved old status texts reading as
+current state once quoted beside the new closed word (moved out to
+`docs/queue-archive/status-notes-ROADMAP-2026-07-23.md`, the status cell declared the sole authority);
+and landings recorded in the wish or acceptance cells with the status cell never updated (rows 130,
+279, 420 — caught only by sweeping all three cells). The new format makes the whole disease
+impossible: one cell, four words, a lint.
+
+Consumer repoints rode the same delivery: the rotation script learned the monthly append and the
+per-row closing move (`--close-row`); the landing-map gate re-keyed to "a row left the body for the
+archive" and learned two honest carves proven by fixtures — a historical relocation (landed two or
+more days before the commit) owes no map refresh, and a deferred trigger quoting the word landed is
+never a flip; the delegation and footprint checks read the union of body and archive; the in-work cap
+reads the italic form. Row 481 opened on Alexander's word the same evening — the roadmap is no
+five-year plan — a staleness sweep at the milestone gate, feeding on the dates the closed vocabulary
+now guarantees. Deferred rows 143 and 144 stand flagged as naming no trigger yet; the sweep owns them.
+
 ## 2026-07-23 — v4.1.0 MINOR: the test matrix becomes the format family's second member (row 477)
 
 The standing order after the spec's conversion put the test matrix first among the remaining documents,
