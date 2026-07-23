@@ -1,6 +1,11 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-23 evening — v4.1.0: the test matrix is the format family's second member, row 477)
+## ON RESUME (2026-07-23 late evening — row 480 conversion applied, landing in progress)
+ROADMAP.md is converted to the queue member format (docs/roadmap-format.md): 227 closed rows moved
+to docs/queue-archive/rotated-ROADMAP-2026-07.md with the content-preservation proof PASS
+(prototype/2026-07-23-roadmap-format/), 118 live rows in the closed vocabularies, consumers repointed,
+suite green at the conversion commit. Remaining before the row-480 close: cold reads to two clean,
+the minor-gate audit, journal + CHANGELOG + VERSION 4.2.0, freeze re-baseline, push. Then row 456.
 Row 477 LANDED: docs/test-matrix-format.md defines the member (family laws inherited by reference);
 SPEC R283–285 + glossary (INV-272..274); TEST_MATRIX.md converted — 449 five-cell criterion rows,
 trailing anchors, lowercase italic statuses, generated Reference; gate d repointed to
