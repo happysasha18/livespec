@@ -6484,7 +6484,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Context:** The spec format proved the requirements genre on the spec document itself, and the test matrix is the format family's second member, written in that same genre. The matrix's own definition — what it inherits from the family and what it adds — lives in `docs/test-matrix-format.md`. This requirement carries that definition into the spec, so the matrix's shape stands as a proven fact the spec's own gates hold.
 
-**User Story:** As a maintainer reading the matrix, I want one format family across the spec and the matrix, so that one set of laws and one set of gates covers both documents.
+**User Story:** As a maintainer reading the matrix, I want one format family across the spec and the matrix, so that one set of laws and one set of gates covers every family document.
 
 ### Acceptance Criteria
 
@@ -6554,20 +6554,24 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 286: The queue is a family member written as live wish rows
 
-**Context:** The spec format proved the requirements genre on the spec, and the test matrix followed as the family's second member. The queue (ROADMAP.md) is the family's third member, the live record of what is asked of the product and where each ask stands. Its own definition — what it inherits from the family and what it adds — lives in `docs/roadmap-format.md`. This requirement carries that definition into the spec, so the queue's shape stands as a proven fact the spec's gates hold.
+**Context:** ROADMAP.md is the format family's third member, joining after the spec and the matrix. The page `docs/roadmap-format.md` defines the member — the inherited laws and the queue-particular additions — and this requirement binds that definition, putting the queue's shape under the gates that hold the family.
 
-**User Story:** As a maintainer reading the queue, I want it written in the one format family the spec and the matrix already use, so that one set of laws and one set of gates covers every family document.
+**User Story:** As a maintainer working the queue, I want its format governed by the family's laws and gates, so that reading and holding it costs what the other family documents cost.
 
 ### Acceptance Criteria
 
-**Case: inherits the family, adds its own structure**
+**Case: the member definition and its inheritance**
 
-1. The queue *shall* be written in the requirements format the spec format defines, inheriting the closed vocabulary, the keyword form, the trailing anchor, the no-history law, the generated-section gating, and the comprehension gate from `docs/spec-format.md`, and *shall* restate none of them. [INV-275]
+1. The queue *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, the no-history law, generated-section gating, the comprehension gate — and *shall* restate none of those laws. [INV-275]
 2. The queue *shall* open with a preamble and a glossary, then hold one table of live wish rows in ascending id order, a manifest line per archive file standing above the body. [INV-275]
 
 **Case: when the gates arm**
 
 3. The queue's conversion *shall* follow the family's one-delivery arming rule: the whole document moves at once, every consumer that reads the old shape is repointed in that same delivery, and this member's row lint arms inside it. [INV-275] [INV-270]
+
+**Case: how the no-history law is enforced here**
+
+4. The queue's no-history net *shall* be the live-body law and the doc-rotation gate, and the family's no-history gate *shall* stay unpointed at the queue, a live row carrying its status date and its provenance date by design. [INV-275, INV-276]
 
 ---
 
@@ -6588,6 +6592,10 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: a parked row stays live in the body**
 
 4. The system *shall* keep a *deferred* or a *far* row in the body, its revisit trigger re-read at queue-take and at the milestone review by the existing re-scan law. [INV-276, INV-129]
+
+**Case: a row with several legs closes only whole**
+
+5. A row whose wish carries more than one leg *shall* reach a terminal exit only *when* every leg is closed, a landing that leaves any leg open keeping the row *in-work* with the open leg named. [INV-276, INV-26]
 
 ---
 
@@ -6698,7 +6706,7 @@ The code-to-location table below is generated output, built from the body criter
 | INV-23 | R112.3, R114.8, R154.5, R163.1, R163.3, R163.5, R163.6, R166.8, R167.2, R207.5 |
 | INV-24 | R54.3, R137.1, R137.2, R137.3, R137.4, R194.3, R194.4, R197.6, R197.9, R207.5 |
 | INV-25 | R17.6, R201.1, R201.2, R201.3, R201.4, R201.5 |
-| INV-26 | R14.1, R14.2, R14.3, R127.2, R127.3, R161.5 |
+| INV-26 | R14.1, R14.2, R14.3, R127.2, R127.3, R161.5, R287.5 |
 | INV-27 | R15.1, R15.2, R15.4, R15.5, R15.6, R22.8, R23.1, R80.5, R86.3, R152.4, R154.1, R159.5, R159.7, R187.8, R195.12, R196.7, R196.9, R196.16, R254.5 |
 | INV-28 | R8.2, R17.1, R17.2, R17.3, R17.4, R17.5, R17.6, R17.7, R17.8, R22.8, R22.9, R29.3, R54.3, R159.4, R188.9, R191.3, R195.12, R212.5 |
 | INV-29 | R57.1, R57.2, R57.3, R57.4, R58.2, R63.2, R68.2 |
@@ -6947,8 +6955,8 @@ The code-to-location table below is generated output, built from the body criter
 | INV-272 | R283.1, R283.2, R283.3, R283.4, R283.5, R283.6, R283.7 |
 | INV-273 | R284.1, R284.2, R284.3, R284.4 |
 | INV-274 | R285.1, R285.2, R285.3, R285.4 |
-| INV-275 | R286.1, R286.2, R286.3 |
-| INV-276 | R5.1, R96.4, R130.7, R209.1, R243.1, R245.5, R257.1, R287.1, R287.2, R287.3, R287.4 |
+| INV-275 | R286.1, R286.2, R286.3, R286.4 |
+| INV-276 | R5.1, R96.4, R130.7, R209.1, R243.1, R245.5, R257.1, R286.4, R287.1, R287.2, R287.3, R287.4, R287.5 |
 | INV-277 | R288.1, R288.2, R288.3, R288.4, R288.5 |
 | M-1 | R49.2, R80.7, R80.8, R92.2, R130.1, R130.2, R130.3, R130.4, R130.5, R130.6, R130.7, R130.8, R130.9, R164.4, R166.3, R166.8, R198.6, R249.2 |
 | M-2 | R14.3, R125.1, R125.2, R125.3, R177.12, R204.3 |
