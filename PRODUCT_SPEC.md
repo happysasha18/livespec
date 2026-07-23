@@ -6571,7 +6571,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: how the no-history law is enforced here**
 
-4. The queue's no-history net *shall* be the live-body law and the doc-rotation gate, and the family's no-history gate *shall* stay unpointed at the queue, a live row carrying its status date and its provenance date by design. [INV-275, INV-276]
+4. The queue's no-history net *shall* be the live-body law and the doc-rotation gate; the family's no-history gate *shall* not scan the queue, a live row carrying its status and provenance dates by design, the status cell standing as the sole authority on a row's state. [INV-275, INV-276]
 
 ---
 
