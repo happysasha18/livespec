@@ -177,6 +177,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **publish gate** — the human's own gate over anything irreversible or outward, which the publish checklist runs ahead of.
 - **published contract** — a surface in a producer agent's own spec, paired with a machine-readable artifact at the path the producer's card names, stating the version it was generated under and the moment it was generated, that another agent reads on its own clock.
 - **push gate** — the ordered chain of nets that runs before a push to the pack's repository and blocks the push on any red. Each net in the chain carries a letter.
+- **queue archive** — the dated directory `docs/queue-archive/` holding every roadmap row that has left the queue's body at a terminal exit, kept verbatim with its delivery report and grepable by its number; one archive file gathers one calendar month's moved rows, and a manifest line above the body points at each.
 - **queue-take** — the moment a session reads the queue's runnable head to plan the next work, building its dependency graph before opening any lane.
 - **ratchet manifest** — the host record that pins the pack version each vendored gate script came from.
 - **reach** — what a gate read to reach its verdict: the files it opened and the rows it matched of the rows it scanned.
@@ -195,6 +196,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **requirements format** — the genre a spec document is written in: a preamble, a glossary, then a body of requirements.
 - **response** — the duty a criterion states: its *shall* clauses, read together as one duty.
 - **revisit trigger** — the recorded condition on a deferred queue row that, once it fires against the current moment, returns the row to the runnable head.
+- **roadmap format** — the format-family member the queue is written in: a preamble, a glossary, then a body of live wish rows in ascending id order above a manifest, held by a row lint; it inherits the family's shared laws from the spec format and adds only the roadmap-particular rules, its definition at `docs/roadmap-format.md`.
 - **round cap** — the bound of three progressing rounds on the prover-and-design-review loop, past which the loop stops iterating and surfaces its unsettled groupings on the record; a host may set its own cap.
 - **routing rule** — the rule that proposes the cheapest tier that can pass a brief for each unit of work before the seat may overrule it.
 - **scaffold** — the runnable suite the templates ship with. It defines what a green suite means for the first delivery.
@@ -328,7 +330,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 5: A row rests in the home its exit names
 
-**Context:** A row's exit decides where it lives next. A row closed with a terminal exit — landed, declined, or superseded — moves at a milestone to a dated queue archive and stays there unedited. A deferred row stays in the active queue carrying its revisit trigger. A far row stays too, but carries no revisit trigger and no plan to run.
+**Context:** A row's exit decides where it lives next. A row closed with a terminal exit — *landed*, *declined*, or *superseded* — moves to the queue archive in the commit that closes it and stays there unedited. A deferred row stays in the queue's body carrying its revisit trigger. A far row stays too, but carries no revisit trigger and no plan to run.
 
 **User Story:** As a person whose queue holds live work beside parked thoughts, I want each row to rest in the home its exit names, so that a closed wish is archived, a deferred one returns on its trigger, and a far one is kept out of that same what's-left answer.
 
@@ -336,16 +338,16 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: a terminal exit is archived**
 
-1. *when* a milestone is reached, the system *shall* move a row closed with a terminal exit — landed, declined, or superseded — to a dated queue archive, and *shall* keep it there unedited. [INV-1]
+1. *when* a row closes with a terminal exit — *landed*, *declined*, or *superseded* — the system *shall* move it to the queue archive in the same commit that closes it, carrying it verbatim, and *shall* keep it there unedited and grepable by its number. [INV-1, INV-276]
 2. The system *shall* keep in the archive only wishes no longer due back. [INV-1]
 
 **Case: a deferred row waits on its trigger**
 
-3. The system *shall* keep a deferred row in the active queue, carrying its revisit trigger, until the trigger fires or the row resolves to a terminal exit. [INV-222]
+3. The system *shall* keep a deferred row in the queue's body, carrying its revisit trigger, until the trigger fires or the row resolves to a terminal exit. [INV-222]
 
 **Case: a far row is kept and stood down**
 
-4. The system *shall* keep a far row in the active queue with no revisit trigger and no plan to run, so a thought worth keeping is not discarded. [INV-222]
+4. The system *shall* keep a far row in the queue's body with no revisit trigger and no plan to run, so a thought worth keeping is not discarded. [INV-222]
 5. *when* the runnable report — the what's-left answer naming the rows a session could take next, spoken at queue-take or on the person's ask — is produced, the system *shall* stand the far tier down by name and *shall* show it only on the person's request. [INV-222, INV-223]
 
 ---
@@ -2147,7 +2149,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 96: A wish can end without landing in one of three end-states
 
-**Context:** A wish can end without landing, and its row stays in the table in one of three end-states: declined when the human said no, deferred when parked with a named revisit trigger, or superseded when absorbed by another wish so the row points to the absorbing one. A superseded wish never dies by pointer. The far status is a resting state: a far row stays kept in the queue with no exit event and returns on the person's ask, so the end-state list stays at three.
+**Context:** A wish can end without landing, and its row stays in the table in one of three end-states: *declined* when the human said no, *deferred* when parked with a named revisit trigger, or *superseded* when absorbed by another wish so the row points to the absorbing one. A superseded wish never dies by pointer. The far status is a resting state: a far row stays kept in the queue with no exit event and returns on the person's ask, so the end-state list stays at three.
 
 **User Story:** As a person whose wish ends without landing, I want it settled into one recorded end-state with what it absorbed preserved, so that a declined or superseded wish still reaches a named terminal state and nothing it held is lost.
 
@@ -2161,6 +2163,10 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: each absorbed row is settled by name**
 
 3. *when* a wish is declined, the system *shall* either decline each listed row by name where the human's no covered it or return it to the queue as its own row where the no was about the absorber's shape, never letting a superseded wish die by pointer. [T-8, INV-1]
+
+**Case: the terminal-exit vocabulary**
+
+4. The terminal exits — the words a row leaving the queue's body is named by — *shall* be the closed lowercase set *landed*, *declined*, and *superseded*, and *deferred* *shall* stay a live status that keeps its row in the body. [T-8, INV-276]
 
 ---
 
@@ -2817,7 +2823,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 5. The system *shall* audit every living document — spec, matrix, queue, skills, ledger, and the test suite — for redundant information and compact it, a fact living once in one home with a pointer from everywhere else, removing only the redundancy and keeping anything whose removal would change the meaning, and accounting for each removal that takes substance. [M-1, INV-115, E-24, INV-109]
 6. The system *shall* widen the station to code — merging duplicate logic, removing dead weight with its listing, and extracting a ripened abstraction only through the three-question fitness gate — the second occurrence of one problem opening its own compaction row that lands through the ordinary pipeline at one row's delta per commit without blocking its lane. [M-1, INV-123, INV-122, INV-39, INV-56]
-7. The system *shall* restructure a document only for a faster reading shape and only through the content-preserving layout vehicle — the restructure road that moves text without changing it — with its multiset proof, the check that the before and after texts hold the same words and punctuation marks in the same counts, and *shall* archive a closed queue row rather than delete it. [M-1, INV-111, INV-1]
+7. The system *shall* restructure a document only for a faster reading shape and only through the content-preserving layout vehicle — the restructure road that moves text without changing it — with its multiset proof, the check that the before and after texts hold the same words and punctuation marks in the same counts, and *shall* verify the queue's body holds no terminally-closed row, the archiving of each closed row having happened in its own closing commit. [M-1, INV-111, INV-1, INV-276]
 
 **Case: the closing sweep**
 
@@ -4752,7 +4758,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 209: A delivered row carries its delegation accounting
 
-**Context:** Every delivered queue row records how its work was delegated: the unit that went to a worker with an estimated saving, or a stood-down line naming why the seat kept the work. The line lives in the row's status cell, and a suite check reds a delivered row that omits it. The duty binds the orchestrating seat whatever tier leads it.
+**Context:** Every delivered queue row records how its work was delegated: the unit that went to a worker with an estimated saving, or a stood-down line naming why the seat kept the work. The line rides the delivery report the archived row carries, and a suite check reds a delivered row that omits it, reading it from the archive for a row landed after the format conversion. The duty binds the orchestrating seat whatever tier leads it.
 
 **User Story:** As a person auditing how work was delegated, I want every delivered row to carry its delegation accounting under a suite check, so that the account of who did each piece of work is never silently dropped.
 
@@ -4760,7 +4766,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the delivered row carries the line**
 
-1. The system *shall* record on each delivered row's status cell how its work was delegated — the unit sent to a worker with an estimated saving, or why the seat kept it — and *shall* red the suite *when* a delivered row omits the line. [INV-103]
+1. The system *shall* record on each delivered row's delivery report how its work was delegated — the unit sent to a worker with an estimated saving, or why the seat kept it — and *shall* red the suite *when* a row landed after the format conversion omits the line, reading it from the archive. [INV-103, INV-276]
    [GAP: the delegation accounting records a saving for each delegated unit, but the source names no unit or baseline the saving is measured against — tokens, wall-time, or cost — so a correct saving figure is undefined and a test author cannot pin it.]
 2. The system *shall* bind the duty to the orchestrating seat whatever tier leads it, and *shall* bind it forward from its own reach rather than over rows already delivered. [INV-103, INV-159]
 
@@ -5483,7 +5489,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: rotate the closed portion**
 
-1. *when* a growable document holds enough fully-closed material, the system *shall* move the closed rows into a dated archive under `docs/queue-archive/` and leave a manifest line naming which rows moved and where. [INV-209]
+1. *when* a growable document holds enough fully-closed material, the system *shall* move the closed rows into a dated archive under `docs/queue-archive/` and leave a manifest line naming which rows moved and where; for the queue the closing commit is that moment, the live-body law moving each closed row as it closes. [INV-209, INV-276]
 2. The system *shall* read a row as rotatable only when it carries a closed status and no open signal, reusing the existing signal rather than minting a marker. [INV-209, INV-164]
 
 **Case: the gate holds nothing-lost**
@@ -5535,6 +5541,10 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 3. *when* a document over its ceiling carries a manifest naming an archive dated the same day, the system *shall* pass it, since the grooming that shrinks it back under the bound has just been applied. [INV-234, INV-209]
 4. The system *shall* seed the ceilings above the current file sizes with rotation headroom, and *shall* let a ceiling rise only with a recorded reason. [INV-234]
+
+**Case: the queue archives at each closing commit**
+
+5. The system *shall*, for the queue (ROADMAP.md), take the closing commit as its archiving cadence, hold its byte ceiling as a backstop, and grow its manifest one line per monthly archive file; the spec, the test matrix, and the journal keep their byte-ceiling rotation unchanged. [INV-234, INV-276]
 
 ---
 
@@ -5802,7 +5812,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 257: A delivery that closes a roadmap row refreshes the forward map
 
-**Context:** The movement-end report law asks the seat to refresh the forward map and report after every big movement without being asked; left as once-read prose it fired only on a reminder. Its checkable face is a commit: a delivery is a commit whose diff flips a roadmap row's status cell to the closed token `landed`, and such a commit that does not also touch the forward map reds. A commit that closes no row is not a delivery and owes nothing.
+**Context:** The movement-end report law asks the seat to refresh the forward map and report after every big movement without being asked; left as once-read prose it fired only on a reminder. Its checkable face is a commit: a delivery is a commit that moves a roadmap row from the queue's body to the archive with its status naming *landed* and its date, and such a commit that does not also touch the forward map reds. A commit that closes no row is not a delivery and owes nothing.
 
 **User Story:** As a person relying on an up-to-date forward map, I want a delivery commit made to refresh the forward map in the same breath, so that a movement that ends never leaves the map stale.
 
@@ -5810,12 +5820,12 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: a delivery commit refreshes the map**
 
-1. *when* a commit's diff flips a roadmap row's status cell to the closed token `landed`, the system *shall* require the same commit to touch `NEXT_STEPS.md`, reading the pushed commit range through the same base ladder the other range checks read — the declared base, then `origin/main`, then the previous commit. [INV-242]
+1. *when* a commit's diff moves a roadmap row from the body to the archive with its status naming *landed*, the system *shall* require the same commit to touch `NEXT_STEPS.md`, reading the pushed commit range through the same base ladder the other range checks read — the declared base, then `origin/main`, then the previous commit. [INV-242, INV-276]
 2. *if* such a delivery commit does not touch the forward map, *then* the system *shall* red and name the one fix. [INV-242]
 
 **Case: what is not a delivery owes nothing**
 
-3. The system *shall* leave a commit that closes no row, and a row closed to `declined`, `deferred`, or `superseded`, owing no refresh. [INV-242]
+3. The system *shall* leave a commit that closes no row, and a row closed to *declined*, *deferred*, or *superseded*, owing no refresh. [INV-242]
 4. *when* the push-gate letters are exhausted, the system *shall* ride this check on the suite, so a red here reds the suite gate and blocks the push. [INV-242, INV-222]
 
 ## Requirement 258: Every stateful surface is reviewed against a floor of composition axes
@@ -6539,6 +6549,66 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the hand-walked checklist retires**
 
 4. *when* the conversion delivery lands, the checkbox gate that read the coverage-validation checklist *shall* retire, the row lint and the matrix-reference gate standing as its successors. [INV-274]
+
+---
+
+## Requirement 286: The queue is a family member written as live wish rows
+
+**Context:** The spec format proved the requirements genre on the spec, and the test matrix followed as the family's second member. The queue (ROADMAP.md) is the family's third member, the live record of what is asked of the product and where each ask stands. Its own definition — what it inherits from the family and what it adds — lives in `docs/roadmap-format.md`. This requirement carries that definition into the spec, so the queue's shape stands as a proven fact the spec's gates hold.
+
+**User Story:** As a maintainer reading the queue, I want it written in the one format family the spec and the matrix already use, so that one set of laws and one set of gates covers every family document.
+
+### Acceptance Criteria
+
+**Case: inherits the family, adds its own structure**
+
+1. The queue *shall* be written in the requirements format the spec format defines, inheriting the closed vocabulary, the keyword form, the trailing anchor, the no-history law, the generated-section gating, and the comprehension gate from `docs/spec-format.md`, and *shall* restate none of them. [INV-275]
+2. The queue *shall* open with a preamble and a glossary, then hold one table of live wish rows in ascending id order, a manifest line per archive file standing above the body. [INV-275]
+
+**Case: when the gates arm**
+
+3. The queue's conversion *shall* follow the family's one-delivery arming rule: the whole document moves at once, every consumer that reads the old shape is repointed in that same delivery, and this member's row lint arms inside it. [INV-275] [INV-270]
+
+---
+
+## Requirement 287: The queue's body holds live rows, and a closed row moves to the archive at its closing commit
+
+**Context:** The queue's body is its live table, and the record of finished work lives in the archive. When a wish reaches a terminal exit, its row leaves the body for the archive in the same commit that closes it, so the body a reader scans is always the live queue. A parked wish still awaits its turn, so a *deferred* or a *far* row stays live in the body.
+
+**User Story:** As a person reading the queue for the live work state, I want a closed row to leave the body for the archive the moment its commit closes it, so that the body I scan holds only live wishes and nothing closed is lost.
+
+### Acceptance Criteria
+
+**Case: a terminal exit moves to the archive at its closing commit**
+
+1. *when* a row reaches a terminal exit — *landed*, *declined*, or *superseded* — the system *shall* move it verbatim, its delivery report riding with it, from the body to the queue archive in the same commit that closes it. [INV-276]
+2. The system *shall* gather one calendar month's moved rows in one archive file and *shall* record one manifest line per archive file above the body. [INV-276]
+3. The system *shall* cross-check the manifest against the archive under the existing nothing-lost gate, reading a moved row found in neither the body nor its archive as a violation. [INV-276, INV-209]
+
+**Case: a parked row stays live in the body**
+
+4. The system *shall* keep a *deferred* or a *far* row in the body, its revisit trigger re-read at queue-take and at the milestone review by the existing re-scan law. [INV-276, INV-129]
+
+---
+
+## Requirement 288: A queue row carries five cells in the closed vocabularies, or the row lint reds
+
+**Context:** One queue row is one live wish. The header fixes its shape at five cells, and two closed vocabularies fix what its status and class cells may say. A row lint reads every body row at every suite run and reds a row that breaks the shape or the vocabulary, so a malformed row is caught the moment it lands rather than read wrong later.
+
+**User Story:** As a maintainer trusting the queue, I want a row lint to hold every body row to five cells and the closed vocabularies, so that a drifted or mislabelled row is caught at every suite run rather than left to mislead a reader.
+
+### Acceptance Criteria
+
+**Case: the row form**
+
+1. Each body row *shall* carry exactly five cells matching the header — the id, the wish, the class, the status, and the acceptance — and the body rows *shall* stand in ascending id order. [INV-277]
+2. A row's status cell *shall* carry one word of the closed status vocabulary — *queued*, *in-work*, *deferred*, or *far* — each set in lowercase italics and carrying its date, a *deferred* row naming its revisit trigger. [INV-277]
+3. A row's class cell *shall* carry one word of the closed size vocabulary — *bug*, *small*, *surface*, or *large*. [INV-277]
+
+**Case: the row lint holds the shape and the vocabularies**
+
+4. *if* a body row carries other than five cells, sits out of ascending id order, carries a status or a class outside its closed vocabulary, or reads *deferred* with no trigger, *then* the row lint *shall* red, naming the row. [INV-277]
+5. *when* every body row holds its shape and its vocabularies, the row lint *shall* pass green and state its reach on the green line, its home the suite's traceability tests extended rather than a new standalone script. [INV-277, INV-269]
 
 ## Reference
 
