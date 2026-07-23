@@ -39,7 +39,9 @@ An architecture document opens with a short preamble, the same shape the family 
 document covers, what the bracket codes are, and what a pin is. The sections follow in a fixed
 order, each keeping its heading name, since presence checks in the suite read the headings:
 
-1. **The shape at a glance** — a short prose paragraph placing the whole system.
+1. **The shape at a glance** — a few lines naming the whole system and the places it runs, so a
+   reader lands oriented before the first table; the placement view later details those places
+   (the spec's tiers-first opening rule, SPEC INV-75).
 2. **Nodes** — the body: one section per node, defined below.
 3. **Seams** — the table of places two nodes meet: what crosses, which side owns the format.
 4. **Feature coverage** — the table mapping each person-facing feature tag to its implementing
@@ -115,6 +117,10 @@ moves in that same delivery:
     dated home under the records, and the no-history law finally reaches this document;
   - a pin's inline provenance (a landing date, a session number) is dropped where the journal
     already tells it, each drop named.
+- **The spec's table-shaped wording moves with it.** The placement requirement (SPEC INV-75) today
+  offers "a column in the node table" as one of two homes for a node's run-place; the conversion
+  retires the table, so the clause re-words to the surviving home — the placement view — in the
+  same delivery, the prover re-reading the amended clause.
 - **The gates arm here.** The format's own checks arm in this delivery and never before it.
 
 ## The comprehension gate
