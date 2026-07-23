@@ -14,12 +14,12 @@ docs/audit/2026-07-22-register-census.md; the text-audit eval in docs/evals/2026
 landing: the eleven pack skills rewritten to the register bar, the new text-audit working skill (row 458, the
 pack's tenth), and VERSION 4.0.0 across every frontmatter and the base. Push stands on the suite's own green.
 
-## LIVE STATE (2026-07-23 — landing commit in progress; this session is wipeable after the push)
-Root PRODUCT_SPEC.md = the restored 12-unit assembly (590,695 B); freeze re-baselined with --compaction; suite at
-the pre-commit run: 3 failed, 1806 passed — the two push gates close at the landing commit itself (the prover
-record docs/prover/2026-07-23-row445-4.0.0-fix-verify.md must be committed for gate a; gate b mirrors it), the
-third was this file's own missing LIVE STATE block, restored in this edit. Next acts: landing commit → full suite
-green → push.
+## LIVE STATE (2026-07-23 ~12:30 — v4.0.0 PUSHED, this session is wipeable)
+The landing is on origin/main (24ef0ec..fcd2b97): the 4.0.0 commit, the push-gate closures (11 skill-review
+records in docs/skill-review/, the suite budget row at the fresh measured figure, the readme-opening needle),
+and the prover-record addendum. Suite at the push: 1,809 passed, 0 failed, 0 skipped, read from the run's own
+log; all push gates green. The tlvphotos window's metric-gap deposit is routed as row 469 (deposit left earned
+in place). Nothing is mid-flight.
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 The method proves itself on its own documents before any host migrates. Order after the spec:
