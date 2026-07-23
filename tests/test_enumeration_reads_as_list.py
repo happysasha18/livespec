@@ -16,9 +16,13 @@ pre-push gate) is written where a reader meets it.
 
 import os
 import re
+import sys
 import unittest
 
 from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 class TestEnumerationReadsAsList(unittest.TestCase):
@@ -70,11 +74,10 @@ class TestEnumerationReadsAsList(unittest.TestCase):
                          "PRODUCT_SPEC.md's Formal index carries no INV-215 row")
 
     def test_architecture_owns_the_invariant(self):
-        arch = read("ARCHITECTURE.md")
-        section = arch.split("## Nodes", 1)[1].split("## Seams", 1)[0]
-        spec_author_row = next((ln for ln in section.splitlines()
-                                if ln.startswith("| spec-author ")), "")
-        self.assertIn("INV-215", spec_author_row,
+        nodes = archformat.parse_nodes(read("ARCHITECTURE.md"))
+        spec_author = next((n for n in nodes if n.name == "spec-author"), None)
+        self.assertIsNotNone(spec_author, "ARCHITECTURE.md carries no spec-author node")
+        self.assertIn("INV-215", spec_author.anchors_expanded,
                       "the spec-author node's owns-list never claims INV-215")
 
     def test_matrix_row_covers_the_law(self):

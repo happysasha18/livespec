@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v4.2.0, 2026-07-23)
+# live-spec — Product Spec (v4.3.0, 2026-07-23)
 
 This document is the living statement of what live-spec is right now. The body is a flat list of requirements, each stating one rule of the method. A requirement carries a Context block, a one-sentence User Story, and acceptance criteria grouped into named cases; a requirement whose heading carries a `[feature: F-...]` tag is a person-facing scenario — what the reader does and what the reader sees. Edit history lives in `JOURNAL.md`; this spec states what is true today.
 
@@ -19,6 +19,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **agent** — one project window that carries its own tree, queue, gates, published contracts, a standing mission, and an agent card, each of which outlives any single conversation.
 - **agent card** — a host's self-describing file (`.live-spec/agent.md`) stating its name, mission, zones, published contracts, and inbox address.
 - **announced self-compaction** — the session's own act, said aloud at a safe breakpoint, of pruning its working context while carrying its live lines forward into the summary.
+- **architecture format** — the format-family member the architecture document is written in: a preamble, then a body of node sections, then the architecture's generated tables; it inherits the family's shared laws from the spec format and adds only the architecture-particular rules, its definition at `docs/architecture-format.md`.
 - **architecture node** — one named unit in the architecture document carrying one responsibility and one name, owning the spec facts it implements and pinned to its place in the code.
 - **artifact inventory** — the test matrix's opening section naming every file the reader receives, each carried by at least one row asserting it at the rendered level.
 - **attic** — the host's append-only archive folder (`attic/`). A superseded file moves here with one manifest line and is kept for good.
@@ -148,6 +149,8 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **never-bend list** — the set of protections that holds at every rung of the economy ladder and does not bend.
 - **new-criteria budget** — the byte sum a spec-touching delivery declares for the criteria it adds under the *new* kind, each within the per-criterion byte cap.
 - **node block** — the group of matrix rows owned by one architecture node, headed by the node's name, standing as the matrix's case grouping.
+- **node reader** — the one reader that reads the node shape — the node names, each node's owned-anchor set, and each node's pins — read through by every consumer of the architecture; the sibling of `guardrails/specformat.py`, the spec format's one reader.
+- **node section** — the section one architecture node stands as, headed `### [node: <name>]` and carrying four fields: the responsibility, the owns list of spec anchors, the pins list of file-and-line places, and a notes line for what the other fields cannot hold.
 - **non-goal** — one sentence in a spec-delta naming what the change deliberately leaves out, so a deliberate absence reads as a decision.
 - **norm** — an approved prototype frozen as the binding record of a surface's look and feel, kept as a dated copy under `docs/norms/`.
 - **norm pointer** — the `norm: <path>` reference a spec clause carries at its line end, pointing at the frozen norm artifact its behaviour is checked against.
@@ -2681,7 +2684,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: every node states its place**
 
 1. The system *shall* have every node state its place and name the load-bearing technology choice where one exists, and *shall* say in the same table where secrets live and which tier holds each verdict that must not be decided on the client. [INV-75]
-2. The system *shall* make the placement first-class — a column in the node table or its own small table — so a reader answers where a node runs at a glance. [INV-75]
+2. The system *shall* make the placement first-class in its own table, the placement view, so a reader answers where a node runs at a glance. [INV-75]
 
 **Case: tiers-first reading, scaled by kind**
 
@@ -4869,7 +4872,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the class is closed and enumerated**
 
 1. The system *shall* treat the expensive-decision set as closed and enumerable — an agent's birth, a node carved or merged, a contract's shape once a consumer pinned it, a project's kind, an engine-and-instance split, and a repository going public — naming every member as either enumerated on its own row or riding inside another row's work. [INV-235, T-22, INV-113, INV-122, INV-187, INV-36, INV-85, INV-44, INV-226]
-2. The system *shall* state the duty for the whole class and have each member carry it at its own decision point, a traceability test holding that this clause names the read and that agent birth carries it. [INV-235]
+2. The system *shall* state the duty for the whole class and have each member carry it at its own decision point, a traceability test holding that this clause names the read and that agent birth carries it; that test *shall* ride the suite and take no push-gate letter, since no gate reads a reversal cost, the far-tier and node-growth checks the precedent. [INV-235]
 
 **Case: the read is adversarial and closes with the human**
 
@@ -5245,7 +5248,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the hedge gate**
 
-1. *when* the seat's last reply carries an offering-hedge frame from the pattern list, after a quoted, backticked, or fenced span is stripped, the system *shall* block the stop with a rewrite instruction reaching the seat one message later, modelled on the scissors scan — the literal gate that blocks a sentence naming a thing by denying its neighbour — and installed by the setup walk. [INV-238, INV-173]
+1. *when* the seat's last reply carries an offering-hedge frame from the pattern list, after a quoted, backticked, or fenced span is stripped, the system *shall* block the stop with a rewrite instruction reaching the seat one message later, modelled on the scissors scan — the literal gate that blocks a sentence naming a thing by denying its neighbour — matching against an inline universal pattern list and an optional personal-overlay file a host tunes, as the scissors scan carries one, and installed by the setup walk. [INV-238, INV-173]
 2. The system *shall* leave clear of a genuine taste, policy, or irreversible question that names its human-only fact, since that question is an honest admission the human owns. [INV-238, INV-152]
 3. The system *shall* catch only the frames it lists, so a paraphrase it does not carry stays with the conduct judge that reads the class in meaning. [INV-238, INV-241]
 
@@ -5319,7 +5322,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: report a runaway the run owns**
 
-1. *when* a stopping point is reached, the system *shall* report a descendant that is owned, orphaned, and burning — its identity, its processor share, and why the run owns it — reasoning over process group, parent liveness, and processor share alone. [INV-213]
+1. *when* a stopping point is reached, the system *shall* report a descendant that is owned, orphaned, and burning — its identity, its processor share, and why the run owns it — reasoning over process group, parent liveness, and processor share alone, and *shall* fire this notice at the stopping point and never at the push gate, which runs long after the cores burn. [INV-213]
    [GAP: the source gates the burning test on a host-settable processor-share threshold but names no default, so the reporter's out-of-box firing point is unstated.]
 2. The system *shall* read no command or name field for that verdict, so a process whose command merely matches a known burner in a foreign group is never targeted. [INV-213, INV-162]
 
@@ -5521,6 +5524,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 5. *when* a split is taken, the system *shall* carve it by the architecture step alone and re-prove it there. [INV-233, INV-37, INV-113]
 6. The system *shall* read what counts as a code file from the project's declared layers. [INV-233, INV-135]
+7. The node-growth check *shall* ride the suite as `tests/test_node_growth.py` and take no push-gate letter, the far-tier check the precedent. [INV-233]
 
 ---
 
@@ -5573,7 +5577,8 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: a permission rule points at a real path**
 
-7. *when* a filesystem path named inside a permission rule is absent, the system *shall* red the rule, reading absolute and home-rooted paths and reporting the count of rules it resolved. [INV-216, INV-176]
+7. *when* a filesystem path named inside a permission rule is absent, the system *shall* red the rule, reading absolute and home-rooted paths across the personal settings and the host's project settings, stripping a trailing glob to its literal ancestor, keeping a spaced path whole, and reporting the count of rules it resolved. [INV-216, INV-176]
+8. *where* a settings file cannot be read, the perms arm *shall* stand down by name, and *shall* red a present-but-unreadable settings file rather than pass it falsely. [INV-216]
 
 ---
 
@@ -5718,7 +5723,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the remote read arm**
 
-6. *when* a remote consumer reads a private producer repository, the system *shall* require a read grant recorded beside the push grant, and *shall* fail honestly naming the read grant it lacks rather than guess. [INV-232, INV-187]
+6. *when* a remote consumer reads a private producer repository, the system *shall* require a read grant, recorded beside the push grant as the profile field `trust.read-grant`, and *shall* fail honestly naming the read grant it lacks rather than guess. [INV-232, INV-187]
 
 **Case: the stand-down holds no bar over the deposit**
 
@@ -6618,6 +6623,71 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 4. *if* a body row carries other than five cells, breaks ascending id order, carries a status or class outside its vocabulary, or reads *deferred* with no trigger, *then* the row lint *shall* red, naming the row. [INV-277]
 5. *when* every body row holds its shape and its vocabularies, the row lint *shall* pass green and state its reach on the green line, its home the suite's traceability tests, extended, with no new standalone script. [INV-277, INV-269]
 
+## Requirement 289: The architecture is a family member written as node sections
+
+**Context:** ARCHITECTURE.md is the format family's fourth member, joining the spec, the matrix, and the queue. The page `docs/architecture-format.md` defines the member — the laws it inherits from the family and the parts particular to the architecture — and this requirement binds that definition, putting the architecture's shape under the gates that hold the family. The architecture's reading job is a component inventory: a reader opens it to learn what parts exist, what each is for, which spec facts each owns, and where the part sits on disk. Each part is one node, and each node is one section headed `### [node: <name>]`, carrying its responsibility, the spec anchors it owns, the file-and-line pins where it lives, and a short notes line for what the other fields cannot hold.
+
+**User Story:** As a maintainer reading the architecture, I want its format governed by the family's laws and gates, so that reading and holding it costs what the other family documents cost.
+
+### Acceptance Criteria
+
+**Case: the member definition and its inheritance**
+
+1. The architecture *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, no-history, generated-section gating, the comprehension gate — and *shall* restate none of them, its own definition living at `docs/architecture-format.md`. [INV-278]
+2. The architecture *shall* open with a preamble, then its body of node sections, then the generated tables the member-definition page fixes in order. [INV-278]
+
+**Case: a node is a section with four fields**
+
+3. Each node *shall* stand as one section headed `### [node: <name>]`, and a node promised under an open queue row with its machinery still ahead *shall* carry the target tag in that heading, the matrix's block heading for the node reading the same. [INV-278]
+4. A node section *shall* carry four fields — the responsibility, one sentence naming what the node is for; the owns list of spec anchors; the pins list of file-and-line places its responsibility is carried on disk; and a notes line, present only *when* the other three cannot hold something. [INV-278]
+
+**Case: every anchor lives under exactly one node**
+
+5. Every spec anchor *shall* be owned by exactly one node, and the suite *shall* hold that bond both ways — each anchor to its node and each node to its anchors. [INV-278]
+
+**Case: when the gates arm**
+
+6. The architecture's conversion *shall* follow the family's one-delivery arming rule: the whole document moves at once, every consumer of the old shape is repointed in that delivery, and this member's gates arm inside it. [INV-278] [INV-270]
+
+## Requirement 290: An owns anchor cites its rule and carries no history
+
+**Context:** A node's owns list points at the spec anchors the node implements, and the rule each anchor names lives once at the spec. So an owns entry cites that home and adds at most one parenthetical sentence saying where the anchor sits or why the node keeps it; a law copied back into the owns cell is a second home and a defect. *when* the spec turns out to lack a sentence the owns cell was carrying, that sentence moves into the spec clause in the same delivery, so the words survive at their one home. The architecture states today's structure alone: the dated prover-record table leaves for its own dated home under the prover records, and a pin carries no date and no provenance, the journal already telling when and why the node landed.
+
+**User Story:** As a maintainer following an owns anchor, I want it to cite one home and carry no history, so that the rule lives once and the architecture reads as today's map.
+
+### Acceptance Criteria
+
+**Case: the owns anchor cites, and a restated law is a defect**
+
+1. An owns entry *shall* cite the rule's home at the spec by its anchor and *shall* trail at most one parenthetical sentence saying where the anchor sits or why the node keeps it. [INV-279]
+2. *if* an owns cell restates the rule its anchor names, *then* the suite *shall* red, the restated law standing as a second home. [INV-279]
+
+**Case: content the spec lacks moves to the spec**
+
+3. *when* an owns cell carries a sentence the cited spec clause lacks, the system *shall* move that sentence into the spec clause in the same delivery, so the content lives once at the spec. [INV-279]
+
+**Case: the architecture carries no history**
+
+4. The dated prover-record table *shall* relocate verbatim to its own dated home under the prover records, and the family's no-history law *shall* thereafter reach this document. [INV-279]
+5. A pin *shall* carry no date and no provenance, the journal holding when and why the node landed. [INV-279]
+
+## Requirement 291: One node reader serves every consumer of the node shape
+
+**Context:** The node sections are read by many checks — the traceability suite's tests, the node-growth counter, the pin-drift check, and every test asking which node owns an anchor. One reader reads the node shape for all of them: the node names, each node's owned-anchor set, and each node's pins. It is the sibling of `guardrails/specformat.py`, the spec format's one reader. A consumer that reads the raw node shape on its own reads a shape that can drift under it, so such a consumer is a defect the conversion retires. The node-growth counter's hardcoded node-name list retires the same way — it re-derives the list from the reader, so a renamed node stays in step across every consumer.
+
+**User Story:** As a maintainer changing a node, I want every check to read the node shape through one reader, so that a rename or a moved anchor reaches every consumer at once and none reads a stale shape.
+
+### Acceptance Criteria
+
+**Case: one reader, every consumer through it**
+
+1. One reader — the node reader — *shall* read the node shape, the node names, each node's owned-anchor set, and each node's pins, and every consumer *shall* read through it: the traceability tests, the node-growth counter, the pin-drift check, and every test asking which node owns an anchor. [INV-280]
+2. *if* a consumer reads the raw node shape on its own, *then* the suite *shall* red, that consumer standing as a defect the conversion retires. [INV-280]
+
+**Case: the hardcoded node list re-derives**
+
+3. The node-growth counter's node-name list *shall* re-derive from the node reader, so a renamed node *shall* stay in step across every consumer. [INV-280]
+
 ## Reference
 
 The code-to-location table below is generated output, built from the body criteria by `scripts/build-index.py`; no one edits it by hand. Feature codes (`F-...`) live on their scenario headings and carry no table row.
@@ -6896,7 +6966,7 @@ The code-to-location table below is generated output, built from the body criter
 | INV-213 | R235.1, R235.2 |
 | INV-214 | R82.4, R91.1, R91.2, R91.3, R91.4, R266.7 |
 | INV-215 | R134.1, R134.2 |
-| INV-216 | R246.7 |
+| INV-216 | R246.7, R246.8 |
 | INV-217 | R191.5, R215.2, R274.1, R274.2, R274.3, R274.4, R274.5, R274.6, R274.7 |
 | INV-218 | R113.1, R113.2 |
 | INV-219 | R193.13 |
@@ -6913,7 +6983,7 @@ The code-to-location table below is generated output, built from the body criter
 | INV-230 | R207.8, R235.3, R235.4, R235.5 |
 | INV-231 | R95.1, R95.2, R95.3, R190.6, R190.7 |
 | INV-232 | R194.11, R253.6 |
-| INV-233 | R244.1, R244.2, R244.3, R244.4, R244.5, R244.6 |
+| INV-233 | R244.1, R244.2, R244.3, R244.4, R244.5, R244.6, R244.7 |
 | INV-234 | R245.1, R245.2, R245.3, R245.4, R245.5 |
 | INV-235 | R197.2, R197.4, R214.1, R214.2, R214.3, R214.4, R214.5 |
 | INV-236 | R190.4, R190.5, R190.6, R190.7, R190.8 |
@@ -6950,7 +7020,7 @@ The code-to-location table below is generated output, built from the body criter
 | INV-267 | R281.3, R281.4, R281.5, R281.6 |
 | INV-268 | R281.7 |
 | INV-269 | R282.1, R282.2, R284.4, R285.3, R288.5 |
-| INV-270 | R277.19, R277.20, R283.7, R286.3 |
+| INV-270 | R277.19, R277.20, R283.7, R286.3, R289.6 |
 | INV-271 | R191.4, R191.7, R278.5, R278.6, R278.7 |
 | INV-272 | R283.1, R283.2, R283.3, R283.4, R283.5, R283.6, R283.7 |
 | INV-273 | R284.1, R284.2, R284.3, R284.4 |
@@ -6958,6 +7028,9 @@ The code-to-location table below is generated output, built from the body criter
 | INV-275 | R286.1, R286.2, R286.3, R286.4 |
 | INV-276 | R5.1, R96.4, R130.7, R209.1, R243.1, R245.5, R257.1, R286.4, R287.1, R287.2, R287.3, R287.4, R287.5 |
 | INV-277 | R288.1, R288.2, R288.3, R288.4, R288.5 |
+| INV-278 | R289.1, R289.2, R289.3, R289.4, R289.5, R289.6 |
+| INV-279 | R290.1, R290.2, R290.3, R290.4, R290.5 |
+| INV-280 | R291.1, R291.2, R291.3 |
 | M-1 | R49.2, R80.7, R80.8, R92.2, R130.1, R130.2, R130.3, R130.4, R130.5, R130.6, R130.7, R130.8, R130.9, R164.4, R166.3, R166.8, R198.6, R249.2 |
 | M-2 | R14.3, R125.1, R125.2, R125.3, R177.12, R204.3 |
 | M-3 | R136.1 |

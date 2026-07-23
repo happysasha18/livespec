@@ -42,9 +42,11 @@ class TestReviewRecordClass(unittest.TestCase):
         # design-review and audit members consolidated into ARCHITECTURE.md under one-home-per-fact,
         # while the prover's record home survives in the spec body.
         self.assertIn("`docs/prover/`", self.spec, "spec does not name the prover record home")
-        arch = read_flat("ARCHITECTURE.md")
+        # Since the row-456 conversion the dated review records live in the relocated architecture
+        # prover-record file, the architecture itself stating today's structure alone (SPEC INV-279).
+        record = read_flat("docs/prover/architecture-prover-record.md")
         for home in ("docs/design-review/", "docs/audit/"):
-            self.assertIn(home, arch, "architecture does not name the record home: %s" % home)
+            self.assertIn(home, record, "the prover-record home does not name the record home: %s" % home)
 
     def test_states_verify_difference(self):
         self.assertIn("the verify-by-deed audit is the one deliberate difference", self.spec.lower(),

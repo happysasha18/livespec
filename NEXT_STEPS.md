@@ -1,75 +1,53 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-23 night — row 480 CLOSED; next: row 456 on Fable, his ~21:35 word)
-Row 480 closed 2026-07-23 ~21:35: the confirming pair ran twice — the first pair returned one
-blocking stop (the meaning-bearing `[target]` mark read as an ignorable code; fixed in the
-preamble's bracket-marks sentence), the second pair returned zero blocking twice — then the row
-moved to docs/queue-archive/rotated-ROADMAP-2026-07.md via rotate-doc --close-row 480, freeze
-re-baselined, suite 1842 passed / 2 skipped, short-form prover record
-docs/prover/2026-07-23-row480-close-shortform.md, pushed. Row 482 opened the same evening: mid-turn
-chat lines bypass the register Stop-hooks (his catch ~21:20). His ~21:33 word: row 456 (the
-architecture format) runs on Fable in this window; the routine after it moves to Opus.
-Row 480's full delivery report rides its archived row in docs/queue-archive/rotated-ROADMAP-2026-07.md;
-the mechanics chapter is in JOURNAL.md. His 2026-07-23 ~20:35 word stands: wrap at milestones, the
-weekly budget at 10%.
+## LIVE STATE (2026-07-23 night — row 456 LANDED at v4.3.0; the format family is complete)
+The architecture became the format family's fourth member (row 456, v4.3.0). ARCHITECTURE.md is now
+per-node `### [node: <name>]` sections under `docs/architecture-format.md`, read through the one node
+reader `guardrails/archformat.py`; the dated prover-record table relocated to
+`docs/prover/architecture-prover-record.md`; six behavioral rules moved from owns cells into their spec
+clauses; requirements 289-291 (INV-278/279/280) added; 17 consumers repointed to the reader; the doc shed
+31 KB (107 to 76 KB). The two-stage content-preservation proof passed (nothing substantive lost or
+invented). The fresh-context MINOR gate ran a prover + adversarial audit + design-review parity: two
+blocking findings (the pin-drift check still slicing the raw shape in shell behind a Python-only test; the
+Decisions section's dangling "prover record below" pointers) and two should-fix findings folded before the
+landing. Suite green. Record: `docs/prover/2026-07-23-row456.md`.
 
-Row 456 in-work (his ~21:33 word: this window, Fable seat, full rigor): scouts done — structure
-distillation (106 KB doc; the Nodes table is 52%, the guardrails cell alone 26 KB; seven content
-kinds ride the owns cells beyond bare anchors; the prover-record section is pure history) and the
-consumer inventory (~15 structural parsers pinned to the 4-column Nodes table, ~11 row-prefix
-tests, dozens of substring checks that survive, one hardcoded node list in crosscut_counter that
-goes stale silently). Format draft at prototype/2026-07-23-architecture-format/format-draft.md,
-style-lint clean: per-node `### [node: <name>]` sections (the matrix's heading convention), owns
-cites anchors with at most one parenthetical (restated laws relocate to the spec, verified
-per-anchor), prover record relocates to a dated home, one shared reader module (specformat.py's
-sibling) every consumer repoints to, node set unchanged so the matrix headings survive.
-Drafts done and pushed: spec requirements (INV-278..280, lint clean, three glossary entries, the
-placement rule's wording conflict resolved into the draft, SPEC INV-75) and reader/converter/proof
-(stage 1 green: 22 sections, multisets equal, deterministic, reader refuses the old shape).
-Relocation audit done, 13 workers, reports in prototype/2026-07-23-architecture-format/
-relocation-audit/: 249 fragments = 130 duplicate (replace with citation; spec line quoted per
-verdict) + 101 keep (ownership/wiring) + 12 partial (the missing sentences move into the named
-spec clauses) + 6 absent (2 build-pipeline, 4 guardrails-b — decide each: into the spec or an
-architecture note) + 6 provenance-carrying pins. Some nodes hold ownership prose in the
-responsibility field (design-reviewer report) — stage 2 trims responsibility to one sentence too.
-NEXT (the apply stage; routine after the design, so an Opus window per his word): apply verdicts
-to the converted doc + spec edits with named deltas, relocate the prover-record table, move
-format-draft to docs/architecture-format.md, fold the spec-reqs draft (rebuild index), land
-archformat.py in guardrails/, repoint the ~26 consumers, red-proofs, suite, cold-read pair,
-prover, minor-gate audit, bump 4.3.0.
+With the spec (4.0.0), matrix (4.1.0), roadmap (4.2.0), and architecture (4.3.0) all converted, the
+format family is complete. **tlvphotos migrates next on his word from its own window; other projects
+stand until then.**
 
-## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
-1. TEST_MATRIX.md — DONE, row 477, v4.1.0 (2026-07-23).
-2. ROADMAP.md — DONE, row 480, v4.2.0 (2026-07-23).
-3. ARCHITECTURE.md — NEXT (row 456): its own format definition in the same family; carries the named
-   back-propagation (a converted node set re-lays the matrix's block headings in the same delivery).
-Only then does tlvphotos migrate, on his word from its own window; other projects stand until then.
+## Near queue
+- Row 483: the four pre-existing architecture-doc reader stumbles the row-456 cold read surfaced
+  (feature-coverage prose vs table on guardrails; two gates both lettered "gate x"; "Formal index"
+  retired-vs-live terminology; the spec-author self-seam) — each resolved or recorded as an agreed
+  non-problem. Small doc-cleanup.
+- Row 481: the live-queue staleness sweep at the milestone gate (his 2026-07-23 word: the roadmap is no
+  five-year plan); threshold [default: 30 days queued, 7 days in-work quiet]; owns the two deferred rows
+  still trigger-less (143, 144) and the stale in-work claims 386/412 (quiet since 07-18, sweep-eligible
+  07-25).
+- Row 482: mid-turn chat lines reach the human ungated (his catch 2026-07-23 ~21:20) — the register nets
+  must read narration lines, not only the turn's final message; the fix is a machine.
+- Rows 471-475 (row 470's children; 475 the class answer — the enforcement-coverage registry).
+- Rows 465-467 · row 437 pulled near (axis forcing step first, the recursive sweep its dear half) · row
+  460 re-scoped (his 2026-07-23 word: public tier only; working tier possibly-never with two named
+  triggers) · row 469 · row 479 (worker tree-restore guard).
 
-## Near queue after this landing
-- Row 456: the architecture format (the standing order's last member).
-- Row 481: the live-queue staleness sweep at the milestone gate (his 2026-07-23 word: the roadmap is
-  no five-year plan); threshold [default: 30 days queued, 7 days in-work quiet]; also owns the two
-  deferred rows still flagged trigger-less (143, 144) and the stale in-work claims 386/412 (quiet
-  since 07-18, sweep-eligible 07-25).
-- Rows 471–475 (row 470's children; 475 the class answer — the enforcement-coverage registry).
-- Rows 465–467 · row 437 pulled near (axis forcing step first, the recursive sweep its dear half) ·
-  row 460 re-scoped on his 2026-07-23 word: public tier only; working tier possibly-never with two
-  named triggers (size interference, register contamination) · row 469 · row 479 (worker
-  tree-restore guard).
-- His budget word (2026-07-23, 15% of the week left): the two formats in ~5%, then the mechanical
-  half of the tail; rows 460+437's expensive halves wait for the weekly reset.
+## RECOMMENDATION carried from the row-456 prover (not blocking)
+R290.1's "at most one parenthetical sentence" has no length/count gate; a few owns cells carry
+multi-clause parentheticals. Candidate to fold into row 483's doc-cleanup.
 
 ## FIRST at intake — classify one-time vs standing (Alexander 2026-07-21, ROADMAP 440)
 Name every request's persistence class before actioning it, and say it yourself.
 
 ## Standing word / OWNER-HELD
 - Whole movement solo, push on green; plain English in docs, plain Russian in chat; gates mandatory.
-  Max agentic, conserve orchestrator context (delegate reads and drafts; hold briefs and decisions).
-- lean-orchestrator: the seat authors nothing long and reads nothing past a glance inline. Backed by
-  the INV-246 soft signal.
-- Push on green is his grant; re-test every "needs his word" by derivability first; re-derive
-  deferred state from the code itself (INV-247), setting any stale resume note aside.
+- Max agentic, conserve orchestrator context (delegate reads and drafts; hold briefs and decisions).
+- lean-orchestrator: the seat authors nothing long and reads nothing past a glance inline.
+- Push on green is his grant; re-test every "needs his word" by derivability first; re-derive deferred
+  state from the code itself (INV-247), setting any stale resume note aside.
 - Row 421 (open, Alexander's call): one window ruling several instance-agents vs the one-window law.
+- Budget word (2026-07-23): the two remaining formats fit; rows 460+437's expensive halves wait for the
+  weekly reset. The format family is now done, so that spend closed.
 
 ## CONCURRENCY — multiple windows share ~/live-spec
 Commit narrowly by explicit path, never git add -A; re-check HEAD before writing; re-arm with
@@ -79,26 +57,23 @@ commit (python3 scripts/spec-freeze.py --freeze PRODUCT_SPEC.md ARCHITECTURE.md 
 `python3 scripts/rotate-doc.py --doc ROADMAP.md --close-row N` and touches this file (INV-242).
 
 ## Migration readiness
-Architecture format (row 456) is the last document before tlvphotos migrates on his word.
-Onboarding (movement 3) stays deferred on ~8 taste forks; framework coexistence and the
+The format family is complete (all four core documents converted). tlvphotos migrates on his word from its
+own window. Onboarding (movement 3) stays deferred on ~8 taste forks; framework coexistence and the
 "superpower" positioning stay open questions.
 
 ## Open movements
-CLOSED: row 480 queue format v4.2.0 · row 477 matrix format v4.1.0 · rows 461–464 audit should-fix
-batch v4.0.1 · row 445 spec format v4.0.0 · conduct audit v3.1.0 · comms/naming v3.0.0 ·
-axes-from-kind v3.2.0.
-DEFERRED: adoption + onboarding (his 2026-07-18 word; ~8 taste forks; owns the parameters
-registry, 427).
+CLOSED: row 456 architecture format v4.3.0 · row 480 queue format v4.2.0 · row 477 matrix format v4.1.0 ·
+rows 461-464 audit should-fix batch v4.0.1 · row 445 spec format v4.0.0 · conduct audit v3.1.0 ·
+comms/naming v3.0.0 · axes-from-kind v3.2.0.
+DEFERRED: adoption + onboarding (his 2026-07-18 word; ~8 taste forks; owns the parameters registry, 427).
 
 ## Queue's open head (field-gated + far tier)
-385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405
-conversation channel + listener (wait on the harness listener, INV-231) · far tier 381, 411, 435.
-Runnable head is field-gated (contract/listener) + far tier.
+385 first real contract · 389 cross-machine read · 247 remote-deposit field leg · 396/405 conversation
+channel + listener (wait on the harness listener, INV-231) · far tier 381, 411, 435. Runnable head is
+field-gated (contract/listener) + far tier.
 
 ## Next free codes
-Next free INV-278, E-36, T-25, M-454; next ROADMAP row 483 (A-12, B-4, C-2, D-8, S-1, ACT-4 also
-free). Row 482 opened 2026-07-23: mid-turn chat lines bypass the register Stop-hooks (his catch at
-~21:20); the nets must read narration lines too.
+Next free INV-281, E-36, T-25, M-457; next ROADMAP row 484 (A-12, B-4, C-2, D-8, S-1, ACT-4 also free).
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A

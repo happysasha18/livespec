@@ -61,7 +61,12 @@ def test_formal_index_row():
 
 def test_architecture_owns_the_invariant():
     arch = _read("ARCHITECTURE.md")
-    assert "INV-221 (grading the size of a change is the reader's act" in arch
+    import os as _os, sys as _sys
+    _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+    _sys.path.insert(0, _os.path.join(_root, "guardrails"))
+    import archformat as _af
+    owners = [n.name for n in _af.parse_nodes(arch) if "INV-221" in n.anchors_expanded]
+    assert owners == ["build-pipeline"], "INV-221 must be owned by build-pipeline, got %r" % owners
 
 
 def test_matrix_row_covers_the_law():

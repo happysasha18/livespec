@@ -13,7 +13,7 @@ from conftest import read_flat
 
 ARCH = "ARCHITECTURE.md"
 PIPE = "skills/build-pipeline/SKILL.md"
-APPEND_DUTY = "appends its dated row to the Prover record"
+APPEND_DUTY = "appends its dated row to"
 
 
 class TestArchitectureProveSeam(unittest.TestCase):
@@ -28,7 +28,9 @@ class TestArchitectureProveSeam(unittest.TestCase):
         self.assertIn(APPEND_DUTY, read_flat(PIPE))
 
     def test_record_table_caught_up_to_1_1_0(self):
-        body = read_flat(ARCH)
+        # Since the row-456 format conversion the dated prover-record table lives in its own home under
+        # the prover records, the architecture stating today's structure alone (SPEC INV-279).
+        body = read_flat("docs/prover/architecture-prover-record.md")
         self.assertIn("2026-07-12-full-pass-pre-1.1.0.md", body)
         self.assertIn("2026-07-12-s38-inv115-inv116-and-architecture.md", body)
 

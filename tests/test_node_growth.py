@@ -51,21 +51,20 @@ def run_counter(architecture_path, cap_path):
     return p.returncode, p.stdout + p.stderr
 
 
-# A minimal architecture fixture: a Nodes table with a pin column the counter reads.
+# A minimal architecture fixture: node sections (guardrails/archformat.py) with a pins field the
+# counter reads.
 def _arch(rows):
-    head = (
-        "# Fixture architecture\n\n"
-        "## Nodes\n\n"
-        "| Node | Responsibility (one line) | Owns spec facts (anchors) | Pinned to (file:line) |\n"
-        "|---|---|---|---|\n"
-    )
+    head = "# Fixture architecture\n\n## Nodes\n\n"
     body = "".join(rows)
     tail = "\n## Seams\n\n| From | To | Carries |\n|---|---|---|\n| a | b | x |\n"
     return head + body + tail
 
 
 def _row(node, pins):
-    return "| %s | does one thing | E-1 | %s |\n" % (node, pins)
+    return ("### [node: %s]\n"
+            "**responsibility** — does one thing\n"
+            "**owns** — E-1\n"
+            "**pins** — %s\n\n" % (node, pins))
 
 
 class TestNodeGrowthMechanism(unittest.TestCase):

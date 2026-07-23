@@ -2,8 +2,10 @@
 # check-pin-drift.sh — gate (g): architecture pins must not rot (row 90, the
 # track-coach lesson: 7 of 17 pins drifted in ONE session, silently).
 #
-# A pin looks like `path/to/file:123` (label words) in ARCHITECTURE.md's Nodes
-# table. The NORMATIVE pin is the named thing; the :line is a cache (SPEC E-14).
+# A pin looks like `path/to/file:123` (label words) in a node section of
+# ARCHITECTURE.md, read through the one node reader guardrails/archformat.py
+# (--pins), never by slicing the node body here (SPEC INV-280). The NORMATIVE
+# pin is the named thing; the :line is a cache (SPEC E-14).
 # This gate:
 #   RED   — pinned file missing, or :line beyond end of file (a hard break);
 #   DRIFT — none of the label's words (≥4 chars) found within ±25 lines of the
@@ -14,6 +16,9 @@
 
 set -euo pipefail
 
+# the one node reader sits beside this script (both in guardrails/), found by the script's own path so a
+# gate run against an ARCHITECTURE.md anywhere (a test fixture in a temp dir) still resolves the reader.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ARCH="${1:-$(git rev-parse --show-toplevel)/ARCHITECTURE.md}"
 STRICT=0
 [ "${2:-}" = "--strict" ] && STRICT=1
@@ -63,9 +68,7 @@ while IFS=$'\t' read -r path line label; do
     echo "DRIFT (pin drift): $path:$line ($label) — label not found within ±25 lines"
     drift=1
   fi
-done < <(sed -n '/## Nodes/,/## Seams/p' "$ARCH" \
-  | grep -oE '`[A-Za-z0-9_./~-]+:[0-9]+`( \([^)]*\))?' \
-  | sed -E 's/^`([^:]+):([0-9]+)`( \(([^)]*)\))?/\1\t\2\t\4/')
+done < <(python3 "$SCRIPT_DIR/archformat.py" --pins "$ARCH")
 
 if [ "$checked" -eq 0 ]; then
   echo "FAIL (pin drift): no pins parsed from $ARCH"; exit 1

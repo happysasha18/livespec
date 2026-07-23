@@ -604,6 +604,9 @@ by `test_artifact_inventory` — the test parses this table, so adding an entry 
 | M-443 | Each format gate's green line states its reach — the files opened and the rows matched of the rows scanned — never a bare green line with no reach stated; asserted per gate in its own test file [INV-269] | string | `tests/test_requirement_shape.py::test_green_line_states_reach` (siblings assert the same reach line per gate) | *built* |
 | M-444 | Every format gate armed in the one conversion delivery, none before: each gate's suite test runs it on the live PRODUCT_SPEC.md (gate x also wired local + CI), the armed tests being the record of the arming event; never a format gate enforcing before the conversion delivery, never an armed gate red on the live document [INV-270] | string | `tests/test_requirement_shape.py::TestArmedOnTheRealSpec` (one armed test per format-gate file) | *built* |
 | M-445 | The generated index carries locations only while the criteria and the glossary stay the authored home of every code's plain statement; the description-field gate retired with that stated successor, its config disarmed naming the retirement; never a table row carrying prose, never a bare code standing with no criterion home [INV-271] | string | `tests/test_description_field.py::test_index_carries_locations_only_with_criteria_as_the_authored_home` | *built* |
+| M-454 | The architecture reads in the format-family member `docs/architecture-format.md` defines — a preamble, then per-node `### [node: <name>]` sections each carrying responsibility, owns, and pins with an optional notes field, then the generated tables — a `[target]` node marking the tag in its heading; every spec anchor owned by exactly one node and the bond held both ways; never a node outside a section, never an anchor owned by two nodes or by none [INV-278] | string | `tests/test_architecture_format.py` (red proven against the pre-conversion table `ARCHITECTURE.md` at git HEAD: `archformat.parse_nodes` raises on the retired 4-column table, so every check reds) | *built* |
+| M-455 | An owns entry cites its rule's spec home by anchor and restates no law, a sentence the spec lacked having moved into the spec clause in the same delivery, and the dated prover-record table having relocated to `docs/prover/architecture-prover-record.md`; never an owns cell restating the rule its anchor names, never a pin carrying a date or provenance, never a dated history table left in the architecture [INV-279] | string | `tests/test_architecture_format.py` (red proven against the pre-conversion doc: restated laws filled the owns cells, pins carried landing dates, the Prover-record table sat in ARCHITECTURE.md) | *built* |
+| M-456 | One node reader `guardrails/archformat.py` reads the node shape — names, owned anchors, pins — for every consumer, and the node-growth counter's node list re-derives from it; never a consumer parsing the raw node shape on its own, never a hardcoded node-name list drifting [INV-280] | string | `tests/test_architecture_format.py` (red proven against the pre-conversion tree: consumers parsed the `## Nodes` table by hand and `crosscut_counter.PACK_NODES` was a hardcoded literal) | *built* |
 
 ### [node: text-audit]
 
@@ -1039,6 +1042,9 @@ The anchor-to-row table below is generated output, built from the body rows by `
 | INV-275 | M-451 |
 | INV-276 | M-452 |
 | INV-277 | M-453 |
+| INV-278 | M-454 |
+| INV-279 | M-455 |
+| INV-280 | M-456 |
 | M-1 | M-029, M-128 |
 | M-2 | M-011 |
 | M-3 | M-053 |

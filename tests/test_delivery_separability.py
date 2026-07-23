@@ -17,9 +17,14 @@ spec-author node in ARCHITECTURE (the lens carried by product-prover). Against H
 none of these exist — recorded in the station's red run.
 """
 
+import os
+import sys
 import unittest
 
-from conftest import read, read_flat
+from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 class TestDeliverySeparabilityLaw(unittest.TestCase):
@@ -71,14 +76,17 @@ class TestDeliverySeparabilityLaw(unittest.TestCase):
     def test_inv248_architecture_owns_the_lens(self):
         """The delivery-separability invariant is owned by the spec-author node (INV-244's owner), the
         lens body carried by product-prover — mirroring INV-49 (owned by parallel-lanes, carried)."""
-        arch = read("ARCHITECTURE.md")
-        owner_line = next((l for l in arch.splitlines()
-                           if l.startswith("|") and "INV-248" in l and "spec-author" in l), "")
-        self.assertTrue(owner_line, "spec-author does not own INV-248 in the Nodes owns-list")
-        carried_line = next((l for l in arch.splitlines()
-                             if l.startswith("|") and "delivery-separability lens" in l
-                             and "product-prover" in l), "")
-        self.assertTrue(carried_line, "product-prover does not carry the delivery-separability lens")
+        nodes = archformat.parse_nodes(read("ARCHITECTURE.md"))
+        spec_author = next((n for n in nodes if n.name == "spec-author"), None)
+        self.assertIsNotNone(spec_author, "ARCHITECTURE.md carries no spec-author node")
+        self.assertIn("INV-248", spec_author.anchors_expanded,
+                      "spec-author does not own INV-248")
+        product_prover = next((n for n in nodes if n.name == "product-prover"), None)
+        self.assertIsNotNone(product_prover, "ARCHITECTURE.md carries no product-prover node")
+        self.assertTrue(
+            "delivery-separability lens" in product_prover.owns
+            or "delivery-separability lens" in product_prover.notes,
+            "product-prover does not carry the delivery-separability lens")
 
     def test_inv248_distinct_from_composition_axes_law(self):
         """The delivery-separability law is the DUAL of the composition-axes law, never folded into it:

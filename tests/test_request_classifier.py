@@ -13,10 +13,15 @@ cannot reword away — the invariant code itself — since a needle drawn from t
 would travel with the very edit the check exists to catch.
 """
 
+import os
 import re
+import sys
 import unittest
 
-from conftest import read, read_flat, read_all, read_all_flat
+from conftest import ROOT, read, read_flat, read_all, read_all_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 # --- reading a count out of prose ------------------------------------------------------------
@@ -144,24 +149,15 @@ class DocHomeCase(unittest.TestCase):
         return " ".join(" ".join(found).split())
 
     def architecture_owner(self, code):
-        """The component whose invariants cell in ARCHITECTURE.md's table lists `code`.
+        """The node whose `owns` field (guardrails/archformat.py) lists `code`.
 
-        The table reads `| component | responsibility | invariants | homes |`, so a code owned by
-        a component is a token in that row's third cell. A code that appears only in loose prose
-        has no owner and reds here."""
-        owners = []
-        for line in read("ARCHITECTURE.md").splitlines():
-            s = line.strip()
-            if not s.startswith("|"):
-                continue
-            cells = [c.strip() for c in s.strip("|").split("|")]
-            if len(cells) < 3:
-                continue
-            if code in [t.strip() for t in cells[2].split(",")]:
-                owners.append(cells[0])
+        Anchors are read from the owns field only, ranges expanded to their members. A code that
+        appears only in loose prose has no owner and reds here."""
+        owners = [n.name for n in archformat.parse_nodes(read("ARCHITECTURE.md"))
+                  if code in n.anchors_expanded]
         self.assertEqual(len(owners), 1,
-                         "ARCHITECTURE.md gives %s %d owning components %s; a code is owned by "
-                         "one component's invariants cell" % (code, len(owners), owners))
+                         "ARCHITECTURE.md gives %s %d owning nodes %s; a code is owned by "
+                         "one node's owns field" % (code, len(owners), owners))
         return owners[0]
 
 

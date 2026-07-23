@@ -13,7 +13,13 @@ for the forward-binding law and the suite-honesty class.
 String-level assertions on the shipped PRODUCT_SPEC.md, ARCHITECTURE.md, and the
 spec-author skill. Red-proven against the pre-delta tree (INV-163 absent).
 Landed 2026-07-15 (v2.0.0)."""
+import os
+import sys
+
 from conftest import ROOT, read
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 # the five spec sites the split now routes through, and the pole each takes
 SHIP_SHAPE_SITES = ("INV-125", "INV-136", "INV-139")   # ship-the-shape pole
@@ -99,9 +105,11 @@ def test_no_site_re_derives_the_split_in_its_own_words():
 def test_architecture_cites_the_root_not_a_re_derivation():
     arch = read("ARCHITECTURE.md")
     assert "the ship-the-shape pole of the pack-to-host split [INV-163]" in arch
-    # INV-163 is owned by a node (base-rulebook carries it in its invariant list)
-    base_row = [ln for ln in arch.splitlines() if ln.startswith("| base-rulebook |")]
-    assert base_row and "INV-163" in base_row[0], "INV-163 not homed on the base-rulebook node"
+    # INV-163 is owned by a node (base-rulebook carries it in its owns field)
+    nodes = archformat.parse_nodes(arch)
+    base_rulebook = next((n for n in nodes if n.name == "base-rulebook"), None)
+    assert base_rulebook is not None, "ARCHITECTURE.md carries no base-rulebook node"
+    assert "INV-163" in base_rulebook.anchors_expanded, "INV-163 not homed on the base-rulebook node"
 
 
 def test_pole_declaration_duty_homed_in_spec_author():

@@ -16,6 +16,7 @@ from conftest import ROOT, read, read_all, read_all_flat
 
 sys.path.insert(0, os.path.join(ROOT, "guardrails"))
 from specformat import green_reach  # the family's green-reach line (SPEC INV-269)
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 def expand(anchor):
@@ -41,25 +42,16 @@ def spec_index_anchors():
 
 
 def architecture_nodes():
-    """{node name: set of owned anchors} from ARCHITECTURE.md's Nodes table."""
+    """{node name: set of owned anchors} from ARCHITECTURE.md's node sections (guardrails/archformat.py).
+
+    A target node's key carries the same " [target]" suffix the old table's name cell wrote
+    (Node.name_cell), so every caller comparing this dict's keys against TEST_MATRIX.md's
+    `### [node: <name>]` block names (which carry the same suffix) still lines up. Owned anchors
+    are read via .anchors_expanded so a range like INV-250..INV-265 matches its member codes."""
     arch = read("ARCHITECTURE.md")
     nodes = {}
-    in_nodes = False
-    for line in arch.splitlines():
-        if line.startswith("## Nodes"):
-            in_nodes = True
-            continue
-        if in_nodes and line.startswith("## "):
-            break
-        if in_nodes and line.startswith("|") and not line.startswith("|---") and "Responsibility" not in line:
-            cells = [c.strip() for c in line.strip("|").split("|")]
-            if len(cells) == 4:
-                owned = set()
-                for tok in re.findall(ANCHOR_TOKEN, cells[1]):
-                    pass  # responsibility column may mention rows; anchors come from column 3 only
-                for tok in re.findall(ANCHOR_TOKEN, cells[2]):
-                    owned.update(expand(tok))
-                nodes[cells[0]] = owned
+    for node in archformat.parse_nodes(arch):
+        nodes[node.name_cell] = node.anchors_expanded
     return nodes
 
 
@@ -205,10 +197,14 @@ class TestArchitecture(unittest.TestCase):
 
     def test_architecture_pins_exist(self):
         arch = read("ARCHITECTURE.md")
-        section = arch.split("## Nodes", 1)[1].split("## Seams", 1)[0]
-        pins = re.findall(r"`([\w./-]+):(\d+)`", section)
+        nodes = archformat.parse_nodes(arch)
+        # Same path charset the pre-conversion regex matched (`[\w./-]+`) — a `~`-prefixed
+        # machine-local pin (real only on the pin's own author's machine, SPEC M-5) stays out of
+        # scope here exactly as before, the way guardrails/check-pin-drift.sh treats it specially.
+        pins = [pin for n in nodes for pin, _label in n.pins if re.match(r"^[\w./-]+:\d+$", pin)]
         self.assertGreater(len(pins), 10, "pin parse failure")
-        for path, line_no in pins:
+        for pin in pins:
+            path, line_no = pin.rsplit(":", 1)
             full = os.path.join(ROOT, path)
             self.assertTrue(os.path.isfile(full), "pinned file missing: %s" % path)
             with open(full, encoding="utf-8") as f:
@@ -1353,21 +1349,15 @@ class TestTargetOwnership(unittest.TestCase):
 
     def test_target_nodes_pin_honesty(self):
         arch = read("ARCHITECTURE.md")
-        section = arch.split("## Nodes", 1)[1].split("## Seams", 1)[0]
-        for line in section.splitlines():
-            if not line.startswith("|") or line.startswith("|---"):
-                continue
-            cells = [c.strip() for c in line.strip("|").split("|")]
-            if len(cells) != 4 or cells[0] == "Node":
-                continue
-            name, resp, owned, pins = cells
-            has_tag = "[target" in name or "[target" in resp
+        for node in archformat.parse_nodes(arch):
+            pins = node.pins_text
+            has_tag = node.is_target or "[target" in node.responsibility
             if has_tag:
                 self.assertIn("—", pins,
                               "node %r carries [target] but every pin reads real — drop the tag or "
-                              "mark the missing pin with an em-dash" % name)
+                              "mark the missing pin with an em-dash" % node.name)
             if pins.strip().startswith("—"):
-                self.assertTrue(has_tag, "node %r has no real pin but no [target] mark" % name)
+                self.assertTrue(has_tag, "node %r has no real pin but no [target] mark" % node.name)
 
 
 class TestLoaderStaysThin(unittest.TestCase):
@@ -2835,11 +2825,12 @@ class TestSmallDesignHoles(unittest.TestCase):
         self.assertIn("`HEAD` never sits red across a breakpoint", s)
 
     def test_179_architecture_inv67_ownership_prose(self):
-        arch = re.sub(r"\s+", " ", read("ARCHITECTURE.md"))
-        self.assertNotIn("the invariant's owner is the guardrails node, INV-67", arch,
-                         "ARCHITECTURE still reads as if guardrails owns INV-67 (F4)")
-        self.assertIn("INV-67 (the showing channel matches the session's seat)", arch,
-                      "INV-67 no longer reads as communicator's own")
+        # INV-67 reads as communicator's own, never guardrails' (F4). Since the row-456 format
+        # conversion the ownership is read through the node reader, not a literal prose string (the
+        # showing-channel law itself lives at the spec, cited by the anchor).
+        owners = [node for node, owned in architecture_nodes().items() if "INV-67" in owned]
+        self.assertEqual(owners, ["communicator"],
+                         "INV-67 must be owned by exactly the communicator node, got %r" % owners)
 
 
 class TestAuthoringTerminology(unittest.TestCase):

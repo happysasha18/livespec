@@ -8,9 +8,13 @@ not fly the picture home, and a door picture that behaved differently by slot â€
 review that carried only the bottom-up lens.
 """
 import os
+import sys
 import unittest
 
 from conftest import ROOT, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 def _read(rel):
@@ -54,10 +58,10 @@ class TestGestureOverlayParityLens(unittest.TestCase):
         self.assertIn("two producers", skill)
 
     def test_architecture_owns_165_under_design_reviewer(self):
-        arch = _read("ARCHITECTURE.md")
-        for line in arch.splitlines():
-            if line.startswith("| design-reviewer |") and "INV-165" in line:
-                return
+        nodes = archformat.parse_nodes(_read("ARCHITECTURE.md"))
+        design_reviewer = next((n for n in nodes if n.name == "design-reviewer"), None)
+        if design_reviewer is not None and "INV-165" in design_reviewer.anchors_expanded:
+            return
         self.fail("the design-reviewer node does not own INV-165")
 
     def test_matrix_row_present(self):

@@ -18,11 +18,15 @@ below fail. The red is recorded in docs/prover/2026-07-18-rows-370-394.md.
 import json
 import os
 import subprocess
+import sys
 import tempfile
 import unittest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHECK = os.path.join(REPO, "scripts", "check-pack-update.sh")
+
+sys.path.insert(0, os.path.join(REPO, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 def run_check(tmp, founding_manifest=None, host_profile=None, remote_version="9.9.9"):
@@ -132,8 +136,10 @@ class TestSpecStatesTheLaw(unittest.TestCase):
 
     def test_architecture_owns_the_invariant(self):
         arch = open(os.path.join(REPO, "ARCHITECTURE.md"), encoding="utf-8").read()
-        owner_line = next((l for l in arch.splitlines() if "INV-227" in l), "")
-        self.assertIn("| attach ", owner_line, "attach does not own INV-227 in the owns-list")
+        nodes = archformat.parse_nodes(arch)
+        attach = next((n for n in nodes if n.name == "attach"), None)
+        self.assertIsNotNone(attach, "ARCHITECTURE.md carries no attach node")
+        self.assertIn("INV-227", attach.anchors_expanded, "attach does not own INV-227 in the owns-list")
 
     def test_matrix_row_covers_the_law(self):
         mat = open(os.path.join(REPO, "TEST_MATRIX.md"), encoding="utf-8").read()

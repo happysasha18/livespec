@@ -539,7 +539,8 @@ class TestGateG_PinDrift(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             arch = os.path.join(tmp, "ARCHITECTURE.md")
             with open(arch, "w") as f:
-                f.write("## Nodes\n| n | r | E-1 | `ghost.py:5` (spine) |\n## Seams\n")
+                f.write("### [node: n]\n\n**responsibility** — r\n\n**owns** — E-1\n\n"
+                        "**pins** — `ghost.py:5` (spine)\n")
             result = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch])
             self.assertEqual(result.returncode, 1, "missing pinned file must be RED")
             self.assertIn("pinned file missing", result.stdout)
@@ -551,7 +552,8 @@ class TestGateG_PinDrift(unittest.TestCase):
                 f.write("\n" * 100)
             arch = os.path.join(tmp, "ARCHITECTURE.md")
             with open(arch, "w") as f:
-                f.write("## Nodes\n| n | r | E-1 | `code.py:50` (nonexistent-symbol) |\n## Seams\n")
+                f.write("### [node: n]\n\n**responsibility** — r\n\n**owns** — E-1\n\n"
+                        "**pins** — `code.py:50` (nonexistent-symbol)\n")
             soft = run([os.path.join(GUARDRAILS, "check-pin-drift.sh"), arch])
             self.assertEqual(soft.returncode, 0, "non-strict drift must report, not block")
             self.assertIn("DRIFT", soft.stdout)

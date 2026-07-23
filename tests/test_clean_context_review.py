@@ -80,10 +80,9 @@ class TestCleanContextReview(unittest.TestCase):
         self.assertIn("SPEC INV-237", pv)
 
     def test_architecture_owns_the_invariant(self):
-        arch = flat("ARCHITECTURE.md")
-        # INV-237's ownership entry reads plainly under its owning node
-        self.assertIn("INV-237 (the authoring seat does not adversarially certify its own work", arch)
-        # and exactly one architecture node owns it (traceability owns every anchor once)
+        # Exactly one architecture node owns INV-237 (traceability owns every anchor once). Since the
+        # row-456 format conversion the ownership is read through the node reader; the release-audit law
+        # itself lives at the spec, cited by the anchor rather than restated in the architecture.
         import sys
         sys.path.insert(0, os.path.join(REPO, "tests"))
         from test_traceability import architecture_nodes

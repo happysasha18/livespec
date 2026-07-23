@@ -69,7 +69,15 @@ class TestConvergenceLocks(unittest.TestCase):
         # Context-echoes-criterion pairs — the measured floor moves 114 -> 116, this same-commit
         # edit being the deliberate, visible move the contract demands. The meter's calibration
         # for the requirements grammar rides its own queue row.
-        self.assertLessEqual(cap["max_redundancy_open"]["PRODUCT_SPEC.md"], 116,
+        # 2026-07-23, row 456 (the architecture-format member): the three architecture-format
+        # requirements 289-291 follow the same family template as the spec, matrix, and queue members
+        # (283, 286), so their genre-inheritance sentence, their user story, and their
+        # Context-echoes-criterion prose parallel the existing members by design. Those five lawful
+        # formulaic-grammar pairs move the measured floor 116 -> 121, this same-commit edit being the
+        # deliberate, visible move the contract demands. ARCHITECTURE.md keeps its zero floor (its four
+        # transient pairs were deduped in this landing, the owner's-word provenance dropped under the
+        # no-history law INV-279).
+        self.assertLessEqual(cap["max_redundancy_open"]["PRODUCT_SPEC.md"], 121,
                              "PRODUCT_SPEC.md's redundancy cap was raised above the reached floor")
         self.assertLessEqual(cap["max_redundancy_open"]["ARCHITECTURE.md"], 0,
                              "ARCHITECTURE.md's redundancy cap was raised above the reached floor")

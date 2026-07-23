@@ -317,3 +317,19 @@ generated index, the size ratchet, and the delta classifier — arm when the hos
 (SPEC INV-270); until then they stand dormant and red nothing. The installed-set record reads the pack
 version from the version lines the installed skills carry, so a host records 4.0.0 once its conversion
 lands behind the owner's gate.
+
+### 4.3.0 — 2026-07-23
+
+**No forced host action.** The 4.3.0 minor makes the architecture document the format family's fourth
+member, defined in `docs/architecture-format.md`: each node stands as a `### [node: <name>]` section with
+its responsibility, the spec anchors it owns, its file-and-line pins, and an optional notes line, read
+through the one node reader `guardrails/archformat.py`. This joins the spec (4.0.0), the test matrix
+(4.1.0), and the roadmap (4.2.0) as family members a host converts by the same per-document recipe the
+4.0.0 chapter states: convert the document's units, prove no content dropped by the word-and-punctuation
+multiset check, repoint every consumer of the old shape to the reader, run the mechanical lints, and put
+each converted section before the cold-reader panel. A host keeps its old-format `ARCHITECTURE.md` until
+it converts; the architecture format gates arm only when the host's converted document lands (SPEC
+INV-270), staying dormant and reddening nothing until then. The pack's own conversion of its
+`ARCHITECTURE.md` runs the recipe end to end and records every named delta
+(`prototype/2026-07-23-architecture-format/`). tlvphotos converts on the owner's word; other hosts follow
+on the same word.

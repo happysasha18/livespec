@@ -18,8 +18,12 @@ Usage:  crosscut_counter.py [ROADMAP.md] [threshold]
 
 import glob
 import itertools
+import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 DEFAULT_THRESHOLD = 3  # a pair cross-cut this many times is a boundary-move candidate; [default], tunable
 
@@ -98,23 +102,22 @@ def crosscut_landings_union(base, known_nodes):
     return list(by_row.values())
 
 
-# The pack's own node names, from ARCHITECTURE.md's node map — the known vocabulary for the adapter.
-PACK_NODES = [
-    "base-rulebook", "spec-author", "product-prover", "build-pipeline", "publish",
-    "communicator", "feedback-intake", "test-author", "attach", "inbox", "guardrails",
-    "templates", "skill-evals", "snapshot", "design-sync", "onboarding-card",
-    "spec", "architecture", "matrix",
-]
+def pack_nodes(architecture_path):
+    """The pack's own node names, read live from ARCHITECTURE.md's node sections (guardrails/
+    archformat.py, SPEC INV-280) — the known vocabulary the cross-cutting-note adapter matches
+    against, rederived every run instead of held as a literal that drifts from the real map."""
+    with open(architecture_path, encoding="utf-8") as f:
+        text = f.read()
+    return [node.name for node in archformat.parse_nodes(text)]
 
 
 def main(argv):
-    import os
     roadmap = argv[1] if len(argv) > 1 else "ROADMAP.md"
     threshold = int(argv[2]) if len(argv) > 2 else DEFAULT_THRESHOLD
     # Read the UNION of the body and the archives, deduped by row number: the closed queue's
     # cross-cutting landings live in docs/queue-archive/*.md as well as (pre-conversion) the body.
     base = os.path.dirname(os.path.abspath(roadmap)) or "."
-    landings = crosscut_landings_union(base, PACK_NODES)
+    landings = crosscut_landings_union(base, pack_nodes(os.path.join(base, "ARCHITECTURE.md")))
     ranked = flagged_pairs(landings, threshold)
     if not ranked:
         print("cross-cut counter: no node pair reached threshold %d — boundaries look healthy" % threshold)

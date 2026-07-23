@@ -33,9 +33,13 @@ the presence check above. The two are separate mechanisms.
 
 import os
 import re
+import sys
 import unittest
 
 from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 KIND = re.compile(r"(?m)^\s*[-*]?\s*`?project\.kind:")
 AXES = re.compile(r"(?m)^\s*[-*]?\s*`?project\.axes:")
@@ -161,10 +165,11 @@ class TestCompositionAxesLaw(unittest.TestCase):
         self.assertIn("INV-244", adopt)
 
     def test_architecture_owns_the_invariant(self):
-        arch = read("ARCHITECTURE.md")
-        owner_line = next((l for l in arch.splitlines()
-                           if l.startswith("|") and "INV-244" in l and "spec-author" in l), "")
-        self.assertTrue(owner_line, "spec-author does not own INV-244 in the Nodes owns-list")
+        nodes = archformat.parse_nodes(read("ARCHITECTURE.md"))
+        spec_author = next((n for n in nodes if n.name == "spec-author"), None)
+        self.assertIsNotNone(spec_author, "ARCHITECTURE.md carries no spec-author node")
+        self.assertIn("INV-244", spec_author.anchors_expanded,
+                      "spec-author does not own INV-244")
 
     def test_matrix_row_covers_the_law(self):
         mat = read("TEST_MATRIX.md")

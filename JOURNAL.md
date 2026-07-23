@@ -2,6 +2,45 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-23 — v4.3.0 MINOR: the architecture becomes the format family's fourth member (row 456)
+
+The architecture document was the last core document still in its old shape: one 4-column `## Nodes`
+table where each node was a single row, and the large rows had grown into essays — at conversion the
+guardrails cell alone carried 20 KB, a fifth of the document, most of it spec laws copied back beside the
+anchor that already owned them. The fourth family member, defined in `docs/architecture-format.md`,
+answers with per-node `### [node: <name>]` sections: each node states its responsibility in one sentence,
+the spec anchors it owns (each anchor citing its rule's home, restating no law), the file-and-line pins
+where it lives, and a notes line for the wiring the other fields cannot hold. Reading and holding the
+architecture now costs what the other family documents cost, and the document shed 31 KB.
+
+The conversion ran in two stages under a content-preservation proof. Stage one turned the table into
+sections mechanically, verbatim, proven zero-delta by the family's word-and-punctuation multiset method.
+Stage two applied a 249-fragment relocation audit: 130 restated laws replaced by their bare anchor
+citation (the words already lived at the cited spec clause), the dated prover-record table relocated to
+`docs/prover/architecture-prover-record.md` so the no-history law finally reached the document, pin
+provenance dropped, and six behavioral sentences the architecture had been carrying that the spec lacked
+moved into their spec clauses (the runaway-child fire-timing, the perms arm's settings scope and path
+parsing and unreadable stand-down, the hedge gate's personal overlay, the read grant's `trust.read-grant`
+field, and the node-growth and expensive-decision checks' push status). The proof reads the new node
+content plus every named delta back against the converted document and confirms no substantive content was
+lost or invented.
+
+One reader now serves the node shape: `guardrails/archformat.py`, the sibling of the spec format's
+`specformat.py`. Seventeen consumers that had parsed the node table by hand — the traceability suite's
+helpers, the node-growth counter, the pin-drift check, the cross-cut counter's hardcoded node list, and a
+dozen ownership tests — repoint to it, and the counter re-derives its node list from the reader so a
+renamed node can never silently desync it. The node set stayed unchanged through the conversion, so the
+test matrix's block headings, which group by these nodes, survived as they stood.
+
+The fresh-context MINOR gate earned its keep. The prover caught that the pin-drift check, a consumer the
+spec names by name, still sliced the raw node section in shell while the enforcing test scanned only
+Python — the invariant's own net had a hole exactly the shape of the surviving violation; the reader
+gained a `--pins` feed the shell gate now drives off, and the test widened to reach shell. The audit
+caught three prose pointers in the Decisions section still saying the prover record sat "below" where the
+relocated table no longer was — a gate green over stale prose, the migration-sweeps-all-cells lesson. Both
+blocking findings and two should-fix findings folded before the landing. Four pre-existing reader stumbles
+the cold read surfaced, none introduced by the conversion, queued as row 483.
+
 ## 2026-07-23 — v4.2.0 MINOR: the queue becomes the format family's third member (row 480)
 
 The roadmap was the reading bottleneck: 686 KB against a 700 KB ceiling, 72% of its 345 rows closed,

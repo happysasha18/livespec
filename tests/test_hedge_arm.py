@@ -239,7 +239,11 @@ def test_formal_index_row():
 
 def test_architecture_owns_the_invariant():
     arch = _read(os.path.join(ROOT, "ARCHITECTURE.md"))
-    assert "INV-238 (the hedge gate:" in arch
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+    import archformat as _af
+    owners = [n.name for n in _af.parse_nodes(arch) if "INV-238" in n.anchors_expanded]
+    assert owners == ["guardrails"], "INV-238 must be owned by the guardrails node, got %r" % owners
     assert "hooks/hedge-scan.py:1" in arch
 
 

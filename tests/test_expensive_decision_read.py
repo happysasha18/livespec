@@ -26,9 +26,13 @@ criteria now share one combined `[..]` tag list rather than one bracket per code
 """
 import json
 import os
+import sys
 import unittest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+sys.path.insert(0, os.path.join(REPO, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 def read(rel):
@@ -143,10 +147,11 @@ class TestTraceability(unittest.TestCase):
         self.assertIn(CLASS_OPENER, spec)
 
     def test_architecture_owns_the_invariant(self):
-        arch = read("ARCHITECTURE.md")
-        owners = [line for line in arch.splitlines() if "INV-235" in line]
-        self.assertTrue(any("| build-pipeline |" in line for line in owners),
-                        "build-pipeline does not own INV-235 in the architecture owns-list")
+        nodes = archformat.parse_nodes(read("ARCHITECTURE.md"))
+        build_pipeline = next((n for n in nodes if n.name == "build-pipeline"), None)
+        self.assertIsNotNone(build_pipeline, "ARCHITECTURE.md carries no build-pipeline node")
+        self.assertIn("INV-235", build_pipeline.anchors_expanded,
+                      "build-pipeline does not own INV-235 in the architecture owns-list")
 
     def test_matrix_row_covers_the_law(self):
         mat = read("TEST_MATRIX.md")

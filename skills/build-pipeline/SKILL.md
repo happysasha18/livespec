@@ -9,7 +9,7 @@ description: >
   entry point for bugs, refactors, docs-only changes, and feature removals — a bug enters at the matrix
   step with a red-on-bug test. NOT for tiny reversible edits (those shortcut straight to code + a test) or pure research/fact-gathering.
 metadata:
-  version: 4.2.0
+  version: 4.3.0
 ---
 
 # build-pipeline — ship a change by the method
@@ -17,7 +17,7 @@ metadata:
 > Part of the **live-spec pack** — the shared working rules (ask-never-guess · plain words, anchors trail ·
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
-> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v4.2.0), together with the
+> need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live ONCE in the pack's base skill, `live-spec-base` (v4.3.0), together with the
 > settings ladder — this skill references them and elaborates only its own domain. Used standalone, this
 > note is plain advice.
 
@@ -288,8 +288,10 @@ See [references/work-kind-table.md](references/work-kind-table.md) for the full 
    quality budgets are stated with their instrumentation homes, each naming its watcher (INV-41) · the runtime view walks every
    promised flow (INV-74) · the placement view says where every node runs (INV-75). Findings land in the
    same `docs/prover/` record discipline as step 2. A full pass at an M-1 or M-6 gate that proves
-   ARCHITECTURE.md beside the spec (INV-116) also **appends its dated row to the Prover record** table in
-   ARCHITECTURE.md, so that table tracks the architecture's freshness rule and stays current with it.
+   ARCHITECTURE.md beside the spec (INV-116) also **appends its dated row to the architecture prover
+   record** at `docs/prover/architecture-prover-record.md` — the dated home the record moved to when the
+   architecture became a format member (SPEC INV-279) — so that record tracks the architecture's freshness
+   rule and stays current with it.
 
 5. **Test spec — invoke `test-author` to DERIVE `TEST_MATRIX.md` from the proven spec through the proven architecture (the method's one home, SPEC E-27).** The
    matrix is derived, and hand-filling its rows does not count: rows organized **architecture node × spec fact** (one block per

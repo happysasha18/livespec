@@ -36,6 +36,8 @@ import os
 import re
 import sys
 
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
+
 # A pin token names a file when it looks like a path or carries a known source extension.
 _FILE_TOKEN = re.compile(r"\.(md|py|sh|json|yml|yaml|html|txt|template\.md)$")
 
@@ -53,33 +55,16 @@ def repo_root():
 
 
 def count_nodes_per_file(architecture_text):
-    """Read the Nodes table's pin column and return ({file: node_count}, {file: set(nodes)}).
+    """Read every node's pins field (guardrails/archformat.py) and return
+    ({file: node_count}, {file: set(nodes)}).
 
-    A file's node count is the number of DISTINCT nodes whose pins name it — its co-residence. Only the
-    Nodes table is read: the walk starts at the `| Node |` header and stops at the first non-table line,
-    so the Seams and Prover-record tables below never contribute."""
+    A file's node count is the number of DISTINCT nodes whose pins name it — its co-residence."""
     node_files = {}
-    in_table = False
-    for line in architecture_text.splitlines():
-        if line.startswith("| Node |"):
-            in_table = True
-            continue
-        if in_table and line.startswith("|---"):
-            continue
-        if in_table:
-            if not line.startswith("|"):
-                break
-            cells = line.split("|")
-            if len(cells) < 5:
-                continue
-            node = cells[1].strip().split(" ")[0].split("[")[0].strip()
-            if not node:
-                continue
-            pins = cells[4]
-            for tok in re.findall(r"`([^`]+)`", pins):
-                path = tok.split(":")[0].strip()
-                if "/" in path or _FILE_TOKEN.search(path):
-                    node_files.setdefault(path, set()).add(node)
+    for node in archformat.parse_nodes(architecture_text):
+        for pin, _label in node.pins:
+            path = pin.split(":")[0].strip()
+            if "/" in path or _FILE_TOKEN.search(path):
+                node_files.setdefault(path, set()).add(node.name)
     return {f: len(ns) for f, ns in node_files.items()}, node_files
 
 

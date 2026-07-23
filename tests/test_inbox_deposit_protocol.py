@@ -14,9 +14,14 @@ paragraph, the feedback-intake sweep fence, and the owning inbox node in ARCHITE
 118ad87 (pre-delta) none of these exist — recorded in the station's red run.
 """
 
+import os
+import sys
 import unittest
 
-from conftest import read, read_flat
+from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 class TestInboxDepositProtocol(unittest.TestCase):
@@ -59,10 +64,11 @@ class TestInboxDepositProtocol(unittest.TestCase):
 
     def test_inv249_architecture_owns_the_invariant(self):
         """INV-249 is owned by the inbox node."""
-        arch = read("ARCHITECTURE.md")
-        owner_line = next((l for l in arch.splitlines()
-                           if l.startswith("|") and "INV-249" in l and "| inbox |" in l), "")
-        self.assertTrue(owner_line, "the inbox node does not own INV-249 in the Nodes owns-list")
+        nodes = archformat.parse_nodes(read("ARCHITECTURE.md"))
+        inbox = next((n for n in nodes if n.name == "inbox"), None)
+        self.assertIsNotNone(inbox, "ARCHITECTURE.md carries no inbox node")
+        self.assertIn("INV-249", inbox.anchors_expanded,
+                      "the inbox node does not own INV-249")
 
     def test_inv249_matrix_row_covers_the_law(self):
         mat = read("TEST_MATRIX.md")

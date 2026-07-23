@@ -2,7 +2,13 @@
 Enshrines the pass across its homes: the design-reviewer skill, the two spec clauses and
 their index rows, the ARCHITECTURE node and seams, and these matrix rows. Landed 2026-07-14.
 String level against the SHIPPED files on disk (matrix M-283, M-284)."""
-from conftest import read, read_flat
+import os
+import sys
+
+from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 SKILL = "skills/design-reviewer/SKILL.md"
 
@@ -114,9 +120,11 @@ def test_formal_index_rows():
 
 def test_architecture_node_and_seams():
     arch = read("ARCHITECTURE.md")
-    node = next((l for l in arch.splitlines() if l.startswith("| design-reviewer |")), None)
-    assert node is not None, "ARCHITECTURE lost the design-reviewer node row"
-    assert "INV-141" in node and "INV-142" in node, "design-reviewer node lost its owned anchors"
+    nodes = archformat.parse_nodes(arch)
+    node = next((n for n in nodes if n.name == "design-reviewer"), None)
+    assert node is not None, "ARCHITECTURE lost the design-reviewer node"
+    assert "INV-141" in node.anchors_expanded and "INV-142" in node.anchors_expanded, \
+        "design-reviewer node lost its owned anchors"
     flat = read_flat("ARCHITECTURE.md")
     for seam in ("spec → design review", "design review → record", "design-review ask → human"):
         assert seam in flat, "ARCHITECTURE lost the seam: %s" % seam

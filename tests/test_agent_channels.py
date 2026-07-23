@@ -24,10 +24,14 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 
 from conftest import ROOT, read, read_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+import archformat  # the one node reader every consumer reads through (SPEC INV-280)
 
 
 SPEC = "PRODUCT_SPEC.md"
@@ -62,23 +66,16 @@ def _declaration(anchor):
 
 
 def _architecture_owners(anchor):
-    """Every node whose owns-anchors cell lists this anchor.
+    """Every node whose `owns` field (guardrails/archformat.py) lists this anchor.
 
-    ARCHITECTURE.md's node table reads `| node | responsibility | owns | pins |`, so an owned
-    anchor is a token in the third cell. An anchor sitting only in loose prose is owned by
-    nobody and reads as zero owners here — the reading a whole-file search cannot make.
+    Anchors are read from the owns field only, ranges expanded to their members, so a range like
+    INV-250..INV-265 owns each of its member codes. An anchor sitting only in loose prose is
+    owned by nobody and reads as zero owners here — the reading a whole-file search cannot make.
     """
     owners = []
-    for line in read("ARCHITECTURE.md").splitlines():
-        s = line.strip()
-        if not s.startswith("|"):
-            continue
-        cells = [c.strip() for c in s.strip("|").split("|")]
-        if len(cells) < 3:
-            continue
-        tokens = [re.sub(r"\s*\(.*", "", tok).strip() for tok in re.split(r"[,;]", cells[2])]
-        if anchor in tokens:
-            owners.append(cells[0])
+    for node in archformat.parse_nodes(read("ARCHITECTURE.md")):
+        if anchor in node.anchors_expanded:
+            owners.append(node.name)
     return owners
 
 
