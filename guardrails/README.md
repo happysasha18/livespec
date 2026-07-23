@@ -17,9 +17,12 @@ SPEC INV-170):
 - **c. Every spec anchor has exactly one owner.** In this repo that's already asserted
   inside the test suite itself (`tests/test_traceability.py`), so gate (b) passing means
   gate (c) passed too — there's no separate check to run.
-- **d. The test matrix's coverage checklist is fully walked.** `TEST_MATRIX.md` ends with a
-  "Coverage validation" section of checkboxes; any box left unchecked (`- [ ]`) blocks
-  the push until it's ticked or the row it belongs to is explicitly retired.
+- **d. The matrix Reference agrees with the body.** `TEST_MATRIX.md` ends with a generated
+  `## Reference` table (`scripts/build-matrix-reference.py` builds it from the rows'
+  trailing anchors); `check-matrix-reference.py` reds a hand edit, a body anchor the
+  table misses, or a table anchor no row carries, and states its reach on the green
+  line (SPEC `INV-273`). It replaced the hand-walked coverage checklist at the matrix's
+  format conversion (row 477); the per-row facts moved to the suite's row lint (`INV-274`).
 - **e. The prototype fence holds.** A prototype lives in a fenced home (a `prototype/`
   folder — SPEC `INV-17`); a PROD file referencing anything inside that home is RED.
   This gate catches STRUCTURAL wiring — a prod file naming or loading a fenced file

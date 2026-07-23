@@ -1,0 +1,1 @@
+check-matrix-coverage.sh — the hand-walked coverage checklist's gate, retired at the row-477 matrix format conversion; successors: guardrails/check-matrix-reference.py + the suite's matrix row lint (INV-273, INV-274).
