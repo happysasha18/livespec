@@ -178,7 +178,7 @@ def test_new_trigger_landed_move_without_next_steps_reds(tmp_path):
     base = _commit(repo, "base")
 
     _write(repo, "ROADMAP.md", ROADMAP_HEADER)  # row 7 gone from the body
-    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed 2026-07-23; door: feature; delegation: kept*"))
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed %s; door: feature; delegation: kept*" % _today()))
     _commit(repo, "close row 7 into the month archive, no NEXT_STEPS touch")
 
     r = _run_check(repo, base)
@@ -195,9 +195,31 @@ def test_new_trigger_landed_move_with_next_steps_passes(tmp_path):
     base = _commit(repo, "base")
 
     _write(repo, "ROADMAP.md", ROADMAP_HEADER)
-    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed 2026-07-23*"))
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed %s*" % _today()))
     _write(repo, "NEXT_STEPS.md", "state\nrow 7 landed\n")
     _commit(repo, "close row 7 into the archive, with NEXT_STEPS refresh")
+
+    r = _run_check(repo, base)
+    assert r.returncode == 0, r.stdout + r.stderr
+
+
+def _today():
+    import datetime
+    return datetime.date.today().isoformat()
+
+
+def test_new_trigger_relocation_of_old_landed_row_is_exempt(tmp_path):
+    # A move whose archived status landed two or more days before the commit's own date is a
+    # historical relocation — a conversion or an override fold — and owes no NEXT_STEPS refresh:
+    # the map was refreshed at that old landing (SPEC INV-242's carve).
+    repo = _init_repo(tmp_path)
+    _write(repo, "ROADMAP.md", _roadmap_row(7, "*queued* 2026-07-06"))
+    _write(repo, "NEXT_STEPS.md", "state\n")
+    base = _commit(repo, "base")
+
+    _write(repo, "ROADMAP.md", ROADMAP_HEADER)
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "**landed 2026-07-06 ~13:52, session 14** — whole"))
+    _commit(repo, "relocate the historically landed row 7, no NEXT_STEPS touch")
 
     r = _run_check(repo, base)
     assert r.returncode == 0, r.stdout + r.stderr

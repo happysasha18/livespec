@@ -58,7 +58,10 @@ gate — live once in `docs/spec-format.md` and hold here unchanged. Its own rul
 status and class vocabularies, the live-body law, the row lint — are defined in `docs/roadmap-format.md`.
 The class cell names the wish's size, one vocabulary shared with the spec: *bug*, *small*, *surface*,
 or *large*, with a priority mark when it is other than normal. The status cell carries one of *queued*,
-*in-work*, *deferred*, or *far*, each with its date, a *deferred* row naming its revisit trigger. A
+*in-work*, *deferred*, or *far*, each with its date, a *deferred* row naming its revisit trigger. The
+status cell is the sole authority on a row's current state; the wish and acceptance cells carry the
+ask and its criteria. The pre-conversion status texts of the rows that stayed live are kept verbatim
+in docs/queue-archive/status-notes-ROADMAP-2026-07-23.md. A
 bracket code such as `[INV-277]` points to its home in `PRODUCT_SPEC.md`; a reader may ignore it.
 
 The body below is the live queue, one row per open wish, the rows in ascending id order. When a wish
@@ -68,6 +71,16 @@ commit that closes it, and the rotated-manifest block records the move.
 
 MANIFEST_INTRO = ("Rotated closed rows (base rule 10 — nothing lost; the archive keeps every moved row, "
                   "grepable by number; the live queue below holds live material):")
+
+NOTES_REL = "docs/queue-archive/status-notes-ROADMAP-2026-07-23.md"
+NOTES_HEADER = (
+    "# Pre-conversion status texts — live rows, 2026-07-23 conversion\n\n"
+    "> The pre-conversion status texts of the rows that stayed live at the 2026-07-23 format\n"
+    "> conversion, one entry per row, kept verbatim under the nothing-lost rule. The live body's\n"
+    "> status cell is the sole authority on current state; these entries are the record of what each\n"
+    "> row's old free-form status cell said, nothing more. This file is not a rotated-rows archive\n"
+    "> and takes no manifest line.\n"
+)
 
 ARCHIVE_HEADER_TMPL = (
     "# Rotated ROADMAP rows — %s\n\n"
@@ -124,11 +137,17 @@ def build():
     with open(os.path.join(OUT, "rotated-ROADMAP-%s.md" % MONTH), "w", encoding="utf-8") as f:
         f.write(arch_doc)
 
+    # --- the status-notes file (round 6): each live row's pre-conversion status text, verbatim ----
+    notes_doc = NOTES_HEADER + "".join(
+        "\n## row %d\n\n%s\n" % (rid, cells[3]) for rid, cells in live)
+
     # --- mirror for the rotation gate (so --base out resolves docs/queue-archive/) ----------------
     qa = os.path.join(OUT, "docs", "queue-archive")
     os.makedirs(qa, exist_ok=True)
     with open(os.path.join(qa, "rotated-ROADMAP-%s.md" % MONTH), "w", encoding="utf-8") as f:
         f.write(arch_doc)
+    with open(os.path.join(qa, "status-notes-ROADMAP-2026-07-23.md"), "w", encoding="utf-8") as f:
+        f.write(notes_doc)
     src_0718 = os.path.join(ROOT, "docs", "queue-archive", "rotated-ROADMAP-2026-07-18.md")
     if os.path.isfile(src_0718):
         shutil.copyfile(src_0718, os.path.join(qa, "rotated-ROADMAP-2026-07-18.md"))

@@ -1,37 +1,40 @@
 # Conversion report — ROADMAP.md → queue-member format (row 480, PROTOTYPE)
 
-Source pinned to git 859dcfc; the orchestrator applied round-3 output at 6edcf32, and this final round supersedes it. Override table and the closed-leader→deferred rule recorded in rowconv.py (rationale per row).
+Source pinned to git 859dcfc (round-3 output applied at 6edcf32; this round-6 output supersedes it). Round 6 root fix: the in-body status notes read as current state to a cold reader (bold LANDED in a quote out-shouting the italic status), so live rows carry no note — the pre-conversion status texts live verbatim in docs/queue-archive/status-notes-ROADMAP-2026-07-23.md (45,991 B; no manifest line, not a rotated-rows archive), and deferred cells name their real trigger inline. The preamble states both facts (status cell = sole authority; where the old texts live).
 
 ## Totals
 
 - rows in (pinned source body): 345
 - archived: 228 (227 verbatim + row 445 with the corrected cell + delegation line)
-- live: 117
+- live: 117  (body 686 KB old → 126 KB new; notes file 45,991 B)
 - live by status: queued 82 · in-work 3 · deferred 29 · far 3
 - ambiguous / safe-default-live: 3  (235, 241, 424)
 
+## Trigger extraction (deferred: 29)
+
+- inline 20 · override 4 (55, 69, 129, 131) · NEEDS-TRIGGER fallback 5 (134, 140, 141, 143, 144).
+
 ## Proof verdict
 
-PASS — word-token + punctuation multisets, OLD (859dcfc) vs NEW body + July archive, every difference attributed to a named delta class with matching signed counts; residual empty. See out/proof-report.md.
+PASS — OLD (859dcfc) vs NEW body + July archive + status-notes entries, word-token and punctuation multisets, every difference a named delta with matching signed counts; residual empty. Duplication choice: a deferred row's extracted trigger is COPIED into the status cell (counted inside the per-row status-cell delta) while the notes entry stays verbatim — copy-not-move keeps the notes file's verbatim guarantee. See out/proof-report.md.
 
 ## Validation (all against out/)
 
-- real TestQueue: queue_row_lint 117/117 with reach line; fixtures, class-vocabulary green.
-- test_roadmap_in_work_cap (re-keyed to the italic form): PASSES — rows 386, 412, 480 = 3, at the T-18 cap.
-- tests/test_delegation_line.py forward-landed scan: PASSES (row 445's corrected cell carries the Delegation (INV-103) line).
-- guardrails/check-doc-rotation.py --base out: OK — nothing lost, no rotated row still live.
+- real TestQueue: queue_row_lint 117/117 with reach line; in-work cap (re-keyed) counts 386, 412, 480 = 3; fixtures + class-vocabulary green.
+- tests/test_delegation_line.py + tests/test_footprint_note.py forward-landed scans: green with the notes file inside their docs/queue-archive/*.md glob — its `## row` sections are not `| n |` table rows and every `**landed` occurrence in the note texts predates the 2026-07-12 bind, so both parsers skip them (verified by running the real tests).
+- guardrails/check-doc-rotation.py --base out: OK — the notes file is outside the rotated-*.md orphan glob, so it owes no manifest line.
 
 ## Declared deltas (each counted)
 
-- Closed rows to the July archive: 228 — 227 verbatim (cancel) + row 445's corrected status cell (named per-row delta).
-- Status normalized `*word* DATE`, old status verbatim in the wish cell's `(status note: …)`: 117 live rows.
-- Deferred revisit-trigger clauses: 29 rows (69/55/129/131 named by override, the rest `see the status note`).
-- Sixth drift cell dropped: 27 live rows (`—` ×27, `|` ×27); archived 6-cell rows keep theirs.
+- Closed rows to the July archive: 228 — 227 verbatim (cancel) + row 445's corrected cell (named per-row delta).
+- Live rows: old status text verbatim to the notes file (cancels); ADDED per row the `*word* DATE` cell (+ inline trigger) and the `## row <id>` notes header.
+- Sixth drift cell dropped: 27 live rows; archived 6-cell rows keep theirs.
 - Class re-vocabularying: row 411 far→surface; row 455 big→large (2 rows).
-- Preamble replaced (excluded, reported); manifest keeps the 2026-07-18 line + one July line; archive header generated (excluded, reported).
+- Preamble replaced (+2 authority sentences per the addendum), archive header + notes header generated — excluded from the proof, token counts reported in proof-report.md.
 
 ## Flags for the orchestrator
 
-- Ambiguous rows kept live (deferred): 235, 241, 424 — review whether each leg is truly still open.
-- Dates pulled from the wish cell: 48, 49, 171, 302, 307, 308, 309, 332, 381.
+- NEEDS-TRIGGER rows 134, 140, 141, 143, 144: cells carry the last-resort fallback; the real events need the owner's word.
+- Ambiguous rows kept live (deferred): 235, 241, 424.
+- Dates pulled from the wish cell: [48, 49, 171, 302, 307, 308, 309, 332, 381].
 

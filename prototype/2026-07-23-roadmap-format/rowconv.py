@@ -181,15 +181,52 @@ def new_class(old_class, rid):
     return size + (" · " + parts[1] if len(parts) > 1 else "")
 
 
-DEFERRED_TRIGGER_TAIL = " — revisit trigger: see the status note"
+# Trigger extraction (round 6): a *deferred* row's status cell names its REAL trigger inline — the
+# shortest clause of the old cell that names the concrete revisit event, <= 20 words. Patterns tried
+# in order; the captured clause is cut at the first structural boundary (`**`, `;`, ` — `, newline)
+# and capped at 20 words. A row where every pattern fails takes the last-resort fallback and is
+# flagged NEEDS-TRIGGER on the mapping table.
+TRIGGER_PATTERNS = [
+    re.compile(r"revisit trigger:\s*", re.I),   # colon required: prose says "revisit trigger" without
+                                                # one when merely describing the mechanism (row 405)
+    re.compile(r"Remainder:\s*"),
+    re.compile(r"REMAINS\s*(?:\([^)]*\))?:\s*"),
+    re.compile(r"open legs?\s*[:]\s*", re.I),
+    re.compile(r"OPEN\s*—\s*"),
+    re.compile(r"waiting on\s+", re.I),
+    re.compile(r"field-gated\s+on\s+", re.I),
+    re.compile(r"deferred\s*—\s*", re.I),
+]
+FALLBACK_TRIGGER = "re-read the wish's record in the status notes"
+
+
+def extract_trigger(status):
+    """Return (trigger_text, how) — how is 'inline' or 'fallback'."""
+    for pat in TRIGGER_PATTERNS:
+        m = pat.search(status)
+        if not m:
+            continue
+        rest = status[m.end():]
+        cut = len(rest)
+        for d in ("**", ";", " — ", "\n"):
+            j = rest.find(d)
+            if j != -1:
+                cut = min(cut, j)
+        clause = rest[:cut].strip().rstrip(",.")
+        words = clause.split()
+        if not words:
+            continue
+        if len(words) > 20:
+            clause = " ".join(words[:20])
+        return clause, "inline"
+    return FALLBACK_TRIGGER, "fallback"
 
 
 def new_status_cell(status, wish, rid):
-    """The normalized status cell: `*word* DATE`, a deferred row carrying a revisit-trigger clause so
-    the row lint (which demands the literal trigger/revisit word) passes; the real trigger text rides
-    on, unedited, inside the status note appended to the wish cell. STATUS_CELL_OVERRIDE wins where
-    the orchestrator ruled a cell's exact text (row 69: no date exists on the row, so the git-history
-    date and a named trigger are supplied)."""
+    """The normalized status cell: `*word* DATE`, a *deferred* row carrying its REAL revisit trigger
+    inline (round 6: the status cell is the sole authority on current state; no cell may point at the
+    status note for its trigger). STATUS_CELL_OVERRIDE wins where the orchestrator ruled a cell's
+    exact text."""
     if rid in STATUS_CELL_OVERRIDE:
         return STATUS_CELL_OVERRIDE[rid]
     word = status_word(status)
@@ -197,13 +234,9 @@ def new_status_cell(status, wish, rid):
     date = date or "0000-00-00"          # a no-date row is reported; this keeps the cell lint-shaped
     cell = "*%s* %s" % (word, date)
     if word == "deferred":
-        cell += DEFERRED_TRIGGER_TAIL
+        trigger, _how = extract_trigger(status)
+        cell += " — revisit trigger: %s" % trigger
     return cell
-
-
-def new_wish_cell(wish, status):
-    """The wish cell gains ` (status note: <old status verbatim>)` so no status token is deleted."""
-    return "%s (status note: %s)" % (wish, status)
 
 
 def parse_body_rows(text):
@@ -221,12 +254,13 @@ def parse_body_rows(text):
 
 def normalize_live_row(rid, cells):
     """Build the normalized five-cell live row string (no trailing newline). cells is the stripped
-    field list (5 or 6 wide). The sixth drift cell (a lone dash at index 4) is dropped."""
+    field list (5 or 6 wide). The sixth drift cell (a lone dash at index 4) is dropped. Round 6: the
+    wish cell rides verbatim — the pre-conversion status text moves to the status-notes file, not
+    into the row (a bold LANDED inside an in-body quote out-shouts the italic status)."""
     wish = cells[1]
     old_class = cells[2]
     status = cells[3]
     accept = cells[5] if len(cells) >= 6 else (cells[4] if len(cells) >= 5 else "")
-    w = new_wish_cell(wish, status)
     c = new_class(old_class, rid)
     s = new_status_cell(status, wish, rid)
-    return "| %d | %s | %s | %s | %s |" % (rid, w, c, s, accept)
+    return "| %d | %s | %s | %s | %s |" % (rid, wish, c, s, accept)

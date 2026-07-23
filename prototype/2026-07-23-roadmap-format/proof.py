@@ -35,6 +35,8 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 OLD_COMMIT = "859dcfc"
 NEW_BODY = os.path.join(HERE, "out", "ROADMAP.md")
 NEW_ARCHIVE = os.path.join(HERE, "out", "rotated-ROADMAP-2026-07.md")
+NEW_NOTES = os.path.join(HERE, "out", "docs", "queue-archive",
+                         "status-notes-ROADMAP-2026-07-23.md")
 REPORT = os.path.join(HERE, "out", "proof-report.md")
 
 WORD_RE = re.compile(r"[^\W_]+(?:[-'][^\W_]+)*", re.UNICODE)
@@ -69,13 +71,18 @@ def main():
                               capture_output=True, text=True, check=True).stdout
     new_body_text = open(NEW_BODY, encoding="utf-8").read()
     new_arch_text = open(NEW_ARCHIVE, encoding="utf-8").read()
+    new_notes_text = open(NEW_NOTES, encoding="utf-8").read()
 
     old_rows = rowconv.parse_body_rows(old_text)
     live = [(rid, cells) for rid, cells, raw in old_rows if rowconv.is_live(cells[3], rid)[0]]
 
-    # --- the two compared regions (data rows only) ------------------------------------------------
+    # --- the compared regions: OLD data rows vs NEW body rows + archive rows + notes ENTRIES ------
+    # (round 6: each live row's pre-conversion status text lives verbatim in the notes file, so it
+    # cancels against the old cell there; the notes file's prose header is excluded and reported.)
+    notes_entries = new_notes_text[new_notes_text.index("\n## row"):]
     old_region = data_rows_text(old_text)
-    new_region = data_rows_text(new_body_text) + "\n" + data_rows_text(new_arch_text)
+    new_region = (data_rows_text(new_body_text) + "\n" + data_rows_text(new_arch_text)
+                  + "\n" + notes_entries)
     old_w, old_p = counts(old_region)
     new_w, new_p = counts(new_region)
 
@@ -83,22 +90,24 @@ def main():
     exp_add_w, exp_rem_w = collections.Counter(), collections.Counter()
     exp_add_p, exp_rem_p = collections.Counter(), collections.Counter()
 
-    WRAP = " (status note: "          # opens the status note in the wish cell
-    WRAP_CLOSE = ")"
     n_live6 = 0
     class_pairs = []
     for rid, cells in live:
         status = cells[3]
         wish = cells[1]
-        # wrapper additions
-        w, p = counts(WRAP + WRAP_CLOSE)
-        exp_add_w += w
-        exp_add_p += p
-        # new status cell additions (tokenized from the exact generated string)
+        # new status cell additions (tokenized from the exact generated string). DUPLICATION CHOICE:
+        # a deferred row's extracted trigger is COPIED into the status cell while the old text stays
+        # verbatim in the notes file, so the duplicated trigger tokens are accounted here inside the
+        # status-cell addition — copy-not-move keeps the notes verbatim under the nothing-lost rule.
         scell = rowconv.new_status_cell(status, wish, rid)
         w, p = counts(scell)
         exp_add_w += w
         exp_add_p += p
+        # the notes entry's own section header: `## row <id>` (the entry BODY cancels with the old
+        # status cell, both verbatim).
+        exp_add_w["row"] += 1
+        exp_add_w[str(rid)] += 1
+        exp_add_p["#"] += 2
         # dropped sixth drift cell
         if len(cells) >= 6:
             n_live6 += 1
@@ -169,10 +178,12 @@ def main():
     L.append("# Content-preservation proof — ROADMAP.md format conversion (row 480)\n")
     L.append("**Verdict: %s**\n" % ("PASS — every token difference is a declared delta" if ok
                                      else "FAIL — an unexplained token difference remains"))
-    L.append("Compared the OLD `ROADMAP.md` body against the NEW live body plus the July archive, over "
-             "the data-row region (preambles, table headers, and separators excluded on both sides), "
+    L.append("Compared the OLD `ROADMAP.md` body (git %s) against the NEW live body plus the July "
+             "archive plus the status-notes file's entries, over the data-row region (preambles, table "
+             "headers, separators, and the notes file's prose header excluded and reported), "
              "word-token multiset and punctuation multiset, modulo the named deltas below. "
-             "Live rows: %d (%s). Archived rows: %d — moved verbatim, byte-identical, so they cancel."
+             "Live rows: %%d (%%s). Archived rows: %%d — moved verbatim, byte-identical, so they "
+             "cancel." % OLD_COMMIT
              % (len(live), " · ".join("%s %d" % (k, status_hist[k]) for k in
                 ("queued", "in-work", "deferred", "far")),
                 len(old_rows) - len(live)))
@@ -183,6 +194,9 @@ def main():
              "one July line)." % (old_pre, new_pre))
     L.append("- **Archive file header generated** — excluded from the new side; %d word tokens (the "
              "`# Rotated …` title and the ARCHIVED provenance note)." % arch_head_w)
+    notes_head_w = len(WORD_RE.findall(new_notes_text[:new_notes_text.index("\n## row")]))
+    L.append("- **Status-notes file header generated** — excluded from the new side; %d word tokens "
+             "(what the file is; not a rotated-rows archive, no manifest line)." % notes_head_w)
     L.append("")
     L.append("## Named deltas (reconciled in the compared data-row region)\n")
     L.append("- **Archived rows verbatim** — %d of %d archived rows, present in the OLD body and the "
@@ -192,10 +206,16 @@ def main():
         L.append("- **Archived row %d status corrected at the move** (override table) — the cell "
                  "gains `%s`, the old cell text riding verbatim inside the note; tokenized and "
                  "reconciled per row." % (rid, rowconv.ARCHIVE_STATUS_REWRITE[rid] % "…"))
-    L.append("- **Status normalized, token-preserving** — the old status cell of each of the %d live "
-             "rows is preserved unedited inside the wish cell's `(status note: …)`; ADDED per row: the "
-             "wrapper (`status`, `note`; `(` `)` `:`) and the new `*word* DATE` status cell (a deferred "
-             "row also `— revisit trigger: see the status note`)." % len(live))
+    L.append("- **Status normalized, token-preserving** — each of the %d live rows' pre-conversion "
+             "status text stands verbatim in the status-notes file (so it cancels against the old "
+             "cell); ADDED per row: the new `*word* DATE` status cell (a deferred row with its real "
+             "inline `— revisit trigger: …` clause) and the notes entry's `## row <id>` header "
+             "(`row`, the id; `#` × 2)." % len(live))
+    L.append("- **Deferred trigger duplication (the declared choice: copy, not move)** — a deferred "
+             "row's extracted trigger clause is COPIED into the status cell while the notes entry "
+             "stays verbatim, so the duplicated tokens are counted inside the per-row status-cell "
+             "addition above; moving the clause out of the note would have broken the notes file's "
+             "verbatim guarantee.")
     L.append("- **Sixth drift cell dropped** — %d live rows carried a lone-dash sixth cell; removed "
              "`—` × %d and `|` × %d." % (n_live6, n_live6, n_live6))
     L.append("- **Class re-vocabularying** — %d rows: %s."

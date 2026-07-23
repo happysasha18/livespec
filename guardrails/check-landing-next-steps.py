@@ -143,12 +143,41 @@ def landed_moves_for_commit(sha, cwd):
             if parsed:
                 arch_added[parsed[0]] = parsed[1]
 
+    commit_day = _commit_date(sha, cwd)
     flipped = []
     for num in removed:
         status = arch_added.get(num)
         if status is not None and "landed" in status.lower():
+            if _is_relocation(status, commit_day):
+                continue
             flipped.append(num)
     return sorted(flipped)
+
+
+def _commit_date(sha, cwd):
+    """The commit's own date (YYYY-MM-DD) from its committer clock."""
+    r = _run(["git", "show", "-s", "--format=%cs", sha], cwd=cwd)
+    return r.stdout.strip().splitlines()[-1].strip() if r.stdout.strip() else None
+
+
+def _is_relocation(status, commit_day):
+    """True when the archived status's landed date is two or more days older than the commit's own
+    date: the row landed back then and this commit merely RELOCATES it to the archive (a conversion
+    or an override fold), so the map was refreshed at the old landing and this move owes nothing
+    (SPEC INV-242's carve: a fresh landing refreshes the map; a historical relocation does not).
+    A status with no parseable date stays a fresh landing — the safe side."""
+    if not commit_day:
+        return False
+    m = re.search(r"landed[^0-9]{0,40}(\d{4}-\d{2}-\d{2})", status, re.IGNORECASE)
+    if not m:
+        return False
+    try:
+        import datetime as _dt
+        landed = _dt.date.fromisoformat(m.group(1))
+        commit = _dt.date.fromisoformat(commit_day)
+    except ValueError:
+        return False
+    return (commit - landed).days >= 2
 
 
 def commit_files(sha, cwd):
