@@ -23,11 +23,20 @@ the landing-map gate re-keyed to the archive move with two red-proven carves (hi
 footprint checks read body+archive union. Content preservation proven by word+punctuation multisets
 across seven deterministic converter rounds (prototype/2026-07-23-roadmap-format/). Prover CROSS-LINK
 10/10 folded; minor-gate audit passes-with-fixes, folded; skill-review pass (build-pipeline).
-Cold reads: five rounds run and folded (the finding stream thinned to one-sentence surface
-disclaimers); the confirming zero-blocking pair is row 480's ONE OPEN LEG — the next fresh session
-runs it first (a fresh context is itself a cold reader), then flips row 480 landed and moves it to
-the archive via rotate-doc --close-row 480. His 2026-07-23 ~20:35 word: wrap early, the weekly
-budget at 10%.
+Cold reads: five rounds run and folded before the confirming pair closed the gate (see LIVE STATE).
+His 2026-07-23 ~20:35 word stands: wrap at milestones, the weekly budget at 10%.
+
+Row 456 in-work (his ~21:33 word: this window, Fable seat, full rigor): scouts done — structure
+distillation (106 KB doc; the Nodes table is 52%, the guardrails cell alone 26 KB; seven content
+kinds ride the owns cells beyond bare anchors; the prover-record section is pure history) and the
+consumer inventory (~15 structural parsers pinned to the 4-column Nodes table, ~11 row-prefix
+tests, dozens of substring checks that survive, one hardcoded node list in crosscut_counter that
+goes stale silently). Format draft at prototype/2026-07-23-architecture-format/format-draft.md,
+style-lint clean: per-node `### [node: <name>]` sections (the matrix's heading convention), owns
+cites anchors with at most one parenthetical (restated laws relocate to the spec, verified
+per-anchor), prover record relocates to a dated home, one shared reader module (specformat.py's
+sibling) every consumer repoints to, node set unchanged so the matrix headings survive. Two
+drafter workers out: spec requirements (INV-278..280) + reader/converter/proof drafts.
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 1. TEST_MATRIX.md — DONE, row 477, v4.1.0 (2026-07-23).
