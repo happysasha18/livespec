@@ -203,6 +203,22 @@ def test_new_trigger_landed_move_with_next_steps_passes(tmp_path):
     assert r.returncode == 0, r.stdout + r.stderr
 
 
+def test_live_deferred_status_quoting_landed_is_not_a_flip(tmp_path):
+    # A *deferred* row whose trigger text QUOTES the word landed (a Done-when citation) is live,
+    # never a landing flip — the closed live vocabulary at the cell's head decides (INV-242).
+    repo = _init_repo(tmp_path)
+    _write(repo, "ROADMAP.md", _roadmap_row(7, "*queued* 2026-07-12"))
+    _write(repo, "NEXT_STEPS.md", "state\n")
+    base = _commit(repo, "base")
+
+    _write(repo, "ROADMAP.md", _roadmap_row(
+        7, "*deferred* 2026-07-12 — revisit trigger: the clause \"one real deposit landed\" stays open"))
+    _commit(repo, "re-status row 7 with a landed-quoting trigger, no NEXT_STEPS touch")
+
+    r = _run_check(repo, base)
+    assert r.returncode == 0, r.stdout + r.stderr
+
+
 def _today():
     import datetime
     return datetime.date.today().isoformat()

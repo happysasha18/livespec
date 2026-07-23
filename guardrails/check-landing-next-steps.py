@@ -112,10 +112,21 @@ def landed_rows_for_commit(sha, cwd):
     for num, status in added.items():
         if "landed" not in status.lower():
             continue
+        if _live_status(status):
+            continue
         old_status = removed.get(num)
         if old_status is None or "landed" not in old_status.lower():
             flipped.append(num)
     return sorted(flipped)
+
+
+def _live_status(status):
+    """True when the status cell OPENS with one of the four live closed-vocabulary words — the
+    post-conversion form (*queued* / *in-work* / *deferred* / *far*). Such a row is live whatever
+    prose follows (a deferred trigger may quote the word landed inside a Done-when citation),
+    so it is never a landing flip."""
+    head = status.strip().lstrip("*").lower()
+    return head.startswith(("queued", "in-work", "deferred", "far"))
 
 
 def landed_moves_for_commit(sha, cwd):
