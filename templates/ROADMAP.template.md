@@ -1,33 +1,91 @@
 # [Project Name] — Roadmap
 
-The wish queue. Intake is continuous — a wish lands here the moment it is spoken. Execution is serial:
-the current landing finishes before the next starts. Every row names its size, its priority when not
-normal, and its DOOR — feature · bug · refactor · docs-only · skip — said at intake, before any code
-(SPEC T-12, INV-16). It also names its WORK-KIND — product · infra · skill · prose — what the wish
-builds; the kind scales the form each pipeline step takes, and a stood-down step is named in the
-landing report, never silently skipped (SPEC T-16, INV-22). It also names its FOOTPRINT —
-presentation-only · single-module · cross-cutting — the three-source impact read taken at intake
-(the spec says what behaviour changes, the architecture which module owns it, the code what is
-touched); the footprint is written in the row's `footprint:` note beside `door:`, `kind:`, and
-`map:`, and every landed feature-or-refactor row carries it — a suite check reddens one that omits
-it (SPEC INV-128, INV-134).
+The wish queue: the live record of what is asked of the product and where each ask stands. A wish
+is a request for a change the product does not yet carry, and a wish lands when the delivery that
+completes it ships. Intake is continuous, a wish entering the queue the moment it is spoken;
+execution is serial, the current landing finishing before the next starts.
+
+The roadmap is a member of the format family. Its shared rules — the closed-vocabulary glossary,
+the keyword form, the no-capitals rule, the trailing code anchor, the no-history law, the
+comprehension gate — live once in `docs/spec-format.md` and hold here unchanged. Its own rules —
+the row shape, the status and class vocabularies, the live-body law, the row lint — are defined in
+full in `docs/roadmap-format.md`; read that page before editing this file, since this template only
+teaches the shape and does not restate the definition. The keywords *when*, *if*, *then*, and
+*shall*, where a row's acceptance cell uses them, are set in lowercase italics. A bracket code
+trailing a line, such as `[INV-277]`, points to the rule's home in `PRODUCT_SPEC.md`; a reader may
+ignore it, and a maintainer follows it.
+
+## Glossary
+
+[Domain nouns the queue's own rows use, each with a one-sentence definition. A word of ordinary
+English needs no entry.]
+
+## The body
+
+The table below is the body: the live queue, one row per open wish, the rows standing in ascending
+id order. A rotated-manifest block sits above the body, one line per monthly archive file naming
+the rows that moved and the file that received them; a script maintains this block and a gate
+cross-checks it against the archive.
+
+<!-- rotated-manifest -->
+Rotated closed rows (the archive keeps every moved row, grepable by number; the body below holds
+only the live queue):
+- rows [ids] → docs/queue-archive/rotated-ROADMAP-[YYYY-MM].md
+<!-- /rotated-manifest -->
 
 | # | Wish (plain words) | Class | Status | Decision / acceptance |
 |---|---|---|---|---|
-| 1 | [Wish in plain producer/user language] | bug / small / surface / large | queued / in-work / landed / waiting | [Who decides, what they need to see, or what was decided] |
-| 2 | | | | |
+| 1 | [Wish in plain producer/user language]. Asked by [name], [date]. door: [feature / bug / refactor / docs-only / skip] · kind: [product / infra / skill / prose] · footprint: [presentation-only / single-module / cross-cutting] · map: [architecture node] · entry: [entry condition, where one applies] | small | *queued* [date] | [Done-when criteria and non-goals, code anchors trailing at the line ends] |
+| 2 | [Second example wish, its delivery split into two legs]. Asked by [name], [date]. door: feature · kind: product · footprint: single-module · map: [architecture node] · priority: quick win | surface | *in-work* [date] | [Leg one: done — ...; leg two: open — ...] |
 
-**Class = size, plus a priority mark when it isn't normal.** Size speaks the spec's four words — **bug**
-(something shipped is wrong) · **small** (one landing, no new surface) · **surface** (a new stateful
-user-facing surface — enters the pipeline in full) · **large** (decomposes into several landings). Priority
-is normal unless marked: **· critical** (the shipped product is broken for its user — lands before
-everything) or **· quick win** (low effort, immediate value — may bubble up between landings, the jump
-marked in the row). Ambiguous size or priority is asked at intake, never guessed.
+Both rows above are invented placeholders, shown to teach the shape; a new roadmap starts with row
+1 held open for the first real wish.
 
-**Status values:** `queued` (ready to enter the pipeline) · `in-work` (active) · `waiting` (blocked on a
-person or event) · `far` (kept in the queue with no revisit trigger and no plan to run — a thought kept
-because discarding it would lose it; stood down by name in the what's-left report and shown on request,
-distinct from `deferred` whose trigger the queue-take re-scans every time, SPEC INV-222) · `landed`
-(acceptance met, committed) · `declined` / `deferred` / `superseded` (closed
-without landing; the row stays). Declining a wish that other rows were superseded INTO lists those rows:
-each is declined by name or returned to the queue — a superseded wish never dies by pointer (SPEC T-8). A row carrying several user stories enumerates per-story acceptance in its Decision/acceptance cell and cannot close with an unmet leg (SPEC INV-26) — though the norm is one wish = one story, split at intake (SPEC T-17).
+## The wish cell
+
+The wish cell carries three things: the ask, in plain producer or user language; its provenance —
+whose word asked for the wish, and the date; and the intake notes — the wish's door (feature · bug
+· refactor · docs-only · skip), its kind (product · infra · skill · prose), its footprint
+(presentation-only · single-module · cross-cutting), its placement on the architecture map, and an
+entry condition where the wish declared one. A priority mark rides the intake notes when the
+wish's priority is other than normal: **critical** (the shipped product is broken for its user, and
+the row lands before everything) or **quick win** (low effort, immediate value, free to bubble up
+between landings with the jump named in the row). Ambiguous size or priority is asked at intake,
+never guessed.
+
+## The class cell
+
+The class cell carries one word of the closed size vocabulary, one vocabulary shared with the
+spec: **bug** (something shipped is wrong), **small** (one landing, no new surface), **surface** (a
+new stateful user-facing surface, entering the pipeline in full), or **large** (a wish that
+decomposes into several landings).
+
+## The status cell
+
+The status cell carries one word of the closed status vocabulary, each set in lowercase italics and
+carrying its date:
+
+- *queued* — the wish is accepted and waiting its turn.
+- *in-work* — the wish is claimed by a session.
+- *deferred* — the wish is parked on a named revisit trigger, the trigger written in the status
+  cell.
+- *far* — the wish is parked with no near trigger.
+
+A row whose wish carries more than one leg stays *in-work* while any leg remains open, the open leg
+named in the acceptance cell; the row reaches a terminal exit only when every leg is closed.
+
+## The live-body law
+
+The body holds live rows only. A row reaching a terminal exit — *landed*, *declined*, or
+*superseded* — moves verbatim, its delivery report riding with it, from the body to the month's
+file in the archive in the same commit that closes it. The word *landed* names that transition a
+row makes; a body row never carries it as a status. An archive file gathers one calendar month's
+moved rows, and the rotated-manifest block above the body grows one line per archive file. A
+*deferred* or a *far* row stays live in the body, its revisit trigger re-read at the next milestone
+review and whenever a session takes its next wish from the queue.
+
+## The acceptance cell
+
+The acceptance cell carries the done-when criteria and the non-goals, with code anchors trailing at
+the line ends. The spec's Context blocks and User Stories stand down from the row: the spec owns
+them, and the row points at the spec by anchor, the spec staying their one home.

@@ -472,7 +472,9 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
 
   Every shared-doc edit, the integration, and the closing of a row take the pen one lane at a time — a
   pen-stage is never cut mid-edit — and a landing commit carries exactly one row's delta, its gate run
-  on a tree clean of the other lanes' unfinished work. After a landing, waiting lanes re-fence and
+  on a tree clean of the other lanes' unfinished work; that same closing commit moves the row from the
+  queue's body to the month's archive file with its delivery report (the live-body law, SPEC INV-276).
+  After a landing, waiting lanes re-fence and
   re-run their gates on the new truth. Never across sessions, never mid-milestone. A bug takes the pen
   at the end of the current pen-stage and parks every rolling lane, each at its own checkpoint,
   resuming in landing order.
@@ -523,7 +525,8 @@ and why each is a trap (SPEC T-12, T-15, INV-4, INV-5, INV-15).
   recorded PID / process group or an install path like `~/.cache/puppeteer/...`), never a broad name pattern
   (`pkill chrome`, `chrome_crashpad_handler`) that can match the human's own program (SPEC INV-162, base
   rule 17; the mistake that once closed the user's real browser). Every delegation reports its
-  saving in the landed row's status cell, checked by suite (SPEC INV-103), and names the reads dispatched
+  saving in the row's delivery report, checked by suite and moved to the archive with the row by
+  the closing commit (SPEC INV-103, INV-276), and names the reads dispatched
   beside the work delegated (SPEC INV-137). See
   [references/delegation-protocol.md](references/delegation-protocol.md) for the full protocol: the routing
   rule, the brief's three birth laws, the worker contract, and the delegation-reporting duty.
