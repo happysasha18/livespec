@@ -6562,7 +6562,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the member definition and its inheritance**
 
-1. The queue *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, the no-history law, generated-section gating, the comprehension gate — and *shall* restate none of those laws. [INV-275]
+1. The queue *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, the no-history law, generated-section gating, the comprehension gate — and *shall* restate none of them. [INV-275]
 2. The queue *shall* open with a preamble and a glossary, then hold one table of live wish rows in ascending id order, a manifest line per archive file standing above the body. [INV-275]
 
 **Case: when the gates arm**
@@ -6616,7 +6616,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the row lint holds the shape and the vocabularies**
 
 4. *if* a body row carries other than five cells, sits out of ascending id order, carries a status or a class outside its closed vocabulary, or reads *deferred* with no trigger, *then* the row lint *shall* red, naming the row. [INV-277]
-5. *when* every body row holds its shape and its vocabularies, the row lint *shall* pass green and state its reach on the green line, its home the suite's traceability tests extended rather than a new standalone script. [INV-277, INV-269]
+5. *when* every body row holds its shape and its vocabularies, the row lint *shall* pass green and state its reach on the green line, its home the suite's traceability tests, extended, with no new standalone script. [INV-277, INV-269]
 
 ## Reference
 
