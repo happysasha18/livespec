@@ -97,7 +97,7 @@ def test_window_passes_a_first_offer_after_the_window():
 
 def test_roadmap_template_carries_the_far_status():
     t = read("templates/ROADMAP.template.md")
-    assert "`far`" in t, "the roadmap template's status vocabulary does not carry `far`"
+    assert "*far*" in t, "the roadmap template's status vocabulary does not carry *far*"
 
 
 def test_settings_ladder_carries_the_cadence_default():

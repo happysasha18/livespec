@@ -39,15 +39,15 @@ class TestDelegationLineLaw(unittest.TestCase):
         # (included via read_all_flat) still carries the original wording verbatim.
         needles = {
             "PRODUCT_SPEC.md": (
-                "delivered row's status cell",
+                "delivered row's delivery report",
                 "a suite check reds a delivered row",
-                "a delivered row omits the line",
+                "omits the line, reading it from the archive",
                 "bind the duty to the orchestrating seat whatever tier leads it",
             ),
             "skills/build-pipeline/SKILL.md": (
-                "the landed row's status cell",
-                "a suite check reads it",
-                "a landed row without the line goes red",
+                "the row's delivery report",
+                "a suite check reads it from the archive",
+                "a delivered row without the line goes red",
                 "binds the orchestrator seat regardless of",
             ),
         }
@@ -60,7 +60,7 @@ class TestDelegationLineLaw(unittest.TestCase):
         # INDEX-ROW pattern (RECIPE): the Reference table now carries locations only.
         # "delegation" prose is asserted against the flattened spec body instead.
         spec = read_flat("PRODUCT_SPEC.md")
-        self.assertIn("[INV-103]", spec)
+        self.assertRegex(spec, r"\[INV-103[,\]]")  # bare or compound anchor
         self.assertIn("delegation accounting", spec)
         with open(os.path.join(ROOT, "PRODUCT_SPEC.md"), encoding="utf-8") as f:
             for line in f:
