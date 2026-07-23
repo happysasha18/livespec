@@ -32,8 +32,8 @@ jobs:
         env:
           LIVE_SPEC_DIFF_BASE: ${{ github.event.before }}
         run: guardrails/check-prover-record.sh
-      - name: gate d — matrix coverage
-        run: guardrails/check-matrix-coverage.sh
+      - name: gate d — matrix Reference generated and agrees with the body
+        run: python3 guardrails/check-matrix-reference.py TEST_MATRIX.md
       - name: gate g — pin drift
         run: guardrails/check-pin-drift.sh
       - name: gate f — skill loadability

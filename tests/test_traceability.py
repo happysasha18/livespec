@@ -9,9 +9,13 @@ the pre-push hook generalizes it when row 3 lands.
 import json
 import os
 import re
+import sys
 import unittest
 
 from conftest import ROOT, read, read_all, read_all_flat
+
+sys.path.insert(0, os.path.join(ROOT, "guardrails"))
+from specformat import green_reach  # the family's green-reach line (SPEC INV-269)
 
 
 def expand(anchor):
@@ -59,9 +63,28 @@ def architecture_nodes():
     return nodes
 
 
+LAST_BRACKET_RE = re.compile(r"\[([^\[\]]*)\]\s*$")
+
+
+def row_anchors(fact):
+    """The row's spec anchors, parsed from the LAST trailing bracket group of the fact sentence
+    (docs/test-matrix-format.md): compound anchors and `T-1..T-7` ranges expand. Only the last group
+    is read, so an inline citation earlier in the sentence is never mistaken for the row's parent
+    anchor."""
+    m = LAST_BRACKET_RE.search(fact.strip())
+    refs = set()
+    if m:
+        for tok in re.findall(ANCHOR_TOKEN, m.group(1)):
+            refs.update(expand(tok))
+    return refs
+
+
 def matrix_blocks():
-    """{block node name: [row dicts]} from TEST_MATRIX.md."""
-    mat = read("TEST_MATRIX.md")
+    """{block node name: [row dicts]} from TEST_MATRIX.md's converted body (docs/test-matrix-format.md).
+    A converted row carries five cells — id, fact sentence with its trailing anchors, level, owning
+    test, status. The generated `## Reference` section is dropped before parsing so its table rows are
+    never read as body rows."""
+    mat = re.split(r"(?m)^## Reference *$", read("TEST_MATRIX.md"), 1)[0]
     blocks = {}
     current = None
     for line in mat.splitlines():
@@ -72,15 +95,37 @@ def matrix_blocks():
             continue
         if current and line.startswith("|") and not line.startswith("|---") and "Owning test" not in line:
             cells = [c.strip() for c in line.strip("|").split("|")]
-            if len(cells) == 6:
-                refs = set()
-                for tok in re.findall(ANCHOR_TOKEN, cells[2]):
-                    refs.update(expand(tok))
+            if len(cells) == 5:
+                fact = cells[1]
                 blocks[current].append(
-                    {"id": cells[0], "fact": cells[1], "refs": refs,
-                     "level": cells[3], "owning": cells[4], "status": cells[5]}
+                    {"id": cells[0], "fact": fact, "refs": row_anchors(fact),
+                     "level": cells[2], "owning": cells[3], "status": cells[4]}
                 )
     return blocks
+
+
+MATRIX_LEVELS = {"string", "DOM-text", "browser-computed", "pixel"}
+MATRIX_STATUSES = ("built", "todo", "retired")
+
+
+def matrix_row_lint(blocks):
+    """The mechanical row lint (SPEC INV-274, docs/test-matrix-format.md): the coverage checklist's two
+    per-row facts, promoted to a lint that names each offending row. A row reds when it pins no level
+    from the declared ladder, states no never side (the forbidden half, found by the literal word
+    *never* in the fact sentence), or carries a status outside the lowercase vocabulary. Returns the
+    list of offending-row messages, empty when every row holds both facts."""
+    offenders = []
+    for _node, rows in blocks.items():
+        for row in rows:
+            if row.get("level") not in MATRIX_LEVELS:
+                offenders.append("%s: pins no level from the declared ladder (%r)"
+                                 % (row["id"], row.get("level")))
+            if "never" not in row.get("fact", "").lower():
+                offenders.append("%s: states no never side (regression fence missing)" % row["id"])
+            st = row.get("status", "").strip().strip("*").strip()
+            if st not in MATRIX_STATUSES:
+                offenders.append("%s: status outside the vocabulary (%r)" % (row["id"], row.get("status")))
+    return offenders
 
 
 def inventory_entries():
@@ -233,20 +278,74 @@ class TestMatrix(unittest.TestCase):
                          "matrix rows citing anchors absent from the index and the open-decision set")
 
     def test_matrix_rows_have_level_and_negative_side(self):
-        levels = {"string", "DOM-text", "browser-computed", "pixel"}
-        statuses = ("BUILT", "TODO", "RETIRED")
+        # The row lint (SPEC INV-274): every body row pins a ladder level and states its never side,
+        # its status one of the lowercase vocabulary. An offender is named (not just counted), and on
+        # green the check states its reach — the rows it matched of the rows it scanned (INV-269).
+        blocks = matrix_blocks()
+        scanned = 0
         ids = []
-        for node, rows in matrix_blocks().items():
+        for node, rows in blocks.items():
             self.assertTrue(rows, "empty matrix block: %s" % node)
             for row in rows:
+                scanned += 1
                 ids.append(row["id"])
-                self.assertIn(row["level"], levels, "%s: unknown level %r" % (row["id"], row["level"]))
-                self.assertIn("never", row["fact"].lower(),
-                              "%s: no NEVER side (regression fence missing)" % row["id"])
-                self.assertTrue(row["status"].startswith(statuses),
-                                "%s: status outside vocabulary: %r" % (row["id"], row["status"]))
+        offenders = matrix_row_lint(blocks)
+        self.assertEqual(offenders, [], "row lint found offending row(s): %s" % "; ".join(offenders))
         dupes = [i for i in set(ids) if ids.count(i) > 1]
         self.assertEqual(dupes, [], "duplicate matrix row ids")
+        # reach on the green pass — printed for the suite tail (INV-269, INV-274)
+        print(green_reach("matrix-row-lint", ["TEST_MATRIX.md"], scanned, scanned,
+                          "every body row pins a ladder level and states its never side"))
+
+    def test_row_lint_names_a_levelless_or_one_sided_row(self):
+        # Red-proof for the lint (R285.1, R285.2): a level-less row and a bare happy-path row are each
+        # named by their id; a two-sided, levelled row passes clean.
+        bad = {"n": [
+            {"id": "X-1", "fact": "does a thing; never the bad thing [INV-1]",
+             "level": "nope", "owning": "`t`", "status": "*built*"},
+            {"id": "X-2", "fact": "does a thing with no fence [INV-1]",
+             "level": "string", "owning": "`t`", "status": "*built*"},
+        ]}
+        offenders = matrix_row_lint(bad)
+        self.assertTrue(any("X-1" in o and "level" in o for o in offenders),
+                        "the lint did not name the level-less row X-1: %s" % offenders)
+        self.assertTrue(any("X-2" in o and "never" in o for o in offenders),
+                        "the lint did not name the one-sided row X-2: %s" % offenders)
+        good = {"n": [{"id": "Y-1", "fact": "does a thing; never the bad thing [INV-1]",
+                       "level": "string", "owning": "`t`", "status": "*todo*"}]}
+        self.assertEqual(matrix_row_lint(good), [], "the lint red a clean row")
+
+    def test_matrix_rows_are_five_cells_with_lowercase_italic_status(self):
+        # The converted shape (R283.4): every node-block data row is five cells, its status one of
+        # *built* / *todo* / *retired* in lowercase italic, its anchors trailing the fact sentence.
+        mat = re.split(r"(?m)^## Reference *$", read("TEST_MATRIX.md"), 1)[0]
+        current = None
+        seen = 0
+        status_re = re.compile(r"^\*(built|todo|retired)\*$")
+        for line in mat.splitlines():
+            m = re.match(r"^### \[node: (.*)\]\s*$", line)
+            if m:
+                current = m.group(1)
+                continue
+            if current and re.match(r"^\| [A-Z]+-\d", line):
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                self.assertEqual(len(cells), 5,
+                                 "row %s is not five cells: %r" % (cells[0], cells))
+                self.assertRegex(cells[4], status_re,
+                                 "row %s status is not lowercase italic: %r" % (cells[0], cells[4]))
+                self.assertRegex(cells[1], r"\[[^\]]*[A-Z]+-\d",
+                                 "row %s fact carries no trailing anchor bracket" % cells[0])
+                seen += 1
+        self.assertGreater(seen, 400, "converted-row scan found too few rows — parse broke")
+
+    def test_matrix_anchor_reads_from_the_trailing_bracket(self):
+        # A known row keeps its parent anchor after the move (M-155 -> INV-56).
+        for rows in matrix_blocks().values():
+            for row in rows:
+                if row["id"] == "M-155":
+                    self.assertIn("INV-56", row["refs"])
+                    return
+        self.fail("M-155 not found — the anchor-move check could not run")
 
     def test_matrix_built_rows_name_real_tests(self):
         tests_dir = os.path.join(ROOT, "tests")
@@ -256,7 +355,7 @@ class TestMatrix(unittest.TestCase):
         )
         for rows in matrix_blocks().values():
             for row in rows:
-                if row["status"].startswith("BUILT"):
+                if row["status"].strip().strip("*").strip().startswith("built"):
                     _check_owning_row_tests(self, row["id"], row["owning"], this_file)
 
     def test_owning_row_check_catches_stale_file_path(self):

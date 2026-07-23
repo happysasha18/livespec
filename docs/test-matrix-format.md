@@ -23,7 +23,7 @@ The matrix is the spec projected into a checkable grid. It is derived from the p
 A matrix document opens with a short preamble, the same shape the family gives it: what the document covers, what the bracket codes are, and how the keywords read. Three parts follow, in this order:
 
 1. **The artifact inventory** — a table of every file the reader receives, each entry owning at least one row that asserts it at the rendered level. An artifact that no test renders can ship broken while the suite stays green, so the inventory closes that gap by construction.
-2. **The matrix rows**, grouped into node blocks — the body.
+2. **The matrix rows** — the body, grouped into node blocks: one block of rows per architecture node, defined below.
 3. **The generated Reference** — a table a script builds, mapping each spec anchor to the matrix rows that cover it.
 
 ## The matrix row is one criterion
@@ -34,7 +34,7 @@ A converted row carries five cells: the row id, the fact sentence with its trail
 
 Beside the criterion the row carries three fields the spec criterion has no need of:
 
-- **the pinned level** — the rung the row's test sits at, drawn from the project's declared level ladder. The level is the row's most important judgment, and the family's criterion form does not carry it, so the matrix row states it as its own field. The ladder is kind-abstract: a project declares its concrete rungs at founding, and the row pins one of its project's rungs.
+- **the pinned level** — the rung the row's test sits at, drawn from the project's declared level ladder. The level is the row's most important judgment, and the family's criterion form does not carry it, so the matrix row states it as its own field. The ladder's rungs are named by what proves them, so each project kind fills them with its own concrete proof artifacts, declared at founding, and the row pins one of its own project's rungs.
 - **the owning test** — the test that holds this row, named so a reader walks from the fact to the test that proves it.
 - **the status** — one of *built* (the test exists and runs green), *todo* (the test's future owner is named in the row), or *retired* (the row is kept, never deleted).
 
@@ -42,7 +42,7 @@ A matrix-local row id is legal, and the spec anchor stays the parent. One spec f
 
 ## Node blocks stand as the case grouping
 
-The spec groups its criteria into named cases. The matrix groups its rows into node blocks: one block per architecture node, headed `### [node: <name>]`, and the block heading is the matrix's case grouping. Every architecture node owns at least one block, and every module block owns at least one row that asserts the module at its declared interface.
+The spec groups its criteria into named cases. The matrix groups its rows into node blocks: one block per architecture node, headed `### [node: <name>]`, and the block heading is the matrix's case grouping. A node the architecture marks `[target]` — promised under an owned queue row, its machinery not yet landed — keeps that mark in its block heading, so the matrix and the architecture read the same. Every architecture node owns at least one block, and every module block owns at least one row that asserts the module at its declared interface.
 
 The spec criterion sits inside a requirement that gives it a Context block and a User Story; the matrix row carries neither. The fact's Context and its User Story live once at the spec, and the row inherits them through its trailing anchor. Restating them on the row would give one fact a second home, so the row stands down from carrying them and points at the spec instead.
 
@@ -62,7 +62,7 @@ The gate stays unarmed until the delivery that converts the matrix to this forma
 
 The coverage checklist the matrix once walked by hand is promoted to a mechanical row lint. The lint reads every body row and reds a row that pins no level from the declared level ladder, or that states no never side — the row's forbidden half, found by the literal word *never* in the fact sentence. Walking the two facts per row by hand let a row slip through with a missing level or a bare happy-path fact; the lint holds them at every suite run instead, one row at a time.
 
-The lint's home is the suite check that already holds these two facts, `test_matrix_rows_have_level_and_negative_side` in `tests/test_traceability.py`, extended rather than duplicated: it gains the naming of each offending row and the reach line on green — the rows it matched of the rows it scanned — and no new standalone script is built. It supersedes the hand-walked checkbox list. The reach line prints through the suite's terminal summary, the pytest terminal-summary hook, so a quiet run still shows it at the suite's tail.
+The lint's home is the suite check that already holds these two facts, `test_matrix_rows_have_level_and_negative_side` in `tests/test_traceability.py`, extended rather than duplicated: it gains the naming of each offending row and the reach line on green, stating how many body rows it read, and no new standalone script is built. It supersedes the hand-walked checkbox list. The reach line prints through the suite's terminal summary, the pytest terminal-summary hook, so a quiet run still shows it at the suite's tail.
 
 The two checklist items the lint now holds — a level pinned per row, a never side present per row — leave the hand-walked checklist, and the checkbox gate that read that checklist retires with it. The retirement fans out to six homes, all retired, repointed, or re-taught in the conversion delivery: the gate script `guardrails/check-matrix-coverage.sh`, its caller in `guardrails/pre-push`, its exercising tests in `tests/test_guardrails.py`, the matrix's own `## Coverage validation` section, the checklist-walk instruction in `skills/test-author/SKILL.md`, and the six-column header and shipped checklist in `templates/TEST_MATRIX.template.md` — so no surviving document teaches the retired form. The remaining coverage facts move to the Reference gate: that every spec anchor is covered by at least one row, and that no row cites an anchor the spec no longer carries, are the body-and-Reference agreement the Reference gate already holds.
 

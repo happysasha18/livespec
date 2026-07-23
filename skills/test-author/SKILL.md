@@ -55,10 +55,16 @@ skill owns the JUDGMENT in between: which facts, at which level, asserted how.
    structure never ships green. Its sibling half lives in build-pipeline's code step — the norm-open rule
    with the plan-vs-prototype diff line in the delivery report — and a review cites the two halves
    together.
-8. **Close by walking the coverage checklist** (the template ships it): every anchor covered · every
-   node's never-side rows present · every module block owns an interface-level row (P9) · every row's
-   level follows its footprint layer, presentation at browser-computed or above (P8) · no stale
-   references. Walked in person, item by item.
+8. **Close by the mechanical gates, not a hand-walked list.** The coverage checklist the matrix once
+   walked by hand retires; its facts are held mechanically at every run. The row lint
+   (`test_matrix_rows_have_level_and_negative_side` in `tests/test_traceability.py`) reds a row that
+   pins no level from the ladder or states no never side, naming the offending row. The generated
+   Reference gate (`guardrails/check-matrix-reference.py`) maps every spec anchor a body row carries to
+   its rows and reds a stale anchor no row carries, so anchor coverage and stale-reference catching are
+   the gate's. The interface-level row per module block and the level-follows-the-layer rule (P8, P9)
+   stay a standing suite check in `tests/test_interface_coverage.py`. The matrix `## Reference` is built
+   by `scripts/build-matrix-reference.py` and never hand-edited — generated output, the way the spec's
+   own code-to-location table is.
 
 ## The level ladder — where green suites lie
 

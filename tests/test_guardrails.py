@@ -94,7 +94,7 @@ class TestGuardrailFilesShip(unittest.TestCase):
     SCRIPTS = (
         "check-prover-record.sh",
         "check-tests.sh",
-        "check-matrix-coverage.sh",
+        "check-matrix-reference.py",
         "fence-refresh.sh",
         "install.sh",
         "check-shipped-language.sh",
@@ -317,39 +317,29 @@ class TestGateB_Tests(unittest.TestCase):
             self.assertIn("FAIL (tests)", result.stdout)
 
 
-class TestGateD_MatrixCoverage(unittest.TestCase):
-    """Gate (d): TEST_MATRIX.md's coverage-validation checklist must be fully checked."""
+class TestGateD_MatrixReference(unittest.TestCase):
+    """Gate (d), row 477: the hand-walked coverage-validation checkbox gate retired, and gate d now
+    runs the generated matrix-Reference gate (check-matrix-reference.py). The checkbox gate's own
+    exercising tests retired with it; the reference gate is red-proven in tests/test_matrix_reference.py
+    (gate d's registered red proof). Here we hold only the guardrails-level facts: the new gate passes
+    the real matrix, and the retired script is no longer wired into the push gate."""
 
     def test_real_matrix_passes(self):
-        result = run([os.path.join(GUARDRAILS, "check-matrix-coverage.sh")])
+        result = run(["python3", os.path.join(GUARDRAILS, "check-matrix-reference.py"),
+                      os.path.join(ROOT, "TEST_MATRIX.md")])
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("OK (matrix)", result.stdout)
-
-    def test_unchecked_box_fails(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            scratch_matrix = os.path.join(tmp, "TEST_MATRIX.md")
-            with open(os.path.join(ROOT, "TEST_MATRIX.md"), encoding="utf-8") as f:
-                content = f.read()
-            broken = content.replace(
-                "- [x] No row cites a spec anchor or node that no longer exists",
-                "- [ ] No row cites a spec anchor or node that no longer exists",
-                1,
-            )
-            self.assertNotEqual(content, broken, "fixture edit did not match — matrix text changed")
-            with open(scratch_matrix, "w", encoding="utf-8") as f:
-                f.write(broken)
-            result = run([os.path.join(GUARDRAILS, "check-matrix-coverage.sh"), scratch_matrix])
-            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-            self.assertIn("FAIL (matrix)", result.stdout)
-            self.assertIn("- [ ]", result.stdout)
+        self.assertIn("reach:", result.stdout)
 
     def test_missing_file_fails(self):
-        result = run([
-            os.path.join(GUARDRAILS, "check-matrix-coverage.sh"),
-            "/nonexistent/TEST_MATRIX.md",
-        ])
+        result = run(["python3", os.path.join(GUARDRAILS, "check-matrix-reference.py"),
+                      "/nonexistent/TEST_MATRIX.md"])
         self.assertEqual(result.returncode, 1)
-        self.assertIn("FAIL (matrix)", result.stdout)
+
+    def test_retired_checkbox_gate_unwired(self):
+        with open(os.path.join(GUARDRAILS, "pre-push"), encoding="utf-8") as f:
+            body = f.read()
+        self.assertNotIn("check-matrix-coverage.sh", body,
+                         "the retired checkbox gate is still wired into pre-push")
 
 
 class TestGateE_PrototypeFence(unittest.TestCase):
@@ -432,7 +422,7 @@ class TestPrePush(unittest.TestCase):
             "check-prover-record.sh",
             "check-tests.sh",
             "check-push-reach.sh",
-            "check-matrix-coverage.sh",
+            "check-matrix-reference.py",
             "check-prototype-fence.sh",
             "check-shipped-language.sh",
         ):
@@ -984,7 +974,7 @@ class TestCIMirror(unittest.TestCase):
         self.assertTrue(os.path.isfile(path), "gates.yml missing")
         with open(path, encoding="utf-8") as f:
             body = f.read()
-        for needle in ("pytest", "check-prover-record.sh", "check-matrix-coverage.sh",
+        for needle in ("pytest", "check-prover-record.sh", "check-matrix-reference.py",
                        "check-pin-drift.sh", "check-skill-loadability.sh",
                        "check-prototype-fence.sh", "check-shipped-language.sh", "fetch-depth: 0"):
             self.assertIn(needle, body, "gates.yml missing: %s" % needle)

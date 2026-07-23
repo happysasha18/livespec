@@ -3,7 +3,7 @@
   "proofs": {
     "a": {"proof": "tests/test_guardrails.py::test_missing_record_fails", "reds": "check-prover-record.sh"},
     "b": {"proof": "tests/test_guardrails.py::test_broken_suite_fails", "reds": "check-tests.sh"},
-    "d": {"proof": "tests/test_guardrails.py::test_unchecked_box_fails", "reds": "check-matrix-coverage.sh"},
+    "d": {"proof": "tests/test_matrix_reference.py::test_reds_a_hand_edited_reference", "reds": "check-matrix-reference"},
     "e": {"proof": "tests/test_guardrails.py::test_prod_reference_fails", "reds": "check-prototype-fence.sh"},
     "f": {"proof": "tests/test_guardrails.py::test_broken_skill_fails", "reds": "check-skill-loadability.sh"},
     "g": {"proof": "tests/test_guardrails.py::test_label_drift_strict_fails", "reds": "check-pin-drift.sh"},

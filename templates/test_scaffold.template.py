@@ -4,8 +4,8 @@ Copy this file to `tests/test_scaffold.py` at bootstrap, together with the six d
 Run from the project root:  python3 -m unittest discover tests
 
 This is what "green suite" MEANS for landing #1: the document set is present and filled (headers
-dated, the coverage checklist in place, one live-state block) — i.e., the bootstrap itself is
-complete. It is a floor, not a ceiling: landing #1 ships its own first real test beside this file,
+dated, the matrix's generated Reference section in place, one live-state block) — i.e., the bootstrap
+itself is complete. It is a floor, not a ceiling: landing #1 ships its own first real test beside this file,
 and the traceability checks grow from here (the pack's own tests/test_traceability.py is the worked
 example of where this scaffold is headed).
 """
@@ -40,9 +40,16 @@ class TestBootstrapComplete(unittest.TestCase):
             self.assertNotIn("[Project Name]", head,
                              "%s still carries the template placeholder name" % doc)
 
-    def test_matrix_carries_coverage_validation(self):
-        self.assertIn("Coverage validation", read("TEST_MATRIX.md"),
-                      "TEST_MATRIX lost the coverage-validation checklist (E-15)")
+    def test_matrix_carries_generated_reference(self):
+        # The hand-walked coverage-validation checklist retired (row 477): coverage is now held by the
+        # mechanical row lint and the generated Reference gate. The matrix carries the generated
+        # `## Reference` section built from its body rows, and the mechanical-close teaching in place of
+        # the retired checkbox list.
+        matrix = read("TEST_MATRIX.md")
+        self.assertIn("## Reference", matrix,
+                      "TEST_MATRIX lost its generated Reference section (E-15, row 477)")
+        self.assertIn("How coverage is held", matrix,
+                      "TEST_MATRIX lost the mechanical-close teaching (E-15, row 477)")
 
     def test_queue_is_a_table(self):
         body = read("ROADMAP.md")
