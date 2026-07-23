@@ -6593,9 +6593,9 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 288: A queue row carries five cells in the closed vocabularies, or the row lint reds
 
-**Context:** One queue row is one live wish. The header fixes its shape at five cells, and two closed vocabularies fix what its status and class cells may say. A row lint reads every body row at every suite run and reds a row that breaks the shape or the vocabulary, so a malformed row is caught the moment it lands rather than read wrong later.
+**Context:** One queue row is one live wish. The header fixes its shape at five cells, and two closed vocabularies fix what its status and class cells may say. A row lint reads every body row at every suite run and reds a row that breaks the shape or the vocabulary, so a malformed row is caught the moment it lands, before any reader meets it.
 
-**User Story:** As a maintainer trusting the queue, I want a row lint to hold every body row to five cells and the closed vocabularies, so that a drifted or mislabelled row is caught at every suite run rather than left to mislead a reader.
+**User Story:** As a maintainer trusting the queue, I want a row lint to hold every body row to five cells and the closed vocabularies, so that a drifted or mislabelled row is caught at every suite run, before it can mislead a reader.
 
 ### Acceptance Criteria
 
