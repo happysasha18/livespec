@@ -6562,8 +6562,8 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the member definition and its inheritance**
 
-1. The queue *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, the no-history law, generated-section gating, the comprehension gate — and *shall* restate none of them. [INV-275]
-2. The queue *shall* open with a preamble and a glossary, then hold one table of live wish rows in ascending id order, a manifest line per archive file standing above the body. [INV-275]
+1. The queue *shall* follow the family genre by reference to `docs/spec-format.md` — closed vocabulary, keyword form, trailing anchors, no-history, generated-section gating, the comprehension gate — restating none of them. [INV-275]
+2. The queue *shall* open with a preamble and a glossary, then one table of live wish rows in ascending id order, a manifest line per archive file above the body. [INV-275]
 
 **Case: when the gates arm**
 
