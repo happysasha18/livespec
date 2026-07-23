@@ -1,7 +1,15 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## LIVE STATE (2026-07-23 night — v4.2.0: the queue is the format family's third member, row 480)
-Row 480 pushed at v4.2.0, in-work on one leg (the confirming cold-read pair): docs/roadmap-format.md defines the queue member (family laws inherited by reference);
+## LIVE STATE (2026-07-23 night — row 480 CLOSED; next: row 456 on Fable, his ~21:35 word)
+Row 480 closed 2026-07-23 ~21:35: the confirming pair ran twice — the first pair returned one
+blocking stop (the meaning-bearing `[target]` mark read as an ignorable code; fixed in the
+preamble's bracket-marks sentence), the second pair returned zero blocking twice — then the row
+moved to docs/queue-archive/rotated-ROADMAP-2026-07.md via rotate-doc --close-row 480, freeze
+re-baselined, suite 1842 passed / 2 skipped, short-form prover record
+docs/prover/2026-07-23-row480-close-shortform.md, pushed. Row 482 opened the same evening: mid-turn
+chat lines bypass the register Stop-hooks (his catch ~21:20). His ~21:33 word: row 456 (the
+architecture format) runs on Fable in this window; the routine after it moves to Opus.
+Pre-close state for reference: docs/roadmap-format.md defines the queue member (family laws inherited by reference);
 SPEC R286–288 (INV-275..277) + seven requirements sharpened to the closing-commit archiving law;
 ROADMAP.md converted — the body holds live rows only (114 rows, ~120 KB, was 345 rows at 98% of a
 700 KB ceiling; ceiling now 260 KB), closed status vocabulary *queued*/*in-work*/*deferred*/*far*
@@ -79,8 +87,9 @@ conversation channel + listener (wait on the harness listener, INV-231) · far t
 Runnable head is field-gated (contract/listener) + far tier.
 
 ## Next free codes
-Next free INV-278, E-36, T-25, M-454; next ROADMAP row 482 (A-12, B-4, C-2, D-8, S-1, ACT-4 also
-free).
+Next free INV-278, E-36, T-25, M-454; next ROADMAP row 483 (A-12, B-4, C-2, D-8, S-1, ACT-4 also
+free). Row 482 opened 2026-07-23: mid-turn chat lines bypass the register Stop-hooks (his catch at
+~21:20); the nets must read narration lines too.
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A
