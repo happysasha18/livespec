@@ -20,6 +20,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **agent card** — a host's self-describing file (`.live-spec/agent.md`) stating its name, mission, zones, published contracts, and inbox address.
 - **announced self-compaction** — the session's own act, said aloud at a safe breakpoint, of pruning its working context while carrying its live lines forward into the summary.
 - **architecture node** — one named unit in the architecture document carrying one responsibility and one name, owning the spec facts it implements and pinned to its place in the code.
+- **artifact inventory** — the test matrix's opening section naming every file the reader receives, each carried by at least one row asserting it at the rendered level.
 - **attic** — the host's append-only archive folder (`attic/`). A superseded file moves here with one manifest line and is kept for good.
 - **attribution line** — the single `made with live-spec` line a built-with publication carries on its landing surface, naming the pack version the project runs.
 - **base skill** — the pack skill that holds the shared rulebook and the default settings, stated once, so every working skill points at one home rather than restating them.
@@ -126,6 +127,10 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **local-only diaries** — the journal, the resume file, the queue, and the migration chapter, the host-local files that hold candid attribution and process history no publish ships.
 - **loop** — an autonomous recurring run the session performs with no person present, working in iterations and sleeping between them.
 - **map note** — the row field, written `map:`, that records the intake verdict of how a wish maps onto the product: changes feature X, new feature, or restructure.
+- **matrix Reference** — the generated section of the test matrix mapping each spec anchor to the matrix rows that cover it, built by script and output only.
+- **matrix-reference gate** — the mechanical check that reds a matrix Reference differing from a fresh build or disagreeing with the body rows.
+- **matrix row** — one criterion of the test matrix: a single trigger-and-response sentence stating both what a fact does and what it must never do with its spec anchor trailing, and beside it a pinned test level, an owning test, and a status.
+- **matrix row lint** — the mechanical check that reds a matrix row pinning no test level or stating no never side.
 - **measurement family** — the deferred machinery, still unbuilt, that reads, scores, and aggregates feedback signals such as field evidence.
 - **mechanical lint** — a free script check the comprehension gate runs before any reader: the vocabulary check, the one-name check, the weak-word check, or the style lint.
 - **method version** — the pack-and-skill version set a piece of work was carried out under, read from the host's installed set.
@@ -139,8 +144,10 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **need-by** — the moment a message states as the time by which it needs its terminal state.
 - **net** — one hook or guard that watches for a stated condition and fires when it holds. A guardrail is one kind of net.
 - **net-liveness meter** — the shared instrument that records how often a net ran and how often it fired, and reads the two numbers back so a silent net is caught by the numbers.
+- **never side** — the half of a matrix row's sentence stating what the fact must never do, written with the literal word *never*.
 - **never-bend list** — the set of protections that holds at every rung of the economy ladder and does not bend.
 - **new-criteria budget** — the byte sum a spec-touching delivery declares for the criteria it adds under the *new* kind, each within the per-criterion byte cap.
+- **node block** — the group of matrix rows owned by one architecture node, headed by the node's name, standing as the matrix's case grouping.
 - **non-goal** — one sentence in a spec-delta naming what the change deliberately leaves out, so a deliberate absence reads as a decision.
 - **norm** — an approved prototype frozen as the binding record of a surface's look and feel, kept as a dated copy under `docs/norms/`.
 - **norm pointer** — the `norm: <path>` reference a spec clause carries at its line end, pointing at the frozen norm artifact its behaviour is checked against.
@@ -218,6 +225,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 - **surface registry** — one host-authored list of every user-facing surface the product carries, read by a completeness net.
 - **target tag** — the marker `[target]` a spec line carries on a line of its own to mark a feature or leg that is promised but not yet built.
 - **test matrix** — the document (`TEST_MATRIX.md`) whose rows pair one architecture node with one spec fact, each row pinning the test level that covers the fact.
+- **test-matrix format** — the format-family member the test matrix is written in: an artifact inventory, matrix rows grouped into node blocks, and a generated Reference; it inherits the family's shared laws from the spec format and adds only the matrix-particular rules.
 - **thin loader** — the personal layer's global instruction file, holding only what must be true before any pack file loads.
 - **tier** — the model level a unit of work runs at: a no-decision one-shot worker, a multi-step mechanical worker, or the seat for judgment.
 - **touchpoint** — one point of contact with the person, carrying a kind: synchronous when the person is present and the work waits on the person, asynchronous when the person reads on the person's own clock while the work keeps running.
@@ -2687,7 +2695,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the matrix is derived by node and fact**
 
 1. The system *shall* organize the matrix by architecture node paired with spec fact, giving every fact at least one row and pinning each row to a test level. [E-5, E-14]
-2. The system *shall* close the derivation with the coverage validation, confirming every spec anchor owns at least one row, every artifact-inventory entry owns at least one row at a rendered tier of the level ladder (browser-computed or pixel), every visibility or layout or colour or interaction fact sits at browser-computed level or above, and every node carries its negative-side rows. [E-15, INV-6]
+2. The system *shall* close the derivation with the coverage validation, confirming every spec anchor owns at least one row, every artifact-inventory entry owns at least one row at a rendered tier of the level ladder (browser-computed or pixel), every visibility or layout or colour or interaction fact sits at browser-computed level or above, and every node carries its negative-side rows; *when* the test-matrix conversion delivery lands, the matrix row lint and the matrix-reference gate *shall* stand as the derivation's mechanical close, the hand-walked checklist retiring with its section. [E-15, INV-6]
 3. The system *shall* retire a stale row that cites an anchor or node no longer present rather than let it vanish, and *shall* read a fact with no row, or a row at too weak a level, as a derivation defect the prover catches before any user hits it. [E-15]
 
 **Case: no wish jumps the bridge**
@@ -6449,7 +6457,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 282: Every gate in this family states its reach on the green line
 
-**Context:** A gate that prints green proves nothing until a reader knows how much it read. The gates in this family — the index gate, the delta classifier, the ratchet gate, and the mechanical lints — each read files and match rows. So each states its reach on the line it prints when it passes: the files it opened, and the rows it matched of the rows it scanned. A reader of the green line then knows the verdict and its reach together.
+**Context:** A gate that prints green proves nothing until a reader knows how much it read. The gates in this family — the index gate, the delta classifier, the ratchet gate, the mechanical lints, the matrix-reference gate, and the matrix row lint — each read files and match rows. So each states its reach on the line it prints when it passes: the files it opened, and the rows it matched of the rows it scanned. A reader of the green line then knows the verdict and its reach together.
 
 **User Story:** As a person reading a gate's green line, I want it to state what the gate read, so that I can tell a real pass from a pass that read nothing.
 
@@ -6459,6 +6467,79 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 1. *when* a gate in this family passes, the system *shall* print a green line that names the files it opened and the count of rows it matched of the rows it scanned. [INV-269]
 2. *if* a gate passes while its scanned-row count is zero, *then* the gate *shall* print a line naming that it scanned nothing, and *shall* not print a bare green line. [INV-269]
+
+---
+
+## Requirement 283: The test matrix is a family member written as node-grouped criteria
+
+**Context:** The spec format proved the requirements genre on the spec document itself, and the test matrix is the format family's second member, written in that same genre. The matrix's own definition — what it inherits from the family and what it adds — lives in `docs/test-matrix-format.md`. This requirement carries that definition into the spec, so the matrix's shape stands as a proven fact the spec's own gates hold.
+
+**User Story:** As a maintainer reading the matrix, I want one format family across the spec and the matrix, so that one set of laws and one set of gates covers both documents.
+
+### Acceptance Criteria
+
+**Case: inherits the family, adds its own structure**
+
+1. The test matrix *shall* be written in the requirements format the spec format defines, inheriting the closed vocabulary, the criterion form, the trailing anchor, the no-history law, the generated-section gating, and the comprehension gate from `docs/spec-format.md`, and *shall* restate none of them. [INV-272]
+2. The matrix *shall* open with an artifact inventory naming every file the reader receives with at least one row asserting it at the rendered level, then the matrix rows grouped into node blocks, then the generated Reference. [INV-272]
+
+**Case: a row is one criterion with the matrix's own fields**
+
+3. Each matrix row *shall* state one trigger and one response in a single sentence carrying both what the fact does and what it must never do, its spec anchor trailing at the line's end. [INV-272]
+4. Each row *shall* carry a pinned test level drawn from the project's declared level ladder, an owning test, and a status of *built*, *todo*, or *retired*. [INV-272]
+
+**Case: node blocks are the case grouping, and Context and the User Story stand down**
+
+5. Matrix rows *shall* group into node blocks, one per architecture node headed "### [node: <name>]", the heading standing as the matrix's case grouping. [INV-272]
+6. A matrix row *shall* carry no Context block and no User Story; the fact's Context and User Story live once at the spec, and the row inherits them through its trailing anchor. [INV-272]
+
+**Case: when the gates arm**
+
+7. *when* the migration converts the matrix to this format, the system *shall* convert the whole document in one delivery, and the gates this member names *shall* arm in that same delivery. [INV-272]
+
+---
+
+## Requirement 284: The matrix Reference is generated from the rows, never hand-written
+
+**Context:** A hand-kept coverage view drifts from the rows it claims to summarize. The matrix Reference is instead built from the body the way the spec's own code-to-location table is: a script reads the committed rows and produces the map, and no one edits the map by hand.
+
+**User Story:** As a maintainer following a spec anchor into its coverage, I want the Reference built from the rows at freeze, so that it never drifts from the body it maps.
+
+### Acceptance Criteria
+
+**Case: generated output**
+
+1. *when* the matrix is frozen, the system *shall* build the Reference from the body rows, mapping each row's trailing spec anchors to the row ids that cover them. [INV-273]
+2. The Reference *shall* be output only; *if* it is edited by hand, *then* the matrix-reference gate *shall* red. [INV-273]
+
+**Case: body and Reference must agree**
+
+3. *if* a spec anchor sits on a body row and is absent from the committed Reference, *then* the matrix-reference gate *shall* red. [INV-273]
+4. *if* a spec anchor sits in the committed Reference and is carried by no body row, *then* the matrix-reference gate *shall* red. [INV-273]
+
+**Case: reach and arming**
+
+5. The matrix-reference gate *shall* stay unarmed until the conversion delivery, *shall* arm in it, and *shall* state its reach on the green line. [INV-273] [INV-269]
+
+---
+
+## Requirement 285: A matrix row pins a level and states its never side, or the row lint reds
+
+**Context:** The matrix once closed its derivation with a coverage checklist walked by hand. The two facts a machine can read off each row — a pinned test level, a stated never side — become a mechanical lint instead, run at every push rather than walked once.
+
+**User Story:** As a maintainer trusting the matrix, I want a row lint to catch a missing level or a bare happy-path row, so that the coverage a hand-walked checklist once caught is never lost to drift.
+
+### Acceptance Criteria
+
+**Case: the row lint holds the two per-row facts**
+
+1. *if* a body row pins no test level from the declared ladder, *then* the row lint *shall* red, naming the row. [INV-274]
+2. *if* a body row states no never side, *then* the row lint *shall* red, naming the row. [INV-274]
+3. *when* every body row pins its level and states its never side, the row lint *shall* pass green and state its reach on the green line. [INV-274] [INV-269]
+
+**Case: the hand-walked checklist retires**
+
+4. *when* the conversion delivery lands, the checkbox gate that read the coverage-validation checklist *shall* retire, the row lint and the matrix-reference gate standing as its successors. [INV-274]
 
 ## Reference
 
@@ -6791,9 +6872,12 @@ The code-to-location table below is generated output, built from the body criter
 | INV-266 | R281.1, R281.2 |
 | INV-267 | R281.3, R281.4, R281.5, R281.6 |
 | INV-268 | R281.7 |
-| INV-269 | R282.1, R282.2 |
+| INV-269 | R282.1, R282.2, R284.5, R285.3 |
 | INV-270 | R277.19, R277.20 |
 | INV-271 | R191.4, R191.7, R278.5, R278.6, R278.7 |
+| INV-272 | R283.1, R283.2, R283.3, R283.4, R283.5, R283.6, R283.7 |
+| INV-273 | R284.1, R284.2, R284.3, R284.4, R284.5 |
+| INV-274 | R285.1, R285.2, R285.3, R285.4 |
 | M-1 | R49.2, R80.7, R80.8, R92.2, R130.1, R130.2, R130.3, R130.4, R130.5, R130.6, R130.7, R130.8, R130.9, R164.4, R166.3, R166.8, R198.6, R249.2 |
 | M-2 | R14.3, R125.1, R125.2, R125.3, R177.12, R204.3 |
 | M-3 | R136.1 |
