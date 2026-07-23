@@ -84,7 +84,7 @@ DEFERRED: adoption + onboarding (his 2026-07-18 word; ~8 taste forks; owns the p
 ## Inbox — all 2026-07-21 deposits routed and landed (438→INV-248, 430→INV-247, 439→INV-249), left earned in place.
 
 ## Next free codes
-Next free INV-272, E-36, T-25, M-447; next ROADMAP row 477 (A-12, B-4, C-2, D-8, S-1, ACT-4 also free).
+Next free INV-272, E-36, T-25, M-447; next ROADMAP row 478 (A-12, B-4, C-2, D-8, S-1, ACT-4 also free).
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A
