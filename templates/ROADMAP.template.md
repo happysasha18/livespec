@@ -72,7 +72,8 @@ carrying its date:
 - *far* — the wish is parked with no near trigger.
 
 A row whose wish carries more than one leg stays *in-work* while any leg remains open, the open leg
-named in the acceptance cell; the row reaches a terminal exit only when every leg is closed.
+named in the acceptance cell; the row reaches a terminal exit only when every leg is closed — a row
+closes only whole. [INV-26]
 
 ## The live-body law
 
@@ -83,6 +84,9 @@ row makes; a body row never carries it as a status. An archive file gathers one 
 moved rows, and the rotated-manifest block above the body grows one line per archive file. A
 *deferred* or a *far* row stays live in the body, its revisit trigger re-read at the next milestone
 review and whenever a session takes its next wish from the queue.
+
+Declining a row that absorbed other wishes lists the absorbed rows: decline each listed row by name
+or return it to the queue as its own row — a superseded wish never dies by pointer. [T-8]
 
 ## The acceptance cell
 
