@@ -1,0 +1,72 @@
+# The roadmap format — definition
+
+This page defines the format the roadmap is written in. The roadmap is a member of the same format family as the spec, and this page states only what is particular to the roadmap. The shared family laws live once in `docs/spec-format.md`, and this page inherits them by reference rather than restating them.
+
+## What the roadmap inherits from the family
+
+The roadmap is written in the requirements genre `docs/spec-format.md` defines, and every law that page states holds here unchanged:
+
+- the closed-vocabulary glossary, so every domain noun the roadmap uses carries one glossary entry under one name;
+- the keyword form, so the keywords *when*, *while*, *if*, *then*, and *shall* are set in lowercase italics;
+- the no-capitals rule, so no word stands in all capitals outside a code anchor;
+- the trailing code anchor, so a code points to its home at the line's end and a reader may ignore it;
+- the no-history law, so the record of finished work — its dates, its delivery reports, the reasons behind past choices — lives in the archive and the journal, and the body states only the live queue;
+- the generated-section gating, so a section a script builds is output only and a gate reds a hand edit of it, where the roadmap carries such a section;
+- the comprehension gate, so a changed section clears the mechanical lints and then a panel of cold readers, passing only after two consecutive reads return zero blocking findings.
+
+A reader who needs any of these consults `docs/spec-format.md`. The rest of this page adds the parts the roadmap carries that the spec does not.
+
+## What the roadmap is
+
+The roadmap is the wish queue: the live record of what is asked of the product and where each ask stands. A wish is a request for a change the product does not yet carry, and a wish lands when the delivery that completes it ships. Intake is continuous, a wish entering the moment it is spoken; execution is serial, the current landing finishing before the next starts. The spec keeps sole authority over what is true of the product, and the roadmap holds the asks. Its reading job: a stranger reads the body and knows the live work state on the first pass.
+
+## Document structure
+
+A roadmap document opens with a short preamble, the same shape the family gives it: what the document covers, what the bracket codes are, and how the keywords read. The body follows — one table, its header `| # | Wish (plain words) | Class | Status | Decision / acceptance |`, one row per live wish, the rows standing in ascending id order with a new wish appending at the tail. A rotated-manifest block sits above the body, one line per archived batch naming the rows moved and the archive file that received them; the rotation script maintains it and a gate cross-checks it against the archive.
+
+## The live-body law
+
+The body holds live rows only. When a wish lands, its row moves to the dated archive under `docs/queue-archive/` in the same commit that lands it, carried verbatim with its delivery report, and the rotated-manifest block records the move. The word *landed* therefore names a transition a row makes, and a body row never carries it as a status. The archive keeps every moved row, grepable by number, under the project's nothing-lost rule, so the history of the work stands in the archive and the journal. This is how the family's no-history law reaches a queue document: the body stays the live queue, and the record of finished work moves out to the archive.
+
+## The status vocabulary
+
+The status vocabulary is closed — four words, each set in lowercase italics and each carrying a date:
+
+- *queued* — the wish is accepted and waiting its turn.
+- *in-work* — the wish is claimed by a session. A landing that leaves any leg open keeps its row *in-work* with the open leg named — a leg is one separable part of the wish's delivery — since a row closes only whole.
+- *deferred* — the wish is parked on a named revisit trigger, the trigger written in the status cell and re-read at the next milestone review and whenever a session takes its next wish from the queue.
+- *far* — the wish is parked with no near trigger, re-read at the milestone reviews.
+
+Anything else a row needs to say about its state lives in the wish cell or the acceptance cell.
+
+## The class vocabulary
+
+The class vocabulary is the family's declared four, closed and held by a lint: *bug*, *small*, *surface*, and *large*. The class names the size of the wish, one vocabulary shared with the spec, and the class cell carries exactly one of the four words.
+
+## The roadmap row
+
+One roadmap row is one live wish, exactly five cells, matching the header: the id, the wish, the class, the status, and the acceptance.
+
+The wish cell carries the ask in plain words, its provenance, and the intake notes. The provenance is whose word asked for the wish and the date — a queue's load-bearing fact, carried on the row because an unfinished ask's origin governs how it is handled. The intake notes are the wish's door (feature · bug · refactor · docs-only · skip), its kind (product · infra · skill · prose), its footprint, its placement on the architecture map, and an entry condition where one was declared. A priority mark rides the intake notes when the wish's priority is other than normal — a critical bug lands before everything, and a quick win may bubble up between landings with the jump named in its row.
+
+The acceptance cell carries the Done-when criteria and the non-goals, with code anchors trailing at the line ends.
+
+The spec's Context blocks and User Stories stand down from the row the way the matrix's rows stand them down: the spec owns them, and the row points at the spec by anchor rather than restating them.
+
+## The row lint
+
+Every body row clears a row lint that runs in the suite. The lint reds a row that does not carry exactly five cells, a row whose status is outside the closed set or missing its date, a row whose class is outside the closed set, a *deferred* row that names no trigger, and a body whose row ids do not ascend. Its home is the suite's traceability tests, extended rather than duplicated, the way the matrix's row lint is homed, so no new standalone script is built. It states its reach on the green line — how many body rows it read — the reach every gate in this family states.
+
+## The conversion delivery
+
+One delivery converts the whole roadmap to this format, and everything that reads the old shape moves in that same delivery:
+
+- **Landed rows move to a dated archive file verbatim**, the biggest named delta: the body shrinks to its live rows, each moved row carrying its delivery report unchanged, and the rotated-manifest and the archive together preserve every row.
+- **The statuses lowercase and lose their decoration** as a declared delta, each free-form status becoming one of the four closed words with its date.
+- **The sixth drift cell is removed** as a declared delta: the newest rows drifted into a sixth cell holding a bare dash, and the conversion returns every row to the five the header declares.
+- **The two class values outside the vocabulary move** as declared deltas: a class reading *big* reads *large*, and the one row carrying *far* in its class cell moves that word to its status cell.
+- **Every parsing consumer is repointed** in the same delivery. `scripts/rotate-doc.py` keeps reading the status from cell index 3, now one of the closed words with the drift cell gone. `guardrails/check-doc-rotation.py` keeps cross-checking the rotated-manifest against the archive, continuing to prove nothing was lost as rows move. `guardrails/check-landing-next-steps.py` re-keys from "a Status cell flipped to landed" to "a body row left the body," since a landing now moves a row out of the body, and it still reds a landing commit that leaves `NEXT_STEPS.md` untouched. `guardrails/crosscut_counter.py` keeps grepping the cells for `footprint: cross-cutting`, reading the footprint from the wish cell's intake notes. `guardrails/check-doc-bound.py` holds the byte ceiling, and its ceiling ratchets down after the body shrinks.
+
+## The comprehension gate
+
+A changed roadmap section clears the comprehension gate the family defines, stated once in `docs/spec-format.md`: the mechanical lints first, then a panel of cold readers, passing only after two consecutive reads return zero blocking findings. The roadmap adds the row lint above to that first layer, running beside the family's vocabulary, one-name, weak-word, and style lints. The conversion's cold reads cover the preamble and this definition page and a sample of body rows, never all of them.
