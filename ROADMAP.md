@@ -2,8 +2,8 @@
 
 The wish queue: the live record of what is asked of the product and where each ask stands. A wish is a
 request for a change the product does not yet carry, and it lands when the delivery that completes it
-ships. Intake is continuous, a wish entering the moment it is spoken; execution is serial, the current
-landing finishing before the next starts.
+ships. Intake is continuous, a wish entering the moment it is spoken; execution runs at most three independent
+landings at once — the lane cap — and a landing finishes before a colliding next starts.
 
 The roadmap is a member of the format family. Its shared rules — the closed-vocabulary glossary, the
 keyword form, the no-capitals rule, the trailing code anchor, the no-history law, the comprehension
