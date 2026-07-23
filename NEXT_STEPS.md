@@ -9,22 +9,9 @@ re-baselined, suite 1842 passed / 2 skipped, short-form prover record
 docs/prover/2026-07-23-row480-close-shortform.md, pushed. Row 482 opened the same evening: mid-turn
 chat lines bypass the register Stop-hooks (his catch ~21:20). His ~21:33 word: row 456 (the
 architecture format) runs on Fable in this window; the routine after it moves to Opus.
-Pre-close state for reference: docs/roadmap-format.md defines the queue member (family laws inherited by reference);
-SPEC R286–288 (INV-275..277) + seven requirements sharpened to the closing-commit archiving law;
-ROADMAP.md converted — the body holds live rows only (114 rows, ~120 KB, was 345 rows at 98% of a
-700 KB ceiling; ceiling now 260 KB), closed status vocabulary *queued*/*in-work*/*deferred*/*far*
-lowercase italic and dated, closed class vocabulary, five cells, ascending ids, all held by the queue
-row lint in the traceability suite (reach on green). 231 closed rows live verbatim in
-docs/queue-archive/rotated-ROADMAP-2026-07.md; the pre-conversion status texts of live rows live in
-docs/queue-archive/status-notes-ROADMAP-2026-07-23.md; the status cell is the sole authority on a
-row's state. rotate-doc.py gained --close-row (monthly append, one manifest line per month file);
-the landing-map gate re-keyed to the archive move with two red-proven carves (historical relocation
-≥2 days old owes no map refresh; a live-status trigger quoting "landed" is no flip); delegation and
-footprint checks read body+archive union. Content preservation proven by word+punctuation multisets
-across seven deterministic converter rounds (prototype/2026-07-23-roadmap-format/). Prover CROSS-LINK
-10/10 folded; minor-gate audit passes-with-fixes, folded; skill-review pass (build-pipeline).
-Cold reads: five rounds run and folded before the confirming pair closed the gate (see LIVE STATE).
-His 2026-07-23 ~20:35 word stands: wrap at milestones, the weekly budget at 10%.
+Row 480's full delivery report rides its archived row in docs/queue-archive/rotated-ROADMAP-2026-07.md;
+the mechanics chapter is in JOURNAL.md. His 2026-07-23 ~20:35 word stands: wrap at milestones, the
+weekly budget at 10%.
 
 Row 456 in-work (his ~21:33 word: this window, Fable seat, full rigor): scouts done — structure
 distillation (106 KB doc; the Nodes table is 52%, the guardrails cell alone 26 KB; seven content
