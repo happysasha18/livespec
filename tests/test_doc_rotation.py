@@ -211,6 +211,141 @@ class TestMechanism(unittest.TestCase):
         self.assertEqual(code, 0, "rotate-doc.py output failed the gate:\n" + out)
 
 
+MONTH_MANIFEST = (
+    "<!-- rotated-manifest -->\n"
+    "Rotated closed rows (base rule 10 — nothing lost; the archive keeps everything):\n"
+    "- rows 480 → docs/queue-archive/rotated-ROADMAP-2026-07.md\n"
+    "<!-- /rotated-manifest -->\n"
+)
+MONTH_MANIFEST_TWO = MONTH_MANIFEST.replace("- rows 480 →", "- rows 480, 483 →")
+
+
+def _month_archive(rows):
+    head = ("# Rotated ROADMAP rows — 2026-07\n\n"
+            "> ARCHIVED 2026-07 by scripts/rotate-doc.py from ROADMAP.md at the closing commit — nothing lost.\n\n")
+    body = "".join(
+        "| %d | closed wish %d | small | *landed 2026-07-23* | Done: met |\n" % (n, n) for n in rows)
+    return head + "| # | Wish (plain words) | Class | Status | Decision / acceptance |\n|---|---|---|---|---|\n" + body
+
+
+class TestMonthlyClosingCommitGate(unittest.TestCase):
+    """Piece 2 (SPEC INV-276): the doc-rotation gate accepts the monthly-growing manifest shape — one
+    line per month archive whose row-set grows across commits, a monthly-named archive as legal as the
+    day-named legacy ones — and the three reds stay live on it."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix="rotation-month-")
+        os.makedirs(os.path.join(self.tmp, "docs", "queue-archive"))
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _run(self, docs=("ROADMAP.md",)):
+        return run_gate(self.tmp, list(docs),
+                        extra=["--archive-glob", "docs/queue-archive/rotated-*.md"])
+
+    def test_a_row_moved_into_a_month_file_passes(self):
+        _write(self.tmp, "ROADMAP.md", _live_doc(MONTH_MANIFEST))
+        _write(self.tmp, "docs/queue-archive/rotated-ROADMAP-2026-07.md", _month_archive([480]))
+        code, out = self._run()
+        self.assertEqual(code, 0, "a clean monthly close must pass:\n" + out)
+
+    def test_a_second_row_appended_with_the_line_grown_passes(self):
+        _write(self.tmp, "ROADMAP.md", _live_doc(MONTH_MANIFEST_TWO))
+        _write(self.tmp, "docs/queue-archive/rotated-ROADMAP-2026-07.md", _month_archive([480, 483]))
+        code, out = self._run()
+        self.assertEqual(code, 0, "a grown month manifest line must pass:\n" + out)
+
+    def test_a_moved_row_missing_from_the_archive_reds(self):
+        # RED-PROOF: manifest names 480 and 483 but the month archive holds only 480.
+        _write(self.tmp, "ROADMAP.md", _live_doc(MONTH_MANIFEST_TWO))
+        _write(self.tmp, "docs/queue-archive/rotated-ROADMAP-2026-07.md", _month_archive([480]))
+        code, out = self._run()
+        self.assertNotEqual(code, 0, "a row lost from the month archive must red")
+        self.assertIn("483", out)
+
+    def test_a_row_in_both_body_and_archive_reds(self):
+        # RED-PROOF: row 480 is declared moved yet still stands as a live body row — ambiguous.
+        live = _live_doc(MONTH_MANIFEST) + "| 480 | still here | small | *queued 2026-07-23* | Done: x |\n"
+        _write(self.tmp, "ROADMAP.md", live)
+        _write(self.tmp, "docs/queue-archive/rotated-ROADMAP-2026-07.md", _month_archive([480]))
+        code, out = self._run()
+        self.assertNotEqual(code, 0, "a row both live and archived must red")
+        self.assertIn("480", out)
+
+    def test_an_orphan_month_archive_reds(self):
+        # RED-PROOF: a month archive with no manifest line pointing to it (base-rule-10 violation).
+        _write(self.tmp, "ROADMAP.md", _live_doc(""))
+        _write(self.tmp, "docs/queue-archive/rotated-ROADMAP-2026-07.md", _month_archive([480]))
+        code, out = self._run()
+        self.assertNotEqual(code, 0, "an orphan month archive must red")
+        self.assertIn("rotated-ROADMAP-2026-07.md", out)
+
+
+class TestClosingCommitMechanism(unittest.TestCase):
+    """Piece 1: scripts/rotate-doc.py --close-row moves ONE row into the month archive, grows the
+    month's single manifest line, and its output survives the gate."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix="rotation-close-")
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    LIVE = (
+        "# live-spec Roadmap (dated version: 2026-07-23)\n\n"
+        "The wish queue.\n\n"
+        "| # | Wish (plain words) | Class | Status | Decision / acceptance |\n"
+        "|---|---|---|---|---|\n"
+        "| 480 | first closed wish | surface | *landed 2026-07-23* | Done: met |\n"
+        "| 481 | a live open wish | small | *queued 2026-07-23* | Done: x |\n"
+        "| 483 | second closed wish | small | *landed 2026-07-23* | Done: met |\n"
+    )
+
+    def _close(self, rownum):
+        return subprocess.run(
+            [sys.executable, ROTATE, "--doc", "ROADMAP.md", "--close-row", str(rownum),
+             "--month", "2026-07", "--base", self.tmp], capture_output=True, text=True)
+
+    def test_close_row_moves_one_row_and_grows_one_manifest_line(self):
+        _write(self.tmp, "ROADMAP.md", self.LIVE)
+        p = self._close(480)
+        self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+        p = self._close(483)
+        self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+        live = open(os.path.join(self.tmp, "ROADMAP.md"), encoding="utf-8").read()
+        self.assertNotRegex(live, r"(?m)^\| 480 \|", "row 480 still a live body row")
+        self.assertNotRegex(live, r"(?m)^\| 483 \|", "row 483 still a live body row")
+        self.assertRegex(live, r"(?m)^\| 481 \|", "the live open row 481 was dropped")
+        # ONE manifest line for the month archive, its row list grown to both rows
+        month_lines = [l for l in live.splitlines()
+                       if "rotated-ROADMAP-2026-07.md" in l and l.strip().startswith("- rows")]
+        self.assertEqual(len(month_lines), 1, "the month archive must own exactly one manifest line: %s" % month_lines)
+        self.assertIn("480", month_lines[0])
+        self.assertIn("483", month_lines[0])
+        arch = open(os.path.join(self.tmp, "docs", "queue-archive", "rotated-ROADMAP-2026-07.md"),
+                    encoding="utf-8").read()
+        self.assertRegex(arch, r"(?m)^\| 480 \|")
+        self.assertRegex(arch, r"(?m)^\| 483 \|")
+
+    def test_close_row_halts_on_an_absent_row(self):
+        _write(self.tmp, "ROADMAP.md", self.LIVE)
+        p = self._close(999)
+        self.assertNotEqual(p.returncode, 0, "closing a row the body does not hold must halt")
+
+    def test_close_row_output_survives_the_gate(self):
+        _write(self.tmp, "ROADMAP.md", self.LIVE)
+        self._close(480)
+        self._close(483)
+        code, out = run_gate(self.tmp, ["ROADMAP.md"],
+                             extra=["--archive-glob", "docs/queue-archive/rotated-*.md"])
+        self.assertEqual(code, 0, "rotate-doc.py --close-row output failed the gate:\n" + out)
+
+
 # --- wired into the push chain, both nets ---
 
 def test_gate_wired_into_pre_push():

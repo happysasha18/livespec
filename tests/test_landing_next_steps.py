@@ -147,3 +147,72 @@ def test_real_repo_range_refreshes_next_steps():
 
 def test_checker_not_wired_into_pre_push():
     assert "check-landing-next-steps" not in read("guardrails/pre-push")
+
+
+# --- the NEW trigger: the live-body law's closing-commit move (SPEC INV-276, ROADMAP row 480) ---
+
+_ARCHIVE = "docs/queue-archive/rotated-ROADMAP-2026-07.md"
+_ARCHIVE_HEADER = (
+    "# Rotated ROADMAP rows — 2026-07\n\n"
+    "| # | Wish (plain words) | Class | Status | Decision / acceptance |\n"
+    "|---|---|---|---|---|\n"
+)
+
+
+def _archive_row(num, status, wish="Some wish"):
+    return _ARCHIVE_HEADER + "| %d | %s | small | %s | Some decision |\n" % (num, wish, status)
+
+
+def _write_sub(repo, name, content):
+    p = repo / name
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(content)
+
+
+def test_new_trigger_landed_move_without_next_steps_reds(tmp_path):
+    # A closing commit REMOVES row 7 from the body and ADDS it to the archive with a *landed* status,
+    # and does not touch NEXT_STEPS.md — the new trigger reds.
+    repo = _init_repo(tmp_path)
+    _write(repo, "ROADMAP.md", _roadmap_row(7, "*in-work 2026-07-23*"))
+    _write(repo, "NEXT_STEPS.md", "state\n")
+    base = _commit(repo, "base")
+
+    _write(repo, "ROADMAP.md", ROADMAP_HEADER)  # row 7 gone from the body
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed 2026-07-23; door: feature; delegation: kept*"))
+    _commit(repo, "close row 7 into the month archive, no NEXT_STEPS touch")
+
+    r = _run_check(repo, base)
+    out = r.stdout + r.stderr
+    assert r.returncode != 0, out
+    assert "7" in out
+    assert "INV-242" in out
+
+
+def test_new_trigger_landed_move_with_next_steps_passes(tmp_path):
+    repo = _init_repo(tmp_path)
+    _write(repo, "ROADMAP.md", _roadmap_row(7, "*in-work 2026-07-23*"))
+    _write(repo, "NEXT_STEPS.md", "state\n")
+    base = _commit(repo, "base")
+
+    _write(repo, "ROADMAP.md", ROADMAP_HEADER)
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "*landed 2026-07-23*"))
+    _write(repo, "NEXT_STEPS.md", "state\nrow 7 landed\n")
+    _commit(repo, "close row 7 into the archive, with NEXT_STEPS refresh")
+
+    r = _run_check(repo, base)
+    assert r.returncode == 0, r.stdout + r.stderr
+
+
+def test_new_trigger_declined_move_is_exempt(tmp_path):
+    # A row leaving the body as *declined* (no landed token in the archived status) owes nothing.
+    repo = _init_repo(tmp_path)
+    _write(repo, "ROADMAP.md", _roadmap_row(7, "*queued 2026-07-23*"))
+    _write(repo, "NEXT_STEPS.md", "state\n")
+    base = _commit(repo, "base")
+
+    _write(repo, "ROADMAP.md", ROADMAP_HEADER)
+    _write_sub(repo, _ARCHIVE, _archive_row(7, "*declined 2026-07-23*"))
+    _commit(repo, "decline row 7 into the archive, no NEXT_STEPS touch")
+
+    r = _run_check(repo, base)
+    assert r.returncode == 0, r.stdout + r.stderr

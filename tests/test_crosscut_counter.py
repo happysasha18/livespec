@@ -86,6 +86,43 @@ class TestCrossCutCounter(unittest.TestCase):
                       "the pair named in both cross-cutting rows reaches threshold 2")
 
 
+class TestCrossCutUnion(unittest.TestCase):
+    """Piece 4 (SPEC INV-276): the counter reads the UNION of the body and the archives and dedupes by
+    row number, so a cross-cutting row counted in the body is not double-counted after it moves to a
+    month archive under the live-body law."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix="crosscut-union-")
+        os.makedirs(os.path.join(self.tmp, "docs", "queue-archive"))
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _write(self, rel, text):
+        path = os.path.join(self.tmp, rel)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(text)
+
+    def test_union_reads_body_and_archive(self):
+        self._write("ROADMAP.md",
+            "| 1 | wish | small | **landed 2026-07-12; footprint: cross-cutting** spec and architecture | done |\n")
+        self._write("docs/queue-archive/rotated-ROADMAP-2026-07.md",
+            "| 2 | wish | small | *landed 2026-07-23; footprint: cross-cutting* spec, architecture | done |\n")
+        landings = CC.crosscut_landings_union(self.tmp, ["spec", "architecture"])
+        self.assertEqual(len(landings), 2, "both the body row and the archive row must count")
+
+    def test_union_dedupes_a_row_by_number(self):
+        # the SAME row number appears in the body and an archive (mid-move state); it counts once.
+        row = "| 5 | wish | small | **landed 2026-07-12; footprint: cross-cutting** spec, architecture | done |\n"
+        self._write("ROADMAP.md", row)
+        self._write("docs/queue-archive/rotated-ROADMAP-2026-07.md", row)
+        landings = CC.crosscut_landings_union(self.tmp, ["spec", "architecture"])
+        self.assertEqual(len(landings), 1, "row 5 in both homes must be counted once, not twice")
+
+
 class TestCrossCutCounterLaw(unittest.TestCase):
     def test_architecture_states_bar_signal_and_counter(self):
         arch = read_flat("ARCHITECTURE.md")

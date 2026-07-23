@@ -16,6 +16,7 @@ always and prints the flagged pairs for the MINOR audit to weigh; it never block
 Usage:  crosscut_counter.py [ROADMAP.md] [threshold]
 """
 
+import glob
 import itertools
 import re
 import sys
@@ -44,13 +45,11 @@ def flagged_pairs(landings, threshold=DEFAULT_THRESHOLD):
     )
 
 
-def crosscut_landings_from_roadmap(text, known_nodes):
-    """Best-effort adapter for the real queue: for each landed row carrying a
-    `footprint: cross-cutting` note, collect the known node names named in its status cell. A row naming
-    fewer than two known nodes contributes no pair. This is ADVISORY input to the MINOR audit — a
-    cross-cutting note names its nodes in prose, not a structured field, so the auditor reads the flag and
-    weighs it, never a green/red gate."""
-    landings = []
+def _crosscut_rows_by_number(text, known_nodes):
+    """{rownum: named-nodes-set} for each landed row carrying a `footprint: cross-cutting` note whose
+    status cell names two or more known nodes. Keyed by row number so a row that appears in both the
+    body and an archive (a closed row that moved out under the live-body law) is counted once."""
+    by_row = {}
     for line in text.splitlines():
         cells = line.split("|")
         status = next(
@@ -60,9 +59,43 @@ def crosscut_landings_from_roadmap(text, known_nodes):
         if status is None:
             continue
         named = {n for n in known_nodes if re.search(r"\b" + re.escape(n) + r"\b", status)}
-        if len(named) >= 2:
-            landings.append(named)
-    return landings
+        if len(named) < 2:
+            continue
+        num = cells[1].strip() if len(cells) > 1 and cells[1].strip().isdigit() else None
+        key = num if num is not None else ("_anon-%d" % len(by_row))
+        by_row[key] = named
+    return by_row
+
+
+def crosscut_landings_from_roadmap(text, known_nodes):
+    """Best-effort adapter for the real queue: the node-sets of the cross-cutting landed rows in one
+    text. ADVISORY input to the MINOR audit — a cross-cutting note names its nodes in prose, not a
+    structured field, so the auditor reads the flag and weighs it, never a green/red gate."""
+    return list(_crosscut_rows_by_number(text, known_nodes).values())
+
+
+def crosscut_landings_union(base, known_nodes):
+    """The union of the body and the archives: the closed queue's cross-cutting landings now live in
+    docs/queue-archive/*.md as well as (pre-conversion) the ROADMAP.md body. Both are scanned and the
+    rows deduped by number, so a row counted in the body is not double-counted after it moves to an
+    archive under the live-body law (SPEC INV-276)."""
+    import os
+    by_row = {}
+    roadmap = os.path.join(base, "ROADMAP.md")
+    files = []
+    if os.path.isfile(roadmap):
+        files.append(roadmap)
+    files += sorted(glob.glob(os.path.join(base, "docs", "queue-archive", "*.md")))
+    anon = 0
+    for path in files:
+        with open(path, encoding="utf-8") as f:
+            for k, v in _crosscut_rows_by_number(f.read(), known_nodes).items():
+                if str(k).startswith("_anon"):
+                    by_row["_anon-%s-%d" % (os.path.basename(path), anon)] = v
+                    anon += 1
+                else:
+                    by_row.setdefault(k, v)  # first home wins; body precedes archives
+    return list(by_row.values())
 
 
 # The pack's own node names, from ARCHITECTURE.md's node map — the known vocabulary for the adapter.
@@ -75,11 +108,13 @@ PACK_NODES = [
 
 
 def main(argv):
+    import os
     roadmap = argv[1] if len(argv) > 1 else "ROADMAP.md"
     threshold = int(argv[2]) if len(argv) > 2 else DEFAULT_THRESHOLD
-    with open(roadmap, encoding="utf-8") as f:
-        text = f.read()
-    landings = crosscut_landings_from_roadmap(text, PACK_NODES)
+    # Read the UNION of the body and the archives, deduped by row number: the closed queue's
+    # cross-cutting landings live in docs/queue-archive/*.md as well as (pre-conversion) the body.
+    base = os.path.dirname(os.path.abspath(roadmap)) or "."
+    landings = crosscut_landings_union(base, PACK_NODES)
     ranked = flagged_pairs(landings, threshold)
     if not ranked:
         print("cross-cut counter: no node pair reached threshold %d — boundaries look healthy" % threshold)

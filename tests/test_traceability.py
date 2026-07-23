@@ -401,6 +401,78 @@ class TestArtifacts(unittest.TestCase):
         self.assertTrue(os.path.isfile(scaffold), "missing the bootstrap suite scaffold (B-1, row 62)")
 
 
+# --- the queue row lint (SPEC INV-277, R288, docs/roadmap-format.md) -----------------------------
+# The lint reds a body row that is not five cells, sits out of ascending id order, carries a status or
+# a class outside its closed vocabulary, states a status with no date, or reads *deferred* with no
+# revisit trigger. Its home is TestQueue, extended in place — no new standalone script. The logic is a
+# pure function proven TODAY by the fixture tests; the real-body run ARMS at the conversion delivery
+# (row 480), the family's one-delivery arming rule (INV-270): until the whole document moves, the body
+# is old-format and the lint runs against fixtures only.
+
+QUEUE_STATUSES = ("queued", "in-work", "deferred", "far")
+QUEUE_CLASSES = ("bug", "small", "surface", "large")
+_STATUS_ITALIC_RE = re.compile(r"^\*([a-z][a-z-]*)\b")   # the first italic token, lowercase
+_QUEUE_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def queue_row_lint(rows):
+    """The row lint (SPEC INV-277): each body row carries exactly five cells, ids ascend, the status
+    cell is a closed word in lowercase italics carrying a date (a *deferred* row naming its revisit
+    trigger), and the class cell is one of the four size words. Returns the offending-row messages,
+    empty when every row holds its shape and vocabularies. Each row is a list of stripped cell strings."""
+    offenders = []
+    last = None
+    for cells in rows:
+        rid = cells[0].strip() if cells else "?"
+        if len(cells) != 5:
+            offenders.append("%s: carries %d cells, not the five the header declares" % (rid, len(cells)))
+        if rid.isdigit():
+            n = int(rid)
+            if last is not None and n <= last:
+                offenders.append("%s: id out of ascending order (follows %d)" % (rid, last))
+            last = n
+        status = cells[3].strip() if len(cells) > 3 else ""
+        m = _STATUS_ITALIC_RE.match(status)
+        word = m.group(1) if m else None
+        if word not in QUEUE_STATUSES:
+            offenders.append("%s: status outside the closed vocabulary or not lowercase-italic (%r)"
+                             % (rid, status))
+        else:
+            if not _QUEUE_DATE_RE.search(status):
+                offenders.append("%s: status carries no date (%r)" % (rid, status))
+            if word == "deferred" and not re.search(r"trigger|revisit", status, re.IGNORECASE):
+                offenders.append("%s: deferred row names no revisit trigger (%r)" % (rid, status))
+        cls = cells[2].strip() if len(cells) > 2 else ""
+        if cls not in QUEUE_CLASSES:
+            offenders.append("%s: class outside the closed vocabulary (%r)" % (rid, cls))
+    return offenders
+
+
+def _roadmap_body_rows():
+    """Every body data row of ROADMAP.md as a list of stripped cells — 5- and 6-cell alike, so the
+    armed lint sees the sixth drift cell as a fault rather than skipping the row."""
+    rows = []
+    for line in read("ROADMAP.md").splitlines():
+        if line.startswith("|") and not line.startswith("|---") and "Wish (plain words)" not in line:
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if cells and cells[0].isdigit():
+                rows.append(cells)
+    return rows
+
+
+def _queue_armed(rows=None):
+    """The lint arms in the conversion delivery (SPEC INV-277/INV-270, R286.3). The observable signal
+    the conversion fired is the live-body law (R287.1): no body row carries a terminal-closed status —
+    landed/declined/superseded — those rows having moved to the archive at their closing commit. Until
+    then the body is old-format and the real-body lint stands down."""
+    if rows is None:
+        rows = _roadmap_body_rows()
+    for cells in rows:
+        if len(cells) > 3 and any(w in cells[3].lower() for w in ("landed", "declined", "superseded")):
+            return False
+    return True
+
+
 class TestQueue(unittest.TestCase):
     def _rows(self):
         rows = []
@@ -418,12 +490,70 @@ class TestQueue(unittest.TestCase):
             self.assertIn(col, header, "queue missing column: %s" % col)
         rows = self._rows()
         self.assertGreater(len(rows), 3, "queue parse failure")
-        # terminal rows move to dated archives at milestones (INV-1/M-1); the archive dir must exist once one happened
+        # A terminally-closed row moves to that month's dated archive under docs/queue-archive/ in the
+        # SAME commit that closes it — the closing-commit law (SPEC INV-276, ROADMAP row 480), not a
+        # milestone batch; the archive dir must exist once one has happened.
         self.assertTrue(os.path.isdir(os.path.join(ROOT, "docs", "queue-archive")),
                         "closed rows gone but no queue archive present")
-        pat = re.compile(r"^(bug|small|surface|large)( · (critical|quick win))?$")
+        # The armed lint forbids *big* and *far* in the class cell; before arming (the pre-conversion
+        # body still carrying them, a declared conversion delta) the vocabulary check tolerates them.
+        allowed = "bug|small|surface|large" if _queue_armed() else "bug|small|surface|large|big|far"
+        pat = re.compile(r"^(%s)( · (critical|quick win))?$" % allowed)
         bad = [(r[0], r[2]) for r in rows if not pat.match(r[2])]
         self.assertEqual(bad, [], "class cells outside the four-word vocabulary (+ priority)")
+
+    def test_queue_row_lint_fixtures(self):
+        # RED-PROOF (run TODAY, independent of arming): each failure mode is named by its row id, and a
+        # clean five-cell body passes. Six cells · out-of-order ids · unknown status · missing date ·
+        # unknown class · trigger-less deferred (SPEC INV-277, R288.4).
+        clean = [
+            ["480", "a wish", "surface", "*queued 2026-07-23*", "Done: x"],
+            ["481", "a wish", "small", "*deferred 2026-07-23 — revisit trigger: row 48 lands*", "Done: y"],
+            ["483", "a wish", "large", "*in-work 2026-07-23*", "Done: z"],
+        ]
+        self.assertEqual(queue_row_lint(clean), [], "the lint red a clean body")
+
+        six = [["480", "a wish", "surface", "*queued 2026-07-23*", "—", "Done: x"]]
+        self.assertTrue(any("480" in o and "five" in o for o in queue_row_lint(six)),
+                        "the lint did not name the six-cell row")
+
+        disorder = [["481", "a", "small", "*queued 2026-07-23*", "d"],
+                    ["480", "a", "small", "*queued 2026-07-23*", "d"]]
+        self.assertTrue(any("480" in o and "ascending" in o for o in queue_row_lint(disorder)),
+                        "the lint did not name the out-of-order id")
+
+        bad_status = [["480", "a", "small", "*landed 2026-07-23*", "d"]]
+        self.assertTrue(any("480" in o and "status" in o for o in queue_row_lint(bad_status)),
+                        "the lint did not name the unknown status")
+
+        no_date = [["480", "a", "small", "*queued*", "d"]]
+        self.assertTrue(any("480" in o and "date" in o for o in queue_row_lint(no_date)),
+                        "the lint did not name the dateless status")
+
+        bad_class = [["480", "a", "big", "*queued 2026-07-23*", "d"]]
+        self.assertTrue(any("480" in o and "class" in o for o in queue_row_lint(bad_class)),
+                        "the lint did not name the unknown class")
+
+        triggerless = [["480", "a", "small", "*deferred 2026-07-23*", "d"]]
+        self.assertTrue(any("480" in o and "trigger" in o for o in queue_row_lint(triggerless)),
+                        "the lint did not name the trigger-less deferred row")
+
+    def test_queue_row_lint_on_the_real_body(self):
+        # ARMS at the conversion delivery (SPEC INV-277/INV-270, R286.3). Unarmed today: the body is
+        # old-format, so the lint stands down here and its logic is proven by the fixtures above. Once
+        # the conversion moves every closed row to the archive, this runs the lint on the live body and
+        # states its reach on the green line (INV-269).
+        rows = _roadmap_body_rows()
+        if not _queue_armed(rows):
+            self.assertTrue(
+                any(len(c) > 3 and any(w in c[3].lower()
+                    for w in ("landed", "declined", "superseded")) for c in rows),
+                "queue reads as converted, yet the armed real-body lint did not run — arm the lint")
+            return
+        offenders = queue_row_lint(rows)
+        self.assertEqual(offenders, [], "queue row lint found offending row(s): %s" % "; ".join(offenders))
+        print(green_reach("queue-row-lint", ["ROADMAP.md"], len(rows), len(rows),
+                          "every body row holds five cells and the closed status/class vocabularies"))
 
     def test_roadmap_in_work_cap(self):
         in_work = [r[0] for r in self._rows() if r[3].lower().startswith("in-work")]

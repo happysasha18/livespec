@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
 """check-landing-next-steps.py — the landing-refreshed-map gate (SPEC INV-242).
 
-THE LAW. A "landing" commit — one whose diff flips a ROADMAP.md row's Status cell to `landed`
-(case-insensitive) — owes a refresh of NEXT_STEPS.md in that SAME commit, since NEXT_STEPS.md is
-the resume file (LIVE STATE + queue only) and a landing that does not update it leaves the next
-session resuming from a stale map. A commit that closes no row, or closes one to `declined` /
-`deferred` / `superseded` (anything without the `landed` token), owes nothing here.
+THE LAW. A "landing" commit owes a refresh of NEXT_STEPS.md in that SAME commit, since NEXT_STEPS.md
+is the resume file (LIVE STATE + queue only) and a landing that does not update it leaves the next
+session resuming from a stale map. Two triggers OR together, so both the pre-conversion history and the
+post-conversion queue classify (SPEC INV-276, ROADMAP row 480):
+
+  - the OLD trigger (pre-conversion body): the diff flips a ROADMAP.md row's Status cell to `landed`
+    (case-insensitive) — the landed word lands as a live body status.
+  - the NEW trigger (post-conversion live-body law): the diff REMOVES a body row from ROADMAP.md while
+    a docs/queue-archive/*.md diff ADDS that same row number with an archived status containing `landed`
+    (case-insensitive, so the historical bold `**LANDED**` and the new `*landed*` both match) — the row
+    leaves the body for the archive at its closing commit.
+
+A commit that closes no row, or moves a row out as `declined` / `superseded` / `deferred` (anything
+without the `landed` token in the flipped or archived status), owes nothing here.
 
 RANGE. Same base ladder as check-skill-review.sh / check-prover-record.sh: env LIVE_SPEC_DIFF_BASE
 if set (and not the all-zeros sha) and it resolves to a commit; else origin/main if it resolves;
@@ -109,6 +118,39 @@ def landed_rows_for_commit(sha, cwd):
     return sorted(flipped)
 
 
+def landed_moves_for_commit(sha, cwd):
+    """The set of ROADMAP row numbers this commit MOVES from the body to an archive with a `landed`
+    archived status — the new trigger under the live-body law. A number reds here when the commit's
+    ROADMAP.md diff removes its body row and a docs/queue-archive/*.md diff adds that same number with
+    `landed` in its status cell. A row moved out as declined/superseded (no `landed`) owes nothing."""
+    r_body = _run(["git", "show", sha, "--", "ROADMAP.md"], cwd=cwd)
+    removed = {}
+    for raw in r_body.stdout.splitlines():
+        if raw.startswith("+++") or raw.startswith("---"):
+            continue
+        if raw.startswith("-"):
+            parsed = parse_row_cells(raw[1:])
+            if parsed:
+                removed[parsed[0]] = parsed[1]
+
+    r_arch = _run(["git", "show", sha, "--", "docs/queue-archive"], cwd=cwd)
+    arch_added = {}
+    for raw in r_arch.stdout.splitlines():
+        if raw.startswith("+++") or raw.startswith("---"):
+            continue
+        if raw.startswith("+"):
+            parsed = parse_row_cells(raw[1:])
+            if parsed:
+                arch_added[parsed[0]] = parsed[1]
+
+    flipped = []
+    for num in removed:
+        status = arch_added.get(num)
+        if status is not None and "landed" in status.lower():
+            flipped.append(num)
+    return sorted(flipped)
+
+
 def commit_files(sha, cwd):
     r = _run(["git", "show", "--name-only", "--format=", sha], cwd=cwd)
     return set(line.strip() for line in r.stdout.splitlines() if line.strip())
@@ -133,7 +175,7 @@ def main():
 
     fail = False
     for sha in commits:
-        flipped = landed_rows_for_commit(sha, cwd)
+        flipped = sorted(set(landed_rows_for_commit(sha, cwd)) | set(landed_moves_for_commit(sha, cwd)))
         if not flipped:
             continue
         if "NEXT_STEPS.md" in commit_files(sha, cwd):

@@ -8,11 +8,24 @@ impact-analysis station was law (2026-07-12 ~17:01, when INV-128 landed) must ca
 Rows that landed before the read was law stay as they landed.
 """
 
+import glob
 import os
 import re
 import unittest
 
 from conftest import ROOT, read_flat
+
+
+def _queue_lines():
+    """Every line of the live queue AND its archives — the union scanned so a landed feature/refactor
+    row holds in both eras: pre-conversion in ROADMAP.md's body, post-conversion moved to
+    docs/queue-archive/*.md under the live-body law (SPEC INV-276, ROADMAP row 480)."""
+    files = [os.path.join(ROOT, "ROADMAP.md")]
+    files += sorted(glob.glob(os.path.join(ROOT, "docs", "queue-archive", "*.md")))
+    for path in files:
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                yield line
 
 # Capture the landed date and, when present, the ~HH:MM time-of-day of the stamp.
 LANDED = re.compile(r"\*\*landed (20\d\d-\d\d-\d\d)(?:[^|]*?~(\d\d):(\d\d))?", re.IGNORECASE)
@@ -89,29 +102,28 @@ class TestFootprintNoteLaw(unittest.TestCase):
 
     def test_every_forward_landed_feature_row_carries_the_note(self):
         checked = 0
-        with open(os.path.join(ROOT, "ROADMAP.md"), encoding="utf-8") as f:
-            for line in f:
-                m = LANDED.search(line)
-                if not m:
-                    continue
-                date = m.group(1)
-                hm = (int(m.group(2)), int(m.group(3))) if m.group(2) else None
-                cells = line.split("|")
-                rownum = cells[1].strip() if len(cells) > 1 else ""
-                status = next((c for c in cells if re.search("landed", c, re.IGNORECASE)), "")
-                d = DOOR.search(status)
-                door = d.group(1).lower() if d else ""
-                if door not in ENFORCED_DOORS:
-                    continue
-                if not _required(date, hm, rownum):
-                    continue
-                self.assertRegex(
-                    status,
-                    FOOTPRINT_NOTE,
-                    "landed-forward feature/refactor row missing its footprint note: " + line[:70],
-                )
-                checked += 1
-        self.assertGreater(checked, 0, "no forward-landed feature/refactor rows found to scan")
+        for line in _queue_lines():
+            m = LANDED.search(line)
+            if not m:
+                continue
+            date = m.group(1)
+            hm = (int(m.group(2)), int(m.group(3))) if m.group(2) else None
+            cells = line.split("|")
+            rownum = cells[1].strip() if len(cells) > 1 else ""
+            status = next((c for c in cells if re.search("landed", c, re.IGNORECASE)), "")
+            d = DOOR.search(status)
+            door = d.group(1).lower() if d else ""
+            if door not in ENFORCED_DOORS:
+                continue
+            if not _required(date, hm, rownum):
+                continue
+            self.assertRegex(
+                status,
+                FOOTPRINT_NOTE,
+                "landed-forward feature/refactor row missing its footprint note: " + line[:70],
+            )
+            checked += 1
+        self.assertGreater(checked, 0, "no forward-landed feature/refactor rows found to scan (body or archive)")
 
     def test_missing_time_cutoff_day_row_does_not_escape(self):
         """A cutoff-day feature/refactor row with no ~HH:MM stamp no longer escapes the footprint

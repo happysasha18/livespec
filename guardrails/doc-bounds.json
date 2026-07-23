@@ -7,7 +7,7 @@
     },
     "ROADMAP.md": {
       "max_bytes": 700000,
-      "reason": "seed 2026-07-18 above ~603 KB current with rotation headroom; the 2026-07-18 rotation already moved 17 closed rows to docs/queue-archive/, and further closed rows rotate before this ceiling."
+      "reason": "the queue rotates by the closing-commit law (SPEC INV-276, ROADMAP row 480), not the milestone batch: a row reaching a terminal exit moves to that month's archive docs/queue-archive/rotated-ROADMAP-YYYY-MM.md in the same commit that closes it, so the live body stays the live queue and the byte ceiling is only a backstop. The number is held this stage above the ~603 KB current with rotation headroom; it ratchets down in the conversion stage, once the body actually shrinks to its live rows."
     },
     "TEST_MATRIX.md": {
       "max_bytes": 430000,
