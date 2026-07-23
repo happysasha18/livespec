@@ -5433,3 +5433,13 @@ the enforcement-coverage registry as the class answer), rows 432 and 446 given t
 one atomic deposit left in tlvphotos/inbox with that window's five actions. Installed skills re-synced
 4.0.0 → 4.0.1 after the version stamp (config-health's own red pointed at it, sync-skills run, all
 eleven copies re-synced).
+
+## 2026-07-23 — row 476: the push gate met its first stamp-only push and red it
+
+The v4.0.1 push was blocked by tests-present: the eleven SKILL.md files carried only the version stamp,
+and the check reads file paths with no content read — the gate-reach class on the pack's own gate. Root
+fix over a waiver: the check now compares base and HEAD content with version strings normalized, and a
+file identical under that normalization stands outside its subject (the stamped-copy guard test already
+holds those copies). Red-proven both ways on the fixture host: the stamp-only case failed the old code
+and passes the new, the stamp-plus-real-edit case reds on both. A whole-check waiver was rejected aloud:
+it would blind the gate to real skill edits.

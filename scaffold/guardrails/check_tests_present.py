@@ -14,6 +14,7 @@ Python 3.9 stdlib only.
 
 import argparse
 import os
+import re
 import subprocess
 import sys
 
@@ -26,6 +27,23 @@ CHECK = "tests-present"
 def git(root, *args):
     return subprocess.run(["git"] + list(args), cwd=root,
                           capture_output=True, text=True)
+
+
+_VERSION = re.compile(r"\d+\.\d+\.\d+")
+
+
+def _stamp_only(root, base, path):
+    """True when the file's base and HEAD contents are identical after every version
+    string (N.N.N) is normalized — the version stamp's mechanical output."""
+    old = git(root, "show", "%s:%s" % (base, path))
+    if old.returncode != 0:
+        return False
+    try:
+        with open(os.path.join(root, path), encoding="utf-8") as f:
+            new = f.read()
+    except OSError:
+        return False
+    return _VERSION.sub("V", old.stdout) == _VERSION.sub("V", new)
 
 
 def resolve_base(root, arg_base, config):
@@ -71,9 +89,19 @@ def main():
                     if f == tests_dir or f.startswith(tests_dir + "/")]
 
     if offenders and not test_touched:
+        # A file whose whole diff is version-string substitution is the stamp script's
+        # mechanical output; the stamped-copy guard test already holds those copies, so
+        # such a file stands outside this check's subject. A file added, deleted, or
+        # unreadable stays an offender.
+        real = [f for f in offenders if not _stamp_only(root, base, f)]
+        if not real:
+            gate_lib.ok(CHECK, "%d user-facing change(s) are version-stamp-only "
+                               "(identical after normalizing version strings), held by "
+                               "the stamped-copy guard test (base %s)"
+                               % (len(offenders), base))
         gate_lib.fail(CHECK, "missing-test",
                       "user-facing file(s) changed with no change under %s/: %s"
-                      % (tests_dir, ", ".join(offenders)),
+                      % (tests_dir, ", ".join(real)),
                       "add or update a test under %s/ for this change (or record the "
                       "exemption where your matrix expects it)" % tests_dir)
 

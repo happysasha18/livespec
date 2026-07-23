@@ -20,7 +20,8 @@ Row 470 LANDED same session: verdicts in docs/audit/2026-07-23-tlvphotos-conduct
 overlay widened to third-person deferrals (red-proven 0/4→4/4), rows 471–475 opened (estimate line ·
 remainder-up-front · deposit-at-finding · judge dedupe · enforcement-coverage registry), rows 432/446
 carry the field evidence, one atomic deposit left in tlvphotos/inbox (update to 4.0.1 + cold-read before
-showing + report duties). His order stands: this landed BEFORE any tlvphotos spec migration.
+showing + report duties). His order stands: this landed BEFORE any tlvphotos spec migration. At the push the tests-present gate
+red the stamp-only skill files — fixed at the root the same session (row 476, red-proven both ways).
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 The method proves itself on its own documents before any host migrates. Order after the spec:
@@ -83,7 +84,7 @@ DEFERRED: adoption + onboarding (his 2026-07-18 word; ~8 taste forks; owns the p
 ## Inbox — all 2026-07-21 deposits routed and landed (438→INV-248, 430→INV-247, 439→INV-249), left earned in place.
 
 ## Next free codes
-Next free INV-272, E-36, T-25, M-447; next ROADMAP row 476 (A-12, B-4, C-2, D-8, S-1, ACT-4 also free).
+Next free INV-272, E-36, T-25, M-447; next ROADMAP row 477 (A-12, B-4, C-2, D-8, S-1, ACT-4 also free).
 
 ## Research in hand
 Direct-protocol research (scratchpad research-agent-transport.md + research-direct-channel.md): A2A

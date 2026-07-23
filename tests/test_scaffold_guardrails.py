@@ -150,6 +150,25 @@ class TestTestsPresent(GitHostCase):
         git(self.host, "commit", "-aqm", "docs only")
         self.assert_green("tests-present", args=["--base", "HEAD~1"])
 
+    def test_version_stamp_only_change_green(self):
+        # A diff that only substitutes version strings is the stamp script's mechanical output,
+        # held by the stamped-copy guard test; it owes no test change of its own.
+        self.write("src/app.py", self.read("src/app.py") + '\nPACK_VERSION = "1.0.0"\n')
+        git(self.host, "commit", "-aqm", "carry a version string")
+        self.write("src/app.py", self.read("src/app.py").replace('"1.0.0"', '"1.0.1"'))
+        git(self.host, "commit", "-aqm", "stamp bump only")
+        self.assert_green("tests-present", args=["--base", "HEAD~1"])
+
+    def test_stamp_plus_real_edit_still_red(self):
+        self.write("src/app.py", self.read("src/app.py") + '\nPACK_VERSION = "1.0.0"\n')
+        git(self.host, "commit", "-aqm", "carry a version string")
+        self.write("src/app.py",
+                   self.read("src/app.py").replace('"1.0.0"', '"1.0.1"') + "\n# real behaviour edit\n")
+        git(self.host, "commit", "-aqm", "stamp plus real edit")
+        r, payload = self.assert_red("tests-present", "tests-present.missing-test",
+                                     args=["--base", "HEAD~1"])
+        self.assertIn("src/app.py", payload["message"])
+
 
 class TestCompletenessDefects(HostCase):
     def test_registered_but_absent(self):
