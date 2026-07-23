@@ -5401,3 +5401,35 @@ the change makes the machine hold it. The universal law body now numbers LAW 1 (
 (bare-code), and chat_law() renumbers the joined universal+personal laws into one sequence so the judge
 cites a law by a number no personal overlay's own base can collide with (the overlay numbers from LAW 2).
 Five test cases added; installed judge copies re-synced so config-health reads no drift. Pushed and deployed.
+
+## 2026-07-23 — rows 461–464: the 4.0.0 audit's should-fix batch lands (v4.0.1)
+
+Why now: the near queue after the 4.0.0 landing, taken in list order with one deliberate inversion —
+content fixes to the spec land before the row-460 register rewrite, so the ratchet will measure final
+text. All four rows are consistency and polish debts the full prover audit and the assembly notes had
+already pinned; every decision pinned to an existing artifact, so the whole batch ran without a question
+(the deferral re-test held: no taste, no policy, nothing irreversible). The far status is now stated as
+a resting state in the end-state requirement; the isolation default and the scope rule each keep one
+home with a citation from the twin; *where* joined the declared keywords before any keyword gate arms;
+the fix-versus-story boundary GAP now cites the user-story test; activity generation is glossed; the
+surface-registry contradiction resolved by the shipped truth (SURFACES.md exists and is host-authored,
+so the planned list drops it). The suite red three gates mid-landing — weak-word on a new citation,
+scissors on a contrast frame in the new far sentence, and the embedded index table — which is the gates
+doing their job on the gate-author's own prose; all three folded before commit. Same day: Alexander's
+partial-execution report on the tlvphotos window became row 470 with its evidence digest collected in
+parallel and committed under docs/audit/.
+
+## 2026-07-23 — row 470 lands the same session: the partial-execution audit's verdicts
+
+Alexander's report on the tlvphotos window (seven symptoms of rules only partially executed) was
+classified standing at intake and became row 470. The evidence collection ran read-only in parallel with
+the rows-461–464 batch; the verdicts are in docs/audit/2026-07-23-tlvphotos-conduct-verdicts.md. What
+the evidence settled: where a machine exists and reads its true subject the rule holds; where the
+machine is absent, mis-aimed, or not installed the rule decays — the hedge net's 0 fires in 973 runs
+against four documented third-person deferral phrasings is the sharpest instance. Landed today: the
+hedge overlay widened by six third-person patterns (red-proven: old list 0/4, new 4/4, clean lines
+silent), rows 471–475 opened (estimate line, remainder-up-front, deposit-at-finding, judge dedupe, and
+the enforcement-coverage registry as the class answer), rows 432 and 446 given the field evidence, and
+one atomic deposit left in tlvphotos/inbox with that window's five actions. Installed skills re-synced
+4.0.0 → 4.0.1 after the version stamp (config-health's own red pointed at it, sync-skills run, all
+eleven copies re-synced).

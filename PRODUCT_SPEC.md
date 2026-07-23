@@ -1,4 +1,4 @@
-# live-spec — Product Spec (v4.0.0, 2026-07-22)
+# live-spec — Product Spec (v4.0.1, 2026-07-22)
 
 This document is the living statement of what live-spec is right now. The body is a flat list of requirements, each stating one rule of the method. A requirement carries a Context block, a one-sentence User Story, and acceptance criteria grouped into named cases; a requirement whose heading carries a `[feature: F-...]` tag is a person-facing scenario — what the reader does and what the reader sees. Edit history lives in `JOURNAL.md`; this spec states what is true today.
 
@@ -6,13 +6,14 @@ live-spec takes any request a person submits, of any size and at any moment, bre
 
 Bracket codes like `[E-1]` and `[INV-27]` trail a criterion and point to the rule's home in the project spec; a reader can ignore them, a maintainer follows them. The letter before the number names the kind: `E-` an entity, a numbered part of the product; `INV-` an invariant, a numbered rule that must always hold; `T-` a transition, a numbered change of state; `M-` a rhythm rule, a numbered recurring routine; `A-` an adoption step; `B-` a bootstrap step; `ACT-` an actor; `C-` a composition-axis rule; `D-` a recorded decision; `S-` a header rule; and `F-` a feature, which a scenario heading carries as a `[feature: F-...]` tag. A range such as `[T-1..T-7]` cites its whole run of codes. A `[target]` marker on a line of its own marks a feature or leg that is promised but not yet built, and a `[default]` marker names a value the agent set that the human may retune. A `[GAP: ...]` line under a criterion records a place the source states a behaviour and leaves its judge, its measure, or its scope unstated; it is the honest output for a real hole, never a filled-in guess.
 
-The keywords *when*, *while*, *if*, *then*, and *shall* are set in lowercase italics and carry their standard requirements meaning: *shall* states a duty, *when* and *while* open a situation, and *if* and *then* open a condition and its result.
+The keywords *when*, *while*, *if*, *then*, *where*, and *shall* are set in lowercase italics and carry their standard requirements meaning: *shall* states a duty, *when* and *while* open a situation, *if* and *then* open a condition and its result, and *where* scopes a duty to the setting it holds in.
 
 The foundational nouns of the method — request, pipeline, spec, architecture, invariant, guardrail, suite, session, journal, queue, movement, delivery, delivery report, footprint, profile, and resume file — carry the meanings the base method glossary gives them. The glossary below defines, in one place, every domain noun the twelve assembled sections introduce; a term appears once, under one name, and the criteria use it with that meaning.
 
 ## Glossary
 
 - **action trace** — the ordered record of which tools the seat called during one turn, read from the tool-use events in the transcript.
+- **activity generation** — the stranger-monitor's dedupe unit: the state of a shown work's outside comments, those not the monitor's own markers; a new outside comment advances the generation, and an item surfaces at most once per generation.
 - **adoption** — attaching the pack to a project already running, run as an ordered set of phases.
 - **adversarial read** — a fresh-context audit set on breaking a decision's case, run before the decision lands, that closes by bringing the decision to the owner with its findings and a recommendation.
 - **agent** — one project window that carries its own tree, queue, gates, published contracts, a standing mission, and an agent card, each of which outlives any single conversation.
@@ -258,7 +259,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the suite ties each tag to its building row**
 
 3. The system *shall* tie each target tag to the queue row that builds it, that row still open and awaiting its landing, and *shall* red the suite *if* that row ships with the tag still on, *if* the tag vanishes, or *if* the tag was never named. [S-0]
-4. The system *shall* mark as planned the host-facing guardrail checks and the surface registry, the snapshot machinery that records a project's state at adoption as its baseline, and the design-sync machine. [E-6, E-10, E-7, A-6, E-18]
+4. The system *shall* mark as planned the host-facing guardrail checks, the snapshot machinery that records a project's state at adoption as its baseline, and the design-sync machine. [E-6, E-7, A-6, E-18]
    [target]
 
 ---
@@ -295,7 +296,6 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: the host owns its own state**
 
 3. The host *shall* own its own spec, test matrix, queue, journal, surface registry, inbox, and feedback ledger. [E-1]
-   [GAP: the source lists the surface registry as planned and also states the host owns it today, with no reconciling clause.]
 4. The host *shall* keep a `.live-spec/` folder holding its profile, its checkpoints, and the versions of the skills it runs. [E-1]
 
 ## Requirement 4: A wish is captured as a queue row that is never lost  [feature: F-wish]
@@ -1023,8 +1023,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the intake line and the door set**
 
-1. *when* a wish is captured, the system *shall* state its size, priority, and door together in one intake line, and *shall* renegotiate a wish too big for its worth in scope rather than in time. [T-12, T-15]
-   [GAP: the judge and measure of a wish's effort against its worth are unstated in the source.]
+1. *when* a wish is captured, the system *shall* state its size, priority, and door together in one intake line, and *shall* renegotiate a wish too big for its worth by the scope rule stated once at the scope-negotiation requirement. [T-12, T-15]
 2. The system *shall* draw the door from the closed set of five — feature, bug, refactor, docs-only, and skip — naming it before any code is written. [T-12]
 
 **Case: the ordered procedure**
@@ -1887,7 +1886,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: overlapping lanes default to isolation**
 
-3. *when* two concurrent lanes' write-sets overlap, the system *shall* default the later lane to worktree isolation, its copy reaching the shared tree only through integration under the pen. [E-34, INV-105]
+3. The system *shall* follow the overlapping-write-set isolation default stated once at the concurrent-edit fence requirement. [E-34, INV-105]
 
 ---
 
@@ -2140,7 +2139,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 96: A wish can end without landing in one of three end-states
 
-**Context:** A wish can end without landing, and its row stays in the table in one of three end-states: declined when the human said no, deferred when parked with a named revisit trigger, or superseded when absorbed by another wish so the row points to the absorbing one. A superseded wish never dies by pointer.
+**Context:** A wish can end without landing, and its row stays in the table in one of three end-states: declined when the human said no, deferred when parked with a named revisit trigger, or superseded when absorbed by another wish so the row points to the absorbing one. A superseded wish never dies by pointer. The far status is a resting state: a far row stays kept in the queue with no exit event and returns on the person's ask, so the end-state list stays at three.
 
 **User Story:** As a person whose wish ends without landing, I want it settled into one recorded end-state with what it absorbed preserved, so that a declined or superseded wish still reaches a named terminal state and nothing it held is lost.
 
@@ -2513,7 +2512,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 116: The suite-honesty invariants are one class, each naming its net
 
-**Context:** The test-infrastructure family — INV-77, INV-78, INV-79, INV-80, INV-100, INV-102, INV-155, INV-157, INV-158 — shares one role: each member closes a way the suite could pass green while the fact it claims is false, or leaves the machine worse than it found it. The class carries one parity — each member names its net past merely naming the fix. For most members the net is a mechanical check; one member's net is the real-device walk row the suite can never green. The class binds forward [INV-159], a new suite-honesty invariant stating its net against this parity while members declared before the class stand unreshaped.
+**Context:** The test-infrastructure family — INV-77, INV-78, INV-79, INV-80, INV-100, INV-102, INV-155, INV-157, INV-158 — shares one role: each member closes a way the suite could pass green while the fact it claims is false, or leaves the machine worse than it found it. The class carries one parity — each member names its net past merely naming the fix. For most members the net is a mechanical check; for a few the assertion shape itself is the net, among them the real-device walk row the suite can never green. The class binds forward [INV-159], a new suite-honesty invariant stating its net against this parity while members declared before the class stand unreshaped.
 
 **User Story:** As a person relying on the suite-honesty class, I want every member to name the net that reds a run on its violation, so that a member naming no net is caught as a class defect.
 
@@ -3268,7 +3267,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 1. *when* an item asks for new behaviour, the system *shall* route it as a wish through wish intake with its own echo, door, and row, that row being its home. [T-20, T-12, INV-27]
 2. *when* a fix-sized comment lands on shown work, the system *shall* fix it the same session with its commit and journal line as its home, and *shall* queue a story-sized comment as a wish instead. [T-20]
-   [GAP: the source separates a fix-sized comment from a story-sized one but states no measure or judge for the size boundary, so which comments are fixed the same session and which queue as a wish is undecidable at the line.]
+   [GAP: the source names no numeric measure for the size boundary; the glossary's user-story test decides it — a comment naming a distinct new thing a person does and sees is story-sized and queues, and any other comment is fix-sized.]
 3. *when* a person answers an open question, the system *shall* harvest it the same session into the decision archive and the harvested row, closing the question for good. [T-20, INV-59]
 
 **Case: the field and workshop routes**
@@ -3488,7 +3487,8 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: a third unowned recurrence is a method defect**
 
-5. *when* a signature recurs a third time with no queue row open on it and no human word closing it, the state a pending no-problem recommendation still riding the batched report leaves it in, the system *shall* file it as a defect of the method that reaches past a single day, leaving the host as one inbox file to the pack's own queue and citing the signature and its dates. [INV-23, E-11, INV-10]
+5. *when* a signature recurs a third time with no queue row open on it and no human word closing it — the state a pending no-problem recommendation still riding the batched report leaves it in — the system *shall* file the recurrence as a defect of the method that reaches past a single day. [INV-23, INV-10]
+6. *when* the recurrence is filed as a method defect, the system *shall* leave the host as one inbox file to the pack's own queue, citing the signature and its dates. [INV-23, E-11]
 
 ---
 
@@ -4530,7 +4530,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 ## Requirement 199: Every place the pack lists its skills names the same set
 
-**Context:** The pack lists its skills in more than one reader-facing place — the working-skills sentence, the closing lists the skills carry, and the README table. A list is the kind of fact that drifts as the pack grows. A check runs at every commit and reds a list that names fewer skills than the complete set.
+**Context:** The pack lists its skills in more than one reader-facing place — the working-skills sentence, the closing lists the skills carry, and the README table. A list is the kind of fact that drifts as the pack grows. A check runs at every commit and reds a list that names fewer skills than the complete set. The check's reach is that missing-member drift; a stale extra name past the complete set is outside its net and waits for a reader's pass.
 
 **User Story:** As a reader trusting any skill list in the pack, I want every list to name the identical complete set under a mechanical check, so that a list that has fallen behind the pack turns the suite red instead of misinforming a reader.
 
@@ -5435,7 +5435,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the default travels with the question**
 
-1. *when* the pack parks a question whose value is the person's input, the system *shall* born it onto the waiting board already carrying the default the work took, and *shall* proceed on that recommendation. [INV-229, INV-4]
+1. *when* the pack parks a question whose value is the person's input, the system *shall* place it on the waiting board already carrying the default the work took, and *shall* proceed on that recommendation. [INV-229, INV-4]
 2. *when* a board item marked a parked question records no default, the system *shall* red the board gate, and *shall* pass a parked question naming its default. [INV-229]
 
 **Case: an unanswered parked question keeps standing**
@@ -6497,8 +6497,8 @@ The code-to-location table below is generated output, built from the body criter
 | E-7 | R1.4, R177.9, R247.1, R247.2, R247.3, R247.4 |
 | E-8 | R47.3, R162.1, R200.5, R200.6, R202.1, R247.5 |
 | E-9 | R179.3 |
-| E-10 | R1.4, R61.1, R102.2, R177.3, R228.6, R250.1, R250.2, R250.3, R260.3 |
-| E-11 | R153.3, R163.5, R187.4, R187.5, R187.7, R190.1, R190.4, R195.1, R195.2, R196.13, R196.14, R252.1, R252.2, R252.3 |
+| E-10 | R61.1, R102.2, R177.3, R228.6, R250.1, R250.2, R250.3, R260.3 |
+| E-11 | R153.3, R163.6, R187.4, R187.5, R187.7, R190.1, R190.4, R195.1, R195.2, R196.13, R196.14, R252.1, R252.2, R252.3 |
 | E-12 | R2.1, R2.2, R2.3, R50.2, R51.1, R59.3, R198.1, R198.4, R198.5, R202.1 |
 | E-13 | R47.3, R80.1, R80.2, R89.1, R91.2, R170.4, R171.1, R171.2, R173.1, R173.5, R186.3, R198.1, R200.2, R200.4, R202.1, R202.2, R202.4, R207.4, R219.1, R220.4, R239.2 |
 | E-14 | R16.1, R16.2, R118.1, R118.2, R118.3, R118.4, R118.5, R118.6, R124.1, R124.4, R159.2, R159.7, R177.6, R187.1, R194.3, R223.2, R259.2 |
@@ -6545,7 +6545,7 @@ The code-to-location table below is generated output, built from the body criter
 | INV-20 | R12.3, R76.1, R76.2, R76.4 |
 | INV-21 | R12.3, R76.1, R76.3, R76.4, R76.5, R154.4 |
 | INV-22 | R9.6, R50.1, R50.2, R50.3, R50.4, R51.3, R56.4, R59.3, R61.5, R144.1, R146.3, R248.3 |
-| INV-23 | R112.3, R114.8, R154.5, R163.1, R163.3, R163.5, R166.8, R167.2, R207.5 |
+| INV-23 | R112.3, R114.8, R154.5, R163.1, R163.3, R163.5, R163.6, R166.8, R167.2, R207.5 |
 | INV-24 | R54.3, R137.1, R137.2, R137.3, R137.4, R194.3, R194.4, R197.6, R197.9, R207.5 |
 | INV-25 | R17.6, R201.1, R201.2, R201.3, R201.4, R201.5 |
 | INV-26 | R14.1, R14.2, R14.3, R127.2, R127.3, R161.5 |

@@ -2,7 +2,7 @@
 name: text-audit
 description: Audit any human-facing text and fix what a stranger stops on — run the mechanical lints, then a fresh cold reader with zero context on the text's history, take the places a reader stops, fix them from the source, and repeat until two consecutive reads return zero blocking findings. Use when the user wants a text checked for comprehension before it ships — "audit this text", "cold-read this", "will a stranger understand this", "is this README/section/page clear", "check this for undefined terms", "does this read", "review this copy for clarity" — on a spec section, a README, a decision page, marketing copy, an article, or any prose a person will read. It states the register it holds a text to and the reader-prompt it hands the cold reader, ready to paste. NOT for reviewing whether a spec HOLDS TOGETHER as a design (that is product-prover, which argues with the claims); NOT for grading taste or rewriting a voice; and NOT for machine-read text — worker briefs, checkpoints, internal notes no human returns to.
 metadata:
-  version: 4.0.0
+  version: 4.0.1
 ---
 
 # text-audit — read a text as a stranger, fix where they stop
@@ -11,7 +11,7 @@ metadata:
 > one surface = one name · one home per fact · junior/senior split · checkpoints · the concurrent-edit
 > fence · freshness · journal discipline · attic-never-delete · verify by deed · the human's gates · claims
 > need primary sources · fix the class, sweep look-alikes · the door before code · prototype ≠ product) live
-> ONCE in the pack's base skill, `live-spec-base` (v4.0.0), together with the settings ladder — this skill
+> ONCE in the pack's base skill, `live-spec-base` (v4.0.1), together with the settings ladder — this skill
 > references them and elaborates only its own domain. Used standalone, this note is plain advice.
 
 This skill audits a piece of human-facing text for comprehension and fixes what it finds. A **cold reader**
