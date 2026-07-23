@@ -6567,7 +6567,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: when the gates arm**
 
-3. The queue's conversion *shall* follow the family's one-delivery arming rule: the whole document moves at once, every consumer that reads the old shape is repointed in that same delivery, and this member's row lint arms inside it. [INV-275] [INV-270]
+3. The queue's conversion *shall* follow the family's one-delivery arming rule: the whole document moves at once, every consumer of the old shape is repointed in that delivery, and the row lint arms inside it. [INV-275] [INV-270]
 
 **Case: how the no-history law is enforced here**
 
