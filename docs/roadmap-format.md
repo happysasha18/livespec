@@ -33,15 +33,15 @@ The body holds live rows only. When a wish lands, its row moves to the dated arc
 The status vocabulary is closed — four words, each set in lowercase italics and each carrying a date:
 
 - *queued* — the wish is accepted and waiting its turn.
-- *in-work* — the wish is claimed by a session. A landing that leaves any leg open keeps its row live with the open leg named — a leg is one separable part of the wish's delivery — since a row closes only whole; the row reads *in-work* while a session still drives the open leg, and *deferred* on a named trigger when that leg waits on an outside event. A stale claim is re-read at queue-take — the moment a session takes its next wish from the queue: an *in-work* row with no commit citing it for seven days joins the staleness review list for the human's word (its sweep is ROADMAP row 481's build).
-- *deferred* — the wish is parked on a named revisit trigger, the trigger written in the status cell and re-read at the next milestone review and whenever a session takes its next wish from the queue.
+- *in-work* — the wish is claimed by a session. A landing that leaves any leg open keeps its row live with the open leg named — a leg is one separable part of the wish's delivery — since a row closes only whole; the row reads *in-work* while a session still drives the open leg, and *deferred* on a named trigger when that leg waits on an outside event. A stale claim is re-read at queue-take — the moment a session takes its next wish from the queue: an *in-work* row with no commit citing it for seven days joins the staleness review list for the human's word. The mechanical sweep behind that list is promised under ROADMAP row 481; until it lands, the taking session runs the re-read itself.
+- *deferred* — the wish is parked on a named revisit trigger, the trigger written in the status cell and re-read at queue-take and at the next milestone review — the whole-project re-check the pack runs at each version milestone.
 - *far* — the wish is parked with no near trigger, re-read at the milestone reviews.
 
 Anything else a row needs to say about its state lives in the wish cell or the acceptance cell.
 
 ## The class vocabulary
 
-The class vocabulary is the family's declared four, closed and held by a lint: *bug*, *small*, *surface*, and *large*. The class names the size of the wish, one vocabulary shared with the spec, and the class cell carries exactly one of the four words.
+The class vocabulary is the family's declared four, closed and held by a lint: *bug*, *small*, *surface*, and *large*. The class names the size of the wish, one vocabulary shared with the spec — each word's meaning lives in the spec glossary's size entry — and the class cell carries exactly one of the four words.
 
 ## The roadmap row
 
