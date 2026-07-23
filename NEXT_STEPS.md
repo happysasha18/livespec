@@ -24,8 +24,11 @@ showing + report duties). His order stands: this landed BEFORE any tlvphotos spe
 red the stamp-only skill files — fixed at the root the same session (row 476, red-proven both ways).
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
-The method proves itself on its own documents before any host migrates. Order after the spec:
-1. TEST_MATRIX.md gets its format (its own follow-on movement in the row-445 plan).
+His word: the method proves itself on its own documents before any host migrates. The sequence inside
+that is the seat's own derivation (smallest format delta first; the matrix is machine-gated so a
+conversion error reds itself; the architecture needs a new format design, better made with two members
+as precedent), told to him 2026-07-23 and standing unless he reorders:
+1. TEST_MATRIX.md gets its format (row 477, in-work 2026-07-23).
 2. ROADMAP.md movements get their format.
 3. ARCHITECTURE.md gets its own format definition in the same family (row 456).
 Only then does tlvphotos migrate, on his word from its own window; other projects stand until then.
