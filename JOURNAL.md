@@ -2,6 +2,32 @@
 
 Edit history lives here — the WHY behind every change. The spec and README state current truth; this file explains how we got there.
 
+## 2026-07-23 — v4.1.0 MINOR: the test matrix becomes the format family's second member (row 477)
+
+The standing order after the spec's conversion put the test matrix first among the remaining documents,
+the seat's own sequencing under Alexander's docs-before-migration word: the matrix had the smallest
+format gap, its machine nets red a conversion error by themselves, and the architecture's coming format
+needs two members as precedent. The member's definition lives in `docs/test-matrix-format.md`, deliberately
+thin: the shared family laws stay in `docs/spec-format.md` by reference, and only the matrix-particular
+rules are stated — a row is one criterion carrying both sides with its anchors trailing, node blocks stand
+as the case grouping, Context and the User Story stand down because the spec owns them, and the coverage
+view is generated. The spec grew Requirements 283–285 (INV-272..274) plus four glossary terms; the
+hand-walked coverage checklist retired, its two per-row facts promoted into the suite's row lint and its
+document-level agreement into the matrix-reference gate (`scripts/build-matrix-reference.py` +
+`guardrails/check-matrix-reference.py`, gate d's letter reused). The conversion itself was a deterministic
+script over the 449 rows, fact sentences verbatim, and a token-multiset proof with every difference
+declared by name (statuses lowercased, emphasis caps lowered, headers reshaped, the retired section and
+the generated Reference excluded) — PASS, empty residuals.
+
+The day also bought two safety lessons, both root-fixed. The index builder would happily write its table
+over its own input; an applier did exactly that to PRODUCT_SPEC.md, git held the body, and the builder now
+refuses a self-targeted `-o`, red-proven (row 478). Hours later a worker's `git checkout --` discarded the
+still-uncommitted conversion — recovered only because the converter was deterministic — and row 479 now
+owes the worker contract a no-restore clause with the orchestrator-side twin: commit each stage before
+the next worker touches its files. The comprehension gate closed on cold reads two and three returning
+zero blocking stops; the minor-gate audit (record `docs/prover/2026-07-23-row477-minor-gate.md`) returned
+passes-with-fixes, both folded the same hour.
+
 ## 2026-07-23 — v4.0.0 MAJOR: the spec moves to the requirements genre (row 445)
 
 The product spec now reads as a requirements document: a preamble, a glossary of every domain noun, and a body of numbered requirements, each carrying a Context block, a one-sentence User Story, and acceptance criteria grouped into named cases with the code anchors trailing at each line's end. Alexander approved the genre on 2026-07-22 («гораздо лучше»); the named cases, the lowercase italic keywords, and the law that every relational word fills its slots were his own edits. The old scenario-first prose form retired, and with it the hand-kept Formal index, whose job now belongs to a code-to-location table that `scripts/build-index.py` generates from the body. The format's own definition lives in `docs/spec-format.md`, and the format laws themselves sit inside the spec as their own requirements section, INV-250..271.

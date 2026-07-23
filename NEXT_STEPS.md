@@ -1,36 +1,32 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
-## ON RESUME (2026-07-23 — v4.0.1: the audit's should-fix batch landed; row 470 opened on his word)
-Rows 461–464 landed in one docs-only batch (v4.0.1): F9–F15 from the 4.0.0 full audit folded (far stated
-as a resting state in R96; the isolation default and the scope rule each keep one home; *where* joined the
-declared keywords; the fix-vs-story GAP cites the user-story test; activity generation glossed; R241.1
-grammar fixed), the surface-registry contradiction decided from the shipped truth (registry exists,
-host-authored; R1.4's planned list drops it, R3.3's GAP retired), R116's count aligned, R163.5 unpacked
-into two criteria, R199's check bound stated. Dispositions marked folded in the audit record; index
-regenerated; short-form pre-push record docs/prover/2026-07-23-rows461-464-shortform.md.
+## ON RESUME (2026-07-23 evening — v4.1.0: the test matrix is the format family's second member, row 477)
+Row 477 LANDED: docs/test-matrix-format.md defines the member (family laws inherited by reference);
+SPEC R283–285 + glossary (INV-272..274); TEST_MATRIX.md converted — 449 five-cell criterion rows,
+trailing anchors, lowercase italic statuses, generated Reference; gate d repointed to
+check-matrix-reference.py and the row lint lives in the suite, both red-proven; the hand-walked coverage
+checklist retired across seven homes; token-multiset proof PASS (prototype/2026-07-23-matrix-format/);
+cold reads 2+3 consecutive zero-blocking; minor-gate record docs/prover/2026-07-23-row477-minor-gate.md.
+Side landings: row 476 (tests-present stamp-only), row 478 (index builder refuses -o onto its input,
+after an applier clobbered the spec's working copy — git held the body). Row 479 OPENED: a worker never
+restores the shared working tree (a caps worker's git checkout discarded the uncommitted conversion,
+recovered by the deterministic converter); its build also owes the orchestrator habit commit-per-stage.
 
-## LIVE STATE (2026-07-23 ~13:15 — landing commit of v4.0.1 in flight)
-Same day, Alexander's word in this window: the tlvphotos window executes installed rules only partially —
-seven named symptoms; classified STANDING (permanent mechanisms owed). Opened as ROADMAP row 470; the
-read-only evidence digest is committed at docs/audit/2026-07-23-tlvphotos-conduct-evidence.md (each
-symptom → dated episodes + which net exists and what it actually reads; headline: hedge-scan 0 fires in
-973 runs against documented third-person Russian deferrals, no net at all for estimates/disclosure-timing/
-sending-side deposits/class-vs-enumeration, text-audit skill absent from tlvphotos' installed set).
-Row 470 LANDED same session: verdicts in docs/audit/2026-07-23-tlvphotos-conduct-verdicts.md, the hedge
-overlay widened to third-person deferrals (red-proven 0/4→4/4), rows 471–475 opened (estimate line ·
-remainder-up-front · deposit-at-finding · judge dedupe · enforcement-coverage registry), rows 432/446
-carry the field evidence, one atomic deposit left in tlvphotos/inbox (update to 4.0.1 + cold-read before
-showing + report duties). His order stands: this landed BEFORE any tlvphotos spec migration. At the push the tests-present gate
-red the stamp-only skill files — fixed at the root the same session (row 476, red-proven both ways).
+## LIVE STATE (2026-07-23 — the tlvphotos conduct audit, row 470, LANDED at v4.0.1 earlier the same day)
+Verdicts docs/audit/2026-07-23-tlvphotos-conduct-verdicts.md; hedge overlay widened to third-person
+deferrals (0/4→4/4); rows 471–475 opened (estimate line · remainder-up-front · deposit-at-finding ·
+judge dedupe · enforcement-coverage registry); rows 432/446 carry the field evidence; one atomic deposit
+left in tlvphotos/inbox. His order stands: that landing came BEFORE any tlvphotos spec migration.
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 His word: the method proves itself on its own documents before any host migrates. The sequence inside
 that is the seat's own derivation (smallest format delta first; the matrix is machine-gated so a
 conversion error reds itself; the architecture needs a new format design, better made with two members
 as precedent), told to him 2026-07-23 and standing unless he reorders:
-1. TEST_MATRIX.md gets its format (row 477, in-work 2026-07-23).
-2. ROADMAP.md movements get their format.
-3. ARCHITECTURE.md gets its own format definition in the same family (row 456).
+1. TEST_MATRIX.md gets its format — DONE, row 477 landed v4.1.0 (2026-07-23).
+2. ROADMAP.md movements get their format — NEXT.
+3. ARCHITECTURE.md gets its own format definition in the same family (row 456; carries the named
+   back-propagation: a converted node set re-lays the matrix's block headings in the same delivery).
 Only then does tlvphotos migrate, on his word from its own window; other projects stand until then.
 
 ## Near queue after this landing
