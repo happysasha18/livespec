@@ -22,8 +22,21 @@ goes stale silently). Format draft at prototype/2026-07-23-architecture-format/f
 style-lint clean: per-node `### [node: <name>]` sections (the matrix's heading convention), owns
 cites anchors with at most one parenthetical (restated laws relocate to the spec, verified
 per-anchor), prover record relocates to a dated home, one shared reader module (specformat.py's
-sibling) every consumer repoints to, node set unchanged so the matrix headings survive. Two
-drafter workers out: spec requirements (INV-278..280) + reader/converter/proof drafts.
+sibling) every consumer repoints to, node set unchanged so the matrix headings survive.
+Drafts done and pushed: spec requirements (INV-278..280, lint clean, three glossary entries, the
+placement rule's wording conflict resolved into the draft, SPEC INV-75) and reader/converter/proof
+(stage 1 green: 22 sections, multisets equal, deterministic, reader refuses the old shape).
+Relocation audit done, 13 workers, reports in prototype/2026-07-23-architecture-format/
+relocation-audit/: 249 fragments = 130 duplicate (replace with citation; spec line quoted per
+verdict) + 101 keep (ownership/wiring) + 12 partial (the missing sentences move into the named
+spec clauses) + 6 absent (2 build-pipeline, 4 guardrails-b — decide each: into the spec or an
+architecture note) + 6 provenance-carrying pins. Some nodes hold ownership prose in the
+responsibility field (design-reviewer report) — stage 2 trims responsibility to one sentence too.
+NEXT (the apply stage; routine after the design, so an Opus window per his word): apply verdicts
+to the converted doc + spec edits with named deltas, relocate the prover-record table, move
+format-draft to docs/architecture-format.md, fold the spec-reqs draft (rebuild index), land
+archformat.py in guardrails/, repoint the ~26 consumers, red-proofs, suite, cold-read pair,
+prover, minor-gate audit, bump 4.3.0.
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 1. TEST_MATRIX.md — DONE, row 477, v4.1.0 (2026-07-23).
