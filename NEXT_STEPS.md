@@ -1,7 +1,7 @@
 # live-spec — NEXT_STEPS (resume file: LIVE STATE + queue only; history → JOURNAL.md; ≤100 lines, INV-48)
 
 ## LIVE STATE (2026-07-23 night — v4.2.0: the queue is the format family's third member, row 480)
-Row 480 LANDED: docs/roadmap-format.md defines the queue member (family laws inherited by reference);
+Row 480 pushed at v4.2.0, in-work on one leg (the confirming cold-read pair): docs/roadmap-format.md defines the queue member (family laws inherited by reference);
 SPEC R286–288 (INV-275..277) + seven requirements sharpened to the closing-commit archiving law;
 ROADMAP.md converted — the body holds live rows only (114 rows, ~120 KB, was 345 rows at 98% of a
 700 KB ceiling; ceiling now 260 KB), closed status vocabulary *queued*/*in-work*/*deferred*/*far*
@@ -14,8 +14,12 @@ the landing-map gate re-keyed to the archive move with two red-proven carves (hi
 ≥2 days old owes no map refresh; a live-status trigger quoting "landed" is no flip); delegation and
 footprint checks read body+archive union. Content preservation proven by word+punctuation multisets
 across seven deterministic converter rounds (prototype/2026-07-23-roadmap-format/). Prover CROSS-LINK
-10/10 folded; minor-gate audit passes-with-fixes, folded; skill-review pass (build-pipeline);
-cold reads 5+6 consecutive zero-blocking.
+10/10 folded; minor-gate audit passes-with-fixes, folded; skill-review pass (build-pipeline).
+Cold reads: five rounds run and folded (the finding stream thinned to one-sentence surface
+disclaimers); the confirming zero-blocking pair is row 480's ONE OPEN LEG — the next fresh session
+runs it first (a fresh context is itself a cold reader), then flips row 480 landed and moves it to
+the archive via rotate-doc --close-row 480. His 2026-07-23 ~20:35 word: wrap early, the weekly
+budget at 10%.
 
 ## STANDING ORDER — the format family finishes the live-spec docs first (Alexander 2026-07-22)
 1. TEST_MATRIX.md — DONE, row 477, v4.1.0 (2026-07-23).
