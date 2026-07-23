@@ -4766,7 +4766,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the delivered row carries the line**
 
-1. The system *shall* record on each delivered row's delivery report how its work was delegated — the unit sent to a worker with an estimated saving, or why the seat kept it — and *shall* red the suite *when* a row landed after the format conversion omits the line, reading it from the archive. [INV-103, INV-276]
+1. The system *shall* record on each delivered row's delivery report how its work was delegated — the unit sent to a worker with its saving, or why the seat kept it — and *shall* red the suite *when* a row landed after the conversion omits the line, reading it from the archive. [INV-103, INV-276]
    [GAP: the delegation accounting records a saving for each delegated unit, but the source names no unit or baseline the saving is measured against — tokens, wall-time, or cost — so a correct saving figure is undefined and a test author cannot pin it.]
 2. The system *shall* bind the duty to the orchestrating seat whatever tier leads it, and *shall* bind it forward from its own reach rather than over rows already delivered. [INV-103, INV-159]
 
@@ -6586,8 +6586,8 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 **Case: a terminal exit moves to the archive at its closing commit**
 
 1. *when* a row reaches a terminal exit — *landed*, *declined*, or *superseded* — the system *shall* move it verbatim, its delivery report riding with it, from the body to the queue archive in the same commit that closes it. [INV-276]
-2. The system *shall* gather one calendar month's moved rows in one archive file and *shall* record one manifest line per archive file above the body. [INV-276]
-3. The system *shall* cross-check the manifest against the archive under the existing nothing-lost gate, reading a moved row found in neither the body nor its archive as a violation. [INV-276, INV-209]
+2. The system *shall* gather a calendar month's moved rows in one archive file and *shall* record one manifest line per file above the body. [INV-276]
+3. The system *shall* cross-check the manifest against the archive under the nothing-lost gate, a moved row found in neither the body nor its archive reading as a violation. [INV-276, INV-209]
 
 **Case: a parked row stays live in the body**
 
@@ -6595,7 +6595,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: a row with several legs closes only whole**
 
-5. A row whose wish carries more than one leg *shall* reach a terminal exit only *when* every leg is closed, a landing that leaves any leg open keeping the row *in-work* with the open leg named. [INV-276, INV-26]
+5. A row with more than one leg *shall* reach a terminal exit only *when* every leg is closed; an open leg *shall* keep the row live and named — *in-work* under a driving session, *deferred* on a named trigger *when* it waits on an outside event. [INV-276, INV-26]
 
 ---
 
@@ -6615,7 +6615,7 @@ The foundational nouns of the method — request, pipeline, spec, architecture, 
 
 **Case: the row lint holds the shape and the vocabularies**
 
-4. *if* a body row carries other than five cells, sits out of ascending id order, carries a status or a class outside its closed vocabulary, or reads *deferred* with no trigger, *then* the row lint *shall* red, naming the row. [INV-277]
+4. *if* a body row carries other than five cells, breaks ascending id order, carries a status or class outside its vocabulary, or reads *deferred* with no trigger, *then* the row lint *shall* red, naming the row. [INV-277]
 5. *when* every body row holds its shape and its vocabularies, the row lint *shall* pass green and state its reach on the green line, its home the suite's traceability tests, extended, with no new standalone script. [INV-277, INV-269]
 
 ## Reference

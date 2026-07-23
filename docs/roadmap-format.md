@@ -33,7 +33,7 @@ The body holds live rows only. When a wish lands, its row moves to the dated arc
 The status vocabulary is closed — four words, each set in lowercase italics and each carrying a date:
 
 - *queued* — the wish is accepted and waiting its turn.
-- *in-work* — the wish is claimed by a session. A landing that leaves any leg open keeps its row *in-work* with the open leg named — a leg is one separable part of the wish's delivery — since a row closes only whole. A stale claim is re-read at queue-take: an *in-work* row with no commit citing it for seven days joins the staleness review list for the human's word (its sweep is ROADMAP row 481's build).
+- *in-work* — the wish is claimed by a session. A landing that leaves any leg open keeps its row live with the open leg named — a leg is one separable part of the wish's delivery — since a row closes only whole; the row reads *in-work* while a session still drives the open leg, and *deferred* on a named trigger when that leg waits on an outside event. A stale claim is re-read at queue-take: an *in-work* row with no commit citing it for seven days joins the staleness review list for the human's word (its sweep is ROADMAP row 481's build).
 - *deferred* — the wish is parked on a named revisit trigger, the trigger written in the status cell and re-read at the next milestone review and whenever a session takes its next wish from the queue.
 - *far* — the wish is parked with no near trigger, re-read at the milestone reviews.
 
